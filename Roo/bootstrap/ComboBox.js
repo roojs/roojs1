@@ -56,7 +56,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
         this.container = Roo.bootstrap.ComboBox.SingleSelect2.createContainer();
         
-        this.liveRegion = $("<span>", {
+        this.liveRegion = new Roo.Element(do, forceNew)$("<span>", {
                     role: "status",
                     "aria-live": "polite"
                 })
@@ -166,7 +166,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
 Roo.apply(Roo.bootstrap.ComboBox,  {
     SingleSelect2 : {
         createContainer: function () {
-            var container = new Roo.Element(document.createElement("div"));
+            var container = new Roo.Element(document.createElement("div"), true);
             container.addClass("select2-container");
             
             container.createChild({
