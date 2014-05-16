@@ -230,6 +230,11 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                             },
                             
                         ]
+                    },
+                    {
+                        tag: 'ul',
+                        cls: 'select2-results',
+                        role: 'listbox'
                     }
                 ]
             });
