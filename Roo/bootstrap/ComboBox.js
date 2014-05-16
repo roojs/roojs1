@@ -20,6 +20,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
     
     
     multiple: false,
+    width: 200,
     
     getAutoCreate : function(){
         
@@ -41,6 +42,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
                 {
                     tag: 'div',
                     cls: 'select2-container',
+                    style: "width:" + this.width + 'px',
                     cn: [
                         {
                             tag: 'a',
@@ -107,6 +109,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
                 {
                     tag: 'div',
                     cls: 'select2-container select2-container-multiple',
+                    style: "width:" + this.width + 'px',
                     cn: [
                         {
                             tag: 'ul',
