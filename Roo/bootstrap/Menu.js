@@ -86,7 +86,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
    /// html : false,
     //align : '',
-    triggerEl : false,
+    triggerEl : false,  // is this set by component builder? -- it should really be fetched from parent()???
     type: false,
     /**
      * @cfg {Boolean} registerMenu True (default) - means that clicking on screen etc. hides it.
