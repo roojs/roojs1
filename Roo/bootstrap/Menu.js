@@ -238,7 +238,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if (this.isVisible()) {
             this.hide();
         } else {
-            this.show();
+            this.show(this.triggerEl);
         }
         // if disabled.. ingore
         this.hideMenuItems(e); // hids any open sub-menus..
