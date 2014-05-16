@@ -43,7 +43,7 @@ Roo.bootstrap.MenuMgr = function(){
        active.remove(m);
        if(active.length < 1){
            Roo.get(document).un("mousedown", onMouseDown);
-           Roo.select('iframe').un("mousedown", onMouseDown);
+            
            attached = false;
        }
    }
@@ -55,7 +55,7 @@ Roo.bootstrap.MenuMgr = function(){
        active.add(m);
        if(!attached){
            Roo.get(document).on("mousedown", onMouseDown);
-           Roo.select('iframe').on("mousedown", onMouseDown);
+           
            attached = true;
        }
        if(m.parentMenu){
