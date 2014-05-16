@@ -170,6 +170,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             
         }
         */
+        Roo.log('pass click event');
+        
         t.onClick(e);
         this.fireEvent("click", this, t, e);
     },
