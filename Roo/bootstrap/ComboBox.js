@@ -47,6 +47,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
                         {
                             tag: 'a',
                             cls: 'select2-choice',
+                            href: 'javascript:void(0)',
                             tabindex: -1,
                             cn: [
                                 {
