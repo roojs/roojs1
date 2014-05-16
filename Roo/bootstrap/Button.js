@@ -70,6 +70,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     name: false,
     target: false,
     
+    
+    pressed : null,
+    
+    
     getAutoCreate : function(){
         
         var cfg = {
@@ -86,7 +90,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         cfg.html = this.html || cfg.html;
         
-        if (this.toggle===true) {
+        if (this.toggle === true) {
             cfg={
                 tag: 'div',
                 cls: 'slider-frame roo-button',
@@ -268,6 +272,12 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         if(this.preventDefault){
             e.preventDefault();
         }
+        if (this.pressed === true || this.pressed === false) {
+            this.pressed = !this.pressed;
+            this[this.pressed ? 'addClass' : 'removeClass']('active');
+            this.fireEvent('toggle', this,e);
+        }
+        
         
         this.fireEvent('click', this, e);
     }

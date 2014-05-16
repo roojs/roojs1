@@ -226,7 +226,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     // private
     onResize : function(w, h)
     {
-        //Roo.log('resize: ' +w + ',' + h );
+        Roo.log('resize: ' +w + ',' + h );
         Roo.bootstrap.HtmlEditor.superclass.onResize.apply(this, arguments);
         var ew = false;
         var eh = false;
@@ -238,14 +238,15 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
                 ew = aw;
             }
             if(typeof h == 'number'){
-                var tbh = 0;
+                 var tbh = -11;  // fixme it needs to tool bar size!
                 for (var i =0; i < this.toolbars.length;i++) {
                     // fixme - ask toolbars for heights?
-                    tbh += this.toolbars[i].tb.el.getHeight();
-                    if (this.toolbars[i].footer) {
-                        tbh += this.toolbars[i].footer.el.getHeight();
-                    }
+                    tbh += this.toolbars[i].el.getHeight();
+                    //if (this.toolbars[i].footer) {
+                    //    tbh += this.toolbars[i].footer.el.getHeight();
+                    //}
                 }
+              
                 
                 
                 

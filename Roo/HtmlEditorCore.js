@@ -237,7 +237,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // private
     onResize : function(w, h)
     {
-        //Roo.log('resize: ' +w + ',' + h );
+         Roo.log('resize: ' +w + ',' + h );
         //Roo.HtmlEditorCore.superclass.onResize.apply(this, arguments);
         if(!this.iframe){
             return;
@@ -266,11 +266,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         if(this.sourceEditMode){
  
-            this.iframe.className = 'x-hidden hide';     //FIXME - what's the BS styles for these
+            Roo.get(this.iframe).addClass(['x-hidden','hide']);     //FIXME - what's the BS styles for these
             
         }else{
- 
-            this.iframe.className = '';
+            Roo.get(this.iframe).removeClass(['x-hidden','hide']);
+            //this.iframe.className = '';
             this.deferFocus();
         }
         //this.setSize(this.owner.wrap.getSize());
