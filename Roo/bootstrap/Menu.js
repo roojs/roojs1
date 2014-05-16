@@ -204,8 +204,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
     },
     
-    toggle  : function(e)
+    ontriggerPress  : function(e)
     {
+        
+        
         //Roo.log(e.getTarget());
        // Roo.log(this.triggerEl.dom);
         if (Roo.get(e.getTarget()).findParent('.dropdown-menu')) {
