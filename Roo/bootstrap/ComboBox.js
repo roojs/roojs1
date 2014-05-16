@@ -48,8 +48,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
     },
     
-    initEvent : function()
+    initEvents : function()
     {
-        Roo.log('initEvent');
+        Roo.log('initEvents');
     }
 });
