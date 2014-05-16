@@ -60,7 +60,7 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     
     initEvents: function() {
         
-        this.el.on('click', this.onClick, this);
+        this.el.select('a').on('click', this.onClick, this);
         
     },
     onClick : function(e)
