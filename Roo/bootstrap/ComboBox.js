@@ -30,7 +30,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
         
         if(this.multiple){
             cfg = this.getAutoCreateMulitple();
+            return cfg;
         }
+        
         
         
         return cfg;
