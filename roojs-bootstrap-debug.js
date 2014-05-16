@@ -7234,7 +7234,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
             ]
         };
         
-        
+        Roo.log(cfg);
         return cfg;
         
     },
