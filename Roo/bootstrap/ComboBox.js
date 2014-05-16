@@ -157,5 +157,49 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
 });
 
 Roo.apply(Roo.bootstrap.ComboBox,  {
+    SingleSelect2 : {
+        createContainer: function () {
+            var container = new Roo.Element(document.createElement("div"));
+            container.addClass("select2-container");
+            
+            container.createChild({
+                tag: 'a',
+                href: 'javascript:void(0)',
+                cls: 'select2-choice',
+                tabindex: '-1',
+                cn: [
+                    {
+                        tag: 'span',
+                        cls: 'select2-chosen',
+                        html: '&#160;'
+                    },
+                    {
+                        tag: 'abbr',
+                        cls: 'select2-search-choice-close'
+                    }
+                ]
+            });
+            
+            var container = $(document.createElement("div")).attr({
+                "class": "select2-container"
+            }).html([
+                "<a href='javascript:void(0)' class='select2-choice' tabindex='-1'>",
+                "   <span class='select2-chosen'>&#160;</span><abbr class='select2-search-choice-close'></abbr>",
+                "   <span class='select2-arrow' role='presentation'><b role='presentation'></b></span>",
+                "</a>",
+                "<label for='' class='select2-offscreen'></label>",
+                "<input class='select2-focusser select2-offscreen' type='text' aria-haspopup='true' role='button' />",
+                "<div class='select2-drop select2-display-none'>",
+                "   <div class='select2-search'>",
+                "       <label for='' class='select2-offscreen'></label>",
+                "       <input type='text' autocomplete='off' autocorrect='off' autocapitalize='off' spellcheck='false' class='select2-input' role='combobox' aria-expanded='true'",
+                "       aria-autocomplete='list' />",
+                "   </div>",
+                "   <ul class='select2-results' role='listbox'>",
+                "   </ul>",
+                "</div>"].join(""));
+            return container;
+        },
+    }
         
 });
