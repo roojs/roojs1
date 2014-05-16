@@ -78,6 +78,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
                             cls: 'select2-focusser select2-offscreen',
                             type: 'text',
                             role: 'button',
+                            id: id,
+                            tabindex: 0
                             
                         }
                     ]
