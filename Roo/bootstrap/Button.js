@@ -302,7 +302,11 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         this.disabled = true;
         this.el.addClass('disabled');
     },
-    
+    toggle : function(v) {
+        this[v ? 'enable' : 'disable']();
+        
+        
+    }
 });
 
  
