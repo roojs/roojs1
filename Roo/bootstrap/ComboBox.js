@@ -74,10 +74,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
         this.container.addClass(this.el.attr('class'));
         
+        this.container.on("click", this.killEvent);
+        
         this.elementTabIndex = this.el.attr("tabindex");
         
         this.dropdown = this.container.find(".select2-drop");
         
+        this.dropdown.addClass(this.el.attr('class'));
+        
+        this.dropdown.on("click", this.killEvent);
         
     },
     
