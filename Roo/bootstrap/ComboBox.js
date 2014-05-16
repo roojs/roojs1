@@ -89,7 +89,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
                 label.attr("id", "select2-result-label-" + nextUid());
                 label.attr("role", "option");
 
-                formatted=this.formatResult(result, label, query, this.escapeMarkup);
+                formatted=this.formatResult(result, label, query, this.defaultEscapeMarkup);
                 if (formatted!==undefined) {
                     label.html(formatted);
                     node.append(label);
