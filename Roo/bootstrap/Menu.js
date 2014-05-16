@@ -286,9 +286,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         Roo.log('trigger press');
         //Roo.log(e.getTarget());
        // Roo.log(this.triggerEl.dom);
-        //if (Roo.get(e.getTarget()).findParent('.dropdown-menu')) {
-        //    return;
-        //}
+        if (Roo.get(e.getTarget()).findParent('.dropdown-menu')) {
+            return;
+        }
         if (this.isVisible()) {
             Roo.log('hide');
             this.hide();
