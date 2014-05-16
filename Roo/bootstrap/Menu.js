@@ -229,6 +229,39 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.focus();
         this.fireEvent("show", this);
     },
+    
+    focus : function(){
+        if(!this.hidden){
+            this.doFocus.defer(50, this);
+        }
+    },
+
+    doFocus : function(){
+        if(!this.hidden){
+            this.focusEl.focus();
+        }
+    },
+
+    /**
+     * Hides this menu and optionally all parent menus
+     * @param {Boolean} deep (optional) True to hide all parent menus recursively, if any (defaults to false)
+     */
+    hide : function(deep){
+        if(this.el && this.isVisible()){
+            this.fireEvent("beforehide", this);
+            if(this.activeItem){
+                this.activeItem.deactivate();
+                this.activeItem = null;
+            }
+            this.el.hide();
+            this.hidden = true;
+            this.fireEvent("hide", this);
+        }
+        if(deep === true && this.parentMenu){
+            this.parentMenu.hide(true);
+        }
+    },
+    
     onTriggerPress  : function(e)
     {
         
