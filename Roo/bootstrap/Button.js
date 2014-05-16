@@ -304,7 +304,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     },
     setActive : function(v) {
         
-        this[v ? 'addClass' : 'removeClass']('active');
+        this.el[v ? 'addClass' : 'removeClass']('active');
         
         
     }
