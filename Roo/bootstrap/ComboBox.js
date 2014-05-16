@@ -89,7 +89,25 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
                 {
                     tag: 'select',
                     cls: 'select2-offscreen',
-                    tabindex: -1
+                    tabindex: -1,
+                    cn: [
+                        {
+                            tag: 'option',
+                            value: 'AK',
+                            html: 'Alaska'
+                        },
+                        {
+                            tag: 'option',
+                            value: 'HI',
+                            html: 'Hawaii'
+                        },
+                        {
+                            tag: 'option',
+                            value: 'CA',
+                            html: 'California'
+                        }
+                        
+                    ]
                 }
             ]
         };
