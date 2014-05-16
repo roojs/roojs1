@@ -249,6 +249,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      * @param {Boolean} deep (optional) True to hide all parent menus recursively, if any (defaults to false)
      */
     hide : function(deep){
+        
+        this.hideMenuItems();
         if(this.el && this.isVisible()){
             this.fireEvent("beforehide", this);
             if(this.activeItem){
