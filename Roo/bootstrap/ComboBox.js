@@ -5,7 +5,7 @@
 
 /**
  * @class Roo.bootstrap.ComboBox
- * @extends Roo.bootstrap.Component
+ * @extends Roo.bootstrap.Input
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
  * @constructor
  * Create a new ComboBox.
@@ -16,7 +16,22 @@ Roo.bootstrap.ComboBox = function(config){
 
 };
 
-Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
+Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
     
+    
+    
+    getAutoCreate : function(){
+        
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+        
+        var id = Roo.id();
+        
+        var cfg = {};
+        
+        
+        
+        return cfg;
+        
+    }
     
 });
