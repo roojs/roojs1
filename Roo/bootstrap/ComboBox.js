@@ -24,7 +24,24 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
         var cfg = {
             tag: 'select',
-            id: id
+            id: id,
+            cn: [
+                {
+                    tag: 'option',
+                    value: 'AK',
+                    html: 'Alaska'
+                },
+                {
+                    tag: 'option',
+                    value: 'HI',
+                    html: 'Hawfaii'
+                },
+                {
+                    tag: 'option',
+                    value: 'CA',
+                    html: 'California'
+                }
+            ]
         };
         
         
