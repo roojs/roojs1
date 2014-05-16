@@ -98,7 +98,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
 
                 if (compound) {
 
-                    innerContainer=$("<ul></ul>");
+                    innerContainer=new Roo.Element(document.createElement("ul"), true);
                     innerContainer.addClass("select2-result-sub");
                     populate(result.children, innerContainer, depth+1);
                     node.append(innerContainer);
