@@ -84,9 +84,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
         this.dropdown.on("click", this.killEvent);
         
-        this.results = this.container.find(this.resultsSelector);
+        this.results = this.container.select(this.resultsSelector, true).first();
         
-        this.search = this.container.find("input.select2-input");
+        this.search = this.container.select("input.select2-input", true).first();
         
     },
     
