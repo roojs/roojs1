@@ -118,7 +118,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
        // Roo.log("ADD event");
        // Roo.log(this.triggerEl.dom);
-        //this.triggerEl.on('click', this.toggle, this);
+         this.triggerEl.on('click', this.show, this);
         this.triggerEl.addClass('dropdown-toggle');
         this.el.on(Roo.isTouch ? 'touchstart' : 'click'   , this.onClick, this);
 
@@ -186,6 +186,24 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         //}
         this.fireEvent("mouseout", this, e, t);
     },
+    
+    
+    /**
+     * Displays this menu relative to another element
+     * @param {String/HTMLElement/Roo.Element} element The element to align to
+     * @param {String} position (optional) The {@link Roo.Element#alignTo} anchor position to use in aligning to
+     * the element (defaults to this.defaultAlign)
+     * @param {Roo.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
+     */
+    show : function(el, pos, parentMenu){
+        this.parentMenu = parentMenu;
+        if(!this.el){
+            this.render();
+        }
+        this.fireEvent("beforeshow", this);
+        this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
+    },
+    
     toggle  : function(e)
     {
         //Roo.log(e.getTarget());
