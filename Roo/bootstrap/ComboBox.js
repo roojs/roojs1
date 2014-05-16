@@ -75,7 +75,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
 
                 compound=result.children && result.children.length > 0;
 
-                node=document.createElement("li");;
+                node=new Roo.Element(document.createElement("li"), true);
                 node.addClass("select2-results-dept-"+depth);
                 node.addClass("select2-result");
                 node.addClass(selectable ? "select2-result-selectable" : "select2-result-unselectable");
@@ -84,7 +84,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
                 node.addClass(this.formatResultCssClass(result));
                 node.attr("role", "presentation");
 
-                label=document.createElement("div");
+                label=new Roo.Element(document.createElement("div"), true);
                 label.addClass("select2-result-label");
                 label.attr("id", "select2-result-label-" + nextUid());
                 label.attr("role", "option");
