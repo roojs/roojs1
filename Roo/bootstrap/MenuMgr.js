@@ -143,11 +143,13 @@ Roo.bootstrap.MenuMgr = function(){
                return menus[menu];
            }else if(menu.events){  // menu instance
                return menu;
-           }else if(typeof menu.length == 'number'){ // array of menu items?
+           }
+           /*else if(typeof menu.length == 'number'){ // array of menu items?
                return new Roo.bootstrap.Menu({items:menu});
            }else{ // otherwise, must be a config
                return new Roo.bootstrap.Menu(menu);
            }
+           */
        },
 
        // private
