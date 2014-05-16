@@ -1145,14 +1145,14 @@ Roo.apply(Roo.bootstrap.Menu, {
     {
         Roo.log(e);
         
-    }
+    },
     show : function(menu) {
         
         
         
     }
     
-    
+
     
     
 });

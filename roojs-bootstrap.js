@@ -31,8 +31,7 @@ Roo.bootstrap.Header=function(A){Roo.bootstrap.Header.superclass.constructor.cal
 //Roo/bootstrap/Menu.js
 Roo.bootstrap.Menu=function(A){Roo.bootstrap.Menu.superclass.constructor.call(this,A);Roo.bootstrap.Menu.register(this);};Roo.extend(Roo.bootstrap.Menu,Roo.bootstrap.Component,{triggerEl:false,type:false,getChildContainer:function(){return this.el;},getAutoCreate:function(){var A={tag:'ul',cls:'dropdown-menu'};if(this.type==='submenu'){A.cls='submenu active'}return A;},initEvents:function(){this.triggerEl.on('click',this.toggle,this);this.triggerEl.addClass('dropdown-toggle');},toggle:function(e){if(Roo.get(e.getTarget()).findParent('.dropdown-menu')){return;}var A=this.triggerEl.hasClass('open');this.hideMenuItems(e);this.triggerEl[A?'removeClass':'addClass']('open');this.triggerEl.focus();e.preventDefault();},hideMenuItems:function(){Roo.select('.dropdown-toggle',true).each(function(aa){if(!aa.hasClass('open')){return;}
 aa.removeClass('open');})}});Roo.apply(Roo.bootstrap.Menu,{menus:[],register:function(A){if(!this.menus.length){Roo.get(document.body).on('click',Roo.bootstrap.Menu.onClick)}
-this.menus.push(A);},onClick:function(e){Roo.log(e);}
-show:function(menu){}});
+this.menus.push(A);},onClick:function(e){Roo.log(e);},show:function(A){}});
 //Roo/bootstrap/MenuItem.js
 Roo.bootstrap.MenuItem=function(A){Roo.bootstrap.MenuItem.superclass.constructor.call(this,A);this.addEvents({"click":true});};Roo.extend(Roo.bootstrap.MenuItem,Roo.bootstrap.Component,{href:false,html:false,preventDefault:true,getAutoCreate:function(){var A={tag:'li',cn:[{tag:'a',href:'#',html:'Link'}]};A.cn[0].href=this.href||A.cn[0].href;A.cn[0].html=this.html||A.cn[0].html;return A;},initEvents:function(){this.el.on('click',this.onClick,this);},onClick:function(e){Roo.log('item on click ');if(this.preventDefault){e.preventDefault();}
 this.parent().hideMenuItems();this.fireEvent('click',this,e);}});
