@@ -27,6 +27,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
         
         var id = Roo.id();
         
+        var select = {
+            tag: 'select',
+            cls: 'select2-offscreen',
+            tabindex: -1
+        };
+        
+        if(this.multiple){
+            select.multiple = true;
+        }
+        
         var cfg = {
             tag: 'div',
             cn: [
@@ -66,42 +76,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
                     ]
 
                 },
-                {
-                    tag: 'select',
-                    cls: 'select2-container',
-                    cn: [
-                        {
-                            tag: 'ul',
-                            cls: 'select2-choice',
-                            cn: [
-                                {
-                                    tag: 'li',
-                                    cls: 'select2-search-field',
-                                    cn: [
-                                        {
-                                            tag: 'label',
-                                            'for': id,
-                                            cls: 'select2-offscreen',
-                                            html: 'Label here'
-                                        },
-                                        {
-                                            tag: 'input',
-                                            type: 'text',
-                                            cls: 'select2-input',
-                                            id: id,
-                                            autocomplete: 'off',
-                                            autocorrect: 'off',
-                                            autocapitalize: 'off',
-                                            spellcheck: false,
-                                            tabindex: 0
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-
-                },
+                
             ]
         };
         
