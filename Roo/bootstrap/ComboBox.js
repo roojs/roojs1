@@ -18,10 +18,6 @@ Roo.bootstrap.ComboBox = function(config){
 
 Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
     
-    
-    multiple: false,
-    width: 200,
-    
     getAutoCreate : function(){
         
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
@@ -116,62 +112,5 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
         Roo.log(cfg);
         return cfg;
         
-    },
-    
-    getAutoCreateMulitple : function()
-    {
-        var id = Roo.id();
-        
-        var cfg = {
-            tag: 'div',
-            cn: [
-                {
-                    tag: 'div',
-                    cls: 'select2-container select2-container-multiple',
-                    style: "width:" + this.width + 'px',
-                    cn: [
-                        {
-                            tag: 'ul',
-                            cls: 'select2-choice',
-                            cn: [
-                                {
-                                    tag: 'li',
-                                    cls: 'select2-search-field',
-                                    cn: [
-                                        {
-                                            tag: 'label',
-                                            'for': id,
-                                            cls: 'select2-offscreen',
-                                            html: 'Label here'
-                                        },
-                                        {
-                                            tag: 'input',
-                                            type: 'text',
-                                            cls: 'select2-input',
-                                            id: id,
-                                            autocomplete: 'off',
-                                            autocorrect: 'off',
-                                            autocapitalize: 'off',
-                                            spellcheck: false,
-                                            tabindex: 0
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-
-                },
-                {
-                    tag: 'select',
-                    cls: 'select2-offscreen',
-                    tabindex: -1,
-                    multiple: true
-                }
-            ]
-        };
-        
-        return cfg;
     }
-    
 });
