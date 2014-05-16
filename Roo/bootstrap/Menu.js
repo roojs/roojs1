@@ -138,10 +138,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if(!t){
             return;
         }
-        Roo.log(t);
-        Roo.log(t.id);
+        //Roo.log(t);         Roo.log(t.id);
         if(t && t.id){
-            Roo.log(this.menuitems);
+            //Roo.log(this.menuitems);
             return this.menuitems.get(t.id);
             
             //return this.items.get(t.menuItemId);
