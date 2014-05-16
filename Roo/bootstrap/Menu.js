@@ -305,7 +305,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         })
     },
     addxtypeChild : function (tree, cntr) {
-        var comp= Roo.bootstrap.Component.superclass.addxtypeChild.call(this, tree, cntr);
+        var comp= Roo.bootstrap.Menu.superclass.addxtypeChild.call(this, tree, cntr);
         comp.menuItemId = comp.el.id;
         this.menuitems.add(comp);
         return comp;
