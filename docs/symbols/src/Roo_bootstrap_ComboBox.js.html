@@ -19,4 +19,137 @@
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.ComboBox</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Input</span><span class="jsdoc-syntax">, {
     
     
+    </span><span class="jsdoc-var">multiple</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= (!</span><span class="jsdoc-var">this.labelAlign</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.parentLabelAlign</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.labelAlign</span><span class="jsdoc-syntax">;
+        
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {};
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getAutoCreateMulitple</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-container'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-choice'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">tabindex</span><span class="jsdoc-syntax">: -1,
+                            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                                {
+                                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-chosen'
+                                </span><span class="jsdoc-syntax">},
+                                {
+                                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'abbr'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-search-choice-close'
+                                </span><span class="jsdoc-syntax">},
+                                {
+                                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-arrow'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">role</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'presentation'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                                        {
+                                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'b'</span><span class="jsdoc-syntax">,
+                                            </span><span class="jsdoc-var">role</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'presentation'
+                                        </span><span class="jsdoc-syntax">}
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-string">'for'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-offscreen'
+                        </span><span class="jsdoc-syntax">},
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-focusser select2-offscreen'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">role</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">tabindex</span><span class="jsdoc-syntax">: 0
+                        }
+                    ]
+
+                },
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-offscreen'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">tabindex</span><span class="jsdoc-syntax">: -1
+                }
+            ]
+        };
+        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+        
+    },
+    
+    </span><span class="jsdoc-var">getAutoCreateMulitple </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-container select2-container-multiple'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-choice'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                                {
+                                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-search-field'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                                        {
+                                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+                                            </span><span class="jsdoc-string">'for'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-offscreen'</span><span class="jsdoc-syntax">,
+                                            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Label here'
+                                        </span><span class="jsdoc-syntax">},
+                                        {
+                                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
+                                            </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text'</span><span class="jsdoc-syntax">,
+                                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-input'</span><span class="jsdoc-syntax">,
+                                            </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
+                                            </span><span class="jsdoc-var">autocomplete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'off'</span><span class="jsdoc-syntax">,
+                                            </span><span class="jsdoc-var">autocorrect</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'off'</span><span class="jsdoc-syntax">,
+                                            </span><span class="jsdoc-var">autocapitalize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'off'</span><span class="jsdoc-syntax">,
+                                            </span><span class="jsdoc-var">spellcheck</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+                                            </span><span class="jsdoc-var">tabindex</span><span class="jsdoc-syntax">: 0
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+
+                },
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-offscreen'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">tabindex</span><span class="jsdoc-syntax">: -1,
+                    </span><span class="jsdoc-var">multiple</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+                </span><span class="jsdoc-syntax">}
+            ]
+        };
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    }
+    
 });</span></code></body></html>

@@ -19,6 +19,7 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.Menu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.Menu.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.bootstrap.Menu.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Menu</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
@@ -66,7 +67,7 @@
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isActive </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.triggerEl.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">// if disabled.. ingore
-        </span><span class="jsdoc-var">this.clearMenus</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.hideMenuItems</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//if ('ontouchstart' in document.documentElement &amp;&amp; !$parent.closest('.navbar-nav').length) {
          // if mobile we use a backdrop because click events don't delegate
         // $('&lt;div class=&quot;dropdown-backdrop&quot;/&gt;').insertAfter($(this)).on('click', clearMenus)
@@ -87,7 +88,11 @@
         
         
     },
-    </span><span class="jsdoc-var">clearMenus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    
+         
+       
+    
+    </span><span class="jsdoc-var">hideMenuItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-comment">//$(backdrop).remove()
         </span><span class="jsdoc-var">Roo.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.dropdown-toggle'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aa</span><span class="jsdoc-syntax">) {
@@ -108,6 +113,33 @@
    
 });
 
- 
-
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Menu</span><span class="jsdoc-syntax">, {
+    
+    </span><span class="jsdoc-var">menus </span><span class="jsdoc-syntax">: [],
+    
+    </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menu</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.menus.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Menu.onClick</span><span class="jsdoc-syntax">)
+            
+        }
+        </span><span class="jsdoc-var">this.menus.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menu</span><span class="jsdoc-syntax">);
+        
+        
+    },
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        
+    }
+    </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menu</span><span class="jsdoc-syntax">) {
+        
+        
+        
+    }
+    
+    
+    
+    
+});
  </span></code></body></html>
