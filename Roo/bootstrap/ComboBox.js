@@ -179,6 +179,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
     formatMatches: function (matches) 
     { 
         return matches + " results are available, use up and down arrow keys to navigate."; 
+    },
+    
+    killEvent : function (event) {
+        Roo.log('KILLEVENT');
+        event.preventDefault();
+        event.stopPropagation();
     }
     
     
