@@ -119,7 +119,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
        // Roo.log(this.triggerEl.dom);
         this.triggerEl.on('click', this.toggle, this);
         this.triggerEl.addClass('dropdown-toggle');
-            
+        this.el.on(Roo.isTouch ? 'touchstart' : 'click'   , this.onClick, this);
+
         this.el.on("mouseover", this.onMouseOver, this);
         this.el.on("mouseout", this.onMouseOut, this);
         
