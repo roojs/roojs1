@@ -145,6 +145,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             
             //return this.items.get(t.menuItemId);
         }
+        
         return false;
     },
     onClick : function(e){
