@@ -38,7 +38,8 @@ Roo.example.combobox = new Roo.XComponent({
                                 items: [
                                     {
                                         xtype: "ComboBox",
-                                        xns: Roo.bootstrap
+                                        xns: Roo.bootstrap,
+                                        style: "width:300px"
                                     }
                                 ]
                             }
