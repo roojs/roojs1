@@ -223,6 +223,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
         //this.el.setXY(xy);
         //this.el.show();
+        this.hideMenuItems(e);
         this.hidden = false;
         this.triggerEl.addClass('open');
         this.focus();
@@ -243,7 +244,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.show(this.triggerEl, false, false);
         }
         // if disabled.. ingore
-        this.hideMenuItems(e); // hids any open sub-menus..
+        //this.hideMenuItems(e); // hids any open sub-menus..
         
         
         
