@@ -12,6 +12,7 @@ Roo.bootstrap.Img
 
 Roo.bootstrap.Header
 
+Roo.bootstrap.MenuMgr
 Roo.bootstrap.Menu
 Roo.bootstrap.MenuItem
 Roo.bootstrap.MenuSeparator
