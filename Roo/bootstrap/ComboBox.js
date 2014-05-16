@@ -72,7 +72,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
         this.container.attr("style", this.el.attr("style"));
         
+        this.container.addClass(this.el.attr('class'));
+        
         this.elementTabIndex = this.el.attr("tabindex");
+        
+        this.dropdown = this.container.find(".select2-drop");
         
         
     },
