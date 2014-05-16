@@ -275,6 +275,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     },
     onClick : function(e)
     {
+        if (this.disabled) {
+            return;
+        }
+        
         Roo.log('button on click ');
         if(this.preventDefault){
             e.preventDefault();
@@ -287,8 +291,17 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         
         this.fireEvent('click', this, e);
-    }
-    
+    },
+    enable : function()
+    {
+        this.disabled = false;
+        this.el.removeClass('disabled');
+    },
+    disable : function()
+    {
+        this.disabled = true;
+        this.el.addClass('disabled');
+    },
     
 });
 
