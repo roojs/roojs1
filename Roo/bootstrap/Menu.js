@@ -136,8 +136,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     findTargetItem : function(e){
         var t = e.getTarget(".dropdown-menu-item", this.el,  true);
         Roo.log(t);
+        Roo.log(t.id);
         if(t && t.id){
-            
+            Roo.log(this.menuitems);
             return this.menuitems.get(t.id);
             
             //return this.items.get(t.menuItemId);
