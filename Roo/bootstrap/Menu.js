@@ -119,6 +119,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
        // Roo.log(this.triggerEl.dom);
         this.triggerEl.on('click', this.toggle, this);
         this.triggerEl.addClass('dropdown-toggle');
+            
+        this.el.on("mouseover", this.onMouseOver, this);
+        this.el.on("mouseout", this.onMouseOut, this);
+        
         
     },
     toggle  : function(e)
@@ -143,6 +147,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
        //$parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
  
        //if (e.isDefaultPrevented()) return;
+        if (isActive) {
+            
+        }
         
        this.triggerEl[isActive ? 'removeClass' : 'addClass']('open');
        
