@@ -318,7 +318,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         return comp;
 
     },
-   getEl : function()
+    getEl : function()
     {
         return this.el;
     }
