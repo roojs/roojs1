@@ -40,10 +40,16 @@ Roo.bootstrap.Button = function(config){
         // raw events
         /**
          * @event click
-         * The raw click event for the entire grid.
+         * When a butotn is pressed
          * @param {Roo.EventObject} e
          */
-        "click" : true
+        "click" : true,
+         /**
+         * @event toggle
+         * After the button has been toggles
+         * @param {Roo.EventObject} e
+         */
+        "toggle" : true
     });
 };
 
