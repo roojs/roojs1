@@ -108,7 +108,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
                 container.append(node);
             }
 
-            liveRegion.text(opts.formatMatches(results.length));
+            liveRegion.text(this.formatMatches(results.length));
         };
 
         populate(results, container, 0);
@@ -145,5 +145,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         return String(markup).replace(/[&<>"'\/\\]/g, function (match) {
             return replace_map[match];
         });
+    },
+    
+    formatMatches: function (matches) 
+    { 
+        return matches + " results are available, use up and down arrow keys to navigate."; 
     }
+    
 });
