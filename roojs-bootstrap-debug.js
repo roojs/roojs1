@@ -7137,7 +7137,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
         
         var cfg = {};
         
-        
+        var cfg =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            value : this.value,
+            cls : 'form-control',
+            placeholder : this.placeholder || ''
+            
+        };
         
         return cfg;
         
