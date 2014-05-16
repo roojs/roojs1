@@ -199,7 +199,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                 "   </ul>",
                 "</div>"].join(""));
             return container;
-        },
+        }
     }
         
 });
