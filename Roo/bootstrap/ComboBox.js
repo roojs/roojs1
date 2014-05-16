@@ -68,6 +68,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
         this.container.attr("id", "s2id_"+(this.el.attr("id") || Roo.id()));
         
+        this.container.attr("title", this.el.attr("title"));
+        
     },
     
     populateResults: function(container, results, query) {
