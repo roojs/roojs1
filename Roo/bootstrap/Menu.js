@@ -86,13 +86,15 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
    /// html : false,
     //align : '',
-    triggerEl : false,
+    triggerEl : false,  // is this set by component builder? -- it should really be fetched from parent()???
     type: false,
     /**
      * @cfg {Boolean} registerMenu True (default) - means that clicking on screen etc. hides it.
      */
     registerMenu : true,
     
+    
+    hidden:true,
     
     parentMenu : false,
     
@@ -121,7 +123,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
        // Roo.log("ADD event");
        // Roo.log(this.triggerEl.dom);
-         this.triggerEl.on('click', this.toggle, this);
+        this.triggerEl.on('click', this.onTriggerPress, this);
         this.triggerEl.addClass('dropdown-toggle');
         this.el.on(Roo.isTouch ? 'touchstart' : 'click'   , this.onClick, this);
 
@@ -229,7 +231,40 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.focus();
         this.fireEvent("show", this);
     },
-    ontriggerPress  : function(e)
+    
+    focus : function(){
+        if(!this.hidden){
+            this.doFocus.defer(50, this);
+        }
+    },
+
+    doFocus : function(){
+        if(!this.hidden){
+            this.focusEl.focus();
+        }
+    },
+
+    /**
+     * Hides this menu and optionally all parent menus
+     * @param {Boolean} deep (optional) True to hide all parent menus recursively, if any (defaults to false)
+     */
+    hide : function(deep){
+        if(this.el && this.isVisible()){
+            this.fireEvent("beforehide", this);
+            if(this.activeItem){
+                this.activeItem.deactivate();
+                this.activeItem = null;
+            }
+            this.triggerEl.removeClass('open');
+            this.hidden = true;
+            this.fireEvent("hide", this);
+        }
+        if(deep === true && this.parentMenu){
+            this.parentMenu.hide(true);
+        }
+    },
+    
+    onTriggerPress  : function(e)
     {
         
         
@@ -278,11 +313,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     hideMenuItems : function()
     {
         //$(backdrop).remove()
-        Roo.select('.dropdown-toggle',true).each(function(aa) {
-            if (!aa.hasClass('open')) {
-                return;
-            }
-            // triger close...
+        Roo.select('.open',true).each(function(aa) {
+            
             aa.removeClass('open');
           //var parent = getParent($(this))
           //var relatedTarget = { relatedTarget: this }
