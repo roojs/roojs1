@@ -7128,29 +7128,6 @@ Roo.bootstrap.ComboBox = function(config){
 Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Input, {
     
     
-    
-    getAutoCreate : function(){
-        
-        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
-        
-        var id = Roo.id();
-        
-        var cfg = {};
-        
-        var cfg =  {
-            tag: 'input',
-            id : id,
-            type : this.inputType,
-            value : this.value,
-            cls : 'form-control',
-            placeholder : this.placeholder || ''
-            
-        };
-        
-        return cfg;
-        
-    }
-    
 });/*
  * Based on:
  * Ext JS Library 1.1.1
