@@ -72,7 +72,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
         this.container.attr("style", this.el.attr("style"));
         
-        
+        this.elementTabIndex = this.el.attr("tabindex");
         
         
     },
