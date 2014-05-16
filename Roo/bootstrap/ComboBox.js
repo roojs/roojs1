@@ -18,6 +18,8 @@ Roo.bootstrap.ComboBox = function(config){
 
 Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
     
+    escapeMarkup: defaultEscapeMarkup,
+    
     getAutoCreate : function()
     {
         var id = Roo.id();
@@ -53,5 +55,95 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         Roo.log('initEvents');
         var results, search, resultsSelector = ".select2-results";
         
+    },
+    
+    populateResults: function(container, results, query) {
+        var populate, id=this.opts.id, liveRegion=this.liveRegion;
+
+        populate=function(results, container, depth) {
+
+            var i, l, result, selectable, disabled, compound, node, label, innerContainer, formatted;
+
+            results = this.sortResults(results, container, query);
+
+            for (i = 0, l = results.length; i < l; i = i + 1) {
+
+                result=results[i];
+
+                disabled = (result.disabled === true);
+                selectable = (!disabled) && (id(result) !== undefined);
+
+                compound=result.children && result.children.length > 0;
+
+                node=$("<li></li>");
+                node.addClass("select2-results-dept-"+depth);
+                node.addClass("select2-result");
+                node.addClass(selectable ? "select2-result-selectable" : "select2-result-unselectable");
+                if (disabled) { node.addClass("select2-disabled"); }
+                if (compound) { node.addClass("select2-result-with-children"); }
+                node.addClass(this.formatResultCssClass(result));
+                node.attr("role", "presentation");
+
+                label=$(document.createElement("div"));
+                label.addClass("select2-result-label");
+                label.attr("id", "select2-result-label-" + nextUid());
+                label.attr("role", "option");
+
+                formatted=this.formatResult(result, label, query, this.escapeMarkup);
+                if (formatted!==undefined) {
+                    label.html(formatted);
+                    node.append(label);
+                }
+
+
+                if (compound) {
+
+                    innerContainer=$("<ul></ul>");
+                    innerContainer.addClass("select2-result-sub");
+                    populate(result.children, innerContainer, depth+1);
+                    node.append(innerContainer);
+                }
+
+                node.data("select2-data", result);
+                container.append(node);
+            }
+
+            liveRegion.text(opts.formatMatches(results.length));
+        };
+
+        populate(results, container, 0);
+    },
+    
+    sortResults: function (results, container, query) 
+    {
+        return results;
+    },
+    
+    formatResultCssClass: function(data) 
+    {
+        return data.css;
+    },
+    
+    formatResult: function(result, container, query, escapeMarkup) 
+    {
+        var markup=[];
+        markMatch(result.text, query.term, markup, escapeMarkup);
+        return markup.join("");
+    },
+    
+    defaultEscapeMarkup : function (markup) {
+        var replace_map = {
+            '\\': '&#92;',
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;',
+            "/": '&#47;'
+        };
+
+        return String(markup).replace(/[&<>"'\/\\]/g, function (match) {
+            return replace_map[match];
+        });
     }
 });
