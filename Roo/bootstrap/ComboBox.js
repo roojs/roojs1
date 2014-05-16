@@ -20,8 +20,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
     
     getAutoCreate : function()
     {
+        var id = Roo.id();
         
-        var cfg = {};
+        var cfg = {
+            tag: 'select',
+            id: id
+        };
         
         
         return cfg;
