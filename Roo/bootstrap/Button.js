@@ -292,11 +292,19 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         this.fireEvent('click', this, e);
     },
+    
+    /**
+     * Enables this button
+     */
     enable : function()
     {
         this.disabled = false;
         this.el.removeClass('disabled');
     },
+    
+    /**
+     * Disable this button
+     */
     disable : function()
     {
         this.disabled = true;
