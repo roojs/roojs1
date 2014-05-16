@@ -79,7 +79,7 @@ Roo.bootstrap.Menu = function(config){
          */
         itemclick: true
     });
-    this.menuitems = new Roo.util.MixedCollection();
+    this.menuitems = new Roo.util.MixedCollection(false, function(o) { return o.el.id; });
 };
 
 Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
@@ -311,8 +311,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     },
     addxtypeChild : function (tree, cntr) {
         var comp= Roo.bootstrap.Menu.superclass.addxtypeChild.call(this, tree, cntr);
-        comp.menuItemId = comp.el.id;
-        Roo.log('add ' + comp.menuItemId);
+         Roo.log('add ' + comp.menuItemId);
         this.menuitems.add(comp);
         return comp;
 
