@@ -164,11 +164,11 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      onMouseOver : function(e){
         var t  = this.findTargetItem(e);
         
-        if(t){
+        //if(t){
         //    if(t.canActivate && !t.disabled){
         //        this.setActiveItem(t, true);
         //    }
-        }
+        //}
         
         this.fireEvent("mouseover", this, e, t);
     },
@@ -178,12 +178,12 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      onMouseOut : function(e){
         var t  = this.findTargetItem(e);
         
-        if(t ){
+        //if(t ){
         //    if(t == this.activeItem && t.shouldDeactivate(e)){
         //        this.activeItem.deactivate();
         //        delete this.activeItem;
         //    }
-        }
+        //}
         this.fireEvent("mouseout", this, e, t);
     },
     toggle  : function(e)
