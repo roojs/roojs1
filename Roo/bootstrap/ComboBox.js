@@ -1057,7 +1057,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log(this.view.el.dom.scrollHeight);
         Roo.log(this.view.el.dom.clientHeight);
         Roo.log(this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight);
-        if(this.view.el.getScroll() < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight){
+        if(this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight){
             Roo.log('not hit bottom');
             return;
         }
