@@ -399,7 +399,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         var r = o.records, t = o.totalRecords || r.length;
         
         this.fireEvent("beforeloadadd", this, r, options, o);
-        Roo.log(options);
+        
         if(!options || options.add !== true){
             if(this.pruneModifiedRecords){
                 this.modified = [];
