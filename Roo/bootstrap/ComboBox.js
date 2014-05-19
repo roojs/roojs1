@@ -932,8 +932,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     
                     var options = {params : this.getParams(q)};
                     
-                    if(this.append){
+                    if(this.loadNext){
                         options.add = true;
+                        options.params.start = this.page * this.pageSize;
                     }
                     
                     this.store.load(options);
