@@ -933,10 +933,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         //p[this.queryParam] = q;
         
         if(this.pageSize){
-            
-            var start = (this.page) ? this.page * this.pageSize : 0;
-            
-            p.start = start;
+            p.start = this.page * this.pageSize;
             p.limit = this.pageSize;
         }
         return p;
