@@ -963,7 +963,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(!this.isExpanded()){
             return;
         }
-        throw "Error";
+        //throw "Error";
         Roo.log("collapse");
         
         this.list.hide();
