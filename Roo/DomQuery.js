@@ -414,8 +414,6 @@ Roo.DomQuery = function(){
                 lq = q;
                 var tm = q.match(tagTokenRe);
                 if(type == "select"){
-                    Roo.log('tm');
-                    Roo.log(tm);
                     if(tm){
                         if(tm[1] == "#"){
                             fn[fn.length] = 'n = quickId(n, mode, root, "'+tm[2]+'");';
@@ -423,13 +421,9 @@ Roo.DomQuery = function(){
                             fn[fn.length] = 'n = getNodes(n, mode, "'+tm[2]+'");';
                         }
                         q = q.replace(tm[0], "");
-                        
                     }else if(q.substr(0, 1) != '@'){
                         fn[fn.length] = 'n = getNodes(n, mode, "*");';
                     }
-                    Roo.log('fn');
-                        Roo.log(fn);
-                        Roo.log(q);
                 }else{
                     if(tm){
                         if(tm[1] == "#"){
@@ -440,19 +434,11 @@ Roo.DomQuery = function(){
                         q = q.replace(tm[0], "");
                     }
                 }
-                Roo.log(modeRe);
                 while(!(mm = q.match(modeRe))){
                     var matched = false;
-                    Roo.log('mm');
-                    Roo.log(mm);
                     for(var j = 0; j < tklen; j++){
                         var t = tk[j];
                         var m = q.match(t.re);
-                        Roo.log('t');
-                        Roo.log(t);
-                        
-                        Roo.log('m');
-                        Roo.log(m);
                         if(m){
                             fn[fn.length] = t.select.replace(tplRe, function(x, i){
                                                     return m[i];
