@@ -247,6 +247,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     addicon : false,
     editicon: false,
     
+    page: 0,
+    
     // element that contains real text value.. (when hidden is used..)
      
     // private
