@@ -578,15 +578,11 @@ Roo.DomQuery = function(){
          * @return {Array}
          */
         filter : function(els, ss, nonMatches){
-            Roo.log(els);
-            Roo.log(ss);
             ss = ss.replace(trimRe, "");
-            Roo.log(ss);
             if(!simpleCache[ss]){
                 simpleCache[ss] = Roo.DomQuery.compile(ss, "simple");
             }
             var result = simpleCache[ss](els);
-            Roo.log(result);
             return nonMatches ? quickDiff(result, els) : result;
         },
 
