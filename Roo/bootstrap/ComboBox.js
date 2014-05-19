@@ -414,6 +414,24 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         Roo.log('KILLEVENT');
         event.preventDefault();
         event.stopPropagation();
+    },
+    
+    moveHighlight: function (delta) {
+        var choices = this.findHighlightableChoices(),
+            index = this.highlight();
+
+        while (index > -1 && index < choices.length) {
+            index += delta;
+            var choice = $(choices[index]);
+            if (choice.hasClass("select2-result-selectable") && !choice.hasClass("select2-disabled") && !choice.hasClass("select2-selected")) {
+                this.highlight(index);
+                break;
+            }
+        }
+    },
+    
+    findHighlightableChoices: function() {
+        return this.results.select(".select2-result-selectable:not(.select2-disabled):not(.select2-selected)", true).elements;
     }
     
     
