@@ -443,9 +443,16 @@ Roo.DomQuery = function(){
                 Roo.log(modeRe);
                 while(!(mm = q.match(modeRe))){
                     var matched = false;
+                    Roo.log('mm');
+                    Roo.log(mm);
                     for(var j = 0; j < tklen; j++){
                         var t = tk[j];
                         var m = q.match(t.re);
+                        Roo.log('t');
+                        Roo.log(t);
+                        
+                        Roo.log('m');
+                        Roo.log(m);
                         if(m){
                             fn[fn.length] = t.select.replace(tplRe, function(x, i){
                                                     return m[i];
