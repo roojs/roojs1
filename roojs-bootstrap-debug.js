@@ -8130,10 +8130,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onLoad : function(){
+        
+        this.hasQuery = false;
+        
         if(!this.hasFocus){
             return;
         }
-        this.hasQuery = false;
         
         if(this.store.getCount() > 0){
             this.expand();
@@ -8662,11 +8664,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onViewScroll : function(e, t){
         
-        if(this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append){
-            return;
-        }
-        
-        if(this.hasQuery){
+        if(this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append || this.hasQuery){
             return;
         }
         

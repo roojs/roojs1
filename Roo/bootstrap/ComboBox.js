@@ -559,10 +559,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onLoad : function(){
+        
+        this.hasQuery = false;
+        
         if(!this.hasFocus){
             return;
         }
-        this.hasQuery = false;
         
         if(this.store.getCount() > 0){
             this.expand();
