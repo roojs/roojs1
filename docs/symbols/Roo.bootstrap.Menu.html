@@ -396,7 +396,37 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt1">
+		<tr class="config-row expandable config-row-alt1 notInherited">
+		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+		    <td class="sig">
+
+			<a id="Roo.bootstrap.Menu-cfg-registerMenu" name=".registerMenu"></a>
+			<div class="fixedFont">
+				<b  class="itemname">registerMenu</b> : <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+				
+				
+			</div>
+		  
+			<div class="mdesc">
+			    <div class="short">True (default) - means that clicking on screen etc.</div> 
+			</div>
+			
+			<div class="mdesc">
+			    <div class="long">True (default) - means that clicking on screen etc. hides it.</div> 
+			</div>
+			
+			
+
+		    </td>
+		    <td class="msource">
+			
+			Roo.bootstrap.Menu
+				
+		    </td>
+		</tr>
+        
+	
+		<tr class="config-row expandable config-row-alt0">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -426,7 +456,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt0 notInherited">
+		<tr class="config-row expandable config-row-alt1 notInherited">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -456,7 +486,7 @@
 		</tr>
         
 	
-		<tr class="config-row expandable config-row-alt1">
+		<tr class="config-row expandable config-row-alt0">
 		   <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 		    <td class="sig">
 
@@ -1297,53 +1327,49 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable">
+          <tr class="method-row config-row-alt1 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
             <td class="sig">
-                <a id="Roo.Component-method-hide"   name=".hide"></a>
+                <a id="Roo.bootstrap.Menu-method-hide"   name=".hide"></a>
 		<div class="fixedFont">
 			<span class="attributes"></span><b class="itemname">hide</b>
 				
-				 () 
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a> <B><i>deep</i></B>) 
 			
-				
-					 : 
-					
-						
-						<a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>
-					
-					
-					
 				
 			
 		</div>
                 <div class="mdesc">
 		
-                   <div class="short">Hide this component.</div> 
+                   <div class="short">Hides this menu and optionally all parent menus</div> 
 		 
 		 
 		 
                     <div class="long">
 			
-				Hide this component.
+				Hides this menu and optionally all parent menus
 		    
 				
 			
 			
 			
 			
-			
-			
-			
-			
 				<dl class="detailList">
-				<dt class="heading">Returns:</dt>
+				<dt class="heading">Parameters:</dt>
 				
-					<dd><span class="fixedFont"><a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a></span>  this</dd>
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  <b>deep</b>
+						
+					</dt>
+					<dd>(optional) True to hide all parent menus recursively, if any (defaults to false)</dd>
 				
 				</dl>
+			
+			
+			
+			
 			
 			
 			
@@ -1357,7 +1383,7 @@
             </td>
             <td class="msource">
 		
-			<a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>
+			Roo.bootstrap.Menu
 		&nbsp;
             </td>
         </tr>
@@ -1820,53 +1846,61 @@
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt1 expandable">
+          <tr class="method-row config-row-alt1 expandable notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
             <td class="sig">
-                <a id="Roo.Component-method-show"   name=".show"></a>
+                <a id="Roo.bootstrap.Menu-method-show"   name=".show"></a>
 		<div class="fixedFont">
 			<span class="attributes"></span><b class="itemname">show</b>
 				
-				 () 
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Roo.Element <B><i>element</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>position</i></B>, <a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a> <B><i>parentMenu</i></B>) 
 			
-				
-					 : 
-					
-						
-						<a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>
-					
-					
-					
 				
 			
 		</div>
                 <div class="mdesc">
 		
-                   <div class="short">Show this component.</div> 
+                   <div class="short">Displays this menu relative to another element</div> 
 		 
 		 
 		 
                     <div class="long">
 			
-				Show this component.
+				Displays this menu relative to another element
 		    
 				
 			
 			
 			
 			
-			
-			
-			
-			
 				<dl class="detailList">
-				<dt class="heading">Returns:</dt>
+				<dt class="heading">Parameters:</dt>
 				
-					<dd><span class="fixedFont"><a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a></span>  this</dd>
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement/Roo.Element</span>  <b>element</b>
+						
+					</dt>
+					<dd>The element to align to</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>position</b>
+						
+					</dt>
+					<dd>(optional) The {<b>link</b> Roo.Element<b>alignTo</b>} anchor position to use in aligning to<br/>the element (defaults to this.defaultAlign)</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a></span>  <b>parentMenu</b>
+						
+					</dt>
+					<dd>(optional) This menu's parent menu, if applicable (defaults to undefined)</dd>
 				
 				</dl>
+			
+			
+			
+			
 			
 			
 			
@@ -1880,13 +1914,81 @@
             </td>
             <td class="msource">
 		
-			<a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>
+			Roo.bootstrap.Menu
 		&nbsp;
             </td>
         </tr>
 	
 	  
-          <tr class="method-row config-row-alt0 expandable">
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.bootstrap.Menu-method-showAt"   name=".showAt"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">showAt</b>
+				
+				 (<a href="./Array.html#constructor" roo:cls="Array.html#constructor">Array</a> <B><i>xyPosition</i></B>, <a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a> <B><i>parentMenu</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Displays this menu at a specific xy position</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Displays this menu at a specific xy position
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Array.html#constructor" roo:cls="Array.html#constructor">Array</a></span>  <b>xyPosition</b>
+						
+					</dt>
+					<dd>Contains X & Y [x, y] values for the position at which to show the menu (coordinates are page-based)</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a></span>  <b>parentMenu</b>
+						
+					</dt>
+					<dd>(optional) This menu's parent menu, if applicable (defaults to undefined)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.bootstrap.Menu
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	   
 	   
@@ -2044,26 +2146,26 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt1">
+          <tr class="method-row expandable config-row-alt1 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
-                <a id="Roo.Component-event-*beforehide"></a>
+                <a id="Roo.bootstrap.Menu-event-*beforehide"></a>
                 
 	       <div class="fixedFont">
-		<b class="itemname">beforehide</b> (<a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a> <B><i>this</i></B>) 
+		<b class="itemname">beforehide</b> (<a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a> <B><i>this</i></B>) 
 		
 		</div>
 
                 <div class="mdesc">
 
-                   <div class="short">Fires before the component is hidden.
+                   <div class="short">Fires before this menu is hidden
 		   
 		</div> 
 		    
                     <div class="long">
 		    
-			Fires before the component is hidden. Return false to stop the hide.
+			Fires before this menu is hidden
 		    
 			
 			
@@ -2073,7 +2175,7 @@
 				<dt class="heading">Parameters:</dt>
 				
 					<dt>
-						<span class="fixedFont"><a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a></span> <b>this</b>
+						<span class="fixedFont"><a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a></span> <b>this</b>
 						
 					</dt>
 					<dd></dd>
@@ -2095,7 +2197,7 @@
 
             </td>
             <td class="msource">
-                <a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>
+                Roo.bootstrap.Menu
             </td>
         </tr>
 	
@@ -2154,26 +2256,26 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt1">
+          <tr class="method-row expandable config-row-alt1 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
-                <a id="Roo.Component-event-*beforeshow"></a>
+                <a id="Roo.bootstrap.Menu-event-*beforeshow"></a>
                 
 	       <div class="fixedFont">
-		<b class="itemname">beforeshow</b> (<a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a> <B><i>this</i></B>) 
+		<b class="itemname">beforeshow</b> (<a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a> <B><i>this</i></B>) 
 		
 		</div>
 
                 <div class="mdesc">
 
-                   <div class="short">Fires before the component is shown.
+                   <div class="short">Fires before this menu is displayed
 		   
 		</div> 
 		    
                     <div class="long">
 		    
-			Fires before the component is shown.  Return false to stop the show.
+			Fires before this menu is displayed
 		    
 			
 			
@@ -2183,7 +2285,7 @@
 				<dt class="heading">Parameters:</dt>
 				
 					<dt>
-						<span class="fixedFont"><a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a></span> <b>this</b>
+						<span class="fixedFont"><a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a></span> <b>this</b>
 						
 					</dt>
 					<dd></dd>
@@ -2205,11 +2307,78 @@
 
             </td>
             <td class="msource">
-                <a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>
+                Roo.bootstrap.Menu
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt0">
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.bootstrap.Menu-event-*click"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">click</b> (<a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a> <B><i>this</i></B>, <a href="./Roo.menu.Item.html#constructor" roo:cls="Roo.menu.Item.html#constructor">Roo.menu.Item</a> <B><i>menuItem</i></B>, <a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when this menu is clicked (or when the enter key is pressed while it is active)
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when this menu is clicked (or when the enter key is pressed while it is active)
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a></span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.menu.Item.html#constructor" roo:cls="Roo.menu.Item.html#constructor">Roo.menu.Item</a></span> <b>menuItem</b>
+						
+					</dt>
+					<dd>The menu item that was clicked</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.bootstrap.Menu
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -2264,7 +2433,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt1">
+          <tr class="method-row expandable config-row-alt0">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -2319,7 +2488,7 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt0">
+          <tr class="method-row expandable config-row-alt1">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
@@ -2374,26 +2543,26 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt1">
+          <tr class="method-row expandable config-row-alt0 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
-                <a id="Roo.Component-event-*hide"></a>
+                <a id="Roo.bootstrap.Menu-event-*hide"></a>
                 
 	       <div class="fixedFont">
-		<b class="itemname">hide</b> (<a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a> <B><i>this</i></B>) 
+		<b class="itemname">hide</b> (<a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a> <B><i>this</i></B>) 
 		
 		</div>
 
                 <div class="mdesc">
 
-                   <div class="short">Fires after the component is hidden.
+                   <div class="short">Fires after this menu is hidden
 		   
 		</div> 
 		    
                     <div class="long">
 		    
-			Fires after the component is hidden.
+			Fires after this menu is hidden
 		    
 			
 			
@@ -2403,7 +2572,7 @@
 				<dt class="heading">Parameters:</dt>
 				
 					<dt>
-						<span class="fixedFont"><a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a></span> <b>this</b>
+						<span class="fixedFont"><a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a></span> <b>this</b>
 						
 					</dt>
 					<dd></dd>
@@ -2425,7 +2594,202 @@
 
             </td>
             <td class="msource">
-                <a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>
+                Roo.bootstrap.Menu
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.bootstrap.Menu-event-*itemclick"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">itemclick</b> (<a href="./Roo.menu.BaseItem.html#constructor" roo:cls="Roo.menu.BaseItem.html#constructor">Roo.menu.BaseItem</a> <B><i>baseItem</i></B>, <a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when a menu item contained in this menu is clicked
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when a menu item contained in this menu is clicked
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.menu.BaseItem.html#constructor" roo:cls="Roo.menu.BaseItem.html#constructor">Roo.menu.BaseItem</a></span> <b>baseItem</b>
+						
+					</dt>
+					<dd>The BaseItem that was clicked</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.bootstrap.Menu
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt0 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.bootstrap.Menu-event-*mouseout"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">mouseout</b> (<a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a> <B><i>this</i></B>, <a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>, <a href="./Roo.menu.Item.html#constructor" roo:cls="Roo.menu.Item.html#constructor">Roo.menu.Item</a> <B><i>menuItem</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when the mouse exits this menu
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when the mouse exits this menu
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a></span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.menu.Item.html#constructor" roo:cls="Roo.menu.Item.html#constructor">Roo.menu.Item</a></span> <b>menuItem</b>
+						
+					</dt>
+					<dd>The menu item that was clicked</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.bootstrap.Menu
+            </td>
+        </tr>
+	
+          <tr class="method-row expandable config-row-alt1 notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	    
+            <td class="sig">
+                <a id="Roo.bootstrap.Menu-event-*mouseover"></a>
+                
+	       <div class="fixedFont">
+		<b class="itemname">mouseover</b> (<a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a> <B><i>this</i></B>, <a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a> <B><i>e</i></B>, <a href="./Roo.menu.Item.html#constructor" roo:cls="Roo.menu.Item.html#constructor">Roo.menu.Item</a> <B><i>menuItem</i></B>) 
+		
+		</div>
+
+                <div class="mdesc">
+
+                   <div class="short">Fires when the mouse is hovering over this menu
+		   
+		</div> 
+		    
+                    <div class="long">
+		    
+			Fires when the mouse is hovering over this menu
+		    
+			
+			
+		
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a></span> <b>this</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.EventObject.html#constructor" roo:cls="Roo.EventObject.html#constructor">Roo.EventObject</a></span> <b>e</b>
+						
+					</dt>
+					<dd></dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Roo.menu.Item.html#constructor" roo:cls="Roo.menu.Item.html#constructor">Roo.menu.Item</a></span> <b>menuItem</b>
+						
+					</dt>
+					<dd>The menu item that was clicked</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+                Roo.bootstrap.Menu
             </td>
         </tr>
 	
@@ -2484,26 +2848,26 @@
             </td>
         </tr>
 	
-          <tr class="method-row expandable config-row-alt1">
+          <tr class="method-row expandable config-row-alt1 notInherited">
             <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
 	    
             <td class="sig">
-                <a id="Roo.Component-event-*show"></a>
+                <a id="Roo.bootstrap.Menu-event-*show"></a>
                 
 	       <div class="fixedFont">
-		<b class="itemname">show</b> (<a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a> <B><i>this</i></B>) 
+		<b class="itemname">show</b> (<a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a> <B><i>this</i></B>) 
 		
 		</div>
 
                 <div class="mdesc">
 
-                   <div class="short">Fires after the component is shown.
+                   <div class="short">Fires after this menu is displayed
 		   
 		</div> 
 		    
                     <div class="long">
 		    
-			Fires after the component is shown.
+			Fires after this menu is displayed
 		    
 			
 			
@@ -2513,7 +2877,7 @@
 				<dt class="heading">Parameters:</dt>
 				
 					<dt>
-						<span class="fixedFont"><a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a></span> <b>this</b>
+						<span class="fixedFont"><a href="./Roo.menu.Menu.html#constructor" roo:cls="Roo.menu.Menu.html#constructor">Roo.menu.Menu</a></span> <b>this</b>
 						
 					</dt>
 					<dd></dd>
@@ -2535,7 +2899,7 @@
 
             </td>
             <td class="msource">
-                <a href="./Roo.Component.html#constructor" roo:cls="Roo.Component.html#constructor">Roo.Component</a>
+                Roo.bootstrap.Menu
             </td>
         </tr>
 	
@@ -2549,7 +2913,7 @@
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Fri May 16 2014 14:14:51 GMT+0800 (HKT)
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Mon May 19 2014 15:17:53 GMT+0800 (HKT)
 			Based on 
 			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
 		</div>

@@ -476,7 +476,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         }
         cfg.html = this.html || cfg.html;
         
-        if (this.toggle === true) {
+        if (this.toggle == true) {
             cfg={
                 tag: 'div',
                 cls: 'slider-frame roo-button',
@@ -654,6 +654,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     },
     onClick : function(e)
     {
+        if (this.disabled) {
+            return;
+        }
+        
         Roo.log('button on click ');
         if(this.preventDefault){
             e.preventDefault();
@@ -666,7 +670,44 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         
         this.fireEvent('click', this, e);
+    },
+    
+    /**
+     * Enables this button
+     */
+    enable : function()
+    {
+        this.disabled = false;
+        this.el.removeClass('disabled');
+    },
+    
+    /**
+     * Disable this button
+     */
+    disable : function()
+    {
+        this.disabled = true;
+        this.el.addClass('disabled');
+    },
+     /**
+     * sets the active state on/off, 
+     * @param {Boolean} state (optional) Force a particular state
+     */
+    setActive : function(v) {
+        
+        this.el[v ? 'addClass' : 'removeClass']('active');
+    },
+     /**
+     * toggles the current active state 
+     */
+    toggleActive : function()
+    {
+       var active = this.el.hasClass('active');
+       this.setActive(!active);
+       
+        
     }
+    
     
     
 });
@@ -1013,6 +1054,201 @@ Roo.extend(Roo.bootstrap.Header, Roo.bootstrap.Component,  {
  
 
  /*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.bootstrap.MenuMgr
+ * Provides a common registry of all menu items on a page so that they can be easily accessed by id.
+ * @singleton
+ */
+Roo.bootstrap.MenuMgr = function(){
+   var menus, active, groups = {}, attached = false, lastShow = new Date();
+
+   // private - called when first menu is created
+   function init(){
+       menus = {};
+       active = new Roo.util.MixedCollection();
+       Roo.get(document).addKeyListener(27, function(){
+           if(active.length > 0){
+               hideAll();
+           }
+       });
+   }
+
+   // private
+   function hideAll(){
+       if(active && active.length > 0){
+           var c = active.clone();
+           c.each(function(m){
+               m.hide();
+           });
+       }
+   }
+
+   // private
+   function onHide(m){
+       active.remove(m);
+       if(active.length < 1){
+           Roo.get(document).un("mouseup", onMouseDown);
+            
+           attached = false;
+       }
+   }
+
+   // private
+   function onShow(m){
+       var last = active.last();
+       lastShow = new Date();
+       active.add(m);
+       if(!attached){
+          Roo.get(document).on("mouseup", onMouseDown);
+           
+           attached = true;
+       }
+       if(m.parentMenu){
+          //m.getEl().setZIndex(parseInt(m.parentMenu.getEl().getStyle("z-index"), 10) + 3);
+          m.parentMenu.activeChild = m;
+       }else if(last && last.isVisible()){
+          //m.getEl().setZIndex(parseInt(last.getEl().getStyle("z-index"), 10) + 3);
+       }
+   }
+
+   // private
+   function onBeforeHide(m){
+       if(m.activeChild){
+           m.activeChild.hide();
+       }
+       if(m.autoHideTimer){
+           clearTimeout(m.autoHideTimer);
+           delete m.autoHideTimer;
+       }
+   }
+
+   // private
+   function onBeforeShow(m){
+       var pm = m.parentMenu;
+       if(!pm && !m.allowOtherMenus){
+           hideAll();
+       }else if(pm && pm.activeChild && active != m){
+           pm.activeChild.hide();
+       }
+   }
+
+   // private
+   function onMouseDown(e){
+        Roo.log("on MouseDown");
+        if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu")){
+           hideAll();
+        }
+        
+        
+   }
+
+   // private
+   function onBeforeCheck(mi, state){
+       if(state){
+           var g = groups[mi.group];
+           for(var i = 0, l = g.length; i < l; i++){
+               if(g[i] != mi){
+                   g[i].setChecked(false);
+               }
+           }
+       }
+   }
+
+   return {
+
+       /**
+        * Hides all menus that are currently visible
+        */
+       hideAll : function(){
+            hideAll();  
+       },
+
+       // private
+       register : function(menu){
+           if(!menus){
+               init();
+           }
+           menus[menu.id] = menu;
+           menu.on("beforehide", onBeforeHide);
+           menu.on("hide", onHide);
+           menu.on("beforeshow", onBeforeShow);
+           menu.on("show", onShow);
+           var g = menu.group;
+           if(g && menu.events["checkchange"]){
+               if(!groups[g]){
+                   groups[g] = [];
+               }
+               groups[g].push(menu);
+               menu.on("checkchange", onCheck);
+           }
+       },
+
+        /**
+         * Returns a {@link Roo.menu.Menu} object
+         * @param {String/Object} menu The string menu id, an existing menu object reference, or a Menu config that will
+         * be used to generate and return a new Menu instance.
+         */
+       get : function(menu){
+           if(typeof menu == "string"){ // menu id
+               return menus[menu];
+           }else if(menu.events){  // menu instance
+               return menu;
+           }
+           /*else if(typeof menu.length == 'number'){ // array of menu items?
+               return new Roo.bootstrap.Menu({items:menu});
+           }else{ // otherwise, must be a config
+               return new Roo.bootstrap.Menu(menu);
+           }
+           */
+           return false;
+       },
+
+       // private
+       unregister : function(menu){
+           delete menus[menu.id];
+           menu.un("beforehide", onBeforeHide);
+           menu.un("hide", onHide);
+           menu.un("beforeshow", onBeforeShow);
+           menu.un("show", onShow);
+           var g = menu.group;
+           if(g && menu.events["checkchange"]){
+               groups[g].remove(menu);
+               menu.un("checkchange", onCheck);
+           }
+       },
+
+       // private
+       registerCheckable : function(menuItem){
+           var g = menuItem.group;
+           if(g){
+               if(!groups[g]){
+                   groups[g] = [];
+               }
+               groups[g].push(menuItem);
+               menuItem.on("beforecheckchange", onBeforeCheck);
+           }
+       },
+
+       // private
+       unregisterCheckable : function(menuItem){
+           var g = menuItem.group;
+           if(g){
+               groups[g].remove(menuItem);
+               menuItem.un("beforecheckchange", onBeforeCheck);
+           }
+       }
+   };
+}();/*
  * - LGPL
  *
  * menu
@@ -1033,16 +1269,85 @@ Roo.extend(Roo.bootstrap.Header, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.Menu = function(config){
     Roo.bootstrap.Menu.superclass.constructor.call(this, config);
-    Roo.bootstrap.Menu.register(this);
+    if (this.registerMenu) {
+        Roo.bootstrap.MenuMgr.register(this);
+    }
+    this.addEvents({
+        /**
+         * @event beforeshow
+         * Fires before this menu is displayed
+         * @param {Roo.menu.Menu} this
+         */
+        beforeshow : true,
+        /**
+         * @event beforehide
+         * Fires before this menu is hidden
+         * @param {Roo.menu.Menu} this
+         */
+        beforehide : true,
+        /**
+         * @event show
+         * Fires after this menu is displayed
+         * @param {Roo.menu.Menu} this
+         */
+        show : true,
+        /**
+         * @event hide
+         * Fires after this menu is hidden
+         * @param {Roo.menu.Menu} this
+         */
+        hide : true,
+        /**
+         * @event click
+         * Fires when this menu is clicked (or when the enter key is pressed while it is active)
+         * @param {Roo.menu.Menu} this
+         * @param {Roo.menu.Item} menuItem The menu item that was clicked
+         * @param {Roo.EventObject} e
+         */
+        click : true,
+        /**
+         * @event mouseover
+         * Fires when the mouse is hovering over this menu
+         * @param {Roo.menu.Menu} this
+         * @param {Roo.EventObject} e
+         * @param {Roo.menu.Item} menuItem The menu item that was clicked
+         */
+        mouseover : true,
+        /**
+         * @event mouseout
+         * Fires when the mouse exits this menu
+         * @param {Roo.menu.Menu} this
+         * @param {Roo.EventObject} e
+         * @param {Roo.menu.Item} menuItem The menu item that was clicked
+         */
+        mouseout : true,
+        /**
+         * @event itemclick
+         * Fires when a menu item contained in this menu is clicked
+         * @param {Roo.menu.BaseItem} baseItem The BaseItem that was clicked
+         * @param {Roo.EventObject} e
+         */
+        itemclick: true
+    });
+    this.menuitems = new Roo.util.MixedCollection(false, function(o) { return o.el.id; });
 };
 
 Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     
    /// html : false,
     //align : '',
-    triggerEl : false,
+    triggerEl : false,  // is this set by component builder? -- it should really be fetched from parent()???
     type: false,
+    /**
+     * @cfg {Boolean} registerMenu True (default) - means that clicking on screen etc. hides it.
+     */
+    registerMenu : true,
     
+    menuItems :false, // stores the menu items..
+    
+    hidden:true,
+    
+    parentMenu : false,
     
     getChildContainer : function() {
         return this.el;  
@@ -1055,50 +1360,191 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         //}
         var cfg = {
             tag : 'ul',
-            cls : 'dropdown-menu' 
+            cls : 'dropdown-menu' ,
+            style : 'z-index:1000'
             
         }
 	
-	if (this.type==='submenu') {
-	    cfg.cls='submenu active'
+	if (this.type === 'submenu') {
+	    cfg.cls = 'submenu active'
 	}
 	
         return cfg;
     },
     initEvents : function() {
+        
        // Roo.log("ADD event");
        // Roo.log(this.triggerEl.dom);
-        this.triggerEl.on('click', this.toggle, this);
+        this.triggerEl.on('click', this.onTriggerPress, this);
         this.triggerEl.addClass('dropdown-toggle');
+        this.el.on(Roo.isTouch ? 'touchstart' : 'click'   , this.onClick, this);
+
+        this.el.on("mouseover", this.onMouseOver, this);
+        this.el.on("mouseout", this.onMouseOut, this);
+        
         
     },
-    toggle  : function(e)
+    findTargetItem : function(e){
+        var t = e.getTarget(".dropdown-menu-item", this.el,  true);
+        if(!t){
+            return false;
+        }
+        //Roo.log(t);         Roo.log(t.id);
+        if(t && t.id){
+            //Roo.log(this.menuitems);
+            return this.menuitems.get(t.id);
+            
+            //return this.items.get(t.menuItemId);
+        }
+        
+        return false;
+    },
+    onClick : function(e){
+        Roo.log("menu.onClick");
+        var t = this.findTargetItem(e);
+        if(!t){
+            return;
+        }
+        Roo.log(e);
+        /*
+        if (Roo.isTouch && e.type == 'touchstart' && t.menu  && !t.disabled) {
+            if(t == this.activeItem && t.shouldDeactivate(e)){
+                this.activeItem.deactivate();
+                delete this.activeItem;
+                return;
+            }
+            if(t.canActivate){
+                this.setActiveItem(t, true);
+            }
+            return;
+            
+            
+        }
+        */
+        Roo.log('pass click event');
+        
+        t.onClick(e);
+        
+        this.fireEvent("click", this, t, e);
+        
+        this.hide();
+    },
+     onMouseOver : function(e){
+        var t  = this.findTargetItem(e);
+        //Roo.log(t);
+        //if(t){
+        //    if(t.canActivate && !t.disabled){
+        //        this.setActiveItem(t, true);
+        //    }
+        //}
+        
+        this.fireEvent("mouseover", this, e, t);
+    },
+    isVisible : function(){
+        return !this.hidden;
+    },
+     onMouseOut : function(e){
+        var t  = this.findTargetItem(e);
+        
+        //if(t ){
+        //    if(t == this.activeItem && t.shouldDeactivate(e)){
+        //        this.activeItem.deactivate();
+        //        delete this.activeItem;
+        //    }
+        //}
+        this.fireEvent("mouseout", this, e, t);
+    },
+    
+    
+    /**
+     * Displays this menu relative to another element
+     * @param {String/HTMLElement/Roo.Element} element The element to align to
+     * @param {String} position (optional) The {@link Roo.Element#alignTo} anchor position to use in aligning to
+     * the element (defaults to this.defaultAlign)
+     * @param {Roo.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
+     */
+    show : function(el, pos, parentMenu){
+        this.parentMenu = parentMenu;
+        if(!this.el){
+            this.render();
+        }
+        this.fireEvent("beforeshow", this);
+        this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
+    },
+     /**
+     * Displays this menu at a specific xy position
+     * @param {Array} xyPosition Contains X & Y [x, y] values for the position at which to show the menu (coordinates are page-based)
+     * @param {Roo.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
+     */
+    showAt : function(xy, parentMenu, /* private: */_e){
+        this.parentMenu = parentMenu;
+        if(!this.el){
+            this.render();
+        }
+        if(_e !== false){
+            this.fireEvent("beforeshow", this);
+            
+            //xy = this.el.adjustForConstraints(xy);
+        }
+        //this.el.setXY(xy);
+        //this.el.show();
+        this.hideMenuItems();
+        this.hidden = false;
+        this.triggerEl.addClass('open');
+        this.focus();
+        this.fireEvent("show", this);
+    },
+    
+    focus : function(){
+        return;
+        if(!this.hidden){
+            this.doFocus.defer(50, this);
+        }
+    },
+
+    doFocus : function(){
+        if(!this.hidden){
+            this.focusEl.focus();
+        }
+    },
+
+    /**
+     * Hides this menu and optionally all parent menus
+     * @param {Boolean} deep (optional) True to hide all parent menus recursively, if any (defaults to false)
+     */
+    hide : function(deep){
+        
+        this.hideMenuItems();
+        if(this.el && this.isVisible()){
+            this.fireEvent("beforehide", this);
+            if(this.activeItem){
+                this.activeItem.deactivate();
+                this.activeItem = null;
+            }
+            this.triggerEl.removeClass('open');;
+            this.hidden = true;
+            this.fireEvent("hide", this);
+        }
+        if(deep === true && this.parentMenu){
+            this.parentMenu.hide(true);
+        }
+    },
+    
+    onTriggerPress  : function(e)
     {
+        
+        Roo.log('trigger press');
         //Roo.log(e.getTarget());
        // Roo.log(this.triggerEl.dom);
         if (Roo.get(e.getTarget()).findParent('.dropdown-menu')) {
             return;
         }
-        var isActive = this.triggerEl.hasClass('open');
-        // if disabled.. ingore
-        this.hideMenuItems(e);
-        //if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
-         // if mobile we use a backdrop because click events don't delegate
-        // $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
-        // }
- 
-       //var relatedTarget = { relatedTarget: this }
-       //$parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
- 
-       //if (e.isDefaultPrevented()) return;
-        
-       this.triggerEl[isActive ? 'removeClass' : 'addClass']('open');
-       
-       //  .trigger('shown.bs.dropdown', relatedTarget)
- 
-       this.triggerEl.focus();
-//       Roo.log(e);
-       e.preventDefault(); 
+        if (this.isVisible()) {
+            Roo.log('hide');
+            this.hide();
+        } else {
+            this.show(this.triggerEl, false, false);
+        }
         
         
     },
@@ -1109,11 +1555,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     hideMenuItems : function()
     {
         //$(backdrop).remove()
-        Roo.select('.dropdown-toggle',true).each(function(aa) {
-            if (!aa.hasClass('open')) {
-                return;
-            }
-            // triger close...
+        Roo.select('.open',true).each(function(aa) {
+            
             aa.removeClass('open');
           //var parent = getParent($(this))
           //var relatedTarget = { relatedTarget: this }
@@ -1122,40 +1565,22 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
           //if (e.isDefaultPrevented()) return
            //$parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
         })
+    },
+    addxtypeChild : function (tree, cntr) {
+        var comp= Roo.bootstrap.Menu.superclass.addxtypeChild.call(this, tree, cntr);
+          
+        this.menuitems.add(comp);
+        return comp;
+
+    },
+    getEl : function()
+    {
+        Roo.log(this.el);
+        return this.el;
     }
-    
-   
 });
 
-Roo.apply(Roo.bootstrap.Menu, {
-    
-    menus : [],
-    
-    register : function(menu)
-    {
-        if (!this.menus.length) {
-            Roo.get(document.body).on( 'click', Roo.bootstrap.Menu.onClick)
-            
-        }
-        this.menus.push(menu);
-        
-        
-    },
-    onClick : function(e)
-    {
-        Roo.log(e);
-        
-    },
-    show : function(menu) {
-        
-        
-        
-    }
-    
-
-    
-    
-});
+ 
  /*
  * - LGPL
  *
@@ -1201,14 +1626,15 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg= {
 	    tag: 'li',
+        cls: 'dropdown-menu-item',
 	    cn: [
-		{
-		    tag : 'a',
-		    href : '#',
-		    html : 'Link'
-		}
+            {
+                tag : 'a',
+                href : '#',
+                html : 'Link'
+            }
 	    ]
-        };
+    };
 	
         cfg.cn[0].href = this.href || cfg.cn[0].href ;
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
@@ -1217,20 +1643,23 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     
     initEvents: function() {
         
-        this.el.on('click', this.onClick, this);
+        //this.el.select('a').on('click', this.onClick, this);
         
     },
     onClick : function(e)
     {
         Roo.log('item on click ');
-        if(this.preventDefault){
-            e.preventDefault();
-        }
-        this.parent().hideMenuItems();
+        //if(this.preventDefault){
+        //    e.preventDefault();
+        //}
+        //this.parent().hideMenuItems();
         
         this.fireEvent('click', this, e);
+    },
+    getEl : function()
+    {
+        return this.el;
     }
-   
 });
 
  
@@ -8206,7 +8635,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @hide
      * @method autoSize
      */
-});/*
+});
+/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.

@@ -19,16 +19,85 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.Menu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.Menu.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-var">Roo.bootstrap.Menu.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.registerMenu</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">Roo.bootstrap.MenuMgr.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    }
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event beforeshow
+         * Fires before this menu is displayed
+         * @param {Roo.menu.Menu} this
+         */
+        </span><span class="jsdoc-var">beforeshow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event beforehide
+         * Fires before this menu is hidden
+         * @param {Roo.menu.Menu} this
+         */
+        </span><span class="jsdoc-var">beforehide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event show
+         * Fires after this menu is displayed
+         * @param {Roo.menu.Menu} this
+         */
+        </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event hide
+         * Fires after this menu is hidden
+         * @param {Roo.menu.Menu} this
+         */
+        </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event click
+         * Fires when this menu is clicked (or when the enter key is pressed while it is active)
+         * @param {Roo.menu.Menu} this
+         * @param {Roo.menu.Item} menuItem The menu item that was clicked
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event mouseover
+         * Fires when the mouse is hovering over this menu
+         * @param {Roo.menu.Menu} this
+         * @param {Roo.EventObject} e
+         * @param {Roo.menu.Item} menuItem The menu item that was clicked
+         */
+        </span><span class="jsdoc-var">mouseover </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event mouseout
+         * Fires when the mouse exits this menu
+         * @param {Roo.menu.Menu} this
+         * @param {Roo.EventObject} e
+         * @param {Roo.menu.Item} menuItem The menu item that was clicked
+         */
+        </span><span class="jsdoc-var">mouseout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event itemclick
+         * Fires when a menu item contained in this menu is clicked
+         * @param {Roo.menu.BaseItem} baseItem The BaseItem that was clicked
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-var">itemclick</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">this.menuitems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o.el.id</span><span class="jsdoc-syntax">; });
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Menu</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
    </span><span class="jsdoc-comment">/// html : false,
     //align : '',
-    </span><span class="jsdoc-var">triggerEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">triggerEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-comment">// is this set by component builder? -- it should really be fetched from parent()???
     </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} registerMenu True (default) - means that clicking on screen etc. hides it.
+     */
+    </span><span class="jsdoc-var">registerMenu </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     
+    </span><span class="jsdoc-var">menuItems </span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// stores the menu items..
+    
+    </span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">parentMenu </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;  
@@ -41,50 +110,191 @@
         //}
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'dropdown-menu' 
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'dropdown-menu' </span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'z-index:1000'
             
         </span><span class="jsdoc-syntax">}
 	
-	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.type</span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'submenu'</span><span class="jsdoc-syntax">) {
-	    </span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">=</span><span class="jsdoc-string">'submenu active'
+	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'submenu'</span><span class="jsdoc-syntax">) {
+	    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'submenu active'
 	</span><span class="jsdoc-syntax">}
 	
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        
        </span><span class="jsdoc-comment">// Roo.log(&quot;ADD event&quot;);
        // Roo.log(this.triggerEl.dom);
-        </span><span class="jsdoc-var">this.triggerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.toggle</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.triggerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTriggerPress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.triggerEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'dropdown-toggle'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'touchstart' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'click'   </span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseover&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseOver</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseOut</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
         
     },
-    </span><span class="jsdoc-var">toggle  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">findTargetItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;.dropdown-menu-item&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">//Roo.log(t);         Roo.log(t.id);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">t.id</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-comment">//Roo.log(this.menuitems);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.menuitems.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t.id</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-comment">//return this.items.get(t.menuItemId);
+        </span><span class="jsdoc-syntax">}
+        
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;menu.onClick&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findTargetItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">/*
+        if (Roo.isTouch &amp;&amp; e.type == 'touchstart' &amp;&amp; t.menu  &amp;&amp; !t.disabled) {
+            if(t == this.activeItem &amp;&amp; t.shouldDeactivate(e)){
+                this.activeItem.deactivate();
+                delete this.activeItem;
+                return;
+            }
+            if(t.canActivate){
+                this.setActiveItem(t, true);
+            }
+            return;
+            
+            
+        }
+        */
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'pass click event'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">t.onClick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+    },
+     </span><span class="jsdoc-var">onMouseOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findTargetItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//Roo.log(t);
+        //if(t){
+        //    if(t.canActivate &amp;&amp; !t.disabled){
+        //        this.setActiveItem(t, true);
+        //    }
+        //}
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseover&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-var">isVisible </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">this.hidden</span><span class="jsdoc-syntax">;
+    },
+     </span><span class="jsdoc-var">onMouseOut </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findTargetItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-comment">//if(t ){
+        //    if(t == this.activeItem &amp;&amp; t.shouldDeactivate(e)){
+        //        this.activeItem.deactivate();
+        //        delete this.activeItem;
+        //    }
+        //}
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">);
+    },
+    
+    
+    </span><span class="jsdoc-comment">/**
+     * Displays this menu relative to another element
+     * @param {String/HTMLElement/Roo.Element} element The element to align to
+     * @param {String} position (optional) The {@link Roo.Element#alignTo} anchor position to use in aligning to
+     * the element (defaults to this.defaultAlign)
+     * @param {Roo.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
+     */
+    </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parentMenu</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.parentMenu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parentMenu</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeshow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.showAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.defaultAlign</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">parentMenu</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+    },
+     </span><span class="jsdoc-comment">/**
+     * Displays this menu at a specific xy position
+     * @param {Array} xyPosition Contains X &amp; Y [x, y] values for the position at which to show the menu (coordinates are page-based)
+     * @param {Roo.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
+     */
+    </span><span class="jsdoc-var">showAt </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parentMenu</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">/* private: */</span><span class="jsdoc-var">_e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.parentMenu </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parentMenu</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_e </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeshow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-comment">//xy = this.el.adjustForConstraints(xy);
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-comment">//this.el.setXY(xy);
+        //this.el.show();
+        </span><span class="jsdoc-var">this.hideMenuItems</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.triggerEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.focus</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;show&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">focus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.hidden</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.doFocus.defer</span><span class="jsdoc-syntax">(50, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">doFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.hidden</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.focusEl.focus</span><span class="jsdoc-syntax">();
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Hides this menu and optionally all parent menus
+     * @param {Boolean} deep (optional) True to hide all parent menus recursively, if any (defaults to false)
+     */
+    </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">deep</span><span class="jsdoc-syntax">){
+        
+        </span><span class="jsdoc-var">this.hideMenuItems</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.isVisible</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforehide&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.activeItem</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.activeItem.deactivate</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.activeItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">this.triggerEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);;
+            </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hide&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">deep </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.parentMenu</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.parentMenu.hide</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }
+    },
+    
+    </span><span class="jsdoc-var">onTriggerPress  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {
+        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'trigger press'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//Roo.log(e.getTarget());
        // Roo.log(this.triggerEl.dom);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.dropdown-menu'</span><span class="jsdoc-syntax">)) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isActive </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.triggerEl.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-comment">// if disabled.. ingore
-        </span><span class="jsdoc-var">this.hideMenuItems</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-comment">//if ('ontouchstart' in document.documentElement &amp;&amp; !$parent.closest('.navbar-nav').length) {
-         // if mobile we use a backdrop because click events don't delegate
-        // $('&lt;div class=&quot;dropdown-backdrop&quot;/&gt;').insertAfter($(this)).on('click', clearMenus)
-        // }
- 
-       //var relatedTarget = { relatedTarget: this }
-       //$parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
- 
-       //if (e.isDefaultPrevented()) return;
-        
-       </span><span class="jsdoc-var">this.triggerEl</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">isActive </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'removeClass' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'addClass'</span><span class="jsdoc-syntax">](</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
-       
-       </span><span class="jsdoc-comment">//  .trigger('shown.bs.dropdown', relatedTarget)
- 
-       </span><span class="jsdoc-var">this.triggerEl.focus</span><span class="jsdoc-syntax">();
-</span><span class="jsdoc-comment">//       Roo.log(e);
-       </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">(); 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isVisible</span><span class="jsdoc-syntax">()) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.show</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.triggerEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        }
         
         
     },
@@ -95,11 +305,8 @@
     </span><span class="jsdoc-var">hideMenuItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-comment">//$(backdrop).remove()
-        </span><span class="jsdoc-var">Roo.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.dropdown-toggle'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aa</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">aa.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">)) {
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-            }
-            </span><span class="jsdoc-comment">// triger close...
+        </span><span class="jsdoc-var">Roo.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.open'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">aa</span><span class="jsdoc-syntax">) {
+            
             </span><span class="jsdoc-var">aa.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
           </span><span class="jsdoc-comment">//var parent = getParent($(this))
           //var relatedTarget = { relatedTarget: this }
@@ -108,38 +315,20 @@
           //if (e.isDefaultPrevented()) return
            //$parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
         </span><span class="jsdoc-syntax">})
+    },
+    </span><span class="jsdoc-var">addxtypeChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">comp</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Menu.superclass.addxtypeChild.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">);
+          
+        </span><span class="jsdoc-var">this.menuitems.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">comp</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">comp</span><span class="jsdoc-syntax">;
+
+    },
+    </span><span class="jsdoc-var">getEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
     }
-    
-   
 });
 
-</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Menu</span><span class="jsdoc-syntax">, {
-    
-    </span><span class="jsdoc-var">menus </span><span class="jsdoc-syntax">: [],
-    
-    </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menu</span><span class="jsdoc-syntax">)
-    {
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.menus.length</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Menu.onClick</span><span class="jsdoc-syntax">)
-            
-        }
-        </span><span class="jsdoc-var">this.menus.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menu</span><span class="jsdoc-syntax">);
-        
-        
-    },
-    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
-    {
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
-        
-    },
-    </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menu</span><span class="jsdoc-syntax">) {
-        
-        
-        
-    }
-    
-
-    
-    
-});
+ 
  </span></code></body></html>

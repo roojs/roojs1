@@ -1,0 +1,196 @@
+<html><head><title>../roojs1/Roo/bootstrap/MenuMgr.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * &lt;script type=&quot;text/javascript&quot;&gt;
+ */
+ 
+/**
+ * @class Roo.bootstrap.MenuMgr
+ * Provides a common registry of all menu items on a page so that they can be easily accessed by id.
+ * @singleton
+ */
+</span><span class="jsdoc-var">Roo.bootstrap.MenuMgr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+   </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">menus</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">groups </span><span class="jsdoc-syntax">= {}, </span><span class="jsdoc-var">attached </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">lastShow </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">();
+
+   </span><span class="jsdoc-comment">// private - called when first menu is created
+   </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">init</span><span class="jsdoc-syntax">(){
+       </span><span class="jsdoc-var">menus </span><span class="jsdoc-syntax">= {};
+       </span><span class="jsdoc-var">active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">();
+       </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addKeyListener</span><span class="jsdoc-syntax">(27, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">active.length </span><span class="jsdoc-syntax">&gt; 0){
+               </span><span class="jsdoc-var">hideAll</span><span class="jsdoc-syntax">();
+           }
+       });
+   }
+
+   </span><span class="jsdoc-comment">// private
+   </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">hideAll</span><span class="jsdoc-syntax">(){
+       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">active </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">active.length </span><span class="jsdoc-syntax">&gt; 0){
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">active.clone</span><span class="jsdoc-syntax">();
+           </span><span class="jsdoc-var">c.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-var">m.hide</span><span class="jsdoc-syntax">();
+           });
+       }
+   }
+
+   </span><span class="jsdoc-comment">// private
+   </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">onHide</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">){
+       </span><span class="jsdoc-var">active.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">active.length </span><span class="jsdoc-syntax">&lt; 1){
+           </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseup&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onMouseDown</span><span class="jsdoc-syntax">);
+            
+           </span><span class="jsdoc-var">attached </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+       }
+   }
+
+   </span><span class="jsdoc-comment">// private
+   </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">onShow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">){
+       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">active.last</span><span class="jsdoc-syntax">();
+       </span><span class="jsdoc-var">lastShow </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">();
+       </span><span class="jsdoc-var">active.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">attached</span><span class="jsdoc-syntax">){
+          </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseup&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onMouseDown</span><span class="jsdoc-syntax">);
+           
+           </span><span class="jsdoc-var">attached </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+       }
+       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m.parentMenu</span><span class="jsdoc-syntax">){
+          </span><span class="jsdoc-comment">//m.getEl().setZIndex(parseInt(m.parentMenu.getEl().getStyle(&quot;z-index&quot;), 10) + 3);
+          </span><span class="jsdoc-var">m.parentMenu.activeChild </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">;
+       }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">last </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">last.isVisible</span><span class="jsdoc-syntax">()){
+          </span><span class="jsdoc-comment">//m.getEl().setZIndex(parseInt(last.getEl().getStyle(&quot;z-index&quot;), 10) + 3);
+       </span><span class="jsdoc-syntax">}
+   }
+
+   </span><span class="jsdoc-comment">// private
+   </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">onBeforeHide</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">){
+       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m.activeChild</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">m.activeChild.hide</span><span class="jsdoc-syntax">();
+       }
+       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m.autoHideTimer</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m.autoHideTimer</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">m.autoHideTimer</span><span class="jsdoc-syntax">;
+       }
+   }
+
+   </span><span class="jsdoc-comment">// private
+   </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">onBeforeShow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">){
+       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">m.parentMenu</span><span class="jsdoc-syntax">;
+       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">pm </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">m.allowOtherMenus</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">hideAll</span><span class="jsdoc-syntax">();
+       }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pm </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">pm.activeChild </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">active </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">m</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">pm.activeChild.hide</span><span class="jsdoc-syntax">();
+       }
+   }
+
+   </span><span class="jsdoc-comment">// private
+   </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">onMouseDown</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;on MouseDown&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lastShow.getElapsed</span><span class="jsdoc-syntax">() &gt; 50 &amp;&amp; </span><span class="jsdoc-var">active.length </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; !</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;.x-menu&quot;</span><span class="jsdoc-syntax">)){
+           </span><span class="jsdoc-var">hideAll</span><span class="jsdoc-syntax">();
+        }
+        
+        
+   }
+
+   </span><span class="jsdoc-comment">// private
+   </span><span class="jsdoc-keyword">function </span><span class="jsdoc-var">onBeforeCheck</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mi</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
+       </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">mi.group</span><span class="jsdoc-syntax">];
+           </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+               </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-var">mi</span><span class="jsdoc-syntax">){
+                   </span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.setChecked</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+               }
+           }
+       }
+   }
+
+   </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+
+       </span><span class="jsdoc-comment">/**
+        * Hides all menus that are currently visible
+        */
+       </span><span class="jsdoc-var">hideAll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-var">hideAll</span><span class="jsdoc-syntax">();  
+       },
+
+       </span><span class="jsdoc-comment">// private
+       </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menu</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">menus</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-var">init</span><span class="jsdoc-syntax">();
+           }
+           </span><span class="jsdoc-var">menus</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">menu.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">menu</span><span class="jsdoc-syntax">;
+           </span><span class="jsdoc-var">menu.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforehide&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onBeforeHide</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">menu.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hide&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onHide</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">menu.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeshow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onBeforeShow</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">menu.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;show&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onShow</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">menu.group</span><span class="jsdoc-syntax">;
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">menu.events</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">&quot;checkchange&quot;</span><span class="jsdoc-syntax">]){
+               </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">]){
+                   </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">] = [];
+               }
+               </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menu</span><span class="jsdoc-syntax">);
+               </span><span class="jsdoc-var">menu.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;checkchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onCheck</span><span class="jsdoc-syntax">);
+           }
+       },
+
+        </span><span class="jsdoc-comment">/**
+         * Returns a {@link Roo.menu.Menu} object
+         * @param {String/Object} menu The string menu id, an existing menu object reference, or a Menu config that will
+         * be used to generate and return a new Menu instance.
+         */
+       </span><span class="jsdoc-var">get </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menu</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">menu </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// menu id
+               </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">menus</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">menu</span><span class="jsdoc-syntax">];
+           }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menu.events</span><span class="jsdoc-syntax">){  </span><span class="jsdoc-comment">// menu instance
+               </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">menu</span><span class="jsdoc-syntax">;
+           }
+           </span><span class="jsdoc-comment">/*else if(typeof menu.length == 'number'){ // array of menu items?
+               return new Roo.bootstrap.Menu({items:menu});
+           }else{ // otherwise, must be a config
+               return new Roo.bootstrap.Menu(menu);
+           }
+           */
+           </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+       },
+
+       </span><span class="jsdoc-comment">// private
+       </span><span class="jsdoc-var">unregister </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menu</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-keyword">delete </span><span class="jsdoc-var">menus</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">menu.id</span><span class="jsdoc-syntax">];
+           </span><span class="jsdoc-var">menu.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforehide&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onBeforeHide</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">menu.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hide&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onHide</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">menu.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeshow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onBeforeShow</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-var">menu.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;show&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onShow</span><span class="jsdoc-syntax">);
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">menu.group</span><span class="jsdoc-syntax">;
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">menu.events</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">&quot;checkchange&quot;</span><span class="jsdoc-syntax">]){
+               </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menu</span><span class="jsdoc-syntax">);
+               </span><span class="jsdoc-var">menu.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;checkchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onCheck</span><span class="jsdoc-syntax">);
+           }
+       },
+
+       </span><span class="jsdoc-comment">// private
+       </span><span class="jsdoc-var">registerCheckable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menuItem</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">menuItem.group</span><span class="jsdoc-syntax">;
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">]){
+                   </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">] = [];
+               }
+               </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menuItem</span><span class="jsdoc-syntax">);
+               </span><span class="jsdoc-var">menuItem.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforecheckchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onBeforeCheck</span><span class="jsdoc-syntax">);
+           }
+       },
+
+       </span><span class="jsdoc-comment">// private
+       </span><span class="jsdoc-var">unregisterCheckable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menuItem</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">menuItem.group</span><span class="jsdoc-syntax">;
+           </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">g</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">menuItem</span><span class="jsdoc-syntax">);
+               </span><span class="jsdoc-var">menuItem.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforecheckchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">onBeforeCheck</span><span class="jsdoc-syntax">);
+           }
+       }
+   };
+}();</span></code></body></html>

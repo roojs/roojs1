@@ -8726,6 +8726,12 @@
      "memberOf": ""
     },
     {
+     "name": "registerMenu",
+     "type": "Boolean",
+     "desc": "True (default) - means that clicking on screen etc. hides it.",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -8803,7 +8809,7 @@
      "name": "beforehide",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
-     "desc": "Fires before the component is hidden. Return false to stop the hide."
+     "desc": "Fires before this menu is hidden"
     },
     {
      "name": "beforerender",
@@ -8815,7 +8821,13 @@
      "name": "beforeshow",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
-     "desc": "Fires before the component is shown.  Return false to stop the show."
+     "desc": "Fires before this menu is displayed"
+    },
+    {
+     "name": "click",
+     "sig": "function (_self, menuItem, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this menu is clicked (or when the enter key is pressed while it is active)"
     },
     {
      "name": "destroy",
@@ -8839,7 +8851,25 @@
      "name": "hide",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
-     "desc": "Fires after the component is hidden."
+     "desc": "Fires after this menu is hidden"
+    },
+    {
+     "name": "itemclick",
+     "sig": "function (baseItem, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a menu item contained in this menu is clicked"
+    },
+    {
+     "name": "mouseout",
+     "sig": "function (_self, e, menuItem)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the mouse exits this menu"
+    },
+    {
+     "name": "mouseover",
+     "sig": "function (_self, e, menuItem)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the mouse is hovering over this menu"
     },
     {
      "name": "render",
@@ -8851,7 +8881,7 @@
      "name": "show",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
-     "desc": "Fires after the component is shown."
+     "desc": "Fires after this menu is displayed"
     }
    ]
   },
@@ -9010,6 +9040,10 @@
      "desc": "Fires after the component is shown."
     }
    ]
+  },
+  "Roo.bootstrap.MenuMgr": {
+   "props": [],
+   "events": []
   },
   "Roo.bootstrap.MenuSeparator": {
    "props": [

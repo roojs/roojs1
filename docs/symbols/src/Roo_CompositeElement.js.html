@@ -63,12 +63,15 @@
     </span><span class="jsdoc-comment">/**
     * Filters this composite to only elements that match the passed selector.
     * @param {String} selector A string CSS selector
+    * @param {Boolean} inverse return inverse filter (not matches)
     * @return {CompositeElement} this
     */
-    </span><span class="jsdoc-var">filter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">filter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">inverse</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">els </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">inverse </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">inverse </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.is</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">match </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">inverse </span><span class="jsdoc-syntax">? !</span><span class="jsdoc-var">el.is</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">el.is</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">selector</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">match</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">els</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">els.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">el.dom</span><span class="jsdoc-syntax">;
             }
         });

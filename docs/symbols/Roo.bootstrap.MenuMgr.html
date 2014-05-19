@@ -8,7 +8,7 @@
 		<meta name="generator" content="JsDoc Toolkit" />
 		
 		
-		<title>JsDoc Reference - Array</title>
+		<title>JsDoc Reference - Roo.bootstrap.MenuMgr</title>
 		
 		
 	<link rel="stylesheet" type="text/css" href="../../css/roojs.css" />		
@@ -31,10 +31,10 @@
 
     <div class="top-tools">
     <!--
-        <a class="inner-link" href="#Array-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
-        <a class="inner-link" href="#Array-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
-        <a class="inner-link" href="#Array-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
-        <a class="inner-link" href="#Array-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
+        <a class="inner-link" href="#Roo.bootstrap.MenuMgr-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
+        <a class="inner-link" href="#Roo.bootstrap.MenuMgr-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
+        <a class="inner-link" href="#Roo.bootstrap.MenuMgr-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
+        <a class="inner-link" href="#Roo.bootstrap.MenuMgr-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
         <a class="bookmark" href="NEED_TO_CREATE_DIRECT_LINK_HREF"><img src="resources/s.gif" class="item-icon icon-fav">Direct Link</a>
 	-->
     </div>
@@ -47,17 +47,19 @@
     
     <h1 class="classTitle">
 				
-				Built-In Class Array
+				Class Roo.bootstrap.MenuMgr
 			</h1>
 			
     <table cellspacing="0" class="class-summary-table">
 	
+		<tr><td class="label">Package:</td><td class="hd-info">Roo.bootstrap</td></tr>
+	
         <tr><td class="label">Defined In:</td><td class="hd-info">
 			
-					<a href="./src/Array.js.html">Array.js</a>.
+					<a href="./src/Roo_bootstrap_MenuMgr.js.html">Roo/bootstrap/MenuMgr.js</a>.
 			
 	</td></tr>
-        <tr><td class="label">Class:</td><td class="hd-info">Array</td></tr>
+        <tr><td class="label">Class:</td><td class="hd-info">MenuMgr</td></tr>
 	
 	
 	
@@ -67,7 +69,7 @@
     
 <!-- ============================== class summary ========================== -->			
     <div class="description">
-	
+	Provides a common registry of all menu items on a page so that they can be easily accessed by id.
     </div>
 
 	
@@ -75,10 +77,10 @@
 
 <div class="comments">
 	<b>Class Comments / Notes</B> =>  
-	<u onclick="parent.CommentDialog.showCommentId = 'Array';">[Add Your comment/notes about this class]</u>
+	<u onclick="parent.CommentDialog.showCommentId = 'Roo.bootstrap.MenuMgr';">[Add Your comment/notes about this class]</u>
 	<br/>
-	<iframe frameborder="0"  id="comments-" style="border: none;width:100%;" 
-		src="/blog.php/GtkDjsComments/Array.html"></iframe>
+	<iframe frameborder="0"  id="comments-Roo.bootstrap" style="border: none;width:100%;" 
+		src="/blog.php/GtkDjsComments/Roo.bootstrap.MenuMgr.html"></iframe>
 </div>
 	
 
@@ -89,7 +91,7 @@
     
 		
     <div class="hr"></div>
-    <a id="Array-configs"></a>
+    <a id="Roo.bootstrap.MenuMgr-configs"></a>
 		
     
     
@@ -112,7 +114,7 @@
   
   
   
-    <a id="Array-props"></a>      
+    <a id="Roo.bootstrap.MenuMgr-props"></a>      
     
     
 
@@ -128,7 +130,7 @@
   <!-- ============================== methods summary / details ======================== -->
   
   
-  <a id="Array-methods"></a>
+  <a id="Roo.bootstrap.MenuMgr-methods"></a>
 	<!-- constructor?? -->
   	
 	<!-- static's first 
@@ -162,32 +164,24 @@
 	   
 	   
             <td class="sig">
-                <a id="Array-method-indexOf"   name=".indexOf"></a>
+                <a id="Roo.bootstrap.MenuMgr-method-get"   name=".get"></a>
 		<div class="fixedFont">
-			<span class="attributes"></span><b class="itemname">indexOf</b>
+			<span class="attributes">Roo.bootstrap.MenuMgr.</span><b class="itemname">get</b>
 				
-				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>o</i></B>) 
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object <B><i>menu</i></B>) 
 			
-				
-					 : 
-					
-						
-						<a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
-					
-					
-					
 				
 			
 		</div>
                 <div class="mdesc">
 		
-                   <div class="short">Checks whether or not the specified object exists in the array.</div> 
+                   <div class="short">Returns a {<b>link</b> Roo.menu.Menu} object</div> 
 		 
 		 
 		 
                     <div class="long">
 			
-				Checks whether or not the specified object exists in the array.
+				Returns a {<b>link</b> Roo.menu.Menu} object
 		    
 				
 			
@@ -198,23 +192,16 @@
 				<dt class="heading">Parameters:</dt>
 				
 					<dt>
-						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>o</b>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/Object</span>  <b>menu</b>
 						
 					</dt>
-					<dd>The object to check for</dd>
+					<dd>The string menu id, an existing menu object reference, or a Menu config that will<br/>be used to generate and return a new Menu instance.</dd>
 				
 				</dl>
 			
 			
 			
 			
-			
-				<dl class="detailList">
-				<dt class="heading">Returns:</dt>
-				
-					<dd><span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span>  The index of o in the array (or -1 if it is not found)</dd>
-				
-				</dl>
 			
 			
 			
@@ -228,7 +215,7 @@
             </td>
             <td class="msource">
 		
-			Array
+			Roo.bootstrap.MenuMgr
 		&nbsp;
             </td>
         </tr>
@@ -239,40 +226,29 @@
 	   
 	   
             <td class="sig">
-                <a id="Array-method-map"   name=".map"></a>
+                <a id="Roo.bootstrap.MenuMgr-method-hideAll"   name=".hideAll"></a>
 		<div class="fixedFont">
-			<span class="attributes"></span><b class="itemname">map</b>
+			<span class="attributes">Roo.bootstrap.MenuMgr.</span><b class="itemname">hideAll</b>
 				
-				 (<a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>function</i></B>) 
+				 () 
 			
 				
 			
 		</div>
                 <div class="mdesc">
 		
-                   <div class="short">Map (JS 1.6 compatibility)</div> 
+                   <div class="short">Hides all menus that are currently visible</div> 
 		 
 		 
 		 
                     <div class="long">
 			
-				Map (JS 1.6 compatibility)
+				Hides all menus that are currently visible
 		    
 				
 			
 			
 			
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>function</b>
-						
-					</dt>
-					<dd>to call</dd>
-				
-				</dl>
 			
 			
 			
@@ -290,69 +266,7 @@
             </td>
             <td class="msource">
 		
-			Array
-		&nbsp;
-            </td>
-        </tr>
-	
-	  
-          <tr class="method-row config-row-alt0 expandable notInherited">
-            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
-	   
-	   
-            <td class="sig">
-                <a id="Array-method-remove"   name=".remove"></a>
-		<div class="fixedFont">
-			<span class="attributes"></span><b class="itemname">remove</b>
-				
-				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>o</i></B>) 
-			
-				
-			
-		</div>
-                <div class="mdesc">
-		
-                   <div class="short">Removes the specified object from the array.</div> 
-		 
-		 
-		 
-                    <div class="long">
-			
-				Removes the specified object from the array.  If the object is not found nothing happens.
-		    
-				
-			
-			
-			
-			
-				<dl class="detailList">
-				<dt class="heading">Parameters:</dt>
-				
-					<dt>
-						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>o</b>
-						
-					</dt>
-					<dd>The object to remove</dd>
-				
-				</dl>
-			
-			
-			
-			
-			
-			
-			
-
-		    
-		    
-		     
-                    </div>                    
-                </div>
-
-            </td>
-            <td class="msource">
-		
-			Array
+			Roo.bootstrap.MenuMgr
 		&nbsp;
             </td>
         </tr>
@@ -364,7 +278,7 @@
   <!-- ============================== events summary / details ======================== -->
   
   
-  <a id="Array-events"></a>
+  <a id="Roo.bootstrap.MenuMgr-events"></a>
     
   
   	
@@ -385,7 +299,7 @@
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Mon May 19 2014 15:17:48 GMT+0800 (HKT)
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Mon May 19 2014 15:17:53 GMT+0800 (HKT)
 			Based on 
 			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
 		</div>
