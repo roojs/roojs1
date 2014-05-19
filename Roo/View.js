@@ -242,6 +242,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     refresh : function(){
         this.append();
         return;
+        Roo.log('refresh');
         var t = this.tpl;
         
         // if we are using something like 'domtemplate', then
@@ -290,6 +291,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     },
     
     append : function(){
+        Roo.log('append');
         var t = this.tpl;
         
         var html = [];
