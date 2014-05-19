@@ -303,6 +303,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     },
 
     onUpdate : function(ds, record){
+         Roo.log('on Add');   
         this.clearSelections();
         var index = this.store.indexOf(record);
         var n = this.nodes[index];
@@ -398,7 +399,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      */
     onBeforeLoad : function(store,opts)
     {
-        
+         Roo.log('onBeforeLoad');   
         if (!opts.add) {
             Roo.log('clear el..');
             this.el.update("");
