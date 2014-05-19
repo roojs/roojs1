@@ -70,7 +70,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
         this.tpl = new Roo.factory(this.tpl, Roo);
     }
     
-    
+    Roo.log(this.tpl);
     this.tpl.compile();
    
   
