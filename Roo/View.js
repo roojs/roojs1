@@ -292,6 +292,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     
     append : function(){
         Roo.log('append');
+        Roo.log(this.tpl);
         var t = this.tpl;
         
         var html = [];
