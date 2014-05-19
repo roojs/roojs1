@@ -286,6 +286,41 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         this.nodes = el.dom.childNodes;
         this.updateIndexes(0);
     },
+    
+    append : function(){
+        var t = this.tpl;
+        
+        var html = [];
+        var records = this.store.getRange();
+        if(records.length < 1) {
+            
+            // is this valid??  = should it render a template??
+            
+            this.el.update(this.emptyText);
+            return;
+        }
+        var el = this.el;
+        if (this.dataName) {
+            this.el.update(t.apply(this.store.meta)); //????
+            el = this.el.child('.roo-tpl-' + this.dataName);
+        }
+        
+        for(var i = 0, len = records.length; i < len; i++){
+            var data = this.prepareData(records[i].data, i, records[i]);
+            this.fireEvent("preparedata", this, data, i, records[i]);
+            html[html.length] = Roo.util.Format.trim(
+                this.dataName ?
+                    t.applySubtemplate(this.dataName, data, this.store.meta) :
+                    t.apply(data)
+            );
+        }
+        
+        
+        
+        el.update(html.join(""));
+        this.nodes = el.dom.childNodes;
+        this.updateIndexes(0);
+    },
 
     /**
      * Function to override to reformat the data that is sent to
