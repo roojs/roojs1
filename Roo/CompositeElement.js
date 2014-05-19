@@ -63,9 +63,10 @@ Roo.CompositeElement.prototype = {
     /**
     * Filters this composite to only elements that match the passed selector.
     * @param {String} selector A string CSS selector
+    * @param {Boolean} inverse return inverse filter (not matches)
     * @return {CompositeElement} this
     */
-    filter : function(selector){
+    filter : function(selector, inverse){
         var els = [];
         this.each(function(el){
             if(el.is(selector)){
