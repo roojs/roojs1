@@ -337,7 +337,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     },
 
     onRemove : function(ds, record, index){
-        Roo.log('onBeforeLoad');
+        Roo.log('onRemove');
         this.clearSelections();
         var el = this.dataName  ?
             this.el.child('.roo-tpl-' + this.dataName) :
