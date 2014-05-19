@@ -240,6 +240,8 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * Refreshes the view. - called by datachanged on the store. - do not call directly.
      */
     refresh : function(){
+        this.append();
+        return;
         var t = this.tpl;
         
         // if we are using something like 'domtemplate', then
