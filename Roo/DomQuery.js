@@ -586,6 +586,7 @@ Roo.DomQuery = function(){
                 simpleCache[ss] = Roo.DomQuery.compile(ss, "simple");
             }
             var result = simpleCache[ss](els);
+            Roo.log(result);
             return nonMatches ? quickDiff(result, els) : result;
         },
 
