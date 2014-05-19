@@ -198,12 +198,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
             idSuffix = Roo.id(),
             elementLabel;
 
-        if (this.minimumResultsForSearch < 0) {
-            this.showSearch(false);
-        } else {
-            this.showSearch(true);
+        
+        this.hideSearchBar();
+        
+        if (this.showSearchBar) {
+            this.showSearchBar();
         }
-
+        
         this.selection = selection = container.find(".select2-choice");
 
         this.focusser = container.find(".select2-focusser");
