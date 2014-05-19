@@ -1080,14 +1080,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.page++;
         
-        var cs = Roo.apply({}, this.store);
-        
-        cs = Roo.factory(this.store, Roo.data);
-        
-        cs.load();
-        
-        Roo.log(cs);
-        
+        this.doQuery(this.allQuery, true);
         return;
     }
 
