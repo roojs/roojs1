@@ -240,6 +240,7 @@
      * Refreshes the view. - called by datachanged on the store. - do not call directly.
      */
     </span><span class="jsdoc-var">refresh </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'refresh'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-comment">// if we are using something like 'domtemplate', then
@@ -286,6 +287,7 @@
         </span><span class="jsdoc-var">this.nodes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.dom.childNodes</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.updateIndexes</span><span class="jsdoc-syntax">(0);
     },
+    
 
     </span><span class="jsdoc-comment">/**
      * Function to override to reformat the data that is sent to
@@ -301,6 +303,7 @@
     },
 
     </span><span class="jsdoc-var">onUpdate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">){
+         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'on update'</span><span class="jsdoc-syntax">);   
         </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">n </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.nodes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">];
@@ -314,6 +317,7 @@
 </span><span class="jsdoc-comment">// --------- FIXME     
     </span><span class="jsdoc-var">onAdd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'on Add'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">] );        
         </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.nodes.length </span><span class="jsdoc-syntax">== 0){
             </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">();
@@ -333,6 +337,7 @@
     },
 
     </span><span class="jsdoc-var">onRemove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'onRemove'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.dataName  </span><span class="jsdoc-syntax">?
             </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-tpl-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.dataName</span><span class="jsdoc-syntax">) :
@@ -393,9 +398,12 @@
      * onbeforeLoad - masks the loading area.
      *
      */
-    </span><span class="jsdoc-var">onBeforeLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    </span><span class="jsdoc-var">onBeforeLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'onBeforeLoad'</span><span class="jsdoc-syntax">);   
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">opts.add</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.el.update</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">);
+        }
         </span><span class="jsdoc-var">this.el.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mask </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.mask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Loading&quot; </span><span class="jsdoc-syntax">); 
     },
     </span><span class="jsdoc-var">onLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()

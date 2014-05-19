@@ -6080,6 +6080,12 @@
   "Roo.bootstrap.ComboBox": {
    "props": [
     {
+     "name": "append",
+     "type": "Boolean",
+     "desc": "(true|false) default false",
+     "memberOf": ""
+    },
+    {
      "name": "lazyRender",
      "type": "Boolean",
      "desc": "True to prevent the ComboBox from rendering until requested (should always be used when\nrendering into an Roo.Editor, defaults to false)",

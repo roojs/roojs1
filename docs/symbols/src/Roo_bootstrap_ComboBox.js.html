@@ -7,6 +7,7 @@
  * @class Roo.bootstrap.ComboBox
  * @extends Roo.bootstrap.TriggerField
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
+ * @cfg {Boolean} append (true|false) default false
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -247,6 +248,10 @@
     </span><span class="jsdoc-var">addicon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">editicon</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
+    </span><span class="jsdoc-var">page</span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">hasQuery</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">append</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-comment">// element that contains real text value.. (when hidden is used..)
      
     // private
@@ -292,6 +297,8 @@
         
         </span><span class="jsdoc-var">this.list.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseover'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onViewOver</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.list.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousemove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onViewMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.list.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onViewScroll</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-comment">/*
         this.list.swallowEvent('mousewheel');
@@ -537,14 +544,14 @@
     },
 
     </span><span class="jsdoc-comment">// private
-    </span><span class="jsdoc-var">onBeforeLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    
+    </span><span class="jsdoc-var">onBeforeLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">combo</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.hasFocus</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-comment">//this.innerList.update(this.loadingText ?
-        //       '&lt;div class=&quot;loading-indicator&quot;&gt;'+this.loadingText+'&lt;/div&gt;' : '');
-        </span><span class="jsdoc-var">this.list.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;li class=&quot;loading-indicator&quot;&gt;'</span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">this.loadingText</span><span class="jsdoc-syntax">||</span><span class="jsdoc-string">'loading'</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-string">'&lt;/li&gt;' </span><span class="jsdoc-syntax">;
-        
+         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">opts.add</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.list.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;li class=&quot;loading-indicator&quot;&gt;'</span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">this.loadingText</span><span class="jsdoc-syntax">||</span><span class="jsdoc-string">'loading'</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-string">'&lt;/li&gt;' </span><span class="jsdoc-syntax">;
+         }
         </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.selectedIndex </span><span class="jsdoc-syntax">= -1;
     },
@@ -573,6 +580,8 @@
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">this.onEmptyResults</span><span class="jsdoc-syntax">();
         }
+        
+        </span><span class="jsdoc-var">this.hasQuery </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">//this.el.focus();
     </span><span class="jsdoc-syntax">},
     </span><span class="jsdoc-comment">// private
@@ -883,6 +892,13 @@
      * saved in the current store (defaults to false)
      */
     </span><span class="jsdoc-var">doQuery </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">forceAll</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasQuery</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'has query already'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.hasQuery </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         }
@@ -896,6 +912,7 @@
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">qe.query</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-var">forceAll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">qe.forceAll</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">forceAll </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">q.length </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">this.minChars</span><span class="jsdoc-syntax">)){
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastQuery </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.alwaysQuery</span><span class="jsdoc-syntax">){
@@ -910,9 +927,14 @@
                     </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">();
                 }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                     </span><span class="jsdoc-var">this.store.baseParams</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.queryParam</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-var">this.store.load</span><span class="jsdoc-syntax">({
-                        </span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.getParams</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">)
-                    });
+                    
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">options </span><span class="jsdoc-syntax">= {</span><span class="jsdoc-var">params </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.getParams</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">)};
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.append</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">options.add </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                    }
+                    
+                    </span><span class="jsdoc-var">this.store.load</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">this.expand</span><span class="jsdoc-syntax">();
                 }
             }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
@@ -926,8 +948,9 @@
     </span><span class="jsdoc-var">getParams </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= {};
         </span><span class="jsdoc-comment">//p[this.queryParam] = q;
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">p.start </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-var">p.start </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.page </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">p.limit </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">;
@@ -940,6 +963,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isExpanded</span><span class="jsdoc-syntax">()){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
         </span><span class="jsdoc-var">this.list.hide</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.collapseIf</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousewheel'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.collapseIf</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -951,19 +975,27 @@
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">collapseIf </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">e.within</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) &amp;&amp; !</span><span class="jsdoc-var">e.within</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">)){
-            </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">in_combo  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.within</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">in_list </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">e.within</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.list</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">in_combo </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">in_list</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">//e.stopPropagation();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+
+        </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
+        
     },
 
     </span><span class="jsdoc-comment">/**
      * Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.
      */
     </span><span class="jsdoc-var">expand </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'expand'</span><span class="jsdoc-syntax">);
+       
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isExpanded</span><span class="jsdoc-syntax">() || !</span><span class="jsdoc-var">this.hasFocus</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'expand'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.list.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.listAlign</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.list.show</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.collapseIf</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -1046,7 +1078,26 @@
         </span><span class="jsdoc-var">this.view.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">match</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.getSelectedNodes</span><span class="jsdoc-syntax">()[0])
         </span><span class="jsdoc-comment">//sn.scrollIntoView(sn.dom.parentNode, false);
-    </span><span class="jsdoc-syntax">}
+    </span><span class="jsdoc-syntax">},
+    
+    </span><span class="jsdoc-var">onViewScroll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.el.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.view.el.dom.scrollHeight </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.view.el.dom.clientHeight </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.hasFocus</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasQuery</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.page</span><span class="jsdoc-syntax">++;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_combo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">_combo.doQuery</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_combo.allQuery</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(500);
+        
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+    }
 
     </span><span class="jsdoc-comment">/** 
     * @cfg {Boolean} grow 

@@ -7578,6 +7578,7 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
  * @class Roo.bootstrap.ComboBox
  * @extends Roo.bootstrap.TriggerField
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
+ * @cfg {Boolean} append (true|false) default false
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -7818,6 +7819,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     addicon : false,
     editicon: false,
     
+    page: 0,
+    hasQuery: false,
+    append: false,
+    
     // element that contains real text value.. (when hidden is used..)
      
     // private
@@ -7863,6 +7868,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.list.on('mouseover', this.onViewOver, this);
         this.list.on('mousemove', this.onViewMove, this);
+        
+        this.list.on('scroll', this.onViewScroll, this);
         
         /*
         this.list.swallowEvent('mousewheel');
@@ -8108,14 +8115,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     },
 
     // private
-    onBeforeLoad : function(){
+    
+    onBeforeLoad : function(combo,opts){
         if(!this.hasFocus){
             return;
         }
-        //this.innerList.update(this.loadingText ?
-        //       '<div class="loading-indicator">'+this.loadingText+'</div>' : '');
-        this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
-        
+         if (!opts.add) {
+            this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
+         }
         this.restrictHeight();
         this.selectedIndex = -1;
     },
@@ -8144,6 +8151,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }else{
             this.onEmptyResults();
         }
+        
+        this.hasQuery = false;
         //this.el.focus();
     },
     // private
@@ -8454,6 +8463,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * saved in the current store (defaults to false)
      */
     doQuery : function(q, forceAll){
+        if(this.hasQuery){
+            Roo.log('has query already');
+            return;
+        }
+        
+        this.hasQuery = true;
+        
         if(q === undefined || q === null){
             q = '';
         }
@@ -8467,6 +8483,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return false;
         }
         q = qe.query;
+        
         forceAll = qe.forceAll;
         if(forceAll === true || (q.length >= this.minChars)){
             if(this.lastQuery != q || this.alwaysQuery){
@@ -8481,9 +8498,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     this.onLoad();
                 }else{
                     this.store.baseParams[this.queryParam] = q;
-                    this.store.load({
-                        params: this.getParams(q)
-                    });
+                    
+                    var options = {params : this.getParams(q)};
+                    
+                    if(this.append){
+                        options.add = true;
+                    }
+                    
+                    this.store.load(options);
                     this.expand();
                 }
             }else{
@@ -8497,8 +8519,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     getParams : function(q){
         var p = {};
         //p[this.queryParam] = q;
+        
         if(this.pageSize){
-            p.start = 0;
+            p.start = this.page * this.pageSize;
             p.limit = this.pageSize;
         }
         return p;
@@ -8511,6 +8534,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(!this.isExpanded()){
             return;
         }
+        
         this.list.hide();
         Roo.get(document).un('mousedown', this.collapseIf, this);
         Roo.get(document).un('mousewheel', this.collapseIf, this);
@@ -8522,19 +8546,27 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     collapseIf : function(e){
-        if(!e.within(this.el) && !e.within(this.el)){
-            this.collapse();
+        var in_combo  = e.within(this.el);
+        var in_list =  e.within(this.list);
+        
+        if (in_combo || in_list) {
+            //e.stopPropagation();
+            return;
         }
+
+        this.collapse();
+        
     },
 
     /**
      * Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.
      */
     expand : function(){
-        Roo.log('expand');
+       
         if(this.isExpanded() || !this.hasFocus){
             return;
         }
+         Roo.log('expand');
         this.list.alignTo(this.inputEl(), this.listAlign);
         this.list.show();
         Roo.get(document).on('mousedown', this.collapseIf, this);
@@ -8617,6 +8649,25 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.view.select(match);
         var sn = Roo.get(this.view.getSelectedNodes()[0])
         //sn.scrollIntoView(sn.dom.parentNode, false);
+    },
+    
+    onViewScroll : function(e, t){
+        
+        if(this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus){
+            return;
+        }
+        
+        if(this.hasQuery){
+            return;
+        }
+        
+        this.page++;
+        
+        var _combo = this;
+        
+        (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
+        
+        return;
     }
 
     /** 
@@ -8878,6 +8929,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * Refreshes the view. - called by datachanged on the store. - do not call directly.
      */
     refresh : function(){
+        Roo.log('refresh');
         var t = this.tpl;
         
         // if we are using something like 'domtemplate', then
@@ -8924,6 +8976,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         this.nodes = el.dom.childNodes;
         this.updateIndexes(0);
     },
+    
 
     /**
      * Function to override to reformat the data that is sent to
@@ -8939,6 +8992,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     },
 
     onUpdate : function(ds, record){
+         Roo.log('on update');   
         this.clearSelections();
         var index = this.store.indexOf(record);
         var n = this.nodes[index];
@@ -8952,6 +9006,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
 // --------- FIXME     
     onAdd : function(ds, records, index)
     {
+        Roo.log(['on Add', ds, records, index] );        
         this.clearSelections();
         if(this.nodes.length == 0){
             this.refresh();
@@ -8971,6 +9026,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     },
 
     onRemove : function(ds, record, index){
+        Roo.log('onRemove');
         this.clearSelections();
         var el = this.dataName  ?
             this.el.child('.roo-tpl-' + this.dataName) :
@@ -9031,9 +9087,12 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * onbeforeLoad - masks the loading area.
      *
      */
-    onBeforeLoad : function()
+    onBeforeLoad : function(store,opts)
     {
-        this.el.update("");
+         Roo.log('onBeforeLoad');   
+        if (!opts.add) {
+            this.el.update("");
+        }
         this.el.mask(this.mask ? this.mask : "Loading" ); 
     },
     onLoad : function ()
