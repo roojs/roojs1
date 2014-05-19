@@ -401,7 +401,13 @@ Roo.DomQuery = function(){
             Roo.log('compile!!!');
             Roo.log(q);
             // accept leading mode switch
+            Roo.log('modeRe');
+            Roo.log(modeRe);
             var lmode = q.match(modeRe);
+            
+            Roo.log('lmode');
+            Roo.log(lmode);
+            
             if(lmode && lmode[1]){
                 fn[fn.length] = 'mode="'+lmode[1].replace(trimRe, "")+'";';
                 q = q.replace(lmode[1], "");
