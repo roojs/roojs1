@@ -7,6 +7,8 @@
  * @class Roo.bootstrap.ComboBox
  * @extends Roo.bootstrap.Component
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
+ * @cfg {Boolean} showSearchBar  (true|false) default false
+ * 
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
