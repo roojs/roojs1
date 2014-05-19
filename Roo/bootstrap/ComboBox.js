@@ -543,14 +543,19 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     },
 
     // private
-    onBeforeLoad : function(){
+    
+    onBeforeLoad : function(store,opts){
+        
+        
         if(!this.hasFocus){
             return;
         }
         //this.innerList.update(this.loadingText ?
         //       '<div class="loading-indicator">'+this.loadingText+'</div>' : '');
-        this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
-        
+        //       
+         if (!opts.add) {
+            this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
+         }
         this.restrictHeight();
         this.selectedIndex = -1;
     },
@@ -891,7 +896,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * saved in the current store (defaults to false)
      */
     doQuery : function(q, forceAll){
-        
+        Roo.log('has query already');
         if(this.hasQuery){
             Roo.log('has query already');
             return;
