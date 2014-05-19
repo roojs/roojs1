@@ -419,7 +419,8 @@ Roo.DomQuery = function(){
             while(path.substr(0, 1)=="/"){
                 path = path.substr(1);
             }
-
+            Roo.log('lg!!!');
+            Roo.log(lq);
             while(q && lq != q){
                 lq = q;
                 var tm = q.match(tagTokenRe);
