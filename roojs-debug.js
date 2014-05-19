@@ -5242,6 +5242,8 @@ Roo.DomQuery = function(){
                 lq = q;
                 var tm = q.match(tagTokenRe);
                 if(type == "select"){
+                    Roo.log('tm');
+                    Roo.log(tm);
                     if(tm){
                         if(tm[1] == "#"){
                             fn[fn.length] = 'n = quickId(n, mode, root, "'+tm[2]+'");';
@@ -5249,12 +5251,13 @@ Roo.DomQuery = function(){
                             fn[fn.length] = 'n = getNodes(n, mode, "'+tm[2]+'");';
                         }
                         q = q.replace(tm[0], "");
-                        Roo.log('fn');
-                        Roo.log(fn);
-                        Roo.log(q);
+                        
                     }else if(q.substr(0, 1) != '@'){
                         fn[fn.length] = 'n = getNodes(n, mode, "*");';
                     }
+                    Roo.log('fn');
+                        Roo.log(fn);
+                        Roo.log(q);
                 }else{
                     if(tm){
                         if(tm[1] == "#"){
