@@ -192,12 +192,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
     
     initContainer: function () {
 
-        var selection,
-            container = this.container,
-            dropdown = this.dropdown,
-            idSuffix = Roo.id(),
+        var idSuffix = Roo.id(),
             elementLabel;
-
         
         this.hideSearchBar();
         
@@ -205,9 +201,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
             this.showSearchBar();
         }
         
-        this.selection = selection = container.find(".select2-choice");
+        this.selection = this.container.find(".select2-choice");
 
-        this.focusser = container.find(".select2-focusser");
+        this.focusser = this.container.find(".select2-focusser");
 
         // add aria associations
         selection.find(".select2-chosen").attr("id", "select2-chosen-"+idSuffix);
