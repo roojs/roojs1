@@ -424,6 +424,8 @@ Roo.DomQuery = function(){
             while(q && lq != q){
                 lq = q;
                 var tm = q.match(tagTokenRe);
+                Roo.log('tm');
+                Roo.log(tm);
                 if(type == "select"){
                     if(tm){
                         if(tm[1] == "#"){
