@@ -983,10 +983,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.
      */
     expand : function(){
-        Roo.log('expand');
+       
         if(this.isExpanded() || !this.hasFocus){
             return;
         }
+         Roo.log('expand');
         this.list.alignTo(this.inputEl(), this.listAlign);
         this.list.show();
         Roo.get(document).on('mousedown', this.collapseIf, this);
