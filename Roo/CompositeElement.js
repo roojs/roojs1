@@ -71,7 +71,8 @@ Roo.CompositeElement.prototype = {
         inverse = inverse || false;
         this.each(function(el){
             var match  = el.is(selector) ;
-            if(match && !inverse || !match && inverse){
+            match = inverse ? !match : match;
+            if(match){
                 els[els.length] = el.dom;
             }
         });
