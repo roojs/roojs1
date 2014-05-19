@@ -1085,9 +1085,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        Roo.log(this.store);
-        Roo.log('hit bottom');
-        
         if(this.hasQuery){
             return;
         }
