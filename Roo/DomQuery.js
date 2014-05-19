@@ -421,6 +421,9 @@ Roo.DomQuery = function(){
                             fn[fn.length] = 'n = getNodes(n, mode, "'+tm[2]+'");';
                         }
                         q = q.replace(tm[0], "");
+                        Roo.log('fn');
+                        Roo.log(fn);
+                        Roo.log(q);
                     }else if(q.substr(0, 1) != '@'){
                         fn[fn.length] = 'n = getNodes(n, mode, "*");';
                     }
