@@ -562,6 +562,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(!this.hasFocus){
             return;
         }
+        this.hasQuery = false;
+        
         if(this.store.getCount() > 0){
             this.expand();
             this.restrictHeight();
@@ -582,7 +584,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.onEmptyResults();
         }
         
-        this.hasQuery = false;
         //this.el.focus();
     },
     // private
