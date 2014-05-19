@@ -1058,6 +1058,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
+        Roo.log('hit bottom');
+        
     }
 
     /** 
