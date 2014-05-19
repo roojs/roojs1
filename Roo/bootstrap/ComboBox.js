@@ -201,18 +201,18 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
             this.showSearchBar();
         }
         
-        this.selection = this.container.find(".select2-choice");
+        this.selection = this.container.select(".select2-choice", true).first();
 
-        this.focusser = this.container.find(".select2-focusser");
+        this.focusser = this.container.select(".select2-focusser", true).first();
 
         // add aria associations
-        selection.find(".select2-chosen").attr("id", "select2-chosen-"+idSuffix);
-        this.focusser.attr("aria-labelledby", "select2-chosen-"+idSuffix);
-        this.results.attr("id", "select2-results-"+idSuffix);
-        this.search.attr("aria-owns", "select2-results-"+idSuffix);
+        this.selection.select(".select2-chosen",true).first().attr("id", "select2-chosen-" + idSuffix);
+        this.focusser.attr("aria-labelledby", "select2-chosen-" + idSuffix);
+        this.results.attr("id", "select2-results-" + idSuffix);
+        this.search.attr("aria-owns", "select2-results-" + idSuffix);
 
         // rewrite labels from original element to focusser
-        this.focusser.attr("id", "s2id_autogen"+idSuffix);
+        this.focusser.attr("id", "s2id_" + idSuffix);
 
         elementLabel = $("label[for='" + this.opts.element.attr("id") + "']");
 
