@@ -30,41 +30,41 @@ Roo.example.combobox = new Roo.XComponent({
                  {
                     xtype: 'ComboBox',
                     xns: Roo.bootstrap,
-                    placeholder : 'Location',
-                    displayField : 'country_name',
-                    hiddenName : 'country',
-                    md : '4',
+                    placeholder : 'Select a country',
+                    displayField : 'name',
+                    hiddenName : 'country_id',
+                    md : '12',
                     size : 'sm',
-                    style : 'margin-left:10px',
-                    name : 'country_name',
+                    name : 'country_id_name',
                     triggerAction : 'all',
                     minChars : '2',
-                    tpl : '<div class="x-grid-cell-text x-btn button"><b>{country_name}</b></div>',
+                    tpl : '<div class="x-grid-cell-text x-btn button"><b>{name}</b></div>',
                     listWidth : '400',
                     listeners : {
                         render : function (_self) {
-                            _this.locSel = _self;
-
+                            _this.countrySel = _self;
                         }
                     },
                     forceSelection : true,
-                    valueField : 'country',
-                    queryParam : 'query[country]',
+                    valueField : 'id',
+                    queryParam : 'query[name]',
                     editable : true,
                     alwaysQuery : true,
+                    allowBlank : false,
+                    fieldLabel : 'Country',
+                    pageSize : '20',
                     store : {
                         xtype: 'Store',
                         xns: Roo.data,
                         listeners : {
                             beforeload : function (_self, o) {
                                 o.params = o.params || {};
-                                o.params._countryList = 1;
                             }
                         },
                         proxy : {
                             xtype: 'HttpProxy',
                             xns: Roo.data,
-                            url : baseURL + '/Roo/Core_cities',
+                            url : baseURL + '/Roo/Core_geoip_country',
                             method : 'GET'
                         },
                         reader : {
@@ -76,15 +76,11 @@ Roo.example.combobox = new Roo.XComponent({
                                     'type': 'int'
                                 },
                                 {
+                                    'name': 'code',
+                                    'type': 'string'
+                                },
+                                {
                                     'name': 'name',
-                                    'type': 'string'
-                                },
-                                {
-                                    'name': 'country',
-                                    'type': 'string'
-                                },
-                                {
-                                    'name': 'country_name',
                                     'type': 'string'
                                 }
                             ]
