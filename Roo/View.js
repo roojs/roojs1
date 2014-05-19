@@ -294,7 +294,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         Roo.log('append');
         Roo.log(this.tpl);
         var t = this.tpl;
-        Roo.log(this.el);
+        Roo.log(this.el.dom.innerHTML);
         var html = [];
         var records = this.store.getRange();
         if(records.length < 1) {
