@@ -1066,7 +1066,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.page++;
 //        
-//        this.doQuery(this.allQuery, true);
+        this.doQuery(this.allQuery, true);
     }
 
     /** 
