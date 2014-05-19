@@ -894,6 +894,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
+        this.hasQuery = true;
+        
         if(q === undefined || q === null){
             q = '';
         }
