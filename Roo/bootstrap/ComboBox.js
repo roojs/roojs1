@@ -891,7 +891,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * saved in the current store (defaults to false)
      */
     doQuery : function(q, forceAll){
-        Roo.log('has query already');
         if(this.hasQuery){
             Roo.log('has query already');
             return;
@@ -963,8 +962,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(!this.isExpanded()){
             return;
         }
-        //throw "Error";
-        Roo.log("collapse");
         
         this.list.hide();
         Roo.get(document).un('mousedown', this.collapseIf, this);
