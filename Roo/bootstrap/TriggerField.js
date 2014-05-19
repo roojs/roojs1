@@ -217,7 +217,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
         
-        this.trigger = this.el.select('span.dropdown-toggle',true).first();
+        this.trigger = this.el.select('span.select2-arrow',true).first();
         if(this.hideTrigger){
             this.trigger.setDisplayed(false);
         }
