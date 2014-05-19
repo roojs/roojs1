@@ -398,7 +398,7 @@ Roo.DomQuery = function(){
             var tk = Roo.DomQuery.matchers;
             var tklen = tk.length;
             var mm;
-
+            Roo.log(q);
             // accept leading mode switch
             var lmode = q.match(modeRe);
             if(lmode && lmode[1]){
