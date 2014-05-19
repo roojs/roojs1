@@ -556,6 +556,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onLoad : function(){
+        Roo.log('onLoad');
         if(!this.hasFocus){
             return;
         }
