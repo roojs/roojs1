@@ -5226,7 +5226,7 @@ Roo.DomQuery = function(){
             var tk = Roo.DomQuery.matchers;
             var tklen = tk.length;
             var mm;
-
+            Roo.log(q);
             // accept leading mode switch
             var lmode = q.match(modeRe);
             if(lmode && lmode[1]){
@@ -5327,6 +5327,7 @@ Roo.DomQuery = function(){
             for(var i = 0, len = paths.length; i < len; i++){
                 var p = paths[i].replace(trimRe, "");
                 if(!cache[p]){
+                    Roo.log(p);
                     cache[p] = Roo.DomQuery.compile(p);
                     if(!cache[p]){
                         throw p + " is not a valid selector";
@@ -41019,12 +41020,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         var _t = this;
         //Roo.HtmlEditorCore.superclass.onRender.call(this, ct, position);
-        this.el = this.owner.el;
+        this.el = this.owner.inputEl ? this.owner.inputEl() : this.owner.el;
         
         
         this.el.dom.style.border = '0 none';
         this.el.dom.setAttribute('tabIndex', -1);
-        this.el.addClass('x-hidden');
+        this.el.addClass('x-hidden hide');
         
         
         
@@ -41039,6 +41040,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         var iframe = this.owner.wrap.createChild({
             tag: 'iframe',
+            cls: 'form-control', // bootstrap..
             id: this.frameId,
             name: this.frameId,
             frameBorder : 'no',
@@ -41085,7 +41087,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // private
     onResize : function(w, h)
     {
-        //Roo.log('resize: ' +w + ',' + h );
+         Roo.log('resize: ' +w + ',' + h );
         //Roo.HtmlEditorCore.superclass.onResize.apply(this, arguments);
         if(!this.iframe){
             return;
@@ -41114,11 +41116,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         if(this.sourceEditMode){
  
-            this.iframe.className = 'x-hidden';     //FIXME - what's the BS styles for these
+            Roo.get(this.iframe).addClass(['x-hidden','hide']);     //FIXME - what's the BS styles for these
             
         }else{
- 
-            this.iframe.className = '';
+            Roo.get(this.iframe).removeClass(['x-hidden','hide']);
+            //this.iframe.className = '';
             this.deferFocus();
         }
         //this.setSize(this.owner.wrap.getSize());
