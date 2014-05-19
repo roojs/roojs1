@@ -929,8 +929,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     getParams : function(q){
         var p = {};
         //p[this.queryParam] = q;
+        
         if(this.pageSize){
-            p.start = 0;
+            
+            var start = (this.page) ? this.page * this.pageSize : 0;
+            
+            p.start = start;
             p.limit = this.pageSize;
         }
         return p;
