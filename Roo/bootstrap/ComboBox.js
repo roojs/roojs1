@@ -248,7 +248,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     addicon : false,
     editicon: false,
     
-    page: 0,
     hasQuery: false,
     append: false,
     
@@ -951,7 +950,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         //p[this.queryParam] = q;
         
         if(this.pageSize){
-            p.start = this.page * this.pageSize;
+            p.start = 0;
             p.limit = this.pageSize;
         }
         return p;
@@ -1090,8 +1089,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.hasQuery){
             return;
         }
-        
-        this.page++;
         
         var _combo = this;
         
