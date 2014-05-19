@@ -68,6 +68,7 @@ Roo.CompositeElement.prototype = {
     */
     filter : function(selector, inverse){
         var els = [];
+        inverse = inverse || false;
         this.each(function(el){
             if(el.is(selector)){
                 els[els.length] = el.dom;
