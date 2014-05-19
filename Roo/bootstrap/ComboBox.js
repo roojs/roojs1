@@ -1002,7 +1002,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.list.alignTo(this.inputEl(), this.listAlign);
         this.list.show();
         Roo.get(document).on('mousedown', this.collapseIf, this);
-        //Roo.get(document).on('mousewheel', this.collapseIf, this);
+        Roo.get(document).on('mousewheel', this.collapseIf, this);
         if (!this.editable) {
             Roo.get(document).on('keydown', this.listKeyPress, this);
         }
