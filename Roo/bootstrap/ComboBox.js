@@ -346,6 +346,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         });
         //this.view.wrapEl.setDisplayed(false);
         this.view.on('click', this.onViewClick, this);
+        this.view.on('scroll', this.onViewScroll, this);
         
         
         
