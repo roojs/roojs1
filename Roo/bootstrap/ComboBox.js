@@ -346,7 +346,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         });
         //this.view.wrapEl.setDisplayed(false);
         this.view.on('click', this.onViewClick, this);
-        this.view.on('scroll', this.onViewScroll, this);
+        this.list.on('scroll', this.onViewScroll, this);
         
         
         
@@ -739,7 +739,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onViewOver : function(e, t){
-        Roo.log('on VIew over');
         if(this.inKeyMode){ // prevent key nav and mouse over conflicts
             return;
         }
@@ -753,7 +752,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     onViewClick : function(doFocus)
     {
-        Roo.log('on view click');
         var index = this.view.getSelectedIndexes()[0];
         var r = this.store.getAt(index);
         if(r){
