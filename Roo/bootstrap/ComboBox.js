@@ -977,6 +977,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     collapseIf : function(e){
+        Roo.log(e);
         var in_combo  = e.within(this.el);
         var in_list =  e.within(this.list);
         Roo.log({ combo : in_combo, list: in_list });
