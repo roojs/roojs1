@@ -5226,19 +5226,9 @@ Roo.DomQuery = function(){
             var tk = Roo.DomQuery.matchers;
             var tklen = tk.length;
             var mm;
-            Roo.log('path!!!');
-            Roo.log(path)
-            
-            Roo.log('compile!!!');
-            Roo.log(q);
+
             // accept leading mode switch
-            Roo.log('modeRe');
-            Roo.log(modeRe);
             var lmode = q.match(modeRe);
-            
-            Roo.log('lmode');
-            Roo.log(lmode);
-            
             if(lmode && lmode[1]){
                 fn[fn.length] = 'mode="'+lmode[1].replace(trimRe, "")+'";';
                 q = q.replace(lmode[1], "");
@@ -5247,13 +5237,10 @@ Roo.DomQuery = function(){
             while(path.substr(0, 1)=="/"){
                 path = path.substr(1);
             }
-            Roo.log('lg!!!');
-            Roo.log(lq);
+
             while(q && lq != q){
                 lq = q;
                 var tm = q.match(tagTokenRe);
-                Roo.log('tm');
-                Roo.log(tm);
                 if(type == "select"){
                     if(tm){
                         if(tm[1] == "#"){
@@ -5340,8 +5327,6 @@ Roo.DomQuery = function(){
             for(var i = 0, len = paths.length; i < len; i++){
                 var p = paths[i].replace(trimRe, "");
                 if(!cache[p]){
-                    Roo.log('p!!!');
-                    Roo.log(p);
                     cache[p] = Roo.DomQuery.compile(p);
                     if(!cache[p]){
                         throw p + " is not a valid selector";
