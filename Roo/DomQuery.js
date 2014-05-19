@@ -414,6 +414,8 @@ Roo.DomQuery = function(){
                 lq = q;
                 var tm = q.match(tagTokenRe);
                 if(type == "select"){
+                    Roo.log('tm');
+                    Roo.log(tm);
                     if(tm){
                         if(tm[1] == "#"){
                             fn[fn.length] = 'n = quickId(n, mode, root, "'+tm[2]+'");';
