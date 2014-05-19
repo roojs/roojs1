@@ -153,7 +153,6 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     this.selections = [];
     this.nodes = [];
     this.cmp = new Roo.CompositeElementLite([]);
-    Roo.log(this.store);
     if(this.store){
         this.store = Roo.factory(this.store, Roo.data);
         this.setStore(this.store, true);
