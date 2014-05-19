@@ -928,15 +928,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }else{
                     this.store.baseParams[this.queryParam] = q;
                     
-                    var params = this.getParams(q);
+                    var options = {params : this.getParams(q)};
                     
                     if(this.append){
-                        params.add = true;
+                        options.add = true;
                     }
                     
-                    this.store.load({
-                        params: params
-                    });
+                    this.store.load(options);
                     this.expand();
                 }
             }else{
