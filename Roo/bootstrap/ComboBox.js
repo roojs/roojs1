@@ -578,6 +578,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }else{
             this.onEmptyResults();
         }
+        
+        this.hasQuery = false;
         //this.el.focus();
     },
     // private
