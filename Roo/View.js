@@ -317,7 +317,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
 // --------- FIXME     
     onAdd : function(ds, records, index)
     {
-        Roo.log('on Add');        
+        Roo.log(['on Add', ds, records, index] );        
         this.clearSelections();
         if(this.nodes.length == 0){
             this.refresh();
