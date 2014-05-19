@@ -5,523 +5,1063 @@
 
 /**
  * @class Roo.bootstrap.ComboBox
- * @extends Roo.bootstrap.Component
+ * @extends Roo.bootstrap.TriggerField
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
- * @cfg {Boolean} showSearchBar  (true|false) default false
- * 
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
  */
 Roo.bootstrap.ComboBox = function(config){
     Roo.bootstrap.ComboBox.superclass.constructor.call(this, config);
-
+    this.addEvents({
+        /**
+         * @event expand
+         * Fires when the dropdown list is expanded
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'expand' : true,
+        /**
+         * @event collapse
+         * Fires when the dropdown list is collapsed
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'collapse' : true,
+        /**
+         * @event beforeselect
+         * Fires before a list item is selected. Return false to cancel the selection.
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.data.Record} record The data record returned from the underlying store
+	     * @param {Number} index The index of the selected item in the dropdown list
+	     */
+        'beforeselect' : true,
+        /**
+         * @event select
+         * Fires when a list item is selected
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
+	     * @param {Number} index The index of the selected item in the dropdown list
+	     */
+        'select' : true,
+        /**
+         * @event beforequery
+         * Fires before all queries are processed. Return false to cancel the query or set cancel to true.
+         * The event object passed has these properties:
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {String} query The query
+	     * @param {Boolean} forceAll true to force "all" query
+	     * @param {Boolean} cancel true to cancel the query
+	     * @param {Object} e The query event object
+	     */
+        'beforequery': true,
+         /**
+         * @event add
+         * Fires when the 'add' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'add' : true,
+        /**
+         * @event edit
+         * Fires when the 'edit' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
+	     */
+        'edit' : true
+        
+        
+    });
+    
+    
+    this.selectedIndex = -1;
+    if(this.mode == 'local'){
+        if(config.queryDelay === undefined){
+            this.queryDelay = 10;
+        }
+        if(config.minChars === undefined){
+            this.minChars = 0;
+        }
+    }
 };
 
-Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
+Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
+     
+    /**
+     * @cfg {Boolean} lazyRender True to prevent the ComboBox from rendering until requested (should always be used when
+     * rendering into an Roo.Editor, defaults to false)
+     */
+    /**
+     * @cfg {Boolean/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to:
+     * {tag: "input", type: "text", size: "24", autocomplete: "off"})
+     */
+    /**
+     * @cfg {Roo.data.Store} store The data store to which this combo is bound (defaults to undefined)
+     */
+    /**
+     * @cfg {String} title If supplied, a header element is created containing this text and added into the top of
+     * the dropdown list (defaults to undefined, with no header element)
+     */
+
+     /**
+     * @cfg {String/Roo.Template} tpl The template to use to render the output
+     */
+     
+     /**
+     * @cfg {Number} listWidth The width in pixels of the dropdown list (defaults to the width of the ComboBox field)
+     */
+    listWidth: undefined,
+    /**
+     * @cfg {String} displayField The underlying data field name to bind to this CombBox (defaults to undefined if
+     * mode = 'remote' or 'text' if mode = 'local')
+     */
+    displayField: undefined,
+    /**
+     * @cfg {String} valueField The underlying data value name to bind to this CombBox (defaults to undefined if
+     * mode = 'remote' or 'value' if mode = 'local'). 
+     * Note: use of a valueField requires the user make a selection
+     * in order for a value to be mapped.
+     */
+    valueField: undefined,
     
-    showSearchBar : false,
-    resultsSelector : ".select2-results",
     
-    getAutoCreate : function()
-    {
-        var id = Roo.id();
-        
-        var cfg = {
-            tag: 'select',
-            id: id,
-            cn: [
-                {
-                    tag: 'option',
-                    value: 'AK',
-                    html: 'Alaska'
-                },
-                {
-                    tag: 'option',
-                    value: 'HI',
-                    html: 'Hawfaii'
-                },
-                {
-                    tag: 'option',
-                    value: 'CA',
-                    html: 'California'
-                }
-            ]
-        };
-       
-        return cfg;
-        
-    },
+    /**
+     * @cfg {String} hiddenName If specified, a hidden form field with this name is dynamically generated to store the
+     * field's data value (defaults to the underlying DOM element's name)
+     */
+    hiddenName: undefined,
+    /**
+     * @cfg {String} listClass CSS class to apply to the dropdown list element (defaults to '')
+     */
+    listClass: '',
+    /**
+     * @cfg {String} selectedClass CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')
+     */
+    selectedClass: 'active',
     
-    initEvents : function()
-    {
-        Roo.log('initEvents');
+    /**
+     * @cfg {Boolean/String} shadow True or "sides" for the default effect, "frame" for 4-way shadow, and "drop" for bottom-right
+     */
+    shadow:'sides',
+    /**
+     * @cfg {String} listAlign A valid anchor position value. See {@link Roo.Element#alignTo} for details on supported
+     * anchor positions (defaults to 'tl-bl')
+     */
+    listAlign: 'tl-bl?',
+    /**
+     * @cfg {Number} maxHeight The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)
+     */
+    maxHeight: 300,
+    /**
+     * @cfg {String} triggerAction The action to execute when the trigger field is activated.  Use 'all' to run the
+     * query specified by the allQuery config option (defaults to 'query')
+     */
+    triggerAction: 'query',
+    /**
+     * @cfg {Number} minChars The minimum number of characters the user must type before autocomplete and typeahead activate
+     * (defaults to 4, does not apply if editable = false)
+     */
+    minChars : 4,
+    /**
+     * @cfg {Boolean} typeAhead True to populate and autoselect the remainder of the text being typed after a configurable
+     * delay (typeAheadDelay) if it matches a known value (defaults to false)
+     */
+    typeAhead: false,
+    /**
+     * @cfg {Number} queryDelay The length of time in milliseconds to delay between the start of typing and sending the
+     * query to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')
+     */
+    queryDelay: 500,
+    /**
+     * @cfg {Number} pageSize If greater than 0, a paging toolbar is displayed in the footer of the dropdown list and the
+     * filter queries will execute with page start and limit parameters.  Only applies when mode = 'remote' (defaults to 0)
+     */
+    pageSize: 0,
+    /**
+     * @cfg {Boolean} selectOnFocus True to select any existing text in the field immediately on focus.  Only applies
+     * when editable = true (defaults to false)
+     */
+    selectOnFocus:false,
+    /**
+     * @cfg {String} queryParam Name of the query as it will be passed on the querystring (defaults to 'query')
+     */
+    queryParam: 'query',
+    /**
+     * @cfg {String} loadingText The text to display in the dropdown list while data is loading.  Only applies
+     * when mode = 'remote' (defaults to 'Loading...')
+     */
+    loadingText: 'Loading...',
+    /**
+     * @cfg {Boolean} resizable True to add a resize handle to the bottom of the dropdown list (defaults to false)
+     */
+    resizable: false,
+    /**
+     * @cfg {Number} handleHeight The height in pixels of the dropdown list resize handle if resizable = true (defaults to 8)
+     */
+    handleHeight : 8,
+    /**
+     * @cfg {Boolean} editable False to prevent the user from typing text directly into the field, just like a
+     * traditional select (defaults to true)
+     */
+    editable: true,
+    /**
+     * @cfg {String} allQuery The text query to send to the server to return all records for the list with no filtering (defaults to '')
+     */
+    allQuery: '',
+    /**
+     * @cfg {String} mode Set to 'local' if the ComboBox loads local data (defaults to 'remote' which loads from the server)
+     */
+    mode: 'remote',
+    /**
+     * @cfg {Number} minListWidth The minimum width of the dropdown list in pixels (defaults to 70, will be ignored if
+     * listWidth has a higher value)
+     */
+    minListWidth : 70,
+    /**
+     * @cfg {Boolean} forceSelection True to restrict the selected value to one of the values in the list, false to
+     * allow the user to set arbitrary text into the field (defaults to false)
+     */
+    forceSelection:false,
+    /**
+     * @cfg {Number} typeAheadDelay The length of time in milliseconds to wait until the typeahead text is displayed
+     * if typeAhead = true (defaults to 250)
+     */
+    typeAheadDelay : 250,
+    /**
+     * @cfg {String} valueNotFoundText When using a name/value combo, if the value passed to setValue is not found in
+     * the store, valueNotFoundText will be displayed as the field text if defined (defaults to undefined)
+     */
+    valueNotFoundText : undefined,
+    /**
+     * @cfg {Boolean} blockFocus Prevents all focus calls, so it can work with things like HTML edtor bar
+     */
+    blockFocus : false,
+    
+    /**
+     * @cfg {Boolean} disableClear Disable showing of clear button.
+     */
+    disableClear : false,
+    /**
+     * @cfg {Boolean} alwaysQuery  Disable caching of results, and always send query
+     */
+    alwaysQuery : false,
+    
+    //private
+    addicon : false,
+    editicon: false,
+    
+    // element that contains real text value.. (when hidden is used..)
+     
+    // private
+    initEvents: function(){
         
-        this.container = Roo.bootstrap.ComboBox.SingleSelect2.createContainer();
+        if (!this.store) {
+            throw "can not find store for combo";
+        }
+        this.store = Roo.factory(this.store, Roo.data);
         
-        var liveRegion = {
-            tag: 'span',
-            role: 'status',
-            cls: 'select2-hidden-accessible'
+        
+        
+        Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
+        
+        
+        if(this.hiddenName){
+            
+            this.hiddenField = this.el.select('input.form-hidden-field',true).first();
+            
+            this.hiddenField.dom.value =
+                this.hiddenValue !== undefined ? this.hiddenValue :
+                this.value !== undefined ? this.value : '';
+
+            // prevent input submission
+            this.el.dom.removeAttribute('name');
+            this.hiddenField.dom.setAttribute('name', this.hiddenName);
+             
+             
+        }
+        //if(Roo.isGecko){
+        //    this.el.dom.setAttribute('autocomplete', 'off');
+        //}
+
+        var cls = 'x-combo-list';
+        this.list = this.el.select('ul',true).first();
+
+        //this.list = new Roo.Layer({
+        //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
+        //});
+        
+        var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
+        this.list.setWidth(lw);
+        
+        this.list.on('mouseover', this.onViewOver, this);
+        this.list.on('mousemove', this.onViewMove, this);
+        
+        /*
+        this.list.swallowEvent('mousewheel');
+        this.assetHeight = 0;
+
+        if(this.title){
+            this.header = this.list.createChild({cls:cls+'-hd', html: this.title});
+            this.assetHeight += this.header.getHeight();
+        }
+
+        this.innerList = this.list.createChild({cls:cls+'-inner'});
+        this.innerList.on('mouseover', this.onViewOver, this);
+        this.innerList.on('mousemove', this.onViewMove, this);
+        this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
+        
+        if(this.allowBlank && !this.pageSize && !this.disableClear){
+            this.footer = this.list.createChild({cls:cls+'-ft'});
+            this.pageTb = new Roo.Toolbar(this.footer);
+           
+        }
+        if(this.pageSize){
+            this.footer = this.list.createChild({cls:cls+'-ft'});
+            this.pageTb = new Roo.PagingToolbar(this.footer, this.store,
+                    {pageSize: this.pageSize});
+            
         }
         
-        this.liveRegion = Roo.get(document.body).createChild(liveRegion);
-        
-        this.containerId="s2id_"+(this.el.attr("id") || Roo.id());
-        
-        this.container.attr("id", "s2id_"+(this.el.attr("id") || Roo.id()));
-        
-        this.container.attr("title", this.el.attr("title"));
-        
-        this.container.attr("style", this.el.attr("style"));
-        
-        this.container.addClass(this.el.attr('class'));
-        
-        this.container.on("click", this.killEvent);
-        
-        this.elementTabIndex = this.el.attr("tabindex");
-        
-        this.dropdown = this.container.select(".select2-drop", true).first();
-        
-        this.dropdown.addClass(this.el.attr('class'));
-        
-        this.dropdown.on("click", this.killEvent);
-        
-        this.results = this.container.select(this.resultsSelector, true).first();
-        
-        this.search = this.container.select("input.select2-input", true).first();
-        
-        this.initContainer();
-        
-    },
-    
-    populateResults: function(container, results, query) {
-        var populate, id=this.opts.id, liveRegion=this.liveRegion;
-
-        populate=function(results, container, depth) {
-
-            var i, l, result, selectable, disabled, compound, node, label, innerContainer, formatted;
-
-            results = this.sortResults(results, container, query);
-
-            for (i = 0, l = results.length; i < l; i = i + 1) {
-
-                result=results[i];
-
-                disabled = (result.disabled === true);
-                selectable = (!disabled) && (id(result) !== undefined);
-
-                compound=result.children && result.children.length > 0;
-
-                node=new Roo.Element(document.createElement("li"), true);
-                node.addClass("select2-results-dept-"+depth);
-                node.addClass("select2-result");
-                node.addClass(selectable ? "select2-result-selectable" : "select2-result-unselectable");
-                if (disabled) { node.addClass("select2-disabled"); }
-                if (compound) { node.addClass("select2-result-with-children"); }
-                node.addClass(this.formatResultCssClass(result));
-                node.attr("role", "presentation");
-
-                label=new Roo.Element(document.createElement("div"), true);
-                label.addClass("select2-result-label");
-                label.attr("id", "select2-result-label-" + nextUid());
-                label.attr("role", "option");
-
-                formatted=this.formatResult(result, label, query, this.defaultEscapeMarkup);
-                if (formatted!==undefined) {
-                    label.html(formatted);
-                    node.append(label);
+        if (this.pageTb && this.allowBlank && !this.disableClear) {
+            var _this = this;
+            this.pageTb.add(new Roo.Toolbar.Fill(), {
+                cls: 'x-btn-icon x-btn-clear',
+                text: '&#160;',
+                handler: function()
+                {
+                    _this.collapse();
+                    _this.clearValue();
+                    _this.onSelect(false, -1);
                 }
+            });
+        }
+        if (this.footer) {
+            this.assetHeight += this.footer.getHeight();
+        }
+        */
+            
+        if(!this.tpl){
+            this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
+        }
 
-
-                if (compound) {
-
-                    innerContainer=new Roo.Element(document.createElement("ul"), true);
-                    innerContainer.addClass("select2-result-sub");
-                    populate(result.children, innerContainer, depth+1);
-                    node.append(innerContainer);
-                }
-
-                node.data("select2-data", result);
-                container.append(node);
-            }
-
-            liveRegion.text(this.formatMatches(results.length));
-        };
-
-        populate(results, container, 0);
-    },
-    
-    sortResults: function (results, container, query) 
-    {
-        return results;
-    },
-    
-    formatResultCssClass: function(data) 
-    {
-        return data.css;
-    },
-    
-    formatResult: function(result, container, query, escapeMarkup) 
-    {
-        var markup=[];
-        markMatch(result.text, query.term, markup, escapeMarkup);
-        return markup.join("");
-    },
-    
-    defaultEscapeMarkup : function (markup) {
-        var replace_map = {
-            '\\': '&#92;',
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#39;',
-            "/": '&#47;'
-        };
-
-        return String(markup).replace(/[&<>"'\/\\]/g, function (match) {
-            return replace_map[match];
+        this.view = new Roo.View(this.el.select('ul',true).first(), this.tpl, {
+            singleSelect:true, store: this.store, selectedClass: this.selectedClass
         });
-    },
-    
-    formatMatches: function (matches) 
-    { 
-        return matches + " results are available, use up and down arrow keys to navigate."; 
-    },
-    
-    initContainer: function () {
-
-        var idSuffix = Roo.id(),
-            elementLabel;
+        //this.view.wrapEl.setDisplayed(false);
+        this.view.on('click', this.onViewClick, this);
         
-        this.hideSearchBar();
         
-        if (this.showSearchBar) {
-            this.showSearchBar();
+        
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('loadexception', this.onLoadException, this);
+        /*
+        if(this.resizable){
+            this.resizer = new Roo.Resizable(this.list,  {
+               pinned:true, handles:'se'
+            });
+            this.resizer.on('resize', function(r, w, h){
+                this.maxHeight = h-this.handleHeight-this.list.getFrameWidth('tb')-this.assetHeight;
+                this.listWidth = w;
+                this.innerList.setWidth(w - this.list.getFrameWidth('lr'));
+                this.restrictHeight();
+            }, this);
+            this[this.pageSize?'footer':'innerList'].setStyle('margin-bottom', this.handleHeight+'px');
+        }
+        */
+        if(!this.editable){
+            this.editable = true;
+            this.setEditable(false);
         }
         
-        this.selection = this.container.select(".select2-choice", true).first();
-
-        this.focusser = this.container.select(".select2-focusser", true).first();
-
-        // add aria associations
-        this.selection.select(".select2-chosen",true).first().attr("id", "select2-chosen-" + idSuffix);
-        this.focusser.attr("aria-labelledby", "select2-chosen-" + idSuffix);
-        this.results.attr("id", "select2-results-" + idSuffix);
-        this.search.attr("aria-owns", "select2-results-" + idSuffix);
-
-        // rewrite labels from original element to focusser
-        this.focusser.attr("id", "s2id_" + idSuffix);
-
-        Roo.get(this.focusser.getPrevSibling()).attr('for', this.focusser.attr('id'));
+        /*
         
-        // Ensure the original element retains an accessible name
-//        var originalTitle = this.el.attr("title");
-//        this.opts.element.attr("title", (originalTitle || elementLabel.text()));
-
-        this.focusser.attr("tabindex", this.elementTabIndex);
-
-        // write label for search field using the label from the focusser element
-        this.search.attr("id", this.focusser.attr('id') + '_search');
-
-        Roo.get(this.search.getPrevSibling()).attr('for', this.search.attr('id'));
+        if (typeof(this.events.add.listeners) != 'undefined') {
+            
+            this.addicon = this.wrap.createChild(
+                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-add' });  
+       
+            this.addicon.on('click', function(e) {
+                this.fireEvent('add', this);
+            }, this);
+        }
+        if (typeof(this.events.edit.listeners) != 'undefined') {
+            
+            this.editicon = this.wrap.createChild(
+                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-edit' });  
+            if (this.addicon) {
+                this.editicon.setStyle('margin-left', '40px');
+            }
+            this.editicon.on('click', function(e) {
+                
+                // we fire even  if inothing is selected..
+                this.fireEvent('edit', this, this.lastData );
+                
+            }, this);
+        }
+        */
         
-        this.search.on("keydown", this.bind(function (e) {
-            if (!this.isInterfaceEnabled()) return;
+ 
+        this.keyNav = new Roo.KeyNav(this.inputEl(), {
+            "up" : function(e){
+                this.inKeyMode = true;
+                this.selectPrev();
+            },
 
-            if (e.which === KEY.PAGE_UP || e.which === KEY.PAGE_DOWN) {
-                // prevent the page from scrolling
-                killEvent(e);
-                return;
-            }
-
-            switch (e.which) {
-                case KEY.UP:
-                case KEY.DOWN:
-                    this.moveHighlight((e.which === KEY.UP) ? -1 : 1);
-                    killEvent(e);
-                    return;
-                case KEY.ENTER:
-                    this.selectHighlighted();
-                    killEvent(e);
-                    return;
-                case KEY.TAB:
-                    this.selectHighlighted({noFocus: true});
-                    return;
-                case KEY.ESC:
-                    this.cancel(e);
-                    killEvent(e);
-                    return;
-            }
-        }));
-
-        this.search.on("blur", this.bind(function(e) {
-
-            // a workaround for chrome to keep the search field focussed when the scroll bar is used to scroll the dropdown.
-            // without this the search field loses focus which is annoying
-            if (document.activeElement === this.body.get(0)) {
-                window.setTimeout(this.bind(function() {
-                    if (this.opened()) {
-                        this.search.focus();
-                    }
-                }), 0);
-            }
-        }));
-
-        this.focusser.on("keydown", this.bind(function (e) {
-            console.log('focusser on keydown');
-            if (!this.isInterfaceEnabled()) return;
-
-            if (e.which === KEY.TAB || KEY.isControl(e) || KEY.isFunctionKey(e) || e.which === KEY.ESC) {
-                return;
-            }
-
-            if (this.opts.openOnEnter === false && e.which === KEY.ENTER) {
-                killEvent(e);
-                return;
-            }
-
-            if (e.which == KEY.DOWN || e.which == KEY.UP
-                || (e.which == KEY.ENTER && this.opts.openOnEnter)) {
-
-                if (e.altKey || e.ctrlKey || e.shiftKey || e.metaKey) return;
-
-                this.open();
-                killEvent(e);
-                return;
-            }
-
-            if (e.which == KEY.DELETE || e.which == KEY.BACKSPACE) {
-                if (this.opts.allowClear) {
-                    this.clear();
+            "down" : function(e){
+                if(!this.isExpanded()){
+                    this.onTriggerClick();
+                }else{
+                    this.inKeyMode = true;
+                    this.selectNext();
                 }
-                killEvent(e);
-                return;
-            }
-        }));
+            },
 
+            "enter" : function(e){
+                this.onViewClick();
+                //return true;
+            },
 
-        installKeyUpChangeEvent(this.focusser);
-        this.focusser.on("keyup-change input", this.bind(function(e) {
-            if (this.opts.minimumResultsForSearch >= 0) {
-                e.stopPropagation();
-                if (this.opened()) return;
-                this.open();
-            }
-        }));
+            "esc" : function(e){
+                this.collapse();
+            },
 
-        selection.on("mousedown touchstart", "abbr", this.bind(function (e) {
-            if (!this.isInterfaceEnabled()) return;
-            this.clear();
-            killEventImmediately(e);
-            this.close();
-            this.selection.focus();
-        }));
+            "tab" : function(e){
+                this.collapse();
+                
+                if(this.fireEvent("specialkey", this, e)){
+                    this.onViewClick(false);
+                }
+                
+                return true;
+            },
 
-        selection.on("mousedown touchstart", this.bind(function (e) {
-            // Prevent IE from generating a click event on the body
-            reinsertElement(selection);
+            scope : this,
 
-            if (!this.container.hasClass("select2-container-active")) {
-                this.opts.element.trigger($.Event("select2-focus"));
-            }
+            doRelay : function(foo, bar, hname){
+                if(hname == 'down' || this.scope.isExpanded()){
+                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+                }
+                return true;
+            },
 
-            if (this.opened()) {
-                this.close();
-            } else if (this.isInterfaceEnabled()) {
-                this.open();
-            }
-
-            killEvent(e);
-        }));
-
-        dropdown.on("mousedown touchstart", this.bind(function() {
-            if (this.opts.shouldFocusInput(this)) {
-                this.search.focus();
-            }
-        }));
-
-        selection.on("focus", this.bind(function(e) {
-            killEvent(e);
-        }));
-
-        this.focusser.on("focus", this.bind(function(){
-            if (!this.container.hasClass("select2-container-active")) {
-                this.opts.element.trigger($.Event("select2-focus"));
-            }
-            this.container.addClass("select2-container-active");
-        })).on("blur", this.bind(function() {
-            if (!this.opened()) {
-                this.container.removeClass("select2-container-active");
-                this.opts.element.trigger($.Event("select2-blur"));
-            }
-        }));
-        this.search.on("focus", this.bind(function(){
-            if (!this.container.hasClass("select2-container-active")) {
-                this.opts.element.trigger($.Event("select2-focus"));
-            }
-            this.container.addClass("select2-container-active");
-        }));
-
-        this.initContainerWidth();
-        this.opts.element.addClass("select2-offscreen");
-        this.setPlaceholder();
-
-    },
-    
-    showSearchBar: function() {
+            forceKeyDown: true
+        });
         
-        if(!this.dropdown.select(".select2-search",true).first().hasClass("select2-search-hidden")){
-            this.dropdown.select(".select2-search",true).first().addClass("select2-search-hidden");
+        
+        this.queryDelay = Math.max(this.queryDelay || 10,
+                this.mode == 'local' ? 10 : 250);
+        
+        
+        this.dqTask = new Roo.util.DelayedTask(this.initQuery, this);
+        
+        if(this.typeAhead){
+            this.taTask = new Roo.util.DelayedTask(this.onTypeAhead, this);
         }
-        
-        if(!this.dropdown.select(".select2-search",true).first().hasClass("select2-offscreen")){
-            this.dropdown.select(".select2-search",true).first().addClass("select2-offscreen");
+        if(this.editable !== false){
+            this.inputEl().on("keyup", this.onKeyUp, this);
         }
-        
-        if(!this.dropdown.hasClass("select2-with-searchbox")){
-            this.dropdown.addClass("select2-with-searchbox");
-        }
-        
-        if(!this.container.hasClass("select2-with-searchbox")){
-            this.container.addClass("select2-with-searchbox");
-        }
-        
-    },
-    
-    hideSearchBar: function() {
-        
-        if(this.dropdown.select(".select2-search",true).first().hasClass("select2-search-hidden")){
-            this.dropdown.select(".select2-search",true).first().removeClass("select2-search-hidden");
-        }
-        
-        if(this.dropdown.select(".select2-search",true).first().hasClass("select2-offscreen")){
-            this.dropdown.select(".select2-search",true).first().removeClass("select2-offscreen");
-        }
-        
-        if(this.dropdown.hasClass("select2-with-searchbox")){
-            this.dropdown.removeClass("select2-with-searchbox");
-        }
-        
-        if(this.container.hasClass("select2-with-searchbox")){
-            this.container.removeClass("select2-with-searchbox");
-        }
-        
-    },
-    
-    killEvent : function (event) {
-        Roo.log('KILLEVENT');
-        event.preventDefault();
-        event.stopPropagation();
-    },
-    
-    moveHighlight: function (delta) {
-        var choices = this.findHighlightableChoices(),
-            index = this.highlight();
-
-        while (index > -1 && index < choices.length) {
-            index += delta;
-            var choice = $(choices[index]);
-            if (choice.hasClass("select2-result-selectable") && !choice.hasClass("select2-disabled") && !choice.hasClass("select2-selected")) {
-                this.highlight(index);
-                break;
-            }
+        if(this.forceSelection){
+            this.on('blur', this.doForce, this);
         }
     },
-    
-    findHighlightableChoices: function() {
-        return this.results.select(".select2-result-selectable:not(.select2-disabled):not(.select2-selected)", true).elements;
-    }
-    
-    
-});
 
-Roo.apply(Roo.bootstrap.ComboBox,  {
-    SingleSelect2 : {
-        createContainer: function () {
-            var container = new Roo.Element(document.createElement("div"), true);
-            container.addClass("select2-container");
+    onDestroy : function(){
+        if(this.view){
+            this.view.setStore(null);
+            this.view.el.removeAllListeners();
+            this.view.el.remove();
+            this.view.purgeListeners();
+        }
+        if(this.list){
+            this.list.dom.innerHTML  = '';
+        }
+        if(this.store){
+            this.store.un('beforeload', this.onBeforeLoad, this);
+            this.store.un('load', this.onLoad, this);
+            this.store.un('loadexception', this.onLoadException, this);
+        }
+        Roo.bootstrap.ComboBox.superclass.onDestroy.call(this);
+    },
+
+    // private
+    fireKey : function(e){
+        if(e.isNavKeyPress() && !this.list.isVisible()){
+            this.fireEvent("specialkey", this, e);
+        }
+    },
+
+    // private
+    onResize: function(w, h){
+//        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
+//        
+//        if(typeof w != 'number'){
+//            // we do not handle it!?!?
+//            return;
+//        }
+//        var tw = this.trigger.getWidth();
+//       // tw += this.addicon ? this.addicon.getWidth() : 0;
+//       // tw += this.editicon ? this.editicon.getWidth() : 0;
+//        var x = w - tw;
+//        this.inputEl().setWidth( this.adjustWidth('input', x));
+//            
+//        //this.trigger.setStyle('left', x+'px');
+//        
+//        if(this.list && this.listWidth === undefined){
+//            var lw = Math.max(x + this.trigger.getWidth(), this.minListWidth);
+//            this.list.setWidth(lw);
+//            this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
+//        }
+        
+    
+        
+    },
+
+    /**
+     * Allow or prevent the user from directly editing the field text.  If false is passed,
+     * the user will only be able to select from the items defined in the dropdown list.  This method
+     * is the runtime equivalent of setting the 'editable' config option at config time.
+     * @param {Boolean} value True to allow the user to directly edit the field text
+     */
+    setEditable : function(value){
+        if(value == this.editable){
+            return;
+        }
+        this.editable = value;
+        if(!value){
+            this.inputEl().dom.setAttribute('readOnly', true);
+            this.inputEl().on('mousedown', this.onTriggerClick,  this);
+            this.inputEl().addClass('x-combo-noedit');
+        }else{
+            this.inputEl().dom.setAttribute('readOnly', false);
+            this.inputEl().un('mousedown', this.onTriggerClick,  this);
+            this.inputEl().removeClass('x-combo-noedit');
+        }
+    },
+
+    // private
+    onBeforeLoad : function(){
+        if(!this.hasFocus){
+            return;
+        }
+        //this.innerList.update(this.loadingText ?
+        //       '<div class="loading-indicator">'+this.loadingText+'</div>' : '');
+        this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
+        
+        this.restrictHeight();
+        this.selectedIndex = -1;
+    },
+
+    // private
+    onLoad : function(){
+        if(!this.hasFocus){
+            return;
+        }
+        if(this.store.getCount() > 0){
+            this.expand();
+            this.restrictHeight();
+            if(this.lastQuery == this.allQuery){
+                if(this.editable){
+                    this.inputEl().dom.select();
+                }
+                if(!this.selectByValue(this.value, true)){
+                    this.select(0, true);
+                }
+            }else{
+                this.selectNext();
+                if(this.typeAhead && this.lastKey != Roo.EventObject.BACKSPACE && this.lastKey != Roo.EventObject.DELETE){
+                    this.taTask.delay(this.typeAheadDelay);
+                }
+            }
+        }else{
+            this.onEmptyResults();
+        }
+        //this.el.focus();
+    },
+    // private
+    onLoadException : function()
+    {
+        this.collapse();
+        Roo.log(this.store.reader.jsonData);
+        if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
+            // fixme
+            //Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+        }
+        
+        
+    },
+    // private
+    onTypeAhead : function(){
+        if(this.store.getCount() > 0){
+            var r = this.store.getAt(0);
+            var newValue = r.data[this.displayField];
+            var len = newValue.length;
+            var selStart = this.getRawValue().length;
             
-            container.createChild({
-                tag: 'a',
-                href: 'javascript:void(0)',
-                cls: 'select2-choice',
-                tabindex: '-1',
-                cn: [
-                    {
-                        tag: 'span',
-                        cls: 'select2-chosen',
-                        html: '&#160;'
-                    },
-                    {
-                        tag: 'abbr',
-                        cls: 'select2-search-choice-close'
-                    },
-                    {
-                        tag: 'span',
-                        cls: 'select2-arrow',
-                        role: 'presentation'
-                    },
-                    {
-                        tag: 'b',
-                        role: 'presentation'
+            if(selStart != len){
+                this.setRawValue(newValue);
+                this.selectText(selStart, newValue.length);
+            }
+        }
+    },
+
+    // private
+    onSelect : function(record, index){
+        if(this.fireEvent('beforeselect', this, record, index) !== false){
+            this.setFromData(index > -1 ? record.data : false);
+            this.collapse();
+            this.fireEvent('select', this, record, index);
+        }
+    },
+
+    /**
+     * Returns the currently selected field value or empty string if no value is set.
+     * @return {String} value The selected value
+     */
+    getValue : function(){
+        if(this.valueField){
+            return typeof this.value != 'undefined' ? this.value : '';
+        }else{
+            return Roo.bootstrap.ComboBox.superclass.getValue.call(this);
+        }
+    },
+
+    /**
+     * Clears any text/value currently set in the field
+     */
+    clearValue : function(){
+        if(this.hiddenField){
+            this.hiddenField.dom.value = '';
+        }
+        this.value = '';
+        this.setRawValue('');
+        this.lastSelectionText = '';
+        
+    },
+
+    /**
+     * Sets the specified value into the field.  If the value finds a match, the corresponding record text
+     * will be displayed in the field.  If the value does not match the data value of an existing item,
+     * and the valueNotFoundText config option is defined, it will be displayed as the default field text.
+     * Otherwise the field will be blank (although the value will still be set).
+     * @param {String} value The value to match
+     */
+    setValue : function(v){
+        var text = v;
+        if(this.valueField){
+            var r = this.findRecord(this.valueField, v);
+            if(r){
+                text = r.data[this.displayField];
+            }else if(this.valueNotFoundText !== undefined){
+                text = this.valueNotFoundText;
+            }
+        }
+        this.lastSelectionText = text;
+        if(this.hiddenField){
+            this.hiddenField.dom.value = v;
+        }
+        Roo.bootstrap.ComboBox.superclass.setValue.call(this, text);
+        this.value = v;
+    },
+    /**
+     * @property {Object} the last set data for the element
+     */
+    
+    lastData : false,
+    /**
+     * Sets the value of the field based on a object which is related to the record format for the store.
+     * @param {Object} value the value to set as. or false on reset?
+     */
+    setFromData : function(o){
+        var dv = ''; // display value
+        var vv = ''; // value value..
+        this.lastData = o;
+        if (this.displayField) {
+            dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
+        } else {
+            // this is an error condition!!!
+            Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
+        }
+        
+        if(this.valueField){
+            vv = !o || typeof(o[this.valueField]) == 'undefined' ? dv : o[this.valueField];
+        }
+        if(this.hiddenField){
+            this.hiddenField.dom.value = vv;
+            
+            this.lastSelectionText = dv;
+            Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
+            this.value = vv;
+            return;
+        }
+        // no hidden field.. - we store the value in 'value', but still display
+        // display field!!!!
+        this.lastSelectionText = dv;
+        Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
+        this.value = vv;
+        
+        
+    },
+    // private
+    reset : function(){
+        // overridden so that last data is reset..
+        this.setValue(this.originalValue);
+        this.clearInvalid();
+        this.lastData = false;
+        if (this.view) {
+            this.view.clearSelections();
+        }
+    },
+    // private
+    findRecord : function(prop, value){
+        var record;
+        if(this.store.getCount() > 0){
+            this.store.each(function(r){
+                if(r.data[prop] == value){
+                    record = r;
+                    return false;
+                }
+                return true;
+            });
+        }
+        return record;
+    },
+    
+    getName: function()
+    {
+        // returns hidden if it's set..
+        if (!this.rendered) {return ''};
+        return !this.hiddenName && this.inputEl().dom.name  ? this.inputEl().dom.name : (this.hiddenName || '');
+        
+    },
+    // private
+    onViewMove : function(e, t){
+        this.inKeyMode = false;
+    },
+
+    // private
+    onViewOver : function(e, t){
+        if(this.inKeyMode){ // prevent key nav and mouse over conflicts
+            return;
+        }
+        var item = this.view.findItemFromChild(t);
+        if(item){
+            var index = this.view.indexOf(item);
+            this.select(index, false);
+        }
+    },
+
+    // private
+    onViewClick : function(doFocus)
+    {
+        var index = this.view.getSelectedIndexes()[0];
+        var r = this.store.getAt(index);
+        if(r){
+            this.onSelect(r, index);
+        }
+        if(doFocus !== false && !this.blockFocus){
+            this.inputEl().focus();
+        }
+    },
+
+    // private
+    restrictHeight : function(){
+        //this.innerList.dom.style.height = '';
+        //var inner = this.innerList.dom;
+        //var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
+        //this.innerList.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
+        //this.list.beginUpdate();
+        //this.list.setHeight(this.innerList.getHeight()+this.list.getFrameWidth('tb')+(this.resizable?this.handleHeight:0)+this.assetHeight);
+        this.list.alignTo(this.inputEl(), this.listAlign);
+        //this.list.endUpdate();
+    },
+
+    // private
+    onEmptyResults : function(){
+        this.collapse();
+    },
+
+    /**
+     * Returns true if the dropdown list is expanded, else false.
+     */
+    isExpanded : function(){
+        return this.list.isVisible();
+    },
+
+    /**
+     * Select an item in the dropdown list by its data value. This function does NOT cause the select event to fire.
+     * The store must be loaded and the list expanded for this function to work, otherwise use setValue.
+     * @param {String} value The data value of the item to select
+     * @param {Boolean} scrollIntoView False to prevent the dropdown list from autoscrolling to display the
+     * selected item if it is not currently in view (defaults to true)
+     * @return {Boolean} True if the value matched an item in the list, else false
+     */
+    selectByValue : function(v, scrollIntoView){
+        if(v !== undefined && v !== null){
+            var r = this.findRecord(this.valueField || this.displayField, v);
+            if(r){
+                this.select(this.store.indexOf(r), scrollIntoView);
+                return true;
+            }
+        }
+        return false;
+    },
+
+    /**
+     * Select an item in the dropdown list by its numeric index in the list. This function does NOT cause the select event to fire.
+     * The store must be loaded and the list expanded for this function to work, otherwise use setValue.
+     * @param {Number} index The zero-based index of the list item to select
+     * @param {Boolean} scrollIntoView False to prevent the dropdown list from autoscrolling to display the
+     * selected item if it is not currently in view (defaults to true)
+     */
+    select : function(index, scrollIntoView){
+        this.selectedIndex = index;
+        this.view.select(index);
+        if(scrollIntoView !== false){
+            var el = this.view.getNode(index);
+            if(el){
+                //this.innerList.scrollChildIntoView(el, false);
+                
+            }
+        }
+    },
+
+    // private
+    selectNext : function(){
+        var ct = this.store.getCount();
+        if(ct > 0){
+            if(this.selectedIndex == -1){
+                this.select(0);
+            }else if(this.selectedIndex < ct-1){
+                this.select(this.selectedIndex+1);
+            }
+        }
+    },
+
+    // private
+    selectPrev : function(){
+        var ct = this.store.getCount();
+        if(ct > 0){
+            if(this.selectedIndex == -1){
+                this.select(0);
+            }else if(this.selectedIndex != 0){
+                this.select(this.selectedIndex-1);
+            }
+        }
+    },
+
+    // private
+    onKeyUp : function(e){
+        if(this.editable !== false && !e.isSpecialKey()){
+            this.lastKey = e.getKey();
+            this.dqTask.delay(this.queryDelay);
+        }
+    },
+
+    // private
+    validateBlur : function(){
+        return !this.list || !this.list.isVisible();   
+    },
+
+    // private
+    initQuery : function(){
+        this.doQuery(this.getRawValue());
+    },
+
+    // private
+    doForce : function(){
+        if(this.el.dom.value.length > 0){
+            this.el.dom.value =
+                this.lastSelectionText === undefined ? '' : this.lastSelectionText;
+             
+        }
+    },
+
+    /**
+     * Execute a query to filter the dropdown list.  Fires the beforequery event prior to performing the
+     * query allowing the query action to be canceled if needed.
+     * @param {String} query The SQL query to execute
+     * @param {Boolean} forceAll True to force the query to execute even if there are currently fewer characters
+     * in the field than the minimum specified by the minChars config option.  It also clears any filter previously
+     * saved in the current store (defaults to false)
+     */
+    doQuery : function(q, forceAll){
+        if(q === undefined || q === null){
+            q = '';
+        }
+        var qe = {
+            query: q,
+            forceAll: forceAll,
+            combo: this,
+            cancel:false
+        };
+        if(this.fireEvent('beforequery', qe)===false || qe.cancel){
+            return false;
+        }
+        q = qe.query;
+        forceAll = qe.forceAll;
+        if(forceAll === true || (q.length >= this.minChars)){
+            if(this.lastQuery != q || this.alwaysQuery){
+                this.lastQuery = q;
+                if(this.mode == 'local'){
+                    this.selectedIndex = -1;
+                    if(forceAll){
+                        this.store.clearFilter();
+                    }else{
+                        this.store.filter(this.displayField, q);
                     }
-                ]
-            });
-            
-            container.createChild({
-                tag: 'label',
-                'for': '',
-                cls: 'select2-offscreen'
-            });
-            
-            container.createChild({
-                tag: 'input',
-                type: 'text',
-                cls: 'select2-focusser select2-offscreen',
-                'aria-haspopup': true,
-                role: 'button'
-            });
-            
-            container.createChild({
-                tag: 'div',
-                cls: 'select2-drop select2-display-none',
-                cn: [
-                    {
-                        tag: 'div',
-                        cls: 'select2-search',
-                        cn: [
-                            {
-                                tag: 'label',
-                                'for': '',
-                                cls: 'select2-offscreen'
-                            },
-                            {
-                                tag: 'input',
-                                type: 'text',
-                                cls: 'select2-input',
-                                role: 'combobox',
-                                autocomplete: 'off',
-                                autocorrect: 'off',
-                                autocapitalize: 'off',
-                                spellcheck: false,
-                                'aria-expanded': true,
-                                'aria-autocomplete': 'lsit'
-                            },
-                            
-                        ]
-                    },
-                    {
-                        tag: 'ul',
-                        cls: 'select2-results',
-                        role: 'listbox'
-                    }
-                ]
-            });
-            
-            return container;
+                    this.onLoad();
+                }else{
+                    this.store.baseParams[this.queryParam] = q;
+                    this.store.load({
+                        params: this.getParams(q)
+                    });
+                    this.expand();
+                }
+            }else{
+                this.selectedIndex = -1;
+                this.onLoad();   
+            }
         }
-    }
+    },
+
+    // private
+    getParams : function(q){
+        var p = {};
+        //p[this.queryParam] = q;
+        if(this.pageSize){
+            p.start = 0;
+            p.limit = this.pageSize;
+        }
+        return p;
+    },
+
+    /**
+     * Hides the dropdown list if it is currently expanded. Fires the 'collapse' event on completion.
+     */
+    collapse : function(){
+        if(!this.isExpanded()){
+            return;
+        }
+        this.list.hide();
+        Roo.get(document).un('mousedown', this.collapseIf, this);
+        Roo.get(document).un('mousewheel', this.collapseIf, this);
+        if (!this.editable) {
+            Roo.get(document).un('keydown', this.listKeyPress, this);
+        }
+        this.fireEvent('collapse', this);
+    },
+
+    // private
+    collapseIf : function(e){
+        if(!e.within(this.el) && !e.within(this.el)){
+            this.collapse();
+        }
+    },
+
+    /**
+     * Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.
+     */
+    expand : function(){
+        Roo.log('expand');
+        if(this.isExpanded() || !this.hasFocus){
+            return;
+        }
+        this.list.alignTo(this.inputEl(), this.listAlign);
+        this.list.show();
+        Roo.get(document).on('mousedown', this.collapseIf, this);
+        Roo.get(document).on('mousewheel', this.collapseIf, this);
+        if (!this.editable) {
+            Roo.get(document).on('keydown', this.listKeyPress, this);
+        }
         
+        this.fireEvent('expand', this);
+    },
+
+    // private
+    // Implements the default empty TriggerField.onTriggerClick function
+    onTriggerClick : function()
+    {
+        Roo.log('trigger click');
+        
+        if(this.disabled){
+            return;
+        }
+        if(this.isExpanded()){
+            this.collapse();
+            if (!this.blockFocus) {
+                this.inputEl().focus();
+            }
+            
+        }else {
+            this.hasFocus = true;
+            if(this.triggerAction == 'all') {
+                this.doQuery(this.allQuery, true);
+            } else {
+                this.doQuery(this.getRawValue());
+            }
+            if (!this.blockFocus) {
+                this.inputEl().focus();
+            }
+        }
+    },
+    listKeyPress : function(e)
+    {
+        //Roo.log('listkeypress');
+        // scroll to first matching element based on key pres..
+        if (e.isSpecialKey()) {
+            return false;
+        }
+        var k = String.fromCharCode(e.getKey()).toUpperCase();
+        //Roo.log(k);
+        var match  = false;
+        var csel = this.view.getSelectedNodes();
+        var cselitem = false;
+        if (csel.length) {
+            var ix = this.view.indexOf(csel[0]);
+            cselitem  = this.store.getAt(ix);
+            if (!cselitem.get(this.displayField) || cselitem.get(this.displayField).substring(0,1).toUpperCase() != k) {
+                cselitem = false;
+            }
+            
+        }
+        
+        this.store.each(function(v) { 
+            if (cselitem) {
+                // start at existing selection.
+                if (cselitem.id == v.id) {
+                    cselitem = false;
+                }
+                return true;
+            }
+                
+            if (v.get(this.displayField) && v.get(this.displayField).substring(0,1).toUpperCase() == k) {
+                match = this.store.indexOf(v);
+                return false;
+            }
+            return true;
+        }, this);
+        
+        if (match === false) {
+            return true; // no more action?
+        }
+        // scroll to?
+        this.view.select(match);
+        var sn = Roo.get(this.view.getSelectedNodes()[0])
+        //sn.scrollIntoView(sn.dom.parentNode, false);
+    }
+
+    /** 
+    * @cfg {Boolean} grow 
+    * @hide 
+    */
+    /** 
+    * @cfg {Number} growMin 
+    * @hide 
+    */
+    /** 
+    * @cfg {Number} growMax 
+    * @hide 
+    */
+    /**
+     * @hide
+     * @method autoSize
+     */
 });
