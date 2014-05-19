@@ -1095,6 +1095,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var _combo = this;
         
+        this.page++;
         this.loadNext = true;
         
         (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);

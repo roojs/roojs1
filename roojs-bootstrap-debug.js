@@ -7822,6 +7822,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     page: 0,
     hasQuery: false,
     append: false,
+    loadNext: false,
     
     // element that contains real text value.. (when hidden is used..)
      
@@ -8502,8 +8503,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     
                     var options = {params : this.getParams(q)};
                     
-                    if(this.append){
+                    if(this.loadNext){
                         options.add = true;
+                        options.params.start = this.page * this.pageSize;
                     }
                     
                     this.store.load(options);
@@ -8522,7 +8524,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         //p[this.queryParam] = q;
         
         if(this.pageSize){
-            p.start = this.page * this.pageSize;
+            p.start = 0;
             p.limit = this.pageSize;
         }
         return p;
@@ -8654,7 +8656,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onViewScroll : function(e, t){
         
-        if(this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus){
+        if(this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append){
             return;
         }
         
@@ -8662,9 +8664,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        this.page++;
-        
         var _combo = this;
+        
+        this.page++;
+        this.loadNext = true;
         
         (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
         
