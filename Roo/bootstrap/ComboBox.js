@@ -214,25 +214,19 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         // rewrite labels from original element to focusser
         this.focusser.attr("id", "s2id_" + idSuffix);
 
-        elementLabel = $("label[for='" + this.opts.element.attr("id") + "']");
-
-        this.focusser.prev()
-            .text(elementLabel.text())
-            .attr('for', this.focusser.attr('id'));
-
+        Roo.get(this.focusser.getPrevSibling()).attr('for', this.focusser.attr('id'));
+        
         // Ensure the original element retains an accessible name
-        var originalTitle = this.opts.element.attr("title");
-        this.opts.element.attr("title", (originalTitle || elementLabel.text()));
+//        var originalTitle = this.el.attr("title");
+//        this.opts.element.attr("title", (originalTitle || elementLabel.text()));
 
         this.focusser.attr("tabindex", this.elementTabIndex);
 
         // write label for search field using the label from the focusser element
         this.search.attr("id", this.focusser.attr('id') + '_search');
 
-        this.search.prev()
-            .text($("label[for='" + this.focusser.attr('id') + "']").text())
-            .attr('for', this.search.attr('id'));
-
+        Roo.get(this.search.getPrevSibling()).attr('for', this.search.attr('id'));
+        
         this.search.on("keydown", this.bind(function (e) {
             if (!this.isInterfaceEnabled()) return;
 
