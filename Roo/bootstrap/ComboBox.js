@@ -1056,8 +1056,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onViewScroll : function(e, t){
         
-        if(this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight){
-            Roo.log('not hit bottom');
+        if(this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus){
             return;
         }
         
@@ -1065,7 +1064,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log('hit bottom');
         
         
+        this.page++;
         
+        this.doQuery(this.allQuery, true);
     }
 
     /** 
