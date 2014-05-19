@@ -303,7 +303,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     },
 
     onUpdate : function(ds, record){
-         Roo.log('on Add');   
+         Roo.log('on update');   
         this.clearSelections();
         var index = this.store.indexOf(record);
         var n = this.nodes[index];
@@ -337,6 +337,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     },
 
     onRemove : function(ds, record, index){
+        Roo.log('onBeforeLoad');
         this.clearSelections();
         var el = this.dataName  ?
             this.el.child('.roo-tpl-' + this.dataName) :
