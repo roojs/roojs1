@@ -248,6 +248,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     addicon : false,
     editicon: false,
     
+    page: 0,
     hasQuery: false,
     append: false,
     
