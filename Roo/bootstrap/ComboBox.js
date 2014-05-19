@@ -293,6 +293,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.list.on('mouseover', this.onViewOver, this);
         this.list.on('mousemove', this.onViewMove, this);
         
+        
+        
         /*
         this.list.swallowEvent('mousewheel');
         this.assetHeight = 0;
@@ -346,7 +348,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         });
         //this.view.wrapEl.setDisplayed(false);
         this.view.on('click', this.onViewClick, this);
-        this.list.on('scroll', this.onViewScroll, this);
         
         
         
@@ -1047,11 +1048,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.view.select(match);
         var sn = Roo.get(this.view.getSelectedNodes()[0])
         //sn.scrollIntoView(sn.dom.parentNode, false);
-    },
-    
-    onViewScroll : function()
-    {
-        Roo.log('on View Scroll');
     }
 
     /** 
