@@ -4909,7 +4909,7 @@ Roo.DomQuery = function(){
     var trimRe = /^\s+|\s+$/g;
     var tplRe = /\{(\d+)\}/g;
     var modeRe = /^(\s?[\/>+~]\s?|\s|$)/;
-    var tagTokenRe = /^(#)?([\w\-\*\|\\]+)/;
+    var tagTokenRe = /^(#)?([\w-\*]+)/;
     var nthRe = /(\d*)n\+?(\d*)/, nthRe2 = /\D/;
 
     function child(p, index){
@@ -10946,12 +10946,15 @@ Roo.CompositeElement.prototype = {
     /**
     * Filters this composite to only elements that match the passed selector.
     * @param {String} selector A string CSS selector
+    * @param {Boolean} inverse return inverse filter (not matches)
     * @return {CompositeElement} this
     */
-    filter : function(selector){
+    filter : function(selector, inverse){
         var els = [];
+        inverse = inverse || false;
         this.each(function(el){
-            if(el.is(selector)){
+            var match = inverse ? !el.is(selector) : el.is(selector);
+            if(match){
                 els[els.length] = el.dom;
             }
         });
