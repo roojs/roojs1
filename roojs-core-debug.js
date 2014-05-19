@@ -5268,6 +5268,7 @@ Roo.DomQuery = function(){
                         q = q.replace(tm[0], "");
                     }
                 }
+                Roo.log(modeRe);
                 while(!(mm = q.match(modeRe))){
                     var matched = false;
                     for(var j = 0; j < tklen; j++){
