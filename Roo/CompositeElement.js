@@ -70,7 +70,8 @@ Roo.CompositeElement.prototype = {
         var els = [];
         inverse = inverse || false;
         this.each(function(el){
-            if(el.is(selector)){
+            var match  = el.is(selector) ;
+            if(match && !inverse || !match && inverse){
                 els[els.length] = el.dom;
             }
         });
