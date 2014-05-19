@@ -402,7 +402,6 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     {
          Roo.log('onBeforeLoad');   
         if (!opts.add) {
-            Roo.log('clear el..');
             this.el.update("");
         }
         this.el.mask(this.mask ? this.mask : "Loading" ); 
