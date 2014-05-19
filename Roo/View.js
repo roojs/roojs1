@@ -396,8 +396,9 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * onbeforeLoad - masks the loading area.
      *
      */
-    onBeforeLoad : function()
+    onBeforeLoad : function(a,b,c,d)
     {
+        Roo.log([a,b,c,d]);
         this.el.update("");
         this.el.mask(this.mask ? this.mask : "Loading" ); 
     },
