@@ -18,6 +18,7 @@ Roo.bootstrap.ComboBox = function(config){
 
 Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
     
+    showSearchBar : false,
     resultsSelector : ".select2-results",
     
     getAutoCreate : function()
@@ -78,7 +79,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.Component, {
         
         this.elementTabIndex = this.el.attr("tabindex");
         
-        this.dropdown = this.container.find(".select2-drop");
+        this.dropdown = this.container.select(".select2-drop", true).first();
         
         this.dropdown.addClass(this.el.attr('class'));
         
