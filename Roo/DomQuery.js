@@ -398,6 +398,9 @@ Roo.DomQuery = function(){
             var tk = Roo.DomQuery.matchers;
             var tklen = tk.length;
             var mm;
+            Roo.log('path!!!');
+            Roo.log(path)
+            
             Roo.log('compile!!!');
             Roo.log(q);
             // accept leading mode switch
