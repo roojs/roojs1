@@ -1052,8 +1052,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onViewScroll : function(e, t){
         Roo.log('on view scroll');
-        Roo.log(e);
-        Roo.log(t);
+        
+        Roo.log(this.view);
     }
 
     /** 
