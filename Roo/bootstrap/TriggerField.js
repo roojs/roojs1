@@ -89,7 +89,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             input.cls += ' input-' + this.size;
         }
         var inputblock = {
-            cls: 'combobox-container input-group',
+            cls: 'select2-container input-group',
             cn: [
                 {
                     tag: 'input',
@@ -104,21 +104,12 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 },
                 {
                     tag :'span',
-                    cls : 'input-group-addon btn dropdown-toggle',
+                    cls : 'select2-arrow',
+                    role: 'presentation',
                     cn : [
                         {
-                            tag: 'span',
-                            cls: 'caret'
-                        },
-                        {
-                            tag: 'span',
-                            cls: 'combobox-clear',
-                            cn  : [
-                                {
-                                    tag : 'i',
-                                    cls: 'icon-remove'
-                                }
-                            ]
+                            tag: 'b',
+                            role: 'presentation'
                         }
                     ]
                         
