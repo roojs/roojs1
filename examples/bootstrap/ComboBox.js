@@ -53,6 +53,7 @@ Roo.example.combobox = new Roo.XComponent({
                     allowBlank : false,
                     fieldLabel : 'Country',
                     pageSize : '20',
+                    append: true,
                     store : {
                         xtype: 'Store',
                         xns: Roo.data,
