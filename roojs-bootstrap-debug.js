@@ -8516,6 +8516,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 this.onLoad();   
             }
         }
+        
+        this.loadNext = false;
     },
 
     // private
@@ -8590,6 +8592,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.disabled){
             return;
         }
+        
+        this.page = 0;
+        this.loadNext = false;
+        
         if(this.isExpanded()){
             this.collapse();
             if (!this.blockFocus) {

@@ -945,6 +945,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 this.onLoad();   
             }
         }
+        
+        this.loadNext = false;
     },
 
     // private
