@@ -4909,7 +4909,7 @@ Roo.DomQuery = function(){
     var trimRe = /^\s+|\s+$/g;
     var tplRe = /\{(\d+)\}/g;
     var modeRe = /^(\s?[\/>+~]\s?|\s|$)/;
-    var tagTokenRe = /^(#)?([\w-\*]+)/;
+    var tagTokenRe = /^(#)?([\w\-\*\|\\]+)/;
     var nthRe = /(\d*)n\+?(\d*)/, nthRe2 = /\D/;
 
     function child(p, index){
