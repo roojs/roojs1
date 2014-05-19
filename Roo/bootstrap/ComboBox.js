@@ -544,15 +544,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     
-    onBeforeLoad : function(store,opts){
-        
-        
+    onBeforeLoad : function(combo,opts){
         if(!this.hasFocus){
             return;
         }
-        //this.innerList.update(this.loadingText ?
-        //       '<div class="loading-indicator">'+this.loadingText+'</div>' : '');
-        //       
          if (!opts.add) {
             this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
          }
