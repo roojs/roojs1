@@ -5327,6 +5327,7 @@ Roo.DomQuery = function(){
             for(var i = 0, len = paths.length; i < len; i++){
                 var p = paths[i].replace(trimRe, "");
                 if(!cache[p]){
+                    Roo.log(p);
                     cache[p] = Roo.DomQuery.compile(p);
                     if(!cache[p]){
                         throw p + " is not a valid selector";
