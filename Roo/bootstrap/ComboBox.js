@@ -1111,17 +1111,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.loading === null){
             this.list.createChild({
                 tag: 'div',
-                cls: 'loading',
-                cn: [
-                    {
-                        tag: "img",
-                        src: rootURL + '/roojs1/images/ux/lightbox/loading.gif'
-                    },
-                    {
-                        tag: "span",
-                        html: "Loading More..."
-                    }
-                ]
+                cls: 'loading select2-more-results select2-active',
+                html: 'Loading more results...'
             })
             
             this.loading = this.list.select('.loading', true).first();
