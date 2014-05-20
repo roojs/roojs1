@@ -35,7 +35,6 @@ Roo.example.combobox = new Roo.XComponent({
                     hiddenName : 'country_id',
                     md : '12',
                     size : 'sm',
-                    style : 'width:300px',
                     name : 'country_id_name',
                     triggerAction : 'all',
                     minChars : '2',
