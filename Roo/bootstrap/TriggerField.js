@@ -242,11 +242,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         //    this.wrap.setWidth(this.el.getWidth()+this.trigger.getWidth());
         //}
         
-        var style = this.el.select('input.form-control', true).first().attr('style');
-        
-        Roo.log(style);
-        
-        
     },
 
     // private
