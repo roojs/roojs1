@@ -105,27 +105,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                             tag: 'ul',
                             cls : 'typeahead typeahead-long dropdown-menu',
                             style : 'display:none'
-                        },
-                        {
-                            tag: 'div',
-                            cls: 'select2-choice',
-                            cn: [
-                                {
-                                    tag :'span',
-                                    cls : 'select2-chosen'
-                                },
-                                {
-                                    tag :'span',
-                                    cls : 'select2-arrow',
-                                    role: 'presentation',
-                                    cn : [
-                                        {
-                                            tag: 'b',
-                                            role: 'presentation'
-                                        }
-                                    ]
-                                }     
-                            ]
                         }
                     ]
                 }
