@@ -202,7 +202,7 @@ this.store.each(function(v){if(C){if(C.id==v.id){C=false;}return true;}if(v.get(
 this.view.select(A);var sn=Roo.get(this.view.getSelectedNodes()[0])},onViewScroll:function(e,t){if(this.view.el.getScroll().top<this.view.el.dom.scrollHeight-this.view.el.dom.clientHeight||!this.hasFocus||!this.append||this.hasQuery){return;}
 this.hasQuery=true;this.loading=this.list.select('.loading',true).first();if(this.loading===null){this.list.createChild({tag:'div',cls:'loading select2-more-results select2-active',html:'Loading more results...'})
 this.loading=this.list.select('.loading',true).first();this.loading.setVisibilityMode(Roo.Element.DISPLAY);this.loading.hide();}
-this.loading.show();var A=this;this.page++;this.loadNext=true;(function(){A.doQuery(A.getRawValue(),true);}).defer(500);return;}});
+this.loading.show();var A=this;this.page++;this.loadNext=true;(function(){A.doQuery(A.allQuery,true);}).defer(500);return;}});
 //Roo/View.js
 Roo.View=function(A,B,C){if(typeof(B)=='undefined'){Roo.apply(this,A);this.el=Roo.get(this.el);}else {this.el=Roo.get(A);this.tpl=B;Roo.apply(this,C);}
 this.wrapEl=this.el.wrap().wrap();if(typeof(this.tpl)=="string"){this.tpl=new Roo.Template(this.tpl);}else {this.tpl=new Roo.factory(this.tpl,Roo);}
