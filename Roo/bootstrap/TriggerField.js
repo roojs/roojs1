@@ -230,6 +230,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
         
         var style = this.el.select('input.form-control', true).first().attr('style');
+        Roo.log(this.el.select('input.form-control', true).first());
         Roo.log(style);
         
         this.trigger = this.el.select('span.select2-arrow',true).first();
