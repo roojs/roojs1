@@ -37,7 +37,7 @@ Roo.example.combobox = new Roo.XComponent({
                     size : 'sm',
                     name : 'country_id_name',
                     triggerAction : 'all',
-                    minChars : '2',
+                    minChars : '1',
                     tpl : '<div class="x-grid-cell-text x-btn button"><b>{name}</b></div>',
                     listWidth : '400',
                     listeners : {
