@@ -99,7 +99,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 input,
                 {
                     tag: 'div',
-                    cls: 'select2-drop select2-display-none select2-with-searchbox',
+                    cls: 'select2-drop select2-with-searchbox',
+                    style: 'display:none',
                     cn: [
                         {
                             tag: 'ul',
