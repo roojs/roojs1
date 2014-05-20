@@ -59,6 +59,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     actionMode : 'wrap',
     
     
+    
     getAutoCreate : function(){
        
         var parent = this.parent();
@@ -76,7 +77,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             tag: 'input',
             id : id,
             type : this.inputType,
-            cls : 'form-control select2-offscreen',
+            cls : 'form-control',
             autocomplete: 'off',
             placeholder : this.placeholder || '' 
             
@@ -89,7 +90,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         }
         var inputblock = {
             cls: 'select2-container input-group',
-            style: 'width:' + ((this.width) ? this.width : '200') + 'px',
             cn: [
                 {
                     tag: 'input',
@@ -108,10 +108,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     cn: [
                         {
                             tag :'span',
-                            cls : 'select2-chosen'
-                        },
-                        {
-                            tag :'span',
                             cls : 'select2-arrow',
                             role: 'presentation',
                             cn : [
@@ -125,6 +121,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 }
             ]
         };
+        
+        
         
         
         if (align ==='left' && this.fieldLabel.length) {
@@ -235,7 +233,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         //if(!this.width){
         //    this.wrap.setWidth(this.el.getWidth()+this.trigger.getWidth());
         //}
-        
     },
 
     // private
