@@ -99,7 +99,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 input,
                 {
                     tag: 'ul',
-                    cls : 'typeahead typeahead-long dropdown-menu',
+                    cls : 'typeahead typeahead-long dropdown-menu select2-drop select2-with-searchbox',
                     style : 'display:none'
                 },
                 {
