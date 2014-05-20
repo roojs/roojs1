@@ -1119,7 +1119,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     },
                     {
                         tag: "span",
-                        html: "Loading"
+                        html: "Loading More..."
                     }
                 ]
             })
