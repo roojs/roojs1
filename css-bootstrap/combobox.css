@@ -48,8 +48,8 @@
   
 }
 .combobox-container .active {
-  background-color: #3875d7;
-  color: #fff;
+  background-color: #a9dba9;
+  border-color: #46a546;
 }
 .combobox-container input,
 .combobox-container .uneditable-input {
