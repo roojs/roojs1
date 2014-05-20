@@ -229,7 +229,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
         
-        var style = this.el.select('input.form-control', true).first().attr('style');
+        var style = this.el.select('input.form-control', true).first().attr("style");
         Roo.log(this.el.select('input.form-control', true).first());
         Roo.log(style);
         
