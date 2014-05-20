@@ -267,6 +267,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
         
+        
         if(this.hiddenName){
             
             this.hiddenField = this.el.select('input.form-hidden-field',true).first();
@@ -1003,7 +1004,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
          Roo.log('expand');
-         
         this.list.alignTo(this.inputEl(), this.listAlign);
         this.list.show();
         Roo.get(document).on('mousedown', this.collapseIf, this);
@@ -1019,11 +1019,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // Implements the default empty TriggerField.onTriggerClick function
     onTriggerClick : function()
     {
+        Roo.log('trigger click');
+        
         if(this.disabled){
             return;
         }
-        
-        Roo.log('trigger click');
         
         this.page = 0;
         this.loadNext = false;
