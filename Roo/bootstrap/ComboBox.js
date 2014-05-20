@@ -916,6 +916,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         forceAll = qe.forceAll;
         if(forceAll === true || (q.length >= this.minChars)){
             
+            this.hasQuery = true;
+            
             if(this.lastQuery != q || this.alwaysQuery){
                 this.lastQuery = q;
                 if(this.mode == 'local'){
