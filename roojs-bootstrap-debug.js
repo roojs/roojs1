@@ -8137,6 +8137,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
+        if(typeof(this.loading) !== 'undefined' && this.loading !== null){
+            this.loading.hide();
+        }
+        
         if(this.store.getCount() > 0){
             this.expand();
             this.restrictHeight();
@@ -8162,6 +8166,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     onLoadException : function()
     {
+        this.hasQuery = false;
+        
+        if(typeof(this.loading) !== 'undefined' && this.loading !== null){
+            this.loading.hide();
+        }
+        
         this.collapse();
         Roo.log(this.store.reader.jsonData);
         if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
@@ -8467,10 +8477,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * saved in the current store (defaults to false)
      */
     doQuery : function(q, forceAll){
-        if(this.hasQuery){
-            Roo.log('has query already');
-            return;
-        }
         
         if(q === undefined || q === null){
             q = '';
@@ -8502,10 +8508,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }
                     this.onLoad();
                 }else{
+                    Roo.log(q);
                     this.store.baseParams[this.queryParam] = q;
                     
                     var options = {params : this.getParams(q)};
-                    
+                    Roo.log(options);
                     if(this.loadNext){
                         options.add = true;
                         options.params.start = this.page * this.pageSize;
@@ -8669,12 +8676,32 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
+        this.hasQuery = true;
+        
+        this.loading = this.list.select('.loading', true).first();
+        
+        if(this.loading === null){
+            this.list.createChild({
+                tag: 'div',
+                cls: 'loading select2-more-results select2-active',
+                html: 'Loading more results...'
+            })
+            
+            this.loading = this.list.select('.loading', true).first();
+            
+            this.loading.setVisibilityMode(Roo.Element.DISPLAY);
+            
+            this.loading.hide();
+        }
+        
+        this.loading.show();
+        
         var _combo = this;
         
         this.page++;
         this.loadNext = true;
         
-        (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
+        (function() { _combo.doQuery(_combo.getRawValue(), true); }).defer(500);
         
         return;
     }
