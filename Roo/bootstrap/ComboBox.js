@@ -1105,12 +1105,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             cls: 'loading',
             html: 'Loading More...'
         })
-//        var _combo = this;
-//        
-//        this.page++;
-//        this.loadNext = true;
+        var _combo = this;
         
-//        (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
+        this.page++;
+        this.loadNext = true;
+        
+        (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
         
         return;
     }
