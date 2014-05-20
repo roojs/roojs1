@@ -1110,6 +1110,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 html: 'Loading More...'
             })
             
+            this.loading = this.list.select('.loading', true).first();
+            
             this.loading.hide();
         }
         
