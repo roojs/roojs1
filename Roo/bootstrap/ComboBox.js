@@ -591,6 +591,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     onLoadException : function()
     {
+        this.hasQuery = false;
+        
         this.collapse();
         Roo.log(this.store.reader.jsonData);
         if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
