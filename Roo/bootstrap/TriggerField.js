@@ -77,7 +77,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             tag: 'input',
             id : id,
             type : this.inputType,
-            cls : 'form-control',
+            cls : 'form-control select2-offscreen',
             autocomplete: 'off',
             placeholder : this.placeholder || '' 
             
@@ -94,7 +94,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 {
                     tag: 'input',
                     type : 'hidden',
-                    cls: 'form-hidden-field select2-offscreen'
+                    cls: 'form-hidden-field'
                 },
                 input,
                 {
