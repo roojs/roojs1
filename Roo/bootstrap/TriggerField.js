@@ -98,30 +98,38 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 },
                 input,
                 {
-                    tag: 'ul',
-                    cls : 'select2-drop select2-display-none select2-with-searchbox'
-                },
-                {
                     tag: 'div',
-                    cls: 'select2-choice',
+                    cls: 'select2-drop select2-display-none select2-with-searchbox',
                     cn: [
                         {
-                            tag :'span',
-                            cls : 'select2-chosen'
+                            tag: 'ul',
+                            cls : 'typeahead typeahead-long dropdown-menu',
+                            style : 'display:none'
                         },
                         {
-                            tag :'span',
-                            cls : 'select2-arrow',
-                            role: 'presentation',
-                            cn : [
+                            tag: 'div',
+                            cls: 'select2-choice',
+                            cn: [
                                 {
-                                    tag: 'b',
-                                    role: 'presentation'
-                                }
+                                    tag :'span',
+                                    cls : 'select2-chosen'
+                                },
+                                {
+                                    tag :'span',
+                                    cls : 'select2-arrow',
+                                    role: 'presentation',
+                                    cn : [
+                                        {
+                                            tag: 'b',
+                                            role: 'presentation'
+                                        }
+                                    ]
+                                }     
                             ]
-                        }     
+                        }
                     ]
                 }
+                
             ]
         };
 
