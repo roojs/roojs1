@@ -62,6 +62,8 @@ Roo.example.combobox = new Roo.XComponent({
                                 o.params = o.params || {};
                             }
                         },
+                        remoteSort : true,
+                        sortInfo : { direction : 'ASC', field: 'name' },
                         proxy : {
                             xtype: 'HttpProxy',
                             xns: Roo.data,
