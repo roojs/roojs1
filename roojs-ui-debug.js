@@ -8607,6 +8607,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * Refreshes the view. - called by datachanged on the store. - do not call directly.
      */
     refresh : function(){
+        Roo.log('refresh');
         var t = this.tpl;
         
         // if we are using something like 'domtemplate', then
@@ -8653,6 +8654,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         this.nodes = el.dom.childNodes;
         this.updateIndexes(0);
     },
+    
 
     /**
      * Function to override to reformat the data that is sent to
@@ -8668,6 +8670,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     },
 
     onUpdate : function(ds, record){
+         Roo.log('on update');   
         this.clearSelections();
         var index = this.store.indexOf(record);
         var n = this.nodes[index];
@@ -8681,6 +8684,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
 // --------- FIXME     
     onAdd : function(ds, records, index)
     {
+        Roo.log(['on Add', ds, records, index] );        
         this.clearSelections();
         if(this.nodes.length == 0){
             this.refresh();
@@ -8700,6 +8704,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     },
 
     onRemove : function(ds, record, index){
+        Roo.log('onRemove');
         this.clearSelections();
         var el = this.dataName  ?
             this.el.child('.roo-tpl-' + this.dataName) :
@@ -8760,9 +8765,12 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * onbeforeLoad - masks the loading area.
      *
      */
-    onBeforeLoad : function()
+    onBeforeLoad : function(store,opts)
     {
-        this.el.update("");
+         Roo.log('onBeforeLoad');   
+        if (!opts.add) {
+            this.el.update("");
+        }
         this.el.mask(this.mask ? this.mask : "Loading" ); 
     },
     onLoad : function ()
@@ -26164,6 +26172,11 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     syncValue : function()
     {
         this.editorcore.syncValue();
+    },
+    
+    pushValue : function()
+    {
+        this.editorcore.pushValue();
     }
      
     
