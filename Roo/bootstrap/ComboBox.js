@@ -1098,6 +1098,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
+        Roo.log(this.list);
+        
 //        var _combo = this;
 //        
 //        this.page++;
