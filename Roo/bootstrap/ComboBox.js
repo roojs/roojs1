@@ -1102,14 +1102,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var loading = this.list.select('.loading', true).first();
         
-        Roo.log(typeof(loading));
-        
-        
-        this.list.createChild({
-            tag: 'div',
-            cls: 'loading',
-            html: 'Loading More...'
-        })
+        if(loading === null){
+            Roo.log('create loading!!!');
+            this.list.createChild({
+                tag: 'div',
+                cls: 'loading',
+                html: 'Loading More...'
+            })
+        }
         var _combo = this;
         
         this.page++;
