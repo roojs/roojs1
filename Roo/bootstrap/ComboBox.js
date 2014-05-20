@@ -799,6 +799,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onEmptyResults : function(){
+        Roo.log('onEmptyResults');
         this.collapse();
     },
 
