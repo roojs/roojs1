@@ -1098,6 +1098,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
+        this.hasQuery = true;
         
         Roo.log(this.list);
         this.list.createChild({
