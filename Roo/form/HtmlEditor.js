@@ -381,6 +381,11 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     syncValue : function()
     {
         this.editorcore.syncValue();
+    },
+    
+    pushValue : function()
+    {
+        this.editorcore.pushValue();
     }
      
     
