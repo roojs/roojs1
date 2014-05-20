@@ -1112,6 +1112,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             this.loading = this.list.select('.loading', true).first();
             
+            this.loading.setVisibilityMode(Roo.Element.DISPLAY);
+            
             this.loading.hide();
         }
         
