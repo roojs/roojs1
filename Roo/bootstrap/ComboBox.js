@@ -1003,6 +1003,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
          Roo.log('expand');
+         Roo.log(this.list);
         this.list.alignTo(this.inputEl(), this.listAlign);
         this.list.show();
         Roo.get(document).on('mousedown', this.collapseIf, this);
@@ -1026,7 +1027,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.page = 0;
         this.loadNext = false;
-        Roo.log(this.isExpanded());
+        
         if(this.isExpanded()){
             this.collapse();
             if (!this.blockFocus) {
