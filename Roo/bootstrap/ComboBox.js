@@ -1044,8 +1044,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }else {
             this.hasFocus = true;
             if(this.triggerAction == 'all') {
+                Roo.log('123');
                 this.doQuery(this.allQuery, true);
             } else {
+                Roo.log('abc');
                 this.doQuery(this.getRawValue());
             }
             if (!this.blockFocus) {
