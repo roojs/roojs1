@@ -346,7 +346,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         */
             
         if(!this.tpl){
-            this.tpl = '<li class="select2-result"><div class="select2-result-label">{' + this.displayField + '}</div></li>';
+            this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
         }
 
         this.view = new Roo.View(this.el.select('ul',true).first(), this.tpl, {
