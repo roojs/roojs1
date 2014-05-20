@@ -898,10 +898,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * saved in the current store (defaults to false)
      */
     doQuery : function(q, forceAll){
-        if(this.hasQuery){
-            Roo.log('has query already');
-            return;
-        }
         
         if(q === undefined || q === null){
             q = '';
