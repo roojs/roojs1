@@ -565,8 +565,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(!this.hasFocus){
             return;
         }
-        Roo.log(this.loading);
-        if(this.loading !== null || typeof(this.loading) !== 'undefined'){
+        
+        if(this.loading !== null && typeof(this.loading) !== 'undefined'){
             this.loading.hide();
         }
         
