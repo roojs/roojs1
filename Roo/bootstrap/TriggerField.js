@@ -89,6 +89,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         }
         var inputblock = {
             cls: 'select2-container input-group',
+            style: 'width:' + ((this.width) ? this.width : '200') + 'px',
             cn: [
                 {
                     tag: 'input',
@@ -126,6 +127,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         };
 
         Roo.log(this.width);
+        
 //        if(this.width){
 //            inputblock.style = typeof(inputblock.style) !== 'undefined' ? inputblock.style + ' width:' + this.width : 'width:' + this.width;
 //        }
