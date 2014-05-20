@@ -103,21 +103,25 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     style : 'display:none'
                 },
                 {
-                    tag: 'div',
-                    cls: 'select2-choice',
-                    cn: [
+                    tag :'span',
+                    cls : 'input-group-addon btn dropdown-toggle',
+                    cn : [
                         {
-                            tag :'span',
-                            cls : 'select2-arrow',
-                            role: 'presentation',
-                            cn : [
+                            tag: 'span',
+                            cls: 'caret'
+                        },
+                        {
+                            tag: 'span',
+                            cls: 'combobox-clear',
+                            cn  : [
                                 {
-                                    tag: 'b',
-                                    role: 'presentation'
+                                    tag : 'i',
+                                    cls: 'icon-remove'
                                 }
                             ]
-                        }     
+                        }
                     ]
+                        
                 }
             ]
         };
@@ -222,7 +226,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
         
-        this.trigger = this.el.select('span.select2-arrow',true).first();
+        this.trigger = this.el.select('span.dropdown-toggle',true).first();
         if(this.hideTrigger){
             this.trigger.setDisplayed(false);
         }
