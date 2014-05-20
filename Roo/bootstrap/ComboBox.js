@@ -1117,6 +1117,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.loading.hide();
         }
         
+        this.loading.show();
         
         var _combo = this;
         
