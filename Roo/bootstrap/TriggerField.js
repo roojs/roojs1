@@ -108,6 +108,10 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     cn: [
                         {
                             tag :'span',
+                            cls : 'select2-chosen'
+                        },
+                        {
+                            tag :'span',
                             cls : 'select2-arrow',
                             role: 'presentation',
                             cn : [
