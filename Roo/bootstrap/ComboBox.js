@@ -1026,7 +1026,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.page = 0;
         this.loadNext = false;
-        
+        Roo.log(this.isExpanded);
         if(this.isExpanded()){
             this.collapse();
             if (!this.blockFocus) {
