@@ -1100,16 +1100,20 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         Roo.log(this.list);
         
-        var loading = this.list.select('.loading', true).first();
+        this.loading = this.list.select('.loading', true).first();
         
-        if(loading === null){
+        if(this.loading === null){
             Roo.log('create loading!!!');
             this.list.createChild({
                 tag: 'div',
                 cls: 'loading',
                 html: 'Loading More...'
             })
+            
+            this.loading.hide();
         }
+        
+        
         var _combo = this;
         
         this.page++;
