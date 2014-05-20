@@ -21,7 +21,6 @@ trigger.applyTo('my-field');
  * However, in general you will most likely want to use TriggerField as the base class for a reusable component.
  * {@link Roo.bootstrap.DateField} and {@link Roo.bootstrap.ComboBox} are perfect examples of this.
  * @cfg {String} triggerClass An additional CSS class used to style the trigger button.  The trigger will always get the
- * @cfg {Number} width box width
  * class 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.
  * @constructor
  * Create a new TriggerField.
@@ -58,9 +57,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
     
     actionMode : 'wrap',
-    
-    width : false,
-    
     
     
     getAutoCreate : function(){
