@@ -1100,6 +1100,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         Roo.log(this.list);
         
+        var loading = this.list.el.select('.loading', true).first();
+        Roo.log(loading);
         
         
         this.list.createChild({
