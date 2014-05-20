@@ -98,16 +98,9 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 },
                 input,
                 {
-                    tag: 'div',
-                    cls: 'select2-drop select2-with-searchbox',
-                    style: 'display:none',
-                    cn: [
-                        {
-                            tag: 'ul',
-                            cls : 'typeahead typeahead-long dropdown-menu',
-                            style : 'display:none'
-                        }
-                    ]
+                    tag: 'ul',
+                    cls : 'typeahead typeahead-long dropdown-menu',
+                    style : 'display:none'
                 },
                 {
                     tag: 'div',
@@ -130,10 +123,9 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                         }     
                     ]
                 }
-                
             ]
         };
-
+        
         
         if (align ==='left' && this.fieldLabel.length) {
                 
