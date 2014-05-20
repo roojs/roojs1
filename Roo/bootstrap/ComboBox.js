@@ -566,6 +566,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
+        if(this.loading !== null || typeof(this.loading) !== 'undefined'){
+            this.loading.hide();
+        }
+        
         if(this.store.getCount() > 0){
             this.expand();
             this.restrictHeight();
@@ -592,6 +596,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     onLoadException : function()
     {
         this.hasQuery = false;
+        
+        if(this.loading !== null || typeof(this.loading) !== 'undefined'){
+            this.loading.hide();
+        }
         
         this.collapse();
         Roo.log(this.store.reader.jsonData);
