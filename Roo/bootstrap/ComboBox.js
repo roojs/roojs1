@@ -566,7 +566,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        if(this.loading !== null && typeof(this.loading) !== 'undefined'){
+        if(typeof(this.loading) !== 'undefined' && this.loading !== null){
             this.loading.hide();
         }
         
@@ -597,7 +597,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         this.hasQuery = false;
         
-        if(this.loading !== null || typeof(this.loading) !== 'undefined'){
+        if(typeof(this.loading) !== 'undefined' && this.loading !== null){
             this.loading.hide();
         }
         
