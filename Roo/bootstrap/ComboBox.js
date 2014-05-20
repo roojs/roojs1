@@ -267,7 +267,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
         
-        var style = this.el.select('input.form-control', true).first().attr("id");
+        var style = this.el.select('input.form-control', true).first().getStyle('width');
         
         Roo.log(style);
         
