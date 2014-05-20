@@ -125,6 +125,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             ]
         };
 
+        Roo.log(this.width);
 //        if(this.width){
 //            inputblock.style = typeof(inputblock.style) !== 'undefined' ? inputblock.style + ' width:' + this.width : 'width:' + this.width;
 //        }
