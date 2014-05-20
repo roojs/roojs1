@@ -1098,12 +1098,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.hasQuery = true;
         
-        Roo.log(this.list);
-        
         this.loading = this.list.select('.loading', true).first();
         
         if(this.loading === null){
-            Roo.log('create loading!!!');
             this.list.createChild({
                 tag: 'div',
                 cls: 'loading',
