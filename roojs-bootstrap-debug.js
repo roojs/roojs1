@@ -5284,7 +5284,38 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         if (this.size) {
             input.cls += ' input-' + this.size;
         }
-        var inputblock = {
+        
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        
+        var inputblock = input;
+        
+        if (this.before || this.after) {
+            
+            inputblock = {
+                cls : 'input-group',
+                cn :  [] 
+            };
+            if (this.before) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.before
+                });
+            }
+            inputblock.cn.push(input);
+            if (this.after) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.after
+                });
+            }
+            
+        };
+        
+        var combobox = {
             cls: 'combobox-container input-group',
             cn: [
                 {
@@ -5292,7 +5323,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     type : 'hidden',
                     cls: 'form-hidden-field'
                 },
-                input,
+                inputblock,
                 {
                     tag: 'ul',
                     cls: 'typeahead typeahead-long dropdown-menu',
@@ -5322,9 +5353,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             ]
         };
         
-        
-        
-        
         if (align ==='left' && this.fieldLabel.length) {
                 
             
@@ -5342,7 +5370,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     {
                         cls : "col-sm-10", 
                         cn: [
-                            inputblock
+                            combobox
                         ]
                     }
                     
@@ -5358,14 +5386,14 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                         
                     },
                     
-                    inputblock
+                    combobox
                     
                 ];
 
         } else {
             
                 Roo.log(" no label && no align");
-                cfg = inputblock
+                cfg = combobox
                      
                 
         }
@@ -5377,11 +5405,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             }
         });
         
-        
-        
-        if (this.disabled) {
-            input.disabled=true;
-        }
         return cfg;
         
     },
