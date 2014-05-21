@@ -10173,6 +10173,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     {   
         this.calevents = [];
         var cal = this;
+        Roo.log(this.store.getCount());
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
                cal.addItem({
