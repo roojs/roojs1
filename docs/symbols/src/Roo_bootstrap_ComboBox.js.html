@@ -251,6 +251,7 @@
     </span><span class="jsdoc-var">page</span><span class="jsdoc-syntax">: 0,
     </span><span class="jsdoc-var">hasQuery</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">append</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">loadNext</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">// element that contains real text value.. (when hidden is used..)
      
@@ -558,9 +559,17 @@
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-var">this.hasQuery </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.hasFocus</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loading</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.loading </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.loading.hide</span><span class="jsdoc-syntax">();
+        }
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.getCount</span><span class="jsdoc-syntax">() &gt; 0){
             </span><span class="jsdoc-var">this.expand</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
@@ -581,12 +590,17 @@
             </span><span class="jsdoc-var">this.onEmptyResults</span><span class="jsdoc-syntax">();
         }
         
-        </span><span class="jsdoc-var">this.hasQuery </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">//this.el.focus();
     </span><span class="jsdoc-syntax">},
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onLoadException </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-var">this.hasQuery </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loading</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.loading </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.loading.hide</span><span class="jsdoc-syntax">();
+        }
+        
         </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.reader.jsonData</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.reader.jsonData.errorMsg</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
@@ -892,12 +906,6 @@
      * saved in the current store (defaults to false)
      */
     </span><span class="jsdoc-var">doQuery </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">forceAll</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasQuery</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'has query already'</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-var">this.hasQuery </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
@@ -915,6 +923,9 @@
         
         </span><span class="jsdoc-var">forceAll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">qe.forceAll</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">forceAll </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">q.length </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">this.minChars</span><span class="jsdoc-syntax">)){
+            
+            </span><span class="jsdoc-var">this.hasQuery </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastQuery </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">q </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.alwaysQuery</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.lastQuery </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'local'</span><span class="jsdoc-syntax">){
@@ -930,8 +941,9 @@
                     
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">options </span><span class="jsdoc-syntax">= {</span><span class="jsdoc-var">params </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.getParams</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">)};
                     
-                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.append</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadNext</span><span class="jsdoc-syntax">){
                         </span><span class="jsdoc-var">options.add </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">options.params.start </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.page </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">;
                     }
                     
                     </span><span class="jsdoc-var">this.store.load</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
@@ -942,6 +954,8 @@
                 </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">();   
             }
         }
+        
+        </span><span class="jsdoc-var">this.loadNext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     },
 
     </span><span class="jsdoc-comment">// private
@@ -950,7 +964,7 @@
         </span><span class="jsdoc-comment">//p[this.queryParam] = q;
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">p.start </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.page </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">p.start </span><span class="jsdoc-syntax">= 0;
             </span><span class="jsdoc-var">p.limit </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">;
@@ -1016,6 +1030,10 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
+        </span><span class="jsdoc-var">this.page </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.loadNext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isExpanded</span><span class="jsdoc-syntax">()){
             </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.blockFocus</span><span class="jsdoc-syntax">) {
@@ -1082,17 +1100,34 @@
     
     </span><span class="jsdoc-var">onViewScroll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.el.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.view.el.dom.scrollHeight </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.view.el.dom.clientHeight </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.hasFocus</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.el.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.view.el.dom.scrollHeight </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.view.el.dom.clientHeight </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.hasFocus </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.append </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.hasQuery</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasQuery</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.hasQuery </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.loading </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.list.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.loading'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loading </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.list.createChild</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'loading select2-more-results select2-active'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Loading more results...'
+            </span><span class="jsdoc-syntax">})
+            
+            </span><span class="jsdoc-var">this.loading </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.list.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.loading'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-var">this.loading.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">this.loading.hide</span><span class="jsdoc-syntax">();
         }
         
-        </span><span class="jsdoc-var">this.page</span><span class="jsdoc-syntax">++;
+        </span><span class="jsdoc-var">this.loading.show</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_combo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.page</span><span class="jsdoc-syntax">++;
+        </span><span class="jsdoc-var">this.loadNext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         
         (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">_combo.doQuery</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_combo.allQuery</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(500);
         
