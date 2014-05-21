@@ -89,6 +89,10 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             input.cls += ' input-' + this.size;
         }
         
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        
         var inputblock = input;
         
         if (this.before || this.after) {
