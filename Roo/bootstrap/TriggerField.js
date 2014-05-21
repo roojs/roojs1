@@ -126,9 +126,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             ]
         };
         
-        
-        
-        
         if (align ==='left' && this.fieldLabel.length) {
                 
             
