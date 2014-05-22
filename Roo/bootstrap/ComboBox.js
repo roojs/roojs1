@@ -1184,7 +1184,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var close = choice.select('a.select2-search-choice-close', true).first()
         
-        close.on('click', this.removeItem, choice, o);
+        close.on('click', this.removeItem, close, o);
     },
     
     removeItem : function(a,b,c)
