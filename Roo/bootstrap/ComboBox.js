@@ -1164,7 +1164,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
         }
         
-        this.choices.createChild({
+        var choice = this.choices.createChild({
             tag: 'li',
             cls: 'select2-search-choice',
             cn: [
@@ -1180,7 +1180,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }
             ]
             
-        }, this.searchField)
+        }, this.searchField, true);
+        
+        
+        Roo.log(choice);
     }
 
     /** 
