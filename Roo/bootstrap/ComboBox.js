@@ -691,6 +691,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     setValue : function(v){
         if(this.multiple){
             
+            if(!this.item.length){
+                this.clearValue();
+                return;
+            }
+            
             var value = [];
             var _this = this;
             Roo.each(this.item, function(i){
@@ -701,17 +706,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 
                 value.push(i);
             });
-            
-            Roo.each(v, function(i){
-                if(_this.valueField){
-                    if(value.indexOf(i[_this.valueField]) == -1){
-                        value.push(i[_this.valueField]);
-                    }
-                    return;
-                }
-                
-                value.push(i);
-            })
             
             this.value = value.join(',');
             
