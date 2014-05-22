@@ -301,7 +301,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         }
         
         if(this.multiple){
-            this.inputEl().on("focus", this.onTriggerClick, this, {preventDefault:true});
+            this.inputEl().on("click", this.onTriggerClick, this, {preventDefault:true});
         }
         
         //this.trigger.addClassOnOver('x-form-trigger-over');
