@@ -719,6 +719,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.multiple){
             this.onAddItem(o);
+            return;
         }
             
         var dv = ''; // display value
