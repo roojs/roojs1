@@ -718,7 +718,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     setFromData : function(o){
         
         if(this.multiple){
-            this.addItems(o);
+            this.addItem(o);
             return;
         }
             
@@ -1162,19 +1162,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
         
         return;
-    },
-    
-    addItems : function (records)
-    {
-        if( Object.prototype.toString.call(records) === '[object Array]' ) {
-            var _this = this;
-            Roo.each(records, function(r){
-                _this.addItem(r);
-            });
-            return;
-        }
-        Roo.log(records);
-        this.addItem(records);
     },
     
     addItem : function(o)
