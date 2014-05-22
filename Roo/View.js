@@ -344,6 +344,8 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             this.el; 
         Roo.log(this.dataName);
         Roo.log(el);
+        Roo.log(el.dom.removeChild);
+        Roo.log(this.nodes);
         el.dom.removeChild(this.nodes[index]);
         this.updateIndexes(index);
     },
