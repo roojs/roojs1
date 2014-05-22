@@ -10340,6 +10340,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     onBeforeLoad: function()
     {
+        Roo.log('here');
         this.calevents = [];
         
         this.clearEvents();
