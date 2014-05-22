@@ -9887,7 +9887,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.el.select('.fc-button',true).addClassOnOver('fc-state-hover');
         
         this.on('monthchange', this.onMonthChange, this);
-        Roo.log('init !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        
         this.update(new Date().clearTime());
     },
     
@@ -9901,7 +9901,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     // private
     showPrevMonth : function(e){
-        Roo.log('RUN PREV');
         this.update(this.activeDate.add("mo", -1));
     },
     showToday : function(e){
@@ -9926,8 +9925,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
    // private
     update : function(date)
     {
-        Roo.log('update!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(date);
         var vd = this.activeDate;
         this.activeDate = date;
 //        if(vd && this.el){
@@ -10319,7 +10316,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     onLoad: function () 
     {   
         this.calevents = [];
-        
         var cal = this;
         
         if(this.store.getCount() > 0){
