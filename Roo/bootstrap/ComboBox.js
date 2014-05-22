@@ -582,6 +582,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var records = this.store.getRange();
         Roo.log(records);
+        Roo.log(this.store);
         
         if(this.store.getCount() > 0){
             this.expand();
