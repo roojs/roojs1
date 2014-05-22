@@ -7710,8 +7710,13 @@ Roo.bootstrap.ComboBox = function(config){
 	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
 	     */
-        'edit' : true
-        
+        'edit' : true,
+        /**
+         * @event remove
+         * Fires when the remove value from the combobox array
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'remove' : true
         
     });
     
@@ -8869,6 +8874,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         o.item.remove();
         
         this.syncValue();
+        
+        this.fireEvent('remove', this);
         
     },
     
