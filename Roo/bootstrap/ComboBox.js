@@ -1224,7 +1224,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.inputEl().dom.value = '';
         
-        this.store.remove(record);
     },
     
     onRemoveItem : function(e, _self, o)
@@ -1241,8 +1240,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         o.item.remove();
         
         this.setValue('');
-        
-        this.store.add(o.record);
         
     }
 
