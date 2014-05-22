@@ -782,7 +782,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     onBeforeLoad: function()
     {
         Roo.log('clear the events!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        this.calevents = [];
         
         this.clearEvents();
         
