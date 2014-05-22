@@ -1173,7 +1173,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             });
             return;
         }
-        Roo.log(records);
+        Roo.log(Object.prototype.toString.call(records));
         this.addItem(records);
     },
     
