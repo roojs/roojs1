@@ -169,6 +169,12 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     tag: 'ul',
                     cls: 'typeahead typeahead-long dropdown-menu',
                     style: 'display:none'
+                },
+                {
+                tag :'span',
+                cls : 'input-group-addon'
+                
+
                 }
             ]
         };
