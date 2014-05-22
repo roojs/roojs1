@@ -651,7 +651,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     getValue : function(){
         
         if(this.multiple){
-            return this.hiddenField.dom.value = '';
+            return (this.hiddenField) ? this.hiddenField.dom.value : this.value;
         }
         
         if(this.valueField){
@@ -696,8 +696,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 value.push(i);
             });
             
-            return;
+            if(this.hiddenField){
+                this.hiddenField.dom.value = value.join(',');
+                return;
+            }
             
+            return;
         }
         
         var text = v;
