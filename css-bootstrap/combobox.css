@@ -159,15 +159,3 @@
     border-top: none;
     
 }
-
-.combobox-container .combobox-result  {
-    padding: 3px 7px 4px;
-    margin: 0;
-    cursor: pointer;
-    min-height: 1em;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
