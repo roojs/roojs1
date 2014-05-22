@@ -691,9 +691,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             var value = [];
             var _this = this;
             Roo.each(this.item, function(i){
-                Roo.log(i);
-                Roo.log(_this.valueField);
-                Roo.log(i[_this.valueField]);
                 if(this.valueField){
                     value.push(i[_this.valueField]);
                     return;
