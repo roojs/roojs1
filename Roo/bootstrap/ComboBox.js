@@ -1184,14 +1184,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         return;
     },
     
-    addItem : function(o){
-        this.item.push(o);
+    addItem : function(record, index){
+        this.item.push(record.data);
         
         var dv = ''; // display value
         
-        this.lastData = o;
+        this.lastData = record.data;
         if (this.displayField) {
-            dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
+            dv = !record.data || typeof(record.data[this.displayField]) == 'undefined' ? '' : record.data[this.displayField];
         } else {
             // this is an error condition!!!
             Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
@@ -1217,13 +1217,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var close = choice.select('a.select2-search-choice-close', true).first()
         
-        close.on('click', this.removeItem, this, { item : choice, data : o} );
+        close.on('click', this.removeItem, this, { item : choice, record : record} );
         
         this.setValue('');
         
         this.inputEl().dom.value = '';
         
-        this.view.store.remove(o);
+        this.view.store.remove(record);
     },
     
     removeItem : function(e, _self, o)
