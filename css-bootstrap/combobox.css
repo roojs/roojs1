@@ -160,7 +160,16 @@
     
 }
 
-.combobox-container .combobox-result  {
+.select2-container .dropdown-menu {
+    border: 1px solid #5897fb;
+}
+
+.dropdown-menu .active {
+    background: #3875d7;
+    color: #fff;
+}
+
+.dropdown-menu .select2-result {
     padding: 3px 7px 4px;
     margin: 0;
     cursor: pointer;
