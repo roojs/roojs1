@@ -1180,7 +1180,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }
             ]
             
-        }, this.searchField, true);
+        }, this.searchField);
         
         
         Roo.log(choice);
