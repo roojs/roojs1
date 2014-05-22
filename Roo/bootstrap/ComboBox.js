@@ -641,7 +641,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.fireEvent('beforeselect', this, record, index) !== false){
         
             if(this.multiple){
-                this.addItem(record, index);
+                this.addItem(record);
             }else{
                 this.setFromData(index > -1 ? record.data : false);
             }
@@ -1184,7 +1184,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         return;
     },
     
-    addItem : function(record, index){
+    addItem : function(record){
         this.item.push(record);
         
         var dv = ''; // display value
