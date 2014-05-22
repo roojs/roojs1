@@ -181,6 +181,7 @@
     user-select: none;
 }
 
-.select2-container {
+.select2-container,
+.select2-choices .select2-search-field{
     width: 100%
 }
