@@ -690,29 +690,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     setValue : function(v){
         if(this.multiple){
-            
-            if(!this.item.length){
-                this.clearValue();
-                return;
-            }
-            
-            var value = [];
-            var _this = this;
-            Roo.each(this.item, function(i){
-                if(_this.valueField){
-                    value.push(i[_this.valueField]);
-                    return;
-                }
-                
-                value.push(i);
-            });
-            
-            this.value = value.join(',');
-            
-            if(this.hiddenField){
-                this.hiddenField.dom.value = this.value;
-            }
-            
+            this.syncValue();
             return;
         }
         
