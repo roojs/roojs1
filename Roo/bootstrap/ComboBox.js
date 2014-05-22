@@ -649,6 +649,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @return {String} value The selected value
      */
     getValue : function(){
+        
+        if(this.multiple){
+            return this.hiddenField.dom.value = '';
+        }
+        
         if(this.valueField){
             return typeof this.value != 'undefined' ? this.value : '';
         }else{
