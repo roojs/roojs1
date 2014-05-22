@@ -1185,7 +1185,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         return;
     },
     
-    addItem : function(record){
+    onAddItem : function(record){
         this.item.push(record);
         
         var dv = ''; // display value
@@ -1218,7 +1218,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var close = choice.select('a.select2-search-choice-close', true).first()
         
-        close.on('click', this.removeItem, this, { item : choice, record : record} );
+        close.on('click', this.onRemoveItem, this, { item : choice, record : record} );
         
         this.setValue('');
         
@@ -1227,7 +1227,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store.remove(record);
     },
     
-    removeItem : function(e, _self, o)
+    onRemoveItem : function(e, _self, o)
     {
         Roo.log('remove item');
         var index = this.item.indexOf(o.record) * 1;
