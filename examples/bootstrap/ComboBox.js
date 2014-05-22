@@ -61,8 +61,8 @@ Roo.example.combobox = new Roo.XComponent({
                         listeners : {
                             beforeload : function (_self, o) {
                                 o.params = o.params || {};
-                                Roo.log(this);
-                                var selected = this.getValue();
+                                
+                                var selected = _this.countrySel.getValue();
                                 
                                 Roo.log(selected);
                             }
