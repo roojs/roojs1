@@ -1170,7 +1170,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             var _this = this;
             Roo.each(records, function(r){
                 _this.addItem(r);
-            })
+            });
             return;
         }
         
