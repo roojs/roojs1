@@ -639,7 +639,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     onSelect : function(record, index){
         Roo.log(record);
         if(this.fireEvent('beforeselect', this, record, index) !== false){
-            this.setFromData(index > -1 ? record.data : false);
+            Roo.log(index);
+            if(this.multiple){
+                this.addItem(record);
+            }else{
+                this.setFromData(index > -1 ? record.data : false);
+            }
+            
             this.collapse();
             this.fireEvent('select', this, record, index);
         }
