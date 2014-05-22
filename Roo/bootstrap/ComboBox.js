@@ -1229,7 +1229,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     removeItem : function(e, _self, o)
     {
         Roo.log('remove item');
-        var index = this.item.indexOf(o.data) * 1;
+        var index = this.item.indexOf(o.record.data) * 1;
         
         if( index < 0){
             Roo.log('not this item?!');
