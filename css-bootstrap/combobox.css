@@ -180,3 +180,7 @@
     -ms-user-select: none;
     user-select: none;
 }
+
+.select2-container {
+    width: 100%
+}
