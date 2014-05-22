@@ -1184,15 +1184,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var close = choice.select('a.select2-search-choice-close', true).first()
         
-        close.on('click', this.removeItem, this, o);
+        close.on('click', this.removeItem, this, o, this.item.length);
     },
     
-    removeItem : function(e, _self, item)
+    removeItem : function(e, _self, item, index)
     {
         Roo.log('remove item');
         Roo.log(this.item);
-        
-        Roo.log(this.item.indexOf('a'));
+        Roo.log(index);
     }
 
     /** 
