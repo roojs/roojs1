@@ -1187,12 +1187,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         close.on('click', this.removeItem, close, o);
     },
     
-    removeItem : function(a,b,c)
+    removeItem : function(e, _self, item)
     {
         Roo.log('remove item');
-        Roo.log(a);
-        Roo.log(b);
-        Roo.log(c);
+        
     }
 
     /** 
