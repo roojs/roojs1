@@ -274,6 +274,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         for(var i = 0, len = records.length; i < len; i++){
             var data = this.prepareData(records[i].data, i, records[i]);
             this.fireEvent("preparedata", this, data, i, records[i]);
+            Roo.log(data);
             html[html.length] = Roo.util.Format.trim(
                 this.dataName ?
                     t.applySubtemplate(this.dataName, data, this.store.meta) :
