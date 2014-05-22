@@ -61,6 +61,10 @@ Roo.example.combobox = new Roo.XComponent({
                         listeners : {
                             beforeload : function (_self, o) {
                                 o.params = o.params || {};
+                                
+                                var selected = this.getValue();
+                                
+                                Roo.log(selected);
                             }
                         },
                         remoteSort : true,
