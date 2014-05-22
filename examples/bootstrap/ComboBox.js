@@ -65,8 +65,9 @@ Roo.example.combobox = new Roo.XComponent({
                                 var selected = _this.countrySel.getValue();
                                 
                                 if(selected.length){
-                                    Roo.log(selected);
+                                    o.params._exists = selected;
                                 }
+                                
                             }
                         },
                         remoteSort : true,
