@@ -257,6 +257,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     hasQuery: false,
     append: false,
     loadNext: false,
+    item: [],
     
     // element that contains real text value.. (when hidden is used..)
      
@@ -1143,6 +1144,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
         
         return;
+    },
+    
+    addItem : function(o){
+        
     }
 
     /** 
