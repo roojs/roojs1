@@ -159,7 +159,7 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
 
 .select2-drop-active, .select2-container .dropdown-menu {
     border: 1px solid #5897fb;
-    border-top: none;
+    
 }
 
 .select2-drop.select2-drop-above.select2-drop-active {
