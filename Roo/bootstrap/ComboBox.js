@@ -244,6 +244,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     alwaysQuery : false,
     
+    /**
+     * @cfg {Boolean} multiple  (true|false) ComboBobArray, default false
+     */
+    multiple : false,
+    
     //private
     addicon : false,
     editicon: false,
@@ -406,7 +411,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         */
         
- 
         this.keyNav = new Roo.KeyNav(this.inputEl(), {
             "up" : function(e){
                 this.inKeyMode = true;
