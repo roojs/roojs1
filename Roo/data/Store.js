@@ -231,6 +231,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      * @param {Ext.data.Record} record The Roo.data.Record object to remove from the cache.
      */
     remove : function(record){
+        Roo.log(record);
         var index = this.data.indexOf(record);
         this.data.removeAt(index);
         if(this.pruneModifiedRecords){
