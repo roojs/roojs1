@@ -1182,8 +1182,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
         }, this.searchField);
         
-        Roo.log(choice.select('a.select2-search-choice-close', true).first()).addListener('click', this.removeItem);
-//        choice.select('a.select2-search-choice-close', true).first().on('click', this.removeItem);
+//        Roo.log(choice.select('a.select2-search-choice-close', true).first()).addListener('click', this.removeItem);
+        choice.select('a.select2-search-choice-close', true).first().on('click', this.removeItem);
+    },
+    
+    removeItem : function()
+    {
+        Roo.log('remove item');
     }
 
     /** 
