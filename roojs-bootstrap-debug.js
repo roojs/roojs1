@@ -6655,4 +6655,6891 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         this.modified = [];
         this.fireEvent('metachange', this, this.reader.meta);
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.SimpleStore
+ * @extends Roo.data.Store
+ * Small helper class to make creating Stores from Array data easier.
+ * @cfg {Number} id The array index of the record id. Leave blank to auto generate ids.
+ * @cfg {Array} fields An array of field definition objects, or field name strings.
+ * @cfg {Array} data The multi-dimensional array of data
+ * @constructor
+ * @param {Object} config
+ */
+Roo.data.SimpleStore = function(config){
+    Roo.data.SimpleStore.superclass.constructor.call(this, {
+        isLocal : true,
+        reader: new Roo.data.ArrayReader({
+                id: config.id
+            },
+            Roo.data.Record.create(config.fields)
+        ),
+        proxy : new Roo.data.MemoryProxy(config.data)
+    });
+    this.load();
+};
+Roo.extend(Roo.data.SimpleStore, Roo.data.Store);/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+/**
+ * @extends Roo.data.Store
+ * @class Roo.data.JsonStore
+ * Small helper class to make creating Stores for JSON data easier. <br/>
+<pre><code>
+var store = new Roo.data.JsonStore({
+    url: 'get-images.php',
+    root: 'images',
+    fields: ['name', 'url', {name:'size', type: 'float'}, {name:'lastmod', type:'date'}]
+});
+</code></pre>
+ * <b>Note: Although they are not listed, this class inherits all of the config options of Store,
+ * JsonReader and HttpProxy (unless inline data is provided).</b>
+ * @cfg {Array} fields An array of field definition objects, or field name strings.
+ * @constructor
+ * @param {Object} config
+ */
+Roo.data.JsonStore = function(c){
+    Roo.data.JsonStore.superclass.constructor.call(this, Roo.apply(c, {
+        proxy: !c.data ? new Roo.data.HttpProxy({url: c.url}) : undefined,
+        reader: new Roo.data.JsonReader(c, c.fields)
+    }));
+};
+Roo.extend(Roo.data.JsonStore, Roo.data.Store);/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+Roo.data.Field = function(config){
+    if(typeof config == "string"){
+        config = {name: config};
+    }
+    Roo.apply(this, config);
+    
+    if(!this.type){
+        this.type = "auto";
+    }
+    
+    var st = Roo.data.SortTypes;
+    // named sortTypes are supported, here we look them up
+    if(typeof this.sortType == "string"){
+        this.sortType = st[this.sortType];
+    }
+    
+    // set default sortType for strings and dates
+    if(!this.sortType){
+        switch(this.type){
+            case "string":
+                this.sortType = st.asUCString;
+                break;
+            case "date":
+                this.sortType = st.asDate;
+                break;
+            default:
+                this.sortType = st.none;
+        }
+    }
+
+    // define once
+    var stripRe = /[\$,%]/g;
+
+    // prebuilt conversion function for this field, instead of
+    // switching every time we're reading a value
+    if(!this.convert){
+        var cv, dateFormat = this.dateFormat;
+        switch(this.type){
+            case "":
+            case "auto":
+            case undefined:
+                cv = function(v){ return v; };
+                break;
+            case "string":
+                cv = function(v){ return (v === undefined || v === null) ? '' : String(v); };
+                break;
+            case "int":
+                cv = function(v){
+                    return v !== undefined && v !== null && v !== '' ?
+                           parseInt(String(v).replace(stripRe, ""), 10) : '';
+                    };
+                break;
+            case "float":
+                cv = function(v){
+                    return v !== undefined && v !== null && v !== '' ?
+                           parseFloat(String(v).replace(stripRe, ""), 10) : ''; 
+                    };
+                break;
+            case "bool":
+            case "boolean":
+                cv = function(v){ return v === true || v === "true" || v == 1; };
+                break;
+            case "date":
+                cv = function(v){
+                    if(!v){
+                        return '';
+                    }
+                    if(v instanceof Date){
+                        return v;
+                    }
+                    if(dateFormat){
+                        if(dateFormat == "timestamp"){
+                            return new Date(v*1000);
+                        }
+                        return Date.parseDate(v, dateFormat);
+                    }
+                    var parsed = Date.parse(v);
+                    return parsed ? new Date(parsed) : null;
+                };
+             break;
+            
+        }
+        this.convert = cv;
+    }
+};
+
+Roo.data.Field.prototype = {
+    dateFormat: null,
+    defaultValue: "",
+    mapping: null,
+    sortType : null,
+    sortDir : "ASC"
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+// Base class for reading structured data from a data source.  This class is intended to be
+// extended (see ArrayReader, JsonReader and XmlReader) and should not be created directly.
+
+/**
+ * @class Roo.data.DataReader
+ * Base class for reading structured data from a data source.  This class is intended to be
+ * extended (see {Roo.data.ArrayReader}, {Roo.data.JsonReader} and {Roo.data.XmlReader}) and should not be created directly.
+ */
+
+Roo.data.DataReader = function(meta, recordType){
+    
+    this.meta = meta;
+    
+    this.recordType = recordType instanceof Array ? 
+        Roo.data.Record.create(recordType) : recordType;
+};
+
+Roo.data.DataReader.prototype = {
+     /**
+     * Create an empty record
+     * @param {Object} data (optional) - overlay some values
+     * @return {Roo.data.Record} record created.
+     */
+    newRow :  function(d) {
+        var da =  {};
+        this.recordType.prototype.fields.each(function(c) {
+            switch( c.type) {
+                case 'int' : da[c.name] = 0; break;
+                case 'date' : da[c.name] = new Date(); break;
+                case 'float' : da[c.name] = 0.0; break;
+                case 'boolean' : da[c.name] = false; break;
+                default : da[c.name] = ""; break;
+            }
+            
+        });
+        return new this.recordType(Roo.apply(da, d));
+    }
+    
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.DataProxy
+ * @extends Roo.data.Observable
+ * This class is an abstract base class for implementations which provide retrieval of
+ * unformatted data objects.<br>
+ * <p>
+ * DataProxy implementations are usually used in conjunction with an implementation of Roo.data.DataReader
+ * (of the appropriate type which knows how to parse the data object) to provide a block of
+ * {@link Roo.data.Records} to an {@link Roo.data.Store}.<br>
+ * <p>
+ * Custom implementations must implement the load method as described in
+ * {@link Roo.data.HttpProxy#load}.
+ */
+Roo.data.DataProxy = function(){
+    this.addEvents({
+        /**
+         * @event beforeload
+         * Fires before a network request is made to retrieve a data object.
+         * @param {Object} This DataProxy object.
+         * @param {Object} params The params parameter to the load function.
+         */
+        beforeload : true,
+        /**
+         * @event load
+         * Fires before the load method's callback is called.
+         * @param {Object} This DataProxy object.
+         * @param {Object} o The data object.
+         * @param {Object} arg The callback argument object passed to the load function.
+         */
+        load : true,
+        /**
+         * @event loadexception
+         * Fires if an Exception occurs during data retrieval.
+         * @param {Object} This DataProxy object.
+         * @param {Object} o The data object.
+         * @param {Object} arg The callback argument object passed to the load function.
+         * @param {Object} e The Exception.
+         */
+        loadexception : true
+    });
+    Roo.data.DataProxy.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.data.DataProxy, Roo.util.Observable);
+
+    /**
+     * @cfg {void} listeners (Not available) Constructor blocks listeners from being set
+     */
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.data.MemoryProxy
+ * An implementation of Roo.data.DataProxy that simply passes the data specified in its constructor
+ * to the Reader when its load method is called.
+ * @constructor
+ * @param {Object} data The data object which the Reader uses to construct a block of Roo.data.Records.
+ */
+Roo.data.MemoryProxy = function(data){
+    if (data.data) {
+        data = data.data;
+    }
+    Roo.data.MemoryProxy.superclass.constructor.call(this);
+    this.data = data;
+};
+
+Roo.extend(Roo.data.MemoryProxy, Roo.data.DataProxy, {
+    /**
+     * Load data from the requested source (in this case an in-memory
+     * data object passed to the constructor), read the data object into
+     * a block of Roo.data.Records using the passed Roo.data.DataReader implementation, and
+     * process that block using the passed callback.
+     * @param {Object} params This parameter is not used by the MemoryProxy class.
+     * @param {Roo.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Roo.data.Records.
+     * @param {Function} callback The function into which to pass the block of Roo.data.records.
+     * The function must be passed <ul>
+     * <li>The Record block object</li>
+     * <li>The "arg" argument from the load function</li>
+     * <li>A boolean success indicator</li>
+     * </ul>
+     * @param {Object} scope The scope in which to call the callback
+     * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
+     */
+    load : function(params, reader, callback, scope, arg){
+        params = params || {};
+        var result;
+        try {
+            result = reader.readRecords(this.data);
+        }catch(e){
+            this.fireEvent("loadexception", this, arg, null, e);
+            callback.call(scope, null, arg, false);
+            return;
+        }
+        callback.call(scope, result, arg, true);
+    },
+    
+    // private
+    update : function(params, records){
+        
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.data.HttpProxy
+ * @extends Roo.data.DataProxy
+ * An implementation of {@link Roo.data.DataProxy} that reads a data object from an {@link Roo.data.Connection} object
+ * configured to reference a certain URL.<br><br>
+ * <p>
+ * <em>Note that this class cannot be used to retrieve data from a domain other than the domain
+ * from which the running page was served.<br><br>
+ * <p>
+ * For cross-domain access to remote data, use an {@link Roo.data.ScriptTagProxy}.</em><br><br>
+ * <p>
+ * Be aware that to enable the browser to parse an XML document, the server must set
+ * the Content-Type header in the HTTP response to "text/xml".
+ * @constructor
+ * @param {Object} conn Connection config options to add to each request (e.g. {url: 'foo.php'} or
+ * an {@link Roo.data.Connection} object.  If a Connection config is passed, the singleton {@link Roo.Ajax} object
+ * will be used to make the request.
+ */
+Roo.data.HttpProxy = function(conn){
+    Roo.data.HttpProxy.superclass.constructor.call(this);
+    // is conn a conn config or a real conn?
+    this.conn = conn;
+    this.useAjax = !conn || !conn.events;
+  
+};
+
+Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
+    // thse are take from connection...
+    
+    /**
+     * @cfg {String} url (Optional) The default URL to be used for requests to the server. (defaults to undefined)
+     */
+    /**
+     * @cfg {Object} extraParams (Optional) An object containing properties which are used as
+     * extra parameters to each request made by this object. (defaults to undefined)
+     */
+    /**
+     * @cfg {Object} defaultHeaders (Optional) An object containing request headers which are added
+     *  to each request made by this object. (defaults to undefined)
+     */
+    /**
+     * @cfg {String} method (Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
+     */
+    /**
+     * @cfg {Number} timeout (Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)
+     */
+     /**
+     * @cfg {Boolean} autoAbort (Optional) Whether this request should abort any pending requests. (defaults to false)
+     * @type Boolean
+     */
+  
+
+    /**
+     * @cfg {Boolean} disableCaching (Optional) True to add a unique cache-buster param to GET requests. (defaults to true)
+     * @type Boolean
+     */
+    /**
+     * Return the {@link Roo.data.Connection} object being used by this Proxy.
+     * @return {Connection} The Connection object. This object may be used to subscribe to events on
+     * a finer-grained basis than the DataProxy events.
+     */
+    getConnection : function(){
+        return this.useAjax ? Roo.Ajax : this.conn;
+    },
+
+    /**
+     * Load data from the configured {@link Roo.data.Connection}, read the data object into
+     * a block of Roo.data.Records using the passed {@link Roo.data.DataReader} implementation, and
+     * process that block using the passed callback.
+     * @param {Object} params An object containing properties which are to be used as HTTP parameters
+     * for the request to the remote server.
+     * @param {Roo.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Roo.data.Records.
+     * @param {Function} callback The function into which to pass the block of Roo.data.Records.
+     * The function must be passed <ul>
+     * <li>The Record block object</li>
+     * <li>The "arg" argument from the load function</li>
+     * <li>A boolean success indicator</li>
+     * </ul>
+     * @param {Object} scope The scope in which to call the callback
+     * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
+     */
+    load : function(params, reader, callback, scope, arg){
+        if(this.fireEvent("beforeload", this, params) !== false){
+            var  o = {
+                params : params || {},
+                request: {
+                    callback : callback,
+                    scope : scope,
+                    arg : arg
+                },
+                reader: reader,
+                callback : this.loadResponse,
+                scope: this
+            };
+            if(this.useAjax){
+                Roo.applyIf(o, this.conn);
+                if(this.activeRequest){
+                    Roo.Ajax.abort(this.activeRequest);
+                }
+                this.activeRequest = Roo.Ajax.request(o);
+            }else{
+                this.conn.request(o);
+            }
+        }else{
+            callback.call(scope||this, null, arg, false);
+        }
+    },
+
+    // private
+    loadResponse : function(o, success, response){
+        delete this.activeRequest;
+        if(!success){
+            this.fireEvent("loadexception", this, o, response);
+            o.request.callback.call(o.request.scope, null, o.request.arg, false);
+            return;
+        }
+        var result;
+        try {
+            result = o.reader.read(response);
+        }catch(e){
+            this.fireEvent("loadexception", this, o, response, e);
+            o.request.callback.call(o.request.scope, null, o.request.arg, false);
+            return;
+        }
+        
+        this.fireEvent("load", this, o, o.request.arg);
+        o.request.callback.call(o.request.scope, result, o.request.arg, true);
+    },
+
+    // private
+    update : function(dataSet){
+
+    },
+
+    // private
+    updateResponse : function(dataSet){
+
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.ScriptTagProxy
+ * An implementation of Roo.data.DataProxy that reads a data object from a URL which may be in a domain
+ * other than the originating domain of the running page.<br><br>
+ * <p>
+ * <em>Note that if you are retrieving data from a page that is in a domain that is NOT the same as the originating domain
+ * of the running page, you must use this class, rather than DataProxy.</em><br><br>
+ * <p>
+ * The content passed back from a server resource requested by a ScriptTagProxy is executable JavaScript
+ * source code that is used as the source inside a &lt;script> tag.<br><br>
+ * <p>
+ * In order for the browser to process the returned data, the server must wrap the data object
+ * with a call to a callback function, the name of which is passed as a parameter by the ScriptTagProxy.
+ * Below is a Java example for a servlet which returns data for either a ScriptTagProxy, or an HttpProxy
+ * depending on whether the callback name was passed:
+ * <p>
+ * <pre><code>
+boolean scriptTag = false;
+String cb = request.getParameter("callback");
+if (cb != null) {
+    scriptTag = true;
+    response.setContentType("text/javascript");
+} else {
+    response.setContentType("application/x-json");
+}
+Writer out = response.getWriter();
+if (scriptTag) {
+    out.write(cb + "(");
+}
+out.print(dataBlock.toJsonString());
+if (scriptTag) {
+    out.write(");");
+}
+</pre></code>
+ *
+ * @constructor
+ * @param {Object} config A configuration object.
+ */
+Roo.data.ScriptTagProxy = function(config){
+    Roo.data.ScriptTagProxy.superclass.constructor.call(this);
+    Roo.apply(this, config);
+    this.head = document.getElementsByTagName("head")[0];
+};
+
+Roo.data.ScriptTagProxy.TRANS_ID = 1000;
+
+Roo.extend(Roo.data.ScriptTagProxy, Roo.data.DataProxy, {
+    /**
+     * @cfg {String} url The URL from which to request the data object.
+     */
+    /**
+     * @cfg {Number} timeout (Optional) The number of milliseconds to wait for a response. Defaults to 30 seconds.
+     */
+    timeout : 30000,
+    /**
+     * @cfg {String} callbackParam (Optional) The name of the parameter to pass to the server which tells
+     * the server the name of the callback function set up by the load call to process the returned data object.
+     * Defaults to "callback".<p>The server-side processing must read this parameter value, and generate
+     * javascript output which calls this named function passing the data object as its only parameter.
+     */
+    callbackParam : "callback",
+    /**
+     *  @cfg {Boolean} nocache (Optional) Defaults to true. Disable cacheing by adding a unique parameter
+     * name to the request.
+     */
+    nocache : true,
+
+    /**
+     * Load data from the configured URL, read the data object into
+     * a block of Roo.data.Records using the passed Roo.data.DataReader implementation, and
+     * process that block using the passed callback.
+     * @param {Object} params An object containing properties which are to be used as HTTP parameters
+     * for the request to the remote server.
+     * @param {Roo.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Roo.data.Records.
+     * @param {Function} callback The function into which to pass the block of Roo.data.Records.
+     * The function must be passed <ul>
+     * <li>The Record block object</li>
+     * <li>The "arg" argument from the load function</li>
+     * <li>A boolean success indicator</li>
+     * </ul>
+     * @param {Object} scope The scope in which to call the callback
+     * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
+     */
+    load : function(params, reader, callback, scope, arg){
+        if(this.fireEvent("beforeload", this, params) !== false){
+
+            var p = Roo.urlEncode(Roo.apply(params, this.extraParams));
+
+            var url = this.url;
+            url += (url.indexOf("?") != -1 ? "&" : "?") + p;
+            if(this.nocache){
+                url += "&_dc=" + (new Date().getTime());
+            }
+            var transId = ++Roo.data.ScriptTagProxy.TRANS_ID;
+            var trans = {
+                id : transId,
+                cb : "stcCallback"+transId,
+                scriptId : "stcScript"+transId,
+                params : params,
+                arg : arg,
+                url : url,
+                callback : callback,
+                scope : scope,
+                reader : reader
+            };
+            var conn = this;
+
+            window[trans.cb] = function(o){
+                conn.handleResponse(o, trans);
+            };
+
+            url += String.format("&{0}={1}", this.callbackParam, trans.cb);
+
+            if(this.autoAbort !== false){
+                this.abort();
+            }
+
+            trans.timeoutId = this.handleFailure.defer(this.timeout, this, [trans]);
+
+            var script = document.createElement("script");
+            script.setAttribute("src", url);
+            script.setAttribute("type", "text/javascript");
+            script.setAttribute("id", trans.scriptId);
+            this.head.appendChild(script);
+
+            this.trans = trans;
+        }else{
+            callback.call(scope||this, null, arg, false);
+        }
+    },
+
+    // private
+    isLoading : function(){
+        return this.trans ? true : false;
+    },
+
+    /**
+     * Abort the current server request.
+     */
+    abort : function(){
+        if(this.isLoading()){
+            this.destroyTrans(this.trans);
+        }
+    },
+
+    // private
+    destroyTrans : function(trans, isLoaded){
+        this.head.removeChild(document.getElementById(trans.scriptId));
+        clearTimeout(trans.timeoutId);
+        if(isLoaded){
+            window[trans.cb] = undefined;
+            try{
+                delete window[trans.cb];
+            }catch(e){}
+        }else{
+            // if hasn't been loaded, wait for load to remove it to prevent script error
+            window[trans.cb] = function(){
+                window[trans.cb] = undefined;
+                try{
+                    delete window[trans.cb];
+                }catch(e){}
+            };
+        }
+    },
+
+    // private
+    handleResponse : function(o, trans){
+        this.trans = false;
+        this.destroyTrans(trans, true);
+        var result;
+        try {
+            result = trans.reader.readRecords(o);
+        }catch(e){
+            this.fireEvent("loadexception", this, o, trans.arg, e);
+            trans.callback.call(trans.scope||window, null, trans.arg, false);
+            return;
+        }
+        this.fireEvent("load", this, o, trans.arg);
+        trans.callback.call(trans.scope||window, result, trans.arg, true);
+    },
+
+    // private
+    handleFailure : function(trans){
+        this.trans = false;
+        this.destroyTrans(trans, false);
+        this.fireEvent("loadexception", this, null, trans.arg);
+        trans.callback.call(trans.scope||window, null, trans.arg, false);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.JsonReader
+ * @extends Roo.data.DataReader
+ * Data reader class to create an Array of Roo.data.Record objects from a JSON response
+ * based on mappings in a provided Roo.data.Record constructor.
+ * 
+ * The default behaviour of a store is to send ?_requestMeta=1, unless the class has recieved 'metaData' property
+ * in the reply previously. 
+ * 
+ * <p>
+ * Example code:
+ * <pre><code>
+var RecordDef = Roo.data.Record.create([
+    {name: 'name', mapping: 'name'},     // "mapping" property not needed if it's the same as "name"
+    {name: 'occupation'}                 // This field will use "occupation" as the mapping.
+]);
+var myReader = new Roo.data.JsonReader({
+    totalProperty: "results",    // The property which contains the total dataset size (optional)
+    root: "rows",                // The property which contains an Array of row objects
+    id: "id"                     // The property within each row object that provides an ID for the record (optional)
+}, RecordDef);
+</code></pre>
+ * <p>
+ * This would consume a JSON file like this:
+ * <pre><code>
+{ 'results': 2, 'rows': [
+    { 'id': 1, 'name': 'Bill', occupation: 'Gardener' },
+    { 'id': 2, 'name': 'Ben', occupation: 'Horticulturalist' } ]
+}
+</code></pre>
+ * @cfg {String} totalProperty Name of the property from which to retrieve the total number of records
+ * in the dataset. This is only needed if the whole dataset is not passed in one go, but is being
+ * paged from the remote server.
+ * @cfg {String} successProperty Name of the property from which to retrieve the success attribute used by forms.
+ * @cfg {String} root name of the property which contains the Array of row objects.
+ * @cfg {String} id Name of the property within a row object that contains a record identifier value.
+ * @constructor
+ * Create a new JsonReader
+ * @param {Object} meta Metadata configuration options
+ * @param {Object} recordType Either an Array of field definition objects,
+ * or an {@link Roo.data.Record} object created using {@link Roo.data.Record#create}.
+ */
+Roo.data.JsonReader = function(meta, recordType){
+    
+    meta = meta || {};
+    // set some defaults:
+    Roo.applyIf(meta, {
+        totalProperty: 'total',
+        successProperty : 'success',
+        root : 'data',
+        id : 'id'
+    });
+    
+    Roo.data.JsonReader.superclass.constructor.call(this, meta, recordType||meta.fields);
+};
+Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
+    
+    /**
+     * @prop {Boolean} metaFromRemote  - if the meta data was loaded from the remote source.
+     * Used by Store query builder to append _requestMeta to params.
+     * 
+     */
+    metaFromRemote : false,
+    /**
+     * This method is only used by a DataProxy which has retrieved data from a remote server.
+     * @param {Object} response The XHR object which contains the JSON data in its responseText.
+     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * a cache of Roo.data.Records.
+     */
+    read : function(response){
+        var json = response.responseText;
+       
+        var o = /* eval:var:o */ eval("("+json+")");
+        if(!o) {
+            throw {message: "JsonReader.read: Json object not found"};
+        }
+        
+        if(o.metaData){
+            
+            delete this.ef;
+            this.metaFromRemote = true;
+            this.meta = o.metaData;
+            this.recordType = Roo.data.Record.create(o.metaData.fields);
+            this.onMetaChange(this.meta, this.recordType, o);
+        }
+        return this.readRecords(o);
+    },
+
+    // private function a store will implement
+    onMetaChange : function(meta, recordType, o){
+
+    },
+
+    /**
+	 * @ignore
+	 */
+    simpleAccess: function(obj, subsc) {
+    	return obj[subsc];
+    },
+
+	/**
+	 * @ignore
+	 */
+    getJsonAccessor: function(){
+        var re = /[\[\.]/;
+        return function(expr) {
+            try {
+                return(re.test(expr))
+                    ? new Function("obj", "return obj." + expr)
+                    : function(obj){
+                        return obj[expr];
+                    };
+            } catch(e){}
+            return Roo.emptyFn;
+        };
+    }(),
+
+    /**
+     * Create a data block containing Roo.data.Records from an XML document.
+     * @param {Object} o An object which contains an Array of row objects in the property specified
+     * in the config as 'root, and optionally a property, specified in the config as 'totalProperty'
+     * which contains the total size of the dataset.
+     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * a cache of Roo.data.Records.
+     */
+    readRecords : function(o){
+        /**
+         * After any data loads, the raw JSON data is available for further custom processing.
+         * @type Object
+         */
+        this.o = o;
+        var s = this.meta, Record = this.recordType,
+            f = Record.prototype.fields, fi = f.items, fl = f.length;
+
+//      Generate extraction functions for the totalProperty, the root, the id, and for each field
+        if (!this.ef) {
+            if(s.totalProperty) {
+	            this.getTotal = this.getJsonAccessor(s.totalProperty);
+	        }
+	        if(s.successProperty) {
+	            this.getSuccess = this.getJsonAccessor(s.successProperty);
+	        }
+	        this.getRoot = s.root ? this.getJsonAccessor(s.root) : function(p){return p;};
+	        if (s.id) {
+	        	var g = this.getJsonAccessor(s.id);
+	        	this.getId = function(rec) {
+	        		var r = g(rec);
+		        	return (r === undefined || r === "") ? null : r;
+	        	};
+	        } else {
+	        	this.getId = function(){return null;};
+	        }
+            this.ef = [];
+            for(var jj = 0; jj < fl; jj++){
+                f = fi[jj];
+                var map = (f.mapping !== undefined && f.mapping !== null) ? f.mapping : f.name;
+                this.ef[jj] = this.getJsonAccessor(map);
+            }
+        }
+
+    	var root = this.getRoot(o), c = root.length, totalRecords = c, success = true;
+    	if(s.totalProperty){
+            var vt = parseInt(this.getTotal(o), 10);
+            if(!isNaN(vt)){
+                totalRecords = vt;
+            }
+        }
+        if(s.successProperty){
+            var vs = this.getSuccess(o);
+            if(vs === false || vs === 'false'){
+                success = false;
+            }
+        }
+        var records = [];
+	    for(var i = 0; i < c; i++){
+		    var n = root[i];
+	        var values = {};
+	        var id = this.getId(n);
+	        for(var j = 0; j < fl; j++){
+	            f = fi[j];
+                var v = this.ef[j](n);
+                if (!f.convert) {
+                    Roo.log('missing convert for ' + f.name);
+                    Roo.log(f);
+                    continue;
+                }
+                values[f.name] = f.convert((v !== undefined) ? v : f.defaultValue);
+	        }
+	        var record = new Record(values, id);
+	        record.json = n;
+	        records[i] = record;
+	    }
+	    return {
+            raw : o,
+	        success : success,
+	        records : records,
+	        totalRecords : totalRecords
+	    };
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.ArrayReader
+ * @extends Roo.data.DataReader
+ * Data reader class to create an Array of Roo.data.Record objects from an Array.
+ * Each element of that Array represents a row of data fields. The
+ * fields are pulled into a Record object using as a subscript, the <em>mapping</em> property
+ * of the field definition if it exists, or the field's ordinal position in the definition.<br>
+ * <p>
+ * Example code:.
+ * <pre><code>
+var RecordDef = Roo.data.Record.create([
+    {name: 'name', mapping: 1},         // "mapping" only needed if an "id" field is present which
+    {name: 'occupation', mapping: 2}    // precludes using the ordinal position as the index.
+]);
+var myReader = new Roo.data.ArrayReader({
+    id: 0                     // The subscript within row Array that provides an ID for the Record (optional)
+}, RecordDef);
+</code></pre>
+ * <p>
+ * This would consume an Array like this:
+ * <pre><code>
+[ [1, 'Bill', 'Gardener'], [2, 'Ben', 'Horticulturalist'] ]
+  </code></pre>
+ * @cfg {String} id (optional) The subscript within row Array that provides an ID for the Record
+ * @constructor
+ * Create a new JsonReader
+ * @param {Object} meta Metadata configuration options.
+ * @param {Object} recordType Either an Array of field definition objects
+ * as specified to {@link Roo.data.Record#create},
+ * or an {@link Roo.data.Record} object
+ * created using {@link Roo.data.Record#create}.
+ */
+Roo.data.ArrayReader = function(meta, recordType){
+    Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType);
+};
+
+Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
+    /**
+     * Create a data block containing Roo.data.Records from an XML document.
+     * @param {Object} o An Array of row objects which represents the dataset.
+     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * a cache of Roo.data.Records.
+     */
+    readRecords : function(o){
+        var sid = this.meta ? this.meta.id : null;
+    	var recordType = this.recordType, fields = recordType.prototype.fields;
+    	var records = [];
+    	var root = o;
+	    for(var i = 0; i < root.length; i++){
+		    var n = root[i];
+	        var values = {};
+	        var id = ((sid || sid === 0) && n[sid] !== undefined && n[sid] !== "" ? n[sid] : null);
+	        for(var j = 0, jlen = fields.length; j < jlen; j++){
+                var f = fields.items[j];
+                var k = f.mapping !== undefined && f.mapping !== null ? f.mapping : j;
+                var v = n[k] !== undefined ? n[k] : f.defaultValue;
+                v = f.convert(v);
+                values[f.name] = v;
+            }
+	        var record = new recordType(values, id);
+	        record.json = n;
+	        records[records.length] = record;
+	    }
+	    return {
+	        records : records,
+	        totalRecords : records.length
+	    };
+    }
+});/*
+ * - LGPL
+ * * 
+ */
+
+/**
+ * @class Roo.bootstrap.ComboBox
+ * @extends Roo.bootstrap.TriggerField
+ * A combobox control with support for autocomplete, remote-loading, paging and many other features.
+ * @cfg {Boolean} append (true|false) default false
+ * @constructor
+ * Create a new ComboBox.
+ * @param {Object} config Configuration options
+ */
+Roo.bootstrap.ComboBox = function(config){
+    Roo.bootstrap.ComboBox.superclass.constructor.call(this, config);
+    this.addEvents({
+        /**
+         * @event expand
+         * Fires when the dropdown list is expanded
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'expand' : true,
+        /**
+         * @event collapse
+         * Fires when the dropdown list is collapsed
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'collapse' : true,
+        /**
+         * @event beforeselect
+         * Fires before a list item is selected. Return false to cancel the selection.
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.data.Record} record The data record returned from the underlying store
+	     * @param {Number} index The index of the selected item in the dropdown list
+	     */
+        'beforeselect' : true,
+        /**
+         * @event select
+         * Fires when a list item is selected
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
+	     * @param {Number} index The index of the selected item in the dropdown list
+	     */
+        'select' : true,
+        /**
+         * @event beforequery
+         * Fires before all queries are processed. Return false to cancel the query or set cancel to true.
+         * The event object passed has these properties:
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {String} query The query
+	     * @param {Boolean} forceAll true to force "all" query
+	     * @param {Boolean} cancel true to cancel the query
+	     * @param {Object} e The query event object
+	     */
+        'beforequery': true,
+         /**
+         * @event add
+         * Fires when the 'add' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'add' : true,
+        /**
+         * @event edit
+         * Fires when the 'edit' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
+	     */
+        'edit' : true
+        
+        
+    });
+    
+    
+    this.selectedIndex = -1;
+    if(this.mode == 'local'){
+        if(config.queryDelay === undefined){
+            this.queryDelay = 10;
+        }
+        if(config.minChars === undefined){
+            this.minChars = 0;
+        }
+    }
+};
+
+Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
+     
+    /**
+     * @cfg {Boolean} lazyRender True to prevent the ComboBox from rendering until requested (should always be used when
+     * rendering into an Roo.Editor, defaults to false)
+     */
+    /**
+     * @cfg {Boolean/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to:
+     * {tag: "input", type: "text", size: "24", autocomplete: "off"})
+     */
+    /**
+     * @cfg {Roo.data.Store} store The data store to which this combo is bound (defaults to undefined)
+     */
+    /**
+     * @cfg {String} title If supplied, a header element is created containing this text and added into the top of
+     * the dropdown list (defaults to undefined, with no header element)
+     */
+
+     /**
+     * @cfg {String/Roo.Template} tpl The template to use to render the output
+     */
+     
+     /**
+     * @cfg {Number} listWidth The width in pixels of the dropdown list (defaults to the width of the ComboBox field)
+     */
+    listWidth: undefined,
+    /**
+     * @cfg {String} displayField The underlying data field name to bind to this CombBox (defaults to undefined if
+     * mode = 'remote' or 'text' if mode = 'local')
+     */
+    displayField: undefined,
+    /**
+     * @cfg {String} valueField The underlying data value name to bind to this CombBox (defaults to undefined if
+     * mode = 'remote' or 'value' if mode = 'local'). 
+     * Note: use of a valueField requires the user make a selection
+     * in order for a value to be mapped.
+     */
+    valueField: undefined,
+    
+    
+    /**
+     * @cfg {String} hiddenName If specified, a hidden form field with this name is dynamically generated to store the
+     * field's data value (defaults to the underlying DOM element's name)
+     */
+    hiddenName: undefined,
+    /**
+     * @cfg {String} listClass CSS class to apply to the dropdown list element (defaults to '')
+     */
+    listClass: '',
+    /**
+     * @cfg {String} selectedClass CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')
+     */
+    selectedClass: 'active',
+    
+    /**
+     * @cfg {Boolean/String} shadow True or "sides" for the default effect, "frame" for 4-way shadow, and "drop" for bottom-right
+     */
+    shadow:'sides',
+    /**
+     * @cfg {String} listAlign A valid anchor position value. See {@link Roo.Element#alignTo} for details on supported
+     * anchor positions (defaults to 'tl-bl')
+     */
+    listAlign: 'tl-bl?',
+    /**
+     * @cfg {Number} maxHeight The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)
+     */
+    maxHeight: 300,
+    /**
+     * @cfg {String} triggerAction The action to execute when the trigger field is activated.  Use 'all' to run the
+     * query specified by the allQuery config option (defaults to 'query')
+     */
+    triggerAction: 'query',
+    /**
+     * @cfg {Number} minChars The minimum number of characters the user must type before autocomplete and typeahead activate
+     * (defaults to 4, does not apply if editable = false)
+     */
+    minChars : 4,
+    /**
+     * @cfg {Boolean} typeAhead True to populate and autoselect the remainder of the text being typed after a configurable
+     * delay (typeAheadDelay) if it matches a known value (defaults to false)
+     */
+    typeAhead: false,
+    /**
+     * @cfg {Number} queryDelay The length of time in milliseconds to delay between the start of typing and sending the
+     * query to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')
+     */
+    queryDelay: 500,
+    /**
+     * @cfg {Number} pageSize If greater than 0, a paging toolbar is displayed in the footer of the dropdown list and the
+     * filter queries will execute with page start and limit parameters.  Only applies when mode = 'remote' (defaults to 0)
+     */
+    pageSize: 0,
+    /**
+     * @cfg {Boolean} selectOnFocus True to select any existing text in the field immediately on focus.  Only applies
+     * when editable = true (defaults to false)
+     */
+    selectOnFocus:false,
+    /**
+     * @cfg {String} queryParam Name of the query as it will be passed on the querystring (defaults to 'query')
+     */
+    queryParam: 'query',
+    /**
+     * @cfg {String} loadingText The text to display in the dropdown list while data is loading.  Only applies
+     * when mode = 'remote' (defaults to 'Loading...')
+     */
+    loadingText: 'Loading...',
+    /**
+     * @cfg {Boolean} resizable True to add a resize handle to the bottom of the dropdown list (defaults to false)
+     */
+    resizable: false,
+    /**
+     * @cfg {Number} handleHeight The height in pixels of the dropdown list resize handle if resizable = true (defaults to 8)
+     */
+    handleHeight : 8,
+    /**
+     * @cfg {Boolean} editable False to prevent the user from typing text directly into the field, just like a
+     * traditional select (defaults to true)
+     */
+    editable: true,
+    /**
+     * @cfg {String} allQuery The text query to send to the server to return all records for the list with no filtering (defaults to '')
+     */
+    allQuery: '',
+    /**
+     * @cfg {String} mode Set to 'local' if the ComboBox loads local data (defaults to 'remote' which loads from the server)
+     */
+    mode: 'remote',
+    /**
+     * @cfg {Number} minListWidth The minimum width of the dropdown list in pixels (defaults to 70, will be ignored if
+     * listWidth has a higher value)
+     */
+    minListWidth : 70,
+    /**
+     * @cfg {Boolean} forceSelection True to restrict the selected value to one of the values in the list, false to
+     * allow the user to set arbitrary text into the field (defaults to false)
+     */
+    forceSelection:false,
+    /**
+     * @cfg {Number} typeAheadDelay The length of time in milliseconds to wait until the typeahead text is displayed
+     * if typeAhead = true (defaults to 250)
+     */
+    typeAheadDelay : 250,
+    /**
+     * @cfg {String} valueNotFoundText When using a name/value combo, if the value passed to setValue is not found in
+     * the store, valueNotFoundText will be displayed as the field text if defined (defaults to undefined)
+     */
+    valueNotFoundText : undefined,
+    /**
+     * @cfg {Boolean} blockFocus Prevents all focus calls, so it can work with things like HTML edtor bar
+     */
+    blockFocus : false,
+    
+    /**
+     * @cfg {Boolean} disableClear Disable showing of clear button.
+     */
+    disableClear : false,
+    /**
+     * @cfg {Boolean} alwaysQuery  Disable caching of results, and always send query
+     */
+    alwaysQuery : false,
+    
+    /**
+     * @cfg {Boolean} multiple  (true|false) ComboBobArray, default false
+     */
+    multiple : false,
+    
+    //private
+    addicon : false,
+    editicon: false,
+    
+    page: 0,
+    hasQuery: false,
+    append: false,
+    loadNext: false,
+    item: [],
+    
+    // element that contains real text value.. (when hidden is used..)
+     
+    // private
+    initEvents: function(){
+        
+        if (!this.store) {
+            throw "can not find store for combo";
+        }
+        this.store = Roo.factory(this.store, Roo.data);
+        
+        
+        
+        Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
+        
+        
+        if(this.hiddenName){
+            
+            this.hiddenField = this.el.select('input.form-hidden-field',true).first();
+            
+            this.hiddenField.dom.value =
+                this.hiddenValue !== undefined ? this.hiddenValue :
+                this.value !== undefined ? this.value : '';
+
+            // prevent input submission
+            this.el.dom.removeAttribute('name');
+            this.hiddenField.dom.setAttribute('name', this.hiddenName);
+             
+             
+        }
+        //if(Roo.isGecko){
+        //    this.el.dom.setAttribute('autocomplete', 'off');
+        //}
+
+        var cls = 'x-combo-list';
+        this.list = this.el.select('ul.dropdown-menu',true).first();
+
+        //this.list = new Roo.Layer({
+        //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
+        //});
+        
+        var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
+        this.list.setWidth(lw);
+        
+        this.list.on('mouseover', this.onViewOver, this);
+        this.list.on('mousemove', this.onViewMove, this);
+        
+        this.list.on('scroll', this.onViewScroll, this);
+        
+        /*
+        this.list.swallowEvent('mousewheel');
+        this.assetHeight = 0;
+
+        if(this.title){
+            this.header = this.list.createChild({cls:cls+'-hd', html: this.title});
+            this.assetHeight += this.header.getHeight();
+        }
+
+        this.innerList = this.list.createChild({cls:cls+'-inner'});
+        this.innerList.on('mouseover', this.onViewOver, this);
+        this.innerList.on('mousemove', this.onViewMove, this);
+        this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
+        
+        if(this.allowBlank && !this.pageSize && !this.disableClear){
+            this.footer = this.list.createChild({cls:cls+'-ft'});
+            this.pageTb = new Roo.Toolbar(this.footer);
+           
+        }
+        if(this.pageSize){
+            this.footer = this.list.createChild({cls:cls+'-ft'});
+            this.pageTb = new Roo.PagingToolbar(this.footer, this.store,
+                    {pageSize: this.pageSize});
+            
+        }
+        
+        if (this.pageTb && this.allowBlank && !this.disableClear) {
+            var _this = this;
+            this.pageTb.add(new Roo.Toolbar.Fill(), {
+                cls: 'x-btn-icon x-btn-clear',
+                text: '&#160;',
+                handler: function()
+                {
+                    _this.collapse();
+                    _this.clearValue();
+                    _this.onSelect(false, -1);
+                }
+            });
+        }
+        if (this.footer) {
+            this.assetHeight += this.footer.getHeight();
+        }
+        */
+            
+        if(!this.tpl){
+            this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
+        }
+
+        this.view = new Roo.View(this.el.select('ul.dropdown-menu',true).first(), this.tpl, {
+            singleSelect:true, store: this.store, selectedClass: this.selectedClass
+        });
+        //this.view.wrapEl.setDisplayed(false);
+        this.view.on('click', this.onViewClick, this);
+        
+        
+        
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('loadexception', this.onLoadException, this);
+        /*
+        if(this.resizable){
+            this.resizer = new Roo.Resizable(this.list,  {
+               pinned:true, handles:'se'
+            });
+            this.resizer.on('resize', function(r, w, h){
+                this.maxHeight = h-this.handleHeight-this.list.getFrameWidth('tb')-this.assetHeight;
+                this.listWidth = w;
+                this.innerList.setWidth(w - this.list.getFrameWidth('lr'));
+                this.restrictHeight();
+            }, this);
+            this[this.pageSize?'footer':'innerList'].setStyle('margin-bottom', this.handleHeight+'px');
+        }
+        */
+        if(!this.editable){
+            this.editable = true;
+            this.setEditable(false);
+        }
+        
+        /*
+        
+        if (typeof(this.events.add.listeners) != 'undefined') {
+            
+            this.addicon = this.wrap.createChild(
+                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-add' });  
+       
+            this.addicon.on('click', function(e) {
+                this.fireEvent('add', this);
+            }, this);
+        }
+        if (typeof(this.events.edit.listeners) != 'undefined') {
+            
+            this.editicon = this.wrap.createChild(
+                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-edit' });  
+            if (this.addicon) {
+                this.editicon.setStyle('margin-left', '40px');
+            }
+            this.editicon.on('click', function(e) {
+                
+                // we fire even  if inothing is selected..
+                this.fireEvent('edit', this, this.lastData );
+                
+            }, this);
+        }
+        */
+        
+        this.keyNav = new Roo.KeyNav(this.inputEl(), {
+            "up" : function(e){
+                this.inKeyMode = true;
+                this.selectPrev();
+            },
+
+            "down" : function(e){
+                if(!this.isExpanded()){
+                    this.onTriggerClick();
+                }else{
+                    this.inKeyMode = true;
+                    this.selectNext();
+                }
+            },
+
+            "enter" : function(e){
+                this.onViewClick();
+                //return true;
+            },
+
+            "esc" : function(e){
+                this.collapse();
+            },
+
+            "tab" : function(e){
+                this.collapse();
+                
+                if(this.fireEvent("specialkey", this, e)){
+                    this.onViewClick(false);
+                }
+                
+                return true;
+            },
+
+            scope : this,
+
+            doRelay : function(foo, bar, hname){
+                if(hname == 'down' || this.scope.isExpanded()){
+                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+                }
+                return true;
+            },
+
+            forceKeyDown: true
+        });
+        
+        
+        this.queryDelay = Math.max(this.queryDelay || 10,
+                this.mode == 'local' ? 10 : 250);
+        
+        
+        this.dqTask = new Roo.util.DelayedTask(this.initQuery, this);
+        
+        if(this.typeAhead){
+            this.taTask = new Roo.util.DelayedTask(this.onTypeAhead, this);
+        }
+        if(this.editable !== false){
+            this.inputEl().on("keyup", this.onKeyUp, this);
+        }
+        if(this.forceSelection){
+            this.on('blur', this.doForce, this);
+        }
+        
+        if(this.multiple){
+            this.choices = this.el.select('ul.select2-choices', true).first();
+            this.searchField = this.el.select('ul li.select2-search-field', true).first();
+        }
+    },
+
+    onDestroy : function(){
+        if(this.view){
+            this.view.setStore(null);
+            this.view.el.removeAllListeners();
+            this.view.el.remove();
+            this.view.purgeListeners();
+        }
+        if(this.list){
+            this.list.dom.innerHTML  = '';
+        }
+        if(this.store){
+            this.store.un('beforeload', this.onBeforeLoad, this);
+            this.store.un('load', this.onLoad, this);
+            this.store.un('loadexception', this.onLoadException, this);
+        }
+        Roo.bootstrap.ComboBox.superclass.onDestroy.call(this);
+    },
+
+    // private
+    fireKey : function(e){
+        if(e.isNavKeyPress() && !this.list.isVisible()){
+            this.fireEvent("specialkey", this, e);
+        }
+    },
+
+    // private
+    onResize: function(w, h){
+//        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
+//        
+//        if(typeof w != 'number'){
+//            // we do not handle it!?!?
+//            return;
+//        }
+//        var tw = this.trigger.getWidth();
+//       // tw += this.addicon ? this.addicon.getWidth() : 0;
+//       // tw += this.editicon ? this.editicon.getWidth() : 0;
+//        var x = w - tw;
+//        this.inputEl().setWidth( this.adjustWidth('input', x));
+//            
+//        //this.trigger.setStyle('left', x+'px');
+//        
+//        if(this.list && this.listWidth === undefined){
+//            var lw = Math.max(x + this.trigger.getWidth(), this.minListWidth);
+//            this.list.setWidth(lw);
+//            this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
+//        }
+        
+    
+        
+    },
+
+    /**
+     * Allow or prevent the user from directly editing the field text.  If false is passed,
+     * the user will only be able to select from the items defined in the dropdown list.  This method
+     * is the runtime equivalent of setting the 'editable' config option at config time.
+     * @param {Boolean} value True to allow the user to directly edit the field text
+     */
+    setEditable : function(value){
+        if(value == this.editable){
+            return;
+        }
+        this.editable = value;
+        if(!value){
+            this.inputEl().dom.setAttribute('readOnly', true);
+            this.inputEl().on('mousedown', this.onTriggerClick,  this);
+            this.inputEl().addClass('x-combo-noedit');
+        }else{
+            this.inputEl().dom.setAttribute('readOnly', false);
+            this.inputEl().un('mousedown', this.onTriggerClick,  this);
+            this.inputEl().removeClass('x-combo-noedit');
+        }
+    },
+
+    // private
+    
+    onBeforeLoad : function(combo,opts){
+        if(!this.hasFocus){
+            return;
+        }
+         if (!opts.add) {
+            this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
+         }
+        this.restrictHeight();
+        this.selectedIndex = -1;
+    },
+
+    // private
+    onLoad : function(){
+        
+        this.hasQuery = false;
+        
+        if(!this.hasFocus){
+            return;
+        }
+        
+        if(typeof(this.loading) !== 'undefined' && this.loading !== null){
+            this.loading.hide();
+        }
+        
+        if(this.store.getCount() > 0){
+            this.expand();
+            this.restrictHeight();
+            if(this.lastQuery == this.allQuery){
+                if(this.editable){
+                    this.inputEl().dom.select();
+                }
+                if(!this.selectByValue(this.value, true)){
+                    this.select(0, true);
+                }
+            }else{
+                this.selectNext();
+                if(this.typeAhead && this.lastKey != Roo.EventObject.BACKSPACE && this.lastKey != Roo.EventObject.DELETE){
+                    this.taTask.delay(this.typeAheadDelay);
+                }
+            }
+        }else{
+            this.onEmptyResults();
+        }
+        
+        //this.el.focus();
+    },
+    // private
+    onLoadException : function()
+    {
+        this.hasQuery = false;
+        
+        if(typeof(this.loading) !== 'undefined' && this.loading !== null){
+            this.loading.hide();
+        }
+        
+        this.collapse();
+        Roo.log(this.store.reader.jsonData);
+        if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
+            // fixme
+            //Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+        }
+        
+        
+    },
+    // private
+    onTypeAhead : function(){
+        if(this.store.getCount() > 0){
+            var r = this.store.getAt(0);
+            var newValue = r.data[this.displayField];
+            var len = newValue.length;
+            var selStart = this.getRawValue().length;
+            
+            if(selStart != len){
+                this.setRawValue(newValue);
+                this.selectText(selStart, newValue.length);
+            }
+        }
+    },
+
+    // private
+    onSelect : function(record, index){
+        if(this.fireEvent('beforeselect', this, record, index) !== false){
+            this.setFromData(index > -1 ? record.data : false);
+            this.collapse();
+            this.fireEvent('select', this, record, index);
+        }
+    },
+
+    /**
+     * Returns the currently selected field value or empty string if no value is set.
+     * @return {String} value The selected value
+     */
+    getValue : function(){
+        
+        if(this.multiple){
+            return (this.hiddenField) ? this.hiddenField.dom.value : this.value;
+        }
+        
+        if(this.valueField){
+            return typeof this.value != 'undefined' ? this.value : '';
+        }else{
+            return Roo.bootstrap.ComboBox.superclass.getValue.call(this);
+        }
+    },
+
+    /**
+     * Clears any text/value currently set in the field
+     */
+    clearValue : function(){
+        if(this.hiddenField){
+            this.hiddenField.dom.value = '';
+        }
+        this.value = '';
+        this.setRawValue('');
+        this.lastSelectionText = '';
+        
+    },
+
+    /**
+     * Sets the specified value into the field.  If the value finds a match, the corresponding record text
+     * will be displayed in the field.  If the value does not match the data value of an existing item,
+     * and the valueNotFoundText config option is defined, it will be displayed as the default field text.
+     * Otherwise the field will be blank (although the value will still be set).
+     * @param {String} value The value to match
+     */
+    setValue : function(v){
+        if(this.multiple){
+            if(!this.item.length){
+                this.clearValue();
+                return;
+            }
+            
+            var value = [];
+            var _this = this;
+            Roo.each(this.item, function(i){
+                if(_this.valueField){
+                    value.push(i[_this.valueField]);
+                    return;
+                }
+                
+                value.push(i);
+            });
+            
+            this.value = value.join(',');
+            
+            if(this.hiddenField){
+                this.hiddenField.dom.value = this.value;
+            }
+            
+            return;
+        }
+        
+        var text = v;
+        if(this.valueField){
+            var r = this.findRecord(this.valueField, v);
+            if(r){
+                text = r.data[this.displayField];
+            }else if(this.valueNotFoundText !== undefined){
+                text = this.valueNotFoundText;
+            }
+        }
+        this.lastSelectionText = text;
+        if(this.hiddenField){
+            this.hiddenField.dom.value = v;
+        }
+        Roo.bootstrap.ComboBox.superclass.setValue.call(this, text);
+        this.value = v;
+    },
+    /**
+     * @property {Object} the last set data for the element
+     */
+    
+    lastData : false,
+    /**
+     * Sets the value of the field based on a object which is related to the record format for the store.
+     * @param {Object} value the value to set as. or false on reset?
+     */
+    setFromData : function(o){
+        
+        if(this.multiple){
+            this.addItem(o);
+            return;
+        }
+        
+        var dv = ''; // display value
+        var vv = ''; // value value..
+        this.lastData = o;
+        if (this.displayField) {
+            dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
+        } else {
+            // this is an error condition!!!
+            Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
+        }
+        
+        if(this.valueField){
+            vv = !o || typeof(o[this.valueField]) == 'undefined' ? dv : o[this.valueField];
+        }
+        
+        if(this.hiddenField){
+            this.hiddenField.dom.value = vv;
+            
+            this.lastSelectionText = dv;
+            Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
+            this.value = vv;
+            return;
+        }
+        // no hidden field.. - we store the value in 'value', but still display
+        // display field!!!!
+        this.lastSelectionText = dv;
+        Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
+        this.value = vv;
+        
+        
+    },
+    // private
+    reset : function(){
+        // overridden so that last data is reset..
+        this.setValue(this.originalValue);
+        this.clearInvalid();
+        this.lastData = false;
+        if (this.view) {
+            this.view.clearSelections();
+        }
+    },
+    // private
+    findRecord : function(prop, value){
+        var record;
+        if(this.store.getCount() > 0){
+            this.store.each(function(r){
+                if(r.data[prop] == value){
+                    record = r;
+                    return false;
+                }
+                return true;
+            });
+        }
+        return record;
+    },
+    
+    getName: function()
+    {
+        // returns hidden if it's set..
+        if (!this.rendered) {return ''};
+        return !this.hiddenName && this.inputEl().dom.name  ? this.inputEl().dom.name : (this.hiddenName || '');
+        
+    },
+    // private
+    onViewMove : function(e, t){
+        this.inKeyMode = false;
+    },
+
+    // private
+    onViewOver : function(e, t){
+        if(this.inKeyMode){ // prevent key nav and mouse over conflicts
+            return;
+        }
+        var item = this.view.findItemFromChild(t);
+        if(item){
+            var index = this.view.indexOf(item);
+            this.select(index, false);
+        }
+    },
+
+    // private
+    onViewClick : function(doFocus)
+    {
+        var index = this.view.getSelectedIndexes()[0];
+        var r = this.store.getAt(index);
+        if(r){
+            this.onSelect(r, index);
+        }
+        if(doFocus !== false && !this.blockFocus){
+            this.inputEl().focus();
+        }
+    },
+
+    // private
+    restrictHeight : function(){
+        //this.innerList.dom.style.height = '';
+        //var inner = this.innerList.dom;
+        //var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
+        //this.innerList.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
+        //this.list.beginUpdate();
+        //this.list.setHeight(this.innerList.getHeight()+this.list.getFrameWidth('tb')+(this.resizable?this.handleHeight:0)+this.assetHeight);
+        this.list.alignTo(this.inputEl(), this.listAlign);
+        //this.list.endUpdate();
+    },
+
+    // private
+    onEmptyResults : function(){
+        this.collapse();
+    },
+
+    /**
+     * Returns true if the dropdown list is expanded, else false.
+     */
+    isExpanded : function(){
+        return this.list.isVisible();
+    },
+
+    /**
+     * Select an item in the dropdown list by its data value. This function does NOT cause the select event to fire.
+     * The store must be loaded and the list expanded for this function to work, otherwise use setValue.
+     * @param {String} value The data value of the item to select
+     * @param {Boolean} scrollIntoView False to prevent the dropdown list from autoscrolling to display the
+     * selected item if it is not currently in view (defaults to true)
+     * @return {Boolean} True if the value matched an item in the list, else false
+     */
+    selectByValue : function(v, scrollIntoView){
+        if(v !== undefined && v !== null){
+            var r = this.findRecord(this.valueField || this.displayField, v);
+            if(r){
+                this.select(this.store.indexOf(r), scrollIntoView);
+                return true;
+            }
+        }
+        return false;
+    },
+
+    /**
+     * Select an item in the dropdown list by its numeric index in the list. This function does NOT cause the select event to fire.
+     * The store must be loaded and the list expanded for this function to work, otherwise use setValue.
+     * @param {Number} index The zero-based index of the list item to select
+     * @param {Boolean} scrollIntoView False to prevent the dropdown list from autoscrolling to display the
+     * selected item if it is not currently in view (defaults to true)
+     */
+    select : function(index, scrollIntoView){
+        this.selectedIndex = index;
+        this.view.select(index);
+        if(scrollIntoView !== false){
+            var el = this.view.getNode(index);
+            if(el){
+                //this.innerList.scrollChildIntoView(el, false);
+                
+            }
+        }
+    },
+
+    // private
+    selectNext : function(){
+        var ct = this.store.getCount();
+        if(ct > 0){
+            if(this.selectedIndex == -1){
+                this.select(0);
+            }else if(this.selectedIndex < ct-1){
+                this.select(this.selectedIndex+1);
+            }
+        }
+    },
+
+    // private
+    selectPrev : function(){
+        var ct = this.store.getCount();
+        if(ct > 0){
+            if(this.selectedIndex == -1){
+                this.select(0);
+            }else if(this.selectedIndex != 0){
+                this.select(this.selectedIndex-1);
+            }
+        }
+    },
+
+    // private
+    onKeyUp : function(e){
+        if(this.editable !== false && !e.isSpecialKey()){
+            this.lastKey = e.getKey();
+            this.dqTask.delay(this.queryDelay);
+        }
+    },
+
+    // private
+    validateBlur : function(){
+        return !this.list || !this.list.isVisible();   
+    },
+
+    // private
+    initQuery : function(){
+        this.doQuery(this.getRawValue());
+    },
+
+    // private
+    doForce : function(){
+        if(this.el.dom.value.length > 0){
+            this.el.dom.value =
+                this.lastSelectionText === undefined ? '' : this.lastSelectionText;
+             
+        }
+    },
+
+    /**
+     * Execute a query to filter the dropdown list.  Fires the beforequery event prior to performing the
+     * query allowing the query action to be canceled if needed.
+     * @param {String} query The SQL query to execute
+     * @param {Boolean} forceAll True to force the query to execute even if there are currently fewer characters
+     * in the field than the minimum specified by the minChars config option.  It also clears any filter previously
+     * saved in the current store (defaults to false)
+     */
+    doQuery : function(q, forceAll){
+        
+        if(q === undefined || q === null){
+            q = '';
+        }
+        var qe = {
+            query: q,
+            forceAll: forceAll,
+            combo: this,
+            cancel:false
+        };
+        if(this.fireEvent('beforequery', qe)===false || qe.cancel){
+            return false;
+        }
+        q = qe.query;
+        
+        forceAll = qe.forceAll;
+        if(forceAll === true || (q.length >= this.minChars)){
+            
+            this.hasQuery = true;
+            
+            if(this.lastQuery != q || this.alwaysQuery){
+                this.lastQuery = q;
+                if(this.mode == 'local'){
+                    this.selectedIndex = -1;
+                    if(forceAll){
+                        this.store.clearFilter();
+                    }else{
+                        this.store.filter(this.displayField, q);
+                    }
+                    this.onLoad();
+                }else{
+                    this.store.baseParams[this.queryParam] = q;
+                    
+                    var options = {params : this.getParams(q)};
+                    
+                    if(this.loadNext){
+                        options.add = true;
+                        options.params.start = this.page * this.pageSize;
+                    }
+                    
+                    this.store.load(options);
+                    this.expand();
+                }
+            }else{
+                this.selectedIndex = -1;
+                this.onLoad();   
+            }
+        }
+        
+        this.loadNext = false;
+    },
+
+    // private
+    getParams : function(q){
+        var p = {};
+        //p[this.queryParam] = q;
+        
+        if(this.pageSize){
+            p.start = 0;
+            p.limit = this.pageSize;
+        }
+        return p;
+    },
+
+    /**
+     * Hides the dropdown list if it is currently expanded. Fires the 'collapse' event on completion.
+     */
+    collapse : function(){
+        if(!this.isExpanded()){
+            return;
+        }
+        
+        this.list.hide();
+        Roo.get(document).un('mousedown', this.collapseIf, this);
+        Roo.get(document).un('mousewheel', this.collapseIf, this);
+        if (!this.editable) {
+            Roo.get(document).un('keydown', this.listKeyPress, this);
+        }
+        this.fireEvent('collapse', this);
+    },
+
+    // private
+    collapseIf : function(e){
+        var in_combo  = e.within(this.el);
+        var in_list =  e.within(this.list);
+        
+        if (in_combo || in_list) {
+            //e.stopPropagation();
+            return;
+        }
+
+        this.collapse();
+        
+    },
+
+    /**
+     * Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.
+     */
+    expand : function(){
+       
+        if(this.isExpanded() || !this.hasFocus){
+            return;
+        }
+         Roo.log('expand');
+        this.list.alignTo(this.inputEl(), this.listAlign);
+        this.list.show();
+        Roo.get(document).on('mousedown', this.collapseIf, this);
+        Roo.get(document).on('mousewheel', this.collapseIf, this);
+        if (!this.editable) {
+            Roo.get(document).on('keydown', this.listKeyPress, this);
+        }
+        
+        this.fireEvent('expand', this);
+    },
+
+    // private
+    // Implements the default empty TriggerField.onTriggerClick function
+    onTriggerClick : function()
+    {
+        Roo.log('trigger click');
+        
+        if(this.disabled){
+            return;
+        }
+        
+        this.page = 0;
+        this.loadNext = false;
+        
+        if(this.isExpanded()){
+            this.collapse();
+            if (!this.blockFocus) {
+                this.inputEl().focus();
+            }
+            
+        }else {
+            this.hasFocus = true;
+            if(this.triggerAction == 'all') {
+                this.doQuery(this.allQuery, true);
+            } else {
+                this.doQuery(this.getRawValue());
+            }
+            if (!this.blockFocus) {
+                this.inputEl().focus();
+            }
+        }
+    },
+    listKeyPress : function(e)
+    {
+        //Roo.log('listkeypress');
+        // scroll to first matching element based on key pres..
+        if (e.isSpecialKey()) {
+            return false;
+        }
+        var k = String.fromCharCode(e.getKey()).toUpperCase();
+        //Roo.log(k);
+        var match  = false;
+        var csel = this.view.getSelectedNodes();
+        var cselitem = false;
+        if (csel.length) {
+            var ix = this.view.indexOf(csel[0]);
+            cselitem  = this.store.getAt(ix);
+            if (!cselitem.get(this.displayField) || cselitem.get(this.displayField).substring(0,1).toUpperCase() != k) {
+                cselitem = false;
+            }
+            
+        }
+        
+        this.store.each(function(v) { 
+            if (cselitem) {
+                // start at existing selection.
+                if (cselitem.id == v.id) {
+                    cselitem = false;
+                }
+                return true;
+            }
+                
+            if (v.get(this.displayField) && v.get(this.displayField).substring(0,1).toUpperCase() == k) {
+                match = this.store.indexOf(v);
+                return false;
+            }
+            return true;
+        }, this);
+        
+        if (match === false) {
+            return true; // no more action?
+        }
+        // scroll to?
+        this.view.select(match);
+        var sn = Roo.get(this.view.getSelectedNodes()[0])
+        //sn.scrollIntoView(sn.dom.parentNode, false);
+    },
+    
+    onViewScroll : function(e, t){
+        
+        if(this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append || this.hasQuery){
+            return;
+        }
+        
+        this.hasQuery = true;
+        
+        this.loading = this.list.select('.loading', true).first();
+        
+        if(this.loading === null){
+            this.list.createChild({
+                tag: 'div',
+                cls: 'loading select2-more-results select2-active',
+                html: 'Loading more results...'
+            })
+            
+            this.loading = this.list.select('.loading', true).first();
+            
+            this.loading.setVisibilityMode(Roo.Element.DISPLAY);
+            
+            this.loading.hide();
+        }
+        
+        this.loading.show();
+        
+        var _combo = this;
+        
+        this.page++;
+        this.loadNext = true;
+        
+        (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
+        
+        return;
+    },
+    
+    addItem : function(o){
+        this.item.push(o);
+        
+        var dv = ''; // display value
+        
+        this.lastData = o;
+        if (this.displayField) {
+            dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
+        } else {
+            // this is an error condition!!!
+            Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
+        }
+        
+        var choice = this.choices.createChild({
+            tag: 'li',
+            cls: 'select2-search-choice',
+            cn: [
+                {
+                    tag: 'div',
+                    html: dv
+                },
+                {
+                    tag: 'a',
+                    href: '#',
+                    cls: 'select2-search-choice-close',
+                    tabindex: '-1'
+                }
+            ]
+            
+        }, this.searchField);
+        
+        var close = choice.select('a.select2-search-choice-close', true).first()
+        
+        close.on('click', this.removeItem, this, { item : choice, data : o} );
+        
+        this.setValue('');
+    },
+    
+    removeItem : function(e, _self, o)
+    {
+        Roo.log('remove item');
+        var index = this.item.indexOf(o.data) * 1;
+        
+        if( index < 0){
+            Roo.log('not this item?!');
+            return;
+        }
+        
+        this.item.splice(index, 1);
+        o.item.remove();
+        
+        this.setValue('');
+        
+    }
+
+    /** 
+    * @cfg {Boolean} grow 
+    * @hide 
+    */
+    /** 
+    * @cfg {Number} growMin 
+    * @hide 
+    */
+    /** 
+    * @cfg {Number} growMax 
+    * @hide 
+    */
+    /**
+     * @hide
+     * @method autoSize
+     */
+});
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.View
+ * @extends Roo.util.Observable
+ * Create a "View" for an element based on a data model or UpdateManager and the supplied DomHelper template. 
+ * This class also supports single and multi selection modes. <br>
+ * Create a data model bound view:
+ <pre><code>
+ var store = new Roo.data.Store(...);
+
+ var view = new Roo.View({
+    el : "my-element",
+    tpl : '&lt;div id="{0}"&gt;{2} - {1}&lt;/div&gt;', // auto create template
+ 
+    singleSelect: true,
+    selectedClass: "ydataview-selected",
+    store: store
+ });
+
+ // listen for node click?
+ view.on("click", function(vw, index, node, e){
+ alert('Node "' + node.id + '" at index: ' + index + " was clicked.");
+ });
+
+ // load XML data
+ dataModel.load("foobar.xml");
+ </code></pre>
+ For an example of creating a JSON/UpdateManager view, see {@link Roo.JsonView}.
+ * <br><br>
+ * <b>Note: The root of your template must be a single node. Table/row implementations may work but are not supported due to
+ * IE"s limited insertion support with tables and Opera"s faulty event bubbling.</b>
+ * 
+ * Note: old style constructor is still suported (container, template, config)
+ * 
+ * @constructor
+ * Create a new View
+ * @param {Object} config The config object
+ * 
+ */
+Roo.View = function(config, depreciated_tpl, depreciated_config){
+    
+    if (typeof(depreciated_tpl) == 'undefined') {
+        // new way.. - universal constructor.
+        Roo.apply(this, config);
+        this.el  = Roo.get(this.el);
+    } else {
+        // old format..
+        this.el  = Roo.get(config);
+        this.tpl = depreciated_tpl;
+        Roo.apply(this, depreciated_config);
+    }
+    this.wrapEl  = this.el.wrap().wrap();
+    ///this.el = this.wrapEla.appendChild(document.createElement("div"));
+    
+    
+    if(typeof(this.tpl) == "string"){
+        this.tpl = new Roo.Template(this.tpl);
+    } else {
+        // support xtype ctors..
+        this.tpl = new Roo.factory(this.tpl, Roo);
+    }
+    
+    
+    this.tpl.compile();
+   
+  
+    
+     
+    /** @private */
+    this.addEvents({
+        /**
+         * @event beforeclick
+         * Fires before a click is processed. Returns false to cancel the default action.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "beforeclick" : true,
+        /**
+         * @event click
+         * Fires when a template node is clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "click" : true,
+        /**
+         * @event dblclick
+         * Fires when a template node is double clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "dblclick" : true,
+        /**
+         * @event contextmenu
+         * Fires when a template node is right clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "contextmenu" : true,
+        /**
+         * @event selectionchange
+         * Fires when the selected nodes change.
+         * @param {Roo.View} this
+         * @param {Array} selections Array of the selected nodes
+         */
+            "selectionchange" : true,
+    
+        /**
+         * @event beforeselect
+         * Fires before a selection is made. If any handlers return false, the selection is cancelled.
+         * @param {Roo.View} this
+         * @param {HTMLElement} node The node to be selected
+         * @param {Array} selections Array of currently selected nodes
+         */
+            "beforeselect" : true,
+        /**
+         * @event preparedata
+         * Fires on every row to render, to allow you to change the data.
+         * @param {Roo.View} this
+         * @param {Object} data to be rendered (change this)
+         */
+          "preparedata" : true
+          
+          
+        });
+
+
+
+    this.el.on({
+        "click": this.onClick,
+        "dblclick": this.onDblClick,
+        "contextmenu": this.onContextMenu,
+        scope:this
+    });
+
+    this.selections = [];
+    this.nodes = [];
+    this.cmp = new Roo.CompositeElementLite([]);
+    if(this.store){
+        this.store = Roo.factory(this.store, Roo.data);
+        this.setStore(this.store, true);
+    }
+    
+    if ( this.footer && this.footer.xtype) {
+           
+         var fctr = this.wrapEl.appendChild(document.createElement("div"));
+        
+        this.footer.dataSource = this.store
+        this.footer.container = fctr;
+        this.footer = Roo.factory(this.footer, Roo);
+        fctr.insertFirst(this.el);
+        
+        // this is a bit insane - as the paging toolbar seems to detach the el..
+//        dom.parentNode.parentNode.parentNode
+         // they get detached?
+    }
+    
+    
+    Roo.View.superclass.constructor.call(this);
+    
+    
+};
+
+Roo.extend(Roo.View, Roo.util.Observable, {
+    
+     /**
+     * @cfg {Roo.data.Store} store Data store to load data from.
+     */
+    store : false,
+    
+    /**
+     * @cfg {String|Roo.Element} el The container element.
+     */
+    el : '',
+    
+    /**
+     * @cfg {String|Roo.Template} tpl The template used by this View 
+     */
+    tpl : false,
+    /**
+     * @cfg {String} dataName the named area of the template to use as the data area
+     *                          Works with domtemplates roo-name="name"
+     */
+    dataName: false,
+    /**
+     * @cfg {String} selectedClass The css class to add to selected nodes
+     */
+    selectedClass : "x-view-selected",
+     /**
+     * @cfg {String} emptyText The empty text to show when nothing is loaded.
+     */
+    emptyText : "",
+    
+    /**
+     * @cfg {String} text to display on mask (default Loading)
+     */
+    mask : false,
+    /**
+     * @cfg {Boolean} multiSelect Allow multiple selection
+     */
+    multiSelect : false,
+    /**
+     * @cfg {Boolean} singleSelect Allow single selection
+     */
+    singleSelect:  false,
+    
+    /**
+     * @cfg {Boolean} toggleSelect - selecting 
+     */
+    toggleSelect : false,
+    
+    /**
+     * Returns the element this view is bound to.
+     * @return {Roo.Element}
+     */
+    getEl : function(){
+        return this.wrapEl;
+    },
+    
+    
+
+    /**
+     * Refreshes the view. - called by datachanged on the store. - do not call directly.
+     */
+    refresh : function(){
+        Roo.log('refresh');
+        var t = this.tpl;
+        
+        // if we are using something like 'domtemplate', then
+        // the what gets used is:
+        // t.applySubtemplate(NAME, data, wrapping data..)
+        // the outer template then get' applied with
+        //     the store 'extra data'
+        // and the body get's added to the
+        //      roo-name="data" node?
+        //      <span class='roo-tpl-{name}'></span> ?????
+        
+        
+        
+        this.clearSelections();
+        this.el.update("");
+        var html = [];
+        var records = this.store.getRange();
+        if(records.length < 1) {
+            
+            // is this valid??  = should it render a template??
+            
+            this.el.update(this.emptyText);
+            return;
+        }
+        var el = this.el;
+        if (this.dataName) {
+            this.el.update(t.apply(this.store.meta)); //????
+            el = this.el.child('.roo-tpl-' + this.dataName);
+        }
+        
+        for(var i = 0, len = records.length; i < len; i++){
+            var data = this.prepareData(records[i].data, i, records[i]);
+            this.fireEvent("preparedata", this, data, i, records[i]);
+            html[html.length] = Roo.util.Format.trim(
+                this.dataName ?
+                    t.applySubtemplate(this.dataName, data, this.store.meta) :
+                    t.apply(data)
+            );
+        }
+        
+        
+        
+        el.update(html.join(""));
+        this.nodes = el.dom.childNodes;
+        this.updateIndexes(0);
+    },
+    
+
+    /**
+     * Function to override to reformat the data that is sent to
+     * the template for each node.
+     * DEPRICATED - use the preparedata event handler.
+     * @param {Array/Object} data The raw data (array of colData for a data model bound view or
+     * a JSON object for an UpdateManager bound view).
+     */
+    prepareData : function(data, index, record)
+    {
+        this.fireEvent("preparedata", this, data, index, record);
+        return data;
+    },
+
+    onUpdate : function(ds, record){
+         Roo.log('on update');   
+        this.clearSelections();
+        var index = this.store.indexOf(record);
+        var n = this.nodes[index];
+        this.tpl.insertBefore(n, this.prepareData(record.data, index, record));
+        n.parentNode.removeChild(n);
+        this.updateIndexes(index, index);
+    },
+
+    
+    
+// --------- FIXME     
+    onAdd : function(ds, records, index)
+    {
+        Roo.log(['on Add', ds, records, index] );        
+        this.clearSelections();
+        if(this.nodes.length == 0){
+            this.refresh();
+            return;
+        }
+        var n = this.nodes[index];
+        for(var i = 0, len = records.length; i < len; i++){
+            var d = this.prepareData(records[i].data, i, records[i]);
+            if(n){
+                this.tpl.insertBefore(n, d);
+            }else{
+                
+                this.tpl.append(this.el, d);
+            }
+        }
+        this.updateIndexes(index);
+    },
+
+    onRemove : function(ds, record, index){
+        Roo.log('onRemove');
+        this.clearSelections();
+        var el = this.dataName  ?
+            this.el.child('.roo-tpl-' + this.dataName) :
+            this.el; 
+        el.dom.removeChild(this.nodes[index]);
+        this.updateIndexes(index);
+    },
+
+    /**
+     * Refresh an individual node.
+     * @param {Number} index
+     */
+    refreshNode : function(index){
+        this.onUpdate(this.store, this.store.getAt(index));
+    },
+
+    updateIndexes : function(startIndex, endIndex){
+        var ns = this.nodes;
+        startIndex = startIndex || 0;
+        endIndex = endIndex || ns.length - 1;
+        for(var i = startIndex; i <= endIndex; i++){
+            ns[i].nodeIndex = i;
+        }
+    },
+
+    /**
+     * Changes the data store this view uses and refresh the view.
+     * @param {Store} store
+     */
+    setStore : function(store, initial){
+        if(!initial && this.store){
+            this.store.un("datachanged", this.refresh);
+            this.store.un("add", this.onAdd);
+            this.store.un("remove", this.onRemove);
+            this.store.un("update", this.onUpdate);
+            this.store.un("clear", this.refresh);
+            this.store.un("beforeload", this.onBeforeLoad);
+            this.store.un("load", this.onLoad);
+            this.store.un("loadexception", this.onLoad);
+        }
+        if(store){
+          
+            store.on("datachanged", this.refresh, this);
+            store.on("add", this.onAdd, this);
+            store.on("remove", this.onRemove, this);
+            store.on("update", this.onUpdate, this);
+            store.on("clear", this.refresh, this);
+            store.on("beforeload", this.onBeforeLoad, this);
+            store.on("load", this.onLoad, this);
+            store.on("loadexception", this.onLoad, this);
+        }
+        
+        if(store){
+            this.refresh();
+        }
+    },
+    /**
+     * onbeforeLoad - masks the loading area.
+     *
+     */
+    onBeforeLoad : function(store,opts)
+    {
+         Roo.log('onBeforeLoad');   
+        if (!opts.add) {
+            this.el.update("");
+        }
+        this.el.mask(this.mask ? this.mask : "Loading" ); 
+    },
+    onLoad : function ()
+    {
+        this.el.unmask();
+    },
+    
+
+    /**
+     * Returns the template node the passed child belongs to or null if it doesn't belong to one.
+     * @param {HTMLElement} node
+     * @return {HTMLElement} The template node
+     */
+    findItemFromChild : function(node){
+        var el = this.dataName  ?
+            this.el.child('.roo-tpl-' + this.dataName,true) :
+            this.el.dom; 
+        
+        if(!node || node.parentNode == el){
+		    return node;
+	    }
+	    var p = node.parentNode;
+	    while(p && p != el){
+            if(p.parentNode == el){
+            	return p;
+            }
+            p = p.parentNode;
+        }
+	    return null;
+    },
+
+    /** @ignore */
+    onClick : function(e){
+        var item = this.findItemFromChild(e.getTarget());
+        if(item){
+            var index = this.indexOf(item);
+            if(this.onItemClick(item, index, e) !== false){
+                this.fireEvent("click", this, index, item, e);
+            }
+        }else{
+            this.clearSelections();
+        }
+    },
+
+    /** @ignore */
+    onContextMenu : function(e){
+        var item = this.findItemFromChild(e.getTarget());
+        if(item){
+            this.fireEvent("contextmenu", this, this.indexOf(item), item, e);
+        }
+    },
+
+    /** @ignore */
+    onDblClick : function(e){
+        var item = this.findItemFromChild(e.getTarget());
+        if(item){
+            this.fireEvent("dblclick", this, this.indexOf(item), item, e);
+        }
+    },
+
+    onItemClick : function(item, index, e)
+    {
+        if(this.fireEvent("beforeclick", this, index, item, e) === false){
+            return false;
+        }
+        if (this.toggleSelect) {
+            var m = this.isSelected(item) ? 'unselect' : 'select';
+            Roo.log(m);
+            var _t = this;
+            _t[m](item, true, false);
+            return true;
+        }
+        if(this.multiSelect || this.singleSelect){
+            if(this.multiSelect && e.shiftKey && this.lastSelection){
+                this.select(this.getNodes(this.indexOf(this.lastSelection), index), false);
+            }else{
+                this.select(item, this.multiSelect && e.ctrlKey);
+                this.lastSelection = item;
+            }
+            e.preventDefault();
+        }
+        return true;
+    },
+
+    /**
+     * Get the number of selected nodes.
+     * @return {Number}
+     */
+    getSelectionCount : function(){
+        return this.selections.length;
+    },
+
+    /**
+     * Get the currently selected nodes.
+     * @return {Array} An array of HTMLElements
+     */
+    getSelectedNodes : function(){
+        return this.selections;
+    },
+
+    /**
+     * Get the indexes of the selected nodes.
+     * @return {Array}
+     */
+    getSelectedIndexes : function(){
+        var indexes = [], s = this.selections;
+        for(var i = 0, len = s.length; i < len; i++){
+            indexes.push(s[i].nodeIndex);
+        }
+        return indexes;
+    },
+
+    /**
+     * Clear all selections
+     * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange event
+     */
+    clearSelections : function(suppressEvent){
+        if(this.nodes && (this.multiSelect || this.singleSelect) && this.selections.length > 0){
+            this.cmp.elements = this.selections;
+            this.cmp.removeClass(this.selectedClass);
+            this.selections = [];
+            if(!suppressEvent){
+                this.fireEvent("selectionchange", this, this.selections);
+            }
+        }
+    },
+
+    /**
+     * Returns true if the passed node is selected
+     * @param {HTMLElement/Number} node The node or node index
+     * @return {Boolean}
+     */
+    isSelected : function(node){
+        var s = this.selections;
+        if(s.length < 1){
+            return false;
+        }
+        node = this.getNode(node);
+        return s.indexOf(node) !== -1;
+    },
+
+    /**
+     * Selects nodes.
+     * @param {Array/HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node, id of a template node or an array of any of those to select
+     * @param {Boolean} keepExisting (optional) true to keep existing selections
+     * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange vent
+     */
+    select : function(nodeInfo, keepExisting, suppressEvent){
+        if(nodeInfo instanceof Array){
+            if(!keepExisting){
+                this.clearSelections(true);
+            }
+            for(var i = 0, len = nodeInfo.length; i < len; i++){
+                this.select(nodeInfo[i], true, true);
+            }
+            return;
+        } 
+        var node = this.getNode(nodeInfo);
+        if(!node || this.isSelected(node)){
+            return; // already selected.
+        }
+        if(!keepExisting){
+            this.clearSelections(true);
+        }
+        if(this.fireEvent("beforeselect", this, node, this.selections) !== false){
+            Roo.fly(node).addClass(this.selectedClass);
+            this.selections.push(node);
+            if(!suppressEvent){
+                this.fireEvent("selectionchange", this, this.selections);
+            }
+        }
+        
+        
+    },
+      /**
+     * Unselects nodes.
+     * @param {Array/HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node, id of a template node or an array of any of those to select
+     * @param {Boolean} keepExisting (optional) true IGNORED (for campatibility with select)
+     * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange vent
+     */
+    unselect : function(nodeInfo, keepExisting, suppressEvent)
+    {
+        if(nodeInfo instanceof Array){
+            Roo.each(this.selections, function(s) {
+                this.unselect(s, nodeInfo);
+            }, this);
+            return;
+        }
+        var node = this.getNode(nodeInfo);
+        if(!node || !this.isSelected(node)){
+            Roo.log("not selected");
+            return; // not selected.
+        }
+        // fireevent???
+        var ns = [];
+        Roo.each(this.selections, function(s) {
+            if (s == node ) {
+                Roo.fly(node).removeClass(this.selectedClass);
+
+                return;
+            }
+            ns.push(s);
+        },this);
+        
+        this.selections= ns;
+        this.fireEvent("selectionchange", this, this.selections);
+    },
+
+    /**
+     * Gets a template node.
+     * @param {HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node or the id of a template node
+     * @return {HTMLElement} The node or null if it wasn't found
+     */
+    getNode : function(nodeInfo){
+        if(typeof nodeInfo == "string"){
+            return document.getElementById(nodeInfo);
+        }else if(typeof nodeInfo == "number"){
+            return this.nodes[nodeInfo];
+        }
+        return nodeInfo;
+    },
+
+    /**
+     * Gets a range template nodes.
+     * @param {Number} startIndex
+     * @param {Number} endIndex
+     * @return {Array} An array of nodes
+     */
+    getNodes : function(start, end){
+        var ns = this.nodes;
+        start = start || 0;
+        end = typeof end == "undefined" ? ns.length - 1 : end;
+        var nodes = [];
+        if(start <= end){
+            for(var i = start; i <= end; i++){
+                nodes.push(ns[i]);
+            }
+        } else{
+            for(var i = start; i >= end; i--){
+                nodes.push(ns[i]);
+            }
+        }
+        return nodes;
+    },
+
+    /**
+     * Finds the index of the passed node
+     * @param {HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node or the id of a template node
+     * @return {Number} The index of the node or -1
+     */
+    indexOf : function(node){
+        node = this.getNode(node);
+        if(typeof node.nodeIndex == "number"){
+            return node.nodeIndex;
+        }
+        var ns = this.nodes;
+        for(var i = 0, len = ns.length; i < len; i++){
+            if(ns[i] == node){
+                return i;
+            }
+        }
+        return -1;
+    }
+});
+/*
+ * - LGPL
+ *
+ * based on jquery fullcalendar
+ * 
+ */
+
+Roo.bootstrap = Roo.bootstrap || {};
+/**
+ * @class Roo.bootstrap.Calendar
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Calendar class
+ * @cfg {Boolean} loadMask (true|false) default false
+    
+ * @constructor
+ * Create a new Container
+ * @param {Object} config The config object
+ */
+
+
+
+Roo.bootstrap.Calendar = function(config){
+    Roo.bootstrap.Calendar.superclass.constructor.call(this, config);
+     this.addEvents({
+        /**
+	     * @event select
+	     * Fires when a date is selected
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected date
+	     */
+        'select': true,
+        /**
+	     * @event monthchange
+	     * Fires when the displayed month changes 
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected month
+	     */
+        'monthchange': true,
+        /**
+	     * @event evententer
+	     * Fires when mouse over an event
+	     * @param {Calendar} this
+	     * @param {event} Event
+	     */
+        'evententer': true,
+        /**
+	     * @event eventleave
+	     * Fires when the mouse leaves an
+	     * @param {Calendar} this
+	     * @param {event}
+	     */
+        'eventleave': true,
+        /**
+	     * @event eventclick
+	     * Fires when the mouse click an
+	     * @param {Calendar} this
+	     * @param {event}
+	     */
+        'eventclick': true
+        
+    });
+
+};
+
+Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
+    
+     /**
+     * @cfg {Number} startDay
+     * Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)
+     */
+    startDay : 0,
+    
+    loadMask : false,
+      
+    getAutoCreate : function(){
+        
+        
+        var fc_button = function(name, corner, style, content ) {
+            return Roo.apply({},{
+                tag : 'span',
+                cls : 'fc-button fc-button-'+name+' fc-state-default ' + 
+                         (corner.length ?
+                            'fc-corner-' + corner.split(' ').join(' fc-corner-') :
+                            ''
+                        ),
+                html : '<SPAN class="fc-text-'+style+ '">'+content +'</SPAN>',
+                unselectable: 'on'
+            });
+        };
+        
+        var header = {
+            tag : 'table',
+            cls : 'fc-header',
+            style : 'width:100%',
+            cn : [
+                {
+                    tag: 'tr',
+                    cn : [
+                        {
+                            tag : 'td',
+                            cls : 'fc-header-left',
+                            cn : [
+                                fc_button('prev', 'left', 'arrow', '&#8249;' ),
+                                fc_button('next', 'right', 'arrow', '&#8250;' ),
+                                { tag: 'span', cls: 'fc-header-space' },
+                                fc_button('today', 'left right', '', 'today' )  // neds state disabled..
+                                
+                                
+                            ]
+                        },
+                        
+                        {
+                            tag : 'td',
+                            cls : 'fc-header-center',
+                            cn : [
+                                {
+                                    tag: 'span',
+                                    cls: 'fc-header-title',
+                                    cn : {
+                                        tag: 'H2',
+                                        html : 'month / year'
+                                    }
+                                }
+                                
+                            ]
+                        },
+                        {
+                            tag : 'td',
+                            cls : 'fc-header-right',
+                            cn : [
+                          /*      fc_button('month', 'left', '', 'month' ),
+                                fc_button('week', '', '', 'week' ),
+                                fc_button('day', 'right', '', 'day' )
+                            */    
+                                
+                            ]
+                        }
+                        
+                    ]
+                }
+            ]
+        };
+        
+       
+        var cal_heads = function() {
+            var ret = [];
+            // fixme - handle this.
+            
+            for (var i =0; i < Date.dayNames.length; i++) {
+                var d = Date.dayNames[i];
+                ret.push({
+                    tag: 'th',
+                    cls : 'fc-day-header fc-' + d.substring(0,3).toLowerCase() + ' fc-widget-header',
+                    html : d.substring(0,3)
+                });
+                
+            }
+            ret[0].cls += ' fc-first';
+            ret[6].cls += ' fc-last';
+            return ret;
+        };
+        var cal_cell = function(n) {
+            return  {
+                tag: 'td',
+                cls : 'fc-day fc-'+n + ' fc-widget-content', ///fc-other-month fc-past
+                cn : [
+                    {
+                        cn : [
+                            {
+                                cls: 'fc-day-number',
+                                html: 'D'
+                            },
+                            {
+                                cls: 'fc-day-content',
+                             
+                                cn : [
+                                     {
+                                        style: 'position: relative;' // height: 17px;
+                                    }
+                                ]
+                            }
+                            
+                            
+                        ]
+                    }
+                ]
+                
+            }
+        };
+        var cal_rows = function() {
+            
+            var ret = []
+            for (var r = 0; r < 6; r++) {
+                var row= {
+                    tag : 'tr',
+                    cls : 'fc-week',
+                    cn : []
+                };
+                
+                for (var i =0; i < Date.dayNames.length; i++) {
+                    var d = Date.dayNames[i];
+                    row.cn.push(cal_cell(d.substring(0,3).toLowerCase()));
+
+                }
+                row.cn[0].cls+=' fc-first';
+                row.cn[0].cn[0].style = 'min-height:90px';
+                row.cn[6].cls+=' fc-last';
+                ret.push(row);
+                
+            }
+            ret[0].cls += ' fc-first';
+            ret[4].cls += ' fc-prev-last';
+            ret[5].cls += ' fc-last';
+            return ret;
+            
+        };
+        
+        var cal_table = {
+            tag: 'table',
+            cls: 'fc-border-separate',
+            style : 'width:100%',
+            cellspacing  : 0,
+            cn : [
+                { 
+                    tag: 'thead',
+                    cn : [
+                        { 
+                            tag: 'tr',
+                            cls : 'fc-first fc-last',
+                            cn : cal_heads()
+                        }
+                    ]
+                },
+                { 
+                    tag: 'tbody',
+                    cn : cal_rows()
+                }
+                  
+            ]
+        };
+         
+         var cfg = {
+            cls : 'fc fc-ltr',
+            cn : [
+                header,
+                {
+                    cls : 'fc-content',
+                    style : "position: relative;",
+                    cn : [
+                        {
+                            cls : 'fc-view fc-view-month fc-grid',
+                            style : 'position: relative',
+                            unselectable : 'on',
+                            cn : [
+                                {
+                                    cls : 'fc-event-container',
+                                    style : 'position:absolute;z-index:8;top:0;left:0;'
+                                },
+                                cal_table
+                            ]
+                        }
+                    ]
+    
+                }
+           ] 
+            
+        };
+        
+         
+        
+        return cfg;
+    },
+    
+    
+    initEvents : function()
+    {
+        if(!this.store){
+            throw "can not find store for calendar";
+        }
+        
+        var mark = {
+            tag: "div",
+            cls:"x-dlg-mask",
+            style: "text-align:center",
+            cn: [
+                {
+                    tag: "div",
+                    style: "background-color:white;width:50%;margin:250 auto",
+                    cn: [
+                        {
+                            tag: "img",
+                            src: rootURL + '/roojs1/images/ux/lightbox/loading.gif'
+                        },
+                        {
+                            tag: "span",
+                            html: "Loading"
+                        }
+                        
+                    ]
+                }
+            ]
+        }
+        this.maskEl = Roo.DomHelper.append(this.el.select('.fc-content', true).first(), mark, true);
+        
+        var size = this.el.select('.fc-content', true).first().getSize();
+        this.maskEl.setSize(size.width, size.height);
+        this.maskEl.enableDisplayMode("block");
+        if(!this.loadMask){
+            this.maskEl.hide();
+        }
+        
+        this.store = Roo.factory(this.store, Roo.data);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        
+        this.resize();
+        
+        this.cells = this.el.select('.fc-day',true);
+        //Roo.log(this.cells);
+        this.textNodes = this.el.query('.fc-day-number');
+        this.cells.addClassOnOver('fc-state-hover');
+        
+        this.el.select('.fc-button-prev',true).on('click', this.showPrevMonth, this);
+        this.el.select('.fc-button-next',true).on('click', this.showNextMonth, this);
+        this.el.select('.fc-button-today',true).on('click', this.showToday, this);
+        this.el.select('.fc-button',true).addClassOnOver('fc-state-hover');
+        
+        this.on('monthchange', this.onMonthChange, this);
+        
+        this.update(new Date().clearTime());
+    },
+    
+    resize : function() {
+        var sz  = this.el.getSize();
+        
+        this.el.select('.fc-day-header',true).setWidth(sz.width / 7);
+        this.el.select('.fc-day-content div',true).setHeight(34);
+    },
+    
+    
+    // private
+    showPrevMonth : function(e){
+        this.update(this.activeDate.add("mo", -1));
+    },
+    showToday : function(e){
+        this.update(new Date().clearTime());
+    },
+    // private
+    showNextMonth : function(e){
+        this.update(this.activeDate.add("mo", 1));
+    },
+
+    // private
+    showPrevYear : function(){
+        this.update(this.activeDate.add("y", -1));
+    },
+
+    // private
+    showNextYear : function(){
+        this.update(this.activeDate.add("y", 1));
+    },
+
+    
+   // private
+    update : function(date)
+    {
+        var vd = this.activeDate;
+        this.activeDate = date;
+//        if(vd && this.el){
+//            var t = date.getTime();
+//            if(vd.getMonth() == date.getMonth() && vd.getFullYear() == date.getFullYear()){
+//                Roo.log('using add remove');
+//                
+//                this.fireEvent('monthchange', this, date);
+//                
+//                this.cells.removeClass("fc-state-highlight");
+//                this.cells.each(function(c){
+//                   if(c.dateValue == t){
+//                       c.addClass("fc-state-highlight");
+//                       setTimeout(function(){
+//                            try{c.dom.firstChild.focus();}catch(e){}
+//                       }, 50);
+//                       return false;
+//                   }
+//                   return true;
+//                });
+//                return;
+//            }
+//        }
+        
+        var days = date.getDaysInMonth();
+        
+        var firstOfMonth = date.getFirstDateOfMonth();
+        var startingPos = firstOfMonth.getDay()-this.startDay;
+        
+        if(startingPos < this.startDay){
+            startingPos += 7;
+        }
+        
+        var pm = date.add(Date.MONTH, -1);
+        var prevStart = pm.getDaysInMonth()-startingPos;
+//        
+        this.cells = this.el.select('.fc-day',true);
+        this.textNodes = this.el.query('.fc-day-number');
+        this.cells.addClassOnOver('fc-state-hover');
+        
+        var cells = this.cells.elements;
+        var textEls = this.textNodes;
+        
+        Roo.each(cells, function(cell){
+            cell.removeClass([ 'fc-past', 'fc-other-month', 'fc-future', 'fc-state-highlight', 'fc-state-disabled']);
+        });
+        
+        days += startingPos;
+
+        // convert everything to numbers so it's fast
+        var day = 86400000;
+        var d = (new Date(pm.getFullYear(), pm.getMonth(), prevStart)).clearTime();
+        //Roo.log(d);
+        //Roo.log(pm);
+        //Roo.log(prevStart);
+        
+        var today = new Date().clearTime().getTime();
+        var sel = date.clearTime().getTime();
+        var min = this.minDate ? this.minDate.clearTime() : Number.NEGATIVE_INFINITY;
+        var max = this.maxDate ? this.maxDate.clearTime() : Number.POSITIVE_INFINITY;
+        var ddMatch = this.disabledDatesRE;
+        var ddText = this.disabledDatesText;
+        var ddays = this.disabledDays ? this.disabledDays.join("") : false;
+        var ddaysText = this.disabledDaysText;
+        var format = this.format;
+        
+        var setCellClass = function(cal, cell){
+            
+            //Roo.log('set Cell Class');
+            cell.title = "";
+            var t = d.getTime();
+            
+            //Roo.log(d);
+            
+            cell.dateValue = t;
+            if(t == today){
+                cell.className += " fc-today";
+                cell.className += " fc-state-highlight";
+                cell.title = cal.todayText;
+            }
+            if(t == sel){
+                // disable highlight in other month..
+                //cell.className += " fc-state-highlight";
+                
+            }
+            // disabling
+            if(t < min) {
+                cell.className = " fc-state-disabled";
+                cell.title = cal.minText;
+                return;
+            }
+            if(t > max) {
+                cell.className = " fc-state-disabled";
+                cell.title = cal.maxText;
+                return;
+            }
+            if(ddays){
+                if(ddays.indexOf(d.getDay()) != -1){
+                    cell.title = ddaysText;
+                    cell.className = " fc-state-disabled";
+                }
+            }
+            if(ddMatch && format){
+                var fvalue = d.dateFormat(format);
+                if(ddMatch.test(fvalue)){
+                    cell.title = ddText.replace("%0", fvalue);
+                    cell.className = " fc-state-disabled";
+                }
+            }
+            
+            if (!cell.initialClassName) {
+                cell.initialClassName = cell.dom.className;
+            }
+            
+            cell.dom.className = cell.initialClassName  + ' ' +  cell.className;
+        };
+
+        var i = 0;
+        
+        for(; i < startingPos; i++) {
+            textEls[i].innerHTML = (++prevStart);
+            d.setDate(d.getDate()+1);
+            
+            cells[i].className = "fc-past fc-other-month";
+            setCellClass(this, cells[i]);
+        }
+        
+        var intDay = 0;
+        
+        for(; i < days; i++){
+            intDay = i - startingPos + 1;
+            textEls[i].innerHTML = (intDay);
+            d.setDate(d.getDate()+1);
+            
+            cells[i].className = ''; // "x-date-active";
+            setCellClass(this, cells[i]);
+        }
+        var extraDays = 0;
+        
+        for(; i < 42; i++) {
+            textEls[i].innerHTML = (++extraDays);
+            d.setDate(d.getDate()+1);
+            
+            cells[i].className = "fc-future fc-other-month";
+            setCellClass(this, cells[i]);
+        }
+        
+        this.el.select('.fc-header-title h2',true).update(Date.monthNames[date.getMonth()] + " " + date.getFullYear());
+        
+        var totalRows = Math.ceil((date.getDaysInMonth() + date.getFirstDateOfMonth().getDay()) / 7);
+        
+        this.el.select('tr.fc-week.fc-prev-last',true).removeClass('fc-last');
+        this.el.select('tr.fc-week.fc-next-last',true).addClass('fc-last').show();
+        
+        if(totalRows != 6){
+            this.el.select('tr.fc-week.fc-last',true).removeClass('fc-last').addClass('fc-next-last').hide();
+            this.el.select('tr.fc-week.fc-prev-last',true).addClass('fc-last');
+        }
+        
+        this.fireEvent('monthchange', this, date);
+        
+        
+        /*
+        if(!this.internalRender){
+            var main = this.el.dom.firstChild;
+            var w = main.offsetWidth;
+            this.el.setWidth(w + this.el.getBorderWidth("lr"));
+            Roo.fly(main).setWidth(w);
+            this.internalRender = true;
+            // opera does not respect the auto grow header center column
+            // then, after it gets a width opera refuses to recalculate
+            // without a second pass
+            if(Roo.isOpera && !this.secondPass){
+                main.rows[0].cells[1].style.width = (w - (main.rows[0].cells[0].offsetWidth+main.rows[0].cells[2].offsetWidth)) + "px";
+                this.secondPass = true;
+                this.update.defer(10, this, [date]);
+            }
+        }
+        */
+        
+    },
+    
+    findCell : function(dt) {
+        dt = dt.clearTime().getTime();
+        var ret = false;
+        this.cells.each(function(c){
+            //Roo.log("check " +c.dateValue + '?=' + dt);
+            if(c.dateValue == dt){
+                ret = c;
+                return false;
+            }
+            return true;
+        });
+        
+        return ret;
+    },
+    
+    findCells : function(ev) {
+        var s = ev.start.clone().clearTime().getTime();
+       // Roo.log(s);
+        var e= ev.end.clone().clearTime().getTime();
+       // Roo.log(e);
+        var ret = [];
+        this.cells.each(function(c){
+             ////Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
+            
+            if(c.dateValue > e){
+                return ;
+            }
+            if(c.dateValue < s){
+                return ;
+            }
+            ret.push(c);
+        });
+        
+        return ret;    
+    },
+    
+    findBestRow: function(cells)
+    {
+        var ret = 0;
+        
+        for (var i =0 ; i < cells.length;i++) {
+            ret  = Math.max(cells[i].rows || 0,ret);
+        }
+        return ret;
+        
+    },
+    
+    
+    addItem : function(ev)
+    {
+        // look for vertical location slot in
+        var cells = this.findCells(ev);
+        
+        ev.row = this.findBestRow(cells);
+        
+        // work out the location.
+        
+        var crow = false;
+        var rows = [];
+        for(var i =0; i < cells.length; i++) {
+            if (!crow) {
+                crow = {
+                    start : cells[i],
+                    end :  cells[i]
+                };
+                continue;
+            }
+            if (crow.start.getY() == cells[i].getY()) {
+                // on same row.
+                crow.end = cells[i];
+                continue;
+            }
+            // different row.
+            rows.push(crow);
+            crow = {
+                start: cells[i],
+                end : cells[i]
+            };
+            
+        }
+        
+        rows.push(crow);
+        ev.els = [];
+        ev.rows = rows;
+        ev.cells = cells;
+        for (var i = 0; i < cells.length;i++) {
+            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
+            
+        }
+        
+        this.calevents.push(ev);
+    },
+    
+    clearEvents: function() {
+        
+        if(!this.calevents){
+            return;
+        }
+        
+        Roo.each(this.cells.elements, function(c){
+            c.rows = 0;
+        });
+        
+        Roo.each(this.calevents, function(e) {
+            Roo.each(e.els, function(el) {
+                el.un('mouseenter' ,this.onEventEnter, this);
+                el.un('mouseleave' ,this.onEventLeave, this);
+                el.remove();
+            },this);
+        },this);
+        
+    },
+    
+    renderEvents: function()
+    {   
+        // first make sure there is enough space..
+        
+        this.cells.each(function(c) {
+        
+            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
+        });
+        
+        for (var e = 0; e < this.calevents.length; e++) {
+            var ev = this.calevents[e];
+            var cells = ev.cells;
+            var rows = ev.rows;
+            
+            for(var i =0; i < rows.length; i++) {
+                
+                 
+                // how many rows should it span..
+                
+                var  cfg = {
+                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+                    
+                    unselectable : "on",
+                    cn : [
+                        {
+                            cls: 'fc-event-inner',
+                            cn : [
+                                {
+                                  tag:'span',
+                                  cls: 'fc-event-time',
+                                  html : cells.length > 1 ? '' : ev.time
+                                },
+                                {
+                                  tag:'span',
+                                  cls: 'fc-event-title',
+                                  html : String.format('{0}', ev.title)
+                                }
+                                
+                                
+                            ]
+                        },
+                        {
+                            cls: 'ui-resizable-handle ui-resizable-e',
+                            html : '&nbsp;&nbsp;&nbsp'
+                        }
+                        
+                    ]
+                };
+                if (i == 0) {
+                    cfg.cls += ' fc-event-start';
+                }
+                if ((i+1) == rows.length) {
+                    cfg.cls += ' fc-event-end';
+                }
+                
+                var ctr = this.el.select('.fc-event-container',true).first();
+                var cg = ctr.createChild(cfg);
+                
+                cg.on('mouseenter' ,this.onEventEnter, this, ev);
+                cg.on('mouseleave' ,this.onEventLeave, this, ev);
+                cg.on('click', this.onEventClick, this, ev);
+                
+                ev.els.push(cg);
+                
+                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+                //Roo.log(cg);
+                cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
+                cg.setWidth(ebox.right - sbox.x -2);
+            }
+            
+            
+        }
+        
+    },
+    
+    onEventEnter: function (e, el,event,d) {
+        this.fireEvent('evententer', this, el, event);
+    },
+    
+    onEventLeave: function (e, el,event,d) {
+        this.fireEvent('eventleave', this, el, event);
+    },
+    
+    onEventClick: function (e, el,event,d) {
+        this.fireEvent('eventclick', this, el, event);
+    },
+    
+    onMonthChange: function () {
+        this.store.load();
+    },
+    
+    onLoad: function () 
+    {   
+        this.calevents = [];
+        
+        var cal = this;
+        
+        if(this.store.getCount() > 0){
+            this.store.data.each(function(d){
+               cal.addItem({
+                    id : d.data.id,
+                    start: new Date(d.data.start_dt),
+                    end : new Date(d.data.end_dt),
+                    time : d.data.start_time,
+                    title : d.data.title,
+                    description : d.data.description,
+                    venue : d.data.venue
+                });
+            });
+        }
+        
+        this.renderEvents();
+        
+        if(this.loadMask){
+            this.maskEl.hide();
+        }
+    },
+    
+    onBeforeLoad: function()
+    {
+        Roo.log('clear the events!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        this.calevents = [];
+        
+        this.clearEvents();
+        
+        if(this.loadMask){
+            this.maskEl.show();
+        }
+    }
+});
+
+ 
+ /*
+ * - LGPL
+ *
+ * element
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Popover
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Popover class
+ * @cfg {String} html contents of the popover   (or false to use children..)
+ * @cfg {String} title of popover (or false to hide)
+ * @cfg {String} placement how it is placed
+ * @cfg {String} trigger click || hover (or false to trigger manually)
+ * @cfg {String} over what (parent or false to trigger manually.)
+ * 
+ * @constructor
+ * Create a new Popover
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Popover = function(config){
+    Roo.bootstrap.Popover.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
+    
+    title: 'Fill in a title',
+    html: false,
+    
+    placement : 'right',
+    trigger : 'hover', // hover
+    
+    over: 'parent',
+    
+    can_build_overlaid : false,
+    
+    getChildContainer : function()
+    {
+        return this.el.select('.popover-content',true).first();
+    },
+    
+    getAutoCreate : function(){
+         Roo.log('make popover?');
+        var cfg = {
+           cls : 'popover roo-dynamic',
+           style: 'display:block',
+           cn : [
+                {
+                    cls : 'arrow'
+                },
+                {
+                    cls : 'popover-inner',
+                    cn : [
+                        {
+                            tag: 'h3',
+                            cls: 'popover-title',
+                            html : this.title
+                        },
+                        {
+                            cls : 'popover-content',
+                            html : this.html
+                        }
+                    ]
+                    
+                }
+           ]
+        };
+        
+        return cfg;
+    },
+    setTitle: function(str)
+    {
+        this.el.select('.popover-title',true).first().dom.innerHTML = str;
+    },
+    setContent: function(str)
+    {
+        this.el.select('.popover-content',true).first().dom.innerHTML = str;
+    },
+    // as it get's added to the bottom of the page.
+    onRender : function(ct, position)
+    {
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        if(!this.el){
+            var cfg = Roo.apply({},  this.getAutoCreate());
+            cfg.id = Roo.id();
+            
+            if (this.cls) {
+                cfg.cls += ' ' + this.cls;
+            }
+            if (this.style) {
+                cfg.style = this.style;
+            }
+            Roo.log("adding to ")
+            this.el = Roo.get(document.body).createChild(cfg, position);
+            Roo.log(this.el);
+        }
+        this.initEvents();
+    },
+    
+    initEvents : function()
+    {
+        this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
+        this.el.enableDisplayMode('block');
+        this.el.hide();
+        if (this.over === false) {
+            return; 
+        }
+        if (this.triggers === false) {
+            return;
+        }
+        var on_el = (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
+        var triggers = this.trigger ? this.trigger.split(' ') : [];
+        Roo.each(triggers, function(trigger) {
+        
+            if (trigger == 'click') {
+                on_el.on('click', this.toggle, this);
+            } else if (trigger != 'manual') {
+                var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
+                var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
+      
+                on_el.on(eventIn  ,this.enter, this);
+                on_el.on(eventOut, this.leave, this);
+            }
+        }, this);
+        
+    },
+    
+    
+    // private
+    timeout : null,
+    hoverState : null,
+    
+    toggle : function () {
+        this.hoverState == 'in' ? this.leave() : this.enter();
+    },
+    
+    enter : function () {
+       
+    
+        clearTimeout(this.timeout);
+    
+        this.hoverState = 'in'
+    
+        if (!this.delay || !this.delay.show) {
+            this.show();
+            return 
+        }
+        var _t = this;
+        this.timeout = setTimeout(function () {
+            if (_t.hoverState == 'in') {
+                _t.show();
+            }
+        }, this.delay.show)
+    },
+    leave : function() {
+        clearTimeout(this.timeout);
+    
+        this.hoverState = 'out'
+    
+        if (!this.delay || !this.delay.hide) {
+            this.hide();
+            return 
+        }
+        var _t = this;
+        this.timeout = setTimeout(function () {
+            if (_t.hoverState == 'out') {
+                _t.hide();
+            }
+        }, this.delay.hide)
+    },
+    
+    show : function (on_el)
+    {
+        if (!on_el) {
+            on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
+        }
+        // set content.
+        this.el.select('.popover-title',true).first().dom.innerHtml = this.title;
+        if (this.html !== false) {
+            this.el.select('.popover-content',true).first().dom.innerHtml = this.title;
+        }
+        this.el.removeClass(['fade','top','bottom', 'left', 'right','in']);
+        if (!this.title.length) {
+            this.el.select('.popover-title',true).hide();
+        }
+        
+        var placement = typeof this.placement == 'function' ?
+            this.placement.call(this, this.el, on_el) :
+            this.placement;
+            
+        var autoToken = /\s?auto?\s?/i;
+        var autoPlace = autoToken.test(placement);
+        if (autoPlace) {
+            placement = placement.replace(autoToken, '') || 'top';
+        }
+        
+        //this.el.detach()
+        //this.el.setXY([0,0]);
+        this.el.show();
+        this.el.dom.style.display='block';
+        this.el.addClass(placement);
+        
+        //this.el.appendTo(on_el);
+        
+        var p = this.getPosition();
+        var box = this.el.getBox();
+        
+        if (autoPlace) {
+            // fixme..
+        }
+        var align = Roo.bootstrap.Popover.alignment[placement]
+        this.el.alignTo(on_el, align[0],align[1]);
+        //var arrow = this.el.select('.arrow',true).first();
+        //arrow.set(align[2], 
+        
+        this.el.addClass('in');
+        this.hoverState = null;
+        
+        if (this.el.hasClass('fade')) {
+            // fade it?
+        }
+        
+    },
+    hide : function()
+    {
+        this.el.setXY([0,0]);
+        this.el.removeClass('in');
+        this.el.hide();
+        
+    }
+    
+});
+
+Roo.bootstrap.Popover.alignment = {
+    'left' : ['r-l', [-10,0], 'right'],
+    'right' : ['l-r', [10,0], 'left'],
+    'bottom' : ['t-b', [0,10], 'top'],
+    'top' : [ 'b-t', [0,-10], 'bottom']
+};
+
+ /*
+ * - LGPL
+ *
+ * Progress
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Progress
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Progress class
+ * @cfg {Boolean} striped striped of the progress bar
+ * @cfg {Boolean} active animated of the progress bar
+ * 
+ * 
+ * @constructor
+ * Create a new Progress
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Progress = function(config){
+    Roo.bootstrap.Progress.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
+    
+    striped : false,
+    active: false,
+    
+    getAutoCreate : function(){
+        var cfg = {
+            tag: 'div',
+            cls: 'progress'
+        };
+        
+        
+        if(this.striped){
+            cfg.cls += ' progress-striped';
+        }
+      
+        if(this.active){
+            cfg.cls += ' active';
+        }
+        
+        
+        return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * ProgressBar
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.ProgressBar
+ * @extends Roo.bootstrap.Component
+ * Bootstrap ProgressBar class
+ * @cfg {Number} aria_valuenow aria-value now
+ * @cfg {Number} aria_valuemin aria-value min
+ * @cfg {Number} aria_valuemax aria-value max
+ * @cfg {String} label label for the progress bar
+ * @cfg {String} panel (success | info | warning | danger )
+ * @cfg {String} role role of the progress bar
+ * @cfg {String} sr_only text
+ * 
+ * 
+ * @constructor
+ * Create a new ProgressBar
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.ProgressBar = function(config){
+    Roo.bootstrap.ProgressBar.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
+    
+    aria_valuenow : 0,
+    aria_valuemin : 0,
+    aria_valuemax : 100,
+    label : false,
+    panel : false,
+    role : false,
+    sr_only: false,
+    
+    getAutoCreate : function()
+    {
+        
+        var cfg = {
+            tag: 'div',
+            cls: 'progress-bar',
+            style: 'width:' + Math.ceil((this.aria_valuenow / this.aria_valuemax) * 100) + '%'
+        };
+        
+        if(this.sr_only){
+            cfg.cn = {
+                tag: 'span',
+                cls: 'sr-only',
+                html: this.sr_only
+            }
+        }
+        
+        if(this.role){
+            cfg.role = this.role;
+        }
+        
+        if(this.aria_valuenow){
+            cfg['aria-valuenow'] = this.aria_valuenow;
+        }
+        
+        if(this.aria_valuemin){
+            cfg['aria-valuemin'] = this.aria_valuemin;
+        }
+        
+        if(this.aria_valuemax){
+            cfg['aria-valuemax'] = this.aria_valuemax;
+        }
+        
+        if(this.label && !this.sr_only){
+            cfg.html = this.label;
+        }
+        
+        if(this.panel){
+            cfg.cls += ' progress-bar-' + this.panel;
+        }
+        
+        return cfg;
+    },
+    
+    update : function(aria_valuenow)
+    {
+        this.aria_valuenow = aria_valuenow;
+        
+        this.el.setStyle('width', Math.ceil((this.aria_valuenow / this.aria_valuemax) * 100) + '%');
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * TabPanel
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.TabPanel
+ * @extends Roo.bootstrap.Component
+ * Bootstrap TabPanel class
+ * @cfg {Boolean} active panel active
+ * @cfg {String} html panel content
+ * @cfg {String} tabId tab relate id
+ * 
+ * 
+ * @constructor
+ * Create a new TabPanel
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.TabPanel = function(config){
+    Roo.bootstrap.TabPanel.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
+    
+    active: false,
+    html: false,
+    tabId: false,
+    
+    getAutoCreate : function(){
+        var cfg = {
+            tag: 'div',
+            cls: 'tab-pane',
+            html: this.html || ''
+        };
+        
+        if(this.active){
+            cfg.cls += ' active';
+        }
+        
+        if(this.tabId){
+            cfg.tabId = this.tabId;
+        }
+        
+        return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * DateField
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.DateField
+ * @extends Roo.bootstrap.Input
+ * Bootstrap DateField class
+ * @cfg {Number} weekStart default 0
+ * @cfg {Number} weekStart default 0
+ * @cfg {Number} viewMode default empty, (months|years)
+ * @cfg {Number} minViewMode default empty, (months|years)
+ * @cfg {Number} startDate default -Infinity
+ * @cfg {Number} endDate default Infinity
+ * @cfg {Boolean} todayHighlight default false
+ * @cfg {Boolean} todayBtn default false
+ * @cfg {Boolean} calendarWeeks default false
+ * @cfg {Object} daysOfWeekDisabled default empty
+ * 
+ * @cfg {Boolean} keyboardNavigation default true
+ * @cfg {String} language default en
+ * 
+ * @constructor
+ * Create a new DateField
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.DateField = function(config){
+    Roo.bootstrap.DateField.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
+    
+    /**
+     * @cfg {String} format
+     * The default date format string which can be overriden for localization support.  The format must be
+     * valid according to {@link Date#parseDate} (defaults to 'm/d/y').
+     */
+    format : "m/d/y",
+    /**
+     * @cfg {String} altFormats
+     * Multiple date formats separated by "|" to try when parsing a user input value and it doesn't match the defined
+     * format (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').
+     */
+    altFormats : "m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d",
+    
+    weekStart : 0,
+    
+    viewMode : '',
+    
+    minViewMode : '',
+    
+    todayHighlight : false,
+    
+    todayBtn: false,
+    
+    language: 'en',
+    
+    keyboardNavigation: true,
+    
+    calendarWeeks: false,
+    
+    startDate: -Infinity,
+    
+    endDate: Infinity,
+    
+    daysOfWeekDisabled: [],
+    
+    _events: [],
+    
+    UTCDate: function()
+    {
+        return new Date(Date.UTC.apply(Date, arguments));
+    },
+    
+    UTCToday: function()
+    {
+        var today = new Date();
+        return this.UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+    },
+    
+    getDate: function() {
+            var d = this.getUTCDate();
+            return new Date(d.getTime() + (d.getTimezoneOffset()*60000));
+    },
+    
+    getUTCDate: function() {
+            return this.date;
+    },
+    
+    setDate: function(d) {
+            this.setUTCDate(new Date(d.getTime() - (d.getTimezoneOffset()*60000)));
+    },
+    
+    setUTCDate: function(d) {
+            this.date = d;
+            this.setValue(this.formatDate(this.date));
+    },
+        
+    onRender: function(ct, position)
+    {
+        
+        Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
+        
+        this.language = this.language || 'en';
+        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : this.language.split('-')[0];
+        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : "en";
+        
+        this.isRTL = Roo.bootstrap.DateField.dates[this.language].rtl || false;
+        this.format = this.format || 'm/d/y';
+        this.isInline = false;
+        this.isInput = true;
+        this.component = this.el.select('.add-on', true).first() || false;
+        this.component = (this.component && this.component.length === 0) ? false : this.component;
+        this.hasInput = this.component && this.inputEL().length;
+        
+        if (typeof(this.minViewMode === 'string')) {
+            switch (this.minViewMode) {
+                case 'months':
+                    this.minViewMode = 1;
+                    break;
+                case 'years':
+                    this.minViewMode = 2;
+                    break;
+                default:
+                    this.minViewMode = 0;
+                    break;
+            }
+        }
+        
+        if (typeof(this.viewMode === 'string')) {
+            switch (this.viewMode) {
+                case 'months':
+                    this.viewMode = 1;
+                    break;
+                case 'years':
+                    this.viewMode = 2;
+                    break;
+                default:
+                    this.viewMode = 0;
+                    break;
+            }
+        }
+                
+        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
+        
+        this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.picker().on('mousedown', this.onMousedown, this);
+        this.picker().on('click', this.onClick, this);
+        
+        this.picker().addClass('datepicker-dropdown');
+        
+        this.startViewMode = this.viewMode;
+        
+        
+        Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
+            if(!this.calendarWeeks){
+                v.remove();
+                return;
+            };
+            
+            v.dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today
+            v.attr('colspan', function(i, val){
+                return parseInt(val) + 1;
+            });
+        })
+			
+        
+        this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
+        
+        this.setStartDate(this.startDate);
+        this.setEndDate(this.endDate);
+        
+        this.setDaysOfWeekDisabled(this.daysOfWeekDisabled);
+        
+        this.fillDow();
+        this.fillMonths();
+        this.update();
+        this.showMode();
+        
+        if(this.isInline) {
+            this.show();
+        }
+    },
+    
+    picker : function()
+    {
+        return this.el.select('.datepicker', true).first();
+    },
+    
+    fillDow: function()
+    {
+        var dowCnt = this.weekStart;
+        
+        var dow = {
+            tag: 'tr',
+            cn: [
+                
+            ]
+        };
+        
+        if(this.calendarWeeks){
+            dow.cn.push({
+                tag: 'th',
+                cls: 'cw',
+                html: '&nbsp;'
+            })
+        }
+        
+        while (dowCnt < this.weekStart + 7) {
+            dow.cn.push({
+                tag: 'th',
+                cls: 'dow',
+                html: Roo.bootstrap.DateField.dates[this.language].daysMin[(dowCnt++)%7]
+            });
+        }
+        
+        this.picker().select('>.datepicker-days thead', true).first().createChild(dow);
+    },
+    
+    fillMonths: function()
+    {    
+        var i = 0
+        var months = this.picker().select('>.datepicker-months td', true).first();
+        
+        months.dom.innerHTML = '';
+        
+        while (i < 12) {
+            var month = {
+                tag: 'span',
+                cls: 'month',
+                html: Roo.bootstrap.DateField.dates[this.language].monthsShort[i++]
+            }
+            
+            months.createChild(month);
+        }
+        
+    },
+    
+    update: function(){
+        
+        this.date = (typeof(this.date) === 'undefined') ? this.UTCToday() : (typeof(this.date) === 'string') ? this.parseDate(this.date) : this.date;
+        
+        if (this.date < this.startDate) {
+            this.viewDate = new Date(this.startDate);
+        } else if (this.date > this.endDate) {
+            this.viewDate = new Date(this.endDate);
+        } else {
+            this.viewDate = new Date(this.date);
+        }
+        
+        this.fill();
+    },
+    
+    fill: function() {
+        var d = new Date(this.viewDate),
+                year = d.getUTCFullYear(),
+                month = d.getUTCMonth(),
+                startYear = this.startDate !== -Infinity ? this.startDate.getUTCFullYear() : -Infinity,
+                startMonth = this.startDate !== -Infinity ? this.startDate.getUTCMonth() : -Infinity,
+                endYear = this.endDate !== Infinity ? this.endDate.getUTCFullYear() : Infinity,
+                endMonth = this.endDate !== Infinity ? this.endDate.getUTCMonth() : Infinity,
+                currentDate = this.date && this.date.valueOf(),
+                today = this.UTCToday();
+        
+        this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].months[month]+' '+year;
+        
+//        this.picker().select('>tfoot th.today', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today;
+        
+//        this.picker.select('>tfoot th.today').
+//						.text(dates[this.language].today)
+//						.toggle(this.todayBtn !== false);
+    
+        this.updateNavArrows();
+        this.fillMonths();
+                                                
+        var prevMonth = this.UTCDate(year, month-1, 28,0,0,0,0),
+        
+        day = prevMonth.getDaysInMonth(prevMonth.getUTCFullYear(), prevMonth.getUTCMonth());
+         
+        prevMonth.setUTCDate(day);
+        
+        prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.weekStart + 7)%7);
+        
+        var nextMonth = new Date(prevMonth);
+        
+        nextMonth.setUTCDate(nextMonth.getUTCDate() + 42);
+        
+        nextMonth = nextMonth.valueOf();
+        
+        var fillMonths = false;
+        
+        this.picker().select('>.datepicker-days tbody',true).first().dom.innerHTML = '';
+        
+        while(prevMonth.valueOf() < nextMonth) {
+            var clsName = '';
+            
+            if (prevMonth.getUTCDay() === this.weekStart) {
+                if(fillMonths){
+                    this.picker().select('>.datepicker-days tbody',true).first().createChild(fillMonths);
+                }
+                    
+                fillMonths = {
+                    tag: 'tr',
+                    cn: []
+                };
+                
+                if(this.calendarWeeks){
+                    // ISO 8601: First week contains first thursday.
+                    // ISO also states week starts on Monday, but we can be more abstract here.
+                    var
+                    // Start of current week: based on weekstart/current date
+                    ws = new Date(+prevMonth + (this.weekStart - prevMonth.getUTCDay() - 7) % 7 * 864e5),
+                    // Thursday of this week
+                    th = new Date(+ws + (7 + 4 - ws.getUTCDay()) % 7 * 864e5),
+                    // First Thursday of year, year from thursday
+                    yth = new Date(+(yth = this.UTCDate(th.getUTCFullYear(), 0, 1)) + (7 + 4 - yth.getUTCDay())%7*864e5),
+                    // Calendar week: ms between thursdays, div ms per day, div 7 days
+                    calWeek =  (th - yth) / 864e5 / 7 + 1;
+                    
+                    fillMonths.cn.push({
+                        tag: 'td',
+                        cls: 'cw',
+                        html: calWeek
+                    });
+                }
+            }
+            
+            if (prevMonth.getUTCFullYear() < year || (prevMonth.getUTCFullYear() == year && prevMonth.getUTCMonth() < month)) {
+                clsName += ' old';
+            } else if (prevMonth.getUTCFullYear() > year || (prevMonth.getUTCFullYear() == year && prevMonth.getUTCMonth() > month)) {
+                clsName += ' new';
+            }
+            if (this.todayHighlight &&
+                prevMonth.getUTCFullYear() == today.getFullYear() &&
+                prevMonth.getUTCMonth() == today.getMonth() &&
+                prevMonth.getUTCDate() == today.getDate()) {
+                clsName += ' today';
+            }
+            
+            if (currentDate && prevMonth.valueOf() === currentDate) {
+                clsName += ' active';
+            }
+            
+            if (prevMonth.valueOf() < this.startDate || prevMonth.valueOf() > this.endDate ||
+                    this.daysOfWeekDisabled.indexOf(prevMonth.getUTCDay()) !== -1) {
+                    clsName += ' disabled';
+            }
+            
+            fillMonths.cn.push({
+                tag: 'td',
+                cls: 'day ' + clsName,
+                html: prevMonth.getDate()
+            })
+            
+            prevMonth.setDate(prevMonth.getDate()+1);
+        }
+          
+        var currentYear = this.date && this.date.getUTCFullYear();
+        var currentMonth = this.date && this.date.getUTCMonth();
+        
+        this.picker().select('>.datepicker-months th.switch',true).first().dom.innerHTML = year;
+        
+        Roo.each(this.picker().select('>.datepicker-months tbody span',true).elements, function(v,k){
+            v.removeClass('active');
+            
+            if(currentYear === year && k === currentMonth){
+                v.addClass('active');
+            }
+            
+            if (year < startYear || year > endYear || (year == startYear && k < startMonth) || (year == endYear && k > endMonth)) {
+                v.addClass('disabled');
+            }
+            
+        });
+        
+        
+        year = parseInt(year/10, 10) * 10;
+        
+        this.picker().select('>.datepicker-years th.switch', true).first().dom.innerHTML = year + '-' + (year + 9);
+        
+        this.picker().select('>.datepicker-years tbody td',true).first().dom.innerHTML = '';
+        
+        year -= 1;
+        for (var i = -1; i < 11; i++) {
+            this.picker().select('>.datepicker-years tbody td',true).first().createChild({
+                tag: 'span',
+                cls: 'year' + (i === -1 || i === 10 ? ' old' : '') + (currentYear === year ? ' active' : '') + (year < startYear || year > endYear ? ' disabled' : ''),
+                html: year
+            })
+            
+            year += 1;
+        }
+    },
+    
+    showMode: function(dir) {
+        if (dir) {
+            this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
+        }
+        Roo.each(this.picker().select('>div',true).elements, function(v){
+            v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+            v.hide();
+        });
+        this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
+    },
+    
+    place: function()
+    {
+        if(this.isInline) return;
+        
+        this.picker().removeClass(['bottom', 'top']);
+        
+        if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){
+            /*
+             * place to the top of element!
+             *
+             */
+            
+            this.picker().addClass('top');
+            this.picker().setTop(0 - this.picker().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+            
+            return;
+        }
+        
+        this.picker().addClass('bottom');
+        
+        this.picker().setTop(this.inputEl().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+    },
+    
+    parseDate : function(value){
+        if(!value || value instanceof Date){
+            return value;
+        }
+        var v = Date.parseDate(value, this.format);
+        if (!v && this.useIso) {
+            v = Date.parseDate(value, 'Y-m-d');
+        }
+        if(!v && this.altFormats){
+            if(!this.altFormatsArray){
+                this.altFormatsArray = this.altFormats.split("|");
+            }
+            for(var i = 0, len = this.altFormatsArray.length; i < len && !v; i++){
+                v = Date.parseDate(value, this.altFormatsArray[i]);
+            }
+        }
+        return v;
+    },
+    
+    formatDate : function(date, fmt){
+        return (!date || !(date instanceof Date)) ?
+        date : date.dateFormat(fmt || this.format);
+    },
+    
+    onFocus : function()
+    {
+        Roo.bootstrap.DateField.superclass.onFocus.call(this);
+        this.show();
+    },
+    
+    onBlur : function()
+    {
+        Roo.bootstrap.DateField.superclass.onBlur.call(this);
+        this.hide();
+    },
+    
+    show : function()
+    {
+        this.picker().show();
+        this.update();
+        this.place();
+    },
+    
+    hide : function()
+    {
+        if(this.isInline) return;
+        this.picker().hide();
+        this.viewMode = this.startViewMode;
+        this.showMode();
+        
+    },
+    
+    onMousedown: function(e){
+        e.stopPropagation();
+        e.preventDefault();
+    },
+    
+    keyup: function(e){
+        Roo.bootstrap.DateField.superclass.keyup.call(this);
+        this.update();
+        
+    },
+    
+    fireKey: function(e){
+        if (!this.picker().isVisible()){
+            if (e.keyCode == 27) // allow escape to hide and re-show picker
+                this.show();
+            return;
+        }
+        var dateChanged = false,
+        dir, day, month,
+        newDate, newViewDate;
+        switch(e.keyCode){
+            case 27: // escape
+                this.hide();
+                e.preventDefault();
+                break;
+            case 37: // left
+            case 39: // right
+                if (!this.keyboardNavigation) break;
+                dir = e.keyCode == 37 ? -1 : 1;
+                
+                if (e.ctrlKey){
+                    newDate = this.moveYear(this.date, dir);
+                    newViewDate = this.moveYear(this.viewDate, dir);
+                } else if (e.shiftKey){
+                    newDate = this.moveMonth(this.date, dir);
+                    newViewDate = this.moveMonth(this.viewDate, dir);
+                } else {
+                    newDate = new Date(this.date);
+                    newDate.setUTCDate(this.date.getUTCDate() + dir);
+                    newViewDate = new Date(this.viewDate);
+                    newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir);
+                }
+                if (this.dateWithinRange(newDate)){
+                    this.date = newDate;
+                    this.viewDate = newViewDate;
+                    this.setValue(this.formatDate(this.date));
+                    this.update();
+                    e.preventDefault();
+                    dateChanged = true;
+                }
+                break;
+            case 38: // up
+            case 40: // down
+                if (!this.keyboardNavigation) break;
+                dir = e.keyCode == 38 ? -1 : 1;
+                if (e.ctrlKey){
+                    newDate = this.moveYear(this.date, dir);
+                    newViewDate = this.moveYear(this.viewDate, dir);
+                } else if (e.shiftKey){
+                    newDate = this.moveMonth(this.date, dir);
+                    newViewDate = this.moveMonth(this.viewDate, dir);
+                } else {
+                    newDate = new Date(this.date);
+                    newDate.setUTCDate(this.date.getUTCDate() + dir * 7);
+                    newViewDate = new Date(this.viewDate);
+                    newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir * 7);
+                }
+                if (this.dateWithinRange(newDate)){
+                    this.date = newDate;
+                    this.viewDate = newViewDate;
+                    this.setValue(this.formatDate(this.date));
+                    this.update();
+                    e.preventDefault();
+                    dateChanged = true;
+                }
+                break;
+            case 13: // enter
+                this.setValue(this.formatDate(this.date));
+                this.hide();
+                e.preventDefault();
+                break;
+            case 9: // tab
+                this.setValue(this.formatDate(this.date));
+                this.hide();
+                break;
+        }
+    },
+    
+    
+    onClick: function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        
+        var target = e.getTarget();
+        
+        if(target.nodeName.toLowerCase() === 'i'){
+            target = Roo.get(target).dom.parentNode;
+        }
+        
+        var nodeName = target.nodeName;
+        var className = target.className;
+        var html = target.innerHTML;
+        
+        switch(nodeName.toLowerCase()) {
+            case 'th':
+                switch(className) {
+                    case 'switch':
+                        this.showMode(1);
+                        break;
+                    case 'prev':
+                    case 'next':
+                        var dir = Roo.bootstrap.DateField.modes[this.viewMode].navStep * (className == 'prev' ? -1 : 1);
+                        switch(this.viewMode){
+                                case 0:
+                                        this.viewDate = this.moveMonth(this.viewDate, dir);
+                                        break;
+                                case 1:
+                                case 2:
+                                        this.viewDate = this.moveYear(this.viewDate, dir);
+                                        break;
+                        }
+                        this.fill();
+                        break;
+                    case 'today':
+                        var date = new Date();
+                        this.date = this.UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+                        this.fill()
+                        this.setValue(this.formatDate(this.date));
+                        this.hide();
+                        break;
+                }
+                break;
+            case 'span':
+                if (className.indexOf('disabled') === -1) {
+                    this.viewDate.setUTCDate(1);
+                    if (className.indexOf('month') !== -1) {
+                        this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
+                    } else {
+                        var year = parseInt(html, 10) || 0;
+                        this.viewDate.setUTCFullYear(year);
+                        
+                    }
+                    this.showMode(-1);
+                    this.fill();
+                }
+                break;
+                
+            case 'td':
+                if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
+                    var day = parseInt(html, 10) || 1;
+                    var year = this.viewDate.getUTCFullYear(),
+                        month = this.viewDate.getUTCMonth();
+
+                    if (className.indexOf('old') !== -1) {
+                        if(month === 0 ){
+                            month = 11;
+                            year -= 1;
+                        }else{
+                            month -= 1;
+                        }
+                    } else if (className.indexOf('new') !== -1) {
+                        if (month == 11) {
+                            month = 0;
+                            year += 1;
+                        } else {
+                            month += 1;
+                        }
+                    }
+                    this.date = this.UTCDate(year, month, day,0,0,0,0);
+                    this.viewDate = this.UTCDate(year, month, Math.min(28, day),0,0,0,0);
+                    this.fill();
+                    this.setValue(this.formatDate(this.date));
+                    this.hide();
+                }
+                break;
+        }
+    },
+    
+    setStartDate: function(startDate){
+        this.startDate = startDate || -Infinity;
+        if (this.startDate !== -Infinity) {
+            this.startDate = this.parseDate(this.startDate);
+        }
+        this.update();
+        this.updateNavArrows();
+    },
+
+    setEndDate: function(endDate){
+        this.endDate = endDate || Infinity;
+        if (this.endDate !== Infinity) {
+            this.endDate = this.parseDate(this.endDate);
+        }
+        this.update();
+        this.updateNavArrows();
+    },
+    
+    setDaysOfWeekDisabled: function(daysOfWeekDisabled){
+        this.daysOfWeekDisabled = daysOfWeekDisabled || [];
+        if (typeof(this.daysOfWeekDisabled) !== 'object') {
+            this.daysOfWeekDisabled = this.daysOfWeekDisabled.split(/,\s*/);
+        }
+        this.daysOfWeekDisabled = this.daysOfWeekDisabled.map(function (d) {
+            return parseInt(d, 10);
+        });
+        this.update();
+        this.updateNavArrows();
+    },
+    
+    updateNavArrows: function() {
+        var d = new Date(this.viewDate),
+        year = d.getUTCFullYear(),
+        month = d.getUTCMonth();
+        
+        Roo.each(this.picker().select('.prev', true).elements, function(v){
+            v.show();
+            switch (this.viewMode) {
+                case 0:
+
+                    if (this.startDate !== -Infinity && year <= this.startDate.getUTCFullYear() && month <= this.startDate.getUTCMonth()) {
+                        v.hide();
+                    }
+                    break;
+                case 1:
+                case 2:
+                    if (this.startDate !== -Infinity && year <= this.startDate.getUTCFullYear()) {
+                        v.hide();
+                    }
+                    break;
+            }
+        });
+        
+        Roo.each(this.picker().select('.next', true).elements, function(v){
+            v.show();
+            switch (this.viewMode) {
+                case 0:
+
+                    if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear() && month >= this.endDate.getUTCMonth()) {
+                        v.hide();
+                    }
+                    break;
+                case 1:
+                case 2:
+                    if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear()) {
+                        v.hide();
+                    }
+                    break;
+            }
+        })
+    },
+    
+    moveMonth: function(date, dir){
+        if (!dir) return date;
+        var new_date = new Date(date.valueOf()),
+        day = new_date.getUTCDate(),
+        month = new_date.getUTCMonth(),
+        mag = Math.abs(dir),
+        new_month, test;
+        dir = dir > 0 ? 1 : -1;
+        if (mag == 1){
+            test = dir == -1
+            // If going back one month, make sure month is not current month
+            // (eg, Mar 31 -> Feb 31 == Feb 28, not Mar 02)
+            ? function(){
+                return new_date.getUTCMonth() == month;
+            }
+            // If going forward one month, make sure month is as expected
+            // (eg, Jan 31 -> Feb 31 == Feb 28, not Mar 02)
+            : function(){
+                return new_date.getUTCMonth() != new_month;
+            };
+            new_month = month + dir;
+            new_date.setUTCMonth(new_month);
+            // Dec -> Jan (12) or Jan -> Dec (-1) -- limit expected date to 0-11
+            if (new_month < 0 || new_month > 11)
+                new_month = (new_month + 12) % 12;
+        } else {
+            // For magnitudes >1, move one month at a time...
+            for (var i=0; i<mag; i++)
+                // ...which might decrease the day (eg, Jan 31 to Feb 28, etc)...
+                new_date = this.moveMonth(new_date, dir);
+            // ...then reset the day, keeping it in the new month
+            new_month = new_date.getUTCMonth();
+            new_date.setUTCDate(day);
+            test = function(){
+                return new_month != new_date.getUTCMonth();
+            };
+        }
+        // Common date-resetting loop -- if date is beyond end of month, make it
+        // end of month
+        while (test()){
+            new_date.setUTCDate(--day);
+            new_date.setUTCMonth(new_month);
+        }
+        return new_date;
+    },
+
+    moveYear: function(date, dir){
+        return this.moveMonth(date, dir*12);
+    },
+
+    dateWithinRange: function(date){
+        return date >= this.startDate && date <= this.endDate;
+    },
+
+    
+    remove: function() {
+        this.picker().remove();
+    }
+   
+});
+
+Roo.apply(Roo.bootstrap.DateField,  {
+    
+    head : {
+        tag: 'thead',
+        cn: [
+        {
+            tag: 'tr',
+            cn: [
+            {
+                tag: 'th',
+                cls: 'prev',
+                html: '<i class="icon-arrow-left"/>'
+            },
+            {
+                tag: 'th',
+                cls: 'switch',
+                colspan: '5'
+            },
+            {
+                tag: 'th',
+                cls: 'next',
+                html: '<i class="icon-arrow-right"/>'
+            }
+
+            ]
+        }
+        ]
+    },
+    
+    content : {
+        tag: 'tbody',
+        cn: [
+        {
+            tag: 'tr',
+            cn: [
+            {
+                tag: 'td',
+                colspan: '7'
+            }
+            ]
+        }
+        ]
+    },
+    
+    footer : {
+        tag: 'tfoot',
+        cn: [
+        {
+            tag: 'tr',
+            cn: [
+            {
+                tag: 'th',
+                colspan: '7',
+                cls: 'today'
+            }
+                    
+            ]
+        }
+        ]
+    },
+    
+    dates:{
+        en: {
+            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            today: "Today"
+        }
+    },
+    
+    modes: [
+    {
+        clsName: 'days',
+        navFnc: 'Month',
+        navStep: 1
+    },
+    {
+        clsName: 'months',
+        navFnc: 'FullYear',
+        navStep: 1
+    },
+    {
+        clsName: 'years',
+        navFnc: 'FullYear',
+        navStep: 10
+    }]
+});
+
+Roo.apply(Roo.bootstrap.DateField,  {
+  
+    template : {
+        tag: 'div',
+        cls: 'datepicker dropdown-menu',
+        cn: [
+        {
+            tag: 'div',
+            cls: 'datepicker-days',
+            cn: [
+            {
+                tag: 'table',
+                cls: 'table-condensed',
+                cn:[
+                Roo.bootstrap.DateField.head,
+                {
+                    tag: 'tbody'
+                },
+                Roo.bootstrap.DateField.footer
+                ]
+            }
+            ]
+        },
+        {
+            tag: 'div',
+            cls: 'datepicker-months',
+            cn: [
+            {
+                tag: 'table',
+                cls: 'table-condensed',
+                cn:[
+                Roo.bootstrap.DateField.head,
+                Roo.bootstrap.DateField.content,
+                Roo.bootstrap.DateField.footer
+                ]
+            }
+            ]
+        },
+        {
+            tag: 'div',
+            cls: 'datepicker-years',
+            cn: [
+            {
+                tag: 'table',
+                cls: 'table-condensed',
+                cn:[
+                Roo.bootstrap.DateField.head,
+                Roo.bootstrap.DateField.content,
+                Roo.bootstrap.DateField.footer
+                ]
+            }
+            ]
+        }
+        ]
+    }
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * CheckBox
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.CheckBox
+ * @extends Roo.bootstrap.Input
+ * Bootstrap CheckBox class
+ * 
+ * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
+ * @cfg {String} boxLabel The text that appears beside the checkbox
+ * @cfg {Boolean} checked initnal the element
+ * 
+ * @constructor
+ * Create a new CheckBox
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.CheckBox = function(config){
+    Roo.bootstrap.CheckBox.superclass.constructor.call(this, config);
+   
+        this.addEvents({
+            /**
+            * @event check
+            * Fires when the element is checked or unchecked.
+            * @param {Roo.bootstrap.CheckBox} this This input
+            * @param {Boolean} checked The new checked value
+            */
+           check : true
+        });
+};
+
+Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
+    
+    inputType: 'checkbox',
+    value: 1,
+    valueOff: 0,
+    boxLabel: false,
+    checked: false,
+    
+    getAutoCreate : function()
+    {
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+        
+        var id = Roo.id();
+        
+        var cfg = {};
+        
+        cfg.cls = 'form-group' //input-group
+        
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            value : (!this.checked) ? this.valueOff : this.value,
+            cls : 'form-box',
+            placeholder : this.placeholder || ''
+            
+        };
+        
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        
+        if(this.checked){
+            input.checked = this.checked;
+        }
+        
+        if (this.name) {
+            input.name = this.name;
+        }
+        
+        if (this.size) {
+            input.cls += ' input-' + this.size;
+        }
+        
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
+        
+        var inputblock = input;
+        
+        if (this.before || this.after) {
+            
+            inputblock = {
+                cls : 'input-group',
+                cn :  [] 
+            };
+            if (this.before) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.before
+                });
+            }
+            inputblock.cn.push(input);
+            if (this.after) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.after
+                });
+            }
+            
+        };
+        
+        if (align ==='left' && this.fieldLabel.length) {
+                Roo.log("left and has label");
+                cfg.cn = [
+                    
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'control-label col-md-' + this.labelWidth,
+                        html : this.fieldLabel
+                        
+                    },
+                    {
+                        cls : "col-md-" + (12 - this.labelWidth), 
+                        cn: [
+                            inputblock
+                        ]
+                    }
+                    
+                ];
+        } else if ( this.fieldLabel.length) {
+                Roo.log(" label");
+                 cfg.cn = [
+                   
+                    {
+                        tag: 'label',
+                        'for': id,
+                        cls: 'control-label box-input-label',
+                        //cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    inputblock
+                    
+                ];
+
+        } else {
+            
+                   Roo.log(" no label && no align");
+                cfg.cn = [
+                    
+                        inputblock
+                    
+                ];
+                
+                
+        };
+        
+        if(this.boxLabel){
+            cfg.cn.push({
+                tag: 'span',
+                'for': id,
+                cls: 'box-label',
+                html: this.boxLabel
+            })
+        }
+        
+        return cfg;
+        
+    },
+    
+    /**
+     * return the real input element.
+     */
+    inputEl: function ()
+    {
+        return this.el.select('input.form-box',true).first();
+    },
+    
+    initEvents : function()
+    {
+        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
+        
+        this.inputEl().on('click', this.onClick,  this);
+        
+    },
+    
+    onClick : function()
+    {   
+        this.setChecked(!this.checked);
+    },
+    
+    setChecked : function(state,suppressEvent)
+    {
+        this.checked = state;
+        
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+        
+        this.inputEl().dom.value = state ? this.value : this.valueOff;
+        
+    }
+});
+
+ 
+/*
+ * - LGPL
+ *
+ * Radio
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Radio
+ * @extends Roo.bootstrap.CheckBox
+ * Bootstrap Radio class
+
+ * @constructor
+ * Create a new Radio
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Radio = function(config){
+    Roo.bootstrap.Radio.superclass.constructor.call(this, config);
+   
+};
+
+Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
+    
+    inputType: 'radio',
+    
+    getAutoCreate : function()
+    {
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+        
+        var id = Roo.id();
+        
+        var cfg = {};
+        
+        cfg.cls = 'form-group' //input-group
+        
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            value : (!this.checked) ? this.valueOff : this.value,
+            cls : 'form-box',
+            placeholder : this.placeholder || ''
+            
+        };
+        
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        
+        if(this.checked){
+            input.checked = this.checked;
+        }
+        
+        if (this.name) {
+            input.name = this.name;
+        }
+        
+        if (this.size) {
+            input.cls += ' input-' + this.size;
+        }
+        
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
+        
+        var inputblock = input;
+        
+        if (this.before || this.after) {
+            
+            inputblock = {
+                cls : 'input-group',
+                cn :  [] 
+            };
+            if (this.before) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.before
+                });
+            }
+            inputblock.cn.push(input);
+            if (this.after) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.after
+                });
+            }
+            
+        };
+        
+        if (align ==='left' && this.fieldLabel.length) {
+                Roo.log("left and has label");
+                cfg.cn = [
+                    
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'control-label col-md-' + this.labelWidth,
+                        html : this.fieldLabel
+                        
+                    },
+                    {
+                        cls : "col-md-" + (12 - this.labelWidth), 
+                        cn: [
+                            inputblock
+                        ]
+                    }
+                    
+                ];
+        } else if ( this.fieldLabel.length) {
+                Roo.log(" label");
+                 cfg.cn = [
+                   
+                    {
+                        tag: 'label',
+                        'for': id,
+                        cls: 'control-label box-input-label',
+                        //cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    inputblock
+                    
+                ];
+
+        } else {
+            
+                   Roo.log(" no label && no align");
+                cfg.cn = [
+                    
+                        inputblock
+                    
+                ];
+                
+                
+        };
+        
+        if(this.boxLabel){
+            cfg.cn.push({
+                tag: 'span',
+                'for': id,
+                cls: 'box-label',
+                html: this.boxLabel
+            })
+        }
+        
+        return cfg;
+        
+    },
+    
+    onClick : function()
+    {   
+        this.setChecked(true);
+    },
+    
+    setChecked : function(state,suppressEvent)
+    {
+        Roo.each(this.inputEl().up('form').select('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
+            v.checked = false;
+        });
+        
+        this.checked = state;
+        
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+        
+        this.inputEl().dom.value = state ? this.value : this.valueOff;
+        
+    },
+    
+    getGroupValue : function()
+    {
+        if(typeof(this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true)) == 'undefined'){
+            return '';
+        }
+        
+        return this.inputEl().up('form').child('input[name='+this.inputEl().dom.name+']:checked', true).value;
+    },
+    
+    /**
+     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
+     * @return {Mixed} value The field value
+     */
+    getValue : function(){
+        return this.getGroupValue();
+    }
+    
+});
+
+ 
+/*
+ * - LGPL
+ *
+ * HtmlEditor
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.HtmlEditor
+ * @extends Roo.bootstrap.Component
+ * Bootstrap HtmlEditor class
+
+ * @constructor
+ * Create a new HtmlEditor
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.HtmlEditor = function(config){
+    Roo.bootstrap.HtmlEditor.superclass.constructor.call(this, config);
+    if (!this.toolbars) {
+        this.toolbars = [];
+    }
+    this.editorcore = new Roo.HtmlEditorCore(Roo.apply({ owner : this} , config));
+    this.addEvents({
+            /**
+             * @event initialize
+             * Fires when the editor is fully initialized (including the iframe)
+             * @param {HtmlEditor} this
+             */
+            initialize: true,
+            /**
+             * @event activate
+             * Fires when the editor is first receives the focus. Any insertion must wait
+             * until after this event.
+             * @param {HtmlEditor} this
+             */
+            activate: true,
+             /**
+             * @event beforesync
+             * Fires before the textarea is updated with content from the editor iframe. Return false
+             * to cancel the sync.
+             * @param {HtmlEditor} this
+             * @param {String} html
+             */
+            beforesync: true,
+             /**
+             * @event beforepush
+             * Fires before the iframe editor is updated with content from the textarea. Return false
+             * to cancel the push.
+             * @param {HtmlEditor} this
+             * @param {String} html
+             */
+            beforepush: true,
+             /**
+             * @event sync
+             * Fires when the textarea is updated with content from the editor iframe.
+             * @param {HtmlEditor} this
+             * @param {String} html
+             */
+            sync: true,
+             /**
+             * @event push
+             * Fires when the iframe editor is updated with content from the textarea.
+             * @param {HtmlEditor} this
+             * @param {String} html
+             */
+            push: true,
+             /**
+             * @event editmodechange
+             * Fires when the editor switches edit modes
+             * @param {HtmlEditor} this
+             * @param {Boolean} sourceEdit True if source edit, false if standard editing.
+             */
+            editmodechange: true,
+            /**
+             * @event editorevent
+             * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
+             * @param {HtmlEditor} this
+             */
+            editorevent: true,
+            /**
+             * @event firstfocus
+             * Fires when on first focus - needed by toolbars..
+             * @param {HtmlEditor} this
+             */
+            firstfocus: true,
+            /**
+             * @event autosave
+             * Auto save the htmlEditor value as a file into Events
+             * @param {HtmlEditor} this
+             */
+            autosave: true,
+            /**
+             * @event savedpreview
+             * preview the saved version of htmlEditor
+             * @param {HtmlEditor} this
+             */
+            savedpreview: true
+        });
+};
+
+
+Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
+    
+    
+      /**
+     * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
+     */
+    toolbars : false,
+   
+     /**
+     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
+     *                        Roo.resizable.
+     */
+    resizable : false,
+     /**
+     * @cfg {Number} height (in pixels)
+     */   
+    height: 300,
+   /**
+     * @cfg {Number} width (in pixels)
+     */   
+    width: 500,
+    
+    /**
+     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
+     * 
+     */
+    stylesheets: false,
+    
+    // id of frame..
+    frameId: false,
+    
+    // private properties
+    validationEvent : false,
+    deferHeight: true,
+    initialized : false,
+    activated : false,
+    
+    onFocus : Roo.emptyFn,
+    iframePad:3,
+    hideMode:'offsets',
+    
+    
+    tbContainer : false,
+    
+    toolbarContainer :function() {
+        return this.wrap.select('.x-html-editor-tb',true).first();
+    },
+
+    /**
+     * Protected method that will not generally be called directly. It
+     * is called when the editor creates its toolbar. Override this method if you need to
+     * add custom toolbar buttons.
+     * @param {HtmlEditor} editor
+     */
+    createToolbar : function(){
+        
+        this.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard({editor: this} ) ];
+        this.toolbars[0].render(this.toolbarContainer());
+         
+        Roo.log("create toolbars");
+        return;
+        if (!editor.toolbars || !editor.toolbars.length) {
+            editor.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard() ]; // can be empty?
+        }
+        
+        for (var i =0 ; i < editor.toolbars.length;i++) {
+            editor.toolbars[i] = Roo.factory(
+                    typeof(editor.toolbars[i]) == 'string' ?
+                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
+                Roo.bootstrap.HtmlEditor);
+            editor.toolbars[i].init(editor);
+        }
+         
+        
+    },
+
+     
+    // private
+    onRender : function(ct, position)
+    {
+       // Roo.log("Call onRender: " + this.xtype);
+        
+        Roo.bootstrap.HtmlEditor.superclass.onRender.call(this, ct, position);
+      
+        this.wrap = this.inputEl().wrap({
+            cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
+        });
+        
+        this.editorcore.onRender(ct, position);
+         
+        if (this.resizable) {
+            this.resizeEl = new Roo.Resizable(this.wrap, {
+                pinned : true,
+                wrap: true,
+                dynamic : true,
+                minHeight : this.height,
+                height: this.height,
+                handles : this.resizable,
+                width: this.width,
+                listeners : {
+                    resize : function(r, w, h) {
+                        _t.onResize(w,h); // -something
+                    }
+                }
+            });
+            
+        }
+        this.createToolbar(this);
+       
+        
+        if(!this.width){
+            this.setSize(this.wrap.getSize());
+        }
+        if (this.resizeEl) {
+            this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
+            // should trigger onReize..
+        }
+        
+//        if(this.autosave && this.w){
+//            this.autoSaveFn = setInterval(this.autosave, 1000);
+//        }
+    },
+
+    // private
+    onResize : function(w, h)
+    {
+        Roo.log('resize: ' +w + ',' + h );
+        Roo.bootstrap.HtmlEditor.superclass.onResize.apply(this, arguments);
+        var ew = false;
+        var eh = false;
+        
+        if(this.inputEl() ){
+            if(typeof w == 'number'){
+                var aw = w - this.wrap.getFrameWidth('lr');
+                this.inputEl().setWidth(this.adjustWidth('textarea', aw));
+                ew = aw;
+            }
+            if(typeof h == 'number'){
+                 var tbh = -11;  // fixme it needs to tool bar size!
+                for (var i =0; i < this.toolbars.length;i++) {
+                    // fixme - ask toolbars for heights?
+                    tbh += this.toolbars[i].el.getHeight();
+                    //if (this.toolbars[i].footer) {
+                    //    tbh += this.toolbars[i].footer.el.getHeight();
+                    //}
+                }
+              
+                
+                
+                
+                
+                var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
+                ah -= 5; // knock a few pixes off for look..
+                this.inputEl().setHeight(this.adjustWidth('textarea', ah));
+                var eh = ah;
+            }
+        }
+        Roo.log('onResize:' + [w,h,ew,eh].join(',') );
+        this.editorcore.onResize(ew,eh);
+        
+    },
+
+    /**
+     * Toggles the editor between standard and source edit mode.
+     * @param {Boolean} sourceEdit (optional) True for source edit, false for standard
+     */
+    toggleSourceEdit : function(sourceEditMode)
+    {
+        this.editorcore.toggleSourceEdit(sourceEditMode);
+        
+        if(this.editorcore.sourceEditMode){
+            Roo.log('editor - showing textarea');
+            
+//            Roo.log('in');
+//            Roo.log(this.syncValue());
+            this.editorcore.syncValue();
+            this.inputEl().removeClass('hide');
+            this.inputEl().dom.removeAttribute('tabIndex');
+            this.inputEl().focus();
+        }else{
+            Roo.log('editor - hiding textarea');
+//            Roo.log('out')
+//            Roo.log(this.pushValue()); 
+            this.editorcore.pushValue();
+            
+            this.inputEl().addClass('hide');
+            this.inputEl().dom.setAttribute('tabIndex', -1);
+            //this.deferFocus();
+        }
+         
+        this.setSize(this.wrap.getSize());
+        this.fireEvent('editmodechange', this, this.editorcore.sourceEditMode);
+    },
+ 
+    // private (for BoxComponent)
+    adjustSize : Roo.BoxComponent.prototype.adjustSize,
+
+    // private (for BoxComponent)
+    getResizeEl : function(){
+        return this.wrap;
+    },
+
+    // private (for BoxComponent)
+    getPositionEl : function(){
+        return this.wrap;
+    },
+
+    // private
+    initEvents : function(){
+        this.originalValue = this.getValue();
+    },
+
+    /**
+     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
+     * @method
+     */
+    markInvalid : Roo.emptyFn,
+    /**
+     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
+     * @method
+     */
+    clearInvalid : Roo.emptyFn,
+
+    setValue : function(v){
+        Roo.bootstrap.HtmlEditor.superclass.setValue.call(this, v);
+        this.editorcore.pushValue();
+    },
+
+     
+    // private
+    deferFocus : function(){
+        this.focus.defer(10, this);
+    },
+
+    // doc'ed in Field
+    focus : function(){
+        this.editorcore.focus();
+        
+    },
+      
+
+    // private
+    onDestroy : function(){
+        
+        
+        
+        if(this.rendered){
+            
+            for (var i =0; i < this.toolbars.length;i++) {
+                // fixme - ask toolbars for heights?
+                this.toolbars[i].onDestroy();
+            }
+            
+            this.wrap.dom.innerHTML = '';
+            this.wrap.remove();
+        }
+    },
+
+    // private
+    onFirstFocus : function(){
+        //Roo.log("onFirstFocus");
+        this.editorcore.onFirstFocus();
+         for (var i =0; i < this.toolbars.length;i++) {
+            this.toolbars[i].onFirstFocus();
+        }
+        
+    },
+    
+    // private
+    syncValue : function()
+    {
+        this.editorcore.syncValue();
+    }
+     
+    
+    // hide stuff that is not compatible
+    /**
+     * @event blur
+     * @hide
+     */
+    /**
+     * @event change
+     * @hide
+     */
+    /**
+     * @event focus
+     * @hide
+     */
+    /**
+     * @event specialkey
+     * @hide
+     */
+    /**
+     * @cfg {String} fieldClass @hide
+     */
+    /**
+     * @cfg {String} focusClass @hide
+     */
+    /**
+     * @cfg {String} autoCreate @hide
+     */
+    /**
+     * @cfg {String} inputType @hide
+     */
+    /**
+     * @cfg {String} invalidClass @hide
+     */
+    /**
+     * @cfg {String} invalidText @hide
+     */
+    /**
+     * @cfg {String} msgFx @hide
+     */
+    /**
+     * @cfg {String} validateOnBlur @hide
+     */
+});
+ 
+    
+   
+   
+   
+    
+/**
+ * @class Roo.bootstrap.Table.AbstractSelectionModel
+ * @extends Roo.util.Observable
+ * Abstract base class for grid SelectionModels.  It provides the interface that should be
+ * implemented by descendant classes.  This class should not be directly instantiated.
+ * @constructor
+ */
+Roo.bootstrap.Table.AbstractSelectionModel = function(){
+    this.locked = false;
+    Roo.bootstrap.Table.AbstractSelectionModel.superclass.constructor.call(this);
+};
+
+
+Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel, Roo.util.Observable,  {
+    /** @ignore Called by the grid automatically. Do not call directly. */
+    init : function(grid){
+        this.grid = grid;
+        this.initEvents();
+    },
+
+    /**
+     * Locks the selections.
+     */
+    lock : function(){
+        this.locked = true;
+    },
+
+    /**
+     * Unlocks the selections.
+     */
+    unlock : function(){
+        this.locked = false;
+    },
+
+    /**
+     * Returns true if the selections are locked.
+     * @return {Boolean}
+     */
+    isLocked : function(){
+        return this.locked;
+    }
+});
+/**
+ * @class Roo.bootstrap.Table.ColumnModel
+ * @extends Roo.util.Observable
+ * This is the default implementation of a ColumnModel used by the bootstrap table. It defines
+ * the columns in the table.
+ 
+ * @constructor
+ * @param {Object} config An Array of column config objects. See this class's
+ * config objects for details.
+*/
+Roo.bootstrap.Table.ColumnModel = function(config){
+	/**
+     * The config passed into the constructor
+     */
+    this.config = config;
+    this.lookup = {};
+
+    // if no id, create one
+    // if the column does not have a dataIndex mapping,
+    // map it to the order it is in the config
+    for(var i = 0, len = config.length; i < len; i++){
+        var c = config[i];
+        if(typeof c.dataIndex == "undefined"){
+            c.dataIndex = i;
+        }
+        if(typeof c.renderer == "string"){
+            c.renderer = Roo.util.Format[c.renderer];
+        }
+        if(typeof c.id == "undefined"){
+            c.id = Roo.id();
+        }
+//        if(c.editor && c.editor.xtype){
+//            c.editor  = Roo.factory(c.editor, Roo.grid);
+//        }
+//        if(c.editor && c.editor.isFormField){
+//            c.editor = new Roo.grid.GridEditor(c.editor);
+//        }
+
+        this.lookup[c.id] = c;
+    }
+
+    /**
+     * The width of columns which have no width specified (defaults to 100)
+     * @type Number
+     */
+    this.defaultWidth = 100;
+
+    /**
+     * Default sortable of columns which have no sortable specified (defaults to false)
+     * @type Boolean
+     */
+    this.defaultSortable = false;
+
+    this.addEvents({
+        /**
+	     * @event widthchange
+	     * Fires when the width of a column changes.
+	     * @param {ColumnModel} this
+	     * @param {Number} columnIndex The column index
+	     * @param {Number} newWidth The new width
+	     */
+	    "widthchange": true,
+        /**
+	     * @event headerchange
+	     * Fires when the text of a header changes.
+	     * @param {ColumnModel} this
+	     * @param {Number} columnIndex The column index
+	     * @param {Number} newText The new header text
+	     */
+	    "headerchange": true,
+        /**
+	     * @event hiddenchange
+	     * Fires when a column is hidden or "unhidden".
+	     * @param {ColumnModel} this
+	     * @param {Number} columnIndex The column index
+	     * @param {Boolean} hidden true if hidden, false otherwise
+	     */
+	    "hiddenchange": true,
+	    /**
+         * @event columnmoved
+         * Fires when a column is moved.
+         * @param {ColumnModel} this
+         * @param {Number} oldIndex
+         * @param {Number} newIndex
+         */
+        "columnmoved" : true,
+        /**
+         * @event columlockchange
+         * Fires when a column's locked state is changed
+         * @param {ColumnModel} this
+         * @param {Number} colIndex
+         * @param {Boolean} locked true if locked
+         */
+        "columnlockchange" : true
+    });
+    Roo.bootstrap.Table.ColumnModel.superclass.constructor.call(this);
+};
+Roo.extend(Roo.bootstrap.Table.ColumnModel, Roo.util.Observable, {
+    /**
+     * @cfg {String} header The header text to display in the Grid view.
+     */
+    /**
+     * @cfg {String} dataIndex (Optional) The name of the field in the grid's {@link Roo.data.Store}'s
+     * {@link Roo.data.Record} definition from which to draw the column's value. If not
+     * specified, the column's index is used as an index into the Record's data Array.
+     */
+    /**
+     * @cfg {Number} width (Optional) The initial width in pixels of the column. Using this
+     * instead of {@link Roo.grid.Grid#autoSizeColumns} is more efficient.
+     */
+    /**
+     * @cfg {Boolean} sortable (Optional) True if sorting is to be allowed on this column.
+     * Defaults to the value of the {@link #defaultSortable} property.
+     * Whether local/remote sorting is used is specified in {@link Roo.data.Store#remoteSort}.
+     */
+    /**
+     * @cfg {Boolean} locked (Optional) True to lock the column in place while scrolling the Grid.  Defaults to false.
+     */
+    /**
+     * @cfg {Boolean} fixed (Optional) True if the column width cannot be changed.  Defaults to false.
+     */
+    /**
+     * @cfg {Boolean} resizable (Optional) False to disable column resizing. Defaults to true.
+     */
+    /**
+     * @cfg {Boolean} hidden (Optional) True to hide the column. Defaults to false.
+     */
+    /**
+     * @cfg {Function} renderer (Optional) A function used to generate HTML markup for a cell
+     * given the cell's data value. See {@link #setRenderer}. If not specified, the
+     * default renderer uses the raw data value.
+     */
+    /**
+     * @cfg {String} align (Optional) Set the CSS text-align property of the column.  Defaults to undefined.
+     */
+
+    /**
+     * Returns the id of the column at the specified index.
+     * @param {Number} index The column index
+     * @return {String} the id
+     */
+    getColumnId : function(index){
+        return this.config[index].id;
+    },
+
+    /**
+     * Returns the column for a specified id.
+     * @param {String} id The column id
+     * @return {Object} the column
+     */
+    getColumnById : function(id){
+        return this.lookup[id];
+    },
+
+    
+    /**
+     * Returns the column for a specified dataIndex.
+     * @param {String} dataIndex The column dataIndex
+     * @return {Object|Boolean} the column or false if not found
+     */
+    getColumnByDataIndex: function(dataIndex){
+        var index = this.findColumnIndex(dataIndex);
+        return index > -1 ? this.config[index] : false;
+    },
+    
+    /**
+     * Returns the index for a specified column id.
+     * @param {String} id The column id
+     * @return {Number} the index, or -1 if not found
+     */
+    getIndexById : function(id){
+        for(var i = 0, len = this.config.length; i < len; i++){
+            if(this.config[i].id == id){
+                return i;
+            }
+        }
+        return -1;
+    },
+    
+    /**
+     * Returns the index for a specified column dataIndex.
+     * @param {String} dataIndex The column dataIndex
+     * @return {Number} the index, or -1 if not found
+     */
+    
+    findColumnIndex : function(dataIndex){
+        for(var i = 0, len = this.config.length; i < len; i++){
+            if(this.config[i].dataIndex == dataIndex){
+                return i;
+            }
+        }
+        return -1;
+    },
+    
+    
+    moveColumn : function(oldIndex, newIndex){
+        var c = this.config[oldIndex];
+        this.config.splice(oldIndex, 1);
+        this.config.splice(newIndex, 0, c);
+        this.dataMap = null;
+        this.fireEvent("columnmoved", this, oldIndex, newIndex);
+    },
+
+    isLocked : function(colIndex){
+        return this.config[colIndex].locked === true;
+    },
+
+    setLocked : function(colIndex, value, suppressEvent){
+        if(this.isLocked(colIndex) == value){
+            return;
+        }
+        this.config[colIndex].locked = value;
+        if(!suppressEvent){
+            this.fireEvent("columnlockchange", this, colIndex, value);
+        }
+    },
+
+    getTotalLockedWidth : function(){
+        var totalWidth = 0;
+        for(var i = 0; i < this.config.length; i++){
+            if(this.isLocked(i) && !this.isHidden(i)){
+                this.totalWidth += this.getColumnWidth(i);
+            }
+        }
+        return totalWidth;
+    },
+
+    getLockedCount : function(){
+        for(var i = 0, len = this.config.length; i < len; i++){
+            if(!this.isLocked(i)){
+                return i;
+            }
+        }
+    },
+
+    /**
+     * Returns the number of columns.
+     * @return {Number}
+     */
+    getColumnCount : function(visibleOnly){
+        if(visibleOnly === true){
+            var c = 0;
+            for(var i = 0, len = this.config.length; i < len; i++){
+                if(!this.isHidden(i)){
+                    c++;
+                }
+            }
+            return c;
+        }
+        return this.config.length;
+    },
+
+    /**
+     * Returns the column configs that return true by the passed function that is called with (columnConfig, index)
+     * @param {Function} fn
+     * @param {Object} scope (optional)
+     * @return {Array} result
+     */
+    getColumnsBy : function(fn, scope){
+        var r = [];
+        for(var i = 0, len = this.config.length; i < len; i++){
+            var c = this.config[i];
+            if(fn.call(scope||this, c, i) === true){
+                r[r.length] = c;
+            }
+        }
+        return r;
+    },
+
+    /**
+     * Returns true if the specified column is sortable.
+     * @param {Number} col The column index
+     * @return {Boolean}
+     */
+    isSortable : function(col){
+        if(typeof this.config[col].sortable == "undefined"){
+            return this.defaultSortable;
+        }
+        return this.config[col].sortable;
+    },
+
+    /**
+     * Returns the rendering (formatting) function defined for the column.
+     * @param {Number} col The column index.
+     * @return {Function} The function used to render the cell. See {@link #setRenderer}.
+     */
+    getRenderer : function(col){
+        if(!this.config[col].renderer){
+            return Roo.bootstrap.Table.ColumnModel.defaultRenderer;
+        }
+        return this.config[col].renderer;
+    },
+
+    /**
+     * Sets the rendering (formatting) function for a column.
+     * @param {Number} col The column index
+     * @param {Function} fn The function to use to process the cell's raw data
+     * to return HTML markup for the grid view. The render function is called with
+     * the following parameters:<ul>
+     * <li>Data value.</li>
+     * <li>Cell metadata. An object in which you may set the following attributes:<ul>
+     * <li>css A CSS style string to apply to the table cell.</li>
+     * <li>attr An HTML attribute definition string to apply to the data container element <i>within</i> the table cell.</li></ul>
+     * <li>The {@link Roo.data.Record} from which the data was extracted.</li>
+     * <li>Row index</li>
+     * <li>Column index</li>
+     * <li>The {@link Roo.data.Store} object from which the Record was extracted</li></ul>
+     */
+    setRenderer : function(col, fn){
+        this.config[col].renderer = fn;
+    },
+
+    /**
+     * Returns the width for the specified column.
+     * @param {Number} col The column index
+     * @return {Number}
+     */
+    getColumnWidth : function(col){
+        return this.config[col].width * 1 || this.defaultWidth;
+    },
+
+    /**
+     * Sets the width for a column.
+     * @param {Number} col The column index
+     * @param {Number} width The new width
+     */
+    setColumnWidth : function(col, width, suppressEvent){
+        this.config[col].width = width;
+        this.totalWidth = null;
+        if(!suppressEvent){
+             this.fireEvent("widthchange", this, col, width);
+        }
+    },
+
+    /**
+     * Returns the total width of all columns.
+     * @param {Boolean} includeHidden True to include hidden column widths
+     * @return {Number}
+     */
+    getTotalWidth : function(includeHidden){
+        if(!this.totalWidth){
+            this.totalWidth = 0;
+            for(var i = 0, len = this.config.length; i < len; i++){
+                if(includeHidden || !this.isHidden(i)){
+                    this.totalWidth += this.getColumnWidth(i);
+                }
+            }
+        }
+        return this.totalWidth;
+    },
+
+    /**
+     * Returns the header for the specified column.
+     * @param {Number} col The column index
+     * @return {String}
+     */
+    getColumnHeader : function(col){
+        return this.config[col].header;
+    },
+
+    /**
+     * Sets the header for a column.
+     * @param {Number} col The column index
+     * @param {String} header The new header
+     */
+    setColumnHeader : function(col, header){
+        this.config[col].header = header;
+        this.fireEvent("headerchange", this, col, header);
+    },
+
+    /**
+     * Returns the tooltip for the specified column.
+     * @param {Number} col The column index
+     * @return {String}
+     */
+    getColumnTooltip : function(col){
+            return this.config[col].tooltip;
+    },
+    /**
+     * Sets the tooltip for a column.
+     * @param {Number} col The column index
+     * @param {String} tooltip The new tooltip
+     */
+    setColumnTooltip : function(col, tooltip){
+            this.config[col].tooltip = tooltip;
+    },
+
+    /**
+     * Returns the dataIndex for the specified column.
+     * @param {Number} col The column index
+     * @return {Number}
+     */
+    getDataIndex : function(col){
+        return this.config[col].dataIndex;
+    },
+
+    /**
+     * Sets the dataIndex for a column.
+     * @param {Number} col The column index
+     * @param {Number} dataIndex The new dataIndex
+     */
+    setDataIndex : function(col, dataIndex){
+        this.config[col].dataIndex = dataIndex;
+    },
+
+    
+    
+    /**
+     * Returns true if the cell is editable.
+     * @param {Number} colIndex The column index
+     * @param {Number} rowIndex The row index
+     * @return {Boolean}
+     */
+    isCellEditable : function(colIndex, rowIndex){
+        return (this.config[colIndex].editable || (typeof this.config[colIndex].editable == "undefined" && this.config[colIndex].editor)) ? true : false;
+    },
+
+    /**
+     * Returns the editor defined for the cell/column.
+     * return false or null to disable editing.
+     * @param {Number} colIndex The column index
+     * @param {Number} rowIndex The row index
+     * @return {Object}
+     */
+    getCellEditor : function(colIndex, rowIndex){
+        return this.config[colIndex].editor;
+    },
+
+    /**
+     * Sets if a column is editable.
+     * @param {Number} col The column index
+     * @param {Boolean} editable True if the column is editable
+     */
+    setEditable : function(col, editable){
+        this.config[col].editable = editable;
+    },
+
+
+    /**
+     * Returns true if the column is hidden.
+     * @param {Number} colIndex The column index
+     * @return {Boolean}
+     */
+    isHidden : function(colIndex){
+        return this.config[colIndex].hidden;
+    },
+
+
+    /**
+     * Returns true if the column width cannot be changed
+     */
+    isFixed : function(colIndex){
+        return this.config[colIndex].fixed;
+    },
+
+    /**
+     * Returns true if the column can be resized
+     * @return {Boolean}
+     */
+    isResizable : function(colIndex){
+        return colIndex >= 0 && this.config[colIndex].resizable !== false && this.config[colIndex].fixed !== true;
+    },
+    /**
+     * Sets if a column is hidden.
+     * @param {Number} colIndex The column index
+     * @param {Boolean} hidden True if the column is hidden
+     */
+    setHidden : function(colIndex, hidden){
+        this.config[colIndex].hidden = hidden;
+        this.totalWidth = null;
+        this.fireEvent("hiddenchange", this, colIndex, hidden);
+    },
+
+    /**
+     * Sets the editor for a column.
+     * @param {Number} col The column index
+     * @param {Object} editor The editor object
+     */
+    setEditor : function(col, editor){
+        this.config[col].editor = editor;
+    }
+});
+
+Roo.bootstrap.Table.ColumnModel.defaultRenderer = function(value){
+	if(typeof value == "string" && value.length < 1){
+	    return "&#160;";
+	}
+	return value;
+};
+
+// Alias for backwards compatibility
+Roo.bootstrap.Table.DefaultColumnModel = Roo.bootstrap.Table.ColumnModel;
+
+/**
+ * @extends Roo.bootstrap.Table.AbstractSelectionModel
+ * @class Roo.bootstrap.Table.RowSelectionModel
+ * The default SelectionModel used by {@link Roo.bootstrap.Table}.
+ * It supports multiple selections and keyboard selection/navigation. 
+ * @constructor
+ * @param {Object} config
+ */
+
+Roo.bootstrap.Table.RowSelectionModel = function(config){
+    Roo.apply(this, config);
+    this.selections = new Roo.util.MixedCollection(false, function(o){
+        return o.id;
+    });
+
+    this.last = false;
+    this.lastActive = false;
+
+    this.addEvents({
+        /**
+	     * @event selectionchange
+	     * Fires when the selection changes
+	     * @param {SelectionModel} this
+	     */
+	    "selectionchange" : true,
+        /**
+	     * @event afterselectionchange
+	     * Fires after the selection changes (eg. by key press or clicking)
+	     * @param {SelectionModel} this
+	     */
+	    "afterselectionchange" : true,
+        /**
+	     * @event beforerowselect
+	     * Fires when a row is selected being selected, return false to cancel.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected index
+	     * @param {Boolean} keepExisting False if other selections will be cleared
+	     */
+	    "beforerowselect" : true,
+        /**
+	     * @event rowselect
+	     * Fires when a row is selected.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected index
+	     * @param {Roo.data.Record} r The record
+	     */
+	    "rowselect" : true,
+        /**
+	     * @event rowdeselect
+	     * Fires when a row is deselected.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected index
+	     */
+        "rowdeselect" : true
+    });
+    Roo.bootstrap.Table.RowSelectionModel.superclass.constructor.call(this);
+    this.locked = false;
+};
+
+Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSelectionModel,  {
+    /**
+     * @cfg {Boolean} singleSelect
+     * True to allow selection of only one row at a time (defaults to false)
+     */
+    singleSelect : false,
+
+    // private
+    initEvents : function(){
+
+        if(!this.grid.enableDragDrop && !this.grid.enableDrag){
+            this.grid.on("mousedown", this.handleMouseDown, this);
+        }else{ // allow click to work like normal
+            this.grid.on("rowclick", this.handleDragableRowClick, this);
+        }
+
+        this.rowNav = new Roo.KeyNav(this.grid.getGridEl(), {
+            "up" : function(e){
+                if(!e.shiftKey){
+                    this.selectPrevious(e.shiftKey);
+                }else if(this.last !== false && this.lastActive !== false){
+                    var last = this.last;
+                    this.selectRange(this.last,  this.lastActive-1);
+                    this.grid.getView().focusRow(this.lastActive);
+                    if(last !== false){
+                        this.last = last;
+                    }
+                }else{
+                    this.selectFirstRow();
+                }
+                this.fireEvent("afterselectionchange", this);
+            },
+            "down" : function(e){
+                if(!e.shiftKey){
+                    this.selectNext(e.shiftKey);
+                }else if(this.last !== false && this.lastActive !== false){
+                    var last = this.last;
+                    this.selectRange(this.last,  this.lastActive+1);
+                    this.grid.getView().focusRow(this.lastActive);
+                    if(last !== false){
+                        this.last = last;
+                    }
+                }else{
+                    this.selectFirstRow();
+                }
+                this.fireEvent("afterselectionchange", this);
+            },
+            scope: this
+        });
+
+        var view = this.grid.view;
+        view.on("refresh", this.onRefresh, this);
+        view.on("rowupdated", this.onRowUpdated, this);
+        view.on("rowremoved", this.onRemove, this);
+    },
+
+    // private
+    onRefresh : function(){
+        var ds = this.grid.dataSource, i, v = this.grid.view;
+        var s = this.selections;
+        s.each(function(r){
+            if((i = ds.indexOfId(r.id)) != -1){
+                v.onRowSelect(i);
+            }else{
+                s.remove(r);
+            }
+        });
+    },
+
+    // private
+    onRemove : function(v, index, r){
+        this.selections.remove(r);
+    },
+
+    // private
+    onRowUpdated : function(v, index, r){
+        if(this.isSelected(r)){
+            v.onRowSelect(index);
+        }
+    },
+
+    /**
+     * Select records.
+     * @param {Array} records The records to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectRecords : function(records, keepExisting){
+        if(!keepExisting){
+            this.clearSelections();
+        }
+        var ds = this.grid.dataSource;
+        for(var i = 0, len = records.length; i < len; i++){
+            this.selectRow(ds.indexOf(records[i]), true);
+        }
+    },
+
+    /**
+     * Gets the number of selected rows.
+     * @return {Number}
+     */
+    getCount : function(){
+        return this.selections.length;
+    },
+
+    /**
+     * Selects the first row in the grid.
+     */
+    selectFirstRow : function(){
+        this.selectRow(0);
+    },
+
+    /**
+     * Select the last row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectLastRow : function(keepExisting){
+        this.selectRow(this.grid.dataSource.getCount() - 1, keepExisting);
+    },
+
+    /**
+     * Selects the row immediately following the last selected row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectNext : function(keepExisting){
+        if(this.last !== false && (this.last+1) < this.grid.dataSource.getCount()){
+            this.selectRow(this.last+1, keepExisting);
+            this.grid.getView().focusRow(this.last);
+        }
+    },
+
+    /**
+     * Selects the row that precedes the last selected row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectPrevious : function(keepExisting){
+        if(this.last){
+            this.selectRow(this.last-1, keepExisting);
+            this.grid.getView().focusRow(this.last);
+        }
+    },
+
+    /**
+     * Returns the selected records
+     * @return {Array} Array of selected records
+     */
+    getSelections : function(){
+        return [].concat(this.selections.items);
+    },
+
+    /**
+     * Returns the first selected record.
+     * @return {Record}
+     */
+    getSelected : function(){
+        return this.selections.itemAt(0);
+    },
+
+
+    /**
+     * Clears all selections.
+     */
+    clearSelections : function(fast){
+        if(this.locked) return;
+        if(fast !== true){
+            var ds = this.grid.dataSource;
+            var s = this.selections;
+            s.each(function(r){
+                this.deselectRow(ds.indexOfId(r.id));
+            }, this);
+            s.clear();
+        }else{
+            this.selections.clear();
+        }
+        this.last = false;
+    },
+
+
+    /**
+     * Selects all rows.
+     */
+    selectAll : function(){
+        if(this.locked) return;
+        this.selections.clear();
+        for(var i = 0, len = this.grid.dataSource.getCount(); i < len; i++){
+            this.selectRow(i, true);
+        }
+    },
+
+    /**
+     * Returns True if there is a selection.
+     * @return {Boolean}
+     */
+    hasSelection : function(){
+        return this.selections.length > 0;
+    },
+
+    /**
+     * Returns True if the specified row is selected.
+     * @param {Number/Record} record The record or index of the record to check
+     * @return {Boolean}
+     */
+    isSelected : function(index){
+        var r = typeof index == "number" ? this.grid.dataSource.getAt(index) : index;
+        return (r && this.selections.key(r.id) ? true : false);
+    },
+
+    /**
+     * Returns True if the specified record id is selected.
+     * @param {String} id The id of record to check
+     * @return {Boolean}
+     */
+    isIdSelected : function(id){
+        return (this.selections.key(id) ? true : false);
+    },
+
+    // private
+    handleMouseDown : function(e, t){
+        var view = this.grid.getView(), rowIndex;
+        if(this.isLocked() || (rowIndex = view.findRowIndex(t)) === false){
+            return;
+        };
+        if(e.shiftKey && this.last !== false){
+            var last = this.last;
+            this.selectRange(last, rowIndex, e.ctrlKey);
+            this.last = last; // reset the last
+            view.focusRow(rowIndex);
+        }else{
+            var isSelected = this.isSelected(rowIndex);
+            if(e.button !== 0 && isSelected){
+                view.focusRow(rowIndex);
+            }else if(e.ctrlKey && isSelected){
+                this.deselectRow(rowIndex);
+            }else if(!isSelected){
+                this.selectRow(rowIndex, e.button === 0 && (e.ctrlKey || e.shiftKey));
+                view.focusRow(rowIndex);
+            }
+        }
+        this.fireEvent("afterselectionchange", this);
+    },
+    // private
+    handleDragableRowClick :  function(grid, rowIndex, e) 
+    {
+        if(e.button === 0 && !e.shiftKey && !e.ctrlKey) {
+            this.selectRow(rowIndex, false);
+            grid.view.focusRow(rowIndex);
+             this.fireEvent("afterselectionchange", this);
+        }
+    },
+    
+    /**
+     * Selects multiple rows.
+     * @param {Array} rows Array of the indexes of the row to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectRows : function(rows, keepExisting){
+        if(!keepExisting){
+            this.clearSelections();
+        }
+        for(var i = 0, len = rows.length; i < len; i++){
+            this.selectRow(rows[i], true);
+        }
+    },
+
+    /**
+     * Selects a range of rows. All rows in between startRow and endRow are also selected.
+     * @param {Number} startRow The index of the first row in the range
+     * @param {Number} endRow The index of the last row in the range
+     * @param {Boolean} keepExisting (optional) True to retain existing selections
+     */
+    selectRange : function(startRow, endRow, keepExisting){
+        if(this.locked) return;
+        if(!keepExisting){
+            this.clearSelections();
+        }
+        if(startRow <= endRow){
+            for(var i = startRow; i <= endRow; i++){
+                this.selectRow(i, true);
+            }
+        }else{
+            for(var i = startRow; i >= endRow; i--){
+                this.selectRow(i, true);
+            }
+        }
+    },
+
+    /**
+     * Deselects a range of rows. All rows in between startRow and endRow are also deselected.
+     * @param {Number} startRow The index of the first row in the range
+     * @param {Number} endRow The index of the last row in the range
+     */
+    deselectRange : function(startRow, endRow, preventViewNotify){
+        if(this.locked) return;
+        for(var i = startRow; i <= endRow; i++){
+            this.deselectRow(i, preventViewNotify);
+        }
+    },
+
+    /**
+     * Selects a row.
+     * @param {Number} row The index of the row to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectRow : function(index, keepExisting, preventViewNotify){
+        if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) return;
+        if(this.fireEvent("beforerowselect", this, index, keepExisting) !== false){
+            if(!keepExisting || this.singleSelect){
+                this.clearSelections();
+            }
+            var r = this.grid.dataSource.getAt(index);
+            this.selections.add(r);
+            this.last = this.lastActive = index;
+            if(!preventViewNotify){
+                this.grid.getView().onRowSelect(index);
+            }
+            this.fireEvent("rowselect", this, index, r);
+            this.fireEvent("selectionchange", this);
+        }
+    },
+
+    /**
+     * Deselects a row.
+     * @param {Number} row The index of the row to deselect
+     */
+    deselectRow : function(index, preventViewNotify){
+        if(this.locked) return;
+        if(this.last == index){
+            this.last = false;
+        }
+        if(this.lastActive == index){
+            this.lastActive = false;
+        }
+        var r = this.grid.dataSource.getAt(index);
+        this.selections.remove(r);
+        if(!preventViewNotify){
+            this.grid.getView().onRowDeselect(index);
+        }
+        this.fireEvent("rowdeselect", this, index);
+        this.fireEvent("selectionchange", this);
+    },
+
+    // private
+    restoreLast : function(){
+        if(this._last){
+            this.last = this._last;
+        }
+    },
+
+    // private
+    acceptsNav : function(row, col, cm){
+        return !cm.isHidden(col) && cm.isCellEditable(col, row);
+    },
+
+    // private
+    onEditorKey : function(field, e){
+        var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
+        if(k == e.TAB){
+            e.stopEvent();
+            ed.completeEdit();
+            if(e.shiftKey){
+                newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
+            }else{
+                newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
+            }
+        }else if(k == e.ENTER && !e.ctrlKey){
+            e.stopEvent();
+            ed.completeEdit();
+            if(e.shiftKey){
+                newCell = g.walkCells(ed.row-1, ed.col, -1, this.acceptsNav, this);
+            }else{
+                newCell = g.walkCells(ed.row+1, ed.col, 1, this.acceptsNav, this);
+            }
+        }else if(k == e.ESC){
+            ed.cancelEdit();
+        }
+        if(newCell){
+            g.startEditing(newCell[0], newCell[1]);
+        }
+    }
 });
