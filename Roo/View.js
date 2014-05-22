@@ -342,6 +342,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         var el = this.dataName  ?
             this.el.child('.roo-tpl-' + this.dataName) :
             this.el; 
+        Roo.log(this.dataName);
         Roo.log(el);
         el.dom.removeChild(this.nodes[index]);
         this.updateIndexes(index);
