@@ -698,7 +698,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 
                 value.push(i);
             });
-            
+            Roo.log(value);
             this.value = value.join(',');
             
             if(this.hiddenField){
