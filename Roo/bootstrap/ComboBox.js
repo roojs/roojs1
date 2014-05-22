@@ -704,7 +704,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             Roo.each(v, function(i){
                 if(_this.valueField){
-                    value.push(i[_this.valueField]);
+                    if(value.indexOf(i[_this.valueField]) == -1){
+                        value.push(i[_this.valueField]);
+                    }
                     return;
                 }
                 
