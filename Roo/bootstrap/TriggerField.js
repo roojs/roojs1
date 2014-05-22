@@ -144,7 +144,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                         cls: 'form-hidden-field'
                     },
                     {
-                        tag: 'ul',
+                        tag: 'div',
                         cls: 'select2-choices',
                         cn:[
                             {
