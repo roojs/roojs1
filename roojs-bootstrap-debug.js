@@ -8281,8 +8281,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onSelect : function(record, index){
+        
         if(this.fireEvent('beforeselect', this, record, index) !== false){
-            this.setFromData(index > -1 ? record.data : false);
+        
+            if(this.multiple){
+                this.addItem(record);
+            }else{
+                this.setFromData(index > -1 ? record.data : false);
+            }
+            
             this.collapse();
             this.fireEvent('select', this, record, index);
         }
@@ -8327,6 +8334,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     setValue : function(v){
         if(this.multiple){
+            Roo.log('setValue');
+            Roo.log(v);
+            Roo.log(this.item);
             if(!this.item.length){
                 this.clearValue();
                 return;
@@ -8336,7 +8346,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             var _this = this;
             Roo.each(this.item, function(i){
                 if(_this.valueField){
-                    value.push(i[_this.valueField]);
+                    value.push(i.data[_this.valueField]);
                     return;
                 }
                 
@@ -8378,11 +8388,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @param {Object} value the value to set as. or false on reset?
      */
     setFromData : function(o){
-        
-        if(this.multiple){
-            this.addItem(o);
-            return;
-        }
         
         var dv = ''; // display value
         var vv = ''; // value value..
@@ -8826,14 +8831,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         return;
     },
     
-    addItem : function(o){
-        this.item.push(o);
+    addItem : function(record){
+        this.item.push(record);
         
         var dv = ''; // display value
         
-        this.lastData = o;
+        this.lastData = record.data;
         if (this.displayField) {
-            dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
+            dv = !record.data || typeof(record.data[this.displayField]) == 'undefined' ? '' : record.data[this.displayField];
         } else {
             // this is an error condition!!!
             Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
@@ -8859,16 +8864,19 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var close = choice.select('a.select2-search-choice-close', true).first()
         
-        close.on('click', this.removeItem, this, { item : choice, data : o} );
+        close.on('click', this.removeItem, this, { item : choice, record : record} );
         
         this.setValue('');
+        
         this.inputEl().dom.value = '';
+        
+        this.store.remove(record);
     },
     
     removeItem : function(e, _self, o)
     {
         Roo.log('remove item');
-        var index = this.item.indexOf(o.data) * 1;
+        var index = this.item.indexOf(o.record) * 1;
         
         if( index < 0){
             Roo.log('not this item?!');
@@ -8879,6 +8887,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         o.item.remove();
         
         this.setValue('');
+        
+        this.store.add(o.record);
         
     }
 
@@ -9243,6 +9253,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         var el = this.dataName  ?
             this.el.child('.roo-tpl-' + this.dataName) :
             this.el; 
+        
         el.dom.removeChild(this.nodes[index]);
         this.updateIndexes(index);
     },
