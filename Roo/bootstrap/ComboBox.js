@@ -1223,7 +1223,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     removeItem : function(e, _self, o)
     {
         Roo.log('remove item');
-        this.item.splice(o.index);
+        this.item.splice(o.index, 1);
         o.item.remove();
         
         this.setValue('');
