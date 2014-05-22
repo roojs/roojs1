@@ -684,6 +684,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     setValue : function(v){
         if(this.multiple){
             if(!this.item.length){
+                this.clearValue();
                 return;
             }
             
