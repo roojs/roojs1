@@ -697,6 +697,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @param {Object} value the value to set as. or false on reset?
      */
     setFromData : function(o){
+        
+        if(this.multiple){
+            this.addItem(o);
+            return;
+        }
+        
         var dv = ''; // display value
         var vv = ''; // value value..
         this.lastData = o;
@@ -710,6 +716,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.valueField){
             vv = !o || typeof(o[this.valueField]) == 'undefined' ? dv : o[this.valueField];
         }
+        
         if(this.hiddenField){
             this.hiddenField.dom.value = vv;
             
