@@ -1153,7 +1153,37 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     addItem : function(o){
         this.item.push(o);
         
-        Roo.log(this.choices);
+        var dv = ''; // display value
+        var vv = ''; // value value..
+        this.lastData = o;
+        if (this.displayField) {
+            dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
+        } else {
+            // this is an error condition!!!
+            Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
+        }
+        
+        if(this.valueField){
+            vv = !o || typeof(o[this.valueField]) == 'undefined' ? dv : o[this.valueField];
+        }
+        
+        this.choices.createChild({
+            tag: 'li',
+            cls: 'select2-search-choice',
+            cn: [
+                {
+                    tag: 'div',
+                    html: dv
+                },
+                {
+                    tag: 'a',
+                    href: '#',
+                    cls: 'select2-search-choice-close',
+                    tabindex: '-1'
+                }
+            ]
+            
+        })
     }
 
     /** 
