@@ -5488,12 +5488,18 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
-        
-        this.trigger = this.el.select('span.dropdown-toggle',true).first();
-        if(this.hideTrigger){
-            this.trigger.setDisplayed(false);
+        if(!this.multiple){
+            this.trigger = this.el.select('span.dropdown-toggle',true).first();
+            if(this.hideTrigger){
+                this.trigger.setDisplayed(false);
+            }
+            this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
         }
-        this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
+        
+        if(this.multiple){
+            
+        }
+        
         //this.trigger.addClassOnOver('x-form-trigger-over');
         //this.trigger.addClassOnClick('x-form-trigger-click');
         
