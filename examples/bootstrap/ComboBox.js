@@ -40,7 +40,7 @@ Roo.example.combobox = new Roo.XComponent({
                     minChars : '1',
                     tpl : '<li class="select2-result"><b>{name}</b></div>',
                     listWidth : '400',
-                    
+                    multiple: true,
                     listeners : {
                         render : function (_self) {
                             _this.countrySel = _self;
