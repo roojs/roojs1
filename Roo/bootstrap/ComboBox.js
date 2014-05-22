@@ -637,9 +637,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onSelect : function(record, index){
-        Roo.log(record);
+        
         if(this.fireEvent('beforeselect', this, record, index) !== false){
-            Roo.log(index);
+        
             if(this.multiple){
                 this.addItem(record, index);
             }else{
