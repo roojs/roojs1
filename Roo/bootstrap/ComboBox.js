@@ -718,7 +718,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     setFromData : function(o){
         
         if(this.multiple){
-            this.addItem(o);
+            this.addItems(o);
             return;
         }
             
@@ -1164,9 +1164,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         return;
     },
     
-    addItems : function (o)
+    addItems : function (records)
     {
+        if( Object.prototype.toString.call( someVar ) === '[object Array]' ) {
+            var _this = this;
+            Roo.each(records, function(r){
+                _this.addItem(r);
+            })
+            return;
+        }
         
+        this.addItem(records);
     },
     
     addItem : function(o)
