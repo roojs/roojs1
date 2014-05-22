@@ -40,7 +40,6 @@ Roo.example.combobox = new Roo.XComponent({
                     minChars : '1',
                     tpl : '<li class="select2-result"><b>{name}</b></div>',
                     listWidth : '400',
-                    style: 'width:100%',
                     multiple: true,
                     listeners : {
                         render : function (_self) {
