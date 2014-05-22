@@ -1175,6 +1175,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
         }
         
+        if(!dv.length){
+            return;
+        }
+        
         var choice = this.choices.createChild({
             tag: 'li',
             cls: 'select2-search-choice',
