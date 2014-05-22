@@ -340,6 +340,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     // private
     showPrevMonth : function(e){
+        Roo.log('RUN PREV');
         this.update(this.activeDate.add("mo", -1));
     },
     showToday : function(e){
@@ -352,7 +353,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 
     // private
     showPrevYear : function(){
-        Roo.log('RUN PREV');
         this.update(this.activeDate.add("y", -1));
     },
 
