@@ -1154,17 +1154,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.item.push(o);
         
         var dv = ''; // display value
-        var vv = ''; // value value..
+        
         this.lastData = o;
         if (this.displayField) {
             dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
         } else {
             // this is an error condition!!!
             Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
-        }
-        
-        if(this.valueField){
-            vv = !o || typeof(o[this.valueField]) == 'undefined' ? dv : o[this.valueField];
         }
         
         this.choices.createChild({
