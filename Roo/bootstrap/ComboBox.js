@@ -354,7 +354,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
         }
 
-        this.view = new Roo.View(this.el.select('ul',true).first(), this.tpl, {
+        this.view = new Roo.View(this.el.select('ul.dropdown-menu',true).first(), this.tpl, {
             singleSelect:true, store: this.store, selectedClass: this.selectedClass
         });
         //this.view.wrapEl.setDisplayed(false);
