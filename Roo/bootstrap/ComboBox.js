@@ -580,6 +580,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.loading.hide();
         }
         
+        var records = this.store.getRange();
+        Roo.log(records);
+        
         if(this.store.getCount() > 0){
             this.expand();
             this.restrictHeight();
