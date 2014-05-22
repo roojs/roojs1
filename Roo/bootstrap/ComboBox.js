@@ -1192,7 +1192,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log('remove item : ' + item);
 //        this.item.splice(item.index);
         Roo.log(_self);
-        Roo.log(Roo.get(_self).findParent('li.select2-search-choice'));
+        Roo.log(Roo.get(_self).findParent('li.select2-search-choice', true).first());
         
     }
 
