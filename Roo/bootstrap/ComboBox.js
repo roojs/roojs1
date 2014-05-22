@@ -1192,7 +1192,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log('remove item');
         Roo.log(this.item);
         
-        Roo.log(this.item.indexOf(item));
+        Roo.log(this.item.indexOf('a'));
     }
 
     /** 
