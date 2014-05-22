@@ -5497,7 +5497,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         }
         
         if(this.multiple){
-            this.inputEl().on("focus", this.onTriggerClick, this, {preventDefault:true});
+            this.inputEl().on("click", this.onTriggerClick, this, {preventDefault:true});
         }
         
         //this.trigger.addClassOnOver('x-form-trigger-over');
@@ -8862,6 +8862,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         close.on('click', this.removeItem, this, { item : choice, data : o} );
         
         this.setValue('');
+        this.inputEl().dom.value = '';
     },
     
     removeItem : function(e, _self, o)
