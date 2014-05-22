@@ -754,6 +754,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     onLoad: function () 
     {   
+        this.calevents = [];
+        
         var cal = this;
         
         if(this.store.getCount() > 0){
