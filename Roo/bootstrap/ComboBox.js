@@ -697,6 +697,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @param {Object} value the value to set as. or false on reset?
      */
     setFromData : function(o){
+        Roo.log(o);
         var dv = ''; // display value
         var vv = ''; // value value..
         this.lastData = o;
