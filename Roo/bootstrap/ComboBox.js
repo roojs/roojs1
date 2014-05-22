@@ -1164,10 +1164,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         return;
     },
     
+    addItems : function (o)
+    {
+        
+    },
+    
     addItem : function(o)
     {
-        Roo.log('got');
-        Roo.log(o);
         this.item.push(o);
         
         var dv = ''; // display value
