@@ -1183,7 +1183,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }, this.searchField);
         
         var close = choice.select('a.select2-search-choice-close', true).first()
-        Roo.log(this.item);
+        
         close.on('click', this.removeItem, this, o);
     },
     
