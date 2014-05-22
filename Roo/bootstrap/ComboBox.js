@@ -1168,7 +1168,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {   
         var dv = ''; // display value
         
-        this.lastData = o;
         if (this.displayField) {
             dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
         } else {
@@ -1199,6 +1198,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         close.on('click', this.onRemoveItem, this, { item : choice, data : o} );
         
         this.item.push(o);
+        this.lastData = o;
         
         this.setValue('');
         
