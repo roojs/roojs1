@@ -696,6 +696,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 value.push(i);
             });
             
+            return;
+            
         }
         
         var text = v;
