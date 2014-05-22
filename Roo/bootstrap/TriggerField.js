@@ -148,7 +148,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                         cls: 'select2-choices',
                         cn:[
                             {
-                                tag: 'li',
+                                tag: 'div',
                                 cls: 'select2-search-field',
                                 cn: [
 
