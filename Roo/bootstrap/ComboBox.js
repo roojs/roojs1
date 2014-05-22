@@ -1165,9 +1165,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     },
     
     addItem : function(o)
-    {
-        this.item.push(o);
-        
+    {   
         var dv = ''; // display value
         
         this.lastData = o;
