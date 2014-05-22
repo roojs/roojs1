@@ -1185,7 +1185,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     },
     
     addItem : function(record, index){
-        this.item.push(record.data);
+        this.item.push(record);
         
         var dv = ''; // display value
         
