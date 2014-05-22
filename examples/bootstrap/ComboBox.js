@@ -50,7 +50,7 @@ Roo.example.combobox = new Roo.XComponent({
                     valueField : 'id',
                     queryParam : 'query[name]',
                     editable : true,
-                    
+                    alwaysQuery : true,
                     allowBlank : false,
                     fieldLabel : 'Country',
                     pageSize : '10',
