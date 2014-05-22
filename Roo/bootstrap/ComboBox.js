@@ -682,6 +682,22 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @param {String} value The value to match
      */
     setValue : function(v){
+        if(this.multiple){
+            if(!this.item.length){
+                return;
+            }
+            var value = [];
+            Roo.each(this.item, function(i){
+                if(this.valueField){
+                    value.push(i[this.valueField]);
+                    return;
+                }
+                
+                value.push(i);
+            });
+            
+        }
+        
         var text = v;
         if(this.valueField){
             var r = this.findRecord(this.valueField, v);
