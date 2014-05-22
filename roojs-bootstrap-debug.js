@@ -8284,11 +8284,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.fireEvent('beforeselect', this, record, index) !== false){
         
-            if(this.multiple){
-                this.addItem(record);
-            }else{
-                this.setFromData(index > -1 ? record.data : false);
-            }
+            this.setFromData(index > -1 ? record.data : false);
             
             this.collapse();
             this.fireEvent('select', this, record, index);
@@ -8334,31 +8330,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     setValue : function(v){
         if(this.multiple){
-            Roo.log('setValue');
-            Roo.log(v);
-            Roo.log(this.item);
-            if(!this.item.length){
-                this.clearValue();
-                return;
-            }
-            
-            var value = [];
-            var _this = this;
-            Roo.each(this.item, function(i){
-                if(_this.valueField){
-                    value.push(i.data[_this.valueField]);
-                    return;
-                }
-                
-                value.push(i);
-            });
-            
-            this.value = value.join(',');
-            
-            if(this.hiddenField){
-                this.hiddenField.dom.value = this.value;
-            }
-            
+            this.syncValue();
             return;
         }
         
@@ -8389,6 +8361,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     setFromData : function(o){
         
+        if(this.multiple){
+            this.onAddItem(o);
+            return;
+        }
+            
         var dv = ''; // display value
         var vv = ''; // value value..
         this.lastData = o;
@@ -8831,14 +8808,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         return;
     },
     
-    addItem : function(record){
-        this.item.push(record);
+    onAddItem : function(o)
+    {
+        this.item.push(o);
         
         var dv = ''; // display value
         
-        this.lastData = record.data;
+        this.lastData = o;
         if (this.displayField) {
-            dv = !record.data || typeof(record.data[this.displayField]) == 'undefined' ? '' : record.data[this.displayField];
+            dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
         } else {
             // this is an error condition!!!
             Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
@@ -8864,19 +8842,18 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var close = choice.select('a.select2-search-choice-close', true).first()
         
-        close.on('click', this.removeItem, this, { item : choice, record : record} );
+        close.on('click', this.onRemoveItem, this, { item : choice, data : o} );
         
         this.setValue('');
         
         this.inputEl().dom.value = '';
         
-        this.store.remove(record);
     },
     
-    removeItem : function(e, _self, o)
+    onRemoveItem : function(e, _self, o)
     {
         Roo.log('remove item');
-        var index = this.item.indexOf(o.record) * 1;
+        var index = this.item.indexOf(o.data) * 1;
         
         if( index < 0){
             Roo.log('not this item?!');
@@ -8888,8 +8865,31 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.setValue('');
         
-        this.store.add(o.record);
-        
+    },
+    
+    syncValue : function()
+    {
+        if(!this.item.length){
+            this.clearValue();
+            return;
+        }
+            
+        var value = [];
+        var _this = this;
+        Roo.each(this.item, function(i){
+            if(_this.valueField){
+                value.push(i[_this.valueField]);
+                return;
+            }
+
+            value.push(i);
+        });
+
+        this.value = value.join(',');
+
+        if(this.hiddenField){
+            this.hiddenField.dom.value = this.value;
+        }
     }
 
     /** 
