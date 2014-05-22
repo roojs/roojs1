@@ -5365,30 +5365,33 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     tag: 'ul',
                     cls: 'typeahead typeahead-long dropdown-menu',
                     style: 'display:none'
-                },
-                {
-                    tag :'span',
-                    cls : 'input-group-addon btn dropdown-toggle',
-                    cn : [
-                        {
-                            tag: 'span',
-                            cls: 'caret'
-                        },
-                        {
-                            tag: 'span',
-                            cls: 'combobox-clear',
-                            cn  : [
-                                {
-                                    tag : 'i',
-                                    cls: 'icon-remove'
-                                }
-                            ]
-                        }
-                    ]
-                        
                 }
             ]
         };
+        
+        if(!this.multiple){
+            combobox.cn.push({
+                tag :'span',
+                cls : 'input-group-addon btn dropdown-toggle',
+                cn : [
+                    {
+                        tag: 'span',
+                        cls: 'caret'
+                    },
+                    {
+                        tag: 'span',
+                        cls: 'combobox-clear',
+                        cn  : [
+                            {
+                                tag : 'i',
+                                cls: 'icon-remove'
+                            }
+                        ]
+                    }
+                ]
+
+            })
+        }
         
         if(this.multiple){
             combobox.cls += ' select2-container-multi';
