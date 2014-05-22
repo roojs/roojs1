@@ -474,6 +474,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.forceSelection){
             this.on('blur', this.doForce, this);
         }
+        
+        if(this.multiple){
+            this.choices = this.el.select('ul.select2-choices', true).first();
+        }
     },
 
     onDestroy : function(){
@@ -1147,6 +1151,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     },
     
     addItem : function(o){
+        this.item.push(o);
+        
         
     }
 
