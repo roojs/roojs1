@@ -1206,6 +1206,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var close = choice.select('a.select2-search-choice-close', true).first()
         
         close.on('click', this.removeItem, this, { item : choice, data : o, index : this.item.length - 1} );
+        
+        this.setValue('');
     },
     
     removeItem : function(e, _self, o)
@@ -1213,6 +1215,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log('remove item');
         this.item.splice(o.index);
         o.item.remove();
+        
+        this.setValue('');
         
     }
 
