@@ -1166,8 +1166,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     addItem : function(o)
     {
-        Roo.log('got here!!!');
-        
+        Roo.log('got');
+        Roo.log(o);
         this.item.push(o);
         
         var dv = ''; // display value
@@ -1227,7 +1227,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     syncValue : function()
     {
-        Roo.log('got here??');
         if(!this.item.length){
             this.clearValue();
             return;
