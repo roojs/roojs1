@@ -8810,7 +8810,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     addItems : function (records)
     {
-        if( Object.prototype.toString.call( someVar ) === '[object Array]' ) {
+        if( Object.prototype.toString.call(records) === '[object Array]' ) {
             var _this = this;
             Roo.each(records, function(r){
                 _this.addItem(r);
