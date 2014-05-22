@@ -157,7 +157,7 @@ Version: 3.4.8 Timestamp: Thu May  1 09:50:32 EDT 2014
             box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
 }
 
-.select2-drop-active {
+.select2-drop-active, select2-container .dropdown-menu {
     border: 1px solid #5897fb;
     border-top: none;
 }
