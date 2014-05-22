@@ -641,7 +641,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.fireEvent('beforeselect', this, record, index) !== false){
         
             if(this.multiple){
-                this.addItem(record);
+                this.addItem(record.data);
             }else{
                 this.setFromData(index > -1 ? record.data : false);
             }
@@ -1184,14 +1184,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         return;
     },
     
-    addItem : function(record){
-        this.item.push(record);
+    addItem : function(o){
+        this.item.push(o);
         
         var dv = ''; // display value
         
-        this.lastData = record.data;
+        this.lastData = o;
         if (this.displayField) {
-            dv = !record.data || typeof(record.data[this.displayField]) == 'undefined' ? '' : record.data[this.displayField];
+            dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
         } else {
             // this is an error condition!!!
             Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
@@ -1217,19 +1217,19 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var close = choice.select('a.select2-search-choice-close', true).first()
         
-        close.on('click', this.removeItem, this, { item : choice, record : record} );
+        close.on('click', this.removeItem, this, { item : choice, data : o} );
         
         this.setValue('');
         
         this.inputEl().dom.value = '';
         
-        this.store.remove(record);
+        this.store.remove(o);
     },
     
     removeItem : function(e, _self, o)
     {
         Roo.log('remove item');
-        var index = this.item.indexOf(o.record) * 1;
+        var index = this.item.indexOf(o.data) * 1;
         
         if( index < 0){
             Roo.log('not this item?!');
@@ -1241,7 +1241,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.setValue('');
         
-        this.store.add(o.record);
+        this.store.add(o.data);
         
     }
 
