@@ -65,7 +65,7 @@ Roo.example.combobox = new Roo.XComponent({
                                 var selected = _this.countrySel.getValue();
                                 
                                 if(selected.length){
-                                    o.params._exists = selected;
+                                    o.params._skip = selected;
                                 }
                                 
                             }
