@@ -119,15 +119,52 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             
         };
         
-        var combobox = {
-            cls: 'combobox-container input-group',
+        var box = {
+            tag: 'div',
             cn: [
                 {
                     tag: 'input',
                     type : 'hidden',
                     cls: 'form-hidden-field'
                 },
-                inputblock,
+                inputblock
+            ]
+            
+        };
+        
+        if(this.multiple){
+            Roo.log('multiple');
+            
+            box = {
+                tag: 'div',
+                cn: [
+                    {
+                        tag: 'input',
+                        type : 'hidden',
+                        cls: 'form-hidden-field'
+                    },
+                    {
+                        tag: 'div',
+                        cls: 'select2-choices',
+                        cn:[
+                            {
+                                tag: 'li',
+                                cls: 'select2-search-field',
+                                cn: [
+
+                                    inputblock
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+        Roo.log(box);
+        var combobox = {
+            cls: 'select2-container input-group',
+            cn: [
+                box,
                 {
                     tag: 'ul',
                     cls: 'typeahead typeahead-long dropdown-menu',
@@ -156,6 +193,10 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 }
             ]
         };
+        
+        if(this.multiple){
+            combobox.cls += ' select2-container-multi';
+        }
         
         if (align ==='left' && this.fieldLabel.length) {
                 
