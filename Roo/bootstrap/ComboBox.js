@@ -641,7 +641,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.fireEvent('beforeselect', this, record, index) !== false){
         
             if(this.multiple){
-                this.addItem(record.data);
+                this.addItem(record);
             }else{
                 this.setFromData(index > -1 ? record.data : false);
             }
@@ -699,7 +699,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             var _this = this;
             Roo.each(this.item, function(i){
                 if(_this.valueField){
-                    value.push(i[_this.valueField]);
+                    value.push(i.data[_this.valueField]);
                     return;
                 }
                 
@@ -1184,14 +1184,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         return;
     },
     
-    addItem : function(o){
-        this.item.push(o);
+    addItem : function(record){
+        this.item.push(record);
         
         var dv = ''; // display value
         
-        this.lastData = o;
+        this.lastData = record.data;
         if (this.displayField) {
-            dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
+            dv = !record.data || typeof(record.data[this.displayField]) == 'undefined' ? '' : record.data[this.displayField];
         } else {
             // this is an error condition!!!
             Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
@@ -1217,19 +1217,19 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var close = choice.select('a.select2-search-choice-close', true).first()
         
-        close.on('click', this.removeItem, this, { item : choice, data : o} );
+        close.on('click', this.removeItem, this, { item : choice, record : record} );
         
         this.setValue('');
         
         this.inputEl().dom.value = '';
         
-        this.store.remove(new Roo.data.Record(o, o.id));
+        this.store.remove(record);
     },
     
     removeItem : function(e, _self, o)
     {
         Roo.log('remove item');
-        var index = this.item.indexOf(o.data) * 1;
+        var index = this.item.indexOf(o.record) * 1;
         
         if( index < 0){
             Roo.log('not this item?!');
@@ -1241,7 +1241,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.setValue('');
         
-        this.store.add(new Roo.data.Record(o.data, o.data.id));
+        this.store.add(o.record);
         
     }
 
