@@ -1168,13 +1168,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         if( Object.prototype.toString.call(records) === '[object Array]' ) {
             var _this = this;
-            Roo.log(records);
             Roo.each(records, function(r){
                 _this.addItem(r);
             });
             return;
         }
-        
+        Roo.log(records);
         this.addItem(records);
     },
     
