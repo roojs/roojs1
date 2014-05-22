@@ -1183,7 +1183,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }, this.searchField);
         
         var close = choice.select('a.select2-search-choice-close', true).first()
-        Roo.log(this);
+        
         close.on('click', this.removeItem, this, { item : o, index : this.item.length - 1} );
     },
     
@@ -1192,6 +1192,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log('remove item : ' + item);
 //        this.item.splice(item.index);
         Roo.log(_self);
+        Roo.log(this);
         Roo.log(Roo.get(_self).findParent('li.select2-search-choice', true).first());
         
     }
