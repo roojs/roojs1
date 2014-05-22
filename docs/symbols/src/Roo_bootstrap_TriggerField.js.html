@@ -88,15 +88,83 @@ trigger.applyTo('my-field');
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">input.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' input-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.size</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= {
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'combobox-container input-group'</span><span class="jsdoc-syntax">,
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">input.disabled</span><span class="jsdoc-syntax">=</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">:  [] 
+            };
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group-addon'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.before
+                </span><span class="jsdoc-syntax">});
+            }
+            </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group-addon'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.after
+                </span><span class="jsdoc-syntax">});
+            }
+            
+        };
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-hidden-field'
                 </span><span class="jsdoc-syntax">},
-                </span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">inputblock
+            </span><span class="jsdoc-syntax">]
+            
+        };
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'multiple'</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                    {
+                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'hidden'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-hidden-field'
+                    </span><span class="jsdoc-syntax">},
+                    {
+                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-choices'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">:[
+                            {
+                                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-search-field'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+
+                                    </span><span class="jsdoc-var">inputblock
+                                </span><span class="jsdoc-syntax">]
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">combobox </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-container input-group'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">,
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'typeahead typeahead-long dropdown-menu'</span><span class="jsdoc-syntax">,
@@ -126,8 +194,9 @@ trigger.applyTo('my-field');
             ]
         };
         
-        
-        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">combobox.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' select2-container-multi'</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
                 
@@ -146,7 +215,7 @@ trigger.applyTo('my-field');
                     {
                         </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;col-sm-10&quot;</span><span class="jsdoc-syntax">, 
                         </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-                            </span><span class="jsdoc-var">inputblock
+                            </span><span class="jsdoc-var">combobox
                         </span><span class="jsdoc-syntax">]
                     }
                     
@@ -162,14 +231,14 @@ trigger.applyTo('my-field');
                         
                     </span><span class="jsdoc-syntax">},
                     
-                    </span><span class="jsdoc-var">inputblock
+                    </span><span class="jsdoc-var">combobox
                     
                 </span><span class="jsdoc-syntax">];
 
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; no label &amp;&amp; no align&quot;</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">inputblock
+                </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">combobox
                      
                 
         </span><span class="jsdoc-syntax">}
@@ -181,11 +250,6 @@ trigger.applyTo('my-field');
             }
         });
         
-        
-        
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">input.disabled</span><span class="jsdoc-syntax">=</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
-        }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
         
     },

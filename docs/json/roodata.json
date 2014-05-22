@@ -6308,6 +6308,12 @@
      "memberOf": ""
     },
     {
+     "name": "multiple",
+     "type": "Boolean",
+     "desc": "(true|false) ComboBobArray, default false",
+     "memberOf": ""
+    },
+    {
      "name": "triggerClass",
      "type": "String",
      "desc": "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.",

@@ -244,6 +244,11 @@
      */
     </span><span class="jsdoc-var">alwaysQuery </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} multiple  (true|false) ComboBobArray, default false
+     */
+    </span><span class="jsdoc-var">multiple </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-comment">//private
     </span><span class="jsdoc-var">addicon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">editicon</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -252,6 +257,7 @@
     </span><span class="jsdoc-var">hasQuery</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">append</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">loadNext</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">: [],
     
     </span><span class="jsdoc-comment">// element that contains real text value.. (when hidden is used..)
      
@@ -287,7 +293,7 @@
         //}
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'x-combo-list'</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.list </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.list </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul.dropdown-menu'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
 
         </span><span class="jsdoc-comment">//this.list = new Roo.Layer({
         //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
@@ -349,7 +355,7 @@
             </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;li&gt;&lt;a href=&quot;#&quot;&gt;{' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.displayField </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'}&lt;/a&gt;&lt;/li&gt;'</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.View</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">, {
+        </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.View</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul.dropdown-menu'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">, {
             </span><span class="jsdoc-var">singleSelect</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">selectedClass</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.selectedClass
         </span><span class="jsdoc-syntax">});
         </span><span class="jsdoc-comment">//this.view.wrapEl.setDisplayed(false);
@@ -406,7 +412,6 @@
         }
         */
         
- 
         </span><span class="jsdoc-var">this.keyNav </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.KeyNav</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">(), {
             </span><span class="jsdoc-string">&quot;up&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.inKeyMode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
@@ -468,6 +473,11 @@
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.forceSelection</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.doForce</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.choices </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul.select2-choices'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.searchField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul li.select2-search-field'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         }
     },
 
@@ -639,6 +649,11 @@
      * @return {String} value The selected value
      */
     </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenField</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.hiddenField.dom.value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return typeof </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
@@ -667,6 +682,32 @@
      * @param {String} value The value to match
      */
     </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.item.length</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.clearValue</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.valueField</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">value.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">_this.valueField</span><span class="jsdoc-syntax">]);
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-var">value.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+            });
+            
+            </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">','</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenField</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.hiddenField.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findRecord</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
@@ -693,6 +734,12 @@
      * @param {Object} value the value to set as. or false on reset?
      */
     </span><span class="jsdoc-var">setFromData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// display value
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">vv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// value value..
         </span><span class="jsdoc-var">this.lastData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
@@ -706,6 +753,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">vv </span><span class="jsdoc-syntax">= !</span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">dv </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">];
         }
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenField</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.hiddenField.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">vv</span><span class="jsdoc-syntax">;
             
@@ -1132,6 +1180,61 @@
         (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">_combo.doQuery</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_combo.allQuery</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(500);
         
         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">addItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.item.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// display value
+        
+        </span><span class="jsdoc-var">this.lastData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">dv </span><span class="jsdoc-syntax">= !</span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">];
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-comment">// this is an error condition!!!
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'no  displayField value set for '</span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.name </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">));
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">choice </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.choices.createChild</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-search-choice'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">dv
+                </span><span class="jsdoc-syntax">},
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-search-choice-close'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">tabindex</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'-1'
+                </span><span class="jsdoc-syntax">}
+            ]
+            
+        }, </span><span class="jsdoc-var">this.searchField</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">close </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">choice.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'a.select2-search-choice-close'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()
+        
+        </span><span class="jsdoc-var">close.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.removeItem</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">choice</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">} );
+        
+        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">removeItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'remove item'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.item.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.data</span><span class="jsdoc-syntax">) * 1;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&lt; 0){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'not this item?!'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.item.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, 1);
+        </span><span class="jsdoc-var">o.item.remove</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+        
     }
 
     </span><span class="jsdoc-comment">/** 

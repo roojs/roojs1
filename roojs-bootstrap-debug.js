@@ -5315,15 +5315,52 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             
         };
         
-        var combobox = {
-            cls: 'combobox-container input-group',
+        var box = {
+            tag: 'div',
             cn: [
                 {
                     tag: 'input',
                     type : 'hidden',
                     cls: 'form-hidden-field'
                 },
-                inputblock,
+                inputblock
+            ]
+            
+        };
+        
+        if(this.multiple){
+            Roo.log('multiple');
+            
+            box = {
+                tag: 'div',
+                cn: [
+                    {
+                        tag: 'input',
+                        type : 'hidden',
+                        cls: 'form-hidden-field'
+                    },
+                    {
+                        tag: 'ul',
+                        cls: 'select2-choices',
+                        cn:[
+                            {
+                                tag: 'li',
+                                cls: 'select2-search-field',
+                                cn: [
+
+                                    inputblock
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+        
+        var combobox = {
+            cls: 'select2-container input-group',
+            cn: [
+                box,
                 {
                     tag: 'ul',
                     cls: 'typeahead typeahead-long dropdown-menu',
@@ -5352,6 +5389,10 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 }
             ]
         };
+        
+        if(this.multiple){
+            combobox.cls += ' select2-container-multi';
+        }
         
         if (align ==='left' && this.fieldLabel.length) {
                 
@@ -7838,6 +7879,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     alwaysQuery : false,
     
+    /**
+     * @cfg {Boolean} multiple  (true|false) ComboBobArray, default false
+     */
+    multiple : false,
+    
     //private
     addicon : false,
     editicon: false,
@@ -7846,6 +7892,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     hasQuery: false,
     append: false,
     loadNext: false,
+    item: [],
     
     // element that contains real text value.. (when hidden is used..)
      
@@ -7881,7 +7928,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         //}
 
         var cls = 'x-combo-list';
-        this.list = this.el.select('ul',true).first();
+        this.list = this.el.select('ul.dropdown-menu',true).first();
 
         //this.list = new Roo.Layer({
         //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
@@ -7943,7 +7990,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
         }
 
-        this.view = new Roo.View(this.el.select('ul',true).first(), this.tpl, {
+        this.view = new Roo.View(this.el.select('ul.dropdown-menu',true).first(), this.tpl, {
             singleSelect:true, store: this.store, selectedClass: this.selectedClass
         });
         //this.view.wrapEl.setDisplayed(false);
@@ -8000,7 +8047,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         */
         
- 
         this.keyNav = new Roo.KeyNav(this.inputEl(), {
             "up" : function(e){
                 this.inKeyMode = true;
@@ -8062,6 +8108,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         if(this.forceSelection){
             this.on('blur', this.doForce, this);
+        }
+        
+        if(this.multiple){
+            this.choices = this.el.select('ul.select2-choices', true).first();
+            this.searchField = this.el.select('ul li.select2-search-field', true).first();
         }
     },
 
@@ -8233,6 +8284,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @return {String} value The selected value
      */
     getValue : function(){
+        
+        if(this.multiple){
+            return (this.hiddenField) ? this.hiddenField.dom.value : this.value;
+        }
+        
         if(this.valueField){
             return typeof this.value != 'undefined' ? this.value : '';
         }else{
@@ -8261,6 +8317,32 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @param {String} value The value to match
      */
     setValue : function(v){
+        if(this.multiple){
+            if(!this.item.length){
+                this.clearValue();
+                return;
+            }
+            
+            var value = [];
+            var _this = this;
+            Roo.each(this.item, function(i){
+                if(_this.valueField){
+                    value.push(i[_this.valueField]);
+                    return;
+                }
+                
+                value.push(i);
+            });
+            
+            this.value = value.join(',');
+            
+            if(this.hiddenField){
+                this.hiddenField.dom.value = this.value;
+            }
+            
+            return;
+        }
+        
         var text = v;
         if(this.valueField){
             var r = this.findRecord(this.valueField, v);
@@ -8287,6 +8369,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @param {Object} value the value to set as. or false on reset?
      */
     setFromData : function(o){
+        
+        if(this.multiple){
+            this.addItem(o);
+            return;
+        }
+        
         var dv = ''; // display value
         var vv = ''; // value value..
         this.lastData = o;
@@ -8300,6 +8388,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.valueField){
             vv = !o || typeof(o[this.valueField]) == 'undefined' ? dv : o[this.valueField];
         }
+        
         if(this.hiddenField){
             this.hiddenField.dom.value = vv;
             
@@ -8726,6 +8815,61 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
         
         return;
+    },
+    
+    addItem : function(o){
+        this.item.push(o);
+        
+        var dv = ''; // display value
+        
+        this.lastData = o;
+        if (this.displayField) {
+            dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
+        } else {
+            // this is an error condition!!!
+            Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
+        }
+        
+        var choice = this.choices.createChild({
+            tag: 'li',
+            cls: 'select2-search-choice',
+            cn: [
+                {
+                    tag: 'div',
+                    html: dv
+                },
+                {
+                    tag: 'a',
+                    href: '#',
+                    cls: 'select2-search-choice-close',
+                    tabindex: '-1'
+                }
+            ]
+            
+        }, this.searchField);
+        
+        var close = choice.select('a.select2-search-choice-close', true).first()
+        
+        close.on('click', this.removeItem, this, { item : choice, data : o} );
+        
+        this.setValue('');
+    },
+    
+    removeItem : function(e, _self, o)
+    {
+        Roo.log('remove item');
+        var index = this.item.indexOf(o.data) * 1;
+        
+        if( index < 0){
+            Roo.log('not this item?!');
+            return;
+        }
+        
+        this.item.splice(index, 1);
+        o.item.remove();
+        
+        this.setValue('');
+        
     }
 
     /** 
