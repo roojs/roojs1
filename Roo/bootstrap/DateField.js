@@ -598,6 +598,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 hours -= 12;
             }
             
+            if(hours < 10){
+                hours = '0' + hours;
+            }
             
         }
         
