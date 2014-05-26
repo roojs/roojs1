@@ -138,16 +138,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if (typeof(this.viewMode === 'string')) {
             switch (this.viewMode) {
                 case 'months':
-                    this.viewMode = 1;
+                    this.viewMode = 2;
                     break;
                 case 'years':
                     this.viewMode = 2;
                     break;
                 case 'time':
-                    this.viewMode = 3;
+                    this.viewMode = 0;
                     break;
                 default:
-                    this.viewMode = 0;
+                    this.viewMode = 1;
                     break;
             }
         }
