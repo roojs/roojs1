@@ -225,8 +225,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             });
         }
         
-        this.updateTime();
-        
         if(this.isInline) {
             this.show();
         }
@@ -592,28 +590,30 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     updateTime: function()
     {
+        this.time = (typeof(this.time) === 'undefined') ? this.UTCTodayTime() : this.time;
+        
         var hours = this.time.getHours();
-            var minutes = this.time.getMinutes();
-            
-            if(hours * 1 > 12){
-                hours -= 12;
-            }
-            
-            if(hours < 10){
-                hours = '0' + hours;
-            }
-            
-            if(minutes < 10){
-                minutes = '0' + minutes;
-            }
-            
-            var period = this.time.format('A');
-            
-            this.picker().select('>.datepicker-time span.timepicker-hour', true).first().dom.innerHTML = hours;
-            
-            this.picker().select('>.datepicker-time span.timepicker-minute', true).first().dom.innerHTML = minutes;
-            
-            this.picker().select('>.datepicker-time button.period-btn', true).first().dom.innerHTML = period;
+        var minutes = this.time.getMinutes();
+
+        if(hours * 1 > 12){
+            hours -= 12;
+        }
+
+        if(hours < 10){
+            hours = '0' + hours;
+        }
+
+        if(minutes < 10){
+            minutes = '0' + minutes;
+        }
+
+        var period = this.time.format('A');
+
+        this.picker().select('>.datepicker-time span.timepicker-hour', true).first().dom.innerHTML = hours;
+
+        this.picker().select('>.datepicker-time span.timepicker-minute', true).first().dom.innerHTML = minutes;
+
+        this.picker().select('>.datepicker-time button.period-btn', true).first().dom.innerHTML = period;
     },
     
     showMode: function(dir) {
