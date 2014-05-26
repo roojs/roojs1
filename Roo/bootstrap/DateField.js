@@ -173,6 +173,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             dayFoot.addClass('switch-time');
             dayFoot.addClass('glyphicon-time');
+            
         }else{
             Roo.each(this.picker().select('tfoot th.picker-switch', true).elements, function(v){
                 v.remove();
