@@ -210,16 +210,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             var minutes_up = this.picker().select('>.datepicker-time span.minutes-up', true).first();
             var minutes_down = this.picker().select('>.datepicker-time span.minutes-down', true).first();
             
-            var period = this.picker().select('>.datepicker-time button.period-btn', true).first();
+            var period = this.picker().select('>.datepicker-time button', true).first();
             
-            hours_up.on('click', this.onIncrementHours, this);
-            hours_down.on('click', this.onDecrementHours, this);
-            minutes_up.on('click', this.onIncrementMinutes, this);
-            minutes_down.on('click', this.onDecrementMinutes, this);
+            hours_up.on('click', this.onIncrementHours, hours_up);
+            hours_down.on('click', this.onDecrementHours, hours_down);
+            minutes_up.on('click', this.onIncrementMinutes, minutes_up);
+            minutes_down.on('click', this.onDecrementMinutes, minutes_down);
             
-            period.on('click', this.onTogglePeriod, this);
-            
-            this.updateTime();
+            period.on('click', this.onTogglePeriod, period);
             
         }else{
             Roo.each(this.picker().select('tfoot th', true).elements, function(v){
@@ -376,7 +374,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         {
                             tag: 'button',
                             type: 'button',
-                            cls: 'btn btn-primary period-btn',
+                            cls: 'btn btn-primary',
                             html: 'AM'
                             
                         }
@@ -443,6 +441,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             this.viewDate = new Date(this.endDate);
         } else {
             this.viewDate = new Date(this.date);
+        }
+        
+        if(this.showTime){
+            this.time = (typeof(this.time) === 'undefined') ? this.UTCTodayTime() : this.time;
         }
         
         this.fill();
@@ -588,34 +590,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             year += 1;
         }
         
-    },
-    
-    updateTime: function()
-    {
-        this.time = (typeof(this.time) === 'undefined') ? this.UTCTodayTime() : this.time;
+        if(this.showTime){
+            Roo.log(this.time.getHours());
+            Roo.log(this.time.get());
+        }
         
-        var hours = this.time.getHours();
-        var minutes = this.time.getMinutes();
-
-        if(hours * 1 > 12){
-            hours -= 12;
-        }
-
-        if(hours < 10){
-            hours = '0' + hours;
-        }
-
-        if(minutes < 10){
-            minutes = '0' + minutes;
-        }
-
-        var period = this.time.format('A');
-
-        this.picker().select('>.datepicker-time span.timepicker-hour', true).first().dom.innerHTML = hours;
-
-        this.picker().select('>.datepicker-time span.timepicker-minute', true).first().dom.innerHTML = minutes;
-
-        this.picker().select('>.datepicker-time button.period-btn', true).first().dom.innerHTML = period;
     },
     
     showMode: function(dir) {
@@ -1035,38 +1014,27 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     onIncrementHours: function()
     {
-        this.time = this.time.add(Date.HOUR, 1);
-        this.updateTime();
+        Roo.log('onIncrementHours');
     },
     
     onDecrementHours: function()
     {
-        this.time = this.time.add(Date.HOUR, -1);
-        this.updateTime();
+        Roo.log('onDecrementHours');
     },
     
     onIncrementMinutes: function()
     {
-        this.time = this.time.add(Date.MINUTE, 1);
-        this.updateTime();
+        Roo.log('onIncrementMinutes');
     },
     
     onDecrementMinutes: function()
     {
-        this.time = this.time.add(Date.MINUTE, -1);
-        this.updateTime();
+        Roo.log('onDecrementMinutes');
     },
     
     onTogglePeriod: function()
     {
-        var h = 12;
-        if(this.time.format('A') === 'PM'){
-            h = -12;
-        }
-     
-        this.time = this.time.add(Date.HOUR, h);
-        
-        this.updateTime();
+        Roo.log('onTogglePeriod');
     }
     
    
