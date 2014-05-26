@@ -11347,7 +11347,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             }
             
             if (currentDate && prevMonth.valueOf() === currentDate) {
-                clsName += ' active';
+                clsName += ' active2';
             }
             
             if (prevMonth.valueOf() < this.startDate || prevMonth.valueOf() > this.endDate ||
