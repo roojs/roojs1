@@ -11541,7 +11541,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     
     onClick: function(e) {
-        Roo.log(this.viewMode);
         e.stopPropagation();
         e.preventDefault();
         
@@ -11595,6 +11594,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     this.viewDate.setUTCDate(1);
                     if (className.indexOf('month') !== -1) {
                         this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
+                    } else if(className.indexOf('test') !== -1){
+                        
                     } else {
                         var year = parseInt(html, 10) || 0;
                         this.viewDate.setUTCFullYear(year);
@@ -11826,7 +11827,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 cn: [
                     {
                         tag: 'span',
-                        cls: 'glyphicon'   
+                        cls: 'picker-switch glyphicon'   
                     }
                 ]
             }
