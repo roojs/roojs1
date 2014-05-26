@@ -11035,7 +11035,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             var minutes_up = this.picker().select('>.datepicker-time span.minutes-up', true).first();
             var minutes_down = this.picker().select('>.datepicker-time span.minutes-down', true).first();
             
-            var period = this.picker().select('>.datepicker-time button', true).first();
+            var period = this.picker().select('>.datepicker-time button.period-btn', true).first();
             
             hours_up.on('click', this.onIncrementHours, hours_up);
             hours_down.on('click', this.onDecrementHours, hours_down);
@@ -11199,7 +11199,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         {
                             tag: 'button',
                             type: 'button',
-                            cls: 'btn btn-primary',
+                            cls: 'btn btn-primary period-btn',
                             html: 'AM'
                             
                         }
@@ -11416,6 +11416,28 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
         
         if(this.showTime){
+            var hours = this.time.getHours();
+            var minutes = this.time.getMinutes();
+            
+            if(hours * 1 > 12){
+                hours -= 12;
+            }
+            
+            if(hours < 10){
+                hours = '0' + hours;
+            }
+            
+            if(minutes < 10){
+                minutes = '0' + minutes;
+            }
+            
+            var period = this.time.format('A');
+            
+            this.picker().select('>.datepicker-time span.timepicker-hour', true).first().dom.innerHTML = hours;
+            
+            this.picker().select('>.datepicker-time span.timepicker-minute', true).first().dom.innerHTML = minutes;
+            
+            this.picker().select('>.datepicker-time button.period-btn', true).first().dom.innerHTML = period;
             
         }
         

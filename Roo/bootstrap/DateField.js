@@ -612,7 +612,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             this.picker().select('>.datepicker-time span.timepicker-minute', true).first().dom.innerHTML = minutes;
             
-            this.picker().select('>.datepicker-time button.period-btn', true).first().dom.innerHTML = minutes;
+            this.picker().select('>.datepicker-time button.period-btn', true).first().dom.innerHTML = period;
             
         }
         
