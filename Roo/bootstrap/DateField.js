@@ -806,7 +806,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     this.viewDate.setUTCDate(1);
                     if (className.indexOf('month') !== -1) {
                         this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
-                    } else if(className.indexOf('picker-switch') !== -1){
+                    } else if(className.indexOf('picker-switch-icon') !== -1){
                         if(className.indexOf('switch-time') !== -1){
                             this.showMode(-1);
                             this.fill();
