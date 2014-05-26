@@ -11011,7 +11011,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         if(this.showTime){
             this.timer = this.picker().select('.picker-switch .switch-icon', true).first();
-            Roo.log(this.timer);
         }
         
         this.fillDow();
@@ -11236,7 +11235,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     showMode: function(dir) {
         if (dir) {
-            this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
+            this.viewMode = Math.max(this.minViewMode, Math.min(3, this.viewMode + dir));
         }
         Roo.each(this.picker().select('>div',true).elements, function(v){
             v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -11743,6 +11742,11 @@ Roo.apply(Roo.bootstrap.DateField,  {
         clsName: 'years',
         navFnc: 'FullYear',
         navStep: 10
+    },
+    {
+        clsName: 'time',
+        navFnc: 'Time',
+        navStep: 0
     }]
 });
 
