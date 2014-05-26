@@ -522,7 +522,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             }
             
             if (currentDate && prevMonth.valueOf() === currentDate) {
-                clsName += ' active2';
+                clsName += ' active';
             }
             
             if (prevMonth.valueOf() < this.startDate || prevMonth.valueOf() > this.endDate ||
@@ -548,7 +548,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             v.removeClass('active');
             
             if(currentYear === year && k === currentMonth){
-                v.addClass('active1');
+                v.addClass('active');
             }
             
             if (year < startYear || year > endYear || (year == startYear && k < startMonth) || (year == endYear && k > endMonth)) {
