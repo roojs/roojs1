@@ -11401,20 +11401,20 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     updateTimer : function()
     {   
         var icon = this.timer.select('>span', true).first();
-        Roo.log('run update timer');
+        
         if(this.viewMode == 0){
-            Roo.log('remove time');
+            
             icon.removeClass('switch-time');
             icon.removeClass('glyphicon-time');
             icon.addClass('switch-calendar');
             icon.addClass('glyphicon-calendar');
             return;
         }
-        Roo.log('remove calendar');
+        
         icon.removeClass('switch-calendar');
         icon.removeClass('glyphicon-calendar');
         icon.addClass('switch-time');
-        icon.addClass('glyphicon-calendar');
+        icon.addClass('glyphicon-time');
         
     },
     
