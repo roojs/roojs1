@@ -10903,10 +10903,21 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         return new Date(Date.UTC.apply(Date, arguments));
     },
     
+    UTCTime: function()
+    {
+        return new Date(Date.UTC.apply(Date, arguments));
+    },
+    
     UTCToday: function()
     {
         var today = new Date();
         return this.UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+    },
+    
+    UTCTodayTime: function()
+    {
+        var today = new Date();
+        return this.UTCTime(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), today.getUTCHours(), today.getUTCMinutes());
     },
     
     getDate: function() {
@@ -11256,6 +11267,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         } else {
             this.viewDate = new Date(this.date);
         }
+        
+        this.time = (typeof(this.time) === 'undefined') ? this.UTCTodayTime() : (typeof(this.time) === 'string') ? this.parseDate(this.time) : this.time;
         
         this.fill();
     },
