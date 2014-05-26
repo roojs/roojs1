@@ -175,6 +175,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //                return parseInt(val) + 1;
 //            });
 //        })
+
+        if(this.showTime){
+            this.updateTimer();
+        }
 			
         
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
@@ -562,27 +566,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             v.hide();
         });
         this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
-        
-    },
-    
-    updateTimer : function()
-    {   
-        var dayFoot = this.picker().select('>.datepicker-days span.picker-switch', true).first();
-        var timeFoot = this.picker().select('>.datepicker-time span.picker-switch', true).first();
-        
-        if(this.viewMode == 0){
-            
-            icon.removeClass('switch-time');
-            icon.removeClass('glyphicon-time');
-            icon.addClass('switch-calendar');
-            icon.addClass('glyphicon-calendar');
-            return;
-        }
-//        
-        icon.removeClass('switch-time');
-        icon.removeClass('glyphicon-time');
-        icon.addClass('switch-time');
-        icon.addClass('glyphicon-time');
         
     },
     
