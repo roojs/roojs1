@@ -11402,6 +11402,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {   
         var icon = this.timer.select('>span', true).first();
         Roo.log('run');
+        this.viewMode;
         if(this.viewMode == 0){
             
             icon.removeClass('switch-time');
