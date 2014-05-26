@@ -47,6 +47,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
      * format (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').
      */
 //    altFormats : "m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d",
+    altFormats : false,
     
     weekStart : 0,
     
