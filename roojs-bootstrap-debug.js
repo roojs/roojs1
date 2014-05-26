@@ -10982,17 +10982,17 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.startViewMode = this.viewMode;
         
         
-//        Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
-//            if(!this.calendarWeeks){
-//                v.remove();
-//                return;
-//            };
-//            
-//            v.dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today
-//            v.attr('colspan', function(i, val){
-//                return parseInt(val) + 1;
-//            });
-//        })
+        Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
+            if(!this.calendarWeeks){
+                v.remove();
+                return;
+            };
+            
+            v.dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today
+            v.attr('colspan', function(i, val){
+                return parseInt(val) + 1;
+            });
+        })
 			
         
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
@@ -11741,8 +11741,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 cls: 'table-condensed',
                 cn:[
                 Roo.bootstrap.DateField.head,
-                Roo.bootstrap.DateField.content,
-                Roo.bootstrap.DateField.footer
+                Roo.bootstrap.DateField.content
+//                Roo.bootstrap.DateField.footer
                 ]
             }
             ]
@@ -11756,8 +11756,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 cls: 'table-condensed',
                 cn:[
                 Roo.bootstrap.DateField.head,
-                Roo.bootstrap.DateField.content,
-                Roo.bootstrap.DateField.footer
+                Roo.bootstrap.DateField.content
+//                Roo.bootstrap.DateField.footer
                 ]
             }
             ]
