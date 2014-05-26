@@ -10989,15 +10989,21 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.startViewMode = this.viewMode;
         
         if(this.showTime){
-            var dayFoot = this.picker().select('>.datepicker-days span.picker-switch', true).first();
-            var timeFoot = this.picker().select('>.datepicker-time span.picker-switch', true).first();
+            
+            var dayFoot = this.picker().select('>.datepicker-days th.picker-switch', true).first();
+            var timeFoot = this.picker().select('>.datepicker-time th.picker-switch', true).first();
 
+            var dayFootIcon = this.picker().select('>.datepicker-days span.picker-switch', true).first();
+            var timeFootIcon = this.picker().select('>.datepicker-time span.picker-switch', true).first();
             
             timeFoot.addClass('switch-calendar');
-            timeFoot.addClass('glyphicon-calendar');
-            
             dayFoot.addClass('switch-time');
-            dayFoot.addClass('glyphicon-time');
+            
+            timeFootIcon.addClass('switch-calendar');
+            timeFootIcon.addClass('glyphicon-calendar');
+            
+            dayFootIcon.addClass('switch-time');
+            dayFootIcon.addClass('glyphicon-time');
             
         }else{
             Roo.each(this.picker().select('tfoot th.picker-switch', true).elements, function(v){
@@ -11561,7 +11567,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onClick: function(e) {
         e.stopPropagation();
         e.preventDefault();
-        Roo.log(e);
+        
         var target = e.getTarget();
         
         if(target.nodeName.toLowerCase() === 'i'){
