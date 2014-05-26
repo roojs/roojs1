@@ -254,9 +254,73 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     fillTime: function()
     {    
-        var time = this.picker().select('>tbody', true).first();
+        var time = this.picker().select('>.datepicker-time tbody', true).first();
         
         time.dom.innerHTML = '';
+        
+        time.createChild({
+            tag: 'tr',
+            cn: [
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'hours-up glyphicon glyphicon-chevron-up'
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'minutes-up glyphicon glyphicon-chevron-up'
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                }
+            ]
+        });
+        
+        time.createChild({
+            tag: 'tr',
+            cn: [
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'hours-up glyphicon glyphicon-chevron-up'
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'minutes-up glyphicon glyphicon-chevron-up'
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                }
+            ]
+        }, foot);
         
     },
     
