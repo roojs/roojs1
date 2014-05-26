@@ -846,7 +846,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
             cn: [
             {
                 tag: 'th',
-                colspan: '7'
+                colspan: '7',
+                cls: 'footer'
             }
                     
             ]

@@ -11672,7 +11672,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
             {
                 tag: 'th',
                 colspan: '7',
-                cls: 'today'
+                cls: 'footer'
             }
                     
             ]
