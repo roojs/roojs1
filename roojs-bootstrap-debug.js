@@ -11860,27 +11860,37 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     onIncrementHours: function()
     {
-        Roo.log('onIncrementHours');
+        this.time.add(Date.HOUR, 1);
+        this.updateTime();
     },
     
     onDecrementHours: function()
     {
-        Roo.log('onDecrementHours');
+        this.time.add(Date.HOUR, -1);
+        this.updateTime();
     },
     
     onIncrementMinutes: function()
     {
-        Roo.log('onIncrementMinutes');
+        this.time.add(Date.MINUTE, 1);
+        this.updateTime();
     },
     
     onDecrementMinutes: function()
     {
-        Roo.log('onDecrementMinutes');
+        this.time.add(Date.MINUTE, -1);
+        this.updateTime();
     },
     
     onTogglePeriod: function()
     {
-        Roo.log('onTogglePeriod');
+        var h = 12;
+        if(this.time.format('A') === 'PM'){
+            h = -12;
+        }
+        
+        this.time.add(Date.HOUR, h);
+        this.updateTime();
     }
     
    

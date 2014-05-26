@@ -1059,7 +1059,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     onTogglePeriod: function()
     {
-        this.time.addHours(1);
+        var h = 12;
+        if(this.time.format('A') === 'PM'){
+            h = -12;
+        }
+        
+        this.time.add(Date.HOUR, h);
         this.updateTime();
     }
     
