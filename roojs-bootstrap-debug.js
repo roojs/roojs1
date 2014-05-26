@@ -11613,9 +11613,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         break;
                      case 'picker-switch':
                         if(className.indexOf('switch-time') !== -1){
+                            Roo.log('got switch-time');
                             this.showMode(-1);
                             this.fill();
                         }else{
+                            Roo.log('not got switch-time');
                             this.showMode(1);
                             this.fill();
                         }
