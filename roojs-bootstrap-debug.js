@@ -11891,6 +11891,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
         
         this.time.add(Date.HOUR, h);
+        Roo.log(this.time);
         this.updateTime();
     }
     
