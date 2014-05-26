@@ -171,6 +171,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             var dayFootIcon = this.picker().select('>.datepicker-days span.picker-switch-icon', true).first();
             var timeFootIcon = this.picker().select('>.datepicker-time span.picker-switch-icon', true).first();
             
+            Roo.log(dayFoot);
             timeFoot.addClass('switch-calendar');
             dayFoot.addClass('switch-time');
             
