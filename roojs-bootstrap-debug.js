@@ -11015,6 +11015,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.fillDow();
         this.fillMonths();
+        this.fillTime();
         this.update();
         this.showMode();
         
@@ -11595,10 +11596,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     if (className.indexOf('month') !== -1) {
                         this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
                     } else if(className.indexOf('picker-switch') !== -1){
-                        Roo.log(this.viewMode);
-                        this.showMode(-1);
-                        this.fill();
-                        return;
+                        
                     } else {
                         var year = parseInt(html, 10) || 0;
                         this.viewDate.setUTCFullYear(year);

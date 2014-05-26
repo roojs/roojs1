@@ -190,6 +190,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.fillDow();
         this.fillMonths();
+        this.fillTime();
         this.update();
         this.showMode();
         
