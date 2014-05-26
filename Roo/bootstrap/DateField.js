@@ -1044,7 +1044,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
             {
                 tag: 'th',
                 colspan: '7',
-                cls: 'picker-switch',
+                cls: '',
                 cn: [
                     {
                         tag: 'span',
