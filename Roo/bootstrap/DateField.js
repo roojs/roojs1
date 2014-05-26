@@ -185,7 +185,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.setDaysOfWeekDisabled(this.daysOfWeekDisabled);
         
         if(this.showTime){
-            this.timer = this.picker().select('.picker-switch.switch-icon', true).first();
+            this.timer = this.picker().select('switch-icon', true).first();
             Roo.log(this.timer);
         }
         
