@@ -994,17 +994,17 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     onDecrementHours: function()
     {
-        
+        Roo.log('onDecrementHours');
     },
     
     onIncrementMinutes: function()
     {
-        
+        Roo.log('onIncrementMinutes');
     },
     
     onDecrementMinutes: function()
     {
-        
+        Roo.log('onDecrementMinutes');
     }
     
    
