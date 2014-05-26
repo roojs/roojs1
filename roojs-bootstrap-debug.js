@@ -11037,12 +11037,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             var period = this.picker().select('>.datepicker-time button.period-btn', true).first();
             
-            hours_up.on('click', this.onIncrementHours, hours_up);
-            hours_down.on('click', this.onDecrementHours, hours_down);
-            minutes_up.on('click', this.onIncrementMinutes, minutes_up);
-            minutes_down.on('click', this.onDecrementMinutes, minutes_down);
+            hours_up.on('click', this.onIncrementHours, this);
+            hours_down.on('click', this.onDecrementHours, this);
+            minutes_up.on('click', this.onIncrementMinutes, this);
+            minutes_down.on('click', this.onDecrementMinutes, this);
             
-            period.on('click', this.onTogglePeriod, period);
+            period.on('click', this.onTogglePeriod, this);
             
             this.updateTime();
             
@@ -11884,8 +11884,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     onTogglePeriod: function()
     {
-        Roo.log('this!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this);
         var h = 12;
         if(this.time.format('A') === 'PM'){
             h = -12;
