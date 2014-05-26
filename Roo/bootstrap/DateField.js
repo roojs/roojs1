@@ -320,7 +320,39 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     cls: 'separator'
                 }
             ]
-        }, foot);
+        });
+        
+        time.createChild({
+            tag: 'tr',
+            cn: [
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'hours-down glyphicon glyphicon-chevron-down'
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'minutes-down glyphicon glyphicon-chevron-down'
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                }
+            ]
+        });
         
     },
     
