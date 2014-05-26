@@ -11234,13 +11234,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     },
     
     showMode: function(dir) {
-        Roo.log('dir');
-        Roo.log(dir);
         if (dir) {
             this.viewMode = Math.max(this.minViewMode, Math.min(3, this.viewMode + dir));
         }
-        Roo.log('this.viewMode');
-        Roo.log(this.viewMode);
+        
         Roo.each(this.picker().select('>div',true).elements, function(v){
             v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
             v.hide();
@@ -11258,14 +11255,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var icon = this.timer.select('>span', true).first();
         
         if(this.viewMode == 0){
-            icon.removeClass('switch-calendar');
+            icon.removeClass('switch-time');
             icon.removeClass('glyphicon-time');
+            icon.addClass('switch-calendar');
             icon.addClass('glyphicon-calendar');
-            icon.addClass('glyphicon-time');
             return;
         }
         
+        icon.removeClass('switch-calendar');
         icon.removeClass('glyphicon-calendar');
+        icon.addClass('switch-time');
         icon.addClass('glyphicon-time');
         
     },
@@ -11826,11 +11825,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 tag: 'table',
                 cls: 'table-condensed',
                 cn:[
-                    {
-                        tag: 'div',
-                        html: 'test timer'
-                    },
-//                Roo.bootstrap.DateField.content,
+                Roo.bootstrap.DateField.content,
                 Roo.bootstrap.DateField.footer
                 ]
             }
