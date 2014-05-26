@@ -10844,6 +10844,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
  * @cfg {Boolean} todayBtn default false
  * @cfg {Boolean} calendarWeeks default false
  * @cfg {Object} daysOfWeekDisabled default empty
+ * @cfg {Boolean} showTime pick the time (default true)
  * 
  * @cfg {Boolean} keyboardNavigation default true
  * @cfg {String} language default en
@@ -10894,7 +10895,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     daysOfWeekDisabled: [],
     
-    _events: [],
+    showTime : true,
     
     UTCDate: function()
     {
