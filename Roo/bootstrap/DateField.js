@@ -592,8 +592,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             year += 1;
         }
         
-        if(this.showTime){
-            var hours = this.time.getHours();
+    },
+    
+    updateTime: function()
+    {
+        var hours = this.time.getHours();
             var minutes = this.time.getMinutes();
             
             if(hours * 1 > 12){
@@ -610,14 +613,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             var period = this.time.format('A');
             
-//            this.picker().select('>.datepicker-time span.timepicker-hour', true).first().dom.innerHTML = hours;
-//            
-//            this.picker().select('>.datepicker-time span.timepicker-minute', true).first().dom.innerHTML = minutes;
-//            
-//            this.picker().select('>.datepicker-time button.period-btn', true).first().dom.innerHTML = period;
-//            
-        }
-        
+            this.picker().select('>.datepicker-time span.timepicker-hour', true).first().dom.innerHTML = hours;
+            
+            this.picker().select('>.datepicker-time span.timepicker-minute', true).first().dom.innerHTML = minutes;
+            
+            this.picker().select('>.datepicker-time button.period-btn', true).first().dom.innerHTML = period;
     },
     
     showMode: function(dir) {
