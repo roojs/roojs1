@@ -10990,11 +10990,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         if(this.showTime){
             
-            var dayFoot = this.picker().select('>.datepicker-days th.picker-switch', true).first();
-            var timeFoot = this.picker().select('>.datepicker-time th.picker-switch', true).first();
+            var dayFoot = this.picker().select('>.datepicker-days th', true).first();
+            var timeFoot = this.picker().select('>.datepicker-time th', true).first();
 
-            var dayFootIcon = this.picker().select('>.datepicker-days span.picker-switch', true).first();
-            var timeFootIcon = this.picker().select('>.datepicker-time span.picker-switch', true).first();
+            var dayFootIcon = this.picker().select('>.datepicker-days span.picker-switch-icon', true).first();
+            var timeFootIcon = this.picker().select('>.datepicker-time span.picker-switch-icon', true).first();
             
             timeFoot.addClass('switch-calendar');
             dayFoot.addClass('switch-time');
@@ -11006,7 +11006,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             dayFootIcon.addClass('glyphicon-time');
             
         }else{
-            Roo.each(this.picker().select('tfoot th.picker-switch', true).elements, function(v){
+            Roo.each(this.picker().select('tfoot th', true).elements, function(v){
                 v.remove();
             });
         }
@@ -11611,19 +11611,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         this.setValue(this.formatDate(this.date));
                         this.hide();
                         break;
-                     case 'picker-switch':
-                        if(className.indexOf('switch-time') !== -1){
-                            Roo.log('got switch-time');
-                            this.showMode(-1);
-                            this.fill();
-                        }else{
-                            Roo.log('not got switch-time');
-                            this.showMode(1);
-                            this.fill();
-                        }
-                        
+                     case 'switch-time':
+                        this.showMode(-1);
+                        this.fill();
                         break;
-                         
+                     case 'switch-calendar':
+                         this.showMode(1);
+                         this.fill();
+                         break;
                 }
                 break;
             case 'span':
@@ -11631,7 +11626,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     this.viewDate.setUTCDate(1);
                     if (className.indexOf('month') !== -1) {
                         this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
-                    } else if(className.indexOf('picker-switch') !== -1){
+                    } else if(className.indexOf('picker-switch-icon') !== -1){
                         if(className.indexOf('switch-time') !== -1){
                             this.showMode(-1);
                             this.fill();
@@ -11869,11 +11864,11 @@ Roo.apply(Roo.bootstrap.DateField,  {
             {
                 tag: 'th',
                 colspan: '7',
-                cls: 'picker-switch',
+                cls: '',
                 cn: [
                     {
                         tag: 'span',
-                        cls: 'picker-switch glyphicon'   
+                        cls: 'picker-switch-icon glyphicon'   
                     }
                 ]
             }
