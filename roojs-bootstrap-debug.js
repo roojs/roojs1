@@ -11091,9 +11091,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     tag: 'td',
                     cn: [
                         {
-                            tag: 'span',
-                            cls: 'hours-up glyphicon glyphicon-chevron-up'
-                        }  
+                            tag: 'a',
+                            href: '#',
+                            cls: 'btn',
+                            cn: [
+                                {
+                                    tag: 'span',
+                                    cls: 'hours-up glyphicon glyphicon-chevron-up'
+                                }
+                            ]
+                        } 
                     ]
                 },
                 {
@@ -11104,9 +11111,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     tag: 'td',
                     cn: [
                         {
-                            tag: 'span',
-                            cls: 'minutes-up glyphicon glyphicon-chevron-up'
-                        }  
+                            tag: 'a',
+                            href: '#',
+                            cls: 'btn',
+                            cn: [
+                                {
+                                    tag: 'span',
+                                    cls: 'minutes-up glyphicon glyphicon-chevron-up'
+                                }
+                            ]
+                        }
                     ]
                 },
                 {
@@ -11147,6 +11161,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 {
                     tag: 'td',
                     cls: 'separator'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'button',
+                            type: 'button',
+                            cls: 'btn btn-primary'
+                        }
+                    ]
                 }
             ]
         });
@@ -11158,9 +11182,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     tag: 'td',
                     cn: [
                         {
-                            tag: 'span',
-                            cls: 'hours-down glyphicon glyphicon-chevron-down'
-                        }  
+                            tag: 'a',
+                            href: '#',
+                            cls: 'btn',
+                            cn: [
+                                {
+                                    tag: 'span',
+                                    cls: 'hours-down glyphicon glyphicon-chevron-down'
+                                }
+                            ]
+                        }
                     ]
                 },
                 {
@@ -11171,9 +11202,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     tag: 'td',
                     cn: [
                         {
-                            tag: 'span',
-                            cls: 'minutes-down glyphicon glyphicon-chevron-down'
-                        }  
+                            tag: 'a',
+                            href: '#',
+                            cls: 'btn',
+                            cn: [
+                                {
+                                    tag: 'span',
+                                    cls: 'minutes-down glyphicon glyphicon-chevron-down'
+                                }
+                            ]
+                        }
                     ]
                 },
                 {
