@@ -406,6 +406,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             v.hide();
         });
         this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
+        
+        if(this.showTime){
+            this.updateFooter();
+        }
+        
     },
     
     place: function()
