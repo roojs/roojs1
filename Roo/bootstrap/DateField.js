@@ -219,6 +219,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             period.on('click', this.onTogglePeriod, period);
             
+            this.updateTime();
+            
         }else{
             Roo.each(this.picker().select('tfoot th', true).elements, function(v){
                 v.remove();

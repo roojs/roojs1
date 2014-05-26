@@ -11044,6 +11044,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             period.on('click', this.onTogglePeriod, period);
             
+            this.updateTime();
+            
         }else{
             Roo.each(this.picker().select('tfoot th', true).elements, function(v){
                 v.remove();
@@ -11268,10 +11270,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             this.viewDate = new Date(this.date);
         }
         
-        if(this.showTime){
-            this.time = (typeof(this.time) === 'undefined') ? this.UTCTodayTime() : this.time;
-        }
-        
         this.fill();
     },
     
@@ -11415,33 +11413,34 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             year += 1;
         }
         
-        if(this.showTime){
-            var hours = this.time.getHours();
-            var minutes = this.time.getMinutes();
-            
-            if(hours * 1 > 12){
-                hours -= 12;
-            }
-            
-            if(hours < 10){
-                hours = '0' + hours;
-            }
-            
-            if(minutes < 10){
-                minutes = '0' + minutes;
-            }
-            
-            var period = this.time.format('A');
-            
-            Roo.log(this.picker().select('.datepicker-time', true).first());
-            this.picker().select('.timepicker-hour', true).first().dom.innerHTML = hours;
-            
-//            this.picker().select('>.datepicker-time span.timepicker-minute', true).first().dom.innerHTML = minutes;
-//            
-//            this.picker().select('>.datepicker-time button.period-btn', true).first().dom.innerHTML = period;
-            
-        }
+    },
+    
+    updateTime: function()
+    {
+        this.time = (typeof(this.time) === 'undefined') ? this.UTCTodayTime() : this.time;
         
+        var hours = this.time.getHours();
+        var minutes = this.time.getMinutes();
+
+        if(hours * 1 > 12){
+            hours -= 12;
+        }
+
+        if(hours < 10){
+            hours = '0' + hours;
+        }
+
+        if(minutes < 10){
+            minutes = '0' + minutes;
+        }
+
+        var period = this.time.format('A');
+
+        this.picker().select('>.datepicker-time span.timepicker-hour', true).first().dom.innerHTML = hours;
+
+        this.picker().select('>.datepicker-time span.timepicker-minute', true).first().dom.innerHTML = minutes;
+
+        this.picker().select('>.datepicker-time button.period-btn', true).first().dom.innerHTML = period;
     },
     
     showMode: function(dir) {
