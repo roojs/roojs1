@@ -443,7 +443,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             this.viewDate = new Date(this.date);
         }
         
-        this.time = (typeof(this.time) === 'undefined') ? this.UTCTodayTime() : this.time;
+        if(this.showTime){
+            this.time = (typeof(this.time) === 'undefined') ? this.UTCTodayTime() : this.time;
+        }
         
         this.fill();
     },
@@ -587,6 +589,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             year += 1;
         }
+        
     },
     
     showMode: function(dir) {
