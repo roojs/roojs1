@@ -415,7 +415,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     updateFooter : function()
     {
-        
+        this.picker().select('.picker-switch span.', true).first()
     },
     
     place: function()
@@ -861,7 +861,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 cn: [
                     {
                         tag: 'span',
-                        cls: 'glyphicon'   
+                        cls: 'switch-icon glyphicon'   
                     }
                 ]
             }
