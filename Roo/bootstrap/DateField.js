@@ -443,7 +443,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 startMonth = this.startDate !== -Infinity ? this.startDate.getUTCMonth() : -Infinity,
                 endYear = this.endDate !== Infinity ? this.endDate.getUTCFullYear() : Infinity,
                 endMonth = this.endDate !== Infinity ? this.endDate.getUTCMonth() : Infinity,
-                currentDate = this.date && this.date.valueOf(),
+                currentDate = this.date && this.date.clearTime().valueOf(),
                 today = this.UTCToday();
         
         this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].months[month]+' '+year;
@@ -521,7 +521,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 clsName += ' today';
             }
             
-            if (currentDate && prevMonth.valueOf() === currentDate) {
+            if (currentDate && prevMonth.clearTime().valueOf() === currentDate) {
                 clsName += ' active';
             }
             
