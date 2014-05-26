@@ -165,11 +165,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         if(this.showTime){
             
-            var dayFoot = this.picker().select('>.datepicker-days th.picker-switch', true).first();
-            var timeFoot = this.picker().select('>.datepicker-time th.picker-switch', true).first();
+            var dayFoot = this.picker().select('>.datepicker-days th', true).first();
+            var timeFoot = this.picker().select('>.datepicker-time th', true).first();
 
-            var dayFootIcon = this.picker().select('>.datepicker-days span.picker-switch', true).first();
-            var timeFootIcon = this.picker().select('>.datepicker-time span.picker-switch', true).first();
+            var dayFootIcon = this.picker().select('>.datepicker-days span.picker-switch-icon', true).first();
+            var timeFootIcon = this.picker().select('>.datepicker-time span.picker-switch-icon', true).first();
             
             timeFoot.addClass('switch-calendar');
             dayFoot.addClass('switch-time');
