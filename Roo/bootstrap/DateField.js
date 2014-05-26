@@ -1059,6 +1059,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     onTogglePeriod: function()
     {
+        Roo.log(this.time);
         var h = 12;
         if(this.time.format('A') === 'PM'){
             h = -12;
