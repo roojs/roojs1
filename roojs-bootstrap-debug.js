@@ -10988,6 +10988,19 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.startViewMode = this.viewMode;
         
+        this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
+        
+        this.setStartDate(this.startDate);
+        this.setEndDate(this.endDate);
+        
+        this.setDaysOfWeekDisabled(this.daysOfWeekDisabled);
+        
+        this.fillDow();
+        this.fillMonths();
+        this.fillTime();
+        this.update();
+        this.showMode();
+        
         if(this.showTime){
             
             var dayFoot = this.picker().select('>.datepicker-days tfoot th', true).first();
@@ -11020,20 +11033,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 v.remove();
             });
         }
-			
-        
-        this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
-        
-        this.setStartDate(this.startDate);
-        this.setEndDate(this.endDate);
-        
-        this.setDaysOfWeekDisabled(this.daysOfWeekDisabled);
-        
-        this.fillDow();
-        this.fillMonths();
-        this.fillTime();
-        this.update();
-        this.showMode();
         
         if(this.isInline) {
             this.show();
