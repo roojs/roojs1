@@ -10895,7 +10895,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     daysOfWeekDisabled: [],
     
-    showTime : false,
+    showTime : true,
     
     UTCDate: function()
     {
