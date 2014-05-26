@@ -374,7 +374,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         {
                             tag: 'button',
                             type: 'button',
-                            cls: 'btn btn-primary',
+                            cls: 'btn btn-primary period-btn',
                             html: 'AM'
                             
                         }
@@ -609,6 +609,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             var period = this.time.format('A');
             
             this.picker().select('.datepicker-time .timepicker-hour', true).first().dom.innerHTML = hours;
+            
+            this.picker().select('.datepicker-time .timepicker-minute', true).first().dom.innerHTML = minutes;
             
             this.picker().select('.datepicker-time .timepicker-minute', true).first().dom.innerHTML = minutes;
             
