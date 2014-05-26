@@ -1000,11 +1000,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 tag: 'table',
                 cls: 'table-condensed',
                 cn:[
-                    {
-                        tag: 'div',
-                        html: 'test timer'
-                    },
-//                Roo.bootstrap.DateField.content,
+                Roo.bootstrap.DateField.content,
                 Roo.bootstrap.DateField.footer
                 ]
             }
