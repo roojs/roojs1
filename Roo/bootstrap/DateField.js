@@ -426,15 +426,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     updateTimer : function()
     {   
-//         glyphicon-calendar glyphicon-time
-        if(this.viewMode == 3 && !this.timer.hasClass('glyphicon-calendar')){
-            this.timer.removeClass('glyphicon-time');
-            this.timer.addClass('glyphicon-calendar');
+        var icon = this.timer.select('>span', true).first();
+        
+        if(this.viewMode == 3 && !icon.hasClass('glyphicon-calendar')){
+            icon.removeClass('glyphicon-time');
+            icon.addClass('glyphicon-calendar');
             return;
         }
         
-        this.timer.removeClass('glyphicon-calendar');
-        this.timer.addClass('glyphicon-time');
+        icon.removeClass('glyphicon-calendar');
+        icon.addClass('glyphicon-time');
         
     },
     

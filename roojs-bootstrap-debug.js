@@ -11010,7 +11010,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.setDaysOfWeekDisabled(this.daysOfWeekDisabled);
         
         if(this.showTime){
-            this.timer = this.picker().select('.picker-switch .switch-icon', true).first();
+            this.timer = this.picker().select('.picker-switch', true).first();
         }
         
         this.fillDow();
@@ -11251,15 +11251,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     updateTimer : function()
     {   
-//         glyphicon-calendar glyphicon-time
-        if(this.viewMode == 3 && !this.timer.hasClass('glyphicon-calendar')){
-            this.timer.removeClass('glyphicon-time');
-            this.timer.addClass('glyphicon-calendar');
+        var icon = this.timer.select('>span', true).first();
+        
+        if(this.viewMode == 3 && !icon.hasClass('glyphicon-calendar')){
+            icon.removeClass('glyphicon-time');
+            icon.addClass('glyphicon-calendar');
             return;
         }
         
-        this.timer.removeClass('glyphicon-calendar');
-        this.timer.addClass('glyphicon-time');
+        icon.removeClass('glyphicon-calendar');
+        icon.addClass('glyphicon-time');
         
     },
     
@@ -11712,7 +11713,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 cn: [
                     {
                         tag: 'span',
-                        cls: 'switch-icon glyphicon'   
+                        cls: 'glyphicon'   
                     }
                 ]
             }
