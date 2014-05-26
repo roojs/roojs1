@@ -10844,7 +10844,6 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
  * @cfg {Boolean} todayBtn default false
  * @cfg {Boolean} calendarWeeks default false
  * @cfg {Object} daysOfWeekDisabled default empty
- * @cfg {Boolean} showTime pick the time (default true)
  * 
  * @cfg {Boolean} keyboardNavigation default true
  * @cfg {String} language default en
@@ -10871,12 +10870,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
      * Multiple date formats separated by "|" to try when parsing a user input value and it doesn't match the defined
      * format (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').
      */
-//    altFormats : "m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d",
-    altFormats : false,
+    altFormats : "m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d",
     
     weekStart : 0,
     
-    viewMode : 'day',
+    viewMode : '',
     
     minViewMode : '',
     
@@ -10896,14 +10894,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     daysOfWeekDisabled: [],
     
-    showTime : true,
+    _events: [],
     
     UTCDate: function()
-    {
-        return new Date(Date.UTC.apply(Date, arguments));
-    },
-    
-    UTCTime: function()
     {
         return new Date(Date.UTC.apply(Date, arguments));
     },
@@ -10912,12 +10905,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         var today = new Date();
         return this.UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
-    },
-    
-    UTCTodayTime: function()
-    {
-        var today = new Date();
-        return this.UTCTime(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), today.getUTCHours(), today.getUTCMinutes());
     },
     
     getDate: function() {
@@ -10958,13 +10945,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if (typeof(this.minViewMode === 'string')) {
             switch (this.minViewMode) {
                 case 'months':
-                    this.minViewMode = 2;
+                    this.minViewMode = 1;
                     break;
                 case 'years':
-                    this.minViewMode = 3;
-                    break;
-                case 'day':
-                    this.minViewMode = 1;
+                    this.minViewMode = 2;
                     break;
                 default:
                     this.minViewMode = 0;
@@ -10975,13 +10959,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if (typeof(this.viewMode === 'string')) {
             switch (this.viewMode) {
                 case 'months':
-                    this.viewMode = 2;
+                    this.viewMode = 1;
                     break;
                 case 'years':
                     this.viewMode = 2;
-                    break;
-                case 'day':
-                    this.viewMode = 1;
                     break;
                 default:
                     this.viewMode = 0;
@@ -11000,6 +10981,20 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.startViewMode = this.viewMode;
         
+        
+        Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
+            if(!this.calendarWeeks){
+                v.remove();
+                return;
+            };
+            
+            v.dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today
+            v.attr('colspan', function(i, val){
+                return parseInt(val) + 1;
+            });
+        })
+			
+        
         this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
         
         this.setStartDate(this.startDate);
@@ -11009,48 +11004,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.fillDow();
         this.fillMonths();
-        this.fillTime();
         this.update();
         this.showMode();
-        
-        if(this.showTime){
-            
-            var dayFoot = this.picker().select('>.datepicker-days tfoot th', true).first();
-            var timeFoot = this.picker().select('>.datepicker-time tfoot th', true).first();
-
-            var dayFootIcon = this.picker().select('>.datepicker-days tfoot span.picker-switch-icon', true).first();
-            var timeFootIcon = this.picker().select('>.datepicker-time tfoot span.picker-switch-icon', true).first();
-            
-            timeFoot.addClass('switch-calendar');
-            dayFoot.addClass('switch-time');
-            
-            timeFootIcon.addClass('switch-calendar');
-            timeFootIcon.addClass('glyphicon-calendar');
-            
-            dayFootIcon.addClass('switch-time');
-            dayFootIcon.addClass('glyphicon-time');
-            
-            var hours_up = this.picker().select('>.datepicker-time span.hours-up', true).first();
-            var hours_down = this.picker().select('>.datepicker-time span.hours-down', true).first();
-            var minutes_up = this.picker().select('>.datepicker-time span.minutes-up', true).first();
-            var minutes_down = this.picker().select('>.datepicker-time span.minutes-down', true).first();
-            
-            var period = this.picker().select('>.datepicker-time button.period-btn', true).first();
-            
-            hours_up.on('click', this.onIncrementHours, this);
-            hours_down.on('click', this.onDecrementHours, this);
-            minutes_up.on('click', this.onIncrementMinutes, this);
-            minutes_down.on('click', this.onDecrementMinutes, this);
-            
-            period.on('click', this.onTogglePeriod, this);
-            
-            this.updateTime();
-            
-        }else{
-            Roo.each(this.picker().select('tfoot th', true).elements, function(v){
-                v.remove();
-            });
-        }
         
         if(this.isInline) {
             this.show();
@@ -11108,153 +11063,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             months.createChild(month);
         }
-        
-    },
-    
-    fillTime: function()
-    {    
-        var time = this.picker().select('>.datepicker-time tbody', true).first();
-        
-        time.dom.innerHTML = '';
-        
-        time.createChild({
-            tag: 'tr',
-            cn: [
-                {
-                    tag: 'td',
-                    cn: [
-                        {
-                            tag: 'a',
-                            href: '#',
-                            cls: 'btn',
-                            cn: [
-                                {
-                                    tag: 'span',
-                                    cls: 'hours-up glyphicon glyphicon-chevron-up'
-                                }
-                            ]
-                        } 
-                    ]
-                },
-                {
-                    tag: 'td',
-                    cls: 'separator'
-                },
-                {
-                    tag: 'td',
-                    cn: [
-                        {
-                            tag: 'a',
-                            href: '#',
-                            cls: 'btn',
-                            cn: [
-                                {
-                                    tag: 'span',
-                                    cls: 'minutes-up glyphicon glyphicon-chevron-up'
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    tag: 'td',
-                    cls: 'separator'
-                }
-            ]
-        });
-        
-        time.createChild({
-            tag: 'tr',
-            cn: [
-                {
-                    tag: 'td',
-                    cn: [
-                        {
-                            tag: 'span',
-                            cls: 'timepicker-hour',
-                            html: '00'
-                        }  
-                    ]
-                },
-                {
-                    tag: 'td',
-                    cls: 'separator',
-                    html: ':'
-                },
-                {
-                    tag: 'td',
-                    cn: [
-                        {
-                            tag: 'span',
-                            cls: 'timepicker-minute',
-                            html: '00'
-                        }  
-                    ]
-                },
-                {
-                    tag: 'td',
-                    cls: 'separator'
-                },
-                {
-                    tag: 'td',
-                    cn: [
-                        {
-                            tag: 'button',
-                            type: 'button',
-                            cls: 'btn btn-primary period-btn',
-                            html: 'AM'
-                            
-                        }
-                    ]
-                }
-            ]
-        });
-        
-        time.createChild({
-            tag: 'tr',
-            cn: [
-                {
-                    tag: 'td',
-                    cn: [
-                        {
-                            tag: 'a',
-                            href: '#',
-                            cls: 'btn',
-                            cn: [
-                                {
-                                    tag: 'span',
-                                    cls: 'hours-down glyphicon glyphicon-chevron-down'
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    tag: 'td',
-                    cls: 'separator'
-                },
-                {
-                    tag: 'td',
-                    cn: [
-                        {
-                            tag: 'a',
-                            href: '#',
-                            cls: 'btn',
-                            cn: [
-                                {
-                                    tag: 'span',
-                                    cls: 'minutes-down glyphicon glyphicon-chevron-down'
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    tag: 'td',
-                    cls: 'separator'
-                }
-            ]
-        });
         
     },
     
@@ -11412,48 +11220,17 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             year += 1;
         }
-        
-    },
-    
-    updateTime: function()
-    {
-        this.time = (typeof(this.time) === 'undefined') ? this.UTCTodayTime() : this.time;
-        
-        var hours = this.time.getHours();
-        var minutes = this.time.getMinutes();
-
-        if(hours * 1 > 12){
-            hours -= 12;
-        }
-
-        if(hours < 10){
-            hours = '0' + hours;
-        }
-
-        if(minutes < 10){
-            minutes = '0' + minutes;
-        }
-
-        var period = this.time.format('A');
-
-        this.picker().select('>.datepicker-time span.timepicker-hour', true).first().dom.innerHTML = hours;
-
-        this.picker().select('>.datepicker-time span.timepicker-minute', true).first().dom.innerHTML = minutes;
-
-        this.picker().select('>.datepicker-time button.period-btn', true).first().dom.innerHTML = period;
     },
     
     showMode: function(dir) {
         if (dir) {
-            this.viewMode = Math.max(this.minViewMode, Math.min(3, this.viewMode + dir));
+            this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
         }
-        
         Roo.each(this.picker().select('>div',true).elements, function(v){
             v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
             v.hide();
         });
         this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
-        
     },
     
     place: function()
@@ -11630,8 +11407,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             target = Roo.get(target).dom.parentNode;
         }
         
-        var nodeName = target.nodeName.trim();
-        var className = target.className.trim();
+        var nodeName = target.nodeName;
+        var className = target.className;
         var html = target.innerHTML;
         
         switch(nodeName.toLowerCase()) {
@@ -11661,14 +11438,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         this.setValue(this.formatDate(this.date));
                         this.hide();
                         break;
-                     case 'switch-time':
-                        this.showMode(-1);
-                        this.fill();
-                        break;
-                     case 'switch-calendar':
-                         this.showMode(1);
-                         this.fill();
-                         break;
                 }
                 break;
             case 'span':
@@ -11676,17 +11445,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     this.viewDate.setUTCDate(1);
                     if (className.indexOf('month') !== -1) {
                         this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
-                    } else if(className.indexOf('picker-switch-icon') !== -1){
-                        if(className.indexOf('switch-time') !== -1){
-                            this.showMode(-1);
-                            this.fill();
-                        }else{
-                            this.showMode(1);
-                            this.fill();
-                        }
-                        
-                        break;
-                        
                     } else {
                         var year = parseInt(html, 10) || 0;
                         this.viewDate.setUTCFullYear(year);
@@ -11854,46 +11612,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         return date >= this.startDate && date <= this.endDate;
     },
 
+    
     remove: function() {
         this.picker().remove();
-    },
-    
-    onIncrementHours: function()
-    {
-        this.time = this.time.add(Date.HOUR, 1);
-        this.updateTime();
-    },
-    
-    onDecrementHours: function()
-    {
-        this.time = this.time.add(Date.HOUR, -1);
-        this.updateTime();
-    },
-    
-    onIncrementMinutes: function()
-    {
-        this.time = this.time.add(Date.MINUTE, 1);
-        this.updateTime();
-    },
-    
-    onDecrementMinutes: function()
-    {
-        this.time = this.time.add(Date.MINUTE, -1);
-        this.updateTime();
-    },
-    
-    onTogglePeriod: function()
-    {
-        var h = 12;
-        if(this.time.format('A') === 'PM'){
-            h = -12;
-        }
-     
-        this.time = this.time.add(Date.HOUR, h);
-        
-        this.updateTime();
     }
-    
    
 });
 
@@ -11950,13 +11672,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
             {
                 tag: 'th',
                 colspan: '7',
-                cls: '',
-                cn: [
-                    {
-                        tag: 'span',
-                        cls: 'picker-switch-icon glyphicon'   
-                    }
-                ]
+                cls: 'today'
             }
                     
             ]
@@ -11977,11 +11693,6 @@ Roo.apply(Roo.bootstrap.DateField,  {
     
     modes: [
     {
-        clsName: 'time',
-        navFnc: 'Time',
-        navStep: 0
-    },
-    {
         clsName: 'days',
         navFnc: 'Month',
         navStep: 1
@@ -11995,8 +11706,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
         clsName: 'years',
         navFnc: 'FullYear',
         navStep: 10
-    }
-    ]
+    }]
 });
 
 Roo.apply(Roo.bootstrap.DateField,  {
@@ -12031,8 +11741,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 cls: 'table-condensed',
                 cn:[
                 Roo.bootstrap.DateField.head,
-                Roo.bootstrap.DateField.content
-//                Roo.bootstrap.DateField.footer
+                Roo.bootstrap.DateField.content,
+                Roo.bootstrap.DateField.footer
                 ]
             }
             ]
@@ -12046,20 +11756,6 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 cls: 'table-condensed',
                 cn:[
                 Roo.bootstrap.DateField.head,
-                Roo.bootstrap.DateField.content
-//                Roo.bootstrap.DateField.footer
-                ]
-            }
-            ]
-        },
-        {
-            tag: 'div',
-            cls: 'datepicker-time',
-            cn: [
-            {
-                tag: 'table',
-                cls: 'table-condensed',
-                cn:[
                 Roo.bootstrap.DateField.content,
                 Roo.bootstrap.DateField.footer
                 ]
