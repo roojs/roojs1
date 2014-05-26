@@ -602,6 +602,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 hours = '0' + hours;
             }
             
+            if(minutes < 10){
+                minutes = '0' + minutes;
+            }
+            
+            var period = this.time.format('A');
+            
+            this.picker().select('.datepicker-time .timepicker-hour', true).first().dom.innerHTML = hours;
+            
+            this.picker().select('.datepicker-time .timepicker-minute', true).first().dom.innerHTML = minutes;
+            
         }
         
     },
