@@ -198,6 +198,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             var minutes_up = this.picker().select('>.datepicker-time span.minutes-up', true).first();
             var minutes_down = this.picker().select('>.datepicker-time span.minutes-down', true).first();
             
+            var period = this.picker().select('>.datepicker-time button', true).first();
+            
             hours_up.on('click', this.onIncrementHours, hours_up);
             hours_down.on('click', this.onDecrementHours, hours_down);
             minutes_up.on('click', this.onIncrementMinutes, minutes_up);
