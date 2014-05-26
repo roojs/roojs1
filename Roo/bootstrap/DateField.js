@@ -594,7 +594,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             var hours = this.time.getHours();
             var minutes = this.time.getMinutes();
             
+            var period = 'AM';
             
+            if(hours > 12){
+                hours
+            }
             
         }
         
