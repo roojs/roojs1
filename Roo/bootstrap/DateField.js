@@ -298,20 +298,23 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     cn: [
                         {
                             tag: 'span',
-                            cls: 'hours-up glyphicon glyphicon-chevron-up'
+                            cls: 'timepicker-hour',
+                            html: ''
                         }  
                     ]
                 },
                 {
                     tag: 'td',
-                    cls: 'separator'
+                    cls: 'separator',
+                    html: ':'
                 },
                 {
                     tag: 'td',
                     cn: [
                         {
                             tag: 'span',
-                            cls: 'minutes-up glyphicon glyphicon-chevron-up'
+                            cls: 'timepicker-minute',
+                            html: ''
                         }  
                     ]
                 },
