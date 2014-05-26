@@ -11429,6 +11429,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     
     onClick: function(e) {
+        Roo.log(this.viewMode);
         e.stopPropagation();
         e.preventDefault();
         
