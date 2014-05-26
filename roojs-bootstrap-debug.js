@@ -10946,16 +10946,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if (typeof(this.minViewMode === 'string')) {
             switch (this.minViewMode) {
                 case 'months':
-                    this.minViewMode = 1;
-                    break;
-                case 'years':
                     this.minViewMode = 2;
                     break;
-                case 'time':
+                case 'years':
                     this.minViewMode = 3;
                     break;
-                default:
+                case 'time':
                     this.minViewMode = 0;
+                    break;
+                default:
+                    this.minViewMode = 1;
                     break;
             }
         }
@@ -10963,16 +10963,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if (typeof(this.viewMode === 'string')) {
             switch (this.viewMode) {
                 case 'months':
-                    this.viewMode = 1;
+                    this.viewMode = 2;
                     break;
                 case 'years':
                     this.viewMode = 2;
                     break;
                 case 'time':
-                    this.viewMode = 3;
+                    this.viewMode = 0;
                     break;
                 default:
-                    this.viewMode = 0;
+                    this.viewMode = 1;
                     break;
             }
         }
@@ -11741,6 +11741,11 @@ Roo.apply(Roo.bootstrap.DateField,  {
     
     modes: [
     {
+        clsName: 'time',
+        navFnc: 'Time',
+        navStep: 0
+    },
+    {
         clsName: 'days',
         navFnc: 'Month',
         navStep: 1
@@ -11754,12 +11759,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
         clsName: 'years',
         navFnc: 'FullYear',
         navStep: 10
-    },
-    {
-        clsName: 'time',
-        navFnc: 'Time',
-        navStep: 0
-    }]
+    }
+    ]
 });
 
 Roo.apply(Roo.bootstrap.DateField,  {

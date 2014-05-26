@@ -916,6 +916,11 @@ Roo.apply(Roo.bootstrap.DateField,  {
     
     modes: [
     {
+        clsName: 'time',
+        navFnc: 'Time',
+        navStep: 0
+    },
+    {
         clsName: 'days',
         navFnc: 'Month',
         navStep: 1
@@ -929,12 +934,8 @@ Roo.apply(Roo.bootstrap.DateField,  {
         clsName: 'years',
         navFnc: 'FullYear',
         navStep: 10
-    },
-    {
-        clsName: 'time',
-        navFnc: 'Time',
-        navStep: 0
-    }]
+    }
+    ]
 });
 
 Roo.apply(Roo.bootstrap.DateField,  {
