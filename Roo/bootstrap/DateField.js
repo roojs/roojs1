@@ -608,13 +608,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             var period = this.time.format('A');
             
-            Roo.log(this.picker().select('.datepicker-time', true).first());
-            this.picker().select('.timepicker-hour', true).first().dom.innerHTML = hours;
-            
+//            this.picker().select('>.datepicker-time span.timepicker-hour', true).first().dom.innerHTML = hours;
+//            
 //            this.picker().select('>.datepicker-time span.timepicker-minute', true).first().dom.innerHTML = minutes;
 //            
 //            this.picker().select('>.datepicker-time button.period-btn', true).first().dom.innerHTML = period;
-            
+//            
         }
         
     },
