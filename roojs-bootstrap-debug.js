@@ -10865,13 +10865,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
      * The default date format string which can be overriden for localization support.  The format must be
      * valid according to {@link Date#parseDate} (defaults to 'm/d/y').
      */
-    format : "m/d/y",
+    format : "m/d/y H:i",
     /**
      * @cfg {String} altFormats
      * Multiple date formats separated by "|" to try when parsing a user input value and it doesn't match the defined
      * format (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').
      */
-    altFormats : "m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d",
+//    altFormats : "m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d",
+    altFormats : false,
     
     weekStart : 0,
     
@@ -10905,7 +10906,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     UTCToday: function()
     {
         var today = new Date();
-        return this.UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+        return this.UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), today.getUTCHours(), today.getUTCMinutes);
     },
     
     getDate: function() {
@@ -11099,8 +11100,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     fillTime: function()
     {    
-        Roo.log('this.date!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.date);
         var time = this.picker().select('>.datepicker-time tbody', true).first();
         
         time.dom.innerHTML = '';
