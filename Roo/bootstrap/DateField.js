@@ -183,6 +183,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.setDaysOfWeekDisabled(this.daysOfWeekDisabled);
         
+        if(this.showTime){
+            this.timer = this.picker().select('.picker-switch.switch-icon', true).first();
+        }
+        
         this.fillDow();
         this.fillMonths();
         this.update();
@@ -414,14 +418,23 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
         
         if(this.showTime){
-            this.updateFooter();
+            this.updateTimer();
         }
         
     },
     
-    updateFooter : function()
-    {
-        this.picker().select('.picker-switch.switch-icon', true).first().
+    updateTimer : function()
+    {   
+//         glyphicon-calendar glyphicon-time
+        if(this.viewMode == 3 && !this.timer.hasClass('glyphicon-calendar')){
+            this.timer.removeClass('glyphicon-time');
+            this.timer.addClass('glyphicon-calendar');
+            return;
+        }
+        
+        this.timer.removeClass('glyphicon-calendar');
+        this.timer.addClass('glyphicon-time');
+        
     },
     
     place: function()
