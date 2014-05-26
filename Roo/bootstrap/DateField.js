@@ -548,7 +548,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             v.removeClass('active');
             
             if(currentYear === year && k === currentMonth){
-                v.addClass('active');
+                v.addClass('active1');
             }
             
             if (year < startYear || year > endYear || (year == startYear && k < startMonth) || (year == endYear && k > endMonth)) {
