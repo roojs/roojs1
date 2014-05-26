@@ -475,6 +475,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.picker().select('>.datepicker-days tbody',true).first().dom.innerHTML = '';
         
+        Roo.log('prevMonth!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(prevMonth);
+        
+        Roo.log(currentDate);
         while(prevMonth.valueOf() < nextMonth) {
             var clsName = '';
             
