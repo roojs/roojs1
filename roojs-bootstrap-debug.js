@@ -11011,6 +11011,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         if(this.showTime){
             this.timer = this.picker().select('.picker-switch.switch-icon', true).first();
+            Roo.log(this.timer);
         }
         
         this.fillDow();
