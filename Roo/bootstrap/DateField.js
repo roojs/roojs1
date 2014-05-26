@@ -1035,25 +1035,25 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     onIncrementHours: function()
     {
-        this.time.add(Date.HOUR, 1);
+        this.time = this.time.add(Date.HOUR, 1);
         this.updateTime();
     },
     
     onDecrementHours: function()
     {
-        this.time.add(Date.HOUR, -1);
+        this.time = this.time.add(Date.HOUR, -1);
         this.updateTime();
     },
     
     onIncrementMinutes: function()
     {
-        this.time.add(Date.MINUTE, 1);
+        this.time = this.time.add(Date.MINUTE, 1);
         this.updateTime();
     },
     
     onDecrementMinutes: function()
     {
-        this.time.add(Date.MINUTE, -1);
+        this.time = this.time.add(Date.MINUTE, -1);
         this.updateTime();
     },
     
