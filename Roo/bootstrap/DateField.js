@@ -205,6 +205,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             minutes_up.on('click', this.onIncrementMinutes, minutes_up);
             minutes_down.on('click', this.onDecrementMinutes, minutes_down);
             
+            period.on('click', this.togglePeriod, period);
+            
         }else{
             Roo.each(this.picker().select('tfoot th', true).elements, function(v){
                 v.remove();
