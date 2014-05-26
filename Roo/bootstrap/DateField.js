@@ -314,7 +314,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         {
                             tag: 'span',
                             cls: 'timepicker-hour',
-                            html: ''
+                            html: '00'
                         }  
                     ]
                 },
@@ -329,7 +329,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         {
                             tag: 'span',
                             cls: 'timepicker-minute',
-                            html: ''
+                            html: '00'
                         }  
                     ]
                 },
@@ -343,7 +343,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         {
                             tag: 'button',
                             type: 'button',
-                            cls: 'btn btn-primary'
+                            cls: 'btn btn-primary',
+                            html: 'AM'
+                            
                         }
                     ]
                 }
