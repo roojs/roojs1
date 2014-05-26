@@ -177,7 +177,15 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 //        })
 
         if(this.showTime){
-            this.updateTimer();
+            var dayFoot = this.picker().select('>.datepicker-days span.picker-switch', true).first();
+            var timeFoot = this.picker().select('>.datepicker-time span.picker-switch', true).first();
+
+            
+            timeFoot.addClass('switch-calendar');
+            timeFoot.addClass('glyphicon-calendar');
+            
+            dayFoot.addClass('switch-time');
+            dayFoot.addClass('glyphicon-time');
         }
 			
         
