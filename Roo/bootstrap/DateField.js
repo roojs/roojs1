@@ -163,19 +163,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.startViewMode = this.viewMode;
         
-        
-//        Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
-//            if(!this.calendarWeeks){
-//                v.remove();
-//                return;
-//            };
-//            
-//            v.dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today
-//            v.attr('colspan', function(i, val){
-//                return parseInt(val) + 1;
-//            });
-//        })
-
         if(this.showTime){
             var dayFoot = this.picker().select('>.datepicker-days span.picker-switch', true).first();
             var timeFoot = this.picker().select('>.datepicker-time span.picker-switch', true).first();
@@ -186,6 +173,18 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             
             dayFoot.addClass('switch-time');
             dayFoot.addClass('glyphicon-time');
+        }else{
+            Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
+            if(!this.calendarWeeks){
+                v.remove();
+                return;
+            };
+            
+            v.dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today
+            v.attr('colspan', function(i, val){
+                return parseInt(val) + 1;
+            });
+        })
         }
 			
         
