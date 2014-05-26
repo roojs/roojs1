@@ -413,6 +413,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
     },
     
+    updateFooter : function()
+    {
+        
+    },
+    
     place: function()
     {
         if(this.isInline) return;
