@@ -10950,6 +10950,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 case 'years':
                     this.minViewMode = 2;
                     break;
+                case 'time':
+                    this.minViewMode = 3;
+                    break;
                 default:
                     this.minViewMode = 0;
                     break;
@@ -10963,6 +10966,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     break;
                 case 'years':
                     this.viewMode = 2;
+                    break;
+                case 'time':
+                    this.viewMode = 3;
                     break;
                 default:
                     this.viewMode = 0;
@@ -11001,6 +11007,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.setEndDate(this.endDate);
         
         this.setDaysOfWeekDisabled(this.daysOfWeekDisabled);
+        
+        if(this.showTime){
+            this.timer = this.picker().select('.picker-switch.switch-icon', true).first();
+        }
         
         this.fillDow();
         this.fillMonths();
@@ -11231,6 +11241,25 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             v.hide();
         });
         this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
+        
+        if(this.showTime){
+            this.updateTimer();
+        }
+        
+    },
+    
+    updateTimer : function()
+    {   
+//         glyphicon-calendar glyphicon-time
+        if(this.viewMode == 3 && !this.timer.hasClass('glyphicon-calendar')){
+            this.timer.removeClass('glyphicon-time');
+            this.timer.addClass('glyphicon-calendar');
+            return;
+        }
+        
+        this.timer.removeClass('glyphicon-calendar');
+        this.timer.addClass('glyphicon-time');
+        
     },
     
     place: function()
@@ -11672,7 +11701,13 @@ Roo.apply(Roo.bootstrap.DateField,  {
             {
                 tag: 'th',
                 colspan: '7',
-                cls: 'footer'
+                cls: 'picker-switch',
+                cn: [
+                    {
+                        tag: 'span',
+                        cls: 'switch-icon glyphicon'   
+                    }
+                ]
             }
                     
             ]
