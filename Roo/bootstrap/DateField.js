@@ -1064,8 +1064,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if(this.time.format('A') === 'PM'){
             h = -12;
         }
-        
-        this.time.add("mo", 1);
+        Roo.log(h);
+        this.time.add(Date.HOUR, h);
         Roo.log(this.time);
         this.updateTime();
     }
