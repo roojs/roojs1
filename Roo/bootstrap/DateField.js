@@ -252,6 +252,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
     },
     
+    fillTime: function()
+    {    
+        var time = this.picker().select('>tbody', true).first();
+        
+        
+    },
+    
     update: function(){
         
         this.date = (typeof(this.date) === 'undefined') ? this.UTCToday() : (typeof(this.date) === 'string') ? this.parseDate(this.date) : this.date;
