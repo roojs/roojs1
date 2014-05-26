@@ -11761,6 +11761,20 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 ]
             }
             ]
+        },
+        {
+            tag: 'div',
+            cls: 'datepicker-time',
+            cn: [
+            {
+                tag: 'table',
+                cls: 'table-condensed',
+                cn:[
+                Roo.bootstrap.DateField.content,
+                Roo.bootstrap.DateField.footer
+                ]
+            }
+            ]
         }
         ]
     }
