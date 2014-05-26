@@ -430,14 +430,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var icon = this.timer.select('>span', true).first();
         
         if(this.viewMode == 0){
-            icon.removeClass('switch-calendar');
+            icon.removeClass('switch-time');
             icon.removeClass('glyphicon-time');
+            icon.addClass('switch-calendar');
             icon.addClass('glyphicon-calendar');
-            icon.addClass('glyphicon-time');
             return;
         }
         
+        icon.removeClass('switch-calendar');
         icon.removeClass('glyphicon-calendar');
+        icon.addClass('switch-time');
         icon.addClass('glyphicon-time');
         
     },
