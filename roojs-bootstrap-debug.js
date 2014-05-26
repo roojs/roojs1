@@ -10875,7 +10875,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     weekStart : 0,
     
-    viewMode : '',
+    viewMode : 'day',
     
     minViewMode : '',
     
@@ -10951,11 +10951,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 case 'years':
                     this.minViewMode = 3;
                     break;
-                case 'time':
-                    this.minViewMode = 0;
+                case 'day':
+                    this.minViewMode = 1;
                     break;
                 default:
-                    this.minViewMode = 1;
+                    this.minViewMode = 0;
                     break;
             }
         }
@@ -10968,11 +10968,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 case 'years':
                     this.viewMode = 2;
                     break;
-                case 'time':
-                    this.viewMode = 0;
+                case 'day':
+                    this.viewMode = 1;
                     break;
                 default:
-                    this.viewMode = 1;
+                    this.viewMode = 0;
                     break;
             }
         }
@@ -11257,9 +11257,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {   
         var icon = this.timer.select('>span', true).first();
         
-        if(this.viewMode == 3 && !icon.hasClass('glyphicon-calendar')){
+        if(this.viewMode == 0){
+            icon.removeClass('switch-calendar');
             icon.removeClass('glyphicon-time');
             icon.addClass('glyphicon-calendar');
+            icon.addClass('glyphicon-time');
             return;
         }
         
