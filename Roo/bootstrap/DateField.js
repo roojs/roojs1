@@ -589,7 +589,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         icon.removeClass('switch-calendar');
         icon.removeClass('glyphicon-calendar');
         icon.addClass('switch-time');
-        icon.addClass('glyphicon-time');
+        icon.addClass('glyphicon-calendar');
         
     },
     
