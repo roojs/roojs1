@@ -983,10 +983,30 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         return date >= this.startDate && date <= this.endDate;
     },
 
-    
     remove: function() {
         this.picker().remove();
+    },
+    
+    onIncrementHours: function()
+    {
+        
+    },
+    
+    onDecrementHours: function()
+    {
+        
+    },
+    
+    onIncrementMinutes: function()
+    {
+        
+    },
+    
+    onDecrementMinutes: function()
+    {
+        
     }
+    
    
 });
 
