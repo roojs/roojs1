@@ -409,13 +409,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     },
     
     showMode: function(dir) {
-        Roo.log('dir');
-        Roo.log(dir);
         if (dir) {
             this.viewMode = Math.max(this.minViewMode, Math.min(3, this.viewMode + dir));
         }
-        Roo.log('this.viewMode');
-        Roo.log(this.viewMode);
+        
         Roo.each(this.picker().select('>div',true).elements, function(v){
             v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
             v.hide();
