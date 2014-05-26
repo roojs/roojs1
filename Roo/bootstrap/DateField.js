@@ -81,7 +81,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     UTCToday: function()
     {
         var today = new Date();
-        return this.UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), today.getUTCHours(), today.getUTCMinutes());
+        return this.UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
     },
     
     getDate: function() {
