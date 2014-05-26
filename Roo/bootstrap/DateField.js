@@ -591,7 +591,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
         
         if(this.showTime){
-            Roo.log(this.time.getUTCHours());
+            var hours = this.time.getHours();
+            var minutes = this.time.getMinutes();
+            
+            
+            
         }
         
     },
