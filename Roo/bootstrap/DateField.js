@@ -747,7 +747,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var className = target.className;
         var html = target.innerHTML;
         
-        Roo.log(target.getParent());
+        Roo.log(target);
         
         Roo.log(nodeName);
         Roo.log(className);
