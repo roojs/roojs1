@@ -125,6 +125,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 case 'years':
                     this.minViewMode = 2;
                     break;
+                case 'time':
+                    this.minViewMode = 3;
+                    break;
                 default:
                     this.minViewMode = 0;
                     break;
@@ -138,6 +141,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     break;
                 case 'years':
                     this.viewMode = 2;
+                    break;
+                case 'time':
+                    this.viewMode = 3;
                     break;
                 default:
                     this.viewMode = 0;
@@ -415,7 +421,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     updateFooter : function()
     {
-        this.picker().select('.picker-switch span.', true).first()
+        this.picker().select('.picker-switch.switch-icon', true).first().
     },
     
     place: function()
