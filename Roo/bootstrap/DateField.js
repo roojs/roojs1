@@ -692,11 +692,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
     },
     
-    onTimerClick : function(a,b,c)
-    {
-        Roo.log('on Timer click!!!!!!!!!!!!!!!!!!!!!!!!');
-    },
-    
     setStartDate: function(startDate){
         this.startDate = startDate || -Infinity;
         if (this.startDate !== -Infinity) {
