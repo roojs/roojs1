@@ -225,6 +225,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             });
         }
         
+        this.updateTime();
+        
         if(this.isInline) {
             this.show();
         }
