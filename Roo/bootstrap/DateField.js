@@ -917,6 +917,11 @@ Roo.apply(Roo.bootstrap.DateField,  {
         clsName: 'years',
         navFnc: 'FullYear',
         navStep: 10
+    },
+    {
+        clsName: 'time',
+        navFnc: 'Time',
+        navStep: 0
     }]
 });
 
