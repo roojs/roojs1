@@ -571,7 +571,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     updateTimer : function()
     {   
-        var icon = this.timer.select('>span', true).first();
+        var dayFoot = this.picker().select('>.datepicker-days span.picker-switch', true).first();
+        var timeFoot = this.picker().select('>.datepicker-time span.picker-switch', true).first();
         
 //        if(this.viewMode == 0){
 //            
