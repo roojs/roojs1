@@ -40,7 +40,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
      * The default date format string which can be overriden for localization support.  The format must be
      * valid according to {@link Date#parseDate} (defaults to 'm/d/y').
      */
-    format : "m/d/y H:i",
+    format : "m/d/y",
     /**
      * @cfg {String} altFormats
      * Multiple date formats separated by "|" to try when parsing a user input value and it doesn't match the defined
@@ -443,7 +443,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 startMonth = this.startDate !== -Infinity ? this.startDate.getUTCMonth() : -Infinity,
                 endYear = this.endDate !== Infinity ? this.endDate.getUTCFullYear() : Infinity,
                 endMonth = this.endDate !== Infinity ? this.endDate.getUTCMonth() : Infinity,
-                currentDate = this.date && this.date.clearTime().valueOf(),
+                currentDate = this.date && this.date.valueOf(),
                 today = this.UTCToday();
         
         this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].months[month]+' '+year;
@@ -521,7 +521,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 clsName += ' today';
             }
             
-            if (currentDate && prevMonth.clearTime().valueOf() === currentDate) {
+            if (currentDate && prevMonth.valueOf() === currentDate) {
                 clsName += ' active';
             }
             
