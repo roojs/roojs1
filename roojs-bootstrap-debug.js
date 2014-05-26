@@ -11077,6 +11077,113 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
     },
     
+    fillTime: function()
+    {    
+        var time = this.picker().select('>.datepicker-time tbody', true).first();
+        
+        time.dom.innerHTML = '';
+        
+        time.createChild({
+            tag: 'tr',
+            cn: [
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'hours-up glyphicon glyphicon-chevron-up'
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'minutes-up glyphicon glyphicon-chevron-up'
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                }
+            ]
+        });
+        
+        time.createChild({
+            tag: 'tr',
+            cn: [
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'timepicker-hour',
+                            html: ''
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator',
+                    html: ':'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'timepicker-minute',
+                            html: ''
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                }
+            ]
+        });
+        
+        time.createChild({
+            tag: 'tr',
+            cn: [
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'hours-down glyphicon glyphicon-chevron-down'
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'minutes-down glyphicon glyphicon-chevron-down'
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                }
+            ]
+        });
+        
+    },
+    
     update: function(){
         
         this.date = (typeof(this.date) === 'undefined') ? this.UTCToday() : (typeof(this.date) === 'string') ? this.parseDate(this.date) : this.date;
