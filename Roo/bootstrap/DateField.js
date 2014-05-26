@@ -274,8 +274,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     fillTime: function()
     {    
-        Roo.log('this.date!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.date);
         var time = this.picker().select('>.datepicker-time tbody', true).first();
         
         time.dom.innerHTML = '';
