@@ -443,7 +443,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             this.viewDate = new Date(this.date);
         }
         
-        this.time = (typeof(this.time) === 'undefined') ? this.UTCTime() : (typeof(this.time) === 'string') ? this.parseDate(this.time) : this.time;
+        this.time = (typeof(this.time) === 'undefined') ? this.UTCTodayTime() : (typeof(this.time) === 'string') ? this.parseDate(this.time) : this.time;
         
         this.fill();
     },
