@@ -576,6 +576,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     updateTimer : function()
     {   
         var icon = this.timer.select('>span', true).first();
+        Roo.log('run');
         Roo.log(icon);
         if(this.viewMode == 0){
             
