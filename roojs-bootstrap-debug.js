@@ -11405,6 +11405,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.log(this.viewMode);
         if(this.viewMode == 0){
             Roo.log('get here');
+            Roo.log(icon);
             icon.removeClass('switch-time');
             icon.removeClass('glyphicon-time');
             icon.addClass('switch-calendar');
