@@ -887,7 +887,7 @@ Roo.apply(Roo.bootstrap.DateField,  {
                 cn: [
                     {
                         tag: 'span',
-                        cls: 'switch-icon glyphicon'   
+                        cls: 'glyphicon'   
                     }
                 ]
             }
