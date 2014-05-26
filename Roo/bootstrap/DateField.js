@@ -256,6 +256,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {    
         var time = this.picker().select('>tbody', true).first();
         
+        time.dom.innerHTML = '';
         
     },
     
