@@ -563,10 +563,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         });
         this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
         
-        if(this.showTime){
-            this.updateTimer();
-        }
-        
     },
     
     updateTimer : function()
@@ -574,14 +570,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var dayFoot = this.picker().select('>.datepicker-days span.picker-switch', true).first();
         var timeFoot = this.picker().select('>.datepicker-time span.picker-switch', true).first();
         
-//        if(this.viewMode == 0){
-//            
-//            icon.removeClass('switch-time');
-//            icon.removeClass('glyphicon-time');
-//            icon.addClass('switch-calendar');
-//            icon.addClass('glyphicon-calendar');
-//            return;
-//        }
+        if(this.viewMode == 0){
+            
+            icon.removeClass('switch-time');
+            icon.removeClass('glyphicon-time');
+            icon.addClass('switch-calendar');
+            icon.addClass('glyphicon-calendar');
+            return;
+        }
 //        
         icon.removeClass('switch-time');
         icon.removeClass('glyphicon-time');
