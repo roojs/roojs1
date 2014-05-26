@@ -591,7 +591,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
         
         if(this.showTime){
-            
+            Roo.log(this.time.getUTCHours());
         }
         
     },
