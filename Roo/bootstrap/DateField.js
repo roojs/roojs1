@@ -590,6 +590,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             year += 1;
         }
         
+        if(this.showTime){
+            
+        }
+        
     },
     
     showMode: function(dir) {
