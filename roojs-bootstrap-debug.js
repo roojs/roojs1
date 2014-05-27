@@ -5407,12 +5407,12 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     {
                         tag: 'label',
                         'for' :  id,
-                        cls : 'col-sm-2 control-label',
+                        cls : 'control-label col-sm-' + this.labelWidth,
                         html : this.fieldLabel
                         
                     },
                     {
-                        cls : "col-sm-10", 
+                        cls : "col-sm-" + (12 - this.labelWidth), 
                         cn: [
                             combobox
                         ]
