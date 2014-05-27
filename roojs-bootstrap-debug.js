@@ -8817,6 +8817,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     addItem : function(o)
     {   
+        Roo.loog('add Item!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         var dv = ''; // display value
         
         if (this.displayField) {
