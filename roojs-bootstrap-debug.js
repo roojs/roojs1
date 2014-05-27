@@ -5258,7 +5258,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     
     getAutoCreate : function()
     {
-       Roo.log('labelWidth!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+       Roo.log('run here 1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
         var parent = this.parent();
         
         var align = this.parentLabelAlign();
@@ -8817,7 +8817,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     addItem : function(o)
     {   
-        Roo.loog('add Item!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         var dv = ''; // display value
         
         if (this.displayField) {

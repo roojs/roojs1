@@ -62,7 +62,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     
     getAutoCreate : function()
     {
-       Roo.log('labelWidth!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+       Roo.log('run here 1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
         var parent = this.parent();
         
         var align = this.parentLabelAlign();
