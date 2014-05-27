@@ -5399,7 +5399,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         if (align ==='left' && this.fieldLabel.length) {
                 
-            
+                Roo.log('labelWidth');
+                Roo.log(this.labelWidth);
             
                 Roo.log("left and has label");
                 cfg.cn = [
