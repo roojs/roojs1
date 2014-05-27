@@ -60,9 +60,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     
     
     
-    getAutoCreate : function()
-    {
-       Roo.log('run here 1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+    getAutoCreate : function(){
+       
         var parent = this.parent();
         
         var align = this.parentLabelAlign();
@@ -203,9 +202,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         }
         
         if (align ==='left' && this.fieldLabel.length) {
-                
-                Roo.log('labelWidth!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-                Roo.log(this.labelWidth);
             
                 Roo.log("left and has label");
                 cfg.cn = [
