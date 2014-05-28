@@ -16,6 +16,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @cfg {Boolean} can_build_overlaid  True if element can be rebuild from a HTML page
  * @cfg {string} dataId cutomer id
  * @cfg {string} name Specifies name attribute
+ * @cfg {Number} visibilityMode (Roo.Element.DISPLAY|Roo.Element.VISIBILITY)
  * 
  * @constructor
  * Do not use directly - it does not do anything..
@@ -50,6 +51,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     dataId : false,
     
     name : false,
+    
+    visibilityMode : 1,
     
     parent: function() {
         // returns the parent component..
