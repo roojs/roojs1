@@ -16,6 +16,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @cfg {Boolean} can_build_overlaid  True if element can be rebuild from a HTML page
  * @cfg {string} dataId cutomer id
  * @cfg {string} name Specifies name attribute
+ * @cfg {Number} visibilityMode 
  * 
  * @constructor
  * Do not use directly - it does not do anything..
