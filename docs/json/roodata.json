@@ -5084,12 +5084,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -5264,12 +5258,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -5411,12 +5399,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -5792,12 +5774,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -6005,12 +5981,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -6578,12 +6548,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -6806,12 +6770,6 @@
      "memberOf": ""
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": ""
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -6983,12 +6941,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -7394,12 +7346,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -7586,12 +7532,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -7766,12 +7706,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -7940,12 +7874,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -8105,12 +8033,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -8345,12 +8267,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -8684,12 +8600,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -8876,12 +8786,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -9056,12 +8960,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -9201,12 +9099,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -9351,12 +9243,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -9513,12 +9399,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -9714,12 +9594,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -9894,12 +9768,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -10047,12 +9915,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -10209,12 +10071,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -10386,12 +10242,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -10533,12 +10383,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -10713,12 +10557,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -11064,12 +10902,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -11250,12 +11082,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -11385,12 +11211,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -11541,12 +11361,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -11772,12 +11586,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -11931,12 +11739,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -12162,12 +11964,6 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -12321,12 +12117,6 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -12687,12 +12477,6 @@
      "name": "dataId",
      "type": "string",
      "desc": "cutomer id",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -13071,12 +12855,6 @@
      "name": "dataId",
      "type": "string",
      "desc": "cutomer id",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "visibilityMode",
-     "type": "Number",
-     "desc": "(Roo.Element.DISPLAY|Roo.Element.VISIBILITY)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
