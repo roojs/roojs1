@@ -52,7 +52,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     name : false,
     
-    visibilityMode : false,
+    visibilityMode : 1,
     
     parent: function() {
         // returns the parent component..
