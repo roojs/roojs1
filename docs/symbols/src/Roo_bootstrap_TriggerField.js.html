@@ -202,8 +202,6 @@ trigger.applyTo('my-field');
         }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
-                
-            
             
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;left and has label&quot;</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
@@ -211,12 +209,12 @@ trigger.applyTo('my-field');
                     {
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-string">'for' </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'col-sm-2 control-label'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label col-sm-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fieldLabel
                         
                     </span><span class="jsdoc-syntax">},
                     {
-                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;col-sm-10&quot;</span><span class="jsdoc-syntax">, 
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;col-sm-&quot; </span><span class="jsdoc-syntax">+ (12 - </span><span class="jsdoc-var">this.labelWidth</span><span class="jsdoc-syntax">), 
                         </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
                             </span><span class="jsdoc-var">combobox
                         </span><span class="jsdoc-syntax">]
