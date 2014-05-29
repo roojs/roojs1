@@ -687,11 +687,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                         {
                             cls: 'fc-event-inner',
                             cn : [
-                                {
-                                  tag:'span',
-                                  cls: 'fc-event-time',
-                                  html : cells.length > 1 ? '' : ev.time
-                                },
+//                                {
+//                                  tag:'span',
+//                                  cls: 'fc-event-time',
+//                                  html : cells.length > 1 ? '' : ev.time
+//                                },
                                 {
                                   tag:'span',
                                   cls: 'fc-event-title',
