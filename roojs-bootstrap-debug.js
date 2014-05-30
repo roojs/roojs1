@@ -12554,26 +12554,37 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     onIncrementHours: function()
     {
         Roo.log('onIncrementHours');
+        this.time = this.time.add(Date.HOUR, 1);
+        this.update();
+        
     },
     
     onDecrementHours: function()
     {
         Roo.log('onDecrementHours');
+        this.time = this.time.add(Date.HOUR, -1);
+        this.update();
     },
     
     onIncrementMinutes: function()
     {
         Roo.log('onIncrementMinutes');
+        this.time = this.time.add(Date.MINUTE, 1);
+        this.update();
     },
     
     onDecrementMinutes: function()
     {
         Roo.log('onDecrementMinutes');
+        this.time = this.time.add(Date.MINUTE, -1);
+        this.update();
     },
     
     onTogglePeriod: function()
     {
         Roo.log('onTogglePeriod');
+        this.time = this.time.add(Date.HOUR, 12);
+        this.update();
     }
     
    
