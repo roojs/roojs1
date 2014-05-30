@@ -11892,7 +11892,9 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.TimeField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.picker().select('>.datepicker-time',true).first().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.pop = this.picker().select('>.datepicker-time',true).first();
+        this.pop.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block' 
         
         this.picker().on('mousedown', this.onMousedown, this);
         this.picker().on('click', this.onClick, this);
@@ -11931,20 +11933,12 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
 //            dayFootIcon.addClass('switch-time');
 //            dayFootIcon.addClass('glyphicon-time');
             
-        var hours_up = this.picker().select('>.datepicker-time span.hours-up', true).first();
-        var hours_down = this.picker().select('>.datepicker-time span.hours-down', true).first();
-        var minutes_up = this.picker().select('>.datepicker-time span.minutes-up', true).first();
-        var minutes_down = this.picker().select('>.datepicker-time span.minutes-down', true).first();
+        this.pop.select('>span.hours-up', true).first().on('click', this.onIncrementHours, this);
+        this.pop.select('>span.hours-down', true).first().on('click', this.onDecrementHours, this);
+        this.pop.select('>span.minutes-up', true).first().on('click', this.onIncrementMinutes, this);
+        this.pop.select('>span.minutes-down', true).first().on('click', this.onDecrementMinutes, this);
+        this.pop.select('>button', true).first().on('click', this.onTogglePeriod, this);
 
-        var period = this.picker().select('>.datepicker-time button', true).first();
-
-        hours_up.on('click', this.onIncrementHours, hours_up);
-        hours_down.on('click', this.onDecrementHours, hours_down);
-        minutes_up.on('click', this.onIncrementMinutes, minutes_up);
-        minutes_down.on('click', this.onDecrementMinutes, minutes_down);
-
-        period.on('click', this.onTogglePeriod, period);
-            
 //        }else{
 //            Roo.each(this.picker().select('tfoot th', true).elements, function(v){
 //                v.remove();
@@ -11963,7 +11957,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
     fillTime: function()
     {    
-        var time = this.picker().select('>.datepicker-time tbody', true).first();
+        var time = this.pop.select('>tbody', true).first();
         
         time.dom.innerHTML = '';
         
@@ -12118,10 +12112,9 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
     fill: function() 
     {
-        Roo.log('fill!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-        Roo.log(this.time);
-        Roo.log(this.time.getHours());
-        Roo.log(this.time.getMinutes());
+        var hours = this.time.getHours();
+        var minutes = this.time.getMinutes();
+        
         
     },
 //    
@@ -12200,7 +12193,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     show : function()
     {
         this.picker().show();
-        this.picker().select('>.datepicker-time',true).first().show();
+        this.pop.show();
         this.update();
         this.place();
     },
@@ -12208,7 +12201,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     hide : function()
     {
         this.picker().hide();
-        this.picker().select('>.datepicker-time',true).first().hide();
+        this.pop.hide();
         
     },
     

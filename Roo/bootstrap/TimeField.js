@@ -189,7 +189,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
     fillTime: function()
     {    
-        var time = this.picker().select('>.datepicker-time tbody', true).first();
+        var time = this.pop.select('>tbody', true).first();
         
         time.dom.innerHTML = '';
         
@@ -425,7 +425,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     show : function()
     {
         this.picker().show();
-        this.picker().select('>.datepicker-time',true).first().show();
+        this.pop.show();
         this.update();
         this.place();
     },
@@ -433,7 +433,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     hide : function()
     {
         this.picker().hide();
-        this.picker().select('>.datepicker-time',true).first().hide();
+        this.pop.hide();
         
     },
     
