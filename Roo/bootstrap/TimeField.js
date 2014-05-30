@@ -124,6 +124,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.TimeField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.picker().select('>.datepicker-time',true).first().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.picker().on('mousedown', this.onMousedown, this);
         this.picker().on('click', this.onClick, this);
@@ -431,6 +432,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     show : function()
     {
         this.picker().show();
+        this.picker().select('>.datepicker-time',true).first().show();
         this.update();
         this.place();
     },
@@ -438,6 +440,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     hide : function()
     {
         this.picker().hide();
+        this.picker().select('>.datepicker-time',true).first().hide();
         
     },
     
