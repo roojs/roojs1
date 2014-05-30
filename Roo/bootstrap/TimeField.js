@@ -189,7 +189,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
     picker : function()
     {
-        return this.el.select('.timepicker', true).first();
+        return this.el.select('.datepicker', true).first();
     },
     
     fillDow: function()
@@ -999,7 +999,6 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
 
 Roo.apply(Roo.bootstrap.TimeField,  {
     
-    
     content : {
         tag: 'tbody',
         cn: [
@@ -1037,14 +1036,13 @@ Roo.apply(Roo.bootstrap.TimeField,  {
         }
         ]
     }
-    
 });
 
 Roo.apply(Roo.bootstrap.TimeField,  {
   
     template : {
         tag: 'div',
-        cls: 'TimeField dropdown-menu',
+        cls: 'datepicker dropdown-menu',
         cn: [
             {
                 tag: 'div',
