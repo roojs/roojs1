@@ -349,7 +349,8 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
     fill: function() 
     {
-        
+        Roo.log('fill!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+        Roo.log(this.time);
         Roo.log(this.time.getHours());
 //        Roo.log(this.time.get());
         
