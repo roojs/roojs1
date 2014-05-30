@@ -12615,6 +12615,378 @@
     }
    ]
   },
+  "Roo.bootstrap.TimeField": {
+   "props": [
+    {
+     "name": "format",
+     "type": "String",
+     "desc": "The default time format string which can be overriden for localization support.  The format must be\nvalid according to {@link Date#parseDate} (defaults to 'H:i:s').",
+     "memberOf": ""
+    },
+    {
+     "name": "disabled",
+     "type": "Boolean",
+     "desc": "is it disabled",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "fieldLabel",
+     "type": "String",
+     "desc": "- the label associated",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "inputType",
+     "type": "String",
+     "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "name",
+     "type": "String",
+     "desc": "name of the input",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "placeholder",
+     "type": "string",
+     "desc": "- placeholder to put in text.",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "before",
+     "type": "string",
+     "desc": "- input group add on before",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "after",
+     "type": "string",
+     "desc": "- input group add on after",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "size",
+     "type": "string",
+     "desc": "- (lg|sm) or leave empty..",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "xs",
+     "type": "Number",
+     "desc": "colspan out of 12 for mobile-sized screens",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "sm",
+     "type": "Number",
+     "desc": "colspan out of 12 for tablet-sized screens",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "md",
+     "type": "Number",
+     "desc": "colspan out of 12 for computer-sized screens",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "lg",
+     "type": "Number",
+     "desc": "colspan out of 12 for large computer-sized screens",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "value",
+     "type": "string",
+     "desc": "default value of the input",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelWidth",
+     "type": "Number",
+     "desc": "set the width of label (0-12)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "labelAlign",
+     "type": "String",
+     "desc": "(top|left)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validationEvent",
+     "type": "String/Boolean",
+     "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validateOnBlur",
+     "type": "Boolean",
+     "desc": "Whether the field should validate when it loses focus (defaults to true).",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validationDelay",
+     "type": "Number",
+     "desc": "The length of time in milliseconds after user input begins until validation is initiated (defaults to 250)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "focusClass",
+     "type": "String",
+     "desc": "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "invalidClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "selectOnFocus",
+     "type": "Boolean",
+     "desc": "True to automatically select any existing field text when the field receives input focus (defaults to false)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "maskRe",
+     "type": "String",
+     "desc": "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "vtype",
+     "type": "String",
+     "desc": "A validation type name as defined in {@link Roo.form.VTypes} (defaults to null)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "disableKeyFilter",
+     "type": "Boolean",
+     "desc": "True to disable input keystroke filtering (defaults to false)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "allowBlank",
+     "type": "Boolean",
+     "desc": "False to validate that the value length > 0 (defaults to true)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "blankText",
+     "type": "String",
+     "desc": "Error text to display if the allow blank validation fails (defaults to \"This field is required\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "minLength",
+     "type": "Number",
+     "desc": "Minimum input field length required (defaults to 0)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "maxLength",
+     "type": "Number",
+     "desc": "Maximum input field length allowed (defaults to Number.MAX_VALUE)",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "minLengthText",
+     "type": "String",
+     "desc": "Error text to display if the minimum length validation fails (defaults to \"The minimum length for this field is {minLength}\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "maxLengthText",
+     "type": "String",
+     "desc": "Error text to display if the maximum length validation fails (defaults to \"The maximum length for this field is {maxLength}\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validator",
+     "type": "Function",
+     "desc": "A custom validation function to be called during field validation (defaults to null).\nIf available, this function will be called only after the basic validators all return true, and will be passed the\ncurrent field value and expected to return boolean true if the value is valid or a string error message if invalid.",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "regex",
+     "type": "RegExp",
+     "desc": "A JavaScript RegExp object to be tested against the field value during validation (defaults to null).\nIf available, this regex will be evaluated only after the basic validators all return true, and will be passed the\ncurrent field value.  If the test fails, the field will be marked invalid using {@link #regexText}.",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "regexText",
+     "type": "String",
+     "desc": "The error text to display if {@link #regex} is used and the test fails during validation (defaults to \"\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "cls",
+     "type": "String",
+     "desc": "css class",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "style",
+     "type": "String",
+     "desc": "any extra css",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "xattr",
+     "type": "Object",
+     "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "dataId",
+     "type": "string",
+     "desc": "cutomer id",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "disableClass",
+     "type": "String",
+     "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "allowDomMove",
+     "type": "Boolean",
+     "desc": "Whether the component can move the Dom node when rendering (defaults to true).",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "hideMode",
+     "type": "String",
+     "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "actionMode",
+     "type": "String",
+     "desc": "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "beforedestroy",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is destroyed. Return false to stop the destroy."
+    },
+    {
+     "name": "beforehide",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is hidden. Return false to stop the hide."
+    },
+    {
+     "name": "beforerender",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is rendered. Return false to stop the render."
+    },
+    {
+     "name": "beforeshow",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "blur",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this field loses input focus."
+    },
+    {
+     "name": "change",
+     "sig": "function (_self, newValue, oldValue)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires just before the field blurs if the field value has changed."
+    },
+    {
+     "name": "destroy",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is destroyed."
+    },
+    {
+     "name": "disable",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is disabled."
+    },
+    {
+     "name": "enable",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is enabled."
+    },
+    {
+     "name": "focus",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this field receives input focus."
+    },
+    {
+     "name": "hide",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is hidden."
+    },
+    {
+     "name": "invalid",
+     "sig": "function (_self, msg)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the field has been marked as invalid."
+    },
+    {
+     "name": "keyup",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the key up"
+    },
+    {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is rendered."
+    },
+    {
+     "name": "show",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is shown."
+    },
+    {
+     "name": "specialkey",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check\n{@link Roo.EventObject#getKey} to determine which key was pressed."
+    },
+    {
+     "name": "valid",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the field has been validated with no errors."
+    }
+   ]
+  },
   "Roo.bootstrap.TriggerField": {
    "props": [
     {
