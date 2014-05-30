@@ -73,53 +73,53 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     onRender: function(ct, position)
     {
         
-        Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.TimeField.superclass.onRender.call(this, ct, position);
+//        
+//        this.language = this.language || 'en';
+//        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : this.language.split('-')[0];
+//        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : "en";
+//        
+//        this.isRTL = Roo.bootstrap.DateField.dates[this.language].rtl || false;
+//        this.format = this.format || 'm/d/y';
+//        this.isInline = false;
+//        this.isInput = true;
+//        this.component = this.el.select('.add-on', true).first() || false;
+//        this.component = (this.component && this.component.length === 0) ? false : this.component;
+//        this.hasInput = this.component && this.inputEL().length;
         
-        this.language = this.language || 'en';
-        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : this.language.split('-')[0];
-        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : "en";
+//        if (typeof(this.minViewMode === 'string')) {
+//            switch (this.minViewMode) {
+//                case 'months':
+//                    this.minViewMode = 2;
+//                    break;
+//                case 'years':
+//                    this.minViewMode = 3;
+//                    break;
+//                case 'day':
+//                    this.minViewMode = 1;
+//                    break;
+//                default:
+//                    this.minViewMode = 0;
+//                    break;
+//            }
+//        }
         
-        this.isRTL = Roo.bootstrap.DateField.dates[this.language].rtl || false;
-        this.format = this.format || 'm/d/y';
-        this.isInline = false;
-        this.isInput = true;
-        this.component = this.el.select('.add-on', true).first() || false;
-        this.component = (this.component && this.component.length === 0) ? false : this.component;
-        this.hasInput = this.component && this.inputEL().length;
-        
-        if (typeof(this.minViewMode === 'string')) {
-            switch (this.minViewMode) {
-                case 'months':
-                    this.minViewMode = 2;
-                    break;
-                case 'years':
-                    this.minViewMode = 3;
-                    break;
-                case 'day':
-                    this.minViewMode = 1;
-                    break;
-                default:
-                    this.minViewMode = 0;
-                    break;
-            }
-        }
-        
-        if (typeof(this.viewMode === 'string')) {
-            switch (this.viewMode) {
-                case 'months':
-                    this.viewMode = 2;
-                    break;
-                case 'years':
-                    this.viewMode = 2;
-                    break;
-                case 'day':
-                    this.viewMode = 1;
-                    break;
-                default:
-                    this.viewMode = 0;
-                    break;
-            }
-        }
+//        if (typeof(this.viewMode === 'string')) {
+//            switch (this.viewMode) {
+//                case 'months':
+//                    this.viewMode = 2;
+//                    break;
+//                case 'years':
+//                    this.viewMode = 2;
+//                    break;
+//                case 'day':
+//                    this.viewMode = 1;
+//                    break;
+//                default:
+//                    this.viewMode = 0;
+//                    break;
+//            }
+//        }
                 
         this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
         
@@ -189,7 +189,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
     picker : function()
     {
-        return this.el.select('.datepicker', true).first();
+        return this.el.select('.timepicker', true).first();
     },
     
     fillDow: function()
@@ -997,34 +997,8 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
    
 });
 
-Roo.apply(Roo.bootstrap.DateField,  {
+Roo.apply(Roo.bootstrap.TimeField,  {
     
-    head : {
-        tag: 'thead',
-        cn: [
-        {
-            tag: 'tr',
-            cn: [
-            {
-                tag: 'th',
-                cls: 'prev',
-                html: '<i class="icon-arrow-left"/>'
-            },
-            {
-                tag: 'th',
-                cls: 'switch',
-                colspan: '5'
-            },
-            {
-                tag: 'th',
-                cls: 'next',
-                html: '<i class="icon-arrow-right"/>'
-            }
-
-            ]
-        }
-        ]
-    },
     
     content : {
         tag: 'tbody',
@@ -1062,110 +1036,30 @@ Roo.apply(Roo.bootstrap.DateField,  {
             ]
         }
         ]
-    },
-    
-    dates:{
-        en: {
-            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-            daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            today: "Today"
-        }
-    },
-    
-    modes: [
-    {
-        clsName: 'time',
-        navFnc: 'Time',
-        navStep: 0
-    },
-    {
-        clsName: 'days',
-        navFnc: 'Month',
-        navStep: 1
-    },
-    {
-        clsName: 'months',
-        navFnc: 'FullYear',
-        navStep: 1
-    },
-    {
-        clsName: 'years',
-        navFnc: 'FullYear',
-        navStep: 10
     }
-    ]
+    
 });
 
-Roo.apply(Roo.bootstrap.DateField,  {
+Roo.apply(Roo.bootstrap.TimeField,  {
   
     template : {
         tag: 'div',
-        cls: 'datepicker dropdown-menu',
+        cls: 'TimeField dropdown-menu',
         cn: [
-        {
-            tag: 'div',
-            cls: 'datepicker-days',
-            cn: [
             {
-                tag: 'table',
-                cls: 'table-condensed',
-                cn:[
-                Roo.bootstrap.DateField.head,
+                tag: 'div',
+                cls: 'datepicker-time',
+                cn: [
                 {
-                    tag: 'tbody'
-                },
-                Roo.bootstrap.DateField.footer
+                    tag: 'table',
+                    cls: 'table-condensed',
+                    cn:[
+                    Roo.bootstrap.DateField.content,
+                    Roo.bootstrap.DateField.footer
+                    ]
+                }
                 ]
             }
-            ]
-        },
-        {
-            tag: 'div',
-            cls: 'datepicker-months',
-            cn: [
-            {
-                tag: 'table',
-                cls: 'table-condensed',
-                cn:[
-                Roo.bootstrap.DateField.head,
-                Roo.bootstrap.DateField.content
-//                Roo.bootstrap.DateField.footer
-                ]
-            }
-            ]
-        },
-        {
-            tag: 'div',
-            cls: 'datepicker-years',
-            cn: [
-            {
-                tag: 'table',
-                cls: 'table-condensed',
-                cn:[
-                Roo.bootstrap.DateField.head,
-                Roo.bootstrap.DateField.content
-//                Roo.bootstrap.DateField.footer
-                ]
-            }
-            ]
-        },
-        {
-            tag: 'div',
-            cls: 'datepicker-time',
-            cn: [
-            {
-                tag: 'table',
-                cls: 'table-condensed',
-                cn:[
-                Roo.bootstrap.DateField.content,
-                Roo.bootstrap.DateField.footer
-                ]
-            }
-            ]
-        }
         ]
     }
 });
