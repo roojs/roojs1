@@ -143,7 +143,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
 //        this.fillMonths();
         this.fillTime();
         this.update();
-        this.showMode();
+//        this.showMode();
         
         if(this.showTime){
             
@@ -810,29 +810,6 @@ Roo.apply(Roo.bootstrap.TimeField,  {
             ]
         }
         ]
-    },
-    
-    footer : {
-        tag: 'tfoot',
-        cn: [
-        {
-            tag: 'tr',
-            cn: [
-            {
-                tag: 'th',
-                colspan: '7',
-                cls: '',
-                cn: [
-                    {
-                        tag: 'span',
-                        cls: 'picker-switch-icon glyphicon'   
-                    }
-                ]
-            }
-                    
-            ]
-        }
-        ]
     }
 });
 
@@ -850,8 +827,7 @@ Roo.apply(Roo.bootstrap.TimeField,  {
                     tag: 'table',
                     cls: 'table-condensed',
                     cn:[
-                    Roo.bootstrap.DateField.content,
-                    Roo.bootstrap.DateField.footer
+                    Roo.bootstrap.DateField.content
                     ]
                 }
                 ]
