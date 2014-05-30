@@ -53,6 +53,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.pop.select('span.minutes-up', true).first().on('click', this.onIncrementMinutes, this);
         this.pop.select('span.minutes-down', true).first().on('click', this.onDecrementMinutes, this);
         this.pop.select('button.period', true).first().on('click', this.onTogglePeriod, this);
+        this.pop.select('button.ok', true).first().on('click', this.onTogglePeriod, this);
 
     },
     
