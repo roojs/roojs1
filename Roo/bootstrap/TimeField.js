@@ -437,6 +437,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     hide : function()
     {
         this.picker().hide();
+        
     },
     
     onMousedown: function(e){
