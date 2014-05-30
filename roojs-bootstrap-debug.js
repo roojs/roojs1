@@ -11958,7 +11958,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     fillTime: function()
     {    
         Roo.log(this.pop);
-        var time = this.pop.select('>tbody', true).first();
+        var time = this.pop.select('tbody', true).first();
         
         time.dom.innerHTML = '';
         
