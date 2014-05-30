@@ -130,17 +130,17 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         
         this.picker().addClass('datepicker-dropdown');
         
-        this.startViewMode = this.viewMode;
+//        this.startViewMode = this.viewMode;
         
-        this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
+//        this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
         
-        this.setStartDate(this.startDate);
-        this.setEndDate(this.endDate);
+//        this.setStartDate(this.startDate);
+//        this.setEndDate(this.endDate);
         
-        this.setDaysOfWeekDisabled(this.daysOfWeekDisabled);
+//        this.setDaysOfWeekDisabled(this.daysOfWeekDisabled);
         
-        this.fillDow();
-        this.fillMonths();
+//        this.fillDow();
+//        this.fillMonths();
         this.fillTime();
         this.update();
         this.showMode();
@@ -190,55 +190,6 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     picker : function()
     {
         return this.el.select('.datepicker', true).first();
-    },
-    
-    fillDow: function()
-    {
-        var dowCnt = this.weekStart;
-        
-        var dow = {
-            tag: 'tr',
-            cn: [
-                
-            ]
-        };
-        
-        if(this.calendarWeeks){
-            dow.cn.push({
-                tag: 'th',
-                cls: 'cw',
-                html: '&nbsp;'
-            })
-        }
-        
-        while (dowCnt < this.weekStart + 7) {
-            dow.cn.push({
-                tag: 'th',
-                cls: 'dow',
-                html: Roo.bootstrap.DateField.dates[this.language].daysMin[(dowCnt++)%7]
-            });
-        }
-        
-        this.picker().select('>.datepicker-days thead', true).first().createChild(dow);
-    },
-    
-    fillMonths: function()
-    {    
-        var i = 0
-        var months = this.picker().select('>.datepicker-months td', true).first();
-        
-        months.dom.innerHTML = '';
-        
-        while (i < 12) {
-            var month = {
-                tag: 'span',
-                cls: 'month',
-                html: Roo.bootstrap.DateField.dates[this.language].monthsShort[i++]
-            }
-            
-            months.createChild(month);
-        }
-        
     },
     
     fillTime: function()
@@ -388,169 +339,19 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         
     },
     
-    update: function(){
+    update: function()
+    {
         
-        this.date = (typeof(this.date) === 'undefined') ? this.UTCToday() : (typeof(this.date) === 'string') ? this.parseDate(this.date) : this.date;
-        
-        if (this.date < this.startDate) {
-            this.viewDate = new Date(this.startDate);
-        } else if (this.date > this.endDate) {
-            this.viewDate = new Date(this.endDate);
-        } else {
-            this.viewDate = new Date(this.date);
-        }
-        
-        if(this.showTime){
-            this.time = (typeof(this.time) === 'undefined') ? this.UTCTodayTime() : this.time;
-        }
+        this.time = (typeof(this.time) === 'undefined') ? new Date() : this.time;
         
         this.fill();
     },
     
-    fill: function() {
-        var d = new Date(this.viewDate),
-                year = d.getUTCFullYear(),
-                month = d.getUTCMonth(),
-                startYear = this.startDate !== -Infinity ? this.startDate.getUTCFullYear() : -Infinity,
-                startMonth = this.startDate !== -Infinity ? this.startDate.getUTCMonth() : -Infinity,
-                endYear = this.endDate !== Infinity ? this.endDate.getUTCFullYear() : Infinity,
-                endMonth = this.endDate !== Infinity ? this.endDate.getUTCMonth() : Infinity,
-                currentDate = this.date && this.date.valueOf(),
-                today = this.UTCToday();
+    fill: function() 
+    {
         
-        this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].months[month]+' '+year;
-        
-//        this.picker().select('>tfoot th.today', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today;
-        
-//        this.picker.select('>tfoot th.today').
-//						.text(dates[this.language].today)
-//						.toggle(this.todayBtn !== false);
-    
-        this.updateNavArrows();
-        this.fillMonths();
-                                                
-        var prevMonth = this.UTCDate(year, month-1, 28,0,0,0,0),
-        
-        day = prevMonth.getDaysInMonth(prevMonth.getUTCFullYear(), prevMonth.getUTCMonth());
-         
-        prevMonth.setUTCDate(day);
-        
-        prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.weekStart + 7)%7);
-        
-        var nextMonth = new Date(prevMonth);
-        
-        nextMonth.setUTCDate(nextMonth.getUTCDate() + 42);
-        
-        nextMonth = nextMonth.valueOf();
-        
-        var fillMonths = false;
-        
-        this.picker().select('>.datepicker-days tbody',true).first().dom.innerHTML = '';
-        
-        while(prevMonth.valueOf() < nextMonth) {
-            var clsName = '';
-            
-            if (prevMonth.getUTCDay() === this.weekStart) {
-                if(fillMonths){
-                    this.picker().select('>.datepicker-days tbody',true).first().createChild(fillMonths);
-                }
-                    
-                fillMonths = {
-                    tag: 'tr',
-                    cn: []
-                };
-                
-                if(this.calendarWeeks){
-                    // ISO 8601: First week contains first thursday.
-                    // ISO also states week starts on Monday, but we can be more abstract here.
-                    var
-                    // Start of current week: based on weekstart/current date
-                    ws = new Date(+prevMonth + (this.weekStart - prevMonth.getUTCDay() - 7) % 7 * 864e5),
-                    // Thursday of this week
-                    th = new Date(+ws + (7 + 4 - ws.getUTCDay()) % 7 * 864e5),
-                    // First Thursday of year, year from thursday
-                    yth = new Date(+(yth = this.UTCDate(th.getUTCFullYear(), 0, 1)) + (7 + 4 - yth.getUTCDay())%7*864e5),
-                    // Calendar week: ms between thursdays, div ms per day, div 7 days
-                    calWeek =  (th - yth) / 864e5 / 7 + 1;
-                    
-                    fillMonths.cn.push({
-                        tag: 'td',
-                        cls: 'cw',
-                        html: calWeek
-                    });
-                }
-            }
-            
-            if (prevMonth.getUTCFullYear() < year || (prevMonth.getUTCFullYear() == year && prevMonth.getUTCMonth() < month)) {
-                clsName += ' old';
-            } else if (prevMonth.getUTCFullYear() > year || (prevMonth.getUTCFullYear() == year && prevMonth.getUTCMonth() > month)) {
-                clsName += ' new';
-            }
-            if (this.todayHighlight &&
-                prevMonth.getUTCFullYear() == today.getFullYear() &&
-                prevMonth.getUTCMonth() == today.getMonth() &&
-                prevMonth.getUTCDate() == today.getDate()) {
-                clsName += ' today';
-            }
-            
-            if (currentDate && prevMonth.valueOf() === currentDate) {
-                clsName += ' active';
-            }
-            
-            if (prevMonth.valueOf() < this.startDate || prevMonth.valueOf() > this.endDate ||
-                    this.daysOfWeekDisabled.indexOf(prevMonth.getUTCDay()) !== -1) {
-                    clsName += ' disabled';
-            }
-            
-            fillMonths.cn.push({
-                tag: 'td',
-                cls: 'day ' + clsName,
-                html: prevMonth.getDate()
-            })
-            
-            prevMonth.setDate(prevMonth.getDate()+1);
-        }
-          
-        var currentYear = this.date && this.date.getUTCFullYear();
-        var currentMonth = this.date && this.date.getUTCMonth();
-        
-        this.picker().select('>.datepicker-months th.switch',true).first().dom.innerHTML = year;
-        
-        Roo.each(this.picker().select('>.datepicker-months tbody span',true).elements, function(v,k){
-            v.removeClass('active');
-            
-            if(currentYear === year && k === currentMonth){
-                v.addClass('active');
-            }
-            
-            if (year < startYear || year > endYear || (year == startYear && k < startMonth) || (year == endYear && k > endMonth)) {
-                v.addClass('disabled');
-            }
-            
-        });
-        
-        
-        year = parseInt(year/10, 10) * 10;
-        
-        this.picker().select('>.datepicker-years th.switch', true).first().dom.innerHTML = year + '-' + (year + 9);
-        
-        this.picker().select('>.datepicker-years tbody td',true).first().dom.innerHTML = '';
-        
-        year -= 1;
-        for (var i = -1; i < 11; i++) {
-            this.picker().select('>.datepicker-years tbody td',true).first().createChild({
-                tag: 'span',
-                cls: 'year' + (i === -1 || i === 10 ? ' old' : '') + (currentYear === year ? ' active' : '') + (year < startYear || year > endYear ? ' disabled' : ''),
-                html: year
-            })
-            
-            year += 1;
-        }
-        
-        if(this.showTime){
-            Roo.log(this.time.getHours());
-            Roo.log(this.time.get());
-        }
+        Roo.log(this.time.getHours());
+        Roo.log(this.time.get());
         
     },
     
