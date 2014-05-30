@@ -354,19 +354,19 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         Roo.log(this.time.get());
         
     },
-    
-    showMode: function(dir) {
-        if (dir) {
-            this.viewMode = Math.max(this.minViewMode, Math.min(3, this.viewMode + dir));
-        }
-        
-        Roo.each(this.picker().select('>div',true).elements, function(v){
-            v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-            v.hide();
-        });
-        this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
-        
-    },
+//    
+//    showMode: function(dir) {
+//        if (dir) {
+//            this.viewMode = Math.max(this.minViewMode, Math.min(3, this.viewMode + dir));
+//        }
+//        
+//        Roo.each(this.picker().select('>div',true).elements, function(v){
+//            v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+//            v.hide();
+//        });
+//        this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
+//        
+//    },
     
     place: function()
     {
@@ -436,11 +436,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
     hide : function()
     {
-        if(this.isInline) return;
         this.picker().hide();
-        this.viewMode = this.startViewMode;
-        this.showMode();
-        
     },
     
     onMousedown: function(e){
