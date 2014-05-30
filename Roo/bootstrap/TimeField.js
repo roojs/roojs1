@@ -377,7 +377,7 @@ Roo.apply(Roo.bootstrap.TimeField,  {
                     cn: [
                         {
                             tag: 'button',
-                            cls: 'btn btn-info',
+                            cls: 'btn btn-info ok',
                             html: 'OK'
                         }
                     ]
