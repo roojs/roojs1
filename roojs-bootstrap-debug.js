@@ -11796,48 +11796,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
      * valid according to {@link Date#parseDate} (defaults to 'H:i').
      */
     format : "H:i",
-    
-    
-    UTCDate: function()
-    {
-        return new Date(Date.UTC.apply(Date, arguments));
-    },
-    
-    UTCTime: function()
-    {
-        return new Date(Date.UTC.apply(Date, arguments));
-    },
-    
-    UTCToday: function()
-    {
-        var today = new Date();
-        return this.UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
-    },
-    
-    UTCTodayTime: function()
-    {
-        var today = new Date();
-        return this.UTCTime(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), today.getUTCHours(), today.getUTCMinutes());
-    },
-    
-    getDate: function() {
-            var d = this.getUTCDate();
-            return new Date(d.getTime() + (d.getTimezoneOffset()*60000));
-    },
-    
-    getUTCDate: function() {
-            return this.date;
-    },
-    
-    setDate: function(d) {
-            this.setUTCDate(new Date(d.getTime() - (d.getTimezoneOffset()*60000)));
-    },
-    
-    setUTCDate: function(d) {
-            this.date = d;
-            this.setValue(this.formatDate(this.date));
-    },
-        
+       
     onRender: function(ct, position)
     {
         
@@ -12104,8 +12063,12 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.picker().hide();
         this.pop.hide();
         
+    },
+    
+    setTime : function()
+    {
+        this.hide();
         this.setValue(this.time.format(this.format));
-        
     },
     
     onMousedown: function(e){
@@ -12182,7 +12145,7 @@ Roo.apply(Roo.bootstrap.TimeField,  {
                     cn: [
                         {
                             tag: 'button',
-                            cls: 'btn btn-info glyphicon glyphicon-ok',
+                            cls: 'btn btn-info',
                             html: 'OK'
                         }
                     ]
