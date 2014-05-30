@@ -11933,11 +11933,11 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
 //            dayFootIcon.addClass('switch-time');
 //            dayFootIcon.addClass('glyphicon-time');
             
-        this.pop.select('>span.hours-up', true).first().on('click', this.onIncrementHours, this);
-        this.pop.select('>span.hours-down', true).first().on('click', this.onDecrementHours, this);
-        this.pop.select('>span.minutes-up', true).first().on('click', this.onIncrementMinutes, this);
-        this.pop.select('>span.minutes-down', true).first().on('click', this.onDecrementMinutes, this);
-        this.pop.select('>button', true).first().on('click', this.onTogglePeriod, this);
+        this.pop.select('span.hours-up', true).first().on('click', this.onIncrementHours, this);
+        this.pop.select('span.hours-down', true).first().on('click', this.onDecrementHours, this);
+        this.pop.select('span.minutes-up', true).first().on('click', this.onIncrementMinutes, this);
+        this.pop.select('span.minutes-down', true).first().on('click', this.onDecrementMinutes, this);
+        this.pop.select('button', true).first().on('click', this.onTogglePeriod, this);
 
 //        }else{
 //            Roo.each(this.picker().select('tfoot th', true).elements, function(v){
@@ -11957,7 +11957,6 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
     fillTime: function()
     {    
-        Roo.log(this.pop);
         var time = this.pop.select('tbody', true).first();
         
         time.dom.innerHTML = '';
@@ -12122,9 +12121,9 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
             period = 'PM';
         }
         
-        this.pop.select('>.timepicker-hour', true).first().el.dom.innerHTML = hours;
-        this.pop.select('>.timepicker-minute', true).first().el.dom.innerHTML = minutes;
-        this.pop.select('>button', true).first().el.dom.innerHTML = period;
+        this.pop.select('.timepicker-hour', true).first().el.dom.innerHTML = hours;
+        this.pop.select('.timepicker-minute', true).first().el.dom.innerHTML = minutes;
+        this.pop.select('button', true).first().el.dom.innerHTML = period;
         
     },
 //    
