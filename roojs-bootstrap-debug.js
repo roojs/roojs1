@@ -11769,6 +11769,856 @@ Roo.apply(Roo.bootstrap.DateField,  {
  /*
  * - LGPL
  *
+ * TimeField
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.TimeField
+ * @extends Roo.bootstrap.Input
+ * Bootstrap DateField class
+ * 
+ * 
+ * @constructor
+ * Create a new TimeField
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.TimeField = function(config){
+    Roo.bootstrap.TimeField.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
+    
+    /**
+     * @cfg {String} format
+     * The default time format string which can be overriden for localization support.  The format must be
+     * valid according to {@link Date#parseDate} (defaults to 'H:i:s').
+     */
+    format : "H:i:s",
+    
+    
+    UTCDate: function()
+    {
+        return new Date(Date.UTC.apply(Date, arguments));
+    },
+    
+    UTCTime: function()
+    {
+        return new Date(Date.UTC.apply(Date, arguments));
+    },
+    
+    UTCToday: function()
+    {
+        var today = new Date();
+        return this.UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+    },
+    
+    UTCTodayTime: function()
+    {
+        var today = new Date();
+        return this.UTCTime(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), today.getUTCHours(), today.getUTCMinutes());
+    },
+    
+    getDate: function() {
+            var d = this.getUTCDate();
+            return new Date(d.getTime() + (d.getTimezoneOffset()*60000));
+    },
+    
+    getUTCDate: function() {
+            return this.date;
+    },
+    
+    setDate: function(d) {
+            this.setUTCDate(new Date(d.getTime() - (d.getTimezoneOffset()*60000)));
+    },
+    
+    setUTCDate: function(d) {
+            this.date = d;
+            this.setValue(this.formatDate(this.date));
+    },
+        
+    onRender: function(ct, position)
+    {
+        
+        Roo.bootstrap.TimeField.superclass.onRender.call(this, ct, position);
+//        
+//        this.language = this.language || 'en';
+//        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : this.language.split('-')[0];
+//        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : "en";
+//        
+//        this.isRTL = Roo.bootstrap.DateField.dates[this.language].rtl || false;
+//        this.format = this.format || 'm/d/y';
+//        this.isInline = false;
+//        this.isInput = true;
+//        this.component = this.el.select('.add-on', true).first() || false;
+//        this.component = (this.component && this.component.length === 0) ? false : this.component;
+//        this.hasInput = this.component && this.inputEL().length;
+        
+//        if (typeof(this.minViewMode === 'string')) {
+//            switch (this.minViewMode) {
+//                case 'months':
+//                    this.minViewMode = 2;
+//                    break;
+//                case 'years':
+//                    this.minViewMode = 3;
+//                    break;
+//                case 'day':
+//                    this.minViewMode = 1;
+//                    break;
+//                default:
+//                    this.minViewMode = 0;
+//                    break;
+//            }
+//        }
+        
+//        if (typeof(this.viewMode === 'string')) {
+//            switch (this.viewMode) {
+//                case 'months':
+//                    this.viewMode = 2;
+//                    break;
+//                case 'years':
+//                    this.viewMode = 2;
+//                    break;
+//                case 'day':
+//                    this.viewMode = 1;
+//                    break;
+//                default:
+//                    this.viewMode = 0;
+//                    break;
+//            }
+//        }
+                
+        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.TimeField.template);
+        
+        this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.picker().on('mousedown', this.onMousedown, this);
+        this.picker().on('click', this.onClick, this);
+        
+        this.picker().addClass('datepicker-dropdown');
+        
+//        this.startViewMode = this.viewMode;
+        
+//        this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
+        
+//        this.setStartDate(this.startDate);
+//        this.setEndDate(this.endDate);
+        
+//        this.setDaysOfWeekDisabled(this.daysOfWeekDisabled);
+        
+//        this.fillDow();
+//        this.fillMonths();
+        this.fillTime();
+        this.update();
+//        this.showMode();
+        
+//        if(this.showTime){
+            
+//            var dayFoot = this.picker().select('>.datepicker-days tfoot th', true).first();
+//            var timeFoot = this.picker().select('>.datepicker-time tfoot th', true).first();
+//
+//            var dayFootIcon = this.picker().select('>.datepicker-days tfoot span.picker-switch-icon', true).first();
+//            var timeFootIcon = this.picker().select('>.datepicker-time tfoot span.picker-switch-icon', true).first();
+//            
+//            timeFoot.addClass('switch-calendar');
+//            dayFoot.addClass('switch-time');
+//            
+//            timeFootIcon.addClass('switch-calendar');
+//            timeFootIcon.addClass('glyphicon-calendar');
+//            
+//            dayFootIcon.addClass('switch-time');
+//            dayFootIcon.addClass('glyphicon-time');
+            
+        var hours_up = this.picker().select('>.datepicker-time span.hours-up', true).first();
+        var hours_down = this.picker().select('>.datepicker-time span.hours-down', true).first();
+        var minutes_up = this.picker().select('>.datepicker-time span.minutes-up', true).first();
+        var minutes_down = this.picker().select('>.datepicker-time span.minutes-down', true).first();
+
+        var period = this.picker().select('>.datepicker-time button', true).first();
+
+        hours_up.on('click', this.onIncrementHours, hours_up);
+        hours_down.on('click', this.onDecrementHours, hours_down);
+        minutes_up.on('click', this.onIncrementMinutes, minutes_up);
+        minutes_down.on('click', this.onDecrementMinutes, minutes_down);
+
+        period.on('click', this.onTogglePeriod, period);
+            
+//        }else{
+//            Roo.each(this.picker().select('tfoot th', true).elements, function(v){
+//                v.remove();
+//            });
+//        }
+//        
+//        if(this.isInline) {
+//            this.show();
+//        }
+    },
+    
+    picker : function()
+    {
+        return this.el.select('.datepicker', true).first();
+    },
+    
+    fillTime: function()
+    {    
+        var time = this.picker().select('>.datepicker-time tbody', true).first();
+        
+        time.dom.innerHTML = '';
+        
+        time.createChild({
+            tag: 'tr',
+            cn: [
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'a',
+                            href: '#',
+                            cls: 'btn',
+                            cn: [
+                                {
+                                    tag: 'span',
+                                    cls: 'hours-up glyphicon glyphicon-chevron-up'
+                                }
+                            ]
+                        } 
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'a',
+                            href: '#',
+                            cls: 'btn',
+                            cn: [
+                                {
+                                    tag: 'span',
+                                    cls: 'minutes-up glyphicon glyphicon-chevron-up'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                }
+            ]
+        });
+        
+        time.createChild({
+            tag: 'tr',
+            cn: [
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'timepicker-hour',
+                            html: '00'
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator',
+                    html: ':'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'timepicker-minute',
+                            html: '00'
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'button',
+                            type: 'button',
+                            cls: 'btn btn-primary',
+                            html: 'AM'
+                            
+                        }
+                    ]
+                }
+            ]
+        });
+        
+        time.createChild({
+            tag: 'tr',
+            cn: [
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'a',
+                            href: '#',
+                            cls: 'btn',
+                            cn: [
+                                {
+                                    tag: 'span',
+                                    cls: 'hours-down glyphicon glyphicon-chevron-down'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'a',
+                            href: '#',
+                            cls: 'btn',
+                            cn: [
+                                {
+                                    tag: 'span',
+                                    cls: 'minutes-down glyphicon glyphicon-chevron-down'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                }
+            ]
+        });
+        
+    },
+    
+    update: function()
+    {
+        
+        this.time = (typeof(this.time) === 'undefined') ? new Date() : this.time;
+        
+        this.fill();
+    },
+    
+    fill: function() 
+    {
+        
+        Roo.log(this.time.getHours());
+        Roo.log(this.time.get());
+        
+    },
+//    
+//    showMode: function(dir) {
+//        if (dir) {
+//            this.viewMode = Math.max(this.minViewMode, Math.min(3, this.viewMode + dir));
+//        }
+//        
+//        Roo.each(this.picker().select('>div',true).elements, function(v){
+//            v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+//            v.hide();
+//        });
+//        this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
+//        
+//    },
+    
+    place: function()
+    {
+//        if(this.isInline) return;
+        
+        this.picker().removeClass(['bottom', 'top']);
+        
+        if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){
+            /*
+             * place to the top of element!
+             *
+             */
+            
+            this.picker().addClass('top');
+            this.picker().setTop(0 - this.picker().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+            
+            return;
+        }
+        
+        this.picker().addClass('bottom');
+        
+        this.picker().setTop(this.inputEl().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+    },
+    
+//    parseDate : function(value){
+//        if(!value || value instanceof Date){
+//            return value;
+//        }
+//        var v = Date.parseDate(value, this.format);
+//        if (!v && this.useIso) {
+//            v = Date.parseDate(value, 'Y-m-d');
+//        }
+//        if(!v && this.altFormats){
+//            if(!this.altFormatsArray){
+//                this.altFormatsArray = this.altFormats.split("|");
+//            }
+//            for(var i = 0, len = this.altFormatsArray.length; i < len && !v; i++){
+//                v = Date.parseDate(value, this.altFormatsArray[i]);
+//            }
+//        }
+//        return v;
+//    },
+    
+//    formatDate : function(date, fmt){
+//        return (!date || !(date instanceof Date)) ?
+//        date : date.dateFormat(fmt || this.format);
+//    },
+    
+    onFocus : function()
+    {
+        Roo.bootstrap.TimeField.superclass.onFocus.call(this);
+        this.show();
+    },
+    
+    onBlur : function()
+    {
+        Roo.bootstrap.TimeField.superclass.onBlur.call(this);
+        this.hide();
+    },
+    
+    show : function()
+    {
+        this.picker().show();
+        this.update();
+        this.place();
+    },
+    
+    hide : function()
+    {
+        this.picker().hide();
+        
+    },
+    
+    onMousedown: function(e){
+        e.stopPropagation();
+        e.preventDefault();
+    },
+//    
+//    keyup: function(e){
+//        Roo.bootstrap.DateField.superclass.keyup.call(this);
+//        this.update();
+//        
+//    },
+    
+//    fireKey: function(e){
+//        if (!this.picker().isVisible()){
+//            if (e.keyCode == 27) // allow escape to hide and re-show picker
+//                this.show();
+//            return;
+//        }
+//        var dateChanged = false,
+//        dir, day, month,
+//        newDate, newViewDate;
+//        switch(e.keyCode){
+//            case 27: // escape
+//                this.hide();
+//                e.preventDefault();
+//                break;
+//            case 37: // left
+//            case 39: // right
+//                if (!this.keyboardNavigation) break;
+//                dir = e.keyCode == 37 ? -1 : 1;
+//                
+//                if (e.ctrlKey){
+//                    newDate = this.moveYear(this.date, dir);
+//                    newViewDate = this.moveYear(this.viewDate, dir);
+//                } else if (e.shiftKey){
+//                    newDate = this.moveMonth(this.date, dir);
+//                    newViewDate = this.moveMonth(this.viewDate, dir);
+//                } else {
+//                    newDate = new Date(this.date);
+//                    newDate.setUTCDate(this.date.getUTCDate() + dir);
+//                    newViewDate = new Date(this.viewDate);
+//                    newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir);
+//                }
+//                if (this.dateWithinRange(newDate)){
+//                    this.date = newDate;
+//                    this.viewDate = newViewDate;
+//                    this.setValue(this.formatDate(this.date));
+//                    this.update();
+//                    e.preventDefault();
+//                    dateChanged = true;
+//                }
+//                break;
+//            case 38: // up
+//            case 40: // down
+//                if (!this.keyboardNavigation) break;
+//                dir = e.keyCode == 38 ? -1 : 1;
+//                if (e.ctrlKey){
+//                    newDate = this.moveYear(this.date, dir);
+//                    newViewDate = this.moveYear(this.viewDate, dir);
+//                } else if (e.shiftKey){
+//                    newDate = this.moveMonth(this.date, dir);
+//                    newViewDate = this.moveMonth(this.viewDate, dir);
+//                } else {
+//                    newDate = new Date(this.date);
+//                    newDate.setUTCDate(this.date.getUTCDate() + dir * 7);
+//                    newViewDate = new Date(this.viewDate);
+//                    newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir * 7);
+//                }
+//                if (this.dateWithinRange(newDate)){
+//                    this.date = newDate;
+//                    this.viewDate = newViewDate;
+//                    this.setValue(this.formatDate(this.date));
+//                    this.update();
+//                    e.preventDefault();
+//                    dateChanged = true;
+//                }
+//                break;
+//            case 13: // enter
+//                this.setValue(this.formatDate(this.date));
+//                this.hide();
+//                e.preventDefault();
+//                break;
+//            case 9: // tab
+//                this.setValue(this.formatDate(this.date));
+//                this.hide();
+//                break;
+//        }
+//    },
+    
+    
+    onClick: function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        
+        var target = e.getTarget();
+        
+//        if(target.nodeName.toLowerCase() === 'i'){
+//            target = Roo.get(target).dom.parentNode;
+//        }
+        
+        var nodeName = target.nodeName.trim();
+        var className = target.className.trim();
+        var html = target.innerHTML;
+        
+        Roo.log('nodeName');
+        Roo.log(nodeName);
+        
+        Roo.log('className');
+        Roo.log(className);
+        
+        Roo.log('html');
+        Roo.log(html);
+        
+        
+//        switch(nodeName.toLowerCase()) {
+//            case 'th':
+//                switch(className) {
+//                    case 'switch':
+//                        this.showMode(1);
+//                        break;
+//                    case 'prev':
+//                    case 'next':
+//                        var dir = Roo.bootstrap.DateField.modes[this.viewMode].navStep * (className == 'prev' ? -1 : 1);
+//                        switch(this.viewMode){
+//                                case 0:
+//                                        this.viewDate = this.moveMonth(this.viewDate, dir);
+//                                        break;
+//                                case 1:
+//                                case 2:
+//                                        this.viewDate = this.moveYear(this.viewDate, dir);
+//                                        break;
+//                        }
+//                        this.fill();
+//                        break;
+//                    case 'today':
+//                        var date = new Date();
+//                        this.date = this.UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+//                        this.fill()
+//                        this.setValue(this.formatDate(this.date));
+//                        this.hide();
+//                        break;
+//                     case 'switch-time':
+//                        this.showMode(-1);
+//                        this.fill();
+//                        break;
+//                     case 'switch-calendar':
+//                         this.showMode(1);
+//                         this.fill();
+//                         break;
+//                }
+//                break;
+//            case 'span':
+//                if (className.indexOf('disabled') === -1) {
+//                    this.viewDate.setUTCDate(1);
+//                    if (className.indexOf('month') !== -1) {
+//                        this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
+//                    } else if(className.indexOf('picker-switch-icon') !== -1){
+//                        if(className.indexOf('switch-time') !== -1){
+//                            this.showMode(-1);
+//                            this.fill();
+//                        }else{
+//                            this.showMode(1);
+//                            this.fill();
+//                        }
+//                        
+//                        break;
+//                        
+//                    } else {
+//                        var year = parseInt(html, 10) || 0;
+//                        this.viewDate.setUTCFullYear(year);
+//                        
+//                    }
+//                    this.showMode(-1);
+//                    this.fill();
+//                }
+//                break;
+//                
+//            case 'td':
+//                if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
+//                    var day = parseInt(html, 10) || 1;
+//                    var year = this.viewDate.getUTCFullYear(),
+//                        month = this.viewDate.getUTCMonth();
+//
+//                    if (className.indexOf('old') !== -1) {
+//                        if(month === 0 ){
+//                            month = 11;
+//                            year -= 1;
+//                        }else{
+//                            month -= 1;
+//                        }
+//                    } else if (className.indexOf('new') !== -1) {
+//                        if (month == 11) {
+//                            month = 0;
+//                            year += 1;
+//                        } else {
+//                            month += 1;
+//                        }
+//                    }
+//                    this.date = this.UTCDate(year, month, day,0,0,0,0);
+//                    this.viewDate = this.UTCDate(year, month, Math.min(28, day),0,0,0,0);
+//                    this.fill();
+//                    this.setValue(this.formatDate(this.date));
+//                    this.hide();
+//                }
+//                break;
+//        }
+    },
+    
+//    setStartDate: function(startDate){
+//        this.startDate = startDate || -Infinity;
+//        if (this.startDate !== -Infinity) {
+//            this.startDate = this.parseDate(this.startDate);
+//        }
+//        this.update();
+//        this.updateNavArrows();
+//    },
+//
+//    setEndDate: function(endDate){
+//        this.endDate = endDate || Infinity;
+//        if (this.endDate !== Infinity) {
+//            this.endDate = this.parseDate(this.endDate);
+//        }
+//        this.update();
+//        this.updateNavArrows();
+//    },
+//    
+//    setDaysOfWeekDisabled: function(daysOfWeekDisabled){
+//        this.daysOfWeekDisabled = daysOfWeekDisabled || [];
+//        if (typeof(this.daysOfWeekDisabled) !== 'object') {
+//            this.daysOfWeekDisabled = this.daysOfWeekDisabled.split(/,\s*/);
+//        }
+//        this.daysOfWeekDisabled = this.daysOfWeekDisabled.map(function (d) {
+//            return parseInt(d, 10);
+//        });
+//        this.update();
+//        this.updateNavArrows();
+//    },
+//    
+//    updateNavArrows: function() {
+//        var d = new Date(this.viewDate),
+//        year = d.getUTCFullYear(),
+//        month = d.getUTCMonth();
+//        
+//        Roo.each(this.picker().select('.prev', true).elements, function(v){
+//            v.show();
+//            switch (this.viewMode) {
+//                case 0:
+//
+//                    if (this.startDate !== -Infinity && year <= this.startDate.getUTCFullYear() && month <= this.startDate.getUTCMonth()) {
+//                        v.hide();
+//                    }
+//                    break;
+//                case 1:
+//                case 2:
+//                    if (this.startDate !== -Infinity && year <= this.startDate.getUTCFullYear()) {
+//                        v.hide();
+//                    }
+//                    break;
+//            }
+//        });
+//        
+//        Roo.each(this.picker().select('.next', true).elements, function(v){
+//            v.show();
+//            switch (this.viewMode) {
+//                case 0:
+//
+//                    if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear() && month >= this.endDate.getUTCMonth()) {
+//                        v.hide();
+//                    }
+//                    break;
+//                case 1:
+//                case 2:
+//                    if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear()) {
+//                        v.hide();
+//                    }
+//                    break;
+//            }
+//        })
+//    },
+//    
+//    moveMonth: function(date, dir){
+//        if (!dir) return date;
+//        var new_date = new Date(date.valueOf()),
+//        day = new_date.getUTCDate(),
+//        month = new_date.getUTCMonth(),
+//        mag = Math.abs(dir),
+//        new_month, test;
+//        dir = dir > 0 ? 1 : -1;
+//        if (mag == 1){
+//            test = dir == -1
+//            // If going back one month, make sure month is not current month
+//            // (eg, Mar 31 -> Feb 31 == Feb 28, not Mar 02)
+//            ? function(){
+//                return new_date.getUTCMonth() == month;
+//            }
+//            // If going forward one month, make sure month is as expected
+//            // (eg, Jan 31 -> Feb 31 == Feb 28, not Mar 02)
+//            : function(){
+//                return new_date.getUTCMonth() != new_month;
+//            };
+//            new_month = month + dir;
+//            new_date.setUTCMonth(new_month);
+//            // Dec -> Jan (12) or Jan -> Dec (-1) -- limit expected date to 0-11
+//            if (new_month < 0 || new_month > 11)
+//                new_month = (new_month + 12) % 12;
+//        } else {
+//            // For magnitudes >1, move one month at a time...
+//            for (var i=0; i<mag; i++)
+//                // ...which might decrease the day (eg, Jan 31 to Feb 28, etc)...
+//                new_date = this.moveMonth(new_date, dir);
+//            // ...then reset the day, keeping it in the new month
+//            new_month = new_date.getUTCMonth();
+//            new_date.setUTCDate(day);
+//            test = function(){
+//                return new_month != new_date.getUTCMonth();
+//            };
+//        }
+//        // Common date-resetting loop -- if date is beyond end of month, make it
+//        // end of month
+//        while (test()){
+//            new_date.setUTCDate(--day);
+//            new_date.setUTCMonth(new_month);
+//        }
+//        return new_date;
+//    },
+//
+//    moveYear: function(date, dir){
+//        return this.moveMonth(date, dir*12);
+//    },
+//
+//    dateWithinRange: function(date){
+//        return date >= this.startDate && date <= this.endDate;
+//    },
+
+//    remove: function() {
+//        this.picker().remove();
+//    },
+    
+    onIncrementHours: function()
+    {
+        Roo.log('onIncrementHours');
+    },
+    
+    onDecrementHours: function()
+    {
+        Roo.log('onDecrementHours');
+    },
+    
+    onIncrementMinutes: function()
+    {
+        Roo.log('onIncrementMinutes');
+    },
+    
+    onDecrementMinutes: function()
+    {
+        Roo.log('onDecrementMinutes');
+    },
+    
+    onTogglePeriod: function()
+    {
+        Roo.log('onTogglePeriod');
+    }
+    
+   
+});
+
+Roo.apply(Roo.bootstrap.TimeField,  {
+    
+    content : {
+        tag: 'tbody',
+        cn: [
+        {
+            tag: 'tr',
+            cn: [
+            {
+                tag: 'td',
+                colspan: '7'
+            }
+            ]
+        }
+        ]
+    }
+});
+
+Roo.apply(Roo.bootstrap.TimeField,  {
+  
+    template : {
+        tag: 'div',
+        cls: 'datepicker dropdown-menu',
+        cn: [
+            {
+                tag: 'div',
+                cls: 'datepicker-time',
+                cn: [
+                {
+                    tag: 'table',
+                    cls: 'table-condensed',
+                    cn:[
+                    Roo.bootstrap.DateField.content
+                    ]
+                }
+                ]
+            }
+        ]
+    }
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
  * CheckBox
  * 
  */
