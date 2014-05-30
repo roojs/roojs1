@@ -11851,7 +11851,6 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.pop.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block' 
         
         this.picker().on('mousedown', this.onMousedown, this);
-        this.picker().on('click', this.onClick, this);
         
         this.picker().addClass('datepicker-dropdown');
     
