@@ -12120,7 +12120,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         Roo.log('fill!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
         Roo.log(this.time);
         Roo.log(this.time.getHours());
-//        Roo.log(this.time.get());
+        Roo.log(this.time.getMinutes());
         
     },
 //    
