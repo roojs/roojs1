@@ -42,6 +42,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.pop.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block' 
         
         this.picker().on('mousedown', this.onMousedown, this);
+        this.picker().on('click', this.onClick, this);
         
         this.picker().addClass('datepicker-dropdown');
     
@@ -55,6 +56,11 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.pop.select('button.period', true).first().on('click', this.onTogglePeriod, this);
         this.pop.select('button.ok', true).first().on('click', this.setTime, this);
 
+    },
+    
+    onClick: function(e) {
+        e.stopPropagation();
+        e.preventDefault();
     },
     
     picker : function()
