@@ -124,7 +124,9 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.TimeField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.picker().select('>.datepicker-time',true).first().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.pop = this.picker().select('>.datepicker-time',true).first();
+        this.pop.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block' 
         
         this.picker().on('mousedown', this.onMousedown, this);
         this.picker().on('click', this.onClick, this);
@@ -163,12 +165,12 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
 //            dayFootIcon.addClass('switch-time');
 //            dayFootIcon.addClass('glyphicon-time');
             
-        var hours_up = this.picker().select('>.datepicker-time span.hours-up', true).first();
-        var hours_down = this.picker().select('>.datepicker-time span.hours-down', true).first();
-        var minutes_up = this.picker().select('>.datepicker-time span.minutes-up', true).first();
-        var minutes_down = this.picker().select('>.datepicker-time span.minutes-down', true).first();
+        var hours_up = this.pop.select('>span.hours-up', true).first();
+        var hours_down = this.pop.select('>span.hours-down', true).first();
+        var minutes_up = this.pop.select('>span.minutes-up', true).first();
+        var minutes_down = this.pop.select('>span.minutes-down', true).first();
 
-        var period = this.picker().select('>.datepicker-time button', true).first();
+        var period = this.pop.select('>button', true).first();
 
         hours_up.on('click', this.onIncrementHours, hours_up);
         hours_down.on('click', this.onDecrementHours, hours_down);
@@ -350,10 +352,9 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
     fill: function() 
     {
-        Roo.log('fill!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-        Roo.log(this.time);
-        Roo.log(this.time.getHours());
-        Roo.log(this.time.getMinutes());
+        var hours = this.time.getHours();
+        var minutes = this.time.getMinutes();
+        
         
     },
 //    
