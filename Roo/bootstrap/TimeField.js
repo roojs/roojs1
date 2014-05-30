@@ -25,9 +25,9 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     /**
      * @cfg {String} format
      * The default time format string which can be overriden for localization support.  The format must be
-     * valid according to {@link Date#parseDate} (defaults to 'H:i:s').
+     * valid according to {@link Date#parseDate} (defaults to 'H:i').
      */
-    format : "H:i:s",
+    format : "H:i",
     
     
     UTCDate: function()
