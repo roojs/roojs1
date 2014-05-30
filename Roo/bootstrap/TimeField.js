@@ -338,6 +338,12 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         
     },
     
+    setTime : function()
+    {
+        this.hide();
+        this.setValue(this.time.format(this.format));
+    },
+    
     onMousedown: function(e){
         e.stopPropagation();
         e.preventDefault();
