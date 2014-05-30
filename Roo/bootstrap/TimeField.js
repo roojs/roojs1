@@ -351,7 +351,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     {
         
         Roo.log(this.time.getHours());
-        Roo.log(this.time.get());
+//        Roo.log(this.time.get());
         
     },
 //    
