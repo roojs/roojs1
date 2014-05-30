@@ -165,20 +165,12 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
 //            dayFootIcon.addClass('switch-time');
 //            dayFootIcon.addClass('glyphicon-time');
             
-        var hours_up = this.pop.select('>span.hours-up', true).first();
-        var hours_down = this.pop.select('>span.hours-down', true).first();
-        var minutes_up = this.pop.select('>span.minutes-up', true).first();
-        var minutes_down = this.pop.select('>span.minutes-down', true).first();
+        this.pop.select('>span.hours-up', true).first().on('click', this.onIncrementHours, this);
+        this.pop.select('>span.hours-down', true).first().on('click', this.onDecrementHours, this);
+        this.pop.select('>span.minutes-up', true).first().on('click', this.onIncrementMinutes, this);
+        this.pop.select('>span.minutes-down', true).first().on('click', this.onDecrementMinutes, this);
+        this.pop.select('>button', true).first().on('click', this.onTogglePeriod, this);
 
-        var period = this.pop.select('>button', true).first();
-
-        hours_up.on('click', this.onIncrementHours, hours_up);
-        hours_down.on('click', this.onDecrementHours, hours_down);
-        minutes_up.on('click', this.onIncrementMinutes, minutes_up);
-        minutes_down.on('click', this.onDecrementMinutes, minutes_down);
-
-        period.on('click', this.onTogglePeriod, period);
-            
 //        }else{
 //            Roo.each(this.picker().select('tfoot th', true).elements, function(v){
 //                v.remove();
