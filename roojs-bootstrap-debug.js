@@ -12157,15 +12157,38 @@ Roo.apply(Roo.bootstrap.TimeField,  {
     content : {
         tag: 'tbody',
         cn: [
-        {
-            tag: 'tr',
-            cn: [
             {
-                tag: 'td',
-                colspan: '7'
+                tag: 'tr',
+                cn: [
+                {
+                    tag: 'td',
+                    colspan: '7'
+                }
+                ]
             }
-            ]
-        }
+        ]
+    },
+    
+    footer : {
+        tag: 'tfoot',
+        cn: [
+            {
+                tag: 'tr',
+                cn: [
+                {
+                    tag: 'th',
+                    colspan: '7',
+                    cls: '',
+                    cn: [
+                        {
+                            tag: 'button',
+                            cls: 'btn btn-info glyphicon glyphicon-ok'   
+                        }
+                    ]
+                }
+
+                ]
+            }
         ]
     }
 });
@@ -12184,7 +12207,8 @@ Roo.apply(Roo.bootstrap.TimeField,  {
                     tag: 'table',
                     cls: 'table-condensed',
                     cn:[
-                    Roo.bootstrap.DateField.content
+                    Roo.bootstrap.TimeField.content,
+                    Roo.bootstrap.TimeField.footer
                     ]
                 }
                 ]

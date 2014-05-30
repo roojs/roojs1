@@ -413,8 +413,8 @@ Roo.apply(Roo.bootstrap.TimeField,  {
                     cls: '',
                     cn: [
                         {
-                            tag: 'span',
-                            cls: 'picker-switch-icon glyphicon'   
+                            tag: 'button',
+                            cls: 'btn btn-info glyphicon glyphicon-ok'   
                         }
                     ]
                 }
