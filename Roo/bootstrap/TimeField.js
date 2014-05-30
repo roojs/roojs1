@@ -348,9 +348,16 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         var minutes = this.time.getMinutes();
         var period = 'AM';
         
+        if(hours == 0){
+            hours = 12;
+        }
+        
+        if(hours > 11){
+            period = 'PM';
+        }
+        
         if(hours > 12){
             hours = hours - 12;
-            period = 'PM';
         }
         
         if(hours < 10){
