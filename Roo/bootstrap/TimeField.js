@@ -353,6 +353,14 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
             period = 'PM';
         }
         
+        if(hours < 10){
+            hours = '0' + hours;
+        }
+        
+        if(minutes < 10){
+            minutes = '0' + minutes;
+        }
+        
         this.pop.select('.timepicker-hour', true).first().dom.innerHTML = hours;
         this.pop.select('.timepicker-minute', true).first().dom.innerHTML = minutes;
         this.pop.select('button', true).first().dom.innerHTML = period;
