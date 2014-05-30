@@ -12114,7 +12114,16 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     {
         var hours = this.time.getHours();
         var minutes = this.time.getMinutes();
+        var period = 'AM';
         
+        if(hours > 12){
+            hours = hours - 12;
+            period = 'PM';
+        }
+        
+        this.pop.select('>.timepicker-hour', true).first().innerHTML = hours;
+        this.pop.select('>.timepicker-minute', true).first().innerHTML = minutes;
+        this.pop.select('>button', true).first().innerHTML = period;
         
     },
 //    
