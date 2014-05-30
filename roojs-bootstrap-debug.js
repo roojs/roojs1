@@ -12228,6 +12228,8 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.picker().hide();
         this.pop.hide();
         
+        this.setValue(this.time.format(this.format));
+        
     },
     
     onMousedown: function(e){
