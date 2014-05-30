@@ -121,7 +121,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
 //            }
 //        }
                 
-        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
+        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.TimeField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
