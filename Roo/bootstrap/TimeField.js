@@ -145,46 +145,46 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.update();
 //        this.showMode();
         
-        if(this.showTime){
+//        if(this.showTime){
             
-            var dayFoot = this.picker().select('>.datepicker-days tfoot th', true).first();
-            var timeFoot = this.picker().select('>.datepicker-time tfoot th', true).first();
+//            var dayFoot = this.picker().select('>.datepicker-days tfoot th', true).first();
+//            var timeFoot = this.picker().select('>.datepicker-time tfoot th', true).first();
+//
+//            var dayFootIcon = this.picker().select('>.datepicker-days tfoot span.picker-switch-icon', true).first();
+//            var timeFootIcon = this.picker().select('>.datepicker-time tfoot span.picker-switch-icon', true).first();
+//            
+//            timeFoot.addClass('switch-calendar');
+//            dayFoot.addClass('switch-time');
+//            
+//            timeFootIcon.addClass('switch-calendar');
+//            timeFootIcon.addClass('glyphicon-calendar');
+//            
+//            dayFootIcon.addClass('switch-time');
+//            dayFootIcon.addClass('glyphicon-time');
+            
+        var hours_up = this.picker().select('>.datepicker-time span.hours-up', true).first();
+        var hours_down = this.picker().select('>.datepicker-time span.hours-down', true).first();
+        var minutes_up = this.picker().select('>.datepicker-time span.minutes-up', true).first();
+        var minutes_down = this.picker().select('>.datepicker-time span.minutes-down', true).first();
 
-            var dayFootIcon = this.picker().select('>.datepicker-days tfoot span.picker-switch-icon', true).first();
-            var timeFootIcon = this.picker().select('>.datepicker-time tfoot span.picker-switch-icon', true).first();
+        var period = this.picker().select('>.datepicker-time button', true).first();
+
+        hours_up.on('click', this.onIncrementHours, hours_up);
+        hours_down.on('click', this.onDecrementHours, hours_down);
+        minutes_up.on('click', this.onIncrementMinutes, minutes_up);
+        minutes_down.on('click', this.onDecrementMinutes, minutes_down);
+
+        period.on('click', this.onTogglePeriod, period);
             
-            timeFoot.addClass('switch-calendar');
-            dayFoot.addClass('switch-time');
-            
-            timeFootIcon.addClass('switch-calendar');
-            timeFootIcon.addClass('glyphicon-calendar');
-            
-            dayFootIcon.addClass('switch-time');
-            dayFootIcon.addClass('glyphicon-time');
-            
-            var hours_up = this.picker().select('>.datepicker-time span.hours-up', true).first();
-            var hours_down = this.picker().select('>.datepicker-time span.hours-down', true).first();
-            var minutes_up = this.picker().select('>.datepicker-time span.minutes-up', true).first();
-            var minutes_down = this.picker().select('>.datepicker-time span.minutes-down', true).first();
-            
-            var period = this.picker().select('>.datepicker-time button', true).first();
-            
-            hours_up.on('click', this.onIncrementHours, hours_up);
-            hours_down.on('click', this.onDecrementHours, hours_down);
-            minutes_up.on('click', this.onIncrementMinutes, minutes_up);
-            minutes_down.on('click', this.onDecrementMinutes, minutes_down);
-            
-            period.on('click', this.onTogglePeriod, period);
-            
-        }else{
-            Roo.each(this.picker().select('tfoot th', true).elements, function(v){
-                v.remove();
-            });
-        }
-        
-        if(this.isInline) {
-            this.show();
-        }
+//        }else{
+//            Roo.each(this.picker().select('tfoot th', true).elements, function(v){
+//                v.remove();
+//            });
+//        }
+//        
+//        if(this.isInline) {
+//            this.show();
+//        }
     },
     
     picker : function()
