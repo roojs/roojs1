@@ -67,6 +67,7 @@ Roo.bootstrap.ProgressBar
 Roo.bootstrap.TabPanel
 
 Roo.bootstrap.DateField
+Roo.bootstrap.TimeField
 
 Roo.bootstrap.CheckBox
 Roo.bootstrap.Radio
