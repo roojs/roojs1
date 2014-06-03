@@ -76,7 +76,6 @@ Roo.HtmlEditorCore
 Roo.bootstrap.HtmlEditor
 Roo.bootstrap.HtmlEditor.ToolbarStandard
 
-
 Roo.bootstrap.Table.AbstractSelectionModel
 Roo.bootstrap.Table.ColumnModel
 Roo.bootstrap.Table.RowSelectionModel
