@@ -14027,7 +14027,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     onRender : function(ct, position)
     {
        // Roo.log("Call onRender: " + this.xtype);
-        
+        var _t = this;
         Roo.bootstrap.HtmlEditor.superclass.onRender.call(this, ct, position);
       
         this.wrap = this.inputEl().wrap({
@@ -14268,977 +14268,281 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
    
    
    
-    
+      
+
 /**
- * @class Roo.bootstrap.Table.AbstractSelectionModel
- * @extends Roo.util.Observable
- * Abstract base class for grid SelectionModels.  It provides the interface that should be
- * implemented by descendant classes.  This class should not be directly instantiated.
- * @constructor
- */
-Roo.bootstrap.Table.AbstractSelectionModel = function(){
-    this.locked = false;
-    Roo.bootstrap.Table.AbstractSelectionModel.superclass.constructor.call(this);
-};
-
-
-Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel, Roo.util.Observable,  {
-    /** @ignore Called by the grid automatically. Do not call directly. */
-    init : function(grid){
-        this.grid = grid;
-        this.initEvents();
-    },
-
-    /**
-     * Locks the selections.
-     */
-    lock : function(){
-        this.locked = true;
-    },
-
-    /**
-     * Unlocks the selections.
-     */
-    unlock : function(){
-        this.locked = false;
-    },
-
-    /**
-     * Returns true if the selections are locked.
-     * @return {Boolean}
-     */
-    isLocked : function(){
-        return this.locked;
+ * @class Roo.bootstrap.HtmlEditorToolbar1
+ * Basic Toolbar
+ * 
+ * Usage:
+ *
+ new Roo.bootstrap.HtmlEditor({
+    ....
+    toolbars : [
+        new Roo.bootstrap.HtmlEditorToolbar1({
+            disable : { fonts: 1 , format: 1, ..., ... , ...],
+            btns : [ .... ]
+        })
     }
-});
-/**
- * @class Roo.bootstrap.Table.ColumnModel
- * @extends Roo.util.Observable
- * This is the default implementation of a ColumnModel used by the bootstrap table. It defines
- * the columns in the table.
+     
+ * 
+ * @cfg {Object} disable List of elements to disable..
+ * @cfg {Array} btns List of additional buttons.
+ * 
+ * 
+ * NEEDS Extra CSS? 
+ * .x-html-editor-tb .x-edit-none .x-btn-text { background: none; }
+ */
  
- * @constructor
- * @param {Object} config An Array of column config objects. See this class's
- * config objects for details.
-*/
-Roo.bootstrap.Table.ColumnModel = function(config){
-	/**
-     * The config passed into the constructor
-     */
-    this.config = config;
-    this.lookup = {};
-
-    // if no id, create one
-    // if the column does not have a dataIndex mapping,
-    // map it to the order it is in the config
-    for(var i = 0, len = config.length; i < len; i++){
-        var c = config[i];
-        if(typeof c.dataIndex == "undefined"){
-            c.dataIndex = i;
-        }
-        if(typeof c.renderer == "string"){
-            c.renderer = Roo.util.Format[c.renderer];
-        }
-        if(typeof c.id == "undefined"){
-            c.id = Roo.id();
-        }
-//        if(c.editor && c.editor.xtype){
-//            c.editor  = Roo.factory(c.editor, Roo.grid);
-//        }
-//        if(c.editor && c.editor.isFormField){
-//            c.editor = new Roo.grid.GridEditor(c.editor);
-//        }
-
-        this.lookup[c.id] = c;
-    }
-
-    /**
-     * The width of columns which have no width specified (defaults to 100)
-     * @type Number
-     */
-    this.defaultWidth = 100;
-
-    /**
-     * Default sortable of columns which have no sortable specified (defaults to false)
-     * @type Boolean
-     */
-    this.defaultSortable = false;
-
-    this.addEvents({
-        /**
-	     * @event widthchange
-	     * Fires when the width of a column changes.
-	     * @param {ColumnModel} this
-	     * @param {Number} columnIndex The column index
-	     * @param {Number} newWidth The new width
-	     */
-	    "widthchange": true,
-        /**
-	     * @event headerchange
-	     * Fires when the text of a header changes.
-	     * @param {ColumnModel} this
-	     * @param {Number} columnIndex The column index
-	     * @param {Number} newText The new header text
-	     */
-	    "headerchange": true,
-        /**
-	     * @event hiddenchange
-	     * Fires when a column is hidden or "unhidden".
-	     * @param {ColumnModel} this
-	     * @param {Number} columnIndex The column index
-	     * @param {Boolean} hidden true if hidden, false otherwise
-	     */
-	    "hiddenchange": true,
-	    /**
-         * @event columnmoved
-         * Fires when a column is moved.
-         * @param {ColumnModel} this
-         * @param {Number} oldIndex
-         * @param {Number} newIndex
-         */
-        "columnmoved" : true,
-        /**
-         * @event columlockchange
-         * Fires when a column's locked state is changed
-         * @param {ColumnModel} this
-         * @param {Number} colIndex
-         * @param {Boolean} locked true if locked
-         */
-        "columnlockchange" : true
-    });
-    Roo.bootstrap.Table.ColumnModel.superclass.constructor.call(this);
-};
-Roo.extend(Roo.bootstrap.Table.ColumnModel, Roo.util.Observable, {
-    /**
-     * @cfg {String} header The header text to display in the Grid view.
-     */
-    /**
-     * @cfg {String} dataIndex (Optional) The name of the field in the grid's {@link Roo.data.Store}'s
-     * {@link Roo.data.Record} definition from which to draw the column's value. If not
-     * specified, the column's index is used as an index into the Record's data Array.
-     */
-    /**
-     * @cfg {Number} width (Optional) The initial width in pixels of the column. Using this
-     * instead of {@link Roo.grid.Grid#autoSizeColumns} is more efficient.
-     */
-    /**
-     * @cfg {Boolean} sortable (Optional) True if sorting is to be allowed on this column.
-     * Defaults to the value of the {@link #defaultSortable} property.
-     * Whether local/remote sorting is used is specified in {@link Roo.data.Store#remoteSort}.
-     */
-    /**
-     * @cfg {Boolean} locked (Optional) True to lock the column in place while scrolling the Grid.  Defaults to false.
-     */
-    /**
-     * @cfg {Boolean} fixed (Optional) True if the column width cannot be changed.  Defaults to false.
-     */
-    /**
-     * @cfg {Boolean} resizable (Optional) False to disable column resizing. Defaults to true.
-     */
-    /**
-     * @cfg {Boolean} hidden (Optional) True to hide the column. Defaults to false.
-     */
-    /**
-     * @cfg {Function} renderer (Optional) A function used to generate HTML markup for a cell
-     * given the cell's data value. See {@link #setRenderer}. If not specified, the
-     * default renderer uses the raw data value.
-     */
-    /**
-     * @cfg {String} align (Optional) Set the CSS text-align property of the column.  Defaults to undefined.
-     */
-
-    /**
-     * Returns the id of the column at the specified index.
-     * @param {Number} index The column index
-     * @return {String} the id
-     */
-    getColumnId : function(index){
-        return this.config[index].id;
-    },
-
-    /**
-     * Returns the column for a specified id.
-     * @param {String} id The column id
-     * @return {Object} the column
-     */
-    getColumnById : function(id){
-        return this.lookup[id];
-    },
-
+Roo.bootstrap.HtmlEditor.ToolbarStandard = function(config)
+{
     
-    /**
-     * Returns the column for a specified dataIndex.
-     * @param {String} dataIndex The column dataIndex
-     * @return {Object|Boolean} the column or false if not found
-     */
-    getColumnByDataIndex: function(dataIndex){
-        var index = this.findColumnIndex(dataIndex);
-        return index > -1 ? this.config[index] : false;
-    },
-    
-    /**
-     * Returns the index for a specified column id.
-     * @param {String} id The column id
-     * @return {Number} the index, or -1 if not found
-     */
-    getIndexById : function(id){
-        for(var i = 0, len = this.config.length; i < len; i++){
-            if(this.config[i].id == id){
-                return i;
-            }
-        }
-        return -1;
-    },
-    
-    /**
-     * Returns the index for a specified column dataIndex.
-     * @param {String} dataIndex The column dataIndex
-     * @return {Number} the index, or -1 if not found
-     */
-    
-    findColumnIndex : function(dataIndex){
-        for(var i = 0, len = this.config.length; i < len; i++){
-            if(this.config[i].dataIndex == dataIndex){
-                return i;
-            }
-        }
-        return -1;
-    },
-    
-    
-    moveColumn : function(oldIndex, newIndex){
-        var c = this.config[oldIndex];
-        this.config.splice(oldIndex, 1);
-        this.config.splice(newIndex, 0, c);
-        this.dataMap = null;
-        this.fireEvent("columnmoved", this, oldIndex, newIndex);
-    },
-
-    isLocked : function(colIndex){
-        return this.config[colIndex].locked === true;
-    },
-
-    setLocked : function(colIndex, value, suppressEvent){
-        if(this.isLocked(colIndex) == value){
-            return;
-        }
-        this.config[colIndex].locked = value;
-        if(!suppressEvent){
-            this.fireEvent("columnlockchange", this, colIndex, value);
-        }
-    },
-
-    getTotalLockedWidth : function(){
-        var totalWidth = 0;
-        for(var i = 0; i < this.config.length; i++){
-            if(this.isLocked(i) && !this.isHidden(i)){
-                this.totalWidth += this.getColumnWidth(i);
-            }
-        }
-        return totalWidth;
-    },
-
-    getLockedCount : function(){
-        for(var i = 0, len = this.config.length; i < len; i++){
-            if(!this.isLocked(i)){
-                return i;
-            }
-        }
-    },
-
-    /**
-     * Returns the number of columns.
-     * @return {Number}
-     */
-    getColumnCount : function(visibleOnly){
-        if(visibleOnly === true){
-            var c = 0;
-            for(var i = 0, len = this.config.length; i < len; i++){
-                if(!this.isHidden(i)){
-                    c++;
-                }
-            }
-            return c;
-        }
-        return this.config.length;
-    },
-
-    /**
-     * Returns the column configs that return true by the passed function that is called with (columnConfig, index)
-     * @param {Function} fn
-     * @param {Object} scope (optional)
-     * @return {Array} result
-     */
-    getColumnsBy : function(fn, scope){
-        var r = [];
-        for(var i = 0, len = this.config.length; i < len; i++){
-            var c = this.config[i];
-            if(fn.call(scope||this, c, i) === true){
-                r[r.length] = c;
-            }
-        }
-        return r;
-    },
-
-    /**
-     * Returns true if the specified column is sortable.
-     * @param {Number} col The column index
-     * @return {Boolean}
-     */
-    isSortable : function(col){
-        if(typeof this.config[col].sortable == "undefined"){
-            return this.defaultSortable;
-        }
-        return this.config[col].sortable;
-    },
-
-    /**
-     * Returns the rendering (formatting) function defined for the column.
-     * @param {Number} col The column index.
-     * @return {Function} The function used to render the cell. See {@link #setRenderer}.
-     */
-    getRenderer : function(col){
-        if(!this.config[col].renderer){
-            return Roo.bootstrap.Table.ColumnModel.defaultRenderer;
-        }
-        return this.config[col].renderer;
-    },
-
-    /**
-     * Sets the rendering (formatting) function for a column.
-     * @param {Number} col The column index
-     * @param {Function} fn The function to use to process the cell's raw data
-     * to return HTML markup for the grid view. The render function is called with
-     * the following parameters:<ul>
-     * <li>Data value.</li>
-     * <li>Cell metadata. An object in which you may set the following attributes:<ul>
-     * <li>css A CSS style string to apply to the table cell.</li>
-     * <li>attr An HTML attribute definition string to apply to the data container element <i>within</i> the table cell.</li></ul>
-     * <li>The {@link Roo.data.Record} from which the data was extracted.</li>
-     * <li>Row index</li>
-     * <li>Column index</li>
-     * <li>The {@link Roo.data.Store} object from which the Record was extracted</li></ul>
-     */
-    setRenderer : function(col, fn){
-        this.config[col].renderer = fn;
-    },
-
-    /**
-     * Returns the width for the specified column.
-     * @param {Number} col The column index
-     * @return {Number}
-     */
-    getColumnWidth : function(col){
-        return this.config[col].width * 1 || this.defaultWidth;
-    },
-
-    /**
-     * Sets the width for a column.
-     * @param {Number} col The column index
-     * @param {Number} width The new width
-     */
-    setColumnWidth : function(col, width, suppressEvent){
-        this.config[col].width = width;
-        this.totalWidth = null;
-        if(!suppressEvent){
-             this.fireEvent("widthchange", this, col, width);
-        }
-    },
-
-    /**
-     * Returns the total width of all columns.
-     * @param {Boolean} includeHidden True to include hidden column widths
-     * @return {Number}
-     */
-    getTotalWidth : function(includeHidden){
-        if(!this.totalWidth){
-            this.totalWidth = 0;
-            for(var i = 0, len = this.config.length; i < len; i++){
-                if(includeHidden || !this.isHidden(i)){
-                    this.totalWidth += this.getColumnWidth(i);
-                }
-            }
-        }
-        return this.totalWidth;
-    },
-
-    /**
-     * Returns the header for the specified column.
-     * @param {Number} col The column index
-     * @return {String}
-     */
-    getColumnHeader : function(col){
-        return this.config[col].header;
-    },
-
-    /**
-     * Sets the header for a column.
-     * @param {Number} col The column index
-     * @param {String} header The new header
-     */
-    setColumnHeader : function(col, header){
-        this.config[col].header = header;
-        this.fireEvent("headerchange", this, col, header);
-    },
-
-    /**
-     * Returns the tooltip for the specified column.
-     * @param {Number} col The column index
-     * @return {String}
-     */
-    getColumnTooltip : function(col){
-            return this.config[col].tooltip;
-    },
-    /**
-     * Sets the tooltip for a column.
-     * @param {Number} col The column index
-     * @param {String} tooltip The new tooltip
-     */
-    setColumnTooltip : function(col, tooltip){
-            this.config[col].tooltip = tooltip;
-    },
-
-    /**
-     * Returns the dataIndex for the specified column.
-     * @param {Number} col The column index
-     * @return {Number}
-     */
-    getDataIndex : function(col){
-        return this.config[col].dataIndex;
-    },
-
-    /**
-     * Sets the dataIndex for a column.
-     * @param {Number} col The column index
-     * @param {Number} dataIndex The new dataIndex
-     */
-    setDataIndex : function(col, dataIndex){
-        this.config[col].dataIndex = dataIndex;
-    },
-
-    
-    
-    /**
-     * Returns true if the cell is editable.
-     * @param {Number} colIndex The column index
-     * @param {Number} rowIndex The row index
-     * @return {Boolean}
-     */
-    isCellEditable : function(colIndex, rowIndex){
-        return (this.config[colIndex].editable || (typeof this.config[colIndex].editable == "undefined" && this.config[colIndex].editor)) ? true : false;
-    },
-
-    /**
-     * Returns the editor defined for the cell/column.
-     * return false or null to disable editing.
-     * @param {Number} colIndex The column index
-     * @param {Number} rowIndex The row index
-     * @return {Object}
-     */
-    getCellEditor : function(colIndex, rowIndex){
-        return this.config[colIndex].editor;
-    },
-
-    /**
-     * Sets if a column is editable.
-     * @param {Number} col The column index
-     * @param {Boolean} editable True if the column is editable
-     */
-    setEditable : function(col, editable){
-        this.config[col].editable = editable;
-    },
-
-
-    /**
-     * Returns true if the column is hidden.
-     * @param {Number} colIndex The column index
-     * @return {Boolean}
-     */
-    isHidden : function(colIndex){
-        return this.config[colIndex].hidden;
-    },
-
-
-    /**
-     * Returns true if the column width cannot be changed
-     */
-    isFixed : function(colIndex){
-        return this.config[colIndex].fixed;
-    },
-
-    /**
-     * Returns true if the column can be resized
-     * @return {Boolean}
-     */
-    isResizable : function(colIndex){
-        return colIndex >= 0 && this.config[colIndex].resizable !== false && this.config[colIndex].fixed !== true;
-    },
-    /**
-     * Sets if a column is hidden.
-     * @param {Number} colIndex The column index
-     * @param {Boolean} hidden True if the column is hidden
-     */
-    setHidden : function(colIndex, hidden){
-        this.config[colIndex].hidden = hidden;
-        this.totalWidth = null;
-        this.fireEvent("hiddenchange", this, colIndex, hidden);
-    },
-
-    /**
-     * Sets the editor for a column.
-     * @param {Number} col The column index
-     * @param {Object} editor The editor object
-     */
-    setEditor : function(col, editor){
-        this.config[col].editor = editor;
-    }
-});
-
-Roo.bootstrap.Table.ColumnModel.defaultRenderer = function(value){
-	if(typeof value == "string" && value.length < 1){
-	    return "&#160;";
-	}
-	return value;
-};
-
-// Alias for backwards compatibility
-Roo.bootstrap.Table.DefaultColumnModel = Roo.bootstrap.Table.ColumnModel;
-
-/**
- * @extends Roo.bootstrap.Table.AbstractSelectionModel
- * @class Roo.bootstrap.Table.RowSelectionModel
- * The default SelectionModel used by {@link Roo.bootstrap.Table}.
- * It supports multiple selections and keyboard selection/navigation. 
- * @constructor
- * @param {Object} config
- */
-
-Roo.bootstrap.Table.RowSelectionModel = function(config){
     Roo.apply(this, config);
-    this.selections = new Roo.util.MixedCollection(false, function(o){
-        return o.id;
+    
+    // default disabled, based on 'good practice'..
+    this.disable = this.disable || {};
+    Roo.applyIf(this.disable, {
+        fontSize : true,
+        colors : true,
+        specialElements : true
     });
-
-    this.last = false;
-    this.lastActive = false;
-
-    this.addEvents({
-        /**
-	     * @event selectionchange
-	     * Fires when the selection changes
-	     * @param {SelectionModel} this
-	     */
-	    "selectionchange" : true,
-        /**
-	     * @event afterselectionchange
-	     * Fires after the selection changes (eg. by key press or clicking)
-	     * @param {SelectionModel} this
-	     */
-	    "afterselectionchange" : true,
-        /**
-	     * @event beforerowselect
-	     * Fires when a row is selected being selected, return false to cancel.
-	     * @param {SelectionModel} this
-	     * @param {Number} rowIndex The selected index
-	     * @param {Boolean} keepExisting False if other selections will be cleared
-	     */
-	    "beforerowselect" : true,
-        /**
-	     * @event rowselect
-	     * Fires when a row is selected.
-	     * @param {SelectionModel} this
-	     * @param {Number} rowIndex The selected index
-	     * @param {Roo.data.Record} r The record
-	     */
-	    "rowselect" : true,
-        /**
-	     * @event rowdeselect
-	     * Fires when a row is deselected.
-	     * @param {SelectionModel} this
-	     * @param {Number} rowIndex The selected index
-	     */
-        "rowdeselect" : true
-    });
-    Roo.bootstrap.Table.RowSelectionModel.superclass.constructor.call(this);
-    this.locked = false;
-};
-
-Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSelectionModel,  {
-    /**
-     * @cfg {Boolean} singleSelect
-     * True to allow selection of only one row at a time (defaults to false)
-     */
-    singleSelect : false,
-
-    // private
-    initEvents : function(){
-
-        if(!this.grid.enableDragDrop && !this.grid.enableDrag){
-            this.grid.on("mousedown", this.handleMouseDown, this);
-        }else{ // allow click to work like normal
-            this.grid.on("rowclick", this.handleDragableRowClick, this);
-        }
-
-        this.rowNav = new Roo.KeyNav(this.grid.getGridEl(), {
-            "up" : function(e){
-                if(!e.shiftKey){
-                    this.selectPrevious(e.shiftKey);
-                }else if(this.last !== false && this.lastActive !== false){
-                    var last = this.last;
-                    this.selectRange(this.last,  this.lastActive-1);
-                    this.grid.getView().focusRow(this.lastActive);
-                    if(last !== false){
-                        this.last = last;
-                    }
-                }else{
-                    this.selectFirstRow();
-                }
-                this.fireEvent("afterselectionchange", this);
-            },
-            "down" : function(e){
-                if(!e.shiftKey){
-                    this.selectNext(e.shiftKey);
-                }else if(this.last !== false && this.lastActive !== false){
-                    var last = this.last;
-                    this.selectRange(this.last,  this.lastActive+1);
-                    this.grid.getView().focusRow(this.lastActive);
-                    if(last !== false){
-                        this.last = last;
-                    }
-                }else{
-                    this.selectFirstRow();
-                }
-                this.fireEvent("afterselectionchange", this);
-            },
-            scope: this
-        });
-
-        var view = this.grid.view;
-        view.on("refresh", this.onRefresh, this);
-        view.on("rowupdated", this.onRowUpdated, this);
-        view.on("rowremoved", this.onRemove, this);
-    },
-
-    // private
-    onRefresh : function(){
-        var ds = this.grid.dataSource, i, v = this.grid.view;
-        var s = this.selections;
-        s.each(function(r){
-            if((i = ds.indexOfId(r.id)) != -1){
-                v.onRowSelect(i);
-            }else{
-                s.remove(r);
-            }
-        });
-    },
-
-    // private
-    onRemove : function(v, index, r){
-        this.selections.remove(r);
-    },
-
-    // private
-    onRowUpdated : function(v, index, r){
-        if(this.isSelected(r)){
-            v.onRowSelect(index);
-        }
-    },
-
-    /**
-     * Select records.
-     * @param {Array} records The records to select
-     * @param {Boolean} keepExisting (optional) True to keep existing selections
-     */
-    selectRecords : function(records, keepExisting){
-        if(!keepExisting){
-            this.clearSelections();
-        }
-        var ds = this.grid.dataSource;
-        for(var i = 0, len = records.length; i < len; i++){
-            this.selectRow(ds.indexOf(records[i]), true);
-        }
-    },
-
-    /**
-     * Gets the number of selected rows.
-     * @return {Number}
-     */
-    getCount : function(){
-        return this.selections.length;
-    },
-
-    /**
-     * Selects the first row in the grid.
-     */
-    selectFirstRow : function(){
-        this.selectRow(0);
-    },
-
-    /**
-     * Select the last row.
-     * @param {Boolean} keepExisting (optional) True to keep existing selections
-     */
-    selectLastRow : function(keepExisting){
-        this.selectRow(this.grid.dataSource.getCount() - 1, keepExisting);
-    },
-
-    /**
-     * Selects the row immediately following the last selected row.
-     * @param {Boolean} keepExisting (optional) True to keep existing selections
-     */
-    selectNext : function(keepExisting){
-        if(this.last !== false && (this.last+1) < this.grid.dataSource.getCount()){
-            this.selectRow(this.last+1, keepExisting);
-            this.grid.getView().focusRow(this.last);
-        }
-    },
-
-    /**
-     * Selects the row that precedes the last selected row.
-     * @param {Boolean} keepExisting (optional) True to keep existing selections
-     */
-    selectPrevious : function(keepExisting){
-        if(this.last){
-            this.selectRow(this.last-1, keepExisting);
-            this.grid.getView().focusRow(this.last);
-        }
-    },
-
-    /**
-     * Returns the selected records
-     * @return {Array} Array of selected records
-     */
-    getSelections : function(){
-        return [].concat(this.selections.items);
-    },
-
-    /**
-     * Returns the first selected record.
-     * @return {Record}
-     */
-    getSelected : function(){
-        return this.selections.itemAt(0);
-    },
-
-
-    /**
-     * Clears all selections.
-     */
-    clearSelections : function(fast){
-        if(this.locked) return;
-        if(fast !== true){
-            var ds = this.grid.dataSource;
-            var s = this.selections;
-            s.each(function(r){
-                this.deselectRow(ds.indexOfId(r.id));
-            }, this);
-            s.clear();
-        }else{
-            this.selections.clear();
-        }
-        this.last = false;
-    },
-
-
-    /**
-     * Selects all rows.
-     */
-    selectAll : function(){
-        if(this.locked) return;
-        this.selections.clear();
-        for(var i = 0, len = this.grid.dataSource.getCount(); i < len; i++){
-            this.selectRow(i, true);
-        }
-    },
-
-    /**
-     * Returns True if there is a selection.
-     * @return {Boolean}
-     */
-    hasSelection : function(){
-        return this.selections.length > 0;
-    },
-
-    /**
-     * Returns True if the specified row is selected.
-     * @param {Number/Record} record The record or index of the record to check
-     * @return {Boolean}
-     */
-    isSelected : function(index){
-        var r = typeof index == "number" ? this.grid.dataSource.getAt(index) : index;
-        return (r && this.selections.key(r.id) ? true : false);
-    },
-
-    /**
-     * Returns True if the specified record id is selected.
-     * @param {String} id The id of record to check
-     * @return {Boolean}
-     */
-    isIdSelected : function(id){
-        return (this.selections.key(id) ? true : false);
-    },
-
-    // private
-    handleMouseDown : function(e, t){
-        var view = this.grid.getView(), rowIndex;
-        if(this.isLocked() || (rowIndex = view.findRowIndex(t)) === false){
-            return;
-        };
-        if(e.shiftKey && this.last !== false){
-            var last = this.last;
-            this.selectRange(last, rowIndex, e.ctrlKey);
-            this.last = last; // reset the last
-            view.focusRow(rowIndex);
-        }else{
-            var isSelected = this.isSelected(rowIndex);
-            if(e.button !== 0 && isSelected){
-                view.focusRow(rowIndex);
-            }else if(e.ctrlKey && isSelected){
-                this.deselectRow(rowIndex);
-            }else if(!isSelected){
-                this.selectRow(rowIndex, e.button === 0 && (e.ctrlKey || e.shiftKey));
-                view.focusRow(rowIndex);
-            }
-        }
-        this.fireEvent("afterselectionchange", this);
-    },
-    // private
-    handleDragableRowClick :  function(grid, rowIndex, e) 
+    Roo.bootstrap.HtmlEditor.ToolbarStandard.superclass.constructor.call(this, config);
+    
+    this.editor = config.editor;
+    this.editorcore = config.editor.editorcore;
+    
+    this.buttons   = new Roo.util.MixedCollection(false, function(o) { return o.cmd; });
+    
+    //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
+    // dont call parent... till later.
+}
+Roo.extend(Roo.bootstrap.HtmlEditor.ToolbarStandard, Roo.bootstrap.Navbar,  {
+    
+    
+    bar : true,
+    
+    editor : false,
+    editorcore : false,
+    
+    
+    formats : [
+        "p" ,  
+        "h1","h2","h3","h4","h5","h6", 
+        "pre", "code", 
+        "abbr", "acronym", "address", "cite", "samp", "var",
+        'div','span'
+    ],
+    
+    onRender : function(ct, position)
     {
-        if(e.button === 0 && !e.shiftKey && !e.ctrlKey) {
-            this.selectRow(rowIndex, false);
-            grid.view.focusRow(rowIndex);
-             this.fireEvent("afterselectionchange", this);
+       // Roo.log("Call onRender: " + this.xtype);
+        
+       Roo.bootstrap.HtmlEditor.ToolbarStandard.superclass.onRender.call(this, ct, position);
+       Roo.log(this.el);
+       this.el.dom.style.marginBottom = '0';
+       var _this = this;
+       var editorcore = this.editorcore;
+       var editor= this.editor;
+       
+       var children = [];
+       var btn = function(id,cmd , toggle, handler){
+       
+            var  event = toggle ? 'toggle' : 'click';
+       
+            var a = {
+                size : 'sm',
+                xtype: 'Button',
+                xns: Roo.bootstrap,
+                glyphicon : id,
+                cmd : id || cmd,
+                enableToggle:toggle !== false,
+                //html : 'submit'
+                pressed : toggle ? false : null,
+                listeners : {}
+            }
+            a.listeners[toggle ? 'toggle' : 'click'] = function() {
+                handler ? handler.call(_this,this) :_this.onBtnClick.call(_this, cmd ||  id);
+            }
+            children.push(a);
+            return a;
+       }
+        
+        var style = {
+                xtype: 'Button',
+                size : 'sm',
+                xns: Roo.bootstrap,
+                glyphicon : 'font',
+                //html : 'submit'
+                menu : {
+                    xtype: 'Menu',
+                    xns: Roo.bootstrap,
+                    items:  []
+                }
+        };
+        Roo.each(this.formats, function(f) {
+            style.menu.items.push({
+                xtype :'MenuItem',
+                xns: Roo.bootstrap,
+                html : '<'+ f+' style="margin:2px">'+f +'</'+ f+'>',
+                tagname : f,
+                listeners : {
+                    click : function()
+                    {
+                        editorcore.insertTag(this.tagname);
+                        editor.focus();
+                    }
+                }
+                
+            });
+        });
+         children.push(style);   
+            
+            
+        btn('bold',false,true);
+        btn('italic',false,true);
+        btn('align-left', 'justifyleft',true);
+        btn('align-center', 'justifycenter',true);
+        btn('align-right' , 'justifyright',true);
+        btn('link', false, false, function(btn) {
+            //Roo.log("create link?");
+            var url = prompt(this.createLinkText, this.defaultLinkValue);
+            if(url && url != 'http:/'+'/'){
+                this.editorcore.relayCmd('createlink', url);
+            }
+        }),
+        btn('list','insertunorderedlist',true);
+        btn('pencil', false,true, function(btn){
+                Roo.log(this);
+                
+                this.toggleSourceEdit(btn.pressed);
+        });
+        /*
+        var cog = {
+                xtype: 'Button',
+                size : 'sm',
+                xns: Roo.bootstrap,
+                glyphicon : 'cog',
+                //html : 'submit'
+                menu : {
+                    xtype: 'Menu',
+                    xns: Roo.bootstrap,
+                    items:  []
+                }
+        };
+        
+        cog.menu.items.push({
+            xtype :'MenuItem',
+            xns: Roo.bootstrap,
+            html : Clean styles,
+            tagname : f,
+            listeners : {
+                click : function()
+                {
+                    editorcore.insertTag(this.tagname);
+                    editor.focus();
+                }
+            }
+            
+        });
+       */
+        
+         
+       this.xtype = 'Navbar';
+        
+        for(var i=0;i< children.length;i++) {
+            
+            this.buttons.add(this.addxtypeChild(children[i]));
+            
         }
+        
+        editor.on('editorevent', this.updateToolbar, this);
+    },
+    onBtnClick : function(id)
+    {
+       this.editorcore.relayCmd(id);
+       this.editorcore.focus();
     },
     
     /**
-     * Selects multiple rows.
-     * @param {Array} rows Array of the indexes of the row to select
-     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     * Protected method that will not generally be called directly. It triggers
+     * a toolbar update by reading the markup state of the current selection in the editor.
      */
-    selectRows : function(rows, keepExisting){
-        if(!keepExisting){
-            this.clearSelections();
-        }
-        for(var i = 0, len = rows.length; i < len; i++){
-            this.selectRow(rows[i], true);
-        }
-    },
+    updateToolbar: function(){
 
-    /**
-     * Selects a range of rows. All rows in between startRow and endRow are also selected.
-     * @param {Number} startRow The index of the first row in the range
-     * @param {Number} endRow The index of the last row in the range
-     * @param {Boolean} keepExisting (optional) True to retain existing selections
-     */
-    selectRange : function(startRow, endRow, keepExisting){
-        if(this.locked) return;
-        if(!keepExisting){
-            this.clearSelections();
+        if(!this.editorcore.activated){
+            this.editor.onFirstFocus(); // is this neeed?
+            return;
         }
-        if(startRow <= endRow){
-            for(var i = startRow; i <= endRow; i++){
-                this.selectRow(i, true);
+
+        var btns = this.buttons; 
+        var doc = this.editorcore.doc;
+        btns.get('bold').setActive(doc.queryCommandState('bold'));
+        btns.get('italic').setActive(doc.queryCommandState('italic'));
+        //btns.get('underline').setActive(doc.queryCommandState('underline'));
+        
+        btns.get('align-left').setActive(doc.queryCommandState('justifyleft'));
+        btns.get('align-center').setActive(doc.queryCommandState('justifycenter'));
+        btns.get('align-right').setActive(doc.queryCommandState('justifyright'));
+        
+        //btns[frameId + '-insertorderedlist').setActive(doc.queryCommandState('insertorderedlist'));
+        btns.get('list').setActive(doc.queryCommandState('insertunorderedlist'));
+         /*
+        
+        var ans = this.editorcore.getAllAncestors();
+        if (this.formatCombo) {
+            
+            
+            var store = this.formatCombo.store;
+            this.formatCombo.setValue("");
+            for (var i =0; i < ans.length;i++) {
+                if (ans[i] && store.query('tag',ans[i].tagName.toLowerCase(), false).length) {
+                    // select it..
+                    this.formatCombo.setValue(ans[i].tagName.toLowerCase());
+                    break;
+                }
             }
+        }
+        
+        
+        
+        // hides menus... - so this cant be on a menu...
+        Roo.bootstrap.MenuMgr.hideAll();
+        */
+        Roo.bootstrap.MenuMgr.hideAll();
+        //this.editorsyncValue();
+    },
+    onFirstFocus: function() {
+        this.buttons.each(function(item){
+           item.enable();
+        });
+    },
+    toggleSourceEdit : function(sourceEditMode){
+        
+          
+        if(sourceEditMode){
+            Roo.log("disabling buttons");
+           this.buttons.each( function(item){
+                if(item.cmd != 'pencil'){
+                    item.disable();
+                }
+            });
+          
         }else{
-            for(var i = startRow; i >= endRow; i--){
-                this.selectRow(i, true);
+            Roo.log("enabling buttons");
+            if(this.editorcore.initialized){
+                this.buttons.each( function(item){
+                    item.enable();
+                });
             }
+            
         }
+        Roo.log("calling toggole on editor");
+        // tell the editor that it's been pressed..
+        this.editor.toggleSourceEdit(sourceEditMode);
+       
     },
-
-    /**
-     * Deselects a range of rows. All rows in between startRow and endRow are also deselected.
-     * @param {Number} startRow The index of the first row in the range
-     * @param {Number} endRow The index of the last row in the range
-     */
-    deselectRange : function(startRow, endRow, preventViewNotify){
-        if(this.locked) return;
-        for(var i = startRow; i <= endRow; i++){
-            this.deselectRow(i, preventViewNotify);
-        }
-    },
-
-    /**
-     * Selects a row.
-     * @param {Number} row The index of the row to select
-     * @param {Boolean} keepExisting (optional) True to keep existing selections
-     */
-    selectRow : function(index, keepExisting, preventViewNotify){
-        if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) return;
-        if(this.fireEvent("beforerowselect", this, index, keepExisting) !== false){
-            if(!keepExisting || this.singleSelect){
-                this.clearSelections();
-            }
-            var r = this.grid.dataSource.getAt(index);
-            this.selections.add(r);
-            this.last = this.lastActive = index;
-            if(!preventViewNotify){
-                this.grid.getView().onRowSelect(index);
-            }
-            this.fireEvent("rowselect", this, index, r);
-            this.fireEvent("selectionchange", this);
-        }
-    },
-
-    /**
-     * Deselects a row.
-     * @param {Number} row The index of the row to deselect
-     */
-    deselectRow : function(index, preventViewNotify){
-        if(this.locked) return;
-        if(this.last == index){
-            this.last = false;
-        }
-        if(this.lastActive == index){
-            this.lastActive = false;
-        }
-        var r = this.grid.dataSource.getAt(index);
-        this.selections.remove(r);
-        if(!preventViewNotify){
-            this.grid.getView().onRowDeselect(index);
-        }
-        this.fireEvent("rowdeselect", this, index);
-        this.fireEvent("selectionchange", this);
-    },
-
-    // private
-    restoreLast : function(){
-        if(this._last){
-            this.last = this._last;
-        }
-    },
-
-    // private
-    acceptsNav : function(row, col, cm){
-        return !cm.isHidden(col) && cm.isCellEditable(col, row);
-    },
-
-    // private
-    onEditorKey : function(field, e){
-        var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
-        if(k == e.TAB){
-            e.stopEvent();
-            ed.completeEdit();
-            if(e.shiftKey){
-                newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
-            }else{
-                newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
-            }
-        }else if(k == e.ENTER && !e.ctrlKey){
-            e.stopEvent();
-            ed.completeEdit();
-            if(e.shiftKey){
-                newCell = g.walkCells(ed.row-1, ed.col, -1, this.acceptsNav, this);
-            }else{
-                newCell = g.walkCells(ed.row+1, ed.col, 1, this.acceptsNav, this);
-            }
-        }else if(k == e.ESC){
-            ed.cancelEdit();
-        }
-        if(newCell){
-            g.startEditing(newCell[0], newCell[1]);
-        }
-    }
 });
+
+
+
+
