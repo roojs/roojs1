@@ -270,7 +270,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor.ToolbarStandard, Roo.bootstrap.Navbar,  {
         // tell the editor that it's been pressed..
         this.editor.toggleSourceEdit(sourceEditMode);
        
-    },
+    }
 });
 
 
