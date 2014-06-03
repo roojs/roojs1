@@ -25,167 +25,43 @@
     </span><span class="jsdoc-comment">/**
      * @cfg {String} format
      * The default time format string which can be overriden for localization support.  The format must be
-     * valid according to {@link Date#parseDate} (defaults to 'H:i:s').
+     * valid according to {@link Date#parseDate} (defaults to 'H:i').
      */
-    </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;H:i:s&quot;</span><span class="jsdoc-syntax">,
-    
-    
-    </span><span class="jsdoc-var">UTCDate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-    {
-        </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.UTC.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">));
-    },
-    
-    </span><span class="jsdoc-var">UTCTime</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-    {
-        </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.UTC.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">));
-    },
-    
-    </span><span class="jsdoc-var">UTCToday</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-    {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">today </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.UTCDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">today.getUTCFullYear</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">today.getUTCMonth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">today.getUTCDate</span><span class="jsdoc-syntax">());
-    },
-    
-    </span><span class="jsdoc-var">UTCTodayTime</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-    {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">today </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.UTCTime</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">today.getUTCFullYear</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">today.getUTCMonth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">today.getUTCDate</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">today.getUTCHours</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">today.getUTCMinutes</span><span class="jsdoc-syntax">());
-    },
-    
-    </span><span class="jsdoc-var">getDate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getUTCDate</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">return new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getTime</span><span class="jsdoc-syntax">() + (</span><span class="jsdoc-var">d.getTimezoneOffset</span><span class="jsdoc-syntax">()*60000));
-    },
-    
-    </span><span class="jsdoc-var">getUTCDate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">;
-    },
-    
-    </span><span class="jsdoc-var">setDate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.setUTCDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getTime</span><span class="jsdoc-syntax">() - (</span><span class="jsdoc-var">d.getTimezoneOffset</span><span class="jsdoc-syntax">()*60000)));
-    },
-    
-    </span><span class="jsdoc-var">setUTCDate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">));
-    },
-        
+    </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;H:i&quot;</span><span class="jsdoc-syntax">,
+       
     </span><span class="jsdoc-var">onRender</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
     {
         
         </span><span class="jsdoc-var">Roo.bootstrap.TimeField.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
-</span><span class="jsdoc-comment">//        
-//        this.language = this.language || 'en';
-//        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : this.language.split('-')[0];
-//        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : &quot;en&quot;;
-//        
-//        this.isRTL = Roo.bootstrap.DateField.dates[this.language].rtl || false;
-//        this.format = this.format || 'm/d/y';
-//        this.isInline = false;
-//        this.isInput = true;
-//        this.component = this.el.select('.add-on', true).first() || false;
-//        this.component = (this.component &amp;&amp; this.component.length === 0) ? false : this.component;
-//        this.hasInput = this.component &amp;&amp; this.inputEL().length;
-        
-//        if (typeof(this.minViewMode === 'string')) {
-//            switch (this.minViewMode) {
-//                case 'months':
-//                    this.minViewMode = 2;
-//                    break;
-//                case 'years':
-//                    this.minViewMode = 3;
-//                    break;
-//                case 'day':
-//                    this.minViewMode = 1;
-//                    break;
-//                default:
-//                    this.minViewMode = 0;
-//                    break;
-//            }
-//        }
-        
-//        if (typeof(this.viewMode === 'string')) {
-//            switch (this.viewMode) {
-//                case 'months':
-//                    this.viewMode = 2;
-//                    break;
-//                case 'years':
-//                    this.viewMode = 2;
-//                    break;
-//                case 'day':
-//                    this.viewMode = 1;
-//                    break;
-//                default:
-//                    this.viewMode = 0;
-//                    break;
-//            }
-//        }
                 
         </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;.input-group'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.TimeField.template</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
         
+        </span><span class="jsdoc-var">this.pop </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;.datepicker-time'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.pop.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block' 
+        
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMousedown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'datepicker-dropdown'</span><span class="jsdoc-syntax">);
-        
-</span><span class="jsdoc-comment">//        this.startViewMode = this.viewMode;
-        
-//        this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
-        
-//        this.setStartDate(this.startDate);
-//        this.setEndDate(this.endDate);
-        
-//        this.setDaysOfWeekDisabled(this.daysOfWeekDisabled);
-        
-//        this.fillDow();
-//        this.fillMonths();
+    
         </span><span class="jsdoc-var">this.fillTime</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
-</span><span class="jsdoc-comment">//        this.showMode();
-        
-//        if(this.showTime){
             
-//            var dayFoot = this.picker().select('&gt;.datepicker-days tfoot th', true).first();
-//            var timeFoot = this.picker().select('&gt;.datepicker-time tfoot th', true).first();
-//
-//            var dayFootIcon = this.picker().select('&gt;.datepicker-days tfoot span.picker-switch-icon', true).first();
-//            var timeFootIcon = this.picker().select('&gt;.datepicker-time tfoot span.picker-switch-icon', true).first();
-//            
-//            timeFoot.addClass('switch-calendar');
-//            dayFoot.addClass('switch-time');
-//            
-//            timeFootIcon.addClass('switch-calendar');
-//            timeFootIcon.addClass('glyphicon-calendar');
-//            
-//            dayFootIcon.addClass('switch-time');
-//            dayFootIcon.addClass('glyphicon-time');
-            
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hours_up </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;.datepicker-time span.hours-up'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hours_down </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;.datepicker-time span.hours-down'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minutes_up </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;.datepicker-time span.minutes-up'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minutes_down </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;.datepicker-time span.minutes-down'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.pop.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span.hours-up'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onIncrementHours</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.pop.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span.hours-down'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onDecrementHours</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.pop.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span.minutes-up'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onIncrementMinutes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.pop.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'span.minutes-down'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onDecrementMinutes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.pop.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'button.period'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTogglePeriod</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.pop.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'button.ok'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.setTime</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
 
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">period </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;.datepicker-time button'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-
-        </span><span class="jsdoc-var">hours_up.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onIncrementHours</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hours_up</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">hours_down.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onDecrementHours</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hours_down</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">minutes_up.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onIncrementMinutes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">minutes_up</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">minutes_down.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onDecrementMinutes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">minutes_down</span><span class="jsdoc-syntax">);
-
-        </span><span class="jsdoc-var">period.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTogglePeriod</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">period</span><span class="jsdoc-syntax">);
-            
-</span><span class="jsdoc-comment">//        }else{
-//            Roo.each(this.picker().select('tfoot th', true).elements, function(v){
-//                v.remove();
-//            });
-//        }
-//        
-//        if(this.isInline) {
-//            this.show();
-//        }
-    </span><span class="jsdoc-syntax">},
+    },
+    
+    </span><span class="jsdoc-var">onClick</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">e.stopPropagation</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+    },
     
     </span><span class="jsdoc-var">picker </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -194,7 +70,7 @@
     
     </span><span class="jsdoc-var">fillTime</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {    
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;.datepicker-time tbody'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.pop.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">time.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         
@@ -282,7 +158,7 @@
                         {
                             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-primary'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-primary period'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'AM'
                             
                         </span><span class="jsdoc-syntax">}
@@ -349,29 +225,39 @@
     
     </span><span class="jsdoc-var">fill</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
     {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">hours </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.time.getHours</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minutes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.time.getMinutes</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">period </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'AM'</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.time.getHours</span><span class="jsdoc-syntax">());
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.time.get</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hours </span><span class="jsdoc-syntax">&gt; 11){
+            </span><span class="jsdoc-var">period </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'PM'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hours </span><span class="jsdoc-syntax">== 0){
+            </span><span class="jsdoc-var">hours </span><span class="jsdoc-syntax">= 12;
+        }
+        
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hours </span><span class="jsdoc-syntax">&gt; 12){
+            </span><span class="jsdoc-var">hours </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">hours </span><span class="jsdoc-syntax">- 12;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">hours </span><span class="jsdoc-syntax">&lt; 10){
+            </span><span class="jsdoc-var">hours </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'0' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">hours</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">minutes </span><span class="jsdoc-syntax">&lt; 10){
+            </span><span class="jsdoc-var">minutes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'0' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">minutes</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.pop.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.timepicker-hour'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">hours</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.pop.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.timepicker-minute'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">minutes</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.pop.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">period</span><span class="jsdoc-syntax">;
         
     },
-</span><span class="jsdoc-comment">//    
-//    showMode: function(dir) {
-//        if (dir) {
-//            this.viewMode = Math.max(this.minViewMode, Math.min(3, this.viewMode + dir));
-//        }
-//        
-//        Roo.each(this.picker().select('&gt;div',true).elements, function(v){
-//            v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-//            v.hide();
-//        });
-//        this.picker().select('&gt;.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
-//        
-//    },
     
     </span><span class="jsdoc-var">place</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-    {
-</span><span class="jsdoc-comment">//        if(this.isInline) return;
-        
+    {   
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">]);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top</span><span class="jsdoc-syntax">) - (</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBottom</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">()) &lt; 0){
@@ -390,31 +276,7 @@
         
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getLeft</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.el.getLeft</span><span class="jsdoc-syntax">());
     },
-    
-</span><span class="jsdoc-comment">//    parseDate : function(value){
-//        if(!value || value instanceof Date){
-//            return value;
-//        }
-//        var v = Date.parseDate(value, this.format);
-//        if (!v &amp;&amp; this.useIso) {
-//            v = Date.parseDate(value, 'Y-m-d');
-//        }
-//        if(!v &amp;&amp; this.altFormats){
-//            if(!this.altFormatsArray){
-//                this.altFormatsArray = this.altFormats.split(&quot;|&quot;);
-//            }
-//            for(var i = 0, len = this.altFormatsArray.length; i &lt; len &amp;&amp; !v; i++){
-//                v = Date.parseDate(value, this.altFormatsArray[i]);
-//            }
-//        }
-//        return v;
-//    },
-    
-//    formatDate : function(date, fmt){
-//        return (!date || !(date instanceof Date)) ?
-//        date : date.dateFormat(fmt || this.format);
-//    },
-    
+  
     </span><span class="jsdoc-var">onFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">Roo.bootstrap.TimeField.superclass.onFocus.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -430,6 +292,7 @@
     </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.show</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.pop.show</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.place</span><span class="jsdoc-syntax">();
     },
@@ -437,369 +300,55 @@
     </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.pop.hide</span><span class="jsdoc-syntax">();
         
+    },
+    
+    </span><span class="jsdoc-var">setTime </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.time.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">));
     },
     
     </span><span class="jsdoc-var">onMousedown</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">e.stopPropagation</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
     },
-</span><span class="jsdoc-comment">//    
-//    keyup: function(e){
-//        Roo.bootstrap.DateField.superclass.keyup.call(this);
-//        this.update();
-//        
-//    },
-    
-//    fireKey: function(e){
-//        if (!this.picker().isVisible()){
-//            if (e.keyCode == 27) // allow escape to hide and re-show picker
-//                this.show();
-//            return;
-//        }
-//        var dateChanged = false,
-//        dir, day, month,
-//        newDate, newViewDate;
-//        switch(e.keyCode){
-//            case 27: // escape
-//                this.hide();
-//                e.preventDefault();
-//                break;
-//            case 37: // left
-//            case 39: // right
-//                if (!this.keyboardNavigation) break;
-//                dir = e.keyCode == 37 ? -1 : 1;
-//                
-//                if (e.ctrlKey){
-//                    newDate = this.moveYear(this.date, dir);
-//                    newViewDate = this.moveYear(this.viewDate, dir);
-//                } else if (e.shiftKey){
-//                    newDate = this.moveMonth(this.date, dir);
-//                    newViewDate = this.moveMonth(this.viewDate, dir);
-//                } else {
-//                    newDate = new Date(this.date);
-//                    newDate.setUTCDate(this.date.getUTCDate() + dir);
-//                    newViewDate = new Date(this.viewDate);
-//                    newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir);
-//                }
-//                if (this.dateWithinRange(newDate)){
-//                    this.date = newDate;
-//                    this.viewDate = newViewDate;
-//                    this.setValue(this.formatDate(this.date));
-//                    this.update();
-//                    e.preventDefault();
-//                    dateChanged = true;
-//                }
-//                break;
-//            case 38: // up
-//            case 40: // down
-//                if (!this.keyboardNavigation) break;
-//                dir = e.keyCode == 38 ? -1 : 1;
-//                if (e.ctrlKey){
-//                    newDate = this.moveYear(this.date, dir);
-//                    newViewDate = this.moveYear(this.viewDate, dir);
-//                } else if (e.shiftKey){
-//                    newDate = this.moveMonth(this.date, dir);
-//                    newViewDate = this.moveMonth(this.viewDate, dir);
-//                } else {
-//                    newDate = new Date(this.date);
-//                    newDate.setUTCDate(this.date.getUTCDate() + dir * 7);
-//                    newViewDate = new Date(this.viewDate);
-//                    newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir * 7);
-//                }
-//                if (this.dateWithinRange(newDate)){
-//                    this.date = newDate;
-//                    this.viewDate = newViewDate;
-//                    this.setValue(this.formatDate(this.date));
-//                    this.update();
-//                    e.preventDefault();
-//                    dateChanged = true;
-//                }
-//                break;
-//            case 13: // enter
-//                this.setValue(this.formatDate(this.date));
-//                this.hide();
-//                e.preventDefault();
-//                break;
-//            case 9: // tab
-//                this.setValue(this.formatDate(this.date));
-//                this.hide();
-//                break;
-//        }
-//    },
-    
-    
-    </span><span class="jsdoc-var">onClick</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-var">e.stopPropagation</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">();
-        
-</span><span class="jsdoc-comment">//        if(target.nodeName.toLowerCase() === 'i'){
-//            target = Roo.get(target).dom.parentNode;
-//        }
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.nodeName.trim</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.className.trim</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.innerHTML</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'nodeName'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeName</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'className'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'html'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">);
-        
-        
-</span><span class="jsdoc-comment">//        switch(nodeName.toLowerCase()) {
-//            case 'th':
-//                switch(className) {
-//                    case 'switch':
-//                        this.showMode(1);
-//                        break;
-//                    case 'prev':
-//                    case 'next':
-//                        var dir = Roo.bootstrap.DateField.modes[this.viewMode].navStep * (className == 'prev' ? -1 : 1);
-//                        switch(this.viewMode){
-//                                case 0:
-//                                        this.viewDate = this.moveMonth(this.viewDate, dir);
-//                                        break;
-//                                case 1:
-//                                case 2:
-//                                        this.viewDate = this.moveYear(this.viewDate, dir);
-//                                        break;
-//                        }
-//                        this.fill();
-//                        break;
-//                    case 'today':
-//                        var date = new Date();
-//                        this.date = this.UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
-//                        this.fill()
-//                        this.setValue(this.formatDate(this.date));
-//                        this.hide();
-//                        break;
-//                     case 'switch-time':
-//                        this.showMode(-1);
-//                        this.fill();
-//                        break;
-//                     case 'switch-calendar':
-//                         this.showMode(1);
-//                         this.fill();
-//                         break;
-//                }
-//                break;
-//            case 'span':
-//                if (className.indexOf('disabled') === -1) {
-//                    this.viewDate.setUTCDate(1);
-//                    if (className.indexOf('month') !== -1) {
-//                        this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
-//                    } else if(className.indexOf('picker-switch-icon') !== -1){
-//                        if(className.indexOf('switch-time') !== -1){
-//                            this.showMode(-1);
-//                            this.fill();
-//                        }else{
-//                            this.showMode(1);
-//                            this.fill();
-//                        }
-//                        
-//                        break;
-//                        
-//                    } else {
-//                        var year = parseInt(html, 10) || 0;
-//                        this.viewDate.setUTCFullYear(year);
-//                        
-//                    }
-//                    this.showMode(-1);
-//                    this.fill();
-//                }
-//                break;
-//                
-//            case 'td':
-//                if (className.indexOf('day') !== -1 &amp;&amp; className.indexOf('disabled') === -1){
-//                    var day = parseInt(html, 10) || 1;
-//                    var year = this.viewDate.getUTCFullYear(),
-//                        month = this.viewDate.getUTCMonth();
-//
-//                    if (className.indexOf('old') !== -1) {
-//                        if(month === 0 ){
-//                            month = 11;
-//                            year -= 1;
-//                        }else{
-//                            month -= 1;
-//                        }
-//                    } else if (className.indexOf('new') !== -1) {
-//                        if (month == 11) {
-//                            month = 0;
-//                            year += 1;
-//                        } else {
-//                            month += 1;
-//                        }
-//                    }
-//                    this.date = this.UTCDate(year, month, day,0,0,0,0);
-//                    this.viewDate = this.UTCDate(year, month, Math.min(28, day),0,0,0,0);
-//                    this.fill();
-//                    this.setValue(this.formatDate(this.date));
-//                    this.hide();
-//                }
-//                break;
-//        }
-    </span><span class="jsdoc-syntax">},
-    
-</span><span class="jsdoc-comment">//    setStartDate: function(startDate){
-//        this.startDate = startDate || -Infinity;
-//        if (this.startDate !== -Infinity) {
-//            this.startDate = this.parseDate(this.startDate);
-//        }
-//        this.update();
-//        this.updateNavArrows();
-//    },
-//
-//    setEndDate: function(endDate){
-//        this.endDate = endDate || Infinity;
-//        if (this.endDate !== Infinity) {
-//            this.endDate = this.parseDate(this.endDate);
-//        }
-//        this.update();
-//        this.updateNavArrows();
-//    },
-//    
-//    setDaysOfWeekDisabled: function(daysOfWeekDisabled){
-//        this.daysOfWeekDisabled = daysOfWeekDisabled || [];
-//        if (typeof(this.daysOfWeekDisabled) !== 'object') {
-//            this.daysOfWeekDisabled = this.daysOfWeekDisabled.split(/,\s*/);
-//        }
-//        this.daysOfWeekDisabled = this.daysOfWeekDisabled.map(function (d) {
-//            return parseInt(d, 10);
-//        });
-//        this.update();
-//        this.updateNavArrows();
-//    },
-//    
-//    updateNavArrows: function() {
-//        var d = new Date(this.viewDate),
-//        year = d.getUTCFullYear(),
-//        month = d.getUTCMonth();
-//        
-//        Roo.each(this.picker().select('.prev', true).elements, function(v){
-//            v.show();
-//            switch (this.viewMode) {
-//                case 0:
-//
-//                    if (this.startDate !== -Infinity &amp;&amp; year &lt;= this.startDate.getUTCFullYear() &amp;&amp; month &lt;= this.startDate.getUTCMonth()) {
-//                        v.hide();
-//                    }
-//                    break;
-//                case 1:
-//                case 2:
-//                    if (this.startDate !== -Infinity &amp;&amp; year &lt;= this.startDate.getUTCFullYear()) {
-//                        v.hide();
-//                    }
-//                    break;
-//            }
-//        });
-//        
-//        Roo.each(this.picker().select('.next', true).elements, function(v){
-//            v.show();
-//            switch (this.viewMode) {
-//                case 0:
-//
-//                    if (this.endDate !== Infinity &amp;&amp; year &gt;= this.endDate.getUTCFullYear() &amp;&amp; month &gt;= this.endDate.getUTCMonth()) {
-//                        v.hide();
-//                    }
-//                    break;
-//                case 1:
-//                case 2:
-//                    if (this.endDate !== Infinity &amp;&amp; year &gt;= this.endDate.getUTCFullYear()) {
-//                        v.hide();
-//                    }
-//                    break;
-//            }
-//        })
-//    },
-//    
-//    moveMonth: function(date, dir){
-//        if (!dir) return date;
-//        var new_date = new Date(date.valueOf()),
-//        day = new_date.getUTCDate(),
-//        month = new_date.getUTCMonth(),
-//        mag = Math.abs(dir),
-//        new_month, test;
-//        dir = dir &gt; 0 ? 1 : -1;
-//        if (mag == 1){
-//            test = dir == -1
-//            // If going back one month, make sure month is not current month
-//            // (eg, Mar 31 -&gt; Feb 31 == Feb 28, not Mar 02)
-//            ? function(){
-//                return new_date.getUTCMonth() == month;
-//            }
-//            // If going forward one month, make sure month is as expected
-//            // (eg, Jan 31 -&gt; Feb 31 == Feb 28, not Mar 02)
-//            : function(){
-//                return new_date.getUTCMonth() != new_month;
-//            };
-//            new_month = month + dir;
-//            new_date.setUTCMonth(new_month);
-//            // Dec -&gt; Jan (12) or Jan -&gt; Dec (-1) -- limit expected date to 0-11
-//            if (new_month &lt; 0 || new_month &gt; 11)
-//                new_month = (new_month + 12) % 12;
-//        } else {
-//            // For magnitudes &gt;1, move one month at a time...
-//            for (var i=0; i&lt;mag; i++)
-//                // ...which might decrease the day (eg, Jan 31 to Feb 28, etc)...
-//                new_date = this.moveMonth(new_date, dir);
-//            // ...then reset the day, keeping it in the new month
-//            new_month = new_date.getUTCMonth();
-//            new_date.setUTCDate(day);
-//            test = function(){
-//                return new_month != new_date.getUTCMonth();
-//            };
-//        }
-//        // Common date-resetting loop -- if date is beyond end of month, make it
-//        // end of month
-//        while (test()){
-//            new_date.setUTCDate(--day);
-//            new_date.setUTCMonth(new_month);
-//        }
-//        return new_date;
-//    },
-//
-//    moveYear: function(date, dir){
-//        return this.moveMonth(date, dir*12);
-//    },
-//
-//    dateWithinRange: function(date){
-//        return date &gt;= this.startDate &amp;&amp; date &lt;= this.endDate;
-//    },
-
-//    remove: function() {
-//        this.picker().remove();
-//    },
     
     </span><span class="jsdoc-var">onIncrementHours</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'onIncrementHours'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.time.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.HOUR</span><span class="jsdoc-syntax">, 1);
+        </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
+        
     },
     
     </span><span class="jsdoc-var">onDecrementHours</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'onDecrementHours'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.time.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.HOUR</span><span class="jsdoc-syntax">, -1);
+        </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
     },
     
     </span><span class="jsdoc-var">onIncrementMinutes</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'onIncrementMinutes'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.time.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.MINUTE</span><span class="jsdoc-syntax">, 1);
+        </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
     },
     
     </span><span class="jsdoc-var">onDecrementMinutes</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'onDecrementMinutes'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.time.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.MINUTE</span><span class="jsdoc-syntax">, -1);
+        </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
     },
     
     </span><span class="jsdoc-var">onTogglePeriod</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'onTogglePeriod'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.time </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.time.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Date.HOUR</span><span class="jsdoc-syntax">, 12);
+        </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
     }
     
    
@@ -810,15 +359,39 @@
     </span><span class="jsdoc-var">content </span><span class="jsdoc-syntax">: {
         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tbody'</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-        {
-            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
             {
-                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">colspan</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'7'
-            </span><span class="jsdoc-syntax">}
-            ]
-        }
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">colspan</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'7'
+                </span><span class="jsdoc-syntax">}
+                ]
+            }
+        ]
+    },
+    
+    </span><span class="jsdoc-var">footer </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tfoot'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+            {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'th'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">colspan</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'7'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-info ok'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'OK'
+                        </span><span class="jsdoc-syntax">}
+                    ]
+                }
+
+                ]
+            }
         ]
     }
 });
@@ -837,7 +410,8 @@
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'table-condensed'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">:[
-                    </span><span class="jsdoc-var">Roo.bootstrap.DateField.content
+                    </span><span class="jsdoc-var">Roo.bootstrap.TimeField.content</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">Roo.bootstrap.TimeField.footer
                     </span><span class="jsdoc-syntax">]
                 }
                 ]
