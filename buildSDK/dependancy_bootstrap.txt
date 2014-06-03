@@ -71,8 +71,10 @@ Roo.bootstrap.TimeField
 
 Roo.bootstrap.CheckBox
 Roo.bootstrap.Radio
-Roo.bootstrap.HtmlEditor
 
+Roo.HtmlEditorCore
+Roo.bootstrap.HtmlEditor
+s
 Roo.bootstrap.Table.AbstractSelectionModel
 Roo.bootstrap.Table.ColumnModel
 Roo.bootstrap.Table.RowSelectionModel
