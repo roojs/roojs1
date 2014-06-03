@@ -13853,7 +13853,7 @@ Roo.HtmlEditorCore.swapCodes   =[
 
 /**
  * @class Roo.bootstrap.HtmlEditor
- * @extends Roo.bootstrap.Component
+ * @extends Roo.bootstrap.TextArea
  * Bootstrap HtmlEditor class
 
  * @constructor
