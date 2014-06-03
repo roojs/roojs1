@@ -372,6 +372,11 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     syncValue : function()
     {
         this.editorcore.syncValue();
+    },
+    
+    pushValue : function()
+    {
+        this.editorcore.pushValue();
     }
      
     
