@@ -15602,6 +15602,10 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
             cfg.cls += ' alert-messages-fixed';
         }
         
+        if(!this.fixed){
+            cfg.cls += ' alert-messages-relative';
+        }
+        
         if(this.closable){
             cfg.cn.push({
                 tag: 'button',
