@@ -1,0 +1,439 @@
+<html><head><title>../roojs1/Roo/bootstrap/Table/RowSelectionModel.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/**
+ * @extends Roo.bootstrap.Table.AbstractSelectionModel
+ * @class Roo.bootstrap.Table.RowSelectionModel
+ * The default SelectionModel used by {@link Roo.bootstrap.Table}.
+ * It supports multiple selections and keyboard selection/navigation. 
+ * @constructor
+ * @param {Object} config
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.Table.RowSelectionModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.selections </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">o.id</span><span class="jsdoc-syntax">;
+    });
+
+    </span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.lastActive </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+	     * @event selectionchange
+	     * Fires when the selection changes
+	     * @param {SelectionModel} this
+	     */
+	    </span><span class="jsdoc-string">&quot;selectionchange&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event afterselectionchange
+	     * Fires after the selection changes (eg. by key press or clicking)
+	     * @param {SelectionModel} this
+	     */
+	    </span><span class="jsdoc-string">&quot;afterselectionchange&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event beforerowselect
+	     * Fires when a row is selected being selected, return false to cancel.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected index
+	     * @param {Boolean} keepExisting False if other selections will be cleared
+	     */
+	    </span><span class="jsdoc-string">&quot;beforerowselect&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event rowselect
+	     * Fires when a row is selected.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected index
+	     * @param {Roo.data.Record} r The record
+	     */
+	    </span><span class="jsdoc-string">&quot;rowselect&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event rowdeselect
+	     * Fires when a row is deselected.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected index
+	     */
+        </span><span class="jsdoc-string">&quot;rowdeselect&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">Roo.bootstrap.Table.RowSelectionModel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.locked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Table.RowSelectionModel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Table.AbstractSelectionModel</span><span class="jsdoc-syntax">,  {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} singleSelect
+     * True to allow selection of only one row at a time (defaults to false)
+     */
+    </span><span class="jsdoc-var">singleSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.grid.enableDragDrop </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.grid.enableDrag</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.grid.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mousedown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.handleMouseDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{ </span><span class="jsdoc-comment">// allow click to work like normal
+            </span><span class="jsdoc-var">this.grid.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;rowclick&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.handleDragableRowClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+
+        </span><span class="jsdoc-var">this.rowNav </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.KeyNav</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.grid.getGridEl</span><span class="jsdoc-syntax">(), {
+            </span><span class="jsdoc-string">&quot;up&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.selectPrevious</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">);
+                }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.lastActive </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">this.selectRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this.lastActive</span><span class="jsdoc-syntax">-1);
+                    </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.focusRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastActive</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">last </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">last</span><span class="jsdoc-syntax">;
+                    }
+                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">this.selectFirstRow</span><span class="jsdoc-syntax">();
+                }
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;afterselectionchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-string">&quot;down&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.selectNext</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">);
+                }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.lastActive </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">this.selectRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">this.lastActive</span><span class="jsdoc-syntax">+1);
+                    </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.focusRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastActive</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">last </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">last</span><span class="jsdoc-syntax">;
+                    }
+                }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                    </span><span class="jsdoc-var">this.selectFirstRow</span><span class="jsdoc-syntax">();
+                }
+                </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;afterselectionchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this
+        </span><span class="jsdoc-syntax">});
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.view</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">view.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;refresh&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRefresh</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">view.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;rowupdated&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRowUpdated</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">view.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;rowremoved&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRemove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRefresh </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.dataSource</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.view</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">s.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ds.indexOfId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.id</span><span class="jsdoc-syntax">)) != -1){
+                </span><span class="jsdoc-var">v.onRowSelect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">s.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
+            }
+        });
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRemove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.selections.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onRowUpdated </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isSelected</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">v.onRowSelect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Select records.
+     * @param {Array} records The records to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    </span><span class="jsdoc-var">selectRecords </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.dataSource</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">records.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]), </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Gets the number of selected rows.
+     * @return {Number}
+     */
+    </span><span class="jsdoc-var">getCount </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.selections.length</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Selects the first row in the grid.
+     */
+    </span><span class="jsdoc-var">selectFirstRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(0);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Select the last row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    </span><span class="jsdoc-var">selectLastRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.grid.dataSource.getCount</span><span class="jsdoc-syntax">() - 1, </span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Selects the row immediately following the last selected row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    </span><span class="jsdoc-var">selectNext </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">+1) &lt; </span><span class="jsdoc-var">this.grid.dataSource.getCount</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">+1, </span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.focusRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Selects the row that precedes the last selected row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    </span><span class="jsdoc-var">selectPrevious </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">-1, </span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.focusRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the selected records
+     * @return {Array} Array of selected records
+     */
+    </span><span class="jsdoc-var">getSelections </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">[]</span><span class="jsdoc-var">.concat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selections.items</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the first selected record.
+     * @return {Record}
+     */
+    </span><span class="jsdoc-var">getSelected </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.selections.itemAt</span><span class="jsdoc-syntax">(0);
+    },
+
+
+    </span><span class="jsdoc-comment">/**
+     * Clears all selections.
+     */
+    </span><span class="jsdoc-var">clearSelections </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fast</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.locked</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fast </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.dataSource</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selections</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">s.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.deselectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds.indexOfId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.id</span><span class="jsdoc-syntax">));
+            }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">s.clear</span><span class="jsdoc-syntax">();
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.selections.clear</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+
+    </span><span class="jsdoc-comment">/**
+     * Selects all rows.
+     */
+    </span><span class="jsdoc-var">selectAll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.locked</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.selections.clear</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.dataSource.getCount</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns True if there is a selection.
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">hasSelection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.selections.length </span><span class="jsdoc-syntax">&gt; 0;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns True if the specified row is selected.
+     * @param {Number/Record} record The record or index of the record to check
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">isSelected </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;number&quot; </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.grid.dataSource.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.selections.key</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.id</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns True if the specified record id is selected.
+     * @param {String} id The id of record to check
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">isIdSelected </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selections.key</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">handleMouseDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isLocked</span><span class="jsdoc-syntax">() || (</span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">view.findRowIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">)) === </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        };
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.shiftKey </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.last</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.selectRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">last</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">last</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// reset the last
+            </span><span class="jsdoc-var">view.focusRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isSelected </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.isSelected</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.button </span><span class="jsdoc-syntax">!== 0 &amp;&amp; </span><span class="jsdoc-var">isSelected</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">view.focusRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.ctrlKey </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">isSelected</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.deselectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">isSelected</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e.button </span><span class="jsdoc-syntax">=== 0 &amp;&amp; (</span><span class="jsdoc-var">e.ctrlKey </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">view.focusRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;afterselectionchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">handleDragableRowClick </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) 
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.button </span><span class="jsdoc-syntax">=== 0 &amp;&amp; !</span><span class="jsdoc-var">e.shiftKey </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">grid.view.focusRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;afterselectionchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Selects multiple rows.
+     * @param {Array} rows Array of the indexes of the row to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    </span><span class="jsdoc-var">selectRows </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rows.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Selects a range of rows. All rows in between startRow and endRow are also selected.
+     * @param {Number} startRow The index of the first row in the range
+     * @param {Number} endRow The index of the last row in the range
+     * @param {Boolean} keepExisting (optional) True to retain existing selections
+     */
+    </span><span class="jsdoc-var">selectRange </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">startRow</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">endRow</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.locked</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">startRow </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">endRow</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">startRow</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">endRow</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            }
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">startRow</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">endRow</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--){
+                </span><span class="jsdoc-var">this.selectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Deselects a range of rows. All rows in between startRow and endRow are also deselected.
+     * @param {Number} startRow The index of the first row in the range
+     * @param {Number} endRow The index of the last row in the range
+     */
+    </span><span class="jsdoc-var">deselectRange </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">startRow</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">endRow</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">preventViewNotify</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.locked</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">startRow</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt;= </span><span class="jsdoc-var">endRow</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-var">this.deselectRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">preventViewNotify</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Selects a row.
+     * @param {Number} row The index of the row to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    </span><span class="jsdoc-var">selectRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">preventViewNotify</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.locked </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&lt; 0 || </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&gt;= </span><span class="jsdoc-var">this.grid.dataSource.getCount</span><span class="jsdoc-syntax">())) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforerowselect&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">keepExisting</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">keepExisting </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.singleSelect</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.clearSelections</span><span class="jsdoc-syntax">();
+            }
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.dataSource.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.selections.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.lastActive </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">preventViewNotify</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.onRowSelect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+            }
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;rowselect&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;selectionchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Deselects a row.
+     * @param {Number} row The index of the row to deselect
+     */
+    </span><span class="jsdoc-var">deselectRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">preventViewNotify</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.locked</span><span class="jsdoc-syntax">) </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastActive </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.lastActive </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid.dataSource.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.selections.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">preventViewNotify</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.grid.getView</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.onRowDeselect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;rowdeselect&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;selectionchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">restoreLast </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this._last</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this._last</span><span class="jsdoc-syntax">;
+        }
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">acceptsNav </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cm</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">!</span><span class="jsdoc-var">cm.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">cm.isCellEditable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">onEditorKey </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">field</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getKey</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">g </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.grid</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ed </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.activeEditor</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.TAB</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">ed.completeEdit</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.walkCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ed.col</span><span class="jsdoc-syntax">-1, -1, </span><span class="jsdoc-var">this.acceptsNav</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.walkCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.row</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ed.col</span><span class="jsdoc-syntax">+1, 1, </span><span class="jsdoc-var">this.acceptsNav</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.ENTER </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">ed.completeEdit</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.walkCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.row</span><span class="jsdoc-syntax">-1, </span><span class="jsdoc-var">ed.col</span><span class="jsdoc-syntax">, -1, </span><span class="jsdoc-var">this.acceptsNav</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">newCell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">g.walkCells</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ed.row</span><span class="jsdoc-syntax">+1, </span><span class="jsdoc-var">ed.col</span><span class="jsdoc-syntax">, 1, </span><span class="jsdoc-var">this.acceptsNav</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }
+        }</span><span class="jsdoc-keyword">else if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">e.ESC</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">ed.cancelEdit</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">g.startEditing</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">newCell</span><span class="jsdoc-syntax">[1]);
+        }
+    }
+});</span></code></body></html>

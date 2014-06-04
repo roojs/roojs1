@@ -1,0 +1,494 @@
+<html><head><title>../roojs1/Roo/bootstrap/Table/ColumnModel.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/**
+ * @class Roo.bootstrap.Table.ColumnModel
+ * @extends Roo.util.Observable
+ * This is the default implementation of a ColumnModel used by the bootstrap table. It defines
+ * the columns in the table.
+ 
+ * @constructor
+ * @param {Object} config An Array of column config objects. See this class's
+ * config objects for details.
+*/
+</span><span class="jsdoc-var">Roo.bootstrap.Table.ColumnModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+	</span><span class="jsdoc-comment">/**
+     * The config passed into the constructor
+     */
+    </span><span class="jsdoc-var">this.config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-var">this.lookup </span><span class="jsdoc-syntax">= {};
+
+    </span><span class="jsdoc-comment">// if no id, create one
+    // if the column does not have a dataIndex mapping,
+    // map it to the order it is in the config
+    </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">c.dataIndex </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">c.dataIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">c.renderer </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">c.renderer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.Format</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.renderer</span><span class="jsdoc-syntax">];
+        }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">c.id </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">c.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
+        }
+</span><span class="jsdoc-comment">//        if(c.editor &amp;&amp; c.editor.xtype){
+//            c.editor  = Roo.factory(c.editor, Roo.grid);
+//        }
+//        if(c.editor &amp;&amp; c.editor.isFormField){
+//            c.editor = new Roo.grid.GridEditor(c.editor);
+//        }
+
+        </span><span class="jsdoc-var">this.lookup</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">c.id</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+    }
+
+    </span><span class="jsdoc-comment">/**
+     * The width of columns which have no width specified (defaults to 100)
+     * @type Number
+     */
+    </span><span class="jsdoc-var">this.defaultWidth </span><span class="jsdoc-syntax">= 100;
+
+    </span><span class="jsdoc-comment">/**
+     * Default sortable of columns which have no sortable specified (defaults to false)
+     * @type Boolean
+     */
+    </span><span class="jsdoc-var">this.defaultSortable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+	     * @event widthchange
+	     * Fires when the width of a column changes.
+	     * @param {ColumnModel} this
+	     * @param {Number} columnIndex The column index
+	     * @param {Number} newWidth The new width
+	     */
+	    </span><span class="jsdoc-string">&quot;widthchange&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event headerchange
+	     * Fires when the text of a header changes.
+	     * @param {ColumnModel} this
+	     * @param {Number} columnIndex The column index
+	     * @param {Number} newText The new header text
+	     */
+	    </span><span class="jsdoc-string">&quot;headerchange&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event hiddenchange
+	     * Fires when a column is hidden or &quot;unhidden&quot;.
+	     * @param {ColumnModel} this
+	     * @param {Number} columnIndex The column index
+	     * @param {Boolean} hidden true if hidden, false otherwise
+	     */
+	    </span><span class="jsdoc-string">&quot;hiddenchange&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+	    </span><span class="jsdoc-comment">/**
+         * @event columnmoved
+         * Fires when a column is moved.
+         * @param {ColumnModel} this
+         * @param {Number} oldIndex
+         * @param {Number} newIndex
+         */
+        </span><span class="jsdoc-string">&quot;columnmoved&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event columlockchange
+         * Fires when a column's locked state is changed
+         * @param {ColumnModel} this
+         * @param {Number} colIndex
+         * @param {Boolean} locked true if locked
+         */
+        </span><span class="jsdoc-string">&quot;columnlockchange&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">Roo.bootstrap.Table.ColumnModel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+};
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Table.ColumnModel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} header The header text to display in the Grid view.
+     */
+    /**
+     * @cfg {String} dataIndex (Optional) The name of the field in the grid's {@link Roo.data.Store}'s
+     * {@link Roo.data.Record} definition from which to draw the column's value. If not
+     * specified, the column's index is used as an index into the Record's data Array.
+     */
+    /**
+     * @cfg {Number} width (Optional) The initial width in pixels of the column. Using this
+     * instead of {@link Roo.grid.Grid#autoSizeColumns} is more efficient.
+     */
+    /**
+     * @cfg {Boolean} sortable (Optional) True if sorting is to be allowed on this column.
+     * Defaults to the value of the {@link #defaultSortable} property.
+     * Whether local/remote sorting is used is specified in {@link Roo.data.Store#remoteSort}.
+     */
+    /**
+     * @cfg {Boolean} locked (Optional) True to lock the column in place while scrolling the Grid.  Defaults to false.
+     */
+    /**
+     * @cfg {Boolean} fixed (Optional) True if the column width cannot be changed.  Defaults to false.
+     */
+    /**
+     * @cfg {Boolean} resizable (Optional) False to disable column resizing. Defaults to true.
+     */
+    /**
+     * @cfg {Boolean} hidden (Optional) True to hide the column. Defaults to false.
+     */
+    /**
+     * @cfg {Function} renderer (Optional) A function used to generate HTML markup for a cell
+     * given the cell's data value. See {@link #setRenderer}. If not specified, the
+     * default renderer uses the raw data value.
+     */
+    /**
+     * @cfg {String} align (Optional) Set the CSS text-align property of the column.  Defaults to undefined.
+     */
+
+    /**
+     * Returns the id of the column at the specified index.
+     * @param {Number} index The column index
+     * @return {String} the id
+     */
+    </span><span class="jsdoc-var">getColumnId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the column for a specified id.
+     * @param {String} id The column id
+     * @return {Object} the column
+     */
+    </span><span class="jsdoc-var">getColumnById </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.lookup</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">];
+    },
+
+    
+    </span><span class="jsdoc-comment">/**
+     * Returns the column for a specified dataIndex.
+     * @param {String} dataIndex The column dataIndex
+     * @return {Object|Boolean} the column or false if not found
+     */
+    </span><span class="jsdoc-var">getColumnByDataIndex</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.findColumnIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataIndex</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&gt; -1 ? </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">] : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Returns the index for a specified column id.
+     * @param {String} id The column id
+     * @return {Number} the index, or -1 if not found
+     */
+    </span><span class="jsdoc-var">getIndexById </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.id </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">-1;
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Returns the index for a specified column dataIndex.
+     * @param {String} dataIndex The column dataIndex
+     * @return {Number} the index, or -1 if not found
+     */
+    
+    </span><span class="jsdoc-var">findColumnIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.dataIndex </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">dataIndex</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">-1;
+    },
+    
+    
+    </span><span class="jsdoc-var">moveColumn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oldIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">oldIndex</span><span class="jsdoc-syntax">];
+        </span><span class="jsdoc-var">this.config.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">oldIndex</span><span class="jsdoc-syntax">, 1);
+        </span><span class="jsdoc-var">this.config.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newIndex</span><span class="jsdoc-syntax">, 0, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.dataMap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;columnmoved&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">oldIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">newIndex</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-var">isLocked </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.locked </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">setLocked </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isLocked</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.locked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;columnlockchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-var">getTotalLockedWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">totalWidth </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.config.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isLocked</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) &amp;&amp; !</span><span class="jsdoc-var">this.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-var">this.totalWidth </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">totalWidth</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">getLockedCount </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isLocked</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+            }
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the number of columns.
+     * @return {Number}
+     */
+    </span><span class="jsdoc-var">getColumnCount </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">visibleOnly</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">visibleOnly </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)){
+                    </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">++;
+                }
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.config.length</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the column configs that return true by the passed function that is called with (columnConfig, index)
+     * @param {Function} fn
+     * @param {Object} scope (optional)
+     * @return {Array} result
+     */
+    </span><span class="jsdoc-var">getColumnsBy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">r.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns true if the specified column is sortable.
+     * @param {Number} col The column index
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">isSortable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.sortable </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.defaultSortable</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.sortable</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the rendering (formatting) function defined for the column.
+     * @param {Number} col The column index.
+     * @return {Function} The function used to render the cell. See {@link #setRenderer}.
+     */
+    </span><span class="jsdoc-var">getRenderer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.renderer</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.bootstrap.Table.ColumnModel.defaultRenderer</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.renderer</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the rendering (formatting) function for a column.
+     * @param {Number} col The column index
+     * @param {Function} fn The function to use to process the cell's raw data
+     * to return HTML markup for the grid view. The render function is called with
+     * the following parameters:&lt;ul&gt;
+     * &lt;li&gt;Data value.&lt;/li&gt;
+     * &lt;li&gt;Cell metadata. An object in which you may set the following attributes:&lt;ul&gt;
+     * &lt;li&gt;css A CSS style string to apply to the table cell.&lt;/li&gt;
+     * &lt;li&gt;attr An HTML attribute definition string to apply to the data container element &lt;i&gt;within&lt;/i&gt; the table cell.&lt;/li&gt;&lt;/ul&gt;
+     * &lt;li&gt;The {@link Roo.data.Record} from which the data was extracted.&lt;/li&gt;
+     * &lt;li&gt;Row index&lt;/li&gt;
+     * &lt;li&gt;Column index&lt;/li&gt;
+     * &lt;li&gt;The {@link Roo.data.Store} object from which the Record was extracted&lt;/li&gt;&lt;/ul&gt;
+     */
+    </span><span class="jsdoc-var">setRenderer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.renderer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the width for the specified column.
+     * @param {Number} col The column index
+     * @return {Number}
+     */
+    </span><span class="jsdoc-var">getColumnWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.width </span><span class="jsdoc-syntax">* 1 || </span><span class="jsdoc-var">this.defaultWidth</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the width for a column.
+     * @param {Number} col The column index
+     * @param {Number} width The new width
+     */
+    </span><span class="jsdoc-var">setColumnWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.totalWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">){
+             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;widthchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
+        }
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the total width of all columns.
+     * @param {Boolean} includeHidden True to include hidden column widths
+     * @return {Number}
+     */
+    </span><span class="jsdoc-var">getTotalWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">includeHidden</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.totalWidth</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.totalWidth </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.config.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">includeHidden </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.isHidden</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)){
+                    </span><span class="jsdoc-var">this.totalWidth </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.getColumnWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
+                }
+            }
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.totalWidth</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the header for the specified column.
+     * @param {Number} col The column index
+     * @return {String}
+     */
+    </span><span class="jsdoc-var">getColumnHeader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.header</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the header for a column.
+     * @param {Number} col The column index
+     * @param {String} header The new header
+     */
+    </span><span class="jsdoc-var">setColumnHeader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.header </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;headerchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the tooltip for the specified column.
+     * @param {Number} col The column index
+     * @return {String}
+     */
+    </span><span class="jsdoc-var">getColumnTooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.tooltip</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+     * Sets the tooltip for a column.
+     * @param {Number} col The column index
+     * @param {String} tooltip The new tooltip
+     */
+    </span><span class="jsdoc-var">setColumnTooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.tooltip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the dataIndex for the specified column.
+     * @param {Number} col The column index
+     * @return {Number}
+     */
+    </span><span class="jsdoc-var">getDataIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.dataIndex</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the dataIndex for a column.
+     * @param {Number} col The column index
+     * @param {Number} dataIndex The new dataIndex
+     */
+    </span><span class="jsdoc-var">setDataIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dataIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.dataIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dataIndex</span><span class="jsdoc-syntax">;
+    },
+
+    
+    
+    </span><span class="jsdoc-comment">/**
+     * Returns true if the cell is editable.
+     * @param {Number} colIndex The column index
+     * @param {Number} rowIndex The row index
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">isCellEditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.editable </span><span class="jsdoc-syntax">|| (</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.editable </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;undefined&quot; </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.editor</span><span class="jsdoc-syntax">)) ? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns the editor defined for the cell/column.
+     * return false or null to disable editing.
+     * @param {Number} colIndex The column index
+     * @param {Number} rowIndex The row index
+     * @return {Object}
+     */
+    </span><span class="jsdoc-var">getCellEditor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.editor</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets if a column is editable.
+     * @param {Number} col The column index
+     * @param {Boolean} editable True if the column is editable
+     */
+    </span><span class="jsdoc-var">setEditable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editable</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.editable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editable</span><span class="jsdoc-syntax">;
+    },
+
+
+    </span><span class="jsdoc-comment">/**
+     * Returns true if the column is hidden.
+     * @param {Number} colIndex The column index
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">isHidden </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.hidden</span><span class="jsdoc-syntax">;
+    },
+
+
+    </span><span class="jsdoc-comment">/**
+     * Returns true if the column width cannot be changed
+     */
+    </span><span class="jsdoc-var">isFixed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.fixed</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Returns true if the column can be resized
+     * @return {Boolean}
+     */
+    </span><span class="jsdoc-var">isResizable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">colIndex </span><span class="jsdoc-syntax">&gt;= 0 &amp;&amp; </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.resizable </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.fixed </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-comment">/**
+     * Sets if a column is hidden.
+     * @param {Number} colIndex The column index
+     * @param {Boolean} hidden True if the column is hidden
+     */
+    </span><span class="jsdoc-var">setHidden </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.totalWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hiddenchange&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">colIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hidden</span><span class="jsdoc-syntax">);
+    },
+
+    </span><span class="jsdoc-comment">/**
+     * Sets the editor for a column.
+     * @param {Number} col The column index
+     * @param {Object} editor The editor object
+     */
+    </span><span class="jsdoc-var">setEditor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">col</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.editor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">;
+    }
+});
+
+</span><span class="jsdoc-var">Roo.bootstrap.Table.ColumnModel.defaultRenderer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
+	</span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;string&quot; </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">&lt; 1){
+	    </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">&quot;&amp;#160;&quot;</span><span class="jsdoc-syntax">;
+	}
+	</span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
+};
+
+</span><span class="jsdoc-comment">// Alias for backwards compatibility
+</span><span class="jsdoc-var">Roo.bootstrap.Table.DefaultColumnModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Table.ColumnModel</span><span class="jsdoc-syntax">;
+</span></code></body></html>

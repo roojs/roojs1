@@ -1,7 +1,7 @@
 /*
  * - LGPL
  *
- * button
+ * Body
  * 
  */
 
