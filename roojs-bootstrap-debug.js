@@ -15632,13 +15632,15 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
     
     update : function()
     {
-        var e = this.el.dom.firstChild;
-        
-        if(this.closable){
-            e = e.nextSibling;
-        }
-        
-        e.data = this.html || '';
+//        var e = this.el.dom.firstChild;
+//        
+//        if(this.closable){
+//            e = e.nextSibling;
+//        }
+//        
+//        e.data = this.html || '';
+
+        this.el.dom.innerHTML = this.html || '';
     }
    
 });
