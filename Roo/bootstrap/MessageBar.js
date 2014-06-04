@@ -67,7 +67,6 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
                 cfg.style = this.style;
             }
             this.el = Roo.get(document.body).createChild(cfg, position);
-            
         }
     },
     
