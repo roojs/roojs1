@@ -15591,7 +15591,25 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
     
     onRender : function(ct, position)
     {
-//        this.hide();
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        
+        if(!this.el){
+            var cfg = Roo.apply({},  this.getAutoCreate());
+            cfg.id = Roo.id();
+            //if(!cfg.name){
+            //    cfg.name = typeof(this.name) == 'undefined' ? this.id : this.name;
+            //}
+            //if (!cfg.name.length) {
+            //    delete cfg.name;
+           // }
+            if (this.cls) {
+                cfg.cls += ' ' + this.cls;
+            }
+            if (this.style) {
+                cfg.style = this.style;
+            }
+            this.el = Roo.get(document.body).createChild(cfg, position);
+        }
     }
    
 });
