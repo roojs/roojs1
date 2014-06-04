@@ -39,7 +39,8 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
         if(this.closable){
             cfg.cn = {
                 tag: 'button',
-                cls: 'close'
+                cls: 'close',
+                html: 'x'
             }
         }
         

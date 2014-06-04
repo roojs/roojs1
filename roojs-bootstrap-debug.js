@@ -15582,7 +15582,8 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
         if(this.closable){
             cfg.cn = {
                 tag: 'button',
-                cls: 'close'
+                cls: 'close',
+                html: 'x'
             }
         }
         
@@ -15592,7 +15593,6 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
     onRender : function(ct, position)
     {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
-        Roo.log('render!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
@@ -15610,7 +15610,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
                 cfg.style = this.style;
             }
             this.el = Roo.get(document.body).createChild(cfg, position);
-            Roo.log(this.el);
+            
         }
     },
     
