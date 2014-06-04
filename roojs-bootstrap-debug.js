@@ -278,9 +278,20 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
  /*
  * - LGPL
  *
- * page container.
+ * Body
  * 
- */ 
+ */
+
+/**
+ * @class Roo.bootstrap.Body
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Body class
+ * 
+ * @constructor
+ * Create a new body
+ * @param {Object} config The config object
+ */
+
 Roo.bootstrap.Body = function(config){
     Roo.bootstrap.Body.superclass.constructor.call(this, config);
     this.el = Roo.get(document.body);
