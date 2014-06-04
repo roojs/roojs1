@@ -33,21 +33,15 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
         var cfg = {
             tag: 'div',
             cls: 'alert alert-dismissable alert-messages alert-' + this.weight,
-            cn: [
-                {
-                    tag: 'div',
-                    cls: 'message',
-                    html: this.html || ''
-                }
-            ]
+            html: this.html || ''
         }
         
         if(this.closable){
-            cfg.cn.push({
+            cfg.cn = {
                 tag: 'button',
                 cls: 'close',
                 html: 'x'
-            });
+            }
         }
         
         return cfg;
