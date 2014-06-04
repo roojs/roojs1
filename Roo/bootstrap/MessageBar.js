@@ -66,7 +66,8 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
             if (this.style) {
                 cfg.style = this.style;
             }
-            this.el = Roo.get(document.body).createChild(cfg, position);
+//            this.el = Roo.get(document.body).createChild(cfg, position);
+            this.el = Roo.select('.bootstrap-sticky-wrap', true).first().createChild(cfg, position);
         }
         
         this.el.select('>button.close').on('click', this.hide, this);
