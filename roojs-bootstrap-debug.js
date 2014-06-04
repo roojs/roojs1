@@ -15566,6 +15566,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
  * @cfg {String} html contents of the MessageBar
  * @cfg {String} weight (info | success | warning | danger) default info
  * @cfg {Boolean} closable (true | false) default true
+ * @cfg {Boolean} fixed (true | false) default false, fix the bar at the top
  * 
  * @constructor
  * Create a new Element
@@ -15581,12 +15582,13 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
     html: '',
     weight: 'info',
     closable: true,
+    fixed: false,
     
     getAutoCreate : function(){
         
         var cfg = {
             tag: 'div',
-            cls: 'alert alert-dismissable alert-messages alert-' + this.weight,
+            cls: 'alert alert-dismissable alert-' + this.weight,
             cn: [
                 {
                     tag: 'span',
@@ -15594,6 +15596,10 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
                     html: this.html || ''
                 }
             ]
+        }
+        
+        if(this.fixed){
+            cfg.cls += ' alert-messages-fixed';
         }
         
         if(this.closable){
