@@ -93,6 +93,12 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
         this.el.hide();
         
         Roo.select('.bootstrap-sticky-wrap', true).first().setStyle('margin-top', '0px');
+        
+        var navbar_fixed_top = Roo.select('.navbar-fixed-top', true).first();
+        
+        if(navbar_fixed_top != null){
+            navbar_fixed_top.setStyle('margin-top', '0px');
+        }
     }
    
 });
