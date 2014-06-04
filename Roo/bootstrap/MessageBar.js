@@ -16,27 +16,18 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Element = function(config){
-    Roo.bootstrap.Element.superclass.constructor.call(this, config);
+Roo.bootstrap.MessageBar = function(config){
+    Roo.bootstrap.MessageBar.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
     
-    tag: 'div',
-    cls: '',
     html: '',
      
     
     getAutoCreate : function(){
         
-        var cfg = {
-            tag: this.tag,
-            cls: this.cls,
-            html: this.html
-        }
         
-        
-	
         return cfg;
     }
    
