@@ -206,7 +206,8 @@ this.loading=this.list.select('.loading',true).first();this.loading.setVisibilit
 this.loading.show();var A=this;this.page++;this.loadNext=true;(function(){A.doQuery(A.allQuery,true);}).defer(500);return;},addItem:function(o){var dv='';if(this.displayField){dv=!o||typeof(o[this.displayField])=='undefined'?'':o[this.displayField];}else {Roo.log('no  displayField value set for '+(this.name?this.name:this.id));}if(!dv.length){return;}var A=this.choices.createChild({tag:'li',cls:'select2-search-choice',cn:[{tag:'div',html:dv},{tag:'a',href:'#',cls:'select2-search-choice-close',tabindex:'-1'}]},this.searchField);var B=A.select('a.select2-search-choice-close',true).first()
 B.on('click',this.onRemoveItem,this,{item:A,data:o});this.item.push(o);this.lastData=o;this.syncValue();this.inputEl().dom.value='';},onRemoveItem:function(e,A,o){Roo.log('remove item');var B=this.item.indexOf(o.data)*1;if(B<0){Roo.log('not this item?!');return;}
 this.item.splice(B,1);o.item.remove();this.syncValue();this.fireEvent('remove',this);},syncValue:function(){if(!this.item.length){this.clearValue();return;}var A=[];var B=this;Roo.each(this.item,function(i){if(B.valueField){A.push(i[B.valueField]);return;}
-A.push(i);});this.value=A.join(',');if(this.hiddenField){this.hiddenField.dom.value=this.value;}},clearItem:function(){this.item=[];this.syncValue();}});
+A.push(i);});this.value=A.join(',');if(this.hiddenField){this.hiddenField.dom.value=this.value;}},clearItem:function(){if(!this.multiple){return;}
+this.item=[];Roo.each(this.choices.select('>li.select2-search-choice',true).elements,function(c){c.remove();});this.syncValue();}});
 //Roo/View.js
 Roo.View=function(A,B,C){if(typeof(B)=='undefined'){Roo.apply(this,A);this.el=Roo.get(this.el);}else {this.el=Roo.get(A);this.tpl=B;Roo.apply(this,C);}
 this.wrapEl=this.el.wrap().wrap();if(typeof(this.tpl)=="string"){this.tpl=new Roo.Template(this.tpl);}else {this.tpl=new Roo.factory(this.tpl,Roo);}

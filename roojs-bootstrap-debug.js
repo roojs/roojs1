@@ -8903,7 +8903,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     clearItem : function()
     {
+        if(!this.multiple){
+            return;
+        }
+        
         this.item = [];
+        
+        Roo.each(this.choices.select('>li.select2-search-choice', true).elements, function(c){
+           c.remove();
+        });
         
         this.syncValue();
     }
