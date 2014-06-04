@@ -70,6 +70,8 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
         }
         
         this.el.select('>button.close').on('click', this.hide, this);
+        
+        this.hide();
     },
     
     show : function()
