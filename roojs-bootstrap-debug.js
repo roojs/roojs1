@@ -15576,15 +15576,21 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
         var cfg = {
             tag: 'div',
             cls: 'alert alert-dismissable alert-messages alert-' + this.weight,
-            html: this.html || ''
+            cn: [
+                {
+                    tag: 'div',
+                    cls: 'message',
+                    html: this.html || ''
+                }
+            ]
         }
         
         if(this.closable){
-            cfg.cn = {
+            cfg.cn.push({
                 tag: 'button',
                 cls: 'close',
                 html: 'x'
-            }
+            });
         }
         
         return cfg;
@@ -15613,6 +15619,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
         }
         
         this.el.select('>button.close').on('click', this.hide, this);
+        
     },
     
     show : function()
