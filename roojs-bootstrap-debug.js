@@ -15630,6 +15630,8 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
             navbar_fixed_top.setStyle('margin-top', this.el.getHeight() + 'px');
         }
         
+        this.fireEvent('show', this);
+        
     },
     
     hide : function()
@@ -15643,6 +15645,13 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
         if(navbar_fixed_top != null){
             navbar_fixed_top.setStyle('margin-top', '0px');
         }
+        
+        this.fireEvent('hide', this);
+    },
+    
+    update : function()
+    {
+        
     }
    
 });
