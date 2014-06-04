@@ -79,6 +79,8 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
             this.render();
         }
         
+        this.el.show();
+        
         this.fireEvent('show', this);
         
     },
