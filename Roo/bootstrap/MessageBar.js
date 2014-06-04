@@ -79,14 +79,6 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
             this.render();
         }
         
-        Roo.select('.bootstrap-sticky-wrap', true).first().setStyle('margin-top', this.el.getHeight() + 'px');
-        
-        var navbar_fixed_top = Roo.select('.navbar-fixed-top', true).first();
-        
-        if(navbar_fixed_top != null){
-            navbar_fixed_top.setStyle('margin-top', this.el.getHeight() + 'px');
-        }
-        
         this.fireEvent('show', this);
         
     },
@@ -94,14 +86,6 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
     hide : function()
     {
         this.el.hide();
-        
-        Roo.select('.bootstrap-sticky-wrap', true).first().setStyle('margin-top', '0px');
-        
-        var navbar_fixed_top = Roo.select('.navbar-fixed-top', true).first();
-        
-        if(navbar_fixed_top != null){
-            navbar_fixed_top.setStyle('margin-top', '0px');
-        }
         
         this.fireEvent('hide', this);
     },
