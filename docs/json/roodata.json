@@ -4937,6 +4937,138 @@
    "props": [],
    "events": []
   },
+  "Roo.bootstrap.Body": {
+   "props": [
+    {
+     "name": "cls",
+     "type": "String",
+     "desc": "css class",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "style",
+     "type": "String",
+     "desc": "any extra css",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "xattr",
+     "type": "Object",
+     "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "dataId",
+     "type": "string",
+     "desc": "cutomer id",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "name",
+     "type": "string",
+     "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "disableClass",
+     "type": "String",
+     "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "allowDomMove",
+     "type": "Boolean",
+     "desc": "Whether the component can move the Dom node when rendering (defaults to true).",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "hideMode",
+     "type": "String",
+     "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "actionMode",
+     "type": "String",
+     "desc": "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "beforedestroy",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is destroyed. Return false to stop the destroy."
+    },
+    {
+     "name": "beforehide",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is hidden. Return false to stop the hide."
+    },
+    {
+     "name": "beforerender",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is rendered. Return false to stop the render."
+    },
+    {
+     "name": "beforeshow",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "destroy",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is destroyed."
+    },
+    {
+     "name": "disable",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is disabled."
+    },
+    {
+     "name": "enable",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is enabled."
+    },
+    {
+     "name": "hide",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is hidden."
+    },
+    {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is rendered."
+    },
+    {
+     "name": "show",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is shown."
+    }
+   ]
+  },
   "Roo.bootstrap.Button": {
    "props": [
     {
@@ -8416,6 +8548,23 @@
      "desc": "Fires after the field has been validated with no errors."
     }
    ]
+  },
+  "Roo.bootstrap.HtmlEditor.ToolbarStandard": {
+   "props": [
+    {
+     "name": "disable",
+     "type": "Object",
+     "desc": "List of elements to disable..",
+     "memberOf": ""
+    },
+    {
+     "name": "btns",
+     "type": "Array",
+     "desc": "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
+     "memberOf": ""
+    }
+   ],
+   "events": []
   },
   "Roo.bootstrap.Img": {
    "props": [
@@ -12048,6 +12197,167 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the component is shown."
+    }
+   ]
+  },
+  "Roo.bootstrap.Table.AbstractSelectionModel": {
+   "props": [
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": []
+  },
+  "Roo.bootstrap.Table.ColumnModel": {
+   "props": [
+    {
+     "name": "header",
+     "type": "String",
+     "desc": "The header text to display in the Grid view.",
+     "memberOf": ""
+    },
+    {
+     "name": "dataIndex",
+     "type": "String",
+     "desc": "(Optional) The name of the field in the grid's {@link Roo.data.Store}'s\n{@link Roo.data.Record} definition from which to draw the column's value. If not\nspecified, the column's index is used as an index into the Record's data Array.",
+     "memberOf": ""
+    },
+    {
+     "name": "width",
+     "type": "Number",
+     "desc": "(Optional) The initial width in pixels of the column. Using this\ninstead of {@link Roo.grid.Grid#autoSizeColumns} is more efficient.",
+     "memberOf": ""
+    },
+    {
+     "name": "sortable",
+     "type": "Boolean",
+     "desc": "(Optional) True if sorting is to be allowed on this column.\nDefaults to the value of the {@link #defaultSortable} property.\nWhether local/remote sorting is used is specified in {@link Roo.data.Store#remoteSort}.",
+     "memberOf": ""
+    },
+    {
+     "name": "locked",
+     "type": "Boolean",
+     "desc": "(Optional) True to lock the column in place while scrolling the Grid.  Defaults to false.",
+     "memberOf": ""
+    },
+    {
+     "name": "fixed",
+     "type": "Boolean",
+     "desc": "(Optional) True if the column width cannot be changed.  Defaults to false.",
+     "memberOf": ""
+    },
+    {
+     "name": "resizable",
+     "type": "Boolean",
+     "desc": "(Optional) False to disable column resizing. Defaults to true.",
+     "memberOf": ""
+    },
+    {
+     "name": "hidden",
+     "type": "Boolean",
+     "desc": "(Optional) True to hide the column. Defaults to false.",
+     "memberOf": ""
+    },
+    {
+     "name": "renderer",
+     "type": "Function",
+     "desc": "(Optional) A function used to generate HTML markup for a cell\ngiven the cell's data value. See {@link #setRenderer}. If not specified, the\ndefault renderer uses the raw data value.",
+     "memberOf": ""
+    },
+    {
+     "name": "align",
+     "type": "String",
+     "desc": "(Optional) Set the CSS text-align property of the column.  Defaults to undefined.",
+     "memberOf": ""
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "columlockchange",
+     "sig": "function (_self, colIndex, locked)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a column's locked state is changed"
+    },
+    {
+     "name": "columnmoved",
+     "sig": "function (_self, oldIndex, newIndex)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a column is moved."
+    },
+    {
+     "name": "headerchange",
+     "sig": "function (_self, columnIndex, newText)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the text of a header changes."
+    },
+    {
+     "name": "hiddenchange",
+     "sig": "function (_self, columnIndex, hidden)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a column is hidden or \"unhidden\"."
+    },
+    {
+     "name": "widthchange",
+     "sig": "function (_self, columnIndex, newWidth)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the width of a column changes."
+    }
+   ]
+  },
+  "Roo.bootstrap.Table.RowSelectionModel": {
+   "props": [
+    {
+     "name": "singleSelect",
+     "type": "Boolean",
+     "desc": "True to allow selection of only one row at a time (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "afterselectionchange",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the selection changes (eg. by key press or clicking)"
+    },
+    {
+     "name": "beforerowselect",
+     "sig": "function (_self, rowIndex, keepExisting)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a row is selected being selected, return false to cancel."
+    },
+    {
+     "name": "rowdeselect",
+     "sig": "function (_self, rowIndex)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a row is deselected."
+    },
+    {
+     "name": "rowselect",
+     "sig": "function (_self, rowIndex, r)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a row is selected."
+    },
+    {
+     "name": "selectionchange",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the selection changes"
     }
    ]
   },
