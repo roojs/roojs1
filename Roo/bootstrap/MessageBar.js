@@ -80,6 +80,11 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
         if (!this.rendered) {
             this.render();
         }
+    },
+    
+    hide : function()
+    {
+        this.el.hide();
     }
    
 });

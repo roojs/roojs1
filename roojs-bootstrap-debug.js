@@ -15610,8 +15610,12 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
                 cfg.style = this.style;
             }
             this.el = Roo.get(document.body).createChild(cfg, position);
-            
         }
+    },
+    
+    initEvents : function()
+    {
+        this.el.select('>button.close').on('click', this.hide, this);
     },
     
     show : function()
@@ -15619,6 +15623,11 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
         if (!this.rendered) {
             this.render();
         }
+    },
+    
+    hide : function()
+    {
+        this.el.hide();
     }
    
 });
