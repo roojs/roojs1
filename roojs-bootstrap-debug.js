@@ -15646,7 +15646,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
 //        
 //        e.data = this.html || '';
 
-        this.el.dom.innerHTML = this.html || '';
+        this.el.select('>.message', true).first().dom.innerHTML = this.html || '';
     }
    
 });
