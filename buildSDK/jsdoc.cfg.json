@@ -12,10 +12,12 @@
 		"Roo/state",
 		"Roo/tree",
 		"Roo/util",
-        "Roo/bootstrap",
-        "Roo/bootstrap/Navbar"
-		],
-	"exclude-src" : [
+                "Roo/bootstrap",
+                "Roo/bootstrap/Navbar",
+                "Roo/bootstrap/Table",
+                "Roo/bootstrap/HtmlEditor"
+        ],
+                "exclude-src" : [
 		"roojs-all.js",
 		"roojs-debug.js",
 		"roojs-core.js",
