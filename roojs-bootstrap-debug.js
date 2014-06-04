@@ -15593,7 +15593,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
     onRender : function(ct, position)
     {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
-        
+        Roo.log('onRender!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
             cfg.id = Roo.id();
