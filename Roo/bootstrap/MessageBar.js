@@ -44,6 +44,13 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+    },
+    
+    onRender : function(ct, position)
+    {
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        
+        
     }
    
 });
