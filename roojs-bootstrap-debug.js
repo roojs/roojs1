@@ -15541,4 +15541,61 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
             g.startEditing(newCell[0], newCell[1]);
         }
     }
+});/*
+ * - LGPL
+ *
+ * element
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.MessageBar
+ * @extends Roo.bootstrap.Component
+ * Bootstrap MessageBar class
+ * @cfg {String} html contents of the MessageBar
+ * @cfg {String} weight (info | success | warning | danger) default info
+ * @cfg {Boolean} closable (true | false) default true
+ * 
+ * @constructor
+ * Create a new Element
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.MessageBar = function(config){
+    Roo.bootstrap.MessageBar.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
+    
+    html: '',
+    weight: 'info',
+    closable: true,
+    
+    getAutoCreate : function(){
+        
+        var cfg = {
+            tag: 'div',
+            cls: 'alert alert-dismissable alert-messages alert-' + this.weight,
+            html: this.html || ''
+        }
+        
+        if(this.closable){
+            cfg.cn = {
+                tag: 'button',
+                cls: 'close'
+            }
+        }
+        
+        return cfg;
+    },
+    
+    onRender : function(ct, position)
+    {
+//        this.hide();
+    }
+   
 });
+
+ 
+
+ 

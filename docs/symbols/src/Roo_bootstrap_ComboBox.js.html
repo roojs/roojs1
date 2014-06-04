@@ -1257,7 +1257,24 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenField</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.hiddenField.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">;
         }
+    },
+    
+    </span><span class="jsdoc-var">clearItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.item </span><span class="jsdoc-syntax">= [];
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.choices.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;li.select2-search-choice'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
+           </span><span class="jsdoc-var">c.remove</span><span class="jsdoc-syntax">();
+        });
+        
+        </span><span class="jsdoc-var">this.syncValue</span><span class="jsdoc-syntax">();
     }
+    
+    
 
     </span><span class="jsdoc-comment">/** 
     * @cfg {Boolean} grow 
