@@ -337,4 +337,4 @@ this.fireEvent("rowdeselect",this,A);this.fireEvent("selectionchange",this);},re
 Roo.bootstrap.MessageBar=function(A){Roo.bootstrap.MessageBar.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.MessageBar,Roo.bootstrap.Component,{html:'',weight:'info',closable:true,getAutoCreate:function(){var A={tag:'div',cls:'alert alert-dismissable alert-messages alert-'+this.weight,html:this.html||''};if(this.closable){A.cn={tag:'button',cls:'close',html:'x'}}return A;},onRender:function(ct,A){Roo.bootstrap.Component.superclass.onRender.call(this,ct,A);if(!this.el){var B=Roo.apply({},this.getAutoCreate());B.id=Roo.id();if(this.cls){B.cls+=' '+this.cls;}if(this.style){B.style=this.style;}
 this.el=Roo.get(document.body).createChild(B,A);}
 this.el.select('>button.close').on('click',this.hide,this);},show:function(){if(!this.rendered){this.render();}
-Roo.select('.bootstrap-sticky-wrap',true).first().setStyle('margin-top','55px');},hide:function(){this.el.hide();}});
+Roo.select('.bootstrap-sticky-wrap',true).first().setStyle('margin-top','55px');},hide:function(){this.el.hide();Roo.select('.bootstrap-sticky-wrap',true).first().setStyle('margin-top','0px');}});

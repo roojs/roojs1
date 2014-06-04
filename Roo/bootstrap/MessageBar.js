@@ -85,6 +85,8 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
     hide : function()
     {
         this.el.hide();
+        
+        Roo.select('.bootstrap-sticky-wrap', true).first().setStyle('margin-top', '0px');
     }
    
 });
