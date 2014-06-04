@@ -11,6 +11,7 @@
  * Bootstrap MessageBar class
  * @cfg {String} html contents of the MessageBar
  * @cfg {String} weight (info | success | warning | danger) default info
+ * @cfg {Boolean} closable (true | false) default true
  * 
  * @constructor
  * Create a new Element
@@ -25,7 +26,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
     
     html: '',
     weight: 'info',
-     
+    closable: true,
     
     getAutoCreate : function(){
         
@@ -33,6 +34,13 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
             tag: 'div',
             cls: 'alert alert-dismissable alert-messages alert-' + this.weight,
             html: this.html || ''
+        }
+        
+        if(this.closable){
+            cfg.cn = {
+                tag: 'button',
+                cls: 'close'
+            }
         }
         
         return cfg;
