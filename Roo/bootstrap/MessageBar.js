@@ -28,12 +28,13 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
     html: '',
     weight: 'info',
     closable: true,
+    fixed: false,
     
     getAutoCreate : function(){
         
         var cfg = {
             tag: 'div',
-            cls: 'alert alert-dismissable alert-messages alert-' + this.weight,
+            cls: 'alert alert-dismissable alert-' + this.weight,
             cn: [
                 {
                     tag: 'span',
@@ -41,6 +42,14 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
                     html: this.html || ''
                 }
             ]
+        }
+        
+        if(this.fixed){
+            cfg.cls += ' alert-messages-fixed';
+        }
+        
+        if(!this.fixed){
+            cfg.cls += ' alert-messages-relative';
         }
         
         if(this.closable){
