@@ -15626,7 +15626,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
         var navbar_fixed_top = Roo.select('.navbar-fixed-top', true).first();
         
         if(navbar_fixed_top != null){
-            navbar_fixed_top.setStyle('top', this.el.getHeight() + 'px');
+            navbar_fixed_top.setStyle('margin-top', this.el.getHeight() + 'px');
         }
         
     },
