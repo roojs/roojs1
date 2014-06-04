@@ -68,6 +68,13 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
             }
             this.el = Roo.get(document.body).createChild(cfg, position);
         }
+    },
+    
+    show : function()
+    {
+        if (!this.rendered) {
+            this.render();
+        }
     }
    
 });
