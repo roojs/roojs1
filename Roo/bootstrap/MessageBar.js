@@ -78,7 +78,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
             this.render();
         }
         
-        Roo.select('.bootstrap-sticky-wrap', true).first().setStyle('margin-top', '55px');
+        Roo.select('.bootstrap-sticky-wrap', true).first().setStyle('margin-top', this.el.getHeight() + 'px');
         
     },
     
