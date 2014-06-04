@@ -68,12 +68,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
             }
             this.el = Roo.get(document.body).createChild(cfg, position);
         }
-    },
-    
-    initEvents : function()
-    {
-        Roo.log('initEvent!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.el.select('>button.close'));
+        
         this.el.select('>button.close').on('click', this.hide, this);
     },
     
