@@ -1257,7 +1257,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.hiddenField){
             this.hiddenField.dom.value = this.value;
         }
+    },
+    
+    clearItems : function()
+    {
+        this.item = [];
+        
+        this.syncValue();
     }
+    
+    
 
     /** 
     * @cfg {Boolean} grow 
