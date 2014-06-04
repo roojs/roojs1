@@ -1259,7 +1259,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
     },
     
-    clearItems : function()
+    clearItem : function()
     {
         this.item = [];
         
