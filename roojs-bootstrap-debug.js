@@ -15620,6 +15620,9 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
         if (!this.rendered) {
             this.render();
         }
+        
+        Roo.select('.bootstrap-sticky-wrap', true).first().setStyle('margin-top', '55px');
+        
     },
     
     hide : function()
