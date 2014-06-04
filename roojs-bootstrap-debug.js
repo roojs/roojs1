@@ -8899,7 +8899,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.hiddenField){
             this.hiddenField.dom.value = this.value;
         }
+    },
+    
+    clearItems : function()
+    {
+        this.item = [];
+        
+        this.syncValue();
     }
+    
+    
 
     /** 
     * @cfg {Boolean} grow 
@@ -14056,9 +14065,9 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
         this.createToolbar(this);
        
         
-//        if(!this.width){
-//            this.setSize(this.wrap.getSize());
-//        }
+        if(!this.width){
+            this.setSize(this.wrap.getSize());
+        }
         if (this.resizeEl) {
             this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
             // should trigger onReize..
@@ -14218,6 +14227,11 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     syncValue : function()
     {
         this.editorcore.syncValue();
+    },
+    
+    pushValue : function()
+    {
+        this.editorcore.pushValue();
     }
      
     
