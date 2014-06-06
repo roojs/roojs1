@@ -293,7 +293,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
             //this.deferFocus();
         }
          
-        this.setSize(this.wrap.getSize());
+//        this.setSize(this.wrap.getSize());
         this.fireEvent('editmodechange', this, this.editorcore.sourceEditMode);
     },
  
