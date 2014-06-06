@@ -73,7 +73,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         }
         
         if (this.name) {
-//            input.name = this.name;
+            input.name = this.name;
         }
         
         if (this.size) {
