@@ -14093,34 +14093,34 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
         });
         
         this.editorcore.onRender(ct, position);
-         
-        if (this.resizable) {
-            this.resizeEl = new Roo.Resizable(this.wrap, {
-                pinned : true,
-                wrap: true,
-                dynamic : true,
-                minHeight : this.height,
-                height: this.height,
-                handles : this.resizable,
-                width: this.width,
-                listeners : {
-                    resize : function(r, w, h) {
-                        _t.onResize(w,h); // -something
-                    }
-                }
-            });
-            
-        }
+//         
+//        if (this.resizable) {
+//            this.resizeEl = new Roo.Resizable(this.wrap, {
+//                pinned : true,
+//                wrap: true,
+//                dynamic : true,
+//                minHeight : this.height,
+//                height: this.height,
+//                handles : this.resizable,
+//                width: this.width,
+//                listeners : {
+//                    resize : function(r, w, h) {
+//                        _t.onResize(w,h); // -something
+//                    }
+//                }
+//            });
+//            
+//        }
         this.createToolbar(this);
        
-        
-        if(!this.width){
-            this.setSize(this.wrap.getSize());
-        }
-        if (this.resizeEl) {
-            this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
-            // should trigger onReize..
-        }
+//        
+//        if(!this.width){
+//            this.setSize(this.wrap.getSize());
+//        }
+//        if (this.resizeEl) {
+//            this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
+//            // should trigger onReize..
+//        }
         
 //        if(this.autosave && this.w){
 //            this.autoSaveFn = setInterval(this.autosave, 1000);
