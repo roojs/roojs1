@@ -14086,7 +14086,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     {
        // Roo.log("Call onRender: " + this.xtype);
         var _t = this;
-//        Roo.bootstrap.HtmlEditor.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.HtmlEditor.superclass.onRender.call(this, ct, position);
       
         this.wrap = this.inputEl().wrap({
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
