@@ -99,9 +99,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (this.style) { // fixme needs to support more complex style data.
             cfg.style = this.style;
         }
+        if(this.name == 'descript'){
         Roo.log('run here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         Roo.log(cfg);
         Roo.log(this.name);
+        }
         if(this.name){
             cfg.name = this.name;
         }
