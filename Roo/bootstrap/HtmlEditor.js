@@ -188,7 +188,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
         Roo.log(this.inputEl().wrap);
         this.wrap = this.inputEl().wrap({
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
-        });
+        },true);
         Roo.log(this.wrap);
         this.editorcore.onRender(ct, position);
          
