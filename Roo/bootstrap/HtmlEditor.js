@@ -183,13 +183,11 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
        // Roo.log("Call onRender: " + this.xtype);
         var _t = this;
         Roo.bootstrap.HtmlEditor.superclass.onRender.call(this, ct, position);
-        Roo.log('this.wrap!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.inputEl());
-        Roo.log(this.inputEl().wrap);
+        
         this.wrap = this.inputEl().wrap({
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
-        },true);
-        Roo.log(this.wrap);
+        });
+        
         this.editorcore.onRender(ct, position);
          
         if (this.resizable) {
