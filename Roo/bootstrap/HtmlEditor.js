@@ -290,8 +290,10 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
             //this.deferFocus();
         }
          
-        if(!this.resiable)
-        this.setSize(this.wrap.getSize());
+        if(!this.resizable){
+            this.setSize(this.wrap.getSize());
+        }
+        
         this.fireEvent('editmodechange', this, this.editorcore.sourceEditMode);
     },
  
