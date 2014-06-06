@@ -14130,6 +14130,10 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     // private
     onResize : function(w, h)
     {
+        if(!this.resizable){
+            return;
+        }
+        
         Roo.log('run resize 1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         Roo.log('resize: ' +w + ',' + h );
         Roo.bootstrap.HtmlEditor.superclass.onResize.apply(this, arguments);
