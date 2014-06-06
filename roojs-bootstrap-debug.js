@@ -14275,11 +14275,15 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     // private
     syncValue : function()
     {
+        Roo.log('syncValue');
+        
         this.editorcore.syncValue();
     },
     
     pushValue : function()
     {
+        Roo.log('pushValue');
+        
         this.editorcore.pushValue();
     }
      
