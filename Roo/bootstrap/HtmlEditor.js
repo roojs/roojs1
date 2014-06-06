@@ -210,8 +210,8 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
         this.createToolbar(this);
        
         
-        if(!this.width){
-//            this.setSize(this.wrap.getSize());
+        if(!this.width && this.resizable){
+            this.setSize(this.wrap.getSize());
         }
         if (this.resizeEl) {
             this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
