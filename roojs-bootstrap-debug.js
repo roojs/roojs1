@@ -14122,9 +14122,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
             // should trigger onReize..
         }
         
-//        if(this.autosave && this.w){
-//            this.autoSaveFn = setInterval(this.autosave, 1000);
-//        }
+        this.syncValue();
     },
 
     // private
