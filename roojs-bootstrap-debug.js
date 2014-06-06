@@ -79,7 +79,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
          
         
         var cfg = Roo.apply({},  this.getAutoCreate());
-        Roo.log(cfg);
         cfg.id = Roo.id();
         
         // fill in the extra attributes 
@@ -100,11 +99,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if (this.style) { // fixme needs to support more complex style data.
             cfg.style = this.style;
         }
-        if(this.name == 'descript'){
-        Roo.log('run here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(cfg);
-        Roo.log(this.name);
-        }
+        
         if(this.name){
             cfg.name = this.name;
         }
