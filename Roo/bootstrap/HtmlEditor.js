@@ -218,7 +218,6 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
             // should trigger onReize..
         }
         
-        this.syncValue();
     },
 
     // private
