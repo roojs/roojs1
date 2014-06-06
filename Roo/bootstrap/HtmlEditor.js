@@ -156,24 +156,24 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
      */
     createToolbar : function(){
         
+        Roo.log("create toolbars");
+        
         this.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard({editor: this} ) ];
         this.toolbars[0].render(this.toolbarContainer());
-         
-        Roo.log("create toolbars");
+        
         return;
-        if (!editor.toolbars || !editor.toolbars.length) {
-            editor.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard() ]; // can be empty?
-        }
         
-        for (var i =0 ; i < editor.toolbars.length;i++) {
-            editor.toolbars[i] = Roo.factory(
-                    typeof(editor.toolbars[i]) == 'string' ?
-                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
-                Roo.bootstrap.HtmlEditor);
-            editor.toolbars[i].init(editor);
-        }
-         
-        
+//        if (!editor.toolbars || !editor.toolbars.length) {
+//            editor.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard() ]; // can be empty?
+//        }
+//        
+//        for (var i =0 ; i < editor.toolbars.length;i++) {
+//            editor.toolbars[i] = Roo.factory(
+//                    typeof(editor.toolbars[i]) == 'string' ?
+//                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
+//                Roo.bootstrap.HtmlEditor);
+//            editor.toolbars[i].init(editor);
+//        }
     },
 
      
