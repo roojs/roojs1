@@ -71,7 +71,6 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         
         switch(e.keyCode){
             case 27: // escape
-            case 9: // tab
                 this.hide();
                 break;
             case 37: // left
@@ -80,6 +79,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
             case 40: // down
                 break;
             case 13: // enter
+            case 9: // tab
                 this.setTime();
                 break;
         }
