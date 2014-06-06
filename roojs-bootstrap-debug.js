@@ -4930,6 +4930,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @param {String} msg The validation message
      */
     markInvalid : function(msg){
+        Roo.log('RUN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
         if(!this.el  || this.preventMark){ // not rendered
             return;
         }
