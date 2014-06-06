@@ -11857,80 +11857,28 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     fireKey: function(e){
         Roo.log('Fire Key !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         Roo.log(e.keyCode);
-//        if (!this.picker().isVisible()){
-//            if (e.keyCode == 27) // allow escape to hide and re-show picker
-//                this.show();
-//            return;
-//        }
-//        var dateChanged = false,
-//        dir, day, month,
-//        newDate, newViewDate;
-//        switch(e.keyCode){
-//            case 27: // escape
-//                this.hide();
-//                e.preventDefault();
-//                break;
-//            case 37: // left
-//            case 39: // right
-//                if (!this.keyboardNavigation) break;
-//                dir = e.keyCode == 37 ? -1 : 1;
-//                
-//                if (e.ctrlKey){
-//                    newDate = this.moveYear(this.date, dir);
-//                    newViewDate = this.moveYear(this.viewDate, dir);
-//                } else if (e.shiftKey){
-//                    newDate = this.moveMonth(this.date, dir);
-//                    newViewDate = this.moveMonth(this.viewDate, dir);
-//                } else {
-//                    newDate = new Date(this.date);
-//                    newDate.setUTCDate(this.date.getUTCDate() + dir);
-//                    newViewDate = new Date(this.viewDate);
-//                    newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir);
-//                }
-//                if (this.dateWithinRange(newDate)){
-//                    this.date = newDate;
-//                    this.viewDate = newViewDate;
-//                    this.setValue(this.formatDate(this.date));
-//                    this.update();
-//                    e.preventDefault();
-//                    dateChanged = true;
-//                }
-//                break;
-//            case 38: // up
-//            case 40: // down
-//                if (!this.keyboardNavigation) break;
-//                dir = e.keyCode == 38 ? -1 : 1;
-//                if (e.ctrlKey){
-//                    newDate = this.moveYear(this.date, dir);
-//                    newViewDate = this.moveYear(this.viewDate, dir);
-//                } else if (e.shiftKey){
-//                    newDate = this.moveMonth(this.date, dir);
-//                    newViewDate = this.moveMonth(this.viewDate, dir);
-//                } else {
-//                    newDate = new Date(this.date);
-//                    newDate.setUTCDate(this.date.getUTCDate() + dir * 7);
-//                    newViewDate = new Date(this.viewDate);
-//                    newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir * 7);
-//                }
-//                if (this.dateWithinRange(newDate)){
-//                    this.date = newDate;
-//                    this.viewDate = newViewDate;
-//                    this.setValue(this.formatDate(this.date));
-//                    this.update();
-//                    e.preventDefault();
-//                    dateChanged = true;
-//                }
-//                break;
-//            case 13: // enter
-//                this.setValue(this.formatDate(this.date));
-//                this.hide();
-//                e.preventDefault();
-//                break;
-//            case 9: // tab
-//                this.setValue(this.formatDate(this.date));
-//                this.hide();
-//                break;
-//        }
+        if (!this.picker().isVisible()){
+            if (e.keyCode == 27) // allow escape to hide and re-show picker
+                this.show();
+            return;
+        }
+
+        e.preventDefault();
+        
+        switch(e.keyCode){
+            case 27: // escape
+            case 9: // tab
+                this.hide();
+                break;
+            case 37: // left
+            case 39: // right
+            case 38: // up
+            case 40: // down
+                break;
+            case 13: // enter
+                this.setTime();
+                break;
+        }
     },
     
     onClick: function(e) {
