@@ -78,10 +78,10 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
                 this.onTogglePeriod();
                 break;
             case 38: // up
-                this.onIncrementHours();
+                this.onIncrementMinutes();
                 break;
             case 40: // down
-                this.onDecrementHours();
+                this.onDecrementMinutes();
                 break;
             case 13: // enter
             case 9: // tab
