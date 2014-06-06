@@ -14219,16 +14219,16 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
         this.originalValue = this.getValue();
     },
 
-//    /**
-//     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
-//     * @method
-//     */
-//    markInvalid : Roo.emptyFn,
-//    /**
-//     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
-//     * @method
-//     */
-//    clearInvalid : Roo.emptyFn,
+    /**
+     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
+     * @method
+     */
+    markInvalid : Roo.emptyFn,
+    /**
+     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
+     * @method
+     */
+    clearInvalid : Roo.emptyFn,
 
     setValue : function(v){
         Roo.bootstrap.HtmlEditor.superclass.setValue.call(this, v);
