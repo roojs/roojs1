@@ -120,7 +120,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
    /**
      * @cfg {Number} width (in pixels)
      */   
-    width: 500,
+    width: false,
     
     /**
      * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
