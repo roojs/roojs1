@@ -13005,6 +13005,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             Roo.log(v);
             if(this.owner.fireEvent('beforepush', this, v) !== false){
+                Roo.log('here');
                 var d = (this.doc.body || this.doc.documentElement);
                 d.innerHTML = v;
                 this.cleanUpPaste();
