@@ -9583,7 +9583,13 @@
     {
      "name": "closable",
      "type": "Boolean",
-     "desc": "(true | false) default true",
+     "desc": "(true | false) default false",
+     "memberOf": ""
+    },
+    {
+     "name": "fixed",
+     "type": "Boolean",
+     "desc": "(true | false) default false, fix the bar at the top",
      "memberOf": ""
     },
     {

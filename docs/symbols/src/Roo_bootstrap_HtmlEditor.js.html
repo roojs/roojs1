@@ -120,7 +120,7 @@
    </span><span class="jsdoc-comment">/**
      * @cfg {Number} width (in pixels)
      */   
-    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 500,
+    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">/**
      * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
@@ -156,25 +156,25 @@
      */
     </span><span class="jsdoc-var">createToolbar </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;create toolbars&quot;</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">this.toolbars </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.HtmlEditor.ToolbarStandard</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">} ) ];
         </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbarContainer</span><span class="jsdoc-syntax">());
-         
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;create toolbars&quot;</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">editor.toolbars </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">editor.toolbars.length</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">editor.toolbars </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.HtmlEditor.ToolbarStandard</span><span class="jsdoc-syntax">() ]; </span><span class="jsdoc-comment">// can be empty?
-        </span><span class="jsdoc-syntax">}
         
-        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0 ; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">editor.toolbars.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-            </span><span class="jsdoc-var">editor.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(
-                    </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'string' </span><span class="jsdoc-syntax">?
-                        { </span><span class="jsdoc-var">xtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">editor.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]} : </span><span class="jsdoc-var">editor.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],
-                </span><span class="jsdoc-var">Roo.bootstrap.HtmlEditor</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">editor.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.init</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">);
-        }
-         
-        
-    },
+</span><span class="jsdoc-comment">//        if (!editor.toolbars || !editor.toolbars.length) {
+//            editor.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard() ]; // can be empty?
+//        }
+//        
+//        for (var i =0 ; i &lt; editor.toolbars.length;i++) {
+//            editor.toolbars[i] = Roo.factory(
+//                    typeof(editor.toolbars[i]) == 'string' ?
+//                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
+//                Roo.bootstrap.HtmlEditor);
+//            editor.toolbars[i].init(editor);
+//        }
+    </span><span class="jsdoc-syntax">},
 
      
     </span><span class="jsdoc-comment">// private
@@ -210,7 +210,7 @@
         </span><span class="jsdoc-var">this.createToolbar</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
        
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.resizable</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap.getSize</span><span class="jsdoc-syntax">());
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizeEl</span><span class="jsdoc-syntax">) {
@@ -290,7 +290,10 @@
             </span><span class="jsdoc-comment">//this.deferFocus();
         </span><span class="jsdoc-syntax">}
          
-        </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap.getSize</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resizable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap.getSize</span><span class="jsdoc-syntax">());
+        }
+        
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editmodechange'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editorcore.sourceEditMode</span><span class="jsdoc-syntax">);
     },
  
@@ -312,16 +315,16 @@
         </span><span class="jsdoc-var">this.originalValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
     },
 
-    </span><span class="jsdoc-comment">/**
-     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
-     * @method
-     */
-    </span><span class="jsdoc-var">markInvalid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-comment">/**
-     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
-     * @method
-     */
-    </span><span class="jsdoc-var">clearInvalid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
+</span><span class="jsdoc-comment">//    /**
+//     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
+//     * @method
+//     */
+//    markInvalid : Roo.emptyFn,
+//    /**
+//     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
+//     * @method
+//     */
+//    clearInvalid : Roo.emptyFn,
 
     </span><span class="jsdoc-var">setValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">Roo.bootstrap.HtmlEditor.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);

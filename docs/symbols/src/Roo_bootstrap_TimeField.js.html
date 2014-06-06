@@ -58,6 +58,36 @@
 
     },
     
+    </span><span class="jsdoc-var">fireKey</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.isVisible</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.keyCode </span><span class="jsdoc-syntax">== 27) </span><span class="jsdoc-comment">// allow escape to hide and re-show picker
+                </span><span class="jsdoc-var">this.show</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.keyCode</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">27: </span><span class="jsdoc-comment">// escape
+                </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">37: </span><span class="jsdoc-comment">// left
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">39: </span><span class="jsdoc-comment">// right
+                </span><span class="jsdoc-var">this.onTogglePeriod</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">38: </span><span class="jsdoc-comment">// up
+                </span><span class="jsdoc-var">this.onIncrementMinutes</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">40: </span><span class="jsdoc-comment">// down
+                </span><span class="jsdoc-var">this.onDecrementMinutes</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">13: </span><span class="jsdoc-comment">// enter
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">9: </span><span class="jsdoc-comment">// tab
+                </span><span class="jsdoc-var">this.setTime</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+        }
+    },
+    
     </span><span class="jsdoc-var">onClick</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">e.stopPropagation</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
