@@ -345,10 +345,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if(this.initialized){
             var v = this.el.dom.value.trim();
             
-            if(v.length < 1){
+//            if(v.length < 1){
 //                v = '&#160;';
-                v = '';
-            }
+//            }
             
             if(this.owner.fireEvent('beforepush', this, v) !== false){
                 var d = (this.doc.body || this.doc.documentElement);
