@@ -290,7 +290,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
             //this.deferFocus();
         }
          
-        if(!this.resizable){
+        if(this.resizable){
             this.setSize(this.wrap.getSize());
         }
         
