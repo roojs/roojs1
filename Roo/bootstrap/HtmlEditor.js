@@ -120,7 +120,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
    /**
      * @cfg {Number} width (in pixels)
      */   
-    width: false,
+    width: 500,
     
     /**
      * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
@@ -183,7 +183,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
        // Roo.log("Call onRender: " + this.xtype);
         var _t = this;
         Roo.bootstrap.HtmlEditor.superclass.onRender.call(this, ct, position);
-        
+      
         this.wrap = this.inputEl().wrap({
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
         });
@@ -226,11 +226,6 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     // private
     onResize : function(w, h)
     {
-        if(!this.resizable){
-            return;
-        }
-        
-        Roo.log('run resize 1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         Roo.log('resize: ' +w + ',' + h );
         Roo.bootstrap.HtmlEditor.superclass.onResize.apply(this, arguments);
         var ew = false;
