@@ -14093,7 +14093,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
         this.wrap = this.inputEl().wrap({
             cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
         });
-        
+        Roo.log(this.wrap);
         this.editorcore.onRender(ct, position);
          
         if (this.resizable) {
