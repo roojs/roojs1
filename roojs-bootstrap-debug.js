@@ -14115,7 +14115,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
        
         
         if(!this.width){
-            this.setSize(this.wrap.getSize());
+//            this.setSize(this.wrap.getSize());
         }
         if (this.resizeEl) {
             this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
