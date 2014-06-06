@@ -346,15 +346,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var v = this.el.dom.value;
             
             if(v.length < 1){
+//                v = '&#160;';
                 v = '';
             }
-            Roo.log(v);
+            
             if(this.owner.fireEvent('beforepush', this, v) !== false){
-                Roo.log('here');
                 var d = (this.doc.body || this.doc.documentElement);
-                Roo.log(d);
                 d.innerHTML = v;
-                Roo.log(d);
                 this.cleanUpPaste();
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
