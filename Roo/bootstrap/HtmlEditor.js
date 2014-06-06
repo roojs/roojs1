@@ -272,7 +272,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
             
 //            Roo.log('in');
 //            Roo.log(this.syncValue());
-            this.editorcore.syncValue();
+            this.syncValue();
             this.inputEl().removeClass('hide');
             this.inputEl().dom.removeAttribute('tabIndex');
             this.inputEl().focus();
@@ -280,7 +280,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
             Roo.log('editor - hiding textarea');
 //            Roo.log('out')
 //            Roo.log(this.pushValue()); 
-            this.editorcore.pushValue();
+            this.pushValue();
             
             this.inputEl().addClass('hide');
             this.inputEl().dom.setAttribute('tabIndex', -1);
