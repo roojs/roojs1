@@ -13001,7 +13001,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var v = this.el.dom.value;
             
             if(v.length < 1){
-                v = '&#160;';
+                v = '';
             }
             Roo.log(v);
             if(this.owner.fireEvent('beforepush', this, v) !== false){
