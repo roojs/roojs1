@@ -100,6 +100,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             cfg.style = this.style;
         }
         Roo.log('run here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(cfg);
+        Roo.log(this.name);
         if(this.name){
             cfg.name = this.name;
         }
