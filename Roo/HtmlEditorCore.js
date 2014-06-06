@@ -354,6 +354,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 var d = (this.doc.body || this.doc.documentElement);
                 Roo.log(d);
                 d.innerHTML = v;
+                Roo.log(d);
                 this.cleanUpPaste();
                 this.el.dom.value = d.innerHTML;
                 this.owner.fireEvent('push', this, v);
