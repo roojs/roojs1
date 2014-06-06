@@ -12892,7 +12892,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // private
     onResize : function(w, h)
     {
-         Roo.log('resize: ' +w + ',' + h );
+        Roo.log('run resize !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log('resize: ' +w + ',' + h );
         //Roo.HtmlEditorCore.superclass.onResize.apply(this, arguments);
         if(!this.iframe){
             return;
@@ -14060,24 +14061,24 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
      */
     createToolbar : function(){
         
+        Roo.log("create toolbars");
+        
         this.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard({editor: this} ) ];
         this.toolbars[0].render(this.toolbarContainer());
-         
-        Roo.log("create toolbars");
+        
         return;
-        if (!editor.toolbars || !editor.toolbars.length) {
-            editor.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard() ]; // can be empty?
-        }
         
-        for (var i =0 ; i < editor.toolbars.length;i++) {
-            editor.toolbars[i] = Roo.factory(
-                    typeof(editor.toolbars[i]) == 'string' ?
-                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
-                Roo.bootstrap.HtmlEditor);
-            editor.toolbars[i].init(editor);
-        }
-         
-        
+//        if (!editor.toolbars || !editor.toolbars.length) {
+//            editor.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard() ]; // can be empty?
+//        }
+//        
+//        for (var i =0 ; i < editor.toolbars.length;i++) {
+//            editor.toolbars[i] = Roo.factory(
+//                    typeof(editor.toolbars[i]) == 'string' ?
+//                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
+//                Roo.bootstrap.HtmlEditor);
+//            editor.toolbars[i].init(editor);
+//        }
     },
 
      
@@ -14093,34 +14094,34 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
         });
         
         this.editorcore.onRender(ct, position);
-//         
-//        if (this.resizable) {
-//            this.resizeEl = new Roo.Resizable(this.wrap, {
-//                pinned : true,
-//                wrap: true,
-//                dynamic : true,
-//                minHeight : this.height,
-//                height: this.height,
-//                handles : this.resizable,
-//                width: this.width,
-//                listeners : {
-//                    resize : function(r, w, h) {
-//                        _t.onResize(w,h); // -something
-//                    }
-//                }
-//            });
-//            
-//        }
+         
+        if (this.resizable) {
+            this.resizeEl = new Roo.Resizable(this.wrap, {
+                pinned : true,
+                wrap: true,
+                dynamic : true,
+                minHeight : this.height,
+                height: this.height,
+                handles : this.resizable,
+                width: this.width,
+                listeners : {
+                    resize : function(r, w, h) {
+                        _t.onResize(w,h); // -something
+                    }
+                }
+            });
+            
+        }
         this.createToolbar(this);
        
-//        
-//        if(!this.width){
-//            this.setSize(this.wrap.getSize());
-//        }
-//        if (this.resizeEl) {
-//            this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
-//            // should trigger onReize..
-//        }
+        
+        if(!this.width){
+            this.setSize(this.wrap.getSize());
+        }
+        if (this.resizeEl) {
+            this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
+            // should trigger onReize..
+        }
         
 //        if(this.autosave && this.w){
 //            this.autoSaveFn = setInterval(this.autosave, 1000);
