@@ -4647,7 +4647,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.inputEl().relayEvent('keyup', this);
 
         // reference to original value for reset
-//        this.originalValue = this.getValue();
+        this.originalValue = this.getValue();
         //Roo.form.TextField.superclass.initEvents.call(this);
         if(this.validationEvent == 'keyup'){
             this.validationTask = new Roo.util.DelayedTask(this.validate, this);
@@ -12495,7 +12495,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     initEvents : function()
     {
-        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
+//        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
         
         this.inputEl().on('click', this.onClick,  this);
         
