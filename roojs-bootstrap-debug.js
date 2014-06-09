@@ -12551,6 +12551,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     
     getAutoCreate : function()
     {
+        Roo.log('getAutoCreate!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+        Roo.log(this);
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
         
         var id = Roo.id();
@@ -12568,8 +12570,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             placeholder : this.placeholder || ''
             
         };
-        
-        this.value = this.value; 
         
         if (this.disabled) {
             input.disabled=true;
