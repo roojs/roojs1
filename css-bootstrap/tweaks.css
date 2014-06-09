@@ -17,6 +17,8 @@
 
 .box-input-label {
     width: 100%;
+    display: inline-block;
+    font-weight: bold;
 }
 
 .box-label {
