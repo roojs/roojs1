@@ -11189,16 +11189,10 @@
   "Roo.bootstrap.Radio": {
    "props": [
     {
-     "name": "value",
-     "type": "string",
-     "desc": "default value of the input",
-     "memberOf": ""
-    },
-    {
      "name": "valueOff",
      "type": "String",
      "desc": "The value that should go into the generated input element's value when unchecked.",
-     "memberOf": ""
+     "memberOf": "Roo.bootstrap.CheckBox"
     },
     {
      "name": "boxLabel",
@@ -11282,6 +11276,12 @@
      "name": "lg",
      "type": "Number",
      "desc": "colspan out of 12 for large computer-sized screens",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "value",
+     "type": "string",
+     "desc": "default value of the input",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
