@@ -496,7 +496,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.update();
         this.place();
         
-        this.fireEvent('select', this, this.date);
+        this.fireEvent('show', this, this.date);
     },
     
     hide : function()
