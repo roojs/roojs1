@@ -12533,6 +12533,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
  * @extends Roo.bootstrap.CheckBox
  * Bootstrap Radio class
 
+ * @cfg {string} value default value of the input
+ * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
  * @constructor
  * Create a new Radio
  * @param {Object} config The config object
