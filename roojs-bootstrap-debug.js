@@ -10881,6 +10881,29 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.DateField = function(config){
     Roo.bootstrap.DateField.superclass.constructor.call(this, config);
+     this.addEvents({
+            /**
+             * @event show
+             * Fires when this field show.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            show : true,
+            /**
+             * @event show
+             * Fires when this field hide.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            hide : true,
+            /**
+             * @event select
+             * Fires when select a date.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            select : true
+        });
 };
 
 Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
@@ -11323,6 +11346,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().show();
         this.update();
         this.place();
+        
+        this.fireEvent('show', this, this.date);
     },
     
     hide : function()
@@ -11331,6 +11356,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().hide();
         this.viewMode = this.startViewMode;
         this.showMode();
+        
+        this.fireEvent('hide', this, this.date);
         
     },
     
@@ -11342,6 +11369,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     keyup: function(e){
         Roo.bootstrap.DateField.superclass.keyup.call(this);
         this.update();
+        
+    },
+
+    setValue: function(v){
+        Roo.bootstrap.DateField.superclass.setValue.call(this, v);
+        
+        this.fireEvent('select', this, this.date);
         
     },
     
@@ -11814,6 +11848,29 @@ Roo.apply(Roo.bootstrap.DateField,  {
 
 Roo.bootstrap.TimeField = function(config){
     Roo.bootstrap.TimeField.superclass.constructor.call(this, config);
+    this.addEvents({
+            /**
+             * @event show
+             * Fires when this field show.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            show : true,
+            /**
+             * @event show
+             * Fires when this field hide.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            hide : true,
+            /**
+             * @event select
+             * Fires when select a date.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            select : true
+        });
 };
 
 Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
@@ -12121,6 +12178,8 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.pop.show();
         this.update();
         this.place();
+        
+        this.fireEvent('show', this, this.date);
     },
     
     hide : function()
@@ -12128,12 +12187,17 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.picker().hide();
         this.pop.hide();
         
+        this.fireEvent('hide', this, this.date);
     },
     
     setTime : function()
     {
         this.hide();
         this.setValue(this.time.format(this.format));
+        
+        this.fireEvent('select', this, this.date);
+        
+        
     },
     
     onMousedown: function(e){
@@ -14274,16 +14338,12 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
     
     // private
     syncValue : function()
-    {
-        Roo.log('syncValue');
-        
+    {   
         this.editorcore.syncValue();
     },
     
     pushValue : function()
-    {
-        Roo.log('pushValue');
-        
+    {   
         this.editorcore.pushValue();
     }
      
