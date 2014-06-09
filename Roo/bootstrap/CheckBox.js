@@ -160,7 +160,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         if(this.boxLabel){
             cfg.cn.push({
-                tag: 'span',
+                tag: 'label',
                 'for': id,
                 cls: 'box-label',
                 html: this.boxLabel
