@@ -12546,6 +12546,8 @@ Roo.bootstrap.Radio = function(config){
 Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     
     inputType: 'radio',
+    value: '',
+    valueOff: '',
     
     getAutoCreate : function()
     {
