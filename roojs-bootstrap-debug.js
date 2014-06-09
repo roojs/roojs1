@@ -12444,7 +12444,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                     
                 ];
         } else if ( this.fieldLabel.length) {
-            Roo.log('here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
                 Roo.log(" label");
                 cfg.cn = [
                    
@@ -12517,6 +12516,15 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.inputEl().dom.value = state ? this.value : this.valueOff;
         
+    },
+    
+    fireKey: function(e){
+        switch(e.keyCode){
+            case 13: // enter
+                e.preventDefault();
+                this.onClick();
+                break;
+        }
     }
 });
 
