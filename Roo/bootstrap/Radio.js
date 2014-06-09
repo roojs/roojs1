@@ -23,7 +23,7 @@ Roo.bootstrap.Radio = function(config){
 Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     
     inputType: 'radio',
-    value: '',
+    inputValue: '',
     valueOff: '',
     
     getAutoCreate : function()
@@ -40,7 +40,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             tag: 'input',
             id : id,
             type : this.inputType,
-            value : (!this.checked) ? this.valueOff : this.value,
+            value : (!this.checked) ? this.valueOff : this.inputValue,
             cls : 'form-box',
             placeholder : this.placeholder || ''
             
@@ -175,7 +175,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             this.fireEvent('check', this, state);
         }
         
-        this.inputEl().dom.value = state ? this.value : this.valueOff;
+        this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
         
     },
     
