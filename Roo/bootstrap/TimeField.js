@@ -361,6 +361,10 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     {
         this.hide();
         this.setValue(this.time.format(this.format));
+        
+        this.fireEvent('select', this, this.date);
+        
+        
     },
     
     onMousedown: function(e){
