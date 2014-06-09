@@ -5666,6 +5666,12 @@
      "memberOf": ""
     },
     {
+     "name": "inputValue",
+     "type": "String",
+     "desc": "The value that should go into the generated input element's value when checked.",
+     "memberOf": ""
+    },
+    {
      "name": "boxLabel",
      "type": "String",
      "desc": "The text that appears beside the checkbox",
@@ -11192,6 +11198,12 @@
      "name": "valueOff",
      "type": "String",
      "desc": "The value that should go into the generated input element's value when unchecked.",
+     "memberOf": "Roo.bootstrap.CheckBox"
+    },
+    {
+     "name": "inputValue",
+     "type": "String",
+     "desc": "The value that should go into the generated input element's value when checked.",
      "memberOf": "Roo.bootstrap.CheckBox"
     },
     {
