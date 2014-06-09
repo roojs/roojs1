@@ -130,7 +130,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                     
                 ];
         } else if ( this.fieldLabel.length) {
-            Roo.log('here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
                 Roo.log(" label");
                 cfg.cn = [
                    
