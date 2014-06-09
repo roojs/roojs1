@@ -179,6 +179,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     getGroupValue : function()
     {
         Roo.each(this.inputEl().up('form').select('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
+            Roo.log(v);
             if(v.dom.checked){
                 return v.dom.value;
             }
