@@ -46,8 +46,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             
         };
         
-        this.value = this.value; 
-        
         if (this.disabled) {
             input.disabled=true;
         }
