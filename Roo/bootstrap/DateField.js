@@ -493,6 +493,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.update();
         
     },
+
+    setValue: function(v){
+        Roo.bootstrap.DateField.superclass.setValue.call(this, v);
+        
+        this.fireEvent('select', this, this.date);
+        
+    },
     
     fireKey: function(e){
         if (!this.picker().isVisible()){
