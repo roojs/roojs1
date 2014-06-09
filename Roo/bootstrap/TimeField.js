@@ -348,6 +348,8 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.pop.show();
         this.update();
         this.place();
+        
+        this.fireEvent('show', this, this.date);
     },
     
     hide : function()
