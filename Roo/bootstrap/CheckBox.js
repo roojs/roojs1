@@ -205,8 +205,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     },
     
     fireKey: function(e){
-        Roo.log('run????????????????????????');
-        Roo.log(e.keyCode);
         switch(e.keyCode){
             case 13: // enter
                 e.preventDefault();
