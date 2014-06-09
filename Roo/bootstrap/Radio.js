@@ -156,6 +156,14 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
     },
     
+    initEvents : function()
+    {
+//        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
+//        
+//        this.inputEl().on('click', this.onClick,  this);
+        
+    },
+    
     onClick : function()
     {   
         Roo.log(this);
