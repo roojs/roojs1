@@ -357,6 +357,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.picker().hide();
         this.pop.hide();
         
+        this.fireEvent('hide', this, this.date);
     },
     
     setTime : function()
