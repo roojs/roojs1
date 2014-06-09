@@ -18,6 +18,29 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.TimeField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.TimeField.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-comment">/**
+             * @event show
+             * Fires when this field show.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event show
+             * Fires when this field hide.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event select
+             * Fires when select a date.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            </span><span class="jsdoc-var">select </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">});
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.TimeField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Input</span><span class="jsdoc-syntax">,  {
@@ -325,6 +348,8 @@
         </span><span class="jsdoc-var">this.pop.show</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.update</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.place</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -332,12 +357,17 @@
         </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.pop.hide</span><span class="jsdoc-syntax">();
         
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">setTime </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.time.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">));
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">);
+        
+        
     },
     
     </span><span class="jsdoc-var">onMousedown</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){

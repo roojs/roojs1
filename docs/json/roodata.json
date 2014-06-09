@@ -7594,10 +7594,16 @@
      "desc": "Fires after the component is rendered."
     },
     {
-     "name": "show",
-     "sig": "function (_self)\n{\n\n}",
+     "name": "select",
+     "sig": "function (_self, date)\n{\n\n}",
      "type": "function",
-     "desc": "Fires after the component is shown."
+     "desc": "Fires when select a date."
+    },
+    {
+     "name": "show",
+     "sig": "function (_self, date)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this field show."
     },
     {
      "name": "specialkey",
@@ -13656,10 +13662,16 @@
      "desc": "Fires after the component is rendered."
     },
     {
-     "name": "show",
-     "sig": "function (_self)\n{\n\n}",
+     "name": "select",
+     "sig": "function (_self, date)\n{\n\n}",
      "type": "function",
-     "desc": "Fires after the component is shown."
+     "desc": "Fires when select a date."
+    },
+    {
+     "name": "show",
+     "sig": "function (_self, date)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when this field show."
     },
     {
      "name": "specialkey",
