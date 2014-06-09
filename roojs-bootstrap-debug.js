@@ -12503,7 +12503,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     onClick : function()
     {   
-        Roo.log(this.checked);
         this.setChecked(!this.checked);
     },
     
@@ -12517,16 +12516,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.inputEl().dom.value = state ? this.value : this.valueOff;
         
-    },
-    
-    fireKey: function(e){
-        switch(e.keyCode){
-            case 13: // enter
-                e.preventDefault();
-                this.onClick();
-                break;
-        }
     }
+    
 });
 
  
