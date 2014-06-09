@@ -131,10 +131,10 @@
                 ];
         } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; label&quot;</span><span class="jsdoc-syntax">);
-                 </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
+                </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                    
                     {
-                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.boxLabel </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'span' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-string">'for'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'control-label box-input-label'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-comment">//cls : 'input-group-addon',
@@ -160,7 +160,7 @@
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boxLabel</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
-                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-string">'for'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'box-label'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.boxLabel
@@ -203,6 +203,7 @@
         </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.valueOff</span><span class="jsdoc-syntax">;
         
     }
+    
 });
 
  

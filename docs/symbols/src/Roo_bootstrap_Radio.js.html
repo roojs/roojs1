@@ -23,6 +23,8 @@
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Radio</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.CheckBox</span><span class="jsdoc-syntax">,  {
     
     </span><span class="jsdoc-var">inputType</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'radio'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">valueOff</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -162,26 +164,30 @@
     </span><span class="jsdoc-var">setChecked </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">suppressEvent</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'form'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input[name='</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">v.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">v.dom.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         });
         
         </span><span class="jsdoc-var">this.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">suppressEvent </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'check'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
         }
-        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.valueOff</span><span class="jsdoc-syntax">;
         
     },
     
     </span><span class="jsdoc-var">getGroupValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'form'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input[name='</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']:checked'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-        }
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'form'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input[name='</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+</span><span class="jsdoc-comment">//            Roo.log(v);
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.dom.checked </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'true'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v.dom.value</span><span class="jsdoc-syntax">;
+            }
+        });
         
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'form'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input[name='</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']:checked'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.value</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
     },
     
     </span><span class="jsdoc-comment">/**
