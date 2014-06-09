@@ -4647,7 +4647,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.inputEl().relayEvent('keyup', this);
 
         // reference to original value for reset
-//        this.originalValue = this.getValue();
+        this.originalValue = this.getValue();
         //Roo.form.TextField.superclass.initEvents.call(this);
         if(this.validationEvent == 'keyup'){
             this.validationTask = new Roo.util.DelayedTask(this.validate, this);
@@ -12704,7 +12704,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     
     getGroupValue : function()
     {
-        return '';
         Roo.each(this.inputEl().up('form').select('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
 //            Roo.log(v);
             if(v.dom.checked == 'true'){
