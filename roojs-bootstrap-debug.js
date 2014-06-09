@@ -12325,6 +12325,7 @@ Roo.apply(Roo.bootstrap.TimeField,  {
  * Bootstrap CheckBox class
  * 
  * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
+ * @cfg {String} inputValue The value that should go into the generated input element's value when checked.
  * @cfg {String} boxLabel The text that appears beside the checkbox
  * @cfg {Boolean} checked initnal the element
  * 
@@ -12350,7 +12351,7 @@ Roo.bootstrap.CheckBox = function(config){
 Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     inputType: 'checkbox',
-    value: 1,
+    inputValue: 1,
     valueOff: 0,
     boxLabel: false,
     checked: false,
@@ -12369,7 +12370,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             tag: 'input',
             id : id,
             type : this.inputType,
-            value : (!this.checked) ? this.valueOff : this.value,
+            value : (!this.checked) ? this.valueOff : this.inputValue,
             cls : 'form-box',
             placeholder : this.placeholder || ''
             
@@ -12514,7 +12515,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             this.fireEvent('check', this, state);
         }
         
-        this.inputEl().dom.value = state ? this.value : this.valueOff;
+        this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
         
     }
     
@@ -12546,7 +12547,7 @@ Roo.bootstrap.Radio = function(config){
 Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     
     inputType: 'radio',
-    value: '',
+    inputValue: '',
     valueOff: '',
     
     getAutoCreate : function()
@@ -12563,7 +12564,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             tag: 'input',
             id : id,
             type : this.inputType,
-            value : (!this.checked) ? this.valueOff : this.value,
+            value : (!this.checked) ? this.valueOff : this.inputValue,
             cls : 'form-box',
             placeholder : this.placeholder || ''
             
@@ -12698,7 +12699,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             this.fireEvent('check', this, state);
         }
         
-        this.inputEl().dom.value = state ? this.value : this.valueOff;
+        this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
         
     },
     
