@@ -201,7 +201,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             this.fireEvent('check', this, state);
         }
         
-        this.inputEl().dom.value = state ? this.value : this.valueOff;
+        this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
         
     }
     
