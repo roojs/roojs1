@@ -495,6 +495,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().show();
         this.update();
         this.place();
+        
+        this.fireEvent('select', this, this.date);
     },
     
     hide : function()
@@ -503,6 +505,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().hide();
         this.viewMode = this.startViewMode;
         this.showMode();
+        
+        this.fireEvent('hide', this, this.date);
         
     },
     
