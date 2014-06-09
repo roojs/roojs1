@@ -158,6 +158,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     
     onClick : function()
     {   
+        Roo.log(this);
         this.setChecked(true);
     },
     
@@ -173,7 +174,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
         }
-        Roo.log(this);
+        
         this.inputEl().dom.value = state ? this.value : this.valueOff;
         
     },
