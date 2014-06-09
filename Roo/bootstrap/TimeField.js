@@ -18,6 +18,29 @@
 
 Roo.bootstrap.TimeField = function(config){
     Roo.bootstrap.TimeField.superclass.constructor.call(this, config);
+    this.addEvents({
+            /**
+             * @event show
+             * Fires when this field show.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            show : true,
+            /**
+             * @event show
+             * Fires when this field hide.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            hide : true,
+            /**
+             * @event select
+             * Fires when select a date.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            select : true
+        });
 };
 
 Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
