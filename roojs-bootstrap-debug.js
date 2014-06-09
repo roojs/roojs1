@@ -12689,7 +12689,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         });
         
         this.checked = state;
-        this.el.dom.checked = state;
+        this.el.dom.checked = true;
         
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
