@@ -12445,10 +12445,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 ];
         } else if ( this.fieldLabel.length) {
                 Roo.log(" label");
-                 cfg.cn = [
+                cfg.cn = [
                    
                     {
-                        tag: 'label',
+                        tag: this.boxLabel ? 'span' : 'label',
                         'for': id,
                         cls: 'control-label box-input-label',
                         //cls : 'input-group-addon',
@@ -12474,7 +12474,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         if(this.boxLabel){
             cfg.cn.push({
-                tag: 'span',
+                tag: 'label',
                 'for': id,
                 cls: 'box-label',
                 html: this.boxLabel
