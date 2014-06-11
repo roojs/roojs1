@@ -12712,7 +12712,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             }
         });
         
-        return '';
+        return 'a';
     },
     
     /**
