@@ -181,12 +181,9 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     getGroupValue : function()
     {
         Roo.each(this.inputEl().up('form').select('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
-            Roo.log(v);
             
-            Roo.log(v.dom.checked);
             if(v.dom.checked == true){
-                Roo.log('run');
-                Roo.log(v.dom.value);
+            
                 return v.dom.value;
             }
         });
