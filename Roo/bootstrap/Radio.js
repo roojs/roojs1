@@ -145,7 +145,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
         if(this.boxLabel){
             cfg.cn.push({
-                tag: 'span',
+                tag: 'label',
                 'for': id,
                 cls: 'box-label',
                 html: this.boxLabel
