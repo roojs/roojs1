@@ -15733,6 +15733,8 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
                 cfg.style = this.style;
             }
             this.el = Roo.get(document.body).createChild(cfg, Roo.select('.'+this.beforeClass, true).first());
+            
+            this.el.setVisibilityMode(Roo.Element.DISPLAY);
         }
         
         this.el.select('>button.close').on('click', this.hide, this);
