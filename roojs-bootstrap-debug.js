@@ -12704,15 +12704,14 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     
     getGroupValue : function()
     {
+        var value = ''
         Roo.each(this.inputEl().up('form').select('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
-            
             if(v.dom.checked == true){
-            
-                return v.dom.value;
+                value = v.dom.value;
             }
         });
         
-        return '';
+        return value;
     },
     
     /**
