@@ -11,6 +11,7 @@
  * Bootstrap MessageBar class
  * @cfg {String} html contents of the MessageBar
  * @cfg {String} weight (info | success | warning | danger) default info
+ * @cfg {String} beforeClass insert the bar before the given class
  * @cfg {Boolean} closable (true | false) default false
  * @cfg {Boolean} fixed (true | false) default false, fix the bar at the top
  * 
@@ -29,6 +30,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
     weight: 'info',
     closable: false,
     fixed: false,
+    beforeClass: '.bootstrap-sticky-wrap',
     
     getAutoCreate : function(){
         
