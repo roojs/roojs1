@@ -12708,7 +12708,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             Roo.log(v);
             
             Roo.log(v.dom.checked);
-            if(v.dom.checked == 'true'){
+            if(v.dom.checked == true){
                 Roo.log('run');
                 return v.dom.value;
             }
