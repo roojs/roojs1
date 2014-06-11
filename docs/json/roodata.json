@@ -9593,6 +9593,12 @@
      "memberOf": ""
     },
     {
+     "name": "beforeClass",
+     "type": "String",
+     "desc": "insert the bar before the given class",
+     "memberOf": ""
+    },
+    {
      "name": "closable",
      "type": "Boolean",
      "desc": "(true | false) default false",
