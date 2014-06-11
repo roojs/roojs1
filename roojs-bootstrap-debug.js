@@ -15668,6 +15668,7 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
  * Bootstrap MessageBar class
  * @cfg {String} html contents of the MessageBar
  * @cfg {String} weight (info | success | warning | danger) default info
+ * @cfg {String} beforeClass insert the bar before the given class
  * @cfg {Boolean} closable (true | false) default false
  * @cfg {Boolean} fixed (true | false) default false, fix the bar at the top
  * 
@@ -15686,6 +15687,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
     weight: 'info',
     closable: false,
     fixed: false,
+    beforeClass: 'bootstrap-sticky-wrap',
     
     getAutoCreate : function(){
         
@@ -15730,7 +15732,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
             if (this.style) {
                 cfg.style = this.style;
             }
-            this.el = Roo.get(document.body).createChild(cfg, Roo.select('.bootstrap-sticky-wrap', true).first());
+            this.el = Roo.get(document.body).createChild(cfg, Roo.select('.'+this.beforeClass, true).first());
         }
         
         this.el.select('>button.close').on('click', this.hide, this);
