@@ -201,7 +201,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         if (this.bar === true) {
             return this.el.select('.collapse',true).first();
         }
-        console.log(this);
+        
         return this.el;
     }
    
