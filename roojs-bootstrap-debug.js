@@ -2169,18 +2169,6 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         return cfg;
     },
     
-    onRender : function(ct, position)
-    {
-        
-        Roo.bootstrap.Navbar.superclass.onRender.call(this, ct, position);
-        
-        if(this.disable){
-            Roo.log('on Render size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-            Roo.log(this.el);
-            Roo.log(this.el.getHeight());
-        }
-    },
-    
     initEvents :function ()
     {
         //Roo.log(this.el.select('.navbar-toggle',true));
@@ -2197,11 +2185,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         this.maskEl = Roo.DomHelper.append(this.el, mark, true);
         
         var size = this.el.getSize();
-        if(this.disable){
-            Roo.log('size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-            Roo.log(this.el);
-            Roo.log(this.el.getHeight());
-        }
+        
         this.maskEl.setSize(size.width, size.height);
         this.maskEl.enableDisplayMode("block");
         
