@@ -4311,7 +4311,7 @@ Roo.form.VTypes = function(){
  * @cfg {string} value default value of the input
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {String} labelAlign (top|left)
- * @cfg {Boolean} readonly (true|false) default false
+ * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * 
  * 
  * @constructor
@@ -4483,7 +4483,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     value : '',
     labelWidth : 2,
     labelAlign : false,
-    readonly : false,
+    readOnly : false,
     
     parentLabelAlign : function()
     {
@@ -4528,7 +4528,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             input.disabled=true;
         }
         
-        if (this.readonly) {
+        if (this.readOnly) {
             input.readonly=true;
         }
         
@@ -5046,7 +5046,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
  * Bootstrap TextArea class
  * @cfg {Number} cols Specifies the visible width of a text area
  * @cfg {Number} rows Specifies the visible number of lines in a text area
- * @cfg {Number} readOnly Specifies that a text area should be read-only
  * @cfg {string} wrap (soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form
  * @cfg {string} resize (none|both|horizontal|vertical|inherit|initial)
  * @cfg {string} html text
