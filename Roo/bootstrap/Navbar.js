@@ -167,18 +167,6 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         return cfg;
     },
     
-    onRender : function(ct, position)
-    {
-        
-        Roo.bootstrap.Navbar.superclass.onRender.call(this, ct, position);
-        
-        if(this.disable){
-            Roo.log('on Render size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-            Roo.log(this.el);
-            Roo.log(this.el.getHeight());
-        }
-    },
-    
     initEvents :function ()
     {
         //Roo.log(this.el.select('.navbar-toggle',true));
