@@ -171,8 +171,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     {
         if(this.disable){
             Roo.log('on Render size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-            Roo.log(this.el);
-            Roo.log(this.el.getHeight());
+            
         }
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
         
