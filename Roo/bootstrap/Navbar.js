@@ -189,6 +189,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         
         if(this.disable){
             Roo.log('disable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+            Roo.log(this);
             Roo.log(this.el);
             this.maskEl.show();
         }
