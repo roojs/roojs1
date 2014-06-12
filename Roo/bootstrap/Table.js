@@ -292,16 +292,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             Roo.log(renders);
             
             Roo.each(renders, function(r){
-                var child = false;
-                
-                if(r.cfg.cn.length){
-                    child = Roo.apply({}, r.cfg.cn);
-                }
                 
                 r.cfg.render(Roo.get(r.id));
-                Roo.log(child);
-                if(child){
-                    Roo.each(child, function(c){
+                
+                if(r.cfg.cn){
+                    Roo.each(r.cfg.cn, function(c){
                         
                         c.render(Roo.get(r.id));
                     })
