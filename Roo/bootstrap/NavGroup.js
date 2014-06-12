@@ -12,7 +12,6 @@
  * @cfg {String} align left | right
  * @cfg {Boolean} inverse false | true
  * @cfg {String} type (nav|pills|tab) default nav
- * @cfg {Boolean} disable (true|false) disable the bar, add marks
  * 
  * @constructor
  * Create a new nav group
@@ -29,7 +28,6 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     inverse: false,
     form: false,
     type: 'nav',
-    disable : false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
@@ -81,34 +79,6 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         
         
         return cfg;
-    },
-    
-    initEvents :function ()
-    {
-        Roo.bootstrap.NavGroup.superclass.initEvents.call(this);
-        
-        var mark = {
-            tag: "div",
-            cls:"x-dlg-mask"
-        }
-        
-        this.maskEl = Roo.DomHelper.append(this.el, mark, true);
-        
-        var size = this.el.getSize();
-        
-        if(this.disable){
-            Roo.log('size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-            Roo.log(this.el);
-            
-            Roo.log(this.el.getSize());
-            
-        }
-        this.maskEl.setSize(size.width, size.height);
-        this.maskEl.enableDisplayMode("block");
-        
-        if(this.disable){
-            this.maskEl.show();
-        }
     }
    
 });
