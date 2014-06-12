@@ -185,6 +185,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         var size = this.el.getSize();
         if(this.disable && this.sidebar){
             Roo.log('size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+            Roo.log(this.el);
 //            var a = this.el.select('.dashboard-menu', true).first();
             
         }
