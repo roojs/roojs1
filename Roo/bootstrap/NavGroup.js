@@ -108,7 +108,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         if(this.disable){
             this.maskEl.show();
         }
-    },
+    }
    
 });
 
