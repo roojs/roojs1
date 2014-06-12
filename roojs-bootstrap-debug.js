@@ -2185,6 +2185,10 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         this.maskEl = Roo.DomHelper.append(this.el, mark, true);
         
         var size = this.el.getSize();
+        if(this.disable){
+            Roo.log('size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+            Roo.log(size);
+        }
         this.maskEl.setSize(size.width, size.height);
         this.maskEl.enableDisplayMode("block");
         
