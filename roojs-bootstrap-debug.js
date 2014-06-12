@@ -3029,8 +3029,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     }
                     
                     if(typeof(value) === 'object'){
-                        Roo.log('here is the value!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-                        Roo.log(value);
                         renders.push({
                             id : id,
                             cfg : value 
