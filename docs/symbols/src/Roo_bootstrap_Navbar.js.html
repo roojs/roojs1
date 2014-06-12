@@ -188,6 +188,9 @@
         </span><span class="jsdoc-var">this.maskEl.hide</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'loadMask!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.maskEl.show</span><span class="jsdoc-syntax">();
         }
     },
@@ -200,7 +203,19 @@
         }
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">loadMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.maskEl.show</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">hideMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.maskEl.hide</span><span class="jsdoc-syntax">();
     }
+    
+    
    
 });
 
