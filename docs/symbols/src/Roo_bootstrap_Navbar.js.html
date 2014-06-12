@@ -19,6 +19,7 @@
  * @cfg {String} align (left | right) alignment
  * @cfg {String} brand_href href of the brand
  * @cfg {Boolean} main (true|false) main nav bar? default false
+ * @cfg {Boolean} disable (true|false) disable the bar, add marks
  *
  * 
  * @constructor
@@ -44,6 +45,7 @@
     </span><span class="jsdoc-var">arrangement</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">brand_href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">main </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">disable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
@@ -172,7 +174,29 @@
            </span><span class="jsdoc-comment">// Roo.log('click');
             </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.navbar-collapse'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.toggleClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">);                                 
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-    },
+        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'init Navbar!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-comment">//        var mark = {
+//            tag: &quot;div&quot;,
+//            cls:&quot;x-dlg-mask&quot;
+//        }
+//        
+//        var target = '';
+//        
+//        if(this.sidebar){
+//            this.el.select('.sidebar-nav', true).first()
+//        }
+//        
+//        this.maskEl = Roo.DomHelper.append(this.el.select('.fc-content', true).first(), mark, true);
+//        
+//        var size = this.el.select('.fc-content', true).first().getSize();
+//        this.maskEl.setSize(size.width, size.height);
+//        this.maskEl.enableDisplayMode(&quot;block&quot;);
+//        if(!this.loadMask){
+//            this.maskEl.hide();
+//        }
+    </span><span class="jsdoc-syntax">},
     
     
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
