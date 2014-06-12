@@ -287,11 +287,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             });
         }
         
+        
         if(renders.length){
-            Roo.log('here is the renders!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-            Roo.log(renders);
-            
+            var _this = this;
             Roo.each(renders, function(r){
+                _this.renderColumn(r);
                 
                 r.cfg.render(Roo.get(r.id));
                 
@@ -330,6 +330,22 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             this.selModel = new Roo.bootstrap.Table.RowSelectionModel();
         }
         return this.selModel;
+    },
+    
+    renderColumn : function(r)
+    {
+        var _this = this;
+        r.cfg.render(Roo.get(r.id));
+        
+        if(r.cfg.cn){
+            Roo.each(r.cfg.cn, function(c){
+                var child = {
+                    id: r.id,
+                    cfg: c
+                }
+                _this.renderColumn(child);
+            })
+        }
     }
    
 });
