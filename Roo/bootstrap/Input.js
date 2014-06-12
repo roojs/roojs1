@@ -198,7 +198,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     value : '',
     labelWidth : 2,
     labelAlign : false,
-    readonly : false,
+    readOnly : false,
     
     parentLabelAlign : function()
     {
@@ -243,7 +243,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             input.disabled=true;
         }
         
-        if (this.readonly) {
+        if (this.readOnly) {
             input.readonly=true;
         }
         
