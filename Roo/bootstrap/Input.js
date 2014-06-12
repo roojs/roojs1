@@ -26,6 +26,7 @@
  * @cfg {string} value default value of the input
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {String} labelAlign (top|left)
+ * @cfg {Boolean} readonly (true|false) default false
  * 
  * 
  * @constructor
@@ -197,6 +198,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     value : '',
     labelWidth : 2,
     labelAlign : false,
+    readonly : false,
     
     parentLabelAlign : function()
     {
@@ -239,6 +241,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         if (this.disabled) {
             input.disabled=true;
+        }
+        
+        if (this.readonly) {
+            input.readonly=true;
         }
         
         if (this.name) {
