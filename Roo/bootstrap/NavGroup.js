@@ -99,8 +99,8 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         if(this.disable){
             Roo.log('size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
             Roo.log(this.el);
-            var a = this.el.select('.dashboard-menu', true).first();
-            Roo.log(a);
+            
+            Roo.log(this.el.getSize());
             
         }
         this.maskEl.setSize(size.width, size.height);
