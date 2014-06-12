@@ -9935,12 +9935,6 @@
      "memberOf": ""
     },
     {
-     "name": "disable",
-     "type": "Boolean",
-     "desc": "(true|false) disable the bar, add marks",
-     "memberOf": ""
-    },
-    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -10130,6 +10124,12 @@
      "name": "main",
      "type": "Boolean",
      "desc": "(true|false) main nav bar? default false",
+     "memberOf": ""
+    },
+    {
+     "name": "disable",
+     "type": "Boolean",
+     "desc": "(true|false) disable the bar, add marks",
      "memberOf": ""
     },
     {
