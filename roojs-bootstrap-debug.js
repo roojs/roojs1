@@ -2021,7 +2021,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
  * @cfg {String} align (left | right) alignment
  * @cfg {String} brand_href href of the brand
  * @cfg {Boolean} main (true|false) main nav bar? default false
- * @cfg {Boolean} disable (true|false) disable the bar, add marks
+ * @cfg {Boolean} loadMask (true|false) loadMask on the bar
  *
  * 
  * @constructor
@@ -2047,7 +2047,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     arrangement: '',
     brand_href: false,
     main : false,
-    disable : false,
+    loadMask : false,
     
     getAutoCreate : function(){
         var cfg = {
@@ -2189,10 +2189,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         this.maskEl.enableDisplayMode("block");
         this.maskEl.hide();
         
-        if(this.disable){
-            Roo.log('disable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-            Roo.log(this);
-            Roo.log(this.el);
+        if(this.loadMask){
             this.maskEl.show();
         }
     },
@@ -2205,7 +2202,19 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         }
         
         return this.el;
+    },
+    
+    loadMask : function()
+    {
+        this.maskEl.show();
+    },
+    
+    hideMask : function()
+    {
+        this.maskEl.hide();
     }
+    
+    
    
 });
 

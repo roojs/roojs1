@@ -200,7 +200,19 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         }
         
         return this.el;
+    },
+    
+    loadMask : function()
+    {
+        this.maskEl.show();
+    },
+    
+    hideMask : function()
+    {
+        this.maskEl.hide();
     }
+    
+    
    
 });
 
