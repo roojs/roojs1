@@ -45,6 +45,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     arrangement: '',
     brand_href: false,
     main : false,
+    disable : false,
     
     getAutoCreate : function(){
         var cfg = {
