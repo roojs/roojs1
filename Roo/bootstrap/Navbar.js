@@ -188,6 +188,9 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         this.maskEl.hide();
         
         if(this.loadMask){
+            Roo.log('loadMask!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+            Roo.log(this);
+            Roo.log(this.el);
             this.maskEl.show();
         }
     },
