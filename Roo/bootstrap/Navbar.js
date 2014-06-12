@@ -175,27 +175,6 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             this.el.select('.navbar-collapse',true).toggleClass('in');                                 
         }, this);
         
-        var mark = {
-            tag: "div",
-            cls:"x-dlg-mask"
-        }
-        
-        this.maskEl = Roo.DomHelper.append(this.el, mark, true);
-        
-        var size = this.el.getSize();
-        if(this.disable && this.sidebar){
-            Roo.log('size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-            Roo.log(this.el);
-            var a = this.el.select('.dashboard-menu', true).first();
-            Roo.log(a);
-            
-        }
-        this.maskEl.setSize(size.width, size.height);
-        this.maskEl.enableDisplayMode("block");
-        
-        if(this.disable){
-            this.maskEl.show();
-        }
     },
     
     
