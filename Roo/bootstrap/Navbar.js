@@ -19,7 +19,6 @@
  * @cfg {String} align (left | right) alignment
  * @cfg {String} brand_href href of the brand
  * @cfg {Boolean} main (true|false) main nav bar? default false
- * @cfg {Boolean} disable (true|false) disable the bar, add marks
  *
  * 
  * @constructor
