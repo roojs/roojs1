@@ -2021,6 +2021,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
  * @cfg {String} align (left | right) alignment
  * @cfg {String} brand_href href of the brand
  * @cfg {Boolean} main (true|false) main nav bar? default false
+ * @cfg {Boolean} disable (true|false) disable the bar, add marks
  *
  * 
  * @constructor
@@ -2046,6 +2047,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     arrangement: '',
     brand_href: false,
     main : false,
+    disable : false,
     
     getAutoCreate : function(){
         var cfg = {
@@ -2174,6 +2176,28 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
            // Roo.log('click');
             this.el.select('.navbar-collapse',true).toggleClass('in');                                 
         }, this);
+        
+        Roo.log('init Navbar!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(this.el);
+//        var mark = {
+//            tag: "div",
+//            cls:"x-dlg-mask"
+//        }
+//        
+//        var target = '';
+//        
+//        if(this.sidebar){
+//            this.el.select('.sidebar-nav', true).first()
+//        }
+//        
+//        this.maskEl = Roo.DomHelper.append(this.el.select('.fc-content', true).first(), mark, true);
+//        
+//        var size = this.el.select('.fc-content', true).first().getSize();
+//        this.maskEl.setSize(size.width, size.height);
+//        this.maskEl.enableDisplayMode("block");
+//        if(!this.loadMask){
+//            this.maskEl.hide();
+//        }
     },
     
     
