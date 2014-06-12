@@ -19,6 +19,7 @@
  * @cfg {String} align (left | right) alignment
  * @cfg {String} brand_href href of the brand
  * @cfg {Boolean} main (true|false) main nav bar? default false
+ * @cfg {Boolean} disable (true|false) disable the bar, add marks
  *
  * 
  * @constructor
@@ -44,6 +45,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     arrangement: '',
     brand_href: false,
     main : false,
+    disable : false,
     
     getAutoCreate : function(){
         var cfg = {
@@ -173,6 +175,27 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             this.el.select('.navbar-collapse',true).toggleClass('in');                                 
         }, this);
         
+        var mark = {
+            tag: "div",
+            cls:"x-dlg-mask"
+        }
+        
+        this.maskEl = Roo.DomHelper.append(this.el, mark, true);
+        
+        var size = this.el.getSize();
+        if(this.disable && this.sidebar){
+            Roo.log('size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+            Roo.log(this.el);
+            var a = this.el.select('.dashboard-menu', true).first();
+            Roo.log(a);
+            
+        }
+        this.maskEl.setSize(size.width, size.height);
+        this.maskEl.enableDisplayMode("block");
+        
+        if(this.disable){
+            this.maskEl.show();
+        }
     },
     
     
