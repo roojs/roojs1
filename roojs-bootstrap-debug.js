@@ -2213,8 +2213,6 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     {
         this.maskEl.hide();
     }
-    
-    
    
 });
 
@@ -3031,6 +3029,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     }
                     
                     if(typeof(value) === 'object'){
+                        Roo.log('here is the value!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+                        Roo.log(value);
                         renders.push({
                             id : id,
                             cfg : value 
@@ -3051,6 +3051,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         if(renders.length){
+            Roo.log('here is the renders!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+            Roo.log(renders);
             Roo.each(renders, function(r){
                 r.cfg.render(Roo.get(r.id));
             })
