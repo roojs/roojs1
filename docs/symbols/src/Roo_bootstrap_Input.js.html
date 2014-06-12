@@ -26,6 +26,7 @@
  * @cfg {string} value default value of the input
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {String} labelAlign (top|left)
+ * @cfg {Boolean} readonly (true|false) default false
  * 
  * 
  * @constructor
@@ -197,6 +198,7 @@
     </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">labelWidth </span><span class="jsdoc-syntax">: 2,
     </span><span class="jsdoc-var">labelAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">readonly </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">parentLabelAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -239,6 +241,10 @@
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">input.disabled</span><span class="jsdoc-syntax">=</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.readonly</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">input.readonly</span><span class="jsdoc-syntax">=</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.name</span><span class="jsdoc-syntax">) {

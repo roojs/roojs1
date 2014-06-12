@@ -145,7 +145,7 @@
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boxLabel</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
-                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-string">'for'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'box-label'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.boxLabel
@@ -158,7 +158,6 @@
    
     </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {   
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.setChecked</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
     },
     
@@ -181,14 +180,14 @@
     
     </span><span class="jsdoc-var">getGroupValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.up</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'form'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input[name='</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.name</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
-</span><span class="jsdoc-comment">//            Roo.log(v);
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.dom.checked </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'true'</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">v.dom.value</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.dom.checked </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v.dom.value</span><span class="jsdoc-syntax">;
             }
         });
         
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
     },
     
     </span><span class="jsdoc-comment">/**
