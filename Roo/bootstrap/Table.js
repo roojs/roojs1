@@ -287,6 +287,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         
         if(renders.length){
+            Roo.log(renders);
             var _this = this;
             Roo.each(renders, function(r){
                 _this.renderColumn(r);
