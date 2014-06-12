@@ -2177,24 +2177,16 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             this.el.select('.navbar-collapse',true).toggleClass('in');                                 
         }, this);
         
-        Roo.log('init Navbar!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.el);
-//        var mark = {
-//            tag: "div",
-//            cls:"x-dlg-mask"
-//        }
-//        
-//        var target = '';
-//        
-//        if(this.sidebar){
-//            this.el.select('.sidebar-nav', true).first()
-//        }
-//        
-//        this.maskEl = Roo.DomHelper.append(this.el.select('.fc-content', true).first(), mark, true);
-//        
-//        var size = this.el.select('.fc-content', true).first().getSize();
-//        this.maskEl.setSize(size.width, size.height);
-//        this.maskEl.enableDisplayMode("block");
+        var mark = {
+            tag: "div",
+            cls:"x-dlg-mask"
+        }
+        
+        this.maskEl = Roo.DomHelper.append(this.el, mark, true);
+        
+        var size = this.el.getSize();
+        this.maskEl.setSize(size.width, size.height);
+        this.maskEl.enableDisplayMode("block");
 //        if(!this.loadMask){
 //            this.maskEl.hide();
 //        }

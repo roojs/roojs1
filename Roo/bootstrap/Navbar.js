@@ -182,12 +182,12 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         
         this.maskEl = Roo.DomHelper.append(this.el, mark, true);
         
-        var size = this.el.select('.fc-content', true).first().getSize();
+        var size = this.el.getSize();
         this.maskEl.setSize(size.width, size.height);
         this.maskEl.enableDisplayMode("block");
-        if(!this.loadMask){
-            this.maskEl.hide();
-        }
+//        if(!this.loadMask){
+//            this.maskEl.hide();
+//        }
     },
     
     
