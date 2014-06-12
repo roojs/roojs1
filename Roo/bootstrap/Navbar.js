@@ -169,12 +169,13 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     onRender : function(ct, position)
     {
+        
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        
         if(this.disable){
             Roo.log('on Render size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
             
         }
-        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
-        
     },
     
     initEvents :function ()
