@@ -211,8 +211,6 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     {
         this.maskEl.hide();
     }
-    
-    
    
 });
 
