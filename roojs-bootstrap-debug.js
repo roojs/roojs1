@@ -2187,6 +2187,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         var size = this.el.getSize();
         if(this.disable){
             Roo.log('size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+            Roo.log(this.el);
             Roo.log(size);
         }
         this.maskEl.setSize(size.width, size.height);
@@ -2203,7 +2204,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         if (this.bar === true) {
             return this.el.select('.collapse',true).first();
         }
-        console.log(this);
+        
         return this.el;
     }
    
