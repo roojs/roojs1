@@ -299,10 +299,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
                 
                 r.cfg.render(Roo.get(r.id));
-                
+                Roo.log(child);
                 if(child){
                     Roo.each(child, function(c){
-                        Roo.log(c);
+                        
                         c.render(Roo.get(r.id));
                     })
                 }
