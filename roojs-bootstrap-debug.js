@@ -2190,6 +2190,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         this.maskEl.hide();
         
         if(this.disable){
+            Roo.log('disable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+            Roo.log(this.el);
             this.maskEl.show();
         }
     },
