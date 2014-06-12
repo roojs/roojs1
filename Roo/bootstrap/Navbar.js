@@ -186,7 +186,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         if(this.disable){
             Roo.log('size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
             Roo.log(this.el);
-            Roo.log(size);
+            Roo.log(this.el.getHeight());
         }
         this.maskEl.setSize(size.width, size.height);
         this.maskEl.enableDisplayMode("block");
