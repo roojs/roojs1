@@ -26,7 +26,7 @@
  * @cfg {string} value default value of the input
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {String} labelAlign (top|left)
- * @cfg {Boolean} readonly (true|false) default false
+ * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * 
  * 
  * @constructor
