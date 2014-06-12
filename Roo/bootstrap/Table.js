@@ -290,8 +290,21 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(renders.length){
             Roo.log('here is the renders!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
             Roo.log(renders);
+            
             Roo.each(renders, function(r){
+                var child = false;
+                
+                if(r.cfg.cn.length){
+                    child = Roo.apply({}, r.cfg.cn);
+                }
+                
                 r.cfg.render(Roo.get(r.id));
+                
+                if(child){
+                    Roo.each(child, function(c){
+                        c.render(Roo.get(r.id));
+                    })
+                }
             })
         }
 //        
