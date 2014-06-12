@@ -10127,9 +10127,9 @@
      "memberOf": ""
     },
     {
-     "name": "disable",
+     "name": "loadMask",
      "type": "Boolean",
-     "desc": "(true|false) disable the bar, add marks",
+     "desc": "(true|false) loadMask on the bar",
      "memberOf": ""
     },
     {
