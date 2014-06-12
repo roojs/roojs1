@@ -175,6 +175,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             this.el.select('.navbar-collapse',true).toggleClass('in');                                 
         }, this);
         
+        Roo.log('init Navbar!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(this.el);
 //        var mark = {
 //            tag: "div",
 //            cls:"x-dlg-mask"
