@@ -292,15 +292,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             var _this = this;
             Roo.each(renders, function(r){
                 _this.renderColumn(r);
-                
-                r.cfg.render(Roo.get(r.id));
-                
-                if(r.cfg.cn){
-                    Roo.each(r.cfg.cn, function(c){
-                        
-                        c.render(Roo.get(r.id));
-                    })
-                }
             })
         }
 //        
