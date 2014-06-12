@@ -2189,7 +2189,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         this.maskEl.enableDisplayMode("block");
         this.maskEl.hide();
         
-        if(this.loadMask){
+        if(this.loadMask == true){
             Roo.log('loadMask!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
             Roo.log(this);
             Roo.log(this.el);
