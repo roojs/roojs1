@@ -174,6 +174,26 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
            // Roo.log('click');
             this.el.select('.navbar-collapse',true).toggleClass('in');                                 
         }, this);
+        
+//        var mark = {
+//            tag: "div",
+//            cls:"x-dlg-mask"
+//        }
+//        
+//        var target = '';
+//        
+//        if(this.sidebar){
+//            this.el.select('.sidebar-nav', true).first()
+//        }
+//        
+//        this.maskEl = Roo.DomHelper.append(this.el.select('.fc-content', true).first(), mark, true);
+//        
+//        var size = this.el.select('.fc-content', true).first().getSize();
+//        this.maskEl.setSize(size.width, size.height);
+//        this.maskEl.enableDisplayMode("block");
+//        if(!this.loadMask){
+//            this.maskEl.hide();
+//        }
     },
     
     
