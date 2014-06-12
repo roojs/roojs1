@@ -2185,10 +2185,10 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         this.maskEl = Roo.DomHelper.append(this.el, mark, true);
         
         var size = this.el.getSize();
-        if(this.disable){
+        if(this.disable && this.sidebar){
             Roo.log('size!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-            Roo.log(this.el);
-            Roo.log(this.el.getHeight());
+            var a = this.el.select('.dashboard-menu', true).first().getSize();
+            Roo.log(a);
         }
         this.maskEl.setSize(size.width, size.height);
         this.maskEl.enableDisplayMode("block");
