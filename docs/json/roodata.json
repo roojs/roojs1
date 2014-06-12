@@ -5774,9 +5774,9 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "readonly",
+     "name": "readOnly",
      "type": "Boolean",
-     "desc": "(true|false) default false",
+     "desc": "Specifies that the field should be read-only",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -6560,9 +6560,9 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "readonly",
+     "name": "readOnly",
      "type": "Boolean",
-     "desc": "(true|false) default false",
+     "desc": "Specifies that the field should be read-only",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -7358,9 +7358,9 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "readonly",
+     "name": "readOnly",
      "type": "Boolean",
-     "desc": "(true|false) default false",
+     "desc": "Specifies that the field should be read-only",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -8174,12 +8174,6 @@
      "memberOf": "Roo.bootstrap.TextArea"
     },
     {
-     "name": "readOnly",
-     "type": "Number",
-     "desc": "Specifies that a text area should be read-only",
-     "memberOf": "Roo.bootstrap.TextArea"
-    },
-    {
      "name": "wrap",
      "type": "string",
      "desc": "(soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form",
@@ -8282,9 +8276,9 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "readonly",
+     "name": "readOnly",
      "type": "Boolean",
-     "desc": "(true|false) default false",
+     "desc": "Specifies that the field should be read-only",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -8869,9 +8863,9 @@
      "memberOf": ""
     },
     {
-     "name": "readonly",
+     "name": "readOnly",
      "type": "Boolean",
-     "desc": "(true|false) default false",
+     "desc": "Specifies that the field should be read-only",
      "memberOf": ""
     },
     {
@@ -11345,9 +11339,9 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "readonly",
+     "name": "readOnly",
      "type": "Boolean",
-     "desc": "(true|false) default false",
+     "desc": "Specifies that the field should be read-only",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -12976,12 +12970,6 @@
      "memberOf": ""
     },
     {
-     "name": "readOnly",
-     "type": "Number",
-     "desc": "Specifies that a text area should be read-only",
-     "memberOf": ""
-    },
-    {
      "name": "wrap",
      "type": "string",
      "desc": "(soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form",
@@ -13090,9 +13078,9 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "readonly",
+     "name": "readOnly",
      "type": "Boolean",
-     "desc": "(true|false) default false",
+     "desc": "Specifies that the field should be read-only",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -13468,9 +13456,9 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "readonly",
+     "name": "readOnly",
      "type": "Boolean",
-     "desc": "(true|false) default false",
+     "desc": "Specifies that the field should be read-only",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -13858,9 +13846,9 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "readonly",
+     "name": "readOnly",
      "type": "Boolean",
-     "desc": "(true|false) default false",
+     "desc": "Specifies that the field should be read-only",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
