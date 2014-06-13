@@ -12780,11 +12780,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
      */
     getValue : function(){
         return this.getGroupValue();
-    },
-    
-    setValue : function(v,suppressEvent)
-    {
-        this.setChecked(((typeof(v) == 'undefined') ? this.checked : (String(v) === String(this.inputValue))), suppressEvent);
     }
     
 });
