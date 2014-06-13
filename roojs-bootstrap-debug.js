@@ -12781,6 +12781,14 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
      */
     getValue : function(){
         return this.getGroupValue();
+    },
+    
+    setValue : function(v,suppressEvent)
+    {
+        Roo.log('run radio');
+        Roo.log(this.fieldLabel);
+        Roo.log(this.inputValue);
+        this.setChecked(((typeof(v) == 'undefined') ? this.checked : (String(v) === String(this.inputValue))), suppressEvent);
     }
     
 });
