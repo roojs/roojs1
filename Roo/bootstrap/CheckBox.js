@@ -211,9 +211,9 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
     },
     
-    setValue : function(v)
+    setValue : function(v,suppressEvent)
     {
-        this.setChecked(String(v) === String(this.inputValue));
+        this.setChecked(String(v) === String(this.inputValue), suppressEvent);
     }
     
 });
