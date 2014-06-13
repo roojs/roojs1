@@ -12575,6 +12575,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     setValue : function(v,suppressEvent)
     {
         Roo.log('run set value on checkbox?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(this.fieldLabel);
+        Roo.log(v);
         this.setChecked(String(v) === String(this.inputValue), suppressEvent);
     }
     
