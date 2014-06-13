@@ -12574,10 +12574,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     setValue : function(v,suppressEvent)
     {
-        Roo.log('run');
-        Roo.log(this.fieldLabel);
-        Roo.log(this.inputValue);
-        Roo.log(v);
         this.setChecked(((typeof(v) == 'undefined') ? this.checked : (String(v) === String(this.inputValue))), suppressEvent);
     }
     
@@ -12749,10 +12745,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     
     setChecked : function(state,suppressEvent)
     {
-        Roo.log('RAIDO set checked');
-        Roo.log(this.inputValue);
-        Roo.log(this.boxLabel);
-        Roo.log(state);
         Roo.each(this.inputEl().up('form').select('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
             if(!state){
                 return;
