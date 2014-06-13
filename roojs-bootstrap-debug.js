@@ -4067,7 +4067,6 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             for(var i = 0, len = values.length; i < len; i++){
                 var v = values[i];
                 var f = this.findField(v.id);
-                Roo.log(f);
                 if(f){
                     f.setValue(v.value);
                     if(this.trackResetOnLoad){
@@ -12789,6 +12788,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     setValue : function(v,suppressEvent)
     {
         Roo.log('setValue');
+        Roo.log(_this.form);
         Roo.log(v);
         this.setChecked(((typeof(v) == 'undefined') ? this.checked : (String(v) === String(this.inputValue))), suppressEvent);
     }
