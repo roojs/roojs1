@@ -12574,6 +12574,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     setValue : function(v,suppressEvent)
     {
+        Roo.log(this.fieldLabel);
         this.setChecked(((typeof(v) == 'undefined') ? this.checked : (String(v) === String(this.inputValue))), suppressEvent);
     }
     
