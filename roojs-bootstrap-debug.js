@@ -12751,6 +12751,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     {
         Roo.log('RAIDO set checked');
         Roo.log(this.inputValue);
+        Roo.log(this.boxLabel);
         Roo.log(state);
         Roo.each(this.inputEl().up('form').select('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
             v.dom.checked = false;
