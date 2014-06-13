@@ -12754,6 +12754,9 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         Roo.log(this.boxLabel);
         Roo.log(state);
         Roo.each(this.inputEl().up('form').select('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
+            if(!state){
+                return;
+            }
             v.dom.checked = false;
         });
         
