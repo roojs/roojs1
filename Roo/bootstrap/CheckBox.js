@@ -197,7 +197,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     {
         this.checked = state;
         
-        this.inputEl().dom.checked = state;
+        this.inputEl().attr('checked', true)
+        
+        if(!state){
+            this.inputEl().dom.removeAttribute('checked');
+        }
         
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
