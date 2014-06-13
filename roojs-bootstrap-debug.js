@@ -12568,6 +12568,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
         
+    },
+    
+    setValue : function(v)
+    {
+        this.setChecked(String(v) === String(this.inputValue));
     }
     
 });
