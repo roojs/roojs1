@@ -206,6 +206,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     setValue : function(v,suppressEvent)
     {
         Roo.log('setValue');
+        Roo.log(_this.form);
         Roo.log(v);
         this.setChecked(((typeof(v) == 'undefined') ? this.checked : (String(v) === String(this.inputValue))), suppressEvent);
     }
