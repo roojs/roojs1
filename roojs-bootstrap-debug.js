@@ -12564,10 +12564,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.inputEl().attr('checked', true)
         
-        
         if(state){
-            //this.inputEl().removeAttribute('checked');
+            this.inputEl().dom.removeAttribute('checked');
         }
+        
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
         }
@@ -12578,9 +12578,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     setValue : function(v)
     {
-        Roo.log('run set value of checkbox!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.fieldLabel);
-        Roo.log(String(v) === String(this.inputValue));
         this.setChecked(String(v) === String(this.inputValue));
     }
     
