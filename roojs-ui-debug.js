@@ -5419,6 +5419,18 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         this.sortInfo = meta.sortInfo || this.sortInfo;
         this.modified = [];
         this.fireEvent('metachange', this, this.reader.meta);
+    },
+    
+    moveIndex : function(data, type)
+    {
+        var index = this.indexOf(data);
+        
+        var newIndex = index + type;
+        
+        this.remove(data);
+        
+        this.insert(newIndex, data);
+        
     }
 });/*
  * Based on:
@@ -8709,6 +8721,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         var el = this.dataName  ?
             this.el.child('.roo-tpl-' + this.dataName) :
             this.el; 
+        
         el.dom.removeChild(this.nodes[index]);
         this.updateIndexes(index);
     },
@@ -24885,11 +24898,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     pushValue : function(){
         if(this.initialized){
-            var v = this.el.dom.value;
+            var v = this.el.dom.value.trim();
             
-            if(v.length < 1){
-                v = '&#160;';
-            }
+//            if(v.length < 1){
+//                v = '&#160;';
+//            }
             
             if(this.owner.fireEvent('beforepush', this, v) !== false){
                 var d = (this.doc.body || this.doc.documentElement);
