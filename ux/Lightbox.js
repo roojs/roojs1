@@ -492,6 +492,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         if (widthNew > ww || heightNew > wh) {
             // bigger than window.
             // scale here... - bit nasty..
+            Roo.log(widthNew / ww );
+            Roo.log(heightNew  / wh);
             var rescale = 1.1 * Math.max( widthNew / ww , heightNew  / wh);
             Roo.log(rescale);
              //console.log(rescale);
