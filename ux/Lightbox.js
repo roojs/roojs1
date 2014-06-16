@@ -478,7 +478,8 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         var w = window;
         var ww = w.innerWidth || (w.document.documentElement.clientWidth || w.document.body.clientWidth);
         var wh = w.innerHeight || (w.document.documentElement.clientHeight || w.document.body.clientHeight);
-        
+        Roo.log(ww);
+        Roo.log(wh);
         ww -= 150;
         wh -= 150;
         
