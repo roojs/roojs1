@@ -443,11 +443,6 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         // once image is preloaded, resize image container
 
         imgPreloader.on('load', function() {
-            Roo.log('this.imageArray[this.activeImage].dom.lwidth');
-            Roo.log(this.imageArray[this.activeImage].dom.lwidth);
-            
-            Roo.log('this.imageArray[this.activeImage].dom.lheight');
-            Roo.log(this.imageArray[this.activeImage].dom.lheight);
             
             this.lightboximage.dom.src = this.imageArray[this.activeImage].href || 
                 this.imageArray[this.activeImage].dom.href || this.imageArray[this.activeImage].dom.src;
@@ -478,8 +473,7 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         var w = window;
         var ww = w.innerWidth || (w.document.documentElement.clientWidth || w.document.body.clientWidth);
         var wh = w.innerHeight || (w.document.documentElement.clientHeight || w.document.body.clientHeight);
-        Roo.log(ww);
-        Roo.log(wh);
+        
         ww -= 150;
         wh -= 150;
         
@@ -488,15 +482,11 @@ Roo.apply(Roo.ux.Lightbox.prototype,
         
         var widthNew  =  imgWidth  + bs;
         var heightNew =  imgHeight + bs;
-        Roo.log(widthNew);
-        Roo.log(heightNew);
+        
         if (widthNew > ww || heightNew > wh) {
             // bigger than window.
             // scale here... - bit nasty..
-            Roo.log(widthNew / ww );
-            Roo.log(heightNew  / wh);
             var rescale = 1.1 * Math.max( widthNew / ww , heightNew  / wh);
-            Roo.log(rescale);
              //console.log(rescale);
             imgWidth = Math.floor(imgWidth / rescale);
             imgHeight = Math.floor(imgHeight / rescale);
