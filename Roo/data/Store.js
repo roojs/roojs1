@@ -716,9 +716,13 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     
     moveIndex : function(data, type)
     {
-//        var index = this.indexOf(data);
-//        
-//        var newIndex = index + 1;
+        var index = this.indexOf(data);
+        
+        var newIndex = index + type;
+        
+        this.remove(data);
+        
+        this.insert(newIndex, data);
         
     }
 });
