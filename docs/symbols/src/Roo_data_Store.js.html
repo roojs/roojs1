@@ -712,5 +712,17 @@
         </span><span class="jsdoc-var">this.sortInfo </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">meta.sortInfo </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.sortInfo</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.modified </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'metachange'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.reader.meta</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">moveIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">newIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.insert</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">newIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+        
     }
 });</span></code></body></html>

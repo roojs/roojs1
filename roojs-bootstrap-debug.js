@@ -6723,6 +6723,18 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         this.sortInfo = meta.sortInfo || this.sortInfo;
         this.modified = [];
         this.fireEvent('metachange', this, this.reader.meta);
+    },
+    
+    moveIndex : function(data, type)
+    {
+        var index = this.indexOf(data);
+        
+        var newIndex = index + type;
+        
+        this.remove(data);
+        
+        this.insert(newIndex, data);
+        
     }
 });/*
  * Based on:

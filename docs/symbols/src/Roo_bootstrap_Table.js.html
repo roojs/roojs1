@@ -285,9 +285,11 @@
             });
         }
         
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">renders.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">renders</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">r.cfg.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.id</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">_this.renderColumn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
             })
         }
 </span><span class="jsdoc-comment">//        
@@ -317,6 +319,22 @@
             </span><span class="jsdoc-var">this.selModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Table.RowSelectionModel</span><span class="jsdoc-syntax">();
         }
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.selModel</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">renderColumn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">r.cfg.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.id</span><span class="jsdoc-syntax">));
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.cfg.cn</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.cfg.cn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">child </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">r.id</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c
+                </span><span class="jsdoc-syntax">}
+                </span><span class="jsdoc-var">_this.renderColumn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">child</span><span class="jsdoc-syntax">);
+            })
+        }
     }
    
 });
