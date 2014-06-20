@@ -1745,6 +1745,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
+ * @cfg {Number} width width of dialog
  * @cfg {Array} buttons Array of buttons or standard button set..
  * 
  * @constructor
@@ -1770,6 +1771,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     title : 'test dialog',
    
     buttons : false,
+    
+    width : false,
     
     onRender : function(ct, position)
     {
@@ -1846,7 +1849,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         };
         
          
-        return modal = {
+        var modal = {
             cls: "modal fade",
             cn : [
                 {
@@ -1887,6 +1890,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             
             
         };
+        
+        if(this.width){
+            modal.cn[0].style = 'width:' + this.width + 'px';
+        }
+        
+        return modal;
           
     },
     getChildContainer : function() {
