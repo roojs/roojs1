@@ -9773,12 +9773,6 @@
      "memberOf": ""
     },
     {
-     "name": "width",
-     "type": "Number",
-     "desc": "width of dialog",
-     "memberOf": ""
-    },
-    {
      "name": "buttons",
      "type": "Array",
      "desc": "Array of buttons or standard button set..",
