@@ -57,6 +57,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
    
     buttons : false,
     
+    width : false,
+    
     onRender : function(ct, position)
     {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
@@ -132,7 +134,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         };
         
          
-        return modal = {
+        var modal = {
             cls: "modal fade",
             cn : [
                 {
@@ -173,6 +175,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             
             
         };
+        
+        if(this.width){
+            modal.cn[0].style = 'width:' + this.width + 'px';
+        }
+        
+        return modal;
           
     },
     getChildContainer : function() {
