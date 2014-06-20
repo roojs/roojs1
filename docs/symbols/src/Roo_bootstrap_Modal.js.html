@@ -30,6 +30,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
+ * @cfg {Number} width width of dialog
  * @cfg {Array} buttons Array of buttons or standard button set..
  * 
  * @constructor
