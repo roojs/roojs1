@@ -258,8 +258,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 for(var i = 0, len = cm.getColumnCount(); i < len; i++){
                     var renderer = cm.getRenderer(i);
-                    Roo.log('config!!!!!!!!!!!!!!!!!!!');
-                    Roo.log(cm.config[i]);
+                    var config = cm.config[i];
                     var value = '';
                     var id = Roo.id();
                     
@@ -274,11 +273,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                         })
                     }
                     
-                    row.cn.push({
+                    var td = {
                         tag: 'td',
                         id: id,
                         html: (typeof(value) === 'object') ? '' : value
-                    })
+                    };
+                    
+                    if(typeof(config.width) != 'undefined'){
+                        td.width = config.width;
+                    }
+                    
+                    row.cn.push(td);
                    
                 }
                 
