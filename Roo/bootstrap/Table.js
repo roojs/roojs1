@@ -259,7 +259,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 for(var i = 0, len = cm.getColumnCount(); i < len; i++){
                     var renderer = cm.getRenderer(i);
                     Roo.log('config!!!!!!!!!!!!!!!!!!!');
-                    Roo.log(cm.getColumnById(i));
+                    Roo.log(cm.config(i));
                     var value = '';
                     var id = Roo.id();
                     
