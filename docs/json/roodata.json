@@ -20184,7 +20184,7 @@
   "Roo.form.HtmlEditor": {
    "props": [
     {
-     "name": "cleanUpPaste",
+     "name": "clearUp",
      "type": "Boolean",
      "desc": "",
      "memberOf": ""

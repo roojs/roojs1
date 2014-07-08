@@ -117,7 +117,7 @@
     </span><span class="jsdoc-var">iframePad</span><span class="jsdoc-syntax">:3,
     </span><span class="jsdoc-var">hideMode</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'offsets'</span><span class="jsdoc-syntax">,
     
-    </span><span class="jsdoc-var">cleanUpPaste</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">clearUp</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     
      
     
@@ -937,7 +937,12 @@
     </span><span class="jsdoc-var">cleanUpPaste </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-comment">// cleans up the whole document..
-         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'cleanuppaste'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'cleanuppaste'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.clearUp</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-var">this.cleanUpChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clean </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cleanWordChars</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body.innerHTML</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">clean </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.doc.body.innerHTML</span><span class="jsdoc-syntax">) {

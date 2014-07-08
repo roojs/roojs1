@@ -40990,7 +40990,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     iframePad:3,
     hideMode:'offsets',
     
-    cleanUpPaste: true,
+    clearUp: true,
     
      
     
@@ -41810,7 +41810,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     cleanUpPaste :  function()
     {
         // cleans up the whole document..
-         Roo.log('cleanuppaste');
+        Roo.log('cleanuppaste');
+        
+        if(!this.clearUp){
+            return;
+        }
+        
         this.cleanUpChildren(this.doc.body);
         var clean = this.cleanWordChars(this.doc.body.innerHTML);
         if (clean != this.doc.body.innerHTML) {
@@ -42160,9 +42165,9 @@ Roo.form.HtmlEditor = function(config){
  */
 Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     /**
-     * @cfg {Boolean} cleanUpPaste
+     * @cfg {Boolean} clearUp
      */
-    cleanUpPaste : true,
+    clearUp : true,
       /**
      * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
      */
