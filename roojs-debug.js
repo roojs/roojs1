@@ -40990,6 +40990,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     iframePad:3,
     hideMode:'offsets',
     
+    cleanUpPaste: true,
+    
      
     
 
@@ -42157,6 +42159,10 @@ Roo.form.HtmlEditor = function(config){
  * any element that has display set to 'none' can cause problems in Safari and Firefox.<br/><br/>
  */
 Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
+    /**
+     * @cfg {Boolean} cleanUpPaste
+     */
+    cleanUpPaste : true,
       /**
      * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
      */
