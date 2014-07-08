@@ -977,6 +977,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     cleanUpChild : function (node)
     {
         var ed = this;
+        Roo.log('clear up child!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         //console.log(node);
         if (node.nodeName == "#text") {
             // clean up silly Windows -- stuff?
