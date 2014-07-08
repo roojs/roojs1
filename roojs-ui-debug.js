@@ -25491,13 +25491,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // private? - in a new class?
     cleanUpPaste :  function()
     {
-        if(this.clearUp){
-            this.cleanUpChildren(this.doc.body);
-        }
-        
         // cleans up the whole document..
         Roo.log('cleanuppaste');
         
+        this.cleanUpChildren(this.doc.body);
         var clean = this.cleanWordChars(this.doc.body.innerHTML);
         if (clean != this.doc.body.innerHTML) {
             this.doc.body.innerHTML = clean;
@@ -25535,6 +25532,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     cleanUpChild : function (node)
     {
         var ed = this;
+        Roo.log('clear up child!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(node.nodeName);
         //console.log(node);
         if (node.nodeName == "#text") {
             // clean up silly Windows -- stuff?
