@@ -25491,6 +25491,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // private? - in a new class?
     cleanUpPaste :  function()
     {
+        if(!this.clearUp){
+            return;
+        }
         // cleans up the whole document..
         Roo.log('cleanuppaste');
         
@@ -25532,8 +25535,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     cleanUpChild : function (node)
     {
         var ed = this;
-        Roo.log('clear up child!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(node.nodeName);
         //console.log(node);
         if (node.nodeName == "#text") {
             // clean up silly Windows -- stuff?
