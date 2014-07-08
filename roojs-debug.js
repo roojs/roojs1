@@ -41809,14 +41809,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // private? - in a new class?
     cleanUpPaste :  function()
     {
-        if(!this.clearUp){
-            return;
+        if(this.clearUp){
+            this.cleanUpChildren(this.doc.body);
         }
         
         // cleans up the whole document..
         Roo.log('cleanuppaste');
         
-        this.cleanUpChildren(this.doc.body);
         var clean = this.cleanWordChars(this.doc.body.innerHTML);
         if (clean != this.doc.body.innerHTML) {
             this.doc.body.innerHTML = clean;
