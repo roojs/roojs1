@@ -936,10 +936,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // private? - in a new class?
     cleanUpPaste :  function()
     {
-        if(!this.clearUp){
-            return;
-        }
-        
         // cleans up the whole document..
         Roo.log('cleanuppaste');
         
