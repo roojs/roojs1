@@ -41809,9 +41809,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // private? - in a new class?
     cleanUpPaste :  function()
     {
-        if(!this.clearUp){
-            return;
-        }
         // cleans up the whole document..
         Roo.log('cleanuppaste');
         
@@ -41864,7 +41861,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return; 
         }
         
-        if (Roo.HtmlEditorCore.black.indexOf(node.tagName.toLowerCase()) > -1) {
+        if (Roo.HtmlEditorCore.black.indexOf(node.tagName.toLowerCase()) > -1 && this.clearUp) {
             // remove node.
             node.parentNode.removeChild(node);
             return;
@@ -41934,9 +41931,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 }
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
-                
-                Roo.log('cleaning Style!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-                Roo.log(l);
                 
                 if ( cblack.indexOf(l) > -1) {
 //                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
