@@ -117,7 +117,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     iframePad:3,
     hideMode:'offsets',
     
-    cleanUpPaste: true,
+    clearUp: true,
     
      
     
@@ -937,7 +937,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     cleanUpPaste :  function()
     {
         // cleans up the whole document..
-         Roo.log('cleanuppaste');
+        Roo.log('cleanuppaste');
+        
+        if(!this.clearUp){
+            return;
+        }
+        
         this.cleanUpChildren(this.doc.body);
         var clean = this.cleanWordChars(this.doc.body.innerHTML);
         if (clean != this.doc.body.innerHTML) {
