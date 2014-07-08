@@ -936,9 +936,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     // private? - in a new class?
     cleanUpPaste :  function()
     {
-        if(!this.clearUp){
-            return;
-        }
         // cleans up the whole document..
         Roo.log('cleanuppaste');
         
@@ -991,7 +988,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return; 
         }
         
-        if (Roo.HtmlEditorCore.black.indexOf(node.tagName.toLowerCase()) > -1) {
+        if (Roo.HtmlEditorCore.black.indexOf(node.tagName.toLowerCase()) > -1 && this.clearUp) {
             // remove node.
             node.parentNode.removeChild(node);
             return;
