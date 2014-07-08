@@ -117,6 +117,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     iframePad:3,
     hideMode:'offsets',
     
+    clearUp: true,
+    
      
     
 
