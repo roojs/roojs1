@@ -36,9 +36,9 @@ Roo.form.HtmlEditor = function(config){
  */
 Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     /**
-     * @cfg {Boolean} cleanUpPaste
+     * @cfg {Boolean} clearUp
      */
-    cleanUpPaste : true,
+    clearUp : true,
       /**
      * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
      */
