@@ -20184,6 +20184,12 @@
   "Roo.form.HtmlEditor": {
    "props": [
     {
+     "name": "cleanUpPaste",
+     "type": "Boolean",
+     "desc": "",
+     "memberOf": ""
+    },
+    {
      "name": "toolbars",
      "type": "Array",
      "desc": "Array of toolbars. - defaults to just the Standard one",
