@@ -252,7 +252,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             
             if(typeof(config.width) != 'undefined'){
-                c.style = 'width:' + config.width;
+                c.style = 'width:' + config.width + 'px';
             }
             
             header.cn.push(c)
@@ -335,7 +335,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     };
                     
                     if(typeof(config.width) != 'undefined'){
-                        td.style = 'width:' +  config.width;
+                        td.style = 'width:' +  config.width + 'px';
                     }
                     
                     row.cn.push(td);
