@@ -2953,7 +2953,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var _this = this;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
-            e.on('click', _this.sort, _this, e);
+            e.on('click', _this.sort, _this);
         });
 //        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
 //        this.maskEl.enableDisplayMode("block");
@@ -2968,11 +2968,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
     },
     
-    sort : function(e,el,o)
+    sort : function(e,el)
     {
         Roo.log(e);
         Roo.log(el);
-        Roo.log(o);
+        Roo.log(Roo.get(el));
         //this.store.sortInfo = {field:'created_dt',direction:'DESC'};
         
         //this.store.load();
