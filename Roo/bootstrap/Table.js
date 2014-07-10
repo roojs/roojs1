@@ -211,10 +211,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
             var index = cm.getDataIndex(i);
-            Roo.log('header!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-            Roo.log(i + " : " + index);
             header.cn.push({
                 tag: 'th',
+                sort: index,
                 html: cm.getColumnHeader(i)
             })
         }
