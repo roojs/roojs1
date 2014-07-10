@@ -216,10 +216,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             config = cm.config[i];
             
-            if(typeof(config.dataIndex) != 'undefined'){
-                cls += ' ' + config.dataIndex;
-            }
-            
             if(typeof(config.sortable) != 'undefined' && config.sortable){
                 cls += ' sortable';
             }
@@ -227,6 +223,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             header.cn.push({
                 tag: 'th',
                 cls: cls,
+                sort: (typeof(config.dataIndex) != 'undefined') ? config.dataIndex : '',
                 html: cm.getColumnHeader(i)
             })
         }
