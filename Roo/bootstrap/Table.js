@@ -208,13 +208,20 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         };
         
         var cm = this.cm;
+        var cls = '';
+        var config = '';
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-            var config = cm.config[i];
-            Roo.log('header!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-            Roo.log(config);
+            cls = 'glyphicon';
+            config = cm.config[i];
+            
+            if(typeof(config.sortable) != 'undefined' && config.sortable){
+                cls += ' sortable';
+            }
+            
             header.cn.push({
                 tag: 'th',
+                cls: cls,
                 html: cm.getColumnHeader(i)
             })
         }
