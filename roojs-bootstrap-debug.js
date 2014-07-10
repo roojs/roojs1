@@ -2973,6 +2973,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cm = this.cm;
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+            var index = cm.getDataIndex(i);
+            Roo.log('header!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+            Roo.log(i + " : " + index);
             header.cn.push({
                 tag: 'th',
                 html: cm.getColumnHeader(i)
@@ -12923,6 +12926,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     iframePad:3,
     hideMode:'offsets',
     
+    clearUp: true,
+    
      
     
 
@@ -13741,7 +13746,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     cleanUpPaste :  function()
     {
         // cleans up the whole document..
-         Roo.log('cleanuppaste');
+        Roo.log('cleanuppaste');
+        
         this.cleanUpChildren(this.doc.body);
         var clean = this.cleanWordChars(this.doc.body.innerHTML);
         if (clean != this.doc.body.innerHTML) {
@@ -13791,7 +13797,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return; 
         }
         
-        if (Roo.HtmlEditorCore.black.indexOf(node.tagName.toLowerCase()) > -1) {
+        if (Roo.HtmlEditorCore.black.indexOf(node.tagName.toLowerCase()) > -1 && this.clearUp) {
             // remove node.
             node.parentNode.removeChild(node);
             return;
@@ -13861,7 +13867,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 }
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
-                
                 
                 if ( cblack.indexOf(l) > -1) {
 //                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
