@@ -3054,10 +3054,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'ASC'){
                 e.addClass('glyphicon', 'glyphicon-arrow-up');
-                return;
             }
             
-            e.addClass('glyphicon', 'glyphicon-arrow-down');
+            if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'DESC'){
+                e.addClass('glyphicon', 'glyphicon-arrow-down');
+            }
         });
         
         var tbody = this.el.select('tbody', true).first();
