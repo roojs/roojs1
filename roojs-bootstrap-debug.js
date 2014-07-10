@@ -3041,6 +3041,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var cm = this.cm;
         
+        Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
+            Roo.log(e);
+        });
+        
         var tbody = this.el.select('tbody', true).first();
         
         var renders = [];
