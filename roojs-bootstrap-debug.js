@@ -3044,6 +3044,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         Roo.log('ds onload');
         
+        var _this = this;
         var cm = this.cm;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
@@ -3051,7 +3052,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var sortable = e.attr('')
             
-            if(e.hasClass('sortable') && e.attr('sort') == this.store.sortInfo.field && this.store.sortInfo.dir.toUpperCase() == 'ASC'){
+            if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.dir.toUpperCase() == 'ASC'){
                 e.addClass('glyphicon', 'glyphicon-arrow-up');
                 return;
             }
