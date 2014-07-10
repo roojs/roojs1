@@ -190,7 +190,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var _this = this;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
-            e.on('click', _this.store.load, _this.store);
+            e.on('click', _this.sort, _this);
         });
 //        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
 //        this.maskEl.enableDisplayMode("block");
