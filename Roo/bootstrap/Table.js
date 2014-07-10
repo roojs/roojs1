@@ -205,6 +205,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
     },
     
+    sort : function()
+    {
+        this.store.sortInfo = {field:'created_dt',direction:'DESC'};
+        
+        this.store.load();
+    },
+    
     renderHeader : function()
     {
         var header = {
