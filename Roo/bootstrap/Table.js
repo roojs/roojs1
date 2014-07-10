@@ -207,8 +207,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     sort : function(e,el)
     {
-        var sort = Roo.get(el).attr('sort');
-        Roo.log(sort);
+        var col = Roo.get(el)
+        var sort = col.attr('sort');
+        var dir = 'DESC';
+        
+        
+        
+        
         this.store.sortInfo = {field:sort,direction:'ASC'};
         
         this.store.load();
