@@ -3052,7 +3052,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var sortable = e.attr('')
             
-            if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.dir.toUpperCase() == 'ASC'){
+            if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'ASC'){
                 e.addClass('glyphicon', 'glyphicon-arrow-up');
                 return;
             }
