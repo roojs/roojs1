@@ -2952,8 +2952,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.log('initEvents with ds!!!!');
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
-            //e.on('click', _this.store.load);
-            Roo.log(e);
+            e.on('click', _this.store.load, _this);
         });
 //        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
 //        this.maskEl.enableDisplayMode("block");
