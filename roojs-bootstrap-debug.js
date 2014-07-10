@@ -3098,7 +3098,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     };
                     
                     if(typeof(config.width) != 'undefined'){
-                        td.width = config.width;
+                        td.style = 'width:' +  config.width;
                     }
                     
                     row.cn.push(td);
