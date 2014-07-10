@@ -2973,7 +2973,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cm = this.cm;
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-            var lookup = cm.getColumnById(i);
+            var lookup = cm.looup;
             Roo.log('header!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
             Roo.log(lookup);
             header.cn.push({
