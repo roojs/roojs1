@@ -209,9 +209,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var sort = Roo.get(el).attr('sort');
         Roo.log(sort);
-        //this.store.sortInfo = {field:'created_dt',direction:'DESC'};
+        this.store.sortInfo = {field:sort,direction:'ASC'};
         
-        //this.store.load();
+        this.store.load();
     },
     
     renderHeader : function()
