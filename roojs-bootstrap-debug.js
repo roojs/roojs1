@@ -2948,11 +2948,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         
-        var _this = this;
         Roo.log('initEvents with ds!!!!');
         
+        var _this = this;
+        
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
-            e.on('click', _this.store.load, _this.store);
+            e.on('click', _this.sort, _this);
         });
 //        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
 //        this.maskEl.enableDisplayMode("block");
@@ -2965,6 +2966,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         
         
+    },
+    
+    sort : function(a,b,c)
+    {
+        Roo.log(a);
+        Roo.log(b);
+        Roo.log(c);
+        //this.store.sortInfo = {field:'created_dt',direction:'DESC'};
+        
+        //this.store.load();
     },
     
     renderHeader : function()

@@ -205,11 +205,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
     },
     
-    sort : function()
+    sort : function(a,b,c)
     {
-        this.store.sortInfo = {field:'created_dt',direction:'DESC'};
+        Roo.log(a);
+        Roo.log(b);
+        Roo.log(c);
+        //this.store.sortInfo = {field:'created_dt',direction:'DESC'};
         
-        this.store.load();
+        //this.store.load();
     },
     
     renderHeader : function()
