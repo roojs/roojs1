@@ -3059,7 +3059,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
         });
         
-//        var tbody = this.el.select('tbody', true).first();
+        var tbody = this.el.select('tbody', true).first();
         
         var renders = [];
         
@@ -3123,7 +3123,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         Roo.log('ds onBeforeLoad');
         
-        this.clear();
+//        this.clear();
         
 //        if(this.loadMask){
 //            this.maskEl.show();
