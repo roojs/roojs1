@@ -287,8 +287,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
             e.removeClass(['glyphicon', 'glyphicon-arrow-up', 'glyphicon-arrow-down']);
             
-            var sortable = e.attr('')
-            
             if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'ASC'){
                 e.addClass('glyphicon', 'glyphicon-arrow-up');
             }
