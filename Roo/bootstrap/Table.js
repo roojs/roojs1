@@ -288,8 +288,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var sortable = e.attr('')
             
-            //if(e.)
+            if(e.hasClass('sortable') && e.attr('sort') == this.store.sortInfo.field && this.store.sortInfo.dir.toUpperCase() == 'ASC'){
+                e.addClass('glyphicon', 'glyphicon-arrow-up');
+                return;
+            }
             
+            e.addClass('glyphicon', 'glyphicon-arrow-down');
         });
         
         var tbody = this.el.select('tbody', true).first();
