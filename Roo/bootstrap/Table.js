@@ -213,7 +213,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
             cls = 'glyphicon';
+            
             config = cm.config[i];
+            
+            if(typeof(config.dataIndex) != 'undefined'){
+                cls += ' ' + config.dataIndex;
+            }
             
             if(typeof(config.sortable) != 'undefined' && config.sortable){
                 cls += ' sortable';
