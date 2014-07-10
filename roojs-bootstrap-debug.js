@@ -3055,7 +3055,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             
             if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'DESC'){
-                e.addClass(['glyphicon', 'glyphicon-arrow-down']);
+                e.addClass(['glyphicon', 'glyphicon-arrow-up']);
             }
         });
         
