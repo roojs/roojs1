@@ -2971,6 +2971,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     sort : function(e,el)
     {
         var col = Roo.get(el)
+        
+        if(!col.hasClass('sortable')){
+            return;
+        }
+        
         var sort = col.attr('sort');
         var dir = 'ASC';
         
@@ -3042,7 +3047,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cm = this.cm;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
-            Roo.log(e);
+            e.removeClass(['glyphicon', 'glyphicon-arrow-up', 'glyphicon-arrow-down']);
+            
+            var sortable = e.attr('')
+            
+            //if(e.)
+            
         });
         
         var tbody = this.el.select('tbody', true).first();
