@@ -215,8 +215,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             dir = 'DESC';
         }
         
-        
-        
         this.store.sortInfo = {field : sort, direction : dir};
         
         this.store.load();
