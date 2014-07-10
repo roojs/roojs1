@@ -205,7 +205,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
     },
     
-    sort : function(e,el,o)
+    sort : function(e,el,col)
     {
         Roo.log(e);
         Roo.log(el);
