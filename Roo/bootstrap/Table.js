@@ -190,7 +190,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var _this = this;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
-            e.on('click', _this.sort, _this);
+            e.on('click', _this.sort, _this, e);
         });
 //        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
 //        this.maskEl.enableDisplayMode("block");
@@ -205,11 +205,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
     },
     
-    sort : function(a,b,c)
+    sort : function(e,el,o)
     {
-        Roo.log(a);
-        Roo.log(b);
-        Roo.log(c);
+        Roo.log(e);
+        Roo.log(el);
+        Roo.log(o);
         //this.store.sortInfo = {field:'created_dt',direction:'DESC'};
         
         //this.store.load();
