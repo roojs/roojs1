@@ -2973,9 +2973,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cm = this.cm;
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-            var lookup = cm.getColumnByDataIndex(cm.getIndexById(i));
+            var config = cm.config(i);
             Roo.log('header!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-            Roo.log(lookup);
+            Roo.log(config);
             header.cn.push({
                 tag: 'th',
                 html: cm.getColumnHeader(i)
