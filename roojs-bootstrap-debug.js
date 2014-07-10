@@ -2950,6 +2950,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         Roo.log('initEvents with ds!!!!');
         
+        Roo.log(this.el);
 //        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
 //        this.maskEl.enableDisplayMode("block");
 //        this.maskEl.show();
