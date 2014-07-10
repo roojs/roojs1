@@ -3014,6 +3014,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.cls = 'sortable';
             }
             
+            if(typeof(config.width) != 'undefined'){
+                c.width = config.width;
+            }
+            
             header.cn.push(c)
         }
         
