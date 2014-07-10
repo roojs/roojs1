@@ -185,8 +185,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         
-        var _this = this;
         Roo.log('initEvents with ds!!!!');
+        
+        var _this = this;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
             e.on('click', _this.store.load, _this.store);
