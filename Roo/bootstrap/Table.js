@@ -208,24 +208,25 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         };
         
         var cm = this.cm;
-        var cls = '';
-        var config = '';
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-            cls = 'glyphicon';
             
-            config = cm.config[i];
+            var config = cm.config[i];
             
-            if(typeof(config.sortable) != 'undefined' && config.sortable){
-                cls += ' sortable';
+            var c = {
+                tag: 'th',
+                html: cm.getColumnHeader(i)
+            };
+            
+            if(typeof(config.dataIndex) != 'undefined'){
+                c.sort = config.dataIndex;
             }
             
-            header.cn.push({
-                tag: 'th',
-                cls: cls,
-                sort: (typeof(config.dataIndex) != 'undefined') ? config.dataIndex : '',
-                html: cm.getColumnHeader(i)
-            })
+            if(typeof(config.sortable) != 'undefined' && config.sortable){
+                c.cls = 'sortable';
+            }
+            
+            header.cn.push(c)
         }
         
         return header;
