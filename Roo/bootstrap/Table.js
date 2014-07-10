@@ -295,7 +295,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 e.addClass(['glyphicon', 'glyphicon-arrow-down']);
             }
         });
-        return;
+        
         var tbody = this.el.select('tbody', true).first();
         
         var renders = [];
