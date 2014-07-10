@@ -2970,9 +2970,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     sort : function(e,el)
     {
-        Roo.log(e);
-        Roo.log(el);
-        Roo.log(Roo.get(el));
+        var sort = Roo.get(el).attr('sort');
+        Roo.log(sort);
         //this.store.sortInfo = {field:'created_dt',direction:'DESC'};
         
         //this.store.load();
