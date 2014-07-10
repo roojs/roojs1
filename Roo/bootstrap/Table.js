@@ -209,12 +209,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var col = Roo.get(el)
         var sort = col.attr('sort');
-        var dir = 'DESC';
+        var dir = 'ASC';
+        
+        if(col.hasClass('glyphicon-arrow-up')){
+            dir = 'DESC';
+        }
         
         
         
-        
-        this.store.sortInfo = {field:sort,direction:'ASC'};
+        this.store.sortInfo = {field : sort, direction : dir};
         
         this.store.load();
     },
