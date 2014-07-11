@@ -216,7 +216,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var sort = col.attr('sort');
         var dir = 'ASC';
         
-        if(col.hasClass('icon-arrow-up')){
+        if(col.hasClass('glyphicon-arrow-up')){
             dir = 'DESC';
         }
         
@@ -289,14 +289,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cm = this.cm;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
-            e.removeClass(['icon-arrow-up', 'icon-arrow-down']);
+            e.removeClass(['glyphicon', 'glyphicon-arrow-up', 'glyphicon-arrow-down']);
             
             if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'ASC'){
-                e.addClass('icon-arrow-up');
+                e.addClass(['glyphicon', 'glyphicon-arrow-up']);
             }
             
             if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'DESC'){
-                e.addClass('icon-arrow-down');
+                e.addClass(['glyphicon', 'glyphicon-arrow-down']);
             }
         });
         
