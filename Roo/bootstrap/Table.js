@@ -289,14 +289,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cm = this.cm;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
-            e.removeClass(['glyphicon', 'glyphicon-arrow-up', 'glyphicon-arrow-down']);
+            e.removeClass(['icon-arrow-up', 'icon-arrow-down']);
             
             if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'ASC'){
-                e.addClass(['glyphicon', 'glyphicon-arrow-up']);
+                e.addClass('icon-arrow-up');
             }
             
             if(e.hasClass('sortable') && e.attr('sort') == _this.store.sortInfo.field && _this.store.sortInfo.direction.toUpperCase() == 'DESC'){
-                e.addClass(['glyphicon', 'glyphicon-arrow-down']);
+                e.addClass('icon-arrow-down');
             }
         });
         
