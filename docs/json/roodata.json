@@ -16755,7 +16755,7 @@
     },
     {
      "name": "remove",
-     "sig": "function (combo)\n{\n\n}",
+     "sig": "function (_self, item)\n{\n\n}",
      "type": "function",
      "desc": "Fires when remove the value from the list"
     },
