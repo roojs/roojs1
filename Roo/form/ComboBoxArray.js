@@ -36,6 +36,16 @@
 
 Roo.form.ComboBoxArray = function(config)
 {
+    this.addEvents({
+        /**
+         * @event remove
+         * Fires when remove the value from the list
+	     * @param {Roo.form.ComboBox} combo This combo box
+	     */
+        'remove' : true
+        
+        
+    });
     
     Roo.form.ComboBoxArray.superclass.constructor.call(this, config);
     
@@ -452,5 +462,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
         this.el.child('img').un('click', this.remove, this);
         this.el.remove();
         this.cb.updateHiddenEl();
+        
+        this.fireEvent('remove', this);
     }
 });
