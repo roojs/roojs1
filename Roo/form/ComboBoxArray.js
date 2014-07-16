@@ -40,7 +40,8 @@ Roo.form.ComboBoxArray = function(config)
         /**
          * @event remove
          * Fires when remove the value from the list
-	     * @param {Roo.form.ComboBox} combo This combo box
+	     * @param {Roo.form.ComboBoxArray} _self This combo box array
+             * @param {Roo.form.ComboBoxArray.Item} item removed item
 	     */
         'remove' : true
         
