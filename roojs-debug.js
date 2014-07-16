@@ -40597,7 +40597,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
    
     remove : function()
     {
-        
+        Roo.log(this);
         this.cb.items.remove(this);
         this.el.child('img').un('click', this.remove, this);
         this.el.remove();
