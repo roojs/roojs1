@@ -187,6 +187,11 @@
         
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'initEvents with ds!!!!'</span><span class="jsdoc-syntax">);
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'thead th.sortable'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">e.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this.sort</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">);
+        });
 </span><span class="jsdoc-comment">//        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), {tag: &quot;div&quot;, cls:&quot;x-dlg-mask&quot;}, true);
 //        this.maskEl.enableDisplayMode(&quot;block&quot;);
 //        this.maskEl.show();
@@ -200,6 +205,26 @@
         
     },
     
+    </span><span class="jsdoc-var">sort </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">col </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">col.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'sortable'</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sort </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">col.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'sort'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'ASC'</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">col.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'glyphicon-arrow-up'</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">dir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'DESC'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.store.sortInfo </span><span class="jsdoc-syntax">= {</span><span class="jsdoc-var">field </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">sort</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">direction </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-var">this.store.load</span><span class="jsdoc-syntax">();
+    },
+    
     </span><span class="jsdoc-var">renderHeader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">= {
@@ -210,10 +235,27 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.getColumnCount</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-            </span><span class="jsdoc-var">header.cn.push</span><span class="jsdoc-syntax">({
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cm.config</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'th'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cm.getColumnHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)
-            })
+            };
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.dataIndex</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">c.sort </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.dataIndex</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.sortable</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.sortable</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">c.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'sortable'</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.width</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">c.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'width:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">header.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)
         }
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">;
@@ -243,7 +285,20 @@
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ds onload'</span><span class="jsdoc-syntax">);
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'thead th.sortable'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">e.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'glyphicon'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'glyphicon-arrow-up'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'glyphicon-arrow-down'</span><span class="jsdoc-syntax">]);
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'sortable'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">e.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'sort'</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-var">_this.store.sortInfo.field </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">_this.store.sortInfo.direction.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'ASC'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">e.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'glyphicon'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'glyphicon-arrow-up'</span><span class="jsdoc-syntax">]);
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'sortable'</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">e.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'sort'</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-var">_this.store.sortInfo.field </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">_this.store.sortInfo.direction.toUpperCase</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-string">'DESC'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">e.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'glyphicon'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'glyphicon-arrow-down'</span><span class="jsdoc-syntax">]);
+            }
+        });
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tbody </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         
@@ -280,7 +335,7 @@
                     </span><span class="jsdoc-syntax">};
                     
                     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.width</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
-                        </span><span class="jsdoc-var">td.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.width</span><span class="jsdoc-syntax">;
+                        </span><span class="jsdoc-var">td.style </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'width:' </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">config.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">;
                     }
                     
                     </span><span class="jsdoc-var">row.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);

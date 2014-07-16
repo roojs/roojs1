@@ -939,10 +939,6 @@
         </span><span class="jsdoc-comment">// cleans up the whole document..
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'cleanuppaste'</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.clearUp</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        
         </span><span class="jsdoc-var">this.cleanUpChildren</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">clean </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cleanWordChars</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc.body.innerHTML</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">clean </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.doc.body.innerHTML</span><span class="jsdoc-syntax">) {
@@ -992,7 +988,7 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; 
         }
         
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.HtmlEditorCore.black.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">()) &gt; -1) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.HtmlEditorCore.black.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node.tagName.toLowerCase</span><span class="jsdoc-syntax">()) &gt; -1 &amp;&amp; </span><span class="jsdoc-var">this.clearUp</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// remove node.
             </span><span class="jsdoc-var">node.parentNode.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">node</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
@@ -1062,7 +1058,6 @@
                 }
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">p.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">':'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.shift</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/\s+/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">l </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">l.replace</span><span class="jsdoc-syntax">(/^\s+/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.replace</span><span class="jsdoc-syntax">(/\s+$/g,</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
-                
                 
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">cblack.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">l</span><span class="jsdoc-syntax">) &gt; -1) {
 </span><span class="jsdoc-comment">//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
