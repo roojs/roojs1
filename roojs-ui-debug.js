@@ -24285,6 +24285,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
         this.el.remove();
         this.cb.updateHiddenEl();
         
+        Roo.log('remove?????');
         this.fireEvent('remove', this);
     }
 });/*
