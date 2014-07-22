@@ -9935,6 +9935,12 @@
      "memberOf": ""
     },
     {
+     "name": "navId",
+     "type": "String",
+     "desc": "- reference Id for navbar.",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -10025,6 +10031,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "changed",
+     "sig": "function (_self, item, item)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the active item changes"
     },
     {
      "name": "destroy",
@@ -10296,7 +10308,7 @@
     },
     {
      "name": "active",
-     "type": "Boolena",
+     "type": "Boolean",
      "desc": "Is item active",
      "memberOf": ""
     },
@@ -10304,6 +10316,12 @@
      "name": "preventDefault",
      "type": "Boolean",
      "desc": "(true | false) default false",
+     "memberOf": ""
+    },
+    {
+     "name": "tabId",
+     "type": "String",
+     "desc": "the tab that this item activates.",
      "memberOf": ""
     },
     {
@@ -10397,6 +10415,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "changed",
+     "sig": "function (_self, state)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the active item active state changes"
     },
     {
      "name": "click",
@@ -11912,6 +11936,12 @@
      "name": "tabId",
      "type": "String",
      "desc": "tab relate id",
+     "memberOf": ""
+    },
+    {
+     "name": "navId",
+     "type": "String",
+     "desc": "The navbar which triggers show hide",
      "memberOf": ""
     },
     {
