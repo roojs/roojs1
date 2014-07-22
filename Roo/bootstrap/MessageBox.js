@@ -126,6 +126,7 @@ Roo.bootstrap.MessageBox = function(){
                 buttons["yes"] = dlg.addButton(bt["yes"], handleButton.createCallback("yes"));
                 buttons["no"] = dlg.addButton(bt["no"], handleButton.createCallback("no"));
                 buttons["cancel"] = dlg.addButton(bt["cancel"], handleButton.createCallback("cancel"));
+                Roo.log(buttons)
                 bodyEl = dlg.body.createChild({
 
                     html:'<span class="roo-mb-text"></span><br /><input type="text" class="roo-mb-input" />' +
