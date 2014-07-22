@@ -256,7 +256,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.fireEvent('btnclick', btn.name, e);
     },
     setTitle: function(str) {
-        this.el.select('.modal-title').first().setContents(str);
+        this.el.select('.modal-title',true).first().setContents(str);
         
     }
 });
