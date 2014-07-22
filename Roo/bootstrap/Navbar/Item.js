@@ -181,6 +181,22 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     },
     // this should not be here...
     
+    isActive: function () {
+	return this.active
+    },
+    setActive : function(state, fire)
+    {
+	this.active = state;
+	if (!state ) {
+	    this.el.removeClass('active');
+	    return;
+	}
+	if (!this.hasClass('active')) {
+	    this.addClass('active');
+	}
+	
+    }
+    
     onTabsClick : function(e)
     {
        
