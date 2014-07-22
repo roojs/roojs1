@@ -134,6 +134,8 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
                ret=  e;
                return true;
             }
+            return false;
+            
         });
         return ret;
     
