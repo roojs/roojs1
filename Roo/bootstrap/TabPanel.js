@@ -67,7 +67,8 @@ Roo.apply(Roo.bootstrap.TabPanel, {
     
     registerPanel : function(panel)
     {
-        panels[panel.navId][panel.tabId] = panel;
+        
+        panels[panel.navId + panel.tabId] = panel;
         
         
         
