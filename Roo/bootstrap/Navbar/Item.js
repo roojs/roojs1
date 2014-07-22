@@ -50,8 +50,9 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     badge: '',
     icon: false,
     glyphicon: false,
-     active: false,
+    active: false,
     preventDefault : false,
+    tabId : false,
     
     getAutoCreate : function(){
         
