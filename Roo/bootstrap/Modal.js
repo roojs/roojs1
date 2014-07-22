@@ -217,7 +217,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     hide : function()
     {
-        throw "oops";
         Roo.log('Modal hide?!');
         this.maskEl.hide();
         Roo.get(document.body).removeClass("x-body-masked");
