@@ -61,9 +61,18 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             }, this);
         }
         
+    },
+    setActive: function(state)
+    {
+        this.active = state;
+        if (!state) {
+            this.el.removeClass('active');
+            
+        } else  if (!this.el.hasClass('active')) {
+            this.el.addClass('active');
+        }
+        this.fireEvent('changed', this, state);
     }
-        
-    
     
     
 });
