@@ -179,7 +179,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     {
         Roo.each(this.parent().el.select('.active',true).elements, function(v){
             v.removeClass('active');
-        })
+        });
 
         this.el.addClass('active');
 
