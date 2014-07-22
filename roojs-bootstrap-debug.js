@@ -11067,7 +11067,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         Roo.bootstrap.TabPanel.superclass.onRender.call(this, ct, position);
         
         if (this.navId && this.tabId) {
-            var item = Roo.bootstrap.NavGroup.get(navId).getTabItem(tabId).
+            var item = Roo.bootstrap.NavGroup.get(this.navId).getTabItem(this.tabId).
             item.on('changed', function(item, state) {
                 this.setActive(state);
             }, this);
