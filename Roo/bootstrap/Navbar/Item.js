@@ -170,8 +170,8 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         };
         
         if (['tabs','pills'].indexOf(this.parent().type)!==-1) {
-	     if (typeof(this.parent().setActive) !== 'undefined') {
-		this.parent().setActive(this);
+	     if (typeof(this.parent().setActiveItem) !== 'undefined') {
+		this.parent().setActiveItem(this);
 	    }
 	    
 	    
