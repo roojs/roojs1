@@ -2032,6 +2032,8 @@ Roo.apply(Roo.bootstrap.Modal,  {
 
 Roo.bootstrap.Navbar = function(config){
     Roo.bootstrap.Navbar.superclass.constructor.call(this, config);
+   
+    
 };
 
 Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
@@ -2048,6 +2050,10 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     brand_href: false,
     main : false,
     loadMask : false,
+    
+    
+    // private
+    navItems : false,
     
     getAutoCreate : function(){
         var cfg = {
@@ -2213,8 +2219,12 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     {
         this.maskEl.hide();
     }
-   
+    
+    
+    
 });
+
+
 
  
 
@@ -2232,6 +2242,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
  * @cfg {String} align left | right
  * @cfg {Boolean} inverse false | true
  * @cfg {String} type (nav|pills|tab) default nav
+ * @cfg {String} navId - reference Id for navbar.
+
  * 
  * @constructor
  * Create a new nav group
@@ -2240,6 +2252,19 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.NavGroup = function(config){
     Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
+    this.navItems = [];
+    Roo.bootstrap.NavGroup.register(this);
+     this.addEvents({
+        /**
+	     * @event changed
+	     * Fires when the active item changes
+	     * @param {Roo.bootstrap.NavGroup} this
+	     * @param {Roo.bootstrap.Navbar.Item} item The item selected
+	     * @param {Roo.bootstrap.Navbar.Item} item The previously selected item 
+         */
+        'changed': true
+     });
+    
 };
 
 Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
@@ -2248,8 +2273,13 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     inverse: false,
     form: false,
     type: 'nav',
+    navId : '',
+    // private
     
-    getAutoCreate : function(){
+    navItems : false,
+    
+    getAutoCreate : function()
+    {
         var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
         
         cfg = {
@@ -2299,11 +2329,53 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         
         
         return cfg;
+    },
+    
+    setActiveItem : function(item)
+    {
+        var prev = false;
+        Roo.each(this.navItems, function(v){
+            if (v.isActive()) {
+                v.setActive(false, true);
+                prev = v;
+                
+            }
+            
+        });
+
+        item.el.setActive('active', true);
+        this.fireEvent('changed', this, item, prev);
+        
+        
+    },
+    
+    
+    register : function(item)
+    {
+	this.navItems.push( item);
+	item.navId = this.navId;
+    
     }
-   
+    
 });
 
  
+Roo.apply(Roo.bootstrap.NavGroup, {
+    
+    groups: {},
+    
+    register : function(navgrp)
+    {
+	this.groups[navgrp.navId] = navgrp;
+	
+    },
+    get: function(navId) {
+        return this.groups[navId];
+    }
+    
+    
+    
+});
 
  /*
  * - LGPL
@@ -2321,8 +2393,9 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
  * @cfg {String} badge text inside badge
  * @cfg {String} glyphicon name of glyphicon
  * @cfg {String} icon name of font awesome icon
- * @cfg {Boolena} active Is item active
+ * @cfg {Boolean} active Is item active
  * @cfg {Boolean} preventDefault (true | false) default false
+ * @cfg {String} tabId the tab that this item activates.
   
  * @constructor
  * Create a new Navbar Button
@@ -2337,8 +2410,17 @@ Roo.bootstrap.Navbar.Item = function(config){
          * The raw click event for the entire grid.
          * @param {Roo.EventObject} e
          */
-        "click" : true
+        "click" : true,
+	 /**
+	    * @event changed
+	    * Fires when the active item active state changes
+	    * @param {Roo.bootstrap.Navbar.Item} this
+	    * @param {boolean} state the new state
+	     
+         */
+        'changed': true
     });
+   
 };
 
 Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
@@ -2348,9 +2430,9 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     badge: '',
     icon: false,
     glyphicon: false,
-    icon: false,
     active: false,
     preventDefault : false,
+    tabId : false,
     
     getAutoCreate : function(){
         
@@ -2461,6 +2543,8 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
        // Roo.log('init events?');
        // Roo.log(this.el.dom);
         this.el.select('a',true).on('click', this.onClick, this);
+	// at this point parent should be available..
+	this.parent().register(this);
     },
     
     onClick : function(e)
@@ -2474,29 +2558,34 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         };
         
         if (['tabs','pills'].indexOf(this.parent().type)!==-1) {
-            this.onTabsClick(e);
+	     if (typeof(this.parent().setActiveItem) !== 'undefined') {
+		this.parent().setActiveItem(this);
+	    }
+	    
+	    
+	    
         } 
     },
     
-    onTabsClick : function(e)
+    isActive: function () {
+	return this.active
+    },
+    setActive : function(state, fire)
     {
-        Roo.each(this.parent().el.select('.active',true).elements, function(v){
-            v.removeClass('active');
-        })
-
-        this.el.addClass('active');
-
-        if(this.href && this.href.substring(0,1) == '#'){
-            var tab = Roo.select('[tabId=' + this.href + ']', true).first();
-
-            Roo.each(tab.findParent('.tab-content', 0, true).select('.active', true).elements, function(v){
-                v.removeClass('active');
-            });
-
-            tab.addClass('active');
-        }
+	this.active = state;
+	if (!state ) {
+	    this.el.removeClass('active');
+	} else if (!this.hasClass('active')) {
+	    this.addClass('active');
+	}
+	if (fire) {
+	    this.fireEvent('changed', this, state);
+	}
+	
+	
     }
-   
+     // this should not be here...
+ 
 });
  
 
@@ -10935,6 +11024,7 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
  * @cfg {Boolean} active panel active
  * @cfg {String} html panel content
  * @cfg {String} tabId tab relate id
+ * @cfg {String} navId The navbar which triggers show hide
  * 
  * 
  * @constructor
@@ -10951,6 +11041,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     active: false,
     html: false,
     tabId: false,
+    navId : false,
     
     getAutoCreate : function(){
         var cfg = {
@@ -10968,9 +11059,36 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+    },
+    onRender : function(ct, position)
+    {
+       // Roo.log("Call onRender: " + this.xtype);
+        
+        Roo.bootstrap.TabPanel.superclass.onRender.call(this, ct, position);
+        
+        if (this.navId && this.tabId) {
+            var item = Roo.bootstrap.NavGroup.get(navId).getTabItem(tabId).
+            item.on('changed', function(item, state) {
+                this.setActive(state);
+            }, this);
+        }
+        
+    },
+    setActive: function(state)
+    {
+        this.active = state;
+        if (!state) {
+            this.el.removeClass('active');
+            
+        } else  if (!this.el.hasClass('active')) {
+            this.el.addClass('active');
+        }
+        this.fireEvent('changed', this, state);
     }
-   
+    
+    
 });
+ 
 
  
 
