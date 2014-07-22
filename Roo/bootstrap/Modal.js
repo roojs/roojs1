@@ -48,6 +48,7 @@ Roo.bootstrap.Modal = function(config){
          */
         "btnclick" : true
     });
+    this.buttons = this.buttons || [];
 };
 
 Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
@@ -90,7 +91,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.maskEl.hide();
         //this.el.addClass("x-dlg-modal");
     
-        if (this.buttons) {
+        if (this.buttons.legnth) {
             Roo.each(this.buttons, function(bb) {
                 b = Roo.apply({}, bb);
                 b.xns = b.xns || Roo.bootstrap;
@@ -220,6 +221,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     addButton : function(str, cb)
     {
         if (!this.el) {
+            
             this.buttons.push({
                 html : str,
                 listeners : { click : cb.createDelegate(this) }
