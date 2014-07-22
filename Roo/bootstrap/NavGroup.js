@@ -131,7 +131,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         var ret = false;
         Roo.each(this.navItems, function(e) {
             if (e.tabId == tabId) {
-               ret=  e;
+               ret =  e;
                return true;
             }
             return false;
