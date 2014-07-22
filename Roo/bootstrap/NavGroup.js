@@ -24,6 +24,17 @@ Roo.bootstrap.NavGroup = function(config){
     Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
     this.navItems = [];
     Roo.bootstrap.NavGroup.register(this);
+     this.addEvents({
+        /**
+	     * @event itemactivate
+	     * Fires when the active item changes
+	     * @param {Roo.bootstrap.NavGroup} this
+	     * @param {Roo.bootstrap.Navbar.Item} item The item selected
+	     * @param {Roo.bootstrap.Navbar.Item} item The previously selected item 
+         */
+        'changed': true
+     });
+    
 };
 
 Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
@@ -101,7 +112,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         });
 
         item.el.setActive('active', false);
-        this.fireEvent('item-activate', this, item);
+        this.fireEvent('itemactivate', this, item);
         
         
     },
