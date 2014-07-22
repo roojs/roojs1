@@ -125,7 +125,17 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
 	this.navItems.push( item);
 	item.navId = this.navId;
     
-    }
+    },
+    getNavItem: function(tabId)
+    {
+        var ret = false;
+        Roo.each(this.navItems, function(e) {
+            if (e.tabId == tabId) {
+               ret=  e;
+               return true;
+            }
+        });
+        return ret;
     
 });
 
