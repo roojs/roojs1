@@ -32,10 +32,10 @@ Roo.bootstrap.Navbar.Item = function(config){
          */
         "click" : true,
 	 /**
-	     * @event changed
-	     * Fires when the active item active state changes
-	     * @param {Roo.bootstrap.Navbar.Item} this
-	     * @param {boolean} state the new state
+	    * @event changed
+	    * Fires when the active item active state changes
+	    * @param {Roo.bootstrap.Navbar.Item} this
+	    * @param {boolean} state the new state
 	     
          */
         'changed': true
@@ -50,8 +50,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     badge: '',
     icon: false,
     glyphicon: false,
-    icon: false,
-    active: false,
+     active: false,
     preventDefault : false,
     
     getAutoCreate : function(){
@@ -205,7 +204,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	}
 	
 	
-    }
+    },
     
     onTabsClick : function(e)
     {
