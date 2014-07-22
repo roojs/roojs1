@@ -22,6 +22,7 @@
 
 Roo.bootstrap.NavGroup = function(config){
     Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
+    Roo.bootstrap.NavGroup.register(this);
 };
 
 Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
@@ -84,7 +85,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         
         return cfg;
     }
-   
+    
 });
 
  
