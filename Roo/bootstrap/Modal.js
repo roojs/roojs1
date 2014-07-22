@@ -219,6 +219,14 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     addButton : function(str, cb)
     {
+        if (!this.el) {
+            this.buttons.push({
+                html : str,
+                listeners : { click : cb.createDelegate(this) }
+            } );
+            return;
+        }
+        
         
         var b = Roo.apply({}, { html : str } );
         b.xns = b.xns || Roo.bootstrap;
