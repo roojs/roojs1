@@ -93,8 +93,11 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     setActiveItem : function(item)
     {
         
-        Roo.each(this.el.select('.active',true).elements, function(v){
-            v.removeClass('active');
+        Roo.each(this.navItems, function(v){
+            if (v.isActive()) {
+                v.setActive(false, false);
+            }
+            
         });
 
         item.el.addClass('active');
