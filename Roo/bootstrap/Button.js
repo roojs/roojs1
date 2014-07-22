@@ -80,6 +80,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     
     pressed : null,
     
+    actionMode : 'el',
     
     getAutoCreate : function(){
         
@@ -334,6 +335,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     },
     hide: function() {
        
+        this.el.
         this.el.hide();   
     },
     show: function() {
