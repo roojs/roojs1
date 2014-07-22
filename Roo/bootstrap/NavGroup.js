@@ -22,7 +22,7 @@
 
 Roo.bootstrap.NavGroup = function(config){
     Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
-    this.navItems = {};
+    this.navItems = [];
     Roo.bootstrap.NavGroup.register(this);
 };
 
@@ -98,7 +98,9 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         });
 
         item.el.addClass('active');
+        this.fireEvent('item-activate') {
         
+        }
         
         
     },
@@ -106,7 +108,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     
     register : function(item)
     {
-	this.navItems[item.tabId] = item;
+	this.navItems.push( item);
 	item.navId = this.navId;
     
     }
