@@ -33,6 +33,9 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     form: false,
     type: 'nav',
     navId : '',
+    // private
+    
+    navItems : false,
     
     getAutoCreate : function()
     {
