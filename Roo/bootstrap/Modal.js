@@ -141,6 +141,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
          
         return modal = {
             cls: "modal fade",
+            style : 'display: none',
             cn : [
                 {
                     cls: "modal-dialog",
