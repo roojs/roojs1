@@ -105,6 +105,9 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">;
+            }
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.isActive</span><span class="jsdoc-syntax">()) {
                 </span><span class="jsdoc-var">v.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">prev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
@@ -132,9 +135,9 @@
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.tabId </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">tabId</span><span class="jsdoc-syntax">) {
                </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">;
-               </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+               </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
             
         });
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;

@@ -22,6 +22,16 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.TabPanel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.TabPanel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+	     * @event changed
+	     * Fires when the active status changes
+	     * @param {Roo.bootstrap.TabPanel} this
+	     * @param {Boolean} state the new state
+	    
+         */
+        </span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+     </span><span class="jsdoc-syntax">});
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.TabPanel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {

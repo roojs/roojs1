@@ -12037,6 +12037,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "changed",
+     "sig": "function (_self, state)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the active status changes"
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
