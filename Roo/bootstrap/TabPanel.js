@@ -68,6 +68,8 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     },
     setActive: function(state)
     {
+        Roo.log("panel - set active " + this.tabId + "=" + state);
+        
         this.active = state;
         if (!state) {
             this.el.removeClass('active');
