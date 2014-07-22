@@ -68,7 +68,7 @@ Roo.bootstrap.MessageBox = function(){
             if(typeof buttons[k] != "function"){
                 if(b[k]){
                     buttons[k].show();
-                    buttons[k].setText(typeof b[k] == "string" ? b[k] : Roo.MessageBox.buttonText[k]);
+                    buttons[k].setText(typeof b[k] == "string" ? b[k] : Roo.bootstrap.MessageBox.buttonText[k]);
                     width += buttons[k].el.getWidth()+15;
                 }else{
                     buttons[k].hide();
@@ -95,18 +95,17 @@ Roo.bootstrap.MessageBox = function(){
          */
         getDialog : function(){
            if(!dlg){
-                dlg = new Roo.BasicDialog("x-msg-box", {
-                    autoCreate : true,
-                    shadow: true,
-                    draggable: true,
-                    resizable:false,
-                    constraintoviewport:false,
-                    fixedcenter:true,
-                    collapsible : false,
-                    shim:true,
-                    modal: true,
-                    width:400, height:100,
-                    buttonAlign:"center",
+                dlg = new Roo.bootstrap.Modal("x-msg-box", {
+                    //draggable: true,
+                    //resizable:false,
+                    //constraintoviewport:false,
+                    //fixedcenter:true,
+                    //collapsible : false,
+                    //shim:true,
+                    //modal: true,
+                    width:400,
+                    height:100,
+                    //buttonAlign:"center",
                     closeClick : function(){
                         if(opt && opt.buttons && opt.buttons.no && !opt.buttons.cancel){
                             handleButton("no");
@@ -126,7 +125,9 @@ Roo.bootstrap.MessageBox = function(){
                 buttons["cancel"] = dlg.addButton(bt["cancel"], handleButton.createCallback("cancel"));
                 bodyEl = dlg.body.createChild({
 
-                    html:'<span class="roo-mb-text"></span><br /><input type="text" class="roo-mb-input" /><textarea class="roo-mb-textarea"></textarea><div class="roo-mb-progress-wrap"><div class="roo-mb-progress"><div class="roo-mb-progress-bar">&#160;</div></div></div>'
+                    html:'<span class="roo-mb-text"></span><br /><input type="text" class="roo-mb-input" />' +
+                        '<textarea class="roo-mb-textarea"></textarea>' +
+                        '<div class="roo-mb-progress-wrap"><div class="roo-mb-progress"><div class="roo-mb-progress-bar">&#160;</div></div></div>'
                 });
                 msgEl = bodyEl.dom.firstChild;
                 textboxEl = Roo.get(bodyEl.dom.childNodes[2]);
@@ -544,4 +545,5 @@ Roo.Msg.show({
 /**
  * Shorthand for {@link Roo.MessageBox}
  */
-Roo.Msg = Roo.MessageBox;
+Roo.MessageBox = Roo.MessageBox || Roo.bootstrap.MessageBox 
+Roo.Msg = Roo.Msg || Roo.MessageBox;
