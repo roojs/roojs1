@@ -30,7 +30,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     inverse: false,
     form: false,
     type: 'nav',
-    navId : '';
+    navId : '',
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
