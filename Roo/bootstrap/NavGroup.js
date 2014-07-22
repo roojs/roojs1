@@ -12,6 +12,8 @@
  * @cfg {String} align left | right
  * @cfg {Boolean} inverse false | true
  * @cfg {String} type (nav|pills|tab) default nav
+ * @cfg {String} navId - reference Id for navbar.
+
  * 
  * @constructor
  * Create a new nav group
@@ -28,6 +30,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     inverse: false,
     form: false,
     type: 'nav',
+    navId : '';
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.NavGroup.superclass.getAutoCreate.call(this));
