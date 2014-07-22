@@ -243,6 +243,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
        
     },
     
+    setDefaultButton : function(btn)
+    {
+        
+    }
+    
     onButtonClick: function(btn,e)
     {
         //Roo.log([a,b,c]);
