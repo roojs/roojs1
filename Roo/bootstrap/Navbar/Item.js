@@ -30,7 +30,15 @@ Roo.bootstrap.Navbar.Item = function(config){
          * The raw click event for the entire grid.
          * @param {Roo.EventObject} e
          */
-        "click" : true
+        "click" : true,
+	 /**
+	     * @event changed
+	     * Fires when the active item active state changes
+	     * @param {Roo.bootstrap.Navbar.Item} this
+	     * @param {boolean} state the new state
+	     
+         */
+        'changed': true
     });
    
 };
