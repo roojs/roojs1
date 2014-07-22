@@ -214,6 +214,20 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
    
 });
 
+Roo.apply(Roo.bootstrap.Navbar, {
+    
+   items : {}, 
+    
+    register : function(navbar, item)
+    {
+	items[navbar.navId + item.tabId] = item;
+    
+    }
+    
+    
+});
+
+
  
 
  
