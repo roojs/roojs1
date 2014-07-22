@@ -93,9 +93,9 @@ Roo.apply(Roo.bootstrap.NavGroup, {
     
     groups: {},
     
-    register : function(navbar)
+    register : function(navgrp)
     {
-	bars[navbar.navId] = navbar;
+	bars[navgrp.navId] = navgrp;
 	
     }
     
