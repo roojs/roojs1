@@ -248,7 +248,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         //this.el.select('.modal-footer').()
     },
-    
+    resizeTo: function(w,h)
+    {
+        // skip..
+    },
     onButtonClick: function(btn,e)
     {
         //Roo.log([a,b,c]);
