@@ -114,7 +114,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         });
 
         item.el.setActive('active', false);
-        this.fireEvent('itemactivate', this, item, prev);
+        this.fireEvent('changed', this, item, prev);
         
         
     },
