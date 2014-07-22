@@ -271,7 +271,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             this.el.select('.roo-button').on('click', this.onClick, this);
        }
        
-       
+       this.el.enableDisplayMode();
         
     },
     onClick : function(e)
@@ -332,7 +332,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     setText : function(str)
     {
         this.el.select('.roo-button-text',true).first().dom.innerHTML = str;
-    },
+    }/*,
     hide: function() {
        
         this.el.
@@ -342,7 +342,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
        
         this.el.show();   
     }
-    
+    */
     
 });
 
