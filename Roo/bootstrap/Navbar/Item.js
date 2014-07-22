@@ -32,6 +32,7 @@ Roo.bootstrap.Navbar.Item = function(config){
          */
         "click" : true
     });
+    this.parent().register(this);
 };
 
 Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
@@ -154,7 +155,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
        // Roo.log('init events?');
        // Roo.log(this.el.dom);
         this.el.select('a',true).on('click', this.onClick, this);
-	Roo.bootstrap.Navbar.register(this.parent(), this);
+	
     },
     
     onClick : function(e)
