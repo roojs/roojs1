@@ -54,28 +54,20 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         Roo.bootstrap.TabPanel.superclass.onRender.call(this, ct, position);
         
-        Roo.bootstrap.TabPanel.registerTab(this);
+        if (this.navId && this.tabId) {
+            var item = Roo.bootstrap.NavGroup.get(navId).getTabItem(tabId).
+            item.on('activate', function(item, state) {
+                this.setActive(state);
+            }, this);
+        }
+        
     }
         
     
     
     
 });
-Roo.apply(Roo.bootstrap.TabPanel, {
-    
-    panels : {},
-    
-    registerPanel : function(panel)
-    {
-        
-        panels[panel.navId + panel.tabId] = panel;
-        
-        
-        
-    }
-    
-    
-})
+ 
 
  
 
