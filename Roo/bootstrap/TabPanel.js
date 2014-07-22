@@ -12,6 +12,7 @@
  * @cfg {Boolean} active panel active
  * @cfg {String} html panel content
  * @cfg {String} tabId tab relate id
+ * @cfg {String} navId The navbar which triggers show hide
  * 
  * 
  * @constructor
@@ -28,6 +29,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     active: false,
     html: false,
     tabId: false,
+    navId : false,
     
     getAutoCreate : function(){
         var cfg = {
@@ -46,7 +48,10 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         return cfg;
     }
-   
+    
+    
+    
+    
 });
 
  
