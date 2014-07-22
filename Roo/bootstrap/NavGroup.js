@@ -100,10 +100,8 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             
         });
 
-        item.el.addClass('active');
-        this.fireEvent('item-activate') {
-        
-        }
+        item.el.setActive('active', false);
+        this.fireEvent('item-activate', this, item);
         
         
     },
