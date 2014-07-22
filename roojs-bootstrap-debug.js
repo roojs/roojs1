@@ -2587,8 +2587,8 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	this.active = state;
 	if (!state ) {
 	    this.el.removeClass('active');
-	} else if (!this.hasClass('active')) {
-	    this.addClass('active');
+	} else if (!this.el.hasClass('active')) {
+	    this.el.addClass('active');
 	}
 	if (fire) {
 	    this.fireEvent('changed', this, state);
