@@ -246,8 +246,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     setDefaultButton : function(btn)
     {
-        
-    }
+        //this.el.select('.modal-footer').()
+    },
     
     onButtonClick: function(btn,e)
     {
