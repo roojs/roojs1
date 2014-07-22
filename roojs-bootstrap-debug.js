@@ -2368,7 +2368,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             
         });
         return ret;
-    
+    }
 });
 
  
