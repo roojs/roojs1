@@ -47,12 +47,34 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+    },
+    onRender : function(ct, position)
+    {
+       // Roo.log("Call onRender: " + this.xtype);
+        
+        Roo.bootstrap.TabPanel.superclass.onRender.call(this, ct, position);
+        
+        Roo.bootstrap.TabPanel.registerTab(this.navId, this.tabId);
     }
-    
+        
     
     
     
 });
+Roo.apply(Roo.bootstrap.TabPanel, {
+    
+    
+    register : function(navId, tabId)
+    {
+        
+        
+        
+        
+        
+    }
+    
+    
+})
 
  
 
