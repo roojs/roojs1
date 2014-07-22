@@ -254,6 +254,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         //Roo.log([a,b,c]);
         this.fireEvent('btnclick', btn.name, e);
+    },
+    setTitle: function(str) {
+        
+        
+        
     }
 });
 
