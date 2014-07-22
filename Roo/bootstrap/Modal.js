@@ -57,6 +57,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
    
     buttons : false,
     
+    // set on load...
+    body:  false,
+    
     onRender : function(ct, position)
     {
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
