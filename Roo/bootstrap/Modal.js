@@ -216,6 +216,12 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.setStyle('display', 'none');
         this.fireEvent('hide', this);
     },
+    
+    addButton : function(str, cb)
+    {
+           
+    }
+    
     onButtonClick: function(btn,e)
     {
         //Roo.log([a,b,c]);
