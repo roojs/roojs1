@@ -35,6 +35,7 @@ Roo.bootstrap.MessageBox = function(){
     var bodyEl, msgEl, textboxEl, textareaEl, progressEl, pp;
     var buttons, activeTextEl, bwidth;
 
+    
     // private
     var handleButton = function(button){
         dlg.hide();
@@ -119,6 +120,7 @@ Roo.bootstrap.MessageBox = function(){
                 mask = dlg.mask;
                 //dlg.addKeyListener(27, handleEsc);
                 buttons = {};
+                this.buttons = buttons;
                 var bt = this.buttonText;
                 buttons["ok"] = dlg.addButton(bt["ok"], handleButton.createCallback("ok"));
                 buttons["yes"] = dlg.addButton(bt["yes"], handleButton.createCallback("yes"));
