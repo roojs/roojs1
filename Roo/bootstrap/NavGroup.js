@@ -105,7 +105,7 @@ Roo.apply(Roo.bootstrap.NavGroup, {
     
     register : function(navgrp)
     {
-	groups[navgrp.navId] = navgrp;
+	this.groups[navgrp.navId] = navgrp;
 	
     }
     
