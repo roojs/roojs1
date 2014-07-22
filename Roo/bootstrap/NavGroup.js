@@ -22,6 +22,7 @@
 
 Roo.bootstrap.NavGroup = function(config){
     Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
+    this.navItems = {};
     Roo.bootstrap.NavGroup.register(this);
 };
 
