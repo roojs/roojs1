@@ -88,7 +88,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     register : function(item)
     {
 	this.navItems[item.tabId] = item;
-	item.navId = navbar.navId;
+	item.navId = this.navId;
     
     }
     
