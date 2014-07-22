@@ -2355,7 +2355,19 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
 	this.navItems.push( item);
 	item.navId = this.navId;
     
-    }
+    },
+    getNavItem: function(tabId)
+    {
+        var ret = false;
+        Roo.each(this.navItems, function(e) {
+            if (e.tabId == tabId) {
+               ret=  e;
+               return true;
+            }
+            return false;
+            
+        });
+        return ret;
     
 });
 
@@ -11067,7 +11079,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         Roo.bootstrap.TabPanel.superclass.onRender.call(this, ct, position);
         
         if (this.navId && this.tabId) {
-            var item = Roo.bootstrap.NavGroup.get(this.navId).getTabItem(this.tabId).
+            var item = Roo.bootstrap.NavGroup.get(this.navId).getNavItem(this.tabId).
             item.on('changed', function(item, state) {
                 this.setActive(state);
             }, this);
