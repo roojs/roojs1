@@ -89,6 +89,21 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         
         return cfg;
     },
+    
+    setActiveItem : function(item)
+    {
+        
+        Roo.each(this.el.select('.active',true).elements, function(v){
+            v.removeClass('active');
+        });
+
+        item.el.addClass('active');
+        
+        
+        
+    },
+    
+    
     register : function(item)
     {
 	this.navItems[item.tabId] = item;
