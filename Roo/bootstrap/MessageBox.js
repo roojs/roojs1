@@ -114,6 +114,7 @@ Roo.bootstrap.MessageBox = function(){
                         }
                     }
                 });
+                dlg.render();
                 dlg.on("hide", handleHide);
                 mask = dlg.mask;
                 //dlg.addKeyListener(27, handleEsc);
