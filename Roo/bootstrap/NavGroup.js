@@ -138,6 +138,9 @@ Roo.apply(Roo.bootstrap.NavGroup, {
     {
 	this.groups[navgrp.navId] = navgrp;
 	
+    },
+    get: function(navId) {
+        return this.groups[navId];
     }
     
     
