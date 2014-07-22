@@ -219,8 +219,20 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     addButton : function(str, cb)
     {
+        
+        var b = Roo.apply({}, { html : str } );
+        b.xns = b.xns || Roo.bootstrap;
+        b.xtype = b.xtype || 'Button';
+        if (typeof(b.listeners) == 'undefined') {
+            b.listeners = { click : cb.createDelegate(this)  };
+        }
+        
+        var btn = Roo.factory(b);
            
-    }
+        btn.onRender(this.el.select('.modal-footer').first());
+           
+       
+    },
     
     onButtonClick: function(btn,e)
     {
