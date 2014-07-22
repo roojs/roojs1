@@ -221,6 +221,7 @@ Roo.apply(Roo.bootstrap.Navbar, {
     register : function(navbar, item)
     {
 	items[navbar.navId + item.tabId] = item;
+	item.navId = navbar.navId;
     
     }
     
