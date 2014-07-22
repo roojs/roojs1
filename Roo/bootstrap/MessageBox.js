@@ -116,7 +116,7 @@ Roo.bootstrap.MessageBox = function(){
                 });
                 dlg.on("hide", handleHide);
                 mask = dlg.mask;
-                dlg.addKeyListener(27, handleEsc);
+                //dlg.addKeyListener(27, handleEsc);
                 buttons = {};
                 var bt = this.buttonText;
                 buttons["ok"] = dlg.addButton(bt["ok"], handleButton.createCallback("ok"));
