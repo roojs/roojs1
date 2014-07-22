@@ -173,6 +173,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
             this.onTabsClick(e);
         } 
     },
+    // this should not be here...
     
     onTabsClick : function(e)
     {
