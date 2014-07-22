@@ -30,8 +30,8 @@
 
 Roo.bootstrap.Navbar = function(config){
     Roo.bootstrap.Navbar.superclass.constructor.call(this, config);
-    this.navItems = {};
-    Roo.bootstrap.Navbar.register(this);
+   
+    
 };
 
 Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
@@ -219,27 +219,9 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     },
     
     
-    register : function(item)
-    {
-	this.navItems[item.tabId] = item;
-	item.navId = navbar.navId;
     
-    }
 });
 
-Roo.apply(Roo.bootstrap.Navbar, {
-    
-    bars: {},
-    
-    register : function(navbar)
-    {
-	bars[navbar.navId] = navbar;
-	
-    }
-    
-    
-    
-});
 
 
  
