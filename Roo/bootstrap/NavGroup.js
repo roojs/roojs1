@@ -26,7 +26,7 @@ Roo.bootstrap.NavGroup = function(config){
     Roo.bootstrap.NavGroup.register(this);
      this.addEvents({
         /**
-	     * @event itemactivate
+	     * @event changed
 	     * Fires when the active item changes
 	     * @param {Roo.bootstrap.NavGroup} this
 	     * @param {Roo.bootstrap.Navbar.Item} item The item selected
