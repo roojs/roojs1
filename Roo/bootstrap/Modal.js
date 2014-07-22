@@ -252,6 +252,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     {
         // skip..
     },
+    setContentSize  : function(w, h)
+    {
+        
+    },
     onButtonClick: function(btn,e)
     {
         //Roo.log([a,b,c]);
