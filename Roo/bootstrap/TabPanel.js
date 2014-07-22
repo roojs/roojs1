@@ -22,6 +22,16 @@
 
 Roo.bootstrap.TabPanel = function(config){
     Roo.bootstrap.TabPanel.superclass.constructor.call(this, config);
+     this.addEvents({
+        /**
+	     * @event changed
+	     * Fires when the active status changes
+	     * @param {Roo.bootstrap.TabPanel} this
+	     * @param {Boolean} state the new state
+	    
+         */
+        'changed': true
+     });
 };
 
 Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
