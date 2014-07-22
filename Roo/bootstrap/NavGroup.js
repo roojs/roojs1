@@ -91,7 +91,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
  
 Roo.apply(Roo.bootstrap.NavGroup, {
     
-    bars: {},
+    groups: {},
     
     register : function(navbar)
     {
