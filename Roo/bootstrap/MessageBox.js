@@ -95,7 +95,7 @@ Roo.bootstrap.MessageBox = function(){
          */
         getDialog : function(){
            if(!dlg){
-                dlg = new Roo.bootstrap.Modal("x-msg-box", {
+                dlg = new Roo.bootstrap.Modal( {
                     //draggable: true,
                     //resizable:false,
                     //constraintoviewport:false,
