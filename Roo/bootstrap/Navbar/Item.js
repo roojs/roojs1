@@ -14,8 +14,9 @@
  * @cfg {String} badge text inside badge
  * @cfg {String} glyphicon name of glyphicon
  * @cfg {String} icon name of font awesome icon
- * @cfg {Boolena} active Is item active
+ * @cfg {Boolean} active Is item active
  * @cfg {Boolean} preventDefault (true | false) default false
+ * @cfg {String} tabId the tab that this item activates.
   
  * @constructor
  * Create a new Navbar Button
