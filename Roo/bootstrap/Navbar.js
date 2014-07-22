@@ -30,6 +30,7 @@
 
 Roo.bootstrap.Navbar = function(config){
     Roo.bootstrap.Navbar.superclass.constructor.call(this, config);
+    this.navItems = {};
 };
 
 Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
@@ -46,6 +47,10 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     brand_href: false,
     main : false,
     loadMask : false,
+    
+    
+    // private
+    navItems : false,
     
     getAutoCreate : function(){
         var cfg = {
@@ -211,19 +216,21 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     {
         this.maskEl.hide();
     }
-   
+    
+    
+    register : function(item)
+    {
+	items[navbar.navId + item.tabId] = item;
+	item.navId = navbar.navId;
+    
+    }
 });
 
 Roo.apply(Roo.bootstrap.Navbar, {
     
    items : {}, 
     
-    register : function(navbar, item)
-    {
-	items[navbar.navId + item.tabId] = item;
-	item.navId = navbar.navId;
-    
-    }
+   
     
     
 });
