@@ -186,7 +186,6 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
             this.onTabsClick(e);
         } 
     },
-    // this should not be here...
     
     isActive: function () {
 	return this.active
@@ -205,7 +204,8 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	
 	
     },
-    
+     // this should not be here...
+
     onTabsClick : function(e)
     {
        
