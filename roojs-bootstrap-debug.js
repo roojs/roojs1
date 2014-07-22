@@ -2361,10 +2361,10 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         var ret = false;
         Roo.each(this.navItems, function(e) {
             if (e.tabId == tabId) {
-               ret=  e;
-               return true;
+               ret =  e;
+               return false;
             }
-            return false;
+            return true;
             
         });
         return ret;
