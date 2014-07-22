@@ -185,7 +185,6 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    
 	    
 	    
-            this.onTabsClick(e);
         } 
     },
     
@@ -205,23 +204,9 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	}
 	
 	
-    },
-     // this should not be here...
-
-    onTabsClick : function(e)
-    {
-        
-        if(this.href && this.href.substring(0,1) == '#'){
-            var tab = Roo.select('[tabId=' + this.href + ']', true).first();
-
-            Roo.each(tab.findParent('.tab-content', 0, true).select('.active', true).elements, function(v){
-                v.removeClass('active');
-            });
-
-            tab.addClass('active');
-        }
     }
-    
+     // this should not be here...
+ 
 });
  
 
