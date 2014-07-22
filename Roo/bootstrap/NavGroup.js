@@ -106,7 +106,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         var prev = false;
         Roo.each(this.navItems, function(v){
             if (v == item) {
-                return true;
+                return ;
             }
             if (v.isActive()) {
                 v.setActive(false, true);
