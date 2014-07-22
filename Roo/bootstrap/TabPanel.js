@@ -56,7 +56,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         if (this.navId && this.tabId) {
             var item = Roo.bootstrap.NavGroup.get(navId).getTabItem(tabId).
-            item.on('activate', function(item, state) {
+            item.on('changed', function(item, state) {
                 this.setActive(state);
             }, this);
         }
