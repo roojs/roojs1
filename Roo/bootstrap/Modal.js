@@ -123,7 +123,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         this.items = nitems;
         
-        this.body = this.el.select('.modal-body').first();
+        this.body = this.el.select('.modal-body',true).first();
+        this.close = this.el.select('.modal-header .close', true).first();
         
         this.initEvents();
         //this.el.addClass([this.fieldClass, this.cls]);
