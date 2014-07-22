@@ -220,22 +220,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     register : function(item)
     {
-	items[navbar.navId + item.tabId] = item;
+	this.navItems[item.tabId] = item;
 	item.navId = navbar.navId;
     
     }
 });
-
-Roo.apply(Roo.bootstrap.Navbar, {
-    
-   items : {}, 
-    
-   
-    
-    
-});
-
-
  
 
  
