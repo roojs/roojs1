@@ -89,5 +89,18 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
 });
 
  
+Roo.apply(Roo.bootstrap.NavGroup, {
+    
+    bars: {},
+    
+    register : function(navbar)
+    {
+	bars[navbar.navId] = navbar;
+	
+    }
+    
+    
+    
+});
 
  
