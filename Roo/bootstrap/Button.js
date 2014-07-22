@@ -95,7 +95,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         } else {
             cfg.tag = this.tag;
         }
-        cfg.html = this.html || cfg.html;
+        cfg.html = '<span class="roo-button-text">' + (this.html || cfg.html) + '</span>';
         
         if (this.toggle == true) {
             cfg={
@@ -326,6 +326,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
        var active = this.el.hasClass('active');
        this.setActive(!active);
        
+        
+    },
+    setText : function(str)
+    {
         
     }
     
