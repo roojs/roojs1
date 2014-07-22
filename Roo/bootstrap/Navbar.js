@@ -215,7 +215,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     unmask : function()
     {
         this.maskEl.hide();
-    }
+    },
     
     
     register : function(item)
@@ -225,6 +225,22 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     }
 });
+
+Roo.apply(Roo.bootstrap.Navbar, {
+    
+    bars: {},
+    
+    register : function(navbar)
+    {
+	bars[navbar.navId] = navbar;
+	
+    }
+    
+    
+    
+});
+
+
  
 
  
