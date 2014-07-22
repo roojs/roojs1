@@ -239,7 +239,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         var btn = Roo.factory(b);
            
         btn.onRender(this.el.select('.modal-footer').first());
-           
+        
+        return btn;   
        
     },
     
