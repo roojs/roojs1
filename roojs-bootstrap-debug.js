@@ -1821,7 +1821,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.maskEl.hide();
         //this.el.addClass("x-dlg-modal");
     
-        if (this.buttons.legnth) {
+        if (this.buttons.length) {
             Roo.each(this.buttons, function(bb) {
                 b = Roo.apply({}, bb);
                 b.xns = b.xns || Roo.bootstrap;
