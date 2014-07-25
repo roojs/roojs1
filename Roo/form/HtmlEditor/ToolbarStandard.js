@@ -394,7 +394,19 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     tabIndex:-1
                 });
             }
-            
+            cmenu.menu.items.push({
+                actiontype : 'all',
+                html: 'Remove All Styles',
+                handler: function(a,b) {
+                    
+                    var c = Roo.get(editorcore.doc.body);
+                    c.select('[style]').each(function(s) {
+                        s.dom.removeAttribute('style');
+                    });
+                    
+                },
+                tabIndex:-1
+            });
             tb.add(cmenu);
         }
          
