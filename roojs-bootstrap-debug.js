@@ -485,7 +485,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         } else {
             cfg.tag = this.tag;
         }
-        cfg.html = '<span class="roo-button-text">' + (this.html || cfg.html) + '</span>';
+        cfg.html = '<div class="roo-button-text">' + (this.html || cfg.html) + '</div>';
         
         if (this.toggle == true) {
             cfg={
