@@ -82,7 +82,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
      
     
     getAutoCreate : function(){
-        Roo.log('getAutoCreate Roo.bootstrap Button~!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+        
         var cfg = {
             tag : 'button',
             cls : 'roo-button',
@@ -95,7 +95,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         } else {
             cfg.tag = this.tag;
         }
-        cfg.html = '<div class="roo-button-text">' + (this.html || cfg.html) + '</div>';
+        cfg.html = '<span class="roo-button-text">' + (this.html || cfg.html) + '</span>';
         
         if (this.toggle == true) {
             cfg={
