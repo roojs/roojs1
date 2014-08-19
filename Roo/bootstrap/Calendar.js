@@ -11,6 +11,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @extends Roo.bootstrap.Component
  * Bootstrap Calendar class
  * @cfg {Boolean} loadMask (true|false) default false
+ * @cfg {Object} header generate the user specific header of the calendar, default false
 
  * @constructor
  * Create a new Container
@@ -87,6 +88,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 unselectable: 'on'
             });
         };
+        
         
         var header = {
             tag : 'table',
