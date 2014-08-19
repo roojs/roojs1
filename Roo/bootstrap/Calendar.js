@@ -11,7 +11,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @extends Roo.bootstrap.Component
  * Bootstrap Calendar class
  * @cfg {Boolean} loadMask (true|false) default false
- * @cfg {Object} headerObj generate the user specific header of the calendar, default false
+ * @cfg {Object} header generate the user specific header of the calendar, default false
 
  * @constructor
  * Create a new Container
@@ -73,7 +73,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     loadMask : false,
     
-    headerObj : false,
+    header : false,
       
     getAutoCreate : function(){
         
@@ -93,7 +93,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         var header = {};
         
-        if(!this.headerObj){
+        if(!this.header){
             header = {
                 tag : 'table',
                 cls : 'fc-header',
@@ -148,7 +148,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             };
         }
         
-        header = this.headerObj;
+        header = this.header;
         
        
         var cal_heads = function() {
