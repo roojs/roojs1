@@ -11,7 +11,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @extends Roo.bootstrap.Component
  * Bootstrap Calendar class
  * @cfg {Boolean} loadMask (true|false) default false
-    
+
  * @constructor
  * Create a new Container
  * @param {Object} config The config object
