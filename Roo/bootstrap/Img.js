@@ -48,7 +48,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag: 'img',
-            cls: (this.imgResponsive) ? 'img-responsive' : '',
+            cls: (this.imgResponsive) ? 'img-responsive1' : '',
             html : null
         }
         
