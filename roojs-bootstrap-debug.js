@@ -980,7 +980,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag: 'img',
-            cls: (this.imgResponsive) ? 'img-responsive1' : '',
+            cls: (this.imgResponsive) ? 'img-responsive' : '',
             html : null
         }
         
