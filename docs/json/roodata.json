@@ -5488,7 +5488,7 @@
      "memberOf": ""
     },
     {
-     "name": "headerObj",
+     "name": "header",
      "type": "Object",
      "desc": "generate the user specific header of the calendar, default false",
      "memberOf": ""

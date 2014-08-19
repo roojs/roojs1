@@ -11,7 +11,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Calendar class
  * @cfg {Boolean} loadMask (true|false) default false
- * @cfg {Object} headerObj generate the user specific header of the calendar, default false
+ * @cfg {Object} header generate the user specific header of the calendar, default false
 
  * @constructor
  * Create a new Container
@@ -73,7 +73,7 @@
     
     </span><span class="jsdoc-var">loadMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
-    </span><span class="jsdoc-var">headerObj </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
       
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -93,7 +93,7 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">= {};
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.headerObj</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.header</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fc-header'</span><span class="jsdoc-syntax">,
@@ -148,7 +148,7 @@
             };
         }
         
-        </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.headerObj</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.header</span><span class="jsdoc-syntax">;
         
        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cal_heads </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
