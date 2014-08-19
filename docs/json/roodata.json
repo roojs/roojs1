@@ -3050,10 +3050,6 @@
    ],
    "events": []
   },
-  "Roo.MessageBox": {
-   "props": [],
-   "events": []
-  },
   "Roo.NestedLayoutPanel": {
    "props": [
     {
@@ -5489,6 +5485,12 @@
      "name": "loadMask",
      "type": "Boolean",
      "desc": "(true|false) default false",
+     "memberOf": ""
+    },
+    {
+     "name": "headerObj",
+     "type": "Object",
+     "desc": "generate the user specific header of the calendar, default false",
      "memberOf": ""
     },
     {
@@ -9763,6 +9765,10 @@
      "desc": "Fires after the component is shown."
     }
    ]
+  },
+  "Roo.bootstrap.MessageBox": {
+   "props": [],
+   "events": []
   },
   "Roo.bootstrap.Modal": {
    "props": [

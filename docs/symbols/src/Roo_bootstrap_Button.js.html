@@ -79,7 +79,7 @@
     
     
     </span><span class="jsdoc-var">pressed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
-    
+     
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -95,7 +95,7 @@
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">cfg.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;span class=&quot;roo-button-text&quot;&gt;' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">'&lt;/span&gt;'</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toggle </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">={
@@ -270,7 +270,7 @@
             </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-button'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
        }
        
-       
+       </span><span class="jsdoc-var">this.el.enableDisplayMode</span><span class="jsdoc-syntax">();
         
     },
     </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
@@ -327,8 +327,20 @@
        </span><span class="jsdoc-var">this.setActive</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">);
        
         
+    },
+    </span><span class="jsdoc-var">setText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-button-text'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+       
+     
+        </span><span class="jsdoc-var">this.el.hide</span><span class="jsdoc-syntax">();   
+    },
+    </span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+       
+        </span><span class="jsdoc-var">this.el.show</span><span class="jsdoc-syntax">();   
     }
-    
     
     
 });

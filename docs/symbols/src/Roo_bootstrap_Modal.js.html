@@ -48,6 +48,7 @@
          */
         </span><span class="jsdoc-string">&quot;btnclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">this.buttons </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.buttons </span><span class="jsdoc-syntax">|| [];
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Modal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
@@ -55,6 +56,9 @@
     </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'test dialog'</span><span class="jsdoc-syntax">,
    
     </span><span class="jsdoc-var">buttons </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">// set on load...
+    </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
     {
@@ -90,7 +94,7 @@
         </span><span class="jsdoc-var">this.maskEl.hide</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-comment">//this.el.addClass(&quot;x-dlg-modal&quot;);
     
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.buttons</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.buttons.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.buttons</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bb</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">bb</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">b.xns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b.xns </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">;
@@ -118,6 +122,10 @@
         }
         
         </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-body'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.close </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-header .close'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.footer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-footer'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.initEvents</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-comment">//this.el.addClass([this.fieldClass, this.cls]);
         
@@ -133,6 +141,7 @@
          
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">modal </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;modal fade&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display: none'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                 {
                     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;modal-dialog&quot;</span><span class="jsdoc-syntax">,
@@ -216,10 +225,46 @@
         </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
+    
+    </span><span class="jsdoc-var">addButton </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cb</span><span class="jsdoc-syntax">)
+    {
+         
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">b </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, { </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">str </span><span class="jsdoc-syntax">} );
+        </span><span class="jsdoc-var">b.xns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b.xns </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.bootstrap</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">b.xtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">b.xtype </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'Button'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b.listeners</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">b.listeners </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cb.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)  };
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">);
+           
+        </span><span class="jsdoc-var">btn.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-footer'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">());
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">;   
+       
+    },
+    
+    </span><span class="jsdoc-var">setDefaultButton </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//this.el.select('.modal-footer').()
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-var">resizeTo</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">// skip..
+    </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-var">setContentSize  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
+    {
+        
+    },
     </span><span class="jsdoc-var">onButtonClick</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-comment">//Roo.log([a,b,c]);
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'btnclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">btn.name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-var">setTitle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-title'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
+        
     }
 });
 

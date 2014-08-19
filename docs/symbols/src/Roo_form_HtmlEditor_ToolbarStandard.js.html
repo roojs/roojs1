@@ -394,7 +394,19 @@
                     </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
                 });
             }
-            
+            </span><span class="jsdoc-var">cmenu.menu.items.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">actiontype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'all'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Remove All Styles'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+                    
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editorcore.doc.body</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">c.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'[style]'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">s.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">);
+                    });
+                    
+                },
+                </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
+            });
             </span><span class="jsdoc-var">tb.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cmenu</span><span class="jsdoc-syntax">);
         }
          
