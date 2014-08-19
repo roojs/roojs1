@@ -10469,7 +10469,8 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @extends Roo.bootstrap.Component
  * Bootstrap Calendar class
  * @cfg {Boolean} loadMask (true|false) default false
-    
+ * @cfg {Object} headerObj generate the user specific header of the calendar, default false
+
  * @constructor
  * Create a new Container
  * @param {Object} config The config object
@@ -10529,6 +10530,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     startDay : 0,
     
     loadMask : false,
+    
+    headerObj : false,
       
     getAutoCreate : function(){
         
@@ -10546,58 +10549,64 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             });
         };
         
-        var header = {
-            tag : 'table',
-            cls : 'fc-header',
-            style : 'width:100%',
-            cn : [
-                {
-                    tag: 'tr',
-                    cn : [
-                        {
-                            tag : 'td',
-                            cls : 'fc-header-left',
-                            cn : [
-                                fc_button('prev', 'left', 'arrow', '&#8249;' ),
-                                fc_button('next', 'right', 'arrow', '&#8250;' ),
-                                { tag: 'span', cls: 'fc-header-space' },
-                                fc_button('today', 'left right', '', 'today' )  // neds state disabled..
-                                
-                                
-                            ]
-                        },
-                        
-                        {
-                            tag : 'td',
-                            cls : 'fc-header-center',
-                            cn : [
-                                {
-                                    tag: 'span',
-                                    cls: 'fc-header-title',
-                                    cn : {
-                                        tag: 'H2',
-                                        html : 'month / year'
+        var header = {};
+        
+        if(!this.headerObj){
+            header = {
+                tag : 'table',
+                cls : 'fc-header',
+                style : 'width:100%',
+                cn : [
+                    {
+                        tag: 'tr',
+                        cn : [
+                            {
+                                tag : 'td',
+                                cls : 'fc-header-left',
+                                cn : [
+                                    fc_button('prev', 'left', 'arrow', '&#8249;' ),
+                                    fc_button('next', 'right', 'arrow', '&#8250;' ),
+                                    { tag: 'span', cls: 'fc-header-space' },
+                                    fc_button('today', 'left right', '', 'today' )  // neds state disabled..
+
+
+                                ]
+                            },
+
+                            {
+                                tag : 'td',
+                                cls : 'fc-header-center',
+                                cn : [
+                                    {
+                                        tag: 'span',
+                                        cls: 'fc-header-title',
+                                        cn : {
+                                            tag: 'H2',
+                                            html : 'month / year'
+                                        }
                                     }
-                                }
-                                
-                            ]
-                        },
-                        {
-                            tag : 'td',
-                            cls : 'fc-header-right',
-                            cn : [
-                          /*      fc_button('month', 'left', '', 'month' ),
-                                fc_button('week', '', '', 'week' ),
-                                fc_button('day', 'right', '', 'day' )
-                            */    
-                                
-                            ]
-                        }
-                        
-                    ]
-                }
-            ]
-        };
+
+                                ]
+                            },
+                            {
+                                tag : 'td',
+                                cls : 'fc-header-right',
+                                cn : [
+                              /*      fc_button('month', 'left', '', 'month' ),
+                                    fc_button('week', '', '', 'week' ),
+                                    fc_button('day', 'right', '', 'day' )
+                                */    
+
+                                ]
+                            }
+
+                        ]
+                    }
+                ]
+            };
+        }
+        
+        header = this.headerObj;
         
        
         var cal_heads = function() {
