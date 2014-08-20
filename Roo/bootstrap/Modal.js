@@ -30,6 +30,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
+ * @cfg {Boolean} specificTitle (true|false) default false
  * @cfg {Array} buttons Array of buttons or standard button set..
  * 
  * @constructor
@@ -59,6 +60,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     // set on load...
     body:  false,
+    
+    specificTitle: false,
     
     onRender : function(ct, position)
     {
@@ -138,7 +141,19 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 html : this.html || ''
         };
         
-         
+        var title = {
+            tag: 'h4',
+            cls : 'modal-title',
+            html : this.title
+        };
+        
+        if(this.specificTitle){
+            title = {
+                tag: 'div',
+                html : this.title
+            };
+        };
+        
         return modal = {
             cls: "modal fade",
             style : 'display: none',
