@@ -660,6 +660,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             this.el.select('.roo-button').on('click', this.onClick, this);
        }
        
+       if(this.removeClass){
+           this.el.on('click', this.onClick, this);
+       }
+       
        this.el.enableDisplayMode();
         
     },
