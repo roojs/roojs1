@@ -9791,6 +9791,12 @@
      "memberOf": ""
     },
     {
+     "name": "buttonPosition",
+     "type": "String",
+     "desc": "(left|right|center) default right",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
