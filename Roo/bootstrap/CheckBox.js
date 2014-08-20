@@ -180,6 +180,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         return this.el.select('input.form-box',true).first();
     },
     
+    label: function()
+    {
+        return this.el.select('label.control-label',true).first();
+    },
+    
     initEvents : function()
     {
 //        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
