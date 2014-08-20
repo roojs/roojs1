@@ -32,6 +32,7 @@
  * @cfg {String} title Title of dialog
  * @cfg {Boolean} specificTitle (true|false) default false
  * @cfg {Array} buttons Array of buttons or standard button set..
+ * @cfg {String} buttonPosition (left|right|center) default right
  * 
  * @constructor
  * Create a new Modal Dialog
