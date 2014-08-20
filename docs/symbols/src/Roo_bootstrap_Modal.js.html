@@ -30,6 +30,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
+ * @cfg {Boolean} specificTitle (true|false) default false
  * @cfg {Array} buttons Array of buttons or standard button set..
  * 
  * @constructor
@@ -59,6 +60,8 @@
     
     </span><span class="jsdoc-comment">// set on load...
     </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">specificTitle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
     {
@@ -138,7 +141,19 @@
                 </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
         </span><span class="jsdoc-syntax">};
         
-         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h4'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'modal-title'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.title
+        </span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.specificTitle</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.title
+            </span><span class="jsdoc-syntax">};
+        };
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">modal </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;modal fade&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display: none'</span><span class="jsdoc-syntax">,
@@ -157,13 +172,8 @@
                                             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'close'</span><span class="jsdoc-syntax">,
                                             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&amp;times'
                                         </span><span class="jsdoc-syntax">},
-                                        {
-                                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h4'</span><span class="jsdoc-syntax">,
-                                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'modal-title'</span><span class="jsdoc-syntax">,
-                                            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.title
-                                        </span><span class="jsdoc-syntax">}
-                                    
-                                    ]
+                                        </span><span class="jsdoc-var">title
+                                    </span><span class="jsdoc-syntax">]
                                 },
                                 </span><span class="jsdoc-var">bdy</span><span class="jsdoc-syntax">,
                                 {

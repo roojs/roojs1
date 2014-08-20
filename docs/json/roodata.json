@@ -9779,6 +9779,12 @@
      "memberOf": ""
     },
     {
+     "name": "specificTitle",
+     "type": "Boolean",
+     "desc": "(true|false) default false",
+     "memberOf": ""
+    },
+    {
      "name": "buttons",
      "type": "Array",
      "desc": "Array of buttons or standard button set..",
