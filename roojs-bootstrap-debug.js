@@ -1759,6 +1759,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @cfg {String} title Title of dialog
  * @cfg {Boolean} specificTitle (true|false) default false
  * @cfg {Array} buttons Array of buttons or standard button set..
+ * @cfg {String} buttonPosition (left|right|center) default right
  * 
  * @constructor
  * Create a new Modal Dialog
@@ -1789,6 +1790,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     body:  false,
     
     specificTitle: false,
+    
+    buttonPosition: 'right',
     
     onRender : function(ct, position)
     {
@@ -1835,7 +1838,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                 
                 var btn = Roo.factory(b);
                 
-                btn.onRender(this.el.select('.modal-footer').first());
+                btn.onRender(this.el.select('.modal-footer div').first());
                 
             },this);
         }
@@ -1901,7 +1904,14 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                 },
                                 bdy,
                                 {
-                                    cls : 'modal-footer' 
+                                    cls : 'modal-footer',
+                                    cn : [
+                                        {
+                                            tag: 'div',
+                                            cls: 'btn-' + this.buttonPosition
+                                        }
+                                    ]
+                                    
                                 }
                                 
                                 
@@ -1923,7 +1933,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
     },
     getButtonContainer : function() {
-         return this.el.select('.modal-footer',true).first();
+         return this.el.select('.modal-footer div',true).first();
         
     },
     initEvents : function()
@@ -1973,7 +1983,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         var btn = Roo.factory(b);
            
-        btn.onRender(this.el.select('.modal-footer').first());
+        btn.onRender(this.el.select('.modal-footer div').first());
         
         return btn;   
        
