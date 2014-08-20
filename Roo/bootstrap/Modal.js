@@ -172,12 +172,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                             cls : 'close',
                                             html : '&times'
                                         },
-                                        {
-                                            tag: 'h4',
-                                            cls : 'modal-title',
-                                            html : this.title
-                                        }
-                                    
+                                        title
                                     ]
                                 },
                                 bdy,
