@@ -148,10 +148,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         };
         
         if(this.specificTitle){
-            title = {
-                tag: 'div',
-                html : this.title
-            };
+            title = this.title;
         };
         
         return modal = {
