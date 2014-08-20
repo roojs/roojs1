@@ -177,7 +177,14 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                                 },
                                 bdy,
                                 {
-                                    cls : 'modal-footer' 
+                                    cls : 'modal-footer',
+                                    cn : [
+                                        {
+                                            tag: 'div',
+                                            cls: 'btn-' + this.buttonPosition
+                                        }
+                                    ]
+                                    
                                 }
                                 
                                 
