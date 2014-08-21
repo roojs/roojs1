@@ -6,7 +6,7 @@
  */
 
 /**
- * @class Roo.bootstrap.NavSimplebar
+ * @class Roo.bootstrap.NavSidebar
  * @extends Roo.bootstrap.Navbar
  * Bootstrap Sidebar class
  * 
@@ -16,11 +16,11 @@
  */
 
 
-Roo.bootstrap.NavSimplebar = function(config){
-    Roo.bootstrap.NavSimplebar.superclass.constructor.call(this, config);
+Roo.bootstrap.NavSidebar = function(config){
+    Roo.bootstrap.NavSidebar.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
+Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
     
     
     getAutoCreate : function(){
