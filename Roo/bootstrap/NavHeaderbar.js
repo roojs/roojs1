@@ -9,6 +9,10 @@
  * @class Roo.bootstrap.NavHeaderbar
  * @extends Roo.bootstrap.NavSimplebar
  * Bootstrap Sidebar class
+ *
+ *
+ * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
+
  * 
  * @constructor
  * Create a new Sidebar
