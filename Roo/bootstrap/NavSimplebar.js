@@ -49,6 +49,9 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
             cfg.cn[0].cls += ' navbar-nav'
         }
         
+        
+        
+        
         if (['stacked','justified'].indexOf(this.arrangement)!==-1) {
             cfg.cn[0].cls += ' nav-' + this.arrangement;
         }
