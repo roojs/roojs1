@@ -35,7 +35,6 @@ Roo.bootstrap.Navbar = function(config){
 
 Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
-    sidebar: false,
     
     bar: false,
     brand: '',
@@ -59,15 +58,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         var cfg = {
             cls : 'navbar'
         };
-	
-        if (this.sidebar === true) {
-            cfg = {
-                tag: 'div',
-                cls: 'sidebar-nav'
-            };
-            return cfg;
-        }
-        
+	 
         if (this.bar === true) {
             cfg = {
                 tag: this.nav || 'nav',
