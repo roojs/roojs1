@@ -64,9 +64,10 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         if (this.jumbotron) {
             cfg.cls = 'jumbotron';
         }
-        if (this.cls) {
-            cfg.cls = this.cls + '';
-        }
+        // - this is applied by the parent..
+        //if (this.cls) {
+        //    cfg.cls = this.cls + '';
+        //}
         
         if (this.sticky.length) {
             
