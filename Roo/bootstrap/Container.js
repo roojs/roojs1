@@ -57,6 +57,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         var cfg = {
+            tag : this.tag || 'div',
             html : '',
             cls : ''
         };
