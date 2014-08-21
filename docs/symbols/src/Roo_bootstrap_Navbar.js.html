@@ -9,19 +9,7 @@
  * @class Roo.bootstrap.Navbar
  * @extends Roo.bootstrap.Component
  * Bootstrap Navbar class
- * @cfg {Boolean} sidebar has side bar
- * @cfg {Boolean} bar is a bar?
- * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
- * @cfg {String} brand what is brand
- * @cfg {Boolean} inverse is inverted color
- * @cfg {String} type (nav | pills | tabs)
- * @cfg {Boolean} arrangement stacked | justified
- * @cfg {String} align (left | right) alignment
- * @cfg {String} brand_href href of the brand
- * @cfg {Boolean} main (true|false) main nav bar? default false
- * @cfg {Boolean} loadMask (true|false) loadMask on the bar
- *
- * 
+
  * @constructor
  * Create a new Navbar
  * @param {Object} config The config object
@@ -30,147 +18,23 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.Navbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.Navbar.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
-   
     
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Navbar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
-    </span><span class="jsdoc-var">sidebar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
-    </span><span class="jsdoc-var">bar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">brand</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">inverse</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'nav'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">arrangement</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">brand_href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">main </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+   
+    </span><span class="jsdoc-comment">// private
+    </span><span class="jsdoc-var">navItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">loadMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     
-    </span><span class="jsdoc-comment">// private
-    </span><span class="jsdoc-var">navItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
-            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'navbar'
-        </span><span class="jsdoc-syntax">};
-	
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.sidebar </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
-                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'sidebar-nav'
-            </span><span class="jsdoc-syntax">};
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bar </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
-                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'nav'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'navbar'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">role</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'navigation'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-                    {
-                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'navbar-header'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-                            {
-                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'navbar-toggle'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-string">'data-toggle'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'collapse'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-                                {
-                                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-                                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'sr-only'</span><span class="jsdoc-syntax">,
-                                    </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Toggle navigation'
-                                </span><span class="jsdoc-syntax">},
-                                {
-                                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-                                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'icon-bar'
-                                </span><span class="jsdoc-syntax">},
-                                {
-                                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-                                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'icon-bar'
-                                </span><span class="jsdoc-syntax">},
-                                {
-                                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-                                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'icon-bar'
-                                </span><span class="jsdoc-syntax">}
-                            ]
-                            }
-                        ]
-                    },
-                    {
-                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'collapse navbar-collapse'
-                    </span><span class="jsdoc-syntax">}
-                ]
-            };
-            
-            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">this.inverse </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">' navbar-inverse' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' navbar-default'</span><span class="jsdoc-syntax">;
-            
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'fixed-top'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'fixed-bottom'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'static-top'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">)&gt;-1) {
-                </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">cfg.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.position  </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'fixed-bottom' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'footer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'header'</span><span class="jsdoc-syntax">;
-            }
-            
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.brand </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cn.push</span><span class="jsdoc-syntax">({
-                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.brand_href </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.brand_href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'navbar-brand'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-                    </span><span class="jsdoc-var">this.brand
-                    </span><span class="jsdoc-syntax">]
-                });
-            }
-            
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.main</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' main-nav'</span><span class="jsdoc-syntax">;
-            }
-            
-            
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
-        
-        } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bar </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
-            
-        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Property \'bar\' in of Navbar must be either true or false'</span><span class="jsdoc-syntax">)
-        }
-	
-        </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
-            {
-                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'nav'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'
-            </span><span class="jsdoc-syntax">}
-        ];
-        
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'tabs'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'pills'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.type</span><span class="jsdoc-syntax">)!==-1) {
-            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' nav-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.type
-        </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.type</span><span class="jsdoc-syntax">!==</span><span class="jsdoc-string">'nav'</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'nav type must be nav/tabs/pills'</span><span class="jsdoc-syntax">)
-            }
-            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-nav'
-        </span><span class="jsdoc-syntax">}
-        
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'stacked'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'justified'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.arrangement</span><span class="jsdoc-syntax">)!==-1) {
-            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' nav-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.arrangement</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.align </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-right'</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inverse</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' navbar-inverse'</span><span class="jsdoc-syntax">;
-            
-        }
         
         
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-syntax">{ </span><span class="jsdoc-var">message </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;nav bar is now a abstract base class - use SimpleBar / HeaderBar / SideBar etc...&quot;</span><span class="jsdoc-syntax">};
+        
     },
     
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
@@ -201,7 +65,7 @@
     
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bar </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.collapse'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getCount</span><span class="jsdoc-syntax">()) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.collapse'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         }
         
