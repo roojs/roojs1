@@ -23,6 +23,18 @@ Roo.bootstrap.NavSimplebar = function(config){
 Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
     
     
+    brand: '',
+    inverse: false,
+    position: '',
+    align : false,
+    type: false,
+    arrangement: '',
+    brand_href: false,
+    main : false,
+    loadMask : false,
+    tag : false,
+    
+    
     getAutoCreate : function(){
         
         
