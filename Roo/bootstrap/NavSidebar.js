@@ -7,10 +7,8 @@
 
 /**
  * @class Roo.bootstrap.NavSidebar
- * @extends Roo.bootstrap.Component
+ * @extends Roo.bootstrap.Navbar
  * Bootstrap Navbar class
- * @cfg {Boolean} sidebar has side bar
- * @cfg {Boolean} bar is a bar?
  * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
  * @cfg {String} brand what is brand
  * @cfg {Boolean} inverse is inverted color
