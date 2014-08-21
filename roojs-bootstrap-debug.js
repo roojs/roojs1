@@ -2653,19 +2653,7 @@ Roo.Msg = Roo.Msg || Roo.MessageBox;
  * @class Roo.bootstrap.Navbar
  * @extends Roo.bootstrap.Component
  * Bootstrap Navbar class
- * @cfg {Boolean} sidebar has side bar
- * @cfg {Boolean} bar is a bar?
- * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
- * @cfg {String} brand what is brand
- * @cfg {Boolean} inverse is inverted color
- * @cfg {String} type (nav | pills | tabs)
- * @cfg {Boolean} arrangement stacked | justified
- * @cfg {String} align (left | right) alignment
- * @cfg {String} brand_href href of the brand
- * @cfg {Boolean} main (true|false) main nav bar? default false
- * @cfg {Boolean} loadMask (true|false) loadMask on the bar
- *
- * 
+
  * @constructor
  * Create a new Navbar
  * @param {Object} config The config object
@@ -2674,147 +2662,23 @@ Roo.Msg = Roo.Msg || Roo.MessageBox;
 
 Roo.bootstrap.Navbar = function(config){
     Roo.bootstrap.Navbar.superclass.constructor.call(this, config);
-   
     
 };
 
 Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
-    sidebar: false,
     
-    bar: false,
-    brand: '',
-    inverse: false,
-    position: '',
-    align : false,
-    type: 'nav',
-    arrangement: '',
-    brand_href: false,
-    main : false,
+   
+    // private
+    navItems : false,
     loadMask : false,
     
     
-    // private
-    navItems : false,
-    
     getAutoCreate : function(){
-        var cfg = {
-            cls : 'navbar'
-        };
-	
-        if (this.sidebar === true) {
-            cfg = {
-                tag: 'div',
-                cls: 'sidebar-nav'
-            };
-            return cfg;
-        }
-        
-        if (this.bar === true) {
-            cfg = {
-                tag: 'nav',
-                cls: 'navbar',
-                role: 'navigation',
-                cn: [
-                    {
-                        tag: 'div',
-                        cls: 'navbar-header',
-                        cn: [
-                            {
-                            tag: 'button',
-                            type: 'button',
-                            cls: 'navbar-toggle',
-                            'data-toggle': 'collapse',
-                            cn: [
-                                {
-                                    tag: 'span',
-                                    cls: 'sr-only',
-                                    html: 'Toggle navigation'
-                                },
-                                {
-                                    tag: 'span',
-                                    cls: 'icon-bar'
-                                },
-                                {
-                                    tag: 'span',
-                                    cls: 'icon-bar'
-                                },
-                                {
-                                    tag: 'span',
-                                    cls: 'icon-bar'
-                                }
-                            ]
-                            }
-                        ]
-                    },
-                    {
-                    tag: 'div',
-                    cls: 'collapse navbar-collapse'
-                    }
-                ]
-            };
-            
-            cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
-            
-            if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
-                cfg.cls += ' navbar-' + this.position;
-                cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
-            }
-            
-            if (this.brand !== '') {
-                cfg.cn[0].cn.push({
-                    tag: 'a',
-                    href: this.brand_href ? this.brand_href : '#',
-                    cls: 'navbar-brand',
-                    cn: [
-                    this.brand
-                    ]
-                });
-            }
-            
-            if(this.main){
-                cfg.cls += ' main-nav';
-            }
-            
-            
-            return cfg;
-        
-        } else if (this.bar === false) {
-            
-        } else {
-            Roo.log('Property \'bar\' in of Navbar must be either true or false')
-        }
-	
-        cfg.cn = [
-            {
-                cls: 'nav',
-                tag : 'ul'
-            }
-        ];
-        
-        if (['tabs','pills'].indexOf(this.type)!==-1) {
-            cfg.cn[0].cls += ' nav-' + this.type
-        } else {
-            if (this.type!=='nav') {
-            Roo.log('nav type must be nav/tabs/pills')
-            }
-            cfg.cn[0].cls += ' navbar-nav'
-        }
-        
-        if (['stacked','justified'].indexOf(this.arrangement)!==-1) {
-            cfg.cn[0].cls += ' nav-' + this.arrangement;
-        }
-        
-        if (this.align === 'right') {
-            cfg.cn[0].cls += ' navbar-right';
-        }
-        if (this.inverse) {
-            cfg.cls += ' navbar-inverse';
-            
-        }
         
         
-        return cfg;
+        throw { message : "nav bar is now a abstract base class - use SimpleBar / HeaderBar / SideBar etc..."};
+        
     },
     
     initEvents :function ()
@@ -2845,7 +2709,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     getChildContainer : function()
     {
-        if (this.bar === true) {
+        if (this.el.select('.collapse').getCount()) {
             return this.el.select('.collapse',true).first();
         }
         
@@ -2860,6 +2724,282 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     unmask : function()
     {
         this.maskEl.hide();
+    }
+    
+    
+    
+});
+
+
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * navbar
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.NavSimplebar
+ * @extends Roo.bootstrap.Navbar
+ * Bootstrap Sidebar class
+ *
+ * @cfg {Boolean} inverse is inverted color
+ * 
+ * @cfg {String} type (nav | pills | tabs)
+ * @cfg {Boolean} arrangement stacked | justified
+ * @cfg {String} align (left | right) alignment
+ * 
+ * @cfg {Boolean} main (true|false) main nav bar? default false
+ * @cfg {Boolean} loadMask (true|false) loadMask on the bar
+ * 
+ * @cfg {String} tag (header|footer|nav|div) default is nav 
+
+ * 
+ * 
+ * 
+ * @constructor
+ * Create a new Sidebar
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.NavSimplebar = function(config){
+    Roo.bootstrap.NavSimplebar.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
+    
+    inverse: false,
+    
+    type: false,
+    arrangement: '',
+    align : false,
+    
+    
+    
+    main : false,
+    
+    
+    tag : false,
+    
+    
+    getAutoCreate : function(){
+        
+        
+        var cfg = {
+            tag : this.tag || 'div',
+            cls : 'navbar'
+        };
+	  
+	
+        cfg.cn = [
+            {
+                cls: 'nav',
+                tag : 'ul'
+            }
+        ];
+        
+         
+        this.type = this.type || 'nav';
+        if (['tabs','pills'].indexOf(this.type)!==-1) {
+            cfg.cn[0].cls += ' nav-' + this.type
+        
+        
+        } else {
+            if (this.type!=='nav') {
+                Roo.log('nav type must be nav/tabs/pills')
+            }
+            cfg.cn[0].cls += ' navbar-nav'
+        }
+        
+        
+        
+        
+        if (['stacked','justified'].indexOf(this.arrangement)!==-1) {
+            cfg.cn[0].cls += ' nav-' + this.arrangement;
+        }
+        
+        
+        if (this.align === 'right') {
+            cfg.cn[0].cls += ' navbar-right';
+        }
+        
+        if (this.inverse) {
+            cfg.cls += ' navbar-inverse';
+            
+        }
+        
+        
+        return cfg;
+    
+        
+    }
+    
+    
+    
+});
+
+
+
+ 
+
+ 
+       /*
+ * - LGPL
+ *
+ * navbar
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.NavHeaderbar
+ * @extends Roo.bootstrap.NavSimplebar
+ * Bootstrap Sidebar class
+ *
+ * @cfg {String} brand what is brand
+ * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
+ * @cfg {String} brand_href href of the brand
+ * 
+ * @constructor
+ * Create a new Sidebar
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.NavHeaderbar = function(config){
+    Roo.bootstrap.NavHeaderbar.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
+    
+    position: '',
+    brand: '',
+    brand_href: false,
+    
+    
+    getAutoCreate : function(){
+        
+        
+        
+        var   cfg = {
+            tag: this.nav || 'nav',
+            cls: 'navbar',
+            role: 'navigation',
+            cn: [
+                {
+                    tag: 'div',
+                    cls: 'navbar-header',
+                    cn: [
+                        {
+                        tag: 'button',
+                        type: 'button',
+                        cls: 'navbar-toggle',
+                        'data-toggle': 'collapse',
+                        cn: [
+                            {
+                                tag: 'span',
+                                cls: 'sr-only',
+                                html: 'Toggle navigation'
+                            },
+                            {
+                                tag: 'span',
+                                cls: 'icon-bar'
+                            },
+                            {
+                                tag: 'span',
+                                cls: 'icon-bar'
+                            },
+                            {
+                                tag: 'span',
+                                cls: 'icon-bar'
+                            }
+                        ]
+                        }
+                    ]
+                },
+                {
+                tag: 'div',
+                cls: 'collapse navbar-collapse'
+                }
+            ]
+        };
+        
+        cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
+        
+        if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
+            cfg.cls += ' navbar-' + this.position;
+            
+            // tag can override this..
+            
+            cfg.tag = this.tag || (this.position  == 'fixed-bottom' ? 'footer' : 'header');
+        }
+        
+        if (this.brand !== '') {
+            cfg.cn[0].cn.push({
+                tag: 'a',
+                href: this.brand_href ? this.brand_href : '#',
+                cls: 'navbar-brand',
+                cn: [
+                this.brand
+                ]
+            });
+        }
+        
+        if(this.main){
+            cfg.cls += ' main-nav';
+        }
+        
+        
+        return cfg;
+
+        
+    }
+    
+    
+    
+});
+
+
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * navbar
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.NavSidebar
+ * @extends Roo.bootstrap.Navbar
+ * Bootstrap Sidebar class
+ * 
+ * @constructor
+ * Create a new Sidebar
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.NavSidebar = function(config){
+    Roo.bootstrap.NavSidebar.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
+    
+    
+    getAutoCreate : function(){
+        
+        
+        return  {
+            tag: 'div',
+            cls: 'sidebar-nav'
+        };
+    
+        
     }
     
     
@@ -3095,60 +3235,60 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         
         var cfg = Roo.apply({}, Roo.bootstrap.Navbar.Item.superclass.getAutoCreate.call(this));
 	
-	if (this.parent().parent().sidebar === true) {
-	    cfg = {
-		tag: 'li',
-		cls: '',
-		cn: [
-		    {
-			tag: 'p',
-			cls: ''
-		    }
-		]
-	    }
-	    
-	    if (this.html) {
-		cfg.cn[0].html = this.html;
-	    }
-	    
-	    if (this.active) {
-		this.cls += ' active';
-	    }
-	    
-	    if (this.menu) {
-		cfg.cn[0].cls += ' dropdown-toggle';
-		cfg.cn[0].html = (cfg.cn[0].html || this.html) + '<span class="glyphicon glyphicon-chevron-down"></span>';
-	    }
-	    
-	    if (this.href) {
-		cfg.cn[0].tag = 'a',
-		cfg.cn[0].href = this.href;
-	    }
-	    
-	    if (this.glyphicon) {
-		cfg.cn[0].html = '<i class="glyphicon glyphicon-'+this.glyphicon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
-	    }
+        if (this.parent().parent().sidebar === true) {
+            cfg = {
+                tag: 'li',
+                cls: '',
+                cn: [
+                    {
+                    tag: 'p',
+                    cls: ''
+                    }
+                ]
+            }
             
+            if (this.html) {
+                cfg.cn[0].html = this.html;
+            }
+            
+            if (this.active) {
+                this.cls += ' active';
+            }
+            
+            if (this.menu) {
+                cfg.cn[0].cls += ' dropdown-toggle';
+                cfg.cn[0].html = (cfg.cn[0].html || this.html) + '<span class="glyphicon glyphicon-chevron-down"></span>';
+            }
+            
+            if (this.href) {
+                cfg.cn[0].tag = 'a',
+                cfg.cn[0].href = this.href;
+            }
+            
+            if (this.glyphicon) {
+                cfg.cn[0].html = '<i class="glyphicon glyphicon-'+this.glyphicon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+            }
+                
             if (this.icon) {
-		cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
-	    }
-	    
-	    return cfg;
-	}
+                cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+            }
+            
+            return cfg;
+        }
 	
-	cfg = {
-	    tag: 'li',
-            cls: 'nav-item'
-	}
-        
+        cfg = {
+            tag: 'li',
+                cls: 'nav-item'
+        }
+            
         if (this.active) {
             cfg.cls = typeof(cfg.cls) == 'undefined' ? 'active' : cfg.cls + ' active';
         }
             
-	cfg.cn = [
+        cfg.cn = [
             {
-		tag: 'p',
-		html: 'Text'
+                tag: 'p',
+                html: 'Text'
             }
         ];
         
@@ -3164,31 +3304,31 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
         
-	if (this.menu) {
-	    cfg.cn[0].tag='a';
-	    cfg.cn[0].href='#';
-	    cfg.cn[0].html += " <span class='caret'></span>";
-	//}else if (!this.href) {
-	//    cfg.cn[0].tag='p';
-	//    cfg.cn[0].cls='navbar-text';
-	} else {
-	    cfg.cn[0].tag='a';
-	    cfg.cn[0].href=this.href||'#';
-	    cfg.cn[0].html=this.html;
-	}
-	
-	if (this.badge !== '') {
-	    
-	    cfg.cn[0].cn=[
-		cfg.cn[0].html + ' ',
-		{
-		    tag: 'span',
-		    cls: 'badge',
-		    html: this.badge
-		}
-	    ];
-	    cfg.cn[0].html=''
-	}
+        if (this.menu) {
+            cfg.cn[0].tag='a';
+            cfg.cn[0].href='#';
+            cfg.cn[0].html += " <span class='caret'></span>";
+        //}else if (!this.href) {
+        //    cfg.cn[0].tag='p';
+        //    cfg.cn[0].cls='navbar-text';
+        } else {
+            cfg.cn[0].tag='a';
+            cfg.cn[0].href=this.href||'#';
+            cfg.cn[0].html=this.html;
+        }
+        
+        if (this.badge !== '') {
+            
+            cfg.cn[0].cn=[
+            cfg.cn[0].html + ' ',
+            {
+                tag: 'span',
+                cls: 'badge',
+                html: this.badge
+            }
+            ];
+            cfg.cn[0].html=''
+        }
 	 
         if (this.icon) {
             cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
@@ -3200,8 +3340,8 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
        // Roo.log('init events?');
        // Roo.log(this.el.dom);
         this.el.select('a',true).on('click', this.onClick, this);
-	// at this point parent should be available..
-	this.parent().register(this);
+        // at this point parent should be available..
+        this.parent().register(this);
     },
     
     onClick : function(e)
@@ -3225,19 +3365,19 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     },
     
     isActive: function () {
-	return this.active
+        return this.active
     },
     setActive : function(state, fire)
     {
-	this.active = state;
-	if (!state ) {
-	    this.el.removeClass('active');
-	} else if (!this.el.hasClass('active')) {
-	    this.el.addClass('active');
-	}
-	if (fire) {
-	    this.fireEvent('changed', this, state);
-	}
+        this.active = state;
+        if (!state ) {
+            this.el.removeClass('active');
+        } else if (!this.el.hasClass('active')) {
+            this.el.addClass('active');
+        }
+        if (fire) {
+            this.fireEvent('changed', this, state);
+        }
 	
 	
     }
