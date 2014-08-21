@@ -824,6 +824,8 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
  * @cfg {String} header content of header (for panel)
  * @cfg {String} footer content of footer (for panel)
  * @cfg {String} sticky (footer|wrap|push) block to use as footer or body- needs css-bootstrap/sticky-footer.css
+ * @cfg {String} tag (header|aside|section) type of HTML tag.
+
  *     
  * @constructor
  * Create a new Container
@@ -842,6 +844,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     header: '',
     footer : '',
     sticky: '',
+    tag : false,
   
      
     getChildContainer : function() {
@@ -861,6 +864,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         var cfg = {
+            tag : this.tag || 'div',
             html : '',
             cls : ''
         };
