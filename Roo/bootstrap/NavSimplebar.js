@@ -9,6 +9,23 @@
  * @class Roo.bootstrap.NavSimplebar
  * @extends Roo.bootstrap.Navbar
  * Bootstrap Sidebar class
+ *
+ * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
+ * @cfg {String} brand what is brand
+ * @cfg {Boolean} inverse is inverted color
+ * 
+ * @cfg {String} type (nav | pills | tabs)
+ * @cfg {Boolean} arrangement stacked | justified
+ * @cfg {String} align (left | right) alignment
+ * 
+ * @cfg {String} brand_href href of the brand
+ * @cfg {Boolean} main (true|false) main nav bar? default false
+ * @cfg {Boolean} loadMask (true|false) loadMask on the bar
+ * 
+ * @cfg {String} tag (header|footer|nav|div) default is nav 
+
+ * 
+ * 
  * 
  * @constructor
  * Create a new Sidebar
@@ -22,16 +39,19 @@ Roo.bootstrap.NavSimplebar = function(config){
 
 Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
     
-    
+    position: '',
     brand: '',
     inverse: false,
-    position: '',
-    align : false,
+    
     type: false,
     arrangement: '',
+    align : false,
+    
+    
     brand_href: false,
     main : false,
-    loadMask : false,
+    
+    
     tag : false,
     
     

@@ -27,6 +27,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
    
     // private
     navItems : false,
+    loadMask : false,
+    
     
     getAutoCreate : function(){
         
