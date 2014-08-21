@@ -17,6 +17,8 @@
  * @cfg {String} header content of header (for panel)
  * @cfg {String} footer content of footer (for panel)
  * @cfg {String} sticky (footer|wrap|push) block to use as footer or body- needs css-bootstrap/sticky-footer.css
+ * @cfg {String} tag (header|aside) type of HTML tag.
+
  *     
  * @constructor
  * Create a new Container
