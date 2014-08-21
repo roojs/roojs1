@@ -37,9 +37,6 @@ Roo.bootstrap.Link = function(config){
 
 Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     
-    imgResponsive: true,
-    border: '',
-    src: '',
     href: false,
     target: false,
 
