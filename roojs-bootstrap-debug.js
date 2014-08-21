@@ -302,11 +302,12 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
 	autoCreate : {
         cls: 'container'
     },
-    onRender : function(ct, position){
-        
-        
-        //this.el.addClass([this.fieldClass, this.cls]);
-        
+    onRender : function(ct, position)
+    {
+        if (this.cls && this.cls.length) {
+            Roo.select('body').addClass(this.cls);
+        }
+        // style??? xttr???
     }
     
     
