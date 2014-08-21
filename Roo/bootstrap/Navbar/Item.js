@@ -72,29 +72,29 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    }
 	    
 	    if (this.html) {
-		cfg.cn[0].html = this.html;
+            cfg.cn[0].html = this.html;
 	    }
 	    
 	    if (this.active) {
-		this.cls += ' active';
+            this.cls += ' active';
 	    }
 	    
 	    if (this.menu) {
-		cfg.cn[0].cls += ' dropdown-toggle';
-		cfg.cn[0].html = (cfg.cn[0].html || this.html) + '<span class="glyphicon glyphicon-chevron-down"></span>';
+            cfg.cn[0].cls += ' dropdown-toggle';
+            cfg.cn[0].html = (cfg.cn[0].html || this.html) + '<span class="glyphicon glyphicon-chevron-down"></span>';
 	    }
 	    
 	    if (this.href) {
-		cfg.cn[0].tag = 'a',
-		cfg.cn[0].href = this.href;
+            cfg.cn[0].tag = 'a',
+            cfg.cn[0].href = this.href;
 	    }
 	    
 	    if (this.glyphicon) {
-		cfg.cn[0].html = '<i class="glyphicon glyphicon-'+this.glyphicon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+            cfg.cn[0].html = '<i class="glyphicon glyphicon-'+this.glyphicon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
 	    }
             
-            if (this.icon) {
-		cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+        if (this.icon) {
+            cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
 	    }
 	    
 	    return cfg;
