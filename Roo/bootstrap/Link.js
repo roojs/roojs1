@@ -43,9 +43,8 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         var cfg = {
-            tag: 'img',
-            cls: (this.imgResponsive) ? 'img-responsive' : '',
-            html : null
+            tag: 'a',
+            html : this.html || 'html-missing'
         }
         
         cfg.html = this.html || cfg.html;
