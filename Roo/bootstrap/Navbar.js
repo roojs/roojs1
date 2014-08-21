@@ -20,7 +20,8 @@
  * @cfg {String} brand_href href of the brand
  * @cfg {Boolean} main (true|false) main nav bar? default false
  * @cfg {Boolean} loadMask (true|false) loadMask on the bar
- *
+ * @cfg {String} tag (header|footer|nav) default is nav 
+
  * 
  * @constructor
  * Create a new Navbar
@@ -48,12 +49,15 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     brand_href: false,
     main : false,
     loadMask : false,
-    
+    tag : false,
     
     // private
     navItems : false,
     
     getAutoCreate : function(){
+        
+        
+        
         var cfg = {
             cls : 'navbar'
         };
