@@ -8,10 +8,10 @@
 /**
  * @class Roo.bootstrap.NavSidebar
  * @extends Roo.bootstrap.Navbar
- * Bootstrap Navbar class
+ * Bootstrap Sidebar class
  * 
  * @constructor
- * Create a new Navbar
+ * Create a new Sidebar
  * @param {Object} config The config object
  */
 
