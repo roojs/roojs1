@@ -79,7 +79,9 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
             
             if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
                 cfg.cls += ' navbar-' + this.position;
-                // 
+                
+                // not sure if this should occor??
+                
                 cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
             }
             
