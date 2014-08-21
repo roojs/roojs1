@@ -59,6 +59,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
         
         
         var cfg = {
+            tag : this.tag || 'div',
             cls : 'navbar'
         };
 	  
