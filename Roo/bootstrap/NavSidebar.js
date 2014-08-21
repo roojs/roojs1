@@ -38,17 +38,6 @@ Roo.bootstrap.NavSidebar = function(config){
 Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
     
     sidebar : true,
-    bar: false,
-    brand: '',
-    inverse: false,
-    position: '',
-    align : false,
-    type: false,
-    arrangement: '',
-    brand_href: false,
-    main : false,
-    loadMask : false,
-    tag : false,
     
     // private
     navItems : false,
@@ -56,127 +45,12 @@ Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
     getAutoCreate : function(){
         
         
-        
-        var cfg = {
-            cls : 'navbar'
+        return = {
+            tag: 'div',
+            cls: 'sidebar-nav'
         };
-	
-        if (this.sidebar === true) {
-            cfg = {
-                tag: 'div',
-                cls: 'sidebar-nav'
-            };
-            return cfg;
-        }
+    
         
-        if (this.bar === true) {
-            cfg = {
-                tag: this.nav || 'nav',
-                cls: 'navbar',
-                role: 'navigation',
-                cn: [
-                    {
-                        tag: 'div',
-                        cls: 'navbar-header',
-                        cn: [
-                            {
-                            tag: 'button',
-                            type: 'button',
-                            cls: 'navbar-toggle',
-                            'data-toggle': 'collapse',
-                            cn: [
-                                {
-                                    tag: 'span',
-                                    cls: 'sr-only',
-                                    html: 'Toggle navigation'
-                                },
-                                {
-                                    tag: 'span',
-                                    cls: 'icon-bar'
-                                },
-                                {
-                                    tag: 'span',
-                                    cls: 'icon-bar'
-                                },
-                                {
-                                    tag: 'span',
-                                    cls: 'icon-bar'
-                                }
-                            ]
-                            }
-                        ]
-                    },
-                    {
-                    tag: 'div',
-                    cls: 'collapse navbar-collapse'
-                    }
-                ]
-            };
-            
-            cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
-            
-            if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
-                cfg.cls += ' navbar-' + this.position;
-                // 
-                cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
-            }
-            
-            if (this.brand !== '') {
-                cfg.cn[0].cn.push({
-                    tag: 'a',
-                    href: this.brand_href ? this.brand_href : '#',
-                    cls: 'navbar-brand',
-                    cn: [
-                    this.brand
-                    ]
-                });
-            }
-            
-            if(this.main){
-                cfg.cls += ' main-nav';
-            }
-            
-            
-            return cfg;
-        
-        } else if (this.bar === false) {
-            
-        } else {
-            Roo.log('Property \'bar\' in of Navbar must be either true or false')
-        }
-	
-        cfg.cn = [
-            {
-                cls: 'nav',
-                tag : 'ul'
-            }
-        ];
-        this.type = this.type || 'nav';
-        if (['tabs','pills'].indexOf(this.type)!==-1) {
-            cfg.cn[0].cls += ' nav-' + this.type
-        } else {
-            if (this.type!=='nav') {
-                Roo.log('nav type must be nav/tabs/pills')
-            }
-            cfg.cn[0].cls += ' navbar-nav'
-        }
-        
-        if (['stacked','justified'].indexOf(this.arrangement)!==-1) {
-            cfg.cn[0].cls += ' nav-' + this.arrangement;
-        }
-        
-        
-        if (this.align === 'right') {
-            cfg.cn[0].cls += ' navbar-right';
-        }
-        
-        if (this.inverse) {
-            cfg.cls += ' navbar-inverse';
-            
-        }
-        
-        
-        return cfg;
     },
     
     initEvents :function ()
