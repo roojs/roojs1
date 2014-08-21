@@ -30,11 +30,12 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
     },
     onRender : function(ct, position)
     {
-        Roo.log("Roo.bootstrap.Body - onRender");
+       /* Roo.log("Roo.bootstrap.Body - onRender");
         if (this.cls && this.cls.length) {
             Roo.get(document.body).addClass(this.cls);
         }
         // style??? xttr???
+        */
     }
     
     
