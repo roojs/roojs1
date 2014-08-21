@@ -36,76 +36,76 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         
         
         var   cfg = {
-                tag: this.nav || 'nav',
-                cls: 'navbar',
-                role: 'navigation',
-                cn: [
-                    {
-                        tag: 'div',
-                        cls: 'navbar-header',
+            tag: this.nav || 'nav',
+            cls: 'navbar',
+            role: 'navigation',
+            cn: [
+                {
+                    tag: 'div',
+                    cls: 'navbar-header',
+                    cn: [
+                        {
+                        tag: 'button',
+                        type: 'button',
+                        cls: 'navbar-toggle',
+                        'data-toggle': 'collapse',
                         cn: [
                             {
-                            tag: 'button',
-                            type: 'button',
-                            cls: 'navbar-toggle',
-                            'data-toggle': 'collapse',
-                            cn: [
-                                {
-                                    tag: 'span',
-                                    cls: 'sr-only',
-                                    html: 'Toggle navigation'
-                                },
-                                {
-                                    tag: 'span',
-                                    cls: 'icon-bar'
-                                },
-                                {
-                                    tag: 'span',
-                                    cls: 'icon-bar'
-                                },
-                                {
-                                    tag: 'span',
-                                    cls: 'icon-bar'
-                                }
-                            ]
+                                tag: 'span',
+                                cls: 'sr-only',
+                                html: 'Toggle navigation'
+                            },
+                            {
+                                tag: 'span',
+                                cls: 'icon-bar'
+                            },
+                            {
+                                tag: 'span',
+                                cls: 'icon-bar'
+                            },
+                            {
+                                tag: 'span',
+                                cls: 'icon-bar'
                             }
                         ]
-                    },
-                    {
-                    tag: 'div',
-                    cls: 'collapse navbar-collapse'
-                    }
-                ]
-            };
-            
-            cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
-            
-            if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
-                cfg.cls += ' navbar-' + this.position;
-                
-                // tag can override this..
-                
-                cfg.tag = this.tag || (this.position  == 'fixed-bottom' ? 'footer' : 'header');
-            }
-            
-            if (this.brand !== '') {
-                cfg.cn[0].cn.push({
-                    tag: 'a',
-                    href: this.brand_href ? this.brand_href : '#',
-                    cls: 'navbar-brand',
-                    cn: [
-                    this.brand
+                        }
                     ]
-                });
-            }
+                },
+                {
+                tag: 'div',
+                cls: 'collapse navbar-collapse'
+                }
+            ]
+        };
+        
+        cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
+        
+        if (['fixed-top','fixed-bottom','static-top'].indexOf(this.position)>-1) {
+            cfg.cls += ' navbar-' + this.position;
             
-            if(this.main){
-                cfg.cls += ' main-nav';
-            }
+            // tag can override this..
             
-            
-            return cfg;
-    
+            cfg.tag = this.tag || (this.position  == 'fixed-bottom' ? 'footer' : 'header');
+        }
+        
+        if (this.brand !== '') {
+            cfg.cn[0].cn.push({
+                tag: 'a',
+                href: this.brand_href ? this.brand_href : '#',
+                cls: 'navbar-brand',
+                cn: [
+                this.brand
+                ]
+            });
+        }
+        
+        if(this.main){
+            cfg.cls += ' main-nav';
+        }
+        
+        
+        return cfg;
+
         
     }
     
