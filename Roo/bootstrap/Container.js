@@ -35,6 +35,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     header: '',
     footer : '',
     sticky: '',
+    tag : false,
   
      
     getChildContainer : function() {
