@@ -30,6 +30,7 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
         if (this.cls && this.cls.length) {
             Roo.select('body').addClass(this.cls);
         }
+        // style??? xttr???
     }
     
     
