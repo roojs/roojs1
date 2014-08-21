@@ -6,7 +6,7 @@
  */
 
 /**
- * @class Roo.bootstrap.Navbar
+ * @class Roo.bootstrap.NavSidebar
  * @extends Roo.bootstrap.Component
  * Bootstrap Navbar class
  * @cfg {Boolean} sidebar has side bar
@@ -39,63 +39,15 @@ Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
     
     sidebar : true,
     
-    // private
-    navItems : false,
-    
     getAutoCreate : function(){
         
         
-        return = {
+        return  {
             tag: 'div',
             cls: 'sidebar-nav'
         };
     
         
-    },
-    
-    initEvents :function ()
-    {
-        //Roo.log(this.el.select('.navbar-toggle',true));
-        this.el.select('.navbar-toggle',true).on('click', function() {
-           // Roo.log('click');
-            this.el.select('.navbar-collapse',true).toggleClass('in');                                 
-        }, this);
-        
-        var mark = {
-            tag: "div",
-            cls:"x-dlg-mask"
-        }
-        
-        this.maskEl = Roo.DomHelper.append(this.el, mark, true);
-        
-        var size = this.el.getSize();
-        this.maskEl.setSize(size.width, size.height);
-        this.maskEl.enableDisplayMode("block");
-        this.maskEl.hide();
-        
-        if(this.loadMask){
-            this.maskEl.show();
-        }
-    },
-    
-    
-    getChildContainer : function()
-    {
-        if (this.bar === true) {
-            return this.el.select('.collapse',true).first();
-        }
-        
-        return this.el;
-    },
-    
-    mask : function()
-    {
-        this.maskEl.show();
-    },
-    
-    unmask : function()
-    {
-        this.maskEl.hide();
     }
     
     
