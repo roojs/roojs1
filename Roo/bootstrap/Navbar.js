@@ -152,7 +152,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             cfg.cn[0].cls += ' nav-' + this.type
         } else {
             if (this.type!=='nav') {
-            Roo.log('nav type must be nav/tabs/pills')
+                Roo.log('nav type must be nav/tabs/pills')
             }
             cfg.cn[0].cls += ' navbar-nav'
         }
