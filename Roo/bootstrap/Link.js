@@ -47,35 +47,16 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
             html : this.html || 'html-missing'
         }
         
-        cfg.html = this.html || cfg.html;
-        
-        cfg.src = this.src || cfg.src;
-        
-        if (['rounded','circle','thumbnail'].indexOf(this.border)>-1) {
-            cfg.cls += ' img-' + this.border;
-        }
         
         if(this.alt){
             cfg.alt = this.alt;
         }
-        
-        if(this.href){
-            var a = {
-                tag: 'a',
-                href: this.href,
-                cn: [
-		    cfg
-		]
-            }
-            
-            if(this.target){
-                a.target = this.target;
-            }
-            
+        cfg.href = this.href || '#';
+        if(this.target){
+            cfg.target = this.target;
         }
         
-        
-        return (this.href) ? a : cfg;
+        return cfg;
     },
     
     initEvents: function() {
