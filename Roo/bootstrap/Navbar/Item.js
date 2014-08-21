@@ -59,16 +59,16 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         
         var cfg = Roo.apply({}, Roo.bootstrap.Navbar.Item.superclass.getAutoCreate.call(this));
 	
-	if (this.parent().parent().sidebar === true) {
-	    cfg = {
-		tag: 'li',
-		cls: '',
-		cn: [
-		    {
-			tag: 'p',
-			cls: ''
-		    }
-		]
+        if (this.parent().parent().sidebar === true) {
+            cfg = {
+            tag: 'li',
+            cls: '',
+            cn: [
+                {
+                tag: 'p',
+                cls: ''
+                }
+            ]
 	    }
 	    
 	    if (this.html) {
