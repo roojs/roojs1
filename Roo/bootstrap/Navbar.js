@@ -161,9 +161,11 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
             cfg.cn[0].cls += ' nav-' + this.arrangement;
         }
         
+        
         if (this.align === 'right') {
             cfg.cn[0].cls += ' navbar-right';
         }
+        
         if (this.inverse) {
             cfg.cls += ' navbar-inverse';
             
