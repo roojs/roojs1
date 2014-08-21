@@ -7060,6 +7060,12 @@
      "memberOf": ""
     },
     {
+     "name": "tag",
+     "type": "String",
+     "desc": "(header|aside|section) type of HTML tag.",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
