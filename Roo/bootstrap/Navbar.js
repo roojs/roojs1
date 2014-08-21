@@ -35,17 +35,7 @@ Roo.bootstrap.Navbar = function(config){
 Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     
-    brand: '',
-    inverse: false,
-    position: '',
-    align : false,
-    type: false,
-    arrangement: '',
-    brand_href: false,
-    main : false,
-    loadMask : false,
-    tag : false,
-    
+   
     // private
     navItems : false,
     
