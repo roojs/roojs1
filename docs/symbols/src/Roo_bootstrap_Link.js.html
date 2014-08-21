@@ -1,0 +1,77 @@
+<html><head><title>../roojs1/Roo/bootstrap/Link.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * image
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.Link
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Link Class
+ * @cfg {String} alt image alternative text
+ * @cfg {String} href a tag href
+ * @cfg {String} target (_self|_blank|_parent|_top) target for a href.
+ * @cfg {String} html the content of the link.
+
+ * 
+ * @constructor
+ * Create a new Input
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.Link </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.Link.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">// img events
+        /**
+         * @event click
+         * The img click event for the img.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Link</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'html-missing'
+        </span><span class="jsdoc-syntax">}
+        
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alt</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.alt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.alt</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">cfg.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.target</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.target</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+    },
+    
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-comment">//Roo.log('img onclick');
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    }
+   
+});
+
+ </span></code></body></html>
