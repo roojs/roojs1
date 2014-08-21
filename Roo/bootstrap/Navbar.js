@@ -9,7 +9,6 @@
  * @class Roo.bootstrap.Navbar
  * @extends Roo.bootstrap.Component
  * Bootstrap Navbar class
- * @cfg {Boolean} bar is a bar?
  * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
  * @cfg {String} brand what is brand
  * @cfg {Boolean} inverse is inverted color
@@ -54,46 +53,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         
+        throw { message : "nav bar is now a abstract base class - use SimpleBar / HeaderBar / SideBar etc..."};
         
-        var cfg = {
-            cls : 'navbar'
-        };
-	  
-	
-        cfg.cn = [
-            {
-                cls: 'nav',
-                tag : 'ul'
-            }
-        ];
-        
-         
-        this.type = this.type || 'nav';
-        if (['tabs','pills'].indexOf(this.type)!==-1) {
-            cfg.cn[0].cls += ' nav-' + this.type
-        } else {
-            if (this.type!=='nav') {
-                Roo.log('nav type must be nav/tabs/pills')
-            }
-            cfg.cn[0].cls += ' navbar-nav'
-        }
-        
-        if (['stacked','justified'].indexOf(this.arrangement)!==-1) {
-            cfg.cn[0].cls += ' nav-' + this.arrangement;
-        }
-        
-        
-        if (this.align === 'right') {
-            cfg.cn[0].cls += ' navbar-right';
-        }
-        
-        if (this.inverse) {
-            cfg.cls += ' navbar-inverse';
-            
-        }
-        
-        
-        return cfg;
     },
     
     initEvents :function ()
