@@ -82,7 +82,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
                 
                 // not sure if this should occor??
                 
-                cfg.tag = this.position  == 'fixed-bottom' ? 'footer' : 'header';
+                cfg.tag = this.tag || (this.position  == 'fixed-bottom' ? 'footer' : 'header');
             }
             
             if (this.brand !== '') {
