@@ -66,6 +66,9 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
                 tag : 'ul'
             }
         ];
+        
+        
+        
         this.type = this.type || 'nav';
         if (['tabs','pills'].indexOf(this.type)!==-1) {
             cfg.cn[0].cls += ' nav-' + this.type
