@@ -28,7 +28,7 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
     onRender : function(ct, position)
     {
         if (this.cls && this.cls.length) {
-            Roo.select('body').addClass(this.cls);
+            Roo.get(document.body).addClass(this.cls);
         }
         // style??? xttr???
     }
