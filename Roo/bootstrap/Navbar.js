@@ -20,7 +20,7 @@
  * @cfg {String} brand_href href of the brand
  * @cfg {Boolean} main (true|false) main nav bar? default false
  * @cfg {Boolean} loadMask (true|false) loadMask on the bar
- * @cfg {String} tag (header|footer|nav) default is nav 
+ * @cfg {String} tag (header|footer|nav|div) default is nav 
 
  * 
  * @constructor
