@@ -17,7 +17,6 @@
  * @cfg {Boolean} arrangement stacked | justified
  * @cfg {String} align (left | right) alignment
  * 
- * @cfg {String} brand_href href of the brand
  * @cfg {Boolean} main (true|false) main nav bar? default false
  * @cfg {Boolean} loadMask (true|false) loadMask on the bar
  * 
@@ -38,7 +37,6 @@ Roo.bootstrap.NavSimplebar = function(config){
 
 Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
     
-    brand: '',
     inverse: false,
     
     type: false,

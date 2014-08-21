@@ -28,6 +28,7 @@ Roo.bootstrap.NavHeaderbar = function(config){
 Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     
     position: '',
+    brand: '',
 
     getAutoCreate : function(){
         
