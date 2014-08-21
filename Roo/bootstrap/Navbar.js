@@ -31,7 +31,6 @@
 
 Roo.bootstrap.Navbar = function(config){
     Roo.bootstrap.Navbar.superclass.constructor.call(this, config);
-   
     
 };
 
