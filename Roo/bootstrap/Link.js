@@ -68,7 +68,7 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
-        Roo.log('img onclick');
+        //Roo.log('img onclick');
         this.fireEvent('click', this, e);
     }
    
