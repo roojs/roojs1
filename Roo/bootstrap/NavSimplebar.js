@@ -10,7 +10,6 @@
  * @extends Roo.bootstrap.Navbar
  * Bootstrap Sidebar class
  *
- * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
  * @cfg {String} brand what is brand
  * @cfg {Boolean} inverse is inverted color
  * 
@@ -39,7 +38,6 @@ Roo.bootstrap.NavSimplebar = function(config){
 
 Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
     
-    position: '',
     brand: '',
     inverse: false,
     
