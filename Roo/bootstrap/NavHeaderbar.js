@@ -10,10 +10,9 @@
  * @extends Roo.bootstrap.NavSimplebar
  * Bootstrap Sidebar class
  *
- *
+ * @cfg {String} brand what is brand
  * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
  * @cfg {String} brand_href href of the brand
-
  * 
  * @constructor
  * Create a new Sidebar
