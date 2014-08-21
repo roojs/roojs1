@@ -35,7 +35,6 @@ Roo.bootstrap.Navbar = function(config){
 Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     
-    bar: false,
     brand: '',
     inverse: false,
     position: '',
@@ -85,7 +84,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     
     getChildContainer : function()
     {
-        if (this.bar === true) {
+        if (this.el.select('.collapse').getCount()) {
             return this.el.select('.collapse',true).first();
         }
         
