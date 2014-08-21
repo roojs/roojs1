@@ -21,8 +21,8 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Img = function(config){
-    Roo.bootstrap.Img.superclass.constructor.call(this, config);
+Roo.bootstrap.Link = function(config){
+    Roo.bootstrap.Link.superclass.constructor.call(this, config);
     
     this.addEvents({
         // img events
@@ -35,7 +35,7 @@ Roo.bootstrap.Img = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     
     imgResponsive: true,
     border: '',
