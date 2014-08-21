@@ -10,7 +10,6 @@
  * @extends Roo.bootstrap.Navbar
  * Bootstrap Sidebar class
  *
- * @cfg {String} brand what is brand
  * @cfg {Boolean} inverse is inverted color
  * 
  * @cfg {String} type (nav | pills | tabs)
@@ -44,7 +43,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
     align : false,
     
     
-    brand_href: false,
+    
     main : false,
     
     
@@ -71,6 +70,8 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
         this.type = this.type || 'nav';
         if (['tabs','pills'].indexOf(this.type)!==-1) {
             cfg.cn[0].cls += ' nav-' + this.type
+        
+        
         } else {
             if (this.type!=='nav') {
                 Roo.log('nav type must be nav/tabs/pills')
