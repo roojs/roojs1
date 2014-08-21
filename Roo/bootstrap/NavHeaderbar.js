@@ -29,7 +29,9 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     
     position: '',
     brand: '',
-
+    brand_href: false,
+    
+    
     getAutoCreate : function(){
         
         
