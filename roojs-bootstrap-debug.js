@@ -2753,7 +2753,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         
-        throw { message : "nav bar is now a abstract base class - use SimpleBar / HeaderBar / SideBar etc..."};
+        throw { message : "nav bar is now a abstract base class - use NavSimplebar / NavHeaderbar / NavSidebar etc..."};
         
     },
     
