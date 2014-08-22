@@ -46,7 +46,7 @@ Roo.bootstrap.HtmlEditor.ToolbarStandard = function(config)
     //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
     // dont call parent... till later.
 }
-Roo.extend(Roo.bootstrap.HtmlEditor.ToolbarStandard, Roo.bootstrap.Navbar,  {
+Roo.extend(Roo.bootstrap.HtmlEditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,  {
     
     
     bar : true,
@@ -177,7 +177,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor.ToolbarStandard, Roo.bootstrap.Navbar,  {
        */
         
          
-       this.xtype = 'Navbar';
+       this.xtype = 'NavSimplebar';
         
         for(var i=0;i< children.length;i++) {
             
