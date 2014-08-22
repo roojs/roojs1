@@ -3157,6 +3157,10 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         Roo.log('parent');
         
         Roo.log(this.parent());
+        
+        if(this.parent() instanceof Roo.bootstrap.NavSidebar){
+            Roo.log('true');
+        }
         if (this.parent().sidebar === true) {
             cfg = {
                 tag: 'ul',
