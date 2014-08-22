@@ -126,6 +126,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             }
             
         }
+        Roo.log(cfg);
         if (body) {
             body.html = this.html || cfg.html;
         }
