@@ -126,10 +126,11 @@
             }
             
         }
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">body.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.cls </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.cls.length</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((!</span><span class="jsdoc-var">this.cls </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.cls.length</span><span class="jsdoc-syntax">) &amp;&amp; (!</span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">cfg.cls.length</span><span class="jsdoc-syntax">)) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-string">'container'</span><span class="jsdoc-syntax">;
         }
         
