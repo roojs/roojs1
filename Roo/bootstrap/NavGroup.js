@@ -65,7 +65,9 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             }
             cfg.cls += ' navbar-nav'
         }
+        Roo.log('parent');
         
+        Roo.log(this.parent());
         if (this.parent().sidebar === true) {
             cfg = {
                 tag: 'ul',
