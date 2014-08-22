@@ -3067,6 +3067,7 @@ Roo.bootstrap.NavSidebar = function(config){
 
 Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
     
+    sidebar : true, // used by Navbar Item at present...
     
     getAutoCreate : function(){
         
