@@ -126,14 +126,14 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             }
             
         }
-        Roo.log(cfg);
+        
         if (body) {
             body.html = this.html || cfg.html;
         }
-        if (!this.cls || !this.cls.length) {
+        if ((!this.cls || !this.cls.length) && (!cfg.cls || !cfg.cls.length)) {
             cfg.cls =  'container';
         }
-        Roo.log(cfg);
+        
         return cfg;
     }
    
