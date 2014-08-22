@@ -940,7 +940,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         if (!this.cls || !this.cls.length) {
             cfg.cls =  'container';
         }
-        
+        Roo.log(cfg);
         return cfg;
     }
    
