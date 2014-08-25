@@ -65,21 +65,15 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                     tag: 'p',
                     html: this.html || ''
                 }
-            ];
+            ]
         }
             
         if (this.active) {
             cfg.cls = typeof(cfg.cls) == 'undefined' ? 'active' : cfg.cls + ' active';
         }
             
-        cfg.
-        
-        if(this.html){
-            cfg.cn[0].html = this.html || cfg.cn[0].html ;
-        };
         
         if (this.glyphicon) {
-            
             cfg.html += '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span>';
         }
         
