@@ -9,7 +9,7 @@
  * @class Roo.bootstrap.Menu
  * @extends Roo.bootstrap.Component
  * Bootstrap Menu class - container for MenuItems
- * @cfg {String} type type of menu
+ * @cfg {String} type (dropdown|treeview|submenu) type of menu
  * 
  * @constructor
  * Create a new Menu
