@@ -69,7 +69,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         cfg.cn = [
             {
                 tag: 'p',
-                html: 'Text'
+                html: ''
             }
         ];
         
