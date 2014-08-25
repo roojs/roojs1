@@ -89,14 +89,6 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
             cfg.cn[0].href = this.href;
         }
         
-        if (this.glyphicon) {
-            cfg.cn[0].html = '<i class="glyphicon glyphicon-'+this.glyphicon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
-        }
-            
-        if (this.icon) {
-            cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
-        }
-        
         if (this.badge !== '') {
             
             cfg.cn[0].cn=[
@@ -109,6 +101,15 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
             ];
             cfg.cn[0].html=''
         }
+        
+        if (this.glyphicon) {
+            cfg.cn[0].html = '<i class="glyphicon glyphicon-'+this.glyphicon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+        }
+            
+        if (this.icon) {
+            cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+        }
+        
         return cfg;
          
 	   
