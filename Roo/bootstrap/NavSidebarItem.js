@@ -66,7 +66,8 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
             cn: [
                 {
                 tag: 'p',
-                cls: ''
+                cls: '',
+                html : ''
                 }
             ]
         }
