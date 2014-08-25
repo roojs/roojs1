@@ -63,7 +63,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag: 'a',
-                    href = "#",
+                    href : this.href || "#",
                     html: this.html || ''
                 }
             ]
