@@ -79,12 +79,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         if (this.glyphicon) {
             
-            cfg.cn=[
-                {
-                    tag: 'span',
-                    cls: 'glyphicon glyphicon-' + this.glyphicon
-                }
-            ];
+            cfg.html += '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span>';
         }
         
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
