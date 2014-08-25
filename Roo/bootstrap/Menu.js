@@ -108,6 +108,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         //if (['right'].indexOf(this.align)!==-1) {
         //    cfg.cn[1].cls += ' pull-right'
         //}
+        
+        
         var cfg = {
             tag : 'ul',
             cls : 'dropdown-menu' ,
@@ -115,10 +117,13 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             
         }
 	
-	if (this.type === 'submenu') {
-	    cfg.cls = 'submenu active'
-	}
-	
+        if (this.type === 'submenu') {
+            cfg.cls = 'submenu active';
+        }
+        if (this.type === 'treeview') {
+            cfg.cls = 'treeview-menu';
+        }
+        
         return cfg;
     },
     initEvents : function() {
