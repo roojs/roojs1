@@ -3067,7 +3067,7 @@ Roo.bootstrap.NavSidebar = function(config){
 
 Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
     
-    sidebar : true, // used by Navbar Item at present...
+    sidebar : true, // used by Navbar Item and NavbarGroup at present...
     
     getAutoCreate : function(){
         
@@ -3156,10 +3156,10 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             cfg.cls += ' navbar-nav'
         }
         
-        if (this.parent() instanceof Roo.bootstrap.NavSidebar) {
+        if (this.parent().sidebar) {
             cfg = {
                 tag: 'ul',
-                cls: 'dashboard-menu'
+                cls: 'dashboard-menu sidebar-menu'
             }
             
             return cfg;
