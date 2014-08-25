@@ -88,16 +88,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         }
         
         if (this.badge !== '') {
-            
-            cfg.cn[0].cn=[
-                cfg.cn[0].html + ' ',
-                {
-                    tag: 'span',
-                    cls: 'badge',
-                    html: this.badge
-                }
-            ];
-            cfg.cn[0].html=''
+            cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
         }
         
         if (this.menu) {
