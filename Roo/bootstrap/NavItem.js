@@ -62,7 +62,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cls: 'nav-item',
             cn : [
                 {
-                    tag: 'p',
+                    tag: 'a',
                     html: this.html || ''
                 }
             ]
@@ -73,8 +73,13 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
             
         
-        if (this.glyphicon) {
-            cfg.html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span>';
+        if (this.glyphicon || this.icon) {
+            var c = 'glyphicon glyphicon-' + this.glyphicon;
+            if (this.icon) {
+                cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+            } else {
+                cfg.html+ = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span>';
+            }
         }
         
         
@@ -98,9 +103,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
         }
         
-        if (this.icon) {
-            cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
-        }
+        
         
         return cfg;
     },
