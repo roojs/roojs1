@@ -44,7 +44,7 @@ Roo.bootstrap.Navbar.Item = function(config){
    
 };
 
-Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     
     href: false,
     html: '',
