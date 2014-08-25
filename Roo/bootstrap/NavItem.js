@@ -78,7 +78,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             if (this.icon) {
                 cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
             } else {
-                cfg.html+ = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span>';
+                cfg.html += '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span>';
             }
         }
         
