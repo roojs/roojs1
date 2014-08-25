@@ -1374,7 +1374,7 @@ Roo.bootstrap.MenuMgr = function(){
  * @class Roo.bootstrap.Menu
  * @extends Roo.bootstrap.Component
  * Bootstrap Menu class - container for MenuItems
- * @cfg {String} type type of menu
+ * @cfg {String} type (dropdown|treeview|submenu) type of menu
  * 
  * @constructor
  * Create a new Menu
@@ -1473,6 +1473,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         //if (['right'].indexOf(this.align)!==-1) {
         //    cfg.cn[1].cls += ' pull-right'
         //}
+        
+        
         var cfg = {
             tag : 'ul',
             cls : 'dropdown-menu' ,
@@ -1480,10 +1482,13 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             
         }
 	
-	if (this.type === 'submenu') {
-	    cfg.cls = 'submenu active'
-	}
-	
+        if (this.type === 'submenu') {
+            cfg.cls = 'submenu active';
+        }
+        if (this.type === 'treeview') {
+            cfg.cls = 'treeview-menu';
+        }
+        
         return cfg;
     },
     initEvents : function() {
@@ -1740,17 +1745,20 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         var cfg= {
-	    tag: 'li',
-        cls: 'dropdown-menu-item',
-	    cn: [
-            {
-                tag : 'a',
-                href : '#',
-                html : 'Link'
-            }
-	    ]
-    };
-	
+            tag: 'li',
+            cls: 'dropdown-menu-item',
+            cn: [
+                    {
+                        tag : 'a',
+                        href : '#',
+                        html : 'Link'
+                    }
+                ]
+        };
+        if (this.parent().type == 'treeview') {
+            cfg.cls = 'treeview-menu';
+        }
+        
         cfg.cn[0].href = this.href || cfg.cn[0].href ;
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
         return cfg;
