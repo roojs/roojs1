@@ -104,7 +104,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
         
         // fixme - this should handle glyphicon or ico
         if (this.glyphicon || this.icon) {
-            var c = this.glyphicon  ? (glyphicon glyphicon-'+this.glyphicon')  : this.icon;
+            var c = this.glyphicon  ? ('glyphicon glyphicon-'+this.glyphicon)  : this.icon;
             
             cfg.cn[0].html = '<i class="' +c+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
         }
