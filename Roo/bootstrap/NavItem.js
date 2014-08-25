@@ -63,6 +63,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag: 'a',
+                    href = "#",
                     html: this.html || ''
                 }
             ]
@@ -84,7 +85,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         
         if (this.menu) {
-            cfg.cn[0].tag='a';
+           
             cfg.cn[0].href='#';
             cfg.cn[0].html += " <span class='caret'></span>";
         //}else if (!this.href) {
