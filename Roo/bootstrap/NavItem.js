@@ -59,21 +59,22 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
          
         var cfg = {
             tag: 'li',
-                cls: 'nav-item'
+            cls: 'nav-item',
+            cn : [
+                {
+                    tag: 'p',
+                    html: this.html || ''
+                }
+            ];
         }
             
         if (this.active) {
             cfg.cls = typeof(cfg.cls) == 'undefined' ? 'active' : cfg.cls + ' active';
         }
             
-        cfg.cn = [
-            {
-                tag: 'p',
-                html: ''
-            }
-        ];
+        cfg.
         
-        if(cfg.html){
+        if(this.html){
             cfg.cn[0].html = this.html || cfg.cn[0].html ;
         };
         
