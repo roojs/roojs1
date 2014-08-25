@@ -22,8 +22,8 @@
  * Create a new Navbar Button
  * @param {Object} config The config object
  */
-Roo.bootstrap.Navbar.Item = function(config){
-    Roo.bootstrap.Navbar.Item.superclass.constructor.call(this, config);
+Roo.bootstrap.NavItem = function(config){
+    Roo.bootstrap.NavItem.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
         /**
