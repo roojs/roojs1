@@ -85,21 +85,13 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         
         if (this.menu) {
-           
-            cfg.cn[0].href='#';
+            
             cfg.cn[0].html += " <span class='caret'></span>";
-        //}else if (!this.href) {
-        //    cfg.cn[0].tag='p';
-        //    cfg.cn[0].cls='navbar-text';
-        } else {
-            cfg.cn[0].tag='a';
-            cfg.cn[0].href=this.href||'#';
-            cfg.cn[0].html=this.html;
+         
         }
         
         if (this.badge !== '') {
-            
-            
+             
             cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
         }
         
