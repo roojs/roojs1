@@ -52,7 +52,9 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
                 }
             ]
         };
-	
+        if (this.parent().type == 'treeview') {
+            cfg.cls = 'treeview-menu';
+        }
         cfg.cn[0].href = this.href || cfg.cn[0].href ;
         cfg.cn[0].html = this.html || cfg.cn[0].html ;
         return cfg;
