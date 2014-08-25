@@ -95,12 +95,12 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (this.badge !== '') {
             
             cfg.cn[0].cn=[
-            cfg.cn[0].html + ' ',
-            {
-                tag: 'span',
-                cls: 'badge',
-                html: this.badge
-            }
+                cfg.cn[0].html + ' ',
+                {
+                    tag: 'span',
+                    cls: 'badge',
+                    html: this.badge
+                }
             ];
             cfg.cn[0].html=''
         }
