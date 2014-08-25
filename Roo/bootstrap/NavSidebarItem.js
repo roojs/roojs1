@@ -41,14 +41,6 @@ Roo.bootstrap.NavSidebarItem = function(config){
 
 Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
-    href: false,
-    html: '',
-    badge: '',
-    icon: false,
-    glyphicon: false,
-    active: false,
-    preventDefault : false,
-    tabId : false,
     
     getAutoCreate : function(){
         
