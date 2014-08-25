@@ -102,13 +102,13 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
             cfg.cn[0].html=''
         }
         
-        if (this.glyphicon) {
-            cfg.cn[0].html = '<i class="glyphicon glyphicon-'+this.glyphicon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
-        }
+        // fixme - this should handle glyphicon or ico
+        if (this.glyphicon || this.icon) {
+            var c = this.glyphicon  ? (glyphicon glyphicon-'+this.glyphicon')  : this.icon;
             
-        if (this.icon) {
-            cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+            cfg.cn[0].html = '<i class="' +c+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
         }
+        
         
         return cfg;
          
