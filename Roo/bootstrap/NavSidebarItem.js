@@ -57,7 +57,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     getAutoCreate : function(){
         
-        var cfg = Roo.apply({}, Roo.bootstrap.Navbar.Item.superclass.getAutoCreate.call(this));
+        var cfg = Roo.apply({}, Roo.bootstrap.NavSidebarItem.superclass.getAutoCreate.call(this));
 	
         
         cfg = {
