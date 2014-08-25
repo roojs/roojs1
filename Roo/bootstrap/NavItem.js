@@ -56,51 +56,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     tabId : false,
     
     getAutoCreate : function(){
-        
-        var cfg = Roo.apply({}, Roo.bootstrap.NavItem.superclass.getAutoCreate.call(this));
-	
-        if (this.parent().parent().sidebar === true) {
-            cfg = {
-                tag: 'li',
-                cls: '',
-                cn: [
-                    {
-                    tag: 'p',
-                    cls: ''
-                    }
-                ]
-            }
-            
-            if (this.html) {
-                cfg.cn[0].html = this.html;
-            }
-            
-            if (this.active) {
-                this.cls += ' active';
-            }
-            
-            if (this.menu) {
-                cfg.cn[0].cls += ' dropdown-toggle';
-                cfg.cn[0].html = (cfg.cn[0].html || this.html) + '<span class="glyphicon glyphicon-chevron-down"></span>';
-            }
-            
-            if (this.href) {
-                cfg.cn[0].tag = 'a',
-                cfg.cn[0].href = this.href;
-            }
-            
-            if (this.glyphicon) {
-                cfg.cn[0].html = '<i class="glyphicon glyphicon-'+this.glyphicon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
-            }
-                
-            if (this.icon) {
-                cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
-            }
-            
-            return cfg;
-        }
-	
-        cfg = {
+         
+        var cfg = {
             tag: 'li',
                 cls: 'nav-item'
         }
