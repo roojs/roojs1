@@ -74,12 +74,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             
         // glyphicon and icon go before content..
         if (this.glyphicon || this.icon) {
-            var c = 'glyphicon glyphicon-' + this.glyphicon;
-            if (this.icon) {
-                c= 
+             if (this.icon) {
                 cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
             } else {
-                cfg.html += '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span>';
+                cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span>'  + cfg.cn[0].html;
             }
         }
         
