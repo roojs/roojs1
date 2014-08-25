@@ -27,6 +27,9 @@ Roo.bootstrap.NavSidebar
 Roo.bootstrap.NavGroup
 Roo.bootstrap.Navbar.Button
 Roo.bootstrap.Navbar.Item
+Roo.bootstrap.NavItem
+Roo.bootstrap.NavSidebarItem
+
 
 Roo.bootstrap.Row
 
