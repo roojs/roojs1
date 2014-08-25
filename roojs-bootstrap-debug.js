@@ -3074,7 +3074,7 @@ Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
         
         return  {
             tag: 'div',
-            cls: 'sidebar-nav'
+            cls: 'sidebar sidebar-nav'
         };
     
         
