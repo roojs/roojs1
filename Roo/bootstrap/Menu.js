@@ -110,7 +110,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         //}
         var cfg = {
             tag : 'ul',
-            cls : 'dropdown-menu' ,
+            cls : 'dropdown-menu treeview-menu' ,
             style : 'z-index:1000'
             
         }
