@@ -88,7 +88,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         if (this.glyphicon || this.icon) {
             var c = this.glyphicon  ? ('glyphicon glyphicon-'+this.glyphicon)  : this.icon;
             
-            cfg.cn[0].html = '<i class="' +c+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
+            cfg.cn[0].html = '<i class="' +c+'"></i><span>' + cfg.cn[0].html  + '</span>'
         }
         
         
