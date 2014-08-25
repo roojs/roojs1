@@ -104,53 +104,9 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         return cfg;
          
 	   
-    },
-    initEvents: function() {
-       // Roo.log('init events?');
-       // Roo.log(this.el.dom);
-        this.el.select('a',true).on('click', this.onClick, this);
-        // at this point parent should be available..
-        this.parent().register(this);
-    },
-    
-    onClick : function(e)
-    {
-        if(this.preventDefault){
-            e.preventDefault();
-        }
-        
-        if(this.fireEvent('click', this, e) === false){
-            return;
-        };
-        
-        if (['tabs','pills'].indexOf(this.parent().type)!==-1) {
-	     if (typeof(this.parent().setActiveItem) !== 'undefined') {
-		this.parent().setActiveItem(this);
-	    }
-	    
-	    
-	    
-        } 
-    },
-    
-    isActive: function () {
-        return this.active
-    },
-    setActive : function(state, fire)
-    {
-        this.active = state;
-        if (!state ) {
-            this.el.removeClass('active');
-        } else if (!this.el.hasClass('active')) {
-            this.el.addClass('active');
-        }
-        if (fire) {
-            this.fireEvent('changed', this, state);
-        }
-	
-	
     }
-     // this should not be here...
+   
+     
  
 });
  
