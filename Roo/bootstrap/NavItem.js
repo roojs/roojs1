@@ -73,8 +73,12 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             }
         ];
         
+        if(cfg.html){
+            cfg.html += this.html
+        };
+        
         if (this.glyphicon) {
-            if(cfg.html){cfg.html = ' ' + this.html};
+            
             cfg.cn=[
                 {
                     tag: 'span',
