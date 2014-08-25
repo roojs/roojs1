@@ -69,7 +69,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         if (this.parent() instanceof Roo.bootstrap.NavSidebar) {
             cfg = {
                 tag: 'ul',
-                cls: 'dashboard-menu'
+                cls: 'dashboard-menu sidebar-menu'
             }
             
             return cfg;
