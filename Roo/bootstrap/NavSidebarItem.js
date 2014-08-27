@@ -76,7 +76,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         a.cn.push(span);
         
         if (this.badge !== '') {
-            cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
+            a.push({ tag: 'span' cls : 'badge pull-right', html: this.badge } 
         }
         
         if (this.menu) {
