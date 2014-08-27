@@ -74,15 +74,15 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         }
         // html..
         a.cn.push(span);
-        
+        // then badge..
         if (this.badge !== '') {
             a.cn.push({ tag: 'span',  cls : 'badge pull-right ' + (this.badgecls || ''), html: this.badge }); 
         }
-        
+        // fi
         if (this.menu) {
-            right = right || { tag : 'i', cls : '' };
-            a.cls += ' dropdown-toggle treeview';
-            right.cls += 'glyphicon glyphicon-chevron-down';
+            a.push({ tag : 'i', cls : 'glyphicon glyphicon-chevron-down'});
+            a.cls += 'dropdown-toggle treeview' ;
+            
         }
         
         

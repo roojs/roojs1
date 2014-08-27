@@ -3692,23 +3692,23 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         if (this.active) {
             cfg.cls += ' active';
         }
-        var right = false;
-        // fixme - this should handle glyphicon or ico
+        
+        // left icon..
         if (this.glyphicon || this.icon) {
             var c = this.glyphicon  ? ('glyphicon glyphicon-'+this.glyphicon)  : this.icon;
-            right = { tag : 'i', cls : c };
-            a.cn.push(right) ;
+            a.cn.push({ tag : 'i', cls : c }) ;
         }
+        // html..
         a.cn.push(span);
-        
+        // then badge..
         if (this.badge !== '') {
             a.cn.push({ tag: 'span',  cls : 'badge pull-right ' + (this.badgecls || ''), html: this.badge }); 
         }
-        
+        // fi
         if (this.menu) {
-            right = right || { tag : 'i', cls : '' };
-            a.cls += ' dropdown-toggle treeview';
-            right.cls += 'glyphicon glyphicon-chevron-down';
+            a.push({ tag : 'i', cls : 'glyphicon glyphicon-chevron-down'});
+            a.cls += 'dropdown-toggle treeview' ;
+            
         }
         
         
