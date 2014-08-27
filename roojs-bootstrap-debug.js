@@ -3628,10 +3628,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
  *
  * sidebar item
  *
- *  li / a
- *    optional <i>icon/glyicon</i>
- *    the text
- *    badge
+ *  li
+ *    <span> icon </span>
+ *    <span> text </span>
+ *    <span>badge </span>
  */
 
 /**
@@ -3669,47 +3669,47 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     getAutoCreate : function(){
         
+        
+        var a = {
+                tag: 'a',
+                href : this.href || '#',
+                cls: '',
+                html : '',
+                cn : []
+        };
         var cfg = {
             tag: 'li',
             cls: '',
-            cn: [
-                {
-                tag: 'p',
-                cls: '',
-                html : ''
-                }
-            ]
+            cn: [ a ]
+        }
+        var span = {
+            tag: 'span',
+            html : this.html || ''
         }
         
-        if (this.html) {
-            cfg.cn[0].html = this.html;
-        }
         
         if (this.active) {
-            this.cls += ' active';
+            cfg.cls += ' active';
         }
-        
-        
-        
-        if (this.href) {
-            cfg.cn[0].tag = 'a',
-            cfg.cn[0].href = this.href;
+        var right = false;
+        // fixme - this should handle glyphicon or ico
+        if (this.glyphicon || this.icon) {
+            var c = this.glyphicon  ? ('glyphicon glyphicon-'+this.glyphicon)  : this.icon;
+            right = { tag : 'i', cls : c };
+            a.cn.push(right) ;
         }
+        a.cn.push(span);
         
         if (this.badge !== '') {
             cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
         }
         
         if (this.menu) {
-            cfg.cn[0].cls += ' dropdown-toggle treeview';
-            cfg.cn[0].html += '<span class="glyphicon glyphicon-chevron-down"></span>';
+            right = right || { tag : 'i', cls : '' };
+            a.cls += ' dropdown-toggle treeview';
+            right.cls += 'glyphicon glyphicon-chevron-down';
         }
         
-        // fixme - this should handle glyphicon or ico
-        if (this.glyphicon || this.icon) {
-            var c = this.glyphicon  ? ('glyphicon glyphicon-'+this.glyphicon)  : this.icon;
-            cfg.cn[0].html = '<i class="' +c+'"></i><span>' + cfg.cn[0].html  + '</span>'
-        }
         
         
         return cfg;
