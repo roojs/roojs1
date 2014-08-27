@@ -73,16 +73,16 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             right = { tag : 'i', cls : c };
             a.cn.push(right) ;
         }
-        
-         
+        a.cn.push(span);
         
         if (this.badge !== '') {
             cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
         }
         
         if (this.menu) {
-            cfg.cn[0].cls += ' dropdown-toggle treeview';
-            cfg.cn[0].html += '<span class="glyphicon glyphicon-chevron-down"></span>';
+            right = right || { tag : 'i', cls : '' };
+            a.cls += ' dropdown-toggle treeview';
+            right.cls += 'glyphicon glyphicon-chevron-down';
         }
         
         
