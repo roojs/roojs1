@@ -47,7 +47,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         
         var a = {
                 tag: 'a',
-                href : '#'
+                href : this.href || '#',
                 cls: '',
                 html : '',
                 cn : []
@@ -57,12 +57,14 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             cls: '',
             cn: [ a ]
         }
-        if (this.html) {
-            cfg.cn[0].html = this.html;
+        var span = {
+            tag: 'span',
+            html : this.html || ''
         }
         
+        
         if (this.active) {
-            this.cls += ' active';
+            cfg.cls += ' active';
         }
         
         
