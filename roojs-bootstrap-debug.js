@@ -3486,6 +3486,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
  * @cfg {String} href  link to
  * @cfg {String} html content of button
  * @cfg {String} badge text inside badge
+ * @cfg {String} badgecls (bg-green|bg-red|bg-yellow)the extra classes for the badge
  * @cfg {String} glyphicon name of glyphicon
  * @cfg {String} icon name of font awesome icon
  * @cfg {Boolean} active Is item active
@@ -3701,7 +3702,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         a.cn.push(span);
         
         if (this.badge !== '') {
-            cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
+            a.push({ tag: 'span',  cls : 'badge pull-right ' + (this.badgecls || ''), html: this.badge }); 
         }
         
         if (this.menu) {
