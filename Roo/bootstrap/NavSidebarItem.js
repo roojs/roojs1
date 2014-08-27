@@ -69,8 +69,9 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         var right = false;
         // fixme - this should handle glyphicon or ico
         if (this.glyphicon || this.icon) {
-            right = this.glyphicon  ? ('glyphicon glyphicon-'+this.glyphicon)  : this.icon;
-            a.cn.push( { tag : 'i', cls : c });
+            var c = this.glyphicon  ? ('glyphicon glyphicon-'+this.glyphicon)  : this.icon;
+            right = { tag : 'i', cls : c };
+            a.cn.push(right) ;
         }
         
          
