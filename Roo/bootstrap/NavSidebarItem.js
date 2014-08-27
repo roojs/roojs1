@@ -3,10 +3,10 @@
  *
  * sidebar item
  *
- *  li / a
- *    optional <i>icon/glyicon</i>
- *    the text
- *    badge
+ *  li
+ *    <span> icon </span>
+ *    <span> text </span>
+ *    <span>badge </span>
  */
 
 /**
