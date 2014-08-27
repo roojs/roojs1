@@ -3706,7 +3706,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         }
         // fi
         if (this.menu) {
-            a.cn.push({ tag : 'i', cls : 'glyphicon glyphicon-chevron-down'});
+            a.cn.push({ tag : 'i', cls : 'glyphicon glyphicon-chevron-down pull-right'});
             a.cls += 'dropdown-toggle treeview' ;
             
         }
