@@ -66,7 +66,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         if (this.active) {
             cfg.cls += ' active';
         }
-        
+        var c
         // fixme - this should handle glyphicon or ico
         if (this.glyphicon || this.icon) {
             var c = this.glyphicon  ? ('glyphicon glyphicon-'+this.glyphicon)  : this.icon;
