@@ -44,18 +44,19 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     getAutoCreate : function(){
         
+        
+        var a = {
+                tag: 'a',
+                href : '#'
+                cls: '',
+                html : '',
+                cn : []
+        };
         var cfg = {
             tag: 'li',
             cls: '',
             cn: [ a ]
         }
-        var a = {
-                tag: 'a',
-                href : '#'
-                cls: '',
-                html : ''
-                }
-        
         if (this.html) {
             cfg.cn[0].html = this.html;
         }
