@@ -68,11 +68,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         }
         
         
-        
-        if (this.href) {
-            cfg.cn[0].tag = 'a',
-            cfg.cn[0].href = this.href;
-        }
+         
         
         if (this.badge !== '') {
             cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
