@@ -23,6 +23,7 @@ Roo.bootstrap.Body = function(config){
         /**
          * @event resize
          * When window resize
+         * @param {Roo.EventObject} e
          */
         "resize" : true
     });
