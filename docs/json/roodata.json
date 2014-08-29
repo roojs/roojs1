@@ -5058,6 +5058,12 @@
      "desc": "Fires after the component is rendered."
     },
     {
+     "name": "resize",
+     "sig": "function (e)\n{\n\n}",
+     "type": "function",
+     "desc": "When window resize"
+    },
+    {
      "name": "show",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -9317,7 +9323,7 @@
     {
      "name": "type",
      "type": "String",
-     "desc": "type of menu",
+     "desc": "(dropdown|treeview|submenu) type of menu",
      "memberOf": ""
     },
     {
@@ -10472,6 +10478,12 @@
      "name": "badge",
      "type": "String",
      "desc": "text inside badge",
+     "memberOf": ""
+    },
+    {
+     "name": "badgecls",
+     "type": "String",
+     "desc": "(bg-green|bg-red|bg-yellow)the extra classes for the badge",
      "memberOf": ""
     },
     {

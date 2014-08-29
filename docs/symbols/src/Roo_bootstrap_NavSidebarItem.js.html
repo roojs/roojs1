@@ -3,10 +3,10 @@
  *
  * sidebar item
  *
- *  li / a
- *    optional &lt;i&gt;icon/glyicon&lt;/i&gt;
- *    the text
- *    badge
+ *  li
+ *    &lt;span&gt; icon &lt;/span&gt;
+ *    &lt;span&gt; text &lt;/span&gt;
+ *    &lt;span&gt;badge &lt;/span&gt;
  */
 
 /**
@@ -44,47 +44,47 @@
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
+        };
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-                {
-                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'p'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
-                </span><span class="jsdoc-syntax">}
-            ]
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-var">a </span><span class="jsdoc-syntax">]
         }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">span </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
+        </span><span class="jsdoc-syntax">}
         
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">;
-        }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.active</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' active'</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' active'</span><span class="jsdoc-syntax">;
         }
         
-        
-        
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.href </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.badge </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' &lt;span class=&quot;badge&quot;&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.badge </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/span&gt;'</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' dropdown-toggle treeview'</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'&lt;span class=&quot;glyphicon glyphicon-chevron-down&quot;&gt;&lt;/span&gt;'</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-comment">// fixme - this should handle glyphicon or ico
+        </span><span class="jsdoc-comment">// left icon..
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.glyphicon </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.glyphicon  </span><span class="jsdoc-syntax">? (</span><span class="jsdoc-string">'glyphicon glyphicon-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.glyphicon</span><span class="jsdoc-syntax">)  : </span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;' </span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;&lt;/i&gt;&lt;span&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/span&gt;'
-        </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-var">a.cn.push</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">}) ;
+        }
+        </span><span class="jsdoc-comment">// html..
+        </span><span class="jsdoc-var">a.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">span</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// then badge..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.badge </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">a.cn.push</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,  </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'badge pull-right ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.badgecls </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.badge </span><span class="jsdoc-syntax">}); 
+        }
+        </span><span class="jsdoc-comment">// fi
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">a.cn.push</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'glyphicon glyphicon-chevron-down pull-right'</span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-var">a.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'dropdown-toggle treeview' </span><span class="jsdoc-syntax">;
+            
+        }
+        
         
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;

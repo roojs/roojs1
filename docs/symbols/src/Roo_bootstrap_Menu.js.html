@@ -9,7 +9,7 @@
  * @class Roo.bootstrap.Menu
  * @extends Roo.bootstrap.Component
  * Bootstrap Menu class - container for MenuItems
- * @cfg {String} type type of menu
+ * @cfg {String} type (dropdown|treeview|submenu) type of menu
  * 
  * @constructor
  * Create a new Menu
@@ -108,6 +108,8 @@
         </span><span class="jsdoc-comment">//if (['right'].indexOf(this.align)!==-1) {
         //    cfg.cn[1].cls += ' pull-right'
         //}
+        
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'dropdown-menu' </span><span class="jsdoc-syntax">,
@@ -115,10 +117,13 @@
             
         </span><span class="jsdoc-syntax">}
 	
-	</span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'submenu'</span><span class="jsdoc-syntax">) {
-	    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'submenu active'
-	</span><span class="jsdoc-syntax">}
-	
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'submenu'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'submenu active'</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'treeview'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'treeview-menu'</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {

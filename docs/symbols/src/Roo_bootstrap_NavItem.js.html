@@ -12,6 +12,7 @@
  * @cfg {String} href  link to
  * @cfg {String} html content of button
  * @cfg {String} badge text inside badge
+ * @cfg {String} badgecls (bg-green|bg-red|bg-yellow)the extra classes for the badge
  * @cfg {String} glyphicon name of glyphicon
  * @cfg {String} icon name of font awesome icon
  * @cfg {Boolean} active Is item active
