@@ -23,7 +23,6 @@ Roo.bootstrap.Body = function(config){
         /**
          * @event resize
          * When window resize
-         * @param {Roo.EventObject} e
          */
         "resize" : true
     });
@@ -52,7 +51,7 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
     initEvents: function() 
     {
        
-        this.el.on('click', this.onClick, this);
+        this.fireEvent('resize', this);
     
     }
    
