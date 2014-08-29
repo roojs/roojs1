@@ -12998,7 +12998,7 @@
     },
     {
      "name": "changed",
-     "sig": "function (e, _self, state)\n{\n\n}",
+     "sig": "function (_self, state, e)\n{\n\n}",
      "type": "function",
      "desc": "Fires when the active status changes"
     },

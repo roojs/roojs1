@@ -26,10 +26,9 @@
         </span><span class="jsdoc-comment">/**
 	     * @event changed
 	     * Fires when the active status changes
-             * @param {Roo.EventObject} e
-	     * @param {Roo.bootstrap.TabPanel} this
+             * @param {Roo.bootstrap.TabPanel} this
 	     * @param {Boolean} state the new state
-	    
+	     * @param {Roo.EventObject} e
          */
         </span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
      </span><span class="jsdoc-syntax">});
@@ -70,7 +69,7 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;could not find navID:&quot;  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.navId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;, tabId: &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.tabId</span><span class="jsdoc-syntax">);
             } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-                </span><span class="jsdoc-var">item.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">item.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
