@@ -47,10 +47,14 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
         }
         // style??? xttr???
         */
+    },
+    
+    initEvents: function() 
+    {
+       
+        this.el.on('click', this.onClick, this);
+    
     }
-    
-    
- 
    
 });
 
