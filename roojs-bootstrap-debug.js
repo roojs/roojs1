@@ -12224,9 +12224,8 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             if (!item) {
                 Roo.log("could not find navID:"  + this.navId + ", tabId: " + this.tabId);
             } else {
-                item.on('changed', function(item, state) {
-                    Roo.log(this);
-                    Roo.log(item);
+                item.on('changed', function(e, item, state) {
+                    Roo.log(e);
                     this.setActive(state);
                 }, this);
             }
