@@ -26,9 +26,9 @@ Roo.bootstrap.TabPanel = function(config){
         /**
 	     * @event changed
 	     * Fires when the active status changes
+             * @param {Roo.EventObject} e
 	     * @param {Roo.bootstrap.TabPanel} this
 	     * @param {Boolean} state the new state
-             * @param {Roo.EventObject} e
 	    
          */
         'changed': true
