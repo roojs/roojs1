@@ -51,9 +51,15 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
+        this.el.on('resize', this.onResize, this);
        
-        this.fireEvent('resize', this);
+        
     
+    },
+    
+    onResize: function ()
+    {
+        this.fireEvent('resize', this);
     }
    
 });
