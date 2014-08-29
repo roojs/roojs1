@@ -17,17 +17,6 @@
 
 Roo.bootstrap.Body = function(config){
     Roo.bootstrap.Body.superclass.constructor.call(this, config);
-    
-    this.addEvents({
-        // raw events
-        /**
-         * @event resize
-         * When window resize
-         * @param {Roo.EventObject} e
-         */
-        "resize" : true
-    });
-    
     this.el = Roo.get(document.body);
     if (this.cls && this.cls.length) {
         Roo.get(document.body).addClass(this.cls);
@@ -47,20 +36,10 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
         }
         // style??? xttr???
         */
-    },
-    
-    initEvents: function() 
-    {
-        this.el.on('resize', this.onResize, this);
-       
-        
-    
-    },
-    
-    onResize: function ()
-    {
-        this.fireEvent('resize', this);
     }
+    
+    
+ 
    
 });
 
