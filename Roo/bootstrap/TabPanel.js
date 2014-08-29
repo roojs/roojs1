@@ -26,9 +26,9 @@ Roo.bootstrap.TabPanel = function(config){
         /**
 	     * @event changed
 	     * Fires when the active status changes
-             * @param {Roo.bootstrap.TabPanel} this
+	     * @param {Roo.bootstrap.TabPanel} this
 	     * @param {Boolean} state the new state
-	     * @param {Roo.EventObject} e
+	    
          */
         'changed': true
      });
@@ -69,10 +69,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             if (!item) {
                 Roo.log("could not find navID:"  + this.navId + ", tabId: " + this.tabId);
             } else {
-                item.on('changed', function(item, state, e) {
-                    Roo.log(item);
-                    Roo.log(state);
-                    Roo.log(e);
+                item.on('changed', function(item, state) {
                     this.setActive(state);
                 }, this);
             }
