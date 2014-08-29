@@ -72,7 +72,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
                 item.on('changed', function(e, item, state) {
                     Roo.log(e);
                     this.setActive(state);
-                }, this);
+                }, this, e);
             }
         }
         
