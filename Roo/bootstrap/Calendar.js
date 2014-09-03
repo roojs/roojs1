@@ -740,6 +740,12 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = ctr.createChild(cfg);
                 
+                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+                //Roo.log(cg);
+                cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
+                cg.setWidth(ebox.right - sbox.x -2);
+                
                 if(ev.row > 3){
                     return;
                 }
@@ -750,11 +756,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 ev.els.push(cg);
                 
-                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
-                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
-                //Roo.log(cg);
-                cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
-                cg.setWidth(ebox.right - sbox.x -2);
+                
             }
             
             
