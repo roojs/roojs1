@@ -747,7 +747,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 cg.setWidth(ebox.right - sbox.x -2);
                 
                 if(ev.row > 3){
-                    cg.on('click', this.onMoreEventClick, this, ev);
+                    cg.on('click', this.onMoreEventClick, this, more);
                     return;
                 }
                 
