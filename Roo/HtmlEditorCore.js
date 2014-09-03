@@ -1161,6 +1161,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // clean up silly Windows -- stuff?
             return; 
         }
+        if (node.tagName.toLowerCase().match(/^(style|script|applet|embed|noframes|noscript)$/)) {
+            node.parentNode.removeChild(node);
+            return;
+        }
+        
         // remove - but keep children..
         if (node.tagName.toLowerCase().match(/^(meta|link|span|\\?xml:|st1:|o:|font)/)) {
             while (node.childNodes.length) {
@@ -1172,6 +1177,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             cleanWordChildren();
             return;
         }
+        
         
         
         
