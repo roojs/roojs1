@@ -782,11 +782,12 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.store.load();
     },
     
-    onMoreEventClick: function(e, el)
+    onMoreEventClick: function(e, el, event)
     {
         Roo.log(this.calpopover);
         Roo.log(e);
         Roo.log(el);
+        Roo.log(event);
         
         this.calpopover.placement = 'right';
         this.calpopover.setTitle('More');
