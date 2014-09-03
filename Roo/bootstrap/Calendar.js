@@ -782,7 +782,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 });
             });
         }
-        return;
+        
         this.renderEvents();
         
         if(this.loadMask){
