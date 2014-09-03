@@ -1237,7 +1237,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var j;
             var allText = false;
             var nodeName = currentElement.nodeName;
-            var tagName = currentElement.tagName;
+            var tagName = Roo.util.Format.htmlEncode(currentElement.tagName);
             
             if  (nodeName == '#text') {
                 return currentElement.nodeValue;
