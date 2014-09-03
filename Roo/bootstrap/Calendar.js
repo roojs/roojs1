@@ -792,7 +792,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         Roo.log('calevents!!!!!!!!!!!!!!!!!!!!!!');
         Roo.log(this.calevents);
+        
         this.renderEvents();
+        
+        Roo.log(this.cells);
         
         if(this.loadMask){
             this.maskEl.hide();
