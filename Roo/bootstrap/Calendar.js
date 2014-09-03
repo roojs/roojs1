@@ -679,13 +679,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         var more = [];
         
+        var r = 0;
+        
         for (var e = 0; e < this.calevents.length; e++) {
             
             var ev = this.calevents[e];
             var cells = ev.cells;
             var rows = ev.rows;
-            
-            var r = 0;
             
             for(var i =0; i < rows.length; i++) {
                 
@@ -764,11 +764,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 ev.els.push(cg);
                 
-                r++;
+                
                 
             }
             
-            
+            r++;
         }
         
     },
