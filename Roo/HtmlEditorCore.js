@@ -1225,10 +1225,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
     },
-    domToHTML : function(currentElement, depth, padtext) {
+    domToHTML : function(currentElement, depth, nopadtext) {
         
             depth = depth || 0;
-            padtext = padtext || false;
+            nopadtext = nopadtext || false;
         
             if (!currentElement) {
                 return this.domToHTML(this.doc.body);
@@ -1274,7 +1274,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 return ret;
             }
             if (['PRE', 'TEXTAREA', 'TD'].indexOf(tagName) > -1) { // or code?
-                padtext = true;
+                nopadtext = true;
             }
             
             
@@ -1288,7 +1288,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 
                 if  (currentElementChild.nodeName == '#text') {
                     var toadd = Roo.util.Format.htmlEncode(currentElementChild.nodeValue);
-                    if (padtext && toadd.length > 80) {
+                    if (!nopadtext && toadd.length > 80) {
                         innerHTML  += "\n" + (new Array( depth + 1 )).join( "  "  ) + toadd;
                     } else {
                         innerHTML  += toadd;
@@ -1301,7 +1301,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 innerHTML  += "\n" + (new Array( depth + 1 )).join( "  "  );
                     
                 // Recursively traverse the tree structure of the child node
-                innerHTML   += this.domToHTML(currentElementChild, depth+1, padtext);
+                innerHTML   += this.domToHTML(currentElementChild, depth+1, nopadtext);
                 i++;
                 currentElementChild=currentElement.childNodes.item(i);
             }
