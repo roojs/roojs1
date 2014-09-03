@@ -421,7 +421,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 actiontype : 'word',
                 html: 'Tidy HTML Source',
                 handler: function(a,b) {
-                    editorcore.doc.innerHTML = editorcore.domToHTML();
+                    editorcore.doc.body.innerHTML = editorcore.domToHTML();
                     
                 },
                 tabIndex:-1
