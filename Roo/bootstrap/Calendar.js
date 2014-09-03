@@ -773,7 +773,12 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             this.store.data.each(function(d){
                cal.addItem({
                     id : d.data.id,
-                   
+                    start: (typeof(d.data.start_dt) === 'string') ? new Date.parseDate(d.data.start_dt, 'Y-m-d H:i:s') : d.data.start_dt,
+                    end : (typeof(d.data.end_dt) === 'string') ? new Date.parseDate(d.data.end_dt, 'Y-m-d H:i:s') : d.data.end_dt,
+                    time : d.data.start_time,
+                    title : d.data.title,
+                    description : d.data.description,
+                    venue : d.data.venue
                 });
             });
         }
