@@ -721,7 +721,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 if(ev.row > 3){
                     cfg.cn[0].cn[0].html = 'More';
-                    ev.more = true;
+                    ev.more.push(ev);
                 }
                 
                 if (i == 0) {
