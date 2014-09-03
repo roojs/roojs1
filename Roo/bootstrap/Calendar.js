@@ -677,6 +677,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, Math.min(5, c.rows) * 20));
         });
         
+        var more = [];
+        
         for (var e = 0; e < this.calevents.length; e++) {
             
             var ev = this.calevents[e];
@@ -726,10 +728,12 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 //                    continue;
 //                }
 //                
-//                if(ev.row > 3){
+                if(ev.row > 3 && cells.length > 1 ){
 //                    cfg.cn[0].cn[0].html = 'More';
 //                    this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
-//                }
+                    more.push(ev);
+                    continue;
+                }
                 
                 if (i == 0) {
                     cfg.cls += ' fc-event-start';
