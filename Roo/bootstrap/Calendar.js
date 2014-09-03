@@ -720,7 +720,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 };
                 
                 if(ev.row > 3){
-                    return;
+                    cfg.cn[0].cn[0].html = 'More';
                 }
 
                 if (i == 0) {
