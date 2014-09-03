@@ -789,6 +789,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         Roo.log(el);
         Roo.log(event);
         
+        var more = this.cells.item(this.cells.indexOf(cells[0])).more;
+        
+        Roo.log(more);
+        
         this.calpopover.placement = 'right';
         this.calpopover.setTitle('More');
         this.calpopover.setContent('<div>test</div>');
