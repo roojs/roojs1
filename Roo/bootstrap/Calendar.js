@@ -680,6 +680,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var more = [];
         
         var r = 0;
+        var add = true;
         
         for (var e = 0; e < this.calevents.length; e++) {
             
@@ -734,6 +735,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 //                    cfg.cn[0].cn[0].html = 'More';
 //                    this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
                     more.push(ev);
+                    add = false;
                     continue;
                 }
                 
