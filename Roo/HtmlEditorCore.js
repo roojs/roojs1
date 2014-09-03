@@ -1283,6 +1283,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var currentElementChild = currentElement.childNodes.item(i);
             var allText = true;
             var innerHTML  = '';
+            lastnode = '';
             while (currentElementChild) {
                 // Formatting code (indent the tree so it looks nice on the screen)
                 
@@ -1299,10 +1300,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     continue;
                 }   
                 allText = false;
-                innerHTML  += nopadtext ? '' : "\n" + (new Array( depth + 1 )).join( "  "  );
+                var nopad = nopadtext;
+                if (lastnode == 'SPAN') {
+                    nopad  = true;
+                }
+                innerHTML  += nopad ? '' : "\n" + (new Array( depth + 1 )).join( "  "  );
                     
                 // Recursively traverse the tree structure of the child node
                 innerHTML   += this.domToHTML(currentElementChild, depth+1, nopadtext);
+                lastnode = currentElementChild.nodeName;
                 i++;
                 currentElementChild=currentElement.childNodes.item(i);
             }
