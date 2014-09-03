@@ -1300,8 +1300,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     
                     i++;
                     currentElementChild = currentElement.childNodes.item(i);
+                    lastNode = '';
                     continue;
-                }   
+                }
                 allText = false;
                 
                 innerHTML  += nopad ? '' : "\n" + (new Array( depth + 1 )).join( "  "  );
