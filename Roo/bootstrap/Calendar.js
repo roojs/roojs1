@@ -741,7 +741,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     ]
                 };
                 
-                if(ev.row > 3 && cells.length < 2 ){
+                if(ev.row > 3 && cells.length < 2 && !moreLine){
                     add = false;
                     continue;
                 }
