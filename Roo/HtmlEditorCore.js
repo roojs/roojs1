@@ -1274,33 +1274,38 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 return ret;
             }
             
+            
             // Traverse the tree
             i = 0;
             var currentElementChild = currentElement.childNodes.item(i);
             var allText = true;
+            var innerHTML  = '';
             while (currentElementChild) {
                 // Formatting code (indent the tree so it looks nice on the screen)
                 
                 if  (currentElementChild.nodeName == '#text') {
-                    ret += Roo.util.Format.htmlEncode(currentElementChild.nodeValue);
+                    innerHTML  += Roo.util.Format.htmlEncode(currentElementChild.nodeValue);
                     i++;
                     currentElementChild = currentElement.childNodes.item(i);
                     continue;
                 }   
                 allText = false;
-                ret+= "\n" + (new Array( depth + 1 )).join( "  "  );
+                innerHTML  += "\n" + (new Array( depth + 1 )).join( "  "  );
                     
                 // Recursively traverse the tree structure of the child node
-                ret += this.domToHTML(currentElementChild, depth+1);
+                innerHTML   += this.domToHTML(currentElementChild, depth+1);
                 i++;
                 currentElementChild=currentElement.childNodes.item(i);
             }
             
+            
+            
             if (!allText) {
                     // The remaining code is mostly for formatting the tree
-                ret+="\n";
                 ret+= "\n" + (new Array( depth  )).join( "  "  );
             }
+            
+            
             if (tagName) {
                 ret+= "</"+tagName+">";
             }
