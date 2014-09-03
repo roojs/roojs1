@@ -762,11 +762,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 cg.setXY([sbox.x +2, sbox.y +(r * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
                 
-//                if(ev.row > 3){
-//                    cg.on('click', this.onMoreEventClick, this, ev);
-//                    continue;
-//                }
-                
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
                 cg.on('mouseleave' ,this.onEventLeave, this, ev);
                 cg.on('click', this.onEventClick, this, ev);
