@@ -1142,8 +1142,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (!node.childNodes.length) {
                 return;
             }
-            for (var i = n.childNodes.length-1; i > -1 ; i--) {
-               this.cleanWord(n.childNodes[i]);
+            for (var i = node.childNodes.length-1; i > -1 ; i--) {
+               this.cleanWord(node.childNodes[i]);
             }
         }
         
