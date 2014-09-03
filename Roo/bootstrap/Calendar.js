@@ -722,12 +722,14 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var more = this.cells.item(this.cells.indexOf(cells[0])).more;
                 
                 if(more.length){
+                    Roo.log('has more');
                     Roo.log(this.cells.item(this.cells.indexOf(cells[0])));
                     this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
                     return;
                 }
                 
                 if(ev.row > 3){
+                    Roo.log('start more');
                     Roo.log(this.cells.item(this.cells.indexOf(cells[0])));
                     cfg.cn[0].cn[0].html = 'More';
                     this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
