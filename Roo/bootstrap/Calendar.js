@@ -790,7 +790,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         this.calpopover.placement = 'right';
         this.calpopover.setTitle('More');
-        this.calpopover.setContent('here');
+        this.calpopover.setContent('<div>test</div>');
         this.calpopover.show(el);
     },
     
