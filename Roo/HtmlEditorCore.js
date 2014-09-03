@@ -1235,6 +1235,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             //Roo.log(currentElement);
             var j;
+            var allText = false;
             var nodeName = currentElement.nodeName;
             var tagName = currentElement.tagName;
             
@@ -1247,6 +1248,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if(nodeName == 'BR'){
                 return '<BR/>';
             }
+            var ret = '';
             if (nodeName != 'BODY') {
                 
             
@@ -1260,11 +1262,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                         attr.push(aname + '="' + currentElement.attributes.item(i).value + '"' );
                     }
                     
-                    
-                    cb("<"+currentElement.tagName+ ( attr.length ? (' ' + attr.join(' ') ) : '') + ">");
+                    ret = "<"+currentElement.tagName+ ( attr.length ? (' ' + attr.join(' ') ) : '') + ">";
                 } 
                 else {
-                  cb("[unknown tag]");
+                  // eack
                 }
             } else {
                 tagName = false;
@@ -1277,9 +1278,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 // Formatting code (indent the tree so it looks nice on the screen)
                 
                 if  (currentElementChild.nodeName == '#text') {
-                    cb(currentElementChild.nodeValue);
+                    ret += currentElementChild.nodeValue;
                     i++;
-                    currentElementChild=currentElement.childNodes.item(i);
+                    currentElementChild = currentElement.childNodes.item(i);
                     continue;
                 }   
                 allText = false;
