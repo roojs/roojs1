@@ -853,6 +853,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     onMoreEventClick: function(e, el, event)
     {
+        Roo.log(event);
         var _this = this;
         
         var more = this.cells.item(this.cells.indexOf(event.cells[0])).more;
