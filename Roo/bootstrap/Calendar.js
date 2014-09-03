@@ -678,6 +678,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         });
         
         for (var e = 0; e < this.calevents.length; e++) {
+            
+            if(e > 4){
+                return;
+            }
+            
             var ev = this.calevents[e];
             var cells = ev.cells;
             var rows = ev.rows;
