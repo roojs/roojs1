@@ -42054,7 +42054,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         
         // remove - but keep children..
-        if (node.tagName.toLowerCase().match(/^(meta|link|span|\\?xml:|st1:|o:|font)/)) {
+        if (node.tagName.toLowerCase().match(/^(meta|link|\\?xml:|st1:|o:|font)/)) {
             while (node.childNodes.length) {
                 var cn = node.childNodes[0];
                 node.removeChild(cn);
