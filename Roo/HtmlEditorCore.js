@@ -1258,6 +1258,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     for(i = 0; i < currentElement.attributes.length;i++) {
                         // quoting?
                         var aname = currentElement.attributes.item(i).name;
+                        if (!currentElement.attributes.item(i).value.length) {
+                            continue;
+                        }
                         attr.push(aname + '="' + Roo.util.Format.htmlEncode(currentElement.attributes.item(i).value) + '"' );
                     }
                     
