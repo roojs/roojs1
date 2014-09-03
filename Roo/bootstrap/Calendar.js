@@ -786,6 +786,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     onMoreEventClick: function(e, el, event)
     {
+        var _this = this;
+        
         Roo.log(this.calpopover);
         Roo.log(e);
         Roo.log(el);
@@ -795,13 +797,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         this.calpopover.placement = 'right';
         this.calpopover.setTitle('More');
-        Roo.log('more!!!');
-        Roo.log(more);
         Roo.each(more, function(m){
-            Roo.log('reach');
-           Roo.log(m); 
+            _this.calpopover.setContent('<div>' + m.title +'</div>');
         });
-        this.calpopover.setContent('<div>test</div>');
+        
         this.calpopover.show(el);
         
         
