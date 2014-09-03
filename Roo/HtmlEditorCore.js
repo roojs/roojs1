@@ -1218,9 +1218,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
         }
         
-        
-        
-        
+        cleanWordChildren();
         
         
     }
