@@ -801,7 +801,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var content = '';
         
         Roo.each(more, function(m){
-            content += '<div>' + m.title +'</div>';
+            content += '<div class="fc-event-hori fc-event-draggable">' + m.title +'</div>';
         });
         
         _this.calpopover.setContent(content);
