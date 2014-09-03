@@ -1310,7 +1310,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             if (!allText) {
                     // The remaining code is mostly for formatting the tree
-                ret+= "\n" + (new Array( depth  )).join( "  "  );
+                ret+= nopadtext ? '' : "\n" + (new Array( depth  )).join( "  "  );
             }
             
             
