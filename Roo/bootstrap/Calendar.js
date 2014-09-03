@@ -793,12 +793,16 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         var more = this.cells.item(this.cells.indexOf(event.cells[0])).more;
         
-        Roo.log(more);
-        
         this.calpopover.placement = 'right';
         this.calpopover.setTitle('More');
+        
+        Roo.each(more, function(m){
+           Roo.log(m); 
+        });
         this.calpopover.setContent('<div>test</div>');
         this.calpopover.show(el);
+        
+        
     },
     
     onLoad: function () 
