@@ -803,7 +803,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var ctr = this.calpopover.el.select('.popover-content', true).first();
         
         Roo.each(more, function(m){
-            Roo.log(m);
             var cfg = {
                 cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
                 html : m.title
