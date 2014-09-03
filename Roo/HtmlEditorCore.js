@@ -1190,7 +1190,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 cna.push(cn);
             });
             node.className = cna.length ? cna.join(' ') : '';
+            if (!cna.length) {
+                node.removeAttribute("class");
+            }
+            
         }
+        if (node.hasAttribute("lang")) {
+            node.removeAttribute("lang");
+        }
+        
         
         
         
