@@ -783,7 +783,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     onMoreEventClick: function(e, el,event,d)
     {
-        this.fireEvent('eventclick', this, el, event);
+        Roo.log(e);
+        Roo.log(el);
+        Roo.log(event);
+        Roo.log(d);
     },
     
     onLoad: function () 
