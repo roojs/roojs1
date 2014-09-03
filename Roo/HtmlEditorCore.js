@@ -1250,9 +1250,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             var ret = '';
             if (nodeName != 'BODY') {
-                
-            
-            
+                 
                 var i = 0;
               // Prints the node tagName, such as <A>, <IMG>, etc
                 if (tagName) {
@@ -1284,27 +1282,21 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     continue;
                 }   
                 allText = false;
-                cb("\n");
-                for (j = 0; j < depth; j++) {
-                  // &#166 is just a vertical line
-                  cb("  ");
-                }               
-                
+                ret+= "\n" + (new Array( depth + 1 )).join( "  "  );
                     
                 // Recursively traverse the tree structure of the child node
-                this.traverseDOMTree(cb, currentElementChild, depth+1);
+                ret += this.domToHTML(currentElementChild, depth+1);
                 i++;
                 currentElementChild=currentElement.childNodes.item(i);
             }
+            
             if (!allText) {
                     // The remaining code is mostly for formatting the tree
-                cb("\n");
-                for (j = 0; j < depth - 1; j++) {
-                  cb("  ");
-                }     
+                ret+="\n";
+                ret+= "\n" + (new Array( depth  )).join( "  "  );
             }
             if (tagName) {
-                cb("</"+tagName+">");
+                ret+= "</"+tagName+">";
             }
             
         },
