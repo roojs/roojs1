@@ -770,7 +770,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
             }
             
-            r++;
+            if(add){
+                r++;
+            }
+            
+            add = true;
         }
         
     },
