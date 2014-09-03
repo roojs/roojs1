@@ -781,8 +781,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 ev.els.push(cg);
                 
-                
-                
             }
             
             if(add){
@@ -790,6 +788,33 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             }
             
             add = true;
+        }
+        
+        if(moreLine){
+            var  cfg = {
+                cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+                style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+                unselectable : "on",
+                cn : [
+                    {
+                        cls: 'fc-event-inner',
+                        cn : [
+                            {
+                              tag:'span',
+                              cls: 'fc-event-title',
+                              html : 'More'
+                            }
+
+
+                        ]
+                    },
+                    {
+                        cls: 'ui-resizable-handle ui-resizable-e',
+                        html : '&nbsp;&nbsp;&nbsp'
+                    }
+
+                ]
+            };
         }
         
         
