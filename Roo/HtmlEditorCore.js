@@ -1273,6 +1273,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (['IMG', 'BR', 'HR', 'INPUT'].indexOf(tagName) > -1) {
                 return ret;
             }
+            if (['PRE', 'TEXTAREA'].indexOf(tagName) > -1) { // or code?
+                padtext = true;
+            }
             
             
             // Traverse the tree
