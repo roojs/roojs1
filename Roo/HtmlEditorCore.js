@@ -1137,13 +1137,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     cleanWord : function(node)
     {
+        var _t = this;
         var cleanWordChildren = function()
         {
             if (!node.childNodes.length) {
                 return;
             }
             for (var i = node.childNodes.length-1; i > -1 ; i--) {
-               this.cleanWord(node.childNodes[i]);
+               _t.cleanWord(node.childNodes[i]);
             }
         }
         
