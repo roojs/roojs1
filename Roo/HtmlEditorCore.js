@@ -1224,7 +1224,89 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         cleanWordChildren();
         
         
-    }
+    },
+    domToHTML : function(currentElement, depth) {
+        
+        
+        
+            if (!currentElement) {
+                return '';
+            }
+            
+            //Roo.log(currentElement);
+            var j;
+            var nodeName = currentElement.nodeName;
+            var tagName = currentElement.tagName;
+            
+            if  (nodeName == '#text') {
+                return currentElement.nodeValue;
+            }
+             
+            
+            
+            if(nodeName == 'BR'){
+                return '<BR/>';
+            }
+            if (nodeName != 'BODY') {
+                
+            
+            
+                var i = 0;
+              // Prints the node tagName, such as <A>, <IMG>, etc
+                if (tagName) {
+                    var attr = [];
+                    for(i = 0; i < currentElement.attributes.length;i++) {
+                        // quoting?
+                        attr.push(aname + '="' + currentElement.attributes.item(i).value + '"' );
+                    }
+                    
+                    
+                    cb("<"+currentElement.tagName+ ( attr.length ? (' ' + attr.join(' ') ) : '') + ">");
+                } 
+                else {
+                  cb("[unknown tag]");
+                }
+            } else {
+                tagName = false;
+            }
+            // Traverse the tree
+            i = 0;
+            var currentElementChild = currentElement.childNodes.item(i);
+            var allText = true;
+            while (currentElementChild) {
+                // Formatting code (indent the tree so it looks nice on the screen)
+                
+                if  (currentElementChild.nodeName == '#text') {
+                    cb(currentElementChild.nodeValue);
+                    i++;
+                    currentElementChild=currentElement.childNodes.item(i);
+                    continue;
+                }   
+                allText = false;
+                cb("\n");
+                for (j = 0; j < depth; j++) {
+                  // &#166 is just a vertical line
+                  cb("  ");
+                }               
+                
+                    
+                // Recursively traverse the tree structure of the child node
+                this.traverseDOMTree(cb, currentElementChild, depth+1);
+                i++;
+                currentElementChild=currentElement.childNodes.item(i);
+            }
+            if (!allText) {
+                    // The remaining code is mostly for formatting the tree
+                cb("\n");
+                for (j = 0; j < depth - 1; j++) {
+                  cb("  ");
+                }     
+            }
+            if (tagName) {
+                cb("</"+tagName+">");
+            }
+            
+        },
     
     // hide stuff that is not compatible
     /**
