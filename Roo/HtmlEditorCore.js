@@ -1141,6 +1141,23 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.cleanWord(this.doc.body);
             return;
         }
+        if (node.nodeName == "#text") {
+            // clean up silly Windows -- stuff?
+            return; 
+        }
+        if (node.nodeName == "#comment") {
+            node.parentNode.removeChild(node);
+            // clean up silly Windows -- stuff?
+            return; 
+        }
+        if (node.tagName.toLowerCase().match(/^(meta|link|span|\\?xml:|st1:|o:|font)/)) {
+            while (node.childNodes.length) {
+                var cn = node.childNodes[0];
+                node.removeChild(cn);
+                node.parentNode.insertBefore(cn, node);
+            }
+            node.parentNode.removeChild(node);    
+        }
         
         
         
