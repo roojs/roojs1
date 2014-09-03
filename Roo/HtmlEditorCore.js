@@ -1263,11 +1263,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     ret = "<"+currentElement.tagName+ ( attr.length ? (' ' + attr.join(' ') ) : '') + ">";
                 } 
                 else {
-                  // eack
+                    
+                    // eack
                 }
             } else {
                 tagName = false;
             }
+            if (['IMG', 'BR', 'HR', 'INPUT'].indexOf(tagName) > -1) {
+                return ret;
+            }
+            
             // Traverse the tree
             i = 0;
             var currentElementChild = currentElement.childNodes.item(i);
@@ -1298,6 +1303,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (tagName) {
                 ret+= "</"+tagName+">";
             }
+            return ret;
             
         },
     
