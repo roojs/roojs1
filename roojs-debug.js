@@ -43158,7 +43158,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                         c.select('[style]').each(function(s) {
                             s.dom.style.removeProperty(a.actiontype);
                         });
-                        
+                        editorcore.syncValue();
                     },
                     tabIndex:-1
                 });
@@ -43168,7 +43168,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 html: 'Remove MS Word Formating',
                 handler: function(a,b) {
                     editorcore.cleanWord();
-                    
+                    editorcore.syncValue();
                 },
                 tabIndex:-1
             });
@@ -43182,7 +43182,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     c.select('[style]').each(function(s) {
                         s.dom.removeAttribute('style');
                     });
-                    
+                    editorcore.syncValue();
                 },
                 tabIndex:-1
             });
@@ -43191,7 +43191,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 html: 'Tidy HTML Source',
                 handler: function(a,b) {
                     editorcore.doc.body.innerHTML = editorcore.domToHTML();
-                    
+                    editorcore.syncValue();
                 },
                 tabIndex:-1
             });
