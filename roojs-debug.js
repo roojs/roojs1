@@ -42158,7 +42158,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (['IMG', 'BR', 'HR', 'INPUT'].indexOf(tagName) > -1) {
                 return ret;
             }
-            if (['PRE', 'TEXTAREA', 'TD', 'A'].indexOf(tagName) > -1) { // or code?
+            if (['PRE', 'TEXTAREA', 'TD', 'A', 'SPAN'].indexOf(tagName) > -1) { // or code?
                 nopadtext = true;
             }
             
@@ -42168,25 +42168,33 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             var currentElementChild = currentElement.childNodes.item(i);
             var allText = true;
             var innerHTML  = '';
+            lastnode = '';
             while (currentElementChild) {
                 // Formatting code (indent the tree so it looks nice on the screen)
-                
+                var nopad = nopadtext;
+                if (lastnode == 'SPAN') {
+                    nopad  = true;
+                }
+                // text
                 if  (currentElementChild.nodeName == '#text') {
                     var toadd = Roo.util.Format.htmlEncode(currentElementChild.nodeValue);
-                    if (!nopadtext && toadd.length > 80) {
+                    if (!nopad && toadd.length > 80) {
                         innerHTML  += "\n" + (new Array( depth + 1 )).join( "  "  );
                     }
                     innerHTML  += toadd;
                     
                     i++;
                     currentElementChild = currentElement.childNodes.item(i);
+                    lastNode = '';
                     continue;
-                }   
+                }
                 allText = false;
-                innerHTML  += nopadtext ? '' : "\n" + (new Array( depth + 1 )).join( "  "  );
+                
+                innerHTML  += nopad ? '' : "\n" + (new Array( depth + 1 )).join( "  "  );
                     
                 // Recursively traverse the tree structure of the child node
                 innerHTML   += this.domToHTML(currentElementChild, depth+1, nopadtext);
+                lastnode = currentElementChild.nodeName;
                 i++;
                 currentElementChild=currentElement.childNodes.item(i);
             }
