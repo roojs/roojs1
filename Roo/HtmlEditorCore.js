@@ -1198,7 +1198,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (node.hasAttribute("lang")) {
             node.removeAttribute("lang");
         }
-        if (node.getAttribute("style").length) {
+        if (node.getAttribute("style") && node.getAttribute("style").length) {
             
             var styles = node.getAttribute("style").split(";");
             var nstyle = [];
