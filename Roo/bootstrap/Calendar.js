@@ -605,6 +605,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     addItem : function(ev)
     {
+        Roo.log('add Itme!!!!!!!!!!!!!!!!!!!!');
         // look for vertical location slot in
         var cells = this.findCells(ev);
         
