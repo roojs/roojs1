@@ -1225,9 +1225,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
     },
-    domToHTML : function(currentElement, depth) {
+    domToHTML : function(currentElement, depth, padtext) {
         
             depth = depth || 0;
+            padtext = padtext || false;
         
             if (!currentElement) {
                 return this.domToHTML(this.doc.body);
