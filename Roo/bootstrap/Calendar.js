@@ -788,11 +788,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     {
         var _this = this;
         
-        Roo.log(this.calpopover);
-        Roo.log(e);
-        Roo.log(el);
-        Roo.log(event);
-        
         var more = this.cells.item(this.cells.indexOf(event.cells[0])).more;
         
         this.calpopover.placement = 'right';
@@ -835,12 +830,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 });
             });
         }
-        Roo.log('calevents!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.calevents);
         
         this.renderEvents();
-        
-        Roo.log(this.cells);
         
         if(this.loadMask){
             this.maskEl.hide();
