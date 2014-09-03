@@ -419,7 +419,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             });
              cmenu.menu.items.push({
                 actiontype : 'word',
-                html: 'Remove MS Word Formating',
+                html: 'Tidy HTML Source',
                 handler: function(a,b) {
                     editorcore.doc.innerHTML = editorcore.domToHTML();
                     
