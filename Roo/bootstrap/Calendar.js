@@ -804,7 +804,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         Roo.each(more, function(m){
             var cfg = {
-                cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+                cls : 'fc-event-hori fc-event-draggable',
                 html : m.title
             }
             var cg = ctr.createChild(cfg);
