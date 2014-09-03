@@ -1230,7 +1230,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             depth = depth || 0;
         
             if (!currentElement) {
-                return '';
+                return this.domToHTML(this.doc.body);
             }
             
             //Roo.log(currentElement);
