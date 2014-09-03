@@ -724,7 +724,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     ev.more = true;
                 }
                 
-
                 if (i == 0) {
                     cfg.cls += ' fc-event-start';
                 }
