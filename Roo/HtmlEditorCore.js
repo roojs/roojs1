@@ -1257,6 +1257,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     var attr = [];
                     for(i = 0; i < currentElement.attributes.length;i++) {
                         // quoting?
+                        var aname = currentElement.attributes.item(i).name;
                         attr.push(aname + '="' + currentElement.attributes.item(i).value + '"' );
                     }
                     
