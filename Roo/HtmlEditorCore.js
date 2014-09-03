@@ -1298,7 +1298,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 currentElementChild=currentElement.childNodes.item(i);
             }
             
-            
+            ret += innerHTML;
             
             if (!allText) {
                     // The remaining code is mostly for formatting the tree
