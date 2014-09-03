@@ -725,7 +725,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     Roo.log('has more');
                     Roo.log(this.cells.item(this.cells.indexOf(cells[0])));
                     this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
-                    return;
+                    continue;
                 }
                 
                 if(ev.row > 3){
@@ -754,7 +754,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 if(ev.row > 3){
                     Roo.log('render more click');
                     cg.on('click', this.onMoreEventClick, this, ev);
-                    return;
+                    continue;
                 }
                 
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
