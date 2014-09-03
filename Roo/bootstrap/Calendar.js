@@ -728,7 +728,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 if(ev.row > 3){
                     cfg.cn[0].cn[0].html = 'More';
                     this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
-                    return;
                 }
                 
                 if (i == 0) {
@@ -740,6 +739,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = ctr.createChild(cfg);
+                
+                if(ev.row > 3){
+                    return;
+                }
                 
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
                 cg.on('mouseleave' ,this.onEventLeave, this, ev);
