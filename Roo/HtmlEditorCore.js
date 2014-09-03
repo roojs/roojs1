@@ -1305,7 +1305,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             return ret;
             
-        },
+        }
     
     // hide stuff that is not compatible
     /**
