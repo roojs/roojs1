@@ -389,7 +389,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                         c.select('[style]').each(function(s) {
                             s.dom.style.removeProperty(a.actiontype);
                         });
-                        
+                        editorcore.syncValue();
                     },
                     tabIndex:-1
                 });
