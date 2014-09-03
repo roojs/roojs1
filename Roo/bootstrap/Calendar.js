@@ -671,7 +671,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     renderEvents: function()
     {   
         // first make sure there is enough space..
-        
+        Roo.log(this.cells);
         this.cells.each(function(c) {
         
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, Math.min(5, c.rows) * 20));
