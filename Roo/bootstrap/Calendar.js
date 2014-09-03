@@ -784,10 +784,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     onMoreEventClick: function(e, el)
     {
-        Roo.log(this);
         Roo.log(this.calpopover);
         Roo.log(e);
         Roo.log(el);
+        
+        this.calpopover.setTitle('More');
+        this.calpopover.setContent('here');
+        this.calpopover.show(el);
     },
     
     onLoad: function () 
