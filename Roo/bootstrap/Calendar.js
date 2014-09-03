@@ -741,17 +741,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     ]
                 };
                 
-//                var more = this.cells.item(this.cells.indexOf(cells[0])).more;
-//                
-//                if(more.length){
-//                    this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
-//                    continue;
-//                }
-//                
                 if(ev.row > 3 && cells.length < 2 ){
-//                    cfg.cn[0].cn[0].html = 'More';
-//                    this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
-                    more.push(ev);
                     add = false;
                     continue;
                 }
