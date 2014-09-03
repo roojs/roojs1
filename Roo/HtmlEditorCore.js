@@ -1195,6 +1195,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.removeAttribute("class");
             }
         }
+        
         if (node.hasAttribute("lang")) {
             node.removeAttribute("lang");
         }
