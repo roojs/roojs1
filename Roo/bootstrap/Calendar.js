@@ -789,6 +789,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         Roo.log(el);
         Roo.log(event);
         
+        Roo.log(this.cells.item(this.cells.indexOf(event.cells[0])));
         var more = this.cells.item(this.cells.indexOf(event.cells[0])).more;
         
         Roo.log(more);
