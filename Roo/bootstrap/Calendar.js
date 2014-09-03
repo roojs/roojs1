@@ -695,7 +695,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             moreLine = true;
             moreContainer = more[0].rows.start;
         }
-        
+        Roo.log(moreContainer);
         var r = 0;
         var add = true;
         
