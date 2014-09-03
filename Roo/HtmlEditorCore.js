@@ -1282,7 +1282,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 // Formatting code (indent the tree so it looks nice on the screen)
                 
                 if  (currentElementChild.nodeName == '#text') {
-                    ret += currentElementChild.nodeValue;
+                    ret += Roo.util.Format.htmlEncode(currentElementChild.nodeValue);
                     i++;
                     currentElementChild = currentElement.childNodes.item(i);
                     continue;
