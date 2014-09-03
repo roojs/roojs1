@@ -720,16 +720,14 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 };
                 
                 var more = this.cells.item(this.cells.indexOf(cells[0])).more;
-                Roo.log(more.length);
+                
                 if(more.length){
-                    Roo.log('has more');
                     Roo.log(this.cells.item(this.cells.indexOf(cells[0])));
                     this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
                     continue;
                 }
                 
                 if(ev.row > 3){
-                    Roo.log('start more');
                     Roo.log(this.cells.item(this.cells.indexOf(cells[0])));
                     cfg.cn[0].cn[0].html = 'More';
                     this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
@@ -752,7 +750,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 cg.setWidth(ebox.right - sbox.x -2);
                 
                 if(ev.row > 3){
-                    Roo.log('render more click');
                     cg.on('click', this.onMoreEventClick, this, ev);
                     continue;
                 }
