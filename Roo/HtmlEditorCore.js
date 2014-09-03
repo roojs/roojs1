@@ -1243,12 +1243,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if  (nodeName == '#text') {
                 return currentElement.nodeValue;
             }
-             
             
             
-            if(nodeName == 'BR'){
-                return '<BR/>';
-            }
             var ret = '';
             if (nodeName != 'BODY') {
                  
