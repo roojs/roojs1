@@ -1137,6 +1137,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     cleanWord : function(node)
     {
+        var cleanWordChildren = function()
+        {
+            if (!node.childNodes.length) {
+                return;
+            }
+            for (var i = n.childNodes.length-1; i > -1 ; i--) {
+               this.cleanWord(n.childNodes[i]);
+            }
+        }
+        
+        
         if (!node) {
             this.cleanWord(this.doc.body);
             return;
@@ -1157,7 +1168,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.removeChild(cn);
                 node.parentNode.insertBefore(cn, node);
             }
-            node.parentNode.removeChild(node);    
+            node.parentNode.removeChild(node);
+            cleanWordChildren();
+            return;
         }
         
         
