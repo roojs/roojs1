@@ -1252,7 +1252,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (nodeName != 'BODY') {
                  
                 var i = 0;
-              // Prints the node tagName, such as <A>, <IMG>, etc
+                // Prints the node tagName, such as <A>, <IMG>, etc
                 if (tagName) {
                     var attr = [];
                     for(i = 0; i < currentElement.attributes.length;i++) {
