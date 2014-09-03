@@ -1206,7 +1206,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     return;
                 }
                 var kv = s.split(":");
-                if (kv[0].match(/^(mso-|line|font|background|margin|padding|/)) {
+                if (kv[0].match(/^(mso-|line|font|background|margin|padding)/)) {
                     return;
                 }
                 // what ever is left... we allow.
