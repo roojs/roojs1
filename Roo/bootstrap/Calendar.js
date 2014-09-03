@@ -798,13 +798,17 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.calpopover.placement = 'right';
         this.calpopover.setTitle('More');
         
-        var content = '';
+        this.calpopover.setContent('');
+        
+        var ctr = this.calpopover.el.select('.popover-content', true).first();
         
         Roo.each(more, function(m){
-            content += '<div class="fc-event-hori fc-event-draggable">' + m.title +'</div>';
+            var cfg = {
+                cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+                html : m.title
+            }
+            var cg = ctr.createChild(cfg);
         });
-        
-        _this.calpopover.setContent(content);
         
         this.calpopover.show(el);
         
