@@ -1193,10 +1193,29 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (!cna.length) {
                 node.removeAttribute("class");
             }
-            
         }
         if (node.hasAttribute("lang")) {
             node.removeAttribute("lang");
+        }
+        if (node.getAttribute("style").length) {
+            
+            var styles = node.getAttribute("style").split(";");
+            var nstyle = [];
+            Roo.each(styles, function(s) {
+                if (!s.match(/:/)) {
+                    return;
+                }
+                var kv = s.split(":");
+                if (kv[0].match(/^(mso-|line|font|background|margin|padding|/)) {
+                    return;
+                }
+                // what ever is left... we allow.
+                nstyle.push(s);
+            });
+            node.setAttribute("style", nstyle.length ? nstyle.join(';') : '');
+            if (!nstyle.length) {
+                node.removeAttribute('style');
+            }
         }
         
         
