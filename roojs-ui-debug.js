@@ -25755,7 +25755,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 if (cls.match(/Mso[a-zA-Z]+/)) {
                     return;
                 }
-                cna.push(cn);
+                cna.push(cls);
             });
             node.className = cna.length ? cna.join(' ') : '';
             if (!cna.length) {
