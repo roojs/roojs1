@@ -810,7 +810,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             }
             var cg = ctr.createChild(cfg);
             
-            
+            cg.on('click', this.onEventClick, this, m);
         });
         
         this.calpopover.show(el);
