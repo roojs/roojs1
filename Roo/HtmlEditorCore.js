@@ -1161,6 +1161,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // clean up silly Windows -- stuff?
             return; 
         }
+        
         if (node.tagName.toLowerCase().match(/^(style|script|applet|embed|noframes|noscript)$/)) {
             node.parentNode.removeChild(node);
             return;
@@ -1176,6 +1177,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             node.parentNode.removeChild(node);
             cleanWordChildren();
             return;
+        }
+        // clean styles
+        if (node.className.length) {
+            
+            var cn = node.className.split(/\W+/);
+            var cna = [];
+            Roo.each(cn, function(cls) {
+                if (cls.match(/Mso[a-zA-Z]+/)) {
+                    return;
+                }
+                cna.push(cn);
+            });
+            node.className = cna.length ? cna.join(' ') : '';
         }
         
         
