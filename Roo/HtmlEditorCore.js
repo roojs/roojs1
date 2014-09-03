@@ -1301,7 +1301,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 innerHTML  += "\n" + (new Array( depth + 1 )).join( "  "  );
                     
                 // Recursively traverse the tree structure of the child node
-                innerHTML   += this.domToHTML(currentElementChild, depth+1);
+                innerHTML   += this.domToHTML(currentElementChild, depth+1, padtext);
                 i++;
                 currentElementChild=currentElement.childNodes.item(i);
             }
