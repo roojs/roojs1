@@ -1273,7 +1273,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (['IMG', 'BR', 'HR', 'INPUT'].indexOf(tagName) > -1) {
                 return ret;
             }
-            if (['PRE', 'TEXTAREA', 'TD', 'A'].indexOf(tagName) > -1) { // or code?
+            if (['PRE', 'TEXTAREA', 'TD', 'A', 'SPAN'].indexOf(tagName) > -1) { // or code?
                 nopadtext = true;
             }
             
