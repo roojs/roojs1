@@ -1227,7 +1227,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     },
     domToHTML : function(currentElement, depth) {
         
-        
+            depth = depth || 0;
         
             if (!currentElement) {
                 return '';
