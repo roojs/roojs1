@@ -685,6 +685,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var cells = ev.cells;
             var rows = ev.rows;
             
+            var r = 0;
+            
             for(var i =0; i < rows.length; i++) {
                 
                  
@@ -748,7 +750,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
                 var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
                 //Roo.log(cg);
-                cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
+                cg.setXY([sbox.x +2, sbox.y +(r * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
                 
 //                if(ev.row > 3){
@@ -762,6 +764,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 ev.els.push(cg);
                 
+                r++;
                 
             }
             
