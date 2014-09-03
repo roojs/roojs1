@@ -1131,8 +1131,21 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.cleanUpChildren(node);
         
         
+    },
+    /**
+     * Clean up MS wordisms...
+     */
+    cleanWord : function(node)
+    {
+        if (!node) {
+            this.cleanWord(this.doc.body);
+            return;
+        }
+        
+        
+        
+        
     }
-    
     
     // hide stuff that is not compatible
     /**
