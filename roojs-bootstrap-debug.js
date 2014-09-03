@@ -11605,6 +11605,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         rows.push(crow);
         ev.els = [];
+        ev.more = [];
         ev.rows = rows;
         ev.cells = cells;
         for (var i = 0; i < cells.length;i++) {
@@ -11638,13 +11639,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     renderEvents: function()
     {   
         // first make sure there is enough space..
-        
         this.cells.each(function(c) {
-        
-            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
+            c.more = [];
+            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, Math.min(5, c.rows) * 20));
         });
         
         for (var e = 0; e < this.calevents.length; e++) {
+            
             var ev = this.calevents[e];
             var cells = ev.cells;
             var rows = ev.rows;
@@ -11684,6 +11685,21 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                         
                     ]
                 };
+                
+                var more = this.cells.item(this.cells.indexOf(cells[0])).more;
+                
+                if(more.length){
+                    Roo.log(this.cells.item(this.cells.indexOf(cells[0])));
+                    this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
+                    continue;
+                }
+                
+                if(ev.row > 3){
+                    Roo.log(this.cells.item(this.cells.indexOf(cells[0])));
+                    cfg.cn[0].cn[0].html = 'More';
+                    this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
+                }
+                
                 if (i == 0) {
                     cfg.cls += ' fc-event-start';
                 }
@@ -11694,17 +11710,24 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = ctr.createChild(cfg);
                 
+                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+                //Roo.log(cg);
+                cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
+                cg.setWidth(ebox.right - sbox.x -2);
+                
+                if(ev.row > 3){
+                    cg.on('click', this.onMoreEventClick, this, ev);
+                    continue;
+                }
+                
                 cg.on('mouseenter' ,this.onEventEnter, this, ev);
                 cg.on('mouseleave' ,this.onEventLeave, this, ev);
                 cg.on('click', this.onEventClick, this, ev);
                 
                 ev.els.push(cg);
                 
-                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
-                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
-                //Roo.log(cg);
-                cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
-                cg.setWidth(ebox.right - sbox.x -2);
+                
             }
             
             
@@ -11728,6 +11751,39 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.store.load();
     },
     
+    onMoreEventClick: function(e, el, event)
+    {
+        var _this = this;
+        
+        Roo.log(this.calpopover);
+        Roo.log(e);
+        Roo.log(el);
+        Roo.log(event);
+        
+        var more = this.cells.item(this.cells.indexOf(event.cells[0])).more;
+        
+        this.calpopover.placement = 'right';
+        this.calpopover.setTitle('More');
+        
+        this.calpopover.setContent('');
+        
+        var ctr = this.calpopover.el.select('.popover-content', true).first();
+        
+        Roo.each(more, function(m){
+            var cfg = {
+                cls : 'fc-event-hori fc-event-draggable',
+                html : m.title
+            }
+            var cg = ctr.createChild(cfg);
+            
+            cg.on('click', _this.onEventClick, _this, m);
+        });
+        
+        this.calpopover.show(el);
+        
+        
+    },
+    
     onLoad: function () 
     {   
         this.calevents = [];
@@ -11746,8 +11802,12 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 });
             });
         }
+        Roo.log('calevents!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(this.calevents);
         
         this.renderEvents();
+        
+        Roo.log(this.cells);
         
         if(this.loadMask){
             this.maskEl.hide();
@@ -15274,8 +15334,203 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.cleanUpChildren(node);
         
         
-    }
-    
+    },
+    /**
+     * Clean up MS wordisms...
+     */
+    cleanWord : function(node)
+    {
+        var _t = this;
+        var cleanWordChildren = function()
+        {
+            if (!node.childNodes.length) {
+                return;
+            }
+            for (var i = node.childNodes.length-1; i > -1 ; i--) {
+               _t.cleanWord(node.childNodes[i]);
+            }
+        }
+        
+        
+        if (!node) {
+            this.cleanWord(this.doc.body);
+            return;
+        }
+        if (node.nodeName == "#text") {
+            // clean up silly Windows -- stuff?
+            return; 
+        }
+        if (node.nodeName == "#comment") {
+            node.parentNode.removeChild(node);
+            // clean up silly Windows -- stuff?
+            return; 
+        }
+        
+        if (node.tagName.toLowerCase().match(/^(style|script|applet|embed|noframes|noscript)$/)) {
+            node.parentNode.removeChild(node);
+            return;
+        }
+        
+        // remove - but keep children..
+        if (node.tagName.toLowerCase().match(/^(meta|link|\\?xml:|st1:|o:|font)/)) {
+            while (node.childNodes.length) {
+                var cn = node.childNodes[0];
+                node.removeChild(cn);
+                node.parentNode.insertBefore(cn, node);
+            }
+            node.parentNode.removeChild(node);
+            cleanWordChildren();
+            return;
+        }
+        // clean styles
+        if (node.className.length) {
+            
+            var cn = node.className.split(/\W+/);
+            var cna = [];
+            Roo.each(cn, function(cls) {
+                if (cls.match(/Mso[a-zA-Z]+/)) {
+                    return;
+                }
+                cna.push(cls);
+            });
+            node.className = cna.length ? cna.join(' ') : '';
+            if (!cna.length) {
+                node.removeAttribute("class");
+            }
+        }
+        
+        if (node.hasAttribute("lang")) {
+            node.removeAttribute("lang");
+        }
+        
+        if (node.hasAttribute("style")) {
+            
+            var styles = node.getAttribute("style").split(";");
+            var nstyle = [];
+            Roo.each(styles, function(s) {
+                if (!s.match(/:/)) {
+                    return;
+                }
+                var kv = s.split(":");
+                if (kv[0].match(/^(mso-|line|font|background|margin|padding|color)/)) {
+                    return;
+                }
+                // what ever is left... we allow.
+                nstyle.push(s);
+            });
+            node.setAttribute("style", nstyle.length ? nstyle.join(';') : '');
+            if (!nstyle.length) {
+                node.removeAttribute('style');
+            }
+        }
+        
+        cleanWordChildren();
+        
+        
+    },
+    domToHTML : function(currentElement, depth, nopadtext) {
+        
+            depth = depth || 0;
+            nopadtext = nopadtext || false;
+        
+            if (!currentElement) {
+                return this.domToHTML(this.doc.body);
+            }
+            
+            //Roo.log(currentElement);
+            var j;
+            var allText = false;
+            var nodeName = currentElement.nodeName;
+            var tagName = Roo.util.Format.htmlEncode(currentElement.tagName);
+            
+            if  (nodeName == '#text') {
+                return currentElement.nodeValue;
+            }
+            
+            
+            var ret = '';
+            if (nodeName != 'BODY') {
+                 
+                var i = 0;
+                // Prints the node tagName, such as <A>, <IMG>, etc
+                if (tagName) {
+                    var attr = [];
+                    for(i = 0; i < currentElement.attributes.length;i++) {
+                        // quoting?
+                        var aname = currentElement.attributes.item(i).name;
+                        if (!currentElement.attributes.item(i).value.length) {
+                            continue;
+                        }
+                        attr.push(aname + '="' + Roo.util.Format.htmlEncode(currentElement.attributes.item(i).value) + '"' );
+                    }
+                    
+                    ret = "<"+currentElement.tagName+ ( attr.length ? (' ' + attr.join(' ') ) : '') + ">";
+                } 
+                else {
+                    
+                    // eack
+                }
+            } else {
+                tagName = false;
+            }
+            if (['IMG', 'BR', 'HR', 'INPUT'].indexOf(tagName) > -1) {
+                return ret;
+            }
+            if (['PRE', 'TEXTAREA', 'TD', 'A', 'SPAN'].indexOf(tagName) > -1) { // or code?
+                nopadtext = true;
+            }
+            
+            
+            // Traverse the tree
+            i = 0;
+            var currentElementChild = currentElement.childNodes.item(i);
+            var allText = true;
+            var innerHTML  = '';
+            lastnode = '';
+            while (currentElementChild) {
+                // Formatting code (indent the tree so it looks nice on the screen)
+                var nopad = nopadtext;
+                if (lastnode == 'SPAN') {
+                    nopad  = true;
+                }
+                // text
+                if  (currentElementChild.nodeName == '#text') {
+                    var toadd = Roo.util.Format.htmlEncode(currentElementChild.nodeValue);
+                    if (!nopad && toadd.length > 80) {
+                        innerHTML  += "\n" + (new Array( depth + 1 )).join( "  "  );
+                    }
+                    innerHTML  += toadd;
+                    
+                    i++;
+                    currentElementChild = currentElement.childNodes.item(i);
+                    lastNode = '';
+                    continue;
+                }
+                allText = false;
+                
+                innerHTML  += nopad ? '' : "\n" + (new Array( depth + 1 )).join( "  "  );
+                    
+                // Recursively traverse the tree structure of the child node
+                innerHTML   += this.domToHTML(currentElementChild, depth+1, nopadtext);
+                lastnode = currentElementChild.nodeName;
+                i++;
+                currentElementChild=currentElement.childNodes.item(i);
+            }
+            
+            ret += innerHTML;
+            
+            if (!allText) {
+                    // The remaining code is mostly for formatting the tree
+                ret+= nopadtext ? '' : "\n" + (new Array( depth  )).join( "  "  );
+            }
+            
+            
+            if (tagName) {
+                ret+= "</"+tagName+">";
+            }
+            return ret;
+            
+        }
     
     // hide stuff that is not compatible
     /**
