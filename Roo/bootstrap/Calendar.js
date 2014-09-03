@@ -786,8 +786,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     {
         Roo.log(e);
         Roo.log(el);
-        Roo.log(event);
-        Roo.log(d);
     },
     
     onLoad: function () 
