@@ -723,7 +723,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     cfg.cn[0].cn[0].html = 'More';
                     Roo.log('cells!!!');
                     Roo.log(cells);
-                    Roo.log(this.cells.indexOf(cells[0]));
+                    Roo.log(this.cells.item(this.cells.indexOf(cells[0])));
                 }
                 
                 if (i == 0) {
