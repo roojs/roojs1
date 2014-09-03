@@ -781,6 +781,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.store.load();
     },
     
+    onMoreEventClick: function(e, el,event,d)
+    {
+        this.fireEvent('eventclick', this, el, event);
+    },
+    
     onLoad: function () 
     {   
         this.calevents = [];
