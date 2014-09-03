@@ -827,7 +827,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             cg.setXY([sbox.x +2, sbox.y +(r * 20)]);    
             cg.setWidth(ebox.right - sbox.x -2);
             
-            cg.on('click', this.onMoreEventClick, this, ev);
+            cg.on('click', this.onMoreEventClick, this, more);
         }
         
         
