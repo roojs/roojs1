@@ -720,7 +720,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 };
                 
                 var more = this.cells.item(this.cells.indexOf(cells[0])).more;
-                Roo.log(more);
+                Roo.log(more.length);
                 if(more.length){
                     Roo.log('has more');
                     Roo.log(this.cells.item(this.cells.indexOf(cells[0])));
