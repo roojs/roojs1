@@ -1289,10 +1289,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 if  (currentElementChild.nodeName == '#text') {
                     var toadd = Roo.util.Format.htmlEncode(currentElementChild.nodeValue);
                     if (!nopadtext && toadd.length > 80) {
-                        innerHTML  += "\n" + (new Array( depth + 1 )).join( "  "  ) + toadd;
-                    } else {
-                        innerHTML  += toadd;
+                        innerHTML  += "\n" + (new Array( depth + 1 )).join( "  "  );
                     }
+                    innerHTML  += toadd;
+                    
                     i++;
                     currentElementChild = currentElement.childNodes.item(i);
                     continue;
