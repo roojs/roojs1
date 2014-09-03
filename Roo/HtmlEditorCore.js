@@ -1286,6 +1286,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             while (currentElementChild) {
                 // Formatting code (indent the tree so it looks nice on the screen)
                 
+                // text
                 if  (currentElementChild.nodeName == '#text') {
                     var toadd = Roo.util.Format.htmlEncode(currentElementChild.nodeValue);
                     if (!nopadtext && toadd.length > 80) {
