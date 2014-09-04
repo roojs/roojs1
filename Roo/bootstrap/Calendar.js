@@ -732,7 +732,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 if(cells.length < 2 && scell.row > 3){
                     continue;
                 }
-                
+                Roo.log('got');
                  
                 // how many rows should it span..
                 
