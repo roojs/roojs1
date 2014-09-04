@@ -675,31 +675,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.cells.each(function(c) {
             c.rows = [];
             c.more = [];
-//            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
         });
-        
-//        var more = [];
-//        var moreLine = false;
-//        var moreContainer = false;
-//        
-//        for (var e = 0; e < this.calevents.length; e++) {
-//            var ev = this.calevents[e];
-//            var cells = ev.cells;
-//            var rows = ev.rows;
-//            
-//            if(ev.row > 3 && cells.length < 2 ){
-//                this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
-//                more.push(ev);
-//            }
-//        }
-//        
-//        if(more.length > 1){
-//            moreLine = true;
-//            moreContainer = more[0].rows[0].start;
-//        }
-//        
-//        var r = 0;
-//        var add = true;
         
         for (var e = 0; e < this.calevents.length; e++) {
             
