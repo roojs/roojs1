@@ -672,7 +672,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     {   
         // first make sure there is enough space..
         this.cells.each(function(c) {
-            c.row = 0;
+            c.row = -1;
             c.more = [];
 //            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
         });
@@ -834,7 +834,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         var _this = this;
         this.cells.each(function(c) {
-            
+            Roo.log(c.row);
             var r = (c.more.length) ? c.row + 1 : c.row;
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, r * 20));
             
