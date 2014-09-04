@@ -826,6 +826,46 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
             }
             
+            
+            if(c.more.length){
+                var  cfg = {
+                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+                    style : 'position: absolute',
+                    unselectable : "on",
+                    cn : [
+                        {
+                            cls: 'fc-event-inner',
+                            cn : [
+                                {
+                                  tag:'span',
+                                  cls: 'fc-event-title',
+                                  html : 'More'
+                                }
+
+
+                            ]
+                        },
+                        {
+                            cls: 'ui-resizable-handle ui-resizable-e',
+                            html : '&nbsp;&nbsp;&nbsp'
+                        }
+
+                    ]
+                };
+
+                var ctr = _this.el.select('.fc-event-container',true).first();
+                var cg = ctr.createChild(cfg);
+
+                var sbox = c.select('.fc-day-content',true).first().getBox();
+                var ebox = c.select('.fc-day-content',true).first().getBox();
+                //Roo.log(cg);
+                cg.setXY([sbox.x +2, sbox.y +(c.rows.length * 20)]);    
+                cg.setWidth(ebox.right - sbox.x -2);
+
+                cg.on('click', this.onMoreEventClick, this, c.more);
+            
+            }
+            
         });
         
         
@@ -971,44 +1011,44 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, r * 20));
             
-//            if(c.more.length){
-//                var  cfg = {
-//                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
-//                    style : 'position: absolute',
-//                    unselectable : "on",
-//                    cn : [
-//                        {
-//                            cls: 'fc-event-inner',
-//                            cn : [
-//                                {
-//                                  tag:'span',
-//                                  cls: 'fc-event-title',
-//                                  html : 'More'
-//                                }
-//
-//
-//                            ]
-//                        },
-//                        {
-//                            cls: 'ui-resizable-handle ui-resizable-e',
-//                            html : '&nbsp;&nbsp;&nbsp'
-//                        }
-//
-//                    ]
-//                };
-//
-//                var ctr = _this.el.select('.fc-event-container',true).first();
-//                var cg = ctr.createChild(cfg);
-//
-//                var sbox = c.select('.fc-day-content',true).first().getBox();
-//                var ebox = c.select('.fc-day-content',true).first().getBox();
-//                //Roo.log(cg);
-//                cg.setXY([sbox.x +2, sbox.y +((r-1) * 20)]);    
-//                cg.setWidth(ebox.right - sbox.x -2);
-//
-//                cg.on('click', _this.onMoreEventClick, _this, c.more);
-//            
-//            }
+            if(c.more.length){
+                var  cfg = {
+                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+                    style : 'position: absolute',
+                    unselectable : "on",
+                    cn : [
+                        {
+                            cls: 'fc-event-inner',
+                            cn : [
+                                {
+                                  tag:'span',
+                                  cls: 'fc-event-title',
+                                  html : 'More'
+                                }
+
+
+                            ]
+                        },
+                        {
+                            cls: 'ui-resizable-handle ui-resizable-e',
+                            html : '&nbsp;&nbsp;&nbsp'
+                        }
+
+                    ]
+                };
+
+                var ctr = _this.el.select('.fc-event-container',true).first();
+                var cg = ctr.createChild(cfg);
+
+                var sbox = c.select('.fc-day-content',true).first().getBox();
+                var ebox = c.select('.fc-day-content',true).first().getBox();
+                //Roo.log(cg);
+                cg.setXY([sbox.x +2, sbox.y +((r-1) * 20)]);    
+                cg.setWidth(ebox.right - sbox.x -2);
+
+                cg.on('click', _this.onMoreEventClick, _this, c.more);
+            
+            }
         });
             
         
