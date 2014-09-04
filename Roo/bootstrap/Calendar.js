@@ -806,8 +806,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                         continue;
                     }
                     
-//                    ecell.row = srow + 1;
-//                    continue;
+                    ecell.row = srow + 1;
+                    continue;
                 }
                 
                 
