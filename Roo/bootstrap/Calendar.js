@@ -772,17 +772,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     continue;
                 }
                 
-                scell.row = scell.row + 1;
-                
-                Roo.log(this.cells.indexOf(rows[i].start));
-                
-                Roo.log(this.cells.indexOf(rows[i].end));
-                
-                if(this.cells.indexOf(rows[i].start) != this.cells.indexOf(rows[i].end)){
-                
-                    ecell.row = ecell.row + 1;
-                }
-                
 //                Roo.log(this.cells.indexOf(rows[i].start));
                 
                 var ctr = this.el.select('.fc-event-container',true).first();
@@ -792,7 +781,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
                 
                 //Roo.log(cg);
-                cg.setXY([sbox.x +2, sbox.y +(scell.row * 20)]);    
+                cg.setXY([sbox.x +2, sbox.y +(srow * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
                 
 //                if(ev.row > 3){
