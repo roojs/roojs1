@@ -798,6 +798,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     cg.on('click', _this.onEventClick, _this, ev);
 
                     ev.els.push(cg);
+                    
+                    ev.rendered = true;
     //                
     //                
     //                scell.row = srow + 1;
