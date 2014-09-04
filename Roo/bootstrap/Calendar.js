@@ -640,6 +640,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         ev.els = [];
         ev.rows = rows;
         ev.cells = cells;
+        ev.rendered = false;
 //        for (var i = 0; i < cells.length;i++) {
 //            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
 //            
@@ -705,7 +706,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var ev = this.calevents[e];
             var cells = ev.cells;
             var rows = ev.rows;
-            if(ev.id != 32){
+            if(ev.id != 32 && ev.id != 40){
                 continue;
             }
             for(var i = 0; i < cells.length; i++){
