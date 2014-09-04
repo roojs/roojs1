@@ -705,10 +705,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var ev = this.calevents[e];
             var cells = ev.cells;
             var rows = ev.rows;
-            
+            if(ev.id != 32){
+                continue;
+            }
             for(var i = 0; i < cells.length; i++){
                 if(i != 0){
-                    cbox.rows.push(false);
                     continue;
                 }
                 var cbox = this.cells.item(this.cells.indexOf(cells[i]));
@@ -725,7 +726,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var _this = this;
         
         this.cells.each(function(c) {
-            
             if(c.more.length && c.more.length == 1){
                 c.rows.push(c.more.pop());
             }
@@ -734,15 +734,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, r * 20));
             
             for (var e = 0; e < c.rows.length; e++){
-                
-                if(c.rows[e] == false){
-                    continue;
-                }
-                
                 var ev = c.rows[e];
-                
-                
-                
                 var cells = ev.cells;
                 var rows = ev.rows;
                 
