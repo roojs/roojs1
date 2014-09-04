@@ -782,7 +782,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             
             if(c.more.length){
                 var  cfg = {
-                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable fc-event-start fc-event-end',
                     style : 'position: absolute',
                     unselectable : "on",
                     cn : [
