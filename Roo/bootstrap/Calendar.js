@@ -723,13 +723,12 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 var scell = this.cells.item(this.cells.indexOf(rows[i].start));
 //                var ecell = this.cells.item(this.cells.indexOf(rows[i].end));
-                Roo.log(cells);
-                Roo.log(scell);
+                
                 if(cells.length < 2 && scell.row > 3){
-                    Roo.log('scell.row');
+                    
                     continue;
                 }
-                Roo.log(scell.row);
+                
                  
                 // how many rows should it span..
                 
