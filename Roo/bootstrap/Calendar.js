@@ -708,15 +708,18 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var rows = ev.rows;
             if(ev.id != 32 && ev.id != 40){
                 continue;
-            }   
-            var cbox = this.cells.item(this.cells.indexOf(cells[0]));
-
-            if(cells.length < 2 && cbox.rows.length > 3){
-                cbox.more.push(ev);
-                continue;
             }
-
-            cbox.rows.push(ev);
+            for(var i = 0; i < cells.length; i++){
+                
+                var cbox = this.cells.item(this.cells.indexOf(cells[i]));
+                
+                if(cells.length < 2 && cbox.rows.length > 3){
+                    cbox.more.push(ev);
+                    continue;
+                }
+                
+                cbox.rows.push(ev);
+            }
         }
         
         var _this = this;
