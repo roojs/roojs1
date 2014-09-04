@@ -735,10 +735,14 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             
             for (var e = 0; e < c.rows.length; e++){
                 
-                
+                if(c.rows[e] == false){
+                    continue;
+                }
                 
                 var ev = c.rows[e];
-                Roo.log(ev);
+                
+                
+                
                 var cells = ev.cells;
                 var rows = ev.rows;
                 
