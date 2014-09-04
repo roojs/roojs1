@@ -708,7 +708,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             
             for(var i = 0; i < cells.length; i++){
                 if(i != 0){
-                    cbox.rows.push([]);
+                    cbox.rows.push(false);
                     continue;
                 }
                 var cbox = this.cells.item(this.cells.indexOf(cells[i]));
@@ -738,7 +738,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 
                 var ev = c.rows[e];
-                Roo.log(ev.length);
+                Roo.log(ev);
                 var cells = ev.cells;
                 var rows = ev.rows;
                 
