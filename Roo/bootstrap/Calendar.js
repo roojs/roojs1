@@ -708,7 +708,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             
             for(var i = 0; i < cells.length; i++){
                 
-                if(cells.length < 2 && cells[i].row > 2){
+                if(cells.length < 2 && cells[i].row > 3){
                     cells[i].more.push(ev);
                     continue;
                 }
@@ -721,7 +721,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var scell = this.cells.item(this.cells.indexOf(rows[i].start));
 //                var ecell = this.cells.item(this.cells.indexOf(rows[i].end));
                 
-                if(cells.length < 2 && scell.row > 2){
+                if(cells.length < 2 && scell.row > 3){
                     continue;
                 }
                 
