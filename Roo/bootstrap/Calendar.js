@@ -792,11 +792,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     cg.setXY([sbox.x +2, sbox.y +(e * 20)]);    
                     cg.setWidth(ebox.right - sbox.x -2);
 
-    //                if(ev.row > 3){
-    //                    cg.on('click', this.onMoreEventClick, this, ev);
-    //                    continue;
-    //                }
-
                     cg.on('mouseenter' ,_this.onEventEnter, _this, ev);
                     cg.on('mouseleave' ,_this.onEventLeave, _this, ev);
                     cg.on('click', _this.onEventClick, _this, ev);
@@ -804,24 +799,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     ev.els.push(cg);
                     
                     ev.rendered = true;
-    //                
-    //                
-    //                scell.row = srow + 1;
-    //                
-    //                if(this.cells.indexOf(rows[i].start) != this.cells.indexOf(rows[i].end)){
-    //                    
-    //                    if(srow < erow){
-    //                        ecell.row = erow + 1;
-    //                        scell.row = erow + 1;
-    //                        continue;
-    //                    }
-    //                    
-    //                    ecell.row = srow + 1;
-    //                    continue;
-    //                }
-    //                
-
-
                 }
                 
             }
