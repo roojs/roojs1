@@ -676,28 +676,28 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 //            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
         });
         
-        var more = [];
-        var moreLine = false;
-        var moreContainer = false;
-        
-        for (var e = 0; e < this.calevents.length; e++) {
-            var ev = this.calevents[e];
-            var cells = ev.cells;
-            var rows = ev.rows;
-            
-            if(ev.row > 3 && cells.length < 2 ){
-                this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
-                more.push(ev);
-            }
-        }
-        
-        if(more.length > 1){
-            moreLine = true;
-            moreContainer = more[0].rows[0].start;
-        }
-        
-        var r = 0;
-        var add = true;
+//        var more = [];
+//        var moreLine = false;
+//        var moreContainer = false;
+//        
+//        for (var e = 0; e < this.calevents.length; e++) {
+//            var ev = this.calevents[e];
+//            var cells = ev.cells;
+//            var rows = ev.rows;
+//            
+//            if(ev.row > 3 && cells.length < 2 ){
+//                this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
+//                more.push(ev);
+//            }
+//        }
+//        
+//        if(more.length > 1){
+//            moreLine = true;
+//            moreContainer = more[0].rows[0].start;
+//        }
+//        
+//        var r = 0;
+//        var add = true;
         
         for (var e = 0; e < this.calevents.length; e++) {
             
@@ -748,10 +748,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 //                    continue;
 //                }
 //                
-                if(ev.row > 3 && cells.length < 2 && moreLine){
-                    add = false;
-                    continue;
-                }
+//                if(ev.row > 3 && cells.length < 2 && moreLine){
+//                    add = false;
+//                    continue;
+//                }
                 
                 if (i == 0) {
                     cfg.cls += ' fc-event-start';
@@ -782,50 +782,50 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
             }
             
-            if(add){
-                r++;
-            }
-            
-            add = true;
+//            if(add){
+//                r++;
+//            }
+//            
+//            add = true;
         }
         
-        if(moreLine){
-            var  cfg = {
-                cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
-                style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
-                unselectable : "on",
-                cn : [
-                    {
-                        cls: 'fc-event-inner',
-                        cn : [
-                            {
-                              tag:'span',
-                              cls: 'fc-event-title',
-                              html : 'More'
-                            }
-
-
-                        ]
-                    },
-                    {
-                        cls: 'ui-resizable-handle ui-resizable-e',
-                        html : '&nbsp;&nbsp;&nbsp'
-                    }
-
-                ]
-            };
-            
-            var ctr = this.el.select('.fc-event-container',true).first();
-            var cg = ctr.createChild(cfg);
-
-            var sbox = moreContainer.select('.fc-day-content',true).first().getBox();
-            var ebox = moreContainer.select('.fc-day-content',true).first().getBox();
-            //Roo.log(cg);
-            cg.setXY([sbox.x +2, sbox.y +(r * 20)]);    
-            cg.setWidth(ebox.right - sbox.x -2);
-            
-            cg.on('click', this.onMoreEventClick, this, more);
-        }
+//        if(moreLine){
+//            var  cfg = {
+//                cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+//                style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+//                unselectable : "on",
+//                cn : [
+//                    {
+//                        cls: 'fc-event-inner',
+//                        cn : [
+//                            {
+//                              tag:'span',
+//                              cls: 'fc-event-title',
+//                              html : 'More'
+//                            }
+//
+//
+//                        ]
+//                    },
+//                    {
+//                        cls: 'ui-resizable-handle ui-resizable-e',
+//                        html : '&nbsp;&nbsp;&nbsp'
+//                    }
+//
+//                ]
+//            };
+//            
+//            var ctr = this.el.select('.fc-event-container',true).first();
+//            var cg = ctr.createChild(cfg);
+//
+//            var sbox = moreContainer.select('.fc-day-content',true).first().getBox();
+//            var ebox = moreContainer.select('.fc-day-content',true).first().getBox();
+//            //Roo.log(cg);
+//            cg.setXY([sbox.x +2, sbox.y +(r * 20)]);    
+//            cg.setWidth(ebox.right - sbox.x -2);
+//            
+//            cg.on('click', this.onMoreEventClick, this, more);
+//        }
         
         
         
