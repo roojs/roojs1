@@ -11558,16 +11558,16 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         return ret;    
     },
     
-    findBestRow: function(cells)
-    {
-        var ret = 0;
-        
-        for (var i =0 ; i < cells.length;i++) {
-            ret  = Math.max(cells[i].rows || 0,ret);
-        }
-        return ret;
-        
-    },
+//    findBestRow: function(cells)
+//    {
+//        var ret = 0;
+//        
+//        for (var i =0 ; i < cells.length;i++) {
+//            ret  = Math.max(cells[i].rows || 0,ret);
+//        }
+//        return ret;
+//        
+//    },
     
     
     addItem : function(ev)
@@ -11575,7 +11575,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         // look for vertical location slot in
         var cells = this.findCells(ev);
         
-        ev.row = this.findBestRow(cells);
+//        ev.row = this.findBestRow(cells);
         
         // work out the location.
         
@@ -11605,13 +11605,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         rows.push(crow);
         ev.els = [];
-        ev.more = [];
         ev.rows = rows;
         ev.cells = cells;
-        for (var i = 0; i < cells.length;i++) {
-            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
-            
-        }
+        ev.rendered = false;
+//        for (var i = 0; i < cells.length;i++) {
+//            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
+//            
+//        }
         
         this.calevents.push(ev);
     },
@@ -11623,7 +11623,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         
         Roo.each(this.cells.elements, function(c){
-            c.rows = 0;
+            c.rows = [];
+            c.more = [];
         });
         
         Roo.each(this.calevents, function(e) {
@@ -11634,14 +11635,18 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             },this);
         },this);
         
+        Roo.each(Roo.select('.fc-more-event', true).elements, function(e){
+            e.remove();
+        });
+        
     },
     
     renderEvents: function()
     {   
         // first make sure there is enough space..
         this.cells.each(function(c) {
+            c.rows = [];
             c.more = [];
-            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, Math.min(5, c.rows) * 20));
         });
         
         for (var e = 0; e < this.calevents.length; e++) {
@@ -11650,88 +11655,145 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var cells = ev.cells;
             var rows = ev.rows;
             
-            for(var i =0; i < rows.length; i++) {
+            for(var i = 0; i < cells.length; i++){
                 
-                 
-                // how many rows should it span..
+                var cbox = this.cells.item(this.cells.indexOf(cells[i]));
                 
-                var  cfg = {
-                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
-                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+                if(cells.length < 2 && cbox.rows.length > 3){
+                    cbox.more.push(ev);
+                    continue;
+                }
+                
+                cbox.rows.push(ev);
+            }
+        }
+        
+        var _this = this;
+        
+        this.cells.each(function(c) {
+            if(c.more.length && c.more.length == 1){
+                c.rows.push(c.more.pop());
+            }
+            
+            var r = (c.more.length) ? c.rows.length + 1 : c.rows.length;
+            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, r * 20));
+            
+            
+            for (var e = 0; e < c.rows.length; e++){
+                var ev = c.rows[e];
+                
+                if(ev.rendered){
+                    continue;
+                }
+                
+                var cells = ev.cells;
+                var rows = ev.rows;
+                
+                for(var i = 0; i < rows.length; i++) {
+                
+                    // how many rows should it span..
+
+                    var  cfg = {
+                        cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+                        style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+
+                        unselectable : "on",
+                        cn : [
+                            {
+                                cls: 'fc-event-inner',
+                                cn : [
+    //                                {
+    //                                  tag:'span',
+    //                                  cls: 'fc-event-time',
+    //                                  html : cells.length > 1 ? '' : ev.time
+    //                                },
+                                    {
+                                      tag:'span',
+                                      cls: 'fc-event-title',
+                                      html : String.format('{0}', ev.title)
+                                    }
+
+
+                                ]
+                            },
+                            {
+                                cls: 'ui-resizable-handle ui-resizable-e',
+                                html : '&nbsp;&nbsp;&nbsp'
+                            }
+
+                        ]
+                    };
+
+                    if (i == 0) {
+                        cfg.cls += ' fc-event-start';
+                    }
+                    if ((i+1) == rows.length) {
+                        cfg.cls += ' fc-event-end';
+                    }
+
+                    var ctr = _this.el.select('.fc-event-container',true).first();
+                    var cg = ctr.createChild(cfg);
+
+                    var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+                    var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+
+                    cg.setXY([sbox.x +2, sbox.y +(e * 20)]);    
+                    cg.setWidth(ebox.right - sbox.x -2);
+
+                    cg.on('mouseenter' ,_this.onEventEnter, _this, ev);
+                    cg.on('mouseleave' ,_this.onEventLeave, _this, ev);
+                    cg.on('click', _this.onEventClick, _this, ev);
+
+                    ev.els.push(cg);
                     
+                    ev.rendered = true;
+                }
+                
+            }
+            
+            
+            if(c.more.length){
+                var  cfg = {
+                    cls : 'fc-more-event roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable fc-event-start fc-event-end',
+                    style : 'position: absolute',
                     unselectable : "on",
                     cn : [
                         {
                             cls: 'fc-event-inner',
                             cn : [
-//                                {
-//                                  tag:'span',
-//                                  cls: 'fc-event-time',
-//                                  html : cells.length > 1 ? '' : ev.time
-//                                },
                                 {
                                   tag:'span',
                                   cls: 'fc-event-title',
-                                  html : String.format('{0}', ev.title)
+                                  html : 'More'
                                 }
-                                
-                                
+
+
                             ]
                         },
                         {
                             cls: 'ui-resizable-handle ui-resizable-e',
                             html : '&nbsp;&nbsp;&nbsp'
                         }
-                        
+
                     ]
                 };
-                
-                var more = this.cells.item(this.cells.indexOf(cells[0])).more;
-                
-                if(more.length){
-                    Roo.log(this.cells.item(this.cells.indexOf(cells[0])));
-                    this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
-                    continue;
-                }
-                
-                if(ev.row > 3){
-                    Roo.log(this.cells.item(this.cells.indexOf(cells[0])));
-                    cfg.cn[0].cn[0].html = 'More';
-                    this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
-                }
-                
-                if (i == 0) {
-                    cfg.cls += ' fc-event-start';
-                }
-                if ((i+1) == rows.length) {
-                    cfg.cls += ' fc-event-end';
-                }
-                
-                var ctr = this.el.select('.fc-event-container',true).first();
+
+                var ctr = _this.el.select('.fc-event-container',true).first();
                 var cg = ctr.createChild(cfg);
-                
-                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
-                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+
+                var sbox = c.select('.fc-day-content',true).first().getBox();
+                var ebox = c.select('.fc-day-content',true).first().getBox();
                 //Roo.log(cg);
-                cg.setXY([sbox.x +2, sbox.y +(ev.row * 20)]);    
+                cg.setXY([sbox.x +2, sbox.y +(c.rows.length * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
-                
-                if(ev.row > 3){
-                    cg.on('click', this.onMoreEventClick, this, ev);
-                    continue;
-                }
-                
-                cg.on('mouseenter' ,this.onEventEnter, this, ev);
-                cg.on('mouseleave' ,this.onEventLeave, this, ev);
-                cg.on('click', this.onEventClick, this, ev);
-                
-                ev.els.push(cg);
-                
+
+                cg.on('click', _this.onMoreEventClick, _this, c.more);
                 
             }
             
-            
-        }
+        });
+        
+        
         
     },
     
@@ -11751,16 +11813,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         this.store.load();
     },
     
-    onMoreEventClick: function(e, el, event)
+    onMoreEventClick: function(e, el, more)
     {
         var _this = this;
-        
-        Roo.log(this.calpopover);
-        Roo.log(e);
-        Roo.log(el);
-        Roo.log(event);
-        
-        var more = this.cells.item(this.cells.indexOf(event.cells[0])).more;
         
         this.calpopover.placement = 'right';
         this.calpopover.setTitle('More');
@@ -11802,12 +11857,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 });
             });
         }
-        Roo.log('calevents!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.calevents);
         
         this.renderEvents();
-        
-        Roo.log(this.cells);
         
         if(this.loadMask){
             this.maskEl.hide();
@@ -11817,7 +11868,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     onBeforeLoad: function()
     {
         this.clearEvents();
-        
         if(this.loadMask){
             this.maskEl.show();
         }
