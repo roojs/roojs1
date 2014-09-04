@@ -761,19 +761,20 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     cfg.cls += ' fc-event-end';
                 }
                 
-                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
-                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
-                
                 var scell = this.cells.item(this.cells.indexOf(rows[i].start));
                 
                 if(cells.length < 2 && scell.row > 3){
-                    
+                    scell.more.push(ev);
+                    continue;
                 }
                 
 //                Roo.log(this.cells.indexOf(rows[i].start));
                 
                 var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = ctr.createChild(cfg);
+                
+                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
                 
                 //Roo.log(cg);
                 cg.setXY([sbox.x +2, sbox.y +(i * 20)]);    
