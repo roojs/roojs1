@@ -710,13 +710,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 var cbox = this.cells.item(this.cells.indexOf(cells[i]));
                 
-                if(cells.length < 2 && cells[i].row > 3){
+                if(cells.length < 2 && cbox[i].row > 3){
                     Roo.log(ev);
-                    cells[i].more.push(ev);
+                    cbox[i].more.push(ev);
                     continue;
                 }
                 
-                cells[i].row += 1;
+                cbox[i].row += 1;
             }
             
             for(var i = 0; i < rows.length; i++) {
