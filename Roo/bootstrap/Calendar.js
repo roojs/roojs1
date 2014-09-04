@@ -672,6 +672,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     {   
         // first make sure there is enough space..
         this.cells.each(function(c) {
+            c.row = 0;
             c.more = [];
 //            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
         });
@@ -760,16 +761,15 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     cfg.cls += ' fc-event-end';
                 }
                 
+                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+                
                 var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = ctr.createChild(cfg);
-                Roo.log(this.cells);
+                
                 var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
-                Roo.log(rows[i].start.select('.fc-day-content',true).first());
-                Roo.log(this.cells.indexOf(rows[i].start.select('.fc-day-content',true).first().findParent('td', false, true)));
-                Roo.log(sbox);
                 var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
-                Roo.log(rows[i].end.select('.fc-day-content',true).first());
-                Roo.log(ebox);
+                
                 //Roo.log(cg);
                 cg.setXY([sbox.x +2, sbox.y +(i * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
