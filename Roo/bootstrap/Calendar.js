@@ -706,7 +706,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var cells = ev.cells;
             var rows = ev.rows;
             
-            for(var i =0; i < rows.length; i++) {
+            for(var i = 0; i < cells.length; i++){
+                cells[i].row += 1;
+            }
+            
+            for(var i = 0; i < rows.length; i++) {
                 
                  
                 // how many rows should it span..
@@ -764,10 +768,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var scell = this.cells.item(this.cells.indexOf(rows[i].start));
                 var ecell = this.cells.item(this.cells.indexOf(rows[i].end));
                 
-                var srow = scell.row;
-                var erow = ecell.row;
+//                var srow = scell.row;
+//                var erow = ecell.row;
                 
-                if(cells.length < 2 && srow > 3){
+                if(cells.length < 2 && scell.row > 3){
                     scell.more.push(ev);
                     continue;
                 }
@@ -781,7 +785,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
                 
                 //Roo.log(cg);
-                cg.setXY([sbox.x +2, sbox.y +(srow * 20)]);    
+                cg.setXY([sbox.x +2, sbox.y +(scell.row * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
                 
 //                if(ev.row > 3){
@@ -794,22 +798,22 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 cg.on('click', this.onEventClick, this, ev);
                 
                 ev.els.push(cg);
-                
-                
-                scell.row = srow + 1;
-                
-                if(this.cells.indexOf(rows[i].start) != this.cells.indexOf(rows[i].end)){
-                    
-                    if(srow < erow){
-                        ecell.row = erow + 1;
-                        scell.row = erow + 1;
-                        continue;
-                    }
-                    
-                    ecell.row = srow + 1;
-                    continue;
-                }
-                
+//                
+//                
+//                scell.row = srow + 1;
+//                
+//                if(this.cells.indexOf(rows[i].start) != this.cells.indexOf(rows[i].end)){
+//                    
+//                    if(srow < erow){
+//                        ecell.row = erow + 1;
+//                        scell.row = erow + 1;
+//                        continue;
+//                    }
+//                    
+//                    ecell.row = srow + 1;
+//                    continue;
+//                }
+//                
                 
                 
             }
