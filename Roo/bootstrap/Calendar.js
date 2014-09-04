@@ -726,187 +726,187 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, r * 20));
         });
         
-//        
-//        for (var e = 0; e < this.calevents.length; e++) {
-//            
-//            var ev = this.calevents[e];
-//            var cells = ev.cells;
-//            var rows = ev.rows;
-//            
-//            for(var i = 0; i < cells.length; i++){
+        
+        for (var e = 0; e < this.calevents.length; e++) {
+            
+            var ev = this.calevents[e];
+            var cells = ev.cells;
+            var rows = ev.rows;
+            
+            for(var i = 0; i < cells.length; i++){
+                
+                var cbox = this.cells.item(this.cells.indexOf(cells[i]));
+                
+                if(cells.length < 2 && cbox.row > 2){
+                    cbox.row = 4;
+                    cbox.more.push(ev);
+                    continue;
+                }
+                
+                cbox.row += 1;
+                
+            }
+            
+            for(var i = 0; i < rows.length; i++) {
+                
+                var scell = this.cells.item(this.cells.indexOf(rows[i].start));
+//                var ecell = this.cells.item(this.cells.indexOf(rows[i].end));
+                
+                if(cells.length < 2 && scell.row > 3){
+                    continue;
+                }
+                
+                 
+                // how many rows should it span..
+                
+                var  cfg = {
+                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+                    
+                    unselectable : "on",
+                    cn : [
+                        {
+                            cls: 'fc-event-inner',
+                            cn : [
+//                                {
+//                                  tag:'span',
+//                                  cls: 'fc-event-time',
+//                                  html : cells.length > 1 ? '' : ev.time
+//                                },
+                                {
+                                  tag:'span',
+                                  cls: 'fc-event-title',
+                                  html : String.format('{0}', ev.title)
+                                }
+                                
+                                
+                            ]
+                        },
+                        {
+                            cls: 'ui-resizable-handle ui-resizable-e',
+                            html : '&nbsp;&nbsp;&nbsp'
+                        }
+                        
+                    ]
+                };
+                
+//                var more = this.cells.item(this.cells.indexOf(cells[0])).more;
 //                
-//                var cbox = this.cells.item(this.cells.indexOf(cells[i]));
-//                
-//                if(cells.length < 2 && cbox.row > 2){
-//                    cbox.row = 4;
-//                    cbox.more.push(ev);
+//                if(more.length){
+//                    this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
 //                    continue;
 //                }
 //                
-//                cbox.row += 1;
+//                if(ev.row > 3 && cells.length < 2 && moreLine){
+//                    add = false;
+//                    continue;
+//                }
+                
+                if (i == 0) {
+                    cfg.cls += ' fc-event-start';
+                }
+                if ((i+1) == rows.length) {
+                    cfg.cls += ' fc-event-end';
+                }
+                
+                
+                
+//                Roo.log(this.cells.indexOf(rows[i].start));
+                
+                var ctr = this.el.select('.fc-event-container',true).first();
+                var cg = ctr.createChild(cfg);
+                
+                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+                
+                //Roo.log(cg);
+                cg.setXY([sbox.x +2, sbox.y +(scell.row * 20)]);    
+                cg.setWidth(ebox.right - sbox.x -2);
+                
+//                if(ev.row > 3){
+//                    cg.on('click', this.onMoreEventClick, this, ev);
+//                    continue;
+//                }
+                
+                cg.on('mouseenter' ,this.onEventEnter, this, ev);
+                cg.on('mouseleave' ,this.onEventLeave, this, ev);
+                cg.on('click', this.onEventClick, this, ev);
+                
+                ev.els.push(cg);
 //                
+//                
+//                scell.row = srow + 1;
+//                
+//                if(this.cells.indexOf(rows[i].start) != this.cells.indexOf(rows[i].end)){
+//                    
+//                    if(srow < erow){
+//                        ecell.row = erow + 1;
+//                        scell.row = erow + 1;
+//                        continue;
+//                    }
+//                    
+//                    ecell.row = srow + 1;
+//                    continue;
+//                }
+//                
+                
+                
+            }
+            
+//            if(add){
+//                r++;
 //            }
 //            
-//            for(var i = 0; i < rows.length; i++) {
-//                
-//                var scell = this.cells.item(this.cells.indexOf(rows[i].start));
-////                var ecell = this.cells.item(this.cells.indexOf(rows[i].end));
-//                
-//                if(cells.length < 2 && scell.row > 3){
-//                    continue;
-//                }
-//                
-//                 
-//                // how many rows should it span..
-//                
+//            add = true;
+        }
+        
+        var _this = this;
+        this.cells.each(function(c) {
+            
+            var r = (c.more.length) ? c.row + 1 : c.row;
+            
+            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, r * 20));
+            
+//            if(c.more.length){
 //                var  cfg = {
 //                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
-//                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
-//                    
+//                    style : 'position: absolute',
 //                    unselectable : "on",
 //                    cn : [
 //                        {
 //                            cls: 'fc-event-inner',
 //                            cn : [
-////                                {
-////                                  tag:'span',
-////                                  cls: 'fc-event-time',
-////                                  html : cells.length > 1 ? '' : ev.time
-////                                },
 //                                {
 //                                  tag:'span',
 //                                  cls: 'fc-event-title',
-//                                  html : String.format('{0}', ev.title)
+//                                  html : 'More'
 //                                }
-//                                
-//                                
+//
+//
 //                            ]
 //                        },
 //                        {
 //                            cls: 'ui-resizable-handle ui-resizable-e',
 //                            html : '&nbsp;&nbsp;&nbsp'
 //                        }
-//                        
+//
 //                    ]
 //                };
-//                
-////                var more = this.cells.item(this.cells.indexOf(cells[0])).more;
-////                
-////                if(more.length){
-////                    this.cells.item(this.cells.indexOf(cells[0])).more.push(ev);
-////                    continue;
-////                }
-////                
-////                if(ev.row > 3 && cells.length < 2 && moreLine){
-////                    add = false;
-////                    continue;
-////                }
-//                
-//                if (i == 0) {
-//                    cfg.cls += ' fc-event-start';
-//                }
-//                if ((i+1) == rows.length) {
-//                    cfg.cls += ' fc-event-end';
-//                }
-//                
-//                
-//                
-////                Roo.log(this.cells.indexOf(rows[i].start));
-//                
-//                var ctr = this.el.select('.fc-event-container',true).first();
+//
+//                var ctr = _this.el.select('.fc-event-container',true).first();
 //                var cg = ctr.createChild(cfg);
-//                
-//                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
-//                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
-//                
+//
+//                var sbox = c.select('.fc-day-content',true).first().getBox();
+//                var ebox = c.select('.fc-day-content',true).first().getBox();
 //                //Roo.log(cg);
-//                cg.setXY([sbox.x +2, sbox.y +(scell.row * 20)]);    
+//                cg.setXY([sbox.x +2, sbox.y +((r-1) * 20)]);    
 //                cg.setWidth(ebox.right - sbox.x -2);
-//                
-////                if(ev.row > 3){
-////                    cg.on('click', this.onMoreEventClick, this, ev);
-////                    continue;
-////                }
-//                
-//                cg.on('mouseenter' ,this.onEventEnter, this, ev);
-//                cg.on('mouseleave' ,this.onEventLeave, this, ev);
-//                cg.on('click', this.onEventClick, this, ev);
-//                
-//                ev.els.push(cg);
-////                
-////                
-////                scell.row = srow + 1;
-////                
-////                if(this.cells.indexOf(rows[i].start) != this.cells.indexOf(rows[i].end)){
-////                    
-////                    if(srow < erow){
-////                        ecell.row = erow + 1;
-////                        scell.row = erow + 1;
-////                        continue;
-////                    }
-////                    
-////                    ecell.row = srow + 1;
-////                    continue;
-////                }
-////                
-//                
-//                
+//
+//                cg.on('click', _this.onMoreEventClick, _this, c.more);
+//            
 //            }
-//            
-////            if(add){
-////                r++;
-////            }
-////            
-////            add = true;
-//        }
-//        
-//        var _this = this;
-//        this.cells.each(function(c) {
-//            
-//            var r = (c.more.length) ? c.row + 1 : c.row;
-//            
-//            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, r * 20));
-//            
-////            if(c.more.length){
-////                var  cfg = {
-////                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
-////                    style : 'position: absolute',
-////                    unselectable : "on",
-////                    cn : [
-////                        {
-////                            cls: 'fc-event-inner',
-////                            cn : [
-////                                {
-////                                  tag:'span',
-////                                  cls: 'fc-event-title',
-////                                  html : 'More'
-////                                }
-////
-////
-////                            ]
-////                        },
-////                        {
-////                            cls: 'ui-resizable-handle ui-resizable-e',
-////                            html : '&nbsp;&nbsp;&nbsp'
-////                        }
-////
-////                    ]
-////                };
-////
-////                var ctr = _this.el.select('.fc-event-container',true).first();
-////                var cg = ctr.createChild(cfg);
-////
-////                var sbox = c.select('.fc-day-content',true).first().getBox();
-////                var ebox = c.select('.fc-day-content',true).first().getBox();
-////                //Roo.log(cg);
-////                cg.setXY([sbox.x +2, sbox.y +((r-1) * 20)]);    
-////                cg.setWidth(ebox.right - sbox.x -2);
-////
-////                cg.on('click', _this.onMoreEventClick, _this, c.more);
-////            
-////            }
-//        });
-//            
+        });
+            
         
 //        if(moreLine){
 //            var  cfg = {
