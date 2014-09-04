@@ -718,6 +718,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             
             for(var i = 0; i < rows.length; i++) {
                 
+                var scell = this.cells.item(this.cells.indexOf(rows[i].start));
+//                var ecell = this.cells.item(this.cells.indexOf(rows[i].end));
+                
+                if(cells.length < 2 && scell.row > 3){
+                    continue;
+                }
+                
                  
                 // how many rows should it span..
                 
@@ -771,16 +778,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     cfg.cls += ' fc-event-end';
                 }
                 
-                var scell = this.cells.item(this.cells.indexOf(rows[i].start));
-                var ecell = this.cells.item(this.cells.indexOf(rows[i].end));
                 
-//                var srow = scell.row;
-//                var erow = ecell.row;
-                
-                if(cells.length < 2 && scell.row > 3){
-                    scell.more.push(ev);
-                    continue;
-                }
                 
 //                Roo.log(this.cells.indexOf(rows[i].start));
                 
