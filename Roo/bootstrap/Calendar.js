@@ -705,7 +705,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var ev = this.calevents[e];
             var cells = ev.cells;
             var rows = ev.rows;
-            
+            if(ev.id != 32){
+                continue;
+            }
             for(var i = 0; i < cells.length; i++){
                 
                 var cbox = this.cells.item(this.cells.indexOf(cells[i]));
