@@ -666,7 +666,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             Roo.each(e.els, function(el) {
                 el.un('mouseenter' ,this.onEventEnter, this);
                 el.un('mouseleave' ,this.onEventLeave, this);
-//                el.remove();
+                el.remove();
             },this);
         },this);
         
