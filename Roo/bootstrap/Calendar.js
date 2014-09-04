@@ -892,7 +892,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 });
             });
         }
-        
+        Roo.log(this.calevents);
         this.renderEvents();
         
         if(this.loadMask){
