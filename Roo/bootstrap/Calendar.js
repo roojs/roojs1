@@ -771,11 +771,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 //                var srow = scell.row;
 //                var erow = ecell.row;
                 
-                if(cells.length < 2 && scell.row > 3){
-                    scell.more.push(ev);
-                    continue;
-                }
-                
 //                Roo.log(this.cells.indexOf(rows[i].start));
                 
                 var ctr = this.el.select('.fc-event-container',true).first();
