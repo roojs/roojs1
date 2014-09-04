@@ -722,11 +722,15 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var _this = this;
         
         this.cells.each(function(c) {
+            if(c.more.length && c.more.length == 1){
+                c.rows.push(c.more.pop());
+            }
+            
             var r = (c.more.length) ? c.rows.length + 1 : c.rows.length;
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, r * 20));
         });
         
-        
+        return;
         for (var e = 0; e < this.calevents.length; e++) {
             
             var ev = this.calevents[e];
