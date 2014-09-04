@@ -661,6 +661,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         });
         
         Roo.each(this.calevents, function(e) {
+            Roo.log(e);
             Roo.each(e.els, function(el) {
                 el.un('mouseenter' ,this.onEventEnter, this);
                 el.un('mouseleave' ,this.onEventLeave, this);
