@@ -764,6 +764,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var cg = ctr.createChild(cfg);
                 
                 var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+                Roo.log(rows[i].start.select('.fc-day-content',true).first());
                 Roo.log(sbox);
                 var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
                 Roo.log(ebox);
