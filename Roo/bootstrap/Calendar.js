@@ -771,9 +771,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 scell.row = scell.row + 1;
                 
-                if(this.cells.indexOf(rows[i].start) != this.cells.indexOf(rows[i].end)){
-                    ecell.row = ecell.row + 1;
-                }
+//                if(this.cells.indexOf(rows[i].start) != this.cells.indexOf(rows[i].end)){
+//                    ecell.row = ecell.row + 1;
+//                }
                 
 //                Roo.log(this.cells.indexOf(rows[i].start));
                 
