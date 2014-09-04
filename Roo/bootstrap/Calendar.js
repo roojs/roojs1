@@ -900,7 +900,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     onBeforeLoad: function()
     {
         this.clearEvents();
-        
+        Roo.log('calevents!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(this.calevents);
         if(this.loadMask){
             this.maskEl.show();
         }
