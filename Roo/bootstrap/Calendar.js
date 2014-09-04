@@ -656,7 +656,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         
         Roo.each(this.cells.elements, function(c){
-            c.rows = 0;
+            c.rows = [];
         });
         
         Roo.each(this.calevents, function(e) {
@@ -782,7 +782,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             
             if(c.more.length){
                 var  cfg = {
-                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable fc-event-start fc-event-end',
+                    cls : 'fc-more-event roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable fc-event-start fc-event-end',
                     style : 'position: absolute',
                     unselectable : "on",
                     cn : [
@@ -816,7 +816,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 cg.setWidth(ebox.right - sbox.x -2);
 
                 cg.on('click', _this.onMoreEventClick, _this, c.more);
-            
+                
             }
             
         });
