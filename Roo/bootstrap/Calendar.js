@@ -715,7 +715,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     cbox.more.push(ev);
                     continue;
                 }
-                Roo.log(ev);
+                
                 cbox.row += 1;
             }
             
