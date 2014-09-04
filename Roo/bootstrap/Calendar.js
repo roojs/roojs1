@@ -667,7 +667,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             },this);
         },this);
         
-        Roo.each(Roo.select('fc-more-event', true).elements, function(e){
+        Roo.each(Roo.select('.fc-more-event', true).elements, function(e){
             e.remove();
         });
         
