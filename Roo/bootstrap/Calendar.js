@@ -710,8 +710,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 var cbox = this.cells.item(this.cells.indexOf(cells[i]));
                 
-                Roo.log('before');
-                Roo.log(cbox.row);
                 if(cells.length < 2 && cbox.row > 2){
                     Roo.log(ev);
                     cbox.more.push(ev);
@@ -719,20 +717,18 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 }
                 
                 cbox.row += 1;
-                Roo.log('after');
-                Roo.log(cbox.row);
+                
             }
             
             for(var i = 0; i < rows.length; i++) {
                 
                 var scell = this.cells.item(this.cells.indexOf(rows[i].start));
 //                var ecell = this.cells.item(this.cells.indexOf(rows[i].end));
-                Roo.log('render');
-                Roo.log(scell.row);
+                
                 if(cells.length < 2 && scell.row > 3){
                     continue;
                 }
-                Roo.log('got');
+                
                  
                 // how many rows should it span..
                 
