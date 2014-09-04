@@ -729,7 +729,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 //                var ecell = this.cells.item(this.cells.indexOf(rows[i].end));
                 Roo.log('render');
                 Roo.log(scell.row);
-                if(cells.length < 2 && scell.row > 3){
+                if(cells.length < 2 && scell.row > 4){
                     continue;
                 }
                 Roo.log('got');
