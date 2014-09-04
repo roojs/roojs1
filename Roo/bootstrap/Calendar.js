@@ -711,7 +711,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var cbox = this.cells.item(this.cells.indexOf(cells[i]));
                 
                 if(cells.length < 2 && cbox.row > 3){
-                    Roo.log(ev);
                     cbox.more.push(ev);
                     continue;
                 }
