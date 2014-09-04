@@ -793,8 +793,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
                 
                 //Roo.log(cg);
-                Roo.log(ev);
-                Roo.log(scell.row);
                 cg.setXY([sbox.x +2, sbox.y +(scell.row * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
                 
