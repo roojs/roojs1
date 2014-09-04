@@ -705,13 +705,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var ev = this.calevents[e];
             var cells = ev.cells;
             var rows = ev.rows;
-            if(ev.id != 32){
-                continue;
-            }
+//            if(ev.id != 32){
+//                continue;
+//            }
             for(var i = 0; i < cells.length; i++){
-                if(i != 0){
-                    continue;
-                }
+//                if(i != 0){
+//                    continue;
+//                }
                 var cbox = this.cells.item(this.cells.indexOf(cells[i]));
                 
                 if(cells.length < 2 && cbox.rows.length > 3){
