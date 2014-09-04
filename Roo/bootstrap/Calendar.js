@@ -734,6 +734,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             c.select('.fc-day-content div',true).first().setHeight(Math.max(34, r * 20));
             
             for (var e = 0; e < c.rows.length; e++){
+                
+                if(!c.rows[e].length){
+                    continue;
+                }
+                
                 var ev = c.rows[e];
                 var cells = ev.cells;
                 var rows = ev.rows;
