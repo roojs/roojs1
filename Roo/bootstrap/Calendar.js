@@ -657,6 +657,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         Roo.each(this.cells.elements, function(c){
             c.rows = [];
+            c.more = [];
         });
         
         Roo.each(this.calevents, function(e) {
