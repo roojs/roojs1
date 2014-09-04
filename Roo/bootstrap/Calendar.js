@@ -672,7 +672,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     {   
         // first make sure there is enough space..
         this.cells.each(function(c) {
-            c.row = 0;
+            c.row = -1;
             c.more = [];
 //            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.rows * 20));
         });
@@ -711,13 +711,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var cbox = this.cells.item(this.cells.indexOf(cells[i]));
                 
                 if(cells.length < 2 && cbox.row > 2){
-//                    cbox.row = 4;
+                    cbox.row = 4;
                     Roo.log(ev);
                     cbox.more.push(ev);
                     continue;
                 }
                 
-//                cbox.row += 1;
+                cbox.row += 1;
                 
             }
             
