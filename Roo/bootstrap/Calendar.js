@@ -874,6 +874,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     onLoad: function () 
     {   
+        Roo.log('onLoad');
         this.calevents = [];
         var cal = this;
         
