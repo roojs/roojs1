@@ -11860,7 +11860,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         
         this.renderEvents();
         
-        if(this.loadMask){
+        if(this.calevents.length && this.loadMask){
             this.maskEl.hide();
         }
     },
