@@ -271,13 +271,22 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             Roo.log('before!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
             Roo.log(this.before);
             Roo.log(typeof(this.before));
-            if (this.before) {
+            if (this.before && typeof(this.before) != 'object') {
                 inputblock.cn.push({
                     tag :'span',
                     cls : 'input-group-addon',
                     html : this.before
                 });
             }
+            
+            if (this.before && typeof(this.before) == 'object') {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.before
+                });
+            }
+            
             inputblock.cn.push(input);
             if (this.after) {
                 inputblock.cn.push({
