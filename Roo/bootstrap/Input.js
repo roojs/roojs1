@@ -268,6 +268,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 cls : 'input-group',
                 cn :  [] 
             };
+            Roo.log('before!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
             Roo.log(this.before);
             if (this.before) {
                 inputblock.cn.push({
