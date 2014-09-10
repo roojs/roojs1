@@ -280,11 +280,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             
             if (this.before && typeof(this.before) == 'object') {
-                inputblock.cn.push({
-                    tag :'span',
-                    cls : 'input-group-addon',
-                    html : this.before
-                });
+                inputblock.cn.push(this.before);
             }
             
             inputblock.cn.push(input);
