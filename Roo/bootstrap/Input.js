@@ -281,7 +281,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
             if (this.before && typeof(this.before) != 'string') {
 //                inputblock.cn.push(this.before);
-                this.before.render(this.el);
+                this.before.render();
             }
             
             inputblock.cn.push(input);
