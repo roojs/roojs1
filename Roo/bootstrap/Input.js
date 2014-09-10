@@ -270,6 +270,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             };
             Roo.log('before!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
             Roo.log(this.before);
+            Roo.log(typeof(this.before));
             if (this.before) {
                 inputblock.cn.push({
                     tag :'span',
