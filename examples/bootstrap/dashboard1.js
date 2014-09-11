@@ -596,6 +596,7 @@ dashboard1 = new Roo.XComponent({
                                                                                         xns : Roo.data
                                                                                     },
                                                                                     xtype : 'ComboBox',
+                                                                                    fieldLabel : 'ComboBox',
                                                                                     xns : Roo.bootstrap,
                                                                                     items : [
 

@@ -550,6 +550,7 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "ComboBox",
+                                                                                    "String fieldLabel" : "ComboBox",
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "items" : [
                                                                                         {
