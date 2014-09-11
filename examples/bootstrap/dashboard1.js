@@ -543,63 +543,6 @@ dashboard1 = new Roo.XComponent({
 
                                                         },
                                                     	{
-                                                            cls : 'box box-success',
-                                                            xtype : 'Container',
-                                                            xns : Roo.bootstrap,
-                                                            items : [
-                                                            	{
-                                                                    cls : 'box-header',
-                                                                    xtype : 'Container',
-                                                                    xns : Roo.bootstrap,
-                                                                    items : [
-                                                                    	{
-                                                                            cls : 'box-title',
-                                                                            xtype : 'Header',
-                                                                            xns : Roo.bootstrap,
-                                                                            level : 3,
-                                                                            html : 'Different Height'
-                                                                        }
-                                                                    ]
-
-                                                                },
-                                                            	{
-                                                                    xtype : 'Form',
-                                                                    labelAlign : 'top',
-                                                                    xns : Roo.bootstrap,
-                                                                    items : [
-                                                                    	{
-                                                                            cls : 'box-body',
-                                                                            xtype : 'Container',
-                                                                            xns : Roo.bootstrap,
-                                                                            items : [
-                                                                            	{
-                                                                                    xtype : 'Input',
-                                                                                    placeholder : 'size lg',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    size : 'lg'
-                                                                                },
-                                                                            	{
-                                                                                    xtype : 'Input',
-                                                                                    placeholder : 'size md',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    size : 'md'
-                                                                                },
-                                                                            	{
-                                                                                    xtype : 'Input',
-                                                                                    placeholder : 'size sm',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    size : 'sm'
-                                                                                }
-                                                                            ]
-
-                                                                        }
-                                                                    ]
-
-                                                                }
-                                                            ]
-
-                                                        },
-                                                    	{
                                                             cls : 'box box-danger',
                                                             xtype : 'Container',
                                                             xns : Roo.bootstrap,
