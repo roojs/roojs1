@@ -497,7 +497,14 @@
                                                                                 {
                                                                                     "String cls" : "has-warning",
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : "cls = has-success",
+                                                                                    "string placeholder" : "cls = has-warning",
+                                                                                    "String fieldLabel" : "Input with Warning",
+                                                                                    "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "String cls" : "has-warning",
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "cls = has-error",
                                                                                     "String fieldLabel" : "Input with Warning",
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 }
