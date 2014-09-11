@@ -170,15 +170,15 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : "size lg",
+                                                                                    "string placeholder" : "size md",
                                                                                     "$ xns" : "Roo.bootstrap",
-                                                                                    "string size" : "lg"
+                                                                                    "string size" : "md"
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : "size lg",
+                                                                                    "string placeholder" : "size sm",
                                                                                     "$ xns" : "Roo.bootstrap",
-                                                                                    "string size" : "lg"
+                                                                                    "string size" : "sm"
                                                                                 }
                                                                             ]
                                                                         }
