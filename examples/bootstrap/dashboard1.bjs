@@ -474,6 +474,10 @@
                                                                                     "Boolean disabled" : true,
                                                                                     "String fieldLabel" : "Text",
                                                                                     "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "TextArea",
+                                                                                    "$ xns" : "Roo.bootstrap"
                                                                                 }
                                                                             ]
                                                                         }

@@ -514,6 +514,10 @@ dashboard1 = new Roo.XComponent({
                                                                                     disabled : true,
                                                                                     fieldLabel : 'Text',
                                                                                     xns : Roo.bootstrap
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'TextArea',
+                                                                                    xns : Roo.bootstrap
                                                                                 }
                                                                             ]
 
