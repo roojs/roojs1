@@ -117,6 +117,10 @@ dashboard1 = new Roo.XComponent({
                                                                             inputType : 'file',
                                                                             fieldLabel : 'File Input',
                                                                             xns : Roo.bootstrap
+                                                                        },
+                                                                    	{
+                                                                            xtype : 'Input',
+                                                                            xns : Roo.bootstrap
                                                                         }
                                                                     ]
 

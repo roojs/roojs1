@@ -109,6 +109,10 @@
                                                                             "String inputType" : "file",
                                                                             "String fieldLabel" : "File Input",
                                                                             "$ xns" : "Roo.bootstrap"
+                                                                        },
+                                                                        {
+                                                                            "xtype" : "Input",
+                                                                            "$ xns" : "Roo.bootstrap"
                                                                         }
                                                                     ]
                                                                 }
