@@ -240,21 +240,21 @@ dashboard1 = new Roo.XComponent({
                                                                                             xtype : 'Input',
                                                                                             placeholder : 'md 3',
                                                                                             xns : Roo.bootstrap,
-                                                                                            size : 'lg'
+                                                                                            size : 'md'
                                                                                         },
                                                                                     	{
                                                                                             md : 3,
                                                                                             xtype : 'Input',
                                                                                             placeholder : 'md 4',
                                                                                             xns : Roo.bootstrap,
-                                                                                            size : 'lg'
+                                                                                            size : 'md'
                                                                                         },
                                                                                     	{
                                                                                             md : 5,
                                                                                             xtype : 'Input',
                                                                                             placeholder : 'md 3',
                                                                                             xns : Roo.bootstrap,
-                                                                                            size : 'lg'
+                                                                                            size : 'md'
                                                                                         }
                                                                                     ]
 
