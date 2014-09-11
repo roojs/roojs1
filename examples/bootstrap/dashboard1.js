@@ -21,8 +21,8 @@ dashboard1 = new Roo.XComponent({
             items : [
             	Roo.apply(Dashboard.Header1._tree(), {
                     cls : 'header',
-                    tag : 'header',
                     xtype : 'Container',
+                    tag : 'header',
                     xns : Roo.bootstrap
                 }),
             	{
@@ -323,8 +323,8 @@ dashboard1 = new Roo.XComponent({
                                                                                 },
                                                                             	{
                                                                                     xtype : 'Header',
-                                                                                    level : 4,
                                                                                     xns : Roo.bootstrap,
+                                                                                    level : 4,
                                                                                     html : 'With Icons'
                                                                                 },
                                                                             	{
@@ -351,8 +351,8 @@ dashboard1 = new Roo.XComponent({
                                                                                 },
                                                                             	{
                                                                                     xtype : 'Header',
-                                                                                    xns : Roo.bootstrap,
                                                                                     level : 4,
+                                                                                    xns : Roo.bootstrap,
                                                                                     html : 'With checkbox and radio'
                                                                                 },
                                                                             	{
@@ -379,8 +379,8 @@ dashboard1 = new Roo.XComponent({
                                                                                 },
                                                                             	{
                                                                                     xtype : 'Header',
-                                                                                    level : 4,
                                                                                     xns : Roo.bootstrap,
+                                                                                    level : 4,
                                                                                     html : 'With buttons'
                                                                                 },
                                                                             	{
@@ -517,8 +517,8 @@ dashboard1 = new Roo.XComponent({
                                                                                 },
                                                                             	{
                                                                                     xtype : 'TextArea',
-                                                                                    fieldLabel : 'Textarea',
-                                                                                    xns : Roo.bootstrap
+                                                                                    xns : Roo.bootstrap,
+                                                                                    fieldLabel : 'Textarea'
                                                                                 },
                                                                             	{
                                                                                     xtype : 'TextArea',
@@ -526,6 +526,12 @@ dashboard1 = new Roo.XComponent({
                                                                                     disabled : true,
                                                                                     xns : Roo.bootstrap,
                                                                                     fieldLabel : 'Textarea'
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'Enter ...',
+                                                                                    fieldLabel : 'Text',
+                                                                                    xns : Roo.bootstrap
                                                                                 }
                                                                             ]
 
