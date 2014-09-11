@@ -323,7 +323,8 @@ dashboard1 = new Roo.XComponent({
                                                                             	{
                                                                                     xtype : 'Header',
                                                                                     level : 4,
-                                                                                    xns : Roo.bootstrap
+                                                                                    xns : Roo.bootstrap,
+                                                                                    html : 'With Icons'
                                                                                 }
                                                                             ]
 
