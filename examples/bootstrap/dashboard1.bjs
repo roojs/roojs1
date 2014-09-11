@@ -562,7 +562,7 @@
                                                                                     "items" : [
                                                                                         {
                                                                                             "$ Array fields" : "[ 'item' ]",
-                                                                                            "$ Array data" : "[ [ 'option a', 'option b'] ]",
+                                                                                            "$ Array data" : "[ [ 'option a'] ,[ 'option b'] ]",
                                                                                             "xtype" : "SimpleStore",
                                                                                             "$ xns" : "Roo.data",
                                                                                             "* prop" : "store"
