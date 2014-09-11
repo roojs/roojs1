@@ -85,7 +85,22 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             }
         });
         
+        if(this.boxLabel){
+            input = {
+                tag: 'label',
+                'for': id,
+                cls: 'box-label',
+                html: this.boxLabel
+                cn : [ input ]
+            })
+        }
+        
+        
+        
         var inputblock = input;
+        
+        
+        
         
         if (this.before || this.after) {
             
@@ -159,15 +174,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 
         };
         
-        if(this.boxLabel){
-            cfg.cn.push({
-                tag: 'label',
-                'for': id,
-                cls: 'box-label',
-                html: this.boxLabel
-            })
-        }
-        
+       
         return cfg;
         
     },
