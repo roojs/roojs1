@@ -272,7 +272,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'input-group-addon',
+                    cls : 'roo-input-before input-group-addon',
                     html : this.before
                 });
             }
@@ -281,7 +281,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 Roo.log(this.before);
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'input-group-' + (this.before.xtype == 'Button' ? 'btn' : 'addon'), //?? what about checkboxes - that looks like a bit of a hack thought? 
+                    cls : 'roo-input-before input-group-' +
+                        (this.before.xtype == 'Button' ? 'btn' : 'addon'), //?? what about checkboxes - that looks like a bit of a hack thought? 
                 });
             }
             
@@ -290,7 +291,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             if (this.after && typeof(this.after) == 'string') {
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'input-group-addon',
+                    cls : 'roo-input-after input-group-addon',
                     html : this.after
                 });
             }
@@ -299,7 +300,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 Roo.log(this.after);
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'input-group-' + (this.before.xtype == 'Button' ? 'btn' : 'addon'), //?? what about checkboxes - that looks like a bit of a hack thought? 
+                    cls : 'roo-input-after input-group-' +
+                        (this.before.xtype == 'Button' ? 'btn' : 'addon'), //?? what about checkboxes - that looks like a bit of a hack thought? 
                 });
             }
         };
@@ -413,7 +415,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         if (typeof(this.before) == 'object') {
-            
+            this.before.render(this[cntr]());
         }
         
         
