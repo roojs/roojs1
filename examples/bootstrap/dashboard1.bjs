@@ -358,7 +358,7 @@
                                                                                     "xtype" : "Header",
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "Number level" : 4,
-                                                                                    "String html" : "With checkbox and radio"
+                                                                                    "String html" : "With buttons"
                                                                                 }
                                                                             ]
                                                                         }
