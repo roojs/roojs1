@@ -405,7 +405,7 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : "before :  - an object...    ",
+                                                                                    "string placeholder" : "after - a button",
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "string size" : "md",
                                                                                     "items" : [
