@@ -402,7 +402,13 @@ dashboard1 = new Roo.XComponent({
                                                                                             	{
                                                                                                     xtype : 'MenuItem',
                                                                                                     xns : Roo.bootstrap,
-                                                                                                    html : 'https://'
+                                                                                                    html : 'https://',
+                                                                                                    listeners : {
+                                                                                                    	click : function (e)
+                                                                                                    	   {
+                                                                                                    	       _this.httpButton.setText("https://");
+                                                                                                    	   }
+                                                                                                    }
                                                                                                 }
                                                                                             ]
 

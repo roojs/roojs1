@@ -390,6 +390,9 @@
                                                                                                             "String html" : "http://"
                                                                                                         },
                                                                                                         {
+                                                                                                            "listeners" : {
+                                                                                                                "click" : "function (e)\n{\n    _this.httpButton.setText(\"https://\");\n}"
+                                                                                                            },
                                                                                                             "xtype" : "MenuItem",
                                                                                                             "$ xns" : "Roo.bootstrap",
                                                                                                             "String html" : "https://"
