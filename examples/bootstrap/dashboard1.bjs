@@ -118,6 +118,7 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "CheckBox",
+                                                                                    "String boxLabel" : "checkbox",
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 },
                                                                                 {
