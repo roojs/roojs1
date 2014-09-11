@@ -342,6 +342,7 @@
                                                                                             "xtype" : "Input",
                                                                                             "string placeholder" : "?",
                                                                                             "$ xns" : "Roo.bootstrap",
+                                                                                            "string before" : "fixme",
                                                                                             "string size" : "md"
                                                                                         },
                                                                                         {

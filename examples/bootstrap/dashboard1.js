@@ -363,6 +363,7 @@ dashboard1 = new Roo.XComponent({
                                                                                             xtype : 'Input',
                                                                                             placeholder : '?',
                                                                                             xns : Roo.bootstrap,
+                                                                                            before : 'fixme',
                                                                                             size : 'md'
                                                                                         },
                                                                                     	{
