@@ -63,8 +63,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     getAutoCreate : function(){
        
         var parent = this.parent();
-        Roo.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.labelAlign);
+        
         var align = this.labelAlign || this.parentLabelAlign();
         
         var id = Roo.id();
