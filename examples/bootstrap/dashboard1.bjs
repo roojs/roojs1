@@ -98,9 +98,15 @@
                                                                         },
                                                                         {
                                                                             "xtype" : "Input",
-                                                                            "string placeholder" : "Enter email",
+                                                                            "string placeholder" : "Enter password",
                                                                             "String inputType" : "password",
                                                                             "String fieldLabel" : "Password",
+                                                                            "$ xns" : "Roo.bootstrap"
+                                                                        },
+                                                                        {
+                                                                            "xtype" : "Input",
+                                                                            "string placeholder" : "Enter email",
+                                                                            "String fieldLabel" : "Email Address",
                                                                             "$ xns" : "Roo.bootstrap"
                                                                         }
                                                                     ]
