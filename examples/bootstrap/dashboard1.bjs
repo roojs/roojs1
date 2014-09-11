@@ -232,8 +232,9 @@
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "items" : [
                                                                                         {
+                                                                                            "Number md" : 3,
                                                                                             "xtype" : "Input",
-                                                                                            "string placeholder" : "size lg",
+                                                                                            "string placeholder" : "md 3",
                                                                                             "$ xns" : "Roo.bootstrap",
                                                                                             "string size" : "lg"
                                                                                         }
