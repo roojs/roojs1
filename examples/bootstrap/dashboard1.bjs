@@ -164,34 +164,21 @@
                                                                             "items" : [
                                                                                 {
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : ".input-lg",
-                                                                                    "$ xns" : "Roo.bootstrap"
-                                                                                },
-                                                                                {
-                                                                                    "xtype" : "Input",
-                                                                                    "string placeholder" : "Enter password",
-                                                                                    "String inputType" : "password",
-                                                                                    "String fieldLabel" : "Password",
-                                                                                    "$ xns" : "Roo.bootstrap"
-                                                                                },
-                                                                                {
-                                                                                    "xtype" : "Input",
-                                                                                    "string placeholder" : "Enter email",
-                                                                                    "String inputType" : "file",
-                                                                                    "String fieldLabel" : "File Input",
-                                                                                    "$ xns" : "Roo.bootstrap"
-                                                                                },
-                                                                                {
-                                                                                    "xtype" : "Input",
-                                                                                    "String inputType" : "checkbox",
+                                                                                    "string placeholder" : "size lg",
                                                                                     "$ xns" : "Roo.bootstrap",
-                                                                                    "String fieldLabel" : "Fixme - checkbox type"
+                                                                                    "string size" : "lg"
                                                                                 },
                                                                                 {
-                                                                                    "String weight" : "primary",
-                                                                                    "xtype" : "Button",
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "size lg",
                                                                                     "$ xns" : "Roo.bootstrap",
-                                                                                    "String html" : "Submit"
+                                                                                    "string size" : "lg"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "size lg",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "string size" : "lg"
                                                                                 }
                                                                             ]
                                                                         }

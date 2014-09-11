@@ -176,34 +176,21 @@ dashboard1 = new Roo.XComponent({
                                                                             items : [
                                                                             	{
                                                                                     xtype : 'Input',
-                                                                                    placeholder : '.input-lg',
-                                                                                    xns : Roo.bootstrap
-                                                                                },
-                                                                            	{
-                                                                                    xtype : 'Input',
-                                                                                    placeholder : 'Enter password',
-                                                                                    inputType : 'password',
-                                                                                    fieldLabel : 'Password',
-                                                                                    xns : Roo.bootstrap
-                                                                                },
-                                                                            	{
-                                                                                    xtype : 'Input',
-                                                                                    placeholder : 'Enter email',
-                                                                                    inputType : 'file',
-                                                                                    fieldLabel : 'File Input',
-                                                                                    xns : Roo.bootstrap
-                                                                                },
-                                                                            	{
-                                                                                    xtype : 'Input',
-                                                                                    inputType : 'checkbox',
+                                                                                    placeholder : 'size lg',
                                                                                     xns : Roo.bootstrap,
-                                                                                    fieldLabel : 'Fixme - checkbox type'
+                                                                                    size : 'lg'
                                                                                 },
                                                                             	{
-                                                                                    weight : 'primary',
-                                                                                    xtype : 'Button',
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'size lg',
                                                                                     xns : Roo.bootstrap,
-                                                                                    html : 'Submit'
+                                                                                    size : 'lg'
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'size lg',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    size : 'lg'
                                                                                 }
                                                                             ]
 
