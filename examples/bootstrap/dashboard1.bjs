@@ -568,6 +568,28 @@
                                                                                             "* prop" : "store"
                                                                                         }
                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "String mode" : "local",
+                                                                                    "String name" : "combotest",
+                                                                                    "String valueField" : "item",
+                                                                                    "xtype" : "ComboBox",
+                                                                                    "String triggerAction" : "all",
+                                                                                    "Boolean editable" : false,
+                                                                                    "Boolean disabled" : true,
+                                                                                    "String fieldLabel" : "ComboBox disabled",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "String/Roo.Template tpl" : "<li class=\"select2-result\"><b>{item}</b></div>",
+                                                                                    "String displayField" : "item",
+                                                                                    "items" : [
+                                                                                        {
+                                                                                            "$ Array fields" : "[ 'item' ]",
+                                                                                            "$ Array data" : "[ [ 'option a'] ,[ 'option b'] ]",
+                                                                                            "xtype" : "SimpleStore",
+                                                                                            "$ xns" : "Roo.data",
+                                                                                            "* prop" : "store"
+                                                                                        }
+                                                                                    ]
                                                                                 }
                                                                             ]
                                                                         }

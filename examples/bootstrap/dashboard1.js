@@ -609,6 +609,29 @@ dashboard1 = new Roo.XComponent({
 
                                                                                     ]
 
+                                                                                },
+                                                                            	{
+                                                                                    store : {
+                                                                                        fields : [ 'item' ],
+                                                                                        data : [ [ 'option a'] ,[ 'option b'] ],
+                                                                                        xtype : 'SimpleStore',
+                                                                                        xns : Roo.data
+                                                                                    },
+                                                                                    mode : 'local',
+                                                                                    name : 'combotest',
+                                                                                    valueField : 'item',
+                                                                                    xtype : 'ComboBox',
+                                                                                    triggerAction : 'all',
+                                                                                    editable : false,
+                                                                                    disabled : true,
+                                                                                    fieldLabel : 'ComboBox disabled',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    tpl : '<li class=\"select2-result\"><b>{item}</b></div>',
+                                                                                    displayField : 'item',
+                                                                                    items : [
+
+                                                                                    ]
+
                                                                                 }
                                                                             ]
 
