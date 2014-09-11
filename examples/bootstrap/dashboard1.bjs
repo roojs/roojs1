@@ -99,6 +99,7 @@
                                                                         {
                                                                             "xtype" : "Input",
                                                                             "string placeholder" : "Enter email",
+                                                                            "String inputType" : "password",
                                                                             "String fieldLabel" : "Password",
                                                                             "$ xns" : "Roo.bootstrap"
                                                                         }
