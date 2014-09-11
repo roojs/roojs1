@@ -143,6 +143,77 @@ dashboard1 = new Roo.XComponent({
                                                                 }
                                                             ]
 
+                                                        },
+                                                    	{
+                                                            cls : 'box box-primary',
+                                                            xtype : 'Container',
+                                                            xns : Roo.bootstrap,
+                                                            items : [
+                                                            	{
+                                                                    cls : 'box-header',
+                                                                    xtype : 'Container',
+                                                                    xns : Roo.bootstrap,
+                                                                    items : [
+                                                                    	{
+                                                                            cls : 'box-title',
+                                                                            xtype : 'Header',
+                                                                            xns : Roo.bootstrap,
+                                                                            level : 3,
+                                                                            html : 'Quick Example'
+                                                                        }
+                                                                    ]
+
+                                                                },
+                                                            	{
+                                                                    xtype : 'Form',
+                                                                    labelAlign : 'top',
+                                                                    xns : Roo.bootstrap,
+                                                                    items : [
+                                                                    	{
+                                                                            cls : 'box-body',
+                                                                            xtype : 'Container',
+                                                                            xns : Roo.bootstrap,
+                                                                            items : [
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'Enter email',
+                                                                                    fieldLabel : 'Email Address',
+                                                                                    xns : Roo.bootstrap
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'Enter password',
+                                                                                    inputType : 'password',
+                                                                                    fieldLabel : 'Password',
+                                                                                    xns : Roo.bootstrap
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'Enter email',
+                                                                                    inputType : 'file',
+                                                                                    fieldLabel : 'File Input',
+                                                                                    xns : Roo.bootstrap
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    inputType : 'checkbox',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    fieldLabel : 'Fixme - checkbox type'
+                                                                                },
+                                                                            	{
+                                                                                    weight : 'primary',
+                                                                                    xtype : 'Button',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    html : 'Submit'
+                                                                                }
+                                                                            ]
+
+                                                                        }
+                                                                    ]
+
+                                                                }
+                                                            ]
+
                                                         }
                                                     ]
 

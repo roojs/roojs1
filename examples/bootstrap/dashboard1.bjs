@@ -132,6 +132,73 @@
                                                                     ]
                                                                 }
                                                             ]
+                                                        },
+                                                        {
+                                                            "String cls" : "box box-primary",
+                                                            "xtype" : "Container",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "String cls" : "box-header",
+                                                                    "xtype" : "Container",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "String cls" : "box-title",
+                                                                            "xtype" : "Header",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "Number level" : 3,
+                                                                            "String html" : "Quick Example"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "xtype" : "Form",
+                                                                    "String labelAlign" : "top",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "String cls" : "box-body",
+                                                                            "xtype" : "Container",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "items" : [
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "Enter email",
+                                                                                    "String fieldLabel" : "Email Address",
+                                                                                    "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "Enter password",
+                                                                                    "String inputType" : "password",
+                                                                                    "String fieldLabel" : "Password",
+                                                                                    "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "Enter email",
+                                                                                    "String inputType" : "file",
+                                                                                    "String fieldLabel" : "File Input",
+                                                                                    "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "String inputType" : "checkbox",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "String fieldLabel" : "Fixme - checkbox type"
+                                                                                },
+                                                                                {
+                                                                                    "String weight" : "primary",
+                                                                                    "xtype" : "Button",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "String html" : "Submit"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
                                                         }
                                                     ]
                                                 }
