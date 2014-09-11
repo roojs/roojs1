@@ -575,7 +575,7 @@ dashboard1 = new Roo.XComponent({
                                                                             	{
                                                                                     name : 'radio',
                                                                                     xtype : 'Radio',
-                                                                                    boxLabel : 'Radio 1',
+                                                                                    boxLabel : 'Radio 2',
                                                                                     xns : Roo.bootstrap,
                                                                                     value : 2
                                                                                 }

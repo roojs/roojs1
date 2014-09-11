@@ -535,7 +535,7 @@
                                                                                 {
                                                                                     "String name" : "radio",
                                                                                     "xtype" : "Radio",
-                                                                                    "String boxLabel" : "Radio 1",
+                                                                                    "String boxLabel" : "Radio 2",
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "string value" : 2
                                                                                 }
