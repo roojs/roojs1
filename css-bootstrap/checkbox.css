@@ -36,8 +36,9 @@
 .checkbox input[type="checkbox"] {
     display: none; }
 .checkbox input[type="checkbox"]:checked + label::after {
-    font-family: 'FontAwesome';
-    content: "\f00c"; }
+     font-family: 'Glyphicons Halflings';
+    content: "\e013";
+    }
 .checkbox input[type="checkbox"]:disabled + label {
     opacity: 0.65; }
 .checkbox input[type="checkbox"]:disabled + label::before {
