@@ -84,6 +84,16 @@
                                                                             "String html" : "Quick Example"
                                                                         }
                                                                     ]
+                                                                },
+                                                                {
+                                                                    "xtype" : "Form",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "xtype" : "Input",
+                                                                            "$ xns" : "Roo.bootstrap"
+                                                                        }
+                                                                    ]
                                                                 }
                                                             ]
                                                         }
