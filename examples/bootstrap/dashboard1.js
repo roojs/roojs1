@@ -599,6 +599,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     name : 'combotest',
                                                                                     valueField : 'item',
                                                                                     xtype : 'ComboBox',
+                                                                                    triggerAction : 'all',
                                                                                     fieldLabel : 'ComboBox',
                                                                                     xns : Roo.bootstrap,
                                                                                     tpl : '<li class=\"select2-result\"><b>{item}</b></div>',

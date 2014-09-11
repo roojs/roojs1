@@ -553,6 +553,7 @@
                                                                                     "String name" : "combotest",
                                                                                     "String valueField" : "item",
                                                                                     "xtype" : "ComboBox",
+                                                                                    "String triggerAction" : "all",
                                                                                     "String fieldLabel" : "ComboBox",
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "String/Roo.Template tpl" : "<li class=\"select2-result\"><b>{item}</b></div>",
