@@ -13940,7 +13940,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         };
         
         if (this.weight) { // Validity check?
-            cfg.cls += "checkbox-" + this.weight;
+            cfg.cls += " checkbox-" + this.weight;
         }
         
         if (this.disabled) {
