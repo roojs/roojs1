@@ -6970,7 +6970,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
     // private
     onDisable : function(){
-        Roo.bootstrap.TriggerField.superclass.onDisable.call(this);
+        this.inputEl().dom.disabled = true;
+        //Roo.bootstrap.TriggerField.superclass.onDisable.call(this);
         //if(this.wrap){
         //    this.wrap.addClass('x-item-disabled');
         //}
@@ -6978,7 +6979,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
     // private
     onEnable : function(){
-        Roo.bootstrap.TriggerField.superclass.onEnable.call(this);
+        this.inputEl().dom.disabled = false;
+        //Roo.bootstrap.TriggerField.superclass.onEnable.call(this);
         //if(this.wrap){
         //    this.el.removeClass('x-item-disabled');
         //}
@@ -14140,18 +14142,20 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
         var cfg = {};
         
-        cfg.cls = 'form-group' //input-group
+        cfg.cls = 'form-group radio' //input-group
         
         var input =  {
             tag: 'input',
             id : id,
             type : this.inputType,
             value : (!this.checked) ? this.valueOff : this.inputValue,
-            cls : 'form-box',
+            cls : 'roo-radio',
             placeholder : this.placeholder || ''
             
         };
-        
+          if (this.weight) { // Validity check?
+            cfg.cls += " radio-" + this.weight;
+        }
         if (this.disabled) {
             input.disabled=true;
         }
@@ -14261,7 +14265,10 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         return cfg;
         
     },
-   
+    inputEl: function ()
+    {
+        return this.el.select('input.roo-radio',true).first();
+    },
     onClick : function()
     {   
         this.setChecked(true);
