@@ -314,8 +314,9 @@ dashboard1 = new Roo.XComponent({
                                                                                 },
                                                                             	{
                                                                                     xtype : 'Input',
-                                                                                    placeholder : 'after: .00',
+                                                                                    placeholder : 'before $, after: .00',
                                                                                     xns : Roo.bootstrap,
+                                                                                    before : '$',
                                                                                     size : 'md',
                                                                                     after : 0.00
                                                                                 }

@@ -293,8 +293,9 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : "after: .00",
+                                                                                    "string placeholder" : "before $, after: .00",
                                                                                     "$ xns" : "Roo.bootstrap",
+                                                                                    "string before" : "$",
                                                                                     "string size" : "md",
                                                                                     "string after" : 0
                                                                                 }
