@@ -90,9 +90,9 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 tag: 'label',
                 'for': id,
                 cls: 'box-label',
-                html: this.boxLabel
+                html: this.boxLabel,
                 cn : [ input ]
-            })
+            };
         }
         
         
