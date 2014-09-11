@@ -553,6 +553,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
+                                                                                    cls : 'checkbox-primary',
                                                                                     xtype : 'CheckBox',
                                                                                     boxLabel : 'Checkbox 2',
                                                                                     xns : Roo.bootstrap

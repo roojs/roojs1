@@ -513,6 +513,7 @@
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 },
                                                                                 {
+                                                                                    "String cls" : "checkbox-primary",
                                                                                     "xtype" : "CheckBox",
                                                                                     "String boxLabel" : "Checkbox 2",
                                                                                     "$ xns" : "Roo.bootstrap"
