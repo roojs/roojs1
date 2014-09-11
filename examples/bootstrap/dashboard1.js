@@ -404,7 +404,7 @@ dashboard1 = new Roo.XComponent({
                                                                                         weight : 'primary',
                                                                                         xtype : 'Button',
                                                                                         xns : Roo.bootstrap,
-                                                                                        html : 'test',
+                                                                                        html : 'http://',
                                                                                         items : [
 
                                                                                         ]

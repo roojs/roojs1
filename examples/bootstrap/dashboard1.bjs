@@ -370,7 +370,7 @@
                                                                                             "String weight" : "primary",
                                                                                             "xtype" : "Button",
                                                                                             "$ xns" : "Roo.bootstrap",
-                                                                                            "String html" : "test",
+                                                                                            "String html" : "http://",
                                                                                             "* prop" : "before",
                                                                                             "items" : [
                                                                                                 {
