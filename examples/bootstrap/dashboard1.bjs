@@ -338,14 +338,14 @@
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "items" : [
                                                                                         {
-                                                                                            "Number md" : 5,
+                                                                                            "Number md" : 6,
                                                                                             "xtype" : "Input",
                                                                                             "string placeholder" : "?",
                                                                                             "$ xns" : "Roo.bootstrap",
                                                                                             "string size" : "md"
                                                                                         },
                                                                                         {
-                                                                                            "Number md" : 5,
+                                                                                            "Number md" : 6,
                                                                                             "xtype" : "Input",
                                                                                             "string placeholder" : "md 4",
                                                                                             "$ xns" : "Roo.bootstrap",

@@ -359,14 +359,14 @@ dashboard1 = new Roo.XComponent({
                                                                                     xns : Roo.bootstrap,
                                                                                     items : [
                                                                                     	{
-                                                                                            md : 5,
+                                                                                            md : 6,
                                                                                             xtype : 'Input',
                                                                                             placeholder : '?',
                                                                                             xns : Roo.bootstrap,
                                                                                             size : 'md'
                                                                                         },
                                                                                     	{
-                                                                                            md : 5,
+                                                                                            md : 6,
                                                                                             xtype : 'Input',
                                                                                             placeholder : 'md 4',
                                                                                             xns : Roo.bootstrap,
