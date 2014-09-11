@@ -45,7 +45,9 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             placeholder : this.placeholder || ''
             
         };
-        
+          if (this.weight) { // Validity check?
+            cfg.cls += " radio-" + this.weight;
+        }
         if (this.disabled) {
             input.disabled=true;
         }
