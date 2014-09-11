@@ -560,6 +560,7 @@ dashboard1 = new Roo.XComponent({
                                                                             	{
                                                                                     xtype : 'CheckBox',
                                                                                     boxLabel : 'Checkbox Disabled',
+                                                                                    disabled : true,
                                                                                     xns : Roo.bootstrap
                                                                                 }
                                                                             ]
