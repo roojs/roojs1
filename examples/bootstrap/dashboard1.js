@@ -21,8 +21,8 @@ dashboard1 = new Roo.XComponent({
             items : [
             	{
                     cls : 'header',
-                    tag : 'header',
                     xtype : 'Container',
+                    tag : 'header',
                     xns : Roo.bootstrap,
                     items : [
                     	{
@@ -84,12 +84,75 @@ dashboard1 = new Roo.XComponent({
                     ]
 
                 },
-            	Roo.apply(Sidebar._tree(), {
+            	{
                     cls : 'wrapper row-offcanvas row-offcanvas-left',
                     xtype : 'Container',
                     'flexy:include' : 'Sidebar.html',
-                    xns : Roo.bootstrap
-                })
+                    xns : Roo.bootstrap,
+                    items : [
+                    	Roo.apply(SidebarNav._tree(), {
+                            tag : 'aside',
+                            cls : 'left-side sidebar-offcanvas',
+                            xtype : 'Container',
+                            xns : Roo.bootstrap
+                        }),
+                    	{
+                            tag : 'aside',
+                            cls : 'right-side',
+                            xtype : 'Container',
+                            xns : Roo.bootstrap,
+                            items : [
+                            	{
+                                    tag : 'section',
+                                    cls : 'content-header',
+                                    xtype : 'Container',
+                                    xns : Roo.bootstrap,
+                                    items : [
+                                    	{
+                                            xtype : 'Header',
+                                            xns : Roo.bootstrap,
+                                            html : 'Dashboard <small> Control Panel</small>'
+                                        }
+                                    ]
+
+                                },
+                            	{
+                                    tag : 'section',
+                                    cls : 'content',
+                                    xtype : 'Container',
+                                    xns : Roo.bootstrap,
+                                    items : [
+                                    	{
+                                            xtype : 'Row',
+                                            xns : Roo.bootstrap,
+                                            items : [
+                                            	{
+                                                    lg : 3,
+                                                    xtype : 'Column',
+                                                    xns : Roo.bootstrap,
+                                                    sm : 6,
+                                                    items : [
+                                                    	{
+                                                            cls : 'small-box bg-aqua ',
+                                                            xtype : 'Container',
+                                                            xns : Roo.bootstrap,
+                                                            html : 'test'
+                                                        }
+                                                    ]
+
+                                                }
+                                            ]
+
+                                        }
+                                    ]
+
+                                }
+                            ]
+
+                        }
+                    ]
+
+                }
             ]
 
         };    }
