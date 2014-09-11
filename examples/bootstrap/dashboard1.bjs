@@ -83,13 +83,6 @@
                             "xtype" : "Container",
                             "* xinclude" : "Dashboard.Sidebar2",
                             "$ xns" : "Roo.bootstrap"
-                        },
-                        {
-                            "String tag" : "aside",
-                            "String cls" : "right-side",
-                            "xtype" : "Container",
-                            "* xinclude" : "Dashboard.Body1",
-                            "$ xns" : "Roo.bootstrap"
                         }
                     ]
                 }

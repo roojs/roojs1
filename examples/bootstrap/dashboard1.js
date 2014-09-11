@@ -95,12 +95,6 @@ dashboard1 = new Roo.XComponent({
                             cls : 'left-side sidebar-offcanvas',
                             xtype : 'Container',
                             xns : Roo.bootstrap
-                        }),
-                    	Roo.apply(Dashboard.Body1._tree(), {
-                            tag : 'aside',
-                            cls : 'right-side',
-                            xtype : 'Container',
-                            xns : Roo.bootstrap
                         })
                     ]
 
