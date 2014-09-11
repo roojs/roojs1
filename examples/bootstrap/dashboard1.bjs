@@ -99,7 +99,8 @@
                                                                                     "xtype" : "Input",
                                                                                     "string placeholder" : "Enter email",
                                                                                     "String fieldLabel" : "Email Address",
-                                                                                    "$ xns" : "Roo.bootstrap"
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "String vtype" : "Email"
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Input",
