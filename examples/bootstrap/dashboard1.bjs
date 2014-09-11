@@ -307,7 +307,7 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : "before : @",
+                                                                                    "string placeholder" : "before : <i class=\"fa fa-envelope\"></i>",
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "string before" : "<i class=\"fa fa-envelope\"></i>",
                                                                                     "string size" : "md"
