@@ -30,4 +30,8 @@
     
     z-index: 1;
 }
- 
+
+/* admin-lte - messes with checkbox and radio.. */
+.checkbox. .radio {
+    padding-left: 20px;
+}
