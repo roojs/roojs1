@@ -527,6 +527,7 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Radio",
+                                                                                    "String boxLabel" : "Radio 1",
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 }
                                                                             ]
