@@ -362,7 +362,7 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : "before : &lt;i class=&quot;fa fa-envelope&quot;&gt;&lt;/i&gt;",
+                                                                                    "string placeholder" : "before :  - an object...    ",
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "string size" : "md"
                                                                                 }
