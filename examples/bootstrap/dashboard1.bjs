@@ -553,8 +553,8 @@
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "items" : [
                                                                                         {
+                                                                                            "$ Array fields" : "[ 'item' ]",
                                                                                             "xtype" : "SimpleStore",
-                                                                                            "Array fields" : "[ 'item' ]",
                                                                                             "$ xns" : "Roo.data",
                                                                                             "* prop" : "store"
                                                                                         }

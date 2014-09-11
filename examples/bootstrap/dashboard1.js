@@ -590,8 +590,8 @@ dashboard1 = new Roo.XComponent({
                                                                                 },
                                                                             	{
                                                                                     store : {
+                                                                                        fields : [ 'item' ],
                                                                                         xtype : 'SimpleStore',
-                                                                                        fields : '[ \'item\' ]',
                                                                                         xns : Roo.data
                                                                                     },
                                                                                     xtype : 'ComboBox',
