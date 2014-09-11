@@ -268,7 +268,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      
     // private
     initEvents: function(){
-        Roo.log('initEvents!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        
         if (!this.store) {
             throw "can not find store for combo";
         }
