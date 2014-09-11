@@ -502,10 +502,10 @@
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 },
                                                                                 {
-                                                                                    "String cls" : "has-warning",
+                                                                                    "String cls" : "has-error",
                                                                                     "xtype" : "Input",
                                                                                     "string placeholder" : "cls = has-error",
-                                                                                    "String fieldLabel" : "Input with Warning",
+                                                                                    "String fieldLabel" : "Input with Error",
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 }
                                                                             ]

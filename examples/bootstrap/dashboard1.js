@@ -542,10 +542,10 @@ dashboard1 = new Roo.XComponent({
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
-                                                                                    cls : 'has-warning',
+                                                                                    cls : 'has-error',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'cls = has-error',
-                                                                                    fieldLabel : 'Input with Warning',
+                                                                                    fieldLabel : 'Input with Error',
                                                                                     xns : Roo.bootstrap
                                                                                 }
                                                                             ]
