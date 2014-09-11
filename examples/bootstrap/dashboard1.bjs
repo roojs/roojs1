@@ -134,7 +134,7 @@
                                                             ]
                                                         },
                                                         {
-                                                            "String cls" : "box box-primary",
+                                                            "String cls" : "box box-success",
                                                             "xtype" : "Container",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [

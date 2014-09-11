@@ -145,7 +145,7 @@ dashboard1 = new Roo.XComponent({
 
                                                         },
                                                     	{
-                                                            cls : 'box box-primary',
+                                                            cls : 'box box-success',
                                                             xtype : 'Container',
                                                             xns : Roo.bootstrap,
                                                             items : [
