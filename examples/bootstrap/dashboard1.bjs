@@ -13,8 +13,8 @@
             "items" : [
                 {
                     "String cls" : "header",
-                    "xtype" : "Container",
                     "tag" : "header",
+                    "xtype" : "Container",
                     "* xinclude" : "Dashboard.Header1",
                     "$ xns" : "Roo.bootstrap"
                 },
@@ -126,6 +126,59 @@
                                                                                     "xtype" : "Button",
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "String html" : "Submit"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "String cls" : "box box-success",
+                                                            "xtype" : "Container",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "String cls" : "box-header",
+                                                                    "xtype" : "Container",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "String cls" : "box-title",
+                                                                            "xtype" : "Header",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "Number level" : 3,
+                                                                            "String html" : "Different Height"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "xtype" : "Form",
+                                                                    "String labelAlign" : "top",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "String cls" : "box-body",
+                                                                            "xtype" : "Container",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "items" : [
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "size lg",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "string size" : "lg"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "size md",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "string size" : "md"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "size sm",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "string size" : "sm"
                                                                                 }
                                                                             ]
                                                                         }

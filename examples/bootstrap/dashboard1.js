@@ -21,8 +21,8 @@ dashboard1 = new Roo.XComponent({
             items : [
             	Roo.apply(Dashboard.Header1._tree(), {
                     cls : 'header',
-                    xtype : 'Container',
                     tag : 'header',
+                    xtype : 'Container',
                     xns : Roo.bootstrap
                 }),
             	{
@@ -134,6 +134,63 @@ dashboard1 = new Roo.XComponent({
                                                                                     xtype : 'Button',
                                                                                     xns : Roo.bootstrap,
                                                                                     html : 'Submit'
+                                                                                }
+                                                                            ]
+
+                                                                        }
+                                                                    ]
+
+                                                                }
+                                                            ]
+
+                                                        },
+                                                    	{
+                                                            cls : 'box box-success',
+                                                            xtype : 'Container',
+                                                            xns : Roo.bootstrap,
+                                                            items : [
+                                                            	{
+                                                                    cls : 'box-header',
+                                                                    xtype : 'Container',
+                                                                    xns : Roo.bootstrap,
+                                                                    items : [
+                                                                    	{
+                                                                            cls : 'box-title',
+                                                                            xtype : 'Header',
+                                                                            xns : Roo.bootstrap,
+                                                                            level : 3,
+                                                                            html : 'Different Height'
+                                                                        }
+                                                                    ]
+
+                                                                },
+                                                            	{
+                                                                    xtype : 'Form',
+                                                                    labelAlign : 'top',
+                                                                    xns : Roo.bootstrap,
+                                                                    items : [
+                                                                    	{
+                                                                            cls : 'box-body',
+                                                                            xtype : 'Container',
+                                                                            xns : Roo.bootstrap,
+                                                                            items : [
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'size lg',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    size : 'lg'
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'size md',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    size : 'md'
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'size sm',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    size : 'sm'
                                                                                 }
                                                                             ]
 
