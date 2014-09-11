@@ -490,8 +490,8 @@
                                                                                 {
                                                                                     "String cls" : "has-success",
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : "Enter ...",
-                                                                                    "String fieldLabel" : "Text",
+                                                                                    "string placeholder" : "cls = has-success",
+                                                                                    "String fieldLabel" : "Input with Success",
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 }
                                                                             ]
