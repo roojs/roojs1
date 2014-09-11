@@ -436,23 +436,23 @@ dashboard1 = new Roo.XComponent({
 
                                                                                     ]
 
+                                                                                },
+                                                                            	{
+                                                                                    after : {
+                                                                                        weight : 'success',
+                                                                                        xtype : 'Button',
+                                                                                        xns : Roo.bootstrap,
+                                                                                        html : 'Go'
+                                                                                    },
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'before :  - an object...    ',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    size : 'md',
+                                                                                    items : [
+
+                                                                                    ]
+
                                                                                 }
-                                                                            ]
-
-                                                                        },
-                                                                    	{
-                                                                            after : {
-                                                                                weight : 'success',
-                                                                                xtype : 'Button',
-                                                                                xns : Roo.bootstrap,
-                                                                                html : 'Go'
-                                                                            },
-                                                                            xtype : 'Input',
-                                                                            placeholder : 'before :  - an object...    ',
-                                                                            xns : Roo.bootstrap,
-                                                                            size : 'md',
-                                                                            items : [
-
                                                                             ]
 
                                                                         }

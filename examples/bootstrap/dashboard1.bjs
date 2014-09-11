@@ -402,21 +402,21 @@
                                                                                             ]
                                                                                         }
                                                                                     ]
-                                                                                }
-                                                                            ]
-                                                                        },
-                                                                        {
-                                                                            "xtype" : "Input",
-                                                                            "string placeholder" : "before :  - an object...    ",
-                                                                            "$ xns" : "Roo.bootstrap",
-                                                                            "string size" : "md",
-                                                                            "items" : [
+                                                                                },
                                                                                 {
-                                                                                    "String weight" : "success",
-                                                                                    "xtype" : "Button",
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "before :  - an object...    ",
                                                                                     "$ xns" : "Roo.bootstrap",
-                                                                                    "String html" : "Go",
-                                                                                    "* prop" : "after"
+                                                                                    "string size" : "md",
+                                                                                    "items" : [
+                                                                                        {
+                                                                                            "String weight" : "success",
+                                                                                            "xtype" : "Button",
+                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                            "String html" : "Go",
+                                                                                            "* prop" : "after"
+                                                                                        }
+                                                                                    ]
                                                                                 }
                                                                             ]
                                                                         }
