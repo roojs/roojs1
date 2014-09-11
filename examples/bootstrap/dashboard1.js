@@ -533,6 +533,13 @@ dashboard1 = new Roo.XComponent({
                                                                                     placeholder : 'cls = has-success',
                                                                                     fieldLabel : 'Input with Success',
                                                                                     xns : Roo.bootstrap
+                                                                                },
+                                                                            	{
+                                                                                    cls : 'has-success',
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'cls = has-success',
+                                                                                    fieldLabel : 'Input with Success',
+                                                                                    xns : Roo.bootstrap
                                                                                 }
                                                                             ]
 

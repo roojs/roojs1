@@ -493,6 +493,13 @@
                                                                                     "string placeholder" : "cls = has-success",
                                                                                     "String fieldLabel" : "Input with Success",
                                                                                     "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "String cls" : "has-success",
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "cls = has-success",
+                                                                                    "String fieldLabel" : "Input with Success",
+                                                                                    "$ xns" : "Roo.bootstrap"
                                                                                 }
                                                                             ]
                                                                         }
