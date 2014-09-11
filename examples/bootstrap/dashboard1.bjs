@@ -519,7 +519,7 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "CheckBox",
-                                                                                    "String boxLabel" : "Checkbox 2",
+                                                                                    "String boxLabel" : "Checkbox Disabled",
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 }
                                                                             ]
