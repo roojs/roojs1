@@ -603,6 +603,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     fieldLabel : 'ComboBox',
                                                                                     xns : Roo.bootstrap,
                                                                                     tpl : '<li class=\"select2-result\"><b>{item}</b></div>',
+                                                                                    displayField : 'item',
                                                                                     items : [
 
                                                                                     ]
