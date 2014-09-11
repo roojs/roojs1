@@ -13,7 +13,9 @@
  * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
  * @cfg {String} inputValue The value that should go into the generated input element's value when checked.
  * @cfg {String} boxLabel The text that appears beside the checkbox
+ * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the checkbox
  * @cfg {Boolean} checked initnal the element
+ * 
  * 
  * @constructor
  * Create a new CheckBox
