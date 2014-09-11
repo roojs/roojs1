@@ -6607,7 +6607,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
        
         var parent = this.parent();
         
-        var align = this.parentLabelAlign();
+        var align = this.labelAlign || this.parentLabelAlign();
         
         var id = Roo.id();
         
