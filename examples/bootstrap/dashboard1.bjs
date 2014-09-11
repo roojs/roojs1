@@ -75,7 +75,8 @@
                                                                     "String cls" : "box-header",
                                                                     "xtype" : "Header",
                                                                     "$ xns" : "Roo.bootstrap",
-                                                                    "Number level" : 3
+                                                                    "Number level" : 3,
+                                                                    "String html" : "Quick Example"
                                                                 }
                                                             ]
                                                         }
