@@ -106,6 +106,7 @@
                                                                         {
                                                                             "xtype" : "Input",
                                                                             "string placeholder" : "Enter email",
+                                                                            "String inputType" : "file",
                                                                             "String fieldLabel" : "File Input",
                                                                             "$ xns" : "Roo.bootstrap"
                                                                         }
