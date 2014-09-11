@@ -337,8 +337,8 @@ dashboard1 = new Roo.XComponent({
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'before : &lt;i class=&quot;fa fa-envelope&quot;&gt;&lt;/i&gt;',
                                                                                     xns : Roo.bootstrap,
-                                                                                    before : '<i class=\"fa fa-envelope\"></i>',
-                                                                                    size : 'md'
+                                                                                    size : 'md',
+                                                                                    after : '<i class=\"fa fa-check\"></i>'
                                                                                 }
                                                                             ]
 
