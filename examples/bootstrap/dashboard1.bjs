@@ -477,7 +477,13 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "TextArea",
+                                                                                    "String fieldLabel" : "Textarea",
                                                                                     "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "TextArea",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "String fieldLabel" : "Textarea"
                                                                                 }
                                                                             ]
                                                                         }
