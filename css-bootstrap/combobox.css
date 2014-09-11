@@ -186,6 +186,7 @@
     width: 100%
 }
 .select2-container .x-combo-noedit {
-   cursor: pointer;    
+   cursor: pointer;
+   background-color: #fff;
 
 }
