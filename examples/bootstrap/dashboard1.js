@@ -405,6 +405,12 @@ dashboard1 = new Roo.XComponent({
                                                                                         xtype : 'Button',
                                                                                         xns : Roo.bootstrap,
                                                                                         html : 'http://',
+                                                                                        listeners : {
+                                                                                        	render : function (_self)
+                                                                                        	   {
+                                                                                        	       _this.httpButton = _self;
+                                                                                        	   }
+                                                                                        },
                                                                                         items : [
 
                                                                                         ]

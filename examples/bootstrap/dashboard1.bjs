@@ -367,6 +367,9 @@
                                                                                     "string size" : "md",
                                                                                     "items" : [
                                                                                         {
+                                                                                            "listeners" : {
+                                                                                                "render" : "function (_self)\n{\n    _this.httpButton = _self;\n}"
+                                                                                            },
                                                                                             "String weight" : "primary",
                                                                                             "xtype" : "Button",
                                                                                             "$ xns" : "Roo.bootstrap",
