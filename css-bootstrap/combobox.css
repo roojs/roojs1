@@ -190,3 +190,8 @@
    background-color: #fff;
 
 }
+.select2-container .x-combo-noedit[disabled] {
+   cursor: pointer;
+   background-color: #eee;
+
+}
