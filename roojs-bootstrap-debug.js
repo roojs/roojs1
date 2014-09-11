@@ -5934,7 +5934,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 inputblock.cn.push({
                     tag :'span',
                     cls : 'roo-input-after input-group-' +
-                        (this.before.xtype == 'Button' ? 'btn' : 'addon')  //?? what about checkboxes - that looks like a bit of a hack thought? 
+                        (this.after.xtype == 'Button' ? 'btn' : 'addon')  //?? what about checkboxes - that looks like a bit of a hack thought? 
                 });
             }
         };
@@ -13921,14 +13921,14 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         var cfg = {};
         
-        cfg.cls = 'form-group' //input-group
+        cfg.cls = 'form-group checkbox' //input-group
         
         var input =  {
             tag: 'input',
             id : id,
             type : this.inputType,
             value : (!this.checked) ? this.valueOff : this.inputValue,
-            cls : 'form-box',
+            cls : 'roo-checkbox', //'form-box',
             placeholder : this.placeholder || ''
             
         };
@@ -13956,7 +13956,12 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             }
         });
         
+       
+        
         var inputblock = input;
+        
+        
+        
         
         if (this.before || this.after) {
             
@@ -14020,25 +14025,23 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 
         } else {
             
-                   Roo.log(" no label && no align");
-                cfg.cn = [
-                    
-                        inputblock
-                    
-                ];
+                Roo.log(" no label && no align");
+                cfg.cn = [  inputblock ] ;
                 
                 
         };
-        
-        if(this.boxLabel){
-            cfg.cn.push({
+         if(this.boxLabel){
+            cfg.cn.push( {
                 tag: 'label',
                 'for': id,
                 cls: 'box-label',
                 html: this.boxLabel
-            })
+                
+            });
         }
         
+        
+       
         return cfg;
         
     },
@@ -14048,7 +14051,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     inputEl: function ()
     {
-        return this.el.select('input.form-box',true).first();
+        return this.el.select('input.roo-checkbox',true).first();
     },
     
     label: function()
