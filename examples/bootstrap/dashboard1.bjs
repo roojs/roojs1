@@ -61,10 +61,10 @@
                                             "$ xns" : "Roo.bootstrap",
                                             "items" : [
                                                 {
-                                                    "Number lg" : 3,
+                                                    "Number md" : 6,
                                                     "xtype" : "Column",
                                                     "$ xns" : "Roo.bootstrap",
-                                                    "Number sm" : 6,
+                                                    "Number sm" : 12,
                                                     "items" : [
                                                         {
                                                             "String cls" : "small-box bg-aqua ",

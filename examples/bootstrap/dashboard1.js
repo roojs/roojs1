@@ -68,10 +68,10 @@ dashboard1 = new Roo.XComponent({
                                             xns : Roo.bootstrap,
                                             items : [
                                             	{
-                                                    lg : 3,
+                                                    md : 6,
                                                     xtype : 'Column',
                                                     xns : Roo.bootstrap,
-                                                    sm : 6,
+                                                    sm : 12,
                                                     items : [
                                                     	{
                                                             cls : 'small-box bg-aqua ',
