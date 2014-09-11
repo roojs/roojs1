@@ -185,7 +185,7 @@
 .select2-choices .select2-search-field{
     width: 100%
 }
-.x-combo-noedit {
+.x-combo-noedit[disabled] {
     cursor: pointer;    
 
 }
