@@ -93,37 +93,39 @@
                                                                         {
                                                                             "String cls" : "box-body",
                                                                             "xtype" : "Container",
-                                                                            "$ xns" : "Roo.bootstrap"
-                                                                        },
-                                                                        {
-                                                                            "xtype" : "Input",
-                                                                            "string placeholder" : "Enter email",
-                                                                            "String fieldLabel" : "Email Address",
-                                                                            "$ xns" : "Roo.bootstrap"
-                                                                        },
-                                                                        {
-                                                                            "xtype" : "Input",
-                                                                            "string placeholder" : "Enter password",
-                                                                            "String inputType" : "password",
-                                                                            "String fieldLabel" : "Password",
-                                                                            "$ xns" : "Roo.bootstrap"
-                                                                        },
-                                                                        {
-                                                                            "xtype" : "Input",
-                                                                            "string placeholder" : "Enter email",
-                                                                            "String inputType" : "file",
-                                                                            "String fieldLabel" : "File Input",
-                                                                            "$ xns" : "Roo.bootstrap"
-                                                                        },
-                                                                        {
-                                                                            "xtype" : "Input",
-                                                                            "$ xns" : "Roo.bootstrap"
-                                                                        },
-                                                                        {
-                                                                            "String weight" : "primary",
-                                                                            "xtype" : "Button",
                                                                             "$ xns" : "Roo.bootstrap",
-                                                                            "String html" : "Submit"
+                                                                            "items" : [
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "Enter email",
+                                                                                    "String fieldLabel" : "Email Address",
+                                                                                    "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "Enter password",
+                                                                                    "String inputType" : "password",
+                                                                                    "String fieldLabel" : "Password",
+                                                                                    "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "Enter email",
+                                                                                    "String inputType" : "file",
+                                                                                    "String fieldLabel" : "File Input",
+                                                                                    "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "String weight" : "primary",
+                                                                                    "xtype" : "Button",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "String html" : "Submit"
+                                                                                }
+                                                                            ]
                                                                         }
                                                                     ]
                                                                 }

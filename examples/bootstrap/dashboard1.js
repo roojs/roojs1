@@ -101,37 +101,40 @@ dashboard1 = new Roo.XComponent({
                                                                     	{
                                                                             cls : 'box-body',
                                                                             xtype : 'Container',
-                                                                            xns : Roo.bootstrap
-                                                                        },
-                                                                    	{
-                                                                            xtype : 'Input',
-                                                                            placeholder : 'Enter email',
-                                                                            fieldLabel : 'Email Address',
-                                                                            xns : Roo.bootstrap
-                                                                        },
-                                                                    	{
-                                                                            xtype : 'Input',
-                                                                            placeholder : 'Enter password',
-                                                                            inputType : 'password',
-                                                                            fieldLabel : 'Password',
-                                                                            xns : Roo.bootstrap
-                                                                        },
-                                                                    	{
-                                                                            xtype : 'Input',
-                                                                            placeholder : 'Enter email',
-                                                                            inputType : 'file',
-                                                                            fieldLabel : 'File Input',
-                                                                            xns : Roo.bootstrap
-                                                                        },
-                                                                    	{
-                                                                            xtype : 'Input',
-                                                                            xns : Roo.bootstrap
-                                                                        },
-                                                                    	{
-                                                                            weight : 'primary',
-                                                                            xtype : 'Button',
                                                                             xns : Roo.bootstrap,
-                                                                            html : 'Submit'
+                                                                            items : [
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'Enter email',
+                                                                                    fieldLabel : 'Email Address',
+                                                                                    xns : Roo.bootstrap
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'Enter password',
+                                                                                    inputType : 'password',
+                                                                                    fieldLabel : 'Password',
+                                                                                    xns : Roo.bootstrap
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'Enter email',
+                                                                                    inputType : 'file',
+                                                                                    fieldLabel : 'File Input',
+                                                                                    xns : Roo.bootstrap
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    xns : Roo.bootstrap
+                                                                                },
+                                                                            	{
+                                                                                    weight : 'primary',
+                                                                                    xtype : 'Button',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    html : 'Submit'
+                                                                                }
+                                                                            ]
+
                                                                         }
                                                                     ]
 
