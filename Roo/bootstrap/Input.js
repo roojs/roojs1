@@ -412,6 +412,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             this.inputEl().on('keydown', this.SafariOnKeyDown, this);
         }
         
+        if (typeof(this.before) == 'object') {
+            
+        }
+        
+        
+        
     },
     filterValidation : function(e){
         if(!e.isNavKeyPress()){
