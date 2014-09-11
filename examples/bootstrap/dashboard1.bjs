@@ -369,6 +369,7 @@
                                                                                         {
                                                                                             "xtype" : "Button",
                                                                                             "$ xns" : "Roo.bootstrap",
+                                                                                            "String html" : "test",
                                                                                             "* prop" : "before"
                                                                                         }
                                                                                     ]

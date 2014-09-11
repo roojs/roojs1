@@ -385,7 +385,8 @@ dashboard1 = new Roo.XComponent({
                                                                             	{
                                                                                     before : {
                                                                                         xtype : 'Button',
-                                                                                        xns : Roo.bootstrap
+                                                                                        xns : Roo.bootstrap,
+                                                                                        html : 'test'
                                                                                     },
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'before :  - an object...    ',
