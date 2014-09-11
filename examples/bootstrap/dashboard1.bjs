@@ -13,8 +13,8 @@
             "items" : [
                 {
                     "String cls" : "header",
-                    "tag" : "header",
                     "xtype" : "Container",
+                    "tag" : "header",
                     "* xinclude" : "Dashboard.Header1",
                     "$ xns" : "Roo.bootstrap"
                 },
@@ -301,9 +301,16 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Header",
-                                                                                    "Number level" : 4,
                                                                                     "$ xns" : "Roo.bootstrap",
+                                                                                    "Number level" : 4,
                                                                                     "String html" : "With Icons"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "before : &lt;i class=&quot;fa fa-envelope&quot;&gt;&lt;/i&gt;",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "string before" : "<i class=\"fa fa-envelope\"></i>",
+                                                                                    "string size" : "md"
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Input",

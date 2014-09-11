@@ -21,8 +21,8 @@ dashboard1 = new Roo.XComponent({
             items : [
             	Roo.apply(Dashboard.Header1._tree(), {
                     cls : 'header',
-                    tag : 'header',
                     xtype : 'Container',
+                    tag : 'header',
                     xns : Roo.bootstrap
                 }),
             	{
@@ -310,7 +310,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     placeholder : 'after: .00',
                                                                                     xns : Roo.bootstrap,
                                                                                     size : 'md',
-                                                                                    after : .00
+                                                                                    after : 0
                                                                                 },
                                                                             	{
                                                                                     xtype : 'Input',
@@ -318,13 +318,20 @@ dashboard1 = new Roo.XComponent({
                                                                                     xns : Roo.bootstrap,
                                                                                     before : '$',
                                                                                     size : 'md',
-                                                                                    after : 0.00
+                                                                                    after : 0
                                                                                 },
                                                                             	{
                                                                                     xtype : 'Header',
-                                                                                    level : 4,
                                                                                     xns : Roo.bootstrap,
+                                                                                    level : 4,
                                                                                     html : 'With Icons'
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'before : &lt;i class=&quot;fa fa-envelope&quot;&gt;&lt;/i&gt;',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    before : '<i class=\"fa fa-envelope\"></i>',
+                                                                                    size : 'md'
                                                                                 },
                                                                             	{
                                                                                     xtype : 'Input',
