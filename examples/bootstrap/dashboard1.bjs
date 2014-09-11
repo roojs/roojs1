@@ -91,6 +91,11 @@
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "items" : [
                                                                         {
+                                                                            "String cls" : "box-body",
+                                                                            "xtype" : "Container",
+                                                                            "$ xns" : "Roo.bootstrap"
+                                                                        },
+                                                                        {
                                                                             "xtype" : "Input",
                                                                             "string placeholder" : "Enter email",
                                                                             "String fieldLabel" : "Email Address",
