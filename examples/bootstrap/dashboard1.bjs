@@ -30,6 +30,55 @@
                             "xtype" : "Container",
                             "* xinclude" : "Dashboard.Sidebar2",
                             "$ xns" : "Roo.bootstrap"
+                        },
+                        {
+                            "String tag" : "aside",
+                            "String cls" : "right-side",
+                            "xtype" : "Container",
+                            "$ xns" : "Roo.bootstrap",
+                            "items" : [
+                                {
+                                    "String tag" : "section",
+                                    "String cls" : "content-header",
+                                    "xtype" : "Container",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "items" : [
+                                        {
+                                            "xtype" : "Header",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "String html" : "Dashboard <small> Control Panel</small>"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "String tag" : "section",
+                                    "String cls" : "content",
+                                    "xtype" : "Container",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "items" : [
+                                        {
+                                            "xtype" : "Row",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "Number lg" : 3,
+                                                    "xtype" : "Column",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "Number sm" : 6,
+                                                    "items" : [
+                                                        {
+                                                            "String cls" : "small-box bg-aqua ",
+                                                            "xtype" : "Container",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "test"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 }

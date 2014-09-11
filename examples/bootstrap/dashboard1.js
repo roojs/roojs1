@@ -36,7 +36,61 @@ dashboard1 = new Roo.XComponent({
                             cls : 'left-side sidebar-offcanvas',
                             xtype : 'Container',
                             xns : Roo.bootstrap
-                        })
+                        }),
+                    	{
+                            tag : 'aside',
+                            cls : 'right-side',
+                            xtype : 'Container',
+                            xns : Roo.bootstrap,
+                            items : [
+                            	{
+                                    tag : 'section',
+                                    cls : 'content-header',
+                                    xtype : 'Container',
+                                    xns : Roo.bootstrap,
+                                    items : [
+                                    	{
+                                            xtype : 'Header',
+                                            xns : Roo.bootstrap,
+                                            html : 'Dashboard <small> Control Panel</small>'
+                                        }
+                                    ]
+
+                                },
+                            	{
+                                    tag : 'section',
+                                    cls : 'content',
+                                    xtype : 'Container',
+                                    xns : Roo.bootstrap,
+                                    items : [
+                                    	{
+                                            xtype : 'Row',
+                                            xns : Roo.bootstrap,
+                                            items : [
+                                            	{
+                                                    lg : 3,
+                                                    xtype : 'Column',
+                                                    xns : Roo.bootstrap,
+                                                    sm : 6,
+                                                    items : [
+                                                    	{
+                                                            cls : 'small-box bg-aqua ',
+                                                            xtype : 'Container',
+                                                            xns : Roo.bootstrap,
+                                                            html : 'test'
+                                                        }
+                                                    ]
+
+                                                }
+                                            ]
+
+                                        }
+                                    ]
+
+                                }
+                            ]
+
+                        }
                     ]
 
                 }
