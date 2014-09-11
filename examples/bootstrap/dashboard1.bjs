@@ -72,7 +72,7 @@
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [
                                                                 {
-                                                                    "String cls" : "box-header",
+                                                                    "String cls" : "box-title",
                                                                     "xtype" : "Header",
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "Number level" : 3,
