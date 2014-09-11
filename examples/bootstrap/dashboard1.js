@@ -90,61 +90,12 @@ dashboard1 = new Roo.XComponent({
                     'flexy:include' : 'Sidebar.html',
                     xns : Roo.bootstrap,
                     items : [
-                    	{
+                    	Roo.apply(Dashboard.Sidebar2._tree(), {
                             tag : 'aside',
                             cls : 'left-side sidebar-offcanvas',
                             xtype : 'Container',
-                            xns : Roo.bootstrap,
-                            items : [
-                            	{
-                                    xtype : 'NavSidebar',
-                                    xns : Roo.bootstrap,
-                                    items : [
-                                    	{
-                                            xtype : 'NavGroup',
-                                            xns : Roo.bootstrap,
-                                            items : [
-                                            	{
-                                                    menu : {
-                                                        type : 'treeview',
-                                                        xtype : 'Menu',
-                                                        xns : Roo.bootstrap,
-                                                        items : [
-                                                        	{
-                                                                xtype : 'MenuItem',
-                                                                xns : Roo.bootstrap,
-                                                                html : 'test'
-                                                            }
-                                                        ]
-
-                                                    },
-                                                    href : '#',
-                                                    xtype : 'NavSidebarItem',
-                                                    xns : Roo.bootstrap,
-                                                    icon : 'fa fa-bar-chart-o',
-                                                    html : 'test',
-                                                    items : [
-
-                                                    ]
-
-                                                },
-                                            	{
-                                                    href : '#',
-                                                    xtype : 'NavSidebarItem',
-                                                    xns : Roo.bootstrap,
-                                                    html : 'test',
-                                                    badge : 'new',
-                                                    badgecls : 'bg-red'
-                                                }
-                                            ]
-
-                                        }
-                                    ]
-
-                                }
-                            ]
-
-                        }
+                            xns : Roo.bootstrap
+                        })
                     ]
 
                 }
