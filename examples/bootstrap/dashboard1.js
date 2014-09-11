@@ -79,15 +79,19 @@ dashboard1 = new Roo.XComponent({
                                                             xns : Roo.bootstrap,
                                                             items : [
                                                             	{
-                                                                    cls : 'box-title',
-                                                                    xtype : 'Header',
-                                                                    xns : Roo.bootstrap,
-                                                                    level : 3,
-                                                                    html : 'Quick Example'
-                                                                },
-                                                            	{
+                                                                    cls : 'box-header',
                                                                     xtype : 'Container',
-                                                                    xns : Roo.bootstrap
+                                                                    xns : Roo.bootstrap,
+                                                                    items : [
+                                                                    	{
+                                                                            cls : 'box-title',
+                                                                            xtype : 'Header',
+                                                                            xns : Roo.bootstrap,
+                                                                            level : 3,
+                                                                            html : 'Quick Example'
+                                                                        }
+                                                                    ]
+
                                                                 }
                                                             ]
 
