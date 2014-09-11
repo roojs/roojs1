@@ -549,6 +549,7 @@
                                                                                     "string value" : 3
                                                                                 },
                                                                                 {
+                                                                                    "String mode" : "local",
                                                                                     "xtype" : "ComboBox",
                                                                                     "String fieldLabel" : "ComboBox",
                                                                                     "$ xns" : "Roo.bootstrap",
