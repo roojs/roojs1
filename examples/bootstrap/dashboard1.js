@@ -114,7 +114,7 @@ dashboard1 = new Roo.XComponent({
                                                                     	{
                                                                             xtype : 'Input',
                                                                             placeholder : 'Enter email',
-                                                                            fieldLabel : 'Email Address',
+                                                                            fieldLabel : 'File Input',
                                                                             xns : Roo.bootstrap
                                                                         }
                                                                     ]
