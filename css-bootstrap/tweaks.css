@@ -25,9 +25,11 @@
     margin-left: 5px;
     cursor: pointer;
 }
-.dropdown-menu * {
-    z-index: 1000;
+position:relative {
+    
+    z-index: 1;
 }
+
 /*.form-box input {
     height: 15px;
     width: 15px;
