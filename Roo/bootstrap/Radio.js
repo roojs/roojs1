@@ -155,7 +155,10 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         return cfg;
         
     },
-   
+    inputEl: function ()
+    {
+        return this.el.select('input.roo-checkbox',true).first();
+    },
     onClick : function()
     {   
         this.setChecked(true);
