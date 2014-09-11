@@ -90,12 +90,6 @@ dashboard1 = new Roo.XComponent({
                     'flexy:include' : 'Sidebar.html',
                     xns : Roo.bootstrap,
                     items : [
-                    	Roo.apply(SidebarNav._tree(), {
-                            tag : 'aside',
-                            cls : 'left-side sidebar-offcanvas',
-                            xtype : 'Container',
-                            xns : Roo.bootstrap
-                        }),
                     	Roo.apply(Dashboard1.Body._tree(), {
                             tag : 'aside',
                             cls : 'right-side',
