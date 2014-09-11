@@ -381,6 +381,12 @@ dashboard1 = new Roo.XComponent({
                                                                                     xns : Roo.bootstrap,
                                                                                     level : 4,
                                                                                     html : 'With buttons'
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'before : &lt;i class=&quot;fa fa-envelope&quot;&gt;&lt;/i&gt;',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    size : 'md'
                                                                                 }
                                                                             ]
 

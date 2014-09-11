@@ -359,6 +359,12 @@
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "Number level" : 4,
                                                                                     "String html" : "With buttons"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "before : &lt;i class=&quot;fa fa-envelope&quot;&gt;&lt;/i&gt;",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "string size" : "md"
                                                                                 }
                                                                             ]
                                                                         }
