@@ -470,7 +470,7 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : "Enter ...",
+                                                                                    "string placeholder" : "disabled = true",
                                                                                     "Boolean disabled" : true,
                                                                                     "String fieldLabel" : "Text",
                                                                                     "$ xns" : "Roo.bootstrap"

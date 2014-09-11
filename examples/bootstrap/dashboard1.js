@@ -510,7 +510,7 @@ dashboard1 = new Roo.XComponent({
                                                                                 },
                                                                             	{
                                                                                     xtype : 'Input',
-                                                                                    placeholder : 'Enter ...',
+                                                                                    placeholder : 'disabled = true',
                                                                                     disabled : true,
                                                                                     fieldLabel : 'Text',
                                                                                     xns : Roo.bootstrap
