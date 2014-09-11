@@ -125,6 +125,7 @@ dashboard1 = new Roo.XComponent({
                                                                                 },
                                                                             	{
                                                                                     xtype : 'Input',
+                                                                                    inputType : 'checkbox',
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{

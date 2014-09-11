@@ -117,6 +117,7 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Input",
+                                                                                    "String inputType" : "checkbox",
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 },
                                                                                 {
