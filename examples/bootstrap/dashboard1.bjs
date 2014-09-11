@@ -464,35 +464,15 @@
                                                                             "items" : [
                                                                                 {
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : "Enter email",
-                                                                                    "String fieldLabel" : "Email Address",
+                                                                                    "string placeholder" : "Enter ...",
+                                                                                    "String fieldLabel" : "Text",
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : "Enter password",
-                                                                                    "String inputType" : "password",
-                                                                                    "String fieldLabel" : "Password",
+                                                                                    "string placeholder" : "Enter ...",
+                                                                                    "String fieldLabel" : "Text",
                                                                                     "$ xns" : "Roo.bootstrap"
-                                                                                },
-                                                                                {
-                                                                                    "xtype" : "Input",
-                                                                                    "string placeholder" : "Enter email",
-                                                                                    "String inputType" : "file",
-                                                                                    "String fieldLabel" : "File Input",
-                                                                                    "$ xns" : "Roo.bootstrap"
-                                                                                },
-                                                                                {
-                                                                                    "xtype" : "Input",
-                                                                                    "String inputType" : "checkbox",
-                                                                                    "$ xns" : "Roo.bootstrap",
-                                                                                    "String fieldLabel" : "Fixme - checkbox type"
-                                                                                },
-                                                                                {
-                                                                                    "String weight" : "primary",
-                                                                                    "xtype" : "Button",
-                                                                                    "$ xns" : "Roo.bootstrap",
-                                                                                    "String html" : "Submit"
                                                                                 }
                                                                             ]
                                                                         }

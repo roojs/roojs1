@@ -504,35 +504,15 @@ dashboard1 = new Roo.XComponent({
                                                                             items : [
                                                                             	{
                                                                                     xtype : 'Input',
-                                                                                    placeholder : 'Enter email',
-                                                                                    fieldLabel : 'Email Address',
+                                                                                    placeholder : 'Enter ...',
+                                                                                    fieldLabel : 'Text',
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
                                                                                     xtype : 'Input',
-                                                                                    placeholder : 'Enter password',
-                                                                                    inputType : 'password',
-                                                                                    fieldLabel : 'Password',
+                                                                                    placeholder : 'Enter ...',
+                                                                                    fieldLabel : 'Text',
                                                                                     xns : Roo.bootstrap
-                                                                                },
-                                                                            	{
-                                                                                    xtype : 'Input',
-                                                                                    placeholder : 'Enter email',
-                                                                                    inputType : 'file',
-                                                                                    fieldLabel : 'File Input',
-                                                                                    xns : Roo.bootstrap
-                                                                                },
-                                                                            	{
-                                                                                    xtype : 'Input',
-                                                                                    inputType : 'checkbox',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    fieldLabel : 'Fixme - checkbox type'
-                                                                                },
-                                                                            	{
-                                                                                    weight : 'primary',
-                                                                                    xtype : 'Button',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    html : 'Submit'
                                                                                 }
                                                                             ]
 
