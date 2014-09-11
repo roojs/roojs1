@@ -50,7 +50,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         var cfg = {};
         
-        cfg.cls = 'form-group' //input-group
+        cfg.cls = 'form-group checkbox' //input-group
         
         var input =  {
             tag: 'input',
