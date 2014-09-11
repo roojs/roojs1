@@ -88,16 +88,7 @@ dashboard1 = new Roo.XComponent({
                     cls : 'wrapper row-offcanvas row-offcanvas-left',
                     xtype : 'Container',
                     'flexy:include' : 'Sidebar.html',
-                    xns : Roo.bootstrap,
-                    items : [
-                    	Roo.apply(Dashboard1.Body._tree(), {
-                            tag : 'aside',
-                            cls : 'right-side',
-                            xtype : 'Container',
-                            xns : Roo.bootstrap
-                        })
-                    ]
-
+                    xns : Roo.bootstrap
                 }
             ]
 

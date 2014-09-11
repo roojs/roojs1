@@ -75,16 +75,7 @@
                     "String cls" : "wrapper row-offcanvas row-offcanvas-left",
                     "xtype" : "Container",
                     "flexy:include" : "Sidebar.html",
-                    "$ xns" : "Roo.bootstrap",
-                    "items" : [
-                        {
-                            "String tag" : "aside",
-                            "String cls" : "right-side",
-                            "xtype" : "Container",
-                            "* xinclude" : "Dashboard1.Body",
-                            "$ xns" : "Roo.bootstrap"
-                        }
-                    ]
+                    "$ xns" : "Roo.bootstrap"
                 }
             ]
         }
