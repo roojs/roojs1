@@ -596,6 +596,7 @@ dashboard1 = new Roo.XComponent({
                                                                                         xns : Roo.data
                                                                                     },
                                                                                     mode : 'local',
+                                                                                    name : 'combotest',
                                                                                     valueField : 'item',
                                                                                     xtype : 'ComboBox',
                                                                                     fieldLabel : 'ComboBox',
