@@ -82,7 +82,59 @@
                             "String cls" : "left-side sidebar-offcanvas",
                             "xtype" : "Container",
                             "* xinclude" : "SidebarNav",
-                            "$ xns" : "Roo.bootstrap"
+                            "$ xns" : "Roo.bootstrap",
+                            "items" : [
+                                {
+                                    "String tag" : "aside",
+                                    "String cls" : "left-side sidebar-offcanvas",
+                                    "xtype" : "Container",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "items" : [
+                                        {
+                                            "xtype" : "NavSidebar",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "xtype" : "NavGroup",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "String href" : "#",
+                                                            "xtype" : "NavSidebarItem",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "icon" : "fa fa-bar-chart-o",
+                                                            "String html" : "test",
+                                                            "items" : [
+                                                                {
+                                                                    "String type" : "treeview",
+                                                                    "xtype" : "Menu",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "* prop" : "menu",
+                                                                    "items" : [
+                                                                        {
+                                                                            "xtype" : "MenuItem",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "String html" : "test"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "String href" : "#",
+                                                            "xtype" : "NavSidebarItem",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "test",
+                                                            "String badge" : "new",
+                                                            "badgecls" : "bg-red"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "String tag" : "aside",
