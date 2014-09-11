@@ -476,6 +476,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.editable !== false){
             this.inputEl().on("keyup", this.onKeyUp, this);
         }
+        
+        Roo.log('this.forceSelection');
+        Roo.log(this.forceSelection);
+        
         if(this.forceSelection){
             this.on('blur', this.doForce, this);
         }
