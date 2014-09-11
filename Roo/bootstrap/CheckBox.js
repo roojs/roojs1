@@ -166,7 +166,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 
         };
          if(this.boxLabel){
-            inputblock.cn.push( {
+            cfg.cn.push( {
                 tag: 'label',
                 'for': id,
                 cls: 'box-label',
