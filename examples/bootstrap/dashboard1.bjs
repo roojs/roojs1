@@ -361,7 +361,7 @@
                                                                                     "String html" : "With buttons"
                                                                                 },
                                                                                 {
-                                                                                    "xtype" : "Input",
+                                                                                    "xtype" : "Container",
                                                                                     "string placeholder" : "before :  - an object...    ",
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "string size" : "md"
