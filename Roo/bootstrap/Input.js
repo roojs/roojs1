@@ -286,6 +286,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             
             inputblock.cn.push(input);
+            
             if (this.after && typeof(this.after) == 'string') {
                 inputblock.cn.push({
                     tag :'span',
@@ -293,7 +294,14 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                     html : this.after
                 });
             }
-            
+            if (this.after && typeof(this.after) == 'object') {
+                this.after = Roo.factory(this.after);
+                Roo.log(this.after);
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-btn', //?? what about checkboxes - that looks like a bit of a hack thought? 
+                });
+            }
         };
         
         if (align ==='left' && this.fieldLabel.length) {
