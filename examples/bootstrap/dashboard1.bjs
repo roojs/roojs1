@@ -598,7 +598,7 @@
                                                                                     "xtype" : "ComboBox",
                                                                                     "String triggerAction" : "all",
                                                                                     "Boolean editable" : false,
-                                                                                    "String fieldLabel" : "ComboBox",
+                                                                                    "String fieldLabel" : "Multiple selection",
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "String/Roo.Template tpl" : "<li class=\"select2-result\"><b>{item}</b></div>",
                                                                                     "Boolean multiple" : true,

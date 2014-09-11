@@ -646,7 +646,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     xtype : 'ComboBox',
                                                                                     triggerAction : 'all',
                                                                                     editable : false,
-                                                                                    fieldLabel : 'ComboBox',
+                                                                                    fieldLabel : 'Multiple selection',
                                                                                     xns : Roo.bootstrap,
                                                                                     tpl : '<li class=\"select2-result\"><b>{item}</b></div>',
                                                                                     multiple : true,
