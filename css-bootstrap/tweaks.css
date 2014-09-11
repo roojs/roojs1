@@ -25,14 +25,9 @@
     margin-left: 5px;
     cursor: pointer;
 }
+/* needed as menu ontop of form does not work */
 .input-group .form-control {
     
     z-index: 1;
 }
-
-/*.form-box input {
-    height: 15px;
-    width: 15px;
-    box-shadow: none;
-    float: left;
-}*/
+ 
