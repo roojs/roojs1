@@ -277,6 +277,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 });
             }
             if (this.before && typeof(this.before) == 'object') {
+                this.before = Roo.factory(this.before);
+                Roo.log(this.before);
                 inputblock.cn.push({
                     tag :'span',
                     cls : 'input-group-btn', //?? what about checkboxes - that looks like a bit of a hack thought? 
