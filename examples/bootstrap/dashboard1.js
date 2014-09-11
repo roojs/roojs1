@@ -486,7 +486,7 @@ dashboard1 = new Roo.XComponent({
                                                                             xtype : 'Header',
                                                                             xns : Roo.bootstrap,
                                                                             level : 3,
-                                                                            html : 'Quick Example'
+                                                                            html : 'General Elements'
                                                                         }
                                                                     ]
 
