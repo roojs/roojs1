@@ -386,7 +386,14 @@ dashboard1 = new Roo.XComponent({
                                                                                     before : {
                                                                                         menu : {
                                                                                             xtype : 'Menu',
-                                                                                            xns : Roo.bootstrap
+                                                                                            xns : Roo.bootstrap,
+                                                                                            items : [
+                                                                                            	{
+                                                                                                    xtype : 'MenuItem',
+                                                                                                    xns : Roo.bootstrap
+                                                                                                }
+                                                                                            ]
+
                                                                                         },
                                                                                         weight : 'primary',
                                                                                         xtype : 'Button',

@@ -376,7 +376,13 @@
                                                                                                 {
                                                                                                     "xtype" : "Menu",
                                                                                                     "$ xns" : "Roo.bootstrap",
-                                                                                                    "* prop" : "menu"
+                                                                                                    "* prop" : "menu",
+                                                                                                    "items" : [
+                                                                                                        {
+                                                                                                            "xtype" : "MenuItem",
+                                                                                                            "$ xns" : "Roo.bootstrap"
+                                                                                                        }
+                                                                                                    ]
                                                                                                 }
                                                                                             ]
                                                                                         }
