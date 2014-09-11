@@ -382,7 +382,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
     // private
     onDisable : function(){
-        Roo.bootstrap.TriggerField.superclass.onDisable.call(this);
+        //Roo.bootstrap.TriggerField.superclass.onDisable.call(this);
         //if(this.wrap){
         //    this.wrap.addClass('x-item-disabled');
         //}
@@ -390,7 +390,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
     // private
     onEnable : function(){
-        Roo.bootstrap.TriggerField.superclass.onEnable.call(this);
+        //Roo.bootstrap.TriggerField.superclass.onEnable.call(this);
         //if(this.wrap){
         //    this.el.removeClass('x-item-disabled');
         //}
