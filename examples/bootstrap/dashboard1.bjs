@@ -13,8 +13,8 @@
             "items" : [
                 {
                     "String cls" : "header",
-                    "xtype" : "Container",
                     "tag" : "header",
+                    "xtype" : "Container",
                     "* xinclude" : "Dashboard.Header1",
                     "$ xns" : "Roo.bootstrap"
                 },
@@ -302,8 +302,8 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Header",
-                                                                                    "$ xns" : "Roo.bootstrap",
                                                                                     "Number level" : 4,
+                                                                                    "$ xns" : "Roo.bootstrap",
                                                                                     "String html" : "With Icons"
                                                                                 },
                                                                                 {
@@ -330,8 +330,8 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Header",
-                                                                                    "Number level" : 4,
                                                                                     "$ xns" : "Roo.bootstrap",
+                                                                                    "Number level" : 4,
                                                                                     "String html" : "With checkbox and radio"
                                                                                 },
                                                                                 {
@@ -357,8 +357,8 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Header",
-                                                                                    "$ xns" : "Roo.bootstrap",
                                                                                     "Number level" : 4,
+                                                                                    "$ xns" : "Roo.bootstrap",
                                                                                     "String html" : "With buttons"
                                                                                 },
                                                                                 {
@@ -471,6 +471,7 @@
                                                                                 {
                                                                                     "xtype" : "Input",
                                                                                     "string placeholder" : "Enter ...",
+                                                                                    "Boolean disabled" : true,
                                                                                     "String fieldLabel" : "Text",
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 }
