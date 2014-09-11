@@ -925,8 +925,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     doForce : function(){
-        if(this.el.dom.value.length > 0){
-            this.el.dom.value =
+        if(this.inputEl().dom.value.length > 0){
+            this.inputEl().dom.value =
                 this.lastSelectionText === undefined ? '' : this.lastSelectionText;
              
         }
