@@ -382,6 +382,9 @@
                                                                                                     "* prop" : "menu",
                                                                                                     "items" : [
                                                                                                         {
+                                                                                                            "listeners" : {
+                                                                                                                "click" : "function (e)\n{\n    _this.httpButton.setText(\"http://\");\n}"
+                                                                                                            },
                                                                                                             "xtype" : "MenuItem",
                                                                                                             "$ xns" : "Roo.bootstrap",
                                                                                                             "String html" : "http://"

@@ -391,7 +391,13 @@ dashboard1 = new Roo.XComponent({
                                                                                             	{
                                                                                                     xtype : 'MenuItem',
                                                                                                     xns : Roo.bootstrap,
-                                                                                                    html : 'http://'
+                                                                                                    html : 'http://',
+                                                                                                    listeners : {
+                                                                                                    	click : function (e)
+                                                                                                    	   {
+                                                                                                    	       _this.httpButton.setText("http://");
+                                                                                                    	   }
+                                                                                                    }
                                                                                                 },
                                                                                             	{
                                                                                                     xtype : 'MenuItem',
