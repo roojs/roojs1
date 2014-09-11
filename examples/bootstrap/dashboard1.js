@@ -300,13 +300,7 @@ dashboard1 = new Roo.XComponent({
                                                                             items : [
                                                                             	{
                                                                                     xtype : 'Input',
-                                                                                    placeholder : 'size lg',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    size : 'lg'
-                                                                                },
-                                                                            	{
-                                                                                    xtype : 'Input',
-                                                                                    placeholder : 'size md',
+                                                                                    placeholder : 'username',
                                                                                     xns : Roo.bootstrap,
                                                                                     size : 'md'
                                                                                 },
