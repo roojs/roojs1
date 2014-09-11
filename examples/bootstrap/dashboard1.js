@@ -121,6 +121,10 @@ dashboard1 = new Roo.XComponent({
                                                                     	{
                                                                             xtype : 'Input',
                                                                             xns : Roo.bootstrap
+                                                                        },
+                                                                    	{
+                                                                            xtype : 'Button',
+                                                                            xns : Roo.bootstrap
                                                                         }
                                                                     ]
 
