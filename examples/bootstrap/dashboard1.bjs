@@ -201,7 +201,7 @@
                                                                             "xtype" : "Header",
                                                                             "$ xns" : "Roo.bootstrap",
                                                                             "Number level" : 3,
-                                                                            "String html" : "Different Height"
+                                                                            "String html" : "Different Width"
                                                                         }
                                                                     ]
                                                                 },
