@@ -164,6 +164,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 tag: 'label',
                 'for': id,
                 cls: 'box-label',
+                style : 'user-select: none;',
                 html: this.boxLabel
                 
             });
