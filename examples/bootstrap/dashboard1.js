@@ -347,6 +347,12 @@ dashboard1 = new Roo.XComponent({
                                                                                     before : '<i class=\"fa fa-dollar\"></i>',
                                                                                     size : 'md',
                                                                                     after : '<i class=\"fa fa-ambulance\"></i>'
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'Header',
+                                                                                    level : 4,
+                                                                                    xns : Roo.bootstrap,
+                                                                                    html : 'With Icons'
                                                                                 }
                                                                             ]
 

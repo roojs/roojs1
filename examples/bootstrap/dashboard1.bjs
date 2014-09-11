@@ -326,6 +326,12 @@
                                                                                     "string before" : "<i class=\"fa fa-dollar\"></i>",
                                                                                     "string size" : "md",
                                                                                     "string after" : "<i class=\"fa fa-ambulance\"></i>"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Header",
+                                                                                    "Number level" : 4,
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "String html" : "With Icons"
                                                                                 }
                                                                             ]
                                                                         }
