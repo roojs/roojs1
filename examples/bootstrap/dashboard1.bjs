@@ -100,7 +100,7 @@
                                                                                     "string placeholder" : "Enter email",
                                                                                     "String fieldLabel" : "Email Address",
                                                                                     "$ xns" : "Roo.bootstrap",
-                                                                                    "String vtype" : "Email"
+                                                                                    "String vtype" : "email"
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Input",
