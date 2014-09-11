@@ -507,6 +507,10 @@
                                                                                     "string placeholder" : "cls = has-error",
                                                                                     "String fieldLabel" : "Input with Error",
                                                                                     "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "CheckBox",
+                                                                                    "$ xns" : "Roo.bootstrap"
                                                                                 }
                                                                             ]
                                                                         }

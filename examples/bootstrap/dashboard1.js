@@ -547,6 +547,10 @@ dashboard1 = new Roo.XComponent({
                                                                                     placeholder : 'cls = has-error',
                                                                                     fieldLabel : 'Input with Error',
                                                                                     xns : Roo.bootstrap
+                                                                                },
+                                                                            	{
+                                                                                    xtype : 'CheckBox',
+                                                                                    xns : Roo.bootstrap
                                                                                 }
                                                                             ]
 
