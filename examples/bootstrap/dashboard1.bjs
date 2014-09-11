@@ -547,6 +547,17 @@
                                                                                     "Boolean disabled" : true,
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "string value" : 3
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "ComboBox",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "items" : [
+                                                                                        {
+                                                                                            "xtype" : "SimpleStore",
+                                                                                            "$ xns" : "Roo.data",
+                                                                                            "* prop" : "store"
+                                                                                        }
+                                                                                    ]
                                                                                 }
                                                                             ]
                                                                         }

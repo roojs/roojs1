@@ -587,6 +587,18 @@ dashboard1 = new Roo.XComponent({
                                                                                     disabled : true,
                                                                                     xns : Roo.bootstrap,
                                                                                     value : 3
+                                                                                },
+                                                                            	{
+                                                                                    store : {
+                                                                                        xtype : 'SimpleStore',
+                                                                                        xns : Roo.data
+                                                                                    },
+                                                                                    xtype : 'ComboBox',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    items : [
+
+                                                                                    ]
+
                                                                                 }
                                                                             ]
 
