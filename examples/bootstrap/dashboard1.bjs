@@ -290,6 +290,13 @@
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "string size" : "md",
                                                                                     "string after" : 0
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "after: .00",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "string size" : "md",
+                                                                                    "string after" : 0
                                                                                 }
                                                                             ]
                                                                         }
