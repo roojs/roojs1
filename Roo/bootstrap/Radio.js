@@ -34,7 +34,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
         var cfg = {};
         
-        cfg.cls = 'form-group' //input-group
+        cfg.cls = 'form-group radio' //input-group
         
         var input =  {
             tag: 'input',
