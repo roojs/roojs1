@@ -249,7 +249,7 @@
                                                             ]
                                                         },
                                                         {
-                                                            "String cls" : "box box-success",
+                                                            "String cls" : "box box-info",
                                                             "xtype" : "Container",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [

@@ -269,7 +269,7 @@ dashboard1 = new Roo.XComponent({
 
                                                         },
                                                     	{
-                                                            cls : 'box box-success',
+                                                            cls : 'box box-info',
                                                             xtype : 'Container',
                                                             xns : Roo.bootstrap,
                                                             items : [
