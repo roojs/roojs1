@@ -415,10 +415,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         if (typeof(this.before) == 'object') {
-            this.before.render(this.inputEl().select('.roo-input-before',true).first());
+            this.before.render(this.el.select('.roo-input-before',true).first());
         }
         if (typeof(this.after) == 'object') {
-            this.after.render(this.inputEl().select('.roo-input-after',true).first());
+            this.after.render(this.el.select('.roo-input-after',true).first());
         }
         
         
