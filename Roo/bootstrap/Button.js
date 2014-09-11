@@ -264,6 +264,14 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     initEvents: function() {
        // Roo.log('init events?');
 //        Roo.log(this.el.dom);
+
+        if (typeof (this.menu) != 'undefined') {
+            this.menu.parentType = this.xtype;
+            this.menu.triggerEl = this.el;
+            cn.addxtype(Roo.apply({}, this.menu));
+        }
+
+
        if (this.el.hasClass('roo-button')) {
             this.el.on('click', this.onClick, this);
        } else {
