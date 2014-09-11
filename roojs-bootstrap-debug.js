@@ -661,6 +661,15 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     initEvents: function() {
        // Roo.log('init events?');
 //        Roo.log(this.el.dom);
+        // add the menu...
+        
+        if (typeof (this.menu) != 'undefined') {
+            this.menu.parentType = this.xtype;
+            this.menu.triggerEl = this.el;
+            this.addxtype(Roo.apply({}, this.menu));
+        }
+
+
        if (this.el.hasClass('roo-button')) {
             this.el.on('click', this.onClick, this);
        } else {
@@ -3578,6 +3587,13 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     initEvents: function() {
        // Roo.log('init events?');
        // Roo.log(this.el.dom);
+       if (typeof (this.menu) != 'undefined') {
+            this.menu.parentType = this.xtype;
+            this.menu.triggerEl = this.el;
+            this.addxtype(Roo.apply({}, this.menu));
+        }
+
+       
         this.el.select('a',true).on('click', this.onClick, this);
         // at this point parent should be available..
         this.parent().register(this);
