@@ -10265,7 +10265,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onRemoveItem : function(e, _self, o)
     {
-        Roo.log('remove item');
+        e.preventDefault();
         var index = this.item.indexOf(o.data) * 1;
         
         if( index < 0){
