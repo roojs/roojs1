@@ -318,6 +318,13 @@
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "string size" : "md",
                                                                                     "string after" : "<i class=\"fa fa-check\"></i>"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "after : &lt;i class=&quot;fa fa-after&quot;&gt;&lt;/i&gt;",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "string size" : "md",
+                                                                                    "string after" : "<i class=\"fa fa-check\"></i>"
                                                                                 }
                                                                             ]
                                                                         }
