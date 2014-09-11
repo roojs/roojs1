@@ -352,7 +352,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     xtype : 'Header',
                                                                                     level : 4,
                                                                                     xns : Roo.bootstrap,
-                                                                                    html : 'With Icons'
+                                                                                    html : 'With checkbox and radio'
                                                                                 }
                                                                             ]
 
