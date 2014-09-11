@@ -482,6 +482,7 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "TextArea",
+                                                                                    "string placeholder" : "disabled=true",
                                                                                     "Boolean disabled" : true,
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "String fieldLabel" : "Textarea"
