@@ -472,7 +472,7 @@ dashboard1 = new Roo.XComponent({
                                                     sm : 12,
                                                     items : [
                                                     	{
-                                                            cls : 'box box-primary',
+                                                            cls : 'box box-warning',
                                                             xtype : 'Container',
                                                             xns : Roo.bootstrap,
                                                             items : [

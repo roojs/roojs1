@@ -433,7 +433,7 @@
                                                     "Number sm" : 12,
                                                     "items" : [
                                                         {
-                                                            "String cls" : "box box-primary",
+                                                            "String cls" : "box box-warning",
                                                             "xtype" : "Container",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [
