@@ -117,10 +117,8 @@
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 },
                                                                                 {
-                                                                                    "xtype" : "Input",
-                                                                                    "String inputType" : "checkbox",
-                                                                                    "$ xns" : "Roo.bootstrap",
-                                                                                    "String fieldLabel" : "Fixme - checkbox type"
+                                                                                    "xtype" : "CheckBox",
+                                                                                    "$ xns" : "Roo.bootstrap"
                                                                                 },
                                                                                 {
                                                                                     "String weight" : "primary",

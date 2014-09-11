@@ -125,10 +125,8 @@ dashboard1 = new Roo.XComponent({
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
-                                                                                    xtype : 'Input',
-                                                                                    inputType : 'checkbox',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    fieldLabel : 'Fixme - checkbox type'
+                                                                                    xtype : 'CheckBox',
+                                                                                    xns : Roo.bootstrap
                                                                                 },
                                                                             	{
                                                                                     weight : 'primary',
