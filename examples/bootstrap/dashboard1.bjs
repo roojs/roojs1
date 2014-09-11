@@ -380,7 +380,13 @@
                                                                                                     "items" : [
                                                                                                         {
                                                                                                             "xtype" : "MenuItem",
-                                                                                                            "$ xns" : "Roo.bootstrap"
+                                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                                            "String html" : "http://"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "xtype" : "MenuItem",
+                                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                                            "String html" : "https://"
                                                                                                         }
                                                                                                     ]
                                                                                                 }

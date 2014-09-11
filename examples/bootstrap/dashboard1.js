@@ -390,7 +390,13 @@ dashboard1 = new Roo.XComponent({
                                                                                             items : [
                                                                                             	{
                                                                                                     xtype : 'MenuItem',
-                                                                                                    xns : Roo.bootstrap
+                                                                                                    xns : Roo.bootstrap,
+                                                                                                    html : 'http://'
+                                                                                                },
+                                                                                            	{
+                                                                                                    xtype : 'MenuItem',
+                                                                                                    xns : Roo.bootstrap,
+                                                                                                    html : 'https://'
                                                                                                 }
                                                                                             ]
 
