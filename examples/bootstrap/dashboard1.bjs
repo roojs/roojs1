@@ -601,6 +601,7 @@
                                                                                     "String fieldLabel" : "ComboBox",
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "String/Roo.Template tpl" : "<li class=\"select2-result\"><b>{item}</b></div>",
+                                                                                    "Boolean multiple" : true,
                                                                                     "String displayField" : "item",
                                                                                     "items" : [
                                                                                         {
