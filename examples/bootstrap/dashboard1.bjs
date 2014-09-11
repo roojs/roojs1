@@ -87,6 +87,7 @@
                                                                 },
                                                                 {
                                                                     "xtype" : "Form",
+                                                                    "String labelAlign" : "top",
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "items" : [
                                                                         {

@@ -95,6 +95,7 @@ dashboard1 = new Roo.XComponent({
                                                                 },
                                                             	{
                                                                     xtype : 'Form',
+                                                                    labelAlign : 'top',
                                                                     xns : Roo.bootstrap,
                                                                     items : [
                                                                     	{
