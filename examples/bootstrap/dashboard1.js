@@ -19,71 +19,12 @@ dashboard1 = new Roo.XComponent({
             xtype : 'Body',
             xns : Roo.bootstrap,
             items : [
-            	{
+            	Roo.apply(Dashboard.Header1._tree(), {
                     cls : 'header',
                     xtype : 'Container',
                     tag : 'header',
-                    xns : Roo.bootstrap,
-                    items : [
-                    	{
-                            cls : 'logo',
-                            xtype : 'Link',
-                            xns : Roo.bootstrap,
-                            html : 'test'
-                        },
-                    	{
-                            bar : true,
-                            position : 'static-top',
-                            xtype : 'NavHeaderbar',
-                            tag : 'nav',
-                            xns : Roo.bootstrap,
-                            items : [
-                            	{
-                                    cls : 'navbar-btn sidebar-toggle',
-                                    xtype : 'Link',
-                                    xns : Roo.bootstrap,
-                                    html : '<span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span>'
-                                },
-                            	{
-                                    xtype : 'NavGroup',
-                                    align : 'right',
-                                    xns : Roo.bootstrap,
-                                    items : [
-                                    	{
-                                            menu : {
-                                                xtype : 'Menu',
-                                                xns : Roo.bootstrap,
-                                                items : [
-                                                	{
-                                                        xtype : 'MenuItem',
-                                                        xns : Roo.bootstrap,
-                                                        html : 'test'
-                                                    }
-                                                ]
-
-                                            },
-                                            xtype : 'NavItem',
-                                            xns : Roo.bootstrap,
-                                            html : 'test',
-                                            items : [
-
-                                            ]
-
-                                        },
-                                    	{
-                                            xtype : 'NavItem',
-                                            xns : Roo.bootstrap,
-                                            html : 'test'
-                                        }
-                                    ]
-
-                                }
-                            ]
-
-                        }
-                    ]
-
-                },
+                    xns : Roo.bootstrap
+                }),
             	{
                     cls : 'wrapper row-offcanvas row-offcanvas-left',
                     xtype : 'Container',

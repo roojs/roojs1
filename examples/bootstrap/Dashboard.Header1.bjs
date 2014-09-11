@@ -1,0 +1,70 @@
+{
+    "name" : "Dashboard.Header1",
+    "parent" : "",
+    "title" : "",
+    "path" : "/home/alan/gitlive/roojs1/examples/bootstrap/Dashboard.Header1.bjs",
+    "permname" : "",
+    "modOrder" : "001",
+    "items" : [
+        {
+            "String cls" : "header",
+            "tag" : "header",
+            "xtype" : "Container",
+            "$ xns" : "Roo.bootstrap",
+            "items" : [
+                {
+                    "String cls" : "logo",
+                    "xtype" : "Link",
+                    "$ xns" : "Roo.bootstrap",
+                    "String html" : "test"
+                },
+                {
+                    "Boolean bar" : true,
+                    "String position" : "static-top",
+                    "xtype" : "NavHeaderbar",
+                    "tag" : "nav",
+                    "$ xns" : "Roo.bootstrap",
+                    "items" : [
+                        {
+                            "String cls" : "navbar-btn sidebar-toggle",
+                            "xtype" : "Link",
+                            "$ xns" : "Roo.bootstrap",
+                            "String html" : "<span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span>"
+                        },
+                        {
+                            "xtype" : "NavGroup",
+                            "String align" : "right",
+                            "$ xns" : "Roo.bootstrap",
+                            "items" : [
+                                {
+                                    "xtype" : "NavItem",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "test",
+                                    "items" : [
+                                        {
+                                            "xtype" : "Menu",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "* prop" : "menu",
+                                            "items" : [
+                                                {
+                                                    "xtype" : "MenuItem",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "test"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "xtype" : "NavItem",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "test"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
