@@ -216,23 +216,25 @@
                                                                             "$ xns" : "Roo.bootstrap",
                                                                             "items" : [
                                                                                 {
-                                                                                    "xtype" : "Input",
-                                                                                    "string placeholder" : "size md",
-                                                                                    "$ xns" : "Roo.bootstrap",
-                                                                                    "string size" : "md"
-                                                                                },
-                                                                                {
-                                                                                    "xtype" : "Input",
-                                                                                    "string placeholder" : "size sm",
-                                                                                    "$ xns" : "Roo.bootstrap",
-                                                                                    "string size" : "sm"
-                                                                                },
-                                                                                {
                                                                                     "xtype" : "Row",
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "items" : [
                                                                                         {
                                                                                             "Number md" : 3,
+                                                                                            "xtype" : "Input",
+                                                                                            "string placeholder" : "md 3",
+                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                            "string size" : "lg"
+                                                                                        },
+                                                                                        {
+                                                                                            "Number md" : 3,
+                                                                                            "xtype" : "Input",
+                                                                                            "string placeholder" : "md 4",
+                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                            "string size" : "lg"
+                                                                                        },
+                                                                                        {
+                                                                                            "Number md" : 5,
                                                                                             "xtype" : "Input",
                                                                                             "string placeholder" : "md 3",
                                                                                             "$ xns" : "Roo.bootstrap",

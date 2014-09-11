@@ -232,23 +232,25 @@ dashboard1 = new Roo.XComponent({
                                                                             xns : Roo.bootstrap,
                                                                             items : [
                                                                             	{
-                                                                                    xtype : 'Input',
-                                                                                    placeholder : 'size md',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    size : 'md'
-                                                                                },
-                                                                            	{
-                                                                                    xtype : 'Input',
-                                                                                    placeholder : 'size sm',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    size : 'sm'
-                                                                                },
-                                                                            	{
                                                                                     xtype : 'Row',
                                                                                     xns : Roo.bootstrap,
                                                                                     items : [
                                                                                     	{
                                                                                             md : 3,
+                                                                                            xtype : 'Input',
+                                                                                            placeholder : 'md 3',
+                                                                                            xns : Roo.bootstrap,
+                                                                                            size : 'lg'
+                                                                                        },
+                                                                                    	{
+                                                                                            md : 3,
+                                                                                            xtype : 'Input',
+                                                                                            placeholder : 'md 4',
+                                                                                            xns : Roo.bootstrap,
+                                                                                            size : 'lg'
+                                                                                        },
+                                                                                    	{
+                                                                                            md : 5,
                                                                                             xtype : 'Input',
                                                                                             placeholder : 'md 3',
                                                                                             xns : Roo.bootstrap,
