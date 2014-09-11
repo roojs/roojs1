@@ -164,10 +164,12 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 
         } else {
             
-                   Roo.log(" no label && no align");
+                Roo.log(" no label && no align");
                 cfg.cn = [
-                    
-                        inputblock
+                    {
+                        cls: 'checkbox',
+                        cn : [ inputblock ]
+                    }
                     
                 ];
                 
