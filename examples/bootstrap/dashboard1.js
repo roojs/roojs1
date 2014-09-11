@@ -123,8 +123,10 @@ dashboard1 = new Roo.XComponent({
                                                                             xns : Roo.bootstrap
                                                                         },
                                                                     	{
+                                                                            weight : 'primary',
                                                                             xtype : 'Button',
-                                                                            xns : Roo.bootstrap
+                                                                            xns : Roo.bootstrap,
+                                                                            html : 'Submit'
                                                                         }
                                                                     ]
 
