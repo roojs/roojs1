@@ -264,7 +264,8 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     initEvents: function() {
        // Roo.log('init events?');
 //        Roo.log(this.el.dom);
-
+        // add the menu...
+        
         if (typeof (this.menu) != 'undefined') {
             this.menu.parentType = this.xtype;
             this.menu.triggerEl = this.el;
