@@ -95,6 +95,12 @@
                                                                             "string placeholder" : "Enter email",
                                                                             "String fieldLabel" : "Email Address",
                                                                             "$ xns" : "Roo.bootstrap"
+                                                                        },
+                                                                        {
+                                                                            "xtype" : "Input",
+                                                                            "string placeholder" : "Enter email",
+                                                                            "String fieldLabel" : "Email Address",
+                                                                            "$ xns" : "Roo.bootstrap"
                                                                         }
                                                                     ]
                                                                 }
