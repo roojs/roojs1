@@ -67,7 +67,7 @@
                                                     "Number sm" : 12,
                                                     "items" : [
                                                         {
-                                                            "String cls" : "small-box bg-aqua ",
+                                                            "String cls" : "box box-primary",
                                                             "xtype" : "Container",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "String html" : "test"
