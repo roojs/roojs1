@@ -488,6 +488,7 @@
                                                                                     "String fieldLabel" : "Textarea"
                                                                                 },
                                                                                 {
+                                                                                    "String cls" : "has-success",
                                                                                     "xtype" : "Input",
                                                                                     "string placeholder" : "Enter ...",
                                                                                     "String fieldLabel" : "Text",

@@ -528,6 +528,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     fieldLabel : 'Textarea'
                                                                                 },
                                                                             	{
+                                                                                    cls : 'has-success',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'Enter ...',
                                                                                     fieldLabel : 'Text',
