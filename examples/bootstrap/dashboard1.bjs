@@ -286,9 +286,10 @@
                                                                                 },
                                                                                 {
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : "size sm",
+                                                                                    "string placeholder" : "before : @",
                                                                                     "$ xns" : "Roo.bootstrap",
-                                                                                    "string size" : "sm"
+                                                                                    "string before" : "@",
+                                                                                    "string size" : "md"
                                                                                 }
                                                                             ]
                                                                         }
