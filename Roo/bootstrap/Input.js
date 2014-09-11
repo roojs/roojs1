@@ -299,7 +299,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 Roo.log(this.after);
                 inputblock.cn.push({
                     tag :'span',
-                    cls : 'input-group-btn', //?? what about checkboxes - that looks like a bit of a hack thought? 
+                    cls : 'input-group-' + (this.before.xtype == 'Button' ? 'btn' : 'addon'), //?? what about checkboxes - that looks like a bit of a hack thought? 
                 });
             }
         };
