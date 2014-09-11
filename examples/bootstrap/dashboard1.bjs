@@ -524,6 +524,10 @@
                                                                                     "String boxLabel" : "Checkbox Disabled",
                                                                                     "Boolean disabled" : true,
                                                                                     "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Radio",
+                                                                                    "$ xns" : "Roo.bootstrap"
                                                                                 }
                                                                             ]
                                                                         }
