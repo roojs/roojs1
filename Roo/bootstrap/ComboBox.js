@@ -268,7 +268,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      
     // private
     initEvents: function(){
-        Roo.log('init!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        
         if (!this.store) {
             throw "can not find store for combo";
         }
@@ -476,10 +476,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.editable !== false){
             this.inputEl().on("keyup", this.onKeyUp, this);
         }
-        
-        Roo.log('this.forceSelection');
-        Roo.log(this.forceSelection);
-        
         if(this.forceSelection){
             this.inputEl().on('blur', this.doForce, this);
         }
@@ -929,7 +925,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     doForce : function(){
-        Roo.log('doForece!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         if(this.el.dom.value.length > 0){
             this.el.dom.value =
                 this.lastSelectionText === undefined ? '' : this.lastSelectionText;
