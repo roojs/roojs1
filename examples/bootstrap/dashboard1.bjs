@@ -298,6 +298,11 @@
                                                                                     "string before" : "$",
                                                                                     "string size" : "md",
                                                                                     "string after" : 0
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Header",
+                                                                                    "Number level" : 4,
+                                                                                    "$ xns" : "Roo.bootstrap"
                                                                                 }
                                                                             ]
                                                                         }
