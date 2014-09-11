@@ -481,6 +481,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log(this.forceSelection);
         
         if(this.forceSelection){
+            Roo.log(this);
             this.on('blur', this.doForce, this);
         }
         
