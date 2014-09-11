@@ -279,8 +279,9 @@
                                                                             "items" : [
                                                                                 {
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : "username",
+                                                                                    "string placeholder" : "before : @",
                                                                                     "$ xns" : "Roo.bootstrap",
+                                                                                    "string before" : "@",
                                                                                     "string size" : "md"
                                                                                 },
                                                                                 {
