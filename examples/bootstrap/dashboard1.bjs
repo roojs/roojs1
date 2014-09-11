@@ -332,6 +332,33 @@
                                                                                     "Number level" : 4,
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "String html" : "With checkbox and radio"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Row",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "items" : [
+                                                                                        {
+                                                                                            "Number md" : 3,
+                                                                                            "xtype" : "Input",
+                                                                                            "string placeholder" : "md 3",
+                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                            "string size" : "md"
+                                                                                        },
+                                                                                        {
+                                                                                            "Number md" : 3,
+                                                                                            "xtype" : "Input",
+                                                                                            "string placeholder" : "md 4",
+                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                            "string size" : "md"
+                                                                                        },
+                                                                                        {
+                                                                                            "Number md" : 5,
+                                                                                            "xtype" : "Input",
+                                                                                            "string placeholder" : "md 3",
+                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                            "string size" : "md"
+                                                                                        }
+                                                                                    ]
                                                                                 }
                                                                             ]
                                                                         }
