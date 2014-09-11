@@ -245,13 +245,14 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         // handle the kids..
         
         var nitems = [];
+        /*
         if (typeof (tree.menu) != 'undefined') {
             tree.menu.parentType = cn.xtype;
             tree.menu.triggerEl = cn.el;
             nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
             
         }
-        
+        */
         if (!tree.items || !tree.items.length) {
             cn.items = nitems;
             return cn;
