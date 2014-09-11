@@ -157,7 +157,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     },
     inputEl: function ()
     {
-        return this.el.select('input.roo-checkbox',true).first();
+        return this.el.select('input.roo-radio',true).first();
     },
     onClick : function()
     {   
