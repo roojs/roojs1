@@ -203,11 +203,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     parentLabelAlign : function()
     {
         var parent = this;
-        Roo.log(parent);
         while (parent.parent()) {
-            
             parent = parent.parent();
-            Roo.log(parent);
             if (typeof(parent.labelAlign) !='undefined') {
                 return parent.labelAlign;
             }
