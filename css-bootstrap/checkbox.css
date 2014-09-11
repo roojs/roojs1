@@ -6,7 +6,9 @@
 .checkbox label {
     display: inline-block;
     position: relative;
-    padding-left: 5px; }
+    padding-left: 5px;
+    
+}
 .checkbox label::before {
     content: "";
     display: inline-block;
