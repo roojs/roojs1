@@ -412,7 +412,7 @@
                                                                             "string size" : "md",
                                                                             "items" : [
                                                                                 {
-                                                                                    "String weight" : "primary",
+                                                                                    "String weight" : "success",
                                                                                     "xtype" : "Button",
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "String html" : "Go",
