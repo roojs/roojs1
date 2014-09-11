@@ -304,6 +304,13 @@
                                                                                     "Number level" : 4,
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "String html" : "With Icons"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "before : @",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "string before" : "@",
+                                                                                    "string size" : "md"
                                                                                 }
                                                                             ]
                                                                         }
