@@ -70,7 +70,12 @@
                                                             "String cls" : "box box-primary",
                                                             "xtype" : "Container",
                                                             "$ xns" : "Roo.bootstrap",
-                                                            "String html" : "test"
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "Header",
+                                                                    "$ xns" : "Roo.bootstrap"
+                                                                }
+                                                            ]
                                                         }
                                                     ]
                                                 }

@@ -77,7 +77,13 @@ dashboard1 = new Roo.XComponent({
                                                             cls : 'box box-primary',
                                                             xtype : 'Container',
                                                             xns : Roo.bootstrap,
-                                                            html : 'test'
+                                                            items : [
+                                                            	{
+                                                                    xtype : 'Header',
+                                                                    xns : Roo.bootstrap
+                                                                }
+                                                            ]
+
                                                         }
                                                     ]
 
