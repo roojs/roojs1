@@ -513,9 +513,10 @@
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 },
                                                                                 {
+                                                                                    "Boolean checked" : true,
                                                                                     "String weight" : "primary",
                                                                                     "xtype" : "CheckBox",
-                                                                                    "String boxLabel" : "Checkbox 2",
+                                                                                    "String boxLabel" : "Checkbox weight=primary",
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 },
                                                                                 {

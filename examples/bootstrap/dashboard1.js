@@ -553,9 +553,10 @@ dashboard1 = new Roo.XComponent({
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
+                                                                                    checked : true,
                                                                                     weight : 'primary',
                                                                                     xtype : 'CheckBox',
-                                                                                    boxLabel : 'Checkbox 2',
+                                                                                    boxLabel : 'Checkbox weight=primary',
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
