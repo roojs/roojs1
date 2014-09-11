@@ -43,6 +43,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     valueOff: 0,
     boxLabel: false,
     checked: false,
+    weight : false,
     
     getAutoCreate : function()
     {
@@ -54,6 +55,9 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         cfg.cls = 'form-group checkbox' //input-group
         
+        
+        
+        
         var input =  {
             tag: 'input',
             id : id,
@@ -63,6 +67,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             placeholder : this.placeholder || ''
             
         };
+        
+        if (this.weight) { // Validity check?
+            cfg.cls += "checkbox-" + this.weight;
+        }
         
         if (this.disabled) {
             input.disabled=true;

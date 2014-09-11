@@ -13884,7 +13884,9 @@ Roo.apply(Roo.bootstrap.TimeField,  {
  * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
  * @cfg {String} inputValue The value that should go into the generated input element's value when checked.
  * @cfg {String} boxLabel The text that appears beside the checkbox
+ * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the checkbox
  * @cfg {Boolean} checked initnal the element
+ * 
  * 
  * @constructor
  * Create a new CheckBox
@@ -13912,6 +13914,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     valueOff: 0,
     boxLabel: false,
     checked: false,
+    weight : false,
     
     getAutoCreate : function()
     {
@@ -13923,6 +13926,9 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         cfg.cls = 'form-group checkbox' //input-group
         
+        
+        
+        
         var input =  {
             tag: 'input',
             id : id,
@@ -13932,6 +13938,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             placeholder : this.placeholder || ''
             
         };
+        
+        if (this.weight) { // Validity check?
+            cfg.cls += "checkbox-" + this.weight;
+        }
         
         if (this.disabled) {
             input.disabled=true;
