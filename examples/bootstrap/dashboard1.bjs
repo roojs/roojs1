@@ -164,8 +164,7 @@
                                                                             "items" : [
                                                                                 {
                                                                                     "xtype" : "Input",
-                                                                                    "string placeholder" : "Enter email",
-                                                                                    "String fieldLabel" : "Email Address",
+                                                                                    "string placeholder" : ".input-lg",
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 },
                                                                                 {
