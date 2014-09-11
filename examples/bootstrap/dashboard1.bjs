@@ -353,6 +353,12 @@
                                                                                             "string size" : "md"
                                                                                         }
                                                                                     ]
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Header",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "Number level" : 4,
+                                                                                    "String html" : "With checkbox and radio"
                                                                                 }
                                                                             ]
                                                                         }
