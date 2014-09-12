@@ -345,6 +345,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
     {
         this.el.select('.roo-button-text',true).first().dom.innerHTML = str;
     },
+    getText : function()
+    {
+        return this.el.select('.roo-button-text',true).first().dom.innerHTML;
+    },
     hide: function() {
        
      
