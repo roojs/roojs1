@@ -33,5 +33,5 @@
 
 /* admin-lte - messes with checkbox and radio.. */
 .checkbox, .radio {
-    padding-left: 15px;
+    padding-left: 15px!important;
 }
