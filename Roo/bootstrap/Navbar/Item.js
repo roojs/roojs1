@@ -184,6 +184,12 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 	    }
 	    
         } 
+        
+        if (typeof (this.menu) != 'undefined') {
+            this.menu.parentType = this.xtype;
+            this.menu.triggerEl = this.el;
+            this.addxtype(Roo.apply({}, this.menu));
+        }
     },
     
     isActive: function () {
