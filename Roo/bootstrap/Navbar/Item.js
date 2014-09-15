@@ -184,8 +184,6 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
 		this.parent().setActiveItem(this);
 	    }
 	    
-	    
-	    
         } 
     },
     
