@@ -171,6 +171,7 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
     onClick : function(e)
     {
         Roo.log('item click???/');
+        Roo.log(this);
         if(this.preventDefault){
             e.preventDefault();
         }
