@@ -49,39 +49,39 @@
                                             "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
+                                }
+                            ]
+                        },
+                        {
+                            "String cls" : "footer",
+                            "xtype" : "Container",
+                            "$ xns" : "Roo.bootstrap",
+                            "items" : [
+                                {
+                                    "String cls" : "btn-block",
+                                    "String weight" : "primary",
+                                    "xtype" : "Button",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "Sign me in"
                                 },
                                 {
-                                    "String cls" : "footer",
                                     "xtype" : "Container",
                                     "$ xns" : "Roo.bootstrap",
                                     "items" : [
                                         {
-                                            "String cls" : "btn-block",
-                                            "String weight" : "primary",
-                                            "xtype" : "Button",
-                                            "$ xns" : "Roo.bootstrap",
-                                            "String html" : "Sign me in"
-                                        },
-                                        {
-                                            "xtype" : "Container",
-                                            "$ xns" : "Roo.bootstrap",
-                                            "items" : [
-                                                {
-                                                    "String href" : "#",
-                                                    "xtype" : "Link",
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "String html" : "I forgot my password"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "String cls" : "text-center",
                                             "String href" : "#",
                                             "xtype" : "Link",
                                             "$ xns" : "Roo.bootstrap",
-                                            "String html" : "Register a new menbership"
+                                            "String html" : "I forgot my password"
                                         }
                                     ]
+                                },
+                                {
+                                    "String cls" : "text-center",
+                                    "String href" : "#",
+                                    "xtype" : "Link",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "Register a new menbership"
                                 }
                             ]
                         }

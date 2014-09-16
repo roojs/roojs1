@@ -58,41 +58,41 @@ Login = new Roo.XComponent({
                                         }
                                     ]
 
+                                }
+                            ]
+
+                        },
+                    	{
+                            cls : 'footer',
+                            xtype : 'Container',
+                            xns : Roo.bootstrap,
+                            items : [
+                            	{
+                                    cls : 'btn-block',
+                                    weight : 'primary',
+                                    xtype : 'Button',
+                                    xns : Roo.bootstrap,
+                                    html : 'Sign me in'
                                 },
                             	{
-                                    cls : 'footer',
                                     xtype : 'Container',
                                     xns : Roo.bootstrap,
                                     items : [
                                     	{
-                                            cls : 'btn-block',
-                                            weight : 'primary',
-                                            xtype : 'Button',
-                                            xns : Roo.bootstrap,
-                                            html : 'Sign me in'
-                                        },
-                                    	{
-                                            xtype : 'Container',
-                                            xns : Roo.bootstrap,
-                                            items : [
-                                            	{
-                                                    href : '#',
-                                                    xtype : 'Link',
-                                                    xns : Roo.bootstrap,
-                                                    html : 'I forgot my password'
-                                                }
-                                            ]
-
-                                        },
-                                    	{
-                                            cls : 'text-center',
                                             href : '#',
                                             xtype : 'Link',
                                             xns : Roo.bootstrap,
-                                            html : 'Register a new menbership'
+                                            html : 'I forgot my password'
                                         }
                                     ]
 
+                                },
+                            	{
+                                    cls : 'text-center',
+                                    href : '#',
+                                    xtype : 'Link',
+                                    xns : Roo.bootstrap,
+                                    html : 'Register a new menbership'
                                 }
                             ]
 
