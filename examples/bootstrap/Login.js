@@ -57,6 +57,10 @@ Login = new Roo.XComponent({
                                         }
                                     ]
 
+                                },
+                            	{
+                                    xtype : 'Container',
+                                    xns : Roo.bootstrap
                                 }
                             ]
 
