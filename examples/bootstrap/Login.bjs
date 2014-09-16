@@ -65,6 +65,14 @@
                                     "String html" : "Sign me in"
                                 },
                                 {
+                                    "String cls" : "text-center",
+                                    "String href" : "#",
+                                    "xtype" : "Link",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "Register a new menbership"
+                                },
+                                {
+                                    "String tag" : "p",
                                     "xtype" : "Container",
                                     "$ xns" : "Roo.bootstrap",
                                     "items" : [
@@ -75,13 +83,6 @@
                                             "String html" : "I forgot my password"
                                         }
                                     ]
-                                },
-                                {
-                                    "String cls" : "text-center",
-                                    "String href" : "#",
-                                    "xtype" : "Link",
-                                    "$ xns" : "Roo.bootstrap",
-                                    "String html" : "Register a new menbership"
                                 }
                             ]
                         }

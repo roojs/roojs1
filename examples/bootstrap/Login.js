@@ -75,6 +75,14 @@ Login = new Roo.XComponent({
                                     html : 'Sign me in'
                                 },
                             	{
+                                    cls : 'text-center',
+                                    href : '#',
+                                    xtype : 'Link',
+                                    xns : Roo.bootstrap,
+                                    html : 'Register a new menbership'
+                                },
+                            	{
+                                    tag : 'p',
                                     xtype : 'Container',
                                     xns : Roo.bootstrap,
                                     items : [
@@ -86,13 +94,6 @@ Login = new Roo.XComponent({
                                         }
                                     ]
 
-                                },
-                            	{
-                                    cls : 'text-center',
-                                    href : '#',
-                                    xtype : 'Link',
-                                    xns : Roo.bootstrap,
-                                    html : 'Register a new menbership'
                                 }
                             ]
 
