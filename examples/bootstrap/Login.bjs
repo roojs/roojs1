@@ -38,7 +38,7 @@
                                         },
                                         {
                                             "xtype" : "Input",
-                                            "string placeholder" : "email",
+                                            "string placeholder" : "password",
                                             "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
