@@ -75,6 +75,12 @@ Login = new Roo.XComponent({
                                             xtype : 'Link',
                                             xns : Roo.bootstrap,
                                             html : 'I forgot my password'
+                                        },
+                                    	{
+                                            href : '#',
+                                            xtype : 'Link',
+                                            xns : Roo.bootstrap,
+                                            html : 'I forgot my password'
                                         }
                                     ]
 

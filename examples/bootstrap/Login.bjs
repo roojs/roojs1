@@ -66,6 +66,12 @@
                                             "xtype" : "Link",
                                             "$ xns" : "Roo.bootstrap",
                                             "String html" : "I forgot my password"
+                                        },
+                                        {
+                                            "String href" : "#",
+                                            "xtype" : "Link",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "String html" : "I forgot my password"
                                         }
                                     ]
                                 }
