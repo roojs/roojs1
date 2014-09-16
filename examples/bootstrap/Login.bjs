@@ -10,6 +10,7 @@
             "String cls" : "bg-black",
             "xtype" : "Body",
             "$ xns" : "Roo.bootstrap",
+            "String style" : "min-height: 100%;",
             "items" : [
                 {
                     "String cls" : "form-box",

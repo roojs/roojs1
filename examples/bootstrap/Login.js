@@ -18,6 +18,7 @@ Login = new Roo.XComponent({
             cls : 'bg-black',
             xtype : 'Body',
             xns : Roo.bootstrap,
+            style : 'min-height: 100%;',
             items : [
             	{
                     cls : 'form-box',
