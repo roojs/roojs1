@@ -17,6 +17,14 @@ Login = new Roo.XComponent({
         return {
             cls : 'bg-black',
             xtype : 'Body',
-            xns : Roo.bootstrap
+            xns : Roo.bootstrap,
+            items : [
+            	{
+                    cls : 'form-box',
+                    xtype : 'Container',
+                    xns : Roo.bootstrap
+                }
+            ]
+
         };    }
 });

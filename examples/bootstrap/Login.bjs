@@ -9,7 +9,14 @@
         {
             "String cls" : "bg-black",
             "xtype" : "Body",
-            "$ xns" : "Roo.bootstrap"
+            "$ xns" : "Roo.bootstrap",
+            "items" : [
+                {
+                    "String cls" : "form-box",
+                    "xtype" : "Container",
+                    "$ xns" : "Roo.bootstrap"
+                }
+            ]
         }
     ]
 }
