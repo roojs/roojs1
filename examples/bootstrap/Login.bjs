@@ -55,6 +55,7 @@
                                     "$ xns" : "Roo.bootstrap",
                                     "items" : [
                                         {
+                                            "String cls" : "btn-block",
                                             "String weight" : "primary",
                                             "xtype" : "Button",
                                             "$ xns" : "Roo.bootstrap",
