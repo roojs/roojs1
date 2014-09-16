@@ -62,8 +62,10 @@
                                             "String html" : "Sign me in"
                                         },
                                         {
+                                            "String href" : "#",
                                             "xtype" : "Link",
-                                            "$ xns" : "Roo.bootstrap"
+                                            "$ xns" : "Roo.bootstrap",
+                                            "String html" : "I forgot my password"
                                         }
                                     ]
                                 }
