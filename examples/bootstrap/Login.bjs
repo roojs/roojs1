@@ -33,6 +33,7 @@
                                     "items" : [
                                         {
                                             "xtype" : "Input",
+                                            "string placeholder" : "email",
                                             "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
