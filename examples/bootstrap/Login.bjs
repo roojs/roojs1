@@ -21,6 +21,10 @@
                             "xtype" : "Element",
                             "$ xns" : "Roo.bootstrap",
                             "String html" : "Sign in"
+                        },
+                        {
+                            "xtype" : "Form",
+                            "$ xns" : "Roo.bootstrap"
                         }
                     ]
                 }

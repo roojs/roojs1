@@ -29,6 +29,10 @@ Login = new Roo.XComponent({
                             xtype : 'Element',
                             xns : Roo.bootstrap,
                             html : 'Sign in'
+                        },
+                    	{
+                            xtype : 'Form',
+                            xns : Roo.bootstrap
                         }
                     ]
 
