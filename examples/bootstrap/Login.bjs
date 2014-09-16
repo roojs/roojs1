@@ -19,7 +19,7 @@
                     "items" : [
                         {
                             "String cls" : "header",
-                            "xtype" : "Element",
+                            "xtype" : "Container",
                             "$ xns" : "Roo.bootstrap",
                             "String html" : "Sign in"
                         },

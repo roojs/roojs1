@@ -27,7 +27,7 @@ Login = new Roo.XComponent({
                     items : [
                     	{
                             cls : 'header',
-                            xtype : 'Element',
+                            xtype : 'Container',
                             xns : Roo.bootstrap,
                             html : 'Sign in'
                         },
