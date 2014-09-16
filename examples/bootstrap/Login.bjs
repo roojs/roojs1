@@ -39,6 +39,7 @@
                                         {
                                             "xtype" : "Input",
                                             "string placeholder" : "password",
+                                            "String inputType" : "password",
                                             "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
