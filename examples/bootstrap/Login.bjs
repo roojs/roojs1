@@ -72,7 +72,7 @@
                                             "String href" : "#",
                                             "xtype" : "Link",
                                             "$ xns" : "Roo.bootstrap",
-                                            "String html" : "I forgot my password"
+                                            "String html" : "Register a new menbership"
                                         }
                                     ]
                                 }
