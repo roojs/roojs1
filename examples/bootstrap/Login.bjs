@@ -55,6 +55,7 @@
                                     "$ xns" : "Roo.bootstrap",
                                     "items" : [
                                         {
+                                            "String weight" : "primary",
                                             "xtype" : "Button",
                                             "$ xns" : "Roo.bootstrap",
                                             "String html" : "Sign me in"
