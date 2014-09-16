@@ -68,6 +68,7 @@
                                             "String html" : "I forgot my password"
                                         },
                                         {
+                                            "String cls" : "text-center",
                                             "String href" : "#",
                                             "xtype" : "Link",
                                             "$ xns" : "Roo.bootstrap",
