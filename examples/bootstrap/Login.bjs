@@ -60,6 +60,10 @@
                                             "xtype" : "Button",
                                             "$ xns" : "Roo.bootstrap",
                                             "String html" : "Sign me in"
+                                        },
+                                        {
+                                            "xtype" : "Button",
+                                            "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
                                 }
