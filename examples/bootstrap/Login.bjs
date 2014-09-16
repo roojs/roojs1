@@ -50,6 +50,7 @@
                                     ]
                                 },
                                 {
+                                    "String cls" : "footer",
                                     "xtype" : "Container",
                                     "$ xns" : "Roo.bootstrap"
                                 }
