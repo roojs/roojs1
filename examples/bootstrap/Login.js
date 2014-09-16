@@ -15,6 +15,7 @@ Login = new Roo.XComponent({
         var _this = this;
         var MODULE = this;
         return {
+            cls : 'bg-black',
             xtype : 'Body',
             xns : Roo.bootstrap
         };    }
