@@ -17,8 +17,10 @@
                     "$ xns" : "Roo.bootstrap",
                     "items" : [
                         {
+                            "String cls" : "header",
                             "xtype" : "Element",
-                            "$ xns" : "Roo.bootstrap"
+                            "$ xns" : "Roo.bootstrap",
+                            "String html" : "Sign in"
                         }
                     ]
                 }
