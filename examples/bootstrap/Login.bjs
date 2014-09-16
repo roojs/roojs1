@@ -62,6 +62,7 @@
                                             "String html" : "Sign me in"
                                         },
                                         {
+                                            "String tag" : "a",
                                             "xtype" : "Button",
                                             "$ xns" : "Roo.bootstrap"
                                         }
