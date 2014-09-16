@@ -62,10 +62,16 @@
                                             "String html" : "Sign me in"
                                         },
                                         {
-                                            "String href" : "#",
-                                            "xtype" : "Link",
+                                            "xtype" : "Container",
                                             "$ xns" : "Roo.bootstrap",
-                                            "String html" : "I forgot my password"
+                                            "items" : [
+                                                {
+                                                    "String href" : "#",
+                                                    "xtype" : "Link",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "I forgot my password"
+                                                }
+                                            ]
                                         },
                                         {
                                             "String cls" : "text-center",
