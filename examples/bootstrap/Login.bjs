@@ -27,6 +27,7 @@
                             "$ xns" : "Roo.bootstrap",
                             "items" : [
                                 {
+                                    "String cls" : "body bg-gray",
                                     "xtype" : "Container",
                                     "$ xns" : "Roo.bootstrap"
                                 }

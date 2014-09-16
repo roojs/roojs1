@@ -35,6 +35,7 @@ Login = new Roo.XComponent({
                             xns : Roo.bootstrap,
                             items : [
                             	{
+                                    cls : 'body bg-gray',
                                     xtype : 'Container',
                                     xns : Roo.bootstrap
                                 }
