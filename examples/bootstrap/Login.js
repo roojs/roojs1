@@ -32,7 +32,14 @@ Login = new Roo.XComponent({
                         },
                     	{
                             xtype : 'Form',
-                            xns : Roo.bootstrap
+                            xns : Roo.bootstrap,
+                            items : [
+                            	{
+                                    xtype : 'Container',
+                                    xns : Roo.bootstrap
+                                }
+                            ]
+
                         }
                     ]
 
