@@ -43,6 +43,11 @@ Login = new Roo.XComponent({
                                             xtype : 'Input',
                                             placeholder : 'email',
                                             xns : Roo.bootstrap
+                                        },
+                                    	{
+                                            xtype : 'Input',
+                                            placeholder : 'email',
+                                            xns : Roo.bootstrap
                                         }
                                     ]
 

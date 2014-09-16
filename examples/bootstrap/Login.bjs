@@ -35,6 +35,11 @@
                                             "xtype" : "Input",
                                             "string placeholder" : "email",
                                             "$ xns" : "Roo.bootstrap"
+                                        },
+                                        {
+                                            "xtype" : "Input",
+                                            "string placeholder" : "email",
+                                            "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
                                 }
