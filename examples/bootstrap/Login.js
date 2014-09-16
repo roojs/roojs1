@@ -49,6 +49,10 @@ Login = new Roo.XComponent({
                                             placeholder : 'password',
                                             inputType : 'password',
                                             xns : Roo.bootstrap
+                                        },
+                                    	{
+                                            xtype : 'CheckBox',
+                                            xns : Roo.bootstrap
                                         }
                                     ]
 

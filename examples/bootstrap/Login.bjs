@@ -41,6 +41,10 @@
                                             "string placeholder" : "password",
                                             "String inputType" : "password",
                                             "$ xns" : "Roo.bootstrap"
+                                        },
+                                        {
+                                            "xtype" : "CheckBox",
+                                            "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
                                 }
