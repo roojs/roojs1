@@ -44,6 +44,7 @@
                                         },
                                         {
                                             "xtype" : "CheckBox",
+                                            "String boxLabel" : "Remember me",
                                             "$ xns" : "Roo.bootstrap"
                                         }
                                     ]

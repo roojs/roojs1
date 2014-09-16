@@ -52,6 +52,7 @@ Login = new Roo.XComponent({
                                         },
                                     	{
                                             xtype : 'CheckBox',
+                                            boxLabel : 'Remember me',
                                             xns : Roo.bootstrap
                                         }
                                     ]
