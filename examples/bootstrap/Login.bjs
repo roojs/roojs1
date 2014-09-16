@@ -64,7 +64,8 @@
                                         {
                                             "String tag" : "a",
                                             "xtype" : "Button",
-                                            "$ xns" : "Roo.bootstrap"
+                                            "$ xns" : "Roo.bootstrap",
+                                            "String html" : "I forgot my password"
                                         }
                                     ]
                                 }
