@@ -4218,7 +4218,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: "div",
-                    style: "background-color:white;width:50%;",
+                    style: "background-color:white;width:50%;margin:100 auto",
                     cn: [
                         {
                             tag: "img",
@@ -4237,7 +4237,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var size = this.parent().el.getSize();
         
-        this.maskEl.setSize(size.width, size.height);
+        this.maskEl.setSize(size.width, 300); // we will fix the height at the beginning...
+        
         this.maskEl.enableDisplayMode("block");
         
         this.store.on('load', this.onLoad, this);
@@ -4398,7 +4399,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 _this.renderColumn(r);
             })
         }
-//        
+
         if(this.loadMask){
             this.maskEl.hide();
         }
