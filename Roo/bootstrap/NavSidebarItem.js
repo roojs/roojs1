@@ -11,7 +11,7 @@
 
 /**
  * @class Roo.bootstrap.NavSidebarItem
- * @extends Roo.bootstrap.Component
+ * @extends Roo.bootstrap.NavItem
  * Bootstrap Navbar.NavSidebarItem class
  * @constructor
  * Create a new Navbar Button
