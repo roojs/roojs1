@@ -4240,10 +4240,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.maskEl.setSize(size.width, size.height);
         this.maskEl.enableDisplayMode("block");
         
-        if(!this.loadMask){
-            this.maskEl.hide();
-        }
-        
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
         
