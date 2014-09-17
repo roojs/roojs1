@@ -219,10 +219,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             ]
         }
         Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-        Roo.log(this.el.select('tbody', true).first());
-        this.maskEl = Roo.DomHelper.append(this.el.select('tbody', true).first(), mark, true);
+        Roo.log(this.el);
+        this.maskEl = Roo.DomHelper.append(this.el, mark, true);
         
-        var size = this.el.select('tbody', true).first().getSize();
+        var size = this.el.getSize();
         Roo.log(size);
         this.maskEl.setSize(size.width, size.height);
         this.maskEl.enableDisplayMode("block");
