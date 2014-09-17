@@ -203,7 +203,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: "div",
-                    style: "background-color:white;width:50%;margin:auto",
+                    style: "background-color:white;width:50%;margin:10 auto",
                     cn: [
                         {
                             tag: "img",
