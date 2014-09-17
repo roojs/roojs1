@@ -222,7 +222,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.log(this.el);
         this.maskEl = Roo.DomHelper.append(this.el, mark, true);
         
-        var size = this.el.select('.TableGrid', true).first().getSize();
+        var size = this.el.getSize();
+        Roo.log(size);
         this.maskEl.setSize(size.width, size.height);
         this.maskEl.enableDisplayMode("block");
         if(!this.loadMask){
