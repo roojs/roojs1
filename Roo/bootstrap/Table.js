@@ -207,7 +207,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: "div",
-                    style: "background-color:white;width:50%;margin:auto",
+                    style: "background-color:white;width:50%;margin:250 auto",
                     cn: [
                         {
                             tag: "img",
@@ -226,7 +226,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var size = this.parent().el.getSize();
         
-        this.maskEl.setSize(size.width, size.height);
+        this.maskEl.setSize(size.width, 500); // we will fix the height at the beginning...
         
         this.maskEl.enableDisplayMode("block");
         
