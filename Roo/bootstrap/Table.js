@@ -192,9 +192,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
             e.on('click', _this.sort, _this);
         });
-//        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
-//        this.maskEl.enableDisplayMode("block");
-//        this.maskEl.show();
+        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
+        this.maskEl.enableDisplayMode("block");
+        this.maskEl.show();
         
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
