@@ -64,7 +64,7 @@ trigger.applyTo('my-field');
        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parentLabelAlign</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.parentLabelAlign</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
         
@@ -382,16 +382,18 @@ trigger.applyTo('my-field');
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onDisable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-var">Roo.bootstrap.TriggerField.superclass.onDisable.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-comment">//if(this.wrap){
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">//Roo.bootstrap.TriggerField.superclass.onDisable.call(this);
+        //if(this.wrap){
         //    this.wrap.addClass('x-item-disabled');
         //}
     </span><span class="jsdoc-syntax">},
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onEnable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-var">Roo.bootstrap.TriggerField.superclass.onEnable.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-comment">//if(this.wrap){
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">//Roo.bootstrap.TriggerField.superclass.onEnable.call(this);
+        //if(this.wrap){
         //    this.el.removeClass('x-item-disabled');
         //}
     </span><span class="jsdoc-syntax">},

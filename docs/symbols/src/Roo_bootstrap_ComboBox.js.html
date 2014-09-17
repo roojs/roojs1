@@ -477,7 +477,7 @@
             </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keyup&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onKeyUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.forceSelection</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.doForce</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'blur'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.doForce</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
@@ -925,8 +925,8 @@
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">doForce </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom.value.length </span><span class="jsdoc-syntax">&gt; 0){
-            </span><span class="jsdoc-var">this.el.dom.value </span><span class="jsdoc-syntax">=
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value.length </span><span class="jsdoc-syntax">&gt; 0){
+            </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">=
                 </span><span class="jsdoc-var">this.lastSelectionText </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">undefined </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.lastSelectionText</span><span class="jsdoc-syntax">;
              
         }
@@ -1217,7 +1217,7 @@
     
     </span><span class="jsdoc-var">onRemoveItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'remove item'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.item.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.data</span><span class="jsdoc-syntax">) * 1;
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&lt; 0){

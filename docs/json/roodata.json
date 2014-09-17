@@ -5680,6 +5680,12 @@
      "memberOf": ""
     },
     {
+     "name": "weight",
+     "type": "String",
+     "desc": "(primary|warning|info|danger|success) The text that appears beside the checkbox",
+     "memberOf": ""
+    },
+    {
      "name": "checked",
      "type": "Boolean",
      "desc": "initnal the element",
@@ -10787,6 +10793,60 @@
   "Roo.bootstrap.NavSidebarItem": {
    "props": [
     {
+     "name": "href",
+     "type": "String",
+     "desc": "link to",
+     "memberOf": "Roo.bootstrap.NavItem"
+    },
+    {
+     "name": "html",
+     "type": "String",
+     "desc": "content of button",
+     "memberOf": "Roo.bootstrap.NavItem"
+    },
+    {
+     "name": "badge",
+     "type": "String",
+     "desc": "text inside badge",
+     "memberOf": "Roo.bootstrap.NavItem"
+    },
+    {
+     "name": "badgecls",
+     "type": "String",
+     "desc": "(bg-green|bg-red|bg-yellow)the extra classes for the badge",
+     "memberOf": "Roo.bootstrap.NavItem"
+    },
+    {
+     "name": "glyphicon",
+     "type": "String",
+     "desc": "name of glyphicon",
+     "memberOf": "Roo.bootstrap.NavItem"
+    },
+    {
+     "name": "icon",
+     "type": "String",
+     "desc": "name of font awesome icon",
+     "memberOf": "Roo.bootstrap.NavItem"
+    },
+    {
+     "name": "active",
+     "type": "Boolean",
+     "desc": "Is item active",
+     "memberOf": "Roo.bootstrap.NavItem"
+    },
+    {
+     "name": "preventDefault",
+     "type": "Boolean",
+     "desc": "(true | false) default false",
+     "memberOf": "Roo.bootstrap.NavItem"
+    },
+    {
+     "name": "tabId",
+     "type": "String",
+     "desc": "the tab that this item activates.",
+     "memberOf": "Roo.bootstrap.NavItem"
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -12230,6 +12290,12 @@
      "name": "boxLabel",
      "type": "String",
      "desc": "The text that appears beside the checkbox",
+     "memberOf": "Roo.bootstrap.CheckBox"
+    },
+    {
+     "name": "weight",
+     "type": "String",
+     "desc": "(primary|warning|info|danger|success) The text that appears beside the checkbox",
      "memberOf": "Roo.bootstrap.CheckBox"
     },
     {

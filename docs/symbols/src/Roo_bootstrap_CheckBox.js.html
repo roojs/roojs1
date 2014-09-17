@@ -13,7 +13,9 @@
  * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
  * @cfg {String} inputValue The value that should go into the generated input element's value when checked.
  * @cfg {String} boxLabel The text that appears beside the checkbox
+ * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the checkbox
  * @cfg {Boolean} checked initnal the element
+ * 
  * 
  * @constructor
  * Create a new CheckBox
@@ -41,6 +43,7 @@
     </span><span class="jsdoc-var">valueOff</span><span class="jsdoc-syntax">: 0,
     </span><span class="jsdoc-var">boxLabel</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">checked</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">weight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -50,17 +53,24 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {};
         
-        </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'form-group' </span><span class="jsdoc-comment">//input-group
+        </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'form-group checkbox' </span><span class="jsdoc-comment">//input-group
+        
+        
+        
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">input </span><span class="jsdoc-syntax">=  {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.inputType</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: (!</span><span class="jsdoc-var">this.checked</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.valueOff </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.inputValue</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-box'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-checkbox'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">//'form-box',
             </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.placeholder </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
             
         </span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// Validity check?
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot; checkbox-&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">input.disabled</span><span class="jsdoc-syntax">=</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
@@ -85,7 +95,12 @@
             }
         });
         
+       
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">;
+        
+        
+        
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">) {
             
@@ -149,25 +164,23 @@
 
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             
-                   </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; no label &amp;&amp; no align&quot;</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
-                    
-                        </span><span class="jsdoc-var">inputblock
-                    
-                </span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; no label &amp;&amp; no align&quot;</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [  </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">] ;
                 
                 
         };
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boxLabel</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boxLabel</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">( {
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-string">'for'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'box-label'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.boxLabel
-            </span><span class="jsdoc-syntax">})
+                
+            </span><span class="jsdoc-syntax">});
         }
         
+        
+       
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
         
     },
@@ -177,7 +190,7 @@
      */
     </span><span class="jsdoc-var">inputEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input.form-box'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input.roo-checkbox'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
     },
     
     </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()

@@ -245,13 +245,14 @@
         </span><span class="jsdoc-comment">// handle the kids..
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nitems </span><span class="jsdoc-syntax">= [];
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.menu</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">tree.menu.parentType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cn.xtype</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">tree.menu.triggerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cn.el</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">tree.menu</span><span class="jsdoc-syntax">)));
+        </span><span class="jsdoc-comment">/*
+        if (typeof (tree.menu) != 'undefined') {
+            tree.menu.parentType = cn.xtype;
+            tree.menu.triggerEl = cn.el;
+            nitems.push(cn.addxtype(Roo.apply({}, tree.menu)));
             
         }
-        
+        */
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tree.items </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">tree.items.length</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cn.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
