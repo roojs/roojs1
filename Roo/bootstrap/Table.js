@@ -26,6 +26,7 @@
  * @cfg {boolean} hover Add hover highlighting
  * @cfg {boolean} condensed Format condensed
  * @cfg {boolean} responsive Format condensed
+ * @cfg {Boolean} loadMask (true|false) default false
  *
  
  
@@ -77,6 +78,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     sm : false,
     cm : false,
     store : false,
+    loadMask : false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
