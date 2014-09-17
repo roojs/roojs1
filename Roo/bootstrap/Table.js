@@ -226,8 +226,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var size = this.el.getSize();
         Roo.log(size);
         this.maskEl.setSize(size.width, size.height);
-        this.maskEl.setTop(this.el.getTop());
-        this.maskEl.setLeft(this.el.getLeft());
         this.maskEl.enableDisplayMode("block");
         this.maskEl.show();
         if(!this.loadMask){
