@@ -192,9 +192,40 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
             e.on('click', _this.sort, _this);
         });
-        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
+//        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
+//        this.maskEl.enableDisplayMode("block");
+//        this.maskEl.show();
+        
+        var mark = {
+            tag: "div",
+            cls:"x-dlg-mask",
+            style: "text-align:center",
+            cn: [
+                {
+                    tag: "div",
+                    style: "background-color:white;width:50%;margin:250 auto",
+                    cn: [
+                        {
+                            tag: "img",
+                            src: rootURL + '/roojs1/images/ux/lightbox/loading.gif'
+                        },
+                        {
+                            tag: "span",
+                            html: "Loading"
+                        }
+                        
+                    ]
+                }
+            ]
+        }
+        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), mark, true);
+        
+        var size = this.el.select('.TableGrid', true).first().getSize();
+        this.maskEl.setSize(size.width, size.height);
         this.maskEl.enableDisplayMode("block");
-        this.maskEl.show();
+        if(!this.loadMask){
+            this.maskEl.hide();
+        }
         
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
