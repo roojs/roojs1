@@ -219,7 +219,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             ]
         }
         Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-        Roo.log(this.el.parent());
+        Roo.log(this.parent());
         Roo.log(mark);
         this.maskEl = Roo.DomHelper.append(Roo.select('.table-products', true).first(), mark, true);
         Roo.log(this.maskEl);
