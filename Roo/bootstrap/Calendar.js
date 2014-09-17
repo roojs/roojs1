@@ -310,7 +310,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             ]
         }
         this.maskEl = Roo.DomHelper.append(this.el.select('.fc-content', true).first(), mark, true);
-        Roo.log(this.maskEl);
+        
         var size = this.el.select('.fc-content', true).first().getSize();
         this.maskEl.setSize(size.width, size.height);
         this.maskEl.enableDisplayMode("block");
