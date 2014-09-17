@@ -4037,6 +4037,7 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
  * @cfg {boolean} hover Add hover highlighting
  * @cfg {boolean} condensed Format condensed
  * @cfg {boolean} responsive Format condensed
+ * @cfg {Boolean} loadMask (true|false) default false
  *
  
  
@@ -4088,6 +4089,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     sm : false,
     cm : false,
     store : false,
+    loadMask : false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -4207,6 +4209,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 //        this.maskEl.enableDisplayMode("block");
 //        this.maskEl.show();
         
+        this.parent().el.setStyle('position', 'relative');
+        
         var mark = {
             tag: "div",
             cls:"x-dlg-mask",
@@ -4214,7 +4218,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: "div",
-                    style: "background-color:white;width:50%;margin:250 auto",
+                    style: "background-color:white;width:50%;",
                     cn: [
                         {
                             tag: "img",
@@ -4229,17 +4233,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
             ]
         }
-        Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-        Roo.log(this.el);
-        Roo.log(mark);
-        this.maskEl = Roo.DomHelper.append(this.el, mark, true);
-        Roo.log(this.maskEl);
-        var size = this.el.getSize();
-        Roo.log(size);
+        this.maskEl = Roo.DomHelper.append(this.parent().el, mark, true);
+        
+        var size = this.parent().el.getSize();
+        
         this.maskEl.setSize(size.width, size.height);
         this.maskEl.enableDisplayMode("block");
+        
         if(!this.loadMask){
-//            this.maskEl.hide();
+            this.maskEl.hide();
         }
         
         this.store.on('load', this.onLoad, this);
@@ -11367,7 +11369,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             ]
         }
         this.maskEl = Roo.DomHelper.append(this.el.select('.fc-content', true).first(), mark, true);
-        Roo.log(this.maskEl);
+        
         var size = this.el.select('.fc-content', true).first().getSize();
         this.maskEl.setSize(size.width, size.height);
         this.maskEl.enableDisplayMode("block");
