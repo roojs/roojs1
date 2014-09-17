@@ -219,7 +219,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             ]
         }
         Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-        Roo.log(this.el);
+        Roo.log(this.el.select('tbody', true).first());
         this.maskEl = Roo.DomHelper.append(this.el.select('tbody', true).first(), mark, true);
         
         var size = this.el.select('tbody', true).first().getSize();
