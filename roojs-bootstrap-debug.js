@@ -4399,9 +4399,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             })
         }
 //        
-//        if(this.loadMask){
-//            this.maskEl.hide();
-//        }
+        if(this.loadMask){
+            this.maskEl.hide();
+        }
     },
     
     onBeforeLoad : function()
@@ -4410,9 +4410,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.clear();
         
-//        if(this.loadMask){
-//            this.maskEl.show();
-//        }
+        if(this.loadMask){
+            this.maskEl.show();
+        }
     },
     
     clear : function()
