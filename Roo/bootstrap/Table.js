@@ -221,6 +221,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
         Roo.log(this.el.getCenterXY());
         Roo.log(this.parent().el.getCenterXY());
+        Roo.log(this.el.getBox());
+        Roo.log(this.parent().el.getBox());
         Roo.log(this.parent());
         Roo.log(mark);
         this.maskEl = Roo.DomHelper.append(this.parent().el, mark, true);
