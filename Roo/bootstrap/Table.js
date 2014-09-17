@@ -223,7 +223,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.log(mark);
         this.maskEl = Roo.DomHelper.append(this.parent().el, mark, true);
         Roo.log(this.maskEl);
-        var size = this.el.getSize();
+        var size = this.parent().getSize();
         Roo.log(size);
         this.maskEl.setSize(size.width, size.height);
         this.maskEl.enableDisplayMode("block");
