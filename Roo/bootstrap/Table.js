@@ -389,9 +389,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             })
         }
 //        
-//        if(this.loadMask){
-//            this.maskEl.hide();
-//        }
+        if(this.loadMask){
+            this.maskEl.hide();
+        }
     },
     
     onBeforeLoad : function()
