@@ -4207,6 +4207,41 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 //        this.maskEl.enableDisplayMode("block");
 //        this.maskEl.show();
         
+        var mark = {
+            tag: "div",
+            cls:"x-dlg-mask",
+            style: "text-align:center",
+            cn: [
+                {
+                    tag: "div",
+                    style: "background-color:white;width:50%;margin:250 auto",
+                    cn: [
+                        {
+                            tag: "img",
+                            src: rootURL + '/roojs1/images/ux/lightbox/loading.gif'
+                        },
+                        {
+                            tag: "span",
+                            html: "Loading"
+                        }
+                        
+                    ]
+                }
+            ]
+        }
+        Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+        Roo.log(this.el);
+        Roo.log(mark);
+        this.maskEl = Roo.DomHelper.append(this.el, mark, true);
+        Roo.log(this.maskEl);
+        var size = this.el.getSize();
+        Roo.log(size);
+        this.maskEl.setSize(size.width, size.height);
+        this.maskEl.enableDisplayMode("block");
+        if(!this.loadMask){
+//            this.maskEl.hide();
+        }
+        
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
         
