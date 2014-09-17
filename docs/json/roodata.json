@@ -13205,6 +13205,12 @@
      "memberOf": ""
     },
     {
+     "name": "loadMask",
+     "type": "Boolean",
+     "desc": "(true|false) default false",
+     "memberOf": ""
+    },
+    {
      "name": "style",
      "type": "String",
      "desc": "any extra css",

@@ -26,6 +26,7 @@
  * @cfg {boolean} hover Add hover highlighting
  * @cfg {boolean} condensed Format condensed
  * @cfg {boolean} responsive Format condensed
+ * @cfg {Boolean} loadMask (true|false) default false
  *
  
  
@@ -77,6 +78,7 @@
     </span><span class="jsdoc-var">sm </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">store </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">loadMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">Roo.bootstrap.Table.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
@@ -195,6 +197,41 @@
 </span><span class="jsdoc-comment">//        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), {tag: &quot;div&quot;, cls:&quot;x-dlg-mask&quot;}, true);
 //        this.maskEl.enableDisplayMode(&quot;block&quot;);
 //        this.maskEl.show();
+        
+        </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'relative'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mark </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;x-dlg-mask&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;text-align:center&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;background-color:white;width:50%;&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;img&quot;</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rootURL </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/roojs1/images/ux/lightbox/loading.gif'
+                        </span><span class="jsdoc-syntax">},
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;span&quot;</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Loading&quot;
+                        </span><span class="jsdoc-syntax">}
+                        
+                    ]
+                }
+            ]
+        }
+        </span><span class="jsdoc-var">this.maskEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mark</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.el.getSize</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.maskEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.maskEl.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.maskEl.hide</span><span class="jsdoc-syntax">();
+        }
         
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
