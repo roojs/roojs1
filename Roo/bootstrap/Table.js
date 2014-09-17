@@ -218,21 +218,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
             ]
         }
-        Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-        Roo.log(this.parent());
-        Roo.log(mark);
-        this.maskEl = Roo.DomHelper.append(this.parent().el, mark, true);
-        Roo.log(this.maskEl);
-        var size = this.el.getSize();
-        Roo.log(size);
-        this.maskEl.setSize(size.width, size.height);
-        this.maskEl.setTop(this.el.getTop());
-        this.maskEl.setLeft(this.el.getLeft());
-        this.maskEl.enableDisplayMode("block");
-        this.maskEl.show();
-        if(!this.loadMask){
-//            this.maskEl.hide();
-        }
+        Roo.LoadMask(this.el);
         
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
