@@ -196,6 +196,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 //        this.maskEl.enableDisplayMode("block");
 //        this.maskEl.show();
         
+        this.parent().el.setStyle('position', 'relative');
+        
         var mark = {
             tag: "div",
             cls:"x-dlg-mask",
