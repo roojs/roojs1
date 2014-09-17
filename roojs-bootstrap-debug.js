@@ -3681,7 +3681,7 @@ Roo.bootstrap.NavSidebarItem = function(config){
 	 /**
 	    * @event changed
 	    * Fires when the active item active state changes
-	    * @param {Roo.bootstrap.Navbar.Item} this
+	    * @param {Roo.bootstrap.NavSidebarItem} this
 	    * @param {boolean} state the new state
 	     
          */
