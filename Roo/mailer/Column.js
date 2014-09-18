@@ -69,6 +69,7 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
                                 tag : 'img',
                                 src : this.src,
                                 cls : 'roo-m-column-image',
+                                width : (this.width== '100%' ?  '260' : this.width ),
                                 style : 'max-width: ' + (this.width== '100%' ?  '260' : this.width ) +'px;'
                             }
                         ]
