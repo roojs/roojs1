@@ -23,6 +23,13 @@ template1 = new Roo.XComponent({
                     xns : Roo.mailer,
                     items : [
                     	{
+                            blocktype : 'header',
+                            xtype : 'Block',
+                            html : 'test',
+                            xns : Roo.mailer
+                        },
+                    	{
+                            blocktype : 'header',
                             xtype : 'Block',
                             html : 'test',
                             xns : Roo.mailer

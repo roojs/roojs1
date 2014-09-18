@@ -15,6 +15,13 @@
                     "$ xns" : "Roo.mailer",
                     "items" : [
                         {
+                            "String blocktype" : "header",
+                            "xtype" : "Block",
+                            "string html" : "test",
+                            "$ xns" : "Roo.mailer"
+                        },
+                        {
+                            "String blocktype" : "header",
                             "xtype" : "Block",
                             "string html" : "test",
                             "$ xns" : "Roo.mailer"
