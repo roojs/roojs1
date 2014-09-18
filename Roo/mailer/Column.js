@@ -17,7 +17,7 @@
  * @cfg {String} html content of body
  * @cfg {String} src image url
  * @cfg {String} column  (left|right)
- * @cfg {String width (100%|200|340)
+ * @cfg {String width (100%|200|340|260)
  * 
  * @constructor
  * Create a new Element
