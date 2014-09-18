@@ -47,7 +47,7 @@
                         {
                             "String blocktype" : "footer",
                             "xtype" : "Block",
-                            "string html" : "test",
+                            "string html" : "test footer",
                             "$ xns" : "Roo.mailer"
                         }
                     ]

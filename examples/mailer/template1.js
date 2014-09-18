@@ -56,7 +56,7 @@ template1 = new Roo.XComponent({
                     	{
                             blocktype : 'footer',
                             xtype : 'Block',
-                            html : 'test',
+                            html : 'test footer',
                             xns : Roo.mailer
                         }
                     ]
