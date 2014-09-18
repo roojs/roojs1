@@ -73,10 +73,10 @@ template1 = new Roo.XComponent({
                                     xtype : 'Column',
                                     column : 'left',
                                     xns : Roo.mailer,
-                                    src : 'http://gallery.mailchimp.com/27aac8a65e64c994c4416d6b8/images/header_placeholder_260px.png',
-                                    html : 'test'
+                                    src : 'http://gallery.mailchimp.com/27aac8a65e64c994c4416d6b8/images/header_placeholder_260px.png'
                                 },
                             	{
+                                    width : 340,
                                     xtype : 'Column',
                                     xns : Roo.mailer,
                                     column : 'right',
