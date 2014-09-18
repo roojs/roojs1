@@ -60,6 +60,7 @@
                             "$ xns" : "Roo.mailer",
                             "items" : [
                                 {
+                                    "int width" : 200,
                                     "xtype" : "Column",
                                     "String column" : "left",
                                     "$ xns" : "Roo.mailer",
