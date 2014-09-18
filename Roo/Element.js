@@ -2712,7 +2712,7 @@ if(opt.anim.isAnimated()){
         
         /**
          * Sets or Returns the value the dom attribute value
-         * @param {String} name The attribute name
+         * @param {String|Object} name The attribute name (or object to set multiple attributes)
          * @param {String} value (optional) The value to set the attribute to
          * @return {String} The attribute value
          */
@@ -2721,6 +2721,12 @@ if(opt.anim.isAnimated()){
                 this.dom.setAttribute(name, arguments[1]);
                 return arguments[1];
             }
+            if (typeof(name) == 'object') {
+                
+                
+            }
+            
+            
             if (!this.dom.hasAttribute(name)) {
                 return undefined;
             }
