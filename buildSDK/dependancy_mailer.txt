@@ -1,7 +1,5 @@
 
 
-Roo.bootstrap.Component
-
 
 Roo.mailer.Body
 Roo.mailer.Block
