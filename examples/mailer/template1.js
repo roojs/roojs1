@@ -29,7 +29,13 @@ template1 = new Roo.XComponent({
                             xns : Roo.mailer
                         },
                     	{
-                            blocktype : 'header',
+                            blocktype : 'body',
+                            xtype : 'Block',
+                            html : 'test',
+                            xns : Roo.mailer
+                        },
+                    	{
+                            blocktype : 'footer',
                             xtype : 'Block',
                             html : 'test',
                             xns : Roo.mailer

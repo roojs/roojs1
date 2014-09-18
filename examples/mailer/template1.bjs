@@ -21,7 +21,13 @@
                             "$ xns" : "Roo.mailer"
                         },
                         {
-                            "String blocktype" : "header",
+                            "String blocktype" : "body",
+                            "xtype" : "Block",
+                            "string html" : "test",
+                            "$ xns" : "Roo.mailer"
+                        },
+                        {
+                            "String blocktype" : "footer",
                             "xtype" : "Block",
                             "string html" : "test",
                             "$ xns" : "Roo.mailer"
