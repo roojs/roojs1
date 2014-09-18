@@ -20,7 +20,7 @@
  * @param {Object} config The config object
  */
 
-Roo.mailer = Roo.mailer | {};
+Roo.mailer = Roo.mailer || {};
 
 Roo.mailer.Body  = function(config){
     Roo.mailer.Body.superclass.constructor.call(this, config);
