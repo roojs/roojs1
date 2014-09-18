@@ -42,6 +42,7 @@
                                     "xtype" : "Column",
                                     "$ xns" : "Roo.mailer",
                                     "String column" : "right",
+                                    "String src" : "http://gallery.mailchimp.com/27aac8a65e64c994c4416d6b8/images/header_placeholder_260px.png",
                                     "String html" : "test2"
                                 }
                             ]
