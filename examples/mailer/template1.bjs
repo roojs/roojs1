@@ -34,7 +34,13 @@
                             "items" : [
                                 {
                                     "xtype" : "Column",
+                                    "String column" : "left",
                                     "$ xns" : "Roo.mailer"
+                                },
+                                {
+                                    "xtype" : "Column",
+                                    "$ xns" : "Roo.mailer",
+                                    "String column" : "right"
                                 }
                             ]
                         },
