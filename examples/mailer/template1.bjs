@@ -1,0 +1,14 @@
+{
+    "name" : "template1",
+    "parent" : "",
+    "title" : "",
+    "path" : "/home/alan/gitlive/roojs1/examples/mailer/template1.bjs",
+    "permname" : "",
+    "modOrder" : "001",
+    "items" : [
+        {
+            "xtype" : "Body",
+            "$ xns" : "Roo.mailer"
+        }
+    ]
+}
