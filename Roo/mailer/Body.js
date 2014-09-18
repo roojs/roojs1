@@ -2,12 +2,10 @@
  * - LGPL
  *
  * element
- * <!-- BEGIN TEMPLATE // -->
-                    	<table border="0" cellpadding="0" cellspacing="0" id="templateContainer">
-                        	<tr>
-                            	<td align="center" valign="top">
+ 
                               
  */
+Roo.mailer = Roo.mailer || {};
 
 /**
  * @class Roo.mailer.BodyContainer 
@@ -20,7 +18,6 @@
  * @param {Object} config The config object
  */
 
-Roo.mailer = Roo.mailer || {};
 
 Roo.mailer.Body  = function(config){
     Roo.mailer.Body.superclass.constructor.call(this, config);
