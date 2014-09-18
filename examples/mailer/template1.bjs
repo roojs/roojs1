@@ -24,6 +24,12 @@
                             "String blocktype" : "body",
                             "xtype" : "Block",
                             "string html" : "test",
+                            "$ xns" : "Roo.mailer"
+                        },
+                        {
+                            "String blocktype" : "body",
+                            "xtype" : "Block",
+                            "string html" : "test",
                             "$ xns" : "Roo.mailer",
                             "items" : [
                                 {
