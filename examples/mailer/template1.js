@@ -26,7 +26,8 @@ template1 = new Roo.XComponent({
                             blocktype : 'preheader',
                             xtype : 'Block',
                             html : 'test',
-                            xns : Roo.mailer
+                            xns : Roo.mailer,
+                            style : 'padding-top:10px; padding-right:20px; padding-bottom:10px; padding-left:20px;'
                         },
                     	{
                             blocktype : 'header',

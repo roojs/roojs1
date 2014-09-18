@@ -18,7 +18,8 @@
                             "String blocktype" : "preheader",
                             "xtype" : "Block",
                             "string html" : "test",
-                            "$ xns" : "Roo.mailer"
+                            "$ xns" : "Roo.mailer",
+                            "String style" : "padding-top:10px; padding-right:20px; padding-bottom:10px; padding-left:20px;"
                         },
                         {
                             "String blocktype" : "header",
