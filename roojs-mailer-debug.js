@@ -2,12 +2,10 @@
  * - LGPL
  *
  * element
- * <!-- BEGIN TEMPLATE // -->
-                    	<table border="0" cellpadding="0" cellspacing="0" id="templateContainer">
-                        	<tr>
-                            	<td align="center" valign="top">
+ 
                               
  */
+Roo.mailer = Roo.mailer || {};
 
 /**
  * @class Roo.mailer.BodyContainer 
@@ -20,19 +18,19 @@
  * @param {Object} config The config object
  */
 
-Roo.mailer = Roo.mailer || {};
 
 Roo.mailer.Body  = function(config){
     Roo.mailer.Body.superclass.constructor.call(this, config);
     //this.el = Roo.get(document.body);
-    
-    Roo.get(document.body).attr({
+    var body = Roo.get(document.body);
+    body.attr({
         leftmargin : 0,
         marginwidth : 0,
         topmargin : 0,
         marginheight : 0,
         offset : 0
     });
+    this.onRender(body);
 
 };
 
@@ -108,7 +106,7 @@ Roo.extend(Roo.mailer.Body, Roo.bootstrap.Component,  {
  * Bootstrap Element class
  * @cfg {String} cls class of the element
  * @cfg {String} html content of header (not used for columns)
- * @cfg {String} blocktype  (header|preheader|footer|body|olumn-container)
+ * @cfg {String} blocktype  (header|preheader|footer|body|row)
  * 
  * @constructor
  * Create a new Element
@@ -132,7 +130,7 @@ Roo.extend(Roo.mailer.Block, Roo.bootstrap.Component,  {
             tag : 'tr',
             cls : 'roo-m-block-tr'
         }
-        if (this.blocktype != 'column-container') {
+        if (this.blocktype != 'row') {
            tr.cn = [
                 {
                     tag : 'td',
@@ -160,19 +158,19 @@ Roo.extend(Roo.mailer.Block, Roo.bootstrap.Component,  {
 	
         return cfg;
     },
-    getChildContainer : function()
+    getChildContainer : function(build_call)
     {
         // add a child...
-        if (this.blogtype == 'column-container') {
-            var par = this.select(
-                        'roo-m-block-tr',true
+        if (this.blocktype == 'row' && build_call) {
+            var par = this.el.select(
+                        '.roo-m-block-tr',true
                     ).first();
             return par.createChild( {    
                     tag:  'td',
                     align : 'center',
                     valign : 'top',
                     style : 'padding-top : 20px;',
-                    cls : 'roo-m-column-container'
+                    cls : 'roo-m-row'
                 }
           
             );
@@ -228,8 +226,10 @@ Roo.extend(Roo.mailer.BodyContainer, Roo.bootstrap.Component,  {
             border : 0,
             cellpadding : 0,
             cellspacing : 0,
-            cls: 'roo-m-body-container ' + this.cls 
-            
+            cls: 'roo-m-body-container ' + this.cls,
+            cn : [
+                {  tag : 'tbody' }
+            ]
         };
         
         
@@ -239,7 +239,7 @@ Roo.extend(Roo.mailer.BodyContainer, Roo.bootstrap.Component,  {
     getChildContainer : function()
     {
         // add a child...
-        var tr = this.el.createChild({
+        var tr = this.el.select('tbody',true).first().createChild({
                     tag : 'tr',
                     cn : [
                         {   
