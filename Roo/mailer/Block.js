@@ -79,7 +79,7 @@ Roo.extend(Roo.mailer.Block, Roo.bootstrap.Component,  {
                     align : 'center',
                     valign : 'top',
                     style : 'padding-top : 20px;',
-                    cls : 'roo-m-row'
+                    cls : 'roo-m-column'
                 }
           
             );
