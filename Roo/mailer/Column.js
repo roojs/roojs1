@@ -64,7 +64,7 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
                 style : 'max-width: ' + (this.width== '100%' ?  '260' : this.width ) +'px;'
             };
             if (this.width != '100%' ) {
-                img.width : this.width;
+                img.width = this.width;
             }
            cfg.cn.push({
                 tag  : 'tr',
@@ -76,7 +76,6 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
                         cls : 'roo-m-column-'+ this.column + '-content',
                         cn : [ img ]
                             
-                        ]
                     }
                 ]
             });
