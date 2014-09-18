@@ -30,7 +30,7 @@ Roo.mailer.Body  = function(config){
         marginheight : 0,
         offset : 0
     });
-    Roo.log("render body from ctor");
+    
     this.onRender(body);
     this.onRender = function() { };
 
