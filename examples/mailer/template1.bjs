@@ -8,7 +8,19 @@
     "items" : [
         {
             "xtype" : "Body",
-            "$ xns" : "Roo.mailer"
+            "$ xns" : "Roo.mailer",
+            "items" : [
+                {
+                    "xtype" : "BodyContainer",
+                    "$ xns" : "Roo.mailer",
+                    "items" : [
+                        {
+                            "xtype" : "Block",
+                            "$ xns" : "Roo.mailer"
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

@@ -16,6 +16,20 @@ template1 = new Roo.XComponent({
         var MODULE = this;
         return {
             xtype : 'Body',
-            xns : Roo.mailer
+            xns : Roo.mailer,
+            items : [
+            	{
+                    xtype : 'BodyContainer',
+                    xns : Roo.mailer,
+                    items : [
+                    	{
+                            xtype : 'Block',
+                            xns : Roo.mailer
+                        }
+                    ]
+
+                }
+            ]
+
         };    }
 });
