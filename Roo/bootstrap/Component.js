@@ -236,7 +236,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 // multiple copies here...
                 //Roo.log('render');
                 //Roo.log(this[cntr]());
-                cn.render(this[cntr]());
+                cn.render(this[cntr](true));
              }
             // then add the element..
         }
