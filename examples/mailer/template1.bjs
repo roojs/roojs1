@@ -27,7 +27,7 @@
                             "$ xns" : "Roo.mailer"
                         },
                         {
-                            "String blocktype" : "body",
+                            "String blocktype" : "column",
                             "xtype" : "Block",
                             "string html" : "test",
                             "$ xns" : "Roo.mailer",
