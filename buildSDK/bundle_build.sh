@@ -20,6 +20,10 @@ seed ../gnome.introspection-doc-generator/pack.js \
      -f buildSDK/dependancy_calendar.txt -o roojs-calendar.js -O roojs-calendar-debug.js
   
 
+seed ../gnome.introspection-doc-generator/pack.js \
+     -f buildSDK/dependancy_mailer.txt -o roojs-mailer.js -O roojs-mailer-debug.js
+  
+
      
 #seed ../gnome.introspection-doc-generator/pack.js \
 #    -f buildSDK/dependancy_core.txt \
