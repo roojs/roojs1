@@ -16,6 +16,7 @@
                     "items" : [
                         {
                             "xtype" : "Block",
+                            "string html" : "test",
                             "$ xns" : "Roo.mailer"
                         }
                     ]
