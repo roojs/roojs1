@@ -25,14 +25,15 @@
 </span><span class="jsdoc-var">Roo.mailer.Body  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.mailer.Body.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-comment">//this.el = Roo.get(document.body);
-    
-    </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">({
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">body.attr</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-var">leftmargin </span><span class="jsdoc-syntax">: 0,
         </span><span class="jsdoc-var">marginwidth </span><span class="jsdoc-syntax">: 0,
         </span><span class="jsdoc-var">topmargin </span><span class="jsdoc-syntax">: 0,
         </span><span class="jsdoc-var">marginheight </span><span class="jsdoc-syntax">: 0,
         </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">: 0
     });
+    </span><span class="jsdoc-var">this.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">);
 
 };
 
