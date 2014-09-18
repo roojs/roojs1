@@ -39,7 +39,7 @@ Roo.extend(Roo.mailer.BodyContainer, Roo.bootstrap.Component,  {
             cellspacing : 0,
             cls: 'roo-m-body-container ' + this.cls,
             cn : [
-                tag : 'tbody'
+                {  tag : 'tbody' }
             ]
         };
         
