@@ -51,7 +51,7 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
             border : 0,
             cellpadding :20,
             cellspacing : 0,
-            width : '100%',
+            width : this.width,
             cn :  []
             
         };
