@@ -207,7 +207,7 @@
             </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;background-color:white;width:50%;&quot;</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;background-color:white;width:50%;margin:100 auto&quot;</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
                         {
                             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;img&quot;</span><span class="jsdoc-syntax">,
@@ -226,12 +226,9 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.el.getSize</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-var">this.maskEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">size.height</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.maskEl.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.maskEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, 300); </span><span class="jsdoc-comment">// we will fix the height at the beginning...
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.maskEl.hide</span><span class="jsdoc-syntax">();
-        }
+        </span><span class="jsdoc-var">this.maskEl.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -391,11 +388,11 @@
                 </span><span class="jsdoc-var">_this.renderColumn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
             })
         }
-</span><span class="jsdoc-comment">//        
-//        if(this.loadMask){
-//            this.maskEl.hide();
-//        }
-    </span><span class="jsdoc-syntax">},
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.maskEl.hide</span><span class="jsdoc-syntax">();
+        }
+    },
     
     </span><span class="jsdoc-var">onBeforeLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -403,10 +400,10 @@
         
         </span><span class="jsdoc-var">this.clear</span><span class="jsdoc-syntax">();
         
-</span><span class="jsdoc-comment">//        if(this.loadMask){
-//            this.maskEl.show();
-//        }
-    </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.maskEl.show</span><span class="jsdoc-syntax">();
+        }
+    },
     
     </span><span class="jsdoc-var">clear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {

@@ -1,0 +1,99 @@
+<html><head><title>../roojs1/Roo/mailer/Block.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * element
+ * &lt;!-- BEGIN TEMPLATE // --&gt;
+                    	&lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; id=&quot;templateContainer&quot;&gt;
+                        	&lt;tr&gt;
+                            	&lt;td align=&quot;center&quot; valign=&quot;top&quot;&gt;
+                              
+ */
+
+/**
+ * @class Roo.mailer.Block 
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Element class
+ * @cfg {String} cls class of the element
+ * @cfg {String} html content of header (not used for columns)
+ * @cfg {String} blocktype  (header|preheader|footer|body|olumn-container)
+ * 
+ * @constructor
+ * Create a new Element
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.mailer.Block </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.mailer.Block.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.mailer.Block</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    
+    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">blocktype </span><span class="jsdoc-syntax">:   </span><span class="jsdoc-string">'header'</span><span class="jsdoc-syntax">,
+     
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                                            
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tr </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-m-block-tr'
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.blocktype </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'column-container'</span><span class="jsdoc-syntax">) {
+           </span><span class="jsdoc-var">tr.cn </span><span class="jsdoc-syntax">= [
+                {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">valight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-m-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.blocktype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-content'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
+                </span><span class="jsdoc-syntax">}
+           ]
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">=   {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'table'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">: 0,
+            </span><span class="jsdoc-var">cellpadding </span><span class="jsdoc-syntax">: 0,
+            </span><span class="jsdoc-var">cellspacing </span><span class="jsdoc-syntax">: 0,
+            </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-m-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.blocktype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">,
+            
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-var">tr </span><span class="jsdoc-syntax">]
+            
+        };
+ 
+	
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-comment">// add a child...
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.blogtype </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'column-container'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">par </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.select</span><span class="jsdoc-syntax">(
+                        </span><span class="jsdoc-string">'roo-m-block-tr'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true
+                    </span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">par.createChild</span><span class="jsdoc-syntax">( {    
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">valign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'padding-top : 20px;'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-m-column-container'
+                </span><span class="jsdoc-syntax">}
+          
+            );
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-m-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.blocktype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-content'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+    }
+    
+    
+    
+    
+   
+});
+
+ 
+
+ </span></code></body></html>
