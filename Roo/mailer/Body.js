@@ -25,15 +25,15 @@ Roo.mailer = Roo.mailer || {};
 Roo.mailer.Body  = function(config){
     Roo.mailer.Body.superclass.constructor.call(this, config);
     //this.el = Roo.get(document.body);
-    
-    Roo.get(document.body).attr({
+    var body = Roo.get(document.body);
+    body.attr({
         leftmargin : 0,
         marginwidth : 0,
         topmargin : 0,
         marginheight : 0,
         offset : 0
     });
-    this.onRender(document.body);
+    this.onRender(body);
 
 };
 
