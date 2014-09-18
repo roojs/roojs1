@@ -31,6 +31,7 @@ Roo.mailer.Body  = function(config){
         offset : 0
     });
     this.onRender(body);
+    this.onRender = function() { };
 
 };
 
