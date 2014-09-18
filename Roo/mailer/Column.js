@@ -56,6 +56,16 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
             
         };
         if (this.src != '') {
+            var img = {
+                tag : 'img',
+                src : this.src,
+                cls : 'roo-m-column-image',
+                
+                style : 'max-width: ' + (this.width== '100%' ?  '260' : this.width ) +'px;'
+            };
+            if (this.width != '100%' ) {
+                img.width : this.width;
+            }
            cfg.cn.push({
                 tag  : 'tr',
                 cn : [
@@ -64,14 +74,8 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
                         align : 'center',
                         valight : 'top',
                         cls : 'roo-m-column-'+ this.column + '-content',
-                        cn : [
-                            {
-                                tag : 'img',
-                                src : this.src,
-                                cls : 'roo-m-column-image',
-                                width : (this.width== '100%' ?  '260' : this.width ),
-                                style : 'max-width: ' + (this.width== '100%' ?  '260' : this.width ) +'px;'
-                            }
+                        cn : [ img ]
+                            
                         ]
                     }
                 ]
