@@ -14,7 +14,7 @@
     -ms-user-select: none;
     user-select: none;
 }
-.checkbox label::after {
+.checkbox label::before {
     content: "";
     display: inline-block;
     position: absolute;
@@ -28,7 +28,7 @@
     -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
     -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
     transition: border 0.15s ease-in-out, color 0.15s ease-in-out; }
-.checkbox label::before {
+.checkbox label::after {
     display: inline-block;
     position: absolute;
     width: 16px;
