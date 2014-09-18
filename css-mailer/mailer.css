@@ -10,7 +10,7 @@ img{-ms-interpolation-mode:bicubic;} /* Allow smoother rendering of resized imag
 body{margin:0; padding:0;}
 img{border:0; height:auto; line-height:100%; outline:none; text-decoration:none;}
 table{border-collapse:collapse !important;}
-body, #bodyTable, #bodyCell{height:100% !important; margin:0; padding:0; width:100% !important;}
+body, .roo-m-body-table, .roo-m-body-cell{height:100% !important; margin:0; padding:0; width:100% !important;}
 
 /* /\/\/\/\/\/\/\/\/ TEMPLATE STYLES /\/\/\/\/\/\/\/\/ */
 
