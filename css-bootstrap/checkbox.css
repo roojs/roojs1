@@ -14,7 +14,7 @@
     -ms-user-select: none;
     user-select: none;
 }
-/*.checkbox label::before {
+.checkbox label::before {
     content: "";
     display: inline-block;
     position: absolute;
@@ -39,7 +39,7 @@
     padding-left: 3px;
     padding-top: 1px;
     font-size: 11px;
-    color: #555555; }*/
+    color: #555555; }
 .checkbox input[type="checkbox"] {
     display: none; }
 .checkbox input[type="checkbox"]:checked + label::after {
