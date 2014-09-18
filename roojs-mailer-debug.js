@@ -18,6 +18,7 @@ Roo.mailer = Roo.mailer || {};
  * @param {Object} config The config object
  */
 
+_calls = 0;
 
 Roo.mailer.Body  = function(config){
     Roo.mailer.Body.superclass.constructor.call(this, config);
@@ -30,7 +31,13 @@ Roo.mailer.Body  = function(config){
         marginheight : 0,
         offset : 0
     });
+    _calls++;
+    if (_calls > 1) {
+        throw "test";
+    }
+    
     this.onRender(body);
+    this.onRender = function() { };
 
 };
 
@@ -79,9 +86,12 @@ Roo.extend(Roo.mailer.Body, Roo.bootstrap.Component,  {
         // add a child...
          
         return this.el.select('.roo-m-body-cell').first();
+    },
+    addxtype :   function (tree, cntr)
+    {
+        this.addxtypeChild(tree,cntr);
     }
-    
-    
+
     
     
    
