@@ -2722,8 +2722,10 @@ if(opt.anim.isAnimated()){
                 return arguments[1];
             }
             if (typeof(name) == 'object') {
-                
-                
+                for(var i in name) {
+                    this.attr(i, name[i]);
+                }
+                return name;
             }
             
             
