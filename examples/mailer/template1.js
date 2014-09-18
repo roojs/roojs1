@@ -23,6 +23,12 @@ template1 = new Roo.XComponent({
                     xns : Roo.mailer,
                     items : [
                     	{
+                            blocktype : 'preheader',
+                            xtype : 'Block',
+                            html : 'test',
+                            xns : Roo.mailer
+                        },
+                    	{
                             blocktype : 'header',
                             xtype : 'Block',
                             html : '<img src=\"http://gallery.mailchimp.com/2425ea8ad3/images/header_placeholder_600px.png\">',
