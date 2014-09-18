@@ -20,6 +20,8 @@
  * @param {Object} config The config object
  */
 
+Roo.mailer = Roo.mailer || {};
+
 Roo.mailer.Body  = function(config){
     Roo.mailer.Body.superclass.constructor.call(this, config);
     //this.el = Roo.get(document.body);
@@ -106,7 +108,7 @@ Roo.extend(Roo.mailer.Body, Roo.bootstrap.Component,  {
  * Bootstrap Element class
  * @cfg {String} cls class of the element
  * @cfg {String} html content of header (not used for columns)
- * @cfg {String} blocktype  (header|preheader|footer|column-container)
+ * @cfg {String} blocktype  (header|preheader|footer|body|olumn-container)
  * 
  * @constructor
  * Create a new Element
@@ -226,7 +228,7 @@ Roo.extend(Roo.mailer.BodyContainer, Roo.bootstrap.Component,  {
             border : 0,
             cellpadding : 0,
             cellspacing : 0,
-            cls: 'roo-m-template-container ' + this.cls 
+            cls: 'roo-m-body-container ' + this.cls 
             
         };
         
@@ -312,7 +314,6 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
             cellpadding :20,
             cellspacing : 0,
             width : '100%',
-           
             cn :  []
             
         };
@@ -324,7 +325,7 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
                         tag : 'td',
                         align : 'center',
                         valight : 'top',
-                        cls : 'roo-m-column-left-content',
+                        cls : 'roo-m-column-'+ this.column + '-content',
                         cn : [
                             {
                                 tag : 'img',
@@ -345,7 +346,7 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
                      tag : 'td',
                      align : 'center',
                      valight : 'top',
-                     cls : 'roo-m-column-left-content roo-m-column-body',
+                     cls : 'roo-m-column-'+ this.column + '-content roo-m-column-body',
                      html : this.html
                  }
              ]
