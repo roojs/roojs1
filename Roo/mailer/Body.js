@@ -32,7 +32,7 @@ Roo.mailer.Body  = function(config){
         offset : 0
     });
     _calls++;
-    if (calls > 1) {
+    if (_calls > 1) {
         throw "test";
     }
     
