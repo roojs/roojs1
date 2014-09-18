@@ -1,0 +1,263 @@
+/*
+ * - LGPL
+ *
+ * element
+ * <!-- BEGIN TEMPLATE // -->
+                    	<table border="0" cellpadding="0" cellspacing="0" id="templateContainer">
+                        	<tr>
+                            	<td align="center" valign="top">
+                              
+ */
+
+/**
+ * @class Roo.mailer.BodyContainer 
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Element class
+ * @cfg {String} cls class of the element
+ * 
+ * @constructor
+ * Create a new Element
+ * @param {Object} config The config object
+ */
+
+Roo.mailer.Body  = function(config){
+    Roo.mailer.Body.superclass.constructor.call(this, config);
+    //this.el = Roo.get(document.body);
+    
+    Roo.get(document.body).attr({
+        leftmargin : 0,
+        marginwidth : 0,
+        topmargin : 0,
+        marginheight : 0,
+        offset : 0
+    });
+
+};
+
+Roo.extend(Roo.mailer.Body, Roo.bootstrap.Component,  {
+    
+    
+    cls: '',
+     
+    
+    getAutoCreate : function(){
+        
+        var cfg ={
+            tag : 'center',
+            cn : [
+                {
+                    tag: 'table',
+                    border : 0,
+                    cellpadding : 0,
+                    cellspacing : 0,
+                    height : '100%',
+                    align : 'center',
+                    cls: 'roo-m-body-table ' + this.cls,
+                    
+                    cn : [
+                        {
+                            tag : 'tr',
+                            cn : [
+                                {
+                                    tag : 'td',
+                                    align : 'center',
+                                    valight : 'top',
+                                    cls : 'roo-m-body-cell'
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+         
+	
+        return cfg;
+    },
+    getChildContainer : function()
+    {
+        // add a child...
+         
+        return this.el.select('.roo-m-body-cell').first();
+    }
+    
+    
+    
+    
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * element
+ * <!-- BEGIN TEMPLATE // -->
+                    	<table border="0" cellpadding="0" cellspacing="0" id="templateContainer">
+                        	<tr>
+                            	<td align="center" valign="top">
+                              
+ */
+
+/**
+ * @class Roo.mailer.Block 
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Element class
+ * @cfg {String} cls class of the element
+ * @cfg {String} html content of header (not used for columns)
+ * @cfg {String} blocktype  (header|preheader|footer|column-container)
+ * 
+ * @constructor
+ * Create a new Element
+ * @param {Object} config The config object
+ */
+
+Roo.mailer.Block = function(config){
+    Roo.mailer.Block.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.mailer.Block, Roo.bootstrap.Component,  {
+    
+    
+    cls: '',
+    html : '',
+    blocktype :   'header',
+     
+    getAutoCreate : function(){
+                                            
+        var tr = {
+            tag : 'tr',
+            cls : 'roo-m-block-tr'
+        }
+        if (this.blocktype != 'column-container') {
+           tr.cn = [
+                {
+                    tag : 'td',
+                    align : 'center',
+                    valight : 'top',
+                    cls : 'roo-m-' + this.blocktype + '-content',
+                    html : this.html
+                }
+           ]
+        }
+        
+        var cfg =   {
+            tag: 'table',
+            border : 0,
+            cellpadding : 0,
+            cellspacing : 0,
+            width : '100%',
+            align : 'center',
+            cls: 'roo-m-' + this.blocktype + ' ' + this.cls,
+            
+            cn : [ tr ]
+            
+        };
+ 
+	
+        return cfg;
+    },
+    getChildContainer : function()
+    {
+        // add a child...
+        if (this.blogtype == 'column-container') {
+            var par = this.select(
+                        'roo-m-block-tr',true
+                    ).first();
+            return par.createChild( {    
+                    tag:  'td',
+                    align : 'center',
+                    valign : 'top',
+                    style : 'padding-top : 20px;',
+                    cls : 'roo-m-column-container'
+                }
+          
+            );
+        }
+        
+        return this.el.select('.roo-m-' + this.blocktype + '-content',true).first();
+    }
+    
+    
+    
+    
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * element
+ * <!-- BEGIN TEMPLATE // -->
+                    	<table border="0" cellpadding="0" cellspacing="0" id="templateContainer">
+                        	<tr>
+                            	<td align="center" valign="top">
+                              
+ */
+
+/**
+ * @class Roo.mailer.BodyContainer 
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Element class
+ * @cfg {String} cls class of the element
+ * 
+ * @constructor
+ * Create a new Element
+ * @param {Object} config The config object
+ */
+
+Roo.mailer.BodyContainer = function(config){
+    Roo.mailer.BodyContainer.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.mailer.BodyContainer, Roo.bootstrap.Component,  {
+    
+    
+    cls: '',
+     
+    
+    getAutoCreate : function(){
+        
+        var cfg = {
+            tag: 'table',
+            border : 0,
+            cellpadding : 0,
+            cellspacing : 0,
+            cls: 'roo-m-template-container ' + this.cls,
+            
+        };
+        
+        
+	
+        return cfg;
+    },
+    getChildContainer : function()
+    {
+        // add a child...
+        var tr = this.el.createChild({
+                    tag : 'tr',
+                    cn : [
+                        {   
+                            tag:  'td',
+                            align : 'center',
+                            valign : 'top',
+                            cls : 'roo-m-child-ctr'
+                        }
+                    ]
+                });
+        
+        return tr.select('.roo-m-child-ctr').first();
+    }
+    
+    
+    
+    
+   
+});
+
+ 
+
+ 
