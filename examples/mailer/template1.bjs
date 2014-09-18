@@ -29,7 +29,6 @@
                         {
                             "String blocktype" : "column",
                             "xtype" : "Block",
-                            "string html" : "test",
                             "$ xns" : "Roo.mailer",
                             "items" : [
                                 {
