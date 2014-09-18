@@ -40,7 +40,8 @@
                                 {
                                     "xtype" : "Column",
                                     "$ xns" : "Roo.mailer",
-                                    "String column" : "right"
+                                    "String column" : "right",
+                                    "String html" : "test2"
                                 }
                             ]
                         },

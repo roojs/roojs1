@@ -48,7 +48,8 @@ template1 = new Roo.XComponent({
                             	{
                                     xtype : 'Column',
                                     xns : Roo.mailer,
-                                    column : 'right'
+                                    column : 'right',
+                                    html : 'test2'
                                 }
                             ]
 
