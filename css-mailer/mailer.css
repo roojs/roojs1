@@ -279,14 +279,14 @@ h4{
 
 /* ========== Column Styles ========== */
 
-.roo-m-row {width:260px;}
+.roo-m-column {width:260px;}
 
 /**
 * @tab Columns
 * @section column style
 * @tip Set the background color and borders for your email's column area.
 */
-.roo-m-row {
+.roo-m-column {
     /*@editable*/ background-color:#F4F4F4;
     /*@editable*/ border-top:1px solid #FFFFFF;
     /*@editable*/ border-bottom:1px solid #CCCCCC;
@@ -511,7 +511,7 @@ h4{
 
     /* ======== Column Styles ======== */
 
-    .roo-m-row {display:block !important; width:100% !important;}
+    .roo-m-column {display:block !important; width:100% !important;}
 
     /**
     * @tab Mobile Styles
