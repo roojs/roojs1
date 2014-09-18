@@ -17,7 +17,7 @@
                         {
                             "String blocktype" : "header",
                             "xtype" : "Block",
-                            "string html" : "test",
+                            "string html" : "<img src=\"http://gallery.mailchimp.com/2425ea8ad3/images/header_placeholder_600px.png\">",
                             "$ xns" : "Roo.mailer"
                         },
                         {
