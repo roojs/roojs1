@@ -40,6 +40,27 @@
                             "items" : [
                                 {
                                     "xtype" : "Column",
+                                    "$ xns" : "Roo.mailer",
+                                    "String column" : "left",
+                                    "String src" : "http://gallery.mailchimp.com/27aac8a65e64c994c4416d6b8/images/header_placeholder_260px.png",
+                                    "String html" : "test"
+                                },
+                                {
+                                    "xtype" : "Column",
+                                    "String column" : "right",
+                                    "$ xns" : "Roo.mailer",
+                                    "String src" : "http://gallery.mailchimp.com/27aac8a65e64c994c4416d6b8/images/header_placeholder_260px.png",
+                                    "String html" : "test2"
+                                }
+                            ]
+                        },
+                        {
+                            "String blocktype" : "row",
+                            "xtype" : "Block",
+                            "$ xns" : "Roo.mailer",
+                            "items" : [
+                                {
+                                    "xtype" : "Column",
                                     "String column" : "left",
                                     "$ xns" : "Roo.mailer",
                                     "String src" : "http://gallery.mailchimp.com/27aac8a65e64c994c4416d6b8/images/header_placeholder_260px.png",

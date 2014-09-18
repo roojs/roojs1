@@ -48,6 +48,28 @@ template1 = new Roo.XComponent({
                             items : [
                             	{
                                     xtype : 'Column',
+                                    xns : Roo.mailer,
+                                    column : 'left',
+                                    src : 'http://gallery.mailchimp.com/27aac8a65e64c994c4416d6b8/images/header_placeholder_260px.png',
+                                    html : 'test'
+                                },
+                            	{
+                                    xtype : 'Column',
+                                    column : 'right',
+                                    xns : Roo.mailer,
+                                    src : 'http://gallery.mailchimp.com/27aac8a65e64c994c4416d6b8/images/header_placeholder_260px.png',
+                                    html : 'test2'
+                                }
+                            ]
+
+                        },
+                    	{
+                            blocktype : 'row',
+                            xtype : 'Block',
+                            xns : Roo.mailer,
+                            items : [
+                            	{
+                                    xtype : 'Column',
                                     column : 'left',
                                     xns : Roo.mailer,
                                     src : 'http://gallery.mailchimp.com/27aac8a65e64c994c4416d6b8/images/header_placeholder_260px.png',
