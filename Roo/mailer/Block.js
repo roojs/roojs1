@@ -67,7 +67,7 @@ Roo.extend(Roo.mailer.Block, Roo.bootstrap.Component,  {
 	
         return cfg;
     },
-    getChildContainer : function()
+    getChildContainer : function(build_call)
     {
         // add a child...
         if (this.blocktype == 'row') {
