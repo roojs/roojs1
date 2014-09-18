@@ -86,9 +86,12 @@ Roo.extend(Roo.mailer.Body, Roo.bootstrap.Component,  {
         // add a child...
          
         return this.el.select('.roo-m-body-cell').first();
+    },
+    addxtype :   function (tree, cntr)
+    {
+        this.addxtypeChild(tree,ntr);
     }
-    
-    
+
     
     
    
