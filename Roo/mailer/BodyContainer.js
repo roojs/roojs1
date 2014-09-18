@@ -50,7 +50,7 @@ Roo.extend(Roo.mailer.BodyContainer, Roo.bootstrap.Component,  {
     getChildContainer : function()
     {
         // add a child...
-        var tr = this.el.select('tbody').createChild({
+        var tr = this.el.select('tbody',true).first().createChild({
                     tag : 'tr',
                     cn : [
                         {   
