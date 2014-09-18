@@ -15,7 +15,7 @@
  * Bootstrap Element class
  * @cfg {String} cls class of the element
  * @cfg {String} html content of header (not used for columns)
- * @cfg {String} blocktype  (header|preheader|footer|body|olumn-container)
+ * @cfg {String} blocktype  (header|preheader|footer|body|row)
  * 
  * @constructor
  * Create a new Element
