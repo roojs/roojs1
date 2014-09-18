@@ -35,7 +35,7 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
     html : '',
     src : '',
     column : 'left',
-    width : '100%'
+    width : '100%',
      
     getAutoCreate : function(){
                                             
