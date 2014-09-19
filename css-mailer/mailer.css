@@ -1,4 +1,5 @@
-/* /\/\/\/\/\/\/\/\/ CLIENT-SPECIFIC STYLES /\/\/\/\/\/\/\/\/ */
+  
+    /* /\/\/\/\/\/\/\/\/ CLIENT-SPECIFIC STYLES /\/\/\/\/\/\/\/\/ */
 #outlook a{padding:0;} /* Force Outlook to provide a "view in browser" message */
 .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Hotmail to display emails at full width */
 .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;} /* Force Hotmail to display normal line spacing */
@@ -408,7 +409,7 @@ h4{
 
 /* /\/\/\/\/\/\/\/\/ MOBILE STYLES /\/\/\/\/\/\/\/\/ */
 
-@media only screen and (max-width: 480px){
+@media only screen and (max-width: 520px){
     /* /\/\/\/\/\/\/ CLIENT-SPECIFIC MOBILE STYLES /\/\/\/\/\/\/ */
     body, table, td, p, a, li, blockquote{-webkit-text-size-adjust:none !important;} /* Prevent Webkit platforms from changing default text sizes */
     body{width:100% !important; min-width:100% !important;} /* Prevent iOS Mail from adding padding to the body */
@@ -426,8 +427,8 @@ h4{
     * @tip Make the template fluid for portrait or landscape view adaptability. If a fluid layout doesn't work for you, set the width to 300px instead.
     */
     
-    .roo-m-body-contaner{
-        max-width:600px !important;
+    .roo-m-body-container{
+        max-width:480px !important;
         /*@editable*/ width:100% !important;
     }
 
@@ -482,7 +483,7 @@ h4{
     */
     .roo-m-header > img{
         height:auto !important;
-        /*@editable*/ max-width:600px !important;
+        /*@editable*/ max-width:420px !important;
         /*@editable*/ width:100% !important;
     }
 
@@ -518,9 +519,11 @@ h4{
     * @section column image
     * @tip Make the column image fluid for portrait or landscape view adaptability, and set the image's original width as the max-width. If a fluid setting doesn't work, set the image width to half its original size instead.
     */
-    .roo-m-column-image {
+    .roo-m-column-image,
+    .roo-m-body-content img
+    {
         height:auto !important;
-        /*@editable*/ max-width:480px !important;
+        /*@editable*/ max-width:420px !important;
         /*@editable*/ width:100% !important;
     }
 
