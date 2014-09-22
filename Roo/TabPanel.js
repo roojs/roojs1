@@ -214,16 +214,12 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
      * @param {Roo.TabPanelItem} item The TabPanelItem to add
      */
     addTabItem : function(item){
-        Roo.log('Running addTabItem!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(item);
         this.items[item.id] = item;
         this.items.push(item);
         if(this.resizeTabs){
-            Roo.log('resize tabs??');
            item.setWidth(this.currentTabWidth || this.preferredTabWidth);
            this.autoSizeTabs();
         }else{
-            Roo.log('no resize tabs??');
             item.autoSize();
         }
     },
@@ -624,10 +620,6 @@ Roo.extend(Roo.TabPanelItem, Roo.util.Observable, {
     autoSize : function(){
         //this.el.beginMeasure();
         this.textEl.setWidth(1);
-        Roo.log(this.textEl.dom.scrollWidth);
-        Roo.log(this.pnode.getPadding("lr"));
-        Roo.log(this.inner.getPadding("lr"));
-        Roo.log(this.textEl.dom.scrollWidth+this.pnode.getPadding("lr")+this.inner.getPadding("lr"));
         this.setWidth(this.textEl.dom.scrollWidth+this.pnode.getPadding("lr")+this.inner.getPadding("lr"));
         //this.el.endMeasure();
     },
