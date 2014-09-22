@@ -164,6 +164,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         
         el = el || false;
         var hp = this.parent ? 1 : 0;
+        Roo.log(this);
         
         if (!el && typeof(this.parent) == 'string' && this.parent.substring(0,1) == '#') {
             // if parent is a '#.....' string, then let's use that..
