@@ -2712,7 +2712,7 @@ if(opt.anim.isAnimated()){
         
         </span><span class="jsdoc-comment">/**
          * Sets or Returns the value the dom attribute value
-         * @param {String} name The attribute name
+         * @param {String|Object} name The attribute name (or object to set multiple attributes)
          * @param {String} value (optional) The value to set the attribute to
          * @return {String} The attribute value
          */
@@ -2721,6 +2721,14 @@ if(opt.anim.isAnimated()){
                 </span><span class="jsdoc-var">this.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">[1]);
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">[1];
             }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                }
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">;
+            }
+            
+            
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.dom.hasAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">)) {
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">;
             }

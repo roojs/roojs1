@@ -2,14 +2,12 @@
  * - LGPL
  *
  * element
- * &lt;!-- BEGIN TEMPLATE // --&gt;
-                    	&lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; id=&quot;templateContainer&quot;&gt;
-                        	&lt;tr&gt;
-                            	&lt;td align=&quot;center&quot; valign=&quot;top&quot;&gt;
+ 
                               
  */
+</span><span class="jsdoc-var">Roo.mailer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.mailer </span><span class="jsdoc-syntax">|| {};
 
-/**
+</span><span class="jsdoc-comment">/**
  * @class Roo.mailer.BodyContainer 
  * @extends Roo.bootstrap.Component
  * Bootstrap Element class
@@ -20,7 +18,7 @@
  * @param {Object} config The config object
  */
 
-</span><span class="jsdoc-var">Roo.mailer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.mailer </span><span class="jsdoc-syntax">|| {};
+</span><span class="jsdoc-var">_calls </span><span class="jsdoc-syntax">= 0;
 
 </span><span class="jsdoc-var">Roo.mailer.Body  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.mailer.Body.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
@@ -33,7 +31,13 @@
         </span><span class="jsdoc-var">marginheight </span><span class="jsdoc-syntax">: 0,
         </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">: 0
     });
+    </span><span class="jsdoc-var">_calls</span><span class="jsdoc-syntax">++;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_calls </span><span class="jsdoc-syntax">&gt; 1) {
+        </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;test&quot;</span><span class="jsdoc-syntax">;
+    }
+    
     </span><span class="jsdoc-var">this.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.onRender </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { };
 
 };
 
@@ -82,9 +86,12 @@
         </span><span class="jsdoc-comment">// add a child...
          
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-m-body-cell'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+    },
+    </span><span class="jsdoc-var">addxtype </span><span class="jsdoc-syntax">:   </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.addxtypeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">);
     }
-    
-    
+
     
     
    

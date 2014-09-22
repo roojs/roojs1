@@ -17,6 +17,7 @@
  * @cfg {String} html content of body
  * @cfg {String} src image url
  * @cfg {String} column  (left|right)
+ * @cfg {String width (100%|200|340|260)
  * 
  * @constructor
  * Create a new Element
@@ -34,6 +35,7 @@
     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">column </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">,
      
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
                                             
@@ -49,11 +51,21 @@
             </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">: 0,
             </span><span class="jsdoc-var">cellpadding </span><span class="jsdoc-syntax">:20,
             </span><span class="jsdoc-var">cellspacing </span><span class="jsdoc-syntax">: 0,
-            </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'100%'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">:  []
             
         };
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.src </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">img </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.src</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-m-column-image'</span><span class="jsdoc-syntax">,
+                
+                </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'max-width: ' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'100%' </span><span class="jsdoc-syntax">?  </span><span class="jsdoc-string">'260' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">) +</span><span class="jsdoc-string">'px;'
+            </span><span class="jsdoc-syntax">};
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'100%' </span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">img.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">;
+            }
            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">tag  </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
@@ -62,14 +74,8 @@
                         </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'center'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">valight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-m-column-'</span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.column </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-content'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
-                            {
-                                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,
-                                </span><span class="jsdoc-var">src </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.src</span><span class="jsdoc-syntax">,
-                                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-m-column-image'</span><span class="jsdoc-syntax">,
-                                </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'max-width: 260px;'
-                            </span><span class="jsdoc-syntax">}
-                        ]
+                        </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-var">img </span><span class="jsdoc-syntax">]
+                            
                     }
                 ]
             });

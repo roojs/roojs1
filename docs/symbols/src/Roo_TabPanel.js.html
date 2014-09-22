@@ -620,7 +620,11 @@ jtabs.activate(&quot;jtabs-1&quot;);
     </span><span class="jsdoc-var">autoSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-comment">//this.el.beginMeasure();
         </span><span class="jsdoc-var">this.textEl.setWidth</span><span class="jsdoc-syntax">(1);
-        </span><span class="jsdoc-var">this.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.textEl.dom.scrollWidth</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.pnode.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lr&quot;</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-var">this.inner.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lr&quot;</span><span class="jsdoc-syntax">));
+        </span><span class="jsdoc-comment">/*
+         *  #2804 [new] Tabs in Roojs
+         *  increase the width by 2-4 pixels to prevent the ellipssis showing in chrome
+         */
+        </span><span class="jsdoc-var">this.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.textEl.dom.scrollWidth</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.pnode.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lr&quot;</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-var">this.inner.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;lr&quot;</span><span class="jsdoc-syntax">) + 2);
         </span><span class="jsdoc-comment">//this.el.endMeasure();
     </span><span class="jsdoc-syntax">},
 

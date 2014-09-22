@@ -37,9 +37,11 @@
             </span><span class="jsdoc-var">border </span><span class="jsdoc-syntax">: 0,
             </span><span class="jsdoc-var">cellpadding </span><span class="jsdoc-syntax">: 0,
             </span><span class="jsdoc-var">cellspacing </span><span class="jsdoc-syntax">: 0,
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-m-body-container ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls 
-            
-        </span><span class="jsdoc-syntax">};
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-m-body-container ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {  </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tbody' </span><span class="jsdoc-syntax">}
+            ]
+        };
         
         
 	
@@ -48,7 +50,7 @@
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-comment">// add a child...
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">({
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                         {   
