@@ -173,6 +173,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             switch (ename) {
                 case ('bootstrap-body' && typeof(Roo.bootstrap.Body) != 'undefined'):
                     this.parent = Roo.factory(Roo.bootstrap,'Body');
+                    this.parent.el = Roo.get(document.body);
                     break;
                 case 'bootstrap':
                     this.parent = { el : true};
