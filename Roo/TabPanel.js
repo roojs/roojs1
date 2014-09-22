@@ -624,7 +624,7 @@ Roo.extend(Roo.TabPanelItem, Roo.util.Observable, {
     autoSize : function(){
         //this.el.beginMeasure();
         this.textEl.setWidth(1);
-        Roo.log(this.textEl);
+        Roo.log(this.textEl.dom.scrollWidth);
         this.setWidth(this.textEl.dom.scrollWidth+this.pnode.getPadding("lr")+this.inner.getPadding("lr"));
         //this.el.endMeasure();
     },
