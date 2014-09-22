@@ -4283,6 +4283,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var config = cm.config[i];
             
+            if(typeof(config.hidden) != 'undefined' && config.hidden){
+                continue;
+            }
+                    
             var c = {
                 tag: 'th',
                 html: cm.getColumnHeader(i)
@@ -4348,7 +4352,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var tbody = this.el.select('tbody', true).first();
         
         var renders = [];
-        
+                    
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
                 var row = {
@@ -4357,8 +4361,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 };
                 
                 for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-                    var renderer = cm.getRenderer(i);
                     var config = cm.config[i];
+                    
+                    if(typeof(config.hidden) != 'undefined' && config.hidden){
+                        continue;
+                    }
+                    
+                    var renderer = cm.getRenderer(i);
                     var value = '';
                     var id = Roo.id();
                     
