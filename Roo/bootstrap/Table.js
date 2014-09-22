@@ -338,6 +338,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var renders = [];
         
+        Roo.log('cm!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(cm);
+                    
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
                 var row = {
@@ -347,7 +350,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 for(var i = 0, len = cm.getColumnCount(); i < len; i++){
                     var renderer = cm.getRenderer(i);
-                    Roo.log(renderer);
                     var config = cm.config[i];
                     var value = '';
                     var id = Roo.id();
