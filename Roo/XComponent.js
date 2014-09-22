@@ -7,6 +7,9 @@
  * @class Roo.XComponent
  * A delayed Element creator...
  * Or a way to group chunks of interface together.
+ * technically this is a wrapper around a tree of Roo elements (which defines a 'module'),
+ *  used in conjunction with XComponent.build() it will create an instance of each element,
+ *  then call addxtype() to build the User interface.
  * 
  * Mypart.xyx = new Roo.XComponent({
 
@@ -30,6 +33,37 @@
  * It can be used to build a big heiracy, with parent etc.
  * or you can just use this to render a single compoent to a dom element
  * MYPART.render(Roo.Element | String(id) | dom_element )
+ *
+ *
+ * Usage patterns.
+ *
+ * Classic Roo
+ *
+ * Roo is designed primarily as a single page application, so the UI build for a standard interface will
+ * expect a single 'TOP' level module normally indicated by the 'parent' of the XComponent definition being defined as false.
+ *
+ * Each sub module is expected to have a parent pointing to the class name of it's parent module.
+ *
+ * When the top level is false, a 'Roo.BorderLayout' is created and the element is flagged as 'topModule'
+ * - if mulitple topModules exist, the last one is defined as the top module.
+ *
+ * Embeded Roo
+ * 
+ * When the top level or multiple modules are to embedded into a existing HTML page,
+ * the parent element can container '#id' of the element where the module will be drawn.
+ *
+ * Bootstrap Roo
+ *
+ * Unlike classic Roo, the bootstrap tends not to be used as a single page.
+ * it relies more on a include mechanism, where sub modules are included into an outer page.
+ * This is normally managed by the builder tools using Roo.apply( options, Included.Sub.Module )
+ * 
+ * Bootstrap Roo Included elements
+ *
+ * Our builder application needs the ability to preview these sub compoennts. They will normally have parent=false set,
+ * hence confusing the component builder as it thinks there are multiple top level elements. 
+ *
+ * 
  * 
  * @extends Roo.util.Observable
  * @constructor
