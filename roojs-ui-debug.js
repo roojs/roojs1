@@ -10791,7 +10791,11 @@ Roo.extend(Roo.TabPanelItem, Roo.util.Observable, {
     autoSize : function(){
         //this.el.beginMeasure();
         this.textEl.setWidth(1);
-        this.setWidth(this.textEl.dom.scrollWidth+this.pnode.getPadding("lr")+this.inner.getPadding("lr"));
+        /*
+         *  #2804 [new] Tabs in Roojs
+         *  increase the width by 2-4 pixels to prevent the ellipssis showing in chrome
+         */
+        this.setWidth(this.textEl.dom.scrollWidth+this.pnode.getPadding("lr")+this.inner.getPadding("lr") + 2);
         //this.el.endMeasure();
     },
 
