@@ -174,9 +174,9 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             switch (ename) {
                 case 'bootstrap-body' :
                     if (typeof(Roo.bootstrap.Body) != 'undefined') {
-                        this.parent = Roo.factory(Roo.bootstrap,'Body');
+                        this.parent = { el :  Roo.factory(Roo.bootstrap,'Body') };
                         Roo.log("setting el to doc body");
-                        this.parent.el = Roo.get(document.body);
+                         
                     } else {
                         throw "Container is bootstrap body, but Roo.bootstrap.Body is not defined";
                     }
