@@ -214,6 +214,7 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
      * @param {Roo.TabPanelItem} item The TabPanelItem to add
      */
     addTabItem : function(item){
+        Roo.log('Running addTabItem!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         this.items[item.id] = item;
         this.items.push(item);
         if(this.resizeTabs){
