@@ -349,8 +349,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 };
                 
                 for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-                    var renderer = cm.getRenderer(i);
                     var config = cm.config[i];
+                    
+                    if(typeof(config.hidden) != 'undefined' && config.hidden){
+                        continue;
+                    }
+                    
+                    var renderer = cm.getRenderer(i);
                     var value = '';
                     var id = Roo.id();
                     
