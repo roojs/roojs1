@@ -272,6 +272,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var config = cm.config[i];
             
+            if(typeof(config.hidden) != 'undefined' && config.hidden){
+                continue;
+            }
+                    
             var c = {
                 tag: 'th',
                 html: cm.getColumnHeader(i)
@@ -337,9 +341,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var tbody = this.el.select('tbody', true).first();
         
         var renders = [];
-        
-        Roo.log('cm!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(cm);
                     
         if(this.store.getCount() > 0){
             this.store.data.each(function(d){
