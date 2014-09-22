@@ -28,7 +28,7 @@
 		"roojs-bootstrap.js",
 		"roojs-bootstrap-debug.js",
         "roojs-mailer-debug.js",
-        "roojs-mailer.js",
+        "roojs-mailer.js"
         
 		
 	],
