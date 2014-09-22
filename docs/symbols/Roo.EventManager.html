@@ -47,7 +47,7 @@
     
     <h1 class="classTitle">
 				
-				Namespace Roo.EventManager
+				Class Roo.EventManager
 			</h1>
 			
     <table cellspacing="0" class="class-summary-table">
@@ -119,13 +119,110 @@
     
 
     
-    
-     <table cellspacing="0" class="member-table">
-      <caption class="Empty">Public Properties - Has None</caption>
-     </table>
-    
-    
      
+    
+	
+      <table cellspacing="0" class="member-table">   
+      <caption>Public Properties </caption>
+        <tr>
+            <th class="sig-header" colspan="2">Property</th>
+	    <th class="sig-header">Description</th>
+            <th class="msource-header">Defined By</th>
+        </tr>
+        
+      
+                    
+	  
+		 
+	 
+	
+	
+          <tr class="property-row config-row-alt0 notInherited">
+            <td class="micon">
+                <a class="exi" href="#expand">&nbsp;</a>
+            </td>
+            <td class="sig">
+               <a id="Roo.EventManager-prop-ieDeferSrc" name=".ieDeferSrc"></a>
+	       <div class="fixedFont">
+		    <span class="attributes">Roo.EventManager.</span><b  class="itemname">ieDeferSrc</b> :
+		     <span type="etype"></span>
+		     </div>
+	    </td>
+	    <td class="sig">
+		<div class="mdesc">
+
+
+		   <div class="short">
+			Url used for onDocumentReady with using SSL (defaults to Roo.SSL_SECURE_URL)
+		   
+		   
+		   
+		   </div> 
+		    
+                    <div class="long">
+		    
+			Url used for onDocumentReady with using SSL (defaults to Roo.SSL_SECURE_URL)                        
+		 
+                </div>
+                </div>
+            </td>
+	    
+            <td class="msource">  
+	    Roo.EventManager
+	    </td>             
+                
+          </tr>
+        	 
+	 
+	
+	
+          <tr class="property-row config-row-alt1 notInherited">
+            <td class="micon">
+                <a class="exi" href="#expand">&nbsp;</a>
+            </td>
+            <td class="sig">
+               <a id="Roo.EventManager-prop-textResizeInterval" name=".textResizeInterval"></a>
+	       <div class="fixedFont">
+		    <span class="attributes">Roo.EventManager.</span><b  class="itemname">textResizeInterval</b> :
+		     <span type="etype"></span>
+		     </div>
+	    </td>
+	    <td class="sig">
+		<div class="mdesc">
+
+
+		   <div class="short">
+			The frequency, in milliseconds, to check for text resize events (defaults to 50)
+		   
+		   
+		   
+		   </div> 
+		    
+                    <div class="long">
+		    
+			The frequency, in milliseconds, to check for text resize events (defaults to 50)                        
+		 
+                </div>
+                </div>
+            </td>
+	    
+            <td class="msource">  
+	    Roo.EventManager
+	    </td>             
+                
+          </tr>
+        
+        
+	 
+	
+      
+        <!-- TODO: implement this alt row.  also notice non-linked "Defined by" when property is a part of this class.     
+        <tr class="property-row alt">
+             
+        -->
+
+    </table>
+  
     
   <!-- ============================== methods summary / details ======================== -->
   
@@ -144,12 +241,663 @@
   
     
     
-     <table cellspacing="0" class="member-table">
-      <caption class="Empty">Public Methods - Has None</caption>
-     </table>
     
-    
-    
+      <table cellspacing="0" class="member-table">
+      <caption>Public Methods</caption>
+        <tr>
+            <th class="sig-header" colspan="2">Method</th>            
+            <th class="msource-header">Defined By</th>
+
+        </tr>
+        
+	
+	
+	 
+	
+        
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.EventManager-method-addListener"   name=".addListener"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.EventManager.</span><b class="itemname">addListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement <B><i>element</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Appends an event handler to an element (shorthand for addListener)</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Appends an event handler to an element (shorthand for addListener)
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement</span>  <b>element</b>
+						
+					</dt>
+					<dd>The html element or id to assign the</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope in which to execute the handler<br/>function. The handler function's "this" context.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) An object containing handler configuration<br/>properties. This may contain any of the following properties:<ul><br/><li>scope {Object} The scope in which to execute the handler function. The handler function's "this" context.</li><br/><li>delegate {String} A simple selector to filter the target or look for a descendant of the target</li><br/><li>stopEvent {Boolean} True to stop the event. That is stop propagation, and prevent the default action.</li><br/><li>preventDefault {Boolean} True to prevent the default action</li><br/><li>stopPropagation {Boolean} True to prevent event propagation</li><br/><li>normalized {Boolean} False to pass a browser event to the handler function instead of an Roo.EventObject</li><br/><li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li><br/><li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li><br/><li>buffer {Number} Causes the handler to be scheduled to run in an {<b>link</b> Roo.util.DelayedTask} delayed<br/>by the specified number of milliseconds. If the event fires again within that time, the original<br/>handler is <em>not</em> invoked, but the new handler is scheduled in its place.</li><br/></ul><br><br/><p><br/><b>Combining Options</b><br><br/>Using the options argument, it is possible to combine different types of listeners:<br><br/><br><br/>A normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)<div style="margin: 5px 20px 20px;"><br/>Code:<pre><code><br/>el.on('click', this.onClick, this, {<br/>    single: true,<br/>    delay: 100,<br/>    stopEvent : true,<br/>    forumId: 4<br/>});</code></pre><br/><p><br/><b>Attaching multiple handlers in 1 call</b><br><br/>The method also allows for a single argument to be passed which is a config object containing properties<br/>which specify multiple handlers.<br/><p><br/>Code:<pre><code><br/>el.on({<br/>    'click' : {<br/>        fn: this.onClick<br/>        scope: this,<br/>        delay: 100<br/>    },<br/>    'mouseover' : {<br/>        fn: this.onMouseOver<br/>        scope: this<br/>    },<br/>    'mouseout' : {<br/>        fn: this.onMouseOut<br/>        scope: this<br/>    }<br/>});</code></pre><br/><p><br/>Or a shorthand syntax:<br><br/>Code:<pre><code><br/>el.on({<br/>    'click' : this.onClick,<br/>    'mouseover' : this.onMouseOver,<br/>    'mouseout' : this.onMouseOut<br/>    scope: this<br/>});</code></pre></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.EventManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.EventManager-method-on"   name=".on"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.EventManager.</span><b class="itemname">on</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement <B><i>element</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>handler</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Appends an event handler to an element (shorthand for addListener)</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Appends an event handler to an element (shorthand for addListener)
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement</span>  <b>element</b>
+						
+					</dt>
+					<dd>The html element or id to assign the</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event to listen for</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>handler</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope in which to execute the handler<br/>function. The handler function's "this" context.</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>options</b>
+						
+					</dt>
+					<dd>(optional) An object containing handler configuration<br/>properties. This may contain any of the following properties:<ul><br/><li>scope {Object} The scope in which to execute the handler function. The handler function's "this" context.</li><br/><li>delegate {String} A simple selector to filter the target or look for a descendant of the target</li><br/><li>stopEvent {Boolean} True to stop the event. That is stop propagation, and prevent the default action.</li><br/><li>preventDefault {Boolean} True to prevent the default action</li><br/><li>stopPropagation {Boolean} True to prevent event propagation</li><br/><li>normalized {Boolean} False to pass a browser event to the handler function instead of an Roo.EventObject</li><br/><li>delay {Number} The number of milliseconds to delay the invocation of the handler after te event fires.</li><br/><li>single {Boolean} True to add a handler to handle just the next firing of the event, and then remove itself.</li><br/><li>buffer {Number} Causes the handler to be scheduled to run in an {<b>link</b> Roo.util.DelayedTask} delayed<br/>by the specified number of milliseconds. If the event fires again within that time, the original<br/>handler is <em>not</em> invoked, but the new handler is scheduled in its place.</li><br/></ul><br><br/><p><br/><b>Combining Options</b><br><br/>Using the options argument, it is possible to combine different types of listeners:<br><br/><br><br/>A normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)<div style="margin: 5px 20px 20px;"><br/>Code:<pre><code><br/>el.on('click', this.onClick, this, {<br/>    single: true,<br/>    delay: 100,<br/>    stopEvent : true,<br/>    forumId: 4<br/>});</code></pre><br/><p><br/><b>Attaching multiple handlers in 1 call</b><br><br/>The method also allows for a single argument to be passed which is a config object containing properties<br/>which specify multiple handlers.<br/><p><br/>Code:<pre><code><br/>el.on({<br/>    'click' : {<br/>        fn: this.onClick<br/>        scope: this,<br/>        delay: 100<br/>    },<br/>    'mouseover' : {<br/>        fn: this.onMouseOver<br/>        scope: this<br/>    },<br/>    'mouseout' : {<br/>        fn: this.onMouseOut<br/>        scope: this<br/>    }<br/>});</code></pre><br/><p><br/>Or a shorthand syntax:<br><br/>Code:<pre><code><br/>el.on({<br/>    'click' : this.onClick,<br/>    'mouseover' : this.onMouseOver,<br/>    'mouseout' : this.onMouseOut<br/>    scope: this<br/>});</code></pre></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.EventManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.EventManager-method-onDocumentReady"   name=".onDocumentReady"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.EventManager.</span><b class="itemname">onDocumentReady</b>
+				
+				 (<a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>fn</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, boolean <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Fires when the document is ready (before onload and before images are loaded).</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Fires when the document is ready (before onload and before images are loaded). Can be <br/>accessed shorthanded Roo.onReady().
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>fn</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>An  object that becomes the scope of the handler</dd>
+				
+					<dt>
+						<span class="fixedFont">boolean</span>  <b>options</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.EventManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.EventManager-method-onTextResize"   name=".onTextResize"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.EventManager.</span><b class="itemname">onTextResize</b>
+				
+				 (<a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>fn</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, boolean <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Fires when the user changes the active text size.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Fires when the user changes the active text size. Handler gets called with 2 params, the old size and the new size.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>fn</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>An object that becomes the scope of the handler</dd>
+				
+					<dt>
+						<span class="fixedFont">boolean</span>  <b>options</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.EventManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.EventManager-method-onWindowResize"   name=".onWindowResize"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.EventManager.</span><b class="itemname">onWindowResize</b>
+				
+				 (<a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>fn</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, boolean <B><i>options</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Fires when the window is resized and provides resize event buffering (50 milliseconds), passes new viewport width and height to handlers.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Fires when the window is resized and provides resize event buffering (50 milliseconds), passes new viewport width and height to handlers.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>fn</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>An object that becomes the scope of the handler</dd>
+				
+					<dt>
+						<span class="fixedFont">boolean</span>  <b>options</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.EventManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.EventManager-method-removeListener"   name=".removeListener"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.EventManager.</span><b class="itemname">removeListener</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement <B><i>element</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>eventName</i></B>, <a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>fn</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes an event handler</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes an event handler
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement</span>  <b>element</b>
+						
+					</dt>
+					<dd>The id or html element to remove the <br/>                            event from</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>eventName</b>
+						
+					</dt>
+					<dd>The type of event</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>fn</b>
+						
+					</dt>
+					<dd></dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a></span>  True if a listener was actually removed</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.EventManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.EventManager-method-removeResizeListener"   name=".removeResizeListener"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.EventManager.</span><b class="itemname">removeResizeListener</b>
+				
+				 (<a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>fn</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Removes the passed window resize listener.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Removes the passed window resize listener.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>fn</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>The scope of handler</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.EventManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.EventManager-method-wrap"   name=".wrap"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.EventManager.</span><b class="itemname">wrap</b>
+				
+				 (<a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>fn</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>, boolean <B><i>override</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">This is no longer needed and is deprecated.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				This is no longer needed and is deprecated. Places a simple wrapper around an event handler to override the browser event<br/>object with a Roo.EventObject
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>fn</b>
+						
+					</dt>
+					<dd>The method the event invokes</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>An object that becomes the scope of the handler</dd>
+				
+					<dt>
+						<span class="fixedFont">boolean</span>  <b>override</b>
+						
+					</dt>
+					<dd>If true, the obj passed in becomes<br/>                            the execution scope of the listener</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  The wrapped function</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.EventManager
+		&nbsp;
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
   
   <!-- ============================== events summary / details ======================== -->
   
@@ -175,7 +923,7 @@
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Mon Sep 22 2014 18:14:19 GMT+0800 (HKT)
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Mon Sep 22 2014 18:16:53 GMT+0800 (HKT)
 			Based on 
 			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
 		</div>

@@ -47,7 +47,7 @@
     
     <h1 class="classTitle">
 				
-				Namespace Roo.util.TextMetrics
+				Class Roo.util.TextMetrics
 			</h1>
 			
     <table cellspacing="0" class="class-summary-table">
@@ -144,12 +144,195 @@
   
     
     
-     <table cellspacing="0" class="member-table">
-      <caption class="Empty">Public Methods - Has None</caption>
-     </table>
     
-    
-    
+      <table cellspacing="0" class="member-table">
+      <caption>Public Methods</caption>
+        <tr>
+            <th class="sig-header" colspan="2">Method</th>            
+            <th class="msource-header">Defined By</th>
+
+        </tr>
+        
+	
+	
+	 
+	
+        
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.TextMetrics-method-createInstance"   name=".createInstance"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.util.TextMetrics.</span><b class="itemname">createInstance</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement <B><i>el</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>fixedWidth</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Roo.util.TextMetrics.Instance.html#constructor" roo:cls="Roo.util.TextMetrics.Instance.html#constructor">Roo.util.TextMetrics.Instance</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Return a unique TextMetrics instance that can be bound directly to an element and reused.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Return a unique TextMetrics instance that can be bound directly to an element and reused.  This reduces<br/>the overhead of multiple calls to initialize the style properties on each measurement.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement</span>  <b>el</b>
+						
+					</dt>
+					<dd>The element, dom node or id that the instance will be bound to</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span>  <b>fixedWidth</b>
+						
+					</dt>
+					<dd>(optional) If the text will be multiline, you have to set a fixed width<br/>in order to accurately measure the text height</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Roo.util.TextMetrics.Instance.html#constructor" roo:cls="Roo.util.TextMetrics.Instance.html#constructor">Roo.util.TextMetrics.Instance</a></span>  instance The new instance</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.util.TextMetrics
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Roo.util.TextMetrics-method-measure"   name=".measure"></a>
+		<div class="fixedFont">
+			<span class="attributes">Roo.util.TextMetrics.</span><b class="itemname">measure</b>
+				
+				 (<a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement <B><i>el</i></B>, <a href="./String.html#constructor" roo:cls="String.html#constructor">String</a> <B><i>text</i></B>, <a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>fixedWidth</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Measures the size of the specified text</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Measures the size of the specified text
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a>/HTMLElement</span>  <b>el</b>
+						
+					</dt>
+					<dd>The element, dom node or id from which to copy existing CSS styles<br/>that can affect the size of the rendered text</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./String.html#constructor" roo:cls="String.html#constructor">String</a></span>  <b>text</b>
+						
+					</dt>
+					<dd>The text to measure</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span>  <b>fixedWidth</b>
+						
+					</dt>
+					<dd>(optional) If the text will be multiline, you have to set a fixed width<br/>in order to accurately measure the text height</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  An object containing the text's size {width: (width), height: (height)}</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Roo.util.TextMetrics
+		&nbsp;
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
   
   <!-- ============================== events summary / details ======================== -->
   
@@ -175,7 +358,7 @@
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Mon Sep 22 2014 18:14:21 GMT+0800 (HKT)
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Mon Sep 22 2014 18:16:55 GMT+0800 (HKT)
 			Based on 
 			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
 		</div>
