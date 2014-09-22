@@ -187,6 +187,8 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                 return;
             }
         }
+        Roo.log("EL:");Roo.log(el);
+        Roo.log("this.parent.el:");Roo.log(this.parent.el);
         
         var tree = this._tree ? this._tree() : this.tree();
 
