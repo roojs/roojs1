@@ -219,9 +219,11 @@ Roo.extend(Roo.TabPanel, Roo.util.Observable, {
         this.items[item.id] = item;
         this.items.push(item);
         if(this.resizeTabs){
+            Roo.log('resize tabs??');
            item.setWidth(this.currentTabWidth || this.preferredTabWidth);
            this.autoSizeTabs();
         }else{
+            Roo.log('no resize tabs??');
             item.autoSize();
         }
     },
