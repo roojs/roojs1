@@ -174,7 +174,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             switch (ename) {
                 case 'bootstrap-body' :
                     if (typeof(Roo.bootstrap.Body) != 'undefined') {
-                        this.parent = { el :  Roo.factory('Body', Roo.bootstrap) };
+                        this.parent = { el :  new  Roo.bootstrap.Body() };
                         Roo.log("setting el to doc body");
                          
                     } else {
