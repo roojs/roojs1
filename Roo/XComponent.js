@@ -181,12 +181,13 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                     break;
             }
                 
-            el = Roo.get(ename);
+            
             if (!el && !this.parent) {
                 Roo.log("Warning - element can not be found :#" + ename );
                 return;
             }
         }
+        
         var tree = this._tree ? this._tree() : this.tree();
 
         // altertive root elements ??? - we need a better way to indicate these.
