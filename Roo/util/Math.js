@@ -1,10 +1,11 @@
 //<script type="text/javascript">
+Roo = typeof(Roo) != 'undefined' ? Roo :  { util : { }};
+
 /**
 //+ based on.. Jonas Raoni Soares Silva
 //@ http://jsfromhell.com/classes/bignumber [rev. #4]
 **/
 
-Roo = typeof(Roo) != 'undefined' ? Roo :  { util : { }};
 
 /**
  * @class Roo.util.Math
