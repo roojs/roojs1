@@ -170,6 +170,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             // if parent is a '#.....' string, then let's use that..
             var ename = this.parent.substr(1);
             this.parent = false;
+            Roo.log(ename);
             switch (ename) {
                 case ('bootstrap-body' && typeof(Roo.bootstrap.Body) != 'undefined'):
                     this.parent = Roo.factory(Roo.bootstrap,'Body');
