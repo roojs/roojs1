@@ -59,6 +59,8 @@ Roo.TabPanel = function(container, config){
             Roo.apply(this, config);
         }
     }
+    Roo.log('running!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+    
     if(this.tabPosition == "bottom"){
         this.bodyEl = Roo.get(this.createBody(this.el.dom));
         this.el.addClass("x-tabs-bottom");
