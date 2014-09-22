@@ -9,6 +9,46 @@
    "props": [],
    "events": []
   },
+  "Date.DAY": {
+   "props": [],
+   "events": []
+  },
+  "Date.HOUR": {
+   "props": [],
+   "events": []
+  },
+  "Date.MILLI": {
+   "props": [],
+   "events": []
+  },
+  "Date.MINUTE": {
+   "props": [],
+   "events": []
+  },
+  "Date.MONTH": {
+   "props": [],
+   "events": []
+  },
+  "Date.SECOND": {
+   "props": [],
+   "events": []
+  },
+  "Date.YEAR": {
+   "props": [],
+   "events": []
+  },
+  "Date.dayNames": {
+   "props": [],
+   "events": []
+  },
+  "Date.monthNames": {
+   "props": [],
+   "events": []
+  },
+  "Date.parseDate": {
+   "props": [],
+   "events": []
+  },
   "Function": {
    "props": [],
    "events": []
@@ -88,6 +128,10 @@
      "desc": "Fires if an error HTTP status was returned from the server.\nSee {@link http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html} for details of HTTP status codes."
     }
    ]
+  },
+  "Roo.BLANK_IMAGE_URL": {
+   "props": [],
+   "events": []
   },
   "Roo.BasicDialog": {
    "props": [
@@ -389,6 +433,50 @@
     }
    ]
   },
+  "Roo.BasicLayoutRegion.*beforeremove": {
+   "props": [],
+   "events": []
+  },
+  "Roo.BasicLayoutRegion.*collapsed": {
+   "props": [],
+   "events": []
+  },
+  "Roo.BasicLayoutRegion.*expanded": {
+   "props": [],
+   "events": []
+  },
+  "Roo.BasicLayoutRegion.*invalidated": {
+   "props": [],
+   "events": []
+  },
+  "Roo.BasicLayoutRegion.*panelactivated": {
+   "props": [],
+   "events": []
+  },
+  "Roo.BasicLayoutRegion.*paneladded": {
+   "props": [],
+   "events": []
+  },
+  "Roo.BasicLayoutRegion.*panelremoved": {
+   "props": [],
+   "events": []
+  },
+  "Roo.BasicLayoutRegion.*resized": {
+   "props": [],
+   "events": []
+  },
+  "Roo.BasicLayoutRegion.*slidehide": {
+   "props": [],
+   "events": []
+  },
+  "Roo.BasicLayoutRegion.*slideshow": {
+   "props": [],
+   "events": []
+  },
+  "Roo.BasicLayoutRegion.*visibilitychange": {
+   "props": [],
+   "events": []
+  },
   "Roo.BorderLayout": {
    "props": [
     {
@@ -424,6 +512,10 @@
      "desc": "Fires when the user resizes a region."
     }
    ]
+  },
+  "Roo.BorderLayout.create": {
+   "props": [],
+   "events": []
   },
   "Roo.BoxComponent": {
    "props": [
@@ -1699,7 +1791,63 @@
    "props": [],
    "events": []
   },
+  "Roo.Element.DISPLAY": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Element.VISIBILITY": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Element.fly": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Element.get": {
+   "props": [],
+   "events": []
+  },
   "Roo.EventManager": {
+   "props": [],
+   "events": []
+  },
+  "Roo.EventManager.addListener": {
+   "props": [],
+   "events": []
+  },
+  "Roo.EventManager.ieDeferSrc": {
+   "props": [],
+   "events": []
+  },
+  "Roo.EventManager.on": {
+   "props": [],
+   "events": []
+  },
+  "Roo.EventManager.onDocumentReady": {
+   "props": [],
+   "events": []
+  },
+  "Roo.EventManager.onTextResize": {
+   "props": [],
+   "events": []
+  },
+  "Roo.EventManager.onWindowResize": {
+   "props": [],
+   "events": []
+  },
+  "Roo.EventManager.removeListener": {
+   "props": [],
+   "events": []
+  },
+  "Roo.EventManager.removeResizeListener": {
+   "props": [],
+   "events": []
+  },
+  "Roo.EventManager.textResizeInterval": {
+   "props": [],
+   "events": []
+  },
+  "Roo.EventManager.wrap": {
    "props": [],
    "events": []
   },
@@ -1776,6 +1924,74 @@
      "memberOf": ""
     }
    ],
+   "events": []
+  },
+  "Roo.Fx.fadeIn": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.fadeOut": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.frame": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.ghost": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.hasActiveFx": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.hasFxBlock": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.highlight": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.pause": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.puff": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.scale": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.sequenceFx": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.shift": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.slideIn": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.slideOut": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.stopFx": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.switchOff": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Fx.syncFx": {
+   "props": [],
    "events": []
   },
   "Roo.GridPanel": {
@@ -3050,6 +3266,18 @@
    ],
    "events": []
   },
+  "Roo.MasterTemplate.from": {
+   "props": [],
+   "events": []
+  },
+  "Roo.MessageBox": {
+   "props": [],
+   "events": []
+  },
+  "Roo.Msg": {
+   "props": [],
+   "events": []
+  },
   "Roo.NestedLayoutPanel": {
    "props": [
     {
@@ -3455,6 +3683,10 @@
     }
    ]
   },
+  "Roo.SSL_SECURE_URL": {
+   "props": [],
+   "events": []
+  },
   "Roo.Shadow": {
    "props": [
     {
@@ -3506,7 +3738,31 @@
    "props": [],
    "events": []
   },
+  "Roo.SplitBar.BOTTOM": {
+   "props": [],
+   "events": []
+  },
   "Roo.SplitBar.BasicLayoutAdapter": {
+   "props": [],
+   "events": []
+  },
+  "Roo.SplitBar.HORIZONTAL": {
+   "props": [],
+   "events": []
+  },
+  "Roo.SplitBar.LEFT": {
+   "props": [],
+   "events": []
+  },
+  "Roo.SplitBar.RIGHT": {
+   "props": [],
+   "events": []
+  },
+  "Roo.SplitBar.TOP": {
+   "props": [],
+   "events": []
+  },
+  "Roo.SplitBar.VERTICAL": {
    "props": [],
    "events": []
   },
@@ -4023,6 +4279,10 @@
      "memberOf": ""
     }
    ],
+   "events": []
+  },
+  "Roo.Template.from": {
+   "props": [],
    "events": []
   },
   "Roo.Toolbar": {
@@ -4610,6 +4870,34 @@
    "props": [],
    "events": []
   },
+  "Roo.UpdateManager.defaults.disableCaching": {
+   "props": [],
+   "events": []
+  },
+  "Roo.UpdateManager.defaults.indicatorText": {
+   "props": [],
+   "events": []
+  },
+  "Roo.UpdateManager.defaults.loadScripts": {
+   "props": [],
+   "events": []
+  },
+  "Roo.UpdateManager.defaults.showLoadIndicator": {
+   "props": [],
+   "events": []
+  },
+  "Roo.UpdateManager.defaults.sslBlankUrl": {
+   "props": [],
+   "events": []
+  },
+  "Roo.UpdateManager.defaults.timeout": {
+   "props": [],
+   "events": []
+  },
+  "Roo.UpdateManager.updateElement": {
+   "props": [],
+   "events": []
+  },
   "Roo.View": {
    "props": [
     {
@@ -4908,7 +5196,71 @@
    "props": [],
    "events": []
   },
+  "Roo.XComponent.build": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.buildCompleted": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.buildOrder": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.build_from_html": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.elmodules": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.event": {
+   "props": [],
+   "events": []
+  },
   "Roo.XComponent.event.events": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.event.events.*beforebuild": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.event.events.*buildcomplete": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.event.events.*register": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.hideProgress": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.modules": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.on": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.preBuild": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.register": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.toObject": {
+   "props": [],
+   "events": []
+  },
+  "Roo.XComponent.topModule": {
    "props": [],
    "events": []
   },
@@ -4927,6 +5279,18 @@
      "memberOf": "Roo.Template"
     }
    ],
+   "events": []
+  },
+  "Roo.addBehaviors": {
+   "props": [],
+   "events": []
+  },
+  "Roo.apply": {
+   "props": [],
+   "events": []
+  },
+  "Roo.applyIf": {
+   "props": [],
    "events": []
   },
   "Roo.bootstrap": {
@@ -10105,6 +10469,22 @@
      "desc": "Fires after the component is shown."
     }
    ]
+  },
+  "Roo.bootstrap.Modal.OK": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.Modal.OKCANCEL": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.Modal.YESNO": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.Modal.YESNOCANCEL": {
+   "props": [],
+   "events": []
   },
   "Roo.bootstrap.NavGroup": {
    "props": [
@@ -15620,6 +16000,10 @@
    "props": [],
    "events": []
   },
+  "Roo.data.Record.create": {
+   "props": [],
+   "events": []
+  },
   "Roo.data.ScriptTagProxy": {
    "props": [
     {
@@ -15788,6 +16172,38 @@
    ]
   },
   "Roo.data.SortTypes": {
+   "props": [],
+   "events": []
+  },
+  "Roo.data.SortTypes.asDate": {
+   "props": [],
+   "events": []
+  },
+  "Roo.data.SortTypes.asFloat": {
+   "props": [],
+   "events": []
+  },
+  "Roo.data.SortTypes.asInt": {
+   "props": [],
+   "events": []
+  },
+  "Roo.data.SortTypes.asText": {
+   "props": [],
+   "events": []
+  },
+  "Roo.data.SortTypes.asUCString": {
+   "props": [],
+   "events": []
+  },
+  "Roo.data.SortTypes.asUCText": {
+   "props": [],
+   "events": []
+  },
+  "Roo.data.SortTypes.none": {
+   "props": [],
+   "events": []
+  },
+  "Roo.data.SortTypes.stripTagsRE": {
    "props": [],
    "events": []
   },
@@ -16032,6 +16448,10 @@
    ],
    "events": []
   },
+  "Roo.dd.DDProxy.dragElId": {
+   "props": [],
+   "events": []
+  },
   "Roo.dd.DDTarget": {
    "props": [
     {
@@ -16188,6 +16608,22 @@
     }
    ]
   },
+  "Roo.dd.DropTarget.*drop": {
+   "props": [],
+   "events": []
+  },
+  "Roo.dd.DropTarget.*enter": {
+   "props": [],
+   "events": []
+  },
+  "Roo.dd.DropTarget.*out": {
+   "props": [],
+   "events": []
+  },
+  "Roo.dd.DropTarget.*over": {
+   "props": [],
+   "events": []
+  },
   "Roo.dd.DropZone": {
    "props": [
     {
@@ -16285,11 +16721,71 @@
    ],
    "events": []
   },
+  "Roo.debug": {
+   "props": [],
+   "events": []
+  },
+  "Roo.decode": {
+   "props": [],
+   "events": []
+  },
+  "Roo.each": {
+   "props": [],
+   "events": []
+  },
+  "Roo.enableGarbageCollector": {
+   "props": [],
+   "events": []
+  },
+  "Roo.enableListenerCollection": {
+   "props": [],
+   "events": []
+  },
+  "Roo.encode": {
+   "props": [],
+   "events": []
+  },
+  "Roo.encodeURIComponent": {
+   "props": [],
+   "events": []
+  },
+  "Roo.escapeRe": {
+   "props": [],
+   "events": []
+  },
+  "Roo.extend": {
+   "props": [],
+   "events": []
+  },
+  "Roo.factory": {
+   "props": [],
+   "events": []
+  },
+  "Roo.fly": {
+   "props": [],
+   "events": []
+  },
   "Roo.form": {
    "props": [],
    "events": []
   },
   "Roo.form.Action": {
+   "props": [],
+   "events": []
+  },
+  "Roo.form.Action.CLIENT_INVALID": {
+   "props": [],
+   "events": []
+  },
+  "Roo.form.Action.CONNECT_FAILURE": {
+   "props": [],
+   "events": []
+  },
+  "Roo.form.Action.LOAD_FAILURE": {
+   "props": [],
+   "events": []
+  },
+  "Roo.form.Action.SERVER_INVALID": {
    "props": [],
    "events": []
   },
@@ -25145,6 +25641,18 @@
    "props": [],
    "events": []
   },
+  "Roo.get": {
+   "props": [],
+   "events": []
+  },
+  "Roo.getCmp": {
+   "props": [],
+   "events": []
+  },
+  "Roo.getDom": {
+   "props": [],
+   "events": []
+  },
   "Roo.grid": {
    "props": [],
    "events": []
@@ -26825,6 +27333,66 @@
     }
    ]
   },
+  "Roo.id": {
+   "props": [],
+   "events": []
+  },
+  "Roo.isBorderBox": {
+   "props": [],
+   "events": []
+  },
+  "Roo.isEmpty": {
+   "props": [],
+   "events": []
+  },
+  "Roo.isGecko": {
+   "props": [],
+   "events": []
+  },
+  "Roo.isIE": {
+   "props": [],
+   "events": []
+  },
+  "Roo.isIE7": {
+   "props": [],
+   "events": []
+  },
+  "Roo.isLinux": {
+   "props": [],
+   "events": []
+  },
+  "Roo.isMac": {
+   "props": [],
+   "events": []
+  },
+  "Roo.isOpera": {
+   "props": [],
+   "events": []
+  },
+  "Roo.isReady": {
+   "props": [],
+   "events": []
+  },
+  "Roo.isSafari": {
+   "props": [],
+   "events": []
+  },
+  "Roo.isSecure": {
+   "props": [],
+   "events": []
+  },
+  "Roo.isStrict": {
+   "props": [],
+   "events": []
+  },
+  "Roo.isTouch": {
+   "props": [],
+   "events": []
+  },
+  "Roo.isWindows": {
+   "props": [],
+   "events": []
+  },
   "Roo.lib": {
    "props": [],
    "events": []
@@ -26833,7 +27401,23 @@
    "props": [],
    "events": []
   },
+  "Roo.lib.Ajax.request": {
+   "props": [],
+   "events": []
+  },
   "Roo.lib.Dom": {
+   "props": [],
+   "events": []
+  },
+  "Roo.lib.Dom.getViewHeight": {
+   "props": [],
+   "events": []
+  },
+  "Roo.lib.Dom.getViewWidth": {
+   "props": [],
+   "events": []
+  },
+  "Roo.log": {
    "props": [],
    "events": []
   },
@@ -28889,6 +29473,30 @@
     }
    ]
   },
+  "Roo.namespace": {
+   "props": [],
+   "events": []
+  },
+  "Roo.onReady": {
+   "props": [],
+   "events": []
+  },
+  "Roo.override": {
+   "props": [],
+   "events": []
+  },
+  "Roo.query": {
+   "props": [],
+   "events": []
+  },
+  "Roo.select": {
+   "props": [],
+   "events": []
+  },
+  "Roo.selectNode": {
+   "props": [],
+   "events": []
+  },
   "Roo.state": {
    "props": [],
    "events": []
@@ -29199,6 +29807,10 @@
      "desc": "Fires when the text for this node is changed"
     }
    ]
+  },
+  "Roo.tree.ColumnNodeUI": {
+   "props": [],
+   "events": []
   },
   "Roo.tree.ColumnTree": {
    "props": [
@@ -30167,6 +30779,22 @@
    ],
    "events": []
   },
+  "Roo.type": {
+   "props": [],
+   "events": []
+  },
+  "Roo.urlDecode": {
+   "props": [],
+   "events": []
+  },
+  "Roo.urlEncode": {
+   "props": [],
+   "events": []
+  },
+  "Roo.useShims": {
+   "props": [],
+   "events": []
+  },
   "Roo.util": {
    "props": [],
    "events": []
@@ -30310,6 +30938,14 @@
    ],
    "events": []
   },
+  "Roo.util.Observable.capture": {
+   "props": [],
+   "events": []
+  },
+  "Roo.util.Observable.releaseCapture": {
+   "props": [],
+   "events": []
+  },
   "Roo.util.TextMetrics": {
    "props": [],
    "events": []
@@ -30319,6 +30955,18 @@
    "events": []
   },
   "String": {
+   "props": [],
+   "events": []
+  },
+  "String.escape": {
+   "props": [],
+   "events": []
+  },
+  "String.format": {
+   "props": [],
+   "events": []
+  },
+  "String.leftPad": {
    "props": [],
    "events": []
   },
@@ -30459,6 +31107,262 @@
    "events": []
   },
   "this": {
+   "props": [],
+   "events": []
+  },
+  "this.afterDragDrop": {
+   "props": [],
+   "events": []
+  },
+  "this.afterDragEnter": {
+   "props": [],
+   "events": []
+  },
+  "this.afterDragOut": {
+   "props": [],
+   "events": []
+  },
+  "this.afterDragOver": {
+   "props": [],
+   "events": []
+  },
+  "this.afterInvalidDrop": {
+   "props": [],
+   "events": []
+  },
+  "this.afterValidDrop": {
+   "props": [],
+   "events": []
+  },
+  "this.animate": {
+   "props": [],
+   "events": []
+  },
+  "this.attributes": {
+   "props": [],
+   "events": []
+  },
+  "this.body": {
+   "props": [],
+   "events": []
+  },
+  "this.bodyEl": {
+   "props": [],
+   "events": []
+  },
+  "this.buttons": {
+   "props": [],
+   "events": []
+  },
+  "this.cancel": {
+   "props": [],
+   "events": []
+  },
+  "this.childNodes": {
+   "props": [],
+   "events": []
+  },
+  "this.collapsedEl": {
+   "props": [],
+   "events": []
+  },
+  "this.config": {
+   "props": [],
+   "events": []
+  },
+  "this.css": {
+   "props": [],
+   "events": []
+  },
+  "this.decode": {
+   "props": [],
+   "events": []
+  },
+  "this.defaultSortable": {
+   "props": [],
+   "events": []
+  },
+  "this.defaultUrl": {
+   "props": [],
+   "events": []
+  },
+  "this.defaultWidth": {
+   "props": [],
+   "events": []
+  },
+  "this.delay": {
+   "props": [],
+   "events": []
+  },
+  "this.disableCaching": {
+   "props": [],
+   "events": []
+  },
+  "this.disabled": {
+   "props": [],
+   "events": []
+  },
+  "this.dom": {
+   "props": [],
+   "events": []
+  },
+  "this.dragZone": {
+   "props": [],
+   "events": []
+  },
+  "this.dropZone": {
+   "props": [],
+   "events": []
+  },
+  "this.el": {
+   "props": [],
+   "events": []
+  },
+  "this.encode": {
+   "props": [],
+   "events": []
+  },
+  "this.firstChild": {
+   "props": [],
+   "events": []
+  },
+  "this.footer": {
+   "props": [],
+   "events": []
+  },
+  "this.formUpdateDelegate": {
+   "props": [],
+   "events": []
+  },
+  "this.header": {
+   "props": [],
+   "events": []
+  },
+  "this.id": {
+   "props": [],
+   "events": []
+  },
+  "this.indicatorText": {
+   "props": [],
+   "events": []
+  },
+  "this.jsonData": {
+   "props": [],
+   "events": []
+  },
+  "this.lastChild": {
+   "props": [],
+   "events": []
+  },
+  "this.loadScripts": {
+   "props": [],
+   "events": []
+  },
+  "this.maxSize": {
+   "props": [],
+   "events": []
+  },
+  "this.minSize": {
+   "props": [],
+   "events": []
+  },
+  "this.monitorWindowResize": {
+   "props": [],
+   "events": []
+  },
+  "this.nextSibling": {
+   "props": [],
+   "events": []
+  },
+  "this.o": {
+   "props": [],
+   "events": []
+  },
+  "this.palette": {
+   "props": [],
+   "events": []
+  },
+  "this.panels": {
+   "props": [],
+   "events": []
+  },
+  "this.parentNode": {
+   "props": [],
+   "events": []
+  },
+  "this.picker": {
+   "props": [],
+   "events": []
+  },
+  "this.previousSibling": {
+   "props": [],
+   "events": []
+  },
+  "this.refreshDelegate": {
+   "props": [],
+   "events": []
+  },
+  "this.renderer": {
+   "props": [],
+   "events": []
+  },
+  "this.root": {
+   "props": [],
+   "events": []
+  },
+  "this.showLoadIndicator": {
+   "props": [],
+   "events": []
+  },
+  "this.split": {
+   "props": [],
+   "events": []
+  },
+  "this.sslBlankUrl": {
+   "props": [],
+   "events": []
+  },
+  "this.start": {
+   "props": [],
+   "events": []
+  },
+  "this.tabPanel": {
+   "props": [],
+   "events": []
+  },
+  "this.text": {
+   "props": [],
+   "events": []
+  },
+  "this.timeout": {
+   "props": [],
+   "events": []
+  },
+  "this.titleEl": {
+   "props": [],
+   "events": []
+  },
+  "this.titleTextEl": {
+   "props": [],
+   "events": []
+  },
+  "this.transaction": {
+   "props": [],
+   "events": []
+  },
+  "this.ui": {
+   "props": [],
+   "events": []
+  },
+  "this.updateDelegate": {
+   "props": [],
+   "events": []
+  },
+  "this.useShim": {
+   "props": [],
+   "events": []
+  },
+  "this.xmlData": {
    "props": [],
    "events": []
   }
