@@ -15,41 +15,48 @@ dashboard1 = new Roo.XComponent({
         var _this = this;
         var MODULE = this;
         return {
+            '|xns' : 'Roo.bootstrap',
             cls : 'skin-blue',
             xtype : 'Body',
             xns : Roo.bootstrap,
             items : [
             	Roo.apply(Dashboard.Header1._tree(), {
+                    '|xns' : 'Roo.bootstrap',
                     cls : 'header',
-                    xtype : 'Container',
                     tag : 'header',
+                    xtype : 'Container',
                     xns : Roo.bootstrap
                 }),
             	{
+                    '|xns' : 'Roo.bootstrap',
                     cls : 'wrapper row-offcanvas row-offcanvas-left',
                     xtype : 'Container',
                     'flexy:include' : 'Sidebar.html',
                     xns : Roo.bootstrap,
                     items : [
                     	Roo.apply(Dashboard.Sidebar2._tree(), {
+                            '|xns' : 'Roo.bootstrap',
                             tag : 'aside',
                             cls : 'left-side sidebar-offcanvas',
                             xtype : 'Container',
                             xns : Roo.bootstrap
                         }),
                     	{
+                            '|xns' : 'Roo.bootstrap',
                             tag : 'aside',
                             cls : 'right-side',
                             xtype : 'Container',
                             xns : Roo.bootstrap,
                             items : [
                             	{
+                                    '|xns' : 'Roo.bootstrap',
                                     tag : 'section',
                                     cls : 'content-header',
                                     xtype : 'Container',
                                     xns : Roo.bootstrap,
                                     items : [
                                     	{
+                                            '|xns' : 'Roo.bootstrap',
                                             xtype : 'Header',
                                             xns : Roo.bootstrap,
                                             html : 'General Form Elements  <small> Preview </small>'
@@ -58,32 +65,38 @@ dashboard1 = new Roo.XComponent({
 
                                 },
                             	{
+                                    '|xns' : 'Roo.bootstrap',
                                     tag : 'section',
                                     cls : 'content',
                                     xtype : 'Container',
                                     xns : Roo.bootstrap,
                                     items : [
                                     	{
+                                            '|xns' : 'Roo.bootstrap',
                                             xtype : 'Row',
                                             xns : Roo.bootstrap,
                                             items : [
                                             	{
+                                                    '|xns' : 'Roo.bootstrap',
                                                     md : 6,
                                                     xtype : 'Column',
                                                     xns : Roo.bootstrap,
                                                     sm : 12,
                                                     items : [
                                                     	{
+                                                            '|xns' : 'Roo.bootstrap',
                                                             cls : 'box box-primary',
                                                             xtype : 'Container',
                                                             xns : Roo.bootstrap,
                                                             items : [
                                                             	{
+                                                                    '|xns' : 'Roo.bootstrap',
                                                                     cls : 'box-header',
                                                                     xtype : 'Container',
                                                                     xns : Roo.bootstrap,
                                                                     items : [
                                                                     	{
+                                                                            '|xns' : 'Roo.bootstrap',
                                                                             cls : 'box-title',
                                                                             xtype : 'Header',
                                                                             xns : Roo.bootstrap,
@@ -94,23 +107,19 @@ dashboard1 = new Roo.XComponent({
 
                                                                 },
                                                             	{
+                                                                    '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'Form',
                                                                     labelAlign : 'top',
                                                                     xns : Roo.bootstrap,
                                                                     items : [
                                                                     	{
+                                                                            '|xns' : 'Roo.bootstrap',
                                                                             cls : 'box-body',
                                                                             xtype : 'Container',
                                                                             xns : Roo.bootstrap,
                                                                             items : [
                                                                             	{
-                                                                                    xtype : 'Input',
-                                                                                    placeholder : 'Enter email',
-                                                                                    fieldLabel : 'Email Address',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    vtype : 'email'
-                                                                                },
-                                                                            	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'Enter password',
                                                                                     inputType : 'password',
@@ -118,6 +127,15 @@ dashboard1 = new Roo.XComponent({
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
+                                                                                    xtype : 'Input',
+                                                                                    placeholder : 'Enter email',
+                                                                                    fieldLabel : 'Email Address',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    vtype : 'email'
+                                                                                },
+                                                                            	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'Enter email',
                                                                                     inputType : 'file',
@@ -125,11 +143,13 @@ dashboard1 = new Roo.XComponent({
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'CheckBox',
                                                                                     boxLabel : 'checkbox',
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     weight : 'primary',
                                                                                     xtype : 'Button',
                                                                                     xns : Roo.bootstrap,
@@ -145,16 +165,19 @@ dashboard1 = new Roo.XComponent({
 
                                                         },
                                                     	{
+                                                            '|xns' : 'Roo.bootstrap',
                                                             cls : 'box box-success',
                                                             xtype : 'Container',
                                                             xns : Roo.bootstrap,
                                                             items : [
                                                             	{
+                                                                    '|xns' : 'Roo.bootstrap',
                                                                     cls : 'box-header',
                                                                     xtype : 'Container',
                                                                     xns : Roo.bootstrap,
                                                                     items : [
                                                                     	{
+                                                                            '|xns' : 'Roo.bootstrap',
                                                                             cls : 'box-title',
                                                                             xtype : 'Header',
                                                                             xns : Roo.bootstrap,
@@ -165,28 +188,33 @@ dashboard1 = new Roo.XComponent({
 
                                                                 },
                                                             	{
+                                                                    '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'Form',
                                                                     labelAlign : 'top',
                                                                     xns : Roo.bootstrap,
                                                                     items : [
                                                                     	{
+                                                                            '|xns' : 'Roo.bootstrap',
                                                                             cls : 'box-body',
                                                                             xtype : 'Container',
                                                                             xns : Roo.bootstrap,
                                                                             items : [
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'size lg',
                                                                                     xns : Roo.bootstrap,
                                                                                     size : 'lg'
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'size md',
                                                                                     xns : Roo.bootstrap,
                                                                                     size : 'md'
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'size sm',
                                                                                     xns : Roo.bootstrap,
@@ -202,16 +230,19 @@ dashboard1 = new Roo.XComponent({
 
                                                         },
                                                     	{
+                                                            '|xns' : 'Roo.bootstrap',
                                                             cls : 'box box-danger',
                                                             xtype : 'Container',
                                                             xns : Roo.bootstrap,
                                                             items : [
                                                             	{
+                                                                    '|xns' : 'Roo.bootstrap',
                                                                     cls : 'box-header',
                                                                     xtype : 'Container',
                                                                     xns : Roo.bootstrap,
                                                                     items : [
                                                                     	{
+                                                                            '|xns' : 'Roo.bootstrap',
                                                                             cls : 'box-title',
                                                                             xtype : 'Header',
                                                                             xns : Roo.bootstrap,
@@ -222,20 +253,24 @@ dashboard1 = new Roo.XComponent({
 
                                                                 },
                                                             	{
+                                                                    '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'Form',
                                                                     labelAlign : 'top',
                                                                     xns : Roo.bootstrap,
                                                                     items : [
                                                                     	{
+                                                                            '|xns' : 'Roo.bootstrap',
                                                                             cls : 'box-body',
                                                                             xtype : 'Container',
                                                                             xns : Roo.bootstrap,
                                                                             items : [
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Row',
                                                                                     xns : Roo.bootstrap,
                                                                                     items : [
                                                                                     	{
+                                                                                            '|xns' : 'Roo.bootstrap',
                                                                                             md : 3,
                                                                                             xtype : 'Input',
                                                                                             placeholder : 'md 3',
@@ -243,6 +278,7 @@ dashboard1 = new Roo.XComponent({
                                                                                             size : 'md'
                                                                                         },
                                                                                     	{
+                                                                                            '|xns' : 'Roo.bootstrap',
                                                                                             md : 3,
                                                                                             xtype : 'Input',
                                                                                             placeholder : 'md 4',
@@ -250,6 +286,7 @@ dashboard1 = new Roo.XComponent({
                                                                                             size : 'md'
                                                                                         },
                                                                                     	{
+                                                                                            '|xns' : 'Roo.bootstrap',
                                                                                             md : 5,
                                                                                             xtype : 'Input',
                                                                                             placeholder : 'md 3',
@@ -269,16 +306,19 @@ dashboard1 = new Roo.XComponent({
 
                                                         },
                                                     	{
+                                                            '|xns' : 'Roo.bootstrap',
                                                             cls : 'box box-info',
                                                             xtype : 'Container',
                                                             xns : Roo.bootstrap,
                                                             items : [
                                                             	{
+                                                                    '|xns' : 'Roo.bootstrap',
                                                                     cls : 'box-header',
                                                                     xtype : 'Container',
                                                                     xns : Roo.bootstrap,
                                                                     items : [
                                                                     	{
+                                                                            '|xns' : 'Roo.bootstrap',
                                                                             cls : 'box-title',
                                                                             xtype : 'Header',
                                                                             xns : Roo.bootstrap,
@@ -289,16 +329,19 @@ dashboard1 = new Roo.XComponent({
 
                                                                 },
                                                             	{
+                                                                    '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'Form',
                                                                     labelAlign : 'top',
                                                                     xns : Roo.bootstrap,
                                                                     items : [
                                                                     	{
+                                                                            '|xns' : 'Roo.bootstrap',
                                                                             cls : 'box-body',
                                                                             xtype : 'Container',
                                                                             xns : Roo.bootstrap,
                                                                             items : [
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'before : @',
                                                                                     xns : Roo.bootstrap,
@@ -306,6 +349,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     size : 'md'
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'after: .00',
                                                                                     xns : Roo.bootstrap,
@@ -313,6 +357,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     after : 0
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'before $, after: .00',
                                                                                     xns : Roo.bootstrap,
@@ -321,12 +366,14 @@ dashboard1 = new Roo.XComponent({
                                                                                     after : 0
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Header',
-                                                                                    xns : Roo.bootstrap,
                                                                                     level : 4,
+                                                                                    xns : Roo.bootstrap,
                                                                                     html : 'With Icons'
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'before : &lt;i class=&quot;fa fa-envelope&quot;&gt;&lt;/i&gt;',
                                                                                     xns : Roo.bootstrap,
@@ -334,6 +381,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     size : 'md'
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'after : &lt;i class=&quot;fa fa-after&quot;&gt;&lt;/i&gt;',
                                                                                     xns : Roo.bootstrap,
@@ -341,6 +389,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     after : '<i class=\"fa fa-check\"></i>'
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'after : &lt;i class=&quot;fa fa-ambulance&quot;&gt;&lt;/i&gt; before : &lt;i class=&quot;fa fa-dollar&quot;&gt;&lt;/i&gt;',
                                                                                     xns : Roo.bootstrap,
@@ -349,16 +398,19 @@ dashboard1 = new Roo.XComponent({
                                                                                     after : '<i class=\"fa fa-ambulance\"></i>'
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Header',
-                                                                                    level : 4,
                                                                                     xns : Roo.bootstrap,
+                                                                                    level : 4,
                                                                                     html : 'With checkbox and radio'
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Row',
                                                                                     xns : Roo.bootstrap,
                                                                                     items : [
                                                                                     	{
+                                                                                            '|xns' : 'Roo.bootstrap',
                                                                                             md : 6,
                                                                                             xtype : 'Input',
                                                                                             placeholder : '?',
@@ -367,6 +419,7 @@ dashboard1 = new Roo.XComponent({
                                                                                             size : 'md'
                                                                                         },
                                                                                     	{
+                                                                                            '|xns' : 'Roo.bootstrap',
                                                                                             md : 6,
                                                                                             xtype : 'Input',
                                                                                             placeholder : 'md 4',
@@ -377,18 +430,21 @@ dashboard1 = new Roo.XComponent({
 
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Header',
-                                                                                    xns : Roo.bootstrap,
                                                                                     level : 4,
+                                                                                    xns : Roo.bootstrap,
                                                                                     html : 'With buttons'
                                                                                 },
                                                                             	{
                                                                                     before : {
                                                                                         menu : {
+                                                                                            '|xns' : 'Roo.bootstrap',
                                                                                             xtype : 'Menu',
                                                                                             xns : Roo.bootstrap,
                                                                                             items : [
                                                                                             	{
+                                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                                     xtype : 'MenuItem',
                                                                                                     xns : Roo.bootstrap,
                                                                                                     html : 'http://',
@@ -400,6 +456,7 @@ dashboard1 = new Roo.XComponent({
                                                                                                     }
                                                                                                 },
                                                                                             	{
+                                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                                     xtype : 'MenuItem',
                                                                                                     xns : Roo.bootstrap,
                                                                                                     html : 'https://',
@@ -413,6 +470,7 @@ dashboard1 = new Roo.XComponent({
                                                                                             ]
 
                                                                                         },
+                                                                                        '|xns' : 'Roo.bootstrap',
                                                                                         weight : 'primary',
                                                                                         xtype : 'Button',
                                                                                         xns : Roo.bootstrap,
@@ -428,6 +486,7 @@ dashboard1 = new Roo.XComponent({
                                                                                         ]
 
                                                                                     },
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'before :  - an object...    ',
                                                                                     xns : Roo.bootstrap,
@@ -439,11 +498,13 @@ dashboard1 = new Roo.XComponent({
                                                                                 },
                                                                             	{
                                                                                     after : {
+                                                                                        '|xns' : 'Roo.bootstrap',
                                                                                         weight : 'success',
                                                                                         xtype : 'Button',
                                                                                         xns : Roo.bootstrap,
                                                                                         html : 'Go'
                                                                                     },
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'after - a button',
                                                                                     xns : Roo.bootstrap,
@@ -466,22 +527,26 @@ dashboard1 = new Roo.XComponent({
 
                                                 },
                                             	{
+                                                    '|xns' : 'Roo.bootstrap',
                                                     md : 6,
                                                     xtype : 'Column',
                                                     xns : Roo.bootstrap,
                                                     sm : 12,
                                                     items : [
                                                     	{
+                                                            '|xns' : 'Roo.bootstrap',
                                                             cls : 'box box-warning',
                                                             xtype : 'Container',
                                                             xns : Roo.bootstrap,
                                                             items : [
                                                             	{
+                                                                    '|xns' : 'Roo.bootstrap',
                                                                     cls : 'box-header',
                                                                     xtype : 'Container',
                                                                     xns : Roo.bootstrap,
                                                                     items : [
                                                                     	{
+                                                                            '|xns' : 'Roo.bootstrap',
                                                                             cls : 'box-title',
                                                                             xtype : 'Header',
                                                                             xns : Roo.bootstrap,
@@ -492,22 +557,26 @@ dashboard1 = new Roo.XComponent({
 
                                                                 },
                                                             	{
+                                                                    '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'Form',
                                                                     labelAlign : 'top',
                                                                     xns : Roo.bootstrap,
                                                                     items : [
                                                                     	{
+                                                                            '|xns' : 'Roo.bootstrap',
                                                                             cls : 'box-body',
                                                                             xtype : 'Container',
                                                                             xns : Roo.bootstrap,
                                                                             items : [
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'Enter ...',
                                                                                     fieldLabel : 'Text',
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'disabled = true',
                                                                                     disabled : true,
@@ -515,11 +584,13 @@ dashboard1 = new Roo.XComponent({
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'TextArea',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    fieldLabel : 'Textarea'
+                                                                                    fieldLabel : 'Textarea',
+                                                                                    xns : Roo.bootstrap
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'TextArea',
                                                                                     placeholder : 'disabled=true',
                                                                                     disabled : true,
@@ -527,6 +598,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     fieldLabel : 'Textarea'
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     cls : 'has-success',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'cls = has-success',
@@ -534,6 +606,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     cls : 'has-warning',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'cls = has-warning',
@@ -541,6 +614,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     cls : 'has-error',
                                                                                     xtype : 'Input',
                                                                                     placeholder : 'cls = has-error',
@@ -548,11 +622,13 @@ dashboard1 = new Roo.XComponent({
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'CheckBox',
                                                                                     boxLabel : 'Checkbox 1',
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     checked : true,
                                                                                     weight : 'primary',
                                                                                     xtype : 'CheckBox',
@@ -560,12 +636,14 @@ dashboard1 = new Roo.XComponent({
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'CheckBox',
                                                                                     boxLabel : 'Checkbox Disabled',
                                                                                     disabled : true,
                                                                                     xns : Roo.bootstrap
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     name : 'radio',
                                                                                     xtype : 'Radio',
                                                                                     boxLabel : 'Radio 1',
@@ -573,6 +651,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     value : 1
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     name : 'radio',
                                                                                     xtype : 'Radio',
                                                                                     boxLabel : 'Radio (weight=danger)',
@@ -581,6 +660,7 @@ dashboard1 = new Roo.XComponent({
                                                                                     weight : 'danger'
                                                                                 },
                                                                             	{
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     name : 'radio',
                                                                                     xtype : 'Radio',
                                                                                     boxLabel : 'Radio Disabled',
@@ -590,11 +670,13 @@ dashboard1 = new Roo.XComponent({
                                                                                 },
                                                                             	{
                                                                                     store : {
+                                                                                        '|xns' : 'Roo.data',
                                                                                         fields : [ 'item' ],
                                                                                         data : [ [ 'option a'] ,[ 'option b'] ],
                                                                                         xtype : 'SimpleStore',
                                                                                         xns : Roo.data
                                                                                     },
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     mode : 'local',
                                                                                     name : 'combotest',
                                                                                     valueField : 'item',
@@ -612,11 +694,13 @@ dashboard1 = new Roo.XComponent({
                                                                                 },
                                                                             	{
                                                                                     store : {
+                                                                                        '|xns' : 'Roo.data',
                                                                                         fields : [ 'item' ],
                                                                                         data : [ [ 'option a'] ,[ 'option b'] ],
                                                                                         xtype : 'SimpleStore',
                                                                                         xns : Roo.data
                                                                                     },
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     mode : 'local',
                                                                                     name : 'combotest',
                                                                                     valueField : 'item',
@@ -635,11 +719,13 @@ dashboard1 = new Roo.XComponent({
                                                                                 },
                                                                             	{
                                                                                     store : {
+                                                                                        '|xns' : 'Roo.data',
                                                                                         fields : [ 'item' ],
                                                                                         data : [ [ 'option a'] ,[ 'option b'] ],
                                                                                         xtype : 'SimpleStore',
                                                                                         xns : Roo.data
                                                                                     },
+                                                                                    '|xns' : 'Roo.bootstrap',
                                                                                     mode : 'local',
                                                                                     name : 'combotest',
                                                                                     valueField : 'item',
