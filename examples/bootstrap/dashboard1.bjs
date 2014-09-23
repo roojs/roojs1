@@ -82,6 +82,13 @@
                                                                             "$ xns" : "Roo.bootstrap",
                                                                             "Number level" : 3,
                                                                             "String html" : "Quick Example"
+                                                                        },
+                                                                        {
+                                                                            "xtype" : "Input",
+                                                                            "string placeholder" : "Enter password",
+                                                                            "String inputType" : "password",
+                                                                            "String fieldLabel" : "Password",
+                                                                            "$ xns" : "Roo.bootstrap"
                                                                         }
                                                                     ]
                                                                 },
@@ -95,13 +102,6 @@
                                                                             "xtype" : "Container",
                                                                             "$ xns" : "Roo.bootstrap",
                                                                             "items" : [
-                                                                                {
-                                                                                    "xtype" : "Input",
-                                                                                    "string placeholder" : "Enter password",
-                                                                                    "String inputType" : "password",
-                                                                                    "String fieldLabel" : "Password",
-                                                                                    "$ xns" : "Roo.bootstrap"
-                                                                                },
                                                                                 {
                                                                                     "xtype" : "Input",
                                                                                     "string placeholder" : "Enter email",

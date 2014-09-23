@@ -102,6 +102,14 @@ dashboard1 = new Roo.XComponent({
                                                                             xns : Roo.bootstrap,
                                                                             level : 3,
                                                                             html : 'Quick Example'
+                                                                        },
+                                                                    	{
+                                                                            '|xns' : 'Roo.bootstrap',
+                                                                            xtype : 'Input',
+                                                                            placeholder : 'Enter password',
+                                                                            inputType : 'password',
+                                                                            fieldLabel : 'Password',
+                                                                            xns : Roo.bootstrap
                                                                         }
                                                                     ]
 
@@ -118,14 +126,6 @@ dashboard1 = new Roo.XComponent({
                                                                             xtype : 'Container',
                                                                             xns : Roo.bootstrap,
                                                                             items : [
-                                                                            	{
-                                                                                    '|xns' : 'Roo.bootstrap',
-                                                                                    xtype : 'Input',
-                                                                                    placeholder : 'Enter password',
-                                                                                    inputType : 'password',
-                                                                                    fieldLabel : 'Password',
-                                                                                    xns : Roo.bootstrap
-                                                                                },
                                                                             	{
                                                                                     '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
