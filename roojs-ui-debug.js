@@ -24978,10 +24978,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         //var ss = this.el.getStyles('font-size', 'font-family', 'background-image', 'background-repeat');
         // this copies styles from the containing element into thsi one..
         // not sure why we need all of this..
-        var ss = this.el.getStyles('font-size', 'background-image', 'background-repeat');
-        ss['background-attachment'] = 'fixed'; // w3c
+        //var ss = this.el.getStyles('font-size', 'background-image', 'background-repeat');
+        
+        //var ss = this.el.getStyles( 'background-image', 'background-repeat');
+        //ss['background-attachment'] = 'fixed'; // w3c
         dbody.bgProperties = 'fixed'; // ie
-        Roo.DomHelper.applyStyles(dbody, ss);
+        //Roo.DomHelper.applyStyles(dbody, ss);
         Roo.EventManager.on(this.doc, {
             //'mousedown': this.onEditorEvent,
             'mouseup': this.onEditorEvent,

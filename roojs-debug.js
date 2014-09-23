@@ -15741,6 +15741,9 @@ Roo.extend(Roo.BoxComponent, Roo.Component, {
  * @class Roo.XComponent
  * A delayed Element creator...
  * Or a way to group chunks of interface together.
+ * technically this is a wrapper around a tree of Roo elements (which defines a 'module'),
+ *  used in conjunction with XComponent.build() it will create an instance of each element,
+ *  then call addxtype() to build the User interface.
  * 
  * Mypart.xyx = new Roo.XComponent({
 
@@ -15764,6 +15767,37 @@ Roo.extend(Roo.BoxComponent, Roo.Component, {
  * It can be used to build a big heiracy, with parent etc.
  * or you can just use this to render a single compoent to a dom element
  * MYPART.render(Roo.Element | String(id) | dom_element )
+ *
+ *
+ * Usage patterns.
+ *
+ * Classic Roo
+ *
+ * Roo is designed primarily as a single page application, so the UI build for a standard interface will
+ * expect a single 'TOP' level module normally indicated by the 'parent' of the XComponent definition being defined as false.
+ *
+ * Each sub module is expected to have a parent pointing to the class name of it's parent module.
+ *
+ * When the top level is false, a 'Roo.BorderLayout' is created and the element is flagged as 'topModule'
+ * - if mulitple topModules exist, the last one is defined as the top module.
+ *
+ * Embeded Roo
+ * 
+ * When the top level or multiple modules are to embedded into a existing HTML page,
+ * the parent element can container '#id' of the element where the module will be drawn.
+ *
+ * Bootstrap Roo
+ *
+ * Unlike classic Roo, the bootstrap tends not to be used as a single page.
+ * it relies more on a include mechanism, where sub modules are included into an outer page.
+ * This is normally managed by the builder tools using Roo.apply( options, Included.Sub.Module )
+ * 
+ * Bootstrap Roo Included elements
+ *
+ * Our builder application needs the ability to preview these sub compoennts. They will normally have parent=false set,
+ * hence confusing the component builder as it thinks there are multiple top level elements. 
+ *
+ * 
  * 
  * @extends Roo.util.Observable
  * @constructor
@@ -15864,17 +15898,40 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         
         el = el || false;
         var hp = this.parent ? 1 : 0;
+        Roo.log(this);
         
         if (!el && typeof(this.parent) == 'string' && this.parent.substring(0,1) == '#') {
             // if parent is a '#.....' string, then let's use that..
-            var ename = this.parent.substr(1)
-            this.parent = (this.parent == '#bootstrap') ? { el : true}  : false; // flags it as a top module...
-            el = Roo.get(ename);
+            var ename = this.parent.substr(1);
+            this.parent = false;
+            Roo.log(ename);
+            switch (ename) {
+                case 'bootstrap-body' :
+                    if (typeof(Roo.bootstrap.Body) != 'undefined') {
+                        this.parent = { el :  new  Roo.bootstrap.Body() };
+                        Roo.log("setting el to doc body");
+                         
+                    } else {
+                        throw "Container is bootstrap body, but Roo.bootstrap.Body is not defined";
+                    }
+                    break;
+                case 'bootstrap':
+                    this.parent = { el : true};
+                    // fall through
+                default:
+                    el = Roo.get(ename);
+                    break;
+            }
+                
+            
             if (!el && !this.parent) {
                 Roo.log("Warning - element can not be found :#" + ename );
                 return;
             }
         }
+        Roo.log("EL:");Roo.log(el);
+        Roo.log("this.parent.el:");Roo.log(this.parent.el);
+        
         var tree = this._tree ? this._tree() : this.tree();
 
         // altertive root elements ??? - we need a better way to indicate these.
@@ -41307,10 +41364,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         //var ss = this.el.getStyles('font-size', 'font-family', 'background-image', 'background-repeat');
         // this copies styles from the containing element into thsi one..
         // not sure why we need all of this..
-        var ss = this.el.getStyles('font-size', 'background-image', 'background-repeat');
-        ss['background-attachment'] = 'fixed'; // w3c
+        //var ss = this.el.getStyles('font-size', 'background-image', 'background-repeat');
+        
+        //var ss = this.el.getStyles( 'background-image', 'background-repeat');
+        //ss['background-attachment'] = 'fixed'; // w3c
         dbody.bgProperties = 'fixed'; // ie
-        Roo.DomHelper.applyStyles(dbody, ss);
+        //Roo.DomHelper.applyStyles(dbody, ss);
         Roo.EventManager.on(this.doc, {
             //'mousedown': this.onEditorEvent,
             'mouseup': this.onEditorEvent,
