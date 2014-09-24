@@ -143,13 +143,14 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.Row, {
         //this.addSeparator();
         this.next = this.addButton({
             tooltip: this.nextText,
-            cls: "x-btn-icon x-grid-page-next",
+            cls: "next",
             disabled: true,
             handler: this.onClick.createDelegate(this, ["next"])
         });
         this.last = this.addButton({
             tooltip: this.lastText,
-            cls: "x-btn-icon x-grid-page-last",
+            html : '<i class="fa fa-step-backward"></i> Previous',
+            cls: "next",
             disabled: true,
             handler: this.onClick.createDelegate(this, ["last"])
         });
