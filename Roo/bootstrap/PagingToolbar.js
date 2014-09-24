@@ -158,7 +158,8 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.Row, {
         //this.addSeparator();
         this.loading = this.addButton({
             tooltip: this.refreshText,
-            cls: "x-btn-icon x-grid-loading",
+            html : '<i class="fa fa-reload"></i>',
+            cls: "",
             handler: this.onClick.createDelegate(this, ["refresh"])
         });
 
