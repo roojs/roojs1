@@ -150,7 +150,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.Row, {
         });
         this.last = this.addButton({
             tooltip: this.lastText,
-            html : 'Next <i class="fa fa-step-forward"></i>',
+            html : '<i class="fa fa-forward"></i>',
             cls: "next",
             disabled: true,
             handler: this.onClick.createDelegate(this, ["last"])
