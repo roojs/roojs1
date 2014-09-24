@@ -17,7 +17,7 @@
  * Create a new PagingToolbar
  * @param {Object} config The config object
  */
-Roo.PagingToolbar = function(config)
+Roo.bootstrap.PagingToolbar = function(config)
 {
     // old args format still supported... - xtype is prefered..
         // created from xtype...
@@ -28,7 +28,7 @@ Roo.PagingToolbar = function(config)
         config.items = [];
     }
     
-    Roo.bootstrap.Row.superclass.constructor.call(this, config);
+    Roo.bootstrap.PagingToolbar.superclass.constructor.call(this, config);
     this.ds = ds;
     this.cursor = 0;
      
