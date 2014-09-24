@@ -107,17 +107,21 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.Row, {
     refreshText : "Refresh",
 
     // private
-    renderButtons : function(el){
-        Roo.PagingToolbar.superclass.render.call(this, el);
+    renderButtons : function(el)
+    {
+        Roo.bootstrap.PagingToolbar.superclass.render.call(this, el);
+        
         this.first = this.addButton({
             tooltip: this.firstText,
-            cls: "x-btn-icon x-grid-page-first",
+            cls: "prev",
+            html : '<i class="fa fa-backward"></i>',
             disabled: true,
             handler: this.onClick.createDelegate(this, ["first"])
         });
         this.prev = this.addButton({
             tooltip: this.prevText,
-            cls: "x-btn-icon x-grid-page-prev",
+            cls: "prev",
+            html : '<i class="fa fa-step-backward"></i>',
             disabled: true,
             handler: this.onClick.createDelegate(this, ["prev"])
         });
@@ -132,8 +136,10 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.Row, {
         }).el);
         this.field.on("keydown", this.onPagingKeydown, this);
         this.field.on("focus", function(){this.dom.select();});
+        
+        
         this.afterTextEl = this.addText(String.format(this.afterPageText, 1));
-        this.field.setHeight(18);
+        //this.field.setHeight(18);
         //this.addSeparator();
         this.next = this.addButton({
             tooltip: this.nextText,
