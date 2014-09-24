@@ -121,7 +121,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.Row, {
         this.prev = this.addButton({
             tooltip: this.prevText,
             cls: "prev",
-            html : '<i class="fa fa-step-backward"></i>',
+            html : '<i class="fa fa-step-backward"></i> Previous',
             disabled: true,
             handler: this.onClick.createDelegate(this, ["prev"])
         });
