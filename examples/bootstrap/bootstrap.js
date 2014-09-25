@@ -159,6 +159,26 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     items : [
                                         
                                         {
+                                            xtype: 'PagingToolbar',
+                                            xns: Roo.bootstrap,
+                                            
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'Row',
+                            xns: Roo.bootstrap,
+                            items : [
+                                
+                                {
+                                    xtype: 'Column',
+                                    xns: Roo.bootstrap,
+                                    colspan : 12,
+                                    items : [
+                                        
+                                        {
                                             xtype: 'NavSimplebar',
                                             xns: Roo.bootstrap,
                                             bar: true,
