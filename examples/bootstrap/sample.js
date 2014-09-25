@@ -24,7 +24,7 @@ Roo.example.bootstrap = new Roo.XComponent({
             xns: Roo.bootstrap,
             items: [
                 {
-                    xtype: 'NavSimplebar',
+                    xtype: 'NavHeaderbar',
                     xns: Roo.bootstrap,
                     bar: true,
                     position: 'static-top',
