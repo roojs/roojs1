@@ -124,7 +124,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.first = this.navgroup.addItem({
             tooltip: this.firstText,
             cls: "prev",
-            tagtype : 'span',
             icon : 'fa fa-backward',
             disabled: true,
             listeners : { click : this.onClick.createDelegate(this, ["first"]) }
@@ -159,7 +158,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         //this.addSeparator();
         this.next = this.navgroup.addItem({
             tooltip: this.nextText,
-            tagtype : 'span',
             cls: "next",
             html : ' <i class="fa fa-step-forward">',
             disabled: true,
@@ -167,7 +165,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         });
         this.last = this.navgroup.addItem({
             tooltip: this.lastText,
-            tagtype : 'span',
             icon : 'fa fa-forward',
             cls: "next",
             disabled: true,
@@ -177,9 +174,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.loading = this.navgroup.addItem({
             tooltip: this.refreshText,
             icon: 'fa fa-refresh',
-            tagtype : 'span',
             
-            cls: "",
             listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
 
