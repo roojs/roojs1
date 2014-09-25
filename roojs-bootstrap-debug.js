@@ -3873,7 +3873,7 @@ Roo.bootstrap.Table = function(config){
         this.sm.xmodule = this.xmodule || false;
     }
     if (this.cm && typeof(this.cm.config) == 'undefined') {
-        this.colModel = new Roo.bootstrap.Table.ColumnModel(this.cm);
+        this.colModel = Roo.factory(this.cm, Roo.grid);
         this.cm = this.colModel;
         this.cm.xmodule = this.xmodule || false;
     }
