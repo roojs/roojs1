@@ -168,7 +168,8 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.NavSimplebar, {
         });
 
         if(this.displayInfo){
-            this.displayEl = Roo.fly(this.el.dom.firstChild).createChild({cls:'x-paging-info'});
+            var el = this.navgroup.addItem( { html : '', cls : 'x-paging-info' } );
+            this.displayEl = el.select('a',true).first();
         }
     
     },
