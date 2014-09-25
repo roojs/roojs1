@@ -42,6 +42,68 @@ Roo.bootstrap.PagingToolbar = function(config)
         this.add(Roo.factory(e));
     },this);
     
+    
+    // add the buttons to the navgroup
+        
+    this.first = this.addButton({
+      
+        tooltip: this.firstText,
+        cls: "prev",
+        html : '<i class="fa fa-backward"></i>',
+        disabled: true,
+        handler: this.onClick.createDelegate(this, ["first"])
+    });
+    this.prev = this.addButton({
+        tooltip: this.prevText,
+        cls: "prev",
+        html : '<i class="fa fa-step-backward"></i>' + this.prevText,
+        disabled: true,
+        handler: this.onClick.createDelegate(this, ["prev"])
+    });
+    //this.addSeparator();
+    this.add(this.beforePageText);
+    this.field = Roo.get(this.addDom({
+       tag: "input",
+       type: "text",
+       size: "3",
+       value: "1",
+       cls: "x-grid-page-number"
+    }).el);
+    this.field.on("keydown", this.onPagingKeydown, this);
+    this.field.on("focus", function(){this.dom.select();});
+    
+    
+    this.afterTextEl = this.addText(String.format(this.afterPageText, 1));
+    //this.field.setHeight(18);
+    //this.addSeparator();
+    this.next = this.addButton({
+        tooltip: this.nextText,
+        cls: "next",
+        html : this.nextText + '<i class="fa fa-step-forward"></i>',
+        disabled: true,
+        handler: this.onClick.createDelegate(this, ["next"])
+    });
+    this.last = this.addButton({
+        tooltip: this.lastText,
+        html : '<i class="fa fa-forward"></i>',
+        cls: "next",
+        disabled: true,
+        handler: this.onClick.createDelegate(this, ["last"])
+    });
+    //this.addSeparator();
+    this.loading = this.addButton({
+        tooltip: this.refreshText,
+        html : '<i class="fa fa-reload"></i>',
+        cls: "",
+        handler: this.onClick.createDelegate(this, ["refresh"])
+    });
+
+    if(this.displayInfo){
+        this.displayEl = Roo.fly(this.el.dom.firstChild).createChild({cls:'x-paging-info'});
+    }
+    
+    
+    
 };
 
 Roo.extend(Roo.bootstrap.PagingToolbar, Roo.NavSimplebar, {
@@ -113,61 +175,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.NavSimplebar, {
     {
         Roo.bootstrap.PagingToolbar.superclass.onRender.call(this, ct, position);
         
-        this.first = this.addButton({
-            tooltip: this.firstText,
-            cls: "prev",
-            html : '<i class="fa fa-backward"></i>',
-            disabled: true,
-            handler: this.onClick.createDelegate(this, ["first"])
-        });
-        this.prev = this.addButton({
-            tooltip: this.prevText,
-            cls: "prev",
-            html : '<i class="fa fa-step-backward"></i>' + this.prevText,
-            disabled: true,
-            handler: this.onClick.createDelegate(this, ["prev"])
-        });
-        //this.addSeparator();
-        this.add(this.beforePageText);
-        this.field = Roo.get(this.addDom({
-           tag: "input",
-           type: "text",
-           size: "3",
-           value: "1",
-           cls: "x-grid-page-number"
-        }).el);
-        this.field.on("keydown", this.onPagingKeydown, this);
-        this.field.on("focus", function(){this.dom.select();});
         
-        
-        this.afterTextEl = this.addText(String.format(this.afterPageText, 1));
-        //this.field.setHeight(18);
-        //this.addSeparator();
-        this.next = this.addButton({
-            tooltip: this.nextText,
-            cls: "next",
-            html : this.nextText + '<i class="fa fa-step-forward"></i>',
-            disabled: true,
-            handler: this.onClick.createDelegate(this, ["next"])
-        });
-        this.last = this.addButton({
-            tooltip: this.lastText,
-            html : '<i class="fa fa-forward"></i>',
-            cls: "next",
-            disabled: true,
-            handler: this.onClick.createDelegate(this, ["last"])
-        });
-        //this.addSeparator();
-        this.loading = this.addButton({
-            tooltip: this.refreshText,
-            html : '<i class="fa fa-reload"></i>',
-            cls: "",
-            handler: this.onClick.createDelegate(this, ["refresh"])
-        });
-
-        if(this.displayInfo){
-            this.displayEl = Roo.fly(this.el.dom.firstChild).createChild({cls:'x-paging-info'});
-        }
     },
 
     // private
