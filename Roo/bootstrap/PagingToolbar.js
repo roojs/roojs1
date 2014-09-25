@@ -138,8 +138,15 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             listeners : { click :  this.onClick.createDelegate(this, ["prev"]) }
         });
     //this.addSeparator();
-        this.navgroup.addItem( { tagtype : 'span',  html : this.beforePageText } ); //?? escaped?
-        var field = this.navgroup.addItem( { tagtype : 'span',  html : '<input type="text" size="3" value="1" class="x-grid-page-number">' } );
+        
+        
+        var field = this.navgroup.addItem( {
+            tagtype : 'span',
+            html : this.beforePageText  +
+                '<input type="text" size="3" value="1" class="x-grid-page-number">' +
+                '<span class="x-paging-after">' +  String.format(this.afterPageText, 1) + '</span>'
+         } ); //?? escaped?
+        
         this.field = field.el.select('input', true).first();
         this.field.on("keydown", this.onPagingKeydown, this);
         this.field.on("focus", function(){this.dom.select();});
