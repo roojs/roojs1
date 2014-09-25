@@ -2,7 +2,7 @@
     background-color: #428bca;
 }
 .skin-blue .navbar .pagination>li>a.disabled {
-    background-color: #428bca;
+    background-color: rgb(221, 221, 221);
 }
 .navbar .pagination {
     margin: 0;
