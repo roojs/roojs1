@@ -124,7 +124,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.NavSimplebar, {
             cls: "prev",
             html : '<i class="fa fa-backward"></i>',
             disabled: true,
-            handler: this.onClick.createDelegate(this, ["first"])
+            listeners : { click : this.onClick.createDelegate(this, ["first"]) }
         });
         
         this.prev =  this.navgroup.addItem({
@@ -132,7 +132,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.NavSimplebar, {
             cls: "prev",
             html : '<i class="fa fa-step-backward"></i>' + this.prevText,
             disabled: true,
-            handler: this.onClick.createDelegate(this, ["prev"])
+            listeners : { click :  this.onClick.createDelegate(this, ["prev"]) }
         });
     //this.addSeparator();
         this.navgroup.addItem( { html : this.beforePageText } ); //?? escaped?
@@ -150,26 +150,26 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.NavSimplebar, {
             cls: "next",
             html : this.nextText + '<i class="fa fa-step-forward"></i>',
             disabled: true,
-            handler: this.onClick.createDelegate(this, ["next"])
+            listeners : { click :  this.onClick.createDelegate(this, ["next"]) }
         });
         this.last = this.navgroup.addItem({
             tooltip: this.lastText,
             html : '<i class="fa fa-forward"></i>',
             cls: "next",
             disabled: true,
-            handler: this.onClick.createDelegate(this, ["last"])
+            listeners : { click :  this.onClick.createDelegate(this, ["last"]) }
         });
     //this.addSeparator();
         this.loading = this.navgroup.addItem({
             tooltip: this.refreshText,
             html : '<i class="fa fa-reload"></i>',
             cls: "",
-            handler: this.onClick.createDelegate(this, ["refresh"])
+            listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
 
-    if(this.displayInfo){
-        this.displayEl = Roo.fly(this.el.dom.firstChild).createChild({cls:'x-paging-info'});
-    }
+        if(this.displayInfo){
+            this.displayEl = Roo.fly(this.el.dom.firstChild).createChild({cls:'x-paging-info'});
+        }
     
     },
 
