@@ -56,6 +56,7 @@ Roo.bootstrap.Table = function(config){
          
     }
     if (this.footer) {
+        this.footer.dataSource = this.ds;
         this.footer = Roo.factory(this.footer);
     }
 };
