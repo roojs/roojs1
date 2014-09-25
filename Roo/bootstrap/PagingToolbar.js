@@ -153,7 +153,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.field.on("focus", function(){this.dom.select();});
     
     
-        this.afterTextEl =  field.el.select('.x-paging-after').first();
+        this.afterTextEl =  field.el.select('.x-paging-after',true).first();
         //this.field.setHeight(18);
         //this.addSeparator();
         this.next = this.navgroup.addItem({
