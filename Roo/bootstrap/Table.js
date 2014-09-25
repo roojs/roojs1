@@ -203,6 +203,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.parent().el.setStyle('position', 'relative');
         
+        // mask should be using Roo.bootstrap.Mask...
+        
         var mark = {
             tag: "div",
             cls:"x-dlg-mask",
