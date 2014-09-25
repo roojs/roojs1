@@ -786,8 +786,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             
             var r = c.row - ev.length;
             
-            c.events = ev.slice(0, 4);
-            c.more = ev.slice(4);
+            c.events = ev.slice(0, 4 - r);
+            c.more = ev.slice(4 - r);
             
             c.row = c.events.length + 1;
             
