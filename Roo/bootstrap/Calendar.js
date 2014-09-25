@@ -793,8 +793,10 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             
             var moreRow = 3 - c.inhertance;
             
-            c.events = c.events.slice(0, moreRow);
-            c.more = c.events.slice(moreRow);
+            var ev = c.events;
+            
+            c.events = ev.slice(0, moreRow);
+            c.more = ev.slice(moreRow);
             
             if(c.more.length && c.more.length == 1){
                 c.events.push(c.more.pop());
