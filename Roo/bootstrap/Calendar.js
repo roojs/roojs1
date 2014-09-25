@@ -694,9 +694,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var cells = ev.cells;
             var rows = ev.rows;
             
-            cells.each(function(c){
-                Roo.log(c);
-            })
+            for (var j = 0; j > cells.length; j++){
+                if(cells[i].row){
+                    
+                }
+            }
             
             for (var i = 0; i < rows.length; i++){
                 // how many rows should it span..
