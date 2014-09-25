@@ -153,7 +153,7 @@
         </span><span class="jsdoc-var">this.field.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;focus&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){</span><span class="jsdoc-var">this.dom.select</span><span class="jsdoc-syntax">();});
     
     
-        </span><span class="jsdoc-var">this.afterTextEl </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">field.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.x-paging-after'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.afterTextEl </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">field.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.x-paging-after'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-comment">//this.field.setHeight(18);
         //this.addSeparator();
         </span><span class="jsdoc-var">this.next </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.navgroup.addItem</span><span class="jsdoc-syntax">({
@@ -202,9 +202,11 @@
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
        </span><span class="jsdoc-var">this.cursor </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o.params </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">o.params.start </span><span class="jsdoc-syntax">: 0;
-       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPageData</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">ap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.activePage</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ps </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.pages</span><span class="jsdoc-syntax">;
-
-       </span><span class="jsdoc-var">this.afterTextEl.el.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.afterPageText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d.pages</span><span class="jsdoc-syntax">);
+       </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPageData</span><span class="jsdoc-syntax">(),
+            </span><span class="jsdoc-var">ap </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.activePage</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">ps </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.pages</span><span class="jsdoc-syntax">;
+        
+       </span><span class="jsdoc-var">this.afterTextEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.afterPageText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d.pages</span><span class="jsdoc-syntax">);
        </span><span class="jsdoc-var">this.field.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ap</span><span class="jsdoc-syntax">;
        </span><span class="jsdoc-var">this.first.setDisabled</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ap </span><span class="jsdoc-syntax">== 1);
        </span><span class="jsdoc-var">this.prev.setDisabled</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ap </span><span class="jsdoc-syntax">== 1);

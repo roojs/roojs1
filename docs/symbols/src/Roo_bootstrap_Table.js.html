@@ -45,7 +45,7 @@
         </span><span class="jsdoc-var">this.sm.xmodule </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xmodule </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     }
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cm </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cm.config</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-var">this.colModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Table.ColumnModel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.colModel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.grid.ColumnModel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.colModel</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.cm.xmodule </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xmodule </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     }
@@ -157,7 +157,8 @@
             </span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">+=  </span><span class="jsdoc-string">' TableGrid'</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{ </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">] };
     },
 </span><span class="jsdoc-comment">//    
 //    initTableGrid : function()
@@ -205,50 +206,53 @@
         </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'position'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'relative'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.footer.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">this.footer.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot tr td'</span><span class="jsdoc-syntax">), </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);        
+            </span><span class="jsdoc-var">this.footer.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot tr td'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);        
         }
         
         
         </span><span class="jsdoc-comment">// mask should be using Roo.bootstrap.Mask...
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mark </span><span class="jsdoc-syntax">= {
-            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">&quot;x-dlg-mask&quot;</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;text-align:center&quot;</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+        /*
+        var mark = {
+            tag: &quot;div&quot;,
+            cls:&quot;x-dlg-mask&quot;,
+            style: &quot;text-align:center&quot;,
+            cn: [
                 {
-                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;background-color:white;width:50%;margin:100 auto&quot;</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                    tag: &quot;div&quot;,
+                    style: &quot;background-color:white;width:50%;margin:100 auto&quot;,
+                    cn: [
                         {
-                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;img&quot;</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rootURL </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/roojs1/images/ux/lightbox/loading.gif'
-                        </span><span class="jsdoc-syntax">},
+                            tag: &quot;img&quot;,
+                            src: Roo.rootURL + '/images/ux/lightbox/loading.gif'
+                        },
                         {
-                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;span&quot;</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Loading&quot;
-                        </span><span class="jsdoc-syntax">}
+                            tag: &quot;span&quot;,
+                            html: &quot;Loading&quot;
+                        }
                         
                     ]
                 }
             ]
         }
-        </span><span class="jsdoc-var">this.maskEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.DomHelper.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">mark</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.el.getSize</span><span class="jsdoc-syntax">();
+        var size = this.el.getSize();
         
-        </span><span class="jsdoc-var">this.maskEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size.width</span><span class="jsdoc-syntax">, 300); </span><span class="jsdoc-comment">// we will fix the height at the beginning...
+        this.maskEl = Roo.DomHelper.append(document.body, mark, true);
         
-        </span><span class="jsdoc-var">this.maskEl.enableDisplayMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;block&quot;</span><span class="jsdoc-syntax">);
+        this.maskEl.setSize(size.width, 300); // we will fix the height at the beginning...
+        this.maskEl.enableDisplayMode(&quot;block&quot;);
+        */
+        </span><span class="jsdoc-var">this.maskEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.LoadMask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">store </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msgCls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-el-mask-msg' </span><span class="jsdoc-syntax">});
         
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-var">this.store.load</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">// load should be trigger on render..
+        //this.store.load();
         
         
         
-    },
+    </span><span class="jsdoc-syntax">},
     
     </span><span class="jsdoc-var">sort </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
     {
@@ -267,7 +271,13 @@
         
         </span><span class="jsdoc-var">this.store.sortInfo </span><span class="jsdoc-syntax">= {</span><span class="jsdoc-var">field </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">sort</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">direction </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">};
         
-        </span><span class="jsdoc-var">this.store.load</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;calling footer first&quot;</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.footer.onClick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'first'</span><span class="jsdoc-syntax">);
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        
+            </span><span class="jsdoc-var">this.store.load</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">params </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">: 0 } });
+        }
     },
     
     </span><span class="jsdoc-var">renderHeader </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -314,7 +324,17 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tbody'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">colspan </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">this.cm.getColumnCount</span><span class="jsdoc-syntax">()
+                        }
+                    ]
+                }
+            ]
         };
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">;
@@ -330,7 +350,7 @@
                     </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                         {
                             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">colspan </span><span class="jsdoc-syntax">: 1
+                            </span><span class="jsdoc-var">colspan </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">this.cm.getColumnCount</span><span class="jsdoc-syntax">()
                         }
                     ]
                 }
@@ -343,6 +363,7 @@
     </span><span class="jsdoc-var">onLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ds onload'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.clear</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">;
@@ -419,21 +440,21 @@
             })
         }
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.maskEl.hide</span><span class="jsdoc-syntax">();
-        }
-    },
+        </span><span class="jsdoc-comment">//if(this.loadMask){
+        //    this.maskEl.hide();
+        //}
+    </span><span class="jsdoc-syntax">},
     
     </span><span class="jsdoc-var">onBeforeLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ds onBeforeLoad'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//Roo.log('ds onBeforeLoad');
         
-        </span><span class="jsdoc-var">this.clear</span><span class="jsdoc-syntax">();
+        //this.clear();
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.maskEl.show</span><span class="jsdoc-syntax">();
-        }
-    },
+        //if(this.loadMask){
+        //    this.maskEl.show();
+        //}
+    </span><span class="jsdoc-syntax">},
     
     </span><span class="jsdoc-var">clear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
