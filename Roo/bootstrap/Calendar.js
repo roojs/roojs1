@@ -705,66 +705,67 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 
                 cells[i].events.push(ev);
             }
+        }
             
-            for (var i = 0; i < rows.length; i++){
-                // how many rows should it span..
-
-                var  cfg = {
-                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
-                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
-
-                    unselectable : "on",
-                    cn : [
-                        {
-                            cls: 'fc-event-inner',
-                            cn : [
+//            for (var i = 0; i < rows.length; i++){
+//                // how many rows should it span..
+//
+//                var  cfg = {
+//                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+//                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+//
+//                    unselectable : "on",
+//                    cn : [
+//                        {
+//                            cls: 'fc-event-inner',
+//                            cn : [
+////                                {
+////                                  tag:'span',
+////                                  cls: 'fc-event-time',
+////                                  html : cells.length > 1 ? '' : ev.time
+////                                },
 //                                {
 //                                  tag:'span',
-//                                  cls: 'fc-event-time',
-//                                  html : cells.length > 1 ? '' : ev.time
-//                                },
-                                {
-                                  tag:'span',
-                                  cls: 'fc-event-title',
-                                  html : String.format('{0}', ev.title)
-                                }
-
-
-                            ]
-                        },
-                        {
-                            cls: 'ui-resizable-handle ui-resizable-e',
-                            html : '&nbsp;&nbsp;&nbsp'
-                        }
-
-                    ]
-                };
-
-                if (i == 0) {
-                    cfg.cls += ' fc-event-start';
-                }
-                if ((i+1) == rows.length) {
-                    cfg.cls += ' fc-event-end';
-                }
-
-                var ctr = this.el.select('.fc-event-container',true).first();
-                var cg = ctr.createChild(cfg);
-
-                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
-                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
-
-                cg.setXY([sbox.x +2, sbox.y +(e * 20)]);    
-                cg.setWidth(ebox.right - sbox.x -2);
-
-                cg.on('mouseenter' ,this.onEventEnter, this, ev);
-                cg.on('mouseleave' ,this.onEventLeave, this, ev);
-                cg.on('click', this.onEventClick, this, ev);
-
-                ev.els.push(cg);
-
-                
-            }
-        }
+//                                  cls: 'fc-event-title',
+//                                  html : String.format('{0}', ev.title)
+//                                }
+//
+//
+//                            ]
+//                        },
+//                        {
+//                            cls: 'ui-resizable-handle ui-resizable-e',
+//                            html : '&nbsp;&nbsp;&nbsp'
+//                        }
+//
+//                    ]
+//                };
+//
+//                if (i == 0) {
+//                    cfg.cls += ' fc-event-start';
+//                }
+//                if ((i+1) == rows.length) {
+//                    cfg.cls += ' fc-event-end';
+//                }
+//
+//                var ctr = this.el.select('.fc-event-container',true).first();
+//                var cg = ctr.createChild(cfg);
+//
+//                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+//                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+//
+//                cg.setXY([sbox.x +2, sbox.y +(e * 20)]);    
+//                cg.setWidth(ebox.right - sbox.x -2);
+//
+//                cg.on('mouseenter' ,this.onEventEnter, this, ev);
+//                cg.on('mouseleave' ,this.onEventLeave, this, ev);
+//                cg.on('click', this.onEventClick, this, ev);
+//
+//                ev.els.push(cg);
+//
+//                
+//            }
+//        }
         
 //        for (var e = 0; e < this.calevents.length; e++) {
 //            
