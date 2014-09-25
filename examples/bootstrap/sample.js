@@ -55,7 +55,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                     ]
                 },
                 {
-                    xtype: 'NavSimplebar',
+                    xtype: 'NavSidebar',
                     xns: Roo.bootstrap,
                     sidebar: true,
                     items: [
