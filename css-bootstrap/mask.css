@@ -21,7 +21,11 @@
 }
 .roo-el-mask-msg:before {
    content:url('../images/ux/lightbox/loading.gif');
-
+    z-index:20000;
+    /*border: 4px double #557; */
+    background-color: #fff;
+     
+}
 .roo-el-mask-msg div
 {
     font-size: 20px;
