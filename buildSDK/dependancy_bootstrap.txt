@@ -36,6 +36,7 @@ Roo.bootstrap.Pagination
 Roo.bootstrap.PaginationItem
 Roo.bootstrap.Slider
 
+Roo.grid.ColumnModel
 Roo.LoadMask
 Roo.bootstrap.Table
 Roo.bootstrap.TableCell
