@@ -24,7 +24,7 @@ Roo.example.bootstrap = new Roo.XComponent({
             xns: Roo.bootstrap,
             items: [
                 {
-                    xtype: 'Navbar',
+                    xtype: 'NavbarSimple',
                     xns: Roo.bootstrap,
                     bar: true,
                     position: 'static-top',
@@ -38,8 +38,8 @@ Roo.example.bootstrap = new Roo.XComponent({
                             align: 'right',
                             items: [
                                 {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar,
+                                    xtype: 'NavItem',
+                                    xns: Roo.bootstrap,
                                     items: [
                                         {
                                             xtype: 'Element',
@@ -55,7 +55,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                     ]
                 },
                 {
-                    xtype: 'Navbar',
+                    xtype: 'NavbarSimple',
                     xns: Roo.bootstrap,
                     sidebar: true,
                     items: [
@@ -64,22 +64,22 @@ Roo.example.bootstrap = new Roo.XComponent({
                             xns: Roo.bootstrap,
                             items: [
                                 {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar,
+                                    xtype: 'NavItem',
+                                    xns: Roo.bootstrap,
                                     href: '#',
                                     glyphicon: 'home',
                                     html: 'Hello'
                                 },
                                 {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar,
+                                    xtype: 'NavItem',
+                                    xns: Roo.bootstrap,
                                     href: '#',
                                     glyphicon: 'stats',
                                     html: 'Charts'
                                 },
                                 {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar,
+                                    xtype: 'NavItem',
+                                    xns: Roo.bootstrap,
                                     href: '#',
                                     glyphicon: 'user',
                                     html: 'Users',
@@ -111,50 +111,50 @@ Roo.example.bootstrap = new Roo.XComponent({
                                     }
                                 },
                                 {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar,
+                                    xtype: 'NavItem',
+                                    xns: Roo.bootstrap,
                                     href: '#',
                                     glyphicon: 'edit',
                                     html: 'Forms'
                                 },
                                 {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar,
+                                    xtype: 'NavItem',
+                                    xns: Roo.bootstrap,
                                     href: '#',
                                     glyphicon: 'picture',
                                     html: 'Gallery'
                                 },
                                 {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar,
+                                    xtype: 'NavItem',
+                                    xns: Roo.bootstrap,
                                     href: '#',
                                     glyphicon: 'calendar',
                                     html: 'Calendar'
                                 },
                                 {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar,
+                                    xtype: 'NavItem',
+                                    xns: Roo.bootstrap,
                                     href: '#',
                                     glyphicon: 'th-large',
                                     html: 'Tables'
                                 },
                                 {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar,
+                                    xtype: 'NavItem',
+                                    xns: Roo.bootstrap,
                                     href: '#',
                                     glyphicon: 'flash',
                                     html: 'UI Elements'
                                 },
                                 {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar,
+                                    xtype: 'NavItem',
+                                    xns: Roo.bootstrap,
                                     href: '#',
                                     glyphicon: 'cog',
                                     html: 'My Info'
                                 },
                                 {
-                                    xtype: 'Item',
-                                    xns: Roo.bootstrap.Navbar,
+                                    xtype: 'NavItem',
+                                    xns: Roo.bootstrap,
                                     href: '#',
                                     glyphicon: 'share-alt',
                                     html: 'Extras'
@@ -1075,7 +1075,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     cls: 'ctrls',
                                                     items: [
                                                         {
-                                                            xtype: 'Navbar',
+                                                            xtype: 'NavbarSimple',
                                                             xns: Roo.bootstrap,
                                                             bar: false,
                                                             type: 'tabs',
