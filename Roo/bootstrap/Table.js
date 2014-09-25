@@ -210,7 +210,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         
         // mask should be using Roo.bootstrap.Mask...
-        
+        /*
         var mark = {
             tag: "div",
             cls:"x-dlg-mask",
@@ -218,7 +218,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: "div",
-                    style: "background-color:white;width:50%;margin:100 auto; display:none",
+                    style: "background-color:white;width:50%;margin:100 auto",
                     cn: [
                         {
                             tag: "img",
@@ -233,13 +233,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
             ]
         }
+        
+        var size = this.el.getSize();
+        
         this.maskEl = Roo.DomHelper.append(document.body, mark, true);
         
-        var size = this.parent().el.getSize();
-        
         this.maskEl.setSize(size.width, 300); // we will fix the height at the beginning...
-        
         this.maskEl.enableDisplayMode("block");
+        */
+        this.maskEl = new Roo.LoadMask(this.el, { store : this.ds });
         
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
