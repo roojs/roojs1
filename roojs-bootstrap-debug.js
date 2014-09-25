@@ -4033,7 +4033,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.parent().el.setStyle('position', 'relative');
         if (this.footer) {
             this.footer.parentId = this.id;
-            this.footer.onRender(this.el.select('tfoot tr td'), null);        
+            this.footer.onRender(this.el.select('tfoot tr td').first(), null);        
         }
         
         
