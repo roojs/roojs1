@@ -117,6 +117,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     onRender : function(ct, position) 
     {
         Roo.bootstrap.PagingToolbar.superclass.onRender.call(this, ct, position);
+        this.navgroup.parentId = this.id;
         this.navgroup.onRender(this.el, null);
         // add the buttons to the navgroup
         
