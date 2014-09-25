@@ -407,10 +407,12 @@
         </span><span class="jsdoc-comment">//var ss = this.el.getStyles('font-size', 'font-family', 'background-image', 'background-repeat');
         // this copies styles from the containing element into thsi one..
         // not sure why we need all of this..
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ss </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getStyles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'font-size'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'background-image'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'background-repeat'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">ss</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'background-attachment'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-string">'fixed'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// w3c
+        //var ss = this.el.getStyles('font-size', 'background-image', 'background-repeat');
+        
+        //var ss = this.el.getStyles( 'background-image', 'background-repeat');
+        //ss['background-attachment'] = 'fixed'; // w3c
         </span><span class="jsdoc-var">dbody.bgProperties </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'fixed'</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// ie
-        </span><span class="jsdoc-var">Roo.DomHelper.applyStyles</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dbody</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ss</span><span class="jsdoc-syntax">);
+        //Roo.DomHelper.applyStyles(dbody, ss);
         </span><span class="jsdoc-var">Roo.EventManager.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.doc</span><span class="jsdoc-syntax">, {
             </span><span class="jsdoc-comment">//'mousedown': this.onEditorEvent,
             </span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onEditorEvent</span><span class="jsdoc-syntax">,

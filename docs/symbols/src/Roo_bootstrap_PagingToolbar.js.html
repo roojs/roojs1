@@ -11,42 +11,45 @@
  
 /**
  * @class Roo.bootstrap.PagingToolbar
- * @extends Roo.bootstrap.Toolbar
+ * @extends Roo.Row
  * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
  * @constructor
  * Create a new PagingToolbar
  * @param {Object} config The config object
  */
-</span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
+</span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
 {
     </span><span class="jsdoc-comment">// old args format still supported... - xtype is prefered..
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">el.xtype</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-comment">// created from xtype...
-        </span><span class="jsdoc-var">config </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.dataSource</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.container</span><span class="jsdoc-syntax">;
-    }
+        // created from xtype...
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.dataSource</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= [];
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">config.items </span><span class="jsdoc-syntax">= [];
     }
     
-    </span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">this.cursor </span><span class="jsdoc-syntax">= 0;
-    </span><span class="jsdoc-var">this.renderButtons</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
-    </span><span class="jsdoc-var">this.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">) { 
+        </span><span class="jsdoc-var">this.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">);
+    }
+    
+    </span><span class="jsdoc-var">this.navgroup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.NavGroup</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'pagination' </span><span class="jsdoc-syntax">});
     
     </span><span class="jsdoc-comment">// supprot items array.
-   
+    
     </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">));
     },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     
+    
+    
+    
+    
 };
 
-</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Toolbar</span><span class="jsdoc-syntax">, {
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.NavSimplebar</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-comment">/**
      * @cfg {Roo.data.Store} dataSource
      * The underlying data store providing the paged data
@@ -111,56 +114,75 @@
     </span><span class="jsdoc-var">refreshText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Refresh&quot;</span><span class="jsdoc-syntax">,
 
     </span><span class="jsdoc-comment">// private
-    </span><span class="jsdoc-var">renderButtons </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar.superclass.render.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.first </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addButton</span><span class="jsdoc-syntax">({
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">) 
+    {
+        </span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.navgroup.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.navgroup.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">// add the buttons to the navgroup
+        
+        </span><span class="jsdoc-var">this.first </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.navgroup.addItem</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.firstText</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-btn-icon x-grid-page-first&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;prev&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">icon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fa fa-backward'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;first&quot;</span><span class="jsdoc-syntax">])
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;first&quot;</span><span class="jsdoc-syntax">]) }
         });
-        </span><span class="jsdoc-var">this.prev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addButton</span><span class="jsdoc-syntax">({
+        
+        </span><span class="jsdoc-var">this.prev </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">this.navgroup.addItem</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.prevText</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-btn-icon x-grid-page-prev&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;prev&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">icon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fa fa-step-backward'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;prev&quot;</span><span class="jsdoc-syntax">])
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;prev&quot;</span><span class="jsdoc-syntax">]) }
         });
-        </span><span class="jsdoc-comment">//this.addSeparator();
-        </span><span class="jsdoc-var">this.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.beforePageText</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.addDom</span><span class="jsdoc-syntax">({
-           </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;input&quot;</span><span class="jsdoc-syntax">,
-           </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;text&quot;</span><span class="jsdoc-syntax">,
-           </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;3&quot;</span><span class="jsdoc-syntax">,
-           </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;1&quot;</span><span class="jsdoc-syntax">,
-           </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-grid-page-number&quot;
-        </span><span class="jsdoc-syntax">})</span><span class="jsdoc-var">.el</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-comment">//this.addSeparator();
+        
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.navgroup.addItem</span><span class="jsdoc-syntax">( {
+            </span><span class="jsdoc-var">tagtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-paging-position'</span><span class="jsdoc-syntax">,
+            
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.beforePageText  </span><span class="jsdoc-syntax">+
+                </span><span class="jsdoc-string">'&lt;input type=&quot;text&quot; size=&quot;3&quot; value=&quot;1&quot; class=&quot;x-grid-page-number&quot;&gt;' </span><span class="jsdoc-syntax">+
+                </span><span class="jsdoc-string">'&lt;span class=&quot;x-paging-after&quot;&gt;' </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.afterPageText</span><span class="jsdoc-syntax">, 1) + </span><span class="jsdoc-string">'&lt;/span&gt;'
+         </span><span class="jsdoc-syntax">} ); </span><span class="jsdoc-comment">//?? escaped?
+        
+        </span><span class="jsdoc-var">this.field </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">field.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.field.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keydown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onPagingKeydown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.field.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;focus&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){</span><span class="jsdoc-var">this.dom.select</span><span class="jsdoc-syntax">();});
-        </span><span class="jsdoc-var">this.afterTextEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addText</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.afterPageText</span><span class="jsdoc-syntax">, 1));
-        </span><span class="jsdoc-var">this.field.setHeight</span><span class="jsdoc-syntax">(18);
-        </span><span class="jsdoc-comment">//this.addSeparator();
-        </span><span class="jsdoc-var">this.next </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addButton</span><span class="jsdoc-syntax">({
+    
+    
+        </span><span class="jsdoc-var">this.afterTextEl </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">field.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.x-paging-after'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//this.field.setHeight(18);
+        //this.addSeparator();
+        </span><span class="jsdoc-var">this.next </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.navgroup.addItem</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.nextText</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-btn-icon x-grid-page-next&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;next&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">' &lt;i class=&quot;fa fa-step-forward&quot;&gt;'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;next&quot;</span><span class="jsdoc-syntax">])
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;next&quot;</span><span class="jsdoc-syntax">]) }
         });
-        </span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addButton</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-var">this.last </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.navgroup.addItem</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.lastText</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-btn-icon x-grid-page-last&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">icon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fa fa-forward'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;next&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">disabled</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;last&quot;</span><span class="jsdoc-syntax">])
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;last&quot;</span><span class="jsdoc-syntax">]) }
         });
-        </span><span class="jsdoc-comment">//this.addSeparator();
-        </span><span class="jsdoc-var">this.loading </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.addButton</span><span class="jsdoc-syntax">({
+    </span><span class="jsdoc-comment">//this.addSeparator();
+        </span><span class="jsdoc-var">this.loading </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.navgroup.addItem</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.refreshText</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;x-btn-icon x-grid-loading&quot;</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;refresh&quot;</span><span class="jsdoc-syntax">])
+            </span><span class="jsdoc-var">icon</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fa fa-refresh'</span><span class="jsdoc-syntax">,
+            
+            </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;refresh&quot;</span><span class="jsdoc-syntax">]) }
         });
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayInfo</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.displayEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom.firstChild</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-paging-info'</span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">navel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.navgroup.addItem</span><span class="jsdoc-syntax">( { </span><span class="jsdoc-var">tagtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-paging-info' </span><span class="jsdoc-syntax">} );
+            </span><span class="jsdoc-var">this.displayEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">navel.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         }
+    
     },
 
     </span><span class="jsdoc-comment">// private
@@ -258,6 +280,9 @@
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">which</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.ds</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">which</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">&quot;first&quot;</span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-var">ds.load</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">params</span><span class="jsdoc-syntax">:{</span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">: 0, </span><span class="jsdoc-var">limit</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">}});

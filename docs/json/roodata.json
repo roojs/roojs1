@@ -8597,23 +8597,6 @@
     }
    ]
   },
-  "Roo.bootstrap.HtmlEditor.ToolbarStandard": {
-   "props": [
-    {
-     "name": "disable",
-     "type": "Object",
-     "desc": "List of elements to disable..",
-     "memberOf": ""
-    },
-    {
-     "name": "btns",
-     "type": "Array",
-     "desc": "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
-     "memberOf": ""
-    }
-   ],
-   "events": []
-  },
   "Roo.bootstrap.Img": {
    "props": [
     {
@@ -10509,6 +10492,12 @@
      "memberOf": ""
     },
     {
+     "name": "disabled",
+     "type": "Boolean",
+     "desc": "Is item disabled",
+     "memberOf": ""
+    },
+    {
      "name": "preventDefault",
      "type": "Boolean",
      "desc": "(true | false) default false",
@@ -10518,6 +10507,12 @@
      "name": "tabId",
      "type": "String",
      "desc": "the tab that this item activates.",
+     "memberOf": ""
+    },
+    {
+     "name": "tagtype",
+     "type": "String",
+     "desc": "(a|span) render as a href or span?",
      "memberOf": ""
     },
     {
@@ -10839,6 +10834,12 @@
      "memberOf": "Roo.bootstrap.NavItem"
     },
     {
+     "name": "disabled",
+     "type": "Boolean",
+     "desc": "Is item disabled",
+     "memberOf": "Roo.bootstrap.NavItem"
+    },
+    {
      "name": "preventDefault",
      "type": "Boolean",
      "desc": "(true | false) default false",
@@ -10848,6 +10849,12 @@
      "name": "tabId",
      "type": "String",
      "desc": "the tab that this item activates.",
+     "memberOf": "Roo.bootstrap.NavItem"
+    },
+    {
+     "name": "tagtype",
+     "type": "String",
+     "desc": "(a|span) render as a href or span?",
      "memberOf": "Roo.bootstrap.NavItem"
     },
     {
@@ -11298,198 +11305,6 @@
     }
    ]
   },
-  "Roo.bootstrap.Navbar.Item": {
-   "props": [
-    {
-     "name": "href",
-     "type": "String",
-     "desc": "link to",
-     "memberOf": ""
-    },
-    {
-     "name": "html",
-     "type": "String",
-     "desc": "content of button",
-     "memberOf": ""
-    },
-    {
-     "name": "badge",
-     "type": "String",
-     "desc": "text inside badge",
-     "memberOf": ""
-    },
-    {
-     "name": "glyphicon",
-     "type": "String",
-     "desc": "name of glyphicon",
-     "memberOf": ""
-    },
-    {
-     "name": "icon",
-     "type": "String",
-     "desc": "name of font awesome icon",
-     "memberOf": ""
-    },
-    {
-     "name": "active",
-     "type": "Boolean",
-     "desc": "Is item active",
-     "memberOf": ""
-    },
-    {
-     "name": "preventDefault",
-     "type": "Boolean",
-     "desc": "(true | false) default false",
-     "memberOf": ""
-    },
-    {
-     "name": "tabId",
-     "type": "String",
-     "desc": "the tab that this item activates.",
-     "memberOf": ""
-    },
-    {
-     "name": "cls",
-     "type": "String",
-     "desc": "css class",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "style",
-     "type": "String",
-     "desc": "any extra css",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "xattr",
-     "type": "Object",
-     "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "can_build_overlaid",
-     "type": "Boolean",
-     "desc": "True if element can be rebuild from a HTML page",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "dataId",
-     "type": "string",
-     "desc": "cutomer id",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "name",
-     "type": "string",
-     "desc": "Specifies name attribute",
-     "memberOf": "Roo.bootstrap.Component"
-    },
-    {
-     "name": "disableClass",
-     "type": "String",
-     "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
-     "memberOf": "Roo.Component"
-    },
-    {
-     "name": "allowDomMove",
-     "type": "Boolean",
-     "desc": "Whether the component can move the Dom node when rendering (defaults to true).",
-     "memberOf": "Roo.Component"
-    },
-    {
-     "name": "hideMode",
-     "type": "String",
-     "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
-    },
-    {
-     "name": "actionMode",
-     "type": "String",
-     "desc": "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
-     "memberOf": "Roo.Component"
-    },
-    {
-     "name": "listeners",
-     "type": "Object",
-     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
-     "memberOf": "Roo.util.Observable"
-    }
-   ],
-   "events": [
-    {
-     "name": "beforedestroy",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires before the component is destroyed. Return false to stop the destroy."
-    },
-    {
-     "name": "beforehide",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires before the component is hidden. Return false to stop the hide."
-    },
-    {
-     "name": "beforerender",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires before the component is rendered. Return false to stop the render."
-    },
-    {
-     "name": "beforeshow",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires before the component is shown.  Return false to stop the show."
-    },
-    {
-     "name": "changed",
-     "sig": "function (_self, state)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when the active item active state changes"
-    },
-    {
-     "name": "click",
-     "sig": "function (e)\n{\n\n}",
-     "type": "function",
-     "desc": "The raw click event for the entire grid."
-    },
-    {
-     "name": "destroy",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires after the component is destroyed."
-    },
-    {
-     "name": "disable",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires after the component is disabled."
-    },
-    {
-     "name": "enable",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires after the component is enabled."
-    },
-    {
-     "name": "hide",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires after the component is hidden."
-    },
-    {
-     "name": "render",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires after the component is rendered."
-    },
-    {
-     "name": "show",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires after the component is shown."
-    }
-   ]
-  },
   "Roo.bootstrap.Pagination": {
    "props": [
     {
@@ -11795,6 +11610,47 @@
      "desc": "Fires after the component is shown."
     }
    ]
+  },
+  "Roo.bootstrap.PagingToolbar": {
+   "props": [
+    {
+     "name": "dataSource",
+     "type": "Roo.data.Store",
+     "desc": "The underlying data store providing the paged data",
+     "memberOf": ""
+    },
+    {
+     "name": "container",
+     "type": "String/HTMLElement/Element",
+     "desc": "container The id or element that will contain the toolbar",
+     "memberOf": ""
+    },
+    {
+     "name": "displayInfo",
+     "type": "Boolean",
+     "desc": "True to display the displayMsg (defaults to false)",
+     "memberOf": ""
+    },
+    {
+     "name": "pageSize",
+     "type": "Number",
+     "desc": "The number of records to display per page (defaults to 20)",
+     "memberOf": ""
+    },
+    {
+     "name": "displayMsg",
+     "type": "String",
+     "desc": "The paging status message to display (defaults to \"Displaying {start} - {end} of {total}\")",
+     "memberOf": ""
+    },
+    {
+     "name": "emptyMsg",
+     "type": "String",
+     "desc": "The message to display when no records are found (defaults to \"No data to display\")",
+     "memberOf": ""
+    }
+   ],
+   "events": []
   },
   "Roo.bootstrap.Popover": {
    "props": [
@@ -13212,6 +13068,12 @@
      "name": "loadMask",
      "type": "Boolean",
      "desc": "(true|false) default false",
+     "memberOf": ""
+    },
+    {
+     "name": "footer",
+     "type": "Roo.bootstrap.PagingToolbar",
+     "desc": "a paging toolbar",
      "memberOf": ""
     },
     {
@@ -15202,6 +15064,27 @@
      "desc": "Fires after the field has been validated with no errors."
     }
    ]
+  },
+  "Roo.bootstrap.htmleditor": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.htmleditor.ToolbarStandard": {
+   "props": [
+    {
+     "name": "disable",
+     "type": "Object",
+     "desc": "List of elements to disable..",
+     "memberOf": ""
+    },
+    {
+     "name": "btns",
+     "type": "Array",
+     "desc": "List of additional buttons.\n\n\nNEEDS Extra CSS? \n.x-html-editor-tb .x-edit-none .x-btn-text { background: none; }",
+     "memberOf": ""
+    }
+   ],
+   "events": []
   },
   "Roo.data": {
    "props": [],
