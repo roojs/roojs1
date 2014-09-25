@@ -211,7 +211,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     cn: [
                         {
                             tag: "img",
-                            src: rootURL + '/roojs1/images/ux/lightbox/loading.gif'
+                            src: Roo.rootURL + '/images/ux/lightbox/loading.gif'
                         },
                         {
                             tag: "span",
