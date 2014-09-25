@@ -133,7 +133,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             tooltip: this.prevText,
             cls: "prev",
             icon : 'fa fa-step-backward',
-            html : this.prevText,
+        
             disabled: true,
             listeners : { click :  this.onClick.createDelegate(this, ["prev"]) }
         });
