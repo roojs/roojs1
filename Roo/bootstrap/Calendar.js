@@ -663,7 +663,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         
         Roo.each(this.cells.elements, function(c){
-            c.rows = [];
+            c.row = 0;
             c.more = [];
         });
         
@@ -685,8 +685,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     {   
         // first make sure there is enough space..
         this.cells.each(function(c) {
-//            c.rows = [];
-//            c.more = [];
+            c.row = 0;
+            c.more = [];
         });
         
         for (var e = 0; e < this.calevents.length; e++) {
