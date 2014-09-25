@@ -65,7 +65,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cls: 'nav-item',
             cn : [
                 {
-                    tag: this.tagtype,,
+                    tag: this.tagtype,
                     href : this.href || "#",
                     html: this.html || ''
                 }
@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         // glyphicon and icon go before content..
         if (this.glyphicon || this.icon) {
              if (this.icon) {
-                cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html + '</span>'
+                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
             } else {
                 cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span>'  + cfg.cn[0].html;
             }
