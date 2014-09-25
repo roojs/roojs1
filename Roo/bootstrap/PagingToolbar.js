@@ -202,8 +202,10 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     // private
     onLoad : function(ds, r, o){
        this.cursor = o.params ? o.params.start : 0;
-       var d = this.getPageData(), ap = d.activePage, ps = d.pages;
-
+       var d = this.getPageData(),
+            ap = d.activePage,
+            ps = d.pages;
+        
        this.afterTextEl.dom.innerHTML = String.format(this.afterPageText, d.pages);
        this.field.dom.value = ap;
        this.first.setDisabled(ap == 1);
