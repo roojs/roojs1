@@ -31,8 +31,9 @@ Roo.bootstrap.PagingToolbar = function(config)
     Roo.bootstrap.PagingToolbar.superclass.constructor.call(this, config);
     this.ds = ds;
     this.cursor = 0;
-     
-    this.bind(ds);
+    if (ds) { 
+        this.bind(ds);
+    }
     
     this.navgroup = new Roo.bootstrap.NavGroup({});
     
