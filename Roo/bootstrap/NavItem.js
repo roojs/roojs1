@@ -124,7 +124,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
-        Roo.log("onclick?");
+         
         if(this.preventDefault){
             e.preventDefault();
         }
