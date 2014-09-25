@@ -777,24 +777,15 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var _this = this;
         
         this.cells.each(function(c) {
-            if(c.inhertance > 4){
-                c.more = c.events;
-                c.events = [];
+            
+            if(c.row < 5){
                 return;
             }
-            
-            var totalRow = c.inhertance + c.row;
-            
-            if(totalRow < 5){
-                return;
-            }
-            
-            var moreRow = 4 - c.inhertance;
             
             var ev = c.events;
             
-            c.events = ev.slice(0, moreRow);
-            c.more = ev.slice(moreRow);
+            c.events = ev.slice(0, 4);
+            c.more = ev.slice(4);
             
             c.row = c.events.length + 1;
             
