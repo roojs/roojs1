@@ -34,8 +34,10 @@ Roo.bootstrap.PagingToolbar = function(config)
      
     this.bind(ds);
     
+    this.navgroup = new Roo.bootstrap.NavGroup({});
+    
     // supprot items array.
-   
+    
     Roo.each(items, function(e) {
         this.add(Roo.factory(e));
     },this);
