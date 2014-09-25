@@ -35,6 +35,8 @@ Roo.bootstrap.Element
 Roo.bootstrap.Pagination
 Roo.bootstrap.PaginationItem
 Roo.bootstrap.Slider
+
+Roo.LoadMask
 Roo.bootstrap.Table
 Roo.bootstrap.TableCell
 Roo.bootstrap.TableRow
@@ -83,7 +85,6 @@ Roo.HtmlEditorCore
 Roo.bootstrap.HtmlEditor
 Roo.bootstrap.htmleditor.ToolbarStandard
 
-Roo.grid.ColumnModel
 Roo.bootstrap.Table.AbstractSelectionModel
 Roo.bootstrap.Table.RowSelectionModel
 
