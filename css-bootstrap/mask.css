@@ -16,7 +16,7 @@
 {
     position: absolute;
     z-index:20000;
-    border: 4px double #557;
+    /*border: 4px double #557; */
     background-color: #fff;
 }
 
