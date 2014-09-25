@@ -137,9 +137,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         };
         
         if (['tabs','pills'].indexOf(this.parent().type)!==-1) {
-	     if (typeof(this.parent().setActiveItem) !== 'undefined') {
-		this.parent().setActiveItem(this);
-	    }
+            if (typeof(this.parent().setActiveItem) !== 'undefined') {
+                this.parent().setActiveItem(this);
+            }
 	    
 	    
 	    
