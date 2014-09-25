@@ -45,7 +45,7 @@ Roo.bootstrap.Table = function(config){
         this.sm.xmodule = this.xmodule || false;
     }
     if (this.cm && typeof(this.cm.config) == 'undefined') {
-        this.colModel = Roo.factory(this.cm, Roo.grid);
+        this.colModel = new Roo.grid.ColumnModel(this.cm);
         this.cm = this.colModel;
         this.cm.xmodule = this.xmodule || false;
     }
