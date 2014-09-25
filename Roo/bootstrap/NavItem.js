@@ -110,7 +110,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     initEvents: function() {
        // Roo.log('init events?');
        // Roo.log(this.el.dom);
-       if (typeof (this.menu) != 'undefined') {
+        if (typeof (this.menu) != 'undefined') {
             this.menu.parentType = this.xtype;
             this.menu.triggerEl = this.el;
             this.addxtype(Roo.apply({}, this.menu));
