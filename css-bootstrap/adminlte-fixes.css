@@ -2,7 +2,7 @@
     background-color: #428bca;
     
 }
-.skin-blue .navbar .pagination>li {
+ .navbar .pagination>li {
     min-height:34px;
 }
 .skin-blue .navbar .pagination>li.disabled >a{
