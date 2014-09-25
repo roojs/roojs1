@@ -165,7 +165,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
      // this should not be here...
     setDisabled : function(state, fire)
     {
-        this.active = state;
+        this.disabled = state;
         if (!state ) {
             this.el.removeClass('active');
         } else if (!this.el.hasClass('active')) {
