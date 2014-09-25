@@ -242,7 +242,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.maskEl.setSize(size.width, 300); // we will fix the height at the beginning...
         this.maskEl.enableDisplayMode("block");
         */
-        this.maskEl = new Roo.LoadMask(this.el, { store : this.ds });
+        this.maskEl = new Roo.LoadMask(this.el, { store : this.ds, msgCls: 'roo-el-mask-msg' });
         
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
