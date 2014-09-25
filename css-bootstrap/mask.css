@@ -19,6 +19,8 @@
     /*border: 4px double #557; */
     background-color: #fff;
 }
+.roo-el-mask-msg:before {
+   content:url('../images/ux/lightbox/loading.gif');
 
 .roo-el-mask-msg div
 {
