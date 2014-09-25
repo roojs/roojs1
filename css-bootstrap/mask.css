@@ -18,15 +18,12 @@
     z-index:20000;
     /*border: 4px double #557; */
     background-color: #fff;
+    display: list-item;
+    margin-left: 1.3em;
+    list-style-image: url('../images/ux/lightbox/loading.gif');
+    
 }
-.roo-el-mask-msg:before {
-   content:url('../images/ux/lightbox/loading.gif');
-    z-index:20000;
-    /*border: 4px double #557; */
-    background-color: #fff;
-    width:50px;
-    height:50px;
-}
+
 .roo-el-mask-msg div
 {
     font-size: 20px;
