@@ -784,20 +784,19 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             
             var ev = c.events;
             
-            var r = 0;
+            var r = 4;
             if(c.row != c.events.length){
-                r = 4 - (c.row - c.events.length);
+                r = 4 - (4 - (c.row - c.events.length));
             }
-            
             
             c.events = ev.slice(0, r);
             c.more = ev.slice(r);
             
-            c.row = r + c.events.length + 1;
-            
             if(c.more.length && c.more.length == 1){
                 c.events.push(c.more.pop());
             }
+            
+            c.row = (c.row - ev.length) + c.events.length + ((c.more.length) ? 1 : 0);
             
         });
             
