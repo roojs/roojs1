@@ -443,7 +443,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             cell.row = 0;
             cell.events = [];
             cell.more = [];
-            cell.inhertance = 0;
             //Roo.log('set Cell Class');
             cell.title = "";
             var t = d.getTime();
