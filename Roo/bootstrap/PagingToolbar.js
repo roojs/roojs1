@@ -116,17 +116,17 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.NavSimplebar, {
     onRender : function(ct, position) 
     {
         Roo.bootstrap.PagingToolbar.superclass.onRender.call(this, ct, position);
-        
+        this.navgroup.onRender(this.el, null);
         // add the buttons to the navgroup
         
-    this.first = this.addItem({
-        tooltip: this.firstText,
-        cls: "prev",
-        html : '<i class="fa fa-backward"></i>',
-        disabled: true,
-        handler: this.onClick.createDelegate(this, ["first"])
-    });
-    
+        this.first = this.navgroup.addItem({
+            tooltip: this.firstText,
+            cls: "prev",
+            html : '<i class="fa fa-backward"></i>',
+            disabled: true,
+            handler: this.onClick.createDelegate(this, ["first"])
+        });
+        
     this.prev = this.addButton({
         tooltip: this.prevText,
         cls: "prev",
