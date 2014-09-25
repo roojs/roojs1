@@ -203,6 +203,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.parent().el.setStyle('position', 'relative');
         
+        this.onRenderFooter()
+        
+        
+        
         // mask should be using Roo.bootstrap.Mask...
         
         var mark = {
@@ -318,7 +322,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var footer = {
             tag: 'tfoot',
-            cn : []
+            cn : [
+                {
+                    tag: 'tr',
+                    cn : [
+                        {
+                            tag : 'td',
+                            colspan : 1
+                        }
+                    ]
+                }
+            ]
         };
         
         return footer;
