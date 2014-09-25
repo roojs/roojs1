@@ -775,7 +775,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 //        }
         
         var _this = this;
-        
+        return;
         this.cells.each(function(c) {
             
             if(c.row < 5){
