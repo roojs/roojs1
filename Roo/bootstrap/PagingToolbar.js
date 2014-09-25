@@ -142,30 +142,30 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.NavSimplebar, {
         this.field.on("focus", function(){this.dom.select();});
     
     
-    this.afterTextEl = this.addText(String.format(this.afterPageText, 1));
-    //this.field.setHeight(18);
+        this.afterTextEl =  this.navgroup.addItem( { html : String.format(this.afterPageText, 1) } );
+        //this.field.setHeight(18);
+        //this.addSeparator();
+        this.next = this.navgroup.addItem({
+            tooltip: this.nextText,
+            cls: "next",
+            html : this.nextText + '<i class="fa fa-step-forward"></i>',
+            disabled: true,
+            handler: this.onClick.createDelegate(this, ["next"])
+        });
+        this.last = this.navgroup.addItem({
+            tooltip: this.lastText,
+            html : '<i class="fa fa-forward"></i>',
+            cls: "next",
+            disabled: true,
+            handler: this.onClick.createDelegate(this, ["last"])
+        });
     //this.addSeparator();
-    this.next = this.addButton({
-        tooltip: this.nextText,
-        cls: "next",
-        html : this.nextText + '<i class="fa fa-step-forward"></i>',
-        disabled: true,
-        handler: this.onClick.createDelegate(this, ["next"])
-    });
-    this.last = this.addButton({
-        tooltip: this.lastText,
-        html : '<i class="fa fa-forward"></i>',
-        cls: "next",
-        disabled: true,
-        handler: this.onClick.createDelegate(this, ["last"])
-    });
-    //this.addSeparator();
-    this.loading = this.addButton({
-        tooltip: this.refreshText,
-        html : '<i class="fa fa-reload"></i>',
-        cls: "",
-        handler: this.onClick.createDelegate(this, ["refresh"])
-    });
+        this.loading = this.navgroup.addItem({
+            tooltip: this.refreshText,
+            html : '<i class="fa fa-reload"></i>',
+            cls: "",
+            handler: this.onClick.createDelegate(this, ["refresh"])
+        });
 
     if(this.displayInfo){
         this.displayEl = Roo.fly(this.el.dom.firstChild).createChild({cls:'x-paging-info'});
