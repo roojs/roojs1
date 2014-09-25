@@ -21,7 +21,7 @@ Roo.bootstrap.PagingToolbar = function(config)
 {
     // old args format still supported... - xtype is prefered..
         // created from xtype...
-    var ds = el.dataSource;
+    var ds = config.dataSource;
     var items = [];
     if (config.items) {
         items = config.items;
@@ -31,18 +31,25 @@ Roo.bootstrap.PagingToolbar = function(config)
     Roo.bootstrap.PagingToolbar.superclass.constructor.call(this, config);
     this.ds = ds;
     this.cursor = 0;
-     
-    this.bind(ds);
+    if (ds) { 
+        this.bind(ds);
+    }
+    
+    this.navgroup = new Roo.bootstrap.NavGroup({ cls: 'pagination' });
     
     // supprot items array.
-   
+    
     Roo.each(items, function(e) {
         this.add(Roo.factory(e));
     },this);
     
+    
+    
+    
+    
 };
 
-Roo.extend(Roo.bootstrap.PagingToolbar, Roo.Row, {
+Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     /**
      * @cfg {Roo.data.Store} dataSource
      * The underlying data store providing the paged data
@@ -107,65 +114,75 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.Row, {
     refreshText : "Refresh",
 
     // private
-    renderButtons : function(el)
+    onRender : function(ct, position) 
     {
-        Roo.bootstrap.PagingToolbar.superclass.render.call(this, el);
+        Roo.bootstrap.PagingToolbar.superclass.onRender.call(this, ct, position);
+        this.navgroup.parentId = this.id;
+        this.navgroup.onRender(this.el, null);
+        // add the buttons to the navgroup
         
-        this.first = this.addButton({
+        this.first = this.navgroup.addItem({
             tooltip: this.firstText,
             cls: "prev",
-            html : '<i class="fa fa-backward"></i>',
+            icon : 'fa fa-backward',
             disabled: true,
-            handler: this.onClick.createDelegate(this, ["first"])
+            listeners : { click : this.onClick.createDelegate(this, ["first"]) }
         });
-        this.prev = this.addButton({
+        
+        this.prev =  this.navgroup.addItem({
             tooltip: this.prevText,
             cls: "prev",
-            html : '<i class="fa fa-step-backward"></i>' + this.prevText,
+            icon : 'fa fa-step-backward',
             disabled: true,
-            handler: this.onClick.createDelegate(this, ["prev"])
+            listeners : { click :  this.onClick.createDelegate(this, ["prev"]) }
         });
-        //this.addSeparator();
-        this.add(this.beforePageText);
-        this.field = Roo.get(this.addDom({
-           tag: "input",
-           type: "text",
-           size: "3",
-           value: "1",
-           cls: "x-grid-page-number"
-        }).el);
+    //this.addSeparator();
+        
+        
+        var field = this.navgroup.addItem( {
+            tagtype : 'span',
+            cls : 'x-paging-position',
+            
+            html : this.beforePageText  +
+                '<input type="text" size="3" value="1" class="x-grid-page-number">' +
+                '<span class="x-paging-after">' +  String.format(this.afterPageText, 1) + '</span>'
+         } ); //?? escaped?
+        
+        this.field = field.el.select('input', true).first();
         this.field.on("keydown", this.onPagingKeydown, this);
         this.field.on("focus", function(){this.dom.select();});
-        
-        
-        this.afterTextEl = this.addText(String.format(this.afterPageText, 1));
+    
+    
+        this.afterTextEl =  field.el.select('.x-paging-after').first();
         //this.field.setHeight(18);
         //this.addSeparator();
-        this.next = this.addButton({
+        this.next = this.navgroup.addItem({
             tooltip: this.nextText,
             cls: "next",
-            html : this.nextText + '<i class="fa fa-step-forward"></i>',
+            html : ' <i class="fa fa-step-forward">',
             disabled: true,
-            handler: this.onClick.createDelegate(this, ["next"])
+            listeners : { click :  this.onClick.createDelegate(this, ["next"]) }
         });
-        this.last = this.addButton({
+        this.last = this.navgroup.addItem({
             tooltip: this.lastText,
-            html : '<i class="fa fa-forward"></i>',
+            icon : 'fa fa-forward',
             cls: "next",
             disabled: true,
-            handler: this.onClick.createDelegate(this, ["last"])
+            listeners : { click :  this.onClick.createDelegate(this, ["last"]) }
         });
-        //this.addSeparator();
-        this.loading = this.addButton({
+    //this.addSeparator();
+        this.loading = this.navgroup.addItem({
             tooltip: this.refreshText,
-            html : '<i class="fa fa-reload"></i>',
-            cls: "",
-            handler: this.onClick.createDelegate(this, ["refresh"])
+            icon: 'fa fa-refresh',
+            
+            listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
 
         if(this.displayInfo){
-            this.displayEl = Roo.fly(this.el.dom.firstChild).createChild({cls:'x-paging-info'});
+            var navel = this.navgroup.addItem( { tagtype : 'span', html : '', cls : 'x-paging-info' } );
+            this.displayEl = navel.el.select('a',true).first();
         }
+    
     },
 
     // private
@@ -263,6 +280,9 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.Row, {
     // private
     onClick : function(which){
         var ds = this.ds;
+        if (!ds) {
+            return;
+        }
         switch(which){
             case "first":
                 ds.load({params:{start: 0, limit: this.pageSize}});

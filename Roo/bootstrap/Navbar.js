@@ -80,7 +80,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     unmask : function()
     {
         this.maskEl.hide();
-    }
+    } 
+    
     
     
     

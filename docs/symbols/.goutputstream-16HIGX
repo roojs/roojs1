@@ -1,0 +1,608 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=undefined" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		
+		<title>JsDoc Reference - Function</title>
+		
+		
+	<link rel="stylesheet" type="text/css" href="../../css/roojs.css" />		
+	<link rel="stylesheet" type="text/css" href="../default.css" />
+	
+	
+	<script type="text/javascript" src="../page.js">
+	
+	</script>
+	 
+		
+	</head>
+
+	<body onload="RooDocsPage.onload();">
+	 
+	
+<div class="body-wrap">
+
+    <!-- ============================== links to methods. ================================= -->	
+
+    <div class="top-tools">
+    <!--
+        <a class="inner-link" href="#Function-props"><img src="resources/s.gif" class="item-icon icon-prop">Properties</a>
+        <a class="inner-link" href="#Function-methods"><img src="resources/s.gif" class="item-icon icon-method">Methods</a>
+        <a class="inner-link" href="#Function-events"><img src="resources/s.gif" class="item-icon icon-event">Events</a>
+        <a class="inner-link" href="#Function-configs"><img src="resources/s.gif" class="item-icon icon-config">Config Options</a>
+        <a class="bookmark" href="NEED_TO_CREATE_DIRECT_LINK_HREF"><img src="resources/s.gif" class="item-icon icon-fav">Direct Link</a>
+	-->
+    </div>
+
+    
+<!-- ============================== inheritance Block. ================================= -->	
+	
+<!-- ============================== class title / details ============================ -->
+    
+    
+    <h1 class="classTitle">
+				
+				Built-In Class Function
+			</h1>
+			
+    <table cellspacing="0" class="class-summary-table">
+	
+        <tr><td class="label">Defined In:</td><td class="hd-info">
+			
+					<a href="./src/Function.js.html">Function.js</a>.
+			
+	</td></tr>
+        <tr><td class="label">Class:</td><td class="hd-info">Function</td></tr>
+	
+	
+	
+	
+    </table>
+
+    
+<!-- ============================== class summary ========================== -->			
+    <div class="description">
+	These functions are available on every Function object (any JavaScript function).
+    </div>
+
+	
+<!-- ============================== Class comment block... ========================== -->					
+
+<div class="comments">
+	<b>Class Comments / Notes</B> =>  
+	<u onclick="parent.CommentDialog.showCommentId = 'Function';">[Add Your comment/notes about this class]</u>
+	<br/>
+	<iframe frameborder="0"  id="comments-" style="border: none;width:100%;" 
+		src="/blog.php/GtkDjsComments/Function.html"></iframe>
+</div>
+	
+
+		
+<!-- ============================== config options ========================== -->						
+		 
+    
+    
+		
+    <div class="hr"></div>
+    <a id="Function-configs"></a>
+		
+    
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Config Options - Has None</caption>
+     </table>
+    
+    
+     
+    		
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- ============================== public properties ==================== -->	
+  
+  
+  
+    <a id="Function-props"></a>      
+    
+    
+
+    
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Public Properties - Has None</caption>
+     </table>
+    
+    
+     
+    
+  <!-- ============================== methods summary / details ======================== -->
+  
+  
+  <a id="Function-methods"></a>
+	<!-- constructor?? -->
+  	
+	<!-- static's first 
+	
+	
+	-->
+	
+	<!-- then dynamics first -->
+	
+  
+  
+    
+    
+    
+      <table cellspacing="0" class="member-table">
+      <caption>Public Methods</caption>
+        <tr>
+            <th class="sig-header" colspan="2">Method</th>            
+            <th class="msource-header">Defined By</th>
+
+        </tr>
+        
+	
+	
+	 
+	
+        
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Function-method-createCallback"   name=".createCallback"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">createCallback</b>
+				
+				 () 
+			
+				
+					 : 
+					
+						
+						<a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Creates a callback that passes arguments[0], arguments[1], arguments[2], .</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Creates a callback that passes arguments[0], arguments[1], arguments[2], ...<br/>Call directly on any function. Example: <code>myFunction.createCallback(myarg, myarg2)</code><br/>Will create a function that is bound to those 2 args.
+		    
+				
+			
+			
+			
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  The new function</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Function
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Function-method-createDelegate"   name=".createDelegate"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">createDelegate</b>
+				
+				 (<a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>obj</i></B>, <a href="./Array.html#constructor" roo:cls="Array.html#constructor">Array</a> <B><i>args</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>/Number <B><i>appendArgs</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Creates a delegate (callback) that sets the scope to obj.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Creates a delegate (callback) that sets the scope to obj.<br/>Call directly on any function. Example: <code>this.myFunction.createDelegate(this)</code><br/>Will create a function that is automatically scoped to this.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>obj</b>
+						
+					</dt>
+					<dd>(optional) The object for which the scope is set</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Array.html#constructor" roo:cls="Array.html#constructor">Array</a></span>  <b>args</b>
+						
+					</dt>
+					<dd>(optional) Overrides arguments for the call. (Defaults to the arguments passed by the caller)</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>/Number</span>  <b>appendArgs</b>
+						
+					</dt>
+					<dd>(optional) if True args are appended to call args instead of overriding,<br/>                                            if a number the args are inserted at the specified position</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  The new function</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Function
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Function-method-createInterceptor"   name=".createInterceptor"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">createInterceptor</b>
+				
+				 (<a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>fcn</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Creates an interceptor function.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Creates an interceptor function. The passed fcn is called before the original one. If it returns false, the original one is not called.<br/>The resulting function returns the results of the original function.<br/>The passed fcn is called with the parameters of the original function.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>fcn</b>
+						
+					</dt>
+					<dd>The function to call before the original</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope of the passed fcn (Defaults to scope of original function or window)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  The new function</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Function
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt1 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Function-method-createSequence"   name=".createSequence"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">createSequence</b>
+				
+				 (<a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a> <B><i>fcn</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>scope</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Create a combined function call sequence of the original function + the passed function.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Create a combined function call sequence of the original function + the passed function.<br/>The resulting function returns the results of the original function.<br/>The passed fcn is called with the parameters of the original function
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  <b>fcn</b>
+						
+					</dt>
+					<dd>The function to sequence</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>scope</b>
+						
+					</dt>
+					<dd>(optional) The scope of the passed fcn (Defaults to scope of original function or window)</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Function.html#constructor" roo:cls="Function.html#constructor">Function</a></span>  The new function</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Function
+		&nbsp;
+            </td>
+        </tr>
+	
+	  
+          <tr class="method-row config-row-alt0 expandable notInherited">
+            <td class="micon"><a class="exi" href="#expand">&nbsp;</a></td>
+	   
+	   
+            <td class="sig">
+                <a id="Function-method-defer"   name=".defer"></a>
+		<div class="fixedFont">
+			<span class="attributes"></span><b class="itemname">defer</b>
+				
+				 (<a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a> <B><i>millis</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a> <B><i>obj</i></B>, <a href="./Array.html#constructor" roo:cls="Array.html#constructor">Array</a> <B><i>args</i></B>, <a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>/Number <B><i>appendArgs</i></B>) 
+			
+				
+					 : 
+					
+						
+						<a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a>
+					
+					
+					
+				
+			
+		</div>
+                <div class="mdesc">
+		
+                   <div class="short">Calls this function after the number of millseconds specified.</div> 
+		 
+		 
+		 
+                    <div class="long">
+			
+				Calls this function after the number of millseconds specified.
+		    
+				
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Parameters:</dt>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span>  <b>millis</b>
+						
+					</dt>
+					<dd>The number of milliseconds for the setTimeout call (if 0 the function is executed immediately)</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Object">Object</a></span>  <b>obj</b>
+						
+					</dt>
+					<dd>(optional) The object for which the scope is set</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="./Array.html#constructor" roo:cls="Array.html#constructor">Array</a></span>  <b>args</b>
+						
+					</dt>
+					<dd>(optional) Overrides arguments for the call. (Defaults to the arguments passed by the caller)</dd>
+				
+					<dt>
+						<span class="fixedFont"><a href="http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Reference:Global_Objects:Boolean">Boolean</a>/Number</span>  <b>appendArgs</b>
+						
+					</dt>
+					<dd>(optional) if True args are appended to call args instead of overriding,<br/>                                            if a number the args are inserted at the specified position</dd>
+				
+				</dl>
+			
+			
+			
+			
+			
+				<dl class="detailList">
+				<dt class="heading">Returns:</dt>
+				
+					<dd><span class="fixedFont"><a href="./Number.html#constructor" roo:cls="Number.html#constructor">Number</a></span>  The timeout id that can be used with clearTimeout</dd>
+				
+				</dl>
+			
+			
+			
+
+		    
+		    
+		     
+                    </div>                    
+                </div>
+
+            </td>
+            <td class="msource">
+		
+			Function
+		&nbsp;
+            </td>
+        </tr>
+	
+	                                               
+    </table>
+
+  
+  <!-- ============================== events summary / details ======================== -->
+  
+  
+  <a id="Function-events"></a>
+    
+  
+  	
+   
+    
+     <table cellspacing="0" class="member-table">
+      <caption class="Empty">Events - Has None</caption>
+     </table>
+    
+    
+  
+    
+    
+  
+  
+  
+ 
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://www.akbkhome.com" target="_blankt">Introspection Doc Generator</a>  on Wed Jun 04 2014 17:47:04 GMT+0800 (HKT)
+			Based on 
+			<a href="http://www.jsdoctoolkit.org/" target="_blank">JsDoc Toolkit</a>  
+		</div>
+	</body>
+</html>

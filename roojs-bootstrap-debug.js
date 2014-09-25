@@ -2823,7 +2823,8 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
     unmask : function()
     {
         this.maskEl.hide();
-    }
+    } 
+    
     
     
     
@@ -3234,11 +3235,19 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         
     },
     
+    addItem : function(cfg)
+    {
+        var cn = new Roo.bootstrap.NavItem(cfg);
+        this.register(cn);
+        cn.parentId = this.id;
+        cn.onRender(this.el, null);
+        return cn;
+    },
     
     register : function(item)
     {
-	this.navItems.push( item);
-	item.navId = this.navId;
+        this.navItems.push( item);
+        item.navId = this.navId;
     
     },
     getNavItem: function(tabId)
@@ -3254,6 +3263,10 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         });
         return ret;
     }
+    
+    
+    
+    
 });
 
  
@@ -3282,222 +3295,6 @@ Roo.apply(Roo.bootstrap.NavGroup, {
  */
 
 /**
- * @class Roo.bootstrap.Navbar.Item
- * @extends Roo.bootstrap.Component
- * Bootstrap Navbar.Button class
- * @cfg {String} href  link to
- * @cfg {String} html content of button
- * @cfg {String} badge text inside badge
- * @cfg {String} glyphicon name of glyphicon
- * @cfg {String} icon name of font awesome icon
- * @cfg {Boolean} active Is item active
- * @cfg {Boolean} preventDefault (true | false) default false
- * @cfg {String} tabId the tab that this item activates.
-  
- * @constructor
- * Create a new Navbar Button
- * @param {Object} config The config object
- */
-Roo.bootstrap.Navbar.Item = function(config){
-    Roo.bootstrap.Navbar.Item.superclass.constructor.call(this, config);
-    this.addEvents({
-        // raw events
-        /**
-         * @event click
-         * The raw click event for the entire grid.
-         * @param {Roo.EventObject} e
-         */
-        "click" : true,
-	 /**
-	    * @event changed
-	    * Fires when the active item active state changes
-	    * @param {Roo.bootstrap.Navbar.Item} this
-	    * @param {boolean} state the new state
-	     
-         */
-        'changed': true
-    });
-   
-};
-
-Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
-    
-    href: false,
-    html: '',
-    badge: '',
-    icon: false,
-    glyphicon: false,
-    active: false,
-    preventDefault : false,
-    tabId : false,
-    
-    getAutoCreate : function(){
-        
-        var cfg = Roo.apply({}, Roo.bootstrap.Navbar.Item.superclass.getAutoCreate.call(this));
-	
-        if (this.parent().parent().sidebar === true) {
-            cfg = {
-                tag: 'li',
-                cls: '',
-                cn: [
-                    {
-                    tag: 'p',
-                    cls: ''
-                    }
-                ]
-            }
-            
-            if (this.html) {
-                cfg.cn[0].html = this.html;
-            }
-            
-            if (this.active) {
-                this.cls += ' active';
-            }
-            
-            if (this.menu) {
-                cfg.cn[0].cls += ' dropdown-toggle';
-                cfg.cn[0].html = (cfg.cn[0].html || this.html) + '<span class="glyphicon glyphicon-chevron-down"></span>';
-            }
-            
-            if (this.href) {
-                cfg.cn[0].tag = 'a',
-                cfg.cn[0].href = this.href;
-            }
-            
-            if (this.glyphicon) {
-                cfg.cn[0].html = '<i class="glyphicon glyphicon-'+this.glyphicon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
-            }
-                
-            if (this.icon) {
-                cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
-            }
-            
-            return cfg;
-        }
-	
-        cfg = {
-            tag: 'li',
-                cls: 'nav-item'
-        }
-            
-        if (this.active) {
-            cfg.cls = typeof(cfg.cls) == 'undefined' ? 'active' : cfg.cls + ' active';
-        }
-            
-        cfg.cn = [
-            {
-                tag: 'p',
-                html: 'Text'
-            }
-        ];
-        
-        if (this.glyphicon) {
-            if(cfg.html){cfg.html = ' ' + this.html};
-            cfg.cn=[
-                {
-                    tag: 'span',
-                    cls: 'glyphicon glyphicon-' + this.glyphicon
-                }
-            ];
-        }
-        
-        cfg.cn[0].html = this.html || cfg.cn[0].html ;
-        
-        if (this.menu) {
-            cfg.cn[0].tag='a';
-            cfg.cn[0].href='#';
-            cfg.cn[0].html += " <span class='caret'></span>";
-        //}else if (!this.href) {
-        //    cfg.cn[0].tag='p';
-        //    cfg.cn[0].cls='navbar-text';
-        } else {
-            cfg.cn[0].tag='a';
-            cfg.cn[0].href=this.href||'#';
-            cfg.cn[0].html=this.html;
-        }
-        
-        if (this.badge !== '') {
-            
-            cfg.cn[0].cn=[
-            cfg.cn[0].html + ' ',
-            {
-                tag: 'span',
-                cls: 'badge',
-                html: this.badge
-            }
-            ];
-            cfg.cn[0].html=''
-        }
-	 
-        if (this.icon) {
-            cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html || this.html + '</span>'
-        }
-        
-        return cfg;
-    },
-    initEvents: function() {
-       // Roo.log('init events?');
-       // Roo.log(this.el.dom);
-        this.el.select('a',true).on('click', this.onClick, this);
-        // at this point parent should be available..
-        this.parent().register(this);
-    },
-    
-    onClick : function(e)
-    {
-        if(this.preventDefault){
-            e.preventDefault();
-        }
-        
-        if (typeof (this.menu) != 'undefined') {
-            this.menu.parentType = this.xtype;
-            this.menu.triggerEl = this.el;
-            this.addxtype(Roo.apply({}, this.menu));
-        }
-        
-        if(this.fireEvent('click', this, e) === false){
-            return;
-        };
-        
-        if (['tabs','pills'].indexOf(this.parent().type)!==-1) {
-	     if (typeof(this.parent().setActiveItem) !== 'undefined') {
-		this.parent().setActiveItem(this);
-	    }
-	    
-        } 
-    },
-    
-    isActive: function () {
-        return this.active
-    },
-    setActive : function(state, fire)
-    {
-        this.active = state;
-        if (!state ) {
-            this.el.removeClass('active');
-        } else if (!this.el.hasClass('active')) {
-            this.el.addClass('active');
-        }
-        if (fire) {
-            this.fireEvent('changed', this, state);
-        }
-	
-	
-    }
-     // this should not be here...
- 
-});
- 
-
- /*
- * - LGPL
- *
- * row
- * 
- */
-
-/**
  * @class Roo.bootstrap.NavItem
  * @extends Roo.bootstrap.Component
  * Bootstrap Navbar.NavItem class
@@ -3508,8 +3305,11 @@ Roo.extend(Roo.bootstrap.Navbar.Item, Roo.bootstrap.Component,  {
  * @cfg {String} glyphicon name of glyphicon
  * @cfg {String} icon name of font awesome icon
  * @cfg {Boolean} active Is item active
+ * @cfg {Boolean} disabled Is item disabled
+ 
  * @cfg {Boolean} preventDefault (true | false) default false
  * @cfg {String} tabId the tab that this item activates.
+ * @cfg {String} tagtype (a|span) render as a href or span?
   
  * @constructor
  * Create a new Navbar Item
@@ -3547,6 +3347,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     active: false,
     preventDefault : false,
     tabId : false,
+    tagtype : 'a',
+    disabled : false,
     
     getAutoCreate : function(){
          
@@ -3555,7 +3357,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cls: 'nav-item',
             cn : [
                 {
-                    tag: 'a',
+                    tag: this.tagtype,
                     href : this.href || "#",
                     html: this.html || ''
                 }
@@ -3569,9 +3371,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         // glyphicon and icon go before content..
         if (this.glyphicon || this.icon) {
              if (this.icon) {
-                cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html + '</span>'
+                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
             } else {
-                cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span>'  + cfg.cn[0].html;
+                cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
             }
         }
         
@@ -3587,7 +3389,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
              
             cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
         }
-        
+        if (this.disabled) {
+            cfg.cls += ' disabled';
+        }
         
         
         return cfg;
@@ -3595,7 +3399,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     initEvents: function() {
        // Roo.log('init events?');
        // Roo.log(this.el.dom);
-       if (typeof (this.menu) != 'undefined') {
+        if (typeof (this.menu) != 'undefined') {
             this.menu.parentType = this.xtype;
             this.menu.triggerEl = this.el;
             this.addxtype(Roo.apply({}, this.menu));
@@ -3609,10 +3413,14 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
+         
         if(this.preventDefault){
             e.preventDefault();
         }
-        
+        if (this.disabled) {
+            return;
+        }
+        Roo.log("fire event clicked");
         if(this.fireEvent('click', this, e) === false){
             return;
         };
@@ -3643,9 +3451,18 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
 	
 	
-    }
+    },
      // this should not be here...
- 
+    setDisabled : function(state)
+    {
+        this.disabled = state;
+        if (!state ) {
+            this.el.removeClass('disabled');
+        } else if (!this.el.hasClass('disabled')) {
+            this.el.addClass('disabled');
+        }
+        
+    }
 });
  
 
@@ -4039,7 +3856,7 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
  * @cfg {boolean} responsive Format condensed
  * @cfg {Boolean} loadMask (true|false) default false
  *
- 
+ * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  
  * 
  * @constructor
@@ -4056,7 +3873,7 @@ Roo.bootstrap.Table = function(config){
         this.sm.xmodule = this.xmodule || false;
     }
     if (this.cm && typeof(this.cm.config) == 'undefined') {
-        this.colModel = new Roo.bootstrap.Table.ColumnModel(this.cm);
+        this.colModel = new Roo.grid.ColumnModel(this.cm);
         this.cm = this.colModel;
         this.cm.xmodule = this.xmodule || false;
     }
@@ -4065,6 +3882,10 @@ Roo.bootstrap.Table = function(config){
         this.ds = this.store;
         this.ds.xmodule = this.xmodule || false;
          
+    }
+    if (this.footer && this.store) {
+        this.footer.dataSource = this.ds;
+        this.footer = Roo.factory(this.footer);
     }
 };
 
@@ -4210,6 +4031,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 //        this.maskEl.show();
         
         this.parent().el.setStyle('position', 'relative');
+        if (this.footer) {
+            this.footer.parentId = this.id;
+            this.footer.onRender(this.el.select('tfoot tr td').first(), null);        
+        }
+        
+        
+        // mask should be using Roo.bootstrap.Mask...
         
         var mark = {
             tag: "div",
@@ -4244,7 +4072,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
         
-        this.store.load();
+        // load should be trigger on render..
+        //this.store.load();
         
         
         
@@ -4324,7 +4153,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var footer = {
             tag: 'tfoot',
-            cn : []
+            cn : [
+                {
+                    tag: 'tr',
+                    cn : [
+                        {
+                            tag : 'td',
+                            colspan : 1
+                        }
+                    ]
+                }
+            ]
         };
         
         return footer;
@@ -11363,7 +11202,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     cn: [
                         {
                             tag: "img",
-                            src: rootURL + '/roojs1/images/ux/lightbox/loading.gif'
+                            src: Roo.rootURL + '/images/ux/lightbox/loading.gif' 
                         },
                         {
                             tag: "span",
@@ -16627,60 +16466,43 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
 
 
 
-
-/**
- * @class Roo.bootstrap.Table.AbstractSelectionModel
- * @extends Roo.util.Observable
- * Abstract base class for grid SelectionModels.  It provides the interface that should be
- * implemented by descendant classes.  This class should not be directly instantiated.
- * @constructor
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
  */
-Roo.bootstrap.Table.AbstractSelectionModel = function(){
-    this.locked = false;
-    Roo.bootstrap.Table.AbstractSelectionModel.superclass.constructor.call(this);
-};
-
-
-Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel, Roo.util.Observable,  {
-    /** @ignore Called by the grid automatically. Do not call directly. */
-    init : function(grid){
-        this.grid = grid;
-        this.initEvents();
-    },
-
-    /**
-     * Locks the selections.
-     */
-    lock : function(){
-        this.locked = true;
-    },
-
-    /**
-     * Unlocks the selections.
-     */
-    unlock : function(){
-        this.locked = false;
-    },
-
-    /**
-     * Returns true if the selections are locked.
-     * @return {Boolean}
-     */
-    isLocked : function(){
-        return this.locked;
-    }
-});
-/**
- * @class Roo.bootstrap.Table.ColumnModel
- * @extends Roo.util.Observable
- * This is the default implementation of a ColumnModel used by the bootstrap table. It defines
- * the columns in the table.
  
+
+/**
+ * @class Roo.grid.ColumnModel
+ * @extends Roo.util.Observable
+ * This is the default implementation of a ColumnModel used by the Grid. It defines
+ * the columns in the grid.
+ * <br>Usage:<br>
+ <pre><code>
+ var colModel = new Roo.grid.ColumnModel([
+	{header: "Ticker", width: 60, sortable: true, locked: true},
+	{header: "Company Name", width: 150, sortable: true},
+	{header: "Market Cap.", width: 100, sortable: true},
+	{header: "$ Sales", width: 100, sortable: true, renderer: money},
+	{header: "Employees", width: 100, sortable: true, resizable: false}
+ ]);
+ </code></pre>
+ * <p>
+ 
+ * The config options listed for this class are options which may appear in each
+ * individual column definition.
+ * <br/>RooJS Fix - column id's are not sequential but use Roo.id() - fixes bugs with layouts.
  * @constructor
  * @param {Object} config An Array of column config objects. See this class's
  * config objects for details.
 */
-Roo.bootstrap.Table.ColumnModel = function(config){
+Roo.grid.ColumnModel = function(config){
 	/**
      * The config passed into the constructor
      */
@@ -16701,13 +16523,12 @@ Roo.bootstrap.Table.ColumnModel = function(config){
         if(typeof c.id == "undefined"){
             c.id = Roo.id();
         }
-//        if(c.editor && c.editor.xtype){
-//            c.editor  = Roo.factory(c.editor, Roo.grid);
-//        }
-//        if(c.editor && c.editor.isFormField){
-//            c.editor = new Roo.grid.GridEditor(c.editor);
-//        }
-
+        if(c.editor && c.editor.xtype){
+            c.editor  = Roo.factory(c.editor, Roo.grid);
+        }
+        if(c.editor && c.editor.isFormField){
+            c.editor = new Roo.grid.GridEditor(c.editor);
+        }
         this.lookup[c.id] = c;
     }
 
@@ -16765,9 +16586,9 @@ Roo.bootstrap.Table.ColumnModel = function(config){
          */
         "columnlockchange" : true
     });
-    Roo.bootstrap.Table.ColumnModel.superclass.constructor.call(this);
+    Roo.grid.ColumnModel.superclass.constructor.call(this);
 };
-Roo.extend(Roo.bootstrap.Table.ColumnModel, Roo.util.Observable, {
+Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {String} header The header text to display in the Grid view.
      */
@@ -16801,6 +16622,9 @@ Roo.extend(Roo.bootstrap.Table.ColumnModel, Roo.util.Observable, {
      * @cfg {Function} renderer (Optional) A function used to generate HTML markup for a cell
      * given the cell's data value. See {@link #setRenderer}. If not specified, the
      * default renderer uses the raw data value.
+     */
+       /**
+     * @cfg {Roo.grid.GridEditor} editor (Optional) For grid editors - returns the grid editor 
      */
     /**
      * @cfg {String} align (Optional) Set the CSS text-align property of the column.  Defaults to undefined.
@@ -16958,7 +16782,7 @@ Roo.extend(Roo.bootstrap.Table.ColumnModel, Roo.util.Observable, {
      */
     getRenderer : function(col){
         if(!this.config[col].renderer){
-            return Roo.bootstrap.Table.ColumnModel.defaultRenderer;
+            return Roo.grid.ColumnModel.defaultRenderer;
         }
         return this.config[col].renderer;
     },
@@ -17153,7 +16977,7 @@ Roo.extend(Roo.bootstrap.Table.ColumnModel, Roo.util.Observable, {
     }
 });
 
-Roo.bootstrap.Table.ColumnModel.defaultRenderer = function(value){
+Roo.grid.ColumnModel.defaultRenderer = function(value){
 	if(typeof value == "string" && value.length < 1){
 	    return "&#160;";
 	}
@@ -17161,8 +16985,50 @@ Roo.bootstrap.Table.ColumnModel.defaultRenderer = function(value){
 };
 
 // Alias for backwards compatibility
-Roo.bootstrap.Table.DefaultColumnModel = Roo.bootstrap.Table.ColumnModel;
+Roo.grid.DefaultColumnModel = Roo.grid.ColumnModel;
 
+/**
+ * @class Roo.bootstrap.Table.AbstractSelectionModel
+ * @extends Roo.util.Observable
+ * Abstract base class for grid SelectionModels.  It provides the interface that should be
+ * implemented by descendant classes.  This class should not be directly instantiated.
+ * @constructor
+ */
+Roo.bootstrap.Table.AbstractSelectionModel = function(){
+    this.locked = false;
+    Roo.bootstrap.Table.AbstractSelectionModel.superclass.constructor.call(this);
+};
+
+
+Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel, Roo.util.Observable,  {
+    /** @ignore Called by the grid automatically. Do not call directly. */
+    init : function(grid){
+        this.grid = grid;
+        this.initEvents();
+    },
+
+    /**
+     * Locks the selections.
+     */
+    lock : function(){
+        this.locked = true;
+    },
+
+    /**
+     * Unlocks the selections.
+     */
+    unlock : function(){
+        this.locked = false;
+    },
+
+    /**
+     * Returns true if the selections are locked.
+     * @return {Boolean}
+     */
+    isLocked : function(){
+        return this.locked;
+    }
+});
 /**
  * @extends Roo.bootstrap.Table.AbstractSelectionModel
  * @class Roo.bootstrap.Table.RowSelectionModel
@@ -17599,6 +17465,338 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
         if(newCell){
             g.startEditing(newCell[0], newCell[1]);
         }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.bootstrap.PagingToolbar
+ * @extends Roo.Row
+ * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
+ * @constructor
+ * Create a new PagingToolbar
+ * @param {Object} config The config object
+ */
+Roo.bootstrap.PagingToolbar = function(config)
+{
+    // old args format still supported... - xtype is prefered..
+        // created from xtype...
+    var ds = config.dataSource;
+    var items = [];
+    if (config.items) {
+        items = config.items;
+        config.items = [];
+    }
+    
+    Roo.bootstrap.PagingToolbar.superclass.constructor.call(this, config);
+    this.ds = ds;
+    this.cursor = 0;
+    if (ds) { 
+        this.bind(ds);
+    }
+    
+    this.navgroup = new Roo.bootstrap.NavGroup({ cls: 'pagination' });
+    
+    // supprot items array.
+    
+    Roo.each(items, function(e) {
+        this.add(Roo.factory(e));
+    },this);
+    
+    
+    
+    
+    
+};
+
+Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
+    /**
+     * @cfg {Roo.data.Store} dataSource
+     * The underlying data store providing the paged data
+     */
+    /**
+     * @cfg {String/HTMLElement/Element} container
+     * container The id or element that will contain the toolbar
+     */
+    /**
+     * @cfg {Boolean} displayInfo
+     * True to display the displayMsg (defaults to false)
+     */
+    /**
+     * @cfg {Number} pageSize
+     * The number of records to display per page (defaults to 20)
+     */
+    pageSize: 20,
+    /**
+     * @cfg {String} displayMsg
+     * The paging status message to display (defaults to "Displaying {start} - {end} of {total}")
+     */
+    displayMsg : 'Displaying {0} - {1} of {2}',
+    /**
+     * @cfg {String} emptyMsg
+     * The message to display when no records are found (defaults to "No data to display")
+     */
+    emptyMsg : 'No data to display',
+    /**
+     * Customizable piece of the default paging text (defaults to "Page")
+     * @type String
+     */
+    beforePageText : "Page",
+    /**
+     * Customizable piece of the default paging text (defaults to "of %0")
+     * @type String
+     */
+    afterPageText : "of {0}",
+    /**
+     * Customizable piece of the default paging text (defaults to "First Page")
+     * @type String
+     */
+    firstText : "First Page",
+    /**
+     * Customizable piece of the default paging text (defaults to "Previous Page")
+     * @type String
+     */
+    prevText : "Previous Page",
+    /**
+     * Customizable piece of the default paging text (defaults to "Next Page")
+     * @type String
+     */
+    nextText : "Next Page",
+    /**
+     * Customizable piece of the default paging text (defaults to "Last Page")
+     * @type String
+     */
+    lastText : "Last Page",
+    /**
+     * Customizable piece of the default paging text (defaults to "Refresh")
+     * @type String
+     */
+    refreshText : "Refresh",
+
+    // private
+    onRender : function(ct, position) 
+    {
+        Roo.bootstrap.PagingToolbar.superclass.onRender.call(this, ct, position);
+        this.navgroup.parentId = this.id;
+        this.navgroup.onRender(this.el, null);
+        // add the buttons to the navgroup
+        
+        this.first = this.navgroup.addItem({
+            tooltip: this.firstText,
+            cls: "prev",
+            icon : 'fa fa-backward',
+            disabled: true,
+            listeners : { click : this.onClick.createDelegate(this, ["first"]) }
+        });
+        
+        this.prev =  this.navgroup.addItem({
+            tooltip: this.prevText,
+            cls: "prev",
+            icon : 'fa fa-step-backward',
+            disabled: true,
+            listeners : { click :  this.onClick.createDelegate(this, ["prev"]) }
+        });
+    //this.addSeparator();
+        
+        
+        var field = this.navgroup.addItem( {
+            tagtype : 'span',
+            cls : 'x-paging-position',
+            
+            html : this.beforePageText  +
+                '<input type="text" size="3" value="1" class="x-grid-page-number">' +
+                '<span class="x-paging-after">' +  String.format(this.afterPageText, 1) + '</span>'
+         } ); //?? escaped?
+        
+        this.field = field.el.select('input', true).first();
+        this.field.on("keydown", this.onPagingKeydown, this);
+        this.field.on("focus", function(){this.dom.select();});
+    
+    
+        this.afterTextEl =  field.el.select('.x-paging-after').first();
+        //this.field.setHeight(18);
+        //this.addSeparator();
+        this.next = this.navgroup.addItem({
+            tooltip: this.nextText,
+            cls: "next",
+            html : ' <i class="fa fa-step-forward">',
+            disabled: true,
+            listeners : { click :  this.onClick.createDelegate(this, ["next"]) }
+        });
+        this.last = this.navgroup.addItem({
+            tooltip: this.lastText,
+            icon : 'fa fa-forward',
+            cls: "next",
+            disabled: true,
+            listeners : { click :  this.onClick.createDelegate(this, ["last"]) }
+        });
+    //this.addSeparator();
+        this.loading = this.navgroup.addItem({
+            tooltip: this.refreshText,
+            icon: 'fa fa-refresh',
+            
+            listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
+        });
+
+        if(this.displayInfo){
+            var navel = this.navgroup.addItem( { tagtype : 'span', html : '', cls : 'x-paging-info' } );
+            this.displayEl = navel.el.select('a',true).first();
+        }
+    
+    },
+
+    // private
+    updateInfo : function(){
+        if(this.displayEl){
+            var count = this.ds.getCount();
+            var msg = count == 0 ?
+                this.emptyMsg :
+                String.format(
+                    this.displayMsg,
+                    this.cursor+1, this.cursor+count, this.ds.getTotalCount()    
+                );
+            this.displayEl.update(msg);
+        }
+    },
+
+    // private
+    onLoad : function(ds, r, o){
+       this.cursor = o.params ? o.params.start : 0;
+       var d = this.getPageData(), ap = d.activePage, ps = d.pages;
+
+       this.afterTextEl.el.innerHTML = String.format(this.afterPageText, d.pages);
+       this.field.dom.value = ap;
+       this.first.setDisabled(ap == 1);
+       this.prev.setDisabled(ap == 1);
+       this.next.setDisabled(ap == ps);
+       this.last.setDisabled(ap == ps);
+       this.loading.enable();
+       this.updateInfo();
+    },
+
+    // private
+    getPageData : function(){
+        var total = this.ds.getTotalCount();
+        return {
+            total : total,
+            activePage : Math.ceil((this.cursor+this.pageSize)/this.pageSize),
+            pages :  total < this.pageSize ? 1 : Math.ceil(total/this.pageSize)
+        };
+    },
+
+    // private
+    onLoadError : function(){
+        this.loading.enable();
+    },
+
+    // private
+    onPagingKeydown : function(e){
+        var k = e.getKey();
+        var d = this.getPageData();
+        if(k == e.RETURN){
+            var v = this.field.dom.value, pageNum;
+            if(!v || isNaN(pageNum = parseInt(v, 10))){
+                this.field.dom.value = d.activePage;
+                return;
+            }
+            pageNum = Math.min(Math.max(1, pageNum), d.pages) - 1;
+            this.ds.load({params:{start: pageNum * this.pageSize, limit: this.pageSize}});
+            e.stopEvent();
+        }
+        else if(k == e.HOME || (k == e.UP && e.ctrlKey) || (k == e.PAGEUP && e.ctrlKey) || (k == e.RIGHT && e.ctrlKey) || k == e.END || (k == e.DOWN && e.ctrlKey) || (k == e.LEFT && e.ctrlKey) || (k == e.PAGEDOWN && e.ctrlKey))
+        {
+          var pageNum = (k == e.HOME || (k == e.DOWN && e.ctrlKey) || (k == e.LEFT && e.ctrlKey) || (k == e.PAGEDOWN && e.ctrlKey)) ? 1 : d.pages;
+          this.field.dom.value = pageNum;
+          this.ds.load({params:{start: (pageNum - 1) * this.pageSize, limit: this.pageSize}});
+          e.stopEvent();
+        }
+        else if(k == e.UP || k == e.RIGHT || k == e.PAGEUP || k == e.DOWN || k == e.LEFT || k == e.PAGEDOWN)
+        {
+          var v = this.field.dom.value, pageNum; 
+          var increment = (e.shiftKey) ? 10 : 1;
+          if(k == e.DOWN || k == e.LEFT || k == e.PAGEDOWN)
+            increment *= -1;
+          if(!v || isNaN(pageNum = parseInt(v, 10))) {
+            this.field.dom.value = d.activePage;
+            return;
+          }
+          else if(parseInt(v, 10) + increment >= 1 & parseInt(v, 10) + increment <= d.pages)
+          {
+            this.field.dom.value = parseInt(v, 10) + increment;
+            pageNum = Math.min(Math.max(1, pageNum + increment), d.pages) - 1;
+            this.ds.load({params:{start: pageNum * this.pageSize, limit: this.pageSize}});
+          }
+          e.stopEvent();
+        }
+    },
+
+    // private
+    beforeLoad : function(){
+        if(this.loading){
+            this.loading.disable();
+        }
+    },
+
+    // private
+    onClick : function(which){
+        var ds = this.ds;
+        if (!ds) {
+            return;
+        }
+        switch(which){
+            case "first":
+                ds.load({params:{start: 0, limit: this.pageSize}});
+            break;
+            case "prev":
+                ds.load({params:{start: Math.max(0, this.cursor-this.pageSize), limit: this.pageSize}});
+            break;
+            case "next":
+                ds.load({params:{start: this.cursor+this.pageSize, limit: this.pageSize}});
+            break;
+            case "last":
+                var total = ds.getTotalCount();
+                var extra = total % this.pageSize;
+                var lastStart = extra ? (total - extra) : total-this.pageSize;
+                ds.load({params:{start: lastStart, limit: this.pageSize}});
+            break;
+            case "refresh":
+                ds.load({params:{start: this.cursor, limit: this.pageSize}});
+            break;
+        }
+    },
+
+    /**
+     * Unbinds the paging toolbar from the specified {@link Roo.data.Store}
+     * @param {Roo.data.Store} store The data store to unbind
+     */
+    unbind : function(ds){
+        ds.un("beforeload", this.beforeLoad, this);
+        ds.un("load", this.onLoad, this);
+        ds.un("loadexception", this.onLoadError, this);
+        ds.un("remove", this.updateInfo, this);
+        ds.un("add", this.updateInfo, this);
+        this.ds = undefined;
+    },
+
+    /**
+     * Binds the paging toolbar to the specified {@link Roo.data.Store}
+     * @param {Roo.data.Store} store The data store to bind
+     */
+    bind : function(ds){
+        ds.on("beforeload", this.beforeLoad, this);
+        ds.on("load", this.onLoad, this);
+        ds.on("loadexception", this.onLoadError, this);
+        ds.on("remove", this.updateInfo, this);
+        ds.on("add", this.updateInfo, this);
+        this.ds = ds;
     }
 });/*
  * - LGPL

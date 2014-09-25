@@ -1,0 +1,6 @@
+.skin-blue .navbar .pagination>li>a {
+    background-color: #428bca;
+}
+.navbar .pagination {
+    margin: 0;
+}

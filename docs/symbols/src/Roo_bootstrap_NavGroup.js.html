@@ -122,11 +122,19 @@
         
     },
     
+    </span><span class="jsdoc-var">addItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.NavItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">cn.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">cn.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
+    },
     
     </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">)
     {
-	</span><span class="jsdoc-var">this.navItems.push</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
-	</span><span class="jsdoc-var">item.navId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.navItems.push</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">item.navId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">;
     
     },
     </span><span class="jsdoc-var">getNavItem</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tabId</span><span class="jsdoc-syntax">)
@@ -142,6 +150,10 @@
         });
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
     }
+    
+    
+    
+    
 });
 
  

@@ -28,7 +28,7 @@
  * @cfg {boolean} responsive Format condensed
  * @cfg {Boolean} loadMask (true|false) default false
  *
- 
+ * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  
  * 
  * @constructor
@@ -45,7 +45,7 @@ Roo.bootstrap.Table = function(config){
         this.sm.xmodule = this.xmodule || false;
     }
     if (this.cm && typeof(this.cm.config) == 'undefined') {
-        this.colModel = new Roo.bootstrap.Table.ColumnModel(this.cm);
+        this.colModel = new Roo.grid.ColumnModel(this.cm);
         this.cm = this.colModel;
         this.cm.xmodule = this.xmodule || false;
     }
@@ -54,6 +54,10 @@ Roo.bootstrap.Table = function(config){
         this.ds = this.store;
         this.ds.xmodule = this.xmodule || false;
          
+    }
+    if (this.footer && this.store) {
+        this.footer.dataSource = this.ds;
+        this.footer = Roo.factory(this.footer);
     }
 };
 
@@ -199,6 +203,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 //        this.maskEl.show();
         
         this.parent().el.setStyle('position', 'relative');
+        if (this.footer) {
+            this.footer.parentId = this.id;
+            this.footer.onRender(this.el.select('tfoot tr td').first(), null);        
+        }
+        
+        
+        // mask should be using Roo.bootstrap.Mask...
         
         var mark = {
             tag: "div",
@@ -207,7 +218,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: "div",
-                    style: "background-color:white;width:50%;margin:100 auto",
+                    style: "background-color:white;width:50%;margin:100 auto; display:none",
                     cn: [
                         {
                             tag: "img",
@@ -222,7 +233,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
             ]
         }
-        this.maskEl = Roo.DomHelper.append(this.parent().el, mark, true);
+        this.maskEl = Roo.DomHelper.append(document.body, mark, true);
         
         var size = this.parent().el.getSize();
         
@@ -233,7 +244,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
         
-        this.store.load();
+        // load should be trigger on render..
+        //this.store.load();
         
         
         
@@ -313,7 +325,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var footer = {
             tag: 'tfoot',
-            cn : []
+            cn : [
+                {
+                    tag: 'tr',
+                    cn : [
+                        {
+                            tag : 'td',
+                            colspan : 1
+                        }
+                    ]
+                }
+            ]
         };
         
         return footer;

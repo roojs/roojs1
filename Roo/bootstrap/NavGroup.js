@@ -122,11 +122,19 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         
     },
     
+    addItem : function(cfg)
+    {
+        var cn = new Roo.bootstrap.NavItem(cfg);
+        this.register(cn);
+        cn.parentId = this.id;
+        cn.onRender(this.el, null);
+        return cn;
+    },
     
     register : function(item)
     {
-	this.navItems.push( item);
-	item.navId = this.navId;
+        this.navItems.push( item);
+        item.navId = this.navId;
     
     },
     getNavItem: function(tabId)
@@ -142,6 +150,10 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         });
         return ret;
     }
+    
+    
+    
+    
 });
 
  

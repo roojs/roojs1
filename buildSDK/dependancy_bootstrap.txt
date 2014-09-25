@@ -19,14 +19,12 @@ Roo.bootstrap.MenuItem
 Roo.bootstrap.MenuSeparator
 Roo.bootstrap.Modal
 Roo.bootstrap.MessageBox
+
 Roo.bootstrap.Navbar
 Roo.bootstrap.NavSimplebar
 Roo.bootstrap.NavHeaderbar
 Roo.bootstrap.NavSidebar
-
 Roo.bootstrap.NavGroup
-Roo.bootstrap.Navbar.Button
-Roo.bootstrap.Navbar.Item
 Roo.bootstrap.NavItem
 Roo.bootstrap.NavSidebarItem
 
@@ -85,8 +83,9 @@ Roo.HtmlEditorCore
 Roo.bootstrap.HtmlEditor
 Roo.bootstrap.htmleditor.ToolbarStandard
 
+Roo.grid.ColumnModel
 Roo.bootstrap.Table.AbstractSelectionModel
-Roo.bootstrap.Table.ColumnModel
 Roo.bootstrap.Table.RowSelectionModel
 
+Roo.bootstrap.PagingToolbar
 Roo.bootstrap.MessageBar

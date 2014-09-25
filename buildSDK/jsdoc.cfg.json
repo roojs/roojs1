@@ -13,7 +13,6 @@
 		"Roo/tree",
 		"Roo/util",
         "Roo/bootstrap",
-        "Roo/bootstrap/Navbar",
         "Roo/bootstrap/Table",
         "Roo/bootstrap/htmleditor",
         "Roo/mailer"

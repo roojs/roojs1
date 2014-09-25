@@ -298,7 +298,7 @@
                     </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
                         {
                             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;img&quot;</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rootURL </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/roojs1/images/ux/lightbox/loading.gif'
+                            </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.rootURL </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/images/ux/lightbox/loading.gif' 
                         </span><span class="jsdoc-syntax">},
                         {
                             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;span&quot;</span><span class="jsdoc-syntax">,
@@ -440,7 +440,9 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">format </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">setCellClass </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cal</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">){
-            
+            </span><span class="jsdoc-var">cell.row </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-var">cell.events </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-var">cell.more </span><span class="jsdoc-syntax">= [];
             </span><span class="jsdoc-comment">//Roo.log('set Cell Class');
             </span><span class="jsdoc-var">cell.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.getTime</span><span class="jsdoc-syntax">();
@@ -615,6 +617,13 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">crow </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">cells.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+            
+            </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.row</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">== 0){
+                </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.row </span><span class="jsdoc-syntax">+ 1;
+            }
+            
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">crow</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">crow </span><span class="jsdoc-syntax">= {
                     </span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],
@@ -640,8 +649,16 @@
         </span><span class="jsdoc-var">ev.els </span><span class="jsdoc-syntax">= [];
         </span><span class="jsdoc-var">ev.rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">ev.cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">ev.rendered </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-</span><span class="jsdoc-comment">//        for (var i = 0; i &lt; cells.length;i++) {
+        
+        </span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.events.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
+        
+</span><span class="jsdoc-comment">//        if((typeof(cells[0].events) == 'undefined')){
+//            cells[0].events = [];
+//        }
+//        
+//        cells[0].events.push(ev);
+//        ev.rendered = false;
+//        for (var i = 0; i &lt; cells.length;i++) {
 //            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
 //            
 //        }
@@ -656,7 +673,8 @@
         }
         
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cells.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">c.rows </span><span class="jsdoc-syntax">= [];
+            </span><span class="jsdoc-var">c.row </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-var">c.events </span><span class="jsdoc-syntax">= [];
             </span><span class="jsdoc-var">c.more </span><span class="jsdoc-syntax">= [];
         });
         
@@ -675,51 +693,139 @@
     },
     
     </span><span class="jsdoc-var">renderEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-    {   
-        </span><span class="jsdoc-comment">// first make sure there is enough space..
-        </span><span class="jsdoc-var">this.cells.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">c.rows </span><span class="jsdoc-syntax">= [];
-            </span><span class="jsdoc-var">c.more </span><span class="jsdoc-syntax">= [];
-        });
-        
-        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.calevents.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">++) {
+    {  
+</span><span class="jsdoc-comment">//        for (var e = 0; e &lt; this.calevents.length; e++) {
+//            
+//            var ev = this.calevents[e];
+//            var cells = ev.cells;
+//            var rows = ev.rows;
+//            
+//            for (var j = 0; j &lt; cells.length; j++){
+//            
+//                if(!cells[j].more.length){
+//                    cells[j].row++;
+//                }
+//                if(cells[j].row &gt; 3){
+//                    cells[j].more.push(ev);
+//                    continue;
+//                }
+//                
+//                cells[j].events.push(ev);
+//            }
+//        }
             
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.calevents</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">];
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.cells</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.rows</span><span class="jsdoc-syntax">;
-            
-            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">cells.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-                
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cbox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.cells.item</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cells.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cells</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]));
-                
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cells.length </span><span class="jsdoc-syntax">&lt; 2 &amp;&amp; </span><span class="jsdoc-var">cbox.rows.length </span><span class="jsdoc-syntax">&gt; 3){
-                    </span><span class="jsdoc-var">cbox.more.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
-                }
-                
-                </span><span class="jsdoc-var">cbox.rows.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
-            }
-        }
+//            for (var i = 0; i &lt; rows.length; i++){
+//                // how many rows should it span..
+//
+//                var  cfg = {
+//                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+//                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+//
+//                    unselectable : &quot;on&quot;,
+//                    cn : [
+//                        {
+//                            cls: 'fc-event-inner',
+//                            cn : [
+////                                {
+////                                  tag:'span',
+////                                  cls: 'fc-event-time',
+////                                  html : cells.length &gt; 1 ? '' : ev.time
+////                                },
+//                                {
+//                                  tag:'span',
+//                                  cls: 'fc-event-title',
+//                                  html : String.format('{0}', ev.title)
+//                                }
+//
+//
+//                            ]
+//                        },
+//                        {
+//                            cls: 'ui-resizable-handle ui-resizable-e',
+//                            html : '&amp;nbsp;&amp;nbsp;&amp;nbsp'
+//                        }
+//
+//                    ]
+//                };
+//
+//                if (i == 0) {
+//                    cfg.cls += ' fc-event-start';
+//                }
+//                if ((i+1) == rows.length) {
+//                    cfg.cls += ' fc-event-end';
+//                }
+//
+//                var ctr = this.el.select('.fc-event-container',true).first();
+//                var cg = ctr.createChild(cfg);
+//
+//                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+//                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+//
+//                cg.setXY([sbox.x +2, sbox.y +(e * 20)]);    
+//                cg.setWidth(ebox.right - sbox.x -2);
+//
+//                cg.on('mouseenter' ,this.onEventEnter, this, ev);
+//                cg.on('mouseleave' ,this.onEventLeave, this, ev);
+//                cg.on('click', this.onEventClick, this, ev);
+//
+//                ev.els.push(cg);
+//
+//                
+//            }
+//        }
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">this.cells.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.more.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">c.more.length </span><span class="jsdoc-syntax">== 1){
-                </span><span class="jsdoc-var">c.rows.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.more.pop</span><span class="jsdoc-syntax">());
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.row </span><span class="jsdoc-syntax">&lt; 5){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
             
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">c.more.length</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">c.rows.length </span><span class="jsdoc-syntax">+ 1 : </span><span class="jsdoc-var">c.rows.length</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">c.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content div'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(34, </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">* 20));
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.events</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= 4;
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.row </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">c.events.length</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= 4 - (4 - (</span><span class="jsdoc-var">c.row </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">c.events.length</span><span class="jsdoc-syntax">));
+            }
+            
+            </span><span class="jsdoc-var">c.events </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.slice</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">c.more </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.slice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.more.length </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">c.more.length </span><span class="jsdoc-syntax">== 1){
+                </span><span class="jsdoc-var">c.events.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.more.pop</span><span class="jsdoc-syntax">());
+            }
+            
+            </span><span class="jsdoc-var">c.row </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">c.row </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">ev.length</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">c.events.length </span><span class="jsdoc-syntax">+ ((</span><span class="jsdoc-var">c.more.length</span><span class="jsdoc-syntax">) ? 1 : 0);
+            
+        });
+            
+</span><span class="jsdoc-comment">//        for (var e = 0; e &lt; this.calevents.length; e++) {
+//            
+//            var ev = this.calevents[e];
+//            var cells = ev.cells;
+//            var rows = ev.rows;
+//            
+//            for(var i = 0; i &lt; cells.length; i++){
+//                
+//                var cbox = this.cells.item(this.cells.indexOf(cells[i]));
+//                
+//                if(cells.length &lt; 2 &amp;&amp; cbox.rows.length &gt; 3){
+//                    cbox.more.push(ev);
+//                    continue;
+//                }
+//                
+//                cbox.rows.push(ev);
+//            }
+//        }
+//        
+        </span><span class="jsdoc-var">this.cells.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-var">c.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content div'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(34, </span><span class="jsdoc-var">c.row </span><span class="jsdoc-syntax">* 20));
             
             
-            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">c.rows.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">++){
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">];
-                
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev.rendered</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
-                }
-                
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cells </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.cells</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">c.events.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.events</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">];
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.rows</span><span class="jsdoc-syntax">;
                 
                 </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">rows.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
@@ -770,7 +876,8 @@
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sbox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.start.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">();
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ebox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.end.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">();
 
-                    </span><span class="jsdoc-var">cg.setXY</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">sbox.x </span><span class="jsdoc-syntax">+2, </span><span class="jsdoc-var">sbox.y </span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">* 20)]);    
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">c.more.length</span><span class="jsdoc-syntax">) ? 1 : 0;
+                    </span><span class="jsdoc-var">cg.setXY</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">sbox.x </span><span class="jsdoc-syntax">+2, </span><span class="jsdoc-var">sbox.y </span><span class="jsdoc-syntax">+ ((</span><span class="jsdoc-var">c.row </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">c.events.length </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) * 20)]);    
                     </span><span class="jsdoc-var">cg.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ebox.right </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">sbox.x </span><span class="jsdoc-syntax">-2);
 
                     </span><span class="jsdoc-var">cg.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseenter' </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">_this.onEventEnter</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">);
@@ -779,7 +886,6 @@
 
                     </span><span class="jsdoc-var">ev.els.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cg</span><span class="jsdoc-syntax">);
                     
-                    </span><span class="jsdoc-var">ev.rendered </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
                 }
                 
             }
@@ -817,7 +923,7 @@
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sbox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ebox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">c.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.fc-day-content'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBox</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-comment">//Roo.log(cg);
-                </span><span class="jsdoc-var">cg.setXY</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">sbox.x </span><span class="jsdoc-syntax">+2, </span><span class="jsdoc-var">sbox.y </span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">c.rows.length </span><span class="jsdoc-syntax">* 20)]);    
+                </span><span class="jsdoc-var">cg.setXY</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">sbox.x </span><span class="jsdoc-syntax">+2, </span><span class="jsdoc-var">sbox.y </span><span class="jsdoc-syntax">+((</span><span class="jsdoc-var">c.row </span><span class="jsdoc-syntax">- 1) * 20)]);    
                 </span><span class="jsdoc-var">cg.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ebox.right </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">sbox.x </span><span class="jsdoc-syntax">-2);
 
                 </span><span class="jsdoc-var">cg.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this.onMoreEventClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">c.more</span><span class="jsdoc-syntax">);

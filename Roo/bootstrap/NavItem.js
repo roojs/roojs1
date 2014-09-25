@@ -16,8 +16,11 @@
  * @cfg {String} glyphicon name of glyphicon
  * @cfg {String} icon name of font awesome icon
  * @cfg {Boolean} active Is item active
+ * @cfg {Boolean} disabled Is item disabled
+ 
  * @cfg {Boolean} preventDefault (true | false) default false
  * @cfg {String} tabId the tab that this item activates.
+ * @cfg {String} tagtype (a|span) render as a href or span?
   
  * @constructor
  * Create a new Navbar Item
@@ -55,6 +58,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     active: false,
     preventDefault : false,
     tabId : false,
+    tagtype : 'a',
+    disabled : false,
     
     getAutoCreate : function(){
          
@@ -63,7 +68,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cls: 'nav-item',
             cn : [
                 {
-                    tag: 'a',
+                    tag: this.tagtype,
                     href : this.href || "#",
                     html: this.html || ''
                 }
@@ -77,9 +82,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         // glyphicon and icon go before content..
         if (this.glyphicon || this.icon) {
              if (this.icon) {
-                cfg.cn[0].html = '<i class="'+this.icon+'"></i><span>' + cfg.cn[0].html + '</span>'
+                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
             } else {
-                cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span>'  + cfg.cn[0].html;
+                cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
             }
         }
         
@@ -95,7 +100,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
              
             cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
         }
-        
+        if (this.disabled) {
+            cfg.cls += ' disabled';
+        }
         
         
         return cfg;
@@ -103,7 +110,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     initEvents: function() {
        // Roo.log('init events?');
        // Roo.log(this.el.dom);
-       if (typeof (this.menu) != 'undefined') {
+        if (typeof (this.menu) != 'undefined') {
             this.menu.parentType = this.xtype;
             this.menu.triggerEl = this.el;
             this.addxtype(Roo.apply({}, this.menu));
@@ -117,10 +124,14 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
+         
         if(this.preventDefault){
             e.preventDefault();
         }
-        
+        if (this.disabled) {
+            return;
+        }
+        Roo.log("fire event clicked");
         if(this.fireEvent('click', this, e) === false){
             return;
         };
@@ -151,9 +162,18 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
 	
 	
-    }
+    },
      // this should not be here...
- 
+    setDisabled : function(state)
+    {
+        this.disabled = state;
+        if (!state ) {
+            this.el.removeClass('disabled');
+        } else if (!this.el.hasClass('disabled')) {
+            this.el.addClass('disabled');
+        }
+        
+    }
 });
  
 
