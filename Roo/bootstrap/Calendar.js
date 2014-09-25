@@ -928,7 +928,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var sbox = c.select('.fc-day-content',true).first().getBox();
                 var ebox = c.select('.fc-day-content',true).first().getBox();
                 //Roo.log(cg);
-                cg.setXY([sbox.x +2, sbox.y +((c.inhertance + c.row) * 20)]);    
+                cg.setXY([sbox.x +2, sbox.y +((c.inhertance + c.row - 1) * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
 
                 cg.on('click', _this.onMoreEventClick, _this, c.more);
