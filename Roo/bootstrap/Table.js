@@ -271,7 +271,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.store.sortInfo = {field : sort, direction : dir};
         
-        this.store.load();
+        this.store.load({ start : 0 } );
     },
     
     renderHeader : function()
