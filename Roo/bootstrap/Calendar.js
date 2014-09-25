@@ -871,7 +871,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
                     var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
 
-                    cg.setXY([sbox.x +2, sbox.y + (e * 20)]);    
+                    cg.setXY([sbox.x +2, sbox.y + ((c.row - c.events.length) + e) * 20)]);    
                     cg.setWidth(ebox.right - sbox.x -2);
 
                     cg.on('mouseenter' ,_this.onEventEnter, _this, ev);
