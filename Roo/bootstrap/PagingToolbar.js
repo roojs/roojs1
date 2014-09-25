@@ -45,14 +45,14 @@ Roo.bootstrap.PagingToolbar = function(config)
     
     // add the buttons to the navgroup
         
-    this.first = this.addButton({
-      
+    this.first = this.addItem({
         tooltip: this.firstText,
         cls: "prev",
         html : '<i class="fa fa-backward"></i>',
         disabled: true,
         handler: this.onClick.createDelegate(this, ["first"])
     });
+    
     this.prev = this.addButton({
         tooltip: this.prevText,
         cls: "prev",
