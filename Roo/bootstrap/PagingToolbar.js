@@ -109,9 +109,9 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.NavSimplebar, {
     refreshText : "Refresh",
 
     // private
-    renderButtons : function(el)
+    onRender : function(ct, position) 
     {
-        Roo.bootstrap.PagingToolbar.superclass.render.call(this, el);
+        Roo.bootstrap.PagingToolbar.superclass.onRender.call(this, ct, position);
         
         this.first = this.addButton({
             tooltip: this.firstText,
