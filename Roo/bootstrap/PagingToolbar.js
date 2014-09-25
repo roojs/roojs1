@@ -280,6 +280,9 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     // private
     onClick : function(which){
         var ds = this.ds;
+        if (!ds) {
+            return;
+        }
         switch(which){
             case "first":
                 ds.load({params:{start: 0, limit: this.pageSize}});
