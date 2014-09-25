@@ -1,5 +1,5 @@
   
-
+Roo.namespace('Roo.bootstrap.htmleditor');
 /**
  * @class Roo.bootstrap.HtmlEditorToolbar1
  * Basic Toolbar
@@ -24,7 +24,7 @@
  * .x-html-editor-tb .x-edit-none .x-btn-text { background: none; }
  */
  
-Roo.bootstrap.HtmlEditor.ToolbarStandard = function(config)
+Roo.bootstrap.htmleditor.ToolbarStandard = function(config)
 {
     
     Roo.apply(this, config);
@@ -36,7 +36,7 @@ Roo.bootstrap.HtmlEditor.ToolbarStandard = function(config)
         colors : true,
         specialElements : true
     });
-    Roo.bootstrap.HtmlEditor.ToolbarStandard.superclass.constructor.call(this, config);
+    Roo.bootstrap.htmleditor.ToolbarStandard.superclass.constructor.call(this, config);
     
     this.editor = config.editor;
     this.editorcore = config.editor.editorcore;
@@ -46,9 +46,8 @@ Roo.bootstrap.HtmlEditor.ToolbarStandard = function(config)
     //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
     // dont call parent... till later.
 }
-Roo.extend(Roo.bootstrap.HtmlEditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,  {
-    
-    
+Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,  {
+     
     bar : true,
     
     editor : false,
@@ -67,7 +66,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
     {
        // Roo.log("Call onRender: " + this.xtype);
         
-       Roo.bootstrap.HtmlEditor.ToolbarStandard.superclass.onRender.call(this, ct, position);
+       Roo.bootstrap.htmleditor.ToolbarStandard.superclass.onRender.call(this, ct, position);
        Roo.log(this.el);
        this.el.dom.style.marginBottom = '0';
        var _this = this;
