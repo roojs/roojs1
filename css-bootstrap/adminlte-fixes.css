@@ -1,7 +1,7 @@
 .skin-blue .navbar .pagination>li>a {
     background-color: #428bca;
 }
-.skin-blue .navbar .pagination>li>a.disabled {
+.skin-blue .navbar .pagination>li.disabled >a{
     background-color: rgb(221, 221, 221);
 }
 .navbar .pagination {
