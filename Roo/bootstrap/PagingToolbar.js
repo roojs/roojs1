@@ -151,8 +151,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.next = this.navgroup.addItem({
             tooltip: this.nextText,
             cls: "next",
-            icon : 'fa fa-step-forward',
-            html : this.nextText ,
+            html : this.nextText  + ' <i class="fa fa-step-forward">',
             disabled: true,
             listeners : { click :  this.onClick.createDelegate(this, ["next"]) }
         });
