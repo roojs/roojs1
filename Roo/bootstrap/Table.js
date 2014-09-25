@@ -244,6 +244,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
         
+        // load should be trigger on render..
         //this.store.load();
         
         
