@@ -570,26 +570,26 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         return ret;
     },
     
-//    findCells : function(ev) {
-//        var s = ev.start.clone().clearTime().getTime();
-//       // Roo.log(s);
-//        var e= ev.end.clone().clearTime().getTime();
-//       // Roo.log(e);
-//        var ret = [];
-//        this.cells.each(function(c){
-//             ////Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
-//            
-//            if(c.dateValue > e){
-//                return ;
-//            }
-//            if(c.dateValue < s){
-//                return ;
-//            }
-//            ret.push(c);
-//        });
-//        
-//        return ret;    
-//    },
+    findCells : function(ev) {
+        var s = ev.start.clone().clearTime().getTime();
+       // Roo.log(s);
+        var e= ev.end.clone().clearTime().getTime();
+       // Roo.log(e);
+        var ret = [];
+        this.cells.each(function(c){
+             ////Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
+            
+            if(c.dateValue > e){
+                return ;
+            }
+            if(c.dateValue < s){
+                return ;
+            }
+            ret.push(c);
+        });
+        
+        return ret;    
+    },
     
 //    findBestRow: function(cells)
 //    {
@@ -602,25 +602,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 //        
 //    },
     
-    findStartCell : function(ev) {
-        var s = ev.start.clone().clearTime().getTime();
-       
-        var ret = false;
-        this.cells.each(function(c){
-             ////Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
-            
-            if(c.dateValue != s){
-                return ;
-            }
-            ret = c;
-        });
-        
-        return ret;    
-    },
     
     addItem : function(ev)
     {
-        Roo.log(ev);
         // look for vertical location slot in
         var cells = this.findCells(ev);
         
