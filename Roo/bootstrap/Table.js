@@ -437,7 +437,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onBeforeLoad : function()
     {
-        Roo.log('ds onBeforeLoad');
+        //Roo.log('ds onBeforeLoad');
         
         this.clear();
         
