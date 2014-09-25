@@ -233,7 +233,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
             ]
         }
-        this.maskEl = Roo.DomHelper.append(this.parent().el, mark, true);
+        this.maskEl = Roo.DomHelper.append(document.body, mark, true);
         
         var size = this.parent().el.getSize();
         
