@@ -23,6 +23,10 @@
     background-color: #428bca;
     
 }
+.skin-blue  .navbar .pagination > li > a:hover
+{
+   background-color:  rgb(221, 221, 221);
+}
 .skin-blue table .navbar {
     background-color: #fff;
  
