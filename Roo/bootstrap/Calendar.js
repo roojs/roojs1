@@ -791,7 +791,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 return;
             }
             
-            var moreRow = 3 - c.inhertance;
+            var moreRow = 4 - c.inhertance;
             
             var ev = c.events;
             
