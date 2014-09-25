@@ -125,8 +125,8 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     
     register : function(item)
     {
-	this.navItems.push( item);
-	item.navId = this.navId;
+        this.navItems.push( item);
+        item.navId = this.navId;
     
     },
     getNavItem: function(tabId)
