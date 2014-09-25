@@ -642,11 +642,11 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         ev.rows = rows;
         ev.cells = cells;
         
-        if((typeof(cells[0].events) == 'undefined')){
-            cells[0].events = [];
-        }
-        
-        cells[0].events.push(ev);
+//        if((typeof(cells[0].events) == 'undefined')){
+//            cells[0].events = [];
+//        }
+//        
+//        cells[0].events.push(ev);
 //        ev.rendered = false;
 //        for (var i = 0; i < cells.length;i++) {
 //            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
