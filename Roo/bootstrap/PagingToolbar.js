@@ -142,7 +142,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
         var field = this.navgroup.addItem( {
             tagtype : 'span',
-            style : 'padding-top:3px; padding-bottom:3px',
+            style : 'cls',
             html : this.beforePageText  +
                 '<input type="text" size="3" value="1" class="x-grid-page-number">' +
                 '<span class="x-paging-after">' +  String.format(this.afterPageText, 1) + '</span>'
@@ -158,6 +158,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         //this.addSeparator();
         this.next = this.navgroup.addItem({
             tooltip: this.nextText,
+            tagtype : 'span',
             cls: "next",
             html : ' <i class="fa fa-step-forward">',
             disabled: true,
@@ -165,6 +166,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         });
         this.last = this.navgroup.addItem({
             tooltip: this.lastText,
+            tagtype : 'span',
             icon : 'fa fa-forward',
             cls: "next",
             disabled: true,
@@ -174,6 +176,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.loading = this.navgroup.addItem({
             tooltip: this.refreshText,
             icon: 'fa fa-refresh',
+            tagtype : 'span',
             
             cls: "",
             listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
