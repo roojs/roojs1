@@ -331,7 +331,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     cn : [
                         {
                             tag : 'td',
-                            colspan : 1
+                            colspan :  this.cm.getColumnCount()
                         }
                     ]
                 }
