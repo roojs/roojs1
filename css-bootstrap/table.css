@@ -6,6 +6,17 @@
 .pagination .x-paging-position span  input {
     margin: 0 3px;
 }
+
+.navbar .pagination>li>span {
+    min-height:34px;
+}
+
+.navbar .pagination {
+    margin: 0;
+}
+
+
+/* these are technicall adminlte related */
 .skin-blue .navbar .pagination>li>a {
     background-color: #428bca;
     
@@ -21,10 +32,4 @@
     margin-bottom: 0;
     min-height: 0;
 }
-.navbar .pagination>li>span {
-    min-height:34px;
-}
 
-.navbar .pagination {
-    margin: 0;
-}
