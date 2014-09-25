@@ -117,7 +117,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
 
        
-       // this.el.select('a',true).on('click', this.onClick, this);
+        this.el.select('a',true).on('click', this.onClick, this);
         // at this point parent should be available..
         this.parent().register(this);
     },
