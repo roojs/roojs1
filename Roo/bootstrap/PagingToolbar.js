@@ -21,7 +21,7 @@ Roo.bootstrap.PagingToolbar = function(config)
 {
     // old args format still supported... - xtype is prefered..
         // created from xtype...
-    var ds = el.dataSource;
+    var ds = config.dataSource;
     var items = [];
     if (config.items) {
         items = config.items;
