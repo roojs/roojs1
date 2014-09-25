@@ -14,13 +14,15 @@
 }
 .roo-el-mask-msg 
 {
-    position: absolute;
+   position: absolute;
     z-index:20000;
     /*border: 4px double #557; */
     background-color: #fff;
-    display: list-item;
-    margin-left: 1.3em;
-    list-style-image: url('../images/ux/lightbox/loading.gif');
+    padding: 0px 30px;
+    background-image: url('../images/ux/lightbox/loading.gif');
+    background-repeat: no-repeat;
+    border: 10px solid white;
+    border-radius: 20px
     
 }
 
