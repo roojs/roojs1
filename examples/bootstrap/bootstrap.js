@@ -92,7 +92,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                             align: 'right',
                             items: [
                                 {
-                                    xtype: 'MavItem',
+                                    xtype: 'NavItem',
                                     xns: Roo.bootstrap,
                                     html: "hello",
                                     badge: 'test',
