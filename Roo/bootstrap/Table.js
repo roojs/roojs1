@@ -203,8 +203,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.parent().el.setStyle('position', 'relative');
         
-        this.onRenderFooter()
-        
+        this.footer.parentId = this.id;
+        this.footer.onRender(this.el.select('tfoot tr td'), null);
         
         
         // mask should be using Roo.bootstrap.Mask...
