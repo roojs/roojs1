@@ -4743,7 +4743,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.store.sortInfo = {field : sort, direction : dir};
         
-        this.store.load();
+        if (this.footer) {
+            Roo.log("calling footer first");
+            this.footer.onClick('first');
+        } else {
+        
+            this.store.load({ params : { start : 0 } });
+        }
     },
     
     renderHeader : function()
