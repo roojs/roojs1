@@ -779,9 +779,27 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var _this = this;
         
         this.cells.each(function(c) {
-            if(c.row > 4){
+            if(c.inhertance > 4){
+                c.more = c.events;
+                c.events = [];
+                return;
+            }
+            
+            var totalRow = c.inhertance + c.row;
+            
+            if(totalRow < 5){
+                return;
+            }
+            
+            var moreRow = 3 - c.inhertance;
+            
+            c.events = c.events.slice(0, moreRow);
+            c.more = c.events.slice(moreRow);
+            
+            if(c.more.length){
                 
             }
+            
         });
             
         for (var e = 0; e < this.calevents.length; e++) {
