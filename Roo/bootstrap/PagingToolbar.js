@@ -138,13 +138,13 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         });
     //this.addSeparator();
         this.navgroup.addItem( { html : this.beforePageText } ); //?? escaped?
-        var field = this.navgroup.addItem( { html : '<input type="text" size="3" value="1" class="x-grid-page-number">' } );
+        var field = this.navgroup.addItem( { tagtype : 'span',  html : '<input type="text" size="3" value="1" class="x-grid-page-number">' } );
         this.field = field.el.select('input', true).first();
         this.field.on("keydown", this.onPagingKeydown, this);
         this.field.on("focus", function(){this.dom.select();});
     
     
-        this.afterTextEl =  this.navgroup.addItem( { html : String.format(this.afterPageText, 1) } );
+        this.afterTextEl =  this.navgroup.addItem( { tagtype : 'span', html : String.format(this.afterPageText, 1) } );
         //this.field.setHeight(18);
         //this.addSeparator();
         this.next = this.navgroup.addItem({
