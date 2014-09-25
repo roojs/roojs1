@@ -24,7 +24,7 @@ Roo.example.bootstrap = new Roo.XComponent({
             xns: Roo.bootstrap,
             items: [
                 {
-                    xtype: 'NavbarSimple',
+                    xtype: 'NavSimplebar',
                     xns: Roo.bootstrap,
                     bar: true,
                     position: 'static-top',
@@ -55,7 +55,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                     ]
                 },
                 {
-                    xtype: 'NavbarSimple',
+                    xtype: 'NavSimplebar',
                     xns: Roo.bootstrap,
                     sidebar: true,
                     items: [
@@ -1075,7 +1075,7 @@ Roo.example.bootstrap = new Roo.XComponent({
                                                     cls: 'ctrls',
                                                     items: [
                                                         {
-                                                            xtype: 'NavbarSimple',
+                                                            xtype: 'NavSimplebar',
                                                             xns: Roo.bootstrap,
                                                             bar: false,
                                                             type: 'tabs',
