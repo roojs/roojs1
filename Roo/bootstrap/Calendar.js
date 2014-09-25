@@ -604,20 +604,15 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     findStartCell : function(ev) {
         var s = ev.start.clone().clearTime().getTime();
-       // Roo.log(s);
-        var e= ev.end.clone().clearTime().getTime();
-       // Roo.log(e);
-        var ret = [];
+       
+        var ret = false;
         this.cells.each(function(c){
              ////Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
             
-            if(c.dateValue > e){
+            if(c.dateValue != s){
                 return ;
             }
-            if(c.dateValue < s){
-                return ;
-            }
-            ret.push(c);
+            ret = c;
         });
         
         return ret;    
