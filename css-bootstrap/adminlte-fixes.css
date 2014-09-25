@@ -2,17 +2,21 @@
     background-color: #428bca;
     
 }
- .navbar .pagination>li {
-    min-height:34px;
+.skin-blue table .navbar {
+    background-color: #fff;
+ 
 }
 .skin-blue .navbar .pagination>li.disabled >a{
     background-color: rgb(221, 221, 221);
 }
-.navbar .pagination {
-    margin: 0;
-}
 .skin-blue table .navbar {
-    background-color: #fff;
     margin-bottom: 0;
     min-height: 0;
+}
+.navbar .pagination>li {
+    min-height:34px;
+}
+
+.navbar .pagination {
+    margin: 0;
 }
