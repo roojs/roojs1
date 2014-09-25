@@ -688,31 +688,25 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     
     renderEvents: function()
     {  
-        this.cells.each(function(c) {
-            c.row = 0;
-            c.events = [];
-            c.more = [];
-        });
-        
-        for (var e = 0; e < this.calevents.length; e++) {
-            
-            var ev = this.calevents[e];
-            var cells = ev.cells;
-            var rows = ev.rows;
-            
-            for (var j = 0; j < cells.length; j++){
-            
-                if(!cells[j].more.length){
-                    cells[j].row++;
-                }
-                if(cells[j].row > 3){
-                    cells[j].more.push(ev);
-                    continue;
-                }
-                
-                cells[j].events.push(ev);
-            }
-        }
+//        for (var e = 0; e < this.calevents.length; e++) {
+//            
+//            var ev = this.calevents[e];
+//            var cells = ev.cells;
+//            var rows = ev.rows;
+//            
+//            for (var j = 0; j < cells.length; j++){
+//            
+//                if(!cells[j].more.length){
+//                    cells[j].row++;
+//                }
+//                if(cells[j].row > 3){
+//                    cells[j].more.push(ev);
+//                    continue;
+//                }
+//                
+//                cells[j].events.push(ev);
+//            }
+//        }
             
 //            for (var i = 0; i < rows.length; i++){
 //                // how many rows should it span..
