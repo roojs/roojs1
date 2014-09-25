@@ -615,7 +615,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var crow = false;
         var rows = [];
         for(var i =0; i < cells.length; i++) {
-            cells[i].row = cells[0].row + 1;
+            cells[i].row = (i == 0) ? cells[0].row + 1 : cells[0].row;
             if (!crow) {
                 crow = {
                     start : cells[i],
