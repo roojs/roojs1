@@ -1,5 +1,6 @@
 .skin-blue .navbar .pagination>li>a {
     background-color: #428bca;
+    min-height:34px;
 }
 .skin-blue .navbar .pagination>li.disabled >a{
     background-color: rgb(221, 221, 221);
