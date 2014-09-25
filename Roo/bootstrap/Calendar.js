@@ -443,6 +443,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             cell.row = 0;
             cell.events = [];
             cell.more = [];
+            cell.inhertance = 0;
             //Roo.log('set Cell Class');
             cell.title = "";
             var t = d.getTime();
@@ -768,26 +769,32 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 //            }
 //        }
         
-//        for (var e = 0; e < this.calevents.length; e++) {
-//            
-//            var ev = this.calevents[e];
-//            var cells = ev.cells;
-//            var rows = ev.rows;
-//            
-//            for(var i = 0; i < cells.length; i++){
-//                
-//                var cbox = this.cells.item(this.cells.indexOf(cells[i]));
-//                
-//                if(cells.length < 2 && cbox.rows.length > 3){
-//                    cbox.more.push(ev);
-//                    continue;
-//                }
-//                
-//                cbox.rows.push(ev);
-//            }
-//        }
-//        
         var _this = this;
+        
+        this.cells.each(function(c) {
+            if(c.row > 4){
+                
+            }
+        });
+            
+        for (var e = 0; e < this.calevents.length; e++) {
+            
+            var ev = this.calevents[e];
+            var cells = ev.cells;
+            var rows = ev.rows;
+            
+            for(var i = 0; i < cells.length; i++){
+                
+                var cbox = this.cells.item(this.cells.indexOf(cells[i]));
+                
+                if(cells.length < 2 && cbox.rows.length > 3){
+                    cbox.more.push(ev);
+                    continue;
+                }
+                
+                cbox.rows.push(ev);
+            }
+        }
         
         this.cells.each(function(c) {
             if(c.more.length && c.more.length == 1){
