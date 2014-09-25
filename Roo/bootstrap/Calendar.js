@@ -736,7 +736,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     cfg.cls += ' fc-event-end';
                 }
 
-                var ctr = _this.el.select('.fc-event-container',true).first();
+                var ctr = this.el.select('.fc-event-container',true).first();
                 var cg = ctr.createChild(cfg);
 
                 var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
@@ -745,9 +745,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 cg.setXY([sbox.x +2, sbox.y +(e * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
 
-                cg.on('mouseenter' ,_this.onEventEnter, _this, ev);
-                cg.on('mouseleave' ,_this.onEventLeave, _this, ev);
-                cg.on('click', _this.onEventClick, _this, ev);
+                cg.on('mouseenter' ,this.onEventEnter, this, ev);
+                cg.on('mouseleave' ,this.onEventLeave, this, ev);
+                cg.on('click', this.onEventClick, this, ev);
 
                 ev.els.push(cg);
 
