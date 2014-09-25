@@ -4,3 +4,6 @@
 .navbar .pagination {
     margin: 0;
 }
+table .navbar {
+    background-color: #fff;
+}
