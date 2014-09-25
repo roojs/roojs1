@@ -28,7 +28,7 @@
  * @cfg {boolean} responsive Format condensed
  * @cfg {Boolean} loadMask (true|false) default false
  *
- 
+ * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  
  * 
  * @constructor
