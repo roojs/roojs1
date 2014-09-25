@@ -151,7 +151,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             tooltip: this.nextText,
             cls: "next",
             icon : 'fa fa-step-forward',
-            tagtype : 'span',
             html : this.nextText ,
             disabled: true,
             listeners : { click :  this.onClick.createDelegate(this, ["next"]) }
@@ -159,7 +158,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.last = this.navgroup.addItem({
             tooltip: this.lastText,
             icon : 'fa fa-forward',
-            tagtype : 'span',
             cls: "next",
             disabled: true,
             listeners : { click :  this.onClick.createDelegate(this, ["last"]) }
@@ -167,13 +165,14 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     //this.addSeparator();
         this.loading = this.navgroup.addItem({
             tooltip: this.refreshText,
+            icon: 'fa fa-reload',
             html : '<i class="fa fa-reload"></i>',
             cls: "",
             listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
 
         if(this.displayInfo){
-            var navel = this.navgroup.addItem( { html : '', cls : 'x-paging-info' } );
+            var navel = this.navgroup.addItem( { tagtype : 'span', html : '', cls : 'x-paging-info' } );
             this.displayEl = navel.el.select('a',true).first();
         }
     
