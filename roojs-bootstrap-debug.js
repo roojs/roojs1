@@ -11505,7 +11505,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var format = this.format;
         
         var setCellClass = function(cal, cell){
-            
+            cell.row = 0;
+            cell.events = [];
+            cell.more = [];
             //Roo.log('set Cell Class');
             cell.title = "";
             var t = d.getTime();
@@ -11680,6 +11682,13 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var crow = false;
         var rows = [];
         for(var i =0; i < cells.length; i++) {
+            
+            cells[i].row = cells[0].row;
+            
+            if(i == 0){
+                cells[i].row = cells[i].row + 1;
+            }
+            
             if (!crow) {
                 crow = {
                     start : cells[i],
@@ -11705,7 +11714,15 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         ev.els = [];
         ev.rows = rows;
         ev.cells = cells;
-        ev.rendered = false;
+        
+        cells[0].events.push(ev);
+        
+//        if((typeof(cells[0].events) == 'undefined')){
+//            cells[0].events = [];
+//        }
+//        
+//        cells[0].events.push(ev);
+//        ev.rendered = false;
 //        for (var i = 0; i < cells.length;i++) {
 //            cells[i].rows = Math.max(cells[i].rows || 0 , ev.row + 1 );
 //            
@@ -11721,7 +11738,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         }
         
         Roo.each(this.cells.elements, function(c){
-            c.rows = [];
+            c.row = 0;
+            c.events = [];
             c.more = [];
         });
         
@@ -11740,51 +11758,139 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     },
     
     renderEvents: function()
-    {   
-        // first make sure there is enough space..
-        this.cells.each(function(c) {
-            c.rows = [];
-            c.more = [];
-        });
-        
-        for (var e = 0; e < this.calevents.length; e++) {
+    {  
+//        for (var e = 0; e < this.calevents.length; e++) {
+//            
+//            var ev = this.calevents[e];
+//            var cells = ev.cells;
+//            var rows = ev.rows;
+//            
+//            for (var j = 0; j < cells.length; j++){
+//            
+//                if(!cells[j].more.length){
+//                    cells[j].row++;
+//                }
+//                if(cells[j].row > 3){
+//                    cells[j].more.push(ev);
+//                    continue;
+//                }
+//                
+//                cells[j].events.push(ev);
+//            }
+//        }
             
-            var ev = this.calevents[e];
-            var cells = ev.cells;
-            var rows = ev.rows;
-            
-            for(var i = 0; i < cells.length; i++){
-                
-                var cbox = this.cells.item(this.cells.indexOf(cells[i]));
-                
-                if(cells.length < 2 && cbox.rows.length > 3){
-                    cbox.more.push(ev);
-                    continue;
-                }
-                
-                cbox.rows.push(ev);
-            }
-        }
+//            for (var i = 0; i < rows.length; i++){
+//                // how many rows should it span..
+//
+//                var  cfg = {
+//                    cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+//                    style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+//
+//                    unselectable : "on",
+//                    cn : [
+//                        {
+//                            cls: 'fc-event-inner',
+//                            cn : [
+////                                {
+////                                  tag:'span',
+////                                  cls: 'fc-event-time',
+////                                  html : cells.length > 1 ? '' : ev.time
+////                                },
+//                                {
+//                                  tag:'span',
+//                                  cls: 'fc-event-title',
+//                                  html : String.format('{0}', ev.title)
+//                                }
+//
+//
+//                            ]
+//                        },
+//                        {
+//                            cls: 'ui-resizable-handle ui-resizable-e',
+//                            html : '&nbsp;&nbsp;&nbsp'
+//                        }
+//
+//                    ]
+//                };
+//
+//                if (i == 0) {
+//                    cfg.cls += ' fc-event-start';
+//                }
+//                if ((i+1) == rows.length) {
+//                    cfg.cls += ' fc-event-end';
+//                }
+//
+//                var ctr = this.el.select('.fc-event-container',true).first();
+//                var cg = ctr.createChild(cfg);
+//
+//                var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+//                var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+//
+//                cg.setXY([sbox.x +2, sbox.y +(e * 20)]);    
+//                cg.setWidth(ebox.right - sbox.x -2);
+//
+//                cg.on('mouseenter' ,this.onEventEnter, this, ev);
+//                cg.on('mouseleave' ,this.onEventLeave, this, ev);
+//                cg.on('click', this.onEventClick, this, ev);
+//
+//                ev.els.push(cg);
+//
+//                
+//            }
+//        }
         
         var _this = this;
         
         this.cells.each(function(c) {
-            if(c.more.length && c.more.length == 1){
-                c.rows.push(c.more.pop());
+            
+            if(c.row < 5){
+                return;
             }
             
-            var r = (c.more.length) ? c.rows.length + 1 : c.rows.length;
-            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, r * 20));
+            var ev = c.events;
+            
+            var r = 4;
+            if(c.row != c.events.length){
+                r = 4 - (4 - (c.row - c.events.length));
+            }
+            
+            c.events = ev.slice(0, r);
+            c.more = ev.slice(r);
+            
+            if(c.more.length && c.more.length == 1){
+                c.events.push(c.more.pop());
+            }
+            
+            c.row = (c.row - ev.length) + c.events.length + ((c.more.length) ? 1 : 0);
+            
+        });
+            
+//        for (var e = 0; e < this.calevents.length; e++) {
+//            
+//            var ev = this.calevents[e];
+//            var cells = ev.cells;
+//            var rows = ev.rows;
+//            
+//            for(var i = 0; i < cells.length; i++){
+//                
+//                var cbox = this.cells.item(this.cells.indexOf(cells[i]));
+//                
+//                if(cells.length < 2 && cbox.rows.length > 3){
+//                    cbox.more.push(ev);
+//                    continue;
+//                }
+//                
+//                cbox.rows.push(ev);
+//            }
+//        }
+//        
+        this.cells.each(function(c) {
+            
+            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.row * 20));
             
             
-            for (var e = 0; e < c.rows.length; e++){
-                var ev = c.rows[e];
-                
-                if(ev.rendered){
-                    continue;
-                }
-                
-                var cells = ev.cells;
+            for (var e = 0; e < c.events.length; e++){
+                var ev = c.events[e];
                 var rows = ev.rows;
                 
                 for(var i = 0; i < rows.length; i++) {
@@ -11835,7 +11941,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
                     var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
 
-                    cg.setXY([sbox.x +2, sbox.y +(e * 20)]);    
+                    var r = (c.more.length) ? 1 : 0;
+                    cg.setXY([sbox.x +2, sbox.y + ((c.row - c.events.length - r + e) * 20)]);    
                     cg.setWidth(ebox.right - sbox.x -2);
 
                     cg.on('mouseenter' ,_this.onEventEnter, _this, ev);
@@ -11844,7 +11951,6 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 
                     ev.els.push(cg);
                     
-                    ev.rendered = true;
                 }
                 
             }
@@ -11882,7 +11988,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                 var sbox = c.select('.fc-day-content',true).first().getBox();
                 var ebox = c.select('.fc-day-content',true).first().getBox();
                 //Roo.log(cg);
-                cg.setXY([sbox.x +2, sbox.y +(c.rows.length * 20)]);    
+                cg.setXY([sbox.x +2, sbox.y +((c.row - 1) * 20)]);    
                 cg.setWidth(ebox.right - sbox.x -2);
 
                 cg.on('click', _this.onMoreEventClick, _this, c.more);
@@ -14776,10 +14882,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         //var ss = this.el.getStyles('font-size', 'font-family', 'background-image', 'background-repeat');
         // this copies styles from the containing element into thsi one..
         // not sure why we need all of this..
-        var ss = this.el.getStyles('font-size', 'background-image', 'background-repeat');
-        ss['background-attachment'] = 'fixed'; // w3c
+        //var ss = this.el.getStyles('font-size', 'background-image', 'background-repeat');
+        
+        //var ss = this.el.getStyles( 'background-image', 'background-repeat');
+        //ss['background-attachment'] = 'fixed'; // w3c
         dbody.bgProperties = 'fixed'; // ie
-        Roo.DomHelper.applyStyles(dbody, ss);
+        //Roo.DomHelper.applyStyles(dbody, ss);
         Roo.EventManager.on(this.doc, {
             //'mousedown': this.onEditorEvent,
             'mouseup': this.onEditorEvent,
@@ -15973,7 +16081,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
         
         Roo.log("create toolbars");
         
-        this.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard({editor: this} ) ];
+        this.toolbars = [ new Roo.bootstrap.htmleditor.ToolbarStandard({editor: this} ) ];
         this.toolbars[0].render(this.toolbarContainer());
         
         return;
@@ -16243,7 +16351,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
    
    
       
-
+Roo.namespace('Roo.bootstrap.htmleditor');
 /**
  * @class Roo.bootstrap.HtmlEditorToolbar1
  * Basic Toolbar
@@ -16268,7 +16376,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
  * .x-html-editor-tb .x-edit-none .x-btn-text { background: none; }
  */
  
-Roo.bootstrap.HtmlEditor.ToolbarStandard = function(config)
+Roo.bootstrap.htmleditor.ToolbarStandard = function(config)
 {
     
     Roo.apply(this, config);
@@ -16280,7 +16388,7 @@ Roo.bootstrap.HtmlEditor.ToolbarStandard = function(config)
         colors : true,
         specialElements : true
     });
-    Roo.bootstrap.HtmlEditor.ToolbarStandard.superclass.constructor.call(this, config);
+    Roo.bootstrap.htmleditor.ToolbarStandard.superclass.constructor.call(this, config);
     
     this.editor = config.editor;
     this.editorcore = config.editor.editorcore;
@@ -16290,9 +16398,8 @@ Roo.bootstrap.HtmlEditor.ToolbarStandard = function(config)
     //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
     // dont call parent... till later.
 }
-Roo.extend(Roo.bootstrap.HtmlEditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,  {
-    
-    
+Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,  {
+     
     bar : true,
     
     editor : false,
@@ -16311,7 +16418,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
     {
        // Roo.log("Call onRender: " + this.xtype);
         
-       Roo.bootstrap.HtmlEditor.ToolbarStandard.superclass.onRender.call(this, ct, position);
+       Roo.bootstrap.htmleditor.ToolbarStandard.superclass.onRender.call(this, ct, position);
        Roo.log(this.el);
        this.el.dom.style.marginBottom = '0';
        var _this = this;
