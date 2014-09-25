@@ -127,7 +127,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         var cn = new Roo.bootstrap.NavItem(cfg);
         this.register(cn);
         cn.onRender(this.el, null);
-        
+        return cn;
     },
     
     register : function(item)
