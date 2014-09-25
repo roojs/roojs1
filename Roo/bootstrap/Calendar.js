@@ -440,7 +440,9 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var format = this.format;
         
         var setCellClass = function(cal, cell){
-            
+            cell.row = 0;
+            cell.events = [];
+            cell.more = [];
             //Roo.log('set Cell Class');
             cell.title = "";
             var t = d.getTime();
