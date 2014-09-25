@@ -55,6 +55,9 @@ Roo.bootstrap.Table = function(config){
         this.ds.xmodule = this.xmodule || false;
          
     }
+    if (this.footer) {
+        this.footer = Roo.factory(this.footer);
+    }
 };
 
 Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
