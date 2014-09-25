@@ -28,8 +28,9 @@
 
 .roo-el-mask-msg div
 {
-    font-size: 20px;
-    font-weight: 400;
+   font-family: 'Source Sans Pro', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
     z-index:20001;
     padding:4px 15px;
     color: #557;
