@@ -150,13 +150,16 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.next = this.navgroup.addItem({
             tooltip: this.nextText,
             cls: "next",
-            html : this.nextText + '<i class="fa fa-step-forward"></i>',
+            icon : 'fa fa-step-forward',
+            tagtype : 'span',
+            html : this.nextText ,
             disabled: true,
             listeners : { click :  this.onClick.createDelegate(this, ["next"]) }
         });
         this.last = this.navgroup.addItem({
             tooltip: this.lastText,
-            html : '<i class="fa fa-forward"></i>',
+            icon : 'fa fa-forward',
+            tagtype : 'span',
             cls: "next",
             disabled: true,
             listeners : { click :  this.onClick.createDelegate(this, ["last"]) }
