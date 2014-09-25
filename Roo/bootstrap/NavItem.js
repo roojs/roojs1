@@ -98,7 +98,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
         }
         if (this.disabled) {
-            cls += ' disabled';
+            cfg.cls += ' disabled';
         }
         
         
