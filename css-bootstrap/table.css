@@ -17,7 +17,8 @@
 
 
 /* these are technicall adminlte related */
-.skin-blue  .navbar .nav > li > a:active,
+.skin-blue  .navbar .pagination > li > a:active,
+.skin-blue  .navbar .pagination > li > a:focus,
 .skin-blue .navbar .pagination>li>a {
     background-color: #428bca;
     
@@ -37,3 +38,4 @@
 .table .sortable {
     cursor: pointer;
 }
+
