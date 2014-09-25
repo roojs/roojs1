@@ -685,6 +685,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
     {   
         // first make sure there is enough space..
         this.cells.each(function(c) {
+            Roo.log(c);
             c.row = 0;
             c.more = [];
         });
