@@ -124,6 +124,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if(this.preventDefault){
             e.preventDefault();
         }
+        if (this.disabled) {
+            return;
+        }
         
         if(this.fireEvent('click', this, e) === false){
             return;
