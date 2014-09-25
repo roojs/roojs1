@@ -823,128 +823,128 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 //            }
 //        }
 //        
-//        this.cells.each(function(c) {
-//            if(c.more.length && c.more.length == 1){
-//                c.rows.push(c.more.pop());
-//            }
-//            
-//            var r = (c.more.length) ? c.rows.length + 1 : c.rows.length;
-//            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, r * 20));
-//            
-//            
-//            for (var e = 0; e < c.rows.length; e++){
-//                var ev = c.rows[e];
-//                
-//                if(ev.rendered){
-//                    continue;
-//                }
-//                
-//                var cells = ev.cells;
-//                var rows = ev.rows;
-//                
-//                for(var i = 0; i < rows.length; i++) {
-//                
-//                    // how many rows should it span..
-//
-//                    var  cfg = {
-//                        cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
-//                        style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
-//
-//                        unselectable : "on",
-//                        cn : [
-//                            {
-//                                cls: 'fc-event-inner',
-//                                cn : [
-//    //                                {
-//    //                                  tag:'span',
-//    //                                  cls: 'fc-event-time',
-//    //                                  html : cells.length > 1 ? '' : ev.time
-//    //                                },
-//                                    {
-//                                      tag:'span',
-//                                      cls: 'fc-event-title',
-//                                      html : String.format('{0}', ev.title)
-//                                    }
-//
-//
-//                                ]
-//                            },
-//                            {
-//                                cls: 'ui-resizable-handle ui-resizable-e',
-//                                html : '&nbsp;&nbsp;&nbsp'
-//                            }
-//
-//                        ]
-//                    };
-//
-//                    if (i == 0) {
-//                        cfg.cls += ' fc-event-start';
-//                    }
-//                    if ((i+1) == rows.length) {
-//                        cfg.cls += ' fc-event-end';
-//                    }
-//
-//                    var ctr = _this.el.select('.fc-event-container',true).first();
-//                    var cg = ctr.createChild(cfg);
-//
-//                    var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
-//                    var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
-//
-//                    cg.setXY([sbox.x +2, sbox.y +(e * 20)]);    
-//                    cg.setWidth(ebox.right - sbox.x -2);
-//
-//                    cg.on('mouseenter' ,_this.onEventEnter, _this, ev);
-//                    cg.on('mouseleave' ,_this.onEventLeave, _this, ev);
-//                    cg.on('click', _this.onEventClick, _this, ev);
-//
-//                    ev.els.push(cg);
-//                    
-//                    ev.rendered = true;
-//                }
-//                
-//            }
-//            
-//            
-//            if(c.more.length){
-//                var  cfg = {
-//                    cls : 'fc-more-event roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable fc-event-start fc-event-end',
-//                    style : 'position: absolute',
-//                    unselectable : "on",
-//                    cn : [
-//                        {
-//                            cls: 'fc-event-inner',
-//                            cn : [
-//                                {
-//                                  tag:'span',
-//                                  cls: 'fc-event-title',
-//                                  html : 'More'
-//                                }
-//
-//
-//                            ]
-//                        },
-//                        {
-//                            cls: 'ui-resizable-handle ui-resizable-e',
-//                            html : '&nbsp;&nbsp;&nbsp'
-//                        }
-//
-//                    ]
-//                };
-//
-//                var ctr = _this.el.select('.fc-event-container',true).first();
-//                var cg = ctr.createChild(cfg);
-//
-//                var sbox = c.select('.fc-day-content',true).first().getBox();
-//                var ebox = c.select('.fc-day-content',true).first().getBox();
-//                //Roo.log(cg);
-//                cg.setXY([sbox.x +2, sbox.y +(c.rows.length * 20)]);    
-//                cg.setWidth(ebox.right - sbox.x -2);
-//
-//                cg.on('click', _this.onMoreEventClick, _this, c.more);
-//                
-//            }
-//            
-//        });
+        this.cells.each(function(c) {
+            if(c.more.length && c.more.length == 1){
+                c.rows.push(c.more.pop());
+            }
+            
+            var r = (c.more.length) ? c.rows.length + 1 : c.rows.length;
+            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, r * 20));
+            
+            
+            for (var e = 0; e < c.rows.length; e++){
+                var ev = c.rows[e];
+                
+                if(ev.rendered){
+                    continue;
+                }
+                
+                var cells = ev.cells;
+                var rows = ev.rows;
+                
+                for(var i = 0; i < rows.length; i++) {
+                
+                    // how many rows should it span..
+
+                    var  cfg = {
+                        cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+                        style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+
+                        unselectable : "on",
+                        cn : [
+                            {
+                                cls: 'fc-event-inner',
+                                cn : [
+    //                                {
+    //                                  tag:'span',
+    //                                  cls: 'fc-event-time',
+    //                                  html : cells.length > 1 ? '' : ev.time
+    //                                },
+                                    {
+                                      tag:'span',
+                                      cls: 'fc-event-title',
+                                      html : String.format('{0}', ev.title)
+                                    }
+
+
+                                ]
+                            },
+                            {
+                                cls: 'ui-resizable-handle ui-resizable-e',
+                                html : '&nbsp;&nbsp;&nbsp'
+                            }
+
+                        ]
+                    };
+
+                    if (i == 0) {
+                        cfg.cls += ' fc-event-start';
+                    }
+                    if ((i+1) == rows.length) {
+                        cfg.cls += ' fc-event-end';
+                    }
+
+                    var ctr = _this.el.select('.fc-event-container',true).first();
+                    var cg = ctr.createChild(cfg);
+
+                    var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+                    var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+
+                    cg.setXY([sbox.x +2, sbox.y +(e * 20)]);    
+                    cg.setWidth(ebox.right - sbox.x -2);
+
+                    cg.on('mouseenter' ,_this.onEventEnter, _this, ev);
+                    cg.on('mouseleave' ,_this.onEventLeave, _this, ev);
+                    cg.on('click', _this.onEventClick, _this, ev);
+
+                    ev.els.push(cg);
+                    
+                    ev.rendered = true;
+                }
+                
+            }
+            
+            
+            if(c.more.length){
+                var  cfg = {
+                    cls : 'fc-more-event roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable fc-event-start fc-event-end',
+                    style : 'position: absolute',
+                    unselectable : "on",
+                    cn : [
+                        {
+                            cls: 'fc-event-inner',
+                            cn : [
+                                {
+                                  tag:'span',
+                                  cls: 'fc-event-title',
+                                  html : 'More'
+                                }
+
+
+                            ]
+                        },
+                        {
+                            cls: 'ui-resizable-handle ui-resizable-e',
+                            html : '&nbsp;&nbsp;&nbsp'
+                        }
+
+                    ]
+                };
+
+                var ctr = _this.el.select('.fc-event-container',true).first();
+                var cg = ctr.createChild(cfg);
+
+                var sbox = c.select('.fc-day-content',true).first().getBox();
+                var ebox = c.select('.fc-day-content',true).first().getBox();
+                //Roo.log(cg);
+                cg.setXY([sbox.x +2, sbox.y +(c.rows.length * 20)]);    
+                cg.setWidth(ebox.right - sbox.x -2);
+
+                cg.on('click', _this.onMoreEventClick, _this, c.more);
+                
+            }
+            
+        });
         
         
         
