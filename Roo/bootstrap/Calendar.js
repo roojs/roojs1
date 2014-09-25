@@ -618,11 +618,8 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         var rows = [];
         for(var i =0; i < cells.length; i++) {
             
-            cells[i].inhertance = cells[i].inhertance + 1;
-            
             if(i == 0){
                 cells[i].row = cells[i].row + 1;
-                cells[i].inhertance = cells[i].inhertance - 1;
             }
             
             if (!crow) {
