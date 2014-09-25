@@ -127,15 +127,16 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.NavSimplebar, {
             handler: this.onClick.createDelegate(this, ["first"])
         });
         
-    this.prev = this.addButton({
-        tooltip: this.prevText,
-        cls: "prev",
-        html : '<i class="fa fa-step-backward"></i>' + this.prevText,
-        disabled: true,
-        handler: this.onClick.createDelegate(this, ["prev"])
-    });
+        this.prev =  this.navgroup.addItem({
+            tooltip: this.prevText,
+            cls: "prev",
+            html : '<i class="fa fa-step-backward"></i>' + this.prevText,
+            disabled: true,
+            handler: this.onClick.createDelegate(this, ["prev"])
+        });
     //this.addSeparator();
-    this.add(this.beforePageText);
+        this.navgroup.addItem( { html : this.beforePageText } ); //?? escaped?
+        
     this.field = Roo.get(this.addDom({
        tag: "input",
        type: "text",
