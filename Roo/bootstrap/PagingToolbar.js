@@ -124,6 +124,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.first = this.navgroup.addItem({
             tooltip: this.firstText,
             cls: "prev",
+            tagtype : 'span',
             icon : 'fa fa-backward',
             disabled: true,
             listeners : { click : this.onClick.createDelegate(this, ["first"]) }
@@ -133,7 +134,8 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             tooltip: this.prevText,
             cls: "prev",
             icon : 'fa fa-step-backward',
-        
+        tagtype : 'span',
+            
             disabled: true,
             listeners : { click :  this.onClick.createDelegate(this, ["prev"]) }
         });
@@ -142,6 +144,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
         var field = this.navgroup.addItem( {
             tagtype : 'span',
+            
             style : 'cls',
             html : this.beforePageText  +
                 '<input type="text" size="3" value="1" class="x-grid-page-number">' +
