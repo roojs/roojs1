@@ -315,7 +315,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var body = {
             tag: 'tbody',
-            cn : []
+            cn : [
+                {
+                    tag: 'tr',
+                    cn : [
+                        {
+                            tag : 'td',
+                            colspan :  this.cm.getColumnCount()
+                        }
+                    ]
+                }
+            ]
         };
         
         return body;
