@@ -55,6 +55,8 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
             cfg.valign = this.valign;
         }
 	
+        Roo.log(cfg);
+        
         return cfg;
     }
    
