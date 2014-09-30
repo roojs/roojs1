@@ -200,7 +200,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
             var build_from_html =  Roo.XComponent.build_from_html;
             
-            
+            Roo.log(cn);
             // does the container contain child eleemnts with 'xtype' attributes.
             // that match this xtype..
             // note - when we render we create these as well..
@@ -5074,7 +5074,7 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
             cfg.width=this.width
         }
         
-	
+	Roo.log(cfg);
         return cfg;
     }
    
@@ -5139,6 +5139,8 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
             cfg.valign = this.valign;
         }
 	
+        Roo.log(cfg);
+        
         return cfg;
     }
    
