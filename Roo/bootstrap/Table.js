@@ -304,8 +304,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     
             var c = {
                 tag: 'th',
+                style : '',
                 html: cm.getColumnHeader(i)
             };
+            
+            if(typeof(config.align) != 'undefined' && config.align.length){
+                c.style += ' text-align:' + config.align;
+            }
             
             if(typeof(config.dataIndex) != 'undefined'){
                 c.sort = config.dataIndex;
@@ -316,7 +321,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             
             if(typeof(config.width) != 'undefined'){
-                c.style = 'width:' + config.width + 'px';
+                c.style += 'width:' + config.width + 'px';
             }
             
             header.cn.push(c)
