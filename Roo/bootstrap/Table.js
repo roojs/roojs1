@@ -308,16 +308,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 html: cm.getColumnHeader(i)
             };
             
-            if(typeof(config.align) != 'undefined' && config.align.length){
-                c.style += ' text-align:' + config.align;
-            }
-            
             if(typeof(config.dataIndex) != 'undefined'){
                 c.sort = config.dataIndex;
             }
             
             if(typeof(config.sortable) != 'undefined' && config.sortable){
                 c.cls = 'sortable';
+            }
+            
+            if(typeof(config.align) != 'undefined' && config.align.length){
+                c.style += ' text-align:' + config.align;
             }
             
             if(typeof(config.width) != 'undefined'){
