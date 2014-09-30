@@ -208,10 +208,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             if (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
                
                 var self_cntr_el = Roo.get(this[cntr](false));
-                Roo.log(self_cntr_el);
                 var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
-                Roo.log('echild');
-                Roo.log(echild);
+                
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
                   
@@ -236,8 +234,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                  
                 // actually if flexy:foreach is found, we really want to create 
                 // multiple copies here...
-                //Roo.log('render');
-                //Roo.log(this[cntr]());
+                Roo.log('render');
+                Roo.log(this[cntr]());
                 cn.render(this[cntr](true));
              }
             // then add the element..
