@@ -112,7 +112,7 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
             cfg.width=this.width
         }
         
-	
+	Roo.log(cfg);
         return cfg;
     }
    
