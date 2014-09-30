@@ -234,10 +234,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                  
                 // actually if flexy:foreach is found, we really want to create 
                 // multiple copies here...
-                Roo.log('render');
-                Roo.log(this);
-                Roo.log(this[cntr](true));
-                Roo.log(cn);
+                //Roo.log('render');
+                //Roo.log(this[cntr]());
                 cn.render(this[cntr](true));
              }
             // then add the element..
@@ -5076,7 +5074,7 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
             cfg.width=this.width
         }
         
-	Roo.log(cfg);
+	
         return cfg;
     }
    
@@ -5141,8 +5139,6 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
             cfg.valign = this.valign;
         }
 	
-        Roo.log(cfg);
-        
         return cfg;
     }
    
