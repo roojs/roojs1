@@ -4776,6 +4776,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     
             var c = {
                 tag: 'th',
+                style : '',
                 html: cm.getColumnHeader(i)
             };
             
@@ -4787,8 +4788,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.cls = 'sortable';
             }
             
+            if(typeof(config.align) != 'undefined' && config.align.length){
+                c.style += ' text-align:' + config.align;
+            }
+            
             if(typeof(config.width) != 'undefined'){
-                c.style = 'width:' + config.width + 'px';
+                c.style += 'width:' + config.width + 'px';
             }
             
             header.cn.push(c)
@@ -4893,12 +4898,18 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     var td = {
                         tag: 'td',
                         id: id,
+                        style: '',
                         html: (typeof(value) === 'object') ? '' : value
                     };
                     
-                    if(typeof(config.width) != 'undefined'){
-                        td.style = 'width:' +  config.width + 'px';
+                    if(typeof(config.align) != 'undefined' && config.align.length){
+                        td.style += ' text-align:' + config.align;
                     }
+                    
+                    if(typeof(config.width) != 'undefined'){
+                        td.style += 'width:' +  config.width + 'px';
+                    }
+                    
                     
                     row.cn.push(td);
                    
