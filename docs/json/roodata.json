@@ -13071,6 +13071,12 @@
      "memberOf": ""
     },
     {
+     "name": "tfoor",
+     "type": "Boolean",
+     "desc": "(true|false) generate tfoot, default false",
+     "memberOf": ""
+    },
+    {
      "name": "footer",
      "type": "Roo.bootstrap.PagingToolbar",
      "desc": "a paging toolbar",

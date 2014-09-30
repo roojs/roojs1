@@ -27,6 +27,7 @@
  * @cfg {boolean} condensed Format condensed
  * @cfg {boolean} responsive Format condensed
  * @cfg {Boolean} loadMask (true|false) default false
+ * @cfg {Boolean} tfoor (true|false) generate tfoot, default false
  *
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  
@@ -83,6 +84,7 @@
     </span><span class="jsdoc-var">cm </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">store </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">loadMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">tfoor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">Roo.bootstrap.Table.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
@@ -152,7 +154,10 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.renderHeader</span><span class="jsdoc-syntax">());
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.renderBody</span><span class="jsdoc-syntax">());
-            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.renderFooter</span><span class="jsdoc-syntax">());
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tfoot</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.renderFooter</span><span class="jsdoc-syntax">());
+            }
             
             </span><span class="jsdoc-var">cfg.cls</span><span class="jsdoc-syntax">+=  </span><span class="jsdoc-string">' TableGrid'</span><span class="jsdoc-syntax">;
         }
