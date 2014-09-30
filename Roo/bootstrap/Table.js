@@ -84,6 +84,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     cm : false,
     store : false,
     loadMask : false,
+    tfoor : false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -153,7 +154,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(this.store || this.cm){
             cfg.cn.push(this.renderHeader());
             cfg.cn.push(this.renderBody());
-            cfg.cn.push(this.renderFooter());
+            
+            if(this.tfoot){
+                cfg.cn.push(this.renderFooter());
+            }
+            
             
             cfg.cls+=  ' TableGrid';
         }
