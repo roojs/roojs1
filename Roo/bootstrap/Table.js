@@ -154,7 +154,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         if(this.store || this.cm){
-            cfg.cn.push(this.renderHeader());
+            if(this.thead){
+                cfg.cn.push(this.renderHeader());
+            }
+            
             cfg.cn.push(this.renderBody());
             
             if(this.tfoot){
