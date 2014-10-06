@@ -85,7 +85,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     cm : false,
     store : false,
     loadMask : false,
-    tfoor : false,
+    tfoor : true,
+    thead : true,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
