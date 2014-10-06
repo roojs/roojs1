@@ -13073,7 +13073,13 @@
     {
      "name": "tfoor",
      "type": "Boolean",
-     "desc": "(true|false) generate tfoot, default false",
+     "desc": "(true|false) generate tfoot, default true",
+     "memberOf": ""
+    },
+    {
+     "name": "thead",
+     "type": "Boolean",
+     "desc": "(true|false) generate thead, default true",
      "memberOf": ""
     },
     {
