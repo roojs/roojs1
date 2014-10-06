@@ -4499,7 +4499,8 @@ Roo.LoadMask.prototype = {
  * @cfg {boolean} condensed Format condensed
  * @cfg {boolean} responsive Format condensed
  * @cfg {Boolean} loadMask (true|false) default false
- * @cfg {Boolean} tfoor (true|false) generate tfoot, default false
+ * @cfg {Boolean} tfoor (true|false) generate tfoot, default true
+ * @cfg {Boolean} thead (true|false) generate thead, default true
  *
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  
@@ -4556,7 +4557,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     cm : false,
     store : false,
     loadMask : false,
-    tfoor : false,
+    tfoor : true,
+    thead : true,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -4624,7 +4626,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         if(this.store || this.cm){
-            cfg.cn.push(this.renderHeader());
+            if(this.thead){
+                cfg.cn.push(this.renderHeader());
+            }
+            
             cfg.cn.push(this.renderBody());
             
             if(this.tfoot){
