@@ -317,11 +317,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             
 //            if(typeof(config.align) != 'undefined' && config.align.length){
-//                c.style += ' text-align:' + config.align;
+//                c.style += ' text-align:' + config.align + ';';
 //            }
             
             if(typeof(config.width) != 'undefined'){
-                c.style += 'width:' + config.width + 'px';
+                c.style += 'width:' + config.width + 'px;';
             }
             
             header.cn.push(c)
@@ -435,7 +435,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     }
                     
                     if(typeof(config.width) != 'undefined'){
-                        td.style += 'width:' +  config.width + 'px';
+                        td.style += 'width:' +  config.width + 'px;';
                     }
                     
                     
