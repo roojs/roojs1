@@ -431,7 +431,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     };
                     
                     if(typeof(config.align) != 'undefined' && config.align.length){
-                        td.style += ' text-align:' + config.align;
+                        td.style += ' text-align:' + config.align + ';';
                     }
                     
                     if(typeof(config.width) != 'undefined'){
