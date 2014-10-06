@@ -4788,9 +4788,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.cls = 'sortable';
             }
             
-            if(typeof(config.align) != 'undefined' && config.align.length){
-                c.style += ' text-align:' + config.align;
-            }
+//            if(typeof(config.align) != 'undefined' && config.align.length){
+//                c.style += ' text-align:' + config.align;
+//            }
             
             if(typeof(config.width) != 'undefined'){
                 c.style += 'width:' + config.width + 'px';
