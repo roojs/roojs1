@@ -13119,6 +13119,18 @@
      "memberOf": ""
     },
     {
+     "name": "RowSelection",
+     "type": "Boolean",
+     "desc": "(true|false) default false",
+     "memberOf": ""
+    },
+    {
+     "name": "CellSelection",
+     "type": "Boolean",
+     "desc": "(true|false) default false",
+     "memberOf": ""
+    },
+    {
      "name": "footer",
      "type": "Roo.bootstrap.PagingToolbar",
      "desc": "a paging toolbar",
@@ -13211,6 +13223,18 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "cellclick",
+     "sig": "function (_self, rowIndex, columnIndex, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a cell is clicked"
+    },
+    {
+     "name": "celldblclick",
+     "sig": "function (_self, rowIndex, columnIndex, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a cell is double clicked"
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -13239,6 +13263,18 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the component is rendered."
+    },
+    {
+     "name": "rowclick",
+     "sig": "function (_self, rowIndex, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a row is clicked"
+    },
+    {
+     "name": "rowdblclick",
+     "sig": "function (_self, rowIndex, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a row is double clicked"
     },
     {
      "name": "show",
