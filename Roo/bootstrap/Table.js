@@ -248,10 +248,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = row.dom.rowIndex;
         
-        if()
-        this.fireEvent('cellclick', this);
+        if(this.CellSelection){
+            this.fireEvent('cellclick', this, el, cellIndex, e);
+        }
         
-        Roo.log()
+        if(this.RowSelection){
+            this.fireEvent('rowclick', this, el, cellIndex, e);
+        }
+        
         
     },
     
