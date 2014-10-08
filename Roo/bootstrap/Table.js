@@ -212,58 +212,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.el.on("dblclick", this.onDblClick, this);
         
-//        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
-//        this.maskEl.enableDisplayMode("block");
-//        this.maskEl.show();
-        
         this.parent().el.setStyle('position', 'relative');
         if (this.footer) {
             this.footer.parentId = this.id;
             this.footer.onRender(this.el.select('tfoot tr td').first(), null);        
         }
         
-        
-        // mask should be using Roo.bootstrap.Mask...
-        /*
-        var mark = {
-            tag: "div",
-            cls:"x-dlg-mask",
-            style: "text-align:center",
-            cn: [
-                {
-                    tag: "div",
-                    style: "background-color:white;width:50%;margin:100 auto",
-                    cn: [
-                        {
-                            tag: "img",
-                            src: Roo.rootURL + '/images/ux/lightbox/loading.gif'
-                        },
-                        {
-                            tag: "span",
-                            html: "Loading"
-                        }
-                        
-                    ]
-                }
-            ]
-        }
-        
-        var size = this.el.getSize();
-        
-        this.maskEl = Roo.DomHelper.append(document.body, mark, true);
-        
-        this.maskEl.setSize(size.width, 300); // we will fix the height at the beginning...
-        this.maskEl.enableDisplayMode("block");
-        */
         this.maskEl = new Roo.LoadMask(this.el, { store : this.ds, msgCls: 'roo-el-mask-msg' });
         
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
-        
-        // load should be trigger on render..
-        //this.store.load();
-        
-        
         
     },
     
