@@ -267,6 +267,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
     },
     
+    onDblClick : function(a,b,c){
+        Roo.log(a);
+        Roo.log(b);
+        Roo.log(c);
+        
+    },
+    
     sort : function(e,el)
     {
         var col = Roo.get(el)
