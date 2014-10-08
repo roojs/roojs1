@@ -247,17 +247,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onClick : function(e, el)
     {
-        var cell = Roo.get(el);;
+        var cell = Roo.get(el);
         var row = cell.findParent('tr', false, true);
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = row.dom.rowIndex;
         
         if(this.CellSelection){
-            this.fireEvent('cellclick', this, el, cellIndex, e);
+            this.fireEvent('cellclick', this, cell, rowIndex, cellIndex, e);
         }
         
         if(this.RowSelection){
-            this.fireEvent('rowclick', this, el, rowIndex, e);
+            this.fireEvent('rowclick', this, row, rowIndex, e);
         }
         
         
@@ -275,7 +275,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         if(this.RowSelection){
-            this.fireEvent('rowdblclick', this, el, rowIndex, e);
+            this.fireEvent('rowdblclick', this, row, rowIndex, e);
         }
     },
     
