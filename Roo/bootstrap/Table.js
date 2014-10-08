@@ -128,7 +128,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     loadMask : false,
     tfoor : true,
     thead : true,
-    SelectionModel : 'Row',
+    RowSelection : false,
+    CellSelection : false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
