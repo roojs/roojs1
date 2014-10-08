@@ -27,6 +27,7 @@
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
+ * @cfg {String} align (left|center|right) Default left
  * 
  * 
  * @constructor
