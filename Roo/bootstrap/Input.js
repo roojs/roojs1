@@ -200,6 +200,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     labelWidth : 2,
     labelAlign : false,
     readOnly : false,
+    align : 'left',
     
     parentLabelAlign : function()
     {
