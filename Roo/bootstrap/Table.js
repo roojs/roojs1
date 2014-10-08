@@ -29,6 +29,8 @@
  * @cfg {Boolean} loadMask (true|false) default false
  * @cfg {Boolean} tfoor (true|false) generate tfoot, default true
  * @cfg {Boolean} thead (true|false) generate thead, default true
+ * @cfg {Boolean} RowSelection (true|false) default false
+ * @cfg {Boolean} CellSelection (true|false) default false
  *
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  
@@ -126,6 +128,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     loadMask : false,
     tfoor : true,
     thead : true,
+    SelectionModel : 'Row',
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -240,15 +243,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     onClick : function(e, el)
     {
         var cell = Roo.get(el);;
+        var row = cell.findParent('tr', false, true);
+        var cellIndex = cell.dom.cellIndex;
+        var rowIndex = row.dom.rowIndex;
         
-        Roo.log(cell);
+        if()
+        this.fireEvent('cellclick', this);
         
-        Roo.log('onClick');
-        Roo.log(e);
-        Roo.log(el);
-        
-        Roo.log('cellIndex');
-        Roo.log(cell.dom.cellIndex)
+        Roo.log()
         
     },
     
