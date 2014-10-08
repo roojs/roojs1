@@ -227,8 +227,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onDblClick : function(e, el){
         Roo.log(e);
-        Roo.log(e.getTarget());
-        Roo.log(Roo.get(e.getTarget()))
         Roo.log(el);
         var row = Roo.get(el).findParent('tr', false, true);
         
