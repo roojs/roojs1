@@ -225,11 +225,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
     },
     
-    onDblClick : function(a,b,c,d){
-        Roo.log(a);
-        Roo.log(b);
-        Roo.log(c);
-        Roo.log(d);
+    onDblClick : function(e, el){
+        Roo.log(e);
+        Roo.log(el);
         
     },
     
