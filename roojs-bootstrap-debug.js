@@ -6235,6 +6235,7 @@ Roo.form.VTypes = function(){
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
+ * @cfg {String} align (left|center|right) Default left
  * 
  * 
  * @constructor
@@ -6407,6 +6408,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     labelWidth : 2,
     labelAlign : false,
     readOnly : false,
+    align : false,
     
     parentLabelAlign : function()
     {
@@ -6442,6 +6444,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             placeholder : this.placeholder || ''
             
         };
+        
+        if(this.align){
+            input.style = (typeof(input.style) == 'undefined') ? ('text-align:' + this.align) : (input.style + 'text-align:' + this.align);
+        }
         
         if(this.maxLength && this.maxLength != Number.MAX_VALUE){
             input.maxLength = this.maxLength;
