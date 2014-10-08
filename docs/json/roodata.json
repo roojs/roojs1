@@ -5792,6 +5792,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "align",
+     "type": "String",
+     "desc": "(left|center|right) Default left",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -6575,6 +6581,12 @@
      "name": "readOnly",
      "type": "Boolean",
      "desc": "Specifies that the field should be read-only",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "align",
+     "type": "String",
+     "desc": "(left|center|right) Default left",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -7379,6 +7391,12 @@
      "name": "readOnly",
      "type": "Boolean",
      "desc": "Specifies that the field should be read-only",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "align",
+     "type": "String",
+     "desc": "(left|center|right) Default left",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -8300,6 +8318,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "align",
+     "type": "String",
+     "desc": "(left|center|right) Default left",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -8867,6 +8891,12 @@
      "name": "readOnly",
      "type": "Boolean",
      "desc": "Specifies that the field should be read-only",
+     "memberOf": ""
+    },
+    {
+     "name": "align",
+     "type": "String",
+     "desc": "(left|center|right) Default left",
      "memberOf": ""
     },
     {
@@ -12261,6 +12291,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "align",
+     "type": "String",
+     "desc": "(left|center|right) Default left",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -13934,6 +13970,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "align",
+     "type": "String",
+     "desc": "(left|center|right) Default left",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -14309,6 +14351,12 @@
      "name": "readOnly",
      "type": "Boolean",
      "desc": "Specifies that the field should be read-only",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "align",
+     "type": "String",
+     "desc": "(left|center|right) Default left",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -14699,6 +14747,12 @@
      "name": "readOnly",
      "type": "Boolean",
      "desc": "Specifies that the field should be read-only",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "align",
+     "type": "String",
+     "desc": "(left|center|right) Default left",
      "memberOf": "Roo.bootstrap.Input"
     },
     {

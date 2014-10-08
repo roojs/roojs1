@@ -27,6 +27,7 @@
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
+ * @cfg {String} align (left|center|right) Default left
  * 
  * 
  * @constructor
@@ -199,6 +200,7 @@
     </span><span class="jsdoc-var">labelWidth </span><span class="jsdoc-syntax">: 2,
     </span><span class="jsdoc-var">labelAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">readOnly </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">parentLabelAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -234,6 +236,10 @@
             </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.placeholder </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
             
         </span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">input.style </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input.style</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? (</span><span class="jsdoc-string">'text-align:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">) : (</span><span class="jsdoc-var">input.style </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'text-align:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">);
+        }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxLength </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.maxLength </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">Number.MAX_VALUE</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">input.maxLength </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.maxLength</span><span class="jsdoc-syntax">;
