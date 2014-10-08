@@ -253,7 +253,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         if(this.RowSelection){
-            this.fireEvent('rowclick', this, el, cellIndex, e);
+            this.fireEvent('rowclick', this, el, rowIndex, e);
         }
         
         
@@ -261,13 +261,18 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onDblClick : function(e,el)
     {
-        Roo.log('onDblClick');
+        var cell = Roo.get(el);;
+        var row = cell.findParent('tr', false, true);
+        var cellIndex = cell.dom.cellIndex;
+        var rowIndex = row.dom.rowIndex;
         
-        Roo.log(e);
-        Roo.log(el);
-        var row = Roo.get(el).findParent('tr', false, true);
-        Roo.log('rowIndex');
-        Roo.log(row.dom.rowIndex)
+        if(this.CellSelection){
+            this.fireEvent('celldblclick', this, el, cellIndex, e);
+        }
+        
+        if(this.RowSelection){
+            this.fireEvent('rowdblclick', this, el, rowIndex, e);
+        }
     },
     
     sort : function(e,el)
