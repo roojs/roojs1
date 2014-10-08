@@ -79,7 +79,8 @@ Roo.bootstrap.Table = function(config){
         /**
          * @event celldblclick
          * Fires when a cell is double clicked
-         * @param {Grid} this
+         * @param {Roo.bootstrap.Table} this
+         * @param {Roo.Element} el
          * @param {Number} rowIndex
          * @param {Number} columnIndex
          * @param {Roo.EventObject} e
@@ -88,7 +89,8 @@ Roo.bootstrap.Table = function(config){
         /**
          * @event rowclick
          * Fires when a row is clicked
-         * @param {Grid} this
+         * @param {Roo.bootstrap.Table} this
+         * @param {Roo.Element} el
          * @param {Number} rowIndex
          * @param {Roo.EventObject} e
          */
@@ -97,6 +99,7 @@ Roo.bootstrap.Table = function(config){
          * @event rowdblclick
          * Fires when a row is double clicked
          * @param {Roo.bootstrap.Table} this
+         * @param {Roo.Element} el
          * @param {Number} rowIndex
          * @param {Roo.EventObject} e
          */
