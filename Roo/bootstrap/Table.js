@@ -61,6 +61,45 @@ Roo.bootstrap.Table = function(config){
         this.footer.dataSource = this.ds;
         this.footer = Roo.factory(this.footer);
     }
+    
+    /** @private */
+    this.addEvents({
+        /**
+         * @event cellclick
+         * Fires when a cell is clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "cellclick" : true,
+        /**
+         * @event celldblclick
+         * Fires when a cell is double clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "celldblclick" : true,
+        /**
+         * @event rowclick
+         * Fires when a row is clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowclick" : true,
+        /**
+         * @event rowdblclick
+         * Fires when a row is double clicked
+         * @param {Grid} this
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowdblclick" : true
+        
+    });
 };
 
 Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
@@ -210,7 +249,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             e.on('click', _this.sort, _this);
         });
         
-        this.el.on("dblclick", this.onDblClick, this);
+        this.el.on("rowclick", this.onDblClick, this);
         
         this.parent().el.setStyle('position', 'relative');
         if (this.footer) {
@@ -228,9 +267,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     onDblClick : function(e, el){
         Roo.log(e);
         Roo.log(el);
-        var row = Roo.get(el); //.findParent('tr', false, true);
+        var row = Roo.get(el).findParent('tr', false, true);
         
-        Roo.log(row)
+        Roo.log(row.dom.rowIndex)
         
     },
     
