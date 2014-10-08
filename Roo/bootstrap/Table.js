@@ -95,7 +95,7 @@ Roo.bootstrap.Table = function(config){
         /**
          * @event rowdblclick
          * Fires when a row is double clicked
-         * @param {Grid} this
+         * @param {Roo.bootstrap.Table} this
          * @param {Number} rowIndex
          * @param {Roo.EventObject} e
          */
