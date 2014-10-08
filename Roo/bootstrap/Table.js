@@ -221,7 +221,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             e.on('click', _this.sort, _this);
         });
         
-        Roo.each(this.el.select('td', true).elements, function(e){
+        Roo.each(this.el.select('tbody td', true).elements, function(e){
             Roo.log(e);
             e.on('click', _this.onRowClick, _this);
         });
