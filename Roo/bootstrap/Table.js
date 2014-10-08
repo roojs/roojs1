@@ -239,10 +239,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onClick : function(e, el)
     {
+        var cell = Roo.get(el);;
+        
+        Roo.log(cell);
+        
         Roo.log('onClick');
         Roo.log(e);
         Roo.log(el);
-        var cell = Roo.get(el);;
+        
         Roo.log('cellIndex');
         Roo.log(cell.dom.cellIndex)
         
