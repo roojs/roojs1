@@ -13224,13 +13224,13 @@
     },
     {
      "name": "cellclick",
-     "sig": "function (_self, rowIndex, columnIndex, e)\n{\n\n}",
+     "sig": "function (_self, el, rowIndex, columnIndex, e)\n{\n\n}",
      "type": "function",
      "desc": "Fires when a cell is clicked"
     },
     {
      "name": "celldblclick",
-     "sig": "function (_self, rowIndex, columnIndex, e)\n{\n\n}",
+     "sig": "function (_self, el, rowIndex, columnIndex, e)\n{\n\n}",
      "type": "function",
      "desc": "Fires when a cell is double clicked"
     },
@@ -13266,13 +13266,13 @@
     },
     {
      "name": "rowclick",
-     "sig": "function (_self, rowIndex, e)\n{\n\n}",
+     "sig": "function (_self, el, rowIndex, e)\n{\n\n}",
      "type": "function",
      "desc": "Fires when a row is clicked"
     },
     {
      "name": "rowdblclick",
-     "sig": "function (_self, rowIndex, e)\n{\n\n}",
+     "sig": "function (_self, el, rowIndex, e)\n{\n\n}",
      "type": "function",
      "desc": "Fires when a row is double clicked"
     },

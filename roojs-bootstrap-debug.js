@@ -4501,6 +4501,8 @@ Roo.LoadMask.prototype = {
  * @cfg {Boolean} loadMask (true|false) default false
  * @cfg {Boolean} tfoor (true|false) generate tfoot, default true
  * @cfg {Boolean} thead (true|false) generate thead, default true
+ * @cfg {Boolean} RowSelection (true|false) default false
+ * @cfg {Boolean} CellSelection (true|false) default false
  *
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  
@@ -4533,6 +4535,49 @@ Roo.bootstrap.Table = function(config){
         this.footer.dataSource = this.ds;
         this.footer = Roo.factory(this.footer);
     }
+    
+    /** @private */
+    this.addEvents({
+        /**
+         * @event cellclick
+         * Fires when a cell is clicked
+         * @param {Roo.bootstrap.Table} this
+         * @param {Roo.Element} el
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "cellclick" : true,
+        /**
+         * @event celldblclick
+         * Fires when a cell is double clicked
+         * @param {Roo.bootstrap.Table} this
+         * @param {Roo.Element} el
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "celldblclick" : true,
+        /**
+         * @event rowclick
+         * Fires when a row is clicked
+         * @param {Roo.bootstrap.Table} this
+         * @param {Roo.Element} el
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowclick" : true,
+        /**
+         * @event rowdblclick
+         * Fires when a row is double clicked
+         * @param {Roo.bootstrap.Table} this
+         * @param {Roo.Element} el
+         * @param {Number} rowIndex
+         * @param {Roo.EventObject} e
+         */
+        "rowdblclick" : true
+        
+    });
 };
 
 Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
@@ -4559,6 +4604,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     loadMask : false,
     tfoor : true,
     thead : true,
+    RowSelection : false,
+    CellSelection : false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -4584,9 +4631,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if (this.responsive) {
             cfg.cls += ' table-responsive';
         }
-        
-          
-        
         
         if (this.cls) {
             cfg.cls+=  ' ' +this.cls;
@@ -4642,31 +4686,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         return { cn : [ cfg ] };
     },
-//    
-//    initTableGrid : function()
-//    {
-//        var cfg = {};
-//        
-//        var header = {
-//            tag: 'thead',
-//            cn : []
-//        };
-//        
-//        var cm = this.cm;
-//        
-//        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-//            header.cn.push({
-//                tag: 'th',
-//                html: cm.getColumnHeader(i)
-//            })
-//        }
-//        
-//        cfg.push(header);
-//        
-//        return cfg;
-//        
-//        
-//    },
     
     initEvents : function()
     {   
@@ -4681,9 +4700,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
             e.on('click', _this.sort, _this);
         });
-//        this.maskEl = Roo.DomHelper.append(this.el.select('.TableGrid', true).first(), {tag: "div", cls:"x-dlg-mask"}, true);
-//        this.maskEl.enableDisplayMode("block");
-//        this.maskEl.show();
+        
+        this.el.on("click", this.onClick, this);
+        this.el.on("dblclick", this.onDblClick, this);
         
         this.parent().el.setStyle('position', 'relative');
         if (this.footer) {
@@ -4691,49 +4710,45 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             this.footer.onRender(this.el.select('tfoot tr td').first(), null);        
         }
         
-        
-        // mask should be using Roo.bootstrap.Mask...
-        /*
-        var mark = {
-            tag: "div",
-            cls:"x-dlg-mask",
-            style: "text-align:center",
-            cn: [
-                {
-                    tag: "div",
-                    style: "background-color:white;width:50%;margin:100 auto",
-                    cn: [
-                        {
-                            tag: "img",
-                            src: Roo.rootURL + '/images/ux/lightbox/loading.gif'
-                        },
-                        {
-                            tag: "span",
-                            html: "Loading"
-                        }
-                        
-                    ]
-                }
-            ]
-        }
-        
-        var size = this.el.getSize();
-        
-        this.maskEl = Roo.DomHelper.append(document.body, mark, true);
-        
-        this.maskEl.setSize(size.width, 300); // we will fix the height at the beginning...
-        this.maskEl.enableDisplayMode("block");
-        */
         this.maskEl = new Roo.LoadMask(this.el, { store : this.ds, msgCls: 'roo-el-mask-msg' });
         
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
         
-        // load should be trigger on render..
-        //this.store.load();
+    },
+    
+    onClick : function(e, el)
+    {
+        var cell = Roo.get(el);
+        var row = cell.findParent('tr', false, true);
+        var cellIndex = cell.dom.cellIndex;
+        var rowIndex = row.dom.rowIndex;
+        
+        if(this.CellSelection){
+            this.fireEvent('cellclick', this, cell, rowIndex, cellIndex, e);
+        }
+        
+        if(this.RowSelection){
+            this.fireEvent('rowclick', this, row, rowIndex, e);
+        }
         
         
+    },
+    
+    onDblClick : function(e,el)
+    {
+        var cell = Roo.get(el);;
+        var row = cell.findParent('tr', false, true);
+        var cellIndex = cell.dom.cellIndex;
+        var rowIndex = row.dom.rowIndex;
         
+        if(this.CellSelection){
+            this.fireEvent('celldblclick', this, cell, rowIndex, cellIndex, e);
+        }
+        
+        if(this.RowSelection){
+            this.fireEvent('rowdblclick', this, row, rowIndex, e);
+        }
     },
     
     sort : function(e,el)
