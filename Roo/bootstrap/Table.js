@@ -230,9 +230,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.log(e.getTarget());
         Roo.log(Roo.get(e.getTarget()))
         Roo.log(el);
-        var index = Roo.get(el);
+        var row = Roo.get(el).findParent('tr', false, true);
         
-        Roo.log(index.rowIndex)
+        Roo.log(row)
         
     },
     
