@@ -221,12 +221,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             e.on('click', _this.sort, _this);
         });
         
-        Roo.each(this.el.select('tbody td', true).elements, function(e){
-            Roo.log(e);
-//            e.on('click', _this.onRowClick, _this);
-        });
-        
-//        this.el.on("dblclick", this.onDblClick, this);
+        this.el.on("click", this.onClick, this);
+        this.el.on("dblclick", this.onDblClick, this);
         
         this.parent().el.setStyle('position', 'relative');
         if (this.footer) {
@@ -241,13 +237,26 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
     },
     
-    onRowClick : function(e, el){
+    onClick : function(e, el)
+    {
+        Roo.log('onClick');
+        Roo.log(e);
+        Roo.log(el);
+        var row = Roo.get(el);;
+        
+        Roo.log(row.dom.rowIndex)
+        
+    },
+    
+    onDblClick : function(e,el)
+    {
+        Roo.log('onDblClick');
+        
         Roo.log(e);
         Roo.log(el);
         var row = Roo.get(el).findParent('tr', false, true);
         
-        Roo.log(row.dom.rowIndex)
-        
+        Roo.log(row.dom.cellIndex)
     },
     
     sort : function(e,el)
