@@ -223,7 +223,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         Roo.each(this.el.select('tbody td', true).elements, function(e){
             Roo.log(e);
-            e.on('click', _this.onRowClick, _this);
+//            e.on('click', _this.onRowClick, _this);
         });
         
 //        this.el.on("dblclick", this.onDblClick, this);
