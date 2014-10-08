@@ -271,7 +271,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var rowIndex = row.dom.rowIndex;
         
         if(this.CellSelection){
-            this.fireEvent('celldblclick', this, el, cellIndex, e);
+            this.fireEvent('celldblclick', this, cell, rowIndex, cellIndex, e);
         }
         
         if(this.RowSelection){
