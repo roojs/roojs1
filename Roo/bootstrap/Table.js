@@ -242,9 +242,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.log('onClick');
         Roo.log(e);
         Roo.log(el);
-        var row = Roo.get(el);;
-        
-        Roo.log(row.dom.rowIndex)
+        var cell = Roo.get(el);;
+        Roo.log('cellIndex');
+        Roo.log(cell.dom.cellIndex)
         
     },
     
@@ -255,8 +255,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.log(e);
         Roo.log(el);
         var row = Roo.get(el).findParent('tr', false, true);
-        
-        Roo.log(row.dom.cellIndex)
+        Roo.log('rowIndex');
+        Roo.log(row.dom.rowIndex)
     },
     
     sort : function(e,el)
