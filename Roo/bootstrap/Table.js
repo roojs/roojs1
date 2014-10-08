@@ -69,7 +69,8 @@ Roo.bootstrap.Table = function(config){
         /**
          * @event cellclick
          * Fires when a cell is clicked
-         * @param {Grid} this
+         * @param {Roo.bootstrap.Table} this
+         * @param {Roo.Element} el
          * @param {Number} rowIndex
          * @param {Number} columnIndex
          * @param {Roo.EventObject} e
