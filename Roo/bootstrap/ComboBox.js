@@ -587,9 +587,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.store.getCount() > 0){
             this.expand();
-            
             this.restrictHeight();
-            return false;
             if(this.lastQuery == this.allQuery){
                 if(this.editable){
                     this.inputEl().dom.select();
@@ -1015,6 +1013,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
+        this.list.alignTo(this.inputEl(), this.listAlign);
         this.list.hide();
         Roo.get(document).un('mousedown', this.collapseIf, this);
         Roo.get(document).un('mousewheel', this.collapseIf, this);
