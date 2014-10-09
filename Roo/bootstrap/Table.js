@@ -27,7 +27,7 @@
  * @cfg {boolean} condensed Format condensed
  * @cfg {boolean} responsive Format condensed
  * @cfg {Boolean} loadMask (true|false) default false
- * @cfg {Boolean} tfoor (true|false) generate tfoot, default true
+ * @cfg {Boolean} tfoot (true|false) generate tfoot, default true
  * @cfg {Boolean} thead (true|false) generate thead, default true
  * @cfg {Boolean} RowSelection (true|false) default false
  * @cfg {Boolean} CellSelection (true|false) default false
@@ -130,7 +130,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     cm : false,
     store : false,
     loadMask : false,
-    tfoor : true,
+    tfoot : true,
     thead : true,
     RowSelection : false,
     CellSelection : false,
