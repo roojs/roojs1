@@ -203,7 +203,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             
             cfg.cn.push(this.renderBody());
-            
+            Roo.log(this.tfoot);
             if(this.tfoot){
                 cfg.cn.push(this.renderFooter());
             }
