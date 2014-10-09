@@ -574,8 +574,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onLoad : function(){
-        Roo.log('combobox onLoad');
-        return false;
+        
         this.hasQuery = false;
         
         if(!this.hasFocus){
@@ -585,7 +584,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(typeof(this.loading) !== 'undefined' && this.loading !== null){
             this.loading.hide();
         }
-        
+        return false;
         if(this.store.getCount() > 0){
             this.expand();
             this.restrictHeight();
