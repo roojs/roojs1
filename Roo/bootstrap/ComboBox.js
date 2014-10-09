@@ -300,6 +300,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var cls = 'x-combo-list';
         this.list = this.el.select('ul.dropdown-menu',true).first();
 
+        this.restrictHeight();
         //this.list = new Roo.Layer({
         //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
         //});
