@@ -1013,6 +1013,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
+        this.restrictHeight();
+        
         this.list.hide();
         Roo.get(document).un('mousedown', this.collapseIf, this);
         Roo.get(document).un('mousewheel', this.collapseIf, this);
