@@ -402,6 +402,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     onBeforeLoad : function(store,opts)
     {
          Roo.log('onBeforeLoad !!');   
+         return false;
         if (!opts.add) {
             this.el.update("");
         }
