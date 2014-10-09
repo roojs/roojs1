@@ -300,7 +300,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var cls = 'x-combo-list';
         this.list = this.el.select('ul.dropdown-menu',true).first();
 
-        this.restrictHeight();
         //this.list = new Roo.Layer({
         //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
         //});
@@ -312,6 +311,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.list.on('mousemove', this.onViewMove, this);
         
         this.list.on('scroll', this.onViewScroll, this);
+        
+        this.list.alignTo(this.inputEl(), this.listAlign);
         
         /*
         this.list.swallowEvent('mousewheel');
@@ -828,7 +829,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         //this.innerList.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
         //this.list.beginUpdate();
         //this.list.setHeight(this.innerList.getHeight()+this.list.getFrameWidth('tb')+(this.resizable?this.handleHeight:0)+this.assetHeight);
-        Roo.log(this.inputEl());
         this.list.alignTo(this.inputEl(), this.listAlign);
         //this.list.endUpdate();
     },
