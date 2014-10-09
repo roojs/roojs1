@@ -941,7 +941,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * saved in the current store (defaults to false)
      */
     doQuery : function(q, forceAll){
-        return;
+        
         if(q === undefined || q === null){
             q = '';
         }
@@ -982,7 +982,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }
                     
                     this.store.load(options);
-                    this.expand();
+//                    this.expand();
                 }
             }else{
                 this.selectedIndex = -1;
