@@ -4499,7 +4499,7 @@ Roo.LoadMask.prototype = {
  * @cfg {boolean} condensed Format condensed
  * @cfg {boolean} responsive Format condensed
  * @cfg {Boolean} loadMask (true|false) default false
- * @cfg {Boolean} tfoor (true|false) generate tfoot, default true
+ * @cfg {Boolean} tfoot (true|false) generate tfoot, default true
  * @cfg {Boolean} thead (true|false) generate thead, default true
  * @cfg {Boolean} RowSelection (true|false) default false
  * @cfg {Boolean} CellSelection (true|false) default false
@@ -4602,7 +4602,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     cm : false,
     store : false,
     loadMask : false,
-    tfoor : true,
+    tfoot : true,
     thead : true,
     RowSelection : false,
     CellSelection : false,
@@ -4682,7 +4682,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             cfg.cls+=  ' TableGrid';
         }
-        
         
         return { cn : [ cfg ] };
     },
@@ -10627,7 +10626,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     
                     this.store.load(options);
                     /*
-                     *  this code will make the page width larger, at the beginning, the list not align correctly, so command out it
+                     *  this code will make the page width larger, at the beginning, the list not align correctly, 
+                     *  we should expand the list on onLoad
+                     *  so command out it
                      */
 //                    this.expand();
                 }
