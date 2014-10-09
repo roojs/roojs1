@@ -312,6 +312,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.list.on('scroll', this.onViewScroll, this);
         
+        Roo.log(this.list);
+        Roo.log(this.inputEl());
+        Roo.log(this.listAlign);
         this.list.alignTo(this.inputEl(), this.listAlign);
         
         /*
