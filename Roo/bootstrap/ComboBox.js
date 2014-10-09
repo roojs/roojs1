@@ -363,7 +363,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.view = new Roo.View(this.el.select('ul.dropdown-menu',true).first(), this.tpl, {
             singleSelect:true, store: this.store, selectedClass: this.selectedClass
         });
-        Roo.log(this.view.getEl());
         //this.view.wrapEl.setDisplayed(false);
         this.view.on('click', this.onViewClick, this);
         
@@ -563,8 +562,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     
     onBeforeLoad : function(combo,opts){
-        Roo.log('store beforeload');
-        
         if(!this.hasFocus){
             return;
         }
