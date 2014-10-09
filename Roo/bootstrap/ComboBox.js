@@ -316,7 +316,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log(this.inputEl());
         Roo.log(this.listAlign);
         Roo.log(this.list.getAlignToXY(this.inputEl()));
-        this.list.setXY([0,0]);
+        this.list.setXY(this.inputEl().getXY());
         
         /*
         this.list.swallowEvent('mousewheel');
@@ -568,6 +568,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     
     onBeforeLoad : function(combo,opts){
+        return false;
         if(!this.hasFocus){
             return;
         }
