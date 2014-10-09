@@ -982,6 +982,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }
                     
                     this.store.load(options);
+                    /*
+                     *  this code will make the page width larger, at the beginning, the list not align correctly, so command out it
+                     */
 //                    this.expand();
                 }
             }else{
