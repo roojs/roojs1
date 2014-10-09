@@ -563,6 +563,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onBeforeLoad : function(combo,opts){
         Roo.log('store beforeload');
+        return;
         if(!this.hasFocus){
             return;
         }
