@@ -211,7 +211,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cfg.cls+=  ' TableGrid';
         }
         
-        
+        Roo.log(cfg);
         return { cn : [ cfg ] };
     },
     
