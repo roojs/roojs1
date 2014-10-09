@@ -982,8 +982,13 @@
                     }
                     
                     </span><span class="jsdoc-var">this.store.load</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">this.expand</span><span class="jsdoc-syntax">();
-                }
+                    </span><span class="jsdoc-comment">/*
+                     *  this code will make the page width larger, at the beginning, the list not align correctly, 
+                     *  we should expand the list on onLoad
+                     *  so command out it
+                     */
+//                    this.expand();
+                </span><span class="jsdoc-syntax">}
             }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-var">this.selectedIndex </span><span class="jsdoc-syntax">= -1;
                 </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">();   

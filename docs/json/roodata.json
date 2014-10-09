@@ -13107,7 +13107,7 @@
      "memberOf": ""
     },
     {
-     "name": "tfoor",
+     "name": "tfoot",
      "type": "Boolean",
      "desc": "(true|false) generate tfoot, default true",
      "memberOf": ""
