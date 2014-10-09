@@ -563,7 +563,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onBeforeLoad : function(combo,opts){
         Roo.log('store beforeload');
-        
+        return false;
         if(!this.hasFocus){
             return;
         }
@@ -572,7 +572,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          }
         this.restrictHeight();
         this.selectedIndex = -1;
-        return false;
     },
 
     // private
