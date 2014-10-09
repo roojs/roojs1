@@ -312,7 +312,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.list.on('scroll', this.onViewScroll, this);
         
-//        this.list.setLeft(0)
         /*
         this.list.swallowEvent('mousewheel');
         this.assetHeight = 0;
