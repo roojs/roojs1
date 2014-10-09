@@ -821,6 +821,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     restrictHeight : function(){
+        Roo.log('run restrictHeight');
         //this.innerList.dom.style.height = '';
         //var inner = this.innerList.dom;
         //var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
