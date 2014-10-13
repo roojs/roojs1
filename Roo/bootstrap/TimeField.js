@@ -351,7 +351,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
             }
             
             if(c == 'left'){
-                _this.picker().setLeft(0 - _this.picker().getWidth());
+                _this.picker().setLeft(_this.inputEl().getLeft() - _this.el.getLeft() - _this.picker().getWidth() + 20);
                 return;
             }
             if(c == 'right'){
