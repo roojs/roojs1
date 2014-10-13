@@ -327,8 +327,6 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
             cls.push('left');
         }
         
-        Roo.log(cls);
-        
         this.picker().addClass(cls.join('-'));
         
         var _this = this;
@@ -353,8 +351,6 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
             }
         });
         
-//        this.picker().setTop(0 - this.picker().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
-//        this.picker().setTop(this.inputEl().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
     },
   
     onFocus : function()
