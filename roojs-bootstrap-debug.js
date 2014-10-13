@@ -14296,23 +14296,46 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
     place: function()
     {   
-        this.picker().removeClass(['bottom', 'top']);
+        this.picker().removeClass(['bottom-left', 'bottom-right', 'top-left', 'top-right']);
         
-        if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){
-            /*
-             * place to the top of element!
-             *
-             */
-            
-            this.picker().addClass('top');
-            this.picker().setTop(0 - this.picker().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
-            
-            return;
+        var cls = ['bottom'];
+        
+        if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){ // top
+            cls.pop();
+            cls.push('top');
         }
         
-        this.picker().addClass('bottom');
+        cls.push('right');
         
-        this.picker().setTop(this.inputEl().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+        if((Roo.lib.Dom.getViewWidth() + Roo.get(document.body).getScroll().left) - (this.inputEl().getLeft() + this.picker().getWidth()) < 0){ // left
+            cls.pop();
+            cls.push('left');
+        }
+        
+        this.picker().addClass(cls.join('-'));
+        
+        var _this = this;
+        
+        Roo.each(cls, function(c){
+            if(c == 'bottom'){
+                _this.picker().setTop(_this.inputEl().getHeight());
+                return;
+            }
+            if(c == 'top'){
+                _this.picker().setTop(0 - _this.picker().getHeight());
+                return;
+            }
+            
+            if(c == 'left'){
+                _this.picker().setLeft(_this.inputEl().getLeft() + _this.inputEl().getWidth() - _this.el.getLeft() - _this.picker().getWidth());
+                return;
+            }
+            if(c == 'right'){
+                _this.picker().setLeft(_this.inputEl().getLeft() - _this.el.getLeft());
+                return;
+            }
+        });
+        
     },
   
     onFocus : function()
