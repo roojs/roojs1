@@ -17669,6 +17669,15 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.navgroup.onRender(this.el, null);
         // add the buttons to the navgroup
         
+        
+        if(this.displayInfo){
+            Roo.log(this.el.select('ul.navbar-nav',true).first());
+            this.el.select('ul.navbar-nav',true).first().createChild({cls:'x-paging-info'});
+            this.displayEl = this.el.select('.x-paging-info', true).first();
+//            var navel = this.navgroup.addItem( { tagtype : 'span', html : '', cls : 'x-paging-info', preventDefault : true } );
+//            this.displayEl = navel.el.select('span',true).first();
+        }
+        
         this.first = this.navgroup.addItem({
             tooltip: this.firstText,
             cls: "prev",
@@ -17726,11 +17735,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
 
-        if(this.displayInfo){
-            var navel = this.navgroup.addItem( { tagtype : 'span', html : '', cls : 'x-paging-info' } );
-            this.displayEl = navel.el.select('a',true).first();
-        }
-    
     },
 
     // private
