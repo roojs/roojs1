@@ -313,37 +313,31 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     {   
         this.picker().removeClass(['bottom-left', 'bottom-right', 'top-left', 'top-right']);
         
+        var cls = 'bottom-';
+        
         Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
         Roo.log(Roo.lib.Dom.getViewWidth());
         Roo.log(Roo.get(document.body).getScroll());
         Roo.log(this.inputEl().getLeft());
         Roo.log(this.picker().getWidth());
         
-        if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){
-            /*
-             * place to the top of element!
-             *
-             */
-            
-            this.picker().addClass('top');
-            this.picker().setTop(0 - this.picker().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+        if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){ // top
+            cls = 'top-';
         }
         
-        if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) >= 0){
-            /*
-             * place to the bottom of element!
-             *
-             */
-            
-            this.picker().addClass('top');
-            this.picker().setTop(0 - this.picker().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
-            
-            return;
+        if((Roo.lib.Dom.getViewWidth() + Roo.get(document.body).getScroll().left) - (this.inputEl().getLeft() + this.picker().getWidth()) < 0){ // left
+            cls += 'left';
+        }else{
+            cls += 'right';
         }
         
-        this.picker().addClass('bottom');
-        
-        this.picker().setTop(this.inputEl().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+        Roo.log(cls);
+//        this.picker().addClass('top');
+//            this.picker().setTop(0 - this.picker().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+//            
+//        this.picker().addClass('bottom');
+//        
+//        this.picker().setTop(this.inputEl().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
     },
   
     onFocus : function()
