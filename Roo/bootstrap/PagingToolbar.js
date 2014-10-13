@@ -148,6 +148,11 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
                 '<span class="x-paging-after">' +  String.format(this.afterPageText, 1) + '</span>'
          } ); //?? escaped?
         
+        if(this.displayInfo){
+            var navel = this.navgroup.addItem( { tagtype : 'span', html : '', cls : 'x-paging-info', preventDefault : true } );
+            this.displayEl = navel.el.select('span',true).first();
+        }
+        
         this.field = field.el.select('input', true).first();
         this.field.on("keydown", this.onPagingKeydown, this);
         this.field.on("focus", function(){this.dom.select();});
