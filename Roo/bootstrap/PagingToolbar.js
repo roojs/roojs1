@@ -178,11 +178,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
 
-        if(this.displayInfo){
-            var navel = this.navgroup.addItem( { tagtype : 'span', html : '', cls : 'x-paging-info', preventDefault : true } );
-            this.displayEl = navel.el.select('span',true).first();
-        }
-    
     },
 
     // private
