@@ -315,6 +315,8 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
         Roo.log(Roo.lib.Dom.getViewHeight());
         Roo.log(Roo.get(document.body).getScroll());
+        Roo.log(this.inputEl().getBottom());
+        Roo.log(this.picker().getHeight());
         if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){
             /*
              * place to the top of element!
