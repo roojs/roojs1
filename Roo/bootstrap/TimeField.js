@@ -315,15 +315,6 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         
         var cls = ['bottom'];
         
-        Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-        Roo.log(Roo.lib.Dom.getViewWidth());
-        Roo.log(Roo.get(document.body).getScroll());
-        Roo.log(this.inputEl().getLeft());
-        Roo.log(this.picker().getWidth());
-        Roo.log(this.el);
-        Roo.log(this.el.getLeft());
-        Roo.log(this.inputEl());
-        Roo.log(this.inputEl().getLeft());
         if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){ // top
             cls.pop();
             cls.push('top');
@@ -335,6 +326,8 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
             cls.pop();
             cls.push('left');
         }
+        
+        Roo.log(cls);
         
         this.picker().addClass(cls.join('-'));
         
