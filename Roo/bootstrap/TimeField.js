@@ -322,13 +322,15 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         Roo.log(this.picker().getWidth());
         
         if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){ // top
-            cls.pop().push('top');
+            cls.pop();
+            cls.push('top');
         }
         
         cls.push('right');
         
         if((Roo.lib.Dom.getViewWidth() + Roo.get(document.body).getScroll().left) - (this.inputEl().getLeft() + this.picker().getWidth()) < 0){ // left
-            cls.pop().push('left');
+            cls.pop();
+            cls.push('left');
         }
         
         Roo.log(cls);
