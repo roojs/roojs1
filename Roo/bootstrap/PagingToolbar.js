@@ -179,7 +179,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         });
 
         if(this.displayInfo){
-            var navel = this.navgroup.addItem( { html : '', cls : 'x-paging-info' } );
+            var navel = this.navgroup.addItem( { tagtype : 'span', html : '', cls : 'x-paging-info' } );
             this.displayEl = navel.el.select('a',true).first();
         }
     
