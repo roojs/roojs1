@@ -336,7 +336,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
             cls.push('left');
         }
         
-        this.picker().addClass(cls.join('-'));
+        this.picker().addClass('top');
         
         var _this = this;
         
