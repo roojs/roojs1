@@ -123,6 +123,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
         
         if(this.displayInfo){
+            Roo.log(this.el);
             var navel = this.navgroup.addItem( { tagtype : 'span', html : '', cls : 'x-paging-info', preventDefault : true } );
             this.displayEl = navel.el.select('span',true).first();
         }
