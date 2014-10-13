@@ -311,7 +311,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
     place: function()
     {   
-        this.picker().removeClass(['bottom', 'top']);
+        this.picker().removeClass(['bottom', 'top', 'left', 'right']);
         Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
         Roo.log(Roo.lib.Dom.getViewHeight());
         Roo.log(Roo.get(document.body).getScroll());
