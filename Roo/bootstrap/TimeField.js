@@ -320,18 +320,6 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         
         if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){
             /*
-             * place to the left of element!
-             *
-             */
-            
-            this.picker().addClass('top');
-            this.picker().setTop(0 - this.picker().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
-            
-            return;
-        }
-        
-        if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){
-            /*
              * place to the top of element!
              *
              */
