@@ -316,7 +316,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         Roo.log(Roo.lib.Dom.getViewWidth());
         Roo.log(Roo.get(document.body).getScroll());
         Roo.log(this.inputEl().getLeft());
-        Roo.log(this.picker().getWdith());
+        Roo.log(this.picker().getWidth());
         
         if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){
             /*
