@@ -594,11 +594,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 if(this.editable){
                     this.inputEl().dom.select();
                 }
-                if(!this.selectByValue(this.value, true) && this.selectFirst){
+                if(!this.selectByValue(this.value, true) && this.autoFocus){
                     this.select(0, true);
                 }
             }else{
-                if(this.selectFirst){
+                if(this.autoFocus){
                     this.selectNext();
                 }
                 if(this.typeAhead && this.lastKey != Roo.EventObject.BACKSPACE && this.lastKey != Roo.EventObject.DELETE){
