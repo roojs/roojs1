@@ -9651,6 +9651,7 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
  * @extends Roo.bootstrap.TriggerField
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
  * @cfg {Boolean} append (true|false) default false
+ * @cfg {Boolean} selectFirst (true|false) auto select the first item, default true
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -9905,6 +9906,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     hasQuery: false,
     append: false,
     loadNext: false,
+    selectFirst : true,
     item: [],
     
     // element that contains real text value.. (when hidden is used..)
@@ -10235,11 +10237,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 if(this.editable){
                     this.inputEl().dom.select();
                 }
-                if(!this.selectByValue(this.value, true)){
+                if(!this.selectByValue(this.value, true) && this.selectFirst){
                     this.select(0, true);
                 }
             }else{
-                this.selectNext();
+                if(this.selectFirst){
+                    this.selectNext();
+                }
                 if(this.typeAhead && this.lastKey != Roo.EventObject.BACKSPACE && this.lastKey != Roo.EventObject.DELETE){
                     this.taTask.delay(this.typeAheadDelay);
                 }
