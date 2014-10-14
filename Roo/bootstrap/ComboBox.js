@@ -478,6 +478,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         if(this.forceSelection){
             this.inputEl().on('blur', this.doForce, this);
+        }else{
+            this.inputEl().on('blur', this.onBlur, this);
         }
         
         if(this.multiple){
