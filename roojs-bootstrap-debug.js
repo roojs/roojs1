@@ -10151,7 +10151,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onBlur : function(e)
     {
-//        this.fireEvent("blur", this, e);
+        this.fireEvent("blur", this, e);
     },
 
     // private
