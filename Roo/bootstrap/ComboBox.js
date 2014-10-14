@@ -505,6 +505,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         Roo.bootstrap.ComboBox.superclass.onDestroy.call(this);
     },
+    
+    onBlur : function(e)
+    {
+        this.fireEvent("blur", this, e);
+    },
 
     // private
     fireKey : function(e){
