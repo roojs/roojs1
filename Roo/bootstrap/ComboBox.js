@@ -8,6 +8,7 @@
  * @extends Roo.bootstrap.TriggerField
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
  * @cfg {Boolean} append (true|false) default false
+ * @cfg {Boolean} selectFirst (true|false) auto select the first item, default true
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
