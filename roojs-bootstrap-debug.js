@@ -10121,8 +10121,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         if(this.forceSelection){
             this.inputEl().on('blur', this.doForce, this);
-        }else{
-            this.inputEl().on('blur', this.onBlur, this);
         }
         
         if(this.multiple){
@@ -10147,11 +10145,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.store.un('loadexception', this.onLoadException, this);
         }
         Roo.bootstrap.ComboBox.superclass.onDestroy.call(this);
-    },
-    
-    onBlur : function(e)
-    {
-        this.fireEvent("blur", this);
     },
 
     // private
