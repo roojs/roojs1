@@ -589,7 +589,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.expand();
             this.restrictHeight();
             if(this.lastQuery == this.allQuery){
-                Roo.log('run1');
                 if(this.editable){
                     this.inputEl().dom.select();
                 }
@@ -597,7 +596,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     this.select(0, true);
                 }
             }else{
-                Roo.log('run2');
                 this.selectNext();
                 if(this.typeAhead && this.lastKey != Roo.EventObject.BACKSPACE && this.lastKey != Roo.EventObject.DELETE){
                     this.taTask.delay(this.typeAheadDelay);
