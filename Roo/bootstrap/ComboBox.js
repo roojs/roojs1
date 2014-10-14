@@ -263,6 +263,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     hasQuery: false,
     append: false,
     loadNext: false,
+    selectFirst : true,
     item: [],
     
     // element that contains real text value.. (when hidden is used..)
