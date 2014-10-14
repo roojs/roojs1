@@ -6248,9 +6248,9 @@
      "memberOf": ""
     },
     {
-     "name": "selectFirst",
+     "name": "autoFocus",
      "type": "Boolean",
-     "desc": "(true|false) auto select the first item, default true",
+     "desc": "(true|false) auto focus the first item, default true",
      "memberOf": ""
     },
     {

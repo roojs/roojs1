@@ -8,7 +8,7 @@
  * @extends Roo.bootstrap.TriggerField
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
  * @cfg {Boolean} append (true|false) default false
- * @cfg {Boolean} selectFirst (true|false) auto select the first item, default true
+ * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -263,7 +263,7 @@
     </span><span class="jsdoc-var">hasQuery</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">append</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">loadNext</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">selectFirst </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">autoFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">: [],
     
     </span><span class="jsdoc-comment">// element that contains real text value.. (when hidden is used..)
@@ -594,11 +594,11 @@
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.select</span><span class="jsdoc-syntax">();
                 }
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.selectByValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">this.selectFirst</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.selectByValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">this.autoFocus</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">this.select</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
                 }
             }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectFirst</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoFocus</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">this.selectNext</span><span class="jsdoc-syntax">();
                 }
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.typeAhead </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.lastKey </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">Roo.EventObject.BACKSPACE </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.lastKey </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">Roo.EventObject.DELETE</span><span class="jsdoc-syntax">){
