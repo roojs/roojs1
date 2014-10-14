@@ -311,23 +311,46 @@
     
     </span><span class="jsdoc-var">place</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {   
-        </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'bottom-left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'bottom-right'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'top-left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'top-right'</span><span class="jsdoc-syntax">]);
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top</span><span class="jsdoc-syntax">) - (</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBottom</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">()) &lt; 0){
-            </span><span class="jsdoc-comment">/*
-             * place to the top of element!
-             *
-             */
-            
-            </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setTop</span><span class="jsdoc-syntax">(0 - </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getLeft</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.el.getLeft</span><span class="jsdoc-syntax">());
-            
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= [</span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">];
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top</span><span class="jsdoc-syntax">) - (</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getBottom</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">()) &lt; 0){ </span><span class="jsdoc-comment">// top
+            </span><span class="jsdoc-var">cls.pop</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">cls.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">);
         }
         
-        </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">cls.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getLeft</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.el.getLeft</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.left</span><span class="jsdoc-syntax">) - (</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getLeft</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getWidth</span><span class="jsdoc-syntax">()) &lt; 0){ </span><span class="jsdoc-comment">// left
+            </span><span class="jsdoc-var">cls.pop</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">cls.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cls.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'-'</span><span class="jsdoc-syntax">));
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">_this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">_this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setTop</span><span class="jsdoc-syntax">(0 - </span><span class="jsdoc-var">_this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getHeight</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">_this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getLeft</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">_this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">_this.el.getLeft</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">_this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getWidth</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">_this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getLeft</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">_this.el.getLeft</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+        });
+        
     },
   
     </span><span class="jsdoc-var">onFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()

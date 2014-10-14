@@ -121,6 +121,15 @@
         </span><span class="jsdoc-var">this.navgroup.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">// add the buttons to the navgroup
         
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayInfo</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul.navbar-nav'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul.navbar-nav'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'x-paging-info'</span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-var">this.displayEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.x-paging-info'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+</span><span class="jsdoc-comment">//            var navel = this.navgroup.addItem( { tagtype : 'span', html : '', cls : 'x-paging-info', preventDefault : true } );
+//            this.displayEl = navel.el.select('span',true).first();
+        </span><span class="jsdoc-syntax">}
+        
         </span><span class="jsdoc-var">this.first </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.navgroup.addItem</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">tooltip</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.firstText</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;prev&quot;</span><span class="jsdoc-syntax">,
@@ -178,11 +187,6 @@
             </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;refresh&quot;</span><span class="jsdoc-syntax">]) }
         });
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayInfo</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">navel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.navgroup.addItem</span><span class="jsdoc-syntax">( { </span><span class="jsdoc-var">tagtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-paging-info' </span><span class="jsdoc-syntax">} );
-            </span><span class="jsdoc-var">this.displayEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">navel.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        }
-    
     },
 
     </span><span class="jsdoc-comment">// private
