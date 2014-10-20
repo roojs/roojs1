@@ -139,7 +139,6 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     setTitle : function(v)
     {
-        Roo.log('set Title');
         if(!this.el || !this.panel.length || !this.header.length){
             return;
         }
