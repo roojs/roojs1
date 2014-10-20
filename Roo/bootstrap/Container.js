@@ -140,6 +140,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     setTitle : function()
     {
         Roo.log('set Title');
+        Roo.log(this.el);
     }
    
 });
