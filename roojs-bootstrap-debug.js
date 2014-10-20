@@ -956,6 +956,38 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+    },
+    
+    titleEl : function()
+    {
+        if(!this.el || !this.panel.length || !this.header.length){
+            return;
+        }
+        
+        return this.el.select('.panel-title',true).first();
+    },
+    
+    setTitle : function(v)
+    {
+        var titleEl = this.titleEl();
+        
+        if(!titleEl){
+            return;
+        }
+        
+        titleEl.dom.innerHTML = v;
+    },
+    
+    getTitle : function()
+    {
+        
+        var titleEl = this.titleEl();
+        
+        if(!titleEl){
+            return '';
+        }
+        
+        return titleEl.dom.innerHTML;
     }
    
 });
