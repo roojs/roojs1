@@ -135,6 +135,11 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+    },
+    
+    setTitle : function()
+    {
+        
     }
    
 });
