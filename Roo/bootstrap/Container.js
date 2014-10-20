@@ -137,13 +137,18 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         return cfg;
     },
     
-    setTitle : function(v)
+    titleEl : function()
     {
         if(!this.el || !this.panel.length || !this.header.length){
             return;
         }
         
-        var titleEl = this.el.select('.panel-title',true).first();
+        return this.el.select('.panel-title',true).first();
+    },
+    
+    setTitle : function(v)
+    {
+        var titleEl = this.titleEl();
         
         if(!titleEl){
             return;
@@ -154,11 +159,8 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     getTitle : function()
     {
-        if(!this.el || !this.panel.length || !this.header.length){
-            return '';
-        }
         
-        var titleEl = this.el.select('.panel-title',true).first();
+        var titleEl = this.titleEl();
         
         if(!titleEl){
             return '';
