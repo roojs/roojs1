@@ -137,10 +137,16 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         return cfg;
     },
     
-    setTitle : function()
+    setTitle : function(v)
     {
         Roo.log('set Title');
-        Roo.log(this.el);
+        if(!this.el || !this.panel.length || !this.header.length){
+            return;
+        }
+        
+        var titleEl = this.el.select('.panel-title',true).first();
+        
+        Roo.log(titleEl);
     }
    
 });
