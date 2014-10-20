@@ -150,6 +150,21 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         titleEl.dom.innerHTML = v;
+    },
+    
+    getTitle : function()
+    {
+        if(!this.el || !this.panel.length || !this.header.length){
+            return '';
+        }
+        
+        var titleEl = this.el.select('.panel-title',true).first();
+        
+        if(!titleEl){
+            return '';
+        }
+        
+        return titleEl.dom.innerHTML;
     }
    
 });
