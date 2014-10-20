@@ -146,7 +146,11 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         
         var titleEl = this.el.select('.panel-title',true).first();
         
-        Roo.log(titleEl);
+        if(!titleEl){
+            return;
+        }
+        
+        titleEl.dom.innerHTML = v;
     }
    
 });
