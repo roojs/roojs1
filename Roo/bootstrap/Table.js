@@ -458,13 +458,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 
                     _this.fireEvent('rowclass', this, rowcfg);
                     
-                    Roo.log('rowcfg!!!!!!!!!!!!!!!!!!!!!');
-                    Roo.log(rowcfg);
-                    
                     var td = {
                         tag: 'td',
                         id: id,
-                        style: '',
+                        style: rowcfg.rowClass.join(" "),
                         html: (typeof(value) === 'object') ? '' : value
                     };
                     
