@@ -453,7 +453,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     var rowcfg = {
                         record: d,
                         rowIndex : rowIndex,
-                        colIndex : i,
                         rowClass : ''
                     }
 
