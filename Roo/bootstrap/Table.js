@@ -103,7 +103,14 @@ Roo.bootstrap.Table = function(config){
          * @param {Number} rowIndex
          * @param {Roo.EventObject} e
          */
-        "rowdblclick" : true
+        "rowdblclick" : true,
+        /**
+         * @event rowclass
+         * Fires when a row is rendered, so you can change add a style to it.
+         * @param {Roo.bootstrap.Table} this
+         * @param {Object} rowcfg   contains record  rowIndex and rowClass - set rowClass to add a style.
+         */
+        'rowclass' : true
         
     });
 };
