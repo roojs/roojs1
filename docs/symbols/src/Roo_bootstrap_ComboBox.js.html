@@ -435,9 +435,16 @@
             },
 
             </span><span class="jsdoc-string">&quot;enter&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.onViewClick</span><span class="jsdoc-syntax">();
-                </span><span class="jsdoc-comment">//return true;
-            </span><span class="jsdoc-syntax">},
+</span><span class="jsdoc-comment">//                this.onViewClick();
+                //return true;
+                </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;specialkey&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)){
+                    </span><span class="jsdoc-var">this.onViewClick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                }
+                
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            },
 
             </span><span class="jsdoc-string">&quot;esc&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();

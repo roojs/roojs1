@@ -103,7 +103,14 @@
          * @param {Number} rowIndex
          * @param {Roo.EventObject} e
          */
-        </span><span class="jsdoc-string">&quot;rowdblclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;rowdblclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event rowclass
+         * Fires when a row is rendered, so you can change add a style to it.
+         * @param {Roo.bootstrap.Table} this
+         * @param {Object} rowcfg   contains record  rowIndex and rowClass - set rowClass to add a style.
+         */
+        </span><span class="jsdoc-string">'rowclass' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
     </span><span class="jsdoc-syntax">});
 };
@@ -134,6 +141,7 @@
     </span><span class="jsdoc-var">thead </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">RowSelection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">CellSelection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">Roo.bootstrap.Table.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
@@ -414,7 +422,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">renders </span><span class="jsdoc-syntax">= [];
                     
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.getCount</span><span class="jsdoc-syntax">() &gt; 0){
-            </span><span class="jsdoc-var">this.store.data.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.store.data.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
@@ -441,6 +449,17 @@
                             </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">value 
                         </span><span class="jsdoc-syntax">})
                     }
+                    
+                    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rowcfg </span><span class="jsdoc-syntax">= {
+                        </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">rowClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
+                    </span><span class="jsdoc-syntax">}
+
+                    </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowclass'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowcfg</span><span class="jsdoc-syntax">);
+                    
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rowcfg!!!!!!!!!!!!!!!!!!!!!'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowcfg</span><span class="jsdoc-syntax">);
                     
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">td </span><span class="jsdoc-syntax">= {
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">,

@@ -13271,6 +13271,12 @@
      "desc": "Fires after the component is rendered."
     },
     {
+     "name": "rowclass",
+     "sig": "function (_self, rowcfg)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a row is rendered, so you can change add a style to it."
+    },
+    {
      "name": "rowclick",
      "sig": "function (_self, el, rowIndex, e)\n{\n\n}",
      "type": "function",
