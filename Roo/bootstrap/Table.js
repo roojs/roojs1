@@ -422,7 +422,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var renders = [];
                     
         if(this.store.getCount() > 0){
-            this.store.data.each(function(d){
+            this.store.data.each(function(d,rowIndex){
                 var row = {
                     tag : 'tr',
                     cn : []
@@ -451,9 +451,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     }
                     
                     var rowcfg = {
-                             
-                        record: r,
+                        record: d,
                         rowIndex : rowIndex,
+                        colIndex : i,
                         rowClass : ''
                     }
 
