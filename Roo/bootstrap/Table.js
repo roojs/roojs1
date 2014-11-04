@@ -470,7 +470,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     }
                     
                     if(typeof(config.width) != 'undefined'){
-                        td.style += 'width:' +  config.width + 'px;';
+                        td.style += ' width:' +  config.width + 'px;';
                     }
                     
                     
