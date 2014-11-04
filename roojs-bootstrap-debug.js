@@ -4612,7 +4612,7 @@ Roo.bootstrap.Table = function(config){
          * @event rowclass
          * Fires when a row is rendered, so you can change add a style to it.
          * @param {Roo.bootstrap.Table} this
-         * @param {Object} rowcfg   contains record  rowIndex and rowClass - set rowClass to add a style.
+         * @param {Object} rowcfg   contains record  rowIndex colIndex and rowClass - set rowClass to add a style.
          */
         'rowclass' : true
         
@@ -4957,6 +4957,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     var rowcfg = {
                         record: d,
                         rowIndex : rowIndex,
+                        colIndex : i,
                         rowClass : ''
                     }
 
