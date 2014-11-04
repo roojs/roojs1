@@ -4607,7 +4607,14 @@ Roo.bootstrap.Table = function(config){
          * @param {Number} rowIndex
          * @param {Roo.EventObject} e
          */
-        "rowdblclick" : true
+        "rowdblclick" : true,
+        /**
+         * @event rowclass
+         * Fires when a row is rendered, so you can change add a style to it.
+         * @param {Roo.bootstrap.Table} this
+         * @param {Object} rowcfg   contains record  rowIndex and rowClass - set rowClass to add a style.
+         */
+        'rowclass' : true
         
     });
 };
@@ -4638,6 +4645,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     thead : true,
     RowSelection : false,
     CellSelection : false,
+    
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -4844,7 +4852,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
 //            }
             
             if(typeof(config.width) != 'undefined'){
-                c.style += 'width:' + config.width + 'px;';
+                c.style += ' width:' + config.width + 'px;';
             }
             
             header.cn.push(c)
@@ -4918,7 +4926,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var renders = [];
                     
         if(this.store.getCount() > 0){
-            this.store.data.each(function(d){
+            this.store.data.each(function(d,rowIndex){
                 var row = {
                     tag : 'tr',
                     cn : []
@@ -4946,10 +4954,18 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                         })
                     }
                     
+                    var rowcfg = {
+                        record: d,
+                        rowIndex : rowIndex,
+                        rowClass : ''
+                    }
+
+                    _this.fireEvent('rowclass', this, rowcfg);
+                    
                     var td = {
                         tag: 'td',
                         id: id,
-                        style: '',
+                        style: rowcfg.rowClass,
                         html: (typeof(value) === 'object') ? '' : value
                     };
                     
@@ -4958,7 +4974,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     }
                     
                     if(typeof(config.width) != 'undefined'){
-                        td.style += 'width:' +  config.width + 'px;';
+                        td.style += ' width:' +  config.width + 'px;';
                     }
                     
                     
