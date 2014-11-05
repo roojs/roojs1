@@ -226,8 +226,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(this.inputType != 'hidden'){
             cfg.cls = 'form-group' //input-group
         }
-        Roo.log('input log!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-        Roo.log(this.value);
+        
         var input =  {
             tag: 'input',
             id : id,
@@ -363,9 +362,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if (this.parentType === 'Navbar' &&  this.parent().bar) {
            cfg.cls += ' navbar-form';
            Roo.log(cfg);
-        }
-        if(this.value.length){
-            Roo.log(cfg);
         }
         
         return cfg;
