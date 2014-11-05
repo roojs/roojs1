@@ -364,7 +364,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
            cfg.cls += ' navbar-form';
            Roo.log(cfg);
         }
-        
+        Roo.log(cfg);
         return cfg;
         
     },
