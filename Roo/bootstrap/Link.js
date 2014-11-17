@@ -14,6 +14,7 @@
  * @cfg {String} href a tag href
  * @cfg {String} target (_self|_blank|_parent|_top) target for a href.
  * @cfg {String} html the content of the link.
+ * @cfg {Boolean} preventDefault (true | false) default false
 
  * 
  * @constructor
@@ -39,6 +40,7 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     
     href: false,
     target: false,
+    preventDefault: false,
 
     getAutoCreate : function(){
         
@@ -68,6 +70,9 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
+        if(this.preventDefault){
+            e.preventDefault();
+        }
         //Roo.log('img onclick');
         this.fireEvent('click', this, e);
     }
