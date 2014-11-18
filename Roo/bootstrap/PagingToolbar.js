@@ -120,10 +120,12 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
 //            this.displayEl = navel.el.select('span',true).first();
         }
         
-        Roo.each(this.toolbarItems, function(e) {
-            Roo.log(this);
-            Roo.log(e);
-            this.navgroup.addItem(e);
+        this.navgroup.addItem({
+            tooltip: this.firstText,
+            cls: "test test",
+            icon : 'fa fa-backward',
+            disabled: true,
+            listeners : { click : this.onClick.createDelegate(this, ["first"]) }
         });
         
         this.first = this.navgroup.addItem({
