@@ -208,7 +208,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
        this.afterTextEl.dom.innerHTML = String.format(this.afterPageText, d.pages);
        this.field.dom.value = ap;
-       this.first.setDisabled(ap == 1);
+//       this.first.setDisabled(ap == 1);
        this.prev.setDisabled(ap == 1);
        this.next.setDisabled(ap == ps);
        this.last.setDisabled(ap == ps);
