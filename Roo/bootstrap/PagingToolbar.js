@@ -124,7 +124,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
         if(this.buttons){
             Roo.each(_this.buttons, function(e){
-               Roo.log(e); 
+               Roo.factory(e).onRender(_this.el, null);
             });
         }
             
