@@ -40,6 +40,8 @@ Roo.bootstrap.PagingToolbar = function(config)
     // supprot items array.
     
     Roo.each(items, function(e) {
+        Roo.log(this);
+        Roo.log(e);
         this.add(Roo.factory(e));
     },this);
     
