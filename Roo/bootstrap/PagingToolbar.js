@@ -104,23 +104,12 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
      */
     refreshText : "Refresh",
 
-    buttons : false,
-    
     // private
     onRender : function(ct, position) 
     {   
         Roo.bootstrap.PagingToolbar.superclass.onRender.call(this, ct, position);
         this.navgroup.parentId = this.id;
         this.navgroup.onRender(this.el, null);
-        
-        var test =  new Roo.bootstrap.Button({
-            html: 'Download',
-            size: 'sm',
-            weight: 'primary'
-        });
-        
-        Roo.log(test);
-        test.onRender(this.el, null);
         // add the buttons to the navgroup
         
         if(this.displayInfo){
@@ -135,6 +124,14 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
         Roo.each(_this.toolbarItems, function(e) {
             _this.navgroup.addItem(e);
+        });
+        
+        this.first = this.navgroup.addItem({
+            tooltip: this.firstText,
+            cls: "prev",
+            icon : 'fa fa-backward',
+            disabled: true,
+            listeners : { click : this.onClick.createDelegate(this, ["first"]) }
         });
         
         this.first = this.navgroup.addItem({
