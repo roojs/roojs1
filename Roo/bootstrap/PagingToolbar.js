@@ -23,6 +23,7 @@ Roo.bootstrap.PagingToolbar = function(config)
         // created from xtype...
     var ds = config.dataSource;
     var items = [];
+    this.toolbarItems = [];
     if (config.items) {
         this.toolbarItems = config.items;
         config.items = [];
@@ -39,11 +40,6 @@ Roo.bootstrap.PagingToolbar = function(config)
     
     // supprot items array.
     
-    Roo.each(items, function(e) {
-        Roo.log(this);
-        Roo.log(e);
-        this.navgroup.addItem(e);
-    },this);
     
     
     
@@ -123,6 +119,11 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.navgroup.onRender(this.el, null);
         // add the buttons to the navgroup
         
+        Roo.each(this.toolbarItems, function(e) {
+            Roo.log(this);
+            Roo.log(e);
+            this.navgroup.addItem(e);
+        },this);
         
         if(this.displayInfo){
             Roo.log(this.el.select('ul.navbar-nav',true).first());
