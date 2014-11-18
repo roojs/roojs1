@@ -113,6 +113,14 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.navgroup.parentId = this.id;
         this.navgroup.onRender(this.el, null);
         
+        var test =  new Roo.bootstrap.Button({
+            html: 'Download',
+            size: 'sm',
+            weight: 'primary'
+        });
+        
+        Roo.log(test);
+        test.onRender(this.el, null);
         // add the buttons to the navgroup
         
         if(this.displayInfo){
@@ -124,13 +132,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         }
         
         var _this = this;
-        
-        if(this.buttons){
-            Roo.each(_this.buttons, function(e){
-                
-            });
-        }
-        
         
         Roo.each(_this.toolbarItems, function(e) {
             _this.navgroup.addItem(e);
