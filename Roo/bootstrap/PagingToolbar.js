@@ -124,7 +124,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             Roo.log(this);
             Roo.log(e);
             this.navgroup.addItem(e);
-        },this);
+        });
         
         this.first = this.navgroup.addItem({
             tooltip: this.firstText,
@@ -183,7 +183,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
 
-        Roo.log(this.navgroup);
     },
 
     // private
