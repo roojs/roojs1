@@ -183,6 +183,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
 
+        Roo.log(this.navgroup);
     },
 
     // private
