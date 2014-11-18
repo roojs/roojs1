@@ -120,6 +120,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
 //            this.displayEl = navel.el.select('span',true).first();
         }
         
+        Roo.log(this.toolbarItems);
         Roo.each(this.toolbarItems, function(e) {
             Roo.log(this);
             Roo.log(e);
