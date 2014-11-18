@@ -125,7 +125,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
 //        Roo.each(_this.toolbarItems, function(e) {
 //            _this.navgroup.addItem(e);
 //        });
-        
+        Roo.log(_this.navgroup);
         this.first = this.navgroup.addItem({
         '|xns' : 'Roo.bootstrap',
         xtype : 'Container',
