@@ -26,7 +26,10 @@ Roo.bootstrap.PagingToolbar = function(config)
     this.toolbarItems = [];
     if (config.items) {
         this.toolbarItems = Roo.apply(this.toolbarItems, config.items);
+        Roo.log(this.toolbarItems);
         config.items = [];
+        
+        Roo.log(this.toolbarItems);
     }
     
     Roo.bootstrap.PagingToolbar.superclass.constructor.call(this, config);
