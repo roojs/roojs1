@@ -122,23 +122,9 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
         var _this = this;
         
-//        Roo.each(_this.toolbarItems, function(e) {
-//            _this.navgroup.addItem(e);
-//        });
-        Roo.log(_this.navgroup);
-        this.navgroup.addItem({
-        '|xns' : 'Roo.bootstrap',
-        xtype : 'Container',
-        xns : Roo.bootstrap,
-        cn : [
-            new Roo.bootstrap.Button({
-                '|xns' : 'Roo.bootstrap',
-                xtype : 'Button',
-                xns : Roo.bootstrap,
-                html: 'Downlaod'
-            })
-        ]
-    });
+        Roo.each(_this.toolbarItems, function(e) {
+            _this.navgroup.addItem(e);
+        });
         
         this.first = this.navgroup.addItem({
             tooltip: this.firstText,
