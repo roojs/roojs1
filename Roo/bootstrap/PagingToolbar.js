@@ -109,7 +109,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     {
         Roo.log('onRender!!!!!!!!!!!!!!!!!!!!!!!!1')
         
-        Roo.log(this.toolbarItems);
+        Roo.log(this);
         
         
         Roo.bootstrap.PagingToolbar.superclass.onRender.call(this, ct, position);
