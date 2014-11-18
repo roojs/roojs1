@@ -125,11 +125,11 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
         var _this = this;
         
-        var test = new Roo.bootstrap.Button({
+        var test = {
         html: 'Download',
         size: 'sm',
         weight: 'primary'
-    });
+    };
         Roo.log(typeof(test));
         if(this.buttons){
             Roo.each(_this.buttons, function(e){
