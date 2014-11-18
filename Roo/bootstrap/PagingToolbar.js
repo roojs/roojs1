@@ -112,6 +112,8 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.navgroup.onRender(this.el, null);
         // add the buttons to the navgroup
         
+        Roo.log(this.buttons);
+        
         if(this.displayInfo){
             Roo.log(this.el.select('ul.navbar-nav',true).first());
             this.el.select('ul.navbar-nav',true).first().createChild({cls:'x-paging-info'});
