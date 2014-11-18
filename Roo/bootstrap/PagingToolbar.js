@@ -38,7 +38,7 @@ Roo.bootstrap.PagingToolbar = function(config)
     this.navgroup = new Roo.bootstrap.NavGroup({ cls: 'pagination' });
     
     // supprot items array.
-    Roo.log(items);
+    
     Roo.each(items, function(e) {
         this.add(Roo.factory(e));
     },this);
