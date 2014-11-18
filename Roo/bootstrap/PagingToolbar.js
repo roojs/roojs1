@@ -103,8 +103,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
      * @type String
      */
     refreshText : "Refresh",
-
-    buttons : false,
     
     // private
     onRender : function(ct, position) 
