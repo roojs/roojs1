@@ -112,6 +112,14 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         Roo.bootstrap.PagingToolbar.superclass.onRender.call(this, ct, position);
         this.navgroup.parentId = this.id;
         this.navgroup.onRender(this.el, null);
+        
+        var test =  new Roo.bootstrap.Button({
+            html: 'Download',
+            size: 'sm',
+            weight: 'primary'
+        });
+        
+        Roo.log(test);
         // add the buttons to the navgroup
         
         if(this.displayInfo){
