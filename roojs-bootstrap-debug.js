@@ -17659,7 +17659,6 @@ Roo.bootstrap.PagingToolbar = function(config)
     // old args format still supported... - xtype is prefered..
         // created from xtype...
     var ds = config.dataSource;
-    
     this.toolbarItems = [];
     if (config.items) {
         this.toolbarItems = config.items;
@@ -17740,15 +17739,17 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
      * @type String
      */
     refreshText : "Refresh",
-    
+
+    buttons : false,
     // private
     onRender : function(ct, position) 
-    {   
+    {
         Roo.bootstrap.PagingToolbar.superclass.onRender.call(this, ct, position);
         this.navgroup.parentId = this.id;
         this.navgroup.onRender(this.el, null);
-        
         // add the buttons to the navgroup
+        
+        Roo.log(this.buttons);
         
         if(this.displayInfo){
             Roo.log(this.el.select('ul.navbar-nav',true).first());
@@ -17759,12 +17760,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         }
         
         var _this = this;
-        
-//        if(this.buttons){
-//            Roo.each(_this.buttons, function(e){
-//                e.onRender(this.el, null);
-//            });
-//        }
         
         Roo.each(_this.toolbarItems, function(e) {
             _this.navgroup.addItem(e);

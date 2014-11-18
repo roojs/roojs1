@@ -22,7 +22,6 @@
     </span><span class="jsdoc-comment">// old args format still supported... - xtype is prefered..
         // created from xtype...
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.dataSource</span><span class="jsdoc-syntax">;
-    
     </span><span class="jsdoc-var">this.toolbarItems </span><span class="jsdoc-syntax">= [];
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.toolbarItems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">;
@@ -103,15 +102,17 @@
      * @type String
      */
     </span><span class="jsdoc-var">refreshText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Refresh&quot;</span><span class="jsdoc-syntax">,
-    
+
+    </span><span class="jsdoc-var">buttons </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">) 
-    {   
+    {
         </span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.navgroup.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.navgroup.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
-        
         </span><span class="jsdoc-comment">// add the buttons to the navgroup
+        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.buttons</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayInfo</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul.navbar-nav'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">());
@@ -122,12 +123,6 @@
         </span><span class="jsdoc-syntax">}
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
-        
-</span><span class="jsdoc-comment">//        if(this.buttons){
-//            Roo.each(_this.buttons, function(e){
-//                e.onRender(this.el, null);
-//            });
-//        }
         
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.toolbarItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">_this.navgroup.addItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
