@@ -120,6 +120,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         });
         
         Roo.log(test);
+        test.onRender(this.el, null);
         // add the buttons to the navgroup
         
         if(this.displayInfo){
