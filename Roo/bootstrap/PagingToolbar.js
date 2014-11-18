@@ -42,7 +42,7 @@ Roo.bootstrap.PagingToolbar = function(config)
     Roo.each(items, function(e) {
         Roo.log(this);
         Roo.log(e);
-        this.add(Roo.factory(e));
+        this.addItem(Roo.factory(e));
     },this);
     
     
