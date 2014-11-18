@@ -17749,8 +17749,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.navgroup.onRender(this.el, null);
         // add the buttons to the navgroup
         
-        Roo.log(this.buttons);
-        
         if(this.displayInfo){
             Roo.log(this.el.select('ul.navbar-nav',true).first());
             this.el.select('ul.navbar-nav',true).first().createChild({cls:'x-paging-info'});
@@ -17761,6 +17759,12 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
         var _this = this;
         
+        if(this.buttons){
+            Roo.each(_this.buttons, function(e){
+               Roo.factory(e).onRender(_this.el, null);
+            });
+        }
+            
         Roo.each(_this.toolbarItems, function(e) {
             _this.navgroup.addItem(e);
         });
