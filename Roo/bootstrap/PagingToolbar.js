@@ -125,11 +125,11 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
         var _this = this;
         
-        if(this.buttons){
-            Roo.each(_this.buttons, function(e){
-                e.onRender(this.el, null);
-            });
-        }
+//        if(this.buttons){
+//            Roo.each(_this.buttons, function(e){
+//                e.onRender(this.el, null);
+//            });
+//        }
         
         Roo.each(_this.toolbarItems, function(e) {
             _this.navgroup.addItem(e);
