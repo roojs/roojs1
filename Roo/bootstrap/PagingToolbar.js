@@ -103,8 +103,9 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
      * @type String
      */
     refreshText : "Refresh",
-    
+
     buttons : false,
+    
     // private
     onRender : function(ct, position) 
     {   
@@ -124,11 +125,12 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         
         var _this = this;
         
-//        if(this.buttons){
-//            Roo.each(_this.buttons, function(e){
-//                e.onRender(this.el, null);
-//            });
-//        }
+        if(this.buttons){
+            Roo.each(_this.buttons, function(e){
+                
+            });
+        }
+        
         
         Roo.each(_this.toolbarItems, function(e) {
             _this.navgroup.addItem(e);
