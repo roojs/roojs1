@@ -130,7 +130,14 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         '|xns' : 'Roo.bootstrap',
         xtype : 'Container',
         xns : Roo.bootstrap,
-        html : 'test'
+        cn : [
+            {
+                '|xns' : 'Roo.bootstrap',
+                xtype : 'Button',
+                xns : Roo.bootstrap,
+                html: 'Downlaod'
+            }
+        ]
     });
         
         this.first = this.navgroup.addItem({
