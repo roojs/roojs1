@@ -17659,10 +17659,11 @@ Roo.bootstrap.PagingToolbar = function(config)
     // old args format still supported... - xtype is prefered..
         // created from xtype...
     var ds = config.dataSource;
-    var items = [];
+    
+    this.toolbarItems = [];
     if (config.items) {
-        items = config.items;
-        config.items = [];
+        this.toolbarItems = config.items;
+//        config.items = [];
     }
     
     Roo.bootstrap.PagingToolbar.superclass.constructor.call(this, config);
@@ -17673,16 +17674,6 @@ Roo.bootstrap.PagingToolbar = function(config)
     }
     
     this.navgroup = new Roo.bootstrap.NavGroup({ cls: 'pagination' });
-    
-    // supprot items array.
-    
-    Roo.each(items, function(e) {
-        this.add(Roo.factory(e));
-    },this);
-    
-    
-    
-    
     
 };
 
@@ -17749,15 +17740,15 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
      * @type String
      */
     refreshText : "Refresh",
-
+    
     // private
     onRender : function(ct, position) 
-    {
+    {   
         Roo.bootstrap.PagingToolbar.superclass.onRender.call(this, ct, position);
         this.navgroup.parentId = this.id;
         this.navgroup.onRender(this.el, null);
-        // add the buttons to the navgroup
         
+        // add the buttons to the navgroup
         
         if(this.displayInfo){
             Roo.log(this.el.select('ul.navbar-nav',true).first());
@@ -17766,6 +17757,18 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
 //            var navel = this.navgroup.addItem( { tagtype : 'span', html : '', cls : 'x-paging-info', preventDefault : true } );
 //            this.displayEl = navel.el.select('span',true).first();
         }
+        
+        var _this = this;
+        
+//        if(this.buttons){
+//            Roo.each(_this.buttons, function(e){
+//                e.onRender(this.el, null);
+//            });
+//        }
+        
+        Roo.each(_this.toolbarItems, function(e) {
+            _this.navgroup.addItem(e);
+        });
         
         this.first = this.navgroup.addItem({
             tooltip: this.firstText,
