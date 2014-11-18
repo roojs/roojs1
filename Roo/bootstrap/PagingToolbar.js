@@ -24,7 +24,7 @@ Roo.bootstrap.PagingToolbar = function(config)
     var ds = config.dataSource;
     var items = [];
     if (config.items) {
-        items = config.items;
+        this.toolbarItems = config.items;
         config.items = [];
     }
     
