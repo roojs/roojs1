@@ -106,7 +106,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
 
     // private
     onRender : function(ct, position) 
-    {
+    {   
         Roo.bootstrap.PagingToolbar.superclass.onRender.call(this, ct, position);
         this.navgroup.parentId = this.id;
         this.navgroup.onRender(this.el, null);
@@ -120,6 +120,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
 //            this.displayEl = navel.el.select('span',true).first();
         }
         
+        Roo.log('onRender!!!!!!!!!!!!!!!!!!!!!!!!1')
         Roo.log(this.toolbarItems);
         Roo.each(this.toolbarItems, function(e) {
             Roo.log(this);
