@@ -22,7 +22,7 @@ Roo.bootstrap.PagingToolbar = function(config)
     // old args format still supported... - xtype is prefered..
         // created from xtype...
     var ds = config.dataSource;
-    var items = [];
+    
     this.toolbarItems = [];
     if (config.items) {
         this.toolbarItems = config.items;
@@ -37,13 +37,6 @@ Roo.bootstrap.PagingToolbar = function(config)
     }
     
     this.navgroup = new Roo.bootstrap.NavGroup({ cls: 'pagination' });
-    
-    // supprot items array.
-    
-    
-    
-    
-    
     
 };
 
