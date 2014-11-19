@@ -7,10 +7,11 @@
 
 
 /**
- * @class Roo.bootstrap.Img
+ * @class Roo.bootstrap.Graph
  * @extends Roo.bootstrap.Component
- * Bootstrap Img class
- * @cfg {Boolean} imgResponsive false | true
+ * Bootstrap Graph class
+ * @cfg {number} sm 4
+ * @cfg {number} md 5
  * @cfg {String} border rounded | circle | thumbnail
  * @cfg {String} src image source
  * @cfg {String} alt image alternative text
@@ -97,8 +98,23 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 
     },
 
-    load : function(xdata){
+    load : function(graphtype,xdata){
         this.raphael.clear();
+        if(!graphtype) {
+            graphtype = this.graphtype;
+        }
+        switch(graphtype){
+            case 'bar':
+                this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
+                break;
+            case 'hbar':
+                this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
+                break;
+            case 'pie':
+                //this.raphael.pie(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
+                break;
+
+        }
         this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
     },
     
