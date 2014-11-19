@@ -32,7 +32,7 @@ Roo.example.Graph = new Roo.XComponent({
 			xns: Roo.bootstrap,
             listeners: {
                 render: function(){
-                    this.load([55, 20, 13, 32, 5, 1, 2, 10,5 , 10]);
+                    this.load('hbar',[55, 20, 13, 32, 5, 1, 2, 10,5 , 10]);
                 }
             }
 			
