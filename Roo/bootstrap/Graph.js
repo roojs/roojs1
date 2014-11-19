@@ -44,10 +44,10 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
     width:100,
 
     graphtype: 'bar',
-    g_height: 500,
-    g_width: 300,
-    g_x: 100,
-    g_y:400,
+    g_height: 250,
+    g_width: 560,
+    g_x: 30,
+    g_y:30,
     opts:{
         //g_colors: this.colors,
         g_type: 'square',
