@@ -69,7 +69,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
     onRender : function(ct,position){
         Roo.bootstrap.Graph.superclass.onRender.call(this,ct,position);
         var r = {};
-        r = Raphael(this.el.dom),
+        this.raphael = Raphael(this.el.dom),
                     data1 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
                     data2 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
                     data3 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
@@ -97,9 +97,9 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 
     },
 
-    load : function(data){
-        this.ct.clear();
-        raphael.vbarchar(data);
+    load : function(xdata){
+        this.raphael.clear();
+        this.raphael.vbarchar(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
     },
     
     initEvents: function() {
