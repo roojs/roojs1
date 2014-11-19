@@ -40,8 +40,8 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
     
     sm: 4,
     md: 5,
-    height:100;
-    width:100;
+    height:100,
+    width:100,
 
     graphtype: 'bar',
     g_height: 500,
