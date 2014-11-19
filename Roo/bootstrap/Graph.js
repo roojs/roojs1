@@ -58,7 +58,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag: 'div',
-            cls: (this.imgResponsive) ? 'img-responsive' : '',
+            //cls: (this.imgResponsive) ? 'img-responsive' : '',
             html : null
         }
         
@@ -86,19 +86,20 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
                 r.barchart(330, 250, 300, 220, data3, {stacked: true, type: "round"});
                 */
                 
-                var xdata = [55, 20, 13, 32, 5, 1, 2, 10,5 , 10];
-                r.barchart(30, 30, 560, 250,  xdata, {
-                   labels : [55, 20, 13, 32, 5, 1, 2, 10,5 , 10],
-                    axis : "0 0 1 1",
-                    axisxlabels :  xdata
-                    //yvalues : cols,
+                // var xdata = [55, 20, 13, 32, 5, 1, 2, 10,5 , 10];
+                // r.barchart(30, 30, 560, 250,  xdata, {
+                //    labels : [55, 20, 13, 32, 5, 1, 2, 10,5 , 10],
+                //     axis : "0 0 1 1",
+                //     axisxlabels :  xdata
+                //     //yvalues : cols,
                    
-                });
+                // });
 
     },
 
-    load : function(){
-        
+    load : function(data){
+        this.ct.clear();
+        raphael.vbarchar(data);
     },
     
     initEvents: function() {
