@@ -12,11 +12,12 @@
  * Bootstrap Graph class
  * @cfg {number} sm 4
  * @cfg {number} md 5
- * @cfg {String} border rounded | circle | thumbnail
- * @cfg {String} src image source
- * @cfg {String} alt image alternative text
- * @cfg {String} href a tag href
- * @cfg {String} target (_self|_blank|_parent|_top)target for a href.
+ * @cfg {String} graphtype bar | vbar | pie
+ * @cfg {number} g_x x coodinator
+ * @cfg {number} g_y y coodinator
+ * @cfg {number} g_height height
+ * @cfg {number} g_width width
+ * @cfg {Array}  opts values
  * 
  * @constructor
  * Create a new Input
