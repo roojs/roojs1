@@ -99,14 +99,14 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 
     load : function(xdata){
         this.raphael.clear();
-        //this.raphael.vbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
-        this.raphael.barchart(30, 30, 560, 250,  xdata, {
-                   labels : [55, 20, 13, 32, 5, 1, 2, 10,5 , 10],
-                    axis : "0 0 1 1",
-                    axisxlabels :  xdata
-                    //yvalues : cols,
+        this.raphael.vbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
+        // this.raphael.barchart(30, 30, 560, 250,  xdata, {
+        //            labels : [55, 20, 13, 32, 5, 1, 2, 10,5 , 10],
+        //             axis : "0 0 1 1",
+        //             axisxlabels :  xdata
+        //             //yvalues : cols,
                    
-                });
+        //         });
     },
     
     initEvents: function() {
