@@ -30,7 +30,7 @@ Roo.example.Graph = new Roo.XComponent({
 		 {
 			xtype : 'Graph',
 			xns: Roo.bootstrap,
-			html: 'bar chart'
+			
                  }
 		]
 	}
