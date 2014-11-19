@@ -99,7 +99,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 
     load : function(xdata){
         this.raphael.clear();
-        this.raphael.vbarchar(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
+        this.raphael.VBarchar(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
     },
     
     initEvents: function() {
