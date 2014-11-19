@@ -116,7 +116,6 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
                 break;
 
         }
-        this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
     },
     
     initEvents: function() {
