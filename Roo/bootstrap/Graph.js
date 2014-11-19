@@ -49,7 +49,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
     g_x: 100,
     g_y:400,
     opts:{
-        g_colors: this.colors,
+        //g_colors: this.colors,
         g_type: 'square',
         g_gutter: '20%'
     },
