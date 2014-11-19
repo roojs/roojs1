@@ -40,7 +40,6 @@ Roo.data.DataReader.prototype = {
                 case 'date' : da[c.name] = new Date(); break;
                 case 'float' : da[c.name] = 0.0; break;
                 case 'boolean' : da[c.name] = false; break;
-                
                 default : da[c.name] = ""; break;
             }
             
