@@ -20,9 +20,9 @@
  * @cfg {String} sortable Specifies that the table should be sortable
  * @cfg {String} summary Specifies a summary of the content of a table
  * @cfg {Number} width Specifies the width of a table
+ * @cfg {String} layout table layout (auto | fixed | initial | inherit)
  * 
  * @cfg {boolean} striped Should the rows be alternative striped
- * @cfg {boolean} layout table layout (auto | fixed | initial | inherit)
  * @cfg {boolean} bordered Add borders to the table
  * @cfg {boolean} hover Add hover highlighting
  * @cfg {boolean} condensed Format condensed
