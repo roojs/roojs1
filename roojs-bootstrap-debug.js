@@ -4529,6 +4529,7 @@ Roo.LoadMask.prototype = {
  * @cfg {String} sortable Specifies that the table should be sortable
  * @cfg {String} summary Specifies a summary of the content of a table
  * @cfg {Number} width Specifies the width of a table
+ * @cfg {String} layout table layout (auto | fixed | initial | inherit)
  * 
  * @cfg {boolean} striped Should the rows be alternative striped
  * @cfg {boolean} bordered Add borders to the table
@@ -4650,6 +4651,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     thead : true,
     RowSelection : false,
     CellSelection : false,
+    layout : false,
     
     
     getAutoCreate : function(){
@@ -4662,6 +4664,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
             
         if (this.striped) {
+            cfg.cls += ' table-striped';
+        }
+        if (this.fixed) {
             cfg.cls += ' table-striped';
         }
         if (this.hover) {
@@ -4712,6 +4717,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         if (this.width) {
             cfg.width=this.width;
+        }
+        if (this.layout) {
+            cfg.style = (typeof(cfg.style) == 'undefined') ? ('table-layout:' + this.layout + ';') : (cfg.style + ('table-layout:' + this.layout + ';'));
         }
         
         if(this.store || this.cm){
