@@ -1,0 +1,137 @@
+<html><head><title>../roojs1/Roo/bootstrap/Graph.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * image
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.Graph
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Graph class
+ * @cfg {number} sm 4
+ * @cfg {number} md 5
+ * @cfg {String} graphtype bar | vbar | pie
+ * @cfg {number} g_x x coodinator
+ * @cfg {number} g_y y coodinator
+ * @cfg {number} g_height height
+ * @cfg {number} g_width width
+ * @cfg {Array}  opts values
+ * 
+ * @constructor
+ * Create a new Input
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.Graph </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.Graph.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">// img events
+        /**
+         * @event click
+         * The img click event for the img.
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Graph</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    </span><span class="jsdoc-var">sm</span><span class="jsdoc-syntax">: 4,
+    </span><span class="jsdoc-var">md</span><span class="jsdoc-syntax">: 5,
+    </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">:100,
+    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">:100,
+
+    </span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'bar'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">g_height</span><span class="jsdoc-syntax">: 250,
+    </span><span class="jsdoc-var">g_width</span><span class="jsdoc-syntax">: 560,
+    </span><span class="jsdoc-var">g_x</span><span class="jsdoc-syntax">: 30,
+    </span><span class="jsdoc-var">g_y</span><span class="jsdoc-syntax">:30,
+    </span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">:{
+        </span><span class="jsdoc-comment">//g_colors: this.colors,
+        </span><span class="jsdoc-var">g_type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'square'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">g_gutter</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'20%'
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">//cls: (this.imgResponsive) ? 'img-responsive' : '',
+            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null
+        </span><span class="jsdoc-syntax">}
+        
+        
+        </span><span class="jsdoc-keyword">return  </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+
+    </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.bootstrap.Graph.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= {};
+        </span><span class="jsdoc-var">this.raphael </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Raphael</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">),
+                    </span><span class="jsdoc-var">data1 </span><span class="jsdoc-syntax">= [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    </span><span class="jsdoc-var">data2 </span><span class="jsdoc-syntax">= [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    </span><span class="jsdoc-var">data3 </span><span class="jsdoc-syntax">= [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    </span><span class="jsdoc-var">txtattr </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">font</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;12px 'Fontin Sans', Fontin-Sans, sans-serif&quot; </span><span class="jsdoc-syntax">};
+                </span><span class="jsdoc-comment">/*
+                r.text(160, 10, &quot;Single Series Chart&quot;).attr(txtattr);
+                r.text(480, 10, &quot;Multiline Series Chart&quot;).attr(txtattr);
+                r.text(160, 250, &quot;Multiple Series Stacked Chart&quot;).attr(txtattr);
+                r.text(480, 250, 'Multiline Series Stacked Vertical Chart. Type &quot;round&quot;').attr(txtattr);
+                
+                r.barchart(10, 10, 300, 220, [[55, 20, 13, 32, 5, 1, 2, 10]], 0, {type: &quot;sharp&quot;});
+                r.barchart(330, 10, 300, 220, data1);
+                r.barchart(10, 250, 300, 220, data2, {stacked: true});
+                r.barchart(330, 250, 300, 220, data3, {stacked: true, type: &quot;round&quot;});
+                */
+                
+                // var xdata = [55, 20, 13, 32, 5, 1, 2, 10,5 , 10];
+                // r.barchart(30, 30, 560, 250,  xdata, {
+                //    labels : [55, 20, 13, 32, 5, 1, 2, 10,5 , 10],
+                //     axis : &quot;0 0 1 1&quot;,
+                //     axisxlabels :  xdata
+                //     //yvalues : cols,
+                   
+                // });
+
+    </span><span class="jsdoc-syntax">},
+
+    </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">this.raphael.clear</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">graphtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.graphtype</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'bar'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.raphael.barchart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_height</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.opts</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'hbar'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-var">this.raphael.hbarchart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_height</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.opts</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'pie'</span><span class="jsdoc-syntax">:
+                </span><span class="jsdoc-comment">//this.raphael.pie(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+
+        }
+    },
+    
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.href</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+    },
+    
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img onclick'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+    }
+   
+});
+
+ 
+</span></code></body></html>

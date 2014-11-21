@@ -20,6 +20,7 @@
  * @cfg {String} sortable Specifies that the table should be sortable
  * @cfg {String} summary Specifies a summary of the content of a table
  * @cfg {Number} width Specifies the width of a table
+ * @cfg {String} layout table layout (auto | fixed | initial | inherit)
  * 
  * @cfg {boolean} striped Should the rows be alternative striped
  * @cfg {boolean} bordered Add borders to the table
@@ -141,6 +142,7 @@
     </span><span class="jsdoc-var">thead </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">RowSelection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">CellSelection </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">layout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
@@ -153,6 +155,9 @@
         }
             
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.striped</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' table-striped'</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fixed</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' table-striped'</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hover</span><span class="jsdoc-syntax">) {
@@ -203,6 +208,9 @@
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.width</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this.width</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.style </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.style</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? (</span><span class="jsdoc-string">'table-layout:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.layout </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">) : (</span><span class="jsdoc-var">cfg.style </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-string">'table-layout:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.layout </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">));
         }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.cm</span><span class="jsdoc-syntax">){
