@@ -4666,9 +4666,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if (this.striped) {
             cfg.cls += ' table-striped';
         }
-        if (this.fixed) {
-            cfg.cls += ' table-striped';
-        }
+        
         if (this.hover) {
             cfg.cls += ' table-hover';
         }
