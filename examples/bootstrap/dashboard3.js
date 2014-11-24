@@ -60,6 +60,11 @@ dashboard3 = new Roo.XComponent({
                                             xtype : 'Header',
                                             xns : Roo.bootstrap,
                                             html : 'Dashboard  <small> Control panel </small>'
+                                        },
+                                    	{
+                                            '|xns' : 'Roo.bootstrap',
+                                            xtype : 'Container',
+                                            xns : Roo.bootstrap
                                         }
                                     ]
 

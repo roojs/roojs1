@@ -47,6 +47,10 @@
                                             "xtype" : "Header",
                                             "$ xns" : "Roo.bootstrap",
                                             "String html" : "Dashboard  <small> Control panel </small>"
+                                        },
+                                        {
+                                            "xtype" : "Container",
+                                            "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
                                 },
