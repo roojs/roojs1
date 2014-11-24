@@ -12596,4 +12596,5798 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
 });
 
  
+ /*
+ * - LGPL
+ *
+ * element
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Popover
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Popover class
+ * @cfg {String} html contents of the popover   (or false to use children..)
+ * @cfg {String} title of popover (or false to hide)
+ * @cfg {String} placement how it is placed
+ * @cfg {String} trigger click || hover (or false to trigger manually)
+ * @cfg {String} over what (parent or false to trigger manually.)
+ * 
+ * @constructor
+ * Create a new Popover
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Popover = function(config){
+    Roo.bootstrap.Popover.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
+    
+    title: 'Fill in a title',
+    html: false,
+    
+    placement : 'right',
+    trigger : 'hover', // hover
+    
+    over: 'parent',
+    
+    can_build_overlaid : false,
+    
+    getChildContainer : function()
+    {
+        return this.el.select('.popover-content',true).first();
+    },
+    
+    getAutoCreate : function(){
+         Roo.log('make popover?');
+        var cfg = {
+           cls : 'popover roo-dynamic',
+           style: 'display:block',
+           cn : [
+                {
+                    cls : 'arrow'
+                },
+                {
+                    cls : 'popover-inner',
+                    cn : [
+                        {
+                            tag: 'h3',
+                            cls: 'popover-title',
+                            html : this.title
+                        },
+                        {
+                            cls : 'popover-content',
+                            html : this.html
+                        }
+                    ]
+                    
+                }
+           ]
+        };
+        
+        return cfg;
+    },
+    setTitle: function(str)
+    {
+        this.el.select('.popover-title',true).first().dom.innerHTML = str;
+    },
+    setContent: function(str)
+    {
+        this.el.select('.popover-content',true).first().dom.innerHTML = str;
+    },
+    // as it get's added to the bottom of the page.
+    onRender : function(ct, position)
+    {
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        if(!this.el){
+            var cfg = Roo.apply({},  this.getAutoCreate());
+            cfg.id = Roo.id();
+            
+            if (this.cls) {
+                cfg.cls += ' ' + this.cls;
+            }
+            if (this.style) {
+                cfg.style = this.style;
+            }
+            Roo.log("adding to ")
+            this.el = Roo.get(document.body).createChild(cfg, position);
+            Roo.log(this.el);
+        }
+        this.initEvents();
+    },
+    
+    initEvents : function()
+    {
+        this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
+        this.el.enableDisplayMode('block');
+        this.el.hide();
+        if (this.over === false) {
+            return; 
+        }
+        if (this.triggers === false) {
+            return;
+        }
+        var on_el = (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
+        var triggers = this.trigger ? this.trigger.split(' ') : [];
+        Roo.each(triggers, function(trigger) {
+        
+            if (trigger == 'click') {
+                on_el.on('click', this.toggle, this);
+            } else if (trigger != 'manual') {
+                var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
+                var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
+      
+                on_el.on(eventIn  ,this.enter, this);
+                on_el.on(eventOut, this.leave, this);
+            }
+        }, this);
+        
+    },
+    
+    
+    // private
+    timeout : null,
+    hoverState : null,
+    
+    toggle : function () {
+        this.hoverState == 'in' ? this.leave() : this.enter();
+    },
+    
+    enter : function () {
+       
+    
+        clearTimeout(this.timeout);
+    
+        this.hoverState = 'in'
+    
+        if (!this.delay || !this.delay.show) {
+            this.show();
+            return 
+        }
+        var _t = this;
+        this.timeout = setTimeout(function () {
+            if (_t.hoverState == 'in') {
+                _t.show();
+            }
+        }, this.delay.show)
+    },
+    leave : function() {
+        clearTimeout(this.timeout);
+    
+        this.hoverState = 'out'
+    
+        if (!this.delay || !this.delay.hide) {
+            this.hide();
+            return 
+        }
+        var _t = this;
+        this.timeout = setTimeout(function () {
+            if (_t.hoverState == 'out') {
+                _t.hide();
+            }
+        }, this.delay.hide)
+    },
+    
+    show : function (on_el)
+    {
+        if (!on_el) {
+            on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
+        }
+        // set content.
+        this.el.select('.popover-title',true).first().dom.innerHtml = this.title;
+        if (this.html !== false) {
+            this.el.select('.popover-content',true).first().dom.innerHtml = this.title;
+        }
+        this.el.removeClass(['fade','top','bottom', 'left', 'right','in']);
+        if (!this.title.length) {
+            this.el.select('.popover-title',true).hide();
+        }
+        
+        var placement = typeof this.placement == 'function' ?
+            this.placement.call(this, this.el, on_el) :
+            this.placement;
+            
+        var autoToken = /\s?auto?\s?/i;
+        var autoPlace = autoToken.test(placement);
+        if (autoPlace) {
+            placement = placement.replace(autoToken, '') || 'top';
+        }
+        
+        //this.el.detach()
+        //this.el.setXY([0,0]);
+        this.el.show();
+        this.el.dom.style.display='block';
+        this.el.addClass(placement);
+        
+        //this.el.appendTo(on_el);
+        
+        var p = this.getPosition();
+        var box = this.el.getBox();
+        
+        if (autoPlace) {
+            // fixme..
+        }
+        var align = Roo.bootstrap.Popover.alignment[placement]
+        this.el.alignTo(on_el, align[0],align[1]);
+        //var arrow = this.el.select('.arrow',true).first();
+        //arrow.set(align[2], 
+        
+        this.el.addClass('in');
+        this.hoverState = null;
+        
+        if (this.el.hasClass('fade')) {
+            // fade it?
+        }
+        
+    },
+    hide : function()
+    {
+        this.el.setXY([0,0]);
+        this.el.removeClass('in');
+        this.el.hide();
+        
+    }
+    
+});
+
+Roo.bootstrap.Popover.alignment = {
+    'left' : ['r-l', [-10,0], 'right'],
+    'right' : ['l-r', [10,0], 'left'],
+    'bottom' : ['t-b', [0,10], 'top'],
+    'top' : [ 'b-t', [0,-10], 'bottom']
+};
+
+ /*
+ * - LGPL
+ *
+ * Progress
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Progress
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Progress class
+ * @cfg {Boolean} striped striped of the progress bar
+ * @cfg {Boolean} active animated of the progress bar
+ * 
+ * 
+ * @constructor
+ * Create a new Progress
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Progress = function(config){
+    Roo.bootstrap.Progress.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.Progress, Roo.bootstrap.Component,  {
+    
+    striped : false,
+    active: false,
+    
+    getAutoCreate : function(){
+        var cfg = {
+            tag: 'div',
+            cls: 'progress'
+        };
+        
+        
+        if(this.striped){
+            cfg.cls += ' progress-striped';
+        }
+      
+        if(this.active){
+            cfg.cls += ' active';
+        }
+        
+        
+        return cfg;
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * ProgressBar
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.ProgressBar
+ * @extends Roo.bootstrap.Component
+ * Bootstrap ProgressBar class
+ * @cfg {Number} aria_valuenow aria-value now
+ * @cfg {Number} aria_valuemin aria-value min
+ * @cfg {Number} aria_valuemax aria-value max
+ * @cfg {String} label label for the progress bar
+ * @cfg {String} panel (success | info | warning | danger )
+ * @cfg {String} role role of the progress bar
+ * @cfg {String} sr_only text
+ * 
+ * 
+ * @constructor
+ * Create a new ProgressBar
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.ProgressBar = function(config){
+    Roo.bootstrap.ProgressBar.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
+    
+    aria_valuenow : 0,
+    aria_valuemin : 0,
+    aria_valuemax : 100,
+    label : false,
+    panel : false,
+    role : false,
+    sr_only: false,
+    
+    getAutoCreate : function()
+    {
+        
+        var cfg = {
+            tag: 'div',
+            cls: 'progress-bar',
+            style: 'width:' + Math.ceil((this.aria_valuenow / this.aria_valuemax) * 100) + '%'
+        };
+        
+        if(this.sr_only){
+            cfg.cn = {
+                tag: 'span',
+                cls: 'sr-only',
+                html: this.sr_only
+            }
+        }
+        
+        if(this.role){
+            cfg.role = this.role;
+        }
+        
+        if(this.aria_valuenow){
+            cfg['aria-valuenow'] = this.aria_valuenow;
+        }
+        
+        if(this.aria_valuemin){
+            cfg['aria-valuemin'] = this.aria_valuemin;
+        }
+        
+        if(this.aria_valuemax){
+            cfg['aria-valuemax'] = this.aria_valuemax;
+        }
+        
+        if(this.label && !this.sr_only){
+            cfg.html = this.label;
+        }
+        
+        if(this.panel){
+            cfg.cls += ' progress-bar-' + this.panel;
+        }
+        
+        return cfg;
+    },
+    
+    update : function(aria_valuenow)
+    {
+        this.aria_valuenow = aria_valuenow;
+        
+        this.el.setStyle('width', Math.ceil((this.aria_valuenow / this.aria_valuemax) * 100) + '%');
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * TabPanel
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.TabPanel
+ * @extends Roo.bootstrap.Component
+ * Bootstrap TabPanel class
+ * @cfg {Boolean} active panel active
+ * @cfg {String} html panel content
+ * @cfg {String} tabId tab relate id
+ * @cfg {String} navId The navbar which triggers show hide
+ * 
+ * 
+ * @constructor
+ * Create a new TabPanel
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.TabPanel = function(config){
+    Roo.bootstrap.TabPanel.superclass.constructor.call(this, config);
+     this.addEvents({
+        /**
+	     * @event changed
+	     * Fires when the active status changes
+	     * @param {Roo.bootstrap.TabPanel} this
+	     * @param {Boolean} state the new state
+	    
+         */
+        'changed': true
+     });
+};
+
+Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
+    
+    active: false,
+    html: false,
+    tabId: false,
+    navId : false,
+    
+    getAutoCreate : function(){
+        var cfg = {
+            tag: 'div',
+            cls: 'tab-pane',
+            html: this.html || ''
+        };
+        
+        if(this.active){
+            cfg.cls += ' active';
+        }
+        
+        if(this.tabId){
+            cfg.tabId = this.tabId;
+        }
+        
+        return cfg;
+    },
+    onRender : function(ct, position)
+    {
+       // Roo.log("Call onRender: " + this.xtype);
+        
+        Roo.bootstrap.TabPanel.superclass.onRender.call(this, ct, position);
+        
+        if (this.navId && this.tabId) {
+            var item = Roo.bootstrap.NavGroup.get(this.navId).getNavItem(this.tabId);
+            if (!item) {
+                Roo.log("could not find navID:"  + this.navId + ", tabId: " + this.tabId);
+            } else {
+                item.on('changed', function(item, state) {
+                    this.setActive(state);
+                }, this);
+            }
+        }
+        
+    },
+    setActive: function(state)
+    {
+        Roo.log("panel - set active " + this.tabId + "=" + state);
+        
+        this.active = state;
+        if (!state) {
+            this.el.removeClass('active');
+            
+        } else  if (!this.el.hasClass('active')) {
+            this.el.addClass('active');
+        }
+        this.fireEvent('changed', this, state);
+    }
+    
+    
+});
+ 
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * DateField
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.DateField
+ * @extends Roo.bootstrap.Input
+ * Bootstrap DateField class
+ * @cfg {Number} weekStart default 0
+ * @cfg {Number} weekStart default 0
+ * @cfg {Number} viewMode default empty, (months|years)
+ * @cfg {Number} minViewMode default empty, (months|years)
+ * @cfg {Number} startDate default -Infinity
+ * @cfg {Number} endDate default Infinity
+ * @cfg {Boolean} todayHighlight default false
+ * @cfg {Boolean} todayBtn default false
+ * @cfg {Boolean} calendarWeeks default false
+ * @cfg {Object} daysOfWeekDisabled default empty
+ * 
+ * @cfg {Boolean} keyboardNavigation default true
+ * @cfg {String} language default en
+ * 
+ * @constructor
+ * Create a new DateField
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.DateField = function(config){
+    Roo.bootstrap.DateField.superclass.constructor.call(this, config);
+     this.addEvents({
+            /**
+             * @event show
+             * Fires when this field show.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            show : true,
+            /**
+             * @event show
+             * Fires when this field hide.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            hide : true,
+            /**
+             * @event select
+             * Fires when select a date.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            select : true
+        });
+};
+
+Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
+    
+    /**
+     * @cfg {String} format
+     * The default date format string which can be overriden for localization support.  The format must be
+     * valid according to {@link Date#parseDate} (defaults to 'm/d/y').
+     */
+    format : "m/d/y",
+    /**
+     * @cfg {String} altFormats
+     * Multiple date formats separated by "|" to try when parsing a user input value and it doesn't match the defined
+     * format (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').
+     */
+    altFormats : "m/d/Y|m-d-y|m-d-Y|m/d|m-d|md|mdy|mdY|d",
+    
+    weekStart : 0,
+    
+    viewMode : '',
+    
+    minViewMode : '',
+    
+    todayHighlight : false,
+    
+    todayBtn: false,
+    
+    language: 'en',
+    
+    keyboardNavigation: true,
+    
+    calendarWeeks: false,
+    
+    startDate: -Infinity,
+    
+    endDate: Infinity,
+    
+    daysOfWeekDisabled: [],
+    
+    _events: [],
+    
+    UTCDate: function()
+    {
+        return new Date(Date.UTC.apply(Date, arguments));
+    },
+    
+    UTCToday: function()
+    {
+        var today = new Date();
+        return this.UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+    },
+    
+    getDate: function() {
+            var d = this.getUTCDate();
+            return new Date(d.getTime() + (d.getTimezoneOffset()*60000));
+    },
+    
+    getUTCDate: function() {
+            return this.date;
+    },
+    
+    setDate: function(d) {
+            this.setUTCDate(new Date(d.getTime() - (d.getTimezoneOffset()*60000)));
+    },
+    
+    setUTCDate: function(d) {
+            this.date = d;
+            this.setValue(this.formatDate(this.date));
+    },
+        
+    onRender: function(ct, position)
+    {
+        
+        Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
+        
+        this.language = this.language || 'en';
+        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : this.language.split('-')[0];
+        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : "en";
+        
+        this.isRTL = Roo.bootstrap.DateField.dates[this.language].rtl || false;
+        this.format = this.format || 'm/d/y';
+        this.isInline = false;
+        this.isInput = true;
+        this.component = this.el.select('.add-on', true).first() || false;
+        this.component = (this.component && this.component.length === 0) ? false : this.component;
+        this.hasInput = this.component && this.inputEL().length;
+        
+        if (typeof(this.minViewMode === 'string')) {
+            switch (this.minViewMode) {
+                case 'months':
+                    this.minViewMode = 1;
+                    break;
+                case 'years':
+                    this.minViewMode = 2;
+                    break;
+                default:
+                    this.minViewMode = 0;
+                    break;
+            }
+        }
+        
+        if (typeof(this.viewMode === 'string')) {
+            switch (this.viewMode) {
+                case 'months':
+                    this.viewMode = 1;
+                    break;
+                case 'years':
+                    this.viewMode = 2;
+                    break;
+                default:
+                    this.viewMode = 0;
+                    break;
+            }
+        }
+                
+        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
+        
+        this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.picker().on('mousedown', this.onMousedown, this);
+        this.picker().on('click', this.onClick, this);
+        
+        this.picker().addClass('datepicker-dropdown');
+        
+        this.startViewMode = this.viewMode;
+        
+        
+        Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
+            if(!this.calendarWeeks){
+                v.remove();
+                return;
+            };
+            
+            v.dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today
+            v.attr('colspan', function(i, val){
+                return parseInt(val) + 1;
+            });
+        })
+			
+        
+        this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
+        
+        this.setStartDate(this.startDate);
+        this.setEndDate(this.endDate);
+        
+        this.setDaysOfWeekDisabled(this.daysOfWeekDisabled);
+        
+        this.fillDow();
+        this.fillMonths();
+        this.update();
+        this.showMode();
+        
+        if(this.isInline) {
+            this.show();
+        }
+    },
+    
+    picker : function()
+    {
+        return this.el.select('.datepicker', true).first();
+    },
+    
+    fillDow: function()
+    {
+        var dowCnt = this.weekStart;
+        
+        var dow = {
+            tag: 'tr',
+            cn: [
+                
+            ]
+        };
+        
+        if(this.calendarWeeks){
+            dow.cn.push({
+                tag: 'th',
+                cls: 'cw',
+                html: '&nbsp;'
+            })
+        }
+        
+        while (dowCnt < this.weekStart + 7) {
+            dow.cn.push({
+                tag: 'th',
+                cls: 'dow',
+                html: Roo.bootstrap.DateField.dates[this.language].daysMin[(dowCnt++)%7]
+            });
+        }
+        
+        this.picker().select('>.datepicker-days thead', true).first().createChild(dow);
+    },
+    
+    fillMonths: function()
+    {    
+        var i = 0
+        var months = this.picker().select('>.datepicker-months td', true).first();
+        
+        months.dom.innerHTML = '';
+        
+        while (i < 12) {
+            var month = {
+                tag: 'span',
+                cls: 'month',
+                html: Roo.bootstrap.DateField.dates[this.language].monthsShort[i++]
+            }
+            
+            months.createChild(month);
+        }
+        
+    },
+    
+    update: function(){
+        
+        this.date = (typeof(this.date) === 'undefined') ? this.UTCToday() : (typeof(this.date) === 'string') ? this.parseDate(this.date) : this.date;
+        
+        if (this.date < this.startDate) {
+            this.viewDate = new Date(this.startDate);
+        } else if (this.date > this.endDate) {
+            this.viewDate = new Date(this.endDate);
+        } else {
+            this.viewDate = new Date(this.date);
+        }
+        
+        this.fill();
+    },
+    
+    fill: function() {
+        var d = new Date(this.viewDate),
+                year = d.getUTCFullYear(),
+                month = d.getUTCMonth(),
+                startYear = this.startDate !== -Infinity ? this.startDate.getUTCFullYear() : -Infinity,
+                startMonth = this.startDate !== -Infinity ? this.startDate.getUTCMonth() : -Infinity,
+                endYear = this.endDate !== Infinity ? this.endDate.getUTCFullYear() : Infinity,
+                endMonth = this.endDate !== Infinity ? this.endDate.getUTCMonth() : Infinity,
+                currentDate = this.date && this.date.valueOf(),
+                today = this.UTCToday();
+        
+        this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].months[month]+' '+year;
+        
+//        this.picker().select('>tfoot th.today', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today;
+        
+//        this.picker.select('>tfoot th.today').
+//						.text(dates[this.language].today)
+//						.toggle(this.todayBtn !== false);
+    
+        this.updateNavArrows();
+        this.fillMonths();
+                                                
+        var prevMonth = this.UTCDate(year, month-1, 28,0,0,0,0),
+        
+        day = prevMonth.getDaysInMonth(prevMonth.getUTCFullYear(), prevMonth.getUTCMonth());
+         
+        prevMonth.setUTCDate(day);
+        
+        prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.weekStart + 7)%7);
+        
+        var nextMonth = new Date(prevMonth);
+        
+        nextMonth.setUTCDate(nextMonth.getUTCDate() + 42);
+        
+        nextMonth = nextMonth.valueOf();
+        
+        var fillMonths = false;
+        
+        this.picker().select('>.datepicker-days tbody',true).first().dom.innerHTML = '';
+        
+        while(prevMonth.valueOf() < nextMonth) {
+            var clsName = '';
+            
+            if (prevMonth.getUTCDay() === this.weekStart) {
+                if(fillMonths){
+                    this.picker().select('>.datepicker-days tbody',true).first().createChild(fillMonths);
+                }
+                    
+                fillMonths = {
+                    tag: 'tr',
+                    cn: []
+                };
+                
+                if(this.calendarWeeks){
+                    // ISO 8601: First week contains first thursday.
+                    // ISO also states week starts on Monday, but we can be more abstract here.
+                    var
+                    // Start of current week: based on weekstart/current date
+                    ws = new Date(+prevMonth + (this.weekStart - prevMonth.getUTCDay() - 7) % 7 * 864e5),
+                    // Thursday of this week
+                    th = new Date(+ws + (7 + 4 - ws.getUTCDay()) % 7 * 864e5),
+                    // First Thursday of year, year from thursday
+                    yth = new Date(+(yth = this.UTCDate(th.getUTCFullYear(), 0, 1)) + (7 + 4 - yth.getUTCDay())%7*864e5),
+                    // Calendar week: ms between thursdays, div ms per day, div 7 days
+                    calWeek =  (th - yth) / 864e5 / 7 + 1;
+                    
+                    fillMonths.cn.push({
+                        tag: 'td',
+                        cls: 'cw',
+                        html: calWeek
+                    });
+                }
+            }
+            
+            if (prevMonth.getUTCFullYear() < year || (prevMonth.getUTCFullYear() == year && prevMonth.getUTCMonth() < month)) {
+                clsName += ' old';
+            } else if (prevMonth.getUTCFullYear() > year || (prevMonth.getUTCFullYear() == year && prevMonth.getUTCMonth() > month)) {
+                clsName += ' new';
+            }
+            if (this.todayHighlight &&
+                prevMonth.getUTCFullYear() == today.getFullYear() &&
+                prevMonth.getUTCMonth() == today.getMonth() &&
+                prevMonth.getUTCDate() == today.getDate()) {
+                clsName += ' today';
+            }
+            
+            if (currentDate && prevMonth.valueOf() === currentDate) {
+                clsName += ' active';
+            }
+            
+            if (prevMonth.valueOf() < this.startDate || prevMonth.valueOf() > this.endDate ||
+                    this.daysOfWeekDisabled.indexOf(prevMonth.getUTCDay()) !== -1) {
+                    clsName += ' disabled';
+            }
+            
+            fillMonths.cn.push({
+                tag: 'td',
+                cls: 'day ' + clsName,
+                html: prevMonth.getDate()
+            })
+            
+            prevMonth.setDate(prevMonth.getDate()+1);
+        }
+          
+        var currentYear = this.date && this.date.getUTCFullYear();
+        var currentMonth = this.date && this.date.getUTCMonth();
+        
+        this.picker().select('>.datepicker-months th.switch',true).first().dom.innerHTML = year;
+        
+        Roo.each(this.picker().select('>.datepicker-months tbody span',true).elements, function(v,k){
+            v.removeClass('active');
+            
+            if(currentYear === year && k === currentMonth){
+                v.addClass('active');
+            }
+            
+            if (year < startYear || year > endYear || (year == startYear && k < startMonth) || (year == endYear && k > endMonth)) {
+                v.addClass('disabled');
+            }
+            
+        });
+        
+        
+        year = parseInt(year/10, 10) * 10;
+        
+        this.picker().select('>.datepicker-years th.switch', true).first().dom.innerHTML = year + '-' + (year + 9);
+        
+        this.picker().select('>.datepicker-years tbody td',true).first().dom.innerHTML = '';
+        
+        year -= 1;
+        for (var i = -1; i < 11; i++) {
+            this.picker().select('>.datepicker-years tbody td',true).first().createChild({
+                tag: 'span',
+                cls: 'year' + (i === -1 || i === 10 ? ' old' : '') + (currentYear === year ? ' active' : '') + (year < startYear || year > endYear ? ' disabled' : ''),
+                html: year
+            })
+            
+            year += 1;
+        }
+    },
+    
+    showMode: function(dir) {
+        if (dir) {
+            this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
+        }
+        Roo.each(this.picker().select('>div',true).elements, function(v){
+            v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+            v.hide();
+        });
+        this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
+    },
+    
+    place: function()
+    {
+        if(this.isInline) return;
+        
+        this.picker().removeClass(['bottom', 'top']);
+        
+        if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){
+            /*
+             * place to the top of element!
+             *
+             */
+            
+            this.picker().addClass('top');
+            this.picker().setTop(0 - this.picker().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+            
+            return;
+        }
+        
+        this.picker().addClass('bottom');
+        
+        this.picker().setTop(this.inputEl().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+    },
+    
+    parseDate : function(value){
+        if(!value || value instanceof Date){
+            return value;
+        }
+        var v = Date.parseDate(value, this.format);
+        if (!v && this.useIso) {
+            v = Date.parseDate(value, 'Y-m-d');
+        }
+        if(!v && this.altFormats){
+            if(!this.altFormatsArray){
+                this.altFormatsArray = this.altFormats.split("|");
+            }
+            for(var i = 0, len = this.altFormatsArray.length; i < len && !v; i++){
+                v = Date.parseDate(value, this.altFormatsArray[i]);
+            }
+        }
+        return v;
+    },
+    
+    formatDate : function(date, fmt){
+        return (!date || !(date instanceof Date)) ?
+        date : date.dateFormat(fmt || this.format);
+    },
+    
+    onFocus : function()
+    {
+        Roo.bootstrap.DateField.superclass.onFocus.call(this);
+        this.show();
+    },
+    
+    onBlur : function()
+    {
+        Roo.bootstrap.DateField.superclass.onBlur.call(this);
+        this.hide();
+    },
+    
+    show : function()
+    {
+        this.picker().show();
+        this.update();
+        this.place();
+        
+        this.fireEvent('show', this, this.date);
+    },
+    
+    hide : function()
+    {
+        if(this.isInline) return;
+        this.picker().hide();
+        this.viewMode = this.startViewMode;
+        this.showMode();
+        
+        this.fireEvent('hide', this, this.date);
+        
+    },
+    
+    onMousedown: function(e){
+        e.stopPropagation();
+        e.preventDefault();
+    },
+    
+    keyup: function(e){
+        Roo.bootstrap.DateField.superclass.keyup.call(this);
+        this.update();
+        
+    },
+
+    setValue: function(v){
+        Roo.bootstrap.DateField.superclass.setValue.call(this, v);
+        
+        this.fireEvent('select', this, this.date);
+        
+    },
+    
+    fireKey: function(e){
+        if (!this.picker().isVisible()){
+            if (e.keyCode == 27) // allow escape to hide and re-show picker
+                this.show();
+            return;
+        }
+        var dateChanged = false,
+        dir, day, month,
+        newDate, newViewDate;
+        switch(e.keyCode){
+            case 27: // escape
+                this.hide();
+                e.preventDefault();
+                break;
+            case 37: // left
+            case 39: // right
+                if (!this.keyboardNavigation) break;
+                dir = e.keyCode == 37 ? -1 : 1;
+                
+                if (e.ctrlKey){
+                    newDate = this.moveYear(this.date, dir);
+                    newViewDate = this.moveYear(this.viewDate, dir);
+                } else if (e.shiftKey){
+                    newDate = this.moveMonth(this.date, dir);
+                    newViewDate = this.moveMonth(this.viewDate, dir);
+                } else {
+                    newDate = new Date(this.date);
+                    newDate.setUTCDate(this.date.getUTCDate() + dir);
+                    newViewDate = new Date(this.viewDate);
+                    newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir);
+                }
+                if (this.dateWithinRange(newDate)){
+                    this.date = newDate;
+                    this.viewDate = newViewDate;
+                    this.setValue(this.formatDate(this.date));
+                    this.update();
+                    e.preventDefault();
+                    dateChanged = true;
+                }
+                break;
+            case 38: // up
+            case 40: // down
+                if (!this.keyboardNavigation) break;
+                dir = e.keyCode == 38 ? -1 : 1;
+                if (e.ctrlKey){
+                    newDate = this.moveYear(this.date, dir);
+                    newViewDate = this.moveYear(this.viewDate, dir);
+                } else if (e.shiftKey){
+                    newDate = this.moveMonth(this.date, dir);
+                    newViewDate = this.moveMonth(this.viewDate, dir);
+                } else {
+                    newDate = new Date(this.date);
+                    newDate.setUTCDate(this.date.getUTCDate() + dir * 7);
+                    newViewDate = new Date(this.viewDate);
+                    newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir * 7);
+                }
+                if (this.dateWithinRange(newDate)){
+                    this.date = newDate;
+                    this.viewDate = newViewDate;
+                    this.setValue(this.formatDate(this.date));
+                    this.update();
+                    e.preventDefault();
+                    dateChanged = true;
+                }
+                break;
+            case 13: // enter
+                this.setValue(this.formatDate(this.date));
+                this.hide();
+                e.preventDefault();
+                break;
+            case 9: // tab
+                this.setValue(this.formatDate(this.date));
+                this.hide();
+                break;
+        }
+    },
+    
+    
+    onClick: function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        
+        var target = e.getTarget();
+        
+        if(target.nodeName.toLowerCase() === 'i'){
+            target = Roo.get(target).dom.parentNode;
+        }
+        
+        var nodeName = target.nodeName;
+        var className = target.className;
+        var html = target.innerHTML;
+        
+        switch(nodeName.toLowerCase()) {
+            case 'th':
+                switch(className) {
+                    case 'switch':
+                        this.showMode(1);
+                        break;
+                    case 'prev':
+                    case 'next':
+                        var dir = Roo.bootstrap.DateField.modes[this.viewMode].navStep * (className == 'prev' ? -1 : 1);
+                        switch(this.viewMode){
+                                case 0:
+                                        this.viewDate = this.moveMonth(this.viewDate, dir);
+                                        break;
+                                case 1:
+                                case 2:
+                                        this.viewDate = this.moveYear(this.viewDate, dir);
+                                        break;
+                        }
+                        this.fill();
+                        break;
+                    case 'today':
+                        var date = new Date();
+                        this.date = this.UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
+                        this.fill()
+                        this.setValue(this.formatDate(this.date));
+                        this.hide();
+                        break;
+                }
+                break;
+            case 'span':
+                if (className.indexOf('disabled') === -1) {
+                    this.viewDate.setUTCDate(1);
+                    if (className.indexOf('month') !== -1) {
+                        this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
+                    } else {
+                        var year = parseInt(html, 10) || 0;
+                        this.viewDate.setUTCFullYear(year);
+                        
+                    }
+                    this.showMode(-1);
+                    this.fill();
+                }
+                break;
+                
+            case 'td':
+                if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
+                    var day = parseInt(html, 10) || 1;
+                    var year = this.viewDate.getUTCFullYear(),
+                        month = this.viewDate.getUTCMonth();
+
+                    if (className.indexOf('old') !== -1) {
+                        if(month === 0 ){
+                            month = 11;
+                            year -= 1;
+                        }else{
+                            month -= 1;
+                        }
+                    } else if (className.indexOf('new') !== -1) {
+                        if (month == 11) {
+                            month = 0;
+                            year += 1;
+                        } else {
+                            month += 1;
+                        }
+                    }
+                    this.date = this.UTCDate(year, month, day,0,0,0,0);
+                    this.viewDate = this.UTCDate(year, month, Math.min(28, day),0,0,0,0);
+                    this.fill();
+                    this.setValue(this.formatDate(this.date));
+                    this.hide();
+                }
+                break;
+        }
+    },
+    
+    setStartDate: function(startDate){
+        this.startDate = startDate || -Infinity;
+        if (this.startDate !== -Infinity) {
+            this.startDate = this.parseDate(this.startDate);
+        }
+        this.update();
+        this.updateNavArrows();
+    },
+
+    setEndDate: function(endDate){
+        this.endDate = endDate || Infinity;
+        if (this.endDate !== Infinity) {
+            this.endDate = this.parseDate(this.endDate);
+        }
+        this.update();
+        this.updateNavArrows();
+    },
+    
+    setDaysOfWeekDisabled: function(daysOfWeekDisabled){
+        this.daysOfWeekDisabled = daysOfWeekDisabled || [];
+        if (typeof(this.daysOfWeekDisabled) !== 'object') {
+            this.daysOfWeekDisabled = this.daysOfWeekDisabled.split(/,\s*/);
+        }
+        this.daysOfWeekDisabled = this.daysOfWeekDisabled.map(function (d) {
+            return parseInt(d, 10);
+        });
+        this.update();
+        this.updateNavArrows();
+    },
+    
+    updateNavArrows: function() {
+        var d = new Date(this.viewDate),
+        year = d.getUTCFullYear(),
+        month = d.getUTCMonth();
+        
+        Roo.each(this.picker().select('.prev', true).elements, function(v){
+            v.show();
+            switch (this.viewMode) {
+                case 0:
+
+                    if (this.startDate !== -Infinity && year <= this.startDate.getUTCFullYear() && month <= this.startDate.getUTCMonth()) {
+                        v.hide();
+                    }
+                    break;
+                case 1:
+                case 2:
+                    if (this.startDate !== -Infinity && year <= this.startDate.getUTCFullYear()) {
+                        v.hide();
+                    }
+                    break;
+            }
+        });
+        
+        Roo.each(this.picker().select('.next', true).elements, function(v){
+            v.show();
+            switch (this.viewMode) {
+                case 0:
+
+                    if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear() && month >= this.endDate.getUTCMonth()) {
+                        v.hide();
+                    }
+                    break;
+                case 1:
+                case 2:
+                    if (this.endDate !== Infinity && year >= this.endDate.getUTCFullYear()) {
+                        v.hide();
+                    }
+                    break;
+            }
+        })
+    },
+    
+    moveMonth: function(date, dir){
+        if (!dir) return date;
+        var new_date = new Date(date.valueOf()),
+        day = new_date.getUTCDate(),
+        month = new_date.getUTCMonth(),
+        mag = Math.abs(dir),
+        new_month, test;
+        dir = dir > 0 ? 1 : -1;
+        if (mag == 1){
+            test = dir == -1
+            // If going back one month, make sure month is not current month
+            // (eg, Mar 31 -> Feb 31 == Feb 28, not Mar 02)
+            ? function(){
+                return new_date.getUTCMonth() == month;
+            }
+            // If going forward one month, make sure month is as expected
+            // (eg, Jan 31 -> Feb 31 == Feb 28, not Mar 02)
+            : function(){
+                return new_date.getUTCMonth() != new_month;
+            };
+            new_month = month + dir;
+            new_date.setUTCMonth(new_month);
+            // Dec -> Jan (12) or Jan -> Dec (-1) -- limit expected date to 0-11
+            if (new_month < 0 || new_month > 11)
+                new_month = (new_month + 12) % 12;
+        } else {
+            // For magnitudes >1, move one month at a time...
+            for (var i=0; i<mag; i++)
+                // ...which might decrease the day (eg, Jan 31 to Feb 28, etc)...
+                new_date = this.moveMonth(new_date, dir);
+            // ...then reset the day, keeping it in the new month
+            new_month = new_date.getUTCMonth();
+            new_date.setUTCDate(day);
+            test = function(){
+                return new_month != new_date.getUTCMonth();
+            };
+        }
+        // Common date-resetting loop -- if date is beyond end of month, make it
+        // end of month
+        while (test()){
+            new_date.setUTCDate(--day);
+            new_date.setUTCMonth(new_month);
+        }
+        return new_date;
+    },
+
+    moveYear: function(date, dir){
+        return this.moveMonth(date, dir*12);
+    },
+
+    dateWithinRange: function(date){
+        return date >= this.startDate && date <= this.endDate;
+    },
+
+    
+    remove: function() {
+        this.picker().remove();
+    }
+   
+});
+
+Roo.apply(Roo.bootstrap.DateField,  {
+    
+    head : {
+        tag: 'thead',
+        cn: [
+        {
+            tag: 'tr',
+            cn: [
+            {
+                tag: 'th',
+                cls: 'prev',
+                html: '<i class="fa fa-arrow-left"/>'
+            },
+            {
+                tag: 'th',
+                cls: 'switch',
+                colspan: '5'
+            },
+            {
+                tag: 'th',
+                cls: 'next',
+                html: '<i class="fa fa-arrow-right"/>'
+            }
+
+            ]
+        }
+        ]
+    },
+    
+    content : {
+        tag: 'tbody',
+        cn: [
+        {
+            tag: 'tr',
+            cn: [
+            {
+                tag: 'td',
+                colspan: '7'
+            }
+            ]
+        }
+        ]
+    },
+    
+    footer : {
+        tag: 'tfoot',
+        cn: [
+        {
+            tag: 'tr',
+            cn: [
+            {
+                tag: 'th',
+                colspan: '7',
+                cls: 'today'
+            }
+                    
+            ]
+        }
+        ]
+    },
+    
+    dates:{
+        en: {
+            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            today: "Today"
+        }
+    },
+    
+    modes: [
+    {
+        clsName: 'days',
+        navFnc: 'Month',
+        navStep: 1
+    },
+    {
+        clsName: 'months',
+        navFnc: 'FullYear',
+        navStep: 1
+    },
+    {
+        clsName: 'years',
+        navFnc: 'FullYear',
+        navStep: 10
+    }]
+});
+
+Roo.apply(Roo.bootstrap.DateField,  {
+  
+    template : {
+        tag: 'div',
+        cls: 'datepicker dropdown-menu',
+        cn: [
+        {
+            tag: 'div',
+            cls: 'datepicker-days',
+            cn: [
+            {
+                tag: 'table',
+                cls: 'table-condensed',
+                cn:[
+                Roo.bootstrap.DateField.head,
+                {
+                    tag: 'tbody'
+                },
+                Roo.bootstrap.DateField.footer
+                ]
+            }
+            ]
+        },
+        {
+            tag: 'div',
+            cls: 'datepicker-months',
+            cn: [
+            {
+                tag: 'table',
+                cls: 'table-condensed',
+                cn:[
+                Roo.bootstrap.DateField.head,
+                Roo.bootstrap.DateField.content,
+                Roo.bootstrap.DateField.footer
+                ]
+            }
+            ]
+        },
+        {
+            tag: 'div',
+            cls: 'datepicker-years',
+            cn: [
+            {
+                tag: 'table',
+                cls: 'table-condensed',
+                cn:[
+                Roo.bootstrap.DateField.head,
+                Roo.bootstrap.DateField.content,
+                Roo.bootstrap.DateField.footer
+                ]
+            }
+            ]
+        }
+        ]
+    }
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * TimeField
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.TimeField
+ * @extends Roo.bootstrap.Input
+ * Bootstrap DateField class
+ * 
+ * 
+ * @constructor
+ * Create a new TimeField
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.TimeField = function(config){
+    Roo.bootstrap.TimeField.superclass.constructor.call(this, config);
+    this.addEvents({
+            /**
+             * @event show
+             * Fires when this field show.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            show : true,
+            /**
+             * @event show
+             * Fires when this field hide.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            hide : true,
+            /**
+             * @event select
+             * Fires when select a date.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            select : true
+        });
+};
+
+Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
+    
+    /**
+     * @cfg {String} format
+     * The default time format string which can be overriden for localization support.  The format must be
+     * valid according to {@link Date#parseDate} (defaults to 'H:i').
+     */
+    format : "H:i",
+       
+    onRender: function(ct, position)
+    {
+        
+        Roo.bootstrap.TimeField.superclass.onRender.call(this, ct, position);
+                
+        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.TimeField.template);
+        
+        this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.pop = this.picker().select('>.datepicker-time',true).first();
+        this.pop.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block' 
+        
+        this.picker().on('mousedown', this.onMousedown, this);
+        this.picker().on('click', this.onClick, this);
+        
+        this.picker().addClass('datepicker-dropdown');
+    
+        this.fillTime();
+        this.update();
+            
+        this.pop.select('span.hours-up', true).first().on('click', this.onIncrementHours, this);
+        this.pop.select('span.hours-down', true).first().on('click', this.onDecrementHours, this);
+        this.pop.select('span.minutes-up', true).first().on('click', this.onIncrementMinutes, this);
+        this.pop.select('span.minutes-down', true).first().on('click', this.onDecrementMinutes, this);
+        this.pop.select('button.period', true).first().on('click', this.onTogglePeriod, this);
+        this.pop.select('button.ok', true).first().on('click', this.setTime, this);
+
+    },
+    
+    fireKey: function(e){
+        if (!this.picker().isVisible()){
+            if (e.keyCode == 27) // allow escape to hide and re-show picker
+                this.show();
+            return;
+        }
+
+        e.preventDefault();
+        
+        switch(e.keyCode){
+            case 27: // escape
+                this.hide();
+                break;
+            case 37: // left
+            case 39: // right
+                this.onTogglePeriod();
+                break;
+            case 38: // up
+                this.onIncrementMinutes();
+                break;
+            case 40: // down
+                this.onDecrementMinutes();
+                break;
+            case 13: // enter
+            case 9: // tab
+                this.setTime();
+                break;
+        }
+    },
+    
+    onClick: function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+    },
+    
+    picker : function()
+    {
+        return this.el.select('.datepicker', true).first();
+    },
+    
+    fillTime: function()
+    {    
+        var time = this.pop.select('tbody', true).first();
+        
+        time.dom.innerHTML = '';
+        
+        time.createChild({
+            tag: 'tr',
+            cn: [
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'a',
+                            href: '#',
+                            cls: 'btn',
+                            cn: [
+                                {
+                                    tag: 'span',
+                                    cls: 'hours-up glyphicon glyphicon-chevron-up'
+                                }
+                            ]
+                        } 
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'a',
+                            href: '#',
+                            cls: 'btn',
+                            cn: [
+                                {
+                                    tag: 'span',
+                                    cls: 'minutes-up glyphicon glyphicon-chevron-up'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                }
+            ]
+        });
+        
+        time.createChild({
+            tag: 'tr',
+            cn: [
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'timepicker-hour',
+                            html: '00'
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator',
+                    html: ':'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'span',
+                            cls: 'timepicker-minute',
+                            html: '00'
+                        }  
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'button',
+                            type: 'button',
+                            cls: 'btn btn-primary period',
+                            html: 'AM'
+                            
+                        }
+                    ]
+                }
+            ]
+        });
+        
+        time.createChild({
+            tag: 'tr',
+            cn: [
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'a',
+                            href: '#',
+                            cls: 'btn',
+                            cn: [
+                                {
+                                    tag: 'span',
+                                    cls: 'hours-down glyphicon glyphicon-chevron-down'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                },
+                {
+                    tag: 'td',
+                    cn: [
+                        {
+                            tag: 'a',
+                            href: '#',
+                            cls: 'btn',
+                            cn: [
+                                {
+                                    tag: 'span',
+                                    cls: 'minutes-down glyphicon glyphicon-chevron-down'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    tag: 'td',
+                    cls: 'separator'
+                }
+            ]
+        });
+        
+    },
+    
+    update: function()
+    {
+        
+        this.time = (typeof(this.time) === 'undefined') ? new Date() : this.time;
+        
+        this.fill();
+    },
+    
+    fill: function() 
+    {
+        var hours = this.time.getHours();
+        var minutes = this.time.getMinutes();
+        var period = 'AM';
+        
+        if(hours > 11){
+            period = 'PM';
+        }
+        
+        if(hours == 0){
+            hours = 12;
+        }
+        
+        
+        if(hours > 12){
+            hours = hours - 12;
+        }
+        
+        if(hours < 10){
+            hours = '0' + hours;
+        }
+        
+        if(minutes < 10){
+            minutes = '0' + minutes;
+        }
+        
+        this.pop.select('.timepicker-hour', true).first().dom.innerHTML = hours;
+        this.pop.select('.timepicker-minute', true).first().dom.innerHTML = minutes;
+        this.pop.select('button', true).first().dom.innerHTML = period;
+        
+    },
+    
+    place: function()
+    {   
+        this.picker().removeClass(['bottom-left', 'bottom-right', 'top-left', 'top-right']);
+        
+        var cls = ['bottom'];
+        
+        if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){ // top
+            cls.pop();
+            cls.push('top');
+        }
+        
+        cls.push('right');
+        
+        if((Roo.lib.Dom.getViewWidth() + Roo.get(document.body).getScroll().left) - (this.inputEl().getLeft() + this.picker().getWidth()) < 0){ // left
+            cls.pop();
+            cls.push('left');
+        }
+        
+        this.picker().addClass(cls.join('-'));
+        
+        var _this = this;
+        
+        Roo.each(cls, function(c){
+            if(c == 'bottom'){
+                _this.picker().setTop(_this.inputEl().getHeight());
+                return;
+            }
+            if(c == 'top'){
+                _this.picker().setTop(0 - _this.picker().getHeight());
+                return;
+            }
+            
+            if(c == 'left'){
+                _this.picker().setLeft(_this.inputEl().getLeft() + _this.inputEl().getWidth() - _this.el.getLeft() - _this.picker().getWidth());
+                return;
+            }
+            if(c == 'right'){
+                _this.picker().setLeft(_this.inputEl().getLeft() - _this.el.getLeft());
+                return;
+            }
+        });
+        
+    },
+  
+    onFocus : function()
+    {
+        Roo.bootstrap.TimeField.superclass.onFocus.call(this);
+        this.show();
+    },
+    
+    onBlur : function()
+    {
+        Roo.bootstrap.TimeField.superclass.onBlur.call(this);
+        this.hide();
+    },
+    
+    show : function()
+    {
+        this.picker().show();
+        this.pop.show();
+        this.update();
+        this.place();
+        
+        this.fireEvent('show', this, this.date);
+    },
+    
+    hide : function()
+    {
+        this.picker().hide();
+        this.pop.hide();
+        
+        this.fireEvent('hide', this, this.date);
+    },
+    
+    setTime : function()
+    {
+        this.hide();
+        this.setValue(this.time.format(this.format));
+        
+        this.fireEvent('select', this, this.date);
+        
+        
+    },
+    
+    onMousedown: function(e){
+        e.stopPropagation();
+        e.preventDefault();
+    },
+    
+    onIncrementHours: function()
+    {
+        Roo.log('onIncrementHours');
+        this.time = this.time.add(Date.HOUR, 1);
+        this.update();
+        
+    },
+    
+    onDecrementHours: function()
+    {
+        Roo.log('onDecrementHours');
+        this.time = this.time.add(Date.HOUR, -1);
+        this.update();
+    },
+    
+    onIncrementMinutes: function()
+    {
+        Roo.log('onIncrementMinutes');
+        this.time = this.time.add(Date.MINUTE, 1);
+        this.update();
+    },
+    
+    onDecrementMinutes: function()
+    {
+        Roo.log('onDecrementMinutes');
+        this.time = this.time.add(Date.MINUTE, -1);
+        this.update();
+    },
+    
+    onTogglePeriod: function()
+    {
+        Roo.log('onTogglePeriod');
+        this.time = this.time.add(Date.HOUR, 12);
+        this.update();
+    }
+    
+   
+});
+
+Roo.apply(Roo.bootstrap.TimeField,  {
+    
+    content : {
+        tag: 'tbody',
+        cn: [
+            {
+                tag: 'tr',
+                cn: [
+                {
+                    tag: 'td',
+                    colspan: '7'
+                }
+                ]
+            }
+        ]
+    },
+    
+    footer : {
+        tag: 'tfoot',
+        cn: [
+            {
+                tag: 'tr',
+                cn: [
+                {
+                    tag: 'th',
+                    colspan: '7',
+                    cls: '',
+                    cn: [
+                        {
+                            tag: 'button',
+                            cls: 'btn btn-info ok',
+                            html: 'OK'
+                        }
+                    ]
+                }
+
+                ]
+            }
+        ]
+    }
+});
+
+Roo.apply(Roo.bootstrap.TimeField,  {
+  
+    template : {
+        tag: 'div',
+        cls: 'datepicker dropdown-menu',
+        cn: [
+            {
+                tag: 'div',
+                cls: 'datepicker-time',
+                cn: [
+                {
+                    tag: 'table',
+                    cls: 'table-condensed',
+                    cn:[
+                    Roo.bootstrap.TimeField.content,
+                    Roo.bootstrap.TimeField.footer
+                    ]
+                }
+                ]
+            }
+        ]
+    }
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * CheckBox
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.CheckBox
+ * @extends Roo.bootstrap.Input
+ * Bootstrap CheckBox class
+ * 
+ * @cfg {String} valueOff The value that should go into the generated input element's value when unchecked.
+ * @cfg {String} inputValue The value that should go into the generated input element's value when checked.
+ * @cfg {String} boxLabel The text that appears beside the checkbox
+ * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the checkbox
+ * @cfg {Boolean} checked initnal the element
+ * 
+ * 
+ * @constructor
+ * Create a new CheckBox
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.CheckBox = function(config){
+    Roo.bootstrap.CheckBox.superclass.constructor.call(this, config);
+   
+        this.addEvents({
+            /**
+            * @event check
+            * Fires when the element is checked or unchecked.
+            * @param {Roo.bootstrap.CheckBox} this This input
+            * @param {Boolean} checked The new checked value
+            */
+           check : true
+        });
+};
+
+Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
+    
+    inputType: 'checkbox',
+    inputValue: 1,
+    valueOff: 0,
+    boxLabel: false,
+    checked: false,
+    weight : false,
+    
+    getAutoCreate : function()
+    {
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+        
+        var id = Roo.id();
+        
+        var cfg = {};
+        
+        cfg.cls = 'form-group checkbox' //input-group
+        
+        
+        
+        
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            value : (!this.checked) ? this.valueOff : this.inputValue,
+            cls : 'roo-checkbox', //'form-box',
+            placeholder : this.placeholder || ''
+            
+        };
+        
+        if (this.weight) { // Validity check?
+            cfg.cls += " checkbox-" + this.weight;
+        }
+        
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        
+        if(this.checked){
+            input.checked = this.checked;
+        }
+        
+        if (this.name) {
+            input.name = this.name;
+        }
+        
+        if (this.size) {
+            input.cls += ' input-' + this.size;
+        }
+        
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
+        
+       
+        
+        var inputblock = input;
+        
+        
+        
+        
+        if (this.before || this.after) {
+            
+            inputblock = {
+                cls : 'input-group',
+                cn :  [] 
+            };
+            if (this.before) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.before
+                });
+            }
+            inputblock.cn.push(input);
+            if (this.after) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.after
+                });
+            }
+            
+        };
+        
+        if (align ==='left' && this.fieldLabel.length) {
+                Roo.log("left and has label");
+                cfg.cn = [
+                    
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'control-label col-md-' + this.labelWidth,
+                        html : this.fieldLabel
+                        
+                    },
+                    {
+                        cls : "col-md-" + (12 - this.labelWidth), 
+                        cn: [
+                            inputblock
+                        ]
+                    }
+                    
+                ];
+        } else if ( this.fieldLabel.length) {
+                Roo.log(" label");
+                cfg.cn = [
+                   
+                    {
+                        tag: this.boxLabel ? 'span' : 'label',
+                        'for': id,
+                        cls: 'control-label box-input-label',
+                        //cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    inputblock
+                    
+                ];
+
+        } else {
+            
+                Roo.log(" no label && no align");
+                cfg.cn = [  inputblock ] ;
+                
+                
+        };
+         if(this.boxLabel){
+            cfg.cn.push( {
+                tag: 'label',
+                'for': id,
+                cls: 'box-label',
+                html: this.boxLabel
+                
+            });
+        }
+        
+        
+       
+        return cfg;
+        
+    },
+    
+    /**
+     * return the real input element.
+     */
+    inputEl: function ()
+    {
+        return this.el.select('input.roo-checkbox',true).first();
+    },
+    
+    label: function()
+    {
+        return this.el.select('label.control-label',true).first();
+    },
+    
+    initEvents : function()
+    {
+//        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
+        
+        this.inputEl().on('click', this.onClick,  this);
+        
+    },
+    
+    onClick : function()
+    {   
+        this.setChecked(!this.checked);
+    },
+    
+    setChecked : function(state,suppressEvent)
+    {
+        this.checked = state;
+        
+        this.inputEl().dom.checked = state;
+        
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+        
+        this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
+        
+    },
+    
+    setValue : function(v,suppressEvent)
+    {
+        this.setChecked(((typeof(v) == 'undefined') ? this.checked : (String(v) === String(this.inputValue))), suppressEvent);
+    }
+    
+});
+
+ 
+/*
+ * - LGPL
+ *
+ * Radio
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Radio
+ * @extends Roo.bootstrap.CheckBox
+ * Bootstrap Radio class
+
+ * @constructor
+ * Create a new Radio
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Radio = function(config){
+    Roo.bootstrap.Radio.superclass.constructor.call(this, config);
+   
+};
+
+Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
+    
+    inputType: 'radio',
+    inputValue: '',
+    valueOff: '',
+    
+    getAutoCreate : function()
+    {
+        var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+        
+        var id = Roo.id();
+        
+        var cfg = {};
+        
+        cfg.cls = 'form-group radio' //input-group
+        
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            value : (!this.checked) ? this.valueOff : this.inputValue,
+            cls : 'roo-radio',
+            placeholder : this.placeholder || ''
+            
+        };
+          if (this.weight) { // Validity check?
+            cfg.cls += " radio-" + this.weight;
+        }
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        
+        if(this.checked){
+            input.checked = this.checked;
+        }
+        
+        if (this.name) {
+            input.name = this.name;
+        }
+        
+        if (this.size) {
+            input.cls += ' input-' + this.size;
+        }
+        
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
+        
+        var inputblock = input;
+        
+        if (this.before || this.after) {
+            
+            inputblock = {
+                cls : 'input-group',
+                cn :  [] 
+            };
+            if (this.before) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.before
+                });
+            }
+            inputblock.cn.push(input);
+            if (this.after) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.after
+                });
+            }
+            
+        };
+        
+        if (align ==='left' && this.fieldLabel.length) {
+                Roo.log("left and has label");
+                cfg.cn = [
+                    
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'control-label col-md-' + this.labelWidth,
+                        html : this.fieldLabel
+                        
+                    },
+                    {
+                        cls : "col-md-" + (12 - this.labelWidth), 
+                        cn: [
+                            inputblock
+                        ]
+                    }
+                    
+                ];
+        } else if ( this.fieldLabel.length) {
+                Roo.log(" label");
+                 cfg.cn = [
+                   
+                    {
+                        tag: 'label',
+                        'for': id,
+                        cls: 'control-label box-input-label',
+                        //cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    inputblock
+                    
+                ];
+
+        } else {
+            
+                   Roo.log(" no label && no align");
+                cfg.cn = [
+                    
+                        inputblock
+                    
+                ];
+                
+                
+        };
+        
+        if(this.boxLabel){
+            cfg.cn.push({
+                tag: 'label',
+                'for': id,
+                cls: 'box-label',
+                html: this.boxLabel
+            })
+        }
+        
+        return cfg;
+        
+    },
+    inputEl: function ()
+    {
+        return this.el.select('input.roo-radio',true).first();
+    },
+    onClick : function()
+    {   
+        this.setChecked(true);
+    },
+    
+    setChecked : function(state,suppressEvent)
+    {
+        if(state){
+            Roo.each(this.inputEl().up('form').select('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
+                v.dom.checked = false;
+            });
+        }
+        
+        this.checked = state;
+        this.inputEl().dom.checked = state;
+        
+        if(suppressEvent !== true){
+            this.fireEvent('check', this, state);
+        }
+        
+        this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
+        
+    },
+    
+    getGroupValue : function()
+    {
+        var value = ''
+        Roo.each(this.inputEl().up('form').select('input[name='+this.inputEl().dom.name+']', true).elements, function(v){
+            if(v.dom.checked == true){
+                value = v.dom.value;
+            }
+        });
+        
+        return value;
+    },
+    
+    /**
+     * Returns the normalized data value (undefined or emptyText will be returned as '').  To return the raw value see {@link #getRawValue}.
+     * @return {Mixed} value The field value
+     */
+    getValue : function(){
+        return this.getGroupValue();
+    }
+    
+});
+
+ 
+//<script type="text/javascript">
+
+/*
+ * Based  Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ * LGPL
+ *
+ */
+ 
+/**
+ * @class Roo.HtmlEditorCore
+ * @extends Roo.Component
+ * Provides a the editing component for the HTML editors in Roo. (bootstrap and Roo.form)
+ *
+ * any element that has display set to 'none' can cause problems in Safari and Firefox.<br/><br/>
+ */
+
+Roo.HtmlEditorCore = function(config){
+    
+    
+    Roo.HtmlEditorCore.superclass.constructor.call(this, config);
+    this.addEvents({
+        /**
+         * @event initialize
+         * Fires when the editor is fully initialized (including the iframe)
+         * @param {Roo.HtmlEditorCore} this
+         */
+        initialize: true,
+        /**
+         * @event activate
+         * Fires when the editor is first receives the focus. Any insertion must wait
+         * until after this event.
+         * @param {Roo.HtmlEditorCore} this
+         */
+        activate: true,
+         /**
+         * @event beforesync
+         * Fires before the textarea is updated with content from the editor iframe. Return false
+         * to cancel the sync.
+         * @param {Roo.HtmlEditorCore} this
+         * @param {String} html
+         */
+        beforesync: true,
+         /**
+         * @event beforepush
+         * Fires before the iframe editor is updated with content from the textarea. Return false
+         * to cancel the push.
+         * @param {Roo.HtmlEditorCore} this
+         * @param {String} html
+         */
+        beforepush: true,
+         /**
+         * @event sync
+         * Fires when the textarea is updated with content from the editor iframe.
+         * @param {Roo.HtmlEditorCore} this
+         * @param {String} html
+         */
+        sync: true,
+         /**
+         * @event push
+         * Fires when the iframe editor is updated with content from the textarea.
+         * @param {Roo.HtmlEditorCore} this
+         * @param {String} html
+         */
+        push: true,
+        
+        /**
+         * @event editorevent
+         * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
+         * @param {Roo.HtmlEditorCore} this
+         */
+        editorevent: true
+    });
+     
+};
+
+
+Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
+
+
+     /**
+     * @cfg {Roo.form.HtmlEditor|Roo.bootstrap.HtmlEditor} the owner field 
+     */
+    
+    owner : false,
+    
+     /**
+     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
+     *                        Roo.resizable.
+     */
+    resizable : false,
+     /**
+     * @cfg {Number} height (in pixels)
+     */   
+    height: 300,
+   /**
+     * @cfg {Number} width (in pixels)
+     */   
+    width: 500,
+    
+    /**
+     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
+     * 
+     */
+    stylesheets: false,
+    
+    // id of frame..
+    frameId: false,
+    
+    // private properties
+    validationEvent : false,
+    deferHeight: true,
+    initialized : false,
+    activated : false,
+    sourceEditMode : false,
+    onFocus : Roo.emptyFn,
+    iframePad:3,
+    hideMode:'offsets',
+    
+    clearUp: true,
+    
+     
+    
+
+    /**
+     * Protected method that will not generally be called directly. It
+     * is called when the editor initializes the iframe with HTML contents. Override this method if you
+     * want to change the initialization markup of the iframe (e.g. to add stylesheets).
+     */
+    getDocMarkup : function(){
+        // body styles..
+        var st = '';
+        Roo.log(this.stylesheets);
+        
+        // inherit styels from page...?? 
+        if (this.stylesheets === false) {
+            
+            Roo.get(document.head).select('style').each(function(node) {
+                st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
+            });
+            
+            Roo.get(document.head).select('link').each(function(node) { 
+                st += node.dom.outerHTML || new XMLSerializer().serializeToString(node.dom);
+            });
+            
+        } else if (!this.stylesheets.length) {
+                // simple..
+                st = '<style type="text/css">' +
+                    'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
+                   '</style>';
+        } else {
+            Roo.each(this.stylesheets, function(s) {
+                st += '<link rel="stylesheet" type="text/css" href="' + s +'" />'
+            });
+            
+        }
+        
+        st +=  '<style type="text/css">' +
+            'IMG { cursor: pointer } ' +
+        '</style>';
+
+        
+        return '<html><head>' + st  +
+            //<style type="text/css">' +
+            //'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
+            //'</style>' +
+            ' </head><body class="roo-htmleditor-body"></body></html>';
+    },
+
+    // private
+    onRender : function(ct, position)
+    {
+        var _t = this;
+        //Roo.HtmlEditorCore.superclass.onRender.call(this, ct, position);
+        this.el = this.owner.inputEl ? this.owner.inputEl() : this.owner.el;
+        
+        
+        this.el.dom.style.border = '0 none';
+        this.el.dom.setAttribute('tabIndex', -1);
+        this.el.addClass('x-hidden hide');
+        
+        
+        
+        if(Roo.isIE){ // fix IE 1px bogus margin
+            this.el.applyStyles('margin-top:-1px;margin-bottom:-1px;')
+        }
+       
+        
+        this.frameId = Roo.id();
+        
+         
+        
+        var iframe = this.owner.wrap.createChild({
+            tag: 'iframe',
+            cls: 'form-control', // bootstrap..
+            id: this.frameId,
+            name: this.frameId,
+            frameBorder : 'no',
+            'src' : Roo.SSL_SECURE_URL ? Roo.SSL_SECURE_URL  :  "javascript:false"
+        }, this.el
+        );
+        
+        
+        this.iframe = iframe.dom;
+
+         this.assignDocWin();
+        
+        this.doc.designMode = 'on';
+       
+        this.doc.open();
+        this.doc.write(this.getDocMarkup());
+        this.doc.close();
+
+        
+        var task = { // must defer to wait for browser to be ready
+            run : function(){
+                //console.log("run task?" + this.doc.readyState);
+                this.assignDocWin();
+                if(this.doc.body || this.doc.readyState == 'complete'){
+                    try {
+                        this.doc.designMode="on";
+                    } catch (e) {
+                        return;
+                    }
+                    Roo.TaskMgr.stop(task);
+                    this.initEditor.defer(10, this);
+                }
+            },
+            interval : 10,
+            duration: 10000,
+            scope: this
+        };
+        Roo.TaskMgr.start(task);
+
+        
+         
+    },
+
+    // private
+    onResize : function(w, h)
+    {
+         Roo.log('resize: ' +w + ',' + h );
+        //Roo.HtmlEditorCore.superclass.onResize.apply(this, arguments);
+        if(!this.iframe){
+            return;
+        }
+        if(typeof w == 'number'){
+            
+            this.iframe.style.width = w + 'px';
+        }
+        if(typeof h == 'number'){
+            
+            this.iframe.style.height = h + 'px';
+            if(this.doc){
+                (this.doc.body || this.doc.documentElement).style.height = (h - (this.iframePad*2)) + 'px';
+            }
+        }
+        
+    },
+
+    /**
+     * Toggles the editor between standard and source edit mode.
+     * @param {Boolean} sourceEdit (optional) True for source edit, false for standard
+     */
+    toggleSourceEdit : function(sourceEditMode){
+        
+        this.sourceEditMode = sourceEditMode === true;
+        
+        if(this.sourceEditMode){
+ 
+            Roo.get(this.iframe).addClass(['x-hidden','hide']);     //FIXME - what's the BS styles for these
+            
+        }else{
+            Roo.get(this.iframe).removeClass(['x-hidden','hide']);
+            //this.iframe.className = '';
+            this.deferFocus();
+        }
+        //this.setSize(this.owner.wrap.getSize());
+        //this.fireEvent('editmodechange', this, this.sourceEditMode);
+    },
+
+    
+  
+
+    /**
+     * Protected method that will not generally be called directly. If you need/want
+     * custom HTML cleanup, this is the method you should override.
+     * @param {String} html The HTML to be cleaned
+     * return {String} The cleaned HTML
+     */
+    cleanHtml : function(html){
+        html = String(html);
+        if(html.length > 5){
+            if(Roo.isSafari){ // strip safari nonsense
+                html = html.replace(/\sclass="(?:Apple-style-span|khtml-block-placeholder)"/gi, '');
+            }
+        }
+        if(html == '&nbsp;'){
+            html = '';
+        }
+        return html;
+    },
+
+    /**
+     * HTML Editor -> Textarea
+     * Protected method that will not generally be called directly. Syncs the contents
+     * of the editor iframe with the textarea.
+     */
+    syncValue : function(){
+        if(this.initialized){
+            var bd = (this.doc.body || this.doc.documentElement);
+            //this.cleanUpPaste(); -- this is done else where and causes havoc..
+            var html = bd.innerHTML;
+            if(Roo.isSafari){
+                var bs = bd.getAttribute('style'); // Safari puts text-align styles on the body element!
+                var m = bs ? bs.match(/text-align:(.*?);/i) : false;
+                if(m && m[1]){
+                    html = '<div style="'+m[0]+'">' + html + '</div>';
+                }
+            }
+            html = this.cleanHtml(html);
+            // fix up the special chars.. normaly like back quotes in word...
+            // however we do not want to do this with chinese..
+            html = html.replace(/([\x80-\uffff])/g, function (a, b) {
+                var cc = b.charCodeAt();
+                if (
+                    (cc >= 0x4E00 && cc < 0xA000 ) ||
+                    (cc >= 0x3400 && cc < 0x4E00 ) ||
+                    (cc >= 0xf900 && cc < 0xfb00 )
+                ) {
+                        return b;
+                }
+                return "&#"+cc+";" 
+            });
+            if(this.owner.fireEvent('beforesync', this, html) !== false){
+                this.el.dom.value = html;
+                this.owner.fireEvent('sync', this, html);
+            }
+        }
+    },
+
+    /**
+     * Protected method that will not generally be called directly. Pushes the value of the textarea
+     * into the iframe editor.
+     */
+    pushValue : function(){
+        if(this.initialized){
+            var v = this.el.dom.value.trim();
+            
+//            if(v.length < 1){
+//                v = '&#160;';
+//            }
+            
+            if(this.owner.fireEvent('beforepush', this, v) !== false){
+                var d = (this.doc.body || this.doc.documentElement);
+                d.innerHTML = v;
+                this.cleanUpPaste();
+                this.el.dom.value = d.innerHTML;
+                this.owner.fireEvent('push', this, v);
+            }
+        }
+    },
+
+    // private
+    deferFocus : function(){
+        this.focus.defer(10, this);
+    },
+
+    // doc'ed in Field
+    focus : function(){
+        if(this.win && !this.sourceEditMode){
+            this.win.focus();
+        }else{
+            this.el.focus();
+        }
+    },
+    
+    assignDocWin: function()
+    {
+        var iframe = this.iframe;
+        
+         if(Roo.isIE){
+            this.doc = iframe.contentWindow.document;
+            this.win = iframe.contentWindow;
+        } else {
+            if (!Roo.get(this.frameId)) {
+                return;
+            }
+            this.doc = (iframe.contentDocument || Roo.get(this.frameId).dom.document);
+            this.win = Roo.get(this.frameId).dom.contentWindow;
+        }
+    },
+    
+    // private
+    initEditor : function(){
+        //console.log("INIT EDITOR");
+        this.assignDocWin();
+        
+        
+        
+        this.doc.designMode="on";
+        this.doc.open();
+        this.doc.write(this.getDocMarkup());
+        this.doc.close();
+        
+        var dbody = (this.doc.body || this.doc.documentElement);
+        //var ss = this.el.getStyles('font-size', 'font-family', 'background-image', 'background-repeat');
+        // this copies styles from the containing element into thsi one..
+        // not sure why we need all of this..
+        //var ss = this.el.getStyles('font-size', 'background-image', 'background-repeat');
+        
+        //var ss = this.el.getStyles( 'background-image', 'background-repeat');
+        //ss['background-attachment'] = 'fixed'; // w3c
+        dbody.bgProperties = 'fixed'; // ie
+        //Roo.DomHelper.applyStyles(dbody, ss);
+        Roo.EventManager.on(this.doc, {
+            //'mousedown': this.onEditorEvent,
+            'mouseup': this.onEditorEvent,
+            'dblclick': this.onEditorEvent,
+            'click': this.onEditorEvent,
+            'keyup': this.onEditorEvent,
+            buffer:100,
+            scope: this
+        });
+        if(Roo.isGecko){
+            Roo.EventManager.on(this.doc, 'keypress', this.mozKeyPress, this);
+        }
+        if(Roo.isIE || Roo.isSafari || Roo.isOpera){
+            Roo.EventManager.on(this.doc, 'keydown', this.fixKeys, this);
+        }
+        this.initialized = true;
+
+        this.owner.fireEvent('initialize', this);
+        this.pushValue();
+    },
+
+    // private
+    onDestroy : function(){
+        
+        
+        
+        if(this.rendered){
+            
+            //for (var i =0; i < this.toolbars.length;i++) {
+            //    // fixme - ask toolbars for heights?
+            //    this.toolbars[i].onDestroy();
+           // }
+            
+            //this.wrap.dom.innerHTML = '';
+            //this.wrap.remove();
+        }
+    },
+
+    // private
+    onFirstFocus : function(){
+        
+        this.assignDocWin();
+        
+        
+        this.activated = true;
+         
+    
+        if(Roo.isGecko){ // prevent silly gecko errors
+            this.win.focus();
+            var s = this.win.getSelection();
+            if(!s.focusNode || s.focusNode.nodeType != 3){
+                var r = s.getRangeAt(0);
+                r.selectNodeContents((this.doc.body || this.doc.documentElement));
+                r.collapse(true);
+                this.deferFocus();
+            }
+            try{
+                this.execCmd('useCSS', true);
+                this.execCmd('styleWithCSS', false);
+            }catch(e){}
+        }
+        this.owner.fireEvent('activate', this);
+    },
+
+    // private
+    adjustFont: function(btn){
+        var adjust = btn.cmd == 'increasefontsize' ? 1 : -1;
+        //if(Roo.isSafari){ // safari
+        //    adjust *= 2;
+       // }
+        var v = parseInt(this.doc.queryCommandValue('FontSize')|| 3, 10);
+        if(Roo.isSafari){ // safari
+            var sm = { 10 : 1, 13: 2, 16:3, 18:4, 24: 5, 32:6, 48: 7 };
+            v =  (v < 10) ? 10 : v;
+            v =  (v > 48) ? 48 : v;
+            v = typeof(sm[v]) == 'undefined' ? 1 : sm[v];
+            
+        }
+        
+        
+        v = Math.max(1, v+adjust);
+        
+        this.execCmd('FontSize', v  );
+    },
+
+    onEditorEvent : function(e){
+        this.owner.fireEvent('editorevent', this, e);
+      //  this.updateToolbar();
+        this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
+    },
+
+    insertTag : function(tg)
+    {
+        // could be a bit smarter... -> wrap the current selected tRoo..
+        if (tg.toLowerCase() == 'span' || tg.toLowerCase() == 'code') {
+            
+            range = this.createRange(this.getSelection());
+            var wrappingNode = this.doc.createElement(tg.toLowerCase());
+            wrappingNode.appendChild(range.extractContents());
+            range.insertNode(wrappingNode);
+
+            return;
+            
+            
+            
+        }
+        this.execCmd("formatblock",   tg);
+        
+    },
+    
+    insertText : function(txt)
+    {
+        
+        
+        var range = this.createRange();
+        range.deleteContents();
+               //alert(Sender.getAttribute('label'));
+               
+        range.insertNode(this.doc.createTextNode(txt));
+    } ,
+    
+     
+
+    /**
+     * Executes a Midas editor command on the editor document and performs necessary focus and
+     * toolbar updates. <b>This should only be called after the editor is initialized.</b>
+     * @param {String} cmd The Midas command
+     * @param {String/Boolean} value (optional) The value to pass to the command (defaults to null)
+     */
+    relayCmd : function(cmd, value){
+        this.win.focus();
+        this.execCmd(cmd, value);
+        this.owner.fireEvent('editorevent', this);
+        //this.updateToolbar();
+        this.owner.deferFocus();
+    },
+
+    /**
+     * Executes a Midas editor command directly on the editor document.
+     * For visual commands, you should use {@link #relayCmd} instead.
+     * <b>This should only be called after the editor is initialized.</b>
+     * @param {String} cmd The Midas command
+     * @param {String/Boolean} value (optional) The value to pass to the command (defaults to null)
+     */
+    execCmd : function(cmd, value){
+        this.doc.execCommand(cmd, false, value === undefined ? null : value);
+        this.syncValue();
+    },
+ 
+ 
+   
+    /**
+     * Inserts the passed text at the current cursor position. Note: the editor must be initialized and activated
+     * to insert tRoo.
+     * @param {String} text | dom node.. 
+     */
+    insertAtCursor : function(text)
+    {
+        
+        
+        
+        if(!this.activated){
+            return;
+        }
+        /*
+        if(Roo.isIE){
+            this.win.focus();
+            var r = this.doc.selection.createRange();
+            if(r){
+                r.collapse(true);
+                r.pasteHTML(text);
+                this.syncValue();
+                this.deferFocus();
+            
+            }
+            return;
+        }
+        */
+        if(Roo.isGecko || Roo.isOpera || Roo.isSafari){
+            this.win.focus();
+            
+            
+            // from jquery ui (MIT licenced)
+            var range, node;
+            var win = this.win;
+            
+            if (win.getSelection && win.getSelection().getRangeAt) {
+                range = win.getSelection().getRangeAt(0);
+                node = typeof(text) == 'string' ? range.createContextualFragment(text) : text;
+                range.insertNode(node);
+            } else if (win.document.selection && win.document.selection.createRange) {
+                // no firefox support
+                var txt = typeof(text) == 'string' ? text : text.outerHTML;
+                win.document.selection.createRange().pasteHTML(txt);
+            } else {
+                // no firefox support
+                var txt = typeof(text) == 'string' ? text : text.outerHTML;
+                this.execCmd('InsertHTML', txt);
+            } 
+            
+            this.syncValue();
+            
+            this.deferFocus();
+        }
+    },
+ // private
+    mozKeyPress : function(e){
+        if(e.ctrlKey){
+            var c = e.getCharCode(), cmd;
+          
+            if(c > 0){
+                c = String.fromCharCode(c).toLowerCase();
+                switch(c){
+                    case 'b':
+                        cmd = 'bold';
+                        break;
+                    case 'i':
+                        cmd = 'italic';
+                        break;
+                    
+                    case 'u':
+                        cmd = 'underline';
+                        break;
+                    
+                    case 'v':
+                        this.cleanUpPaste.defer(100, this);
+                        return;
+                        
+                }
+                if(cmd){
+                    this.win.focus();
+                    this.execCmd(cmd);
+                    this.deferFocus();
+                    e.preventDefault();
+                }
+                
+            }
+        }
+    },
+
+    // private
+    fixKeys : function(){ // load time branching for fastest keydown performance
+        if(Roo.isIE){
+            return function(e){
+                var k = e.getKey(), r;
+                if(k == e.TAB){
+                    e.stopEvent();
+                    r = this.doc.selection.createRange();
+                    if(r){
+                        r.collapse(true);
+                        r.pasteHTML('&#160;&#160;&#160;&#160;');
+                        this.deferFocus();
+                    }
+                    return;
+                }
+                
+                if(k == e.ENTER){
+                    r = this.doc.selection.createRange();
+                    if(r){
+                        var target = r.parentElement();
+                        if(!target || target.tagName.toLowerCase() != 'li'){
+                            e.stopEvent();
+                            r.pasteHTML('<br />');
+                            r.collapse(false);
+                            r.select();
+                        }
+                    }
+                }
+                if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                    this.cleanUpPaste.defer(100, this);
+                    return;
+                }
+                
+                
+            };
+        }else if(Roo.isOpera){
+            return function(e){
+                var k = e.getKey();
+                if(k == e.TAB){
+                    e.stopEvent();
+                    this.win.focus();
+                    this.execCmd('InsertHTML','&#160;&#160;&#160;&#160;');
+                    this.deferFocus();
+                }
+                if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                    this.cleanUpPaste.defer(100, this);
+                    return;
+                }
+                
+            };
+        }else if(Roo.isSafari){
+            return function(e){
+                var k = e.getKey();
+                
+                if(k == e.TAB){
+                    e.stopEvent();
+                    this.execCmd('InsertText','\t');
+                    this.deferFocus();
+                    return;
+                }
+               if (String.fromCharCode(k).toLowerCase() == 'v') { // paste
+                    this.cleanUpPaste.defer(100, this);
+                    return;
+                }
+                
+             };
+        }
+    }(),
+    
+    getAllAncestors: function()
+    {
+        var p = this.getSelectedNode();
+        var a = [];
+        if (!p) {
+            a.push(p); // push blank onto stack..
+            p = this.getParentElement();
+        }
+        
+        
+        while (p && (p.nodeType == 1) && (p.tagName.toLowerCase() != 'body')) {
+            a.push(p);
+            p = p.parentNode;
+        }
+        a.push(this.doc.body);
+        return a;
+    },
+    lastSel : false,
+    lastSelNode : false,
+    
+    
+    getSelection : function() 
+    {
+        this.assignDocWin();
+        return Roo.isIE ? this.doc.selection : this.win.getSelection();
+    },
+    
+    getSelectedNode: function() 
+    {
+        // this may only work on Gecko!!!
+        
+        // should we cache this!!!!
+        
+        
+        
+         
+        var range = this.createRange(this.getSelection()).cloneRange();
+        
+        if (Roo.isIE) {
+            var parent = range.parentElement();
+            while (true) {
+                var testRange = range.duplicate();
+                testRange.moveToElementText(parent);
+                if (testRange.inRange(range)) {
+                    break;
+                }
+                if ((parent.nodeType != 1) || (parent.tagName.toLowerCase() == 'body')) {
+                    break;
+                }
+                parent = parent.parentElement;
+            }
+            return parent;
+        }
+        
+        // is ancestor a text element.
+        var ac =  range.commonAncestorContainer;
+        if (ac.nodeType == 3) {
+            ac = ac.parentNode;
+        }
+        
+        var ar = ac.childNodes;
+         
+        var nodes = [];
+        var other_nodes = [];
+        var has_other_nodes = false;
+        for (var i=0;i<ar.length;i++) {
+            if ((ar[i].nodeType == 3) && (!ar[i].data.length)) { // empty text ? 
+                continue;
+            }
+            // fullly contained node.
+            
+            if (this.rangeIntersectsNode(range,ar[i]) && this.rangeCompareNode(range,ar[i]) == 3) {
+                nodes.push(ar[i]);
+                continue;
+            }
+            
+            // probably selected..
+            if ((ar[i].nodeType == 1) && this.rangeIntersectsNode(range,ar[i]) && (this.rangeCompareNode(range,ar[i]) > 0)) {
+                other_nodes.push(ar[i]);
+                continue;
+            }
+            // outer..
+            if (!this.rangeIntersectsNode(range,ar[i])|| (this.rangeCompareNode(range,ar[i]) == 0))  {
+                continue;
+            }
+            
+            
+            has_other_nodes = true;
+        }
+        if (!nodes.length && other_nodes.length) {
+            nodes= other_nodes;
+        }
+        if (has_other_nodes || !nodes.length || (nodes.length > 1)) {
+            return false;
+        }
+        
+        return nodes[0];
+    },
+    createRange: function(sel)
+    {
+        // this has strange effects when using with 
+        // top toolbar - not sure if it's a great idea.
+        //this.editor.contentWindow.focus();
+        if (typeof sel != "undefined") {
+            try {
+                return sel.getRangeAt ? sel.getRangeAt(0) : sel.createRange();
+            } catch(e) {
+                return this.doc.createRange();
+            }
+        } else {
+            return this.doc.createRange();
+        }
+    },
+    getParentElement: function()
+    {
+        
+        this.assignDocWin();
+        var sel = Roo.isIE ? this.doc.selection : this.win.getSelection();
+        
+        var range = this.createRange(sel);
+         
+        try {
+            var p = range.commonAncestorContainer;
+            while (p.nodeType == 3) { // text node
+                p = p.parentNode;
+            }
+            return p;
+        } catch (e) {
+            return null;
+        }
+    
+    },
+    /***
+     *
+     * Range intersection.. the hard stuff...
+     *  '-1' = before
+     *  '0' = hits..
+     *  '1' = after.
+     *         [ -- selected range --- ]
+     *   [fail]                        [fail]
+     *
+     *    basically..
+     *      if end is before start or  hits it. fail.
+     *      if start is after end or hits it fail.
+     *
+     *   if either hits (but other is outside. - then it's not 
+     *   
+     *    
+     **/
+    
+    
+    // @see http://www.thismuchiknow.co.uk/?p=64.
+    rangeIntersectsNode : function(range, node)
+    {
+        var nodeRange = node.ownerDocument.createRange();
+        try {
+            nodeRange.selectNode(node);
+        } catch (e) {
+            nodeRange.selectNodeContents(node);
+        }
+    
+        var rangeStartRange = range.cloneRange();
+        rangeStartRange.collapse(true);
+    
+        var rangeEndRange = range.cloneRange();
+        rangeEndRange.collapse(false);
+    
+        var nodeStartRange = nodeRange.cloneRange();
+        nodeStartRange.collapse(true);
+    
+        var nodeEndRange = nodeRange.cloneRange();
+        nodeEndRange.collapse(false);
+    
+        return rangeStartRange.compareBoundaryPoints(
+                 Range.START_TO_START, nodeEndRange) == -1 &&
+               rangeEndRange.compareBoundaryPoints(
+                 Range.START_TO_START, nodeStartRange) == 1;
+        
+         
+    },
+    rangeCompareNode : function(range, node)
+    {
+        var nodeRange = node.ownerDocument.createRange();
+        try {
+            nodeRange.selectNode(node);
+        } catch (e) {
+            nodeRange.selectNodeContents(node);
+        }
+        
+        
+        range.collapse(true);
+    
+        nodeRange.collapse(true);
+     
+        var ss = range.compareBoundaryPoints( Range.START_TO_START, nodeRange);
+        var ee = range.compareBoundaryPoints(  Range.END_TO_END, nodeRange);
+         
+        //Roo.log(node.tagName + ': ss='+ss +', ee='+ee)
+        
+        var nodeIsBefore   =  ss == 1;
+        var nodeIsAfter    = ee == -1;
+        
+        if (nodeIsBefore && nodeIsAfter)
+            return 0; // outer
+        if (!nodeIsBefore && nodeIsAfter)
+            return 1; //right trailed.
+        
+        if (nodeIsBefore && !nodeIsAfter)
+            return 2;  // left trailed.
+        // fully contined.
+        return 3;
+    },
+
+    // private? - in a new class?
+    cleanUpPaste :  function()
+    {
+        // cleans up the whole document..
+        Roo.log('cleanuppaste');
+        
+        this.cleanUpChildren(this.doc.body);
+        var clean = this.cleanWordChars(this.doc.body.innerHTML);
+        if (clean != this.doc.body.innerHTML) {
+            this.doc.body.innerHTML = clean;
+        }
+        
+    },
+    
+    cleanWordChars : function(input) {// change the chars to hex code
+        var he = Roo.HtmlEditorCore;
+        
+        var output = input;
+        Roo.each(he.swapCodes, function(sw) { 
+            var swapper = new RegExp("\\u" + sw[0].toString(16), "g"); // hex codes
+            
+            output = output.replace(swapper, sw[1]);
+        });
+        
+        return output;
+    },
+    
+    
+    cleanUpChildren : function (n)
+    {
+        if (!n.childNodes.length) {
+            return;
+        }
+        for (var i = n.childNodes.length-1; i > -1 ; i--) {
+           this.cleanUpChild(n.childNodes[i]);
+        }
+    },
+    
+    
+        
+    
+    cleanUpChild : function (node)
+    {
+        var ed = this;
+        //console.log(node);
+        if (node.nodeName == "#text") {
+            // clean up silly Windows -- stuff?
+            return; 
+        }
+        if (node.nodeName == "#comment") {
+            node.parentNode.removeChild(node);
+            // clean up silly Windows -- stuff?
+            return; 
+        }
+        
+        if (Roo.HtmlEditorCore.black.indexOf(node.tagName.toLowerCase()) > -1 && this.clearUp) {
+            // remove node.
+            node.parentNode.removeChild(node);
+            return;
+            
+        }
+        
+        var remove_keep_children= Roo.HtmlEditorCore.remove.indexOf(node.tagName.toLowerCase()) > -1;
+        
+        // remove <a name=....> as rendering on yahoo mailer is borked with this.
+        // this will have to be flaged elsewhere - perhaps ablack=name... on the mailer..
+        
+        //if (node.tagName.toLowerCase() == 'a' && !node.hasAttribute('href')) {
+        //    remove_keep_children = true;
+        //}
+        
+        if (remove_keep_children) {
+            this.cleanUpChildren(node);
+            // inserts everything just before this node...
+            while (node.childNodes.length) {
+                var cn = node.childNodes[0];
+                node.removeChild(cn);
+                node.parentNode.insertBefore(cn, node);
+            }
+            node.parentNode.removeChild(node);
+            return;
+        }
+        
+        if (!node.attributes || !node.attributes.length) {
+            this.cleanUpChildren(node);
+            return;
+        }
+        
+        function cleanAttr(n,v)
+        {
+            
+            if (v.match(/^\./) || v.match(/^\//)) {
+                return;
+            }
+            if (v.match(/^(http|https):\/\//) || v.match(/^mailto:/)) {
+                return;
+            }
+            if (v.match(/^#/)) {
+                return;
+            }
+//            Roo.log("(REMOVE TAG)"+ node.tagName +'.' + n + '=' + v);
+            node.removeAttribute(n);
+            
+        }
+        
+        function cleanStyle(n,v)
+        {
+            if (v.match(/expression/)) { //XSS?? should we even bother..
+                node.removeAttribute(n);
+                return;
+            }
+            var cwhite = typeof(ed.cwhite) == 'undefined' ? Roo.HtmlEditorCore.cwhite : ed.cwhite;
+            var cblack = typeof(ed.cblack) == 'undefined' ? Roo.HtmlEditorCore.cblack : ed.cblack;
+            
+            
+            var parts = v.split(/;/);
+            var clean = [];
+            
+            Roo.each(parts, function(p) {
+                p = p.replace(/^\s+/g,'').replace(/\s+$/g,'');
+                if (!p.length) {
+                    return true;
+                }
+                var l = p.split(':').shift().replace(/\s+/g,'');
+                l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
+                
+                if ( cblack.indexOf(l) > -1) {
+//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
+                    //node.removeAttribute(n);
+                    return true;
+                }
+                //Roo.log()
+                // only allow 'c whitelisted system attributes'
+                if ( cwhite.length &&  cwhite.indexOf(l) < 0) {
+//                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
+                    //node.removeAttribute(n);
+                    return true;
+                }
+                
+                
+                 
+                
+                clean.push(p);
+                return true;
+            });
+            if (clean.length) { 
+                node.setAttribute(n, clean.join(';'));
+            } else {
+                node.removeAttribute(n);
+            }
+            
+        }
+        
+        
+        for (var i = node.attributes.length-1; i > -1 ; i--) {
+            var a = node.attributes[i];
+            //console.log(a);
+            
+            if (a.name.toLowerCase().substr(0,2)=='on')  {
+                node.removeAttribute(a.name);
+                continue;
+            }
+            if (Roo.HtmlEditorCore.ablack.indexOf(a.name.toLowerCase()) > -1) {
+                node.removeAttribute(a.name);
+                continue;
+            }
+            if (Roo.HtmlEditorCore.aclean.indexOf(a.name.toLowerCase()) > -1) {
+                cleanAttr(a.name,a.value); // fixme..
+                continue;
+            }
+            if (a.name == 'style') {
+                cleanStyle(a.name,a.value);
+                continue;
+            }
+            /// clean up MS crap..
+            // tecnically this should be a list of valid class'es..
+            
+            
+            if (a.name == 'class') {
+                if (a.value.match(/^Mso/)) {
+                    node.className = '';
+                }
+                
+                if (a.value.match(/body/)) {
+                    node.className = '';
+                }
+                continue;
+            }
+            
+            // style cleanup!?
+            // class cleanup?
+            
+        }
+        
+        
+        this.cleanUpChildren(node);
+        
+        
+    },
+    /**
+     * Clean up MS wordisms...
+     */
+    cleanWord : function(node)
+    {
+        var _t = this;
+        var cleanWordChildren = function()
+        {
+            if (!node.childNodes.length) {
+                return;
+            }
+            for (var i = node.childNodes.length-1; i > -1 ; i--) {
+               _t.cleanWord(node.childNodes[i]);
+            }
+        }
+        
+        
+        if (!node) {
+            this.cleanWord(this.doc.body);
+            return;
+        }
+        if (node.nodeName == "#text") {
+            // clean up silly Windows -- stuff?
+            return; 
+        }
+        if (node.nodeName == "#comment") {
+            node.parentNode.removeChild(node);
+            // clean up silly Windows -- stuff?
+            return; 
+        }
+        
+        if (node.tagName.toLowerCase().match(/^(style|script|applet|embed|noframes|noscript)$/)) {
+            node.parentNode.removeChild(node);
+            return;
+        }
+        
+        // remove - but keep children..
+        if (node.tagName.toLowerCase().match(/^(meta|link|\\?xml:|st1:|o:|font)/)) {
+            while (node.childNodes.length) {
+                var cn = node.childNodes[0];
+                node.removeChild(cn);
+                node.parentNode.insertBefore(cn, node);
+            }
+            node.parentNode.removeChild(node);
+            cleanWordChildren();
+            return;
+        }
+        // clean styles
+        if (node.className.length) {
+            
+            var cn = node.className.split(/\W+/);
+            var cna = [];
+            Roo.each(cn, function(cls) {
+                if (cls.match(/Mso[a-zA-Z]+/)) {
+                    return;
+                }
+                cna.push(cls);
+            });
+            node.className = cna.length ? cna.join(' ') : '';
+            if (!cna.length) {
+                node.removeAttribute("class");
+            }
+        }
+        
+        if (node.hasAttribute("lang")) {
+            node.removeAttribute("lang");
+        }
+        
+        if (node.hasAttribute("style")) {
+            
+            var styles = node.getAttribute("style").split(";");
+            var nstyle = [];
+            Roo.each(styles, function(s) {
+                if (!s.match(/:/)) {
+                    return;
+                }
+                var kv = s.split(":");
+                if (kv[0].match(/^(mso-|line|font|background|margin|padding|color)/)) {
+                    return;
+                }
+                // what ever is left... we allow.
+                nstyle.push(s);
+            });
+            node.setAttribute("style", nstyle.length ? nstyle.join(';') : '');
+            if (!nstyle.length) {
+                node.removeAttribute('style');
+            }
+        }
+        
+        cleanWordChildren();
+        
+        
+    },
+    domToHTML : function(currentElement, depth, nopadtext) {
+        
+            depth = depth || 0;
+            nopadtext = nopadtext || false;
+        
+            if (!currentElement) {
+                return this.domToHTML(this.doc.body);
+            }
+            
+            //Roo.log(currentElement);
+            var j;
+            var allText = false;
+            var nodeName = currentElement.nodeName;
+            var tagName = Roo.util.Format.htmlEncode(currentElement.tagName);
+            
+            if  (nodeName == '#text') {
+                return currentElement.nodeValue;
+            }
+            
+            
+            var ret = '';
+            if (nodeName != 'BODY') {
+                 
+                var i = 0;
+                // Prints the node tagName, such as <A>, <IMG>, etc
+                if (tagName) {
+                    var attr = [];
+                    for(i = 0; i < currentElement.attributes.length;i++) {
+                        // quoting?
+                        var aname = currentElement.attributes.item(i).name;
+                        if (!currentElement.attributes.item(i).value.length) {
+                            continue;
+                        }
+                        attr.push(aname + '="' + Roo.util.Format.htmlEncode(currentElement.attributes.item(i).value) + '"' );
+                    }
+                    
+                    ret = "<"+currentElement.tagName+ ( attr.length ? (' ' + attr.join(' ') ) : '') + ">";
+                } 
+                else {
+                    
+                    // eack
+                }
+            } else {
+                tagName = false;
+            }
+            if (['IMG', 'BR', 'HR', 'INPUT'].indexOf(tagName) > -1) {
+                return ret;
+            }
+            if (['PRE', 'TEXTAREA', 'TD', 'A', 'SPAN'].indexOf(tagName) > -1) { // or code?
+                nopadtext = true;
+            }
+            
+            
+            // Traverse the tree
+            i = 0;
+            var currentElementChild = currentElement.childNodes.item(i);
+            var allText = true;
+            var innerHTML  = '';
+            lastnode = '';
+            while (currentElementChild) {
+                // Formatting code (indent the tree so it looks nice on the screen)
+                var nopad = nopadtext;
+                if (lastnode == 'SPAN') {
+                    nopad  = true;
+                }
+                // text
+                if  (currentElementChild.nodeName == '#text') {
+                    var toadd = Roo.util.Format.htmlEncode(currentElementChild.nodeValue);
+                    if (!nopad && toadd.length > 80) {
+                        innerHTML  += "\n" + (new Array( depth + 1 )).join( "  "  );
+                    }
+                    innerHTML  += toadd;
+                    
+                    i++;
+                    currentElementChild = currentElement.childNodes.item(i);
+                    lastNode = '';
+                    continue;
+                }
+                allText = false;
+                
+                innerHTML  += nopad ? '' : "\n" + (new Array( depth + 1 )).join( "  "  );
+                    
+                // Recursively traverse the tree structure of the child node
+                innerHTML   += this.domToHTML(currentElementChild, depth+1, nopadtext);
+                lastnode = currentElementChild.nodeName;
+                i++;
+                currentElementChild=currentElement.childNodes.item(i);
+            }
+            
+            ret += innerHTML;
+            
+            if (!allText) {
+                    // The remaining code is mostly for formatting the tree
+                ret+= nopadtext ? '' : "\n" + (new Array( depth  )).join( "  "  );
+            }
+            
+            
+            if (tagName) {
+                ret+= "</"+tagName+">";
+            }
+            return ret;
+            
+        }
+    
+    // hide stuff that is not compatible
+    /**
+     * @event blur
+     * @hide
+     */
+    /**
+     * @event change
+     * @hide
+     */
+    /**
+     * @event focus
+     * @hide
+     */
+    /**
+     * @event specialkey
+     * @hide
+     */
+    /**
+     * @cfg {String} fieldClass @hide
+     */
+    /**
+     * @cfg {String} focusClass @hide
+     */
+    /**
+     * @cfg {String} autoCreate @hide
+     */
+    /**
+     * @cfg {String} inputType @hide
+     */
+    /**
+     * @cfg {String} invalidClass @hide
+     */
+    /**
+     * @cfg {String} invalidText @hide
+     */
+    /**
+     * @cfg {String} msgFx @hide
+     */
+    /**
+     * @cfg {String} validateOnBlur @hide
+     */
+});
+
+Roo.HtmlEditorCore.white = [
+        'area', 'br', 'img', 'input', 'hr', 'wbr',
+        
+       'address', 'blockquote', 'center', 'dd',      'dir',       'div', 
+       'dl',      'dt',         'h1',     'h2',      'h3',        'h4', 
+       'h5',      'h6',         'hr',     'isindex', 'listing',   'marquee', 
+       'menu',    'multicol',   'ol',     'p',       'plaintext', 'pre', 
+       'table',   'ul',         'xmp', 
+       
+       'caption', 'col', 'colgroup', 'tbody', 'td', 'tfoot', 'th', 
+      'thead',   'tr', 
+     
+      'dir', 'menu', 'ol', 'ul', 'dl',
+       
+      'embed',  'object'
+];
+
+
+Roo.HtmlEditorCore.black = [
+    //    'embed',  'object', // enable - backend responsiblity to clean thiese
+        'applet', // 
+        'base',   'basefont', 'bgsound', 'blink',  'body', 
+        'frame',  'frameset', 'head',    'html',   'ilayer', 
+        'iframe', 'layer',  'link',     'meta',    'object',   
+        'script', 'style' ,'title',  'xml' // clean later..
+];
+Roo.HtmlEditorCore.clean = [
+    'script', 'style', 'title', 'xml'
+];
+Roo.HtmlEditorCore.remove = [
+    'font'
+];
+// attributes..
+
+Roo.HtmlEditorCore.ablack = [
+    'on'
+];
+    
+Roo.HtmlEditorCore.aclean = [ 
+    'action', 'background', 'codebase', 'dynsrc', 'href', 'lowsrc' 
+];
+
+// protocols..
+Roo.HtmlEditorCore.pwhite= [
+        'http',  'https',  'mailto'
+];
+
+// white listed style attributes.
+Roo.HtmlEditorCore.cwhite= [
+      //  'text-align', /// default is to allow most things..
+      
+         
+//        'font-size'//??
+];
+
+// black listed style attributes.
+Roo.HtmlEditorCore.cblack= [
+      //  'font-size' -- this can be set by the project 
+];
+
+
+Roo.HtmlEditorCore.swapCodes   =[ 
+    [    8211, "--" ], 
+    [    8212, "--" ], 
+    [    8216,  "'" ],  
+    [    8217, "'" ],  
+    [    8220, '"' ],  
+    [    8221, '"' ],  
+    [    8226, "*" ],  
+    [    8230, "..." ]
+]; 
+
+    /*
+ * - LGPL
+ *
+ * HtmlEditor
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.HtmlEditor
+ * @extends Roo.bootstrap.TextArea
+ * Bootstrap HtmlEditor class
+
+ * @constructor
+ * Create a new HtmlEditor
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.HtmlEditor = function(config){
+    Roo.bootstrap.HtmlEditor.superclass.constructor.call(this, config);
+    if (!this.toolbars) {
+        this.toolbars = [];
+    }
+    this.editorcore = new Roo.HtmlEditorCore(Roo.apply({ owner : this} , config));
+    this.addEvents({
+            /**
+             * @event initialize
+             * Fires when the editor is fully initialized (including the iframe)
+             * @param {HtmlEditor} this
+             */
+            initialize: true,
+            /**
+             * @event activate
+             * Fires when the editor is first receives the focus. Any insertion must wait
+             * until after this event.
+             * @param {HtmlEditor} this
+             */
+            activate: true,
+             /**
+             * @event beforesync
+             * Fires before the textarea is updated with content from the editor iframe. Return false
+             * to cancel the sync.
+             * @param {HtmlEditor} this
+             * @param {String} html
+             */
+            beforesync: true,
+             /**
+             * @event beforepush
+             * Fires before the iframe editor is updated with content from the textarea. Return false
+             * to cancel the push.
+             * @param {HtmlEditor} this
+             * @param {String} html
+             */
+            beforepush: true,
+             /**
+             * @event sync
+             * Fires when the textarea is updated with content from the editor iframe.
+             * @param {HtmlEditor} this
+             * @param {String} html
+             */
+            sync: true,
+             /**
+             * @event push
+             * Fires when the iframe editor is updated with content from the textarea.
+             * @param {HtmlEditor} this
+             * @param {String} html
+             */
+            push: true,
+             /**
+             * @event editmodechange
+             * Fires when the editor switches edit modes
+             * @param {HtmlEditor} this
+             * @param {Boolean} sourceEdit True if source edit, false if standard editing.
+             */
+            editmodechange: true,
+            /**
+             * @event editorevent
+             * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
+             * @param {HtmlEditor} this
+             */
+            editorevent: true,
+            /**
+             * @event firstfocus
+             * Fires when on first focus - needed by toolbars..
+             * @param {HtmlEditor} this
+             */
+            firstfocus: true,
+            /**
+             * @event autosave
+             * Auto save the htmlEditor value as a file into Events
+             * @param {HtmlEditor} this
+             */
+            autosave: true,
+            /**
+             * @event savedpreview
+             * preview the saved version of htmlEditor
+             * @param {HtmlEditor} this
+             */
+            savedpreview: true
+        });
+};
+
+
+Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
+    
+    
+      /**
+     * @cfg {Array} toolbars Array of toolbars. - defaults to just the Standard one
+     */
+    toolbars : false,
+   
+     /**
+     * @cfg {String} resizable  's' or 'se' or 'e' - wrapps the element in a
+     *                        Roo.resizable.
+     */
+    resizable : false,
+     /**
+     * @cfg {Number} height (in pixels)
+     */   
+    height: 300,
+   /**
+     * @cfg {Number} width (in pixels)
+     */   
+    width: false,
+    
+    /**
+     * @cfg {Array} stylesheets url of stylesheets. set to [] to disable stylesheets.
+     * 
+     */
+    stylesheets: false,
+    
+    // id of frame..
+    frameId: false,
+    
+    // private properties
+    validationEvent : false,
+    deferHeight: true,
+    initialized : false,
+    activated : false,
+    
+    onFocus : Roo.emptyFn,
+    iframePad:3,
+    hideMode:'offsets',
+    
+    
+    tbContainer : false,
+    
+    toolbarContainer :function() {
+        return this.wrap.select('.x-html-editor-tb',true).first();
+    },
+
+    /**
+     * Protected method that will not generally be called directly. It
+     * is called when the editor creates its toolbar. Override this method if you need to
+     * add custom toolbar buttons.
+     * @param {HtmlEditor} editor
+     */
+    createToolbar : function(){
+        
+        Roo.log("create toolbars");
+        
+        this.toolbars = [ new Roo.bootstrap.htmleditor.ToolbarStandard({editor: this} ) ];
+        this.toolbars[0].render(this.toolbarContainer());
+        
+        return;
+        
+//        if (!editor.toolbars || !editor.toolbars.length) {
+//            editor.toolbars = [ new Roo.bootstrap.HtmlEditor.ToolbarStandard() ]; // can be empty?
+//        }
+//        
+//        for (var i =0 ; i < editor.toolbars.length;i++) {
+//            editor.toolbars[i] = Roo.factory(
+//                    typeof(editor.toolbars[i]) == 'string' ?
+//                        { xtype: editor.toolbars[i]} : editor.toolbars[i],
+//                Roo.bootstrap.HtmlEditor);
+//            editor.toolbars[i].init(editor);
+//        }
+    },
+
+     
+    // private
+    onRender : function(ct, position)
+    {
+       // Roo.log("Call onRender: " + this.xtype);
+        var _t = this;
+        Roo.bootstrap.HtmlEditor.superclass.onRender.call(this, ct, position);
+      
+        this.wrap = this.inputEl().wrap({
+            cls:'x-html-editor-wrap', cn:{cls:'x-html-editor-tb'}
+        });
+        
+        this.editorcore.onRender(ct, position);
+         
+        if (this.resizable) {
+            this.resizeEl = new Roo.Resizable(this.wrap, {
+                pinned : true,
+                wrap: true,
+                dynamic : true,
+                minHeight : this.height,
+                height: this.height,
+                handles : this.resizable,
+                width: this.width,
+                listeners : {
+                    resize : function(r, w, h) {
+                        _t.onResize(w,h); // -something
+                    }
+                }
+            });
+            
+        }
+        this.createToolbar(this);
+       
+        
+        if(!this.width && this.resizable){
+            this.setSize(this.wrap.getSize());
+        }
+        if (this.resizeEl) {
+            this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
+            // should trigger onReize..
+        }
+        
+    },
+
+    // private
+    onResize : function(w, h)
+    {
+        Roo.log('resize: ' +w + ',' + h );
+        Roo.bootstrap.HtmlEditor.superclass.onResize.apply(this, arguments);
+        var ew = false;
+        var eh = false;
+        
+        if(this.inputEl() ){
+            if(typeof w == 'number'){
+                var aw = w - this.wrap.getFrameWidth('lr');
+                this.inputEl().setWidth(this.adjustWidth('textarea', aw));
+                ew = aw;
+            }
+            if(typeof h == 'number'){
+                 var tbh = -11;  // fixme it needs to tool bar size!
+                for (var i =0; i < this.toolbars.length;i++) {
+                    // fixme - ask toolbars for heights?
+                    tbh += this.toolbars[i].el.getHeight();
+                    //if (this.toolbars[i].footer) {
+                    //    tbh += this.toolbars[i].footer.el.getHeight();
+                    //}
+                }
+              
+                
+                
+                
+                
+                var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
+                ah -= 5; // knock a few pixes off for look..
+                this.inputEl().setHeight(this.adjustWidth('textarea', ah));
+                var eh = ah;
+            }
+        }
+        Roo.log('onResize:' + [w,h,ew,eh].join(',') );
+        this.editorcore.onResize(ew,eh);
+        
+    },
+
+    /**
+     * Toggles the editor between standard and source edit mode.
+     * @param {Boolean} sourceEdit (optional) True for source edit, false for standard
+     */
+    toggleSourceEdit : function(sourceEditMode)
+    {
+        this.editorcore.toggleSourceEdit(sourceEditMode);
+        
+        if(this.editorcore.sourceEditMode){
+            Roo.log('editor - showing textarea');
+            
+//            Roo.log('in');
+//            Roo.log(this.syncValue());
+            this.syncValue();
+            this.inputEl().removeClass('hide');
+            this.inputEl().dom.removeAttribute('tabIndex');
+            this.inputEl().focus();
+        }else{
+            Roo.log('editor - hiding textarea');
+//            Roo.log('out')
+//            Roo.log(this.pushValue()); 
+            this.pushValue();
+            
+            this.inputEl().addClass('hide');
+            this.inputEl().dom.setAttribute('tabIndex', -1);
+            //this.deferFocus();
+        }
+         
+        if(this.resizable){
+            this.setSize(this.wrap.getSize());
+        }
+        
+        this.fireEvent('editmodechange', this, this.editorcore.sourceEditMode);
+    },
+ 
+    // private (for BoxComponent)
+    adjustSize : Roo.BoxComponent.prototype.adjustSize,
+
+    // private (for BoxComponent)
+    getResizeEl : function(){
+        return this.wrap;
+    },
+
+    // private (for BoxComponent)
+    getPositionEl : function(){
+        return this.wrap;
+    },
+
+    // private
+    initEvents : function(){
+        this.originalValue = this.getValue();
+    },
+
+//    /**
+//     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
+//     * @method
+//     */
+//    markInvalid : Roo.emptyFn,
+//    /**
+//     * Overridden and disabled. The editor element does not support standard valid/invalid marking. @hide
+//     * @method
+//     */
+//    clearInvalid : Roo.emptyFn,
+
+    setValue : function(v){
+        Roo.bootstrap.HtmlEditor.superclass.setValue.call(this, v);
+        this.editorcore.pushValue();
+    },
+
+     
+    // private
+    deferFocus : function(){
+        this.focus.defer(10, this);
+    },
+
+    // doc'ed in Field
+    focus : function(){
+        this.editorcore.focus();
+        
+    },
+      
+
+    // private
+    onDestroy : function(){
+        
+        
+        
+        if(this.rendered){
+            
+            for (var i =0; i < this.toolbars.length;i++) {
+                // fixme - ask toolbars for heights?
+                this.toolbars[i].onDestroy();
+            }
+            
+            this.wrap.dom.innerHTML = '';
+            this.wrap.remove();
+        }
+    },
+
+    // private
+    onFirstFocus : function(){
+        //Roo.log("onFirstFocus");
+        this.editorcore.onFirstFocus();
+         for (var i =0; i < this.toolbars.length;i++) {
+            this.toolbars[i].onFirstFocus();
+        }
+        
+    },
+    
+    // private
+    syncValue : function()
+    {   
+        this.editorcore.syncValue();
+    },
+    
+    pushValue : function()
+    {   
+        this.editorcore.pushValue();
+    }
+     
+    
+    // hide stuff that is not compatible
+    /**
+     * @event blur
+     * @hide
+     */
+    /**
+     * @event change
+     * @hide
+     */
+    /**
+     * @event focus
+     * @hide
+     */
+    /**
+     * @event specialkey
+     * @hide
+     */
+    /**
+     * @cfg {String} fieldClass @hide
+     */
+    /**
+     * @cfg {String} focusClass @hide
+     */
+    /**
+     * @cfg {String} autoCreate @hide
+     */
+    /**
+     * @cfg {String} inputType @hide
+     */
+    /**
+     * @cfg {String} invalidClass @hide
+     */
+    /**
+     * @cfg {String} invalidText @hide
+     */
+    /**
+     * @cfg {String} msgFx @hide
+     */
+    /**
+     * @cfg {String} validateOnBlur @hide
+     */
+});
+ 
+    
+   
+   
+   
+      
+Roo.namespace('Roo.bootstrap.htmleditor');
+/**
+ * @class Roo.bootstrap.HtmlEditorToolbar1
+ * Basic Toolbar
+ * 
+ * Usage:
+ *
+ new Roo.bootstrap.HtmlEditor({
+    ....
+    toolbars : [
+        new Roo.bootstrap.HtmlEditorToolbar1({
+            disable : { fonts: 1 , format: 1, ..., ... , ...],
+            btns : [ .... ]
+        })
+    }
+     
+ * 
+ * @cfg {Object} disable List of elements to disable..
+ * @cfg {Array} btns List of additional buttons.
+ * 
+ * 
+ * NEEDS Extra CSS? 
+ * .x-html-editor-tb .x-edit-none .x-btn-text { background: none; }
+ */
+ 
+Roo.bootstrap.htmleditor.ToolbarStandard = function(config)
+{
+    
+    Roo.apply(this, config);
+    
+    // default disabled, based on 'good practice'..
+    this.disable = this.disable || {};
+    Roo.applyIf(this.disable, {
+        fontSize : true,
+        colors : true,
+        specialElements : true
+    });
+    Roo.bootstrap.htmleditor.ToolbarStandard.superclass.constructor.call(this, config);
+    
+    this.editor = config.editor;
+    this.editorcore = config.editor.editorcore;
+    
+    this.buttons   = new Roo.util.MixedCollection(false, function(o) { return o.cmd; });
+    
+    //Roo.form.HtmlEditorToolbar1.superclass.constructor.call(this, editor.wrap.dom.firstChild, [], config);
+    // dont call parent... till later.
+}
+Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,  {
+     
+    bar : true,
+    
+    editor : false,
+    editorcore : false,
+    
+    
+    formats : [
+        "p" ,  
+        "h1","h2","h3","h4","h5","h6", 
+        "pre", "code", 
+        "abbr", "acronym", "address", "cite", "samp", "var",
+        'div','span'
+    ],
+    
+    onRender : function(ct, position)
+    {
+       // Roo.log("Call onRender: " + this.xtype);
+        
+       Roo.bootstrap.htmleditor.ToolbarStandard.superclass.onRender.call(this, ct, position);
+       Roo.log(this.el);
+       this.el.dom.style.marginBottom = '0';
+       var _this = this;
+       var editorcore = this.editorcore;
+       var editor= this.editor;
+       
+       var children = [];
+       var btn = function(id,cmd , toggle, handler){
+       
+            var  event = toggle ? 'toggle' : 'click';
+       
+            var a = {
+                size : 'sm',
+                xtype: 'Button',
+                xns: Roo.bootstrap,
+                glyphicon : id,
+                cmd : id || cmd,
+                enableToggle:toggle !== false,
+                //html : 'submit'
+                pressed : toggle ? false : null,
+                listeners : {}
+            }
+            a.listeners[toggle ? 'toggle' : 'click'] = function() {
+                handler ? handler.call(_this,this) :_this.onBtnClick.call(_this, cmd ||  id);
+            }
+            children.push(a);
+            return a;
+       }
+        
+        var style = {
+                xtype: 'Button',
+                size : 'sm',
+                xns: Roo.bootstrap,
+                glyphicon : 'font',
+                //html : 'submit'
+                menu : {
+                    xtype: 'Menu',
+                    xns: Roo.bootstrap,
+                    items:  []
+                }
+        };
+        Roo.each(this.formats, function(f) {
+            style.menu.items.push({
+                xtype :'MenuItem',
+                xns: Roo.bootstrap,
+                html : '<'+ f+' style="margin:2px">'+f +'</'+ f+'>',
+                tagname : f,
+                listeners : {
+                    click : function()
+                    {
+                        editorcore.insertTag(this.tagname);
+                        editor.focus();
+                    }
+                }
+                
+            });
+        });
+         children.push(style);   
+            
+            
+        btn('bold',false,true);
+        btn('italic',false,true);
+        btn('align-left', 'justifyleft',true);
+        btn('align-center', 'justifycenter',true);
+        btn('align-right' , 'justifyright',true);
+        btn('link', false, false, function(btn) {
+            //Roo.log("create link?");
+            var url = prompt(this.createLinkText, this.defaultLinkValue);
+            if(url && url != 'http:/'+'/'){
+                this.editorcore.relayCmd('createlink', url);
+            }
+        }),
+        btn('list','insertunorderedlist',true);
+        btn('pencil', false,true, function(btn){
+                Roo.log(this);
+                
+                this.toggleSourceEdit(btn.pressed);
+        });
+        /*
+        var cog = {
+                xtype: 'Button',
+                size : 'sm',
+                xns: Roo.bootstrap,
+                glyphicon : 'cog',
+                //html : 'submit'
+                menu : {
+                    xtype: 'Menu',
+                    xns: Roo.bootstrap,
+                    items:  []
+                }
+        };
+        
+        cog.menu.items.push({
+            xtype :'MenuItem',
+            xns: Roo.bootstrap,
+            html : Clean styles,
+            tagname : f,
+            listeners : {
+                click : function()
+                {
+                    editorcore.insertTag(this.tagname);
+                    editor.focus();
+                }
+            }
+            
+        });
+       */
+        
+         
+       this.xtype = 'NavSimplebar';
+        
+        for(var i=0;i< children.length;i++) {
+            
+            this.buttons.add(this.addxtypeChild(children[i]));
+            
+        }
+        
+        editor.on('editorevent', this.updateToolbar, this);
+    },
+    onBtnClick : function(id)
+    {
+       this.editorcore.relayCmd(id);
+       this.editorcore.focus();
+    },
+    
+    /**
+     * Protected method that will not generally be called directly. It triggers
+     * a toolbar update by reading the markup state of the current selection in the editor.
+     */
+    updateToolbar: function(){
+
+        if(!this.editorcore.activated){
+            this.editor.onFirstFocus(); // is this neeed?
+            return;
+        }
+
+        var btns = this.buttons; 
+        var doc = this.editorcore.doc;
+        btns.get('bold').setActive(doc.queryCommandState('bold'));
+        btns.get('italic').setActive(doc.queryCommandState('italic'));
+        //btns.get('underline').setActive(doc.queryCommandState('underline'));
+        
+        btns.get('align-left').setActive(doc.queryCommandState('justifyleft'));
+        btns.get('align-center').setActive(doc.queryCommandState('justifycenter'));
+        btns.get('align-right').setActive(doc.queryCommandState('justifyright'));
+        
+        //btns[frameId + '-insertorderedlist').setActive(doc.queryCommandState('insertorderedlist'));
+        btns.get('list').setActive(doc.queryCommandState('insertunorderedlist'));
+         /*
+        
+        var ans = this.editorcore.getAllAncestors();
+        if (this.formatCombo) {
+            
+            
+            var store = this.formatCombo.store;
+            this.formatCombo.setValue("");
+            for (var i =0; i < ans.length;i++) {
+                if (ans[i] && store.query('tag',ans[i].tagName.toLowerCase(), false).length) {
+                    // select it..
+                    this.formatCombo.setValue(ans[i].tagName.toLowerCase());
+                    break;
+                }
+            }
+        }
+        
+        
+        
+        // hides menus... - so this cant be on a menu...
+        Roo.bootstrap.MenuMgr.hideAll();
+        */
+        Roo.bootstrap.MenuMgr.hideAll();
+        //this.editorsyncValue();
+    },
+    onFirstFocus: function() {
+        this.buttons.each(function(item){
+           item.enable();
+        });
+    },
+    toggleSourceEdit : function(sourceEditMode){
+        
+          
+        if(sourceEditMode){
+            Roo.log("disabling buttons");
+           this.buttons.each( function(item){
+                if(item.cmd != 'pencil'){
+                    item.disable();
+                }
+            });
+          
+        }else{
+            Roo.log("enabling buttons");
+            if(this.editorcore.initialized){
+                this.buttons.each( function(item){
+                    item.enable();
+                });
+            }
+            
+        }
+        Roo.log("calling toggole on editor");
+        // tell the editor that it's been pressed..
+        this.editor.toggleSourceEdit(sourceEditMode);
+       
+    }
+});
+
+
+
+
+
+/**
+ * @class Roo.bootstrap.Table.AbstractSelectionModel
+ * @extends Roo.util.Observable
+ * Abstract base class for grid SelectionModels.  It provides the interface that should be
+ * implemented by descendant classes.  This class should not be directly instantiated.
+ * @constructor
+ */
+Roo.bootstrap.Table.AbstractSelectionModel = function(){
+    this.locked = false;
+    Roo.bootstrap.Table.AbstractSelectionModel.superclass.constructor.call(this);
+};
+
+
+Roo.extend(Roo.bootstrap.Table.AbstractSelectionModel, Roo.util.Observable,  {
+    /** @ignore Called by the grid automatically. Do not call directly. */
+    init : function(grid){
+        this.grid = grid;
+        this.initEvents();
+    },
+
+    /**
+     * Locks the selections.
+     */
+    lock : function(){
+        this.locked = true;
+    },
+
+    /**
+     * Unlocks the selections.
+     */
+    unlock : function(){
+        this.locked = false;
+    },
+
+    /**
+     * Returns true if the selections are locked.
+     * @return {Boolean}
+     */
+    isLocked : function(){
+        return this.locked;
+    }
+});
+/**
+ * @extends Roo.bootstrap.Table.AbstractSelectionModel
+ * @class Roo.bootstrap.Table.RowSelectionModel
+ * The default SelectionModel used by {@link Roo.bootstrap.Table}.
+ * It supports multiple selections and keyboard selection/navigation. 
+ * @constructor
+ * @param {Object} config
+ */
+
+Roo.bootstrap.Table.RowSelectionModel = function(config){
+    Roo.apply(this, config);
+    this.selections = new Roo.util.MixedCollection(false, function(o){
+        return o.id;
+    });
+
+    this.last = false;
+    this.lastActive = false;
+
+    this.addEvents({
+        /**
+	     * @event selectionchange
+	     * Fires when the selection changes
+	     * @param {SelectionModel} this
+	     */
+	    "selectionchange" : true,
+        /**
+	     * @event afterselectionchange
+	     * Fires after the selection changes (eg. by key press or clicking)
+	     * @param {SelectionModel} this
+	     */
+	    "afterselectionchange" : true,
+        /**
+	     * @event beforerowselect
+	     * Fires when a row is selected being selected, return false to cancel.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected index
+	     * @param {Boolean} keepExisting False if other selections will be cleared
+	     */
+	    "beforerowselect" : true,
+        /**
+	     * @event rowselect
+	     * Fires when a row is selected.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected index
+	     * @param {Roo.data.Record} r The record
+	     */
+	    "rowselect" : true,
+        /**
+	     * @event rowdeselect
+	     * Fires when a row is deselected.
+	     * @param {SelectionModel} this
+	     * @param {Number} rowIndex The selected index
+	     */
+        "rowdeselect" : true
+    });
+    Roo.bootstrap.Table.RowSelectionModel.superclass.constructor.call(this);
+    this.locked = false;
+};
+
+Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSelectionModel,  {
+    /**
+     * @cfg {Boolean} singleSelect
+     * True to allow selection of only one row at a time (defaults to false)
+     */
+    singleSelect : false,
+
+    // private
+    initEvents : function(){
+
+        if(!this.grid.enableDragDrop && !this.grid.enableDrag){
+            this.grid.on("mousedown", this.handleMouseDown, this);
+        }else{ // allow click to work like normal
+            this.grid.on("rowclick", this.handleDragableRowClick, this);
+        }
+
+        this.rowNav = new Roo.KeyNav(this.grid.getGridEl(), {
+            "up" : function(e){
+                if(!e.shiftKey){
+                    this.selectPrevious(e.shiftKey);
+                }else if(this.last !== false && this.lastActive !== false){
+                    var last = this.last;
+                    this.selectRange(this.last,  this.lastActive-1);
+                    this.grid.getView().focusRow(this.lastActive);
+                    if(last !== false){
+                        this.last = last;
+                    }
+                }else{
+                    this.selectFirstRow();
+                }
+                this.fireEvent("afterselectionchange", this);
+            },
+            "down" : function(e){
+                if(!e.shiftKey){
+                    this.selectNext(e.shiftKey);
+                }else if(this.last !== false && this.lastActive !== false){
+                    var last = this.last;
+                    this.selectRange(this.last,  this.lastActive+1);
+                    this.grid.getView().focusRow(this.lastActive);
+                    if(last !== false){
+                        this.last = last;
+                    }
+                }else{
+                    this.selectFirstRow();
+                }
+                this.fireEvent("afterselectionchange", this);
+            },
+            scope: this
+        });
+
+        var view = this.grid.view;
+        view.on("refresh", this.onRefresh, this);
+        view.on("rowupdated", this.onRowUpdated, this);
+        view.on("rowremoved", this.onRemove, this);
+    },
+
+    // private
+    onRefresh : function(){
+        var ds = this.grid.dataSource, i, v = this.grid.view;
+        var s = this.selections;
+        s.each(function(r){
+            if((i = ds.indexOfId(r.id)) != -1){
+                v.onRowSelect(i);
+            }else{
+                s.remove(r);
+            }
+        });
+    },
+
+    // private
+    onRemove : function(v, index, r){
+        this.selections.remove(r);
+    },
+
+    // private
+    onRowUpdated : function(v, index, r){
+        if(this.isSelected(r)){
+            v.onRowSelect(index);
+        }
+    },
+
+    /**
+     * Select records.
+     * @param {Array} records The records to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectRecords : function(records, keepExisting){
+        if(!keepExisting){
+            this.clearSelections();
+        }
+        var ds = this.grid.dataSource;
+        for(var i = 0, len = records.length; i < len; i++){
+            this.selectRow(ds.indexOf(records[i]), true);
+        }
+    },
+
+    /**
+     * Gets the number of selected rows.
+     * @return {Number}
+     */
+    getCount : function(){
+        return this.selections.length;
+    },
+
+    /**
+     * Selects the first row in the grid.
+     */
+    selectFirstRow : function(){
+        this.selectRow(0);
+    },
+
+    /**
+     * Select the last row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectLastRow : function(keepExisting){
+        this.selectRow(this.grid.dataSource.getCount() - 1, keepExisting);
+    },
+
+    /**
+     * Selects the row immediately following the last selected row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectNext : function(keepExisting){
+        if(this.last !== false && (this.last+1) < this.grid.dataSource.getCount()){
+            this.selectRow(this.last+1, keepExisting);
+            this.grid.getView().focusRow(this.last);
+        }
+    },
+
+    /**
+     * Selects the row that precedes the last selected row.
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectPrevious : function(keepExisting){
+        if(this.last){
+            this.selectRow(this.last-1, keepExisting);
+            this.grid.getView().focusRow(this.last);
+        }
+    },
+
+    /**
+     * Returns the selected records
+     * @return {Array} Array of selected records
+     */
+    getSelections : function(){
+        return [].concat(this.selections.items);
+    },
+
+    /**
+     * Returns the first selected record.
+     * @return {Record}
+     */
+    getSelected : function(){
+        return this.selections.itemAt(0);
+    },
+
+
+    /**
+     * Clears all selections.
+     */
+    clearSelections : function(fast){
+        if(this.locked) return;
+        if(fast !== true){
+            var ds = this.grid.dataSource;
+            var s = this.selections;
+            s.each(function(r){
+                this.deselectRow(ds.indexOfId(r.id));
+            }, this);
+            s.clear();
+        }else{
+            this.selections.clear();
+        }
+        this.last = false;
+    },
+
+
+    /**
+     * Selects all rows.
+     */
+    selectAll : function(){
+        if(this.locked) return;
+        this.selections.clear();
+        for(var i = 0, len = this.grid.dataSource.getCount(); i < len; i++){
+            this.selectRow(i, true);
+        }
+    },
+
+    /**
+     * Returns True if there is a selection.
+     * @return {Boolean}
+     */
+    hasSelection : function(){
+        return this.selections.length > 0;
+    },
+
+    /**
+     * Returns True if the specified row is selected.
+     * @param {Number/Record} record The record or index of the record to check
+     * @return {Boolean}
+     */
+    isSelected : function(index){
+        var r = typeof index == "number" ? this.grid.dataSource.getAt(index) : index;
+        return (r && this.selections.key(r.id) ? true : false);
+    },
+
+    /**
+     * Returns True if the specified record id is selected.
+     * @param {String} id The id of record to check
+     * @return {Boolean}
+     */
+    isIdSelected : function(id){
+        return (this.selections.key(id) ? true : false);
+    },
+
+    // private
+    handleMouseDown : function(e, t){
+        var view = this.grid.getView(), rowIndex;
+        if(this.isLocked() || (rowIndex = view.findRowIndex(t)) === false){
+            return;
+        };
+        if(e.shiftKey && this.last !== false){
+            var last = this.last;
+            this.selectRange(last, rowIndex, e.ctrlKey);
+            this.last = last; // reset the last
+            view.focusRow(rowIndex);
+        }else{
+            var isSelected = this.isSelected(rowIndex);
+            if(e.button !== 0 && isSelected){
+                view.focusRow(rowIndex);
+            }else if(e.ctrlKey && isSelected){
+                this.deselectRow(rowIndex);
+            }else if(!isSelected){
+                this.selectRow(rowIndex, e.button === 0 && (e.ctrlKey || e.shiftKey));
+                view.focusRow(rowIndex);
+            }
+        }
+        this.fireEvent("afterselectionchange", this);
+    },
+    // private
+    handleDragableRowClick :  function(grid, rowIndex, e) 
+    {
+        if(e.button === 0 && !e.shiftKey && !e.ctrlKey) {
+            this.selectRow(rowIndex, false);
+            grid.view.focusRow(rowIndex);
+             this.fireEvent("afterselectionchange", this);
+        }
+    },
+    
+    /**
+     * Selects multiple rows.
+     * @param {Array} rows Array of the indexes of the row to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectRows : function(rows, keepExisting){
+        if(!keepExisting){
+            this.clearSelections();
+        }
+        for(var i = 0, len = rows.length; i < len; i++){
+            this.selectRow(rows[i], true);
+        }
+    },
+
+    /**
+     * Selects a range of rows. All rows in between startRow and endRow are also selected.
+     * @param {Number} startRow The index of the first row in the range
+     * @param {Number} endRow The index of the last row in the range
+     * @param {Boolean} keepExisting (optional) True to retain existing selections
+     */
+    selectRange : function(startRow, endRow, keepExisting){
+        if(this.locked) return;
+        if(!keepExisting){
+            this.clearSelections();
+        }
+        if(startRow <= endRow){
+            for(var i = startRow; i <= endRow; i++){
+                this.selectRow(i, true);
+            }
+        }else{
+            for(var i = startRow; i >= endRow; i--){
+                this.selectRow(i, true);
+            }
+        }
+    },
+
+    /**
+     * Deselects a range of rows. All rows in between startRow and endRow are also deselected.
+     * @param {Number} startRow The index of the first row in the range
+     * @param {Number} endRow The index of the last row in the range
+     */
+    deselectRange : function(startRow, endRow, preventViewNotify){
+        if(this.locked) return;
+        for(var i = startRow; i <= endRow; i++){
+            this.deselectRow(i, preventViewNotify);
+        }
+    },
+
+    /**
+     * Selects a row.
+     * @param {Number} row The index of the row to select
+     * @param {Boolean} keepExisting (optional) True to keep existing selections
+     */
+    selectRow : function(index, keepExisting, preventViewNotify){
+        if(this.locked || (index < 0 || index >= this.grid.dataSource.getCount())) return;
+        if(this.fireEvent("beforerowselect", this, index, keepExisting) !== false){
+            if(!keepExisting || this.singleSelect){
+                this.clearSelections();
+            }
+            var r = this.grid.dataSource.getAt(index);
+            this.selections.add(r);
+            this.last = this.lastActive = index;
+            if(!preventViewNotify){
+                this.grid.getView().onRowSelect(index);
+            }
+            this.fireEvent("rowselect", this, index, r);
+            this.fireEvent("selectionchange", this);
+        }
+    },
+
+    /**
+     * Deselects a row.
+     * @param {Number} row The index of the row to deselect
+     */
+    deselectRow : function(index, preventViewNotify){
+        if(this.locked) return;
+        if(this.last == index){
+            this.last = false;
+        }
+        if(this.lastActive == index){
+            this.lastActive = false;
+        }
+        var r = this.grid.dataSource.getAt(index);
+        this.selections.remove(r);
+        if(!preventViewNotify){
+            this.grid.getView().onRowDeselect(index);
+        }
+        this.fireEvent("rowdeselect", this, index);
+        this.fireEvent("selectionchange", this);
+    },
+
+    // private
+    restoreLast : function(){
+        if(this._last){
+            this.last = this._last;
+        }
+    },
+
+    // private
+    acceptsNav : function(row, col, cm){
+        return !cm.isHidden(col) && cm.isCellEditable(col, row);
+    },
+
+    // private
+    onEditorKey : function(field, e){
+        var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
+        if(k == e.TAB){
+            e.stopEvent();
+            ed.completeEdit();
+            if(e.shiftKey){
+                newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
+            }else{
+                newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
+            }
+        }else if(k == e.ENTER && !e.ctrlKey){
+            e.stopEvent();
+            ed.completeEdit();
+            if(e.shiftKey){
+                newCell = g.walkCells(ed.row-1, ed.col, -1, this.acceptsNav, this);
+            }else{
+                newCell = g.walkCells(ed.row+1, ed.col, 1, this.acceptsNav, this);
+            }
+        }else if(k == e.ESC){
+            ed.cancelEdit();
+        }
+        if(newCell){
+            g.startEditing(newCell[0], newCell[1]);
+        }
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+/**
+ * @class Roo.bootstrap.PagingToolbar
+ * @extends Roo.Row
+ * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
+ * @constructor
+ * Create a new PagingToolbar
+ * @param {Object} config The config object
+ */
+Roo.bootstrap.PagingToolbar = function(config)
+{
+    // old args format still supported... - xtype is prefered..
+        // created from xtype...
+    var ds = config.dataSource;
+    this.toolbarItems = [];
+    if (config.items) {
+        this.toolbarItems = config.items;
+//        config.items = [];
+    }
+    
+    Roo.bootstrap.PagingToolbar.superclass.constructor.call(this, config);
+    this.ds = ds;
+    this.cursor = 0;
+    if (ds) { 
+        this.bind(ds);
+    }
+    
+    this.navgroup = new Roo.bootstrap.NavGroup({ cls: 'pagination' });
+    
+};
+
+Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
+    /**
+     * @cfg {Roo.data.Store} dataSource
+     * The underlying data store providing the paged data
+     */
+    /**
+     * @cfg {String/HTMLElement/Element} container
+     * container The id or element that will contain the toolbar
+     */
+    /**
+     * @cfg {Boolean} displayInfo
+     * True to display the displayMsg (defaults to false)
+     */
+    /**
+     * @cfg {Number} pageSize
+     * The number of records to display per page (defaults to 20)
+     */
+    pageSize: 20,
+    /**
+     * @cfg {String} displayMsg
+     * The paging status message to display (defaults to "Displaying {start} - {end} of {total}")
+     */
+    displayMsg : 'Displaying {0} - {1} of {2}',
+    /**
+     * @cfg {String} emptyMsg
+     * The message to display when no records are found (defaults to "No data to display")
+     */
+    emptyMsg : 'No data to display',
+    /**
+     * Customizable piece of the default paging text (defaults to "Page")
+     * @type String
+     */
+    beforePageText : "Page",
+    /**
+     * Customizable piece of the default paging text (defaults to "of %0")
+     * @type String
+     */
+    afterPageText : "of {0}",
+    /**
+     * Customizable piece of the default paging text (defaults to "First Page")
+     * @type String
+     */
+    firstText : "First Page",
+    /**
+     * Customizable piece of the default paging text (defaults to "Previous Page")
+     * @type String
+     */
+    prevText : "Previous Page",
+    /**
+     * Customizable piece of the default paging text (defaults to "Next Page")
+     * @type String
+     */
+    nextText : "Next Page",
+    /**
+     * Customizable piece of the default paging text (defaults to "Last Page")
+     * @type String
+     */
+    lastText : "Last Page",
+    /**
+     * Customizable piece of the default paging text (defaults to "Refresh")
+     * @type String
+     */
+    refreshText : "Refresh",
+
+    buttons : false,
+    // private
+    onRender : function(ct, position) 
+    {
+        Roo.bootstrap.PagingToolbar.superclass.onRender.call(this, ct, position);
+        this.navgroup.parentId = this.id;
+        this.navgroup.onRender(this.el, null);
+        // add the buttons to the navgroup
+        
+        if(this.displayInfo){
+            Roo.log(this.el.select('ul.navbar-nav',true).first());
+            this.el.select('ul.navbar-nav',true).first().createChild({cls:'x-paging-info'});
+            this.displayEl = this.el.select('.x-paging-info', true).first();
+//            var navel = this.navgroup.addItem( { tagtype : 'span', html : '', cls : 'x-paging-info', preventDefault : true } );
+//            this.displayEl = navel.el.select('span',true).first();
+        }
+        
+        var _this = this;
+        
+        if(this.buttons){
+            Roo.each(_this.buttons, function(e){
+               Roo.factory(e).onRender(_this.el, null);
+            });
+        }
+            
+        Roo.each(_this.toolbarItems, function(e) {
+            _this.navgroup.addItem(e);
+        });
+        
+        this.first = this.navgroup.addItem({
+            tooltip: this.firstText,
+            cls: "prev",
+            icon : 'fa fa-backward',
+            disabled: true,
+            listeners : { click : this.onClick.createDelegate(this, ["first"]) }
+        });
+        
+        this.prev =  this.navgroup.addItem({
+            tooltip: this.prevText,
+            cls: "prev",
+            icon : 'fa fa-step-backward',
+            disabled: true,
+            listeners : { click :  this.onClick.createDelegate(this, ["prev"]) }
+        });
+    //this.addSeparator();
+        
+        
+        var field = this.navgroup.addItem( {
+            tagtype : 'span',
+            cls : 'x-paging-position',
+            
+            html : this.beforePageText  +
+                '<input type="text" size="3" value="1" class="x-grid-page-number">' +
+                '<span class="x-paging-after">' +  String.format(this.afterPageText, 1) + '</span>'
+         } ); //?? escaped?
+        
+        this.field = field.el.select('input', true).first();
+        this.field.on("keydown", this.onPagingKeydown, this);
+        this.field.on("focus", function(){this.dom.select();});
+    
+    
+        this.afterTextEl =  field.el.select('.x-paging-after',true).first();
+        //this.field.setHeight(18);
+        //this.addSeparator();
+        this.next = this.navgroup.addItem({
+            tooltip: this.nextText,
+            cls: "next",
+            html : ' <i class="fa fa-step-forward">',
+            disabled: true,
+            listeners : { click :  this.onClick.createDelegate(this, ["next"]) }
+        });
+        this.last = this.navgroup.addItem({
+            tooltip: this.lastText,
+            icon : 'fa fa-forward',
+            cls: "next",
+            disabled: true,
+            listeners : { click :  this.onClick.createDelegate(this, ["last"]) }
+        });
+    //this.addSeparator();
+        this.loading = this.navgroup.addItem({
+            tooltip: this.refreshText,
+            icon: 'fa fa-refresh',
+            
+            listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
+        });
+
+    },
+
+    // private
+    updateInfo : function(){
+        if(this.displayEl){
+            var count = this.ds.getCount();
+            var msg = count == 0 ?
+                this.emptyMsg :
+                String.format(
+                    this.displayMsg,
+                    this.cursor+1, this.cursor+count, this.ds.getTotalCount()    
+                );
+            this.displayEl.update(msg);
+        }
+    },
+
+    // private
+    onLoad : function(ds, r, o){
+       this.cursor = o.params ? o.params.start : 0;
+       var d = this.getPageData(),
+            ap = d.activePage,
+            ps = d.pages;
+        
+       this.afterTextEl.dom.innerHTML = String.format(this.afterPageText, d.pages);
+       this.field.dom.value = ap;
+       this.first.setDisabled(ap == 1);
+       this.prev.setDisabled(ap == 1);
+       this.next.setDisabled(ap == ps);
+       this.last.setDisabled(ap == ps);
+       this.loading.enable();
+       this.updateInfo();
+    },
+
+    // private
+    getPageData : function(){
+        var total = this.ds.getTotalCount();
+        return {
+            total : total,
+            activePage : Math.ceil((this.cursor+this.pageSize)/this.pageSize),
+            pages :  total < this.pageSize ? 1 : Math.ceil(total/this.pageSize)
+        };
+    },
+
+    // private
+    onLoadError : function(){
+        this.loading.enable();
+    },
+
+    // private
+    onPagingKeydown : function(e){
+        var k = e.getKey();
+        var d = this.getPageData();
+        if(k == e.RETURN){
+            var v = this.field.dom.value, pageNum;
+            if(!v || isNaN(pageNum = parseInt(v, 10))){
+                this.field.dom.value = d.activePage;
+                return;
+            }
+            pageNum = Math.min(Math.max(1, pageNum), d.pages) - 1;
+            this.ds.load({params:{start: pageNum * this.pageSize, limit: this.pageSize}});
+            e.stopEvent();
+        }
+        else if(k == e.HOME || (k == e.UP && e.ctrlKey) || (k == e.PAGEUP && e.ctrlKey) || (k == e.RIGHT && e.ctrlKey) || k == e.END || (k == e.DOWN && e.ctrlKey) || (k == e.LEFT && e.ctrlKey) || (k == e.PAGEDOWN && e.ctrlKey))
+        {
+          var pageNum = (k == e.HOME || (k == e.DOWN && e.ctrlKey) || (k == e.LEFT && e.ctrlKey) || (k == e.PAGEDOWN && e.ctrlKey)) ? 1 : d.pages;
+          this.field.dom.value = pageNum;
+          this.ds.load({params:{start: (pageNum - 1) * this.pageSize, limit: this.pageSize}});
+          e.stopEvent();
+        }
+        else if(k == e.UP || k == e.RIGHT || k == e.PAGEUP || k == e.DOWN || k == e.LEFT || k == e.PAGEDOWN)
+        {
+          var v = this.field.dom.value, pageNum; 
+          var increment = (e.shiftKey) ? 10 : 1;
+          if(k == e.DOWN || k == e.LEFT || k == e.PAGEDOWN)
+            increment *= -1;
+          if(!v || isNaN(pageNum = parseInt(v, 10))) {
+            this.field.dom.value = d.activePage;
+            return;
+          }
+          else if(parseInt(v, 10) + increment >= 1 & parseInt(v, 10) + increment <= d.pages)
+          {
+            this.field.dom.value = parseInt(v, 10) + increment;
+            pageNum = Math.min(Math.max(1, pageNum + increment), d.pages) - 1;
+            this.ds.load({params:{start: pageNum * this.pageSize, limit: this.pageSize}});
+          }
+          e.stopEvent();
+        }
+    },
+
+    // private
+    beforeLoad : function(){
+        if(this.loading){
+            this.loading.disable();
+        }
+    },
+
+    // private
+    onClick : function(which){
+        var ds = this.ds;
+        if (!ds) {
+            return;
+        }
+        switch(which){
+            case "first":
+                ds.load({params:{start: 0, limit: this.pageSize}});
+            break;
+            case "prev":
+                ds.load({params:{start: Math.max(0, this.cursor-this.pageSize), limit: this.pageSize}});
+            break;
+            case "next":
+                ds.load({params:{start: this.cursor+this.pageSize, limit: this.pageSize}});
+            break;
+            case "last":
+                var total = ds.getTotalCount();
+                var extra = total % this.pageSize;
+                var lastStart = extra ? (total - extra) : total-this.pageSize;
+                ds.load({params:{start: lastStart, limit: this.pageSize}});
+            break;
+            case "refresh":
+                ds.load({params:{start: this.cursor, limit: this.pageSize}});
+            break;
+        }
+    },
+
+    /**
+     * Unbinds the paging toolbar from the specified {@link Roo.data.Store}
+     * @param {Roo.data.Store} store The data store to unbind
+     */
+    unbind : function(ds){
+        ds.un("beforeload", this.beforeLoad, this);
+        ds.un("load", this.onLoad, this);
+        ds.un("loadexception", this.onLoadError, this);
+        ds.un("remove", this.updateInfo, this);
+        ds.un("add", this.updateInfo, this);
+        this.ds = undefined;
+    },
+
+    /**
+     * Binds the paging toolbar to the specified {@link Roo.data.Store}
+     * @param {Roo.data.Store} store The data store to bind
+     */
+    bind : function(ds){
+        ds.on("beforeload", this.beforeLoad, this);
+        ds.on("load", this.onLoad, this);
+        ds.on("loadexception", this.onLoadError, this);
+        ds.on("remove", this.updateInfo, this);
+        ds.on("add", this.updateInfo, this);
+        this.ds = ds;
+    }
+});/*
+ * - LGPL
+ *
+ * element
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.MessageBar
+ * @extends Roo.bootstrap.Component
+ * Bootstrap MessageBar class
+ * @cfg {String} html contents of the MessageBar
+ * @cfg {String} weight (info | success | warning | danger) default info
+ * @cfg {String} beforeClass insert the bar before the given class
+ * @cfg {Boolean} closable (true | false) default false
+ * @cfg {Boolean} fixed (true | false) default false, fix the bar at the top
+ * 
+ * @constructor
+ * Create a new Element
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.MessageBar = function(config){
+    Roo.bootstrap.MessageBar.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
+    
+    html: '',
+    weight: 'info',
+    closable: false,
+    fixed: false,
+    beforeClass: 'bootstrap-sticky-wrap',
+    
+    getAutoCreate : function(){
+        
+        var cfg = {
+            tag: 'div',
+            cls: 'alert alert-dismissable alert-' + this.weight,
+            cn: [
+                {
+                    tag: 'span',
+                    cls: 'message',
+                    html: this.html || ''
+                }
+            ]
+        }
+        
+        if(this.fixed){
+            cfg.cls += ' alert-messages-fixed';
+        }
+        
+        if(this.closable){
+            cfg.cn.push({
+                tag: 'button',
+                cls: 'close',
+                html: 'x'
+            });
+        }
+        
+        return cfg;
+    },
+    
+    onRender : function(ct, position)
+    {
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        
+        if(!this.el){
+            var cfg = Roo.apply({},  this.getAutoCreate());
+            cfg.id = Roo.id();
+            
+            if (this.cls) {
+                cfg.cls += ' ' + this.cls;
+            }
+            if (this.style) {
+                cfg.style = this.style;
+            }
+            this.el = Roo.get(document.body).createChild(cfg, Roo.select('.'+this.beforeClass, true).first());
+            
+            this.el.setVisibilityMode(Roo.Element.DISPLAY);
+        }
+        
+        this.el.select('>button.close').on('click', this.hide, this);
+        
+    },
+    
+    show : function()
+    {
+        if (!this.rendered) {
+            this.render();
+        }
+        
+        this.el.show();
+        
+        this.fireEvent('show', this);
+        
+    },
+    
+    hide : function()
+    {
+        if (!this.rendered) {
+            this.render();
+        }
+        
+        this.el.hide();
+        
+        this.fireEvent('hide', this);
+    },
+    
+    update : function()
+    {
+//        var e = this.el.dom.firstChild;
+//        
+//        if(this.closable){
+//            e = e.nextSibling;
+//        }
+//        
+//        e.data = this.html || '';
+
+        this.el.select('>.message', true).first().dom.innerHTML = this.html || '';
+    }
+   
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * Graph
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.Graph
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Graph class
+> Prameters
+ -sm {number} sm 4
+ -md {number} md 5
+ -graphtype {String} graphtype bar | vbar | pie
+ -g_x {number}  x coodinator | centre x (pie)
+ -g_y {number}  y coodinator | centre y (pie)
+ -g_r {number}  radius (pie)
+ -g_height {number} height of the chart (respected by all elements in the set)
+ -g_width {number}  width of the chart (respected by all elements in the set)
+ -{Array}  values
+ -opts (object) options for the chart 
+     o {
+     o type (string) type of endings of the bar. Default: 'square'. Other options are: 'round', 'sharp', 'soft'.
+     o gutter (number)(string) default '20%' (WHAT DOES IT DO?)
+     o vgutter (number)
+     o colors (array) colors be used repeatedly to plot the bars. If multicolumn bar is used each sequence of bars with use a different color.
+     o stacked (boolean) whether or not to tread values as in a stacked bar chart
+     o to
+     o stretch (boolean)
+     o }
+ -opts (object) options for the pie
+     o{
+     o cut
+     o startAngle (number)
+     o endAngle (number)
+     } 
+ *
+ * @constructor
+ * Create a new Input
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Graph = function(config){
+    Roo.bootstrap.Graph.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+        // img events
+        /**
+         * @event click
+         * The img click event for the img.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
+};
+
+Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
+    
+    sm: 4,
+    md: 5,
+    graphtype: 'bar',
+    g_height: 250,
+    g_width: 650,
+    g_x: 50,
+    g_y: 50,
+    g_r: 30,
+    opts:{
+        //g_colors: this.colors,
+        g_type: 'soft',
+        g_gutter: '20%'
+
+    },
+
+    getAutoCreate : function(){
+        
+        var cfg = {
+            tag: 'div',
+            html : null
+        }
+        
+        
+        return  cfg;
+    },
+
+    onRender : function(ct,position){
+        Roo.bootstrap.Graph.superclass.onRender.call(this,ct,position);
+        var r = {};
+        this.raphael = Raphael(this.el.dom),
+                    data1 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    data2 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    data3 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    txtattr = { font: "12px 'Fontin Sans', Fontin-Sans, sans-serif" };
+                /*
+                r.text(160, 10, "Single Series Chart").attr(txtattr);
+                r.text(480, 10, "Multiline Series Chart").attr(txtattr);
+                r.text(160, 250, "Multiple Series Stacked Chart").attr(txtattr);
+                r.text(480, 250, 'Multiline Series Stacked Vertical Chart. Type "round"').attr(txtattr);
+                
+                r.barchart(10, 10, 300, 220, [[55, 20, 13, 32, 5, 1, 2, 10]], 0, {type: "sharp"});
+                r.barchart(330, 10, 300, 220, data1);
+                r.barchart(10, 250, 300, 220, data2, {stacked: true});
+                r.barchart(330, 250, 300, 220, data3, {stacked: true, type: "round"});
+                */
+                
+                // var xdata = [55, 20, 13, 32, 5, 1, 2, 10,5 , 10];
+                // r.barchart(30, 30, 560, 250,  xdata, {
+                //    labels : [55, 20, 13, 32, 5, 1, 2, 10,5 , 10],
+                //     axis : "0 0 1 1",
+                //     axisxlabels :  xdata
+                //     //yvalues : cols,
+                   
+                // });
+
+    },
+
+    load : function(graphtype,xdata,opts){
+        this.raphael.clear();
+        if(!graphtype) {
+            graphtype = this.graphtype;
+        }
+        if(!opts){
+            opts = this.opts;
+        }
+        switch(graphtype){
+            case 'bar':
+                this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts);
+                break;
+            case 'hbar':
+                this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts);
+                break;
+            case 'pie':
+                this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts);
+                break;
+
+        }
+    },
+    
+    initEvents: function() {
+        
+        if(!this.href){
+            this.el.on('click', this.onClick, this);
+        }
+    },
+    
+    onClick : function(e)
+    {
+        Roo.log('img onclick');
+        this.fireEvent('click', this, e);
+    }
+   
+});
+
+ 
+/*
+ * - LGPL
+ *
+ * numberBox
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.dash.NumberBox
+ * @extends Roo.bootstrap.Component
+ * Bootstrap NumberBox class
+ * @cfg {number} sm 4
+ * @cfg {number} md 5
+ * @cfg {String} headline
+ * @cfg {String} title
+ * @cfg {String} more info url
+ * @cfg {String} more info text
+ * @cfg {Array}  opts values
+ * 
+ * @constructor
+ * Create a new Input
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.dash.NumberBox = function(config){
+    Roo.bootstrap.dash.NumberBox.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+        // img events
+        /**
+         * @event click
+         * The img click event for the img.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
+};
+
+Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
+    
+    width: 200,
+    height: 150,
+    headline: '',
+    title: 'Title',
+    more_url: '',
+    more_text: '',
+
+    getAutoCreate : function(){
+        
+        var cfg = {
+            tag: 'div',
+            cls: '',
+            html : null,
+            cn: [
+            {
+                tag: 'h',
+                cls: '',
+                html: this.headline ? this.headline : 'Headline'
+            },
+            {
+                tag: 'p',
+                cls: '',
+                html: this.title ? this.title : 'Title'
+            },
+            {
+                tag: 'div',
+                cls: '',
+                html : null,
+                cn: [{
+                    tag: 'a',
+                    href: this.more_url,
+                    cls: '',
+                    html: this.more_text
+                }]
+
+            }]
+        }
+    
+        
+        return  cfg;
+    },
+
+    // onRender : function(ct,position){
+    //     Roo.bootstrap.Graph.superclass.onRender.call(this,ct,position);
+                
+    // },
+
+    // load : function(graphtype,xdata){
+    //     this.raphael.clear();
+    //     if(!graphtype) {
+    //         graphtype = this.graphtype;
+    //     }
+    //     switch(graphtype){
+    //         case 'bar':
+    //             this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
+    //             break;
+    //         case 'hbar':
+    //             this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
+    //             break;
+    //         case 'pie':
+    //             this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,this.opts);
+    //             break;
+
+    //     }
+    // },
+    
+    initEvents: function() {
+        
+        if(!this.href){
+            this.el.on('click', this.onClick, this);
+        }
+    },
+    
+    onClick : function(e)
+    {
+        Roo.log('img onclick');
+        this.fireEvent('click', this, e);
+    }
+   
+});
+
  
