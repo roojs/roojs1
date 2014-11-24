@@ -67,6 +67,7 @@
                                                     "$ xns" : "Roo.bootstrap.dash",
                                                     "width" : "col-md-5",
                                                     "String title" : "New Orders",
+                                                    "String style" : "col-md-6",
                                                     "height" : 150
                                                 }
                                             ]
