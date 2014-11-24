@@ -1,0 +1,123 @@
+/*
+ * - LGPL
+ *
+ * numberBox
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.NumberBox
+ * @extends Roo.bootstrap.Component
+ * Bootstrap NumberBox class
+ * @cfg {number} sm 4
+ * @cfg {number} md 5
+ * @cfg {String} headline
+ * @cfg {String} title
+ * @cfg {String} more info url
+ * @cfg {String} more info text
+ * @cfg {Array}  opts values
+ * 
+ * @constructor
+ * Create a new Input
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.NumberBox = function(config){
+    Roo.bootstrap.NumberBox.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+        // img events
+        /**
+         * @event click
+         * The img click event for the img.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
+};
+
+Roo.extend(Roo.bootstrap.NumberBox, Roo.bootstrap.Component,  {
+    
+    width: 200,
+    height: 150,
+    headline: '',
+    title: 'Title',
+    more_url: '',
+    more_text: '',
+
+    getAutoCreate : function(){
+        
+        var cfg = {
+            tag: 'div',
+            cls: '',
+            html : null,
+            cn: [
+            {
+                tag: 'h',
+                cls: '',
+                html: this.headline ? this.headline : 'Headline'
+            },
+            {
+                tag: 'p',
+                cls: '',
+                html: this.title ? this.title : 'Title'
+            },
+            {
+                tag: 'div',
+                cls: '',
+                html : null,
+                cn: [{
+                    tag: 'a',
+                    href: this.more_url,
+                    cls: '',
+                    html: this.more_text
+                }]
+
+            }]
+        }
+    
+        
+        return  cfg;
+    },
+
+    // onRender : function(ct,position){
+    //     Roo.bootstrap.Graph.superclass.onRender.call(this,ct,position);
+                
+    // },
+
+    // load : function(graphtype,xdata){
+    //     this.raphael.clear();
+    //     if(!graphtype) {
+    //         graphtype = this.graphtype;
+    //     }
+    //     switch(graphtype){
+    //         case 'bar':
+    //             this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
+    //             break;
+    //         case 'hbar':
+    //             this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
+    //             break;
+    //         case 'pie':
+    //             this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,this.opts);
+    //             break;
+
+    //     }
+    // },
+    
+    initEvents: function() {
+        
+        if(!this.href){
+            this.el.on('click', this.onClick, this);
+        }
+    },
+    
+    onClick : function(e)
+    {
+        Roo.log('img onclick');
+        this.fireEvent('click', this, e);
+    }
+   
+});
+
+ 

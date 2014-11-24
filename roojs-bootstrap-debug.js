@@ -18165,12 +18165,12 @@ Roo.extend(Roo.bootstrap.NumberBox, Roo.bootstrap.Component,  {
             {
                 tag: 'h',
                 cls: '',
-                html: this.headline ? this.headline : 'Headline',
+                html: this.headline ? this.headline : 'Headline'
             },
             {
                 tag: 'p',
                 cls: '',
-                html: this.title ? this.title : 'Title',
+                html: this.title ? this.title : 'Title'
             },
             {
                 tag: 'div',
