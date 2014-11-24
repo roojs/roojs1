@@ -46,7 +46,7 @@
                                         {
                                             "xtype" : "Header",
                                             "$ xns" : "Roo.bootstrap",
-                                            "String html" : "General Form Elements  <small> Preview </small>"
+                                            "String html" : "Dashboard  <small> Control panel </small>"
                                         }
                                     ]
                                 },

@@ -59,7 +59,7 @@ dashboard3 = new Roo.XComponent({
                                             '|xns' : 'Roo.bootstrap',
                                             xtype : 'Header',
                                             xns : Roo.bootstrap,
-                                            html : 'General Form Elements  <small> Preview </small>'
+                                            html : 'Dashboard  <small> Control panel </small>'
                                         }
                                     ]
 
