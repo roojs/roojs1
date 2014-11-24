@@ -278,10 +278,13 @@
                                             "$ xns" : "Roo.bootstrap",
                                             "items" : [
                                                 {
+                                                    "String hideMode" : "",
                                                     "xtype" : "NumberBox",
                                                     "String headline" : 150,
                                                     "$ xns" : "Roo.bootstrap.dash",
-                                                    "String title" : "New Order"
+                                                    "String title" : "New Order",
+                                                    "String style" : "",
+                                                    "number md" : 3
                                                 }
                                             ]
                                         }
