@@ -15,8 +15,8 @@
  * @cfg {number} md 5
  * @cfg {String} headline
  * @cfg {String} title
- * @cfg {String} more info url
- * @cfg {String} more info text
+ * @cfg {String} more_url
+ * @cfg {String} more_text
  * @cfg {Array}  opts values
  * 
  * @constructor
