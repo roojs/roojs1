@@ -7,7 +7,7 @@
 
 
 /**
- * @class Roo.bootstrap.NumberBox
+ * @class Roo.bootstrap.dash.NumberBox
  * @extends Roo.bootstrap.Component
  * Bootstrap NumberBox class
  * @cfg {number} sm 4
@@ -23,8 +23,8 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.NumberBox = function(config){
-    Roo.bootstrap.NumberBox.superclass.constructor.call(this, config);
+Roo.bootstrap.dash.NumberBox = function(config){
+    Roo.bootstrap.dash.NumberBox.superclass.constructor.call(this, config);
     
     this.addEvents({
         // img events
@@ -37,7 +37,7 @@ Roo.bootstrap.NumberBox = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.NumberBox, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     
     width: 200,
     height: 150,
