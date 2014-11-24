@@ -13,6 +13,7 @@ cat      roojs-core.js  roojs-ui.js >  roojs-all.js
 cat roojs-core-debug.js  roojs-ui-debug.js > roojs-debug.js
 
 
+#build bootstrap library
 seed ../gnome.introspection-doc-generator/pack.js \
      -f buildSDK/dependancy_bootstrap.txt -o roojs-bootstrap.js -O roojs-bootstrap-debug.js
 
@@ -25,10 +26,8 @@ seed ../gnome.introspection-doc-generator/pack.js \
   
 
      
-#seed ../gnome.introspection-doc-generator/pack.js \
-#    -f buildSDK/dependancy_core.txt \
-#    
-#docs.. 
+
+#build the docs.. (and properties file)
 seed ../gnome.introspection-doc-generator/jsdocbuild.js --baseDir ../roojs1 \
    --target ../roojs1/docs --conf ../roojs1/buildSDK/jsdoc.cfg.json \
    --cacheDirectory /tmp/roocache/
