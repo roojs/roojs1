@@ -276,6 +276,10 @@
                                                     ]
                                                 }
                                             ]
+                                        },
+                                        {
+                                            "xtype" : "Container",
+                                            "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
                                 }
