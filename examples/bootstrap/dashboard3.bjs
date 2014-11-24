@@ -279,7 +279,8 @@
                                             "items" : [
                                                 {
                                                     "xtype" : "NumberBox",
-                                                    "$ xns" : "Roo.bootstrap.dash"
+                                                    "$ xns" : "Roo.bootstrap.dash",
+                                                    "String title" : ""
                                                 }
                                             ]
                                         }

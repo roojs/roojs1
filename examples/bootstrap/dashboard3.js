@@ -345,7 +345,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap.dash',
                                                     xtype : 'NumberBox',
-                                                    xns : Roo.bootstrap.dash
+                                                    xns : Roo.bootstrap.dash,
+                                                    title : ""
                                                 }
                                             ]
 
