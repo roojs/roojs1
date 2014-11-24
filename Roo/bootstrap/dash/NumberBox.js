@@ -10,6 +10,7 @@
  * @class Roo.bootstrap.dash.NumberBox
  * @extends Roo.bootstrap.Component
  * Bootstrap NumberBox class
+ * @cfg {String} background color 
  * @cfg {number} sm 4
  * @cfg {number} md 5
  * @cfg {String} headline
