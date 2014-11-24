@@ -277,21 +277,7 @@
                                         },
                                         {
                                             "xtype" : "Container",
-                                            "$ xns" : "Roo.bootstrap",
-                                            "items" : [
-                                                {
-                                                    "String hideMode" : "",
-                                                    "string bgcolor" : "green",
-                                                    "xtype" : "md",
-                                                    "String headline" : 150,
-                                                    "int height" : 110,
-                                                    "$ xns" : "Roo.bootstrap.dash",
-                                                    "width" : 200,
-                                                    "String title" : "New Orders",
-                                                    "String style" : "",
-                                                    "number md" : 5
-                                                }
-                                            ]
+                                            "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
                                 }
