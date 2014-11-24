@@ -40,6 +40,7 @@ Roo.bootstrap.dash.NumberBox = function(config){
 
 Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     
+    bg_color:'',
     width: 200,
     height: 150,
     headline: '',
@@ -51,7 +52,7 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag: 'div',
-            cls: '',
+            cls: this.bg_color? this.bg_color : 'bg_aqua',
             html : null,
             cn: [
             {
