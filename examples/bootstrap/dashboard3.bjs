@@ -221,7 +221,7 @@
                                                                                     "$ xns" : "Roo.bootstrap",
                                                                                     "items" : [
                                                                                         {
-                                                                                            "Number md" : 3,
+                                                                                            "Number md" : 2,
                                                                                             "Boolean readOnly" : true,
                                                                                             "xtype" : "Input",
                                                                                             "string placeholder" : "md 3",
