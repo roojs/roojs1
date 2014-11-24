@@ -43,7 +43,7 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     
     bg_color:'bg-aqua',
     width: 200,
-    height: 150,
+    height: 50,
     headline: '',
     title: 'Title',
     more_url: '',
