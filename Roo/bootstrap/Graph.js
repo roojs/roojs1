@@ -1,7 +1,7 @@
 /*
  * - LGPL
  *
- * image
+ * Graph
  * 
  */
 
@@ -10,15 +10,33 @@
  * @class Roo.bootstrap.Graph
  * @extends Roo.bootstrap.Component
  * Bootstrap Graph class
- * @cfg {number} sm 4
- * @cfg {number} md 5
- * @cfg {String} graphtype bar | vbar | pie
- * @cfg {number} g_x x coodinator
- * @cfg {number} g_y y coodinator
- * @cfg {number} g_height height
- * @cfg {number} g_width width
- * @cfg {Array}  opts values
- * 
+> Prameters
+ -sm {number} sm 4
+ -md {number} md 5
+ -graphtype {String} graphtype bar | vbar | pie
+ -g_x {number}  x coodinator | centre x (pie)
+ -g_y {number}  y coodinator | centre y (pie)
+ -g_r {number}  radius (pie)
+ -g_height {number} height of the chart (respected by all elements in the set)
+ -g_width {number}  width of the chart (respected by all elements in the set)
+ -{Array}  values
+ -opts (object) options for the chart 
+     o {
+     o type (string) type of endings of the bar. Default: 'square'. Other options are: 'round', 'sharp', 'soft'.
+     o gutter (number)(string) default '20%' (WHAT DOES IT DO?)
+     o vgutter (number)
+     o colors (array) colors be used repeatedly to plot the bars. If multicolumn bar is used each sequence of bars with use a different color.
+     o stacked (boolean) whether or not to tread values as in a stacked bar chart
+     o to
+     o stretch (boolean)
+     o }
+ -opts (object) options for the pie
+     o{
+     o cut
+     o startAngle (number)
+     o endAngle (number)
+     } 
+ *
  * @constructor
  * Create a new Input
  * @param {Object} config The config object
@@ -42,25 +60,23 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
     
     sm: 4,
     md: 5,
-    height:100,
-    width:100,
-
     graphtype: 'bar',
     g_height: 250,
-    g_width: 560,
-    g_x: 30,
-    g_y:30,
+    g_width: 650,
+    g_x: 50,
+    g_y: 50,
+    g_r: 30,
     opts:{
         //g_colors: this.colors,
-        g_type: 'square',
+        g_type: 'soft',
         g_gutter: '20%'
+
     },
 
     getAutoCreate : function(){
         
         var cfg = {
             tag: 'div',
-            //cls: (this.imgResponsive) ? 'img-responsive' : '',
             html : null
         }
         
@@ -99,20 +115,23 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 
     },
 
-    load : function(graphtype,xdata){
+    load : function(graphtype,xdata,opts){
         this.raphael.clear();
         if(!graphtype) {
             graphtype = this.graphtype;
         }
+        if(!opts){
+            opts = this.opts;
+        }
         switch(graphtype){
             case 'bar':
-                this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
+                this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts);
                 break;
             case 'hbar':
-                this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
+                this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts);
                 break;
             case 'pie':
-                //this.raphael.pie(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
+                this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts);
                 break;
 
         }
