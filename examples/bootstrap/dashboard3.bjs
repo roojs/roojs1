@@ -286,7 +286,8 @@
                                                     "$ xns" : "Roo.bootstrap.dash",
                                                     "String title" : "New Orders",
                                                     "String style" : "",
-                                                    "number md" : 3
+                                                    "number md" : 3,
+                                                    "string name" : 444
                                                 }
                                             ]
                                         }
