@@ -333,42 +333,6 @@ dashboard3 = new Roo.XComponent({
                                                         }
                                                     ]
 
-                                                },
-                                            	{
-                                                    '|xns' : 'Roo.bootstrap',
-                                                    md : 6,
-                                                    xtype : 'Column',
-                                                    xns : Roo.bootstrap,
-                                                    sm : 12,
-                                                    items : [
-                                                    	{
-                                                            '|xns' : 'Roo.bootstrap',
-                                                            cls : 'box box-warning',
-                                                            xtype : 'Container',
-                                                            xns : Roo.bootstrap,
-                                                            items : [
-                                                            	{
-                                                                    '|xns' : 'Roo.bootstrap',
-                                                                    cls : 'box-header',
-                                                                    xtype : 'Container',
-                                                                    xns : Roo.bootstrap,
-                                                                    items : [
-                                                                    	{
-                                                                            '|xns' : 'Roo.bootstrap',
-                                                                            cls : 'box-title',
-                                                                            xtype : 'Header',
-                                                                            xns : Roo.bootstrap,
-                                                                            level : 3,
-                                                                            html : 'General Elements'
-                                                                        }
-                                                                    ]
-
-                                                                }
-                                                            ]
-
-                                                        }
-                                                    ]
-
                                                 }
                                             ]
 
