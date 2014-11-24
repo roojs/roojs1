@@ -281,10 +281,11 @@
                                             "items" : [
                                                 {
                                                     "bgcolor" : "red",
-                                                    "xtype" : "NumberBox",
+                                                    "xtype" : 150,
                                                     "String headline" : 150,
                                                     "$ xns" : "Roo.bootstrap.dash",
-                                                    "String title" : "New Orders"
+                                                    "String title" : "New Orders",
+                                                    "height" : 0
                                                 }
                                             ]
                                         }
