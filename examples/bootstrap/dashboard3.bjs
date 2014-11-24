@@ -275,7 +275,13 @@
                                         },
                                         {
                                             "xtype" : "Container",
-                                            "$ xns" : "Roo.bootstrap"
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "xtype" : "NumberBox",
+                                                    "$ xns" : "Roo.bootstrap.dash"
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
