@@ -281,7 +281,6 @@
                                                 {
                                                     "String hideMode" : "",
                                                     "String cls" : "bg-aqua",
-                                                    "String more" : 4444,
                                                     "string bgcolor" : "green",
                                                     "xtype" : "NumberBox",
                                                     "String headline" : 150,
@@ -289,8 +288,7 @@
                                                     "$ xns" : "Roo.bootstrap.dash",
                                                     "String title" : "New Orders",
                                                     "String style" : "",
-                                                    "number md" : 3,
-                                                    "string name" : 444
+                                                    "number md" : 3
                                                 }
                                             ]
                                         }
