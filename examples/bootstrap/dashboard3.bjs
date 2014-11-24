@@ -284,6 +284,7 @@
                                                     "String more" : 4444,
                                                     "xtype" : "NumberBox",
                                                     "String headline" : 150,
+                                                    "int height" : 150,
                                                     "$ xns" : "Roo.bootstrap.dash",
                                                     "String title" : "New Orders",
                                                     "String style" : "",
