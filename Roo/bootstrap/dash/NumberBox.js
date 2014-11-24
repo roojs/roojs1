@@ -23,7 +23,7 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.dash = {};
+Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 Roo.bootstrap.dash.NumberBox = function(config){
     Roo.bootstrap.dash.NumberBox.superclass.constructor.call(this, config);
     
