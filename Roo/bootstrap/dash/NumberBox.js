@@ -55,7 +55,7 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
             html : null,
             cn: [
             {
-                tag: 'h',
+                tag: 'h3',
                 cls: '',
                 html: this.headline ? this.headline : 'Headline'
             },
