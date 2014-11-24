@@ -281,7 +281,6 @@
                                             "items" : [
                                                 {
                                                     "String hideMode" : "",
-                                                    "String cls" : "bg-aqua",
                                                     "string bgcolor" : "green",
                                                     "xtype" : "NumberBox",
                                                     "String headline" : 150,
