@@ -280,7 +280,8 @@
                                             "$ xns" : "Roo.bootstrap",
                                             "items" : [
                                                 {
-                                                    "xtype" : "NumberBox",
+                                                    "bgcolor" : "",
+                                                    "xtype" : "red",
                                                     "String headline" : 150,
                                                     "$ xns" : "Roo.bootstrap.dash",
                                                     "String title" : "New Orders"
