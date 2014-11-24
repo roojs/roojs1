@@ -15,6 +15,7 @@
         "Roo/bootstrap",
         "Roo/bootstrap/Table",
         "Roo/bootstrap/htmleditor",
+        "Roo/bootstrap/dash",
         "Roo/mailer"
     ],
     "exclude-src" : [
