@@ -91,3 +91,7 @@ Roo.bootstrap.Table.RowSelectionModel
 
 Roo.bootstrap.PagingToolbar
 Roo.bootstrap.MessageBar
+
+Roo.bootstrap.dash.NumberBox
+
+
