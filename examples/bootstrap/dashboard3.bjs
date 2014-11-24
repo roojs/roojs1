@@ -281,7 +281,7 @@
                                                     "xtype" : "NumberBox",
                                                     "String headline" : 150,
                                                     "$ xns" : "Roo.bootstrap.dash",
-                                                    "String title" : ""
+                                                    "String title" : "New Order"
                                                 }
                                             ]
                                         }
