@@ -279,7 +279,7 @@
                                             "items" : [
                                                 {
                                                     "String hideMode" : "",
-                                                    "String cls" : "",
+                                                    "String cls" : "bg_auqa",
                                                     "xtype" : "NumberBox",
                                                     "String headline" : 150,
                                                     "$ xns" : "Roo.bootstrap.dash",
