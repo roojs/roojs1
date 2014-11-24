@@ -126,7 +126,13 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         this.el.on('submit', this.onSubmit, this);
-         this.el.on('keypress', function() { Roo.log("enter pressed?"); return false; });
+        this.el.on('keypress', function(e) {
+            if (e.getCharCode() != 13) {
+                return true;
+            }
+            e.preventDefault();
+            return false;
+        });
         
     },
     // private
