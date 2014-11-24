@@ -282,6 +282,7 @@
                                                     "String hideMode" : "",
                                                     "String cls" : "bg-aqua",
                                                     "String more" : 4444,
+                                                    "string bgcolor" : "green",
                                                     "xtype" : "NumberBox",
                                                     "String headline" : 150,
                                                     "int height" : 110,

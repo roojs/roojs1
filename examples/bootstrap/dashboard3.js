@@ -348,6 +348,7 @@ dashboard3 = new Roo.XComponent({
                                                     hideMode : '',
                                                     cls : 'bg-aqua',
                                                     more : 4444,
+                                                    bgcolor : 'green',
                                                     xtype : 'NumberBox',
                                                     headline : 150,
                                                     height : 110,
