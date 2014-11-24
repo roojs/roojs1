@@ -1752,4 +1752,477 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
 });
 
  
+ /*
+ * - LGPL
+ *
+ * menu item
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.MenuItem
+ * @extends Roo.bootstrap.Component
+ * Bootstrap MenuItem class
+ * @cfg {String} html the menu label
+ * @cfg {String} href the link
+ * @cfg {Boolean} preventDefault (true | false) default true
+ * 
+ * 
+ * @constructor
+ * Create a new MenuItem
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.MenuItem = function(config){
+    Roo.bootstrap.MenuItem.superclass.constructor.call(this, config);
+    this.addEvents({
+        // raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        "click" : true
+    });
+};
+
+Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
+    
+    href : false,
+    html : false,
+    preventDefault: true,
+    
+    getAutoCreate : function(){
+        var cfg= {
+            tag: 'li',
+            cls: 'dropdown-menu-item',
+            cn: [
+                    {
+                        tag : 'a',
+                        href : '#',
+                        html : 'Link'
+                    }
+                ]
+        };
+        if (this.parent().type == 'treeview') {
+            cfg.cls = 'treeview-menu';
+        }
+        
+        cfg.cn[0].href = this.href || cfg.cn[0].href ;
+        cfg.cn[0].html = this.html || cfg.cn[0].html ;
+        return cfg;
+    },
+    
+    initEvents: function() {
+        
+        //this.el.select('a').on('click', this.onClick, this);
+        
+    },
+    onClick : function(e)
+    {
+        Roo.log('item on click ');
+        //if(this.preventDefault){
+        //    e.preventDefault();
+        //}
+        //this.parent().hideMenuItems();
+        
+        this.fireEvent('click', this, e);
+    },
+    getEl : function()
+    {
+        return this.el;
+    }
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * menu separator
+ * 
+ */
+
+
+/**
+ * @class Roo.bootstrap.MenuSeparator
+ * @extends Roo.bootstrap.Component
+ * Bootstrap MenuSeparator class
+ * 
+ * @constructor
+ * Create a new MenuItem
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.MenuSeparator = function(config){
+    Roo.bootstrap.MenuSeparator.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
+    
+    getAutoCreate : function(){
+        var cfg = {
+            cls: 'divider',
+            tag : 'li'
+        };
+        
+        return cfg;
+    }
+   
+});
+
+ 
+
+ 
+/*
+<div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+*/
+/*
+ * - LGPL
+ *
+ * page contgainer.
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Modal
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Modal class
+ * @cfg {String} title Title of dialog
+ * @cfg {Boolean} specificTitle (true|false) default false
+ * @cfg {Array} buttons Array of buttons or standard button set..
+ * @cfg {String} buttonPosition (left|right|center) default right
+ * 
+ * @constructor
+ * Create a new Modal Dialog
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Modal = function(config){
+    Roo.bootstrap.Modal.superclass.constructor.call(this, config);
+    this.addEvents({
+        // raw events
+        /**
+         * @event btnclick
+         * The raw btnclick event for the button
+         * @param {Roo.EventObject} e
+         */
+        "btnclick" : true
+    });
+    this.buttons = this.buttons || [];
+};
+
+Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
+    
+    title : 'test dialog',
+   
+    buttons : false,
+    
+    // set on load...
+    body:  false,
+    
+    specificTitle: false,
+    
+    buttonPosition: 'right',
+    
+    onRender : function(ct, position)
+    {
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+     
+        if(!this.el){
+            var cfg = Roo.apply({},  this.getAutoCreate());
+            cfg.id = Roo.id();
+            //if(!cfg.name){
+            //    cfg.name = typeof(this.name) == 'undefined' ? this.id : this.name;
+            //}
+            //if (!cfg.name.length) {
+            //    delete cfg.name;
+           // }
+            if (this.cls) {
+                cfg.cls += ' ' + this.cls;
+            }
+            if (this.style) {
+                cfg.style = this.style;
+            }
+            this.el = Roo.get(document.body).createChild(cfg, position);
+        }
+        //var type = this.el.dom.type;
+        
+        if(this.tabIndex !== undefined){
+            this.el.dom.setAttribute('tabIndex', this.tabIndex);
+        }
+        
+        
+        
+        this.maskEl = Roo.DomHelper.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
+        this.maskEl.enableDisplayMode("block");
+        this.maskEl.hide();
+        //this.el.addClass("x-dlg-modal");
+    
+        if (this.buttons.length) {
+            Roo.each(this.buttons, function(bb) {
+                b = Roo.apply({}, bb);
+                b.xns = b.xns || Roo.bootstrap;
+                b.xtype = b.xtype || 'Button';
+                if (typeof(b.listeners) == 'undefined') {
+                    b.listeners = { click : this.onButtonClick.createDelegate(this)  };
+                }
+                
+                var btn = Roo.factory(b);
+                
+                btn.onRender(this.el.select('.modal-footer div').first());
+                
+            },this);
+        }
+        // render the children.
+        var nitems = [];
+        
+        if(typeof(this.items) != 'undefined'){
+            var items = this.items;
+            delete this.items;
+
+            for(var i =0;i < items.length;i++) {
+                nitems.push(this.addxtype(Roo.apply({}, items[i])));
+            }
+        }
+        
+        this.items = nitems;
+        
+        this.body = this.el.select('.modal-body',true).first();
+        this.close = this.el.select('.modal-header .close', true).first();
+        this.footer = this.el.select('.modal-footer',true).first();
+        this.initEvents();
+        //this.el.addClass([this.fieldClass, this.cls]);
+        
+    },
+    getAutoCreate : function(){
+        
+        
+        var bdy = {
+                cls : 'modal-body',
+                html : this.html || ''
+        };
+        
+        var title = {
+            tag: 'h4',
+            cls : 'modal-title',
+            html : this.title
+        };
+        
+        if(this.specificTitle){
+            title = this.title;
+        };
+        
+        return modal = {
+            cls: "modal fade",
+            style : 'display: none',
+            cn : [
+                {
+                    cls: "modal-dialog",
+                    cn : [
+                        {
+                            cls : "modal-content",
+                            cn : [
+                                {
+                                    cls : 'modal-header',
+                                    cn : [
+                                        {
+                                            tag: 'button',
+                                            cls : 'close',
+                                            html : '&times'
+                                        },
+                                        title
+                                    ]
+                                },
+                                bdy,
+                                {
+                                    cls : 'modal-footer',
+                                    cn : [
+                                        {
+                                            tag: 'div',
+                                            cls: 'btn-' + this.buttonPosition
+                                        }
+                                    ]
+                                    
+                                }
+                                
+                                
+                            ]
+                            
+                        }
+                    ]
+                        
+                }
+            ]
+            
+            
+        };
+          
+    },
+    getChildContainer : function() {
+         
+         return this.el.select('.modal-body',true).first();
+        
+    },
+    getButtonContainer : function() {
+         return this.el.select('.modal-footer div',true).first();
+        
+    },
+    initEvents : function()
+    {
+        this.el.select('.modal-header .close').on('click', this.hide, this);
+//        
+//        this.addxtype(this);
+    },
+    show : function() {
+        
+        if (!this.rendered) {
+            this.render();
+        }
+       
+        this.el.addClass('on');
+        this.el.removeClass('fade');
+        this.el.setStyle('display', 'block');
+        Roo.get(document.body).addClass("x-body-masked");
+        this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+        this.maskEl.show();
+        this.el.setStyle('zIndex', '10001');
+        this.fireEvent('show', this);
+        
+        
+    },
+    hide : function()
+    {
+        Roo.log('Modal hide?!');
+        this.maskEl.hide();
+        Roo.get(document.body).removeClass("x-body-masked");
+        this.el.removeClass('on');
+        this.el.addClass('fade');
+        this.el.setStyle('display', 'none');
+        this.fireEvent('hide', this);
+    },
+    
+    addButton : function(str, cb)
+    {
+         
+        
+        var b = Roo.apply({}, { html : str } );
+        b.xns = b.xns || Roo.bootstrap;
+        b.xtype = b.xtype || 'Button';
+        if (typeof(b.listeners) == 'undefined') {
+            b.listeners = { click : cb.createDelegate(this)  };
+        }
+        
+        var btn = Roo.factory(b);
+           
+        btn.onRender(this.el.select('.modal-footer div').first());
+        
+        return btn;   
+       
+    },
+    
+    setDefaultButton : function(btn)
+    {
+        //this.el.select('.modal-footer').()
+    },
+    resizeTo: function(w,h)
+    {
+        // skip..
+    },
+    setContentSize  : function(w, h)
+    {
+        
+    },
+    onButtonClick: function(btn,e)
+    {
+        //Roo.log([a,b,c]);
+        this.fireEvent('btnclick', btn.name, e);
+    },
+    setTitle: function(str) {
+        this.el.select('.modal-title',true).first().dom.innerHTML = str;
+        
+    }
+});
+
+
+Roo.apply(Roo.bootstrap.Modal,  {
+    /**
+         * Button config that displays a single OK button
+         * @type Object
+         */
+        OK :  [{
+            name : 'ok',
+            weight : 'primary',
+            html : 'OK'
+        }], 
+        /**
+         * Button config that displays Yes and No buttons
+         * @type Object
+         */
+        YESNO : [
+            {
+                name  : 'no',
+                html : 'No'
+            },
+            {
+                name  :'yes',
+                weight : 'primary',
+                html : 'Yes'
+            }
+        ],
+        
+        /**
+         * Button config that displays OK and Cancel buttons
+         * @type Object
+         */
+        OKCANCEL : [
+            {
+               name : 'cancel',
+                html : 'Cancel'
+            },
+            {
+                name : 'ok',
+                weight : 'primary',
+                html : 'OK'
+            }
+        ],
+        /**
+         * Button config that displays Yes, No and Cancel buttons
+         * @type Object
+         */
+        YESNOCANCEL : [
+            {
+                name : 'yes',
+                weight : 'primary',
+                html : 'Yes'
+            },
+            {
+                name : 'no',
+                html : 'No'
+            },
+            {
+                name : 'cancel',
+                html : 'Cancel'
+            }
+        ]
+});
  
