@@ -282,9 +282,9 @@
                                                     "String hideMode" : "",
                                                     "String cls" : "",
                                                     "xtype" : "NumberBox",
-                                                    "String headline" : "",
+                                                    "String headline" : 150,
                                                     "$ xns" : "Roo.bootstrap.dash",
-                                                    "String title" : "",
+                                                    "String title" : "New Orders",
                                                     "String style" : "",
                                                     "number md" : 3
                                                 }
