@@ -281,6 +281,7 @@
                                                 {
                                                     "String hideMode" : "",
                                                     "String cls" : "",
+                                                    "String more" : 4444,
                                                     "xtype" : "NumberBox",
                                                     "String headline" : 150,
                                                     "$ xns" : "Roo.bootstrap.dash",
