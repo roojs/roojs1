@@ -280,6 +280,10 @@
                                             "$ xns" : "Roo.bootstrap",
                                             "items" : [
                                                 {
+                                                    "xtype" : "Button",
+                                                    "$ xns" : "Roo.bootstrap"
+                                                },
+                                                {
                                                     "bgcolor" : "red",
                                                     "xtype" : "NumberBox",
                                                     "String headline" : 150,
