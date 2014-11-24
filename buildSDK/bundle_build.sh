@@ -17,10 +17,11 @@ cat roojs-core-debug.js  roojs-ui-debug.js > roojs-debug.js
 seed ../gnome.introspection-doc-generator/pack.js \
      -f buildSDK/dependancy_bootstrap.txt -o roojs-bootstrap.js -O roojs-bootstrap-debug.js
 
+#build calendar library
 seed ../gnome.introspection-doc-generator/pack.js \
      -f buildSDK/dependancy_calendar.txt -o roojs-calendar.js -O roojs-calendar-debug.js
   
-
+#build mailer library
 seed ../gnome.introspection-doc-generator/pack.js \
      -f buildSDK/dependancy_mailer.txt -o roojs-mailer.js -O roojs-mailer-debug.js
   
