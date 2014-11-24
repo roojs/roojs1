@@ -57,6 +57,21 @@
                                     "$ xns" : "Roo.bootstrap",
                                     "items" : [
                                         {
+                                            "xtype" : "Container",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "bgcolor" : "red",
+                                                    "xtype" : "NumberBox",
+                                                    "String headline" : 150,
+                                                    "$ xns" : "Roo.bootstrap.dash",
+                                                    "width" : "col-md-5",
+                                                    "String title" : "New Orders",
+                                                    "height" : 150
+                                                }
+                                            ]
+                                        },
+                                        {
                                             "xtype" : "Row",
                                             "$ xns" : "Roo.bootstrap",
                                             "items" : [
@@ -272,21 +287,6 @@
                                                             ]
                                                         }
                                                     ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "xtype" : "Container",
-                                            "$ xns" : "Roo.bootstrap",
-                                            "items" : [
-                                                {
-                                                    "bgcolor" : "red",
-                                                    "xtype" : "NumberBox",
-                                                    "String headline" : 150,
-                                                    "$ xns" : "Roo.bootstrap.dash",
-                                                    "width" : "col-md-5",
-                                                    "String title" : "New Orders",
-                                                    "height" : 150
                                                 }
                                             ]
                                         }

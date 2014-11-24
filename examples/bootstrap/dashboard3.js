@@ -73,6 +73,24 @@ dashboard3 = new Roo.XComponent({
                                     items : [
                                     	{
                                             '|xns' : 'Roo.bootstrap',
+                                            xtype : 'Container',
+                                            xns : Roo.bootstrap,
+                                            items : [
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap.dash',
+                                                    bgcolor : 'red',
+                                                    xtype : 'NumberBox',
+                                                    headline : 150,
+                                                    xns : Roo.bootstrap.dash,
+                                                    width : 'col-md-5',
+                                                    title : "New Orders",
+                                                    height : 150
+                                                }
+                                            ]
+
+                                        },
+                                    	{
+                                            '|xns' : 'Roo.bootstrap',
                                             xtype : 'Row',
                                             xns : Roo.bootstrap,
                                             items : [
@@ -335,24 +353,6 @@ dashboard3 = new Roo.XComponent({
                                                         }
                                                     ]
 
-                                                }
-                                            ]
-
-                                        },
-                                    	{
-                                            '|xns' : 'Roo.bootstrap',
-                                            xtype : 'Container',
-                                            xns : Roo.bootstrap,
-                                            items : [
-                                            	{
-                                                    '|xns' : 'Roo.bootstrap.dash',
-                                                    bgcolor : 'red',
-                                                    xtype : 'NumberBox',
-                                                    headline : 150,
-                                                    xns : Roo.bootstrap.dash,
-                                                    width : 'col-md-5',
-                                                    title : "New Orders",
-                                                    height : 150
                                                 }
                                             ]
 
