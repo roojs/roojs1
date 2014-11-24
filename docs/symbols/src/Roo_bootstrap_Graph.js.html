@@ -1,7 +1,7 @@
 <html><head><title>../roojs1/Roo/bootstrap/Graph.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
  * - LGPL
  *
- * image
+ * Graph
  * 
  */
 
@@ -10,15 +10,33 @@
  * @class Roo.bootstrap.Graph
  * @extends Roo.bootstrap.Component
  * Bootstrap Graph class
- * @cfg {number} sm 4
- * @cfg {number} md 5
- * @cfg {String} graphtype bar | vbar | pie
- * @cfg {number} g_x x coodinator
- * @cfg {number} g_y y coodinator
- * @cfg {number} g_height height
- * @cfg {number} g_width width
- * @cfg {Array}  opts values
- * 
+&gt; Prameters
+ -sm {number} sm 4
+ -md {number} md 5
+ -graphtype {String} graphtype bar | vbar | pie
+ -g_x {number}  x coodinator | centre x (pie)
+ -g_y {number}  y coodinator | centre y (pie)
+ -g_r {number}  radius (pie)
+ -g_height {number} height of the chart (respected by all elements in the set)
+ -g_width {number}  width of the chart (respected by all elements in the set)
+ -{Array}  values
+ -opts (object) options for the chart 
+     o {
+     o type (string) type of endings of the bar. Default: 'square'. Other options are: 'round', 'sharp', 'soft'.
+     o gutter (number)(string) default '20%' (WHAT DOES IT DO?)
+     o vgutter (number)
+     o colors (array) colors be used repeatedly to plot the bars. If multicolumn bar is used each sequence of bars with use a different color.
+     o stacked (boolean) whether or not to tread values as in a stacked bar chart
+     o to
+     o stretch (boolean)
+     o }
+ -opts (object) options for the pie
+     o{
+     o cut
+     o startAngle (number)
+     o endAngle (number)
+     } 
+ *
  * @constructor
  * Create a new Input
  * @param {Object} config The config object
@@ -42,25 +60,23 @@
     
     </span><span class="jsdoc-var">sm</span><span class="jsdoc-syntax">: 4,
     </span><span class="jsdoc-var">md</span><span class="jsdoc-syntax">: 5,
-    </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">:100,
-    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">:100,
-
     </span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'bar'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">g_height</span><span class="jsdoc-syntax">: 250,
-    </span><span class="jsdoc-var">g_width</span><span class="jsdoc-syntax">: 560,
-    </span><span class="jsdoc-var">g_x</span><span class="jsdoc-syntax">: 30,
-    </span><span class="jsdoc-var">g_y</span><span class="jsdoc-syntax">:30,
+    </span><span class="jsdoc-var">g_width</span><span class="jsdoc-syntax">: 650,
+    </span><span class="jsdoc-var">g_x</span><span class="jsdoc-syntax">: 50,
+    </span><span class="jsdoc-var">g_y</span><span class="jsdoc-syntax">: 50,
+    </span><span class="jsdoc-var">g_r</span><span class="jsdoc-syntax">: 30,
     </span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">:{
         </span><span class="jsdoc-comment">//g_colors: this.colors,
-        </span><span class="jsdoc-var">g_type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'square'</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">g_type</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'soft'</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-var">g_gutter</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'20%'
+
     </span><span class="jsdoc-syntax">},
 
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-comment">//cls: (this.imgResponsive) ? 'img-responsive' : '',
             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null
         </span><span class="jsdoc-syntax">}
         
@@ -99,20 +115,23 @@
 
     </span><span class="jsdoc-syntax">},
 
-    </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.raphael.clear</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">graphtype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.graphtype</span><span class="jsdoc-syntax">;
         }
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">opts </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.opts</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'bar'</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.raphael.barchart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_height</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.opts</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.raphael.barchart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_height</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'hbar'</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.raphael.hbarchart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_height</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.opts</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.raphael.hbarchart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_height</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'pie'</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-comment">//this.raphael.pie(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
+                </span><span class="jsdoc-var">this.raphael.piechart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_r</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
 
         }
