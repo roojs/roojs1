@@ -41,7 +41,7 @@ Roo.bootstrap.dash.NumberBox = function(config){
 
 Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     
-    bg_color:'bg_aqua',
+    bg_color:'bg-aqua',
     width: 200,
     height: 150,
     headline: '',
