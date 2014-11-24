@@ -6,5 +6,309 @@
     "permname" : "",
     "modOrder" : "001",
     "items" : [
+        {
+            "String cls" : "skin-blue",
+            "xtype" : "Body",
+            "$ xns" : "Roo.bootstrap",
+            "items" : [
+                {
+                    "String cls" : "header",
+                    "tag" : "header",
+                    "xtype" : "Container",
+                    "* xinclude" : "Dashboard.Header1",
+                    "$ xns" : "Roo.bootstrap"
+                },
+                {
+                    "String cls" : "wrapper row-offcanvas row-offcanvas-left",
+                    "xtype" : "Container",
+                    "flexy:include" : "Sidebar.html",
+                    "$ xns" : "Roo.bootstrap",
+                    "items" : [
+                        {
+                            "String tag" : "aside",
+                            "String cls" : "left-side sidebar-offcanvas",
+                            "xtype" : "Container",
+                            "* xinclude" : "Dashboard.Sidebar2",
+                            "$ xns" : "Roo.bootstrap"
+                        },
+                        {
+                            "String tag" : "aside",
+                            "String cls" : "right-side",
+                            "xtype" : "Container",
+                            "$ xns" : "Roo.bootstrap",
+                            "items" : [
+                                {
+                                    "String tag" : "section",
+                                    "String cls" : "content-header",
+                                    "xtype" : "Container",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "items" : [
+                                        {
+                                            "xtype" : "Header",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "String html" : "General Form Elements  <small> Preview </small>"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "String tag" : "section",
+                                    "String cls" : "content",
+                                    "xtype" : "Container",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "items" : [
+                                        {
+                                            "xtype" : "Row",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "Number md" : 6,
+                                                    "xtype" : "Column",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "Number sm" : 12,
+                                                    "items" : [
+                                                        {
+                                                            "String cls" : "box box-primary",
+                                                            "xtype" : "Container",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "String cls" : "box-header",
+                                                                    "xtype" : "Container",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "String cls" : "box-title",
+                                                                            "xtype" : "Header",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "Number level" : 3,
+                                                                            "String html" : "Quick Example"
+                                                                        },
+                                                                        {
+                                                                            "xtype" : "Input",
+                                                                            "string placeholder" : "Enter password",
+                                                                            "String inputType" : "password",
+                                                                            "String fieldLabel" : "Password",
+                                                                            "$ xns" : "Roo.bootstrap"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "xtype" : "Form",
+                                                                    "String labelAlign" : "top",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "String cls" : "box-body",
+                                                                            "xtype" : "Container",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "items" : [
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "Enter email",
+                                                                                    "String fieldLabel" : "Email Address",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "String vtype" : "email"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "Enter email",
+                                                                                    "String inputType" : "file",
+                                                                                    "String fieldLabel" : "File Input",
+                                                                                    "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "CheckBox",
+                                                                                    "String boxLabel" : "checkbox",
+                                                                                    "$ xns" : "Roo.bootstrap"
+                                                                                },
+                                                                                {
+                                                                                    "String weight" : "primary",
+                                                                                    "xtype" : "Button",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "String html" : "Submit"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "String cls" : "box box-success",
+                                                            "xtype" : "Container",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "String cls" : "box-header",
+                                                                    "xtype" : "Container",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "String cls" : "box-title",
+                                                                            "xtype" : "Header",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "Number level" : 3,
+                                                                            "String html" : "Different Height"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "xtype" : "Form",
+                                                                    "String labelAlign" : "top",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "String cls" : "box-body",
+                                                                            "xtype" : "Container",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "items" : [
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "size lg",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "string size" : "lg"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "size md",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "string size" : "md"
+                                                                                },
+                                                                                {
+                                                                                    "xtype" : "Input",
+                                                                                    "string placeholder" : "size sm",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "string size" : "sm"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "String cls" : "box box-danger",
+                                                            "xtype" : "Container",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "String cls" : "box-header",
+                                                                    "xtype" : "Container",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "String cls" : "box-title",
+                                                                            "xtype" : "Header",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "Number level" : 3,
+                                                                            "String html" : "Different Width"
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "xtype" : "Form",
+                                                                    "String labelAlign" : "top",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "String cls" : "box-body",
+                                                                            "xtype" : "Container",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "items" : [
+                                                                                {
+                                                                                    "xtype" : "Row",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "items" : [
+                                                                                        {
+                                                                                            "Number md" : 3,
+                                                                                            "xtype" : "Input",
+                                                                                            "string placeholder" : "md 3",
+                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                            "string size" : "md"
+                                                                                        },
+                                                                                        {
+                                                                                            "Number md" : 3,
+                                                                                            "xtype" : "Input",
+                                                                                            "string placeholder" : "md 4",
+                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                            "string size" : "md"
+                                                                                        },
+                                                                                        {
+                                                                                            "Number md" : 5,
+                                                                                            "xtype" : "Input",
+                                                                                            "string placeholder" : "md 3",
+                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                            "string size" : "md"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "String cls" : "box box-info",
+                                                            "xtype" : "Container",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "String cls" : "box-header",
+                                                                    "xtype" : "Container",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "String cls" : "box-title",
+                                                                            "xtype" : "Header",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "Number level" : 3,
+                                                                            "String html" : "Input Addon"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "Number md" : 6,
+                                                    "xtype" : "Column",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "Number sm" : 12,
+                                                    "items" : [
+                                                        {
+                                                            "String cls" : "box box-warning",
+                                                            "xtype" : "Container",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "String cls" : "box-header",
+                                                                    "xtype" : "Container",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "String cls" : "box-title",
+                                                                            "xtype" : "Header",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "Number level" : 3,
+                                                                            "String html" : "General Elements"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
     ]
 }
