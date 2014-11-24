@@ -9629,4 +9629,2971 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
 	        totalRecords : totalRecords
 	    };
     }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.ArrayReader
+ * @extends Roo.data.DataReader
+ * Data reader class to create an Array of Roo.data.Record objects from an Array.
+ * Each element of that Array represents a row of data fields. The
+ * fields are pulled into a Record object using as a subscript, the <em>mapping</em> property
+ * of the field definition if it exists, or the field's ordinal position in the definition.<br>
+ * <p>
+ * Example code:.
+ * <pre><code>
+var RecordDef = Roo.data.Record.create([
+    {name: 'name', mapping: 1},         // "mapping" only needed if an "id" field is present which
+    {name: 'occupation', mapping: 2}    // precludes using the ordinal position as the index.
+]);
+var myReader = new Roo.data.ArrayReader({
+    id: 0                     // The subscript within row Array that provides an ID for the Record (optional)
+}, RecordDef);
+</code></pre>
+ * <p>
+ * This would consume an Array like this:
+ * <pre><code>
+[ [1, 'Bill', 'Gardener'], [2, 'Ben', 'Horticulturalist'] ]
+  </code></pre>
+ * @cfg {String} id (optional) The subscript within row Array that provides an ID for the Record
+ * @constructor
+ * Create a new JsonReader
+ * @param {Object} meta Metadata configuration options.
+ * @param {Object} recordType Either an Array of field definition objects
+ * as specified to {@link Roo.data.Record#create},
+ * or an {@link Roo.data.Record} object
+ * created using {@link Roo.data.Record#create}.
+ */
+Roo.data.ArrayReader = function(meta, recordType){
+    Roo.data.ArrayReader.superclass.constructor.call(this, meta, recordType);
+};
+
+Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
+    /**
+     * Create a data block containing Roo.data.Records from an XML document.
+     * @param {Object} o An Array of row objects which represents the dataset.
+     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * a cache of Roo.data.Records.
+     */
+    readRecords : function(o){
+        var sid = this.meta ? this.meta.id : null;
+    	var recordType = this.recordType, fields = recordType.prototype.fields;
+    	var records = [];
+    	var root = o;
+	    for(var i = 0; i < root.length; i++){
+		    var n = root[i];
+	        var values = {};
+	        var id = ((sid || sid === 0) && n[sid] !== undefined && n[sid] !== "" ? n[sid] : null);
+	        for(var j = 0, jlen = fields.length; j < jlen; j++){
+                var f = fields.items[j];
+                var k = f.mapping !== undefined && f.mapping !== null ? f.mapping : j;
+                var v = n[k] !== undefined ? n[k] : f.defaultValue;
+                v = f.convert(v);
+                values[f.name] = v;
+            }
+	        var record = new recordType(values, id);
+	        record.json = n;
+	        records[records.length] = record;
+	    }
+	    return {
+	        records : records,
+	        totalRecords : records.length
+	    };
+    }
+});/*
+ * - LGPL
+ * * 
+ */
+
+/**
+ * @class Roo.bootstrap.ComboBox
+ * @extends Roo.bootstrap.TriggerField
+ * A combobox control with support for autocomplete, remote-loading, paging and many other features.
+ * @cfg {Boolean} append (true|false) default false
+ * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
+ * @constructor
+ * Create a new ComboBox.
+ * @param {Object} config Configuration options
+ */
+Roo.bootstrap.ComboBox = function(config){
+    Roo.bootstrap.ComboBox.superclass.constructor.call(this, config);
+    this.addEvents({
+        /**
+         * @event expand
+         * Fires when the dropdown list is expanded
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'expand' : true,
+        /**
+         * @event collapse
+         * Fires when the dropdown list is collapsed
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'collapse' : true,
+        /**
+         * @event beforeselect
+         * Fires before a list item is selected. Return false to cancel the selection.
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.data.Record} record The data record returned from the underlying store
+	     * @param {Number} index The index of the selected item in the dropdown list
+	     */
+        'beforeselect' : true,
+        /**
+         * @event select
+         * Fires when a list item is selected
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
+	     * @param {Number} index The index of the selected item in the dropdown list
+	     */
+        'select' : true,
+        /**
+         * @event beforequery
+         * Fires before all queries are processed. Return false to cancel the query or set cancel to true.
+         * The event object passed has these properties:
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {String} query The query
+	     * @param {Boolean} forceAll true to force "all" query
+	     * @param {Boolean} cancel true to cancel the query
+	     * @param {Object} e The query event object
+	     */
+        'beforequery': true,
+         /**
+         * @event add
+         * Fires when the 'add' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'add' : true,
+        /**
+         * @event edit
+         * Fires when the 'edit' icon is pressed (add a listener to enable add button)
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
+	     */
+        'edit' : true,
+        /**
+         * @event remove
+         * Fires when the remove value from the combobox array
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'remove' : true
+        
+    });
+    
+    
+    this.selectedIndex = -1;
+    if(this.mode == 'local'){
+        if(config.queryDelay === undefined){
+            this.queryDelay = 10;
+        }
+        if(config.minChars === undefined){
+            this.minChars = 0;
+        }
+    }
+};
+
+Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
+     
+    /**
+     * @cfg {Boolean} lazyRender True to prevent the ComboBox from rendering until requested (should always be used when
+     * rendering into an Roo.Editor, defaults to false)
+     */
+    /**
+     * @cfg {Boolean/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to:
+     * {tag: "input", type: "text", size: "24", autocomplete: "off"})
+     */
+    /**
+     * @cfg {Roo.data.Store} store The data store to which this combo is bound (defaults to undefined)
+     */
+    /**
+     * @cfg {String} title If supplied, a header element is created containing this text and added into the top of
+     * the dropdown list (defaults to undefined, with no header element)
+     */
+
+     /**
+     * @cfg {String/Roo.Template} tpl The template to use to render the output
+     */
+     
+     /**
+     * @cfg {Number} listWidth The width in pixels of the dropdown list (defaults to the width of the ComboBox field)
+     */
+    listWidth: undefined,
+    /**
+     * @cfg {String} displayField The underlying data field name to bind to this CombBox (defaults to undefined if
+     * mode = 'remote' or 'text' if mode = 'local')
+     */
+    displayField: undefined,
+    /**
+     * @cfg {String} valueField The underlying data value name to bind to this CombBox (defaults to undefined if
+     * mode = 'remote' or 'value' if mode = 'local'). 
+     * Note: use of a valueField requires the user make a selection
+     * in order for a value to be mapped.
+     */
+    valueField: undefined,
+    
+    
+    /**
+     * @cfg {String} hiddenName If specified, a hidden form field with this name is dynamically generated to store the
+     * field's data value (defaults to the underlying DOM element's name)
+     */
+    hiddenName: undefined,
+    /**
+     * @cfg {String} listClass CSS class to apply to the dropdown list element (defaults to '')
+     */
+    listClass: '',
+    /**
+     * @cfg {String} selectedClass CSS class to apply to the selected item in the dropdown list (defaults to 'x-combo-selected')
+     */
+    selectedClass: 'active',
+    
+    /**
+     * @cfg {Boolean/String} shadow True or "sides" for the default effect, "frame" for 4-way shadow, and "drop" for bottom-right
+     */
+    shadow:'sides',
+    /**
+     * @cfg {String} listAlign A valid anchor position value. See {@link Roo.Element#alignTo} for details on supported
+     * anchor positions (defaults to 'tl-bl')
+     */
+    listAlign: 'tl-bl?',
+    /**
+     * @cfg {Number} maxHeight The maximum height in pixels of the dropdown list before scrollbars are shown (defaults to 300)
+     */
+    maxHeight: 300,
+    /**
+     * @cfg {String} triggerAction The action to execute when the trigger field is activated.  Use 'all' to run the
+     * query specified by the allQuery config option (defaults to 'query')
+     */
+    triggerAction: 'query',
+    /**
+     * @cfg {Number} minChars The minimum number of characters the user must type before autocomplete and typeahead activate
+     * (defaults to 4, does not apply if editable = false)
+     */
+    minChars : 4,
+    /**
+     * @cfg {Boolean} typeAhead True to populate and autoselect the remainder of the text being typed after a configurable
+     * delay (typeAheadDelay) if it matches a known value (defaults to false)
+     */
+    typeAhead: false,
+    /**
+     * @cfg {Number} queryDelay The length of time in milliseconds to delay between the start of typing and sending the
+     * query to filter the dropdown list (defaults to 500 if mode = 'remote' or 10 if mode = 'local')
+     */
+    queryDelay: 500,
+    /**
+     * @cfg {Number} pageSize If greater than 0, a paging toolbar is displayed in the footer of the dropdown list and the
+     * filter queries will execute with page start and limit parameters.  Only applies when mode = 'remote' (defaults to 0)
+     */
+    pageSize: 0,
+    /**
+     * @cfg {Boolean} selectOnFocus True to select any existing text in the field immediately on focus.  Only applies
+     * when editable = true (defaults to false)
+     */
+    selectOnFocus:false,
+    /**
+     * @cfg {String} queryParam Name of the query as it will be passed on the querystring (defaults to 'query')
+     */
+    queryParam: 'query',
+    /**
+     * @cfg {String} loadingText The text to display in the dropdown list while data is loading.  Only applies
+     * when mode = 'remote' (defaults to 'Loading...')
+     */
+    loadingText: 'Loading...',
+    /**
+     * @cfg {Boolean} resizable True to add a resize handle to the bottom of the dropdown list (defaults to false)
+     */
+    resizable: false,
+    /**
+     * @cfg {Number} handleHeight The height in pixels of the dropdown list resize handle if resizable = true (defaults to 8)
+     */
+    handleHeight : 8,
+    /**
+     * @cfg {Boolean} editable False to prevent the user from typing text directly into the field, just like a
+     * traditional select (defaults to true)
+     */
+    editable: true,
+    /**
+     * @cfg {String} allQuery The text query to send to the server to return all records for the list with no filtering (defaults to '')
+     */
+    allQuery: '',
+    /**
+     * @cfg {String} mode Set to 'local' if the ComboBox loads local data (defaults to 'remote' which loads from the server)
+     */
+    mode: 'remote',
+    /**
+     * @cfg {Number} minListWidth The minimum width of the dropdown list in pixels (defaults to 70, will be ignored if
+     * listWidth has a higher value)
+     */
+    minListWidth : 70,
+    /**
+     * @cfg {Boolean} forceSelection True to restrict the selected value to one of the values in the list, false to
+     * allow the user to set arbitrary text into the field (defaults to false)
+     */
+    forceSelection:false,
+    /**
+     * @cfg {Number} typeAheadDelay The length of time in milliseconds to wait until the typeahead text is displayed
+     * if typeAhead = true (defaults to 250)
+     */
+    typeAheadDelay : 250,
+    /**
+     * @cfg {String} valueNotFoundText When using a name/value combo, if the value passed to setValue is not found in
+     * the store, valueNotFoundText will be displayed as the field text if defined (defaults to undefined)
+     */
+    valueNotFoundText : undefined,
+    /**
+     * @cfg {Boolean} blockFocus Prevents all focus calls, so it can work with things like HTML edtor bar
+     */
+    blockFocus : false,
+    
+    /**
+     * @cfg {Boolean} disableClear Disable showing of clear button.
+     */
+    disableClear : false,
+    /**
+     * @cfg {Boolean} alwaysQuery  Disable caching of results, and always send query
+     */
+    alwaysQuery : false,
+    
+    /**
+     * @cfg {Boolean} multiple  (true|false) ComboBobArray, default false
+     */
+    multiple : false,
+    
+    //private
+    addicon : false,
+    editicon: false,
+    
+    page: 0,
+    hasQuery: false,
+    append: false,
+    loadNext: false,
+    autoFocus : true,
+    item: [],
+    
+    // element that contains real text value.. (when hidden is used..)
+     
+    // private
+    initEvents: function(){
+        
+        if (!this.store) {
+            throw "can not find store for combo";
+        }
+        this.store = Roo.factory(this.store, Roo.data);
+        
+        
+        
+        Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
+        
+        
+        if(this.hiddenName){
+            
+            this.hiddenField = this.el.select('input.form-hidden-field',true).first();
+            
+            this.hiddenField.dom.value =
+                this.hiddenValue !== undefined ? this.hiddenValue :
+                this.value !== undefined ? this.value : '';
+
+            // prevent input submission
+            this.el.dom.removeAttribute('name');
+            this.hiddenField.dom.setAttribute('name', this.hiddenName);
+             
+             
+        }
+        //if(Roo.isGecko){
+        //    this.el.dom.setAttribute('autocomplete', 'off');
+        //}
+
+        var cls = 'x-combo-list';
+        this.list = this.el.select('ul.dropdown-menu',true).first();
+
+        //this.list = new Roo.Layer({
+        //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
+        //});
+        
+        var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
+        this.list.setWidth(lw);
+        
+        this.list.on('mouseover', this.onViewOver, this);
+        this.list.on('mousemove', this.onViewMove, this);
+        
+        this.list.on('scroll', this.onViewScroll, this);
+        
+        /*
+        this.list.swallowEvent('mousewheel');
+        this.assetHeight = 0;
+
+        if(this.title){
+            this.header = this.list.createChild({cls:cls+'-hd', html: this.title});
+            this.assetHeight += this.header.getHeight();
+        }
+
+        this.innerList = this.list.createChild({cls:cls+'-inner'});
+        this.innerList.on('mouseover', this.onViewOver, this);
+        this.innerList.on('mousemove', this.onViewMove, this);
+        this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
+        
+        if(this.allowBlank && !this.pageSize && !this.disableClear){
+            this.footer = this.list.createChild({cls:cls+'-ft'});
+            this.pageTb = new Roo.Toolbar(this.footer);
+           
+        }
+        if(this.pageSize){
+            this.footer = this.list.createChild({cls:cls+'-ft'});
+            this.pageTb = new Roo.PagingToolbar(this.footer, this.store,
+                    {pageSize: this.pageSize});
+            
+        }
+        
+        if (this.pageTb && this.allowBlank && !this.disableClear) {
+            var _this = this;
+            this.pageTb.add(new Roo.Toolbar.Fill(), {
+                cls: 'x-btn-icon x-btn-clear',
+                text: '&#160;',
+                handler: function()
+                {
+                    _this.collapse();
+                    _this.clearValue();
+                    _this.onSelect(false, -1);
+                }
+            });
+        }
+        if (this.footer) {
+            this.assetHeight += this.footer.getHeight();
+        }
+        */
+            
+        if(!this.tpl){
+            this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
+        }
+
+        this.view = new Roo.View(this.el.select('ul.dropdown-menu',true).first(), this.tpl, {
+            singleSelect:true, store: this.store, selectedClass: this.selectedClass
+        });
+        //this.view.wrapEl.setDisplayed(false);
+        this.view.on('click', this.onViewClick, this);
+        
+        
+        
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('loadexception', this.onLoadException, this);
+        /*
+        if(this.resizable){
+            this.resizer = new Roo.Resizable(this.list,  {
+               pinned:true, handles:'se'
+            });
+            this.resizer.on('resize', function(r, w, h){
+                this.maxHeight = h-this.handleHeight-this.list.getFrameWidth('tb')-this.assetHeight;
+                this.listWidth = w;
+                this.innerList.setWidth(w - this.list.getFrameWidth('lr'));
+                this.restrictHeight();
+            }, this);
+            this[this.pageSize?'footer':'innerList'].setStyle('margin-bottom', this.handleHeight+'px');
+        }
+        */
+        if(!this.editable){
+            this.editable = true;
+            this.setEditable(false);
+        }
+        
+        /*
+        
+        if (typeof(this.events.add.listeners) != 'undefined') {
+            
+            this.addicon = this.wrap.createChild(
+                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-add' });  
+       
+            this.addicon.on('click', function(e) {
+                this.fireEvent('add', this);
+            }, this);
+        }
+        if (typeof(this.events.edit.listeners) != 'undefined') {
+            
+            this.editicon = this.wrap.createChild(
+                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-edit' });  
+            if (this.addicon) {
+                this.editicon.setStyle('margin-left', '40px');
+            }
+            this.editicon.on('click', function(e) {
+                
+                // we fire even  if inothing is selected..
+                this.fireEvent('edit', this, this.lastData );
+                
+            }, this);
+        }
+        */
+        
+        this.keyNav = new Roo.KeyNav(this.inputEl(), {
+            "up" : function(e){
+                this.inKeyMode = true;
+                this.selectPrev();
+            },
+
+            "down" : function(e){
+                if(!this.isExpanded()){
+                    this.onTriggerClick();
+                }else{
+                    this.inKeyMode = true;
+                    this.selectNext();
+                }
+            },
+
+            "enter" : function(e){
+//                this.onViewClick();
+                //return true;
+                this.collapse();
+                
+                if(this.fireEvent("specialkey", this, e)){
+                    this.onViewClick(false);
+                }
+                
+                return true;
+            },
+
+            "esc" : function(e){
+                this.collapse();
+            },
+
+            "tab" : function(e){
+                this.collapse();
+                
+                if(this.fireEvent("specialkey", this, e)){
+                    this.onViewClick(false);
+                }
+                
+                return true;
+            },
+
+            scope : this,
+
+            doRelay : function(foo, bar, hname){
+                if(hname == 'down' || this.scope.isExpanded()){
+                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+                }
+                return true;
+            },
+
+            forceKeyDown: true
+        });
+        
+        
+        this.queryDelay = Math.max(this.queryDelay || 10,
+                this.mode == 'local' ? 10 : 250);
+        
+        
+        this.dqTask = new Roo.util.DelayedTask(this.initQuery, this);
+        
+        if(this.typeAhead){
+            this.taTask = new Roo.util.DelayedTask(this.onTypeAhead, this);
+        }
+        if(this.editable !== false){
+            this.inputEl().on("keyup", this.onKeyUp, this);
+        }
+        if(this.forceSelection){
+            this.inputEl().on('blur', this.doForce, this);
+        }
+        
+        if(this.multiple){
+            this.choices = this.el.select('ul.select2-choices', true).first();
+            this.searchField = this.el.select('ul li.select2-search-field', true).first();
+        }
+    },
+
+    onDestroy : function(){
+        if(this.view){
+            this.view.setStore(null);
+            this.view.el.removeAllListeners();
+            this.view.el.remove();
+            this.view.purgeListeners();
+        }
+        if(this.list){
+            this.list.dom.innerHTML  = '';
+        }
+        if(this.store){
+            this.store.un('beforeload', this.onBeforeLoad, this);
+            this.store.un('load', this.onLoad, this);
+            this.store.un('loadexception', this.onLoadException, this);
+        }
+        Roo.bootstrap.ComboBox.superclass.onDestroy.call(this);
+    },
+
+    // private
+    fireKey : function(e){
+        if(e.isNavKeyPress() && !this.list.isVisible()){
+            this.fireEvent("specialkey", this, e);
+        }
+    },
+
+    // private
+    onResize: function(w, h){
+//        Roo.bootstrap.ComboBox.superclass.onResize.apply(this, arguments);
+//        
+//        if(typeof w != 'number'){
+//            // we do not handle it!?!?
+//            return;
+//        }
+//        var tw = this.trigger.getWidth();
+//       // tw += this.addicon ? this.addicon.getWidth() : 0;
+//       // tw += this.editicon ? this.editicon.getWidth() : 0;
+//        var x = w - tw;
+//        this.inputEl().setWidth( this.adjustWidth('input', x));
+//            
+//        //this.trigger.setStyle('left', x+'px');
+//        
+//        if(this.list && this.listWidth === undefined){
+//            var lw = Math.max(x + this.trigger.getWidth(), this.minListWidth);
+//            this.list.setWidth(lw);
+//            this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
+//        }
+        
+    
+        
+    },
+
+    /**
+     * Allow or prevent the user from directly editing the field text.  If false is passed,
+     * the user will only be able to select from the items defined in the dropdown list.  This method
+     * is the runtime equivalent of setting the 'editable' config option at config time.
+     * @param {Boolean} value True to allow the user to directly edit the field text
+     */
+    setEditable : function(value){
+        if(value == this.editable){
+            return;
+        }
+        this.editable = value;
+        if(!value){
+            this.inputEl().dom.setAttribute('readOnly', true);
+            this.inputEl().on('mousedown', this.onTriggerClick,  this);
+            this.inputEl().addClass('x-combo-noedit');
+        }else{
+            this.inputEl().dom.setAttribute('readOnly', false);
+            this.inputEl().un('mousedown', this.onTriggerClick,  this);
+            this.inputEl().removeClass('x-combo-noedit');
+        }
+    },
+
+    // private
+    
+    onBeforeLoad : function(combo,opts){
+        if(!this.hasFocus){
+            return;
+        }
+         if (!opts.add) {
+            this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
+         }
+        this.restrictHeight();
+        this.selectedIndex = -1;
+    },
+
+    // private
+    onLoad : function(){
+        
+        this.hasQuery = false;
+        
+        if(!this.hasFocus){
+            return;
+        }
+        
+        if(typeof(this.loading) !== 'undefined' && this.loading !== null){
+            this.loading.hide();
+        }
+        
+        if(this.store.getCount() > 0){
+            this.expand();
+            this.restrictHeight();
+            if(this.lastQuery == this.allQuery){
+                if(this.editable){
+                    this.inputEl().dom.select();
+                }
+                if(!this.selectByValue(this.value, true) && this.autoFocus){
+                    this.select(0, true);
+                }
+            }else{
+                if(this.autoFocus){
+                    this.selectNext();
+                }
+                if(this.typeAhead && this.lastKey != Roo.EventObject.BACKSPACE && this.lastKey != Roo.EventObject.DELETE){
+                    this.taTask.delay(this.typeAheadDelay);
+                }
+            }
+        }else{
+            this.onEmptyResults();
+        }
+        
+        //this.el.focus();
+    },
+    // private
+    onLoadException : function()
+    {
+        this.hasQuery = false;
+        
+        if(typeof(this.loading) !== 'undefined' && this.loading !== null){
+            this.loading.hide();
+        }
+        
+        this.collapse();
+        Roo.log(this.store.reader.jsonData);
+        if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
+            // fixme
+            //Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+        }
+        
+        
+    },
+    // private
+    onTypeAhead : function(){
+        if(this.store.getCount() > 0){
+            var r = this.store.getAt(0);
+            var newValue = r.data[this.displayField];
+            var len = newValue.length;
+            var selStart = this.getRawValue().length;
+            
+            if(selStart != len){
+                this.setRawValue(newValue);
+                this.selectText(selStart, newValue.length);
+            }
+        }
+    },
+
+    // private
+    onSelect : function(record, index){
+        
+        if(this.fireEvent('beforeselect', this, record, index) !== false){
+        
+            this.setFromData(index > -1 ? record.data : false);
+            
+            this.collapse();
+            this.fireEvent('select', this, record, index);
+        }
+    },
+
+    /**
+     * Returns the currently selected field value or empty string if no value is set.
+     * @return {String} value The selected value
+     */
+    getValue : function(){
+        
+        if(this.multiple){
+            return (this.hiddenField) ? this.hiddenField.dom.value : this.value;
+        }
+        
+        if(this.valueField){
+            return typeof this.value != 'undefined' ? this.value : '';
+        }else{
+            return Roo.bootstrap.ComboBox.superclass.getValue.call(this);
+        }
+    },
+
+    /**
+     * Clears any text/value currently set in the field
+     */
+    clearValue : function(){
+        if(this.hiddenField){
+            this.hiddenField.dom.value = '';
+        }
+        this.value = '';
+        this.setRawValue('');
+        this.lastSelectionText = '';
+        
+    },
+
+    /**
+     * Sets the specified value into the field.  If the value finds a match, the corresponding record text
+     * will be displayed in the field.  If the value does not match the data value of an existing item,
+     * and the valueNotFoundText config option is defined, it will be displayed as the default field text.
+     * Otherwise the field will be blank (although the value will still be set).
+     * @param {String} value The value to match
+     */
+    setValue : function(v){
+        if(this.multiple){
+            this.syncValue();
+            return;
+        }
+        
+        var text = v;
+        if(this.valueField){
+            var r = this.findRecord(this.valueField, v);
+            if(r){
+                text = r.data[this.displayField];
+            }else if(this.valueNotFoundText !== undefined){
+                text = this.valueNotFoundText;
+            }
+        }
+        this.lastSelectionText = text;
+        if(this.hiddenField){
+            this.hiddenField.dom.value = v;
+        }
+        Roo.bootstrap.ComboBox.superclass.setValue.call(this, text);
+        this.value = v;
+    },
+    /**
+     * @property {Object} the last set data for the element
+     */
+    
+    lastData : false,
+    /**
+     * Sets the value of the field based on a object which is related to the record format for the store.
+     * @param {Object} value the value to set as. or false on reset?
+     */
+    setFromData : function(o){
+        
+        if(this.multiple){
+            this.addItem(o);
+            return;
+        }
+            
+        var dv = ''; // display value
+        var vv = ''; // value value..
+        this.lastData = o;
+        if (this.displayField) {
+            dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
+        } else {
+            // this is an error condition!!!
+            Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
+        }
+        
+        if(this.valueField){
+            vv = !o || typeof(o[this.valueField]) == 'undefined' ? dv : o[this.valueField];
+        }
+        
+        if(this.hiddenField){
+            this.hiddenField.dom.value = vv;
+            
+            this.lastSelectionText = dv;
+            Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
+            this.value = vv;
+            return;
+        }
+        // no hidden field.. - we store the value in 'value', but still display
+        // display field!!!!
+        this.lastSelectionText = dv;
+        Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
+        this.value = vv;
+        
+        
+    },
+    // private
+    reset : function(){
+        // overridden so that last data is reset..
+        this.setValue(this.originalValue);
+        this.clearInvalid();
+        this.lastData = false;
+        if (this.view) {
+            this.view.clearSelections();
+        }
+    },
+    // private
+    findRecord : function(prop, value){
+        var record;
+        if(this.store.getCount() > 0){
+            this.store.each(function(r){
+                if(r.data[prop] == value){
+                    record = r;
+                    return false;
+                }
+                return true;
+            });
+        }
+        return record;
+    },
+    
+    getName: function()
+    {
+        // returns hidden if it's set..
+        if (!this.rendered) {return ''};
+        return !this.hiddenName && this.inputEl().dom.name  ? this.inputEl().dom.name : (this.hiddenName || '');
+        
+    },
+    // private
+    onViewMove : function(e, t){
+        this.inKeyMode = false;
+    },
+
+    // private
+    onViewOver : function(e, t){
+        if(this.inKeyMode){ // prevent key nav and mouse over conflicts
+            return;
+        }
+        var item = this.view.findItemFromChild(t);
+        if(item){
+            var index = this.view.indexOf(item);
+            this.select(index, false);
+        }
+    },
+
+    // private
+    onViewClick : function(doFocus)
+    {
+        var index = this.view.getSelectedIndexes()[0];
+        var r = this.store.getAt(index);
+        if(r){
+            this.onSelect(r, index);
+        }
+        if(doFocus !== false && !this.blockFocus){
+            this.inputEl().focus();
+        }
+    },
+
+    // private
+    restrictHeight : function(){
+        //this.innerList.dom.style.height = '';
+        //var inner = this.innerList.dom;
+        //var h = Math.max(inner.clientHeight, inner.offsetHeight, inner.scrollHeight);
+        //this.innerList.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
+        //this.list.beginUpdate();
+        //this.list.setHeight(this.innerList.getHeight()+this.list.getFrameWidth('tb')+(this.resizable?this.handleHeight:0)+this.assetHeight);
+        this.list.alignTo(this.inputEl(), this.listAlign);
+        //this.list.endUpdate();
+    },
+
+    // private
+    onEmptyResults : function(){
+        this.collapse();
+    },
+
+    /**
+     * Returns true if the dropdown list is expanded, else false.
+     */
+    isExpanded : function(){
+        return this.list.isVisible();
+    },
+
+    /**
+     * Select an item in the dropdown list by its data value. This function does NOT cause the select event to fire.
+     * The store must be loaded and the list expanded for this function to work, otherwise use setValue.
+     * @param {String} value The data value of the item to select
+     * @param {Boolean} scrollIntoView False to prevent the dropdown list from autoscrolling to display the
+     * selected item if it is not currently in view (defaults to true)
+     * @return {Boolean} True if the value matched an item in the list, else false
+     */
+    selectByValue : function(v, scrollIntoView){
+        if(v !== undefined && v !== null){
+            var r = this.findRecord(this.valueField || this.displayField, v);
+            if(r){
+                this.select(this.store.indexOf(r), scrollIntoView);
+                return true;
+            }
+        }
+        return false;
+    },
+
+    /**
+     * Select an item in the dropdown list by its numeric index in the list. This function does NOT cause the select event to fire.
+     * The store must be loaded and the list expanded for this function to work, otherwise use setValue.
+     * @param {Number} index The zero-based index of the list item to select
+     * @param {Boolean} scrollIntoView False to prevent the dropdown list from autoscrolling to display the
+     * selected item if it is not currently in view (defaults to true)
+     */
+    select : function(index, scrollIntoView){
+        this.selectedIndex = index;
+        this.view.select(index);
+        if(scrollIntoView !== false){
+            var el = this.view.getNode(index);
+            if(el){
+                //this.innerList.scrollChildIntoView(el, false);
+                
+            }
+        }
+    },
+
+    // private
+    selectNext : function(){
+        var ct = this.store.getCount();
+        if(ct > 0){
+            if(this.selectedIndex == -1){
+                this.select(0);
+            }else if(this.selectedIndex < ct-1){
+                this.select(this.selectedIndex+1);
+            }
+        }
+    },
+
+    // private
+    selectPrev : function(){
+        var ct = this.store.getCount();
+        if(ct > 0){
+            if(this.selectedIndex == -1){
+                this.select(0);
+            }else if(this.selectedIndex != 0){
+                this.select(this.selectedIndex-1);
+            }
+        }
+    },
+
+    // private
+    onKeyUp : function(e){
+        if(this.editable !== false && !e.isSpecialKey()){
+            this.lastKey = e.getKey();
+            this.dqTask.delay(this.queryDelay);
+        }
+    },
+
+    // private
+    validateBlur : function(){
+        return !this.list || !this.list.isVisible();   
+    },
+
+    // private
+    initQuery : function(){
+        this.doQuery(this.getRawValue());
+    },
+
+    // private
+    doForce : function(){
+        if(this.inputEl().dom.value.length > 0){
+            this.inputEl().dom.value =
+                this.lastSelectionText === undefined ? '' : this.lastSelectionText;
+             
+        }
+    },
+
+    /**
+     * Execute a query to filter the dropdown list.  Fires the beforequery event prior to performing the
+     * query allowing the query action to be canceled if needed.
+     * @param {String} query The SQL query to execute
+     * @param {Boolean} forceAll True to force the query to execute even if there are currently fewer characters
+     * in the field than the minimum specified by the minChars config option.  It also clears any filter previously
+     * saved in the current store (defaults to false)
+     */
+    doQuery : function(q, forceAll){
+        
+        if(q === undefined || q === null){
+            q = '';
+        }
+        var qe = {
+            query: q,
+            forceAll: forceAll,
+            combo: this,
+            cancel:false
+        };
+        if(this.fireEvent('beforequery', qe)===false || qe.cancel){
+            return false;
+        }
+        q = qe.query;
+        
+        forceAll = qe.forceAll;
+        if(forceAll === true || (q.length >= this.minChars)){
+            
+            this.hasQuery = true;
+            
+            if(this.lastQuery != q || this.alwaysQuery){
+                this.lastQuery = q;
+                if(this.mode == 'local'){
+                    this.selectedIndex = -1;
+                    if(forceAll){
+                        this.store.clearFilter();
+                    }else{
+                        this.store.filter(this.displayField, q);
+                    }
+                    this.onLoad();
+                }else{
+                    this.store.baseParams[this.queryParam] = q;
+                    
+                    var options = {params : this.getParams(q)};
+                    
+                    if(this.loadNext){
+                        options.add = true;
+                        options.params.start = this.page * this.pageSize;
+                    }
+                    
+                    this.store.load(options);
+                    /*
+                     *  this code will make the page width larger, at the beginning, the list not align correctly, 
+                     *  we should expand the list on onLoad
+                     *  so command out it
+                     */
+//                    this.expand();
+                }
+            }else{
+                this.selectedIndex = -1;
+                this.onLoad();   
+            }
+        }
+        
+        this.loadNext = false;
+    },
+
+    // private
+    getParams : function(q){
+        var p = {};
+        //p[this.queryParam] = q;
+        
+        if(this.pageSize){
+            p.start = 0;
+            p.limit = this.pageSize;
+        }
+        return p;
+    },
+
+    /**
+     * Hides the dropdown list if it is currently expanded. Fires the 'collapse' event on completion.
+     */
+    collapse : function(){
+        if(!this.isExpanded()){
+            return;
+        }
+        
+        this.list.hide();
+        Roo.get(document).un('mousedown', this.collapseIf, this);
+        Roo.get(document).un('mousewheel', this.collapseIf, this);
+        if (!this.editable) {
+            Roo.get(document).un('keydown', this.listKeyPress, this);
+        }
+        this.fireEvent('collapse', this);
+    },
+
+    // private
+    collapseIf : function(e){
+        var in_combo  = e.within(this.el);
+        var in_list =  e.within(this.list);
+        
+        if (in_combo || in_list) {
+            //e.stopPropagation();
+            return;
+        }
+
+        this.collapse();
+        
+    },
+
+    /**
+     * Expands the dropdown list if it is currently hidden. Fires the 'expand' event on completion.
+     */
+    expand : function(){
+       
+        if(this.isExpanded() || !this.hasFocus){
+            return;
+        }
+         Roo.log('expand');
+        this.list.alignTo(this.inputEl(), this.listAlign);
+        this.list.show();
+        Roo.get(document).on('mousedown', this.collapseIf, this);
+        Roo.get(document).on('mousewheel', this.collapseIf, this);
+        if (!this.editable) {
+            Roo.get(document).on('keydown', this.listKeyPress, this);
+        }
+        
+        this.fireEvent('expand', this);
+    },
+
+    // private
+    // Implements the default empty TriggerField.onTriggerClick function
+    onTriggerClick : function()
+    {
+        Roo.log('trigger click');
+        
+        if(this.disabled){
+            return;
+        }
+        
+        this.page = 0;
+        this.loadNext = false;
+        
+        if(this.isExpanded()){
+            this.collapse();
+            if (!this.blockFocus) {
+                this.inputEl().focus();
+            }
+            
+        }else {
+            this.hasFocus = true;
+            if(this.triggerAction == 'all') {
+                this.doQuery(this.allQuery, true);
+            } else {
+                this.doQuery(this.getRawValue());
+            }
+            if (!this.blockFocus) {
+                this.inputEl().focus();
+            }
+        }
+    },
+    listKeyPress : function(e)
+    {
+        //Roo.log('listkeypress');
+        // scroll to first matching element based on key pres..
+        if (e.isSpecialKey()) {
+            return false;
+        }
+        var k = String.fromCharCode(e.getKey()).toUpperCase();
+        //Roo.log(k);
+        var match  = false;
+        var csel = this.view.getSelectedNodes();
+        var cselitem = false;
+        if (csel.length) {
+            var ix = this.view.indexOf(csel[0]);
+            cselitem  = this.store.getAt(ix);
+            if (!cselitem.get(this.displayField) || cselitem.get(this.displayField).substring(0,1).toUpperCase() != k) {
+                cselitem = false;
+            }
+            
+        }
+        
+        this.store.each(function(v) { 
+            if (cselitem) {
+                // start at existing selection.
+                if (cselitem.id == v.id) {
+                    cselitem = false;
+                }
+                return true;
+            }
+                
+            if (v.get(this.displayField) && v.get(this.displayField).substring(0,1).toUpperCase() == k) {
+                match = this.store.indexOf(v);
+                return false;
+            }
+            return true;
+        }, this);
+        
+        if (match === false) {
+            return true; // no more action?
+        }
+        // scroll to?
+        this.view.select(match);
+        var sn = Roo.get(this.view.getSelectedNodes()[0])
+        //sn.scrollIntoView(sn.dom.parentNode, false);
+    },
+    
+    onViewScroll : function(e, t){
+        
+        if(this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append || this.hasQuery){
+            return;
+        }
+        
+        this.hasQuery = true;
+        
+        this.loading = this.list.select('.loading', true).first();
+        
+        if(this.loading === null){
+            this.list.createChild({
+                tag: 'div',
+                cls: 'loading select2-more-results select2-active',
+                html: 'Loading more results...'
+            })
+            
+            this.loading = this.list.select('.loading', true).first();
+            
+            this.loading.setVisibilityMode(Roo.Element.DISPLAY);
+            
+            this.loading.hide();
+        }
+        
+        this.loading.show();
+        
+        var _combo = this;
+        
+        this.page++;
+        this.loadNext = true;
+        
+        (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
+        
+        return;
+    },
+    
+    addItem : function(o)
+    {   
+        var dv = ''; // display value
+        
+        if (this.displayField) {
+            dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
+        } else {
+            // this is an error condition!!!
+            Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
+        }
+        
+        if(!dv.length){
+            return;
+        }
+        
+        var choice = this.choices.createChild({
+            tag: 'li',
+            cls: 'select2-search-choice',
+            cn: [
+                {
+                    tag: 'div',
+                    html: dv
+                },
+                {
+                    tag: 'a',
+                    href: '#',
+                    cls: 'select2-search-choice-close',
+                    tabindex: '-1'
+                }
+            ]
+            
+        }, this.searchField);
+        
+        var close = choice.select('a.select2-search-choice-close', true).first()
+        
+        close.on('click', this.onRemoveItem, this, { item : choice, data : o} );
+        
+        this.item.push(o);
+        this.lastData = o;
+        
+        this.syncValue();
+        
+        this.inputEl().dom.value = '';
+        
+    },
+    
+    onRemoveItem : function(e, _self, o)
+    {
+        e.preventDefault();
+        var index = this.item.indexOf(o.data) * 1;
+        
+        if( index < 0){
+            Roo.log('not this item?!');
+            return;
+        }
+        
+        this.item.splice(index, 1);
+        o.item.remove();
+        
+        this.syncValue();
+        
+        this.fireEvent('remove', this, e);
+        
+    },
+    
+    syncValue : function()
+    {
+        if(!this.item.length){
+            this.clearValue();
+            return;
+        }
+            
+        var value = [];
+        var _this = this;
+        Roo.each(this.item, function(i){
+            if(_this.valueField){
+                value.push(i[_this.valueField]);
+                return;
+            }
+
+            value.push(i);
+        });
+
+        this.value = value.join(',');
+
+        if(this.hiddenField){
+            this.hiddenField.dom.value = this.value;
+        }
+    },
+    
+    clearItem : function()
+    {
+        if(!this.multiple){
+            return;
+        }
+        
+        this.item = [];
+        
+        Roo.each(this.choices.select('>li.select2-search-choice', true).elements, function(c){
+           c.remove();
+        });
+        
+        this.syncValue();
+    }
+    
+    
+
+    /** 
+    * @cfg {Boolean} grow 
+    * @hide 
+    */
+    /** 
+    * @cfg {Number} growMin 
+    * @hide 
+    */
+    /** 
+    * @cfg {Number} growMax 
+    * @hide 
+    */
+    /**
+     * @hide
+     * @method autoSize
+     */
 });
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.View
+ * @extends Roo.util.Observable
+ * Create a "View" for an element based on a data model or UpdateManager and the supplied DomHelper template. 
+ * This class also supports single and multi selection modes. <br>
+ * Create a data model bound view:
+ <pre><code>
+ var store = new Roo.data.Store(...);
+
+ var view = new Roo.View({
+    el : "my-element",
+    tpl : '&lt;div id="{0}"&gt;{2} - {1}&lt;/div&gt;', // auto create template
+ 
+    singleSelect: true,
+    selectedClass: "ydataview-selected",
+    store: store
+ });
+
+ // listen for node click?
+ view.on("click", function(vw, index, node, e){
+ alert('Node "' + node.id + '" at index: ' + index + " was clicked.");
+ });
+
+ // load XML data
+ dataModel.load("foobar.xml");
+ </code></pre>
+ For an example of creating a JSON/UpdateManager view, see {@link Roo.JsonView}.
+ * <br><br>
+ * <b>Note: The root of your template must be a single node. Table/row implementations may work but are not supported due to
+ * IE"s limited insertion support with tables and Opera"s faulty event bubbling.</b>
+ * 
+ * Note: old style constructor is still suported (container, template, config)
+ * 
+ * @constructor
+ * Create a new View
+ * @param {Object} config The config object
+ * 
+ */
+Roo.View = function(config, depreciated_tpl, depreciated_config){
+    
+    if (typeof(depreciated_tpl) == 'undefined') {
+        // new way.. - universal constructor.
+        Roo.apply(this, config);
+        this.el  = Roo.get(this.el);
+    } else {
+        // old format..
+        this.el  = Roo.get(config);
+        this.tpl = depreciated_tpl;
+        Roo.apply(this, depreciated_config);
+    }
+    this.wrapEl  = this.el.wrap().wrap();
+    ///this.el = this.wrapEla.appendChild(document.createElement("div"));
+    
+    
+    if(typeof(this.tpl) == "string"){
+        this.tpl = new Roo.Template(this.tpl);
+    } else {
+        // support xtype ctors..
+        this.tpl = new Roo.factory(this.tpl, Roo);
+    }
+    
+    
+    this.tpl.compile();
+   
+  
+    
+     
+    /** @private */
+    this.addEvents({
+        /**
+         * @event beforeclick
+         * Fires before a click is processed. Returns false to cancel the default action.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "beforeclick" : true,
+        /**
+         * @event click
+         * Fires when a template node is clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "click" : true,
+        /**
+         * @event dblclick
+         * Fires when a template node is double clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "dblclick" : true,
+        /**
+         * @event contextmenu
+         * Fires when a template node is right clicked.
+         * @param {Roo.View} this
+         * @param {Number} index The index of the target node
+         * @param {HTMLElement} node The target node
+         * @param {Roo.EventObject} e The raw event object
+         */
+            "contextmenu" : true,
+        /**
+         * @event selectionchange
+         * Fires when the selected nodes change.
+         * @param {Roo.View} this
+         * @param {Array} selections Array of the selected nodes
+         */
+            "selectionchange" : true,
+    
+        /**
+         * @event beforeselect
+         * Fires before a selection is made. If any handlers return false, the selection is cancelled.
+         * @param {Roo.View} this
+         * @param {HTMLElement} node The node to be selected
+         * @param {Array} selections Array of currently selected nodes
+         */
+            "beforeselect" : true,
+        /**
+         * @event preparedata
+         * Fires on every row to render, to allow you to change the data.
+         * @param {Roo.View} this
+         * @param {Object} data to be rendered (change this)
+         */
+          "preparedata" : true
+          
+          
+        });
+
+
+
+    this.el.on({
+        "click": this.onClick,
+        "dblclick": this.onDblClick,
+        "contextmenu": this.onContextMenu,
+        scope:this
+    });
+
+    this.selections = [];
+    this.nodes = [];
+    this.cmp = new Roo.CompositeElementLite([]);
+    if(this.store){
+        this.store = Roo.factory(this.store, Roo.data);
+        this.setStore(this.store, true);
+    }
+    
+    if ( this.footer && this.footer.xtype) {
+           
+         var fctr = this.wrapEl.appendChild(document.createElement("div"));
+        
+        this.footer.dataSource = this.store
+        this.footer.container = fctr;
+        this.footer = Roo.factory(this.footer, Roo);
+        fctr.insertFirst(this.el);
+        
+        // this is a bit insane - as the paging toolbar seems to detach the el..
+//        dom.parentNode.parentNode.parentNode
+         // they get detached?
+    }
+    
+    
+    Roo.View.superclass.constructor.call(this);
+    
+    
+};
+
+Roo.extend(Roo.View, Roo.util.Observable, {
+    
+     /**
+     * @cfg {Roo.data.Store} store Data store to load data from.
+     */
+    store : false,
+    
+    /**
+     * @cfg {String|Roo.Element} el The container element.
+     */
+    el : '',
+    
+    /**
+     * @cfg {String|Roo.Template} tpl The template used by this View 
+     */
+    tpl : false,
+    /**
+     * @cfg {String} dataName the named area of the template to use as the data area
+     *                          Works with domtemplates roo-name="name"
+     */
+    dataName: false,
+    /**
+     * @cfg {String} selectedClass The css class to add to selected nodes
+     */
+    selectedClass : "x-view-selected",
+     /**
+     * @cfg {String} emptyText The empty text to show when nothing is loaded.
+     */
+    emptyText : "",
+    
+    /**
+     * @cfg {String} text to display on mask (default Loading)
+     */
+    mask : false,
+    /**
+     * @cfg {Boolean} multiSelect Allow multiple selection
+     */
+    multiSelect : false,
+    /**
+     * @cfg {Boolean} singleSelect Allow single selection
+     */
+    singleSelect:  false,
+    
+    /**
+     * @cfg {Boolean} toggleSelect - selecting 
+     */
+    toggleSelect : false,
+    
+    /**
+     * Returns the element this view is bound to.
+     * @return {Roo.Element}
+     */
+    getEl : function(){
+        return this.wrapEl;
+    },
+    
+    
+
+    /**
+     * Refreshes the view. - called by datachanged on the store. - do not call directly.
+     */
+    refresh : function(){
+        Roo.log('refresh');
+        var t = this.tpl;
+        
+        // if we are using something like 'domtemplate', then
+        // the what gets used is:
+        // t.applySubtemplate(NAME, data, wrapping data..)
+        // the outer template then get' applied with
+        //     the store 'extra data'
+        // and the body get's added to the
+        //      roo-name="data" node?
+        //      <span class='roo-tpl-{name}'></span> ?????
+        
+        
+        
+        this.clearSelections();
+        this.el.update("");
+        var html = [];
+        var records = this.store.getRange();
+        if(records.length < 1) {
+            
+            // is this valid??  = should it render a template??
+            
+            this.el.update(this.emptyText);
+            return;
+        }
+        var el = this.el;
+        if (this.dataName) {
+            this.el.update(t.apply(this.store.meta)); //????
+            el = this.el.child('.roo-tpl-' + this.dataName);
+        }
+        
+        for(var i = 0, len = records.length; i < len; i++){
+            var data = this.prepareData(records[i].data, i, records[i]);
+            this.fireEvent("preparedata", this, data, i, records[i]);
+            html[html.length] = Roo.util.Format.trim(
+                this.dataName ?
+                    t.applySubtemplate(this.dataName, data, this.store.meta) :
+                    t.apply(data)
+            );
+        }
+        
+        
+        
+        el.update(html.join(""));
+        this.nodes = el.dom.childNodes;
+        this.updateIndexes(0);
+    },
+    
+
+    /**
+     * Function to override to reformat the data that is sent to
+     * the template for each node.
+     * DEPRICATED - use the preparedata event handler.
+     * @param {Array/Object} data The raw data (array of colData for a data model bound view or
+     * a JSON object for an UpdateManager bound view).
+     */
+    prepareData : function(data, index, record)
+    {
+        this.fireEvent("preparedata", this, data, index, record);
+        return data;
+    },
+
+    onUpdate : function(ds, record){
+         Roo.log('on update');   
+        this.clearSelections();
+        var index = this.store.indexOf(record);
+        var n = this.nodes[index];
+        this.tpl.insertBefore(n, this.prepareData(record.data, index, record));
+        n.parentNode.removeChild(n);
+        this.updateIndexes(index, index);
+    },
+
+    
+    
+// --------- FIXME     
+    onAdd : function(ds, records, index)
+    {
+        Roo.log(['on Add', ds, records, index] );        
+        this.clearSelections();
+        if(this.nodes.length == 0){
+            this.refresh();
+            return;
+        }
+        var n = this.nodes[index];
+        for(var i = 0, len = records.length; i < len; i++){
+            var d = this.prepareData(records[i].data, i, records[i]);
+            if(n){
+                this.tpl.insertBefore(n, d);
+            }else{
+                
+                this.tpl.append(this.el, d);
+            }
+        }
+        this.updateIndexes(index);
+    },
+
+    onRemove : function(ds, record, index){
+        Roo.log('onRemove');
+        this.clearSelections();
+        var el = this.dataName  ?
+            this.el.child('.roo-tpl-' + this.dataName) :
+            this.el; 
+        
+        el.dom.removeChild(this.nodes[index]);
+        this.updateIndexes(index);
+    },
+
+    /**
+     * Refresh an individual node.
+     * @param {Number} index
+     */
+    refreshNode : function(index){
+        this.onUpdate(this.store, this.store.getAt(index));
+    },
+
+    updateIndexes : function(startIndex, endIndex){
+        var ns = this.nodes;
+        startIndex = startIndex || 0;
+        endIndex = endIndex || ns.length - 1;
+        for(var i = startIndex; i <= endIndex; i++){
+            ns[i].nodeIndex = i;
+        }
+    },
+
+    /**
+     * Changes the data store this view uses and refresh the view.
+     * @param {Store} store
+     */
+    setStore : function(store, initial){
+        if(!initial && this.store){
+            this.store.un("datachanged", this.refresh);
+            this.store.un("add", this.onAdd);
+            this.store.un("remove", this.onRemove);
+            this.store.un("update", this.onUpdate);
+            this.store.un("clear", this.refresh);
+            this.store.un("beforeload", this.onBeforeLoad);
+            this.store.un("load", this.onLoad);
+            this.store.un("loadexception", this.onLoad);
+        }
+        if(store){
+          
+            store.on("datachanged", this.refresh, this);
+            store.on("add", this.onAdd, this);
+            store.on("remove", this.onRemove, this);
+            store.on("update", this.onUpdate, this);
+            store.on("clear", this.refresh, this);
+            store.on("beforeload", this.onBeforeLoad, this);
+            store.on("load", this.onLoad, this);
+            store.on("loadexception", this.onLoad, this);
+        }
+        
+        if(store){
+            this.refresh();
+        }
+    },
+    /**
+     * onbeforeLoad - masks the loading area.
+     *
+     */
+    onBeforeLoad : function(store,opts)
+    {
+         Roo.log('onBeforeLoad');   
+        if (!opts.add) {
+            this.el.update("");
+        }
+        this.el.mask(this.mask ? this.mask : "Loading" ); 
+    },
+    onLoad : function ()
+    {
+        this.el.unmask();
+    },
+    
+
+    /**
+     * Returns the template node the passed child belongs to or null if it doesn't belong to one.
+     * @param {HTMLElement} node
+     * @return {HTMLElement} The template node
+     */
+    findItemFromChild : function(node){
+        var el = this.dataName  ?
+            this.el.child('.roo-tpl-' + this.dataName,true) :
+            this.el.dom; 
+        
+        if(!node || node.parentNode == el){
+		    return node;
+	    }
+	    var p = node.parentNode;
+	    while(p && p != el){
+            if(p.parentNode == el){
+            	return p;
+            }
+            p = p.parentNode;
+        }
+	    return null;
+    },
+
+    /** @ignore */
+    onClick : function(e){
+        var item = this.findItemFromChild(e.getTarget());
+        if(item){
+            var index = this.indexOf(item);
+            if(this.onItemClick(item, index, e) !== false){
+                this.fireEvent("click", this, index, item, e);
+            }
+        }else{
+            this.clearSelections();
+        }
+    },
+
+    /** @ignore */
+    onContextMenu : function(e){
+        var item = this.findItemFromChild(e.getTarget());
+        if(item){
+            this.fireEvent("contextmenu", this, this.indexOf(item), item, e);
+        }
+    },
+
+    /** @ignore */
+    onDblClick : function(e){
+        var item = this.findItemFromChild(e.getTarget());
+        if(item){
+            this.fireEvent("dblclick", this, this.indexOf(item), item, e);
+        }
+    },
+
+    onItemClick : function(item, index, e)
+    {
+        if(this.fireEvent("beforeclick", this, index, item, e) === false){
+            return false;
+        }
+        if (this.toggleSelect) {
+            var m = this.isSelected(item) ? 'unselect' : 'select';
+            Roo.log(m);
+            var _t = this;
+            _t[m](item, true, false);
+            return true;
+        }
+        if(this.multiSelect || this.singleSelect){
+            if(this.multiSelect && e.shiftKey && this.lastSelection){
+                this.select(this.getNodes(this.indexOf(this.lastSelection), index), false);
+            }else{
+                this.select(item, this.multiSelect && e.ctrlKey);
+                this.lastSelection = item;
+            }
+            e.preventDefault();
+        }
+        return true;
+    },
+
+    /**
+     * Get the number of selected nodes.
+     * @return {Number}
+     */
+    getSelectionCount : function(){
+        return this.selections.length;
+    },
+
+    /**
+     * Get the currently selected nodes.
+     * @return {Array} An array of HTMLElements
+     */
+    getSelectedNodes : function(){
+        return this.selections;
+    },
+
+    /**
+     * Get the indexes of the selected nodes.
+     * @return {Array}
+     */
+    getSelectedIndexes : function(){
+        var indexes = [], s = this.selections;
+        for(var i = 0, len = s.length; i < len; i++){
+            indexes.push(s[i].nodeIndex);
+        }
+        return indexes;
+    },
+
+    /**
+     * Clear all selections
+     * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange event
+     */
+    clearSelections : function(suppressEvent){
+        if(this.nodes && (this.multiSelect || this.singleSelect) && this.selections.length > 0){
+            this.cmp.elements = this.selections;
+            this.cmp.removeClass(this.selectedClass);
+            this.selections = [];
+            if(!suppressEvent){
+                this.fireEvent("selectionchange", this, this.selections);
+            }
+        }
+    },
+
+    /**
+     * Returns true if the passed node is selected
+     * @param {HTMLElement/Number} node The node or node index
+     * @return {Boolean}
+     */
+    isSelected : function(node){
+        var s = this.selections;
+        if(s.length < 1){
+            return false;
+        }
+        node = this.getNode(node);
+        return s.indexOf(node) !== -1;
+    },
+
+    /**
+     * Selects nodes.
+     * @param {Array/HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node, id of a template node or an array of any of those to select
+     * @param {Boolean} keepExisting (optional) true to keep existing selections
+     * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange vent
+     */
+    select : function(nodeInfo, keepExisting, suppressEvent){
+        if(nodeInfo instanceof Array){
+            if(!keepExisting){
+                this.clearSelections(true);
+            }
+            for(var i = 0, len = nodeInfo.length; i < len; i++){
+                this.select(nodeInfo[i], true, true);
+            }
+            return;
+        } 
+        var node = this.getNode(nodeInfo);
+        if(!node || this.isSelected(node)){
+            return; // already selected.
+        }
+        if(!keepExisting){
+            this.clearSelections(true);
+        }
+        if(this.fireEvent("beforeselect", this, node, this.selections) !== false){
+            Roo.fly(node).addClass(this.selectedClass);
+            this.selections.push(node);
+            if(!suppressEvent){
+                this.fireEvent("selectionchange", this, this.selections);
+            }
+        }
+        
+        
+    },
+      /**
+     * Unselects nodes.
+     * @param {Array/HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node, id of a template node or an array of any of those to select
+     * @param {Boolean} keepExisting (optional) true IGNORED (for campatibility with select)
+     * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange vent
+     */
+    unselect : function(nodeInfo, keepExisting, suppressEvent)
+    {
+        if(nodeInfo instanceof Array){
+            Roo.each(this.selections, function(s) {
+                this.unselect(s, nodeInfo);
+            }, this);
+            return;
+        }
+        var node = this.getNode(nodeInfo);
+        if(!node || !this.isSelected(node)){
+            Roo.log("not selected");
+            return; // not selected.
+        }
+        // fireevent???
+        var ns = [];
+        Roo.each(this.selections, function(s) {
+            if (s == node ) {
+                Roo.fly(node).removeClass(this.selectedClass);
+
+                return;
+            }
+            ns.push(s);
+        },this);
+        
+        this.selections= ns;
+        this.fireEvent("selectionchange", this, this.selections);
+    },
+
+    /**
+     * Gets a template node.
+     * @param {HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node or the id of a template node
+     * @return {HTMLElement} The node or null if it wasn't found
+     */
+    getNode : function(nodeInfo){
+        if(typeof nodeInfo == "string"){
+            return document.getElementById(nodeInfo);
+        }else if(typeof nodeInfo == "number"){
+            return this.nodes[nodeInfo];
+        }
+        return nodeInfo;
+    },
+
+    /**
+     * Gets a range template nodes.
+     * @param {Number} startIndex
+     * @param {Number} endIndex
+     * @return {Array} An array of nodes
+     */
+    getNodes : function(start, end){
+        var ns = this.nodes;
+        start = start || 0;
+        end = typeof end == "undefined" ? ns.length - 1 : end;
+        var nodes = [];
+        if(start <= end){
+            for(var i = start; i <= end; i++){
+                nodes.push(ns[i]);
+            }
+        } else{
+            for(var i = start; i >= end; i--){
+                nodes.push(ns[i]);
+            }
+        }
+        return nodes;
+    },
+
+    /**
+     * Finds the index of the passed node
+     * @param {HTMLElement/String/Number} nodeInfo An HTMLElement template node, index of a template node or the id of a template node
+     * @return {Number} The index of the node or -1
+     */
+    indexOf : function(node){
+        node = this.getNode(node);
+        if(typeof node.nodeIndex == "number"){
+            return node.nodeIndex;
+        }
+        var ns = this.nodes;
+        for(var i = 0, len = ns.length; i < len; i++){
+            if(ns[i] == node){
+                return i;
+            }
+        }
+        return -1;
+    }
+});
+/*
+ * - LGPL
+ *
+ * based on jquery fullcalendar
+ * 
+ */
+
+Roo.bootstrap = Roo.bootstrap || {};
+/**
+ * @class Roo.bootstrap.Calendar
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Calendar class
+ * @cfg {Boolean} loadMask (true|false) default false
+ * @cfg {Object} header generate the user specific header of the calendar, default false
+
+ * @constructor
+ * Create a new Container
+ * @param {Object} config The config object
+ */
+
+
+
+Roo.bootstrap.Calendar = function(config){
+    Roo.bootstrap.Calendar.superclass.constructor.call(this, config);
+     this.addEvents({
+        /**
+	     * @event select
+	     * Fires when a date is selected
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected date
+	     */
+        'select': true,
+        /**
+	     * @event monthchange
+	     * Fires when the displayed month changes 
+	     * @param {DatePicker} this
+	     * @param {Date} date The selected month
+	     */
+        'monthchange': true,
+        /**
+	     * @event evententer
+	     * Fires when mouse over an event
+	     * @param {Calendar} this
+	     * @param {event} Event
+	     */
+        'evententer': true,
+        /**
+	     * @event eventleave
+	     * Fires when the mouse leaves an
+	     * @param {Calendar} this
+	     * @param {event}
+	     */
+        'eventleave': true,
+        /**
+	     * @event eventclick
+	     * Fires when the mouse click an
+	     * @param {Calendar} this
+	     * @param {event}
+	     */
+        'eventclick': true
+        
+    });
+
+};
+
+Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
+    
+     /**
+     * @cfg {Number} startDay
+     * Day index at which the week should begin, 0-based (defaults to 0, which is Sunday)
+     */
+    startDay : 0,
+    
+    loadMask : false,
+    
+    header : false,
+      
+    getAutoCreate : function(){
+        
+        
+        var fc_button = function(name, corner, style, content ) {
+            return Roo.apply({},{
+                tag : 'span',
+                cls : 'fc-button fc-button-'+name+' fc-state-default ' + 
+                         (corner.length ?
+                            'fc-corner-' + corner.split(' ').join(' fc-corner-') :
+                            ''
+                        ),
+                html : '<SPAN class="fc-text-'+style+ '">'+content +'</SPAN>',
+                unselectable: 'on'
+            });
+        };
+        
+        var header = {};
+        
+        if(!this.header){
+            header = {
+                tag : 'table',
+                cls : 'fc-header',
+                style : 'width:100%',
+                cn : [
+                    {
+                        tag: 'tr',
+                        cn : [
+                            {
+                                tag : 'td',
+                                cls : 'fc-header-left',
+                                cn : [
+                                    fc_button('prev', 'left', 'arrow', '&#8249;' ),
+                                    fc_button('next', 'right', 'arrow', '&#8250;' ),
+                                    { tag: 'span', cls: 'fc-header-space' },
+                                    fc_button('today', 'left right', '', 'today' )  // neds state disabled..
+
+
+                                ]
+                            },
+
+                            {
+                                tag : 'td',
+                                cls : 'fc-header-center',
+                                cn : [
+                                    {
+                                        tag: 'span',
+                                        cls: 'fc-header-title',
+                                        cn : {
+                                            tag: 'H2',
+                                            html : 'month / year'
+                                        }
+                                    }
+
+                                ]
+                            },
+                            {
+                                tag : 'td',
+                                cls : 'fc-header-right',
+                                cn : [
+                              /*      fc_button('month', 'left', '', 'month' ),
+                                    fc_button('week', '', '', 'week' ),
+                                    fc_button('day', 'right', '', 'day' )
+                                */    
+
+                                ]
+                            }
+
+                        ]
+                    }
+                ]
+            };
+        }
+        
+        header = this.header;
+        
+       
+        var cal_heads = function() {
+            var ret = [];
+            // fixme - handle this.
+            
+            for (var i =0; i < Date.dayNames.length; i++) {
+                var d = Date.dayNames[i];
+                ret.push({
+                    tag: 'th',
+                    cls : 'fc-day-header fc-' + d.substring(0,3).toLowerCase() + ' fc-widget-header',
+                    html : d.substring(0,3)
+                });
+                
+            }
+            ret[0].cls += ' fc-first';
+            ret[6].cls += ' fc-last';
+            return ret;
+        };
+        var cal_cell = function(n) {
+            return  {
+                tag: 'td',
+                cls : 'fc-day fc-'+n + ' fc-widget-content', ///fc-other-month fc-past
+                cn : [
+                    {
+                        cn : [
+                            {
+                                cls: 'fc-day-number',
+                                html: 'D'
+                            },
+                            {
+                                cls: 'fc-day-content',
+                             
+                                cn : [
+                                     {
+                                        style: 'position: relative;' // height: 17px;
+                                    }
+                                ]
+                            }
+                            
+                            
+                        ]
+                    }
+                ]
+                
+            }
+        };
+        var cal_rows = function() {
+            
+            var ret = []
+            for (var r = 0; r < 6; r++) {
+                var row= {
+                    tag : 'tr',
+                    cls : 'fc-week',
+                    cn : []
+                };
+                
+                for (var i =0; i < Date.dayNames.length; i++) {
+                    var d = Date.dayNames[i];
+                    row.cn.push(cal_cell(d.substring(0,3).toLowerCase()));
+
+                }
+                row.cn[0].cls+=' fc-first';
+                row.cn[0].cn[0].style = 'min-height:90px';
+                row.cn[6].cls+=' fc-last';
+                ret.push(row);
+                
+            }
+            ret[0].cls += ' fc-first';
+            ret[4].cls += ' fc-prev-last';
+            ret[5].cls += ' fc-last';
+            return ret;
+            
+        };
+        
+        var cal_table = {
+            tag: 'table',
+            cls: 'fc-border-separate',
+            style : 'width:100%',
+            cellspacing  : 0,
+            cn : [
+                { 
+                    tag: 'thead',
+                    cn : [
+                        { 
+                            tag: 'tr',
+                            cls : 'fc-first fc-last',
+                            cn : cal_heads()
+                        }
+                    ]
+                },
+                { 
+                    tag: 'tbody',
+                    cn : cal_rows()
+                }
+                  
+            ]
+        };
+         
+         var cfg = {
+            cls : 'fc fc-ltr',
+            cn : [
+                header,
+                {
+                    cls : 'fc-content',
+                    style : "position: relative;",
+                    cn : [
+                        {
+                            cls : 'fc-view fc-view-month fc-grid',
+                            style : 'position: relative',
+                            unselectable : 'on',
+                            cn : [
+                                {
+                                    cls : 'fc-event-container',
+                                    style : 'position:absolute;z-index:8;top:0;left:0;'
+                                },
+                                cal_table
+                            ]
+                        }
+                    ]
+    
+                }
+           ] 
+            
+        };
+        
+         
+        
+        return cfg;
+    },
+    
+    
+    initEvents : function()
+    {
+        if(!this.store){
+            throw "can not find store for calendar";
+        }
+        
+        var mark = {
+            tag: "div",
+            cls:"x-dlg-mask",
+            style: "text-align:center",
+            cn: [
+                {
+                    tag: "div",
+                    style: "background-color:white;width:50%;margin:250 auto",
+                    cn: [
+                        {
+                            tag: "img",
+                            src: Roo.rootURL + '/images/ux/lightbox/loading.gif' 
+                        },
+                        {
+                            tag: "span",
+                            html: "Loading"
+                        }
+                        
+                    ]
+                }
+            ]
+        }
+        this.maskEl = Roo.DomHelper.append(this.el.select('.fc-content', true).first(), mark, true);
+        
+        var size = this.el.select('.fc-content', true).first().getSize();
+        this.maskEl.setSize(size.width, size.height);
+        this.maskEl.enableDisplayMode("block");
+        if(!this.loadMask){
+            this.maskEl.hide();
+        }
+        
+        this.store = Roo.factory(this.store, Roo.data);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        
+        this.resize();
+        
+        this.cells = this.el.select('.fc-day',true);
+        //Roo.log(this.cells);
+        this.textNodes = this.el.query('.fc-day-number');
+        this.cells.addClassOnOver('fc-state-hover');
+        
+        this.el.select('.fc-button-prev',true).on('click', this.showPrevMonth, this);
+        this.el.select('.fc-button-next',true).on('click', this.showNextMonth, this);
+        this.el.select('.fc-button-today',true).on('click', this.showToday, this);
+        this.el.select('.fc-button',true).addClassOnOver('fc-state-hover');
+        
+        this.on('monthchange', this.onMonthChange, this);
+        
+        this.update(new Date().clearTime());
+    },
+    
+    resize : function() {
+        var sz  = this.el.getSize();
+        
+        this.el.select('.fc-day-header',true).setWidth(sz.width / 7);
+        this.el.select('.fc-day-content div',true).setHeight(34);
+    },
+    
+    
+    // private
+    showPrevMonth : function(e){
+        this.update(this.activeDate.add("mo", -1));
+    },
+    showToday : function(e){
+        this.update(new Date().clearTime());
+    },
+    // private
+    showNextMonth : function(e){
+        this.update(this.activeDate.add("mo", 1));
+    },
+
+    // private
+    showPrevYear : function(){
+        this.update(this.activeDate.add("y", -1));
+    },
+
+    // private
+    showNextYear : function(){
+        this.update(this.activeDate.add("y", 1));
+    },
+
+    
+   // private
+    update : function(date)
+    {
+        var vd = this.activeDate;
+        this.activeDate = date;
+//        if(vd && this.el){
+//            var t = date.getTime();
+//            if(vd.getMonth() == date.getMonth() && vd.getFullYear() == date.getFullYear()){
+//                Roo.log('using add remove');
+//                
+//                this.fireEvent('monthchange', this, date);
+//                
+//                this.cells.removeClass("fc-state-highlight");
+//                this.cells.each(function(c){
+//                   if(c.dateValue == t){
+//                       c.addClass("fc-state-highlight");
+//                       setTimeout(function(){
+//                            try{c.dom.firstChild.focus();}catch(e){}
+//                       }, 50);
+//                       return false;
+//                   }
+//                   return true;
+//                });
+//                return;
+//            }
+//        }
+        
+        var days = date.getDaysInMonth();
+        
+        var firstOfMonth = date.getFirstDateOfMonth();
+        var startingPos = firstOfMonth.getDay()-this.startDay;
+        
+        if(startingPos < this.startDay){
+            startingPos += 7;
+        }
+        
+        var pm = date.add(Date.MONTH, -1);
+        var prevStart = pm.getDaysInMonth()-startingPos;
+//        
+        this.cells = this.el.select('.fc-day',true);
+        this.textNodes = this.el.query('.fc-day-number');
+        this.cells.addClassOnOver('fc-state-hover');
+        
+        var cells = this.cells.elements;
+        var textEls = this.textNodes;
+        
+        Roo.each(cells, function(cell){
+            cell.removeClass([ 'fc-past', 'fc-other-month', 'fc-future', 'fc-state-highlight', 'fc-state-disabled']);
+        });
+        
+        days += startingPos;
+
+        // convert everything to numbers so it's fast
+        var day = 86400000;
+        var d = (new Date(pm.getFullYear(), pm.getMonth(), prevStart)).clearTime();
+        //Roo.log(d);
+        //Roo.log(pm);
+        //Roo.log(prevStart);
+        
+        var today = new Date().clearTime().getTime();
+        var sel = date.clearTime().getTime();
+        var min = this.minDate ? this.minDate.clearTime() : Number.NEGATIVE_INFINITY;
+        var max = this.maxDate ? this.maxDate.clearTime() : Number.POSITIVE_INFINITY;
+        var ddMatch = this.disabledDatesRE;
+        var ddText = this.disabledDatesText;
+        var ddays = this.disabledDays ? this.disabledDays.join("") : false;
+        var ddaysText = this.disabledDaysText;
+        var format = this.format;
+        
+        var setCellClass = function(cal, cell){
+            cell.row = 0;
+            cell.events = [];
+            cell.more = [];
+            //Roo.log('set Cell Class');
+            cell.title = "";
+            var t = d.getTime();
+            
+            //Roo.log(d);
+            
+            cell.dateValue = t;
+            if(t == today){
+                cell.className += " fc-today";
+                cell.className += " fc-state-highlight";
+                cell.title = cal.todayText;
+            }
+            if(t == sel){
+                // disable highlight in other month..
+                //cell.className += " fc-state-highlight";
+                
+            }
+            // disabling
+            if(t < min) {
+                cell.className = " fc-state-disabled";
+                cell.title = cal.minText;
+                return;
+            }
+            if(t > max) {
+                cell.className = " fc-state-disabled";
+                cell.title = cal.maxText;
+                return;
+            }
+            if(ddays){
+                if(ddays.indexOf(d.getDay()) != -1){
+                    cell.title = ddaysText;
+                    cell.className = " fc-state-disabled";
+                }
+            }
+            if(ddMatch && format){
+                var fvalue = d.dateFormat(format);
+                if(ddMatch.test(fvalue)){
+                    cell.title = ddText.replace("%0", fvalue);
+                    cell.className = " fc-state-disabled";
+                }
+            }
+            
+            if (!cell.initialClassName) {
+                cell.initialClassName = cell.dom.className;
+            }
+            
+            cell.dom.className = cell.initialClassName  + ' ' +  cell.className;
+        };
+
+        var i = 0;
+        
+        for(; i < startingPos; i++) {
+            textEls[i].innerHTML = (++prevStart);
+            d.setDate(d.getDate()+1);
+            
+            cells[i].className = "fc-past fc-other-month";
+            setCellClass(this, cells[i]);
+        }
+        
+        var intDay = 0;
+        
+        for(; i < days; i++){
+            intDay = i - startingPos + 1;
+            textEls[i].innerHTML = (intDay);
+            d.setDate(d.getDate()+1);
+            
+            cells[i].className = ''; // "x-date-active";
+            setCellClass(this, cells[i]);
+        }
+        var extraDays = 0;
+        
+        for(; i < 42; i++) {
+            textEls[i].innerHTML = (++extraDays);
+            d.setDate(d.getDate()+1);
+            
+            cells[i].className = "fc-future fc-other-month";
+            setCellClass(this, cells[i]);
+        }
+        
+        this.el.select('.fc-header-title h2',true).update(Date.monthNames[date.getMonth()] + " " + date.getFullYear());
+        
+        var totalRows = Math.ceil((date.getDaysInMonth() + date.getFirstDateOfMonth().getDay()) / 7);
+        
+        this.el.select('tr.fc-week.fc-prev-last',true).removeClass('fc-last');
+        this.el.select('tr.fc-week.fc-next-last',true).addClass('fc-last').show();
+        
+        if(totalRows != 6){
+            this.el.select('tr.fc-week.fc-last',true).removeClass('fc-last').addClass('fc-next-last').hide();
+            this.el.select('tr.fc-week.fc-prev-last',true).addClass('fc-last');
+        }
+        
+        this.fireEvent('monthchange', this, date);
+        
+        
+        /*
+        if(!this.internalRender){
+            var main = this.el.dom.firstChild;
+            var w = main.offsetWidth;
+            this.el.setWidth(w + this.el.getBorderWidth("lr"));
+            Roo.fly(main).setWidth(w);
+            this.internalRender = true;
+            // opera does not respect the auto grow header center column
+            // then, after it gets a width opera refuses to recalculate
+            // without a second pass
+            if(Roo.isOpera && !this.secondPass){
+                main.rows[0].cells[1].style.width = (w - (main.rows[0].cells[0].offsetWidth+main.rows[0].cells[2].offsetWidth)) + "px";
+                this.secondPass = true;
+                this.update.defer(10, this, [date]);
+            }
+        }
+        */
+        
+    },
+    
+    findCell : function(dt) {
+        dt = dt.clearTime().getTime();
+        var ret = false;
+        this.cells.each(function(c){
+            //Roo.log("check " +c.dateValue + '?=' + dt);
+            if(c.dateValue == dt){
+                ret = c;
+                return false;
+            }
+            return true;
+        });
+        
+        return ret;
+    },
+    
+    findCells : function(ev) {
+        var s = ev.start.clone().clearTime().getTime();
+       // Roo.log(s);
+        var e= ev.end.clone().clearTime().getTime();
+       // Roo.log(e);
+        var ret = [];
+        this.cells.each(function(c){
+             ////Roo.log("check " +c.dateValue + '<' + e + ' > ' + s);
+            
+            if(c.dateValue > e){
+                return ;
+            }
+            if(c.dateValue < s){
+                return ;
+            }
+            ret.push(c);
+        });
+        
+        return ret;    
+    },
+    
+//    findBestRow: function(cells)
+//    {
+//        var ret = 0;
+//        
+//        for (var i =0 ; i < cells.length;i++) {
+//            ret  = Math.max(cells[i].rows || 0,ret);
+//        }
+//        return ret;
+//        
+//    },
+    
+    
+    addItem : function(ev)
+    {
+        // look for vertical location slot in
+        var cells = this.findCells(ev);
+        
+//        ev.row = this.findBestRow(cells);
+        
+        // work out the location.
+        
+        var crow = false;
+        var rows = [];
+        for(var i =0; i < cells.length; i++) {
+            
+            cells[i].row = cells[0].row;
+            
+            if(i == 0){
+                cells[i].row = cells[i].row + 1;
+            }
+            
+            if (!crow) {
+                crow = {
+                    start : cells[i],
+                    end :  cells[i]
+                };
+                continue;
+            }
+            if (crow.start.getY() == cells[i].getY()) {
+                // on same row.
+                crow.end = cells[i];
+                continue;
+            }
+            // different row.
+            rows.push(crow);
+            crow = {
+                start: cells[i],
+                end : cells[i]
+            };
+            
+        }
+        
+        rows.push(crow);
+        ev.els = [];
+        ev.rows = rows;
+        ev.cells = cells;
+        
+        cells[0].events.push(ev);
+        
+        this.calevents.push(ev);
+    },
+    
+    clearEvents: function() {
+        
+        if(!this.calevents){
+            return;
+        }
+        
+        Roo.each(this.cells.elements, function(c){
+            c.row = 0;
+            c.events = [];
+            c.more = [];
+        });
+        
+        Roo.each(this.calevents, function(e) {
+            Roo.each(e.els, function(el) {
+                el.un('mouseenter' ,this.onEventEnter, this);
+                el.un('mouseleave' ,this.onEventLeave, this);
+                el.remove();
+            },this);
+        },this);
+        
+        Roo.each(Roo.select('.fc-more-event', true).elements, function(e){
+            e.remove();
+        });
+        
+    },
+    
+    renderEvents: function()
+    {   
+        var _this = this;
+        
+        this.cells.each(function(c) {
+            
+            if(c.row < 5){
+                return;
+            }
+            
+            var ev = c.events;
+            
+            var r = 4;
+            if(c.row != c.events.length){
+                r = 4 - (4 - (c.row - c.events.length));
+            }
+            
+            c.events = ev.slice(0, r);
+            c.more = ev.slice(r);
+            
+            if(c.more.length && c.more.length == 1){
+                c.events.push(c.more.pop());
+            }
+            
+            c.row = (c.row - ev.length) + c.events.length + ((c.more.length) ? 1 : 0);
+            
+        });
+            
+        this.cells.each(function(c) {
+            
+            c.select('.fc-day-content div',true).first().setHeight(Math.max(34, c.row * 20));
+            
+            
+            for (var e = 0; e < c.events.length; e++){
+                var ev = c.events[e];
+                var rows = ev.rows;
+                
+                for(var i = 0; i < rows.length; i++) {
+                
+                    // how many rows should it span..
+
+                    var  cfg = {
+                        cls : 'roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable',
+                        style : 'position: absolute', // left: 387px; width: 121px; top: 359px;
+
+                        unselectable : "on",
+                        cn : [
+                            {
+                                cls: 'fc-event-inner',
+                                cn : [
+    //                                {
+    //                                  tag:'span',
+    //                                  cls: 'fc-event-time',
+    //                                  html : cells.length > 1 ? '' : ev.time
+    //                                },
+                                    {
+                                      tag:'span',
+                                      cls: 'fc-event-title',
+                                      html : String.format('{0}', ev.title)
+                                    }
+
+
+                                ]
+                            },
+                            {
+                                cls: 'ui-resizable-handle ui-resizable-e',
+                                html : '&nbsp;&nbsp;&nbsp'
+                            }
+
+                        ]
+                    };
+
+                    if (i == 0) {
+                        cfg.cls += ' fc-event-start';
+                    }
+                    if ((i+1) == rows.length) {
+                        cfg.cls += ' fc-event-end';
+                    }
+
+                    var ctr = _this.el.select('.fc-event-container',true).first();
+                    var cg = ctr.createChild(cfg);
+
+                    var sbox = rows[i].start.select('.fc-day-content',true).first().getBox();
+                    var ebox = rows[i].end.select('.fc-day-content',true).first().getBox();
+
+                    var r = (c.more.length) ? 1 : 0;
+                    cg.setXY([sbox.x +2, sbox.y + ((c.row - c.events.length - r + e) * 20)]);    
+                    cg.setWidth(ebox.right - sbox.x -2);
+
+                    cg.on('mouseenter' ,_this.onEventEnter, _this, ev);
+                    cg.on('mouseleave' ,_this.onEventLeave, _this, ev);
+                    cg.on('click', _this.onEventClick, _this, ev);
+
+                    ev.els.push(cg);
+                    
+                }
+                
+            }
+            
+            
+            if(c.more.length){
+                var  cfg = {
+                    cls : 'fc-more-event roo-dynamic fc-event fc-event-hori fc-event-draggable ui-draggable fc-event-start fc-event-end',
+                    style : 'position: absolute',
+                    unselectable : "on",
+                    cn : [
+                        {
+                            cls: 'fc-event-inner',
+                            cn : [
+                                {
+                                  tag:'span',
+                                  cls: 'fc-event-title',
+                                  html : 'More'
+                                }
+
+
+                            ]
+                        },
+                        {
+                            cls: 'ui-resizable-handle ui-resizable-e',
+                            html : '&nbsp;&nbsp;&nbsp'
+                        }
+
+                    ]
+                };
+
+                var ctr = _this.el.select('.fc-event-container',true).first();
+                var cg = ctr.createChild(cfg);
+
+                var sbox = c.select('.fc-day-content',true).first().getBox();
+                var ebox = c.select('.fc-day-content',true).first().getBox();
+                //Roo.log(cg);
+                cg.setXY([sbox.x +2, sbox.y +((c.row - 1) * 20)]);    
+                cg.setWidth(ebox.right - sbox.x -2);
+
+                cg.on('click', _this.onMoreEventClick, _this, c.more);
+                
+            }
+            
+        });
+        
+        
+        
+    },
+    
+    onEventEnter: function (e, el,event,d) {
+        this.fireEvent('evententer', this, el, event);
+    },
+    
+    onEventLeave: function (e, el,event,d) {
+        this.fireEvent('eventleave', this, el, event);
+    },
+    
+    onEventClick: function (e, el,event,d) {
+        this.fireEvent('eventclick', this, el, event);
+    },
+    
+    onMonthChange: function () {
+        this.store.load();
+    },
+    
+    onMoreEventClick: function(e, el, more)
+    {
+        var _this = this;
+        
+        this.calpopover.placement = 'right';
+        this.calpopover.setTitle('More');
+        
+        this.calpopover.setContent('');
+        
+        var ctr = this.calpopover.el.select('.popover-content', true).first();
+        
+        Roo.each(more, function(m){
+            var cfg = {
+                cls : 'fc-event-hori fc-event-draggable',
+                html : m.title
+            }
+            var cg = ctr.createChild(cfg);
+            
+            cg.on('click', _this.onEventClick, _this, m);
+        });
+        
+        this.calpopover.show(el);
+        
+        
+    },
+    
+    onLoad: function () 
+    {   
+        this.calevents = [];
+        var cal = this;
+        
+        if(this.store.getCount() > 0){
+            this.store.data.each(function(d){
+               cal.addItem({
+                    id : d.data.id,
+                    start: (typeof(d.data.start_dt) === 'string') ? new Date.parseDate(d.data.start_dt, 'Y-m-d H:i:s') : d.data.start_dt,
+                    end : (typeof(d.data.end_dt) === 'string') ? new Date.parseDate(d.data.end_dt, 'Y-m-d H:i:s') : d.data.end_dt,
+                    time : d.data.start_time,
+                    title : d.data.title,
+                    description : d.data.description,
+                    venue : d.data.venue
+                });
+            });
+        }
+        
+        this.renderEvents();
+        
+        if(this.calevents.length && this.loadMask){
+            this.maskEl.hide();
+        }
+    },
+    
+    onBeforeLoad: function()
+    {
+        this.clearEvents();
+        if(this.loadMask){
+            this.maskEl.show();
+        }
+    }
+});
+
+ 
+ 
