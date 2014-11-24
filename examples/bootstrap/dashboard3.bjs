@@ -288,6 +288,7 @@
                                                     "xtype" : "NumberBox",
                                                     "String headline" : 150,
                                                     "$ xns" : "Roo.bootstrap.dash",
+                                                    "width" : "",
                                                     "String title" : "New Orders",
                                                     "height" : 150
                                                 }
