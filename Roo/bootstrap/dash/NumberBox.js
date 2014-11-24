@@ -82,6 +82,7 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
         cfg.cls += ' ' + this.bg_color;
         if(!this.more_text){
             cfg.cn[2].cn = null;
+        }
         
         return  cfg;
     },
