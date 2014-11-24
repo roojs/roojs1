@@ -7248,3 +7248,2385 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
 });
 
  
+/*
+ * - LGPL
+ *
+ * trigger field - base class for combo..
+ * 
+ */
+ 
+/**
+ * @class Roo.bootstrap.TriggerField
+ * @extends Roo.bootstrap.Input
+ * Provides a convenient wrapper for TextFields that adds a clickable trigger button (looks like a combobox by default).
+ * The trigger has no default action, so you must assign a function to implement the trigger click handler by
+ * overriding {@link #onTriggerClick}. You can create a TriggerField directly, as it renders exactly like a combobox
+ * for which you can provide a custom implementation.  For example:
+ * <pre><code>
+var trigger = new Roo.bootstrap.TriggerField();
+trigger.onTriggerClick = myTriggerFn;
+trigger.applyTo('my-field');
+</code></pre>
+ *
+ * However, in general you will most likely want to use TriggerField as the base class for a reusable component.
+ * {@link Roo.bootstrap.DateField} and {@link Roo.bootstrap.ComboBox} are perfect examples of this.
+ * @cfg {String} triggerClass An additional CSS class used to style the trigger button.  The trigger will always get the
+ * class 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.
+ * @constructor
+ * Create a new TriggerField.
+ * @param {Object} config Configuration options (valid {@Roo.bootstrap.Input} config options will also be applied
+ * to the base TextField)
+ */
+Roo.bootstrap.TriggerField = function(config){
+    this.mimicing = false;
+    Roo.bootstrap.TriggerField.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
+    /**
+     * @cfg {String} triggerClass A CSS class to apply to the trigger
+     */
+     /**
+     * @cfg {Boolean} hideTrigger True to hide the trigger element and display only the base text field (defaults to false)
+     */
+    hideTrigger:false,
+
+    /** @cfg {Boolean} grow @hide */
+    /** @cfg {Number} growMin @hide */
+    /** @cfg {Number} growMax @hide */
+
+    /**
+     * @hide 
+     * @method
+     */
+    autoSize: Roo.emptyFn,
+    // private
+    monitorTab : true,
+    // private
+    deferHeight : true,
+
+    
+    actionMode : 'wrap',
+    
+    
+    
+    getAutoCreate : function(){
+       
+        var parent = this.parent();
+        
+        var align = this.labelAlign || this.parentLabelAlign();
+        
+        var id = Roo.id();
+        
+        var cfg = {
+            cls: 'form-group' //input-group
+        };
+        
+        
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            cls : 'form-control',
+            autocomplete: 'off',
+            placeholder : this.placeholder || '' 
+            
+        };
+        if (this.name) {
+            input.name = this.name;
+        }
+        if (this.size) {
+            input.cls += ' input-' + this.size;
+        }
+        
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        
+        var inputblock = input;
+        
+        if (this.before || this.after) {
+            
+            inputblock = {
+                cls : 'input-group',
+                cn :  [] 
+            };
+            if (this.before) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.before
+                });
+            }
+            inputblock.cn.push(input);
+            if (this.after) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.after
+                });
+            }
+            
+        };
+        
+        var box = {
+            tag: 'div',
+            cn: [
+                {
+                    tag: 'input',
+                    type : 'hidden',
+                    cls: 'form-hidden-field'
+                },
+                inputblock
+            ]
+            
+        };
+        
+        if(this.multiple){
+            Roo.log('multiple');
+            
+            box = {
+                tag: 'div',
+                cn: [
+                    {
+                        tag: 'input',
+                        type : 'hidden',
+                        cls: 'form-hidden-field'
+                    },
+                    {
+                        tag: 'ul',
+                        cls: 'select2-choices',
+                        cn:[
+                            {
+                                tag: 'li',
+                                cls: 'select2-search-field',
+                                cn: [
+
+                                    inputblock
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+        
+        var combobox = {
+            cls: 'select2-container input-group',
+            cn: [
+                box,
+                {
+                    tag: 'ul',
+                    cls: 'typeahead typeahead-long dropdown-menu',
+                    style: 'display:none'
+                }
+            ]
+        };
+        
+        if(!this.multiple){
+            combobox.cn.push({
+                tag :'span',
+                cls : 'input-group-addon btn dropdown-toggle',
+                cn : [
+                    {
+                        tag: 'span',
+                        cls: 'caret'
+                    },
+                    {
+                        tag: 'span',
+                        cls: 'combobox-clear',
+                        cn  : [
+                            {
+                                tag : 'i',
+                                cls: 'icon-remove'
+                            }
+                        ]
+                    }
+                ]
+
+            })
+        }
+        
+        if(this.multiple){
+            combobox.cls += ' select2-container-multi';
+        }
+        
+        if (align ==='left' && this.fieldLabel.length) {
+            
+                Roo.log("left and has label");
+                cfg.cn = [
+                    
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'control-label col-sm-' + this.labelWidth,
+                        html : this.fieldLabel
+                        
+                    },
+                    {
+                        cls : "col-sm-" + (12 - this.labelWidth), 
+                        cn: [
+                            combobox
+                        ]
+                    }
+                    
+                ];
+        } else if ( this.fieldLabel.length) {
+                Roo.log(" label");
+                 cfg.cn = [
+                   
+                    {
+                        tag: 'label',
+                        //cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    combobox
+                    
+                ];
+
+        } else {
+            
+                Roo.log(" no label && no align");
+                cfg = combobox
+                     
+                
+        }
+         
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
+        
+        return cfg;
+        
+    },
+    
+    
+    
+    // private
+    onResize : function(w, h){
+//        Roo.bootstrap.TriggerField.superclass.onResize.apply(this, arguments);
+//        if(typeof w == 'number'){
+//            var x = w - this.trigger.getWidth();
+//            this.inputEl().setWidth(this.adjustWidth('input', x));
+//            this.trigger.setStyle('left', x+'px');
+//        }
+    },
+
+    // private
+    adjustSize : Roo.BoxComponent.prototype.adjustSize,
+
+    // private
+    getResizeEl : function(){
+        return this.inputEl();
+    },
+
+    // private
+    getPositionEl : function(){
+        return this.inputEl();
+    },
+
+    // private
+    alignErrorIcon : function(){
+        this.errorIcon.alignTo(this.inputEl(), 'tl-tr', [2, 0]);
+    },
+
+    // private
+    initEvents : function(){
+        
+        Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
+        //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
+        if(!this.multiple){
+            this.trigger = this.el.select('span.dropdown-toggle',true).first();
+            if(this.hideTrigger){
+                this.trigger.setDisplayed(false);
+            }
+            this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
+        }
+        
+        if(this.multiple){
+            this.inputEl().on("click", this.onTriggerClick, this, {preventDefault:true});
+        }
+        
+        //this.trigger.addClassOnOver('x-form-trigger-over');
+        //this.trigger.addClassOnClick('x-form-trigger-click');
+        
+        //if(!this.width){
+        //    this.wrap.setWidth(this.el.getWidth()+this.trigger.getWidth());
+        //}
+    },
+
+    // private
+    initTrigger : function(){
+       
+    },
+
+    // private
+    onDestroy : function(){
+        if(this.trigger){
+            this.trigger.removeAllListeners();
+          //  this.trigger.remove();
+        }
+        //if(this.wrap){
+        //    this.wrap.remove();
+        //}
+        Roo.bootstrap.TriggerField.superclass.onDestroy.call(this);
+    },
+
+    // private
+    onFocus : function(){
+        Roo.bootstrap.TriggerField.superclass.onFocus.call(this);
+        /*
+        if(!this.mimicing){
+            this.wrap.addClass('x-trigger-wrap-focus');
+            this.mimicing = true;
+            Roo.get(Roo.isIE ? document.body : document).on("mousedown", this.mimicBlur, this);
+            if(this.monitorTab){
+                this.el.on("keydown", this.checkTab, this);
+            }
+        }
+        */
+    },
+
+    // private
+    checkTab : function(e){
+        if(e.getKey() == e.TAB){
+            this.triggerBlur();
+        }
+    },
+
+    // private
+    onBlur : function(){
+        // do nothing
+    },
+
+    // private
+    mimicBlur : function(e, t){
+        /*
+        if(!this.wrap.contains(t) && this.validateBlur()){
+            this.triggerBlur();
+        }
+        */
+    },
+
+    // private
+    triggerBlur : function(){
+        this.mimicing = false;
+        Roo.get(Roo.isIE ? document.body : document).un("mousedown", this.mimicBlur);
+        if(this.monitorTab){
+            this.el.un("keydown", this.checkTab, this);
+        }
+        //this.wrap.removeClass('x-trigger-wrap-focus');
+        Roo.bootstrap.TriggerField.superclass.onBlur.call(this);
+    },
+
+    // private
+    // This should be overriden by any subclass that needs to check whether or not the field can be blurred.
+    validateBlur : function(e, t){
+        return true;
+    },
+
+    // private
+    onDisable : function(){
+        this.inputEl().dom.disabled = true;
+        //Roo.bootstrap.TriggerField.superclass.onDisable.call(this);
+        //if(this.wrap){
+        //    this.wrap.addClass('x-item-disabled');
+        //}
+    },
+
+    // private
+    onEnable : function(){
+        this.inputEl().dom.disabled = false;
+        //Roo.bootstrap.TriggerField.superclass.onEnable.call(this);
+        //if(this.wrap){
+        //    this.el.removeClass('x-item-disabled');
+        //}
+    },
+
+    // private
+    onShow : function(){
+        var ae = this.getActionEl();
+        
+        if(ae){
+            ae.dom.style.display = '';
+            ae.dom.style.visibility = 'visible';
+        }
+    },
+
+    // private
+    
+    onHide : function(){
+        var ae = this.getActionEl();
+        ae.dom.style.display = 'none';
+    },
+
+    /**
+     * The function that should handle the trigger's click event.  This method does nothing by default until overridden
+     * by an implementing function.
+     * @method
+     * @param {EventObject} e
+     */
+    onTriggerClick : Roo.emptyFn
+});
+ /*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+/**
+ * @class Roo.data.SortTypes
+ * @singleton
+ * Defines the default sorting (casting?) comparison functions used when sorting data.
+ */
+Roo.data.SortTypes = {
+    /**
+     * Default sort that does nothing
+     * @param {Mixed} s The value being converted
+     * @return {Mixed} The comparison value
+     */
+    none : function(s){
+        return s;
+    },
+    
+    /**
+     * The regular expression used to strip tags
+     * @type {RegExp}
+     * @property
+     */
+    stripTagsRE : /<\/?[^>]+>/gi,
+    
+    /**
+     * Strips all HTML tags to sort on text only
+     * @param {Mixed} s The value being converted
+     * @return {String} The comparison value
+     */
+    asText : function(s){
+        return String(s).replace(this.stripTagsRE, "");
+    },
+    
+    /**
+     * Strips all HTML tags to sort on text only - Case insensitive
+     * @param {Mixed} s The value being converted
+     * @return {String} The comparison value
+     */
+    asUCText : function(s){
+        return String(s).toUpperCase().replace(this.stripTagsRE, "");
+    },
+    
+    /**
+     * Case insensitive string
+     * @param {Mixed} s The value being converted
+     * @return {String} The comparison value
+     */
+    asUCString : function(s) {
+    	return String(s).toUpperCase();
+    },
+    
+    /**
+     * Date sorting
+     * @param {Mixed} s The value being converted
+     * @return {Number} The comparison value
+     */
+    asDate : function(s) {
+        if(!s){
+            return 0;
+        }
+        if(s instanceof Date){
+            return s.getTime();
+        }
+    	return Date.parse(String(s));
+    },
+    
+    /**
+     * Float sorting
+     * @param {Mixed} s The value being converted
+     * @return {Float} The comparison value
+     */
+    asFloat : function(s) {
+    	var val = parseFloat(String(s).replace(/,/g, ""));
+        if(isNaN(val)) val = 0;
+    	return val;
+    },
+    
+    /**
+     * Integer sorting
+     * @param {Mixed} s The value being converted
+     * @return {Number} The comparison value
+     */
+    asInt : function(s) {
+        var val = parseInt(String(s).replace(/,/g, ""));
+        if(isNaN(val)) val = 0;
+    	return val;
+    }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+* @class Roo.data.Record
+ * Instances of this class encapsulate both record <em>definition</em> information, and record
+ * <em>value</em> information for use in {@link Roo.data.Store} objects, or any code which needs
+ * to access Records cached in an {@link Roo.data.Store} object.<br>
+ * <p>
+ * Constructors for this class are generated by passing an Array of field definition objects to {@link #create}.
+ * Instances are usually only created by {@link Roo.data.Reader} implementations when processing unformatted data
+ * objects.<br>
+ * <p>
+ * Record objects generated by this constructor inherit all the methods of Roo.data.Record listed below.
+ * @constructor
+ * This constructor should not be used to create Record objects. Instead, use the constructor generated by
+ * {@link #create}. The parameters are the same.
+ * @param {Array} data An associative Array of data values keyed by the field name.
+ * @param {Object} id (Optional) The id of the record. This id should be unique, and is used by the
+ * {@link Roo.data.Store} object which owns the Record to index its collection of Records. If
+ * not specified an integer id is generated.
+ */
+Roo.data.Record = function(data, id){
+    this.id = (id || id === 0) ? id : ++Roo.data.Record.AUTO_ID;
+    this.data = data;
+};
+
+/**
+ * Generate a constructor for a specific record layout.
+ * @param {Array} o An Array of field definition objects which specify field names, and optionally,
+ * data types, and a mapping for an {@link Roo.data.Reader} to extract the field's value from a data object.
+ * Each field definition object may contain the following properties: <ul>
+ * <li><b>name</b> : String<p style="margin-left:1em">The name by which the field is referenced within the Record. This is referenced by,
+ * for example the <em>dataIndex</em> property in column definition objects passed to {@link Roo.grid.ColumnModel}</p></li>
+ * <li><b>mapping</b> : String<p style="margin-left:1em">(Optional) A path specification for use by the {@link Roo.data.Reader} implementation
+ * that is creating the Record to access the data value from the data object. If an {@link Roo.data.JsonReader}
+ * is being used, then this is a string containing the javascript expression to reference the data relative to 
+ * the record item's root. If an {@link Roo.data.XmlReader} is being used, this is an {@link Roo.DomQuery} path
+ * to the data item relative to the record element. If the mapping expression is the same as the field name,
+ * this may be omitted.</p></li>
+ * <li><b>type</b> : String<p style="margin-left:1em">(Optional) The data type for conversion to displayable value. Possible values are
+ * <ul><li>auto (Default, implies no conversion)</li>
+ * <li>string</li>
+ * <li>int</li>
+ * <li>float</li>
+ * <li>boolean</li>
+ * <li>date</li></ul></p></li>
+ * <li><b>sortType</b> : Mixed<p style="margin-left:1em">(Optional) A member of {@link Roo.data.SortTypes}.</p></li>
+ * <li><b>sortDir</b> : String<p style="margin-left:1em">(Optional) Initial direction to sort. "ASC" or "DESC"</p></li>
+ * <li><b>convert</b> : Function<p style="margin-left:1em">(Optional) A function which converts the value provided
+ * by the Reader into an object that will be stored in the Record. It is passed the
+ * following parameters:<ul>
+ * <li><b>v</b> : Mixed<p style="margin-left:1em">The data value as read by the Reader.</p></li>
+ * </ul></p></li>
+ * <li><b>dateFormat</b> : String<p style="margin-left:1em">(Optional) A format String for the Date.parseDate function.</p></li>
+ * </ul>
+ * <br>usage:<br><pre><code>
+var TopicRecord = Roo.data.Record.create(
+    {name: 'title', mapping: 'topic_title'},
+    {name: 'author', mapping: 'username'},
+    {name: 'totalPosts', mapping: 'topic_replies', type: 'int'},
+    {name: 'lastPost', mapping: 'post_time', type: 'date'},
+    {name: 'lastPoster', mapping: 'user2'},
+    {name: 'excerpt', mapping: 'post_text'}
+);
+
+var myNewRecord = new TopicRecord({
+    title: 'Do my job please',
+    author: 'noobie',
+    totalPosts: 1,
+    lastPost: new Date(),
+    lastPoster: 'Animal',
+    excerpt: 'No way dude!'
+});
+myStore.add(myNewRecord);
+</code></pre>
+ * @method create
+ * @static
+ */
+Roo.data.Record.create = function(o){
+    var f = function(){
+        f.superclass.constructor.apply(this, arguments);
+    };
+    Roo.extend(f, Roo.data.Record);
+    var p = f.prototype;
+    p.fields = new Roo.util.MixedCollection(false, function(field){
+        return field.name;
+    });
+    for(var i = 0, len = o.length; i < len; i++){
+        p.fields.add(new Roo.data.Field(o[i]));
+    }
+    f.getField = function(name){
+        return p.fields.get(name);  
+    };
+    return f;
+};
+
+Roo.data.Record.AUTO_ID = 1000;
+Roo.data.Record.EDIT = 'edit';
+Roo.data.Record.REJECT = 'reject';
+Roo.data.Record.COMMIT = 'commit';
+
+Roo.data.Record.prototype = {
+    /**
+     * Readonly flag - true if this record has been modified.
+     * @type Boolean
+     */
+    dirty : false,
+    editing : false,
+    error: null,
+    modified: null,
+
+    // private
+    join : function(store){
+        this.store = store;
+    },
+
+    /**
+     * Set the named field to the specified value.
+     * @param {String} name The name of the field to set.
+     * @param {Object} value The value to set the field to.
+     */
+    set : function(name, value){
+        if(this.data[name] == value){
+            return;
+        }
+        this.dirty = true;
+        if(!this.modified){
+            this.modified = {};
+        }
+        if(typeof this.modified[name] == 'undefined'){
+            this.modified[name] = this.data[name];
+        }
+        this.data[name] = value;
+        if(!this.editing && this.store){
+            this.store.afterEdit(this);
+        }       
+    },
+
+    /**
+     * Get the value of the named field.
+     * @param {String} name The name of the field to get the value of.
+     * @return {Object} The value of the field.
+     */
+    get : function(name){
+        return this.data[name]; 
+    },
+
+    // private
+    beginEdit : function(){
+        this.editing = true;
+        this.modified = {}; 
+    },
+
+    // private
+    cancelEdit : function(){
+        this.editing = false;
+        delete this.modified;
+    },
+
+    // private
+    endEdit : function(){
+        this.editing = false;
+        if(this.dirty && this.store){
+            this.store.afterEdit(this);
+        }
+    },
+
+    /**
+     * Usually called by the {@link Roo.data.Store} which owns the Record.
+     * Rejects all changes made to the Record since either creation, or the last commit operation.
+     * Modified fields are reverted to their original values.
+     * <p>
+     * Developers should subscribe to the {@link Roo.data.Store#update} event to have their code notified
+     * of reject operations.
+     */
+    reject : function(){
+        var m = this.modified;
+        for(var n in m){
+            if(typeof m[n] != "function"){
+                this.data[n] = m[n];
+            }
+        }
+        this.dirty = false;
+        delete this.modified;
+        this.editing = false;
+        if(this.store){
+            this.store.afterReject(this);
+        }
+    },
+
+    /**
+     * Usually called by the {@link Roo.data.Store} which owns the Record.
+     * Commits all changes made to the Record since either creation, or the last commit operation.
+     * <p>
+     * Developers should subscribe to the {@link Roo.data.Store#update} event to have their code notified
+     * of commit operations.
+     */
+    commit : function(){
+        this.dirty = false;
+        delete this.modified;
+        this.editing = false;
+        if(this.store){
+            this.store.afterCommit(this);
+        }
+    },
+
+    // private
+    hasError : function(){
+        return this.error != null;
+    },
+
+    // private
+    clearError : function(){
+        this.error = null;
+    },
+
+    /**
+     * Creates a copy of this record.
+     * @param {String} id (optional) A new record id if you don't want to use this record's id
+     * @return {Record}
+     */
+    copy : function(newId) {
+        return new this.constructor(Roo.apply({}, this.data), newId || this.id);
+    }
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+
+
+/**
+ * @class Roo.data.Store
+ * @extends Roo.util.Observable
+ * The Store class encapsulates a client side cache of {@link Roo.data.Record} objects which provide input data
+ * for widgets such as the Roo.grid.Grid, or the Roo.form.ComboBox.<br>
+ * <p>
+ * A Store object uses an implementation of {@link Roo.data.DataProxy} to access a data object unless you call loadData() directly and pass in your data. The Store object
+ * has no knowledge of the format of the data returned by the Proxy.<br>
+ * <p>
+ * A Store object uses its configured implementation of {@link Roo.data.DataReader} to create {@link Roo.data.Record}
+ * instances from the data object. These records are cached and made available through accessor functions.
+ * @constructor
+ * Creates a new Store.
+ * @param {Object} config A config object containing the objects needed for the Store to access data,
+ * and read the data into Records.
+ */
+Roo.data.Store = function(config){
+    this.data = new Roo.util.MixedCollection(false);
+    this.data.getKey = function(o){
+        return o.id;
+    };
+    this.baseParams = {};
+    // private
+    this.paramNames = {
+        "start" : "start",
+        "limit" : "limit",
+        "sort" : "sort",
+        "dir" : "dir",
+        "multisort" : "_multisort"
+    };
+
+    if(config && config.data){
+        this.inlineData = config.data;
+        delete config.data;
+    }
+
+    Roo.apply(this, config);
+    
+    if(this.reader){ // reader passed
+        this.reader = Roo.factory(this.reader, Roo.data);
+        this.reader.xmodule = this.xmodule || false;
+        if(!this.recordType){
+            this.recordType = this.reader.recordType;
+        }
+        if(this.reader.onMetaChange){
+            this.reader.onMetaChange = this.onMetaChange.createDelegate(this);
+        }
+    }
+
+    if(this.recordType){
+        this.fields = this.recordType.prototype.fields;
+    }
+    this.modified = [];
+
+    this.addEvents({
+        /**
+         * @event datachanged
+         * Fires when the data cache has changed, and a widget which is using this Store
+         * as a Record cache should refresh its view.
+         * @param {Store} this
+         */
+        datachanged : true,
+        /**
+         * @event metachange
+         * Fires when this store's reader provides new metadata (fields). This is currently only support for JsonReaders.
+         * @param {Store} this
+         * @param {Object} meta The JSON metadata
+         */
+        metachange : true,
+        /**
+         * @event add
+         * Fires when Records have been added to the Store
+         * @param {Store} this
+         * @param {Roo.data.Record[]} records The array of Records added
+         * @param {Number} index The index at which the record(s) were added
+         */
+        add : true,
+        /**
+         * @event remove
+         * Fires when a Record has been removed from the Store
+         * @param {Store} this
+         * @param {Roo.data.Record} record The Record that was removed
+         * @param {Number} index The index at which the record was removed
+         */
+        remove : true,
+        /**
+         * @event update
+         * Fires when a Record has been updated
+         * @param {Store} this
+         * @param {Roo.data.Record} record The Record that was updated
+         * @param {String} operation The update operation being performed.  Value may be one of:
+         * <pre><code>
+ Roo.data.Record.EDIT
+ Roo.data.Record.REJECT
+ Roo.data.Record.COMMIT
+         * </code></pre>
+         */
+        update : true,
+        /**
+         * @event clear
+         * Fires when the data cache has been cleared.
+         * @param {Store} this
+         */
+        clear : true,
+        /**
+         * @event beforeload
+         * Fires before a request is made for a new data object.  If the beforeload handler returns false
+         * the load action will be canceled.
+         * @param {Store} this
+         * @param {Object} options The loading options that were specified (see {@link #load} for details)
+         */
+        beforeload : true,
+        /**
+         * @event beforeloadadd
+         * Fires after a new set of Records has been loaded.
+         * @param {Store} this
+         * @param {Roo.data.Record[]} records The Records that were loaded
+         * @param {Object} options The loading options that were specified (see {@link #load} for details)
+         */
+        beforeloadadd : true,
+        /**
+         * @event load
+         * Fires after a new set of Records has been loaded, before they are added to the store.
+         * @param {Store} this
+         * @param {Roo.data.Record[]} records The Records that were loaded
+         * @param {Object} options The loading options that were specified (see {@link #load} for details)
+         * @params {Object} return from reader
+         */
+        load : true,
+        /**
+         * @event loadexception
+         * Fires if an exception occurs in the Proxy during loading.
+         * Called with the signature of the Proxy's "loadexception" event.
+         * If you return Json { data: [] , success: false, .... } then this will be thrown with the following args
+         * 
+         * @param {Proxy} 
+         * @param {Object} return from JsonData.reader() - success, totalRecords, records
+         * @param {Object} load options 
+         * @param {Object} jsonData from your request (normally this contains the Exception)
+         */
+        loadexception : true
+    });
+    
+    if(this.proxy){
+        this.proxy = Roo.factory(this.proxy, Roo.data);
+        this.proxy.xmodule = this.xmodule || false;
+        this.relayEvents(this.proxy,  ["loadexception"]);
+    }
+    this.sortToggle = {};
+    this.sortOrder = []; // array of order of sorting - updated by grid if multisort is enabled.
+
+    Roo.data.Store.superclass.constructor.call(this);
+
+    if(this.inlineData){
+        this.loadData(this.inlineData);
+        delete this.inlineData;
+    }
+};
+
+Roo.extend(Roo.data.Store, Roo.util.Observable, {
+     /**
+    * @cfg {boolean} isLocal   flag if data is locally available (and can be always looked up
+    * without a remote query - used by combo/forms at present.
+    */
+    
+    /**
+    * @cfg {Roo.data.DataProxy} proxy The Proxy object which provides access to a data object.
+    */
+    /**
+    * @cfg {Array} data Inline data to be loaded when the store is initialized.
+    */
+    /**
+    * @cfg {Roo.data.Reader} reader The Reader object which processes the data object and returns
+    * an Array of Roo.data.record objects which are cached keyed by their <em>id</em> property.
+    */
+    /**
+    * @cfg {Object} baseParams An object containing properties which are to be sent as parameters
+    * on any HTTP request
+    */
+    /**
+    * @cfg {Object} sortInfo A config object in the format: {field: "fieldName", direction: "ASC|DESC"}
+    */
+    /**
+    * @cfg {Boolean} multiSort enable multi column sorting (sort is based on the order of columns, remote only at present)
+    */
+    multiSort: false,
+    /**
+    * @cfg {boolean} remoteSort True if sorting is to be handled by requesting the Proxy to provide a refreshed
+    * version of the data object in sorted order, as opposed to sorting the Record cache in place (defaults to false).
+    */
+    remoteSort : false,
+
+    /**
+    * @cfg {boolean} pruneModifiedRecords True to clear all modified record information each time the store is
+     * loaded or when a record is removed. (defaults to false).
+    */
+    pruneModifiedRecords : false,
+
+    // private
+    lastOptions : null,
+
+    /**
+     * Add Records to the Store and fires the add event.
+     * @param {Roo.data.Record[]} records An Array of Roo.data.Record objects to add to the cache.
+     */
+    add : function(records){
+        records = [].concat(records);
+        for(var i = 0, len = records.length; i < len; i++){
+            records[i].join(this);
+        }
+        var index = this.data.length;
+        this.data.addAll(records);
+        this.fireEvent("add", this, records, index);
+    },
+
+    /**
+     * Remove a Record from the Store and fires the remove event.
+     * @param {Ext.data.Record} record The Roo.data.Record object to remove from the cache.
+     */
+    remove : function(record){
+        var index = this.data.indexOf(record);
+        this.data.removeAt(index);
+        if(this.pruneModifiedRecords){
+            this.modified.remove(record);
+        }
+        this.fireEvent("remove", this, record, index);
+    },
+
+    /**
+     * Remove all Records from the Store and fires the clear event.
+     */
+    removeAll : function(){
+        this.data.clear();
+        if(this.pruneModifiedRecords){
+            this.modified = [];
+        }
+        this.fireEvent("clear", this);
+    },
+
+    /**
+     * Inserts Records to the Store at the given index and fires the add event.
+     * @param {Number} index The start index at which to insert the passed Records.
+     * @param {Roo.data.Record[]} records An Array of Roo.data.Record objects to add to the cache.
+     */
+    insert : function(index, records){
+        records = [].concat(records);
+        for(var i = 0, len = records.length; i < len; i++){
+            this.data.insert(index, records[i]);
+            records[i].join(this);
+        }
+        this.fireEvent("add", this, records, index);
+    },
+
+    /**
+     * Get the index within the cache of the passed Record.
+     * @param {Roo.data.Record} record The Roo.data.Record object to to find.
+     * @return {Number} The index of the passed Record. Returns -1 if not found.
+     */
+    indexOf : function(record){
+        return this.data.indexOf(record);
+    },
+
+    /**
+     * Get the index within the cache of the Record with the passed id.
+     * @param {String} id The id of the Record to find.
+     * @return {Number} The index of the Record. Returns -1 if not found.
+     */
+    indexOfId : function(id){
+        return this.data.indexOfKey(id);
+    },
+
+    /**
+     * Get the Record with the specified id.
+     * @param {String} id The id of the Record to find.
+     * @return {Roo.data.Record} The Record with the passed id. Returns undefined if not found.
+     */
+    getById : function(id){
+        return this.data.key(id);
+    },
+
+    /**
+     * Get the Record at the specified index.
+     * @param {Number} index The index of the Record to find.
+     * @return {Roo.data.Record} The Record at the passed index. Returns undefined if not found.
+     */
+    getAt : function(index){
+        return this.data.itemAt(index);
+    },
+
+    /**
+     * Returns a range of Records between specified indices.
+     * @param {Number} startIndex (optional) The starting index (defaults to 0)
+     * @param {Number} endIndex (optional) The ending index (defaults to the last Record in the Store)
+     * @return {Roo.data.Record[]} An array of Records
+     */
+    getRange : function(start, end){
+        return this.data.getRange(start, end);
+    },
+
+    // private
+    storeOptions : function(o){
+        o = Roo.apply({}, o);
+        delete o.callback;
+        delete o.scope;
+        this.lastOptions = o;
+    },
+
+    /**
+     * Loads the Record cache from the configured Proxy using the configured Reader.
+     * <p>
+     * If using remote paging, then the first load call must specify the <em>start</em>
+     * and <em>limit</em> properties in the options.params property to establish the initial
+     * position within the dataset, and the number of Records to cache on each read from the Proxy.
+     * <p>
+     * <strong>It is important to note that for remote data sources, loading is asynchronous,
+     * and this call will return before the new data has been loaded. Perform any post-processing
+     * in a callback function, or in a "load" event handler.</strong>
+     * <p>
+     * @param {Object} options An object containing properties which control loading options:<ul>
+     * <li>params {Object} An object containing properties to pass as HTTP parameters to a remote data source.</li>
+     * <li>callback {Function} A function to be called after the Records have been loaded. The callback is
+     * passed the following arguments:<ul>
+     * <li>r : Roo.data.Record[]</li>
+     * <li>options: Options object from the load call</li>
+     * <li>success: Boolean success indicator</li></ul></li>
+     * <li>scope {Object} Scope with which to call the callback (defaults to the Store object)</li>
+     * <li>add {Boolean} indicator to append loaded records rather than replace the current cache.</li>
+     * </ul>
+     */
+    load : function(options){
+        options = options || {};
+        if(this.fireEvent("beforeload", this, options) !== false){
+            this.storeOptions(options);
+            var p = Roo.apply(options.params || {}, this.baseParams);
+            // if meta was not loaded from remote source.. try requesting it.
+            if (!this.reader.metaFromRemote) {
+                p._requestMeta = 1;
+            }
+            if(this.sortInfo && this.remoteSort){
+                var pn = this.paramNames;
+                p[pn["sort"]] = this.sortInfo.field;
+                p[pn["dir"]] = this.sortInfo.direction;
+            }
+            if (this.multiSort) {
+                var pn = this.paramNames;
+                p[pn["multisort"]] = Roo.encode( { sort : this.sortToggle, order: this.sortOrder });
+            }
+            
+            this.proxy.load(p, this.reader, this.loadRecords, this, options);
+        }
+    },
+
+    /**
+     * Reloads the Record cache from the configured Proxy using the configured Reader and
+     * the options from the last load operation performed.
+     * @param {Object} options (optional) An object containing properties which may override the options
+     * used in the last load operation. See {@link #load} for details (defaults to null, in which case
+     * the most recently used options are reused).
+     */
+    reload : function(options){
+        this.load(Roo.applyIf(options||{}, this.lastOptions));
+    },
+
+    // private
+    // Called as a callback by the Reader during a load operation.
+    loadRecords : function(o, options, success){
+        if(!o || success === false){
+            if(success !== false){
+                this.fireEvent("load", this, [], options, o);
+            }
+            if(options.callback){
+                options.callback.call(options.scope || this, [], options, false);
+            }
+            return;
+        }
+        // if data returned failure - throw an exception.
+        if (o.success === false) {
+            // show a message if no listener is registered.
+            if (!this.hasListener('loadexception') && typeof(o.raw.errorMsg) != 'undefined') {
+                    Roo.MessageBox.alert("Error loading",o.raw.errorMsg);
+            }
+            // loadmask wil be hooked into this..
+            this.fireEvent("loadexception", this, o, options, o.raw.errorMsg);
+            return;
+        }
+        var r = o.records, t = o.totalRecords || r.length;
+        
+        this.fireEvent("beforeloadadd", this, r, options, o);
+        
+        if(!options || options.add !== true){
+            if(this.pruneModifiedRecords){
+                this.modified = [];
+            }
+            for(var i = 0, len = r.length; i < len; i++){
+                r[i].join(this);
+            }
+            if(this.snapshot){
+                this.data = this.snapshot;
+                delete this.snapshot;
+            }
+            this.data.clear();
+            this.data.addAll(r);
+            this.totalLength = t;
+            this.applySort();
+            this.fireEvent("datachanged", this);
+        }else{
+            this.totalLength = Math.max(t, this.data.length+r.length);
+            this.add(r);
+        }
+        this.fireEvent("load", this, r, options, o);
+        if(options.callback){
+            options.callback.call(options.scope || this, r, options, true);
+        }
+    },
+
+
+    /**
+     * Loads data from a passed data block. A Reader which understands the format of the data
+     * must have been configured in the constructor.
+     * @param {Object} data The data block from which to read the Records.  The format of the data expected
+     * is dependent on the type of Reader that is configured and should correspond to that Reader's readRecords parameter.
+     * @param {Boolean} append (Optional) True to append the new Records rather than replace the existing cache.
+     */
+    loadData : function(o, append){
+        var r = this.reader.readRecords(o);
+        this.loadRecords(r, {add: append}, true);
+    },
+
+    /**
+     * Gets the number of cached records.
+     * <p>
+     * <em>If using paging, this may not be the total size of the dataset. If the data object
+     * used by the Reader contains the dataset size, then the getTotalCount() function returns
+     * the data set size</em>
+     */
+    getCount : function(){
+        return this.data.length || 0;
+    },
+
+    /**
+     * Gets the total number of records in the dataset as returned by the server.
+     * <p>
+     * <em>If using paging, for this to be accurate, the data object used by the Reader must contain
+     * the dataset size</em>
+     */
+    getTotalCount : function(){
+        return this.totalLength || 0;
+    },
+
+    /**
+     * Returns the sort state of the Store as an object with two properties:
+     * <pre><code>
+ field {String} The name of the field by which the Records are sorted
+ direction {String} The sort order, "ASC" or "DESC"
+     * </code></pre>
+     */
+    getSortState : function(){
+        return this.sortInfo;
+    },
+
+    // private
+    applySort : function(){
+        if(this.sortInfo && !this.remoteSort){
+            var s = this.sortInfo, f = s.field;
+            var st = this.fields.get(f).sortType;
+            var fn = function(r1, r2){
+                var v1 = st(r1.data[f]), v2 = st(r2.data[f]);
+                return v1 > v2 ? 1 : (v1 < v2 ? -1 : 0);
+            };
+            this.data.sort(s.direction, fn);
+            if(this.snapshot && this.snapshot != this.data){
+                this.snapshot.sort(s.direction, fn);
+            }
+        }
+    },
+
+    /**
+     * Sets the default sort column and order to be used by the next load operation.
+     * @param {String} fieldName The name of the field to sort by.
+     * @param {String} dir (optional) The sort order, "ASC" or "DESC" (defaults to "ASC")
+     */
+    setDefaultSort : function(field, dir){
+        this.sortInfo = {field: field, direction: dir ? dir.toUpperCase() : "ASC"};
+    },
+
+    /**
+     * Sort the Records.
+     * If remote sorting is used, the sort is performed on the server, and the cache is
+     * reloaded. If local sorting is used, the cache is sorted internally.
+     * @param {String} fieldName The name of the field to sort by.
+     * @param {String} dir (optional) The sort order, "ASC" or "DESC" (defaults to "ASC")
+     */
+    sort : function(fieldName, dir){
+        var f = this.fields.get(fieldName);
+        if(!dir){
+            this.sortToggle[f.name] = this.sortToggle[f.name] || f.sortDir;
+            
+            if(this.multiSort || (this.sortInfo && this.sortInfo.field == f.name) ){ // toggle sort dir
+                dir = (this.sortToggle[f.name] || "ASC").toggle("ASC", "DESC");
+            }else{
+                dir = f.sortDir;
+            }
+        }
+        this.sortToggle[f.name] = dir;
+        this.sortInfo = {field: f.name, direction: dir};
+        if(!this.remoteSort){
+            this.applySort();
+            this.fireEvent("datachanged", this);
+        }else{
+            this.load(this.lastOptions);
+        }
+    },
+
+    /**
+     * Calls the specified function for each of the Records in the cache.
+     * @param {Function} fn The function to call. The Record is passed as the first parameter.
+     * Returning <em>false</em> aborts and exits the iteration.
+     * @param {Object} scope (optional) The scope in which to call the function (defaults to the Record).
+     */
+    each : function(fn, scope){
+        this.data.each(fn, scope);
+    },
+
+    /**
+     * Gets all records modified since the last commit.  Modified records are persisted across load operations
+     * (e.g., during paging).
+     * @return {Roo.data.Record[]} An array of Records containing outstanding modifications.
+     */
+    getModifiedRecords : function(){
+        return this.modified;
+    },
+
+    // private
+    createFilterFn : function(property, value, anyMatch){
+        if(!value.exec){ // not a regex
+            value = String(value);
+            if(value.length == 0){
+                return false;
+            }
+            value = new RegExp((anyMatch === true ? '' : '^') + Roo.escapeRe(value), "i");
+        }
+        return function(r){
+            return value.test(r.data[property]);
+        };
+    },
+
+    /**
+     * Sums the value of <i>property</i> for each record between start and end and returns the result.
+     * @param {String} property A field on your records
+     * @param {Number} start The record index to start at (defaults to 0)
+     * @param {Number} end The last record index to include (defaults to length - 1)
+     * @return {Number} The sum
+     */
+    sum : function(property, start, end){
+        var rs = this.data.items, v = 0;
+        start = start || 0;
+        end = (end || end === 0) ? end : rs.length-1;
+
+        for(var i = start; i <= end; i++){
+            v += (rs[i].data[property] || 0);
+        }
+        return v;
+    },
+
+    /**
+     * Filter the records by a specified property.
+     * @param {String} field A field on your records
+     * @param {String/RegExp} value Either a string that the field
+     * should start with or a RegExp to test against the field
+     * @param {Boolean} anyMatch True to match any part not just the beginning
+     */
+    filter : function(property, value, anyMatch){
+        var fn = this.createFilterFn(property, value, anyMatch);
+        return fn ? this.filterBy(fn) : this.clearFilter();
+    },
+
+    /**
+     * Filter by a function. The specified function will be called with each
+     * record in this data source. If the function returns true the record is included,
+     * otherwise it is filtered.
+     * @param {Function} fn The function to be called, it will receive 2 args (record, id)
+     * @param {Object} scope (optional) The scope of the function (defaults to this)
+     */
+    filterBy : function(fn, scope){
+        this.snapshot = this.snapshot || this.data;
+        this.data = this.queryBy(fn, scope||this);
+        this.fireEvent("datachanged", this);
+    },
+
+    /**
+     * Query the records by a specified property.
+     * @param {String} field A field on your records
+     * @param {String/RegExp} value Either a string that the field
+     * should start with or a RegExp to test against the field
+     * @param {Boolean} anyMatch True to match any part not just the beginning
+     * @return {MixedCollection} Returns an Roo.util.MixedCollection of the matched records
+     */
+    query : function(property, value, anyMatch){
+        var fn = this.createFilterFn(property, value, anyMatch);
+        return fn ? this.queryBy(fn) : this.data.clone();
+    },
+
+    /**
+     * Query by a function. The specified function will be called with each
+     * record in this data source. If the function returns true the record is included
+     * in the results.
+     * @param {Function} fn The function to be called, it will receive 2 args (record, id)
+     * @param {Object} scope (optional) The scope of the function (defaults to this)
+      @return {MixedCollection} Returns an Roo.util.MixedCollection of the matched records
+     **/
+    queryBy : function(fn, scope){
+        var data = this.snapshot || this.data;
+        return data.filterBy(fn, scope||this);
+    },
+
+    /**
+     * Collects unique values for a particular dataIndex from this store.
+     * @param {String} dataIndex The property to collect
+     * @param {Boolean} allowNull (optional) Pass true to allow null, undefined or empty string values
+     * @param {Boolean} bypassFilter (optional) Pass true to collect from all records, even ones which are filtered
+     * @return {Array} An array of the unique values
+     **/
+    collect : function(dataIndex, allowNull, bypassFilter){
+        var d = (bypassFilter === true && this.snapshot) ?
+                this.snapshot.items : this.data.items;
+        var v, sv, r = [], l = {};
+        for(var i = 0, len = d.length; i < len; i++){
+            v = d[i].data[dataIndex];
+            sv = String(v);
+            if((allowNull || !Roo.isEmpty(v)) && !l[sv]){
+                l[sv] = true;
+                r[r.length] = v;
+            }
+        }
+        return r;
+    },
+
+    /**
+     * Revert to a view of the Record cache with no filtering applied.
+     * @param {Boolean} suppressEvent If true the filter is cleared silently without notifying listeners
+     */
+    clearFilter : function(suppressEvent){
+        if(this.snapshot && this.snapshot != this.data){
+            this.data = this.snapshot;
+            delete this.snapshot;
+            if(suppressEvent !== true){
+                this.fireEvent("datachanged", this);
+            }
+        }
+    },
+
+    // private
+    afterEdit : function(record){
+        if(this.modified.indexOf(record) == -1){
+            this.modified.push(record);
+        }
+        this.fireEvent("update", this, record, Roo.data.Record.EDIT);
+    },
+    
+    // private
+    afterReject : function(record){
+        this.modified.remove(record);
+        this.fireEvent("update", this, record, Roo.data.Record.REJECT);
+    },
+
+    // private
+    afterCommit : function(record){
+        this.modified.remove(record);
+        this.fireEvent("update", this, record, Roo.data.Record.COMMIT);
+    },
+
+    /**
+     * Commit all Records with outstanding changes. To handle updates for changes, subscribe to the
+     * Store's "update" event, and perform updating when the third parameter is Roo.data.Record.COMMIT.
+     */
+    commitChanges : function(){
+        var m = this.modified.slice(0);
+        this.modified = [];
+        for(var i = 0, len = m.length; i < len; i++){
+            m[i].commit();
+        }
+    },
+
+    /**
+     * Cancel outstanding changes on all changed records.
+     */
+    rejectChanges : function(){
+        var m = this.modified.slice(0);
+        this.modified = [];
+        for(var i = 0, len = m.length; i < len; i++){
+            m[i].reject();
+        }
+    },
+
+    onMetaChange : function(meta, rtype, o){
+        this.recordType = rtype;
+        this.fields = rtype.prototype.fields;
+        delete this.snapshot;
+        this.sortInfo = meta.sortInfo || this.sortInfo;
+        this.modified = [];
+        this.fireEvent('metachange', this, this.reader.meta);
+    },
+    
+    moveIndex : function(data, type)
+    {
+        var index = this.indexOf(data);
+        
+        var newIndex = index + type;
+        
+        this.remove(data);
+        
+        this.insert(newIndex, data);
+        
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.SimpleStore
+ * @extends Roo.data.Store
+ * Small helper class to make creating Stores from Array data easier.
+ * @cfg {Number} id The array index of the record id. Leave blank to auto generate ids.
+ * @cfg {Array} fields An array of field definition objects, or field name strings.
+ * @cfg {Array} data The multi-dimensional array of data
+ * @constructor
+ * @param {Object} config
+ */
+Roo.data.SimpleStore = function(config){
+    Roo.data.SimpleStore.superclass.constructor.call(this, {
+        isLocal : true,
+        reader: new Roo.data.ArrayReader({
+                id: config.id
+            },
+            Roo.data.Record.create(config.fields)
+        ),
+        proxy : new Roo.data.MemoryProxy(config.data)
+    });
+    this.load();
+};
+Roo.extend(Roo.data.SimpleStore, Roo.data.Store);/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+/**
+ * @extends Roo.data.Store
+ * @class Roo.data.JsonStore
+ * Small helper class to make creating Stores for JSON data easier. <br/>
+<pre><code>
+var store = new Roo.data.JsonStore({
+    url: 'get-images.php',
+    root: 'images',
+    fields: ['name', 'url', {name:'size', type: 'float'}, {name:'lastmod', type:'date'}]
+});
+</code></pre>
+ * <b>Note: Although they are not listed, this class inherits all of the config options of Store,
+ * JsonReader and HttpProxy (unless inline data is provided).</b>
+ * @cfg {Array} fields An array of field definition objects, or field name strings.
+ * @constructor
+ * @param {Object} config
+ */
+Roo.data.JsonStore = function(c){
+    Roo.data.JsonStore.superclass.constructor.call(this, Roo.apply(c, {
+        proxy: !c.data ? new Roo.data.HttpProxy({url: c.url}) : undefined,
+        reader: new Roo.data.JsonReader(c, c.fields)
+    }));
+};
+Roo.extend(Roo.data.JsonStore, Roo.data.Store);/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+ 
+Roo.data.Field = function(config){
+    if(typeof config == "string"){
+        config = {name: config};
+    }
+    Roo.apply(this, config);
+    
+    if(!this.type){
+        this.type = "auto";
+    }
+    
+    var st = Roo.data.SortTypes;
+    // named sortTypes are supported, here we look them up
+    if(typeof this.sortType == "string"){
+        this.sortType = st[this.sortType];
+    }
+    
+    // set default sortType for strings and dates
+    if(!this.sortType){
+        switch(this.type){
+            case "string":
+                this.sortType = st.asUCString;
+                break;
+            case "date":
+                this.sortType = st.asDate;
+                break;
+            default:
+                this.sortType = st.none;
+        }
+    }
+
+    // define once
+    var stripRe = /[\$,%]/g;
+
+    // prebuilt conversion function for this field, instead of
+    // switching every time we're reading a value
+    if(!this.convert){
+        var cv, dateFormat = this.dateFormat;
+        switch(this.type){
+            case "":
+            case "auto":
+            case undefined:
+                cv = function(v){ return v; };
+                break;
+            case "string":
+                cv = function(v){ return (v === undefined || v === null) ? '' : String(v); };
+                break;
+            case "int":
+                cv = function(v){
+                    return v !== undefined && v !== null && v !== '' ?
+                           parseInt(String(v).replace(stripRe, ""), 10) : '';
+                    };
+                break;
+            case "float":
+                cv = function(v){
+                    return v !== undefined && v !== null && v !== '' ?
+                           parseFloat(String(v).replace(stripRe, ""), 10) : ''; 
+                    };
+                break;
+            case "bool":
+            case "boolean":
+                cv = function(v){ return v === true || v === "true" || v == 1; };
+                break;
+            case "date":
+                cv = function(v){
+                    if(!v){
+                        return '';
+                    }
+                    if(v instanceof Date){
+                        return v;
+                    }
+                    if(dateFormat){
+                        if(dateFormat == "timestamp"){
+                            return new Date(v*1000);
+                        }
+                        return Date.parseDate(v, dateFormat);
+                    }
+                    var parsed = Date.parse(v);
+                    return parsed ? new Date(parsed) : null;
+                };
+             break;
+            
+        }
+        this.convert = cv;
+    }
+};
+
+Roo.data.Field.prototype = {
+    dateFormat: null,
+    defaultValue: "",
+    mapping: null,
+    sortType : null,
+    sortDir : "ASC"
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+ 
+// Base class for reading structured data from a data source.  This class is intended to be
+// extended (see ArrayReader, JsonReader and XmlReader) and should not be created directly.
+
+/**
+ * @class Roo.data.DataReader
+ * Base class for reading structured data from a data source.  This class is intended to be
+ * extended (see {Roo.data.ArrayReader}, {Roo.data.JsonReader} and {Roo.data.XmlReader}) and should not be created directly.
+ */
+
+Roo.data.DataReader = function(meta, recordType){
+    
+    this.meta = meta;
+    
+    this.recordType = recordType instanceof Array ? 
+        Roo.data.Record.create(recordType) : recordType;
+};
+
+Roo.data.DataReader.prototype = {
+     /**
+     * Create an empty record
+     * @param {Object} data (optional) - overlay some values
+     * @return {Roo.data.Record} record created.
+     */
+    newRow :  function(d) {
+        var da =  {};
+        this.recordType.prototype.fields.each(function(c) {
+            switch( c.type) {
+                case 'int' : da[c.name] = 0; break;
+                case 'date' : da[c.name] = new Date(); break;
+                case 'float' : da[c.name] = 0.0; break;
+                case 'boolean' : da[c.name] = false; break;
+                default : da[c.name] = ""; break;
+            }
+            
+        });
+        return new this.recordType(Roo.apply(da, d));
+    }
+    
+};/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.DataProxy
+ * @extends Roo.data.Observable
+ * This class is an abstract base class for implementations which provide retrieval of
+ * unformatted data objects.<br>
+ * <p>
+ * DataProxy implementations are usually used in conjunction with an implementation of Roo.data.DataReader
+ * (of the appropriate type which knows how to parse the data object) to provide a block of
+ * {@link Roo.data.Records} to an {@link Roo.data.Store}.<br>
+ * <p>
+ * Custom implementations must implement the load method as described in
+ * {@link Roo.data.HttpProxy#load}.
+ */
+Roo.data.DataProxy = function(){
+    this.addEvents({
+        /**
+         * @event beforeload
+         * Fires before a network request is made to retrieve a data object.
+         * @param {Object} This DataProxy object.
+         * @param {Object} params The params parameter to the load function.
+         */
+        beforeload : true,
+        /**
+         * @event load
+         * Fires before the load method's callback is called.
+         * @param {Object} This DataProxy object.
+         * @param {Object} o The data object.
+         * @param {Object} arg The callback argument object passed to the load function.
+         */
+        load : true,
+        /**
+         * @event loadexception
+         * Fires if an Exception occurs during data retrieval.
+         * @param {Object} This DataProxy object.
+         * @param {Object} o The data object.
+         * @param {Object} arg The callback argument object passed to the load function.
+         * @param {Object} e The Exception.
+         */
+        loadexception : true
+    });
+    Roo.data.DataProxy.superclass.constructor.call(this);
+};
+
+Roo.extend(Roo.data.DataProxy, Roo.util.Observable);
+
+    /**
+     * @cfg {void} listeners (Not available) Constructor blocks listeners from being set
+     */
+/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.data.MemoryProxy
+ * An implementation of Roo.data.DataProxy that simply passes the data specified in its constructor
+ * to the Reader when its load method is called.
+ * @constructor
+ * @param {Object} data The data object which the Reader uses to construct a block of Roo.data.Records.
+ */
+Roo.data.MemoryProxy = function(data){
+    if (data.data) {
+        data = data.data;
+    }
+    Roo.data.MemoryProxy.superclass.constructor.call(this);
+    this.data = data;
+};
+
+Roo.extend(Roo.data.MemoryProxy, Roo.data.DataProxy, {
+    /**
+     * Load data from the requested source (in this case an in-memory
+     * data object passed to the constructor), read the data object into
+     * a block of Roo.data.Records using the passed Roo.data.DataReader implementation, and
+     * process that block using the passed callback.
+     * @param {Object} params This parameter is not used by the MemoryProxy class.
+     * @param {Roo.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Roo.data.Records.
+     * @param {Function} callback The function into which to pass the block of Roo.data.records.
+     * The function must be passed <ul>
+     * <li>The Record block object</li>
+     * <li>The "arg" argument from the load function</li>
+     * <li>A boolean success indicator</li>
+     * </ul>
+     * @param {Object} scope The scope in which to call the callback
+     * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
+     */
+    load : function(params, reader, callback, scope, arg){
+        params = params || {};
+        var result;
+        try {
+            result = reader.readRecords(this.data);
+        }catch(e){
+            this.fireEvent("loadexception", this, arg, null, e);
+            callback.call(scope, null, arg, false);
+            return;
+        }
+        callback.call(scope, result, arg, true);
+    },
+    
+    // private
+    update : function(params, records){
+        
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+/**
+ * @class Roo.data.HttpProxy
+ * @extends Roo.data.DataProxy
+ * An implementation of {@link Roo.data.DataProxy} that reads a data object from an {@link Roo.data.Connection} object
+ * configured to reference a certain URL.<br><br>
+ * <p>
+ * <em>Note that this class cannot be used to retrieve data from a domain other than the domain
+ * from which the running page was served.<br><br>
+ * <p>
+ * For cross-domain access to remote data, use an {@link Roo.data.ScriptTagProxy}.</em><br><br>
+ * <p>
+ * Be aware that to enable the browser to parse an XML document, the server must set
+ * the Content-Type header in the HTTP response to "text/xml".
+ * @constructor
+ * @param {Object} conn Connection config options to add to each request (e.g. {url: 'foo.php'} or
+ * an {@link Roo.data.Connection} object.  If a Connection config is passed, the singleton {@link Roo.Ajax} object
+ * will be used to make the request.
+ */
+Roo.data.HttpProxy = function(conn){
+    Roo.data.HttpProxy.superclass.constructor.call(this);
+    // is conn a conn config or a real conn?
+    this.conn = conn;
+    this.useAjax = !conn || !conn.events;
+  
+};
+
+Roo.extend(Roo.data.HttpProxy, Roo.data.DataProxy, {
+    // thse are take from connection...
+    
+    /**
+     * @cfg {String} url (Optional) The default URL to be used for requests to the server. (defaults to undefined)
+     */
+    /**
+     * @cfg {Object} extraParams (Optional) An object containing properties which are used as
+     * extra parameters to each request made by this object. (defaults to undefined)
+     */
+    /**
+     * @cfg {Object} defaultHeaders (Optional) An object containing request headers which are added
+     *  to each request made by this object. (defaults to undefined)
+     */
+    /**
+     * @cfg {String} method (Optional) The default HTTP method to be used for requests. (defaults to undefined; if not set but parms are present will use POST, otherwise GET)
+     */
+    /**
+     * @cfg {Number} timeout (Optional) The timeout in milliseconds to be used for requests. (defaults to 30000)
+     */
+     /**
+     * @cfg {Boolean} autoAbort (Optional) Whether this request should abort any pending requests. (defaults to false)
+     * @type Boolean
+     */
+  
+
+    /**
+     * @cfg {Boolean} disableCaching (Optional) True to add a unique cache-buster param to GET requests. (defaults to true)
+     * @type Boolean
+     */
+    /**
+     * Return the {@link Roo.data.Connection} object being used by this Proxy.
+     * @return {Connection} The Connection object. This object may be used to subscribe to events on
+     * a finer-grained basis than the DataProxy events.
+     */
+    getConnection : function(){
+        return this.useAjax ? Roo.Ajax : this.conn;
+    },
+
+    /**
+     * Load data from the configured {@link Roo.data.Connection}, read the data object into
+     * a block of Roo.data.Records using the passed {@link Roo.data.DataReader} implementation, and
+     * process that block using the passed callback.
+     * @param {Object} params An object containing properties which are to be used as HTTP parameters
+     * for the request to the remote server.
+     * @param {Roo.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Roo.data.Records.
+     * @param {Function} callback The function into which to pass the block of Roo.data.Records.
+     * The function must be passed <ul>
+     * <li>The Record block object</li>
+     * <li>The "arg" argument from the load function</li>
+     * <li>A boolean success indicator</li>
+     * </ul>
+     * @param {Object} scope The scope in which to call the callback
+     * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
+     */
+    load : function(params, reader, callback, scope, arg){
+        if(this.fireEvent("beforeload", this, params) !== false){
+            var  o = {
+                params : params || {},
+                request: {
+                    callback : callback,
+                    scope : scope,
+                    arg : arg
+                },
+                reader: reader,
+                callback : this.loadResponse,
+                scope: this
+            };
+            if(this.useAjax){
+                Roo.applyIf(o, this.conn);
+                if(this.activeRequest){
+                    Roo.Ajax.abort(this.activeRequest);
+                }
+                this.activeRequest = Roo.Ajax.request(o);
+            }else{
+                this.conn.request(o);
+            }
+        }else{
+            callback.call(scope||this, null, arg, false);
+        }
+    },
+
+    // private
+    loadResponse : function(o, success, response){
+        delete this.activeRequest;
+        if(!success){
+            this.fireEvent("loadexception", this, o, response);
+            o.request.callback.call(o.request.scope, null, o.request.arg, false);
+            return;
+        }
+        var result;
+        try {
+            result = o.reader.read(response);
+        }catch(e){
+            this.fireEvent("loadexception", this, o, response, e);
+            o.request.callback.call(o.request.scope, null, o.request.arg, false);
+            return;
+        }
+        
+        this.fireEvent("load", this, o, o.request.arg);
+        o.request.callback.call(o.request.scope, result, o.request.arg, true);
+    },
+
+    // private
+    update : function(dataSet){
+
+    },
+
+    // private
+    updateResponse : function(dataSet){
+
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.ScriptTagProxy
+ * An implementation of Roo.data.DataProxy that reads a data object from a URL which may be in a domain
+ * other than the originating domain of the running page.<br><br>
+ * <p>
+ * <em>Note that if you are retrieving data from a page that is in a domain that is NOT the same as the originating domain
+ * of the running page, you must use this class, rather than DataProxy.</em><br><br>
+ * <p>
+ * The content passed back from a server resource requested by a ScriptTagProxy is executable JavaScript
+ * source code that is used as the source inside a &lt;script> tag.<br><br>
+ * <p>
+ * In order for the browser to process the returned data, the server must wrap the data object
+ * with a call to a callback function, the name of which is passed as a parameter by the ScriptTagProxy.
+ * Below is a Java example for a servlet which returns data for either a ScriptTagProxy, or an HttpProxy
+ * depending on whether the callback name was passed:
+ * <p>
+ * <pre><code>
+boolean scriptTag = false;
+String cb = request.getParameter("callback");
+if (cb != null) {
+    scriptTag = true;
+    response.setContentType("text/javascript");
+} else {
+    response.setContentType("application/x-json");
+}
+Writer out = response.getWriter();
+if (scriptTag) {
+    out.write(cb + "(");
+}
+out.print(dataBlock.toJsonString());
+if (scriptTag) {
+    out.write(");");
+}
+</pre></code>
+ *
+ * @constructor
+ * @param {Object} config A configuration object.
+ */
+Roo.data.ScriptTagProxy = function(config){
+    Roo.data.ScriptTagProxy.superclass.constructor.call(this);
+    Roo.apply(this, config);
+    this.head = document.getElementsByTagName("head")[0];
+};
+
+Roo.data.ScriptTagProxy.TRANS_ID = 1000;
+
+Roo.extend(Roo.data.ScriptTagProxy, Roo.data.DataProxy, {
+    /**
+     * @cfg {String} url The URL from which to request the data object.
+     */
+    /**
+     * @cfg {Number} timeout (Optional) The number of milliseconds to wait for a response. Defaults to 30 seconds.
+     */
+    timeout : 30000,
+    /**
+     * @cfg {String} callbackParam (Optional) The name of the parameter to pass to the server which tells
+     * the server the name of the callback function set up by the load call to process the returned data object.
+     * Defaults to "callback".<p>The server-side processing must read this parameter value, and generate
+     * javascript output which calls this named function passing the data object as its only parameter.
+     */
+    callbackParam : "callback",
+    /**
+     *  @cfg {Boolean} nocache (Optional) Defaults to true. Disable cacheing by adding a unique parameter
+     * name to the request.
+     */
+    nocache : true,
+
+    /**
+     * Load data from the configured URL, read the data object into
+     * a block of Roo.data.Records using the passed Roo.data.DataReader implementation, and
+     * process that block using the passed callback.
+     * @param {Object} params An object containing properties which are to be used as HTTP parameters
+     * for the request to the remote server.
+     * @param {Roo.data.DataReader} reader The Reader object which converts the data
+     * object into a block of Roo.data.Records.
+     * @param {Function} callback The function into which to pass the block of Roo.data.Records.
+     * The function must be passed <ul>
+     * <li>The Record block object</li>
+     * <li>The "arg" argument from the load function</li>
+     * <li>A boolean success indicator</li>
+     * </ul>
+     * @param {Object} scope The scope in which to call the callback
+     * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
+     */
+    load : function(params, reader, callback, scope, arg){
+        if(this.fireEvent("beforeload", this, params) !== false){
+
+            var p = Roo.urlEncode(Roo.apply(params, this.extraParams));
+
+            var url = this.url;
+            url += (url.indexOf("?") != -1 ? "&" : "?") + p;
+            if(this.nocache){
+                url += "&_dc=" + (new Date().getTime());
+            }
+            var transId = ++Roo.data.ScriptTagProxy.TRANS_ID;
+            var trans = {
+                id : transId,
+                cb : "stcCallback"+transId,
+                scriptId : "stcScript"+transId,
+                params : params,
+                arg : arg,
+                url : url,
+                callback : callback,
+                scope : scope,
+                reader : reader
+            };
+            var conn = this;
+
+            window[trans.cb] = function(o){
+                conn.handleResponse(o, trans);
+            };
+
+            url += String.format("&{0}={1}", this.callbackParam, trans.cb);
+
+            if(this.autoAbort !== false){
+                this.abort();
+            }
+
+            trans.timeoutId = this.handleFailure.defer(this.timeout, this, [trans]);
+
+            var script = document.createElement("script");
+            script.setAttribute("src", url);
+            script.setAttribute("type", "text/javascript");
+            script.setAttribute("id", trans.scriptId);
+            this.head.appendChild(script);
+
+            this.trans = trans;
+        }else{
+            callback.call(scope||this, null, arg, false);
+        }
+    },
+
+    // private
+    isLoading : function(){
+        return this.trans ? true : false;
+    },
+
+    /**
+     * Abort the current server request.
+     */
+    abort : function(){
+        if(this.isLoading()){
+            this.destroyTrans(this.trans);
+        }
+    },
+
+    // private
+    destroyTrans : function(trans, isLoaded){
+        this.head.removeChild(document.getElementById(trans.scriptId));
+        clearTimeout(trans.timeoutId);
+        if(isLoaded){
+            window[trans.cb] = undefined;
+            try{
+                delete window[trans.cb];
+            }catch(e){}
+        }else{
+            // if hasn't been loaded, wait for load to remove it to prevent script error
+            window[trans.cb] = function(){
+                window[trans.cb] = undefined;
+                try{
+                    delete window[trans.cb];
+                }catch(e){}
+            };
+        }
+    },
+
+    // private
+    handleResponse : function(o, trans){
+        this.trans = false;
+        this.destroyTrans(trans, true);
+        var result;
+        try {
+            result = trans.reader.readRecords(o);
+        }catch(e){
+            this.fireEvent("loadexception", this, o, trans.arg, e);
+            trans.callback.call(trans.scope||window, null, trans.arg, false);
+            return;
+        }
+        this.fireEvent("load", this, o, trans.arg);
+        trans.callback.call(trans.scope||window, result, trans.arg, true);
+    },
+
+    // private
+    handleFailure : function(trans){
+        this.trans = false;
+        this.destroyTrans(trans, false);
+        this.fireEvent("loadexception", this, null, trans.arg);
+        trans.callback.call(trans.scope||window, null, trans.arg, false);
+    }
+});/*
+ * Based on:
+ * Ext JS Library 1.1.1
+ * Copyright(c) 2006-2007, Ext JS, LLC.
+ *
+ * Originally Released Under LGPL - original licence link has changed is not relivant.
+ *
+ * Fork - LGPL
+ * <script type="text/javascript">
+ */
+
+/**
+ * @class Roo.data.JsonReader
+ * @extends Roo.data.DataReader
+ * Data reader class to create an Array of Roo.data.Record objects from a JSON response
+ * based on mappings in a provided Roo.data.Record constructor.
+ * 
+ * The default behaviour of a store is to send ?_requestMeta=1, unless the class has recieved 'metaData' property
+ * in the reply previously. 
+ * 
+ * <p>
+ * Example code:
+ * <pre><code>
+var RecordDef = Roo.data.Record.create([
+    {name: 'name', mapping: 'name'},     // "mapping" property not needed if it's the same as "name"
+    {name: 'occupation'}                 // This field will use "occupation" as the mapping.
+]);
+var myReader = new Roo.data.JsonReader({
+    totalProperty: "results",    // The property which contains the total dataset size (optional)
+    root: "rows",                // The property which contains an Array of row objects
+    id: "id"                     // The property within each row object that provides an ID for the record (optional)
+}, RecordDef);
+</code></pre>
+ * <p>
+ * This would consume a JSON file like this:
+ * <pre><code>
+{ 'results': 2, 'rows': [
+    { 'id': 1, 'name': 'Bill', occupation: 'Gardener' },
+    { 'id': 2, 'name': 'Ben', occupation: 'Horticulturalist' } ]
+}
+</code></pre>
+ * @cfg {String} totalProperty Name of the property from which to retrieve the total number of records
+ * in the dataset. This is only needed if the whole dataset is not passed in one go, but is being
+ * paged from the remote server.
+ * @cfg {String} successProperty Name of the property from which to retrieve the success attribute used by forms.
+ * @cfg {String} root name of the property which contains the Array of row objects.
+ * @cfg {String} id Name of the property within a row object that contains a record identifier value.
+ * @constructor
+ * Create a new JsonReader
+ * @param {Object} meta Metadata configuration options
+ * @param {Object} recordType Either an Array of field definition objects,
+ * or an {@link Roo.data.Record} object created using {@link Roo.data.Record#create}.
+ */
+Roo.data.JsonReader = function(meta, recordType){
+    
+    meta = meta || {};
+    // set some defaults:
+    Roo.applyIf(meta, {
+        totalProperty: 'total',
+        successProperty : 'success',
+        root : 'data',
+        id : 'id'
+    });
+    
+    Roo.data.JsonReader.superclass.constructor.call(this, meta, recordType||meta.fields);
+};
+Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
+    
+    /**
+     * @prop {Boolean} metaFromRemote  - if the meta data was loaded from the remote source.
+     * Used by Store query builder to append _requestMeta to params.
+     * 
+     */
+    metaFromRemote : false,
+    /**
+     * This method is only used by a DataProxy which has retrieved data from a remote server.
+     * @param {Object} response The XHR object which contains the JSON data in its responseText.
+     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * a cache of Roo.data.Records.
+     */
+    read : function(response){
+        var json = response.responseText;
+       
+        var o = /* eval:var:o */ eval("("+json+")");
+        if(!o) {
+            throw {message: "JsonReader.read: Json object not found"};
+        }
+        
+        if(o.metaData){
+            
+            delete this.ef;
+            this.metaFromRemote = true;
+            this.meta = o.metaData;
+            this.recordType = Roo.data.Record.create(o.metaData.fields);
+            this.onMetaChange(this.meta, this.recordType, o);
+        }
+        return this.readRecords(o);
+    },
+
+    // private function a store will implement
+    onMetaChange : function(meta, recordType, o){
+
+    },
+
+    /**
+	 * @ignore
+	 */
+    simpleAccess: function(obj, subsc) {
+    	return obj[subsc];
+    },
+
+	/**
+	 * @ignore
+	 */
+    getJsonAccessor: function(){
+        var re = /[\[\.]/;
+        return function(expr) {
+            try {
+                return(re.test(expr))
+                    ? new Function("obj", "return obj." + expr)
+                    : function(obj){
+                        return obj[expr];
+                    };
+            } catch(e){}
+            return Roo.emptyFn;
+        };
+    }(),
+
+    /**
+     * Create a data block containing Roo.data.Records from an XML document.
+     * @param {Object} o An object which contains an Array of row objects in the property specified
+     * in the config as 'root, and optionally a property, specified in the config as 'totalProperty'
+     * which contains the total size of the dataset.
+     * @return {Object} data A data block which is used by an Roo.data.Store object as
+     * a cache of Roo.data.Records.
+     */
+    readRecords : function(o){
+        /**
+         * After any data loads, the raw JSON data is available for further custom processing.
+         * @type Object
+         */
+        this.o = o;
+        var s = this.meta, Record = this.recordType,
+            f = Record.prototype.fields, fi = f.items, fl = f.length;
+
+//      Generate extraction functions for the totalProperty, the root, the id, and for each field
+        if (!this.ef) {
+            if(s.totalProperty) {
+	            this.getTotal = this.getJsonAccessor(s.totalProperty);
+	        }
+	        if(s.successProperty) {
+	            this.getSuccess = this.getJsonAccessor(s.successProperty);
+	        }
+	        this.getRoot = s.root ? this.getJsonAccessor(s.root) : function(p){return p;};
+	        if (s.id) {
+	        	var g = this.getJsonAccessor(s.id);
+	        	this.getId = function(rec) {
+	        		var r = g(rec);
+		        	return (r === undefined || r === "") ? null : r;
+	        	};
+	        } else {
+	        	this.getId = function(){return null;};
+	        }
+            this.ef = [];
+            for(var jj = 0; jj < fl; jj++){
+                f = fi[jj];
+                var map = (f.mapping !== undefined && f.mapping !== null) ? f.mapping : f.name;
+                this.ef[jj] = this.getJsonAccessor(map);
+            }
+        }
+
+    	var root = this.getRoot(o), c = root.length, totalRecords = c, success = true;
+    	if(s.totalProperty){
+            var vt = parseInt(this.getTotal(o), 10);
+            if(!isNaN(vt)){
+                totalRecords = vt;
+            }
+        }
+        if(s.successProperty){
+            var vs = this.getSuccess(o);
+            if(vs === false || vs === 'false'){
+                success = false;
+            }
+        }
+        var records = [];
+	    for(var i = 0; i < c; i++){
+		    var n = root[i];
+	        var values = {};
+	        var id = this.getId(n);
+	        for(var j = 0; j < fl; j++){
+	            f = fi[j];
+                var v = this.ef[j](n);
+                if (!f.convert) {
+                    Roo.log('missing convert for ' + f.name);
+                    Roo.log(f);
+                    continue;
+                }
+                values[f.name] = f.convert((v !== undefined) ? v : f.defaultValue);
+	        }
+	        var record = new Record(values, id);
+	        record.json = n;
+	        records[i] = record;
+	    }
+	    return {
+            raw : o,
+	        success : success,
+	        records : records,
+	        totalRecords : totalRecords
+	    };
+    }
+});
