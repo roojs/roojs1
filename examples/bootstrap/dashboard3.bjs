@@ -282,10 +282,11 @@
                                                 {
                                                     "String hideMode" : "",
                                                     "string bgcolor" : "green",
-                                                    "xtype" : "NumberBox",
+                                                    "xtype" : "md",
                                                     "String headline" : 150,
                                                     "int height" : 110,
                                                     "$ xns" : "Roo.bootstrap.dash",
+                                                    "width" : 0,
                                                     "String title" : "New Orders",
                                                     "String style" : "",
                                                     "number md" : 5
