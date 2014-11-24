@@ -280,7 +280,7 @@
                                             "items" : [
                                                 {
                                                     "String hideMode" : "",
-                                                    "String cls" : "",
+                                                    "String cls" : "bg-aqua",
                                                     "String more" : 4444,
                                                     "xtype" : "NumberBox",
                                                     "String headline" : 150,
