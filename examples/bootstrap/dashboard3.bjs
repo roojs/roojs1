@@ -182,7 +182,13 @@
                                             "items" : [
                                                 {
                                                     "xtype" : "Column",
-                                                    "$ xns" : "Roo.bootstrap"
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "xtype" : "Graph",
+                                                            "$ xns" : "Roo.bootstrap"
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
