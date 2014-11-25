@@ -150,7 +150,7 @@
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [
                                                                 {
-                                                                    "String cls" : "pull-left header",
+                                                                    "String cls" : "nav nav-tabs pull-left header",
                                                                     "xtype" : "Header",
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "String html" : "SALES"
