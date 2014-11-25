@@ -139,6 +139,7 @@
                                                 {
                                                     "Number md" : 6,
                                                     "xtype" : "Column",
+                                                    "Number lg" : 6,
                                                     "$ xns" : "Roo.bootstrap",
                                                     "Number sm" : 12,
                                                     "items" : [
