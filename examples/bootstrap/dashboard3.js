@@ -23,8 +23,8 @@ dashboard3 = new Roo.XComponent({
             	Roo.apply(Dashboard.Header1._tree(), {
                     '|xns' : 'Roo.bootstrap',
                     cls : 'header',
-                    tag : 'header',
                     xtype : 'Container',
+                    tag : 'header',
                     xns : Roo.bootstrap
                 }),
             	{
@@ -171,7 +171,15 @@ dashboard3 = new Roo.XComponent({
                                                     md : 6,
                                                     xtype : 'Column',
                                                     xns : Roo.bootstrap,
-                                                    sm : 12
+                                                    sm : 12,
+                                                    items : [
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            xtype : 'Graph',
+                                                            xns : Roo.bootstrap
+                                                        }
+                                                    ]
+
                                                 }
                                             ]
 
