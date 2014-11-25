@@ -137,7 +137,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
                 this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts);
                 break;
             case 'pie':
-            opts = { legend: ["%%.%% - Enterprise Users", "IE Users"], legendpos: "west", 
+            opts = { legend: ["%%.%% - Enterprise Users", "Chrome Users"], legendpos: "west", 
             href: ["http://raphaeljs.com", "http://g.raphaeljs.com"]};
                 this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts);
                 break;
