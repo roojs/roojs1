@@ -194,6 +194,21 @@
                                                             "g_x" : 300
                                                         }
                                                     ]
+                                                },
+                                                {
+                                                    "Number lg" : 6,
+                                                    "xtype" : "Column",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "g_y" : 200,
+                                                            "g_r" : 150,
+                                                            "xtype" : "Graph",
+                                                            "graphtype" : "pie",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "g_x" : 300
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
