@@ -1,4 +1,4 @@
-/*
+    /*
  * - LGPL
  *
  * Graph
@@ -87,11 +87,11 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
     onRender : function(ct,position){
         Roo.bootstrap.Graph.superclass.onRender.call(this,ct,position);
         var r = {};
-        this.raphael = Raphael(this.el.dom),
-                    data1 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
-                    data2 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
-                    data3 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
-                    txtattr = { font: "12px 'Fontin Sans', Fontin-Sans, sans-serif" };
+        this.raphael = Raphael(this.el.dom);
+                    // data1 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    // data2 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    // data3 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    // txtattr = { font: "12px 'Fontin Sans', Fontin-Sans, sans-serif" };
                 /*
                 r.text(160, 10, "Single Series Chart").attr(txtattr);
                 r.text(480, 10, "Multiline Series Chart").attr(txtattr);
