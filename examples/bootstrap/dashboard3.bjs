@@ -151,7 +151,7 @@
                                                             "g_r" : 30,
                                                             "graphtype" : "bar",
                                                             "$ xns" : "Roo.bootstrap",
-                                                            "String style" : "border: 1px solid",
+                                                            "String style" : "border: 1px solid height:100%",
                                                             "g_width" : 500,
                                                             "g_x" : 30
                                                         }
