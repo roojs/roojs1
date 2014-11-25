@@ -85,7 +85,7 @@
                                                     "items" : [
                                                         {
                                                             "bgcolor" : "red",
-                                                            "String cls" : "col-md-3",
+                                                            "String cls" : "",
                                                             "xtype" : "NumberBox",
                                                             "String headline" : 150,
                                                             "$ xns" : "Roo.bootstrap.dash",
@@ -103,7 +103,6 @@
                                                     "items" : [
                                                         {
                                                             "bgcolor" : "red",
-                                                            "String cls" : "col-sm-6",
                                                             "xtype" : "NumberBox",
                                                             "String headline" : 150,
                                                             "$ xns" : "Roo.bootstrap.dash",
