@@ -13,12 +13,12 @@
 > Prameters
  -sm {number} sm 4
  -md {number} md 5
- -graphtype {String} graphtype bar | vbar | pie
- -g_x {number}  x coodinator | centre x (pie)
- -g_y {number}  y coodinator | centre y (pie)
- -g_r {number}  radius (pie)
- -g_height {number} height of the chart (respected by all elements in the set)
- -g_width {number}  width of the chart (respected by all elements in the set)
+ @cfg {String} graphtype  bar | vbar | pie
+ @cfg {number} g_x coodinator | centre x (pie)
+ @cfg {number} g_y coodinator | centre y (pie)
+ @cfg {number} g_r radius (pie)
+ @cfg {number} g_height height of the chart (respected by all elements in the set)
+ @cfg {number} g_width width of the chart (respected by all elements in the set)
  -{Array}  values
  -opts (object) options for the chart 
      o {
