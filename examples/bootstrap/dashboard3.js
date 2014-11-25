@@ -206,6 +206,7 @@ dashboard3 = new Roo.XComponent({
                                                             g_r : 30,
                                                             graphtype : 'hbar',
                                                             xns : Roo.bootstrap,
+                                                            style : 'border: 1px solid grey',
                                                             g_width : 500,
                                                             g_x : 30
                                                         }
