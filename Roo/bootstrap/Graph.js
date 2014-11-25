@@ -132,7 +132,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         var chart_title = '',
                     r = this.raphael,
                     fin = function () {
-                        this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
+                        this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0");
                     },
                     fout = function () {
                         this.flag.animate({opacity: 0}, 300, function () {this.remove();});
