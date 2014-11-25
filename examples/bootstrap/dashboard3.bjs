@@ -13,8 +13,8 @@
             "items" : [
                 {
                     "String cls" : "header",
-                    "xtype" : "Container",
                     "tag" : "header",
+                    "xtype" : "Container",
                     "* xinclude" : "Dashboard.Header1",
                     "$ xns" : "Roo.bootstrap"
                 },
@@ -144,6 +144,7 @@
                                                     "items" : [
                                                         {
                                                             "xtype" : "Graph",
+                                                            "graphtype" : "",
                                                             "$ xns" : "Roo.bootstrap"
                                                         }
                                                     ]
