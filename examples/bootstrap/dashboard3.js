@@ -224,43 +224,7 @@ dashboard3 = new Roo.XComponent({
                                                     xtype : 'Column',
                                                     lg : 6,
                                                     xns : Roo.bootstrap,
-                                                    sm : 12,
-                                                    items : [
-                                                    	{
-                                                            '|xns' : 'Roo.bootstrap',
-                                                            g_height : 250,
-                                                            g_y : 50,
-                                                            xtype : 'Graph',
-                                                            g_r : 30,
-                                                            graphtype : 'bar',
-                                                            xns : Roo.bootstrap,
-                                                            g_width : 500,
-                                                            g_x : 30
-                                                        }
-                                                    ]
-
-                                                },
-                                            	{
-                                                    '|xns' : 'Roo.bootstrap',
-                                                    md : 6,
-                                                    lg : 6,
-                                                    xtype : 'Column',
-                                                    xns : Roo.bootstrap,
-                                                    sm : 12,
-                                                    items : [
-                                                    	{
-                                                            '|xns' : 'Roo.bootstrap',
-                                                            g_height : 250,
-                                                            g_y : 50,
-                                                            xtype : 'Graph',
-                                                            g_r : 30,
-                                                            graphtype : 'hbar',
-                                                            xns : Roo.bootstrap,
-                                                            g_width : 500,
-                                                            g_x : 30
-                                                        }
-                                                    ]
-
+                                                    sm : 12
                                                 }
                                             ]
 
