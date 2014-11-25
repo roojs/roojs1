@@ -23,8 +23,8 @@ dashboard3 = new Roo.XComponent({
             	Roo.apply(Dashboard.Header1._tree(), {
                     '|xns' : 'Roo.bootstrap',
                     cls : 'header',
-                    tag : 'header',
                     xtype : 'Container',
+                    tag : 'header',
                     xns : Roo.bootstrap
                 }),
             	{
@@ -154,6 +154,58 @@ dashboard3 = new Roo.XComponent({
                                                             title : "New Orders",
                                                             style : 'col-lg-3',
                                                             height : 150
+                                                        }
+                                                    ]
+
+                                                }
+                                            ]
+
+                                        },
+                                    	{
+                                            '|xns' : 'Roo.bootstrap',
+                                            xtype : 'Row',
+                                            xns : Roo.bootstrap,
+                                            items : [
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    md : 6,
+                                                    lg : 6,
+                                                    xtype : 'Column',
+                                                    xns : Roo.bootstrap,
+                                                    sm : 12,
+                                                    items : [
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            g_height : 250,
+                                                            g_y : 50,
+                                                            xtype : 'Graph',
+                                                            g_r : 30,
+                                                            graphtype : 'bar',
+                                                            xns : Roo.bootstrap,
+                                                            g_width : 500,
+                                                            g_x : 30
+                                                        }
+                                                    ]
+
+                                                },
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    md : 6,
+                                                    xtype : 'Column',
+                                                    lg : 6,
+                                                    xns : Roo.bootstrap,
+                                                    sm : 12,
+                                                    items : [
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            g_height : 250,
+                                                            g_y : 50,
+                                                            xtype : 'Graph',
+                                                            g_r : 30,
+                                                            graphtype : 'hbar',
+                                                            xns : Roo.bootstrap,
+                                                            g_width : 500,
+                                                            g_x : 30
                                                         }
                                                     ]
 

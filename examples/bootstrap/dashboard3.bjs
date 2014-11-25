@@ -13,8 +13,8 @@
             "items" : [
                 {
                     "String cls" : "header",
-                    "tag" : "header",
                     "xtype" : "Container",
+                    "tag" : "header",
                     "* xinclude" : "Dashboard.Header1",
                     "$ xns" : "Roo.bootstrap"
                 },
@@ -127,6 +127,50 @@
                                                             "String title" : "New Orders",
                                                             "String style" : "col-lg-3",
                                                             "height" : 150
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "xtype" : "Row",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "Number md" : 6,
+                                                    "Number lg" : 6,
+                                                    "xtype" : "Column",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "Number sm" : 12,
+                                                    "items" : [
+                                                        {
+                                                            "g_height" : 250,
+                                                            "g_y" : 50,
+                                                            "xtype" : "Graph",
+                                                            "g_r" : 30,
+                                                            "graphtype" : "bar",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "g_width" : 500,
+                                                            "g_x" : 30
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "Number md" : 6,
+                                                    "xtype" : "Column",
+                                                    "Number lg" : 6,
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "Number sm" : 12,
+                                                    "items" : [
+                                                        {
+                                                            "g_height" : 250,
+                                                            "g_y" : 50,
+                                                            "xtype" : "Graph",
+                                                            "g_r" : 30,
+                                                            "graphtype" : "hbar",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "g_width" : 500,
+                                                            "g_x" : 30
                                                         }
                                                     ]
                                                 }
