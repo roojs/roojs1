@@ -217,6 +217,7 @@ dashboard3 = new Roo.XComponent({
                                                     items : [
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',
+                                                            cls : 'nav-tabs-custom',
                                                             xtype : 'Container',
                                                             xns : Roo.bootstrap,
                                                             items : [
