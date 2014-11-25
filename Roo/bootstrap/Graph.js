@@ -113,7 +113,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
                    
                 // });
         var xdata = [55, 20, 13, 32, 5, 1, 2, 10,5 , 10];
-
+        this.raphael.text=("")
         this.load(null,xdata,{
                 axis : "0 0 1 1",
                 axisxlabels :  xdata
@@ -129,20 +129,25 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         if(!opts){
             opts = this.opts;
         }
+        var chart_title = '';
         switch(graphtype){
             case 'bar':
                 this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts);
+                chart_title = 'This is Vertical Barchart';
                 break;
             case 'hbar':
                 this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts);
+                chart_title = 'This is Horizontal Barchart';
                 break;
             case 'pie':
-            opts = { legend: ["%% - Enterprise Users", "%%.% - ddd","Chrome Users"], legendpos: "west", 
-            href: ["http://raphaeljs.com", "http://g.raphaeljs.com"]};
-                this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts);
+                opts = { legend: ["%% - Enterprise Users", "%%.% - ddd","Chrome Users"], legendpos: "west", 
+                href: ["http://raphaeljs.com", "http://g.raphaeljs.com"]};
+                    this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts);
+                chart_title = 'This is Piechart';
                 break;
 
         }
+        this.raphael.text=(chart_title);
     },
     
     initEvents: function() {
