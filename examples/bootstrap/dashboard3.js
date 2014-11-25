@@ -195,6 +195,7 @@ dashboard3 = new Roo.XComponent({
                                                     lg : 6,
                                                     xtype : 'Column',
                                                     xns : Roo.bootstrap,
+                                                    style : 'border: 1px solid grey',
                                                     sm : 12,
                                                     items : [
                                                     	{

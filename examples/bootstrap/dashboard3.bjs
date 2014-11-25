@@ -161,6 +161,7 @@
                                                     "Number lg" : 6,
                                                     "xtype" : "Column",
                                                     "$ xns" : "Roo.bootstrap",
+                                                    "String style" : "border: 1px solid grey",
                                                     "Number sm" : 12,
                                                     "items" : [
                                                         {
