@@ -89,7 +89,7 @@ dashboard3 = new Roo.XComponent({
                                                             xns : Roo.bootstrap.dash,
                                                             width : 'col-md-5',
                                                             title : "New Orders",
-                                                            style : 'col-lg-3',
+                                                            style : 'col-md-3',
                                                             height : 150
                                                         }
                                                     ]
