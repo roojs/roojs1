@@ -176,7 +176,7 @@ dashboard3 = new Roo.XComponent({
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',
                                                             xtype : 'Graph',
-                                                            graphtype : '',
+                                                            graphtype : 'bar',
                                                             xns : Roo.bootstrap
                                                         }
                                                     ]
