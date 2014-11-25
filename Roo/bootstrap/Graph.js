@@ -134,8 +134,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
                 this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts);
                 break;
             case 'hbar':
-                var chart = this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts);
-                chart.lable(xdata,true);
+                this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts);
                 break;
             case 'pie':
                 this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts);
