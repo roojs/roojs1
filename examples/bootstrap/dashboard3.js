@@ -79,18 +79,21 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     xtype : 'Column',
-                                                    xns : Roo.bootstrap
-                                                },
-                                            	{
-                                                    '|xns' : 'Roo.bootstrap.dash',
-                                                    bgcolor : 'red',
-                                                    xtype : 'NumberBox',
-                                                    headline : 150,
-                                                    xns : Roo.bootstrap.dash,
-                                                    width : 'col-md-5',
-                                                    title : "New Orders",
-                                                    style : 'col-lg-3',
-                                                    height : 150
+                                                    xns : Roo.bootstrap,
+                                                    items : [
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap.dash',
+                                                            bgcolor : 'red',
+                                                            xtype : 'NumberBox',
+                                                            headline : 150,
+                                                            xns : Roo.bootstrap.dash,
+                                                            width : 'col-md-5',
+                                                            title : "New Orders",
+                                                            style : 'col-lg-3',
+                                                            height : 150
+                                                        }
+                                                    ]
+
                                                 }
                                             ]
 
