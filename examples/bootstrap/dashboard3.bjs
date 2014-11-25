@@ -123,7 +123,7 @@
                                                             "xtype" : "NumberBox",
                                                             "String headline" : 150,
                                                             "$ xns" : "Roo.bootstrap.dash",
-                                                            "width" : "col-md-5",
+                                                            "width" : "",
                                                             "String title" : "New Orders",
                                                             "String style" : "col-lg-3",
                                                             "height" : 150
