@@ -179,6 +179,7 @@
                                         {
                                             "xtype" : "Row",
                                             "$ xns" : "Roo.bootstrap",
+                                            "height" : 500,
                                             "items" : [
                                                 {
                                                     "Number lg" : 6,
