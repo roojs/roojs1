@@ -150,6 +150,11 @@
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [
                                                                 {
+                                                                    "xtype" : "Header",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "SALES"
+                                                                },
+                                                                {
                                                                     "g_height" : 250,
                                                                     "g_y" : 80,
                                                                     "xtype" : "Graph",
@@ -159,11 +164,6 @@
                                                                     "String style" : "border: 1px solid grey height:100%",
                                                                     "g_width" : 500,
                                                                     "g_x" : 30
-                                                                },
-                                                                {
-                                                                    "xtype" : "Header",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "SALES"
                                                                 }
                                                             ]
                                                         }
