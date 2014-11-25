@@ -145,6 +145,7 @@
                                                     "Number sm" : 12,
                                                     "items" : [
                                                         {
+                                                            "String cls" : "nav-tabs-custom",
                                                             "xtype" : "Container",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [
