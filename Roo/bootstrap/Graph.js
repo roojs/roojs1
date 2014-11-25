@@ -112,7 +112,8 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
                 //     //yvalues : cols,
                    
                 // });
-        this.load(null,[55, 20, 13, 32, 5, 1, 2, 10,5 , 10],{labels : [55, 20, 13, 32, 5, 1, 2, 10,5 , 10],
+        var xdata = [55, 20, 13, 32, 5, 1, 2, 10,5 , 10];
+        this.load(null,xdata,{labels : xdata,
                 axis : "0 0 1 1",
                 axisxlabels :  xdata});
 
