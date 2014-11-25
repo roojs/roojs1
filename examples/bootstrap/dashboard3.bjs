@@ -186,7 +186,7 @@
                                                                 {
                                                                     "xtype" : "Header",
                                                                     "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "SALES",
+                                                                    "String html" : "income",
                                                                     "String style" : "margin: 10,10,0,0"
                                                                 },
                                                                 {

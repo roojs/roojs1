@@ -225,7 +225,7 @@ dashboard3 = new Roo.XComponent({
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'Header',
                                                                     xns : Roo.bootstrap,
-                                                                    html : 'SALES',
+                                                                    html : 'income',
                                                                     style : 'margin: 10,10,0,0'
                                                                 },
                                                             	{
