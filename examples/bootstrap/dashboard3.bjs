@@ -159,6 +159,10 @@
                                                                     "String style" : "border: 1px solid grey height:100%",
                                                                     "g_width" : 500,
                                                                     "g_x" : 30
+                                                                },
+                                                                {
+                                                                    "xtype" : "Header",
+                                                                    "$ xns" : "Roo.bootstrap"
                                                                 }
                                                             ]
                                                         }
