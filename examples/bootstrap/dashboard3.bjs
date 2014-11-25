@@ -97,6 +97,7 @@
                                                     ]
                                                 },
                                                 {
+                                                    "Number lg" : 3,
                                                     "xtype" : "Column",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "items" : [
