@@ -66,6 +66,7 @@
                                                     "items" : [
                                                         {
                                                             "bgcolor" : "red",
+                                                            "String cls" : "col-lg-3",
                                                             "xtype" : "NumberBox",
                                                             "String headline" : 150,
                                                             "$ xns" : "Roo.bootstrap.dash",
