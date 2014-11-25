@@ -153,7 +153,7 @@
                                                                     "xtype" : "Header",
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "String html" : "SALES",
-                                                                    "String style" : "margin-left : 10px"
+                                                                    "String style" : "margin: 10,10,0,0"
                                                                 },
                                                                 {
                                                                     "g_height" : 250,

@@ -186,7 +186,7 @@ dashboard3 = new Roo.XComponent({
                                                                     xtype : 'Header',
                                                                     xns : Roo.bootstrap,
                                                                     html : 'SALES',
-                                                                    style : 'margin-left : 10px'
+                                                                    style : 'margin: 10,10,0,0'
                                                                 },
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
