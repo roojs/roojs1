@@ -181,6 +181,7 @@
                                             "$ xns" : "Roo.bootstrap",
                                             "items" : [
                                                 {
+                                                    "Number lg" : 6,
                                                     "xtype" : "Column",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "items" : [
