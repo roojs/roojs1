@@ -145,19 +145,21 @@
                                                     "Number sm" : 12,
                                                     "items" : [
                                                         {
-                                                            "g_height" : 250,
-                                                            "g_y" : 80,
-                                                            "xtype" : "Graph",
-                                                            "g_r" : 30,
-                                                            "graphtype" : "bar",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "String style" : "border: 1px solid grey height:100%",
-                                                            "g_width" : 500,
-                                                            "g_x" : 30
-                                                        },
-                                                        {
                                                             "xtype" : "Container",
-                                                            "$ xns" : "Roo.bootstrap"
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "g_height" : 250,
+                                                                    "g_y" : 80,
+                                                                    "xtype" : "Graph",
+                                                                    "g_r" : 30,
+                                                                    "graphtype" : "bar",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String style" : "border: 1px solid grey height:100%",
+                                                                    "g_width" : 500,
+                                                                    "g_x" : 30
+                                                                }
+                                                            ]
                                                         }
                                                     ]
                                                 },

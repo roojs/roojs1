@@ -177,20 +177,23 @@ dashboard3 = new Roo.XComponent({
                                                     items : [
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',
-                                                            g_height : 250,
-                                                            g_y : 80,
-                                                            xtype : 'Graph',
-                                                            g_r : 30,
-                                                            graphtype : 'bar',
-                                                            xns : Roo.bootstrap,
-                                                            style : 'border: 1px solid grey height:100%',
-                                                            g_width : 500,
-                                                            g_x : 30
-                                                        },
-                                                    	{
-                                                            '|xns' : 'Roo.bootstrap',
                                                             xtype : 'Container',
-                                                            xns : Roo.bootstrap
+                                                            xns : Roo.bootstrap,
+                                                            items : [
+                                                            	{
+                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    g_height : 250,
+                                                                    g_y : 80,
+                                                                    xtype : 'Graph',
+                                                                    g_r : 30,
+                                                                    graphtype : 'bar',
+                                                                    xns : Roo.bootstrap,
+                                                                    style : 'border: 1px solid grey height:100%',
+                                                                    g_width : 500,
+                                                                    g_x : 30
+                                                                }
+                                                            ]
+
                                                         }
                                                     ]
 
