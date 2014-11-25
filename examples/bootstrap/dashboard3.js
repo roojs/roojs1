@@ -229,7 +229,7 @@ dashboard3 = new Roo.XComponent({
                                                             '|xns' : 'Roo.bootstrap',
                                                             g_y : 200,
                                                             xtype : 'Graph',
-                                                            g_r : 150,
+                                                            g_r : 120,
                                                             graphtype : 'pie',
                                                             xns : Roo.bootstrap,
                                                             height : 500,
