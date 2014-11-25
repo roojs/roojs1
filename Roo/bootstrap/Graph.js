@@ -116,8 +116,8 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 
         this.load(null,xdata,{
                 axis : "0 0 1 1",
-                axisxlabels :  xdata,
-                axisylabels : xdata});
+                axisxlabels :  xdata
+                });
 
     },
 
