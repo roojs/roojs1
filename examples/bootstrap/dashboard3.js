@@ -183,7 +183,6 @@ dashboard3 = new Roo.XComponent({
                                                             items : [
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
-                                                                    cls : 'nav nav-tabs pull-left header',
                                                                     xtype : 'Header',
                                                                     xns : Roo.bootstrap,
                                                                     html : 'SALES'
