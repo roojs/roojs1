@@ -102,7 +102,24 @@
                                                     "$ xns" : "Roo.bootstrap",
                                                     "items" : [
                                                         {
-                                                            "bgcolor" : "red",
+                                                            "bgcolor" : "yellow",
+                                                            "xtype" : "NumberBox",
+                                                            "String headline" : 150,
+                                                            "$ xns" : "Roo.bootstrap.dash",
+                                                            "width" : "col-md-5",
+                                                            "String title" : "New Orders",
+                                                            "String style" : "col-lg-3",
+                                                            "height" : 150
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "Number lg" : 3,
+                                                    "xtype" : "Column",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "bgcolor" : "yellow",
                                                             "xtype" : "NumberBox",
                                                             "String headline" : 150,
                                                             "$ xns" : "Roo.bootstrap.dash",
