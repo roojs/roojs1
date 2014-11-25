@@ -147,7 +147,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
                 break;
 
         }
-        this.raphael.text(0,0,chart_title).attr({ font: "20px 'Fontin Sans', Fontin-Sans, sans-serif" });
+        this.raphael.text(30,50,chart_title).attr({ font: "20px 'Fontin Sans', Fontin-Sans, sans-serif" });
     },
     
     initEvents: function() {
