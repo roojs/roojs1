@@ -13,8 +13,8 @@
             "items" : [
                 {
                     "String cls" : "header",
-                    "xtype" : "Container",
                     "tag" : "header",
+                    "xtype" : "Container",
                     "* xinclude" : "Dashboard.Header1",
                     "$ xns" : "Roo.bootstrap"
                 },
@@ -138,8 +138,8 @@
                                             "items" : [
                                                 {
                                                     "Number md" : 6,
-                                                    "Number lg" : 6,
                                                     "xtype" : "Column",
+                                                    "Number lg" : 6,
                                                     "$ xns" : "Roo.bootstrap",
                                                     "Number sm" : 12,
                                                     "items" : [
@@ -157,8 +157,8 @@
                                                 },
                                                 {
                                                     "Number md" : 6,
-                                                    "xtype" : "Column",
                                                     "Number lg" : 6,
+                                                    "xtype" : "Column",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "Number sm" : 12,
                                                     "items" : [
@@ -175,10 +175,6 @@
                                                     ]
                                                 }
                                             ]
-                                        },
-                                        {
-                                            "xtype" : "Row",
-                                            "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
                                 }

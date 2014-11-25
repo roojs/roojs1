@@ -23,8 +23,8 @@ dashboard3 = new Roo.XComponent({
             	Roo.apply(Dashboard.Header1._tree(), {
                     '|xns' : 'Roo.bootstrap',
                     cls : 'header',
-                    xtype : 'Container',
                     tag : 'header',
+                    xtype : 'Container',
                     xns : Roo.bootstrap
                 }),
             	{
@@ -169,8 +169,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     md : 6,
-                                                    lg : 6,
                                                     xtype : 'Column',
+                                                    lg : 6,
                                                     xns : Roo.bootstrap,
                                                     sm : 12,
                                                     items : [
@@ -191,8 +191,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     md : 6,
-                                                    xtype : 'Column',
                                                     lg : 6,
+                                                    xtype : 'Column',
                                                     xns : Roo.bootstrap,
                                                     sm : 12,
                                                     items : [
@@ -212,11 +212,6 @@ dashboard3 = new Roo.XComponent({
                                                 }
                                             ]
 
-                                        },
-                                    	{
-                                            '|xns' : 'Roo.bootstrap',
-                                            xtype : 'Row',
-                                            xns : Roo.bootstrap
                                         }
                                     ]
 
