@@ -100,7 +100,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         Roo.log('img onclick');
         if(!this.el.hasClass('active')){
             Roo.select('.active',true).first().removeClass('active');
-            thi.el.addClass('active');
+            this.el.addClass('active');
         }
         this.fireEvent('toggle', this, e);
 
