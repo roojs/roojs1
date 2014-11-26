@@ -117,9 +117,8 @@
                                                     ]
                                                 },
                                                 {
-                                                    "Number md" : 3,
-                                                    "Number lg" : 3,
                                                     "xtype" : "Column",
+                                                    "Number lg" : 3,
                                                     "$ xns" : "Roo.bootstrap",
                                                     "items" : [
                                                         {
