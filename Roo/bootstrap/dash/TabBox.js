@@ -101,7 +101,13 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     {
         Roo.log('img onclick');
         this.fireEvent('click', this, e);
-        alert(Roo.type(e));
+        if(this.el.id == 'tab1'){
+            Roo.get('tab2').removeClass('active');
+            Roo.get('tab1').addClass('active');
+        }else if(this.el.id == 'tab2'){
+            Roo.get('tab1').removeClass('active');
+            Roo.get('tab2').addClass('active');
+        }
     }
    
 });
