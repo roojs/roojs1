@@ -99,6 +99,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     {
         Roo.log('img onclick');
         this.fireEvent('click', this, e);
+        alert(Roo.type(e));
     }
    
 });
