@@ -122,6 +122,7 @@ dashboard3 = new Roo.XComponent({
                                                 },
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
+                                                    md : 3,
                                                     lg : 3,
                                                     xtype : 'Column',
                                                     xns : Roo.bootstrap,
