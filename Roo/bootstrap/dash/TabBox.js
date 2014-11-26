@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                 cls: 'nav nav-tabs pull-right',
                 cn: [{
                     tag: 'li',
-                    cls: 'tabgroup active',
+                    cls: 'active',
                     html: null,
                     cn : [{
                         tag: 'a',
@@ -64,7 +64,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                 },
                 {
                     tag: 'li',
-                    cls: 'tabgroup',
+                    cls: '',
                     html: null,
                     cn : [{
                         tag: 'a',
