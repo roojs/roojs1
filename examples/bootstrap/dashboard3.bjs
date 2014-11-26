@@ -250,6 +250,10 @@
                                                                         {
                                                                             "xtype" : "NavItem",
                                                                             "$ xns" : "Roo.bootstrap"
+                                                                        },
+                                                                        {
+                                                                            "xtype" : "NavItem",
+                                                                            "$ xns" : "Roo.bootstrap"
                                                                         }
                                                                     ]
                                                                 }
