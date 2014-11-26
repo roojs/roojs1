@@ -2,7 +2,7 @@
 
 Roo.example = Roo.example || {};
 
-Roo.example.NumberBox = new Roo.XComponent({
+Roo.example.TabBox = new Roo.XComponent({
     part     :  ["layout","viewpanel"],
     order    : '001-viewpanel',
     region   : '',
