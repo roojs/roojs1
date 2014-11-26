@@ -233,7 +233,13 @@
                                                 {
                                                     "Number lg" : 6,
                                                     "xtype" : "Column",
-                                                    "$ xns" : "Roo.bootstrap"
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "xtype" : "NavSimplebar",
+                                                            "$ xns" : "Roo.bootstrap"
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
