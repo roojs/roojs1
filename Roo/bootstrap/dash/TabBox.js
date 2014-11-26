@@ -106,7 +106,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
 
 
         this.findParent('li',false, true).removeClass('active');
-        this.el.addClass('active');
+        this.addClass('active');
         Roo.log(this);
             //this.el.select('li.active',true).first().removeClass('active');            
 
