@@ -96,7 +96,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         var _this = this;
         Roo.each(_this.el.select('li',true).elements, function(el){
             Roo.log(el);
-            el..on('click', _this.onClick, el);
+            el.on('click', _this.onClick, el);
         })
     },
     
