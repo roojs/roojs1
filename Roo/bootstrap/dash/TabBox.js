@@ -58,7 +58,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                     cn : [{
                         tag: 'a',
                         href: '#',
-                        data-toggle: 'tab',
+                        // data-toggle: 'tab',
                         html: this.tab1_text ? this.tab1_text : 'tab1'
                     }]
                 },
@@ -69,7 +69,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                     cn : [{
                         tag: 'a',
                         href: '#',
-                        data-toggle: 'tab',
+                        // data-toggle: 'tab',
                         html: this.tab2_text ? this.tab2_text : 'tab2'
                     }]
                 },
