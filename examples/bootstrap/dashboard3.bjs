@@ -237,7 +237,13 @@
                                                     "items" : [
                                                         {
                                                             "xtype" : "NavSimplebar",
-                                                            "$ xns" : "Roo.bootstrap"
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "NavGroup",
+                                                                    "$ xns" : "Roo.bootstrap"
+                                                                }
+                                                            ]
                                                         }
                                                     ]
                                                 }
