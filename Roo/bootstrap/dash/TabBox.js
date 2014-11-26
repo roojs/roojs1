@@ -53,8 +53,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                 cls: 'nav nav-tabs pull-right',
                 cn: [{
                     tag: 'li',
-                    id: 'tab1',
-                    cls: 'active',
+                    cls: 'tab active',
                     html: null,
                     cn : [{
                         tag: 'a',
@@ -65,8 +64,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                 },
                 {
                     tag: 'li',
-                    id: 'tab2',
-                    cls: '',
+                    cls: 'tab',
                     html: null,
                     cn : [{
                         tag: 'a',
@@ -101,13 +99,14 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     {
         Roo.log('img onclick');
         this.fireEvent('click', this, e);
-        if(this.el.id == 'tab1'){
-            Roo.get('tab2').removeClass('active');
-            Roo.get('tab1').addClass('active');
-        }else if(this.el.id == 'tab2'){
-            Roo.get('tab1').removeClass('active');
-            Roo.get('tab2').addClass('active');
-        }
+        // if(this.el.id == 'tab1'){
+        //     Roo.get('tab2').removeClass('active');
+        //     Roo.get('tab1').addClass('active');
+        // }else if(this.el.id == 'tab2'){
+        //     Roo.get('tab1').removeClass('active');
+        //     Roo.get('tab2').addClass('active');
+        // }
+        var v = Roo.select('');
     }
    
 });
