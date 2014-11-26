@@ -41,42 +41,53 @@ Roo.bootstrap.dash.TabBox = function(config){
 
 Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     
-    bgcolor:'',
-    // width: 200,
-    height: 150,
-    headline: '',
-    title: 'Title',
-    more_url: '',
-    more_text: '',
+    width: 100%,
+    height: 100%,
+    title: '',
+    tab1_text: '',
+    tab2_text: '',
 
     getAutoCreate : function(){
         
         var cfg = {
             tag: 'div',
-            cls: 'small-box',
+            cls: 'nav-tabs-custom',
             html : null,
             cn: [
             {
-                tag: 'h3',
-                cls: '',
-                html: this.headline ? this.headline : 'Headline'
-            },
-            {
-                tag: 'p',
-                cls: '',
-                html: this.title ? this.title : 'Title'
-            },
-            {
-                tag: 'div',
-                cls: '',
-                html : null,
+                tag: 'ul',
+                cls: 'nav nav-tabs pull-right',
                 cn: [{
-                    tag: 'a',
-                    href: this.more_url,
-                    cls: 'small-box-footer',
-                    html: this.more_text
+                    tag: 'li',
+                    cls: 'active',
+                    html: null,
+                    cn : [{
+                        tag: 'a',
+                        href: '#',
+                        data-toggle: 'tab',
+                        html: this.tab1_text ? this.tab1_text : 'tab1'
+                    }]
+                },
+                {
+                    tag: 'li',
+                    cls: '',
+                    html: null,
+                    cn : [{
+                        tag: 'a',
+                        href: '#',
+                        data-toggle: 'tab',
+                        html: this.tab2_text ? this.tab2_text : 'tab2'
+                    }]
+                },
+                {
+                    tag: 'li',
+                    cls: 'pull-left header',
+                    html: this.title ? this.title : 'Title',
+                    cn : [{
+                        tag: 'i',
+                        cls: 'fa fa-inbox',
+                    }]
                 }]
-
             }]
         }
 
