@@ -36,8 +36,7 @@ Roo.bootstrap.dash.TabBox = function(config){
 
 Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     
-    width: 100%,
-    height: 100%,
+
     title: '',
     tab1_text: '',
     tab2_text: '',
