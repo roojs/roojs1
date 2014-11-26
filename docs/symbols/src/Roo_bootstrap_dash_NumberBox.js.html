@@ -10,12 +10,13 @@
  * @class Roo.bootstrap.dash.NumberBox
  * @extends Roo.bootstrap.Component
  * Bootstrap NumberBox class
+ * @cfg {String} bgcolor
  * @cfg {number} sm 4
  * @cfg {number} md 5
  * @cfg {String} headline
  * @cfg {String} title
- * @cfg {String} more info url
- * @cfg {String} more info text
+ * @cfg {String} more_url
+ * @cfg {String} more_text
  * @cfg {Array}  opts values
  * 
  * @constructor
@@ -23,6 +24,7 @@
  * @param {Object} config The config object
  */
 
+</span><span class="jsdoc-var">Roo.bootstrap.dash </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.dash </span><span class="jsdoc-syntax">|| {};
 </span><span class="jsdoc-var">Roo.bootstrap.dash.NumberBox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.dash.NumberBox.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     
@@ -39,7 +41,8 @@
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.dash.NumberBox</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
-    </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">: 200,
+    </span><span class="jsdoc-var">bgcolor</span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">// width: 200,
     </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">: 150,
     </span><span class="jsdoc-var">headline</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Title'</span><span class="jsdoc-syntax">,
@@ -50,11 +53,11 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'small-box'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
             {
-                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h3'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.headline </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.headline </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Headline'
             </span><span class="jsdoc-syntax">},
@@ -70,14 +73,19 @@
                 </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [{
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.more_url</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'small-box-footer'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.more_text
                 </span><span class="jsdoc-syntax">}]
 
             }]
         }
-    
-        
+
+        </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' bg-' </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.bgcolor </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.bgcolor </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'aqua' </span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.more_text</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[2]</span><span class="jsdoc-var">.cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+
+        }
+
         </span><span class="jsdoc-keyword">return  </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
 

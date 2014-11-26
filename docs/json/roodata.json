@@ -8030,6 +8030,42 @@
   "Roo.bootstrap.Graph": {
    "props": [
     {
+     "name": "graphtype",
+     "type": "String",
+     "desc": "bar | vbar | pie",
+     "memberOf": ""
+    },
+    {
+     "name": "g_x",
+     "type": "number",
+     "desc": "coodinator | centre x (pie)",
+     "memberOf": ""
+    },
+    {
+     "name": "g_y",
+     "type": "number",
+     "desc": "coodinator | centre y (pie)",
+     "memberOf": ""
+    },
+    {
+     "name": "g_r",
+     "type": "number",
+     "desc": "radius (pie)",
+     "memberOf": ""
+    },
+    {
+     "name": "g_height",
+     "type": "number",
+     "desc": "height of the chart (respected by all elements in the set)",
+     "memberOf": ""
+    },
+    {
+     "name": "g_width",
+     "type": "number",
+     "desc": "width of the chart (respected by all elements in the set)\n -{Array}  values\n -opts (object) options for the chart \n     o {\n     o type (string) type of endings of the bar. Default: 'square'. Other options are: 'round', 'sharp', 'soft'.\n     o gutter (number)(string) default '20%' (WHAT DOES IT DO?)\n     o vgutter (number)\n     o colors (array) colors be used repeatedly to plot the bars. If multicolumn bar is used each sequence of bars with use a different color.\n     o stacked (boolean) whether or not to tread values as in a stacked bar chart\n     o to\n     o stretch (boolean)\n     o }\n -opts (object) options for the pie\n     o{\n     o cut\n     o startAngle (number)\n     o endAngle (number)\n     }",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -15228,11 +15264,13 @@
    ]
   },
   "Roo.bootstrap.dash": {
-   "props": [],
-   "events": []
-  },
-  "Roo.bootstrap.dash.NumberBox": {
    "props": [
+    {
+     "name": "bgcolor",
+     "type": "String",
+     "desc": "",
+     "memberOf": ""
+    },
     {
      "name": "sm",
      "type": "number",
@@ -15258,9 +15296,15 @@
      "memberOf": ""
     },
     {
-     "name": "more",
+     "name": "more_url",
      "type": "String",
-     "desc": "info url",
+     "desc": "",
+     "memberOf": ""
+    },
+    {
+     "name": "more_text",
+     "type": "String",
+     "desc": "",
      "memberOf": ""
     },
     {
@@ -15362,12 +15406,6 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
-     "name": "click",
-     "sig": "function (e)\n{\n\n}",
-     "type": "function",
-     "desc": "The img click event for the img."
-    },
-    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -15404,6 +15442,10 @@
      "desc": "Fires after the component is shown."
     }
    ]
+  },
+  "Roo.bootstrap.dash.NumberBox": {
+   "props": [],
+   "events": []
   },
   "Roo.bootstrap.htmleditor": {
    "props": [],

@@ -1,4 +1,4 @@
-<html><head><title>../roojs1/Roo/bootstrap/Graph.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+<html><head><title>../roojs1/Roo/bootstrap/Graph.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">    <span class="jsdoc-comment">/*
  * - LGPL
  *
  * Graph
@@ -13,12 +13,12 @@
 &gt; Prameters
  -sm {number} sm 4
  -md {number} md 5
- -graphtype {String} graphtype bar | vbar | pie
- -g_x {number}  x coodinator | centre x (pie)
- -g_y {number}  y coodinator | centre y (pie)
- -g_r {number}  radius (pie)
- -g_height {number} height of the chart (respected by all elements in the set)
- -g_width {number}  width of the chart (respected by all elements in the set)
+ @cfg {String} graphtype  bar | vbar | pie
+ @cfg {number} g_x coodinator | centre x (pie)
+ @cfg {number} g_y coodinator | centre y (pie)
+ @cfg {number} g_r radius (pie)
+ @cfg {number} g_height height of the chart (respected by all elements in the set)
+ @cfg {number} g_width width of the chart (respected by all elements in the set)
  -{Array}  values
  -opts (object) options for the chart 
      o {
@@ -86,13 +86,13 @@
 
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">Roo.bootstrap.Graph.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= {};
-        </span><span class="jsdoc-var">this.raphael </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Raphael</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">),
-                    </span><span class="jsdoc-var">data1 </span><span class="jsdoc-syntax">= [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
-                    </span><span class="jsdoc-var">data2 </span><span class="jsdoc-syntax">= [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
-                    </span><span class="jsdoc-var">data3 </span><span class="jsdoc-syntax">= [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
-                    </span><span class="jsdoc-var">txtattr </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">font</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;12px 'Fontin Sans', Fontin-Sans, sans-serif&quot; </span><span class="jsdoc-syntax">};
-                </span><span class="jsdoc-comment">/*
+        </span><span class="jsdoc-var">this.raphael </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Raphael</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">);
+
+                    </span><span class="jsdoc-comment">// data1 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    // data2 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    // data3 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    // txtattr = { font: &quot;12px 'Fontin Sans', Fontin-Sans, sans-serif&quot; };
+                /*
                 r.text(160, 10, &quot;Single Series Chart&quot;).attr(txtattr);
                 r.text(480, 10, &quot;Multiline Series Chart&quot;).attr(txtattr);
                 r.text(160, 250, &quot;Multiple Series Stacked Chart&quot;).attr(txtattr);
@@ -112,8 +112,14 @@
                 //     //yvalues : cols,
                    
                 // });
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xdata </span><span class="jsdoc-syntax">= [55, 20, 13, 32, 5, 1, 2, 10,5 , 10];
+        
+        </span><span class="jsdoc-var">this.load</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,{
+                </span><span class="jsdoc-var">axis </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;0 0 1 1&quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">axisxlabels </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">xdata
+                </span><span class="jsdoc-syntax">});
 
-    </span><span class="jsdoc-syntax">},
+    },
 
     </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.raphael.clear</span><span class="jsdoc-syntax">();
@@ -123,18 +129,32 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">opts </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.opts</span><span class="jsdoc-syntax">;
         }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">chart_title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.raphael</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">fin </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+                        </span><span class="jsdoc-var">this.flag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r.popup</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bar.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.bar.y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.bar.value </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;0&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                    },
+                    </span><span class="jsdoc-var">fout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+                        </span><span class="jsdoc-var">this.flag.animate</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">opacity</span><span class="jsdoc-syntax">: 0}, 300, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {</span><span class="jsdoc-var">this.remove</span><span class="jsdoc-syntax">();});
+                    };
         </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'bar'</span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-var">this.raphael.barchart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_height</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">chart_title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'This is Vertical Barchart'</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'hbar'</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.raphael.hbarchart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_height</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.raphael.hbarchart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_height</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hover</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fin</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">fout</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">chart_title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'This is Horizontal Barchart'</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'pie'</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.raphael.piechart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_r</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">opts </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">legend</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">&quot;%% - Enterprise Users&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;% - ddd&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;Chrome Users&quot;</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">legendpos</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">, 
+                </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">&quot;http://raphaeljs.com&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;http://g.raphaeljs.com&quot;</span><span class="jsdoc-syntax">]};
+                    </span><span class="jsdoc-var">this.raphael.piechart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_r</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">chart_title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'This is Piechart'</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
 
         }
+        </span><span class="jsdoc-var">this.raphael.text</span><span class="jsdoc-syntax">(150,50,</span><span class="jsdoc-var">chart_title</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">font</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;20px 'Fontin Sans', Fontin-Sans, sans-serif&quot; </span><span class="jsdoc-syntax">});
     },
     
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {

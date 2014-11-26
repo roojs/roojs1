@@ -126,7 +126,13 @@
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'submit'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onSubmit</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        
+        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'keypress'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getCharCode</span><span class="jsdoc-syntax">() != 13) {
+                </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        });
         
     },
     </span><span class="jsdoc-comment">// private
