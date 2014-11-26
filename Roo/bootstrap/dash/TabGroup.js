@@ -66,58 +66,6 @@ Roo.extend(Roo.bootstrap.dash.TabGroup, Roo.bootstrap.Component,  {
         return cfg;
     },
     
-    // setActiveItem : function(item)
-    // {
-    //     var prev = false;
-    //     Roo.each(this.navItems, function(v){
-    //         if (v == item) {
-    //             return ;
-    //         }
-    //         if (v.isActive()) {
-    //             v.setActive(false, true);
-    //             prev = v;
-                
-    //         }
-            
-    //     });
-
-    //     item.setActive(true, true);
-    //     this.fireEvent('changed', this, item, prev);
-        
-        
-    // },
-    
-    // addItem : function(cfg)
-    // {
-    //     var cn = new Roo.bootstrap.NavItem(cfg);
-    //     this.register(cn);
-    //     cn.parentId = this.id;
-    //     cn.onRender(this.el, null);
-    //     return cn;
-    // },
-    
-    // register : function(item)
-    // {
-    //     this.navItems.push( item);
-    //     item.navId = this.navId;
-    
-    // },
-    // getNavItem: function(tabId)
-    // {
-    //     var ret = false;
-    //     Roo.each(this.navItems, function(e) {
-    //         if (e.tabId == tabId) {
-    //            ret =  e;
-    //            return false;
-    //         }
-    //         return true;
-            
-    //     });
-    //     return ret;
-    // }
-    
-    
-    
     
 });
 
