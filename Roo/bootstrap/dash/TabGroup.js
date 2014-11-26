@@ -39,11 +39,11 @@ Roo.bootstrap.dash.TabGroup = function(config){
 
 Roo.extend(Roo.bootstrap.dash.TabGroup, Roo.bootstrap.Component,  {
     
-    align: '',
-    inverse: false,
-    form: false,
-    type: 'nav',
-    navId : '',
+    title: '',
+    // inverse: false,
+    // form: false,
+    // type: 'nav',
+    // navId : '',
     // private
     
     tabItems : false,
@@ -54,7 +54,12 @@ Roo.extend(Roo.bootstrap.dash.TabGroup, Roo.bootstrap.Component,  {
         
         cfg = {
             tag : 'ul',
-            cls: 'nav nav-tabs pull-right' 
+            cls: 'nav nav-tabs pull-right' ,
+            cn: [{
+                tag: 'span',
+                cls: 'pull-left header',
+                html: this.title ? this.title : 'Title',
+            }]
         }
           
         
