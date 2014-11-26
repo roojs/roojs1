@@ -99,8 +99,8 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     {
         Roo.log('img onclick');
         if(!this.el.hasClass('active')){
-            Roo.select('.active',true).fisrt(function(el){
-                el.removeClass('active');
+            Roo.select('.active',true).fisrt(function(tab){
+                tab.removeClass('active');
             });
             thi.el.addClass('active');
         }
