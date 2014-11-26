@@ -105,7 +105,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         Roo.log('img onclick');
 
 
-        this.el.findParent('li',false, true).removeClass('active');
+        this.findParent('li',false, true).removeClass('active');
         this.el.addClass('active');
         Roo.log(this);
             //this.el.select('li.active',true).first().removeClass('active');            
