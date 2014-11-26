@@ -90,9 +90,14 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     
     initEvents: function() {
         
-        if(!this.href){
-            this.el.on('click', this.onClick, this);
-        }
+        // if(!this.href){
+        //     this.el.on('click', this.onClick, this);
+        // }
+        var _this = this;
+        Roo.each(_this.el.select('li',true).elements, function(el){
+            Roo.log(el);
+            el..on('click', _this.onClick, el);
+        })
     },
     
     onClick : function(e)
@@ -103,7 +108,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
             this.el.select('li.active',true).first().removeClass('active');            
 
             Roo.get(e.target).findParent('li',false, true).addClass('active');
-            
+
         this.fireEvent('toggle', this, e);
 
     }
