@@ -10,14 +10,9 @@
  * @class Roo.bootstrap.dash.TabBox
  * @extends Roo.bootstrap.Component
  * Bootstrap TabBox class
- * @cfg {String} bgcolor
- * @cfg {number} sm 4
- * @cfg {number} md 5
- * @cfg {String} headline
  * @cfg {String} title
- * @cfg {String} more_url
- * @cfg {String} more_text
- * @cfg {Array}  opts values
+ * @cfg {String} tab1_text
+ * @cfg {String} tab2_text
  * 
  * @constructor
  * Create a new Input
