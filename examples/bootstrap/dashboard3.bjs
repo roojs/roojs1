@@ -13,8 +13,8 @@
             "items" : [
                 {
                     "String cls" : "header",
-                    "tag" : "header",
                     "xtype" : "Container",
+                    "tag" : "header",
                     "* xinclude" : "Dashboard.Header1",
                     "$ xns" : "Roo.bootstrap"
                 },
@@ -61,6 +61,7 @@
                                             "$ xns" : "Roo.bootstrap",
                                             "items" : [
                                                 {
+                                                    "Number md" : 3,
                                                     "Number lg" : 3,
                                                     "xtype" : "Column",
                                                     "$ xns" : "Roo.bootstrap",
@@ -138,8 +139,8 @@
                                             "items" : [
                                                 {
                                                     "Number md" : 6,
-                                                    "xtype" : "Column",
                                                     "Number lg" : 6,
+                                                    "xtype" : "Column",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "String style" : "",
                                                     "Number sm" : 12,
@@ -172,8 +173,8 @@
                                                 },
                                                 {
                                                     "Number md" : 6,
-                                                    "Number lg" : 6,
                                                     "xtype" : "Column",
+                                                    "Number lg" : 6,
                                                     "$ xns" : "Roo.bootstrap",
                                                     "String style" : "",
                                                     "Number sm" : 12,
@@ -217,8 +218,8 @@
                                                     "items" : [
                                                         {
                                                             "g_y" : 200,
-                                                            "xtype" : "Graph",
                                                             "g_r" : 120,
+                                                            "xtype" : "Graph",
                                                             "graphtype" : "pie",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "height" : 500,
@@ -233,8 +234,8 @@
                                                     "items" : [
                                                         {
                                                             "g_y" : 200,
-                                                            "g_r" : 150,
                                                             "xtype" : "Graph",
+                                                            "g_r" : 150,
                                                             "graphtype" : "pie",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "g_x" : 300
