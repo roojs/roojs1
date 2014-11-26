@@ -102,7 +102,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         if(!Roo.get(e.target).hasClass('active')){
             Roo.select('.active',true).first().removeClass('active');
             
-            Roo.log(Roo.get(e.target)).addClass('active');
+            Roo.get(e.target).addClass('active');
         }
         this.fireEvent('toggle', this, e);
 
