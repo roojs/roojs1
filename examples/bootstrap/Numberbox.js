@@ -28,7 +28,7 @@ Roo.example.NumberBox = new Roo.XComponent({
             xns: Roo.bootstrap,
             items :[
 		 {
-			xtype : 'NumberBox',
+			xtype : 'TabBox',
 			xns: Roo.bootstrap.dash,
             // listeners: {
             //     render: function(){
