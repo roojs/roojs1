@@ -72,15 +72,15 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                         // data-toggle: 'tab',
                         html: this.tab2_text ? this.tab2_text : 'tab2'
                     }]
-                },
-                {
-                    tag: 'li',
-                    cls: 'pull-left header',
-                    html: this.title ? this.title : 'Title',
-                    cn : [{
-                        tag: 'i',
-                        cls: 'fa fa-inbox',
-                    }]
+                // },
+                // {
+                //     tag: 'li',
+                //     cls: 'pull-left header',
+                //     html: this.title ? this.title : 'Title',
+                //     cn : [{
+                //         tag: 'i',
+                //         cls: 'fa fa-inbox',
+                //     }]
                 }]
             }]
         }
