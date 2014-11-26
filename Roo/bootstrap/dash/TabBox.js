@@ -109,7 +109,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
 
            // Roo.get(e.target).findParent('li',false, true).addClass('active');
 
-        this.fireEvent('toggle', this, e);
+        //this.fireEvent('toggle', this, e);
 
     }
    
