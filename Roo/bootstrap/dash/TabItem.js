@@ -50,8 +50,8 @@ Roo.extend(Roo.bootstrap.dash.TabItem, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {
         
-        Roo.log('TabItem:');
-        
+        Roo.log('TabItem:------'+this.el);
+
         cfg = {
             tag: 'li',
             cls: '',
