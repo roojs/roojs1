@@ -241,7 +241,13 @@
                                                             "items" : [
                                                                 {
                                                                     "xtype" : "TabPane",
-                                                                    "$ xns" : "Roo.bootstrap.dash"
+                                                                    "$ xns" : "Roo.bootstrap.dash",
+                                                                    "items" : [
+                                                                        {
+                                                                            "xtype" : "Graph",
+                                                                            "$ xns" : "Roo.bootstrap"
+                                                                        }
+                                                                    ]
                                                                 }
                                                             ]
                                                         }
