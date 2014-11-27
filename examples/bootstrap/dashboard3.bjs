@@ -146,33 +146,7 @@
                                                     "xtype" : "Column",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "String style" : "",
-                                                    "Number sm" : 12,
-                                                    "items" : [
-                                                        {
-                                                            "String cls" : "nav-tabs-custom",
-                                                            "xtype" : "Container",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "items" : [
-                                                                {
-                                                                    "xtype" : "Header",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "SALES",
-                                                                    "String style" : "margin: 10,10,0,0"
-                                                                },
-                                                                {
-                                                                    "g_height" : 250,
-                                                                    "g_y" : 80,
-                                                                    "xtype" : "Graph",
-                                                                    "g_r" : 30,
-                                                                    "graphtype" : "bar",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String style" : "border: 1px solid grey height:100%",
-                                                                    "g_width" : 500,
-                                                                    "g_x" : 30
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
+                                                    "Number sm" : 12
                                                 },
                                                 {
                                                     "Number md" : 6,
