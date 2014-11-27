@@ -51,6 +51,7 @@ Roo.extend(Roo.bootstrap.dash.TabItem, Roo.bootstrap.Component,  {
     {
         
         Roo.log('TabItem:');
+        
         cfg = {
             tag: 'li',
             cls: '',
