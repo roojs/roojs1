@@ -51,7 +51,7 @@ Roo.extend(Roo.bootstrap.dash.TabGroup, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {
         
-        Roo.log('');
+        Roo.log('TabGroup:');
         cfg = {
             tag : 'ul',
             cls: 'nav nav-tabs pull-right' ,
