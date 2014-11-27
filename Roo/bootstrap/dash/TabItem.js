@@ -39,7 +39,7 @@ Roo.bootstrap.dash.TabItem = function(config){
 
 Roo.extend(Roo.bootstrap.dash.TabItem, Roo.bootstrap.Component,  {
     
-    title: '',
+    text: '',
     // inverse: false,
     // form: false,
     // type: 'nav',
@@ -50,7 +50,7 @@ Roo.extend(Roo.bootstrap.dash.TabItem, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {
         
-        
+        Roo.log(this);
         cfg = {
             tag: 'li',
             cls: '',
@@ -58,7 +58,7 @@ Roo.extend(Roo.bootstrap.dash.TabItem, Roo.bootstrap.Component,  {
             cn : [{
                 tag: 'a',
                 href: '#',
-                html: this.tab1_text ? this.tab1_text : 'tab1'
+                html: this.text ? this.text : 'tab'
             }]
         }
           
