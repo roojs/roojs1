@@ -68,7 +68,7 @@ Roo.extend(Roo.bootstrap.dash.TabItem, Roo.bootstrap.Component,  {
     },
     onRender: function(ct,position){
         Roo.bootstrap.dash.TabItem.superclass.onRender.call(this,ct,position);
-        Roo.log(this.el);
+        Roo.log('TabItem:------'+this.el);
     },
     
 });
