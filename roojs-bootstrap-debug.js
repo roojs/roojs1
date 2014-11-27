@@ -18113,7 +18113,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
 
  
 
- /*
+     /*
  * - LGPL
  *
  * Graph
@@ -18128,12 +18128,12 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
 > Prameters
  -sm {number} sm 4
  -md {number} md 5
- -graphtype {String} graphtype bar | vbar | pie
- -g_x {number}  x coodinator | centre x (pie)
- -g_y {number}  y coodinator | centre y (pie)
- -g_r {number}  radius (pie)
- -g_height {number} height of the chart (respected by all elements in the set)
- -g_width {number}  width of the chart (respected by all elements in the set)
+ @cfg {String} graphtype  bar | vbar | pie
+ @cfg {number} g_x coodinator | centre x (pie)
+ @cfg {number} g_y coodinator | centre y (pie)
+ @cfg {number} g_r radius (pie)
+ @cfg {number} g_height height of the chart (respected by all elements in the set)
+ @cfg {number} g_width width of the chart (respected by all elements in the set)
  -{Array}  values
  -opts (object) options for the chart 
      o {
@@ -18201,12 +18201,12 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 
     onRender : function(ct,position){
         Roo.bootstrap.Graph.superclass.onRender.call(this,ct,position);
-        var r = {};
-        this.raphael = Raphael(this.el.dom),
-                    data1 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
-                    data2 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
-                    data3 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
-                    txtattr = { font: "12px 'Fontin Sans', Fontin-Sans, sans-serif" };
+        this.raphael = Raphael(this.el.dom);
+
+                    // data1 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    // data2 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    // data3 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
+                    // txtattr = { font: "12px 'Fontin Sans', Fontin-Sans, sans-serif" };
                 /*
                 r.text(160, 10, "Single Series Chart").attr(txtattr);
                 r.text(480, 10, "Multiline Series Chart").attr(txtattr);
@@ -18227,6 +18227,12 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
                 //     //yvalues : cols,
                    
                 // });
+        var xdata = [55, 20, 13, 32, 5, 1, 2, 10,5 , 10];
+        
+        this.load(null,xdata,{
+                axis : "0 0 1 1",
+                axisxlabels :  xdata
+                });
 
     },
 
@@ -18238,18 +18244,32 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         if(!opts){
             opts = this.opts;
         }
+        var chart_title = '',
+                    r = this.raphael,
+                    fin = function () {
+                        this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
+                    },
+                    fout = function () {
+                        this.flag.animate({opacity: 0}, 300, function () {this.remove();});
+                    };
         switch(graphtype){
             case 'bar':
                 this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts);
+                chart_title = 'This is Vertical Barchart';
                 break;
             case 'hbar':
-                this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts);
+                this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts).hover(fin,fout);
+                chart_title = 'This is Horizontal Barchart';
                 break;
             case 'pie':
-                this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts);
+                opts = { legend: ["%% - Enterprise Users", "% - ddd","Chrome Users"], legendpos: "west", 
+                href: ["http://raphaeljs.com", "http://g.raphaeljs.com"]};
+                    this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts);
+                chart_title = 'This is Piechart';
                 break;
 
         }
+        this.raphael.text(150,50,chart_title).attr({ font: "20px 'Fontin Sans', Fontin-Sans, sans-serif" });
     },
     
     initEvents: function() {
@@ -18280,12 +18300,13 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.dash.NumberBox
  * @extends Roo.bootstrap.Component
  * Bootstrap NumberBox class
+ * @cfg {String} bgcolor
  * @cfg {number} sm 4
  * @cfg {number} md 5
  * @cfg {String} headline
  * @cfg {String} title
- * @cfg {String} more info url
- * @cfg {String} more info text
+ * @cfg {String} more_url
+ * @cfg {String} more_text
  * @cfg {Array}  opts values
  * 
  * @constructor
@@ -18293,6 +18314,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
+Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 Roo.bootstrap.dash.NumberBox = function(config){
     Roo.bootstrap.dash.NumberBox.superclass.constructor.call(this, config);
     
@@ -18309,7 +18331,8 @@ Roo.bootstrap.dash.NumberBox = function(config){
 
 Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     
-    width: 200,
+    bgcolor:'',
+    // width: 200,
     height: 150,
     headline: '',
     title: 'Title',
@@ -18320,11 +18343,11 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag: 'div',
-            cls: '',
+            cls: 'small-box',
             html : null,
             cn: [
             {
-                tag: 'h',
+                tag: 'h3',
                 cls: '',
                 html: this.headline ? this.headline : 'Headline'
             },
@@ -18340,14 +18363,19 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                 cn: [{
                     tag: 'a',
                     href: this.more_url,
-                    cls: '',
+                    cls: 'small-box-footer',
                     html: this.more_text
                 }]
 
             }]
         }
-    
-        
+
+        cfg.cls += ' bg-' + (this.bgcolor ? this.bgcolor : 'aqua' );
+        if(!this.more_text){
+            cfg.cn[2].cn = null;
+
+        }
+
         return  cfg;
     },
 
