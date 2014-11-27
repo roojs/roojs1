@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
         Roo.log(this);
         cfg = {
             tag: 'div',
-            cls: '',
+            cls: 'tab-content no-padding',
             html: null
         }
           
