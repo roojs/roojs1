@@ -237,7 +237,19 @@
                                                     "items" : [
                                                         {
                                                             "xtype" : "TabBox",
-                                                            "$ xns" : "Roo.bootstrap.dash"
+                                                            "$ xns" : "Roo.bootstrap.dash",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "TabGroup",
+                                                                    "$ xns" : "Roo.bootstrap.dash",
+                                                                    "items" : [
+                                                                        {
+                                                                            "xtype" : "TabItem",
+                                                                            "$ xns" : "Roo.bootstrap.dash"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
                                                         }
                                                     ]
                                                 }
