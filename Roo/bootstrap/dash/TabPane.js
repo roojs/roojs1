@@ -32,7 +32,7 @@ Roo.bootstrap.dash.TabPane = function(config){
 	     * @param {Roo.bootstrap.Navbar.Item} item The item selected
 	     * @param {Roo.bootstrap.Navbar.Item} item The previously selected item 
          */
-        'changed': true
+        //'changed': true
      });
     
 };
