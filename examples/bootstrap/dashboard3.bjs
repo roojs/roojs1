@@ -146,7 +146,19 @@
                                                     "xtype" : "Column",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "String style" : "",
-                                                    "Number sm" : 12
+                                                    "Number sm" : 12,
+                                                    "items" : [
+                                                        {
+                                                            "xtype" : "TabBox",
+                                                            "$ xns" : "Roo.bootstrap.dash",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "TabGroup",
+                                                                    "$ xns" : "Roo.bootstrap.dash"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     "Number md" : 6,
