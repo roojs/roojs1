@@ -167,6 +167,10 @@
                                                                         {
                                                                             "xtype" : "TabItem",
                                                                             "$ xns" : "Roo.bootstrap.dash"
+                                                                        },
+                                                                        {
+                                                                            "xtype" : "TabItem",
+                                                                            "$ xns" : "Roo.bootstrap.dash"
                                                                         }
                                                                     ]
                                                                 }
