@@ -148,11 +148,11 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         switch(graphtype){
             case 'bar':
                 this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts).hover(fin,fout);
-                this.title = this.title || 'This is Vertical Barchart';
+                this.title.text = this.title.text || 'This is Vertical Barchart';
                 break;
             case 'hbar':
                 this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts).hover(fin,fout);
-                this.title = this.title || 'This is Horizontal Barchart';
+                this.title.text = this.title.text || 'This is Horizontal Barchart';
                 break;
             case 'pie':
                 opts = { legend: ["%% - Enterprise Users", "% - ddd","Chrome Users"], legendpos: "west", 
@@ -160,7 +160,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
             
                 this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts);
                 
-                this.title = this.title || 'This is Piechart';
+                this.title.text = this.title.text || 'This is Piechart';
                 break;
 
         }
