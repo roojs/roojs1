@@ -89,7 +89,8 @@
                                             "items" : [
                                                 {
                                                     "xtype" : "Button",
-                                                    "$ xns" : "Roo.bootstrap"
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "a button"
                                                 }
                                             ]
                                         }
