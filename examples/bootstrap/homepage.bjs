@@ -74,6 +74,10 @@
                                             "xtype" : "Header",
                                             "$ xns" : "Roo.bootstrap",
                                             "String html" : "The HR Platform"
+                                        },
+                                        {
+                                            "xtype" : "Element",
+                                            "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
                                 }

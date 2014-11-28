@@ -96,6 +96,11 @@ homepage = new Roo.XComponent({
                                             xtype : 'Header',
                                             xns : Roo.bootstrap,
                                             html : 'The HR Platform'
+                                        },
+                                    	{
+                                            '|xns' : 'Roo.bootstrap',
+                                            xtype : 'Element',
+                                            xns : Roo.bootstrap
                                         }
                                     ]
 
