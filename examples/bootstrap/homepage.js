@@ -113,6 +113,7 @@ homepage = new Roo.XComponent({
                                             items : [
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
+                                                    tag : 'a',
                                                     size : 'lg',
                                                     href : '#',
                                                     xtype : 'Button',
