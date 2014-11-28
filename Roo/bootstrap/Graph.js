@@ -131,29 +131,30 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         if(!opts){
             opts = this.opts;
         }
-        var chart_title = '',
-                    r = this.raphael,
-                    fin = function () {
-                        this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
-                    },
-                    fout = function () {
-                        this.flag.animate({opacity: 0}, 300, function () {this.remove();});
-                    };
+        var r = this.raphael,
+            fin = function () {
+                this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
+            },
+            fout = function () {
+                this.flag.animate({opacity: 0}, 300, function () {this.remove();});
+            };
 
         switch(graphtype){
             case 'bar':
                 this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts).hover(fin,fout);
-                chart_title = 'This is Vertical Barchart';
+                this.title = this.title || 'This is Vertical Barchart';
                 break;
             case 'hbar':
                 this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts).hover(fin,fout);
-                chart_title = 'This is Horizontal Barchart';
+                this.title = this.title || 'This is Horizontal Barchart';
                 break;
             case 'pie':
                 opts = { legend: ["%% - Enterprise Users", "% - ddd","Chrome Users"], legendpos: "west", 
                 href: ["http://raphaeljs.com", "http://g.raphaeljs.com"]};
-                    this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts);
-                chart_title = 'This is Piechart';
+            
+                this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts);
+                
+                this.title = this.title || 'This is Piechart';
                 break;
 
         }
