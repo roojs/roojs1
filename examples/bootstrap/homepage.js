@@ -43,6 +43,18 @@ homepage = new Roo.XComponent({
                                     xtype : 'NavItem',
                                     xns : Roo.bootstrapA,
                                     html : 'About'
+                                },
+                            	{
+                                    '|xns' : 'Roo.bootstrap',
+                                    xtype : 'NavItem',
+                                    xns : Roo.bootstrap,
+                                    html : 'More Pages'
+                                },
+                            	{
+                                    '|xns' : 'Roo.bootstrap',
+                                    xtype : 'NavItem',
+                                    xns : Roo.bootstrap,
+                                    html : 'Contact'
                                 }
                             ]
 
