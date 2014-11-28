@@ -78,7 +78,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         text : '',
         x : 150,
         y : 50,
-        attr : {}
+        attr : { font: "20px 'Fontin Sans', Fontin-Sans, sans-serif" }
     },
 
     getAutoCreate : function(){
@@ -164,7 +164,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
                 break;
 
         }
-        this.raphael.text(this.t_x, this.t_y, this.title).attr({ font: "20px 'Fontin Sans', Fontin-Sans, sans-serif" });
+        this.raphael.text(this.title.x, this.title.y, this.title.text).attr(this.title.attr);
     },
     
     setTitle: function(str) {
