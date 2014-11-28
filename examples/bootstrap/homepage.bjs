@@ -45,7 +45,7 @@
                                 {
                                     "xtype" : "NavItem",
                                     "$ xns" : "Roo.bootstrap",
-                                    "String html" : "Contact"
+                                    "String html" : "Sign in / Sign up"
                                 }
                             ]
                         }
