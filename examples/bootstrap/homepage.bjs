@@ -17,6 +17,7 @@
                     "$ xns" : "Roo.bootstrap",
                     "items" : [
                         {
+                            "String type" : "nav",
                             "xtype" : "NavGroup",
                             "String align" : "right",
                             "$ xns" : "Roo.bootstrap",
