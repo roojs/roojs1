@@ -19,6 +19,7 @@
  @cfg {number} g_r radius (pie)
  @cfg {number} g_height height of the chart (respected by all elements in the set)
  @cfg {number} g_width width of the chart (respected by all elements in the set)
+ @cfg {String} title The title of the graph
  -{Array}  values
  -opts (object) options for the chart 
      o {
