@@ -119,6 +119,15 @@ homepage = new Roo.XComponent({
                                                     xtype : 'Button',
                                                     xns : Roo.bootstrap,
                                                     html : 'a button'
+                                                },
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    tag : 'a',
+                                                    size : 'lg',
+                                                    href : '#',
+                                                    xtype : 'Button',
+                                                    xns : Roo.bootstrap,
+                                                    html : 'a button'
                                                 }
                                             ]
 

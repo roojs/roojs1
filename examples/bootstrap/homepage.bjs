@@ -94,6 +94,14 @@
                                                     "xtype" : "Button",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "String html" : "a button"
+                                                },
+                                                {
+                                                    "String tag" : "a",
+                                                    "String size" : "lg",
+                                                    "String href" : "#",
+                                                    "xtype" : "Button",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "a button"
                                                 }
                                             ]
                                         }
