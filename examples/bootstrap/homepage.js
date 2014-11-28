@@ -22,6 +22,7 @@ homepage = new Roo.XComponent({
             	{
                     '|xns' : 'Roo.bootstrap',
                     cls : 'headroom animated',
+                    position : 'fixed-top',
                     xtype : 'NavHeaderbar',
                     inverse : true,
                     brand : 'Hydra',

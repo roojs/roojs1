@@ -12,6 +12,7 @@
             "items" : [
                 {
                     "String cls" : "headroom animated",
+                    "String position" : "fixed-top",
                     "xtype" : "NavHeaderbar",
                     "Boolean inverse" : true,
                     "String brand" : "Hydra",
