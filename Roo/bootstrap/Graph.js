@@ -20,6 +20,9 @@
  @cfg {number} g_height height of the chart (respected by all elements in the set)
  @cfg {number} g_width width of the chart (respected by all elements in the set)
  @cfg {String} title The title of this graph
+ @cfg {number} t_x postition x of title
+ @cfg {number} t_y postition y of title
+    
  -{Array}  values
  -opts (object) options for the chart 
      o {
