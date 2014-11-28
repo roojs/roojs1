@@ -11,6 +11,7 @@
             "$ xns" : "Roo.bootstrap",
             "items" : [
                 {
+                    "String cls" : "headroom animated",
                     "xtype" : "NavHeaderbar",
                     "Boolean inverse" : true,
                     "String brand" : "Hydra",
