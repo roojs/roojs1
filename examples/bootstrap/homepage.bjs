@@ -54,7 +54,7 @@
                     ]
                 },
                 {
-                    "xtype" : "Header",
+                    "xtype" : "Container",
                     "$ xns" : "Roo.bootstrap",
                     "items" : [
                         {
