@@ -45,6 +45,7 @@
                                     "String html" : "Contact"
                                 },
                                 {
+                                    "String cls" : "btn",
                                     "xtype" : "NavItem",
                                     "$ xns" : "Roo.bootstrap",
                                     "String html" : "Sign in / Sign up"
