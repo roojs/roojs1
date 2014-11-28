@@ -12,6 +12,7 @@
             "items" : [
                 {
                     "xtype" : "NavHeaderbar",
+                    "Boolean inverse" : true,
                     "String brand" : "test",
                     "$ xns" : "Roo.bootstrap"
                 }

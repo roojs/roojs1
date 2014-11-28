@@ -22,6 +22,7 @@ homepage = new Roo.XComponent({
             	{
                     '|xns' : 'Roo.bootstrap',
                     xtype : 'NavHeaderbar',
+                    inverse : true,
                     brand : 'test',
                     xns : Roo.bootstrap
                 }
