@@ -137,6 +137,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
                     fout = function () {
                         this.flag.animate({opacity: 0}, 300, function () {this.remove();});
                     };
+        
         switch(graphtype){
             case 'bar':
                 this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts);
