@@ -130,13 +130,13 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
             opts = this.opts;
         }
         var chart_title = '',
-        r = this.raphael,
-        fin = function () {
-            this.flag = r.popup(0,0,0).insertBefore(this);
-        },
-        fout = function () {
-            this.flag.animate({opacity: 0}, 300, function () {this.remove();});
-        };
+                    r = this.raphael,
+                    fin = function () {
+                        this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
+                    },
+                    fout = function () {
+                        this.flag.animate({opacity: 0}, 300, function () {this.remove();});
+                    };
 
         switch(graphtype){
             case 'bar':
