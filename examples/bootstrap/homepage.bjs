@@ -68,6 +68,7 @@
                                     "$ xns" : "Roo.bootstrap",
                                     "items" : [
                                         {
+                                            "String cls" : "lead",
                                             "xtype" : "Header",
                                             "$ xns" : "Roo.bootstrap",
                                             "String html" : "The HR Platform"
