@@ -158,7 +158,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
                 break;
 
         }
-        this.title = this.raphael.text(150,50,this.title).attr({ font: "20px 'Fontin Sans', Fontin-Sans, sans-serif" });
+        this.raphael.text(150,50,this.title).attr({ font: "20px 'Fontin Sans', Fontin-Sans, sans-serif" });
     },
     
     setTitle: function(str) {
