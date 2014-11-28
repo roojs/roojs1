@@ -18,8 +18,14 @@
                     "items" : [
                         {
                             "xtype" : "NavGroup",
+                            "String align" : "right",
                             "$ xns" : "Roo.bootstrap",
                             "items" : [
+                                {
+                                    "xtype" : "NavItem",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "Home"
+                                },
                                 {
                                     "xtype" : "NavItem",
                                     "$ xns" : "Roo.bootstrap",

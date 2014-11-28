@@ -29,8 +29,15 @@ homepage = new Roo.XComponent({
                     	{
                             '|xns' : 'Roo.bootstrap',
                             xtype : 'NavGroup',
+                            align : 'right',
                             xns : Roo.bootstrap,
                             items : [
+                            	{
+                                    '|xns' : 'Roo.bootstrap',
+                                    xtype : 'NavItem',
+                                    xns : Roo.bootstrap,
+                                    html : 'Home'
+                                },
                             	{
                                     '|xns' : 'Roo.bootstrap',
                                     xtype : 'NavItem',
