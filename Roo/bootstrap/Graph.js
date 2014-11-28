@@ -132,7 +132,6 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         var chart_title = '',
                     r = this.raphael,
                     fin = function () {
-                        Roo.log(this);
                         this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
                     },
                     fout = function () {
