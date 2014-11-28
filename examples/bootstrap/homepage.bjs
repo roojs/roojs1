@@ -12,6 +12,7 @@
             "items" : [
                 {
                     "xtype" : "NavHeaderbar",
+                    "String brand" : "test",
                     "$ xns" : "Roo.bootstrap"
                 }
             ]
