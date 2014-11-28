@@ -86,6 +86,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 
     onRender : function(ct,position){
         Roo.bootstrap.Graph.superclass.onRender.call(this,ct,position);
+        Roo.log(this.el.dom);
         this.raphael = Raphael(this.el.dom);
 
                     // data1 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
@@ -130,13 +131,13 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
             opts = this.opts;
         }
         var chart_title = '',
-                    r = this.raphael,
-                    fin = function () {
-                        this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
-                    },
-                    fout = function () {
-                        this.flag.animate({opacity: 0}, 300, function () {this.remove();});
-                    };
+            r = this.raphael,
+            fin = function () {
+                this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
+            },
+            fout = function () {
+                this.flag.animate({opacity: 0}, 300, function () {this.remove();});
+            };
 
         switch(graphtype){
             case 'bar':
