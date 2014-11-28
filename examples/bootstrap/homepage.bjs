@@ -14,7 +14,19 @@
                     "xtype" : "NavHeaderbar",
                     "Boolean inverse" : true,
                     "String brand" : "Hydra",
-                    "$ xns" : "Roo.bootstrap"
+                    "$ xns" : "Roo.bootstrap",
+                    "items" : [
+                        {
+                            "xtype" : "NavGroup",
+                            "$ xns" : "Roo.bootstrap",
+                            "items" : [
+                                {
+                                    "xtype" : "NavItem",
+                                    "$ xns" : "Roo.bootstrap"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }

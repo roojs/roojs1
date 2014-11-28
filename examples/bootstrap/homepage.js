@@ -24,7 +24,23 @@ homepage = new Roo.XComponent({
                     xtype : 'NavHeaderbar',
                     inverse : true,
                     brand : 'Hydra',
-                    xns : Roo.bootstrap
+                    xns : Roo.bootstrap,
+                    items : [
+                    	{
+                            '|xns' : 'Roo.bootstrap',
+                            xtype : 'NavGroup',
+                            xns : Roo.bootstrap,
+                            items : [
+                            	{
+                                    '|xns' : 'Roo.bootstrap',
+                                    xtype : 'NavItem',
+                                    xns : Roo.bootstrap
+                                }
+                            ]
+
+                        }
+                    ]
+
                 }
             ]
 
