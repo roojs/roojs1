@@ -89,6 +89,7 @@
                                             "items" : [
                                                 {
                                                     "String size" : "lg",
+                                                    "String href" : "#",
                                                     "xtype" : "Button",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "String html" : "a button"
