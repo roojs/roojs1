@@ -104,6 +104,12 @@ homepage = new Roo.XComponent({
                                             xtype : 'Element',
                                             xns : Roo.bootstrap,
                                             html : 'some tag line'
+                                        },
+                                    	{
+                                            '|xns' : 'Roo.bootstrap',
+                                            tag : 'p',
+                                            xtype : 'Element',
+                                            xns : Roo.bootstrap
                                         }
                                     ]
 

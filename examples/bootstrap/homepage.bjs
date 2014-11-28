@@ -81,6 +81,11 @@
                                             "xtype" : "Element",
                                             "$ xns" : "Roo.bootstrap",
                                             "String html" : "some tag line"
+                                        },
+                                        {
+                                            "String tag" : "p",
+                                            "xtype" : "Element",
+                                            "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
                                 }
