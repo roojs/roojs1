@@ -31,7 +31,7 @@
                                 },
                                 {
                                     "xtype" : "NavItem",
-                                    "$ xns" : "Roo.bootstrapA",
+                                    "$ xns" : "Roo.bootstrap",
                                     "String html" : "About"
                                 },
                                 {
