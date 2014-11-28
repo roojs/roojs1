@@ -19,9 +19,7 @@
  @cfg {number} g_r radius (pie)
  @cfg {number} g_height height of the chart (respected by all elements in the set)
  @cfg {number} g_width width of the chart (respected by all elements in the set)
- @cfg {String} title The title of this graph
- @cfg {number} t_x postition x of title (default 150)
- @cfg {number} t_y postition y of title (default 50)
+ @cfg {Object} g_title The title of the chart
     
  -{Array}  values
  -opts (object) options for the chart 
@@ -70,15 +68,18 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
     g_x: 50,
     g_y: 50,
     g_r: 30,
-    t_x : 150,
-    t_y : 50,
     opts:{
         //g_colors: this.colors,
         g_type: 'soft',
         g_gutter: '20%'
 
     },
-    title : '',
+    title : {
+        text : '',
+        x : 150,
+        y : 50,
+        attr : {}
+    },
 
     getAutoCreate : function(){
         
