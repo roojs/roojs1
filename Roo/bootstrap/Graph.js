@@ -19,6 +19,7 @@
  @cfg {number} g_r radius (pie)
  @cfg {number} g_height height of the chart (respected by all elements in the set)
  @cfg {number} g_width width of the chart (respected by all elements in the set)
+ @cfg {String} title The title of this graph
  -{Array}  values
  -opts (object) options for the chart 
      o {
@@ -72,6 +73,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         g_gutter: '20%'
 
     },
+    title : '',
 
     getAutoCreate : function(){
         
@@ -156,6 +158,10 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 
         }
         this.raphael.text(150,50,chart_title).attr({ font: "20px 'Fontin Sans', Fontin-Sans, sans-serif" });
+    },
+    
+    setTitle: function(str) {
+        this.title = str;
     },
     
     initEvents: function() {
