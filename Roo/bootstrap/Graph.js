@@ -140,7 +140,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 
         switch(graphtype){
             case 'bar':
-                this.raphael.barchart(this.g_x,this.g_y,500,this.g_height,xdata,opts).hover(fin,fout);
+                this.raphael.barchart(this.g_x,this.g_y,this.g_width,1000,xdata,opts).hover(fin,fout);
                 chart_title = 'This is Vertical Barchart';
                 break;
             case 'hbar':
