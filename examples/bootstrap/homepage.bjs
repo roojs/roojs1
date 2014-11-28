@@ -76,8 +76,11 @@
                                             "String html" : "The HR Platform"
                                         },
                                         {
+                                            "String tag" : "p",
+                                            "String cls" : "tagline",
                                             "xtype" : "Element",
-                                            "$ xns" : "Roo.bootstrap"
+                                            "$ xns" : "Roo.bootstrap",
+                                            "String html" : "some tag line"
                                         }
                                     ]
                                 }
