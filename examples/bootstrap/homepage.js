@@ -16,6 +16,7 @@ homepage = new Roo.XComponent({
         var MODULE = this;
         return {
             '|xns' : 'Roo.bootstrap',
+            cls : 'home',
             xtype : 'Body',
             xns : Roo.bootstrap,
             items : [
