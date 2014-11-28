@@ -28,8 +28,8 @@
                                 },
                                 {
                                     "xtype" : "NavItem",
-                                    "$ xns" : "Roo.bootstrap",
-                                    "String html" : "Home"
+                                    "$ xns" : "Roo.bootstrapA",
+                                    "String html" : "About"
                                 }
                             ]
                         }
