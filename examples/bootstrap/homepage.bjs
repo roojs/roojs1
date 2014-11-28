@@ -41,6 +41,11 @@
                                     "xtype" : "NavItem",
                                     "$ xns" : "Roo.bootstrap",
                                     "String html" : "Contact"
+                                },
+                                {
+                                    "xtype" : "NavItem",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "Contact"
                                 }
                             ]
                         }
