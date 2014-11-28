@@ -86,7 +86,6 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 
     onRender : function(ct,position){
         Roo.bootstrap.Graph.superclass.onRender.call(this,ct,position);
-        Roo.log(this.el.dom);
         this.raphael = Raphael(this.el.dom);
 
                     // data1 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
@@ -130,6 +129,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         if(!opts){
             opts = this.opts;
         }
+        Roo.log(this.bar);
         var chart_title = '',
             r = this.raphael,
             fin = function () {
