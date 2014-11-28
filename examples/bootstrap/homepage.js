@@ -75,6 +75,7 @@ homepage = new Roo.XComponent({
             	{
                     '|xns' : 'Roo.bootstrap',
                     tag : 'header',
+                    cls : 'pr-head',
                     xtype : 'Element',
                     xns : Roo.bootstrap,
                     items : [
