@@ -164,6 +164,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
                 break;
 
         }
+        
         this.raphael.text(this.title.x, this.title.y, this.title.text).attr(this.title.attr);
     },
     
