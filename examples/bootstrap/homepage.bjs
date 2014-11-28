@@ -50,6 +50,10 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "xtype" : "Header",
+                    "$ xns" : "Roo.bootstrap"
                 }
             ]
         }
