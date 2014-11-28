@@ -13,7 +13,7 @@
                 {
                     "xtype" : "NavHeaderbar",
                     "Boolean inverse" : true,
-                    "String brand" : "test",
+                    "String brand" : "Hydra",
                     "$ xns" : "Roo.bootstrap"
                 }
             ]
