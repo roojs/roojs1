@@ -56,7 +56,7 @@
                 },
                 {
                     "String tag" : "header",
-                    "xtype" : "Container",
+                    "xtype" : "Element",
                     "$ xns" : "Roo.bootstrap",
                     "items" : [
                         {
