@@ -84,7 +84,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                     html: this.title ? this.title : 'Title',
                     cn : [{
                         tag: 'i',
-                        cls: 'fa fa-inbox',
+                        cls: 'fa fa-inbox'
                     }]
                 }]
             }]
