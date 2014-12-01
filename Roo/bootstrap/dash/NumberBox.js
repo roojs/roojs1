@@ -62,7 +62,7 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                 cn:[
                     {
                         tag: 'h3',
-                        cls: '',
+                        cls: 'roo-headline',
                         html: this.headline ? this.headline : 'Headline'
                     },
                     {
@@ -103,8 +103,12 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                 
     },
 
-    
-    
+    setHeadline ()
+    {
+        this.el.select('.roo-headline',true).first().dom.innerHTML = value;
+    }
+
+
     initEvents: function() {
         
         if(!this.href){
