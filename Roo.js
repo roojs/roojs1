@@ -649,4 +649,4 @@ Roo.namespace("Roo", "Roo.util", "Roo.grid", "Roo.dd", "Roo.tree", "Roo.data",
                 "Roo.form", "Roo.menu", "Roo.state", "Roo.lib", "Roo.layout",
                 "Roo.app", "Roo.ux",
                 "Roo.bootstrap",
-                "Roo.boostrap.dash");
+                "Roo.bootstrap.dash");
