@@ -18134,6 +18134,8 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
  @cfg {number} g_r radius (pie)
  @cfg {number} g_height height of the chart (respected by all elements in the set)
  @cfg {number} g_width width of the chart (respected by all elements in the set)
+ @cfg {Object} g_title The title of the chart
+    
  -{Array}  values
  -opts (object) options for the chart 
      o {
@@ -18177,7 +18179,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
     md: 5,
     graphtype: 'bar',
     g_height: 250,
-    g_width: 650,
+    g_width: 400,
     g_x: 50,
     g_y: 50,
     g_r: 30,
@@ -18186,6 +18188,12 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         g_type: 'soft',
         g_gutter: '20%'
 
+    },
+    title : {
+        text : '',
+        x : 150,
+        y : 50,
+        attr : { font: "20px 'Fontin Sans', Fontin-Sans, sans-serif" }
     },
 
     getAutoCreate : function(){
@@ -18227,12 +18235,12 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
                 //     //yvalues : cols,
                    
                 // });
-        var xdata = [55, 20, 13, 32, 5, 1, 2, 10,5 , 10];
-        
-        this.load(null,xdata,{
-                axis : "0 0 1 1",
-                axisxlabels :  xdata
-                });
+//        var xdata = [55, 20, 13, 32, 5, 1, 2, 10,5 , 10];
+//        
+//        this.load(null,xdata,{
+//                axis : "0 0 1 1",
+//                axisxlabels :  xdata
+//                });
 
     },
 
@@ -18244,32 +18252,40 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         if(!opts){
             opts = this.opts;
         }
-        var chart_title = '',
-                    r = this.raphael,
-                    fin = function () {
-                        this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
-                    },
-                    fout = function () {
-                        this.flag.animate({opacity: 0}, 300, function () {this.remove();});
-                    };
+        var r = this.raphael,
+            fin = function () {
+                this.flag = r.popup(this.bar.x, this.bar.y, this.bar.value || "0").insertBefore(this);
+            },
+            fout = function () {
+                this.flag.animate({opacity: 0}, 300, function () {this.remove();});
+            };
+
         switch(graphtype){
             case 'bar':
-                this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts);
-                chart_title = 'This is Vertical Barchart';
+                this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts).hover(fin,fout);
+                this.title.text = this.title.text || 'This is Vertical Barchart';
                 break;
             case 'hbar':
                 this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts).hover(fin,fout);
-                chart_title = 'This is Horizontal Barchart';
+                this.title.text = this.title.text || 'This is Horizontal Barchart';
                 break;
             case 'pie':
                 opts = { legend: ["%% - Enterprise Users", "% - ddd","Chrome Users"], legendpos: "west", 
                 href: ["http://raphaeljs.com", "http://g.raphaeljs.com"]};
-                    this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts);
-                chart_title = 'This is Piechart';
+            
+                this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts);
+                
+                this.title.text = this.title.text || 'This is Piechart';
                 break;
 
         }
-        this.raphael.text(150,50,chart_title).attr({ font: "20px 'Fontin Sans', Fontin-Sans, sans-serif" });
+        
+        this.raphael.text(this.title.x, this.title.y, this.title.text).attr(this.title.attr);
+    },
+    
+    setTitle: function(o)
+    {
+        this.title = o;
     },
     
     initEvents: function() {
