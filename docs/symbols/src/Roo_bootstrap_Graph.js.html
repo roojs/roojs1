@@ -19,7 +19,7 @@
  @cfg {number} g_r radius (pie)
  @cfg {number} g_height height of the chart (respected by all elements in the set)
  @cfg {number} g_width width of the chart (respected by all elements in the set)
- @cfg {Object} g_title The title of the chart
+ @cfg {Object} title The title of the chart
     
  -{Array}  values
  -opts (object) options for the chart 
