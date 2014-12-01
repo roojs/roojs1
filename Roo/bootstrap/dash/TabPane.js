@@ -4,7 +4,7 @@
  * Tab pane
  * 
  */
-
+Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 /**
  * @class Roo.bootstrap.TabPane
  * @extends Roo.bootstrap.Component
@@ -19,7 +19,7 @@
  * Create a new nav group
  * @param {Object} config The config object
  */
-Roo.bootstrap.dash = Roo.bootstrap.dash || {};
+
 Roo.bootstrap.dash.TabPane = function(config){
     Roo.bootstrap.dash.TabPane.superclass.constructor.call(this, config);
     
