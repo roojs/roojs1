@@ -19,6 +19,8 @@
  @cfg {number} g_r radius (pie)
  @cfg {number} g_height height of the chart (respected by all elements in the set)
  @cfg {number} g_width width of the chart (respected by all elements in the set)
+ @cfg {Object} g_title The title of the chart
+    
  -{Array}  values
  -opts (object) options for the chart 
      o {
@@ -62,7 +64,7 @@
     </span><span class="jsdoc-var">md</span><span class="jsdoc-syntax">: 5,
     </span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'bar'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">g_height</span><span class="jsdoc-syntax">: 250,
-    </span><span class="jsdoc-var">g_width</span><span class="jsdoc-syntax">: 650,
+    </span><span class="jsdoc-var">g_width</span><span class="jsdoc-syntax">: 400,
     </span><span class="jsdoc-var">g_x</span><span class="jsdoc-syntax">: 50,
     </span><span class="jsdoc-var">g_y</span><span class="jsdoc-syntax">: 50,
     </span><span class="jsdoc-var">g_r</span><span class="jsdoc-syntax">: 30,
@@ -72,6 +74,12 @@
         </span><span class="jsdoc-var">g_gutter</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'20%'
 
     </span><span class="jsdoc-syntax">},
+    </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">: 150,
+        </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">: 50,
+        </span><span class="jsdoc-var">attr </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-var">font</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;20px 'Fontin Sans', Fontin-Sans, sans-serif&quot; </span><span class="jsdoc-syntax">}
+    },
 
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -112,14 +120,14 @@
                 //     //yvalues : cols,
                    
                 // });
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xdata </span><span class="jsdoc-syntax">= [55, 20, 13, 32, 5, 1, 2, 10,5 , 10];
-        
-        </span><span class="jsdoc-var">this.load</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,{
-                </span><span class="jsdoc-var">axis </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;0 0 1 1&quot;</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">axisxlabels </span><span class="jsdoc-syntax">:  </span><span class="jsdoc-var">xdata
-                </span><span class="jsdoc-syntax">});
+//        var xdata = [55, 20, 13, 32, 5, 1, 2, 10,5 , 10];
+//        
+//        this.load(null,xdata,{
+//                axis : &quot;0 0 1 1&quot;,
+//                axisxlabels :  xdata
+//                });
 
-    },
+    </span><span class="jsdoc-syntax">},
 
     </span><span class="jsdoc-var">load </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.raphael.clear</span><span class="jsdoc-syntax">();
@@ -129,32 +137,40 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">opts </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.opts</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">chart_title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.raphael</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">fin </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
-                        </span><span class="jsdoc-var">this.flag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r.popup</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bar.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.bar.y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.bar.value </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;0&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-                    },
-                    </span><span class="jsdoc-var">fout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
-                        </span><span class="jsdoc-var">this.flag.animate</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">opacity</span><span class="jsdoc-syntax">: 0}, 300, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {</span><span class="jsdoc-var">this.remove</span><span class="jsdoc-syntax">();});
-                    };
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.raphael</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">fin </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-var">this.flag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r.popup</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bar.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.bar.y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.bar.value </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;0&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.insertBefore</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-var">fout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-var">this.flag.animate</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">opacity</span><span class="jsdoc-syntax">: 0}, 300, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {</span><span class="jsdoc-var">this.remove</span><span class="jsdoc-syntax">();});
+            };
+
         </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'bar'</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">this.raphael.barchart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_height</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">chart_title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'This is Vertical Barchart'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.raphael.barchart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_height</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hover</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fin</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">fout</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.title.text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.title.text </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'This is Vertical Barchart'</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'hbar'</span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-var">this.raphael.hbarchart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_height</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hover</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fin</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">fout</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">chart_title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'This is Horizontal Barchart'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.title.text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.title.text </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'This is Horizontal Barchart'</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'pie'</span><span class="jsdoc-syntax">:
                 </span><span class="jsdoc-var">opts </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">legend</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">&quot;%% - Enterprise Users&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;% - ddd&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;Chrome Users&quot;</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">legendpos</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">, 
                 </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">&quot;http://raphaeljs.com&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;http://g.raphaeljs.com&quot;</span><span class="jsdoc-syntax">]};
-                    </span><span class="jsdoc-var">this.raphael.piechart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_r</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">chart_title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'This is Piechart'</span><span class="jsdoc-syntax">;
+            
+                </span><span class="jsdoc-var">this.raphael.piechart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_r</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-var">this.title.text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.title.text </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'This is Piechart'</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
 
         }
-        </span><span class="jsdoc-var">this.raphael.text</span><span class="jsdoc-syntax">(150,50,</span><span class="jsdoc-var">chart_title</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">font</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;20px 'Fontin Sans', Fontin-Sans, sans-serif&quot; </span><span class="jsdoc-syntax">});
+        
+        </span><span class="jsdoc-var">this.raphael.text</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.title.x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.title.y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.title.text</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.title.attr</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">setTitle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
     },
     
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {

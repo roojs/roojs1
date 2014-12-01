@@ -1,0 +1,79 @@
+<html><head><title>../roojs1/Roo/bootstrap/dash/TabItem.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * nav group
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.NavGroup
+ * @extends Roo.bootstrap.Component
+ * Bootstrap NavGroup class
+ * @cfg {String} align left | right
+ * @cfg {Boolean} inverse false | true
+ * @cfg {String} type (nav|pills|tab) default nav
+ * @cfg {String} navId - reference Id for navbar.
+
+ * 
+ * @constructor
+ * Create a new nav group
+ * @param {Object} config The config object
+ */
+</span><span class="jsdoc-var">Roo.bootstrap.dash </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.dash </span><span class="jsdoc-syntax">|| {};
+</span><span class="jsdoc-var">Roo.bootstrap.dash.TabItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.dash.TabItem.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.tabItems </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-comment">//Roo.bootstrap.NavGroup.register(this);
+     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+	     * @event changed
+	     * Fires when the active item changes
+	     * @param {Roo.bootstrap.NavGroup} this
+	     * @param {Roo.bootstrap.Navbar.Item} item The item selected
+	     * @param {Roo.bootstrap.Navbar.Item} item The previously selected item 
+         */
+        </span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+     </span><span class="jsdoc-syntax">});
+    
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.dash.TabItem</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">// inverse: false,
+    // form: false,
+    // type: 'nav',
+    // navId : '',
+    // private
+    
+  
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'TabItem:------'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [{
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.text </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tab'
+            </span><span class="jsdoc-syntax">}]
+        }
+          
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">onRender</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.bootstrap.dash.TabItem.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'TabItem:------'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+    }
+    
+});
+
+ 
+
+
+ </span></code></body></html>

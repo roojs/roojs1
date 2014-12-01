@@ -8062,7 +8062,13 @@
     {
      "name": "g_width",
      "type": "number",
-     "desc": "width of the chart (respected by all elements in the set)\n -{Array}  values\n -opts (object) options for the chart \n     o {\n     o type (string) type of endings of the bar. Default: 'square'. Other options are: 'round', 'sharp', 'soft'.\n     o gutter (number)(string) default '20%' (WHAT DOES IT DO?)\n     o vgutter (number)\n     o colors (array) colors be used repeatedly to plot the bars. If multicolumn bar is used each sequence of bars with use a different color.\n     o stacked (boolean) whether or not to tread values as in a stacked bar chart\n     o to\n     o stretch (boolean)\n     o }\n -opts (object) options for the pie\n     o{\n     o cut\n     o startAngle (number)\n     o endAngle (number)\n     }",
+     "desc": "width of the chart (respected by all elements in the set)",
+     "memberOf": ""
+    },
+    {
+     "name": "g_title",
+     "type": "Object",
+     "desc": "The title of the chart\n    \n -{Array}  values\n -opts (object) options for the chart \n     o {\n     o type (string) type of endings of the bar. Default: 'square'. Other options are: 'round', 'sharp', 'soft'.\n     o gutter (number)(string) default '20%' (WHAT DOES IT DO?)\n     o vgutter (number)\n     o colors (array) colors be used repeatedly to plot the bars. If multicolumn bar is used each sequence of bars with use a different color.\n     o stacked (boolean) whether or not to tread values as in a stacked bar chart\n     o to\n     o stretch (boolean)\n     o }\n -opts (object) options for the pie\n     o{\n     o cut\n     o startAngle (number)\n     o endAngle (number)\n     }",
      "memberOf": ""
     },
     {
@@ -15266,51 +15272,27 @@
   "Roo.bootstrap.dash": {
    "props": [
     {
-     "name": "bgcolor",
+     "name": "align",
      "type": "String",
-     "desc": "",
+     "desc": "left | right",
      "memberOf": ""
     },
     {
-     "name": "sm",
-     "type": "number",
-     "desc": "4",
+     "name": "inverse",
+     "type": "Boolean",
+     "desc": "false | true",
      "memberOf": ""
     },
     {
-     "name": "md",
-     "type": "number",
-     "desc": "5",
-     "memberOf": ""
-    },
-    {
-     "name": "headline",
+     "name": "type",
      "type": "String",
-     "desc": "",
+     "desc": "(nav|pills|tab) default nav",
      "memberOf": ""
     },
     {
-     "name": "title",
+     "name": "navId",
      "type": "String",
-     "desc": "",
-     "memberOf": ""
-    },
-    {
-     "name": "more_url",
-     "type": "String",
-     "desc": "",
-     "memberOf": ""
-    },
-    {
-     "name": "more_text",
-     "type": "String",
-     "desc": "",
-     "memberOf": ""
-    },
-    {
-     "name": "opts",
-     "type": "Array",
-     "desc": "values",
+     "desc": "- reference Id for navbar.",
      "memberOf": ""
     },
     {
@@ -15444,6 +15426,22 @@
    ]
   },
   "Roo.bootstrap.dash.NumberBox": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.dash.TabBox": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.dash.TabGroup": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.dash.TabItem": {
+   "props": [],
+   "events": []
+  },
+  "Roo.bootstrap.dash.TabPane": {
    "props": [],
    "events": []
   },

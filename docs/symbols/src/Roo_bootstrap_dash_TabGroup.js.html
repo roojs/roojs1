@@ -1,0 +1,75 @@
+<html><head><title>../roojs1/Roo/bootstrap/dash/TabGroup.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * nav group
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.NavGroup
+ * @extends Roo.bootstrap.Component
+ * Bootstrap NavGroup class
+ * @cfg {String} align left | right
+ * @cfg {Boolean} inverse false | true
+ * @cfg {String} type (nav|pills|tab) default nav
+ * @cfg {String} navId - reference Id for navbar.
+
+ * 
+ * @constructor
+ * Create a new nav group
+ * @param {Object} config The config object
+ */
+</span><span class="jsdoc-var">Roo.bootstrap.dash </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.dash </span><span class="jsdoc-syntax">|| {};
+</span><span class="jsdoc-var">Roo.bootstrap.dash.TabGroup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.dash.TabGroup.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.tabItems </span><span class="jsdoc-syntax">= [];
+    </span><span class="jsdoc-comment">//Roo.bootstrap.NavGroup.register(this);
+     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+	     * @event changed
+	     * Fires when the active item changes
+	     * @param {Roo.bootstrap.NavGroup} this
+	     * @param {Roo.bootstrap.Navbar.Item} item The item selected
+	     * @param {Roo.bootstrap.Navbar.Item} item The previously selected item 
+         */
+        </span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+     </span><span class="jsdoc-syntax">});
+    
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.dash.TabGroup</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-comment">// inverse: false,
+    // form: false,
+    // type: 'nav',
+    // navId : '',
+    // private
+    
+    </span><span class="jsdoc-var">tabItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'TabGroup:'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'nav nav-tabs pull-right' </span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [{
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'pull-left header'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.title </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Title'
+            </span><span class="jsdoc-syntax">}]
+        }
+          
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    }
+    
+    
+});
+
+ 
+
+
+ </span></code></body></html>
