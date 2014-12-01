@@ -95,29 +95,15 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
         return  cfg;
     },
 
-    // onRender : function(ct,position){
-    //     Roo.bootstrap.Graph.superclass.onRender.call(this,ct,position);
+    onRender : function(ct,position){
+        Roo.bootstrap.dash.NumberBox.superclass.onRender.call(this,ct,position);
+
+
+       
                 
-    // },
+    },
 
-    // load : function(graphtype,xdata){
-    //     this.raphael.clear();
-    //     if(!graphtype) {
-    //         graphtype = this.graphtype;
-    //     }
-    //     switch(graphtype){
-    //         case 'bar':
-    //             this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
-    //             break;
-    //         case 'hbar':
-    //             this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
-    //             break;
-    //         case 'pie':
-    //             this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,this.opts);
-    //             break;
-
-    //     }
-    // },
+    
     
     initEvents: function() {
         
