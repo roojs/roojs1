@@ -59,7 +59,7 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
           
         
         return cfg;
-    },
+    }
     
     
 });
