@@ -80,7 +80,12 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                     tag: 'a',
                     href: this.more_url,
                     cls: 'small-box-footer',
-                    html: this.more_text
+                    html: this.more_text,
+                    cn: [{
+                        tag: 'i',
+                        cls: 'fa fa-arrow-circle-right'
+                    }]
+
                 }]
 
             }]
