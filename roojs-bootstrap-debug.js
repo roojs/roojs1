@@ -18134,7 +18134,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
  @cfg {number} g_r radius (pie)
  @cfg {number} g_height height of the chart (respected by all elements in the set)
  @cfg {number} g_width width of the chart (respected by all elements in the set)
- @cfg {Object} g_title The title of the chart
+ @cfg {Object} title The title of the chart
     
  -{Array}  values
  -opts (object) options for the chart 
@@ -18310,7 +18310,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
  * numberBox
  * 
  */
-
+Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 
 /**
  * @class Roo.bootstrap.dash.NumberBox
@@ -18330,7 +18330,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.dash = Roo.bootstrap.dash || {};
+
 Roo.bootstrap.dash.NumberBox = function(config){
     Roo.bootstrap.dash.NumberBox.superclass.constructor.call(this, config);
     
@@ -18363,24 +18363,30 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
             html : null,
             cn: [
             {
-                tag: 'h3',
-                cls: '',
-                html: this.headline ? this.headline : 'Headline'
-            },
-            {
-                tag: 'p',
-                cls: '',
-                html: this.title ? this.title : 'Title'
-            },
-            {
                 tag: 'div',
-                cls: '',
-                html : null,
+                cls: 'inner',
+                cn:[
+                    {
+                        tag: 'h3',
+                        cls: '',
+                        html: this.headline ? this.headline : 'Headline'
+                    },
+                    {
+                        tag: 'p',
+                        cls: '',
+                        html: this.title ? this.title : 'Title'
+                    }
+                ]
+            },
+            {
+                
+                tag: 'a',
+                href: this.more_url,
+                cls: 'small-box-footer',
+                html: this.more_text,
                 cn: [{
-                    tag: 'a',
-                    href: this.more_url,
-                    cls: 'small-box-footer',
-                    html: this.more_text
+                    tag: 'i',
+                    cls: 'fa fa-arrow-circle-right'
                 }]
 
             }]
@@ -18388,36 +18394,22 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
 
         cfg.cls += ' bg-' + (this.bgcolor ? this.bgcolor : 'aqua' );
         if(!this.more_text){
-            cfg.cn[2].cn = null;
+            cfg.cn[1].cn = null;
 
         }
 
         return  cfg;
     },
 
-    // onRender : function(ct,position){
-    //     Roo.bootstrap.Graph.superclass.onRender.call(this,ct,position);
+    onRender : function(ct,position){
+        Roo.bootstrap.dash.NumberBox.superclass.onRender.call(this,ct,position);
+
+
+       
                 
-    // },
+    },
 
-    // load : function(graphtype,xdata){
-    //     this.raphael.clear();
-    //     if(!graphtype) {
-    //         graphtype = this.graphtype;
-    //     }
-    //     switch(graphtype){
-    //         case 'bar':
-    //             this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
-    //             break;
-    //         case 'hbar':
-    //             this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,this.opts);
-    //             break;
-    //         case 'pie':
-    //             this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,this.opts);
-    //             break;
-
-    //     }
-    // },
+    
     
     initEvents: function() {
         
