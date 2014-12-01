@@ -73,19 +73,14 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                 ]
             },
             {
-                tag: 'div',
-                cls: '',
-                html : null,
+                
+                tag: 'a',
+                href: this.more_url,
+                cls: 'small-box-footer',
+                html: this.more_text,
                 cn: [{
-                    tag: 'a',
-                    href: this.more_url,
-                    cls: 'small-box-footer',
-                    html: this.more_text,
-                    cn: [{
-                        tag: 'i',
-                        cls: 'fa fa-arrow-circle-right'
-                    }]
-
+                    tag: 'i',
+                    cls: 'fa fa-arrow-circle-right'
                 }]
 
             }]
