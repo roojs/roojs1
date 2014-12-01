@@ -4,7 +4,7 @@
  * TabBox
  * 
  */
-
+Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 
 /**
  * @class Roo.bootstrap.dash.TabBox
@@ -19,7 +19,7 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.dash = Roo.bootstrap.dash || {};
+
 Roo.bootstrap.dash.TabBox = function(config){
     Roo.bootstrap.dash.TabBox.superclass.constructor.call(this, config);
     
