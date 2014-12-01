@@ -58,13 +58,13 @@ Roo.extend(Roo.bootstrap.dash.TabGroup, Roo.bootstrap.Component,  {
             cn: [{
                 tag: 'span',
                 cls: 'pull-left header',
-                html: this.title ? this.title : 'Title',
+                html: this.title ? this.title : 'Title'
             }]
         }
           
         
         return cfg;
-    },
+    }
     
     
 });
