@@ -210,7 +210,7 @@ homepage = new Roo.XComponent({
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     tag : 'i',
-                                                                    cls : 'fa fa-cogs fa-5::before',
+                                                                    cls : 'fa fa-cogs fa-5',
                                                                     xtype : 'Element',
                                                                     xns : Roo.bootstrap
                                                                 }
