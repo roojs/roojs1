@@ -598,7 +598,29 @@ homepage = new Roo.XComponent({
                                                                             '|xns' : 'Roo.bootstrap',
                                                                             tag : 'a',
                                                                             xtype : 'Element',
-                                                                            xns : Roo.bootstrap
+                                                                            xns : Roo.bootstrap,
+                                                                            html : '<i class=\"fa fa-twitter fa-2\"></i>'
+                                                                        },
+                                                                    	{
+                                                                            '|xns' : 'Roo.bootstrap',
+                                                                            tag : 'a',
+                                                                            xtype : 'Element',
+                                                                            xns : Roo.bootstrap,
+                                                                            html : '<i class=\"fa fa-twitter fa-2\"></i>'
+                                                                        },
+                                                                    	{
+                                                                            '|xns' : 'Roo.bootstrap',
+                                                                            tag : 'a',
+                                                                            xtype : 'Element',
+                                                                            xns : Roo.bootstrap,
+                                                                            html : '<i class=\"fa fa-twitter fa-2\"></i>'
+                                                                        },
+                                                                    	{
+                                                                            '|xns' : 'Roo.bootstrap',
+                                                                            tag : 'a',
+                                                                            xtype : 'Element',
+                                                                            xns : Roo.bootstrap,
+                                                                            html : '<i class=\"fa fa-twitter fa-2\"></i>'
                                                                         }
                                                                     ]
 
