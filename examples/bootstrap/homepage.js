@@ -230,7 +230,8 @@ homepage = new Roo.XComponent({
                                                             '|xns' : 'Roo.bootstrap',
                                                             tag : 'p',
                                                             xtype : 'Element',
-                                                            xns : Roo.bootstrap
+                                                            xns : Roo.bootstrap,
+                                                            html : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?'
                                                         }
                                                     ]
 
