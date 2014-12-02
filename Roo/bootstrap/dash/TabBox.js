@@ -65,6 +65,11 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                     cn: [
                         header
                     ]
+                },
+                {
+                    tag: 'div',
+                    cls: 'tab-content no-padding',
+                    cn: []
                 }
             ]
         }
