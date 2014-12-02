@@ -39,7 +39,6 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     fhref : '',
     ficon : '',
     
-
     getAutoCreate : function(){
         
         var cfg = {
