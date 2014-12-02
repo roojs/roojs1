@@ -142,7 +142,8 @@
                                 {
                                     "String cls" : "text-center thin",
                                     "xtype" : "Header",
-                                    "$ xns" : "Roo.bootstrap"
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "Reasons to use this template"
                                 },
                                 {
                                     "xtype" : "Row",
