@@ -403,6 +403,7 @@
                                 },
                                 {
                                     "String tag" : "p",
+                                    "String cls" : "text-right",
                                     "xtype" : "Element",
                                     "$ xns" : "Roo.bootstrap"
                                 }

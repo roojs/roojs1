@@ -501,6 +501,7 @@ homepage = new Roo.XComponent({
                             	{
                                     '|xns' : 'Roo.bootstrap',
                                     tag : 'p',
+                                    cls : 'text-right',
                                     xtype : 'Element',
                                     xns : Roo.bootstrap
                                 }
