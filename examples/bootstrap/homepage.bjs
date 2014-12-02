@@ -441,6 +441,10 @@
                                                             "Number level" : 3,
                                                             "$ xns" : "Roo.bootstrap",
                                                             "String html" : "Contact"
+                                                        },
+                                                        {
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap"
                                                         }
                                                     ]
                                                 }

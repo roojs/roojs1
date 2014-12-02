@@ -547,6 +547,11 @@ homepage = new Roo.XComponent({
                                                             level : 3,
                                                             xns : Roo.bootstrap,
                                                             html : 'Contact'
+                                                        },
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            xtype : 'Element',
+                                                            xns : Roo.bootstrap
                                                         }
                                                     ]
 
