@@ -167,6 +167,7 @@ homepage = new Roo.XComponent({
                 },
             	{
                     '|xns' : 'Roo.bootstrap',
+                    cls : 'jumbotron top-space',
                     xtype : 'Element',
                     xns : Roo.bootstrap,
                     items : [
