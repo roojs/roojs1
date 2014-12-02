@@ -2,7 +2,7 @@
     "name" : "right_siderbar",
     "parent" : "",
     "title" : "",
-    "path" : "/home/michael/gitlive/roojs1/examples/bootstrap/right_siderbar.bjs",
+    "path" : "/home/michael/gitlive/roojs1/examples/bootstrap/right_sidebar.bjs",
     "permname" : "",
     "modOrder" : "001",
     "items" : [
@@ -54,8 +54,8 @@
                                                             "items" : [
                                                                 {
                                                                     "xtype" : "Header",
-                                                                    "Number level" : 4,
                                                                     "$ xns" : "Roo.bootstrap",
+                                                                    "Number level" : 4,
                                                                     "String html" : "Lorem ipsum dolor sit"
                                                                 },
                                                                 {
@@ -73,8 +73,8 @@
                                                             "items" : [
                                                                 {
                                                                     "xtype" : "Header",
-                                                                    "$ xns" : "Roo.bootstrap",
                                                                     "Number level" : 4,
+                                                                    "$ xns" : "Roo.bootstrap",
                                                                     "String html" : "Lorem ipsum dolor sit"
                                                                 },
                                                                 {
@@ -92,8 +92,8 @@
                                                             "items" : [
                                                                 {
                                                                     "xtype" : "Header",
-                                                                    "Number level" : 4,
                                                                     "$ xns" : "Roo.bootstrap",
+                                                                    "Number level" : 4,
                                                                     "String html" : "Lorem ipsum dolor sit"
                                                                 },
                                                                 {
@@ -154,8 +154,8 @@
                                                 },
                                                 {
                                                     "xtype" : "Header",
-                                                    "Number level" : 2,
                                                     "$ xns" : "Roo.bootstrap",
+                                                    "Number level" : 2,
                                                     "String html" : "A, quibusdam, nobis, eveniet consequatur"
                                                 },
                                                 {
@@ -190,8 +190,8 @@
                                                 },
                                                 {
                                                     "xtype" : "Header",
-                                                    "$ xns" : "Roo.bootstrap",
                                                     "Number level" : 3,
+                                                    "$ xns" : "Roo.bootstrap",
                                                     "String html" : "Numquam, ut iure quia facere totam quas odit illo incidunt"
                                                 },
                                                 {
