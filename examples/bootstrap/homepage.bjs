@@ -197,7 +197,7 @@
                                                             "xtype" : "Header",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "Number level" : 4,
-                                                            "String html" : "<i class=\"fa fa-smile-o fa-5\"></i>Fat-free"
+                                                            "String html" : "<i class=\"fa fa-flash fa-5\"></i>Fat-free"
                                                         }
                                                     ]
                                                 },
