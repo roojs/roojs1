@@ -509,6 +509,33 @@
                                                             ]
                                                         }
                                                     ]
+                                                },
+                                                {
+                                                    "String cls" : "col-md-3 widget",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "String cls" : "widget-title",
+                                                            "xtype" : "Header",
+                                                            "Number level" : 3,
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "Contact"
+                                                        },
+                                                        {
+                                                            "String cls" : "widget-body",
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "String tag" : "p",
+                                                                    "xtype" : "Element",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "+234 23 9873237\n<br>\n<a href=\"mailto:#\">some.email@somewhere.com</a>\n<br>\n<br>\n234 Hidden Pond Road, Ashland City, TN 37015\n\t\t\t\t\t\t\t"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
