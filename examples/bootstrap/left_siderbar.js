@@ -104,7 +104,7 @@ left_siderbar = new Roo.XComponent({
                                                                     tag : 'p',
                                                                     xtype : 'Element',
                                                                     xns : Roo.bootstrap,
-                                                                    html : '<img src=\"assets/images/1.jpg\" alt=\"\">'
+                                                                    html : '<img src=\"http://localhost/bootswatch/Progressus/assets/images/2.jpg\" alt=\"\">'
                                                                 }
                                                             ]
 

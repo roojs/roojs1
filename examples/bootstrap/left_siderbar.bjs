@@ -81,7 +81,7 @@
                                                                     "String tag" : "p",
                                                                     "xtype" : "Element",
                                                                     "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "<img src=\"assets/images/1.jpg\" alt=\"\">"
+                                                                    "String html" : "<img src=\"http://localhost/bootswatch/Progressus/assets/images/2.jpg\" alt=\"\">"
                                                                 }
                                                             ]
                                                         },
