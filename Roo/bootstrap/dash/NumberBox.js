@@ -39,36 +39,24 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
         var cfg = {
             tag: 'div',
             cls: 'small-box',
-            html : null,
             cn: [
-            {
-                tag: 'div',
-                cls: 'inner',
-                cn:[
-                    {
-                        tag: 'h3',
-                        cls: 'roo-headline',
-                        html: this.headline ? this.headline : 'Headline'
-                    },
-                    {
-                        tag: 'p',
-                        cls: '',
-                        html: this.title ? this.title : 'Title'
-                    }
-                ]
-            },
-            {
-                
-                tag: 'a',
-                href: this.more_url,
-                cls: 'small-box-footer',
-                html: this.more_text,
-                cn: [{
-                    tag: 'i',
-                    cls: 'fa fa-arrow-circle-right'
-                }]
-
-            }]
+                {
+                    tag: 'div',
+                    cls: 'inner',
+                    cn:[
+                        {
+                            tag: 'h3',
+                            cls: 'roo-headline',
+                            html: this.headline
+                        },
+                        {
+                            tag: 'p',
+                            cls: 'roo-content',
+                            html: this.content
+                        }
+                    ]
+                }
+            ]
         }
 
         cfg.cls += ' bg-' + (this.bgcolor ? this.bgcolor : 'aqua' );
