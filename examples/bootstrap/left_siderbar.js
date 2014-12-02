@@ -144,6 +144,7 @@ left_siderbar = new Roo.XComponent({
                                                 },
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
+                                                    cls : 'col-md-8 maincontent',
                                                     xtype : 'Container',
                                                     xns : Roo.bootstrap
                                                 }

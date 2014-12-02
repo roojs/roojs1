@@ -113,6 +113,7 @@
                                                     ]
                                                 },
                                                 {
+                                                    "String cls" : "col-md-8 maincontent",
                                                     "xtype" : "Container",
                                                     "$ xns" : "Roo.bootstrap"
                                                 }
