@@ -399,7 +399,7 @@ homepage = new Roo.XComponent({
                                             tag : 'p',
                                             xtype : 'Element',
                                             xns : Roo.bootstrap,
-                                            html : 'I\'d highly recommend you <a href=\"http://www.sublimetext.com/\">Sublime Text</a> - a free to try text editor which I\'m using daily. Awesome tool!'
+                                            html : 'I\'d highly recommend you <a href=\"http://www.sublimetext.com/\">Sublime Text</a> \n- a free to try text editor which I\'m using daily. Awesome tool!'
                                         }
                                     ]
 
