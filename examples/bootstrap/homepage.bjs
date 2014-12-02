@@ -151,6 +151,7 @@
                                     "$ xns" : "Roo.bootstrap",
                                     "items" : [
                                         {
+                                            "String cls" : "co",
                                             "xtype" : "Element",
                                             "$ xns" : "Roo.bootstrap"
                                         },

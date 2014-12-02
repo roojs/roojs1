@@ -190,6 +190,7 @@ homepage = new Roo.XComponent({
                                     items : [
                                     	{
                                             '|xns' : 'Roo.bootstrap',
+                                            cls : 'co',
                                             xtype : 'Element',
                                             xns : Roo.bootstrap
                                         },
