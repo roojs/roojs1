@@ -17,6 +17,14 @@ left_siderbar = new Roo.XComponent({
         return {
             '|xns' : 'Roo.bootstrap',
             xtype : 'Body',
-            xns : Roo.bootstrap
+            xns : Roo.bootstrap,
+            items : [
+            	{
+                    '|xns' : 'Roo.bootstrap',
+                    xtype : 'Container',
+                    xns : Roo.bootstrap
+                }
+            ]
+
         };    }
 });
