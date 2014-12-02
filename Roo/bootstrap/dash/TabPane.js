@@ -26,6 +26,13 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
     
     active : false,
     
+    getChildContainer : function()
+    {
+        Roo.log('getChildContainer!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(this.el);
+        return this.el;
+    },
+    
     getAutoCreate : function() {
         var cfg = {
             tag: 'div',
