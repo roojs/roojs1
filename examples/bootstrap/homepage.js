@@ -358,7 +358,7 @@ homepage = new Roo.XComponent({
                                                             xtype : 'Header',
                                                             xns : Roo.bootstrap,
                                                             level : 4,
-                                                            html : 'Author\'s support'
+                                                            html : '<i class=\"fa fa-smile-o fa-5\"></i>Author\'s support'
                                                         }
                                                     ]
 
