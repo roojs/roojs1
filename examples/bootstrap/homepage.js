@@ -393,6 +393,12 @@ homepage = new Roo.XComponent({
                                             level : 3,
                                             xns : Roo.bootstrap,
                                             html : 'Which code editor would you recommend?'
+                                        },
+                                    	{
+                                            '|xns' : 'Roo.bootstrap',
+                                            tag : 'p',
+                                            xtype : 'Element',
+                                            xns : Roo.bootstrap
                                         }
                                     ]
 

@@ -315,6 +315,11 @@
                                             "Number level" : 3,
                                             "$ xns" : "Roo.bootstrap",
                                             "String html" : "Which code editor would you recommend?"
+                                        },
+                                        {
+                                            "String tag" : "p",
+                                            "xtype" : "Element",
+                                            "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
                                 }
