@@ -308,7 +308,13 @@
                             "items" : [
                                 {
                                     "xtype" : "Element",
-                                    "$ xns" : "Roo.bootstrap"
+                                    "$ xns" : "Roo.bootstrap",
+                                    "items" : [
+                                        {
+                                            "xtype" : "Header",
+                                            "$ xns" : "Roo.bootstrap"
+                                        }
+                                    ]
                                 }
                             ]
                         },
