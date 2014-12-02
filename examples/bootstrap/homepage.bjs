@@ -121,7 +121,8 @@
                                         {
                                             "String tag" : "p",
                                             "xtype" : "Element",
-                                            "$ xns" : "Roo.bootstrap"
+                                            "$ xns" : "Roo.bootstrap",
+                                            "String html" : "\tThe difference between involvement and commitment is like an eggs-and-ham breakfast:"
                                         }
                                     ]
                                 }

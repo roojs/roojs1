@@ -152,7 +152,8 @@ homepage = new Roo.XComponent({
                                             '|xns' : 'Roo.bootstrap',
                                             tag : 'p',
                                             xtype : 'Element',
-                                            xns : Roo.bootstrap
+                                            xns : Roo.bootstrap,
+                                            html : '\tThe difference between involvement and commitment is like an eggs-and-ham breakfast:'
                                         }
                                     ]
 
