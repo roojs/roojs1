@@ -18316,17 +18316,16 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * @class Roo.bootstrap.dash.NumberBox
  * @extends Roo.bootstrap.Component
  * Bootstrap NumberBox class
- * @cfg {String} bgcolor
- * @cfg {number} sm 4
- * @cfg {number} md 5
- * @cfg {String} headline
- * @cfg {String} title
- * @cfg {String} more_url
- * @cfg {String} more_text
- * @cfg {Array}  opts values
+ * @cfg {String} bgcolor Box background color, such as (aqua | green | yellow | red etc..) Default aqua
+ * @cfg {String} headline Box headline
+ * @cfg {String} content Box content
+ * @cfg {String} icon Box icon
+ * @cfg {String} footer Footer text
+ * @cfg {String} fhref Footer href
+ * @cfg {String} ficon Footer icon
  * 
  * @constructor
- * Create a new Input
+ * Create a new NumberBox
  * @param {Object} config The config object
  */
 
@@ -18334,70 +18333,76 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 Roo.bootstrap.dash.NumberBox = function(config){
     Roo.bootstrap.dash.NumberBox.superclass.constructor.call(this, config);
     
-    this.addEvents({
-        // img events
-        /**
-         * @event click
-         * The img click event for the img.
-         * @param {Roo.EventObject} e
-         */
-        "click" : true
-    });
 };
 
 Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     
-    bgcolor:'',
-    // width: 200,
-    height: 150,
-    headline: '',
-    title: 'Title',
-    more_url: '',
-    more_text: '',
-
+    bgcolor : 'aqua',
+    headline : '',
+    content : '',
+    icon : '',
+    footer : '',
+    fhref : '',
+    ficon : '',
+    
     getAutoCreate : function(){
         
         var cfg = {
-            tag: 'div',
-            cls: 'small-box',
-            html : null,
-            cn: [
-            {
-                tag: 'div',
-                cls: 'inner',
-                cn:[
+            tag : 'div',
+            cls : 'small-box bg-' + this.bgcolor,
+            cn : [
+                {
+                    tag : 'div',
+                    cls : 'inner',
+                    cn :[
+                        {
+                            tag : 'h3',
+                            cls : 'roo-headline',
+                            html : this.headline
+                        },
+                        {
+                            tag : 'p',
+                            cls : 'roo-content',
+                            html : this.content
+                        }
+                    ]
+                }
+            ]
+        }
+        
+        if(this.icon){
+            cfg.cn.push({
+                tag : 'div',
+                cls : 'icon',
+                cn :[
                     {
-                        tag: 'h3',
-                        cls: '',
-                        html: this.headline ? this.headline : 'Headline'
-                    },
-                    {
-                        tag: 'p',
-                        cls: '',
-                        html: this.title ? this.title : 'Title'
+                        tag : 'i',
+                        cls : 'ion ' + this.icon
                     }
                 ]
-            },
-            {
-                
-                tag: 'a',
-                href: this.more_url,
-                cls: 'small-box-footer',
-                html: this.more_text,
-                cn: [{
-                    tag: 'i',
-                    cls: 'fa fa-arrow-circle-right'
-                }]
-
-            }]
+            });
         }
-
-        cfg.cls += ' bg-' + (this.bgcolor ? this.bgcolor : 'aqua' );
-        if(!this.more_text){
-            cfg.cn[1].cn = null;
-
+        
+        if(this.footer){
+            var footer = {
+                tag : 'a',
+                cls : 'small-box-footer',
+                href : this.fhref || '#',
+                html : this.footer,
+                cn : []
+            };
+            
+            if(this.ficon){
+                footer.cn.push({
+                    tag : 'i',
+                    cls : 'fa ' + this.ficon
+                });
+            }
+            
+            cfg.cn.push(footer);
+            
         }
-
+        
         return  cfg;
     },
 
@@ -18409,8 +18414,12 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                 
     },
 
-    
-    
+    setHeadline: function ()
+    {
+        this.el.select('.roo-headline',true).first().dom.innerHTML = value;
+    },
+
+
     initEvents: function() {
         
         if(!this.href){
