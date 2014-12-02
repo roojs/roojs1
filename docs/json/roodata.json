@@ -15278,49 +15278,43 @@
     {
      "name": "bgcolor",
      "type": "String",
-     "desc": "",
-     "memberOf": ""
-    },
-    {
-     "name": "sm",
-     "type": "number",
-     "desc": "4",
-     "memberOf": ""
-    },
-    {
-     "name": "md",
-     "type": "number",
-     "desc": "5",
+     "desc": "Box background color, such as (aqua | green | yellow | red etc..) Default aqua",
      "memberOf": ""
     },
     {
      "name": "headline",
      "type": "String",
-     "desc": "",
+     "desc": "Box headline",
      "memberOf": ""
     },
     {
-     "name": "title",
+     "name": "content",
      "type": "String",
-     "desc": "",
+     "desc": "Box content",
      "memberOf": ""
     },
     {
-     "name": "more_url",
+     "name": "icon",
      "type": "String",
-     "desc": "",
+     "desc": "Box icon",
      "memberOf": ""
     },
     {
-     "name": "more_text",
+     "name": "footer",
      "type": "String",
-     "desc": "",
+     "desc": "Footer text",
      "memberOf": ""
     },
     {
-     "name": "opts",
-     "type": "Array",
-     "desc": "values",
+     "name": "fhref",
+     "type": "String",
+     "desc": "Footer href",
+     "memberOf": ""
+    },
+    {
+     "name": "ficon",
+     "type": "String",
+     "desc": "Footer icon",
      "memberOf": ""
     },
     {
@@ -15414,12 +15408,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
-    },
-    {
-     "name": "click",
-     "sig": "function (e)\n{\n\n}",
-     "type": "function",
-     "desc": "The img click event for the img."
     },
     {
      "name": "destroy",
