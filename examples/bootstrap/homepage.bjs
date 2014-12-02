@@ -108,6 +108,7 @@
                                     ]
                                 },
                                 {
+                                    "String cls" : "container text-center",
                                     "xtype" : "Row",
                                     "$ xns" : "Roo.bootstrap",
                                     "items" : [
