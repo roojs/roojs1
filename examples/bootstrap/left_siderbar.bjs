@@ -97,6 +97,7 @@
                                                                     "String html" : "Lorem ipsum dolor sit"
                                                                 },
                                                                 {
+                                                                    "String tag" : "p",
                                                                     "xtype" : "Element",
                                                                     "$ xns" : "Roo.bootstrap"
                                                                 },
