@@ -23,7 +23,8 @@
                                 {
                                     "String tag" : "li",
                                     "xtype" : "Element",
-                                    "$ xns" : "Roo.bootstrap"
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "<a href=\"index.html\">Home</a>"
                                 },
                                 {
                                     "xtype" : "Element",
