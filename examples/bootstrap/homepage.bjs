@@ -178,12 +178,6 @@
                                                             "xtype" : "Element",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?"
-                                                        },
-                                                        {
-                                                            "xtype" : "Header",
-                                                            "Number level" : 4,
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "String html" : "<i class=\"fa fa-smile-o fa-5\"></i>Author's support"
                                                         }
                                                     ]
                                                 }
