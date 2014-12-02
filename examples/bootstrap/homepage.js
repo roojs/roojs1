@@ -410,7 +410,32 @@ homepage = new Roo.XComponent({
                     	{
                             '|xns' : 'Roo.bootstrap',
                             xtype : 'Row',
-                            xns : Roo.bootstrap
+                            xns : Roo.bootstrap,
+                            items : [
+                            	{
+                                    '|xns' : 'Roo.bootstrap',
+                                    xtype : 'Element',
+                                    xns : Roo.bootstrap,
+                                    items : [
+                                    	{
+                                            '|xns' : 'Roo.bootstrap',
+                                            xtype : 'Header',
+                                            xns : Roo.bootstrap,
+                                            level : 3,
+                                            html : 'Which code editor would you recommend?'
+                                        },
+                                    	{
+                                            '|xns' : 'Roo.bootstrap',
+                                            tag : 'p',
+                                            xtype : 'Element',
+                                            xns : Roo.bootstrap,
+                                            html : 'I\'d highly recommend you <a href=\"http://www.sublimetext.com/\">Sublime Text</a> \n- a free to try text editor which I\'m using daily. Awesome tool!'
+                                        }
+                                    ]
+
+                                }
+                            ]
+
                         }
                     ]
 
