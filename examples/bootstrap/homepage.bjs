@@ -439,7 +439,8 @@
                                                             "String cls" : "widget-title",
                                                             "xtype" : "Header",
                                                             "Number level" : 3,
-                                                            "$ xns" : "Roo.bootstrap"
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "Contact"
                                                         }
                                                     ]
                                                 }

@@ -545,7 +545,8 @@ homepage = new Roo.XComponent({
                                                             cls : 'widget-title',
                                                             xtype : 'Header',
                                                             level : 3,
-                                                            xns : Roo.bootstrap
+                                                            xns : Roo.bootstrap,
+                                                            html : 'Contact'
                                                         }
                                                     ]
 
