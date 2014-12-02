@@ -237,7 +237,7 @@ homepage = new Roo.XComponent({
                                             items : [
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
-                                                    cls : 'h-captain',
+                                                    cls : 'h-caption',
                                                     xtype : 'Element',
                                                     xns : Roo.bootstrap,
                                                     items : [
@@ -278,7 +278,7 @@ homepage = new Roo.XComponent({
                                             items : [
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
-                                                    cls : 'h-captain',
+                                                    cls : 'h-caption',
                                                     xtype : 'Element',
                                                     xns : Roo.bootstrap,
                                                     items : [
@@ -319,7 +319,7 @@ homepage = new Roo.XComponent({
                                             items : [
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
-                                                    cls : 'h-captain',
+                                                    cls : 'h-caption',
                                                     xtype : 'Element',
                                                     xns : Roo.bootstrap,
                                                     items : [

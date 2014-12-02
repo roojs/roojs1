@@ -189,7 +189,7 @@
                                             "$ xns" : "Roo.bootstrap",
                                             "items" : [
                                                 {
-                                                    "String cls" : "h-captain",
+                                                    "String cls" : "h-caption",
                                                     "xtype" : "Element",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "items" : [
@@ -222,7 +222,7 @@
                                             "$ xns" : "Roo.bootstrap",
                                             "items" : [
                                                 {
-                                                    "String cls" : "h-captain",
+                                                    "String cls" : "h-caption",
                                                     "xtype" : "Element",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "items" : [
@@ -255,7 +255,7 @@
                                             "$ xns" : "Roo.bootstrap",
                                             "items" : [
                                                 {
-                                                    "String cls" : "h-captain",
+                                                    "String cls" : "h-caption",
                                                     "xtype" : "Element",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "items" : [
