@@ -41,8 +41,10 @@ left_siderbar = new Roo.XComponent({
                             	{
                                     '|xns' : 'Roo.bootstrap',
                                     tag : 'li',
+                                    cls : 'active',
                                     xtype : 'Element',
-                                    xns : Roo.bootstrap
+                                    xns : Roo.bootstrap,
+                                    html : 'Left Sidebar'
                                 }
                             ]
 

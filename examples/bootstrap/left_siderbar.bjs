@@ -28,8 +28,10 @@
                                 },
                                 {
                                     "String tag" : "li",
+                                    "String cls" : "active",
                                     "xtype" : "Element",
-                                    "$ xns" : "Roo.bootstrap"
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "Left Sidebar"
                                 }
                             ]
                         }
