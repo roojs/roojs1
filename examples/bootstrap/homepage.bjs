@@ -433,7 +433,14 @@
                                                 {
                                                     "String cls" : "col-md-3 widget",
                                                     "xtype" : "Element",
-                                                    "$ xns" : "Roo.bootstrap"
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "xtype" : "Header",
+                                                            "Number level" : 3,
+                                                            "$ xns" : "Roo.bootstrap"
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
