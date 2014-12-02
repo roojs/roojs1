@@ -40,7 +40,13 @@
                                         {
                                             "String cls" : "col-md-4 sidebar-left",
                                             "xtype" : "NavSidebar",
-                                            "$ xns" : "Roo.bootstrap"
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "xtype" : "Row",
+                                                    "$ xns" : "Roo.bootstrap"
+                                                }
+                                            ]
                                         }
                                     ]
                                 }
