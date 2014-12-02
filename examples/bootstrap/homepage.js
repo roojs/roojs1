@@ -477,7 +477,7 @@ homepage = new Roo.XComponent({
                                             tag : 'p',
                                             xtype : 'Element',
                                             xns : Roo.bootstrap,
-                                            html : 'Well, there are thousands of stock art galleries, but personally, \n\t\t\t\t\tI prefer to use photos from these sites: \n\t\t<a href=\"http://unsplash.com\">Unsplash.com</a> \n\t\t\t\t\tand \n<a href=\"http://www.flickr.com/creativecommons/by-2.0/tags/\">Flickr - Creative Commons</a>'
+                                            html : 'Yes, I can. Please drop me a line to sergey-at-pozhilov.com and describe your needs in details. Please note, my services are not cheap.'
                                         }
                                     ]
 
