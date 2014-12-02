@@ -108,7 +108,7 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                 
     },
 
-    setHeadline: function ()
+    setHeadline: function (value)
     {
         this.el.select('.roo-headline',true).first().dom.innerHTML = value;
     },
