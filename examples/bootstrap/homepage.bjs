@@ -359,6 +359,25 @@
                                             "xtype" : "Header",
                                             "$ xns" : "Roo.bootstrap",
                                             "Number level" : 3,
+                                            "String html" : "Which code editor would you recommend?"
+                                        },
+                                        {
+                                            "String tag" : "p",
+                                            "xtype" : "Element",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "String html" : "I'd highly recommend you <a href=\"http://www.sublimetext.com/\">Sublime Text</a> \n- a free to try text editor which I'm using daily. Awesome tool!"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "String cls" : "col-sm-6",
+                                    "xtype" : "Element",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "items" : [
+                                        {
+                                            "xtype" : "Header",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "Number level" : 3,
                                             "String html" : "Nice header. Where do I find more images like that one?"
                                         },
                                         {
