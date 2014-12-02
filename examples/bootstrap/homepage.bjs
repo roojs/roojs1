@@ -2,7 +2,7 @@
     "name" : "homepage",
     "parent" : "",
     "title" : "",
-    "path" : "/home/alan/gitlive/roojs1/examples/bootstrap/homepage.bjs",
+    "path" : "/home/michael/gitlive/roojs1/examples/bootstrap/homepage.bjs",
     "permname" : "",
     "modOrder" : "001",
     "items" : [
@@ -106,6 +106,10 @@
                                             ]
                                         }
                                     ]
+                                },
+                                {
+                                    "xtype" : "Row",
+                                    "$ xns" : "Roo.bootstrap"
                                 }
                             ]
                         }
