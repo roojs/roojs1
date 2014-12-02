@@ -436,6 +436,7 @@
                                                     "$ xns" : "Roo.bootstrap",
                                                     "items" : [
                                                         {
+                                                            "String cls" : "widget-title",
                                                             "xtype" : "Header",
                                                             "Number level" : 3,
                                                             "$ xns" : "Roo.bootstrap"
