@@ -294,6 +294,7 @@
                     "$ xns" : "Roo.bootstrap",
                     "items" : [
                         {
+                            "String cls" : "text-center top-space",
                             "xtype" : "Header",
                             "$ xns" : "Roo.bootstrap"
                         }
