@@ -35,7 +35,10 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     headline : '',
     content : '',
     icon : '',
-    footer : false,
+    footer : '',
+    furl : '',
+    ficon : '',
+    
 
     getAutoCreate : function(){
         
