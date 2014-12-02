@@ -25,11 +25,11 @@ Roo.bootstrap.dash.TabPane = function(config){
 Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
     
     active : false,
-    
-    getBox : function()
-    {
-        return this.el.findParent('.nav-tabs-custom', false, true);
-    },
+//    
+//    getBox : function()
+//    {
+//        return this.el.findParent('.nav-tabs-custom', false, true);
+//    },
     
     getAutoCreate : function() 
     {
