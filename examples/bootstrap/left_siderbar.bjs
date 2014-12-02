@@ -115,7 +115,13 @@
                                                 {
                                                     "String cls" : "col-md-8 maincontent",
                                                     "xtype" : "Container",
-                                                    "$ xns" : "Roo.bootstrap"
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "xtype" : "Header",
+                                                            "$ xns" : "Roo.bootstrap"
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
