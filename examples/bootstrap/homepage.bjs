@@ -418,6 +418,7 @@
                     "$ xns" : "Roo.bootstrap",
                     "items" : [
                         {
+                            "String cls" : "footer1",
                             "xtype" : "Container",
                             "$ xns" : "Roo.bootstrap"
                         }
