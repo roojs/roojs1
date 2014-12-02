@@ -113,6 +113,7 @@
                                     "$ xns" : "Roo.bootstrap",
                                     "items" : [
                                         {
+                                            "String cls" : "thin",
                                             "xtype" : "Header",
                                             "$ xns" : "Roo.bootstrap"
                                         }
