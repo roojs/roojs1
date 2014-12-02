@@ -494,7 +494,8 @@ homepage = new Roo.XComponent({
                                     '|xns' : 'Roo.bootstrap',
                                     xtype : 'Header',
                                     level : 4,
-                                    xns : Roo.bootstrap
+                                    xns : Roo.bootstrap,
+                                    html : 'Dicta, nostrum nemo soluta sapiente sit dolor quae voluptas quidem doloribus recusandae facere magni ullam suscipit sunt atque rerum eaque iusto facilis esse nam veniam incidunt officia perspiciatis at voluptatibus. Libero, aliquid illum possimus numquam fuga.'
                                 },
                             	{
                                     '|xns' : 'Roo.bootstrap',
