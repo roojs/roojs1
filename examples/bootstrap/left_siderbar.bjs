@@ -118,8 +118,15 @@
                                                     "$ xns" : "Roo.bootstrap",
                                                     "items" : [
                                                         {
-                                                            "xtype" : "Header",
-                                                            "$ xns" : "Roo.bootstrap"
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "Header",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "Number level" : ""
+                                                                }
+                                                            ]
                                                         },
                                                         {
                                                             "xtype" : "Element",
