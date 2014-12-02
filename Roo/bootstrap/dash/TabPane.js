@@ -26,14 +26,20 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
     
     active : false,
     
+    getBox : function()
+    {
+        return this.el.findParent('.nav-tabs-custom', false, true);
+    },
+    
     getChildContainer : function()
     {
-        Roo.log('getChildContainer!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.el);
+        Roo.log('======================================================');
+        Roo.log(this.getBox());
         return this.el;
     },
     
-    getAutoCreate : function() {
+    getAutoCreate : function() 
+    {
         var cfg = {
             tag: 'div',
             cls: 'tab-pane'
