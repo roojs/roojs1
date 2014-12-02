@@ -205,7 +205,7 @@ homepage = new Roo.XComponent({
                                                             xtype : 'Header',
                                                             xns : Roo.bootstrap,
                                                             level : 4,
-                                                            html : '<i class=\"fa fa-smile-o fa-5\"></i>Bootstrap-powered'
+                                                            html : '<i class=\"fa fa-cogs fa-5\"></i>Bootstrap-powered'
                                                         }
                                                     ]
 
