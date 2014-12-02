@@ -1,14 +1,220 @@
 {
-    "name" : "right_sidebar",
+    "name" : "right_siderbar",
     "parent" : "",
     "title" : "",
-    "path" : "/home/michael/gitlive/roojs1/examples/bootstrap/right_sidebar.bjs",
+    "path" : "/home/michael/gitlive/roojs1/examples/bootstrap/right_siderbar.bjs",
     "permname" : "",
     "modOrder" : "001",
     "items" : [
         {
             "xtype" : "Body",
-            "$ xns" : "Roo.bootstrap"
+            "$ xns" : "Roo.bootstrap",
+            "items" : [
+                {
+                    "xtype" : "Container",
+                    "$ xns" : "Roo.bootstrap",
+                    "items" : [
+                        {
+                            "String tag" : "ol",
+                            "String cls" : "breadcrumb",
+                            "xtype" : "Container",
+                            "$ xns" : "Roo.bootstrap",
+                            "items" : [
+                                {
+                                    "String tag" : "li",
+                                    "xtype" : "Element",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "<a href=\"index.html\">Home</a>"
+                                },
+                                {
+                                    "String tag" : "li",
+                                    "String cls" : "active",
+                                    "xtype" : "Element",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "Left Sidebar"
+                                },
+                                {
+                                    "xtype" : "Row",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "items" : [
+                                        {
+                                            "String cls" : "col-md-4 sidebar-left",
+                                            "xtype" : "NavSidebar",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "String cls" : "widget",
+                                                    "xtype" : "Row",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "String cls" : "col-xs-12",
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "Header",
+                                                                    "Number level" : 4,
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "Lorem ipsum dolor sit"
+                                                                },
+                                                                {
+                                                                    "String tag" : "p",
+                                                                    "xtype" : "Element",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, ratione delectus reiciendis nulla nisi pariatur molestias animi eos repellat? Vel."
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "String cls" : "col-xs-12",
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "Header",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "Number level" : 4,
+                                                                    "String html" : "Lorem ipsum dolor sit"
+                                                                },
+                                                                {
+                                                                    "String tag" : "p",
+                                                                    "xtype" : "Element",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "<img src=\"http://localhost/bootswatch/Progressus/assets/images/2.jpg\" alt=\"\">"
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "String cls" : "col-xs-12",
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "Header",
+                                                                    "Number level" : 4,
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "Lorem ipsum dolor sit"
+                                                                },
+                                                                {
+                                                                    "String tag" : "p",
+                                                                    "xtype" : "Element",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "<img src=\"http://localhost/bootswatch/Progressus/assets/images/1.jpg\" alt=\"\">"
+                                                                },
+                                                                {
+                                                                    "String tag" : "p",
+                                                                    "xtype" : "Element",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "Qui, debitis, ad, neque reprehenderit laborum soluta dolor voluptate eligendi enim consequuntur eveniet recusandae rerum? Atque eos corporis provident tenetur."
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "String cls" : "col-md-8 maincontent",
+                                            "xtype" : "Container",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "String tag" : "header",
+                                                    "String cls" : "page-header",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "String cls" : "page-title",
+                                                            "xtype" : "Header",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "Number level" : 1,
+                                                            "String html" : "Lorem ipsum dolor sit amet, consectetur."
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "String tag" : "p",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, itaque, cumque, maxime obcaecati reprehenderit ea dignissimos amet voluptatem id excepturi facilis totam veritatis maiores eveniet neque explicabo temporibus quisquam in ex ab fugiat ipsa tempore sunt corporis nostrum quam illum!"
+                                                },
+                                                {
+                                                    "String tag" : "p",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, itaque, cumque, maxime obcaecati reprehenderit ea dignissimos amet voluptatem id excepturi facilis totam veritatis maiores eveniet neque explicabo temporibus quisquam in ex ab fugiat ipsa tempore sunt corporis nostrum quam illum!"
+                                                },
+                                                {
+                                                    "String tag" : "p",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, itaque, cumque, maxime obcaecati reprehenderit ea dignissimos amet voluptatem id excepturi facilis totam veritatis maiores eveniet neque explicabo temporibus quisquam in ex ab fugiat ipsa tempore sunt corporis nostrum quam illum!"
+                                                },
+                                                {
+                                                    "xtype" : "Header",
+                                                    "Number level" : 2,
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "A, quibusdam, nobis, eveniet consequatur"
+                                                },
+                                                {
+                                                    "String tag" : "p",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, itaque, cumque, maxime obcaecati reprehenderit ea dignissimos amet voluptatem id excepturi facilis totam veritatis maiores eveniet neque explicabo temporibus quisquam in ex ab fugiat ipsa tempore sunt corporis nostrum quam illum!"
+                                                },
+                                                {
+                                                    "String tag" : "p",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, itaque, cumque, maxime obcaecati reprehenderit ea dignissimos amet voluptatem id excepturi facilis totam veritatis maiores eveniet neque explicabo temporibus quisquam in ex ab fugiat ipsa tempore sunt corporis nostrum quam illum!"
+                                                },
+                                                {
+                                                    "String tag" : "blockquote",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "Numquam, ut iure quia facere totam quas odit illo incidunt. Voluptatem, nostrum, ex, quasi incidunt similique cum maxime expedita unde labore inventore excepturi veniam corporis sequi facere ullam voluptates amet illum quam fuga voluptatibus ipsum atque sunt eos. Ut, necessitatibus."
+                                                },
+                                                {
+                                                    "String tag" : "p",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, itaque, cumque, maxime obcaecati reprehenderit ea dignissimos amet voluptatem id excepturi facilis totam veritatis maiores eveniet neque explicabo temporibus quisquam in ex ab fugiat ipsa tempore sunt corporis nostrum quam illum!"
+                                                },
+                                                {
+                                                    "String tag" : "p",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, itaque, cumque, maxime obcaecati reprehenderit ea dignissimos amet voluptatem id excepturi facilis totam veritatis maiores eveniet neque explicabo temporibus quisquam in ex ab fugiat ipsa tempore sunt corporis nostrum quam illum!"
+                                                },
+                                                {
+                                                    "xtype" : "Header",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "Number level" : 3,
+                                                    "String html" : "Numquam, ut iure quia facere totam quas odit illo incidunt"
+                                                },
+                                                {
+                                                    "String tag" : "p",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, itaque, cumque, maxime obcaecati reprehenderit ea dignissimos amet voluptatem id excepturi facilis totam veritatis maiores eveniet neque explicabo temporibus quisquam in ex ab fugiat ipsa tempore sunt corporis nostrum quam illum!"
+                                                },
+                                                {
+                                                    "String tag" : "p",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, itaque, cumque, maxime obcaecati reprehenderit ea dignissimos amet voluptatem id excepturi facilis totam veritatis maiores eveniet neque explicabo temporibus quisquam in ex ab fugiat ipsa tempore sunt corporis nostrum quam illum!"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
