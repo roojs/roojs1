@@ -54,7 +54,8 @@
                                                                 {
                                                                     "xtype" : "Header",
                                                                     "Number level" : 4,
-                                                                    "$ xns" : "Roo.bootstrap"
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "Lorem ipsum dolor sit"
                                                                 },
                                                                 {
                                                                     "xtype" : "Element",
