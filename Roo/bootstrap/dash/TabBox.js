@@ -10,6 +10,8 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * @class Roo.bootstrap.dash.TabBox
  * @extends Roo.bootstrap.Component
  * Bootstrap TabBox class
+ * @cfg {String} title Title of the TabBox
+ * @cfg {String} icon Icon of the TabBox
  * 
  * @constructor
  * Create a new TabBox
@@ -33,7 +35,25 @@ Roo.bootstrap.dash.TabBox = function(config){
 
 Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
 
+    title : '',
+    icon : false,
+    
     getAutoCreate : function(){
+        
+        var header = {
+            tag: 'li',
+            cls: 'pull-left header',
+            html: this.title,
+            cn : []
+        };
+        
+        if(this.icon){
+            header.cn.push({
+                tag: 'i',
+                cls: 'fa ' + this.icon
+            });
+        }
+        
         
         var cfg = {
             tag: 'div',
@@ -42,38 +62,11 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                 {
                     tag: 'ul',
                     cls: 'nav nav-tabs pull-right',
-                    cn: [{
-                        tag: 'li',
-                        cls: 'active',
-                        html: null,
-                        cn : [{
-                            tag: 'a',
-                            href: '#',
-                            // data-toggle: 'tab',
-                            html: this.tab1_text ? this.tab1_text : 'tab1'
-                        }]
-                },
-                {
-                    tag: 'li',
-                    cls: '',
-                    html: null,
-                    cn : [{
-                        tag: 'a',
-                        href: '#',
-                        // data-toggle: 'tab',
-                        html: this.tab2_text ? this.tab2_text : 'tab2'
-                    }]
-                },
-                {
-                    tag: 'li',
-                    cls: 'pull-left header',
-                    html: this.title ? this.title : 'Title',
-                    cn : [{
-                        tag: 'i',
-                        cls: 'fa fa-inbox'
-                    }]
-                }]
-            }]
+                    cn: [
+                        
+                    ]
+                }
+            ]
         }
 
         return  cfg;
