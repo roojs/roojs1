@@ -396,7 +396,6 @@
                             "$ xns" : "Roo.bootstrap",
                             "items" : [
                                 {
-                                    "String cls" : "jumbotron top-space",
                                     "xtype" : "Header",
                                     "Number level" : 4,
                                     "$ xns" : "Roo.bootstrap",
