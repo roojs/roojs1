@@ -300,7 +300,8 @@
                                                         {
                                                             "xtype" : "Header",
                                                             "Number level" : 4,
-                                                            "$ xns" : "Roo.bootstrap"
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : ""
                                                         }
                                                     ]
                                                 },
