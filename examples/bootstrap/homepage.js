@@ -454,7 +454,7 @@ homepage = new Roo.XComponent({
                                             tag : 'p',
                                             xtype : 'Element',
                                             xns : Roo.bootstrap,
-                                            html : 'I\'d highly recommend you <a href=\"http://www.sublimetext.com/\">Sublime Text</a> \n- a free to try text editor which I\'m using daily. Awesome tool!'
+                                            html : 'Yes, you can. You may use this template for any purpose, just don\'t forget about the \n<a href=\"http://creativecommons.org/licenses/by/3.0/\">license</a>\nwhich says: \"You must give appropriate credit\", i.e. you must provide the name of the creator and a link to the original template in your work. \n'
                                         }
                                     ]
 
