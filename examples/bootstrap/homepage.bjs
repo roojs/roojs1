@@ -132,8 +132,34 @@
                                     "xtype" : "Element",
                                     "$ xns" : "Roo.bootstrap",
                                     "String html" : "\tThe difference between involvement and commitment is like an eggs-and-ham breakfast:\n\t<br> \n\tthe chicken was involved; the pig was committed.\n\t\t"
+                                },
+                                {
+                                    "String cls" : "thin",
+                                    "xtype" : "Header",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "The best place to tell people why they are here"
+                                },
+                                {
+                                    "String tag" : "p",
+                                    "String cls" : "text-muted",
+                                    "xtype" : "Element",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "\tThe difference between involvement and commitment is like an eggs-and-ham breakfast:\n\t<br> \n\tthe chicken was involved; the pig was committed.\n\t\t"
                                 }
                             ]
+                        },
+                        {
+                            "String cls" : "thin",
+                            "xtype" : "Header",
+                            "$ xns" : "Roo.bootstrap",
+                            "String html" : "The best place to tell people why they are here"
+                        },
+                        {
+                            "String tag" : "p",
+                            "String cls" : "text-muted",
+                            "xtype" : "Element",
+                            "$ xns" : "Roo.bootstrap",
+                            "String html" : "\tThe difference between involvement and commitment is like an eggs-and-ham breakfast:\n\t<br> \n\tthe chicken was involved; the pig was committed.\n\t\t"
                         }
                     ]
                 }
