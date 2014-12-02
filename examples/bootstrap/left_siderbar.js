@@ -189,6 +189,12 @@ left_siderbar = new Roo.XComponent({
                                                     xtype : 'Element',
                                                     xns : Roo.bootstrap,
                                                     html : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, itaque, cumque, maxime obcaecati reprehenderit ea dignissimos amet voluptatem id excepturi facilis totam veritatis maiores eveniet neque explicabo temporibus quisquam in ex ab fugiat ipsa tempore sunt corporis nostrum quam illum!'
+                                                },
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    xtype : 'Header',
+                                                    level : 2,
+                                                    xns : Roo.bootstrap
                                                 }
                                             ]
 
