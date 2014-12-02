@@ -153,7 +153,13 @@
                                         {
                                             "String cls" : "col-md-3 col-sm-6 highlight",
                                             "xtype" : "Element",
-                                            "$ xns" : "Roo.bootstrap"
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap"
+                                                }
+                                            ]
                                         },
                                         {
                                             "String cls" : "col-md-3 col-sm-6 highlight",

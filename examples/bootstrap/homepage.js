@@ -192,7 +192,15 @@ homepage = new Roo.XComponent({
                                             '|xns' : 'Roo.bootstrap',
                                             cls : 'col-md-3 col-sm-6 highlight',
                                             xtype : 'Element',
-                                            xns : Roo.bootstrap
+                                            xns : Roo.bootstrap,
+                                            items : [
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    xtype : 'Element',
+                                                    xns : Roo.bootstrap
+                                                }
+                                            ]
+
                                         },
                                     	{
                                             '|xns' : 'Roo.bootstrap',
