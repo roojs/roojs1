@@ -140,8 +140,7 @@ homepage = new Roo.XComponent({
                         },
                     	{
                             '|xns' : 'Roo.bootstrap',
-                            cls : 'container text-center',
-                            xtype : 'Row',
+                            xtype : 'Container',
                             xns : Roo.bootstrap,
                             items : [
                             	{
@@ -161,11 +160,6 @@ homepage = new Roo.XComponent({
                                 }
                             ]
 
-                        },
-                    	{
-                            '|xns' : 'Roo.bootstrap',
-                            xtype : 'Container',
-                            xns : Roo.bootstrap
                         }
                     ]
 
