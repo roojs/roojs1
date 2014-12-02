@@ -355,27 +355,9 @@ homepage = new Roo.XComponent({
                                                     items : [
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',
-                                                            tag : 'h4',
-                                                            xtype : 'Element',
-                                                            xns : Roo.bootstrap,
-                                                            html : 'Author\'s support',
-                                                            items : [
-                                                            	{
-                                                                    '|xns' : 'Roo.bootstrap',
-                                                                    tag : 'i',
-                                                                    cls : 'fa fa-cogs fa-5',
-                                                                    xtype : 'Element',
-                                                                    xns : Roo.bootstrap
-                                                                }
-                                                            ]
-
-                                                        },
-                                                    	{
-                                                            '|xns' : 'Roo.bootstrap',
                                                             xtype : 'Header',
-                                                            html : '<i class=\"fa fa-smile-o fa-5\"></i>gjfgvj',
-                                                            level : 4,
-                                                            xns : Roo.bootstrap
+                                                            xns : Roo.bootstrap,
+                                                            level : 4
                                                         }
                                                     ]
 

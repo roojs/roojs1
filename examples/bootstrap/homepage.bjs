@@ -284,24 +284,9 @@
                                                     "$ xns" : "Roo.bootstrap",
                                                     "items" : [
                                                         {
-                                                            "String tag" : "h4",
-                                                            "xtype" : "Element",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "String html" : "Author's support",
-                                                            "items" : [
-                                                                {
-                                                                    "String tag" : "i",
-                                                                    "String cls" : "fa fa-cogs fa-5",
-                                                                    "xtype" : "Element",
-                                                                    "$ xns" : "Roo.bootstrap"
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
                                                             "xtype" : "Header",
-                                                            "html" : "<i class=\"fa fa-smile-o fa-5\"></i>gjfgvj",
-                                                            "Number level" : 4,
-                                                            "$ xns" : "Roo.bootstrap"
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "Number level" : 4
                                                         }
                                                     ]
                                                 },
