@@ -11,10 +11,9 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * @extends Roo.bootstrap.Component
  * Bootstrap NumberBox class
  * @cfg {String} bgcolor Box background color, such as (aqua | green | yellow | red etc..) Default aqua
- * @cfg {number} sm 4
- * @cfg {number} md 5
- * @cfg {String} headline
- * @cfg {String} title
+ * @cfg {String} headline Box headline
+ * @cfg {String} content Box content
+ * @cfg {String} icon Box icon
  * @cfg {String} more_url
  * @cfg {String} more_text
  * @cfg {Array}  opts values
