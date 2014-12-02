@@ -137,7 +137,15 @@ homepage = new Roo.XComponent({
                                 }
                             ]
 
-                        },
+                        }
+                    ]
+
+                },
+            	{
+                    '|xns' : 'Roo.bootstrap',
+                    xtype : 'Element',
+                    xns : Roo.bootstrap,
+                    items : [
                     	{
                             '|xns' : 'Roo.bootstrap',
                             cls : 'container text-center',
