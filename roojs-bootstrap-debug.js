@@ -12998,7 +12998,7 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
  * @cfg {Boolean} active panel active
  * @cfg {String} html panel content
  * @cfg {String} tabId tab relate id
- * @cfg {String} navId The navbar which triggers show hide
+ * @cfg {String} navId The Roo.bootstrap.NavGroup which triggers show hide ()
  * 
  * 
  * @constructor
@@ -18189,12 +18189,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         g_gutter: '20%'
 
     },
-    title : {
-        text : '',
-        x : 150,
-        y : 50,
-        attr : { font: "20px 'Fontin Sans', Fontin-Sans, sans-serif" }
-    },
+    title : false,
 
     getAutoCreate : function(){
         
@@ -18263,11 +18258,9 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         switch(graphtype){
             case 'bar':
                 this.raphael.barchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts).hover(fin,fout);
-                this.title.text = this.title.text || 'This is Vertical Barchart';
                 break;
             case 'hbar':
                 this.raphael.hbarchart(this.g_x,this.g_y,this.g_width,this.g_height,xdata,opts).hover(fin,fout);
-                this.title.text = this.title.text || 'This is Horizontal Barchart';
                 break;
             case 'pie':
                 opts = { legend: ["%% - Enterprise Users", "% - ddd","Chrome Users"], legendpos: "west", 
@@ -18275,12 +18268,14 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
             
                 this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts);
                 
-                this.title.text = this.title.text || 'This is Piechart';
                 break;
 
         }
         
-        this.raphael.text(this.title.x, this.title.y, this.title.text).attr(this.title.attr);
+        if(this.title){
+            this.raphael.text(this.title.x, this.title.y, this.title.text).attr(this.title.attr);
+        }
+        
     },
     
     setTitle: function(o)
@@ -18414,25 +18409,17 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                 
     },
 
-    setHeadline: function ()
+    setHeadline: function (value)
     {
         this.el.select('.roo-headline',true).first().dom.innerHTML = value;
     },
 
 
-    initEvents: function() {
+    initEvents: function() 
+    {   
         
-        if(!this.href){
-            this.el.on('click', this.onClick, this);
-        }
-    },
-    
-    onClick : function(e)
-    {
-        Roo.log('img onclick');
-        this.fireEvent('click', this, e);
     }
-   
+    
 });
 
  
