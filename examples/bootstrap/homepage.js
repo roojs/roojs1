@@ -152,6 +152,7 @@ homepage = new Roo.XComponent({
                             cls : 'thin',
                             xtype : 'Header',
                             xns : Roo.bootstrap,
+                            level : 3,
                             html : 'The best place to tell people why they are here'
                         },
                     	{
