@@ -475,7 +475,7 @@
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [
                                                                 {
-                                                                    "String tag" : "a",
+                                                                    "String tag" : "p",
                                                                     "xtype" : "Element",
                                                                     "$ xns" : "Roo.bootstrap"
                                                                 }

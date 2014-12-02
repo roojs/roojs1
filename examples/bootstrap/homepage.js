@@ -589,7 +589,7 @@ homepage = new Roo.XComponent({
                                                             items : [
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
-                                                                    tag : 'a',
+                                                                    tag : 'p',
                                                                     xtype : 'Element',
                                                                     xns : Roo.bootstrap
                                                                 }
