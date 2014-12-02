@@ -33,9 +33,7 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
     
     getChildContainer : function()
     {
-        Roo.log('======================================================');
-        Roo.log(this.getBox());
-        return this.el;
+        return this.getBox().select('.tab-content', true).first();
     },
     
     getAutoCreate : function() 
