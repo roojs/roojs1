@@ -14,9 +14,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * @cfg {String} headline Box headline
  * @cfg {String} content Box content
  * @cfg {String} icon Box icon
- * @cfg {String} more_url
- * @cfg {String} more_text
- * @cfg {Array}  opts values
+ * @cfg {Boolean} footer Ture to generate the footer element Default false.
  * 
  * @constructor
  * Create a new Input
