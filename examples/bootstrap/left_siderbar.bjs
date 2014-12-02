@@ -21,6 +21,7 @@
                             "$ xns" : "Roo.bootstrap",
                             "items" : [
                                 {
+                                    "String tag" : "li",
                                     "xtype" : "Element",
                                     "$ xns" : "Roo.bootstrap"
                                 },
