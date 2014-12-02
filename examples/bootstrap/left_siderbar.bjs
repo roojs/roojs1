@@ -21,17 +21,23 @@
                             "$ xns" : "Roo.bootstrap",
                             "items" : [
                                 {
-                                    "String tag" : "li",
-                                    "xtype" : "Element",
+                                    "xtype" : "Container",
                                     "$ xns" : "Roo.bootstrap",
-                                    "String html" : "<a href=\"index.html\">Home</a>"
-                                },
-                                {
-                                    "String tag" : "li",
-                                    "String cls" : "active",
-                                    "xtype" : "Element",
-                                    "$ xns" : "Roo.bootstrap",
-                                    "String html" : "Left Sidebar"
+                                    "items" : [
+                                        {
+                                            "String tag" : "li",
+                                            "xtype" : "Element",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "String html" : "<a href=\"index.html\">Home</a>"
+                                        },
+                                        {
+                                            "String tag" : "li",
+                                            "String cls" : "active",
+                                            "xtype" : "Element",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "String html" : "Left Sidebar"
+                                        }
+                                    ]
                                 }
                             ]
                         }
