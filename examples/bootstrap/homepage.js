@@ -134,30 +134,30 @@ homepage = new Roo.XComponent({
                                         }
                                     ]
 
+                                }
+                            ]
+
+                        },
+                    	{
+                            '|xns' : 'Roo.bootstrap',
+                            cls : 'container text-center',
+                            xtype : 'Row',
+                            xns : Roo.bootstrap,
+                            items : [
+                            	{
+                                    '|xns' : 'Roo.bootstrap',
+                                    cls : 'thin',
+                                    xtype : 'Header',
+                                    xns : Roo.bootstrap,
+                                    html : 'The best place to tell people why they are here'
                                 },
                             	{
                                     '|xns' : 'Roo.bootstrap',
-                                    cls : 'container text-center',
-                                    xtype : 'Row',
+                                    tag : 'p',
+                                    cls : 'text-muted',
+                                    xtype : 'Element',
                                     xns : Roo.bootstrap,
-                                    items : [
-                                    	{
-                                            '|xns' : 'Roo.bootstrap',
-                                            cls : 'thin',
-                                            xtype : 'Header',
-                                            xns : Roo.bootstrap,
-                                            html : 'The best place to tell people why they are here'
-                                        },
-                                    	{
-                                            '|xns' : 'Roo.bootstrap',
-                                            tag : 'p',
-                                            cls : 'text-muted',
-                                            xtype : 'Element',
-                                            xns : Roo.bootstrap,
-                                            html : '\tThe difference between involvement and commitment is like an eggs-and-ham breakfast:\n\t<br> \n\tthe chicken was involved; the pig was committed.\n\t\t'
-                                        }
-                                    ]
-
+                                    html : '\tThe difference between involvement and commitment is like an eggs-and-ham breakfast:\n\t<br> \n\tthe chicken was involved; the pig was committed.\n\t\t'
                                 }
                             ]
 
