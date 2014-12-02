@@ -613,7 +613,7 @@ homepage = new Roo.XComponent({
                                                                             tag : 'a',
                                                                             xtype : 'Element',
                                                                             xns : Roo.bootstrap,
-                                                                            html : '<i class=\"fa fa-twitter fa-2\"></i>'
+                                                                            html : '<i class=\"fa fa-github fa-2\"></i>'
                                                                         },
                                                                     	{
                                                                             '|xns' : 'Roo.bootstrap',
