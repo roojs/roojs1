@@ -217,6 +217,27 @@ left_siderbar = new Roo.XComponent({
                                                     xtype : 'Element',
                                                     xns : Roo.bootstrap,
                                                     html : 'Numquam, ut iure quia facere totam quas odit illo incidunt. Voluptatem, nostrum, ex, quasi incidunt similique cum maxime expedita unde labore inventore excepturi veniam corporis sequi facere ullam voluptates amet illum quam fuga voluptatibus ipsum atque sunt eos. Ut, necessitatibus.'
+                                                },
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    tag : 'p',
+                                                    xtype : 'Element',
+                                                    xns : Roo.bootstrap,
+                                                    html : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, itaque, cumque, maxime obcaecati reprehenderit ea dignissimos amet voluptatem id excepturi facilis totam veritatis maiores eveniet neque explicabo temporibus quisquam in ex ab fugiat ipsa tempore sunt corporis nostrum quam illum!'
+                                                },
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    tag : 'p',
+                                                    xtype : 'Element',
+                                                    xns : Roo.bootstrap,
+                                                    html : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, itaque, cumque, maxime obcaecati reprehenderit ea dignissimos amet voluptatem id excepturi facilis totam veritatis maiores eveniet neque explicabo temporibus quisquam in ex ab fugiat ipsa tempore sunt corporis nostrum quam illum!'
+                                                },
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    xtype : 'Header',
+                                                    xns : Roo.bootstrap,
+                                                    level : 3,
+                                                    html : 'Numquam, ut iure quia facere totam quas odit illo incidunt'
                                                 }
                                             ]
 
