@@ -90,7 +90,6 @@
                                                 {
                                                     "String tag" : "a",
                                                     "String size" : "lg",
-                                                    "String cls" : "btn btn-default btn-lg",
                                                     "String href" : "#",
                                                     "xtype" : "Button",
                                                     "$ xns" : "Roo.bootstrap",
