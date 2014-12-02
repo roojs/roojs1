@@ -312,6 +312,7 @@
                                     "items" : [
                                         {
                                             "xtype" : "Header",
+                                            "Number level" : 3,
                                             "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
