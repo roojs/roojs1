@@ -53,7 +53,7 @@ left_siderbar = new Roo.XComponent({
                                     items : [
                                     	{
                                             '|xns' : 'Roo.bootstrap',
-                                            cls : 'col-md-4 sidebar-left',
+                                            cls : 'col-md-4 sidebar sidebar-left',
                                             xtype : 'NavSidebar',
                                             xns : Roo.bootstrap,
                                             items : [
@@ -72,8 +72,8 @@ left_siderbar = new Roo.XComponent({
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'Header',
-                                                                    level : 4,
                                                                     xns : Roo.bootstrap,
+                                                                    level : 4,
                                                                     html : 'Lorem ipsum dolor sit'
                                                                 },
                                                             	{
@@ -95,8 +95,8 @@ left_siderbar = new Roo.XComponent({
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'Header',
-                                                                    xns : Roo.bootstrap,
                                                                     level : 4,
+                                                                    xns : Roo.bootstrap,
                                                                     html : 'Lorem ipsum dolor sit'
                                                                 },
                                                             	{
@@ -118,8 +118,8 @@ left_siderbar = new Roo.XComponent({
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'Header',
-                                                                    level : 4,
                                                                     xns : Roo.bootstrap,
+                                                                    level : 4,
                                                                     html : 'Lorem ipsum dolor sit'
                                                                 },
                                                             	{
@@ -193,8 +193,8 @@ left_siderbar = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     xtype : 'Header',
-                                                    level : 2,
                                                     xns : Roo.bootstrap,
+                                                    level : 2,
                                                     html : 'A, quibusdam, nobis, eveniet consequatur'
                                                 },
                                             	{
@@ -235,8 +235,8 @@ left_siderbar = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     xtype : 'Header',
-                                                    xns : Roo.bootstrap,
                                                     level : 3,
+                                                    xns : Roo.bootstrap,
                                                     html : 'Numquam, ut iure quia facere totam quas odit illo incidunt'
                                                 },
                                             	{
