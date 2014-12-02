@@ -116,17 +116,9 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
 
     initEvents: function() 
     {   
-//        if(!this.href){
-//            this.el.on('click', this.onClick, this);
-//        }
-    },
-    
-    onClick : function(e)
-    {
-//        Roo.log('img onclick');
-//        this.fireEvent('click', this, e);
+        
     }
-   
+    
 });
 
  
