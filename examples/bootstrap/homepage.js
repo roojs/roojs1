@@ -503,7 +503,8 @@ homepage = new Roo.XComponent({
                                     tag : 'p',
                                     cls : 'text-right',
                                     xtype : 'Element',
-                                    xns : Roo.bootstrap
+                                    xns : Roo.bootstrap,
+                                    html : '<a class=\"btn btn-primary btn-large\">Learn more »</a>'
                                 }
                             ]
 
