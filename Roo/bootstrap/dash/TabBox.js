@@ -10,12 +10,9 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * @class Roo.bootstrap.dash.TabBox
  * @extends Roo.bootstrap.Component
  * Bootstrap TabBox class
- * @cfg {String} title
- * @cfg {String} tab1_text
- * @cfg {String} tab2_text
  * 
  * @constructor
- * Create a new Input
+ * Create a new TabBox
  * @param {Object} config The config object
  */
 
