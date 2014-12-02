@@ -488,7 +488,15 @@ homepage = new Roo.XComponent({
                     	{
                             '|xns' : 'Roo.bootstrap',
                             xtype : 'Element',
-                            xns : Roo.bootstrap
+                            xns : Roo.bootstrap,
+                            items : [
+                            	{
+                                    '|xns' : 'Roo.bootstrap',
+                                    xtype : 'Header',
+                                    xns : Roo.bootstrap
+                                }
+                            ]
+
                         }
                     ]
 
