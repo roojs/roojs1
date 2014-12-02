@@ -404,6 +404,29 @@ homepage = new Roo.XComponent({
                                         }
                                     ]
 
+                                },
+                            	{
+                                    '|xns' : 'Roo.bootstrap',
+                                    cls : 'col-sm-6',
+                                    xtype : 'Element',
+                                    xns : Roo.bootstrap,
+                                    items : [
+                                    	{
+                                            '|xns' : 'Roo.bootstrap',
+                                            xtype : 'Header',
+                                            level : 3,
+                                            xns : Roo.bootstrap,
+                                            html : 'Nice header. Where do I find more images like that one?'
+                                        },
+                                    	{
+                                            '|xns' : 'Roo.bootstrap',
+                                            tag : 'p',
+                                            xtype : 'Element',
+                                            xns : Roo.bootstrap,
+                                            html : 'Well, there are thousands of stock art galleries, but personally, \n\t\t\t\t\tI prefer to use photos from these sites: \n\t\t<a href=\"http://unsplash.com\">Unsplash.com</a> \n\t\t\t\t\tand \n<a href=\"http://www.flickr.com/creativecommons/by-2.0/tags/\">Flickr - Creative Commons</a>'
+                                        }
+                                    ]
+
                                 }
                             ]
 
