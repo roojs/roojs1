@@ -516,7 +516,7 @@
                                                     "$ xns" : "Roo.bootstrap",
                                                     "items" : [
                                                         {
-                                                            "String cls" : "widget-title",
+                                                            "String cls" : "Text widget",
                                                             "xtype" : "Header",
                                                             "Number level" : 3,
                                                             "$ xns" : "Roo.bootstrap",

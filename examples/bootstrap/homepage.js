@@ -639,7 +639,7 @@ homepage = new Roo.XComponent({
                                                     items : [
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',
-                                                            cls : 'widget-title',
+                                                            cls : 'Text widget',
                                                             xtype : 'Header',
                                                             level : 3,
                                                             xns : Roo.bootstrap,
