@@ -31,11 +31,6 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
         return this.el.findParent('.nav-tabs-custom', false, true);
     },
     
-    getChildContainer : function()
-    {
-        return this.getBox().select('.tab-content', true).first();
-    },
-    
     getAutoCreate : function() 
     {
         var cfg = {
