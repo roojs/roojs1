@@ -43,6 +43,7 @@
                                             "$ xns" : "Roo.bootstrap",
                                             "items" : [
                                                 {
+                                                    "String cls" : "widget",
                                                     "xtype" : "Row",
                                                     "$ xns" : "Roo.bootstrap"
                                                 }
