@@ -24,20 +24,17 @@ Roo.bootstrap.dash.TabPane = function(config){
 
 Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
     
-    //text: '',
-    // inverse: false,
-    // form: false,
-    // type: 'nav',
-    // navId : '',
-    // private
+    active : false,
     
-  
     getAutoCreate : function() {
         var cfg = {
             tag: 'div',
-            cls: 'tab-pane',
+            cls: 'tab-pane'
         }
-          
+        
+        if(this.active){
+            cfg.cls += ' active';
+        }
         
         return cfg;
     }
