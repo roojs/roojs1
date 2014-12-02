@@ -514,6 +514,7 @@ homepage = new Roo.XComponent({
                 },
             	{
                     '|xns' : 'Roo.bootstrap',
+                    cls : 'top-space',
                     xtype : 'Container',
                     xns : Roo.bootstrap
                 }
