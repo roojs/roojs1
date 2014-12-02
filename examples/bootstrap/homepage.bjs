@@ -168,7 +168,7 @@
                                                             "items" : [
                                                                 {
                                                                     "String tag" : "i",
-                                                                    "String cls" : "fa fa-cogs fa-5 ::before",
+                                                                    "String cls" : "fa fa-cogs fa-5",
                                                                     "xtype" : "Element",
                                                                     "$ xns" : "Roo.bootstrap"
                                                                 }
