@@ -222,6 +222,7 @@ homepage = new Roo.XComponent({
                                                 },
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
+                                                    cls : 'h-body text-center',
                                                     xtype : 'Element',
                                                     xns : Roo.bootstrap
                                                 }
