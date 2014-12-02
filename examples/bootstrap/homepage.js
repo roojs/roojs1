@@ -202,20 +202,10 @@ homepage = new Roo.XComponent({
                                                     items : [
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',
-                                                            tag : 'h4',
-                                                            xtype : 'Element',
+                                                            xtype : 'Header',
                                                             xns : Roo.bootstrap,
-                                                            html : 'Bootstrap-powered',
-                                                            items : [
-                                                            	{
-                                                                    '|xns' : 'Roo.bootstrap',
-                                                                    tag : 'i',
-                                                                    cls : 'fa fa-cogs fa-5',
-                                                                    xtype : 'Element',
-                                                                    xns : Roo.bootstrap
-                                                                }
-                                                            ]
-
+                                                            level : 4,
+                                                            html : '<i class=\"fa fa-smile-o fa-5\"></i>Author\'s support'
                                                         }
                                                     ]
 
@@ -232,6 +222,13 @@ homepage = new Roo.XComponent({
                                                             xtype : 'Element',
                                                             xns : Roo.bootstrap,
                                                             html : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?'
+                                                        },
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            xtype : 'Header',
+                                                            level : 4,
+                                                            xns : Roo.bootstrap,
+                                                            html : '<i class=\"fa fa-smile-o fa-5\"></i>Author\'s support'
                                                         }
                                                     ]
 
@@ -249,7 +246,17 @@ homepage = new Roo.XComponent({
                                                     '|xns' : 'Roo.bootstrap',
                                                     cls : 'h-captain',
                                                     xtype : 'Element',
-                                                    xns : Roo.bootstrap
+                                                    xns : Roo.bootstrap,
+                                                    items : [
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            xtype : 'Header',
+                                                            xns : Roo.bootstrap,
+                                                            level : 4,
+                                                            html : '<i class=\"fa fa-smile-o fa-5\"></i>Author\'s support'
+                                                        }
+                                                    ]
+
                                                 },
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
