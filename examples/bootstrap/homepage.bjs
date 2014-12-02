@@ -164,6 +164,7 @@
                                                             "String tag" : "h4",
                                                             "xtype" : "Element",
                                                             "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "Bootstrap-powered",
                                                             "items" : [
                                                                 {
                                                                     "String tag" : "i",
