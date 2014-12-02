@@ -85,6 +85,52 @@ left_siderbar = new Roo.XComponent({
                                                                 }
                                                             ]
 
+                                                        },
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            cls : 'col-xs-12',
+                                                            xtype : 'Element',
+                                                            xns : Roo.bootstrap,
+                                                            items : [
+                                                            	{
+                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    xtype : 'Header',
+                                                                    xns : Roo.bootstrap,
+                                                                    level : 4,
+                                                                    html : 'Lorem ipsum dolor sit'
+                                                                },
+                                                            	{
+                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    tag : 'p',
+                                                                    xtype : 'Element',
+                                                                    xns : Roo.bootstrap,
+                                                                    html : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, ratione delectus reiciendis nulla nisi pariatur molestias animi eos repellat? Vel.'
+                                                                }
+                                                            ]
+
+                                                        },
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            cls : 'col-xs-12',
+                                                            xtype : 'Element',
+                                                            xns : Roo.bootstrap,
+                                                            items : [
+                                                            	{
+                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    xtype : 'Header',
+                                                                    level : 4,
+                                                                    xns : Roo.bootstrap,
+                                                                    html : 'Lorem ipsum dolor sit'
+                                                                },
+                                                            	{
+                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    tag : 'p',
+                                                                    xtype : 'Element',
+                                                                    xns : Roo.bootstrap,
+                                                                    html : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, ratione delectus reiciendis nulla nisi pariatur molestias animi eos repellat? Vel.'
+                                                                }
+                                                            ]
+
                                                         }
                                                     ]
 

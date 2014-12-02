@@ -65,6 +65,44 @@
                                                                     "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, ratione delectus reiciendis nulla nisi pariatur molestias animi eos repellat? Vel."
                                                                 }
                                                             ]
+                                                        },
+                                                        {
+                                                            "String cls" : "col-xs-12",
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "Header",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "Number level" : 4,
+                                                                    "String html" : "Lorem ipsum dolor sit"
+                                                                },
+                                                                {
+                                                                    "String tag" : "p",
+                                                                    "xtype" : "Element",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, ratione delectus reiciendis nulla nisi pariatur molestias animi eos repellat? Vel."
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "String cls" : "col-xs-12",
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "Header",
+                                                                    "Number level" : 4,
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "Lorem ipsum dolor sit"
+                                                                },
+                                                                {
+                                                                    "String tag" : "p",
+                                                                    "xtype" : "Element",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, ratione delectus reiciendis nulla nisi pariatur molestias animi eos repellat? Vel."
+                                                                }
+                                                            ]
                                                         }
                                                     ]
                                                 }
