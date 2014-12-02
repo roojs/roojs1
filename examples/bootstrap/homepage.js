@@ -522,7 +522,15 @@ homepage = new Roo.XComponent({
                             '|xns' : 'Roo.bootstrap',
                             cls : 'footer1',
                             xtype : 'Container',
-                            xns : Roo.bootstrap
+                            xns : Roo.bootstrap,
+                            items : [
+                            	{
+                                    '|xns' : 'Roo.bootstrap',
+                                    xtype : 'Container',
+                                    xns : Roo.bootstrap
+                                }
+                            ]
+
                         }
                     ]
 
