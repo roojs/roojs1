@@ -1,7 +1,7 @@
 //<script type="text/javascript">
 
 // Auto generated file - created by app.Builder.js- do not edit directly (at present!)
-
+Roo.example = Roo.example || {};
 homepage = new Roo.XComponent({
     part     :  ["bootstrap", "homepage" ],
     order    : '001-homepage',
