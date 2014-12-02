@@ -146,8 +146,23 @@
                                     "String html" : "Reasons to use this template"
                                 },
                                 {
+                                    "String cls" : "",
                                     "xtype" : "Row",
-                                    "$ xns" : "Roo.bootstrap"
+                                    "$ xns" : "Roo.bootstrap",
+                                    "items" : [
+                                        {
+                                            "xtype" : "Element",
+                                            "$ xns" : "Roo.bootstrap"
+                                        },
+                                        {
+                                            "xtype" : "Element",
+                                            "$ xns" : "Roo.bootstrap"
+                                        },
+                                        {
+                                            "xtype" : "Element",
+                                            "$ xns" : "Roo.bootstrap"
+                                        }
+                                    ]
                                 }
                             ]
                         }
