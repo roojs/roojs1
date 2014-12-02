@@ -32,13 +32,14 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     bgcolor : 'aqua',
     headline : '',
     content : '',
+    icon : '',
     footer : false,
 
     getAutoCreate : function(){
         
         var cfg = {
             tag: 'div',
-            cls: 'small-box',
+            cls: 'small-box bg-' + this.bgcolor,
             cn: [
                 {
                     tag: 'div',
@@ -58,13 +59,20 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                 }
             ]
         }
-
-        cfg.cls += ' bg-' + (this.bgcolor ? this.bgcolor : 'aqua' );
-        if(!this.more_text){
-            cfg.cn[1].cn = null;
-
+        
+        if(this.icon){
+            cfg.cn.push({
+                tag: 'div',
+                cls: 'icon',
+                cn:[
+                    {
+                        tag: 'i',
+                        cls: 'ion ' + this.icon
+                    }
+                ]
+            });
         }
-
+        
         return  cfg;
     },
 
