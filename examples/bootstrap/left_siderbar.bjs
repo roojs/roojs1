@@ -22,6 +22,7 @@
                             "items" : [
                                 {
                                     "String tag" : "ol",
+                                    "String cls" : "breadcrumb",
                                     "xtype" : "Container",
                                     "$ xns" : "Roo.bootstrap",
                                     "items" : [
@@ -39,6 +40,27 @@
                                             "String html" : "Left Sidebar"
                                         }
                                     ]
+                                }
+                            ]
+                        },
+                        {
+                            "String tag" : "ol",
+                            "String cls" : "breadcrumb",
+                            "xtype" : "Container",
+                            "$ xns" : "Roo.bootstrap",
+                            "items" : [
+                                {
+                                    "String tag" : "li",
+                                    "xtype" : "Element",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "<a href=\"index.html\">Home</a>"
+                                },
+                                {
+                                    "String tag" : "li",
+                                    "String cls" : "active",
+                                    "xtype" : "Element",
+                                    "$ xns" : "Roo.bootstrap",
+                                    "String html" : "Left Sidebar"
                                 }
                             ]
                         }
