@@ -301,6 +301,10 @@
                             "$ xns" : "Roo.bootstrap",
                             "Number level" : 2,
                             "String html" : "Frequently Asked Questions"
+                        },
+                        {
+                            "xtype" : "Row",
+                            "$ xns" : "Roo.bootstrap"
                         }
                     ]
                 }
