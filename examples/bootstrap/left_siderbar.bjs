@@ -127,7 +127,8 @@
                                                                     "String cls" : "page-title",
                                                                     "xtype" : "Header",
                                                                     "$ xns" : "Roo.bootstrap",
-                                                                    "Number level" : 1
+                                                                    "Number level" : 1,
+                                                                    "String html" : "Lorem ipsum dolor sit amet, consectetur."
                                                                 }
                                                             ]
                                                         },
