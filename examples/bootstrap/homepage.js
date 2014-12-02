@@ -209,11 +209,10 @@ homepage = new Roo.XComponent({
                                                             items : [
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
-                                                                    tag : 'i',
+                                                                    tag : 'i::before',
                                                                     cls : 'fa fa-cogs fa-5',
                                                                     xtype : 'Element',
-                                                                    xns : Roo.bootstrap,
-                                                                    style : '::before'
+                                                                    xns : Roo.bootstrap
                                                                 }
                                                             ]
 
