@@ -249,27 +249,7 @@ homepage = new Roo.XComponent({
                                                     '|xns' : 'Roo.bootstrap',
                                                     cls : 'h-captain',
                                                     xtype : 'Element',
-                                                    xns : Roo.bootstrap,
-                                                    items : [
-                                                    	{
-                                                            '|xns' : 'Roo.bootstrap',
-                                                            tag : 'h4',
-                                                            xtype : 'Element',
-                                                            xns : Roo.bootstrap,
-                                                            html : 'Fat-free',
-                                                            items : [
-                                                            	{
-                                                                    '|xns' : 'Roo.bootstrap',
-                                                                    tag : 'i',
-                                                                    cls : 'fa fa-cogs fa-5',
-                                                                    xtype : 'Element',
-                                                                    xns : Roo.bootstrap
-                                                                }
-                                                            ]
-
-                                                        }
-                                                    ]
-
+                                                    xns : Roo.bootstrap
                                                 },
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
@@ -304,20 +284,10 @@ homepage = new Roo.XComponent({
                                                     items : [
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',
-                                                            tag : 'h4',
-                                                            xtype : 'Element',
+                                                            xtype : 'Header',
+                                                            level : 4,
                                                             xns : Roo.bootstrap,
-                                                            html : 'Creative Commons',
-                                                            items : [
-                                                            	{
-                                                                    '|xns' : 'Roo.bootstrap',
-                                                                    tag : 'i',
-                                                                    cls : 'fa fa-cogs fa-5',
-                                                                    xtype : 'Element',
-                                                                    xns : Roo.bootstrap
-                                                                }
-                                                            ]
-
+                                                            html : '<i class=\"fa fa-smile-o fa-5\"></i>Author\'s support'
                                                         }
                                                     ]
 
