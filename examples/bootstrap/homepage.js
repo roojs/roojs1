@@ -590,6 +590,7 @@ homepage = new Roo.XComponent({
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     tag : 'p',
+                                                                    cls : 'follow-me-icons',
                                                                     xtype : 'Element',
                                                                     xns : Roo.bootstrap
                                                                 }
