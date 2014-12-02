@@ -358,7 +358,7 @@ homepage = new Roo.XComponent({
                                                             tag : 'h4',
                                                             xtype : 'Element',
                                                             xns : Roo.bootstrap,
-                                                            html : 'Bootstrap-powered',
+                                                            html : 'Author\'s support',
                                                             items : [
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
