@@ -119,6 +119,7 @@
                                             "String html" : "The best place to tell people why they are here"
                                         },
                                         {
+                                            "String tag" : "p",
                                             "xtype" : "Element",
                                             "$ xns" : "Roo.bootstrap"
                                         }

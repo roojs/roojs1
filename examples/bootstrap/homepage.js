@@ -150,6 +150,7 @@ homepage = new Roo.XComponent({
                                         },
                                     	{
                                             '|xns' : 'Roo.bootstrap',
+                                            tag : 'p',
                                             xtype : 'Element',
                                             xns : Roo.bootstrap
                                         }
