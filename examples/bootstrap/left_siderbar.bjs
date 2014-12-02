@@ -45,7 +45,19 @@
                                                 {
                                                     "String cls" : "widget",
                                                     "xtype" : "Row",
-                                                    "$ xns" : "Roo.bootstrap"
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "Header",
+                                                                    "$ xns" : "Roo.bootstrap"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
