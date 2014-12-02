@@ -14,7 +14,9 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * @cfg {String} headline Box headline
  * @cfg {String} content Box content
  * @cfg {String} icon Box icon
- * @cfg {Boolean} footer Ture to generate the footer element Default false.
+ * @cfg {String} footer Footer text
+ * @cfg {String} furl Footer url
+ * @cfg {String} ficon Footer icon
  * 
  * @constructor
  * Create a new NumberBox
@@ -63,6 +65,19 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
         if(this.icon){
             cfg.cn.push({
                 tag: 'div',
+                cls: 'icon',
+                cn:[
+                    {
+                        tag: 'i',
+                        cls: 'ion ' + this.icon
+                    }
+                ]
+            });
+        }
+        
+        if(this.footer){
+            cfg.cn.push({
+                tag: 'a',
                 cls: 'icon',
                 cn:[
                     {
