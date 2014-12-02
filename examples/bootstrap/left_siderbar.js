@@ -215,7 +215,8 @@ left_siderbar = new Roo.XComponent({
                                                     '|xns' : 'Roo.bootstrap',
                                                     tag : 'blockquote',
                                                     xtype : 'Element',
-                                                    xns : Roo.bootstrap
+                                                    xns : Roo.bootstrap,
+                                                    html : 'Numquam, ut iure quia facere totam quas odit illo incidunt. Voluptatem, nostrum, ex, quasi incidunt similique cum maxime expedita unde labore inventore excepturi veniam corporis sequi facere ullam voluptates amet illum quam fuga voluptatibus ipsum atque sunt eos. Ut, necessitatibus.'
                                                 }
                                             ]
 
