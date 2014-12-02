@@ -443,10 +443,12 @@
                                                             "String html" : "Contact"
                                                         },
                                                         {
+                                                            "String cls" : "widget-body",
                                                             "xtype" : "Element",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [
                                                                 {
+                                                                    "String tag" : "p",
                                                                     "xtype" : "Element",
                                                                     "$ xns" : "Roo.bootstrap"
                                                                 }
