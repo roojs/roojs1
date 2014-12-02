@@ -115,7 +115,8 @@
                                         {
                                             "String cls" : "thin",
                                             "xtype" : "Header",
-                                            "$ xns" : "Roo.bootstrap"
+                                            "$ xns" : "Roo.bootstrap",
+                                            "String html" : "The best place to tell people why they are here"
                                         }
                                     ]
                                 }
