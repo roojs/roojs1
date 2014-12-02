@@ -194,17 +194,125 @@
                                         {
                                             "String cls" : "col-md-3 col-sm-6 highlight",
                                             "xtype" : "Element",
-                                            "$ xns" : "Roo.bootstrap"
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "String cls" : "h-captain",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "String tag" : "h4",
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "Bootstrap-powered",
+                                                            "items" : [
+                                                                {
+                                                                    "String tag" : "i",
+                                                                    "String cls" : "fa fa-cogs fa-5",
+                                                                    "xtype" : "Element",
+                                                                    "$ xns" : "Roo.bootstrap"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "String cls" : "h-body text-center",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "String tag" : "p",
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         },
                                         {
                                             "String cls" : "col-md-3 col-sm-6 highlight",
                                             "xtype" : "Element",
-                                            "$ xns" : "Roo.bootstrap"
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "String cls" : "h-captain",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "String tag" : "h4",
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "Bootstrap-powered",
+                                                            "items" : [
+                                                                {
+                                                                    "String tag" : "i",
+                                                                    "String cls" : "fa fa-cogs fa-5",
+                                                                    "xtype" : "Element",
+                                                                    "$ xns" : "Roo.bootstrap"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "String cls" : "h-body text-center",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "String tag" : "p",
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         },
                                         {
                                             "String cls" : "col-md-3 col-sm-6 highlight",
                                             "xtype" : "Element",
-                                            "$ xns" : "Roo.bootstrap"
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "String cls" : "h-captain",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "String tag" : "h4",
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "Bootstrap-powered",
+                                                            "items" : [
+                                                                {
+                                                                    "String tag" : "i",
+                                                                    "String cls" : "fa fa-cogs fa-5",
+                                                                    "xtype" : "Element",
+                                                                    "$ xns" : "Roo.bootstrap"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "String cls" : "h-body text-center",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "String tag" : "p",
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         }
                                     ]
                                 }

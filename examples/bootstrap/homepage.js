@@ -243,19 +243,154 @@ homepage = new Roo.XComponent({
                                             '|xns' : 'Roo.bootstrap',
                                             cls : 'col-md-3 col-sm-6 highlight',
                                             xtype : 'Element',
-                                            xns : Roo.bootstrap
+                                            xns : Roo.bootstrap,
+                                            items : [
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    cls : 'h-captain',
+                                                    xtype : 'Element',
+                                                    xns : Roo.bootstrap,
+                                                    items : [
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            tag : 'h4',
+                                                            xtype : 'Element',
+                                                            xns : Roo.bootstrap,
+                                                            html : 'Bootstrap-powered',
+                                                            items : [
+                                                            	{
+                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    tag : 'i',
+                                                                    cls : 'fa fa-cogs fa-5',
+                                                                    xtype : 'Element',
+                                                                    xns : Roo.bootstrap
+                                                                }
+                                                            ]
+
+                                                        }
+                                                    ]
+
+                                                },
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    cls : 'h-body text-center',
+                                                    xtype : 'Element',
+                                                    xns : Roo.bootstrap,
+                                                    items : [
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            tag : 'p',
+                                                            xtype : 'Element',
+                                                            xns : Roo.bootstrap,
+                                                            html : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?'
+                                                        }
+                                                    ]
+
+                                                }
+                                            ]
+
                                         },
                                     	{
                                             '|xns' : 'Roo.bootstrap',
                                             cls : 'col-md-3 col-sm-6 highlight',
                                             xtype : 'Element',
-                                            xns : Roo.bootstrap
+                                            xns : Roo.bootstrap,
+                                            items : [
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    cls : 'h-captain',
+                                                    xtype : 'Element',
+                                                    xns : Roo.bootstrap,
+                                                    items : [
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            tag : 'h4',
+                                                            xtype : 'Element',
+                                                            xns : Roo.bootstrap,
+                                                            html : 'Bootstrap-powered',
+                                                            items : [
+                                                            	{
+                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    tag : 'i',
+                                                                    cls : 'fa fa-cogs fa-5',
+                                                                    xtype : 'Element',
+                                                                    xns : Roo.bootstrap
+                                                                }
+                                                            ]
+
+                                                        }
+                                                    ]
+
+                                                },
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    cls : 'h-body text-center',
+                                                    xtype : 'Element',
+                                                    xns : Roo.bootstrap,
+                                                    items : [
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            tag : 'p',
+                                                            xtype : 'Element',
+                                                            xns : Roo.bootstrap,
+                                                            html : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?'
+                                                        }
+                                                    ]
+
+                                                }
+                                            ]
+
                                         },
                                     	{
                                             '|xns' : 'Roo.bootstrap',
                                             cls : 'col-md-3 col-sm-6 highlight',
                                             xtype : 'Element',
-                                            xns : Roo.bootstrap
+                                            xns : Roo.bootstrap,
+                                            items : [
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    cls : 'h-captain',
+                                                    xtype : 'Element',
+                                                    xns : Roo.bootstrap,
+                                                    items : [
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            tag : 'h4',
+                                                            xtype : 'Element',
+                                                            xns : Roo.bootstrap,
+                                                            html : 'Bootstrap-powered',
+                                                            items : [
+                                                            	{
+                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    tag : 'i',
+                                                                    cls : 'fa fa-cogs fa-5',
+                                                                    xtype : 'Element',
+                                                                    xns : Roo.bootstrap
+                                                                }
+                                                            ]
+
+                                                        }
+                                                    ]
+
+                                                },
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    cls : 'h-body text-center',
+                                                    xtype : 'Element',
+                                                    xns : Roo.bootstrap,
+                                                    items : [
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            tag : 'p',
+                                                            xtype : 'Element',
+                                                            xns : Roo.bootstrap,
+                                                            html : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?'
+                                                        }
+                                                    ]
+
+                                                }
+                                            ]
+
                                         }
                                     ]
 
