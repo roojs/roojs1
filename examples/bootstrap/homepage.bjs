@@ -313,7 +313,8 @@
                                         {
                                             "xtype" : "Header",
                                             "Number level" : 3,
-                                            "$ xns" : "Roo.bootstrap"
+                                            "$ xns" : "Roo.bootstrap",
+                                            "String html" : "Which code editor would you recommend?"
                                         }
                                     ]
                                 }
