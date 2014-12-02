@@ -398,7 +398,8 @@ homepage = new Roo.XComponent({
                                             '|xns' : 'Roo.bootstrap',
                                             tag : 'p',
                                             xtype : 'Element',
-                                            xns : Roo.bootstrap
+                                            xns : Roo.bootstrap,
+                                            html : 'I\'d highly recommend you <a href=\"http://www.sublimetext.com/\">Sublime Text</a>'
                                         }
                                     ]
 
