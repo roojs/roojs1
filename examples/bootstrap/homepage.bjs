@@ -467,7 +467,7 @@
                                                             "xtype" : "Header",
                                                             "Number level" : 3,
                                                             "$ xns" : "Roo.bootstrap",
-                                                            "String html" : "Contact"
+                                                            "String html" : "Follow me"
                                                         },
                                                         {
                                                             "String cls" : "widget-body",

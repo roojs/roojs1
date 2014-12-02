@@ -579,7 +579,7 @@ homepage = new Roo.XComponent({
                                                             xtype : 'Header',
                                                             level : 3,
                                                             xns : Roo.bootstrap,
-                                                            html : 'Contact'
+                                                            html : 'Follow me'
                                                         },
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',
