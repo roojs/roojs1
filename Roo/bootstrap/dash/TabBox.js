@@ -32,37 +32,26 @@ Roo.bootstrap.dash.TabBox = function(config){
 };
 
 Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
-    
-
-    title: '',
-    tab1_text: '',
-    tab2_text: '',
 
     getAutoCreate : function(){
         
         var cfg = {
             tag: 'div',
             cls: 'nav-tabs-custom',
-            html : null,
             cn: [
-            // {
-            //     tag: 'span',
-            //     cls: 'pull-left header',
-            //     html: this.title ? this.title : 'Title',
-            // },
-            {
-                tag: 'ul',
-                cls: 'nav nav-tabs pull-right',
-                cn: [{
-                    tag: 'li',
-                    cls: 'active',
-                    html: null,
-                    cn : [{
-                        tag: 'a',
-                        href: '#',
-                        // data-toggle: 'tab',
-                        html: this.tab1_text ? this.tab1_text : 'tab1'
-                    }]
+                {
+                    tag: 'ul',
+                    cls: 'nav nav-tabs pull-right',
+                    cn: [{
+                        tag: 'li',
+                        cls: 'active',
+                        html: null,
+                        cn : [{
+                            tag: 'a',
+                            href: '#',
+                            // data-toggle: 'tab',
+                            html: this.tab1_text ? this.tab1_text : 'tab1'
+                        }]
                 },
                 {
                     tag: 'li',
