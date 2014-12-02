@@ -111,32 +111,6 @@
                                                             ]
                                                         }
                                                     ]
-                                                },
-                                                {
-                                                    "String cls" : "col-md-8 maincontent",
-                                                    "xtype" : "Container",
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "items" : [
-                                                        {
-                                                            "String tag" : "header",
-                                                            "String cls" : "page-header",
-                                                            "xtype" : "Element",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "items" : [
-                                                                {
-                                                                    "String cls" : "page-title",
-                                                                    "xtype" : "Header",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "Number level" : 1,
-                                                                    "String html" : "Lorem ipsum dolor sit amet, consectetur."
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "xtype" : "Element",
-                                                            "$ xns" : "Roo.bootstrap"
-                                                        }
-                                                    ]
                                                 }
                                             ]
                                         },
