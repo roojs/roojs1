@@ -15,7 +15,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * @cfg {String} content Box content
  * @cfg {String} icon Box icon
  * @cfg {String} footer Footer text
- * @cfg {String} furl Footer url
+ * @cfg {String} fhref Footer href
  * @cfg {String} ficon Footer icon
  * 
  * @constructor
@@ -36,29 +36,29 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     content : '',
     icon : '',
     footer : '',
-    furl : '',
+    fhref : '',
     ficon : '',
     
 
     getAutoCreate : function(){
         
         var cfg = {
-            tag: 'div',
-            cls: 'small-box bg-' + this.bgcolor,
-            cn: [
+            tag : 'div',
+            cls : 'small-box bg-' + this.bgcolor,
+            cn : [
                 {
-                    tag: 'div',
-                    cls: 'inner',
-                    cn:[
+                    tag : 'div',
+                    cls : 'inner',
+                    cn :[
                         {
-                            tag: 'h3',
-                            cls: 'roo-headline',
-                            html: this.headline
+                            tag : 'h3',
+                            cls : 'roo-headline',
+                            html : this.headline
                         },
                         {
-                            tag: 'p',
-                            cls: 'roo-content',
-                            html: this.content
+                            tag : 'p',
+                            cls : 'roo-content',
+                            html : this.content
                         }
                     ]
                 }
@@ -67,28 +67,35 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
         
         if(this.icon){
             cfg.cn.push({
-                tag: 'div',
-                cls: 'icon',
-                cn:[
+                tag : 'div',
+                cls : 'icon',
+                cn :[
                     {
-                        tag: 'i',
-                        cls: 'ion ' + this.icon
+                        tag : 'i',
+                        cls : 'ion ' + this.icon
                     }
                 ]
             });
         }
         
         if(this.footer){
-            cfg.cn.push({
-                tag: 'a',
-                cls: 'icon',
-                cn:[
-                    {
-                        tag: 'i',
-                        cls: 'ion ' + this.icon
-                    }
-                ]
-            });
+            var footer = {
+                tag : 'a',
+                cls : 'small-box-footer',
+                href : this.fhref || '#',
+                html : this.footer,
+                cn : []
+            };
+            
+            if(this.ficon){
+                footer.cn.push({
+                    tag : 'i',
+                    cls : 'fa ' + this.ficon
+                });
+            }
+            
+            cfg.cn.push(footer);
+            
         }
         
         return  cfg;
