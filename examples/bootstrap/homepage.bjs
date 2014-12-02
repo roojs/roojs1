@@ -397,6 +397,10 @@
                                 {
                                     "xtype" : "Header",
                                     "$ xns" : "Roo.bootstrap"
+                                },
+                                {
+                                    "xtype" : "Element",
+                                    "$ xns" : "Roo.bootstrap"
                                 }
                             ]
                         }
