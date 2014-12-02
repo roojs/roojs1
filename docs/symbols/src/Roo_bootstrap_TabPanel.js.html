@@ -12,7 +12,7 @@
  * @cfg {Boolean} active panel active
  * @cfg {String} html panel content
  * @cfg {String} tabId tab relate id
- * @cfg {String} navId The navbar which triggers show hide
+ * @cfg {String} navId The Roo.bootstrap.NavGroup which triggers show hide ()
  * 
  * 
  * @constructor

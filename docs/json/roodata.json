@@ -13055,7 +13055,7 @@
     {
      "name": "navId",
      "type": "String",
-     "desc": "The navbar which triggers show hide",
+     "desc": "The Roo.bootstrap.NavGroup which triggers show hide ()",
      "memberOf": ""
     },
     {
@@ -15452,19 +15452,13 @@
     {
      "name": "title",
      "type": "String",
-     "desc": "",
+     "desc": "Title of the TabBox",
      "memberOf": ""
     },
     {
-     "name": "tab1_text",
+     "name": "icon",
      "type": "String",
-     "desc": "",
-     "memberOf": ""
-    },
-    {
-     "name": "tab2_text",
-     "type": "String",
-     "desc": "",
+     "desc": "Icon of the TabBox",
      "memberOf": ""
     },
     {
@@ -15558,12 +15552,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
-    },
-    {
-     "name": "click",
-     "sig": "function (e)\n{\n\n}",
-     "type": "function",
-     "desc": "The img click event for the img."
     },
     {
      "name": "destroy",
@@ -15930,27 +15918,9 @@
   "Roo.bootstrap.dash.TabPane": {
    "props": [
     {
-     "name": "align",
-     "type": "String",
-     "desc": "left | right",
-     "memberOf": ""
-    },
-    {
-     "name": "inverse",
+     "name": "active",
      "type": "Boolean",
-     "desc": "false | true",
-     "memberOf": ""
-    },
-    {
-     "name": "type",
-     "type": "String",
-     "desc": "(nav|pills|tab) default nav",
-     "memberOf": ""
-    },
-    {
-     "name": "navId",
-     "type": "String",
-     "desc": "- reference Id for navbar.",
+     "desc": "(false | true) Default false",
      "memberOf": ""
     },
     {
@@ -16044,12 +16014,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
-    },
-    {
-     "name": "changed",
-     "sig": "function (_self, item, item)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when the active item changes"
     },
     {
      "name": "destroy",
