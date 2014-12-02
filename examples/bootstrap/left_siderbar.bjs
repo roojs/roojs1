@@ -48,6 +48,7 @@
                                                     "$ xns" : "Roo.bootstrap",
                                                     "items" : [
                                                         {
+                                                            "String cls" : "col-xs-12",
                                                             "xtype" : "Element",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [
