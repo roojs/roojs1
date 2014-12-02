@@ -643,7 +643,7 @@ homepage = new Roo.XComponent({
                                                             xtype : 'Header',
                                                             level : 3,
                                                             xns : Roo.bootstrap,
-                                                            html : 'Contact'
+                                                            html : 'Text widget'
                                                         },
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',
