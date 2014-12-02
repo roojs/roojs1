@@ -28,41 +28,6 @@ left_siderbar = new Roo.XComponent({
                             '|xns' : 'Roo.bootstrap',
                             tag : 'ol',
                             cls : 'breadcrumb',
-                            xtype : 'Element',
-                            xns : Roo.bootstrap,
-                            items : [
-                            	{
-                                    '|xns' : 'Roo.bootstrap',
-                                    tag : 'ol',
-                                    cls : 'breadcrumb',
-                                    xtype : 'Container',
-                                    xns : Roo.bootstrap,
-                                    items : [
-                                    	{
-                                            '|xns' : 'Roo.bootstrap',
-                                            tag : 'li',
-                                            xtype : 'Element',
-                                            xns : Roo.bootstrap,
-                                            html : '<a href=\"index.html\">Home</a>'
-                                        },
-                                    	{
-                                            '|xns' : 'Roo.bootstrap',
-                                            tag : 'li',
-                                            cls : 'active',
-                                            xtype : 'Element',
-                                            xns : Roo.bootstrap,
-                                            html : 'Left Sidebar'
-                                        }
-                                    ]
-
-                                }
-                            ]
-
-                        },
-                    	{
-                            '|xns' : 'Roo.bootstrap',
-                            tag : 'ol',
-                            cls : 'breadcrumb',
                             xtype : 'Container',
                             xns : Roo.bootstrap,
                             items : [
