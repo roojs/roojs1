@@ -478,7 +478,14 @@
                                                                     "String tag" : "p",
                                                                     "String cls" : "follow-me-icons",
                                                                     "xtype" : "Element",
-                                                                    "$ xns" : "Roo.bootstrap"
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "String tag" : "a",
+                                                                            "xtype" : "Element",
+                                                                            "$ xns" : "Roo.bootstrap"
+                                                                        }
+                                                                    ]
                                                                 }
                                                             ]
                                                         }
