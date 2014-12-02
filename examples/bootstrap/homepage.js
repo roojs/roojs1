@@ -371,7 +371,9 @@ homepage = new Roo.XComponent({
                             '|xns' : 'Roo.bootstrap',
                             cls : 'text-center top-space',
                             xtype : 'Header',
-                            xns : Roo.bootstrap
+                            xns : Roo.bootstrap,
+                            level : 2,
+                            html : 'Frequently Asked Questions'
                         }
                     ]
 

@@ -296,7 +296,9 @@
                         {
                             "String cls" : "text-center top-space",
                             "xtype" : "Header",
-                            "$ xns" : "Roo.bootstrap"
+                            "$ xns" : "Roo.bootstrap",
+                            "Number level" : 2,
+                            "String html" : "Frequently Asked Questions"
                         }
                     ]
                 }
