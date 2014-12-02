@@ -157,9 +157,10 @@ left_siderbar = new Roo.XComponent({
                                                             items : [
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
+                                                                    cls : 'page-title',
                                                                     xtype : 'Header',
                                                                     xns : Roo.bootstrap,
-                                                                    level : 
+                                                                    level : 1
                                                                 }
                                                             ]
 
