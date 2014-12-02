@@ -27,6 +27,7 @@
                                     "String html" : "<a href=\"index.html\">Home</a>"
                                 },
                                 {
+                                    "String tag" : "li",
                                     "xtype" : "Element",
                                     "$ xns" : "Roo.bootstrap"
                                 }
