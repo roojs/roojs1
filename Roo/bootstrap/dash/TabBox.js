@@ -29,6 +29,11 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     title : '',
     icon : false,
     
+    getChildContainer : function()
+    {
+        return this.el.select('.tab-content', true).first();
+    },
+    
     getAutoCreate : function(){
         
         var header = {
