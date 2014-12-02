@@ -132,7 +132,7 @@
                     ]
                 },
                 {
-                    "String cls" : "jumbotron top-space",
+                    "String cls" : "",
                     "xtype" : "Element",
                     "$ xns" : "Roo.bootstrap",
                     "items" : [
