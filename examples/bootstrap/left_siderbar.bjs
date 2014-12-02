@@ -155,7 +155,8 @@
                                                 {
                                                     "xtype" : "Header",
                                                     "Number level" : 2,
-                                                    "$ xns" : "Roo.bootstrap"
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "String html" : "A, quibusdam, nobis, eveniet consequatur"
                                                 }
                                             ]
                                         }

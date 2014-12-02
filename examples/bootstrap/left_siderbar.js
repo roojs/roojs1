@@ -194,7 +194,8 @@ left_siderbar = new Roo.XComponent({
                                                     '|xns' : 'Roo.bootstrap',
                                                     xtype : 'Header',
                                                     level : 2,
-                                                    xns : Roo.bootstrap
+                                                    xns : Roo.bootstrap,
+                                                    html : 'A, quibusdam, nobis, eveniet consequatur'
                                                 }
                                             ]
 
