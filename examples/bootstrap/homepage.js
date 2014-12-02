@@ -384,6 +384,7 @@ homepage = new Roo.XComponent({
                             items : [
                             	{
                                     '|xns' : 'Roo.bootstrap',
+                                    cls : 'col-sm-6',
                                     xtype : 'Element',
                                     xns : Roo.bootstrap,
                                     items : [
@@ -414,6 +415,7 @@ homepage = new Roo.XComponent({
                             items : [
                             	{
                                     '|xns' : 'Roo.bootstrap',
+                                    cls : 'col-sm-6',
                                     xtype : 'Element',
                                     xns : Roo.bootstrap,
                                     items : [

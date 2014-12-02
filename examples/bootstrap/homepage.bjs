@@ -307,6 +307,7 @@
                             "$ xns" : "Roo.bootstrap",
                             "items" : [
                                 {
+                                    "String cls" : "col-sm-6",
                                     "xtype" : "Element",
                                     "$ xns" : "Roo.bootstrap",
                                     "items" : [
@@ -331,6 +332,7 @@
                             "$ xns" : "Roo.bootstrap",
                             "items" : [
                                 {
+                                    "String cls" : "col-sm-6",
                                     "xtype" : "Element",
                                     "$ xns" : "Roo.bootstrap",
                                     "items" : [
