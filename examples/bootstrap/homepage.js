@@ -558,7 +558,8 @@ homepage = new Roo.XComponent({
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     tag : 'p',
                                                                     xtype : 'Element',
-                                                                    xns : Roo.bootstrap
+                                                                    xns : Roo.bootstrap,
+                                                                    html : '+234 23 9873237<a href=\"mailto:#\">some.email@somewhere.com</a>\n\t\t\t\t\t\t\t\t234 Hidden Pond Road, Ashland City, TN 37015\n\t\t\t\t\t\t\t'
                                                                 }
                                                             ]
 
