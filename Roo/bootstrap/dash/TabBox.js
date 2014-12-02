@@ -22,15 +22,6 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 Roo.bootstrap.dash.TabBox = function(config){
     Roo.bootstrap.dash.TabBox.superclass.constructor.call(this, config);
     
-    this.addEvents({
-        // img events
-        /**
-         * @event click
-         * The img click event for the img.
-         * @param {Roo.EventObject} e
-         */
-        "click" : true
-    });
 };
 
 Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
@@ -75,27 +66,8 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         }
 
         return  cfg;
-    },
-    
-    initEvents: function() {
-        
-//        var _this = this;
-//        Roo.each(_this.el.select('li',true).elements, function(el){
-//            Roo.log(el);
-//            el.on('click', _this.onClick, el);
-//        })
-    },
-    
-    onClick : function(e)
-    {
-//        Roo.log('img onclick');
-//
-//        this.findParent('ul',false, true).select('li.active').removeClass('active');
-//        this.addClass('active');
-//        Roo.log(this);
-
     }
-   
+    
 });
 
  
