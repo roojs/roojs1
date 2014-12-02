@@ -120,7 +120,7 @@
                             "String cls" : "thin",
                             "xtype" : "Header",
                             "$ xns" : "Roo.bootstrap",
-                            "Number level" : 3,
+                            "Number level" : 2,
                             "String html" : "The best place to tell people why they are here"
                         },
                         {
