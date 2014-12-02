@@ -147,6 +147,11 @@ homepage = new Roo.XComponent({
                                             xtype : 'Header',
                                             xns : Roo.bootstrap,
                                             html : 'The best place to tell people why they are here'
+                                        },
+                                    	{
+                                            '|xns' : 'Roo.bootstrap',
+                                            xtype : 'Element',
+                                            xns : Roo.bootstrap
                                         }
                                     ]
 

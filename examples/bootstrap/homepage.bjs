@@ -117,6 +117,10 @@
                                             "xtype" : "Header",
                                             "$ xns" : "Roo.bootstrap",
                                             "String html" : "The best place to tell people why they are here"
+                                        },
+                                        {
+                                            "xtype" : "Element",
+                                            "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
                                 }
