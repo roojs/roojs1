@@ -182,6 +182,7 @@ homepage = new Roo.XComponent({
                                     cls : 'text-center thin',
                                     xtype : 'Header',
                                     xns : Roo.bootstrap,
+                                    level : 3,
                                     html : 'Reasons to use this template'
                                 },
                             	{

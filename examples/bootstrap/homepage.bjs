@@ -145,6 +145,7 @@
                                     "String cls" : "text-center thin",
                                     "xtype" : "Header",
                                     "$ xns" : "Roo.bootstrap",
+                                    "Number level" : 3,
                                     "String html" : "Reasons to use this template"
                                 },
                                 {
