@@ -17,7 +17,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * @cfg {Boolean} footer Ture to generate the footer element Default false.
  * 
  * @constructor
- * Create a new Input
+ * Create a new NumberBox
  * @param {Object} config The config object
  */
 
@@ -25,26 +25,14 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 Roo.bootstrap.dash.NumberBox = function(config){
     Roo.bootstrap.dash.NumberBox.superclass.constructor.call(this, config);
     
-    this.addEvents({
-        // img events
-        /**
-         * @event click
-         * The img click event for the img.
-         * @param {Roo.EventObject} e
-         */
-        "click" : true
-    });
 };
 
 Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     
-    bgcolor:'',
-    // width: 200,
-    height: 150,
-    headline: '',
-    title: 'Title',
-    more_url: '',
-    more_text: '',
+    bgcolor : 'aqua',
+    headline : '',
+    content : '',
+    footer : false,
 
     getAutoCreate : function(){
         
