@@ -470,7 +470,7 @@ homepage = new Roo.XComponent({
                                             xtype : 'Header',
                                             xns : Roo.bootstrap,
                                             level : 3,
-                                            html : 'Nice header. Where do I find more images like that one?'
+                                            html : 'Can you customize this template for me?'
                                         },
                                     	{
                                             '|xns' : 'Roo.bootstrap',

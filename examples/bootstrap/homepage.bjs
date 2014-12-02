@@ -378,7 +378,7 @@
                                             "xtype" : "Header",
                                             "$ xns" : "Roo.bootstrap",
                                             "Number level" : 3,
-                                            "String html" : "Nice header. Where do I find more images like that one?"
+                                            "String html" : "Can you customize this template for me?"
                                         },
                                         {
                                             "String tag" : "p",
