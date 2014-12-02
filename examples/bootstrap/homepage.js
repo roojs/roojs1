@@ -282,7 +282,7 @@ homepage = new Roo.XComponent({
                                                             tag : 'p',
                                                             xtype : 'Element',
                                                             xns : Roo.bootstrap,
-                                                            html : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?'
+                                                            html : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, commodi, sequi quis ad fugit omnis cumque a libero error nesciunt molestiae repellat quos perferendis numquam quibusdam rerum repellendus laboriosam reprehenderit! '
                                                         }
                                                     ]
 
