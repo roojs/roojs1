@@ -415,7 +415,13 @@
                 {
                     "String cls" : "top-space",
                     "xtype" : "Container",
-                    "$ xns" : "Roo.bootstrap"
+                    "$ xns" : "Roo.bootstrap",
+                    "items" : [
+                        {
+                            "xtype" : "Container",
+                            "$ xns" : "Roo.bootstrap"
+                        }
+                    ]
                 }
             ]
         }
