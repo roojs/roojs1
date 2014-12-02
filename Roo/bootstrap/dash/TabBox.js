@@ -71,6 +71,11 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         }
 
         return  cfg;
+    },
+    
+    setTitle : function(value)
+    {
+        this.el.select('.header', true).first().dom.innerHTML = value;
     }
     
 });
