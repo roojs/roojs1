@@ -176,6 +176,38 @@ left_siderbar = new Roo.XComponent({
                                                 }
                                             ]
 
+                                        },
+                                    	{
+                                            '|xns' : 'Roo.bootstrap',
+                                            cls : 'col-md-8 maincontent',
+                                            xtype : 'Container',
+                                            xns : Roo.bootstrap,
+                                            items : [
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    tag : 'header',
+                                                    cls : 'page-header',
+                                                    xtype : 'Element',
+                                                    xns : Roo.bootstrap,
+                                                    items : [
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            cls : 'page-title',
+                                                            xtype : 'Header',
+                                                            xns : Roo.bootstrap,
+                                                            level : 1,
+                                                            html : 'Lorem ipsum dolor sit amet, consectetur.'
+                                                        }
+                                                    ]
+
+                                                },
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    xtype : 'Element',
+                                                    xns : Roo.bootstrap
+                                                }
+                                            ]
+
                                         }
                                     ]
 
