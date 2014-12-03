@@ -100,8 +100,8 @@
                                                             "items" : [
                                                                 {
                                                                     "xtype" : "TextArea",
-                                                                    "string placeholder" : "Type your message here...",
                                                                     "Number rows" : 9,
+                                                                    "string placeholder" : "Type your message here...",
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "Number sm" : 12
                                                                 }
@@ -149,8 +149,8 @@
                                                     "items" : [
                                                         {
                                                             "xtype" : "Header",
-                                                            "Number level" : 4,
                                                             "$ xns" : "Roo.bootstrap",
+                                                            "Number level" : 4,
                                                             "String html" : "Address"
                                                         },
                                                         {
@@ -161,8 +161,8 @@
                                                         },
                                                         {
                                                             "xtype" : "Header",
-                                                            "Number level" : 4,
                                                             "$ xns" : "Roo.bootstrap",
+                                                            "Number level" : 4,
                                                             "String html" : "Phone:"
                                                         },
                                                         {
@@ -176,6 +176,10 @@
                                             ]
                                         }
                                     ]
+                                },
+                                {
+                                    "xtype" : "Container",
+                                    "$ xns" : "Roo.bootstrap"
                                 }
                             ]
                         }
