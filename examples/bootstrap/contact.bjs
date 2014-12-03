@@ -100,6 +100,7 @@
                                                             "items" : [
                                                                 {
                                                                     "xtype" : "TextArea",
+                                                                    "string placeholder" : "Type your message here...",
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "Number sm" : 12
                                                                 }

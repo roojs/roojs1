@@ -127,6 +127,7 @@ contact = new Roo.XComponent({
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'TextArea',
+                                                                    placeholder : 'Type your message here...',
                                                                     xns : Roo.bootstrap,
                                                                     sm : 12
                                                                 }
