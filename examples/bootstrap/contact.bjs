@@ -112,6 +112,7 @@
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [
                                                                 {
+                                                                    "String cls" : "col-sm-6",
                                                                     "xtype" : "Container",
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "items" : [

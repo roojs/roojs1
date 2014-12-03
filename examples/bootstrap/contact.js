@@ -142,6 +142,7 @@ contact = new Roo.XComponent({
                                                             items : [
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
+                                                                    cls : 'col-sm-6',
                                                                     xtype : 'Container',
                                                                     xns : Roo.bootstrap,
                                                                     items : [
