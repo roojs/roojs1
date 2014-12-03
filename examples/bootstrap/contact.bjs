@@ -72,7 +72,6 @@
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [
                                                                 {
-                                                                    "String cls" : "col-sm-4 ",
                                                                     "xtype" : "Input",
                                                                     "string placeholder" : "Name",
                                                                     "String inputType" : "text",
