@@ -152,6 +152,10 @@
                                                             "Number level" : 4,
                                                             "$ xns" : "Roo.bootstrap",
                                                             "String html" : "Address"
+                                                        },
+                                                        {
+                                                            "xtype" : "Element",
+                                                            "$ xns" : "Roo.bootstrap"
                                                         }
                                                     ]
                                                 }
