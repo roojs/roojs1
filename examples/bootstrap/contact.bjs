@@ -134,10 +134,6 @@
                                                             ]
                                                         }
                                                     ]
-                                                },
-                                                {
-                                                    "xtype" : "Element",
-                                                    "$ xns" : "Roo.bootstrap"
                                                 }
                                             ]
                                         }
