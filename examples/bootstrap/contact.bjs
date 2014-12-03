@@ -187,7 +187,13 @@
                                 {
                                     "xtype" : "Element",
                                     "$ xns" : "Roo.bootstrap",
-                                    "String style" : "position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);"
+                                    "String style" : "position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);",
+                                    "items" : [
+                                        {
+                                            "xtype" : "Element",
+                                            "$ xns" : "Roo.bootstrap"
+                                        }
+                                    ]
                                 }
                             ]
                         }

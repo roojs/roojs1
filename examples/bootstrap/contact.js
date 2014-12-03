@@ -235,7 +235,15 @@ contact = new Roo.XComponent({
                                     '|xns' : 'Roo.bootstrap',
                                     xtype : 'Element',
                                     xns : Roo.bootstrap,
-                                    style : 'position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);'
+                                    style : 'position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);',
+                                    items : [
+                                    	{
+                                            '|xns' : 'Roo.bootstrap',
+                                            xtype : 'Element',
+                                            xns : Roo.bootstrap
+                                        }
+                                    ]
+
                                 }
                             ]
 
