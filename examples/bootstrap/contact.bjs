@@ -79,6 +79,7 @@
                                                                         {
                                                                             "String cls" : "form-control",
                                                                             "xtype" : "Input",
+                                                                            "string placeholder" : "Name",
                                                                             "$ xns" : "Roo.bootstrap"
                                                                         }
                                                                     ]
