@@ -83,11 +83,16 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                 cls : 'small-box-footer',
                 href : this.fhref || '#',
                 html : this.footer,
-                cn : []
+                cn : [
+                    {
+                        tag : 'span',
+                        cn : []
+                    }
+                ]
             };
             
             if(this.ficon){
-                footer.cn.push({
+                footer.cn[0].push({
                     tag : 'i',
                     cls : 'fa ' + this.ficon
                 });
