@@ -93,7 +93,7 @@
                                                                         {
                                                                             "String cls" : "form-control",
                                                                             "xtype" : "Input",
-                                                                            "string placeholder" : "Name",
+                                                                            "string placeholder" : "Email",
                                                                             "String inputType" : "text",
                                                                             "$ xns" : "Roo.bootstrap"
                                                                         }
@@ -107,7 +107,7 @@
                                                                         {
                                                                             "String cls" : "form-control",
                                                                             "xtype" : "Input",
-                                                                            "string placeholder" : "Name",
+                                                                            "string placeholder" : "Phone",
                                                                             "String inputType" : "text",
                                                                             "$ xns" : "Roo.bootstrap"
                                                                         }
