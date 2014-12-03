@@ -112,7 +112,7 @@
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [
                                                                 {
-                                                                    "xtype" : "Container",
+                                                                    "xtype" : "Element",
                                                                     "$ xns" : "Roo.bootstrap"
                                                                 }
                                                             ]
