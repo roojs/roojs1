@@ -134,6 +134,11 @@ contact = new Roo.XComponent({
                                                                 }
                                                             ]
 
+                                                        },
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            xtype : 'Row',
+                                                            xns : Roo.bootstrap
                                                         }
                                                     ]
 
