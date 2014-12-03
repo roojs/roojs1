@@ -94,54 +94,27 @@ contact = new Roo.XComponent({
                                                             items : [
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
-                                                                    cls : 'col-sm-4',
-                                                                    xtype : 'Container',
-                                                                    xns : Roo.bootstrap,
-                                                                    items : [
-                                                                    	{
-                                                                            '|xns' : 'Roo.bootstrap',
-                                                                            cls : 'form-control',
-                                                                            xtype : 'Input',
-                                                                            placeholder : 'Name',
-                                                                            inputType : 'text',
-                                                                            xns : Roo.bootstrap
-                                                                        }
-                                                                    ]
-
+                                                                    cls : 'form-control',
+                                                                    xtype : 'Input',
+                                                                    placeholder : 'Name',
+                                                                    inputType : 'text',
+                                                                    xns : Roo.bootstrap
                                                                 },
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
-                                                                    cls : 'col-sm-4',
-                                                                    xtype : 'Container',
-                                                                    xns : Roo.bootstrap,
-                                                                    items : [
-                                                                    	{
-                                                                            '|xns' : 'Roo.bootstrap',
-                                                                            cls : 'form-control',
-                                                                            xtype : 'Input',
-                                                                            placeholder : 'Email',
-                                                                            inputType : 'text',
-                                                                            xns : Roo.bootstrap
-                                                                        }
-                                                                    ]
-
+                                                                    cls : 'form-control',
+                                                                    xtype : 'Input',
+                                                                    placeholder : 'Email',
+                                                                    inputType : 'text',
+                                                                    xns : Roo.bootstrap
                                                                 },
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
-                                                                    cls : 'col-sm-4',
-                                                                    xtype : 'Container',
-                                                                    xns : Roo.bootstrap,
-                                                                    items : [
-                                                                    	{
-                                                                            '|xns' : 'Roo.bootstrap',
-                                                                            cls : 'form-control',
-                                                                            xtype : 'Input',
-                                                                            placeholder : 'Phone',
-                                                                            inputType : 'text',
-                                                                            xns : Roo.bootstrap
-                                                                        }
-                                                                    ]
-
+                                                                    cls : 'form-control',
+                                                                    xtype : 'Input',
+                                                                    placeholder : 'Phone',
+                                                                    inputType : 'text',
+                                                                    xns : Roo.bootstrap
                                                                 }
                                                             ]
 
