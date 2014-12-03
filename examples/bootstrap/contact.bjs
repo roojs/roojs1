@@ -138,6 +138,7 @@
                                             ]
                                         },
                                         {
+                                            "String cls" : "col-sm-3 sidebar sidebar-right",
                                             "xtype" : "NavSidebar",
                                             "$ xns" : "Roo.bootstrap"
                                         }
