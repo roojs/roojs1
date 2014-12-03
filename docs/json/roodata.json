@@ -15312,12 +15312,6 @@
      "memberOf": ""
     },
     {
-     "name": "ficon",
-     "type": "String",
-     "desc": "Footer icon",
-     "memberOf": ""
-    },
-    {
      "name": "cls",
      "type": "String",
      "desc": "css class",

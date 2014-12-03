@@ -16,7 +16,6 @@
  * @cfg {String} icon Box icon
  * @cfg {String} footer Footer text
  * @cfg {String} fhref Footer href
- * @cfg {String} ficon Footer icon
  * 
  * @constructor
  * Create a new NumberBox
@@ -82,16 +81,8 @@
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'small-box-footer'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.fhref </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.footer</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
-            };
-            
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ficon</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">footer.cn.push</span><span class="jsdoc-syntax">({
-                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fa ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.ficon
-                </span><span class="jsdoc-syntax">});
-            }
+                </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.footer
+            </span><span class="jsdoc-syntax">};
             
             </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">footer</span><span class="jsdoc-syntax">);
             
