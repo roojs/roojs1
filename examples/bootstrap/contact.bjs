@@ -44,6 +44,7 @@
                                             "items" : [
                                                 {
                                                     "String tag" : "header",
+                                                    "String cls" : "page-header",
                                                     "xtype" : "Element",
                                                     "$ xns" : "Roo.bootstrap"
                                                 }
