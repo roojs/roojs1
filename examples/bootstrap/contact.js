@@ -205,6 +205,13 @@ contact = new Roo.XComponent({
                                                             level : 4,
                                                             xns : Roo.bootstrap,
                                                             html : 'Phone:'
+                                                        },
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            tag : 'address',
+                                                            xtype : 'Element',
+                                                            xns : Roo.bootstrap,
+                                                            html : '2002 Holcombe Boulevard, Houston, TX 77030, USA\n\t\t\t\t\t'
                                                         }
                                                     ]
 
