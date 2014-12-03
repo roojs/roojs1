@@ -120,14 +120,7 @@
                                                                             "String tag" : "label",
                                                                             "String cls" : "checkbox",
                                                                             "xtype" : "Element",
-                                                                            "$ xns" : "Roo.bootstrap",
-                                                                            "items" : [
-                                                                                {
-                                                                                    "xtype" : "Input",
-                                                                                    "String inputType" : "checkbox",
-                                                                                    "$ xns" : "Roo.bootstrap"
-                                                                                }
-                                                                            ]
+                                                                            "$ xns" : "Roo.bootstrap"
                                                                         }
                                                                     ]
                                                                 }
