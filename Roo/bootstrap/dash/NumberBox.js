@@ -92,7 +92,7 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
             };
             
             if(this.ficon){
-                footer.cn[0].push({
+                footer.cn[0].cn.push({
                     tag : 'i',
                     cls : 'fa ' + this.ficon
                 });
