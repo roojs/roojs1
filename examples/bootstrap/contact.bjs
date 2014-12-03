@@ -128,7 +128,8 @@
                                                                 {
                                                                     "String cls" : "col-sm-6 text-right",
                                                                     "xtype" : "Container",
-                                                                    "$ xns" : "Roo.bootstrap"
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "<input class=\"btn btn-action\" type=\"submit\" value=\"Send message\">"
                                                                 }
                                                             ]
                                                         }

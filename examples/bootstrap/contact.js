@@ -161,7 +161,8 @@ contact = new Roo.XComponent({
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     cls : 'col-sm-6 text-right',
                                                                     xtype : 'Container',
-                                                                    xns : Roo.bootstrap
+                                                                    xns : Roo.bootstrap,
+                                                                    html : '<input class=\"btn btn-action\" type=\"submit\" value=\"Send message\">'
                                                                 }
                                                             ]
 
