@@ -145,7 +145,14 @@
                                                 {
                                                     "String cls" : "widget",
                                                     "xtype" : "Container",
-                                                    "$ xns" : "Roo.bootstrap"
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "xtype" : "Header",
+                                                            "Number level" : 4,
+                                                            "$ xns" : "Roo.bootstrap"
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
