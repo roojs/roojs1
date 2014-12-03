@@ -158,6 +158,10 @@
                                                             "xtype" : "Element",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "String html" : "2002 Holcombe Boulevard, Houston, TX 77030, USA\n\t\t\t\t\t"
+                                                        },
+                                                        {
+                                                            "xtype" : "Header",
+                                                            "$ xns" : "Roo.bootstrap"
                                                         }
                                                     ]
                                                 }
