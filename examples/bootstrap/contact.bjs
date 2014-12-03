@@ -101,6 +101,7 @@
                                                                 {
                                                                     "xtype" : "TextArea",
                                                                     "string placeholder" : "Type your message here...",
+                                                                    "Number rows" : 9,
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "Number sm" : 12
                                                                 }
