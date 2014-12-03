@@ -49,6 +49,7 @@
                                                     "$ xns" : "Roo.bootstrap",
                                                     "items" : [
                                                         {
+                                                            "String cls" : "page-title",
                                                             "xtype" : "Header",
                                                             "Number level" : 1,
                                                             "$ xns" : "Roo.bootstrap"
