@@ -45,6 +45,11 @@ contact = new Roo.XComponent({
                                     xtype : 'Element',
                                     xns : Roo.bootstrap,
                                     html : 'Left Sidebar'
+                                },
+                            	{
+                                    '|xns' : 'Roo.bootstrap',
+                                    xtype : 'Row',
+                                    xns : Roo.bootstrap
                                 }
                             ]
 

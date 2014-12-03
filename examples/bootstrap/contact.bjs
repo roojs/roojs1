@@ -32,6 +32,10 @@
                                     "xtype" : "Element",
                                     "$ xns" : "Roo.bootstrap",
                                     "String html" : "Left Sidebar"
+                                },
+                                {
+                                    "xtype" : "Row",
+                                    "$ xns" : "Roo.bootstrap"
                                 }
                             ]
                         }
