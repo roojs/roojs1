@@ -1,0 +1,14 @@
+{
+    "name" : "contact",
+    "parent" : "",
+    "title" : "",
+    "path" : "/home/michael/gitlive/roojs1/examples/bootstrap/contact.bjs",
+    "permname" : "",
+    "modOrder" : "001",
+    "items" : [
+        {
+            "xtype" : "Body",
+            "$ xns" : "Roo.bootstrap"
+        }
+    ]
+}
