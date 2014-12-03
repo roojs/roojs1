@@ -82,14 +82,28 @@
                                                                             "string placeholder" : "Name",
                                                                             "String inputType" : "text",
                                                                             "$ xns" : "Roo.bootstrap"
-                                                                        },
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "String cls" : "col-sm-4",
+                                                                    "xtype" : "Container",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
                                                                         {
                                                                             "String cls" : "form-control",
                                                                             "xtype" : "Input",
                                                                             "string placeholder" : "Name",
                                                                             "String inputType" : "text",
                                                                             "$ xns" : "Roo.bootstrap"
-                                                                        },
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "String cls" : "col-sm-4",
+                                                                    "xtype" : "Container",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
                                                                         {
                                                                             "String cls" : "form-control",
                                                                             "xtype" : "Input",
