@@ -123,6 +123,7 @@
                                                                             "$ xns" : "Roo.bootstrap",
                                                                             "items" : [
                                                                                 {
+                                                                                    "String tag" : "input",
                                                                                     "xtype" : "Element",
                                                                                     "$ xns" : "Roo.bootstrap"
                                                                                 }
