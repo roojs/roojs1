@@ -178,6 +178,7 @@
                                     ]
                                 },
                                 {
+                                    "String cls" : "container-full top-space",
                                     "xtype" : "Container",
                                     "$ xns" : "Roo.bootstrap"
                                 }
