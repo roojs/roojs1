@@ -156,6 +156,7 @@ contact = new Roo.XComponent({
                                                                             	{
                                                                                     '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Input',
+                                                                                    inputType : 'checkbox',
                                                                                     xns : Roo.bootstrap
                                                                                 }
                                                                             ]
