@@ -102,7 +102,7 @@ contact = new Roo.XComponent({
                                                                 },
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
-                                                                    cls : 'form-control',
+                                                                    cls : 'col-sm-4 form-control',
                                                                     xtype : 'Input',
                                                                     placeholder : 'Email',
                                                                     inputType : 'text',
@@ -110,7 +110,7 @@ contact = new Roo.XComponent({
                                                                 },
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
-                                                                    cls : 'form-control',
+                                                                    cls : 'col-sm-4 form-control',
                                                                     xtype : 'Input',
                                                                     placeholder : 'Phone',
                                                                     inputType : 'text',
