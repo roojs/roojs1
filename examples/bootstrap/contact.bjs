@@ -100,7 +100,8 @@
                                                             "items" : [
                                                                 {
                                                                     "xtype" : "TextArea",
-                                                                    "$ xns" : "Roo.bootstrap"
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "Number sm" : 12
                                                                 }
                                                             ]
                                                         }
