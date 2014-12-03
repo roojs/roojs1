@@ -73,19 +73,12 @@
                                                             "items" : [
                                                                 {
                                                                     "xtype" : "Input",
-                                                                    "string placeholder" : "Name",
-                                                                    "String inputType" : "text",
-                                                                    "$ xns" : "Roo.bootstrap"
-                                                                },
-                                                                {
-                                                                    "xtype" : "Input",
                                                                     "string placeholder" : "Email",
                                                                     "String inputType" : "text",
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "Number sm" : 4
                                                                 },
                                                                 {
-                                                                    "String cls" : "col-sm-4 form-control",
                                                                     "xtype" : "Input",
                                                                     "string placeholder" : "Phone",
                                                                     "String inputType" : "text",
