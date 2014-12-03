@@ -102,11 +102,11 @@ contact = new Roo.XComponent({
                                                                 },
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
-                                                                    cls : 'col-sm-4',
                                                                     xtype : 'Input',
                                                                     placeholder : 'Email',
                                                                     inputType : 'text',
-                                                                    xns : Roo.bootstrap
+                                                                    xns : Roo.bootstrap,
+                                                                    sm : 4
                                                                 },
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
