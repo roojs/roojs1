@@ -56,6 +56,11 @@
                                                             "String html" : "Contact us"
                                                         }
                                                     ]
+                                                },
+                                                {
+                                                    "String tag" : "p",
+                                                    "xtype" : "Element",
+                                                    "$ xns" : "Roo.bootstrap"
                                                 }
                                             ]
                                         }
