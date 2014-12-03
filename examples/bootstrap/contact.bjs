@@ -52,7 +52,8 @@
                                                             "String cls" : "page-title",
                                                             "xtype" : "Header",
                                                             "Number level" : 1,
-                                                            "$ xns" : "Roo.bootstrap"
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "Contact us"
                                                         }
                                                     ]
                                                 }

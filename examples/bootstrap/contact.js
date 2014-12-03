@@ -69,7 +69,8 @@ contact = new Roo.XComponent({
                                                             cls : 'page-title',
                                                             xtype : 'Header',
                                                             level : 1,
-                                                            xns : Roo.bootstrap
+                                                            xns : Roo.bootstrap,
+                                                            html : 'Contact us'
                                                         }
                                                     ]
 
