@@ -126,6 +126,7 @@
                                                                     ]
                                                                 },
                                                                 {
+                                                                    "String cls" : "d",
                                                                     "xtype" : "Input",
                                                                     "$ xns" : "Roo.bootstrap"
                                                                 }
