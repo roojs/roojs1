@@ -95,6 +95,14 @@ contact = new Roo.XComponent({
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'Input',
+                                                                    placeholder : 'Name',
+                                                                    inputType : 'text',
+                                                                    xns : Roo.bootstrap,
+                                                                    sm : 4
+                                                                },
+                                                            	{
+                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    xtype : 'Input',
                                                                     placeholder : 'Email',
                                                                     inputType : 'text',
                                                                     xns : Roo.bootstrap,
@@ -103,9 +111,10 @@ contact = new Roo.XComponent({
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'Input',
-                                                                    placeholder : 'Phone',
+                                                                    placeholder : 'Email',
                                                                     inputType : 'text',
-                                                                    xns : Roo.bootstrap
+                                                                    xns : Roo.bootstrap,
+                                                                    sm : 4
                                                                 }
                                                             ]
 

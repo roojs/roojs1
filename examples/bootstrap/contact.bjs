@@ -73,6 +73,13 @@
                                                             "items" : [
                                                                 {
                                                                     "xtype" : "Input",
+                                                                    "string placeholder" : "Name",
+                                                                    "String inputType" : "text",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "Number sm" : 4
+                                                                },
+                                                                {
+                                                                    "xtype" : "Input",
                                                                     "string placeholder" : "Email",
                                                                     "String inputType" : "text",
                                                                     "$ xns" : "Roo.bootstrap",
@@ -80,9 +87,10 @@
                                                                 },
                                                                 {
                                                                     "xtype" : "Input",
-                                                                    "string placeholder" : "Phone",
+                                                                    "string placeholder" : "Email",
                                                                     "String inputType" : "text",
-                                                                    "$ xns" : "Roo.bootstrap"
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "Number sm" : 4
                                                                 }
                                                             ]
                                                         }
