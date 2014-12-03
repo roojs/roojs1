@@ -50,6 +50,7 @@
                                                     "items" : [
                                                         {
                                                             "xtype" : "Header",
+                                                            "Number level" : 1,
                                                             "$ xns" : "Roo.bootstrap"
                                                         }
                                                     ]
