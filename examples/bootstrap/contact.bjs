@@ -93,6 +93,10 @@
                                                                     "Number sm" : 4
                                                                 }
                                                             ]
+                                                        },
+                                                        {
+                                                            "xtype" : "Row",
+                                                            "$ xns" : "Roo.bootstrap"
                                                         }
                                                     ]
                                                 }
