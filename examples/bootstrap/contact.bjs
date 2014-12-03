@@ -117,6 +117,7 @@
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "items" : [
                                                                         {
+                                                                            "String tag" : "label",
                                                                             "xtype" : "Element",
                                                                             "$ xns" : "Roo.bootstrap"
                                                                         }
