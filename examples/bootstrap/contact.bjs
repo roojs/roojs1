@@ -72,7 +72,7 @@
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [
                                                                 {
-                                                                    "String cls" : "form-control",
+                                                                    "String cls" : "col-sm-4 form-control",
                                                                     "xtype" : "Input",
                                                                     "string placeholder" : "Name",
                                                                     "String inputType" : "text",
