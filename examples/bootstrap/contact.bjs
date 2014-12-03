@@ -79,7 +79,7 @@
                                                                     "$ xns" : "Roo.bootstrap"
                                                                 },
                                                                 {
-                                                                    "String cls" : "col-sm-4 form-control",
+                                                                    "String cls" : "col-sm-4",
                                                                     "xtype" : "Input",
                                                                     "string placeholder" : "Email",
                                                                     "String inputType" : "text",
