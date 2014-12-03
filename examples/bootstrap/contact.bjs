@@ -118,6 +118,7 @@
                                                                     "items" : [
                                                                         {
                                                                             "String tag" : "label",
+                                                                            "String cls" : "checkbox",
                                                                             "xtype" : "Element",
                                                                             "$ xns" : "Roo.bootstrap"
                                                                         }

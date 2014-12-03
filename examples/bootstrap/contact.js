@@ -149,6 +149,7 @@ contact = new Roo.XComponent({
                                                                     	{
                                                                             '|xns' : 'Roo.bootstrap',
                                                                             tag : 'label',
+                                                                            cls : 'checkbox',
                                                                             xtype : 'Element',
                                                                             xns : Roo.bootstrap
                                                                         }
