@@ -17,6 +17,42 @@ contact = new Roo.XComponent({
         return {
             '|xns' : 'Roo.bootstrap',
             xtype : 'Body',
-            xns : Roo.bootstrap
+            xns : Roo.bootstrap,
+            items : [
+            	{
+                    '|xns' : 'Roo.bootstrap',
+                    xtype : 'Container',
+                    xns : Roo.bootstrap,
+                    items : [
+                    	{
+                            '|xns' : 'Roo.bootstrap',
+                            tag : 'ol',
+                            cls : 'breadcrumb',
+                            xtype : 'Container',
+                            xns : Roo.bootstrap,
+                            items : [
+                            	{
+                                    '|xns' : 'Roo.bootstrap',
+                                    tag : 'li',
+                                    xtype : 'Element',
+                                    xns : Roo.bootstrap,
+                                    html : '<a href=\"index.html\">Home</a>'
+                                },
+                            	{
+                                    '|xns' : 'Roo.bootstrap',
+                                    tag : 'li',
+                                    cls : 'active',
+                                    xtype : 'Element',
+                                    xns : Roo.bootstrap,
+                                    html : 'Left Sidebar'
+                                }
+                            ]
+
+                        }
+                    ]
+
+                }
+            ]
+
         };    }
 });
