@@ -124,6 +124,10 @@
                                                                             "String html" : "<input type=\"checkbox\"> \nSign up for newsletter\n"
                                                                         }
                                                                     ]
+                                                                },
+                                                                {
+                                                                    "xtype" : "Input",
+                                                                    "$ xns" : "Roo.bootstrap"
                                                                 }
                                                             ]
                                                         }
