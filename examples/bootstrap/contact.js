@@ -194,6 +194,8 @@ contact = new Roo.XComponent({
                                                         },
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',
+                                                            tag : 'address',
+                                                            cls : '',
                                                             xtype : 'Element',
                                                             xns : Roo.bootstrap
                                                         }

@@ -154,6 +154,8 @@
                                                             "String html" : "Address"
                                                         },
                                                         {
+                                                            "String tag" : "address",
+                                                            "String cls" : "",
                                                             "xtype" : "Element",
                                                             "$ xns" : "Roo.bootstrap"
                                                         }
