@@ -152,7 +152,7 @@ contact = new Roo.XComponent({
                                                                             cls : 'checkbox',
                                                                             xtype : 'Element',
                                                                             xns : Roo.bootstrap,
-                                                                            html : '<input type=\"checkbox\"> \" Sign up for newsletter\"'
+                                                                            html : '<input type=\"checkbox\"> \nSign up for newsletter\n'
                                                                         }
                                                                     ]
 
