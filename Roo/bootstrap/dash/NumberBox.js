@@ -16,7 +16,6 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * @cfg {String} icon Box icon
  * @cfg {String} footer Footer text
  * @cfg {String} fhref Footer href
- * @cfg {String} ficon Footer icon
  * 
  * @constructor
  * Create a new NumberBox
@@ -82,24 +81,8 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                 tag : 'a',
                 cls : 'small-box-footer',
                 href : this.fhref || '#',
-                html : this.footer,
-                cn : [
-                    {
-                        tag : 'span',
-                        cn : []
-                    }
-                ]
+                html : this.footer
             };
-            
-            if(this.ficon){
-                footer.cn[0].cn.push({
-                    tag : 'i',
-                    cls : 'fa ' + this.ficon
-                });
-            }
-            
-            cfg.cn.push(footer);
-            
         }
         
         return  cfg;
