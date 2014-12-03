@@ -105,6 +105,22 @@ contact = new Roo.XComponent({
                                                                             placeholder : 'Name',
                                                                             inputType : 'text',
                                                                             xns : Roo.bootstrap
+                                                                        },
+                                                                    	{
+                                                                            '|xns' : 'Roo.bootstrap',
+                                                                            cls : 'form-control',
+                                                                            xtype : 'Input',
+                                                                            placeholder : 'Name',
+                                                                            inputType : 'text',
+                                                                            xns : Roo.bootstrap
+                                                                        },
+                                                                    	{
+                                                                            '|xns' : 'Roo.bootstrap',
+                                                                            cls : 'form-control',
+                                                                            xtype : 'Input',
+                                                                            placeholder : 'Name',
+                                                                            inputType : 'text',
+                                                                            xns : Roo.bootstrap
                                                                         }
                                                                     ]
 
