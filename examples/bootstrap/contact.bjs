@@ -124,11 +124,6 @@
                                                                             "String html" : "<input type=\"checkbox\"> \nSign up for newsletter\n"
                                                                         }
                                                                     ]
-                                                                },
-                                                                {
-                                                                    "String cls" : "d",
-                                                                    "xtype" : "Input",
-                                                                    "$ xns" : "Roo.bootstrap"
                                                                 }
                                                             ]
                                                         }
