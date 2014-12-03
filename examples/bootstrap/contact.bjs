@@ -161,7 +161,9 @@
                                                         },
                                                         {
                                                             "xtype" : "Header",
-                                                            "$ xns" : "Roo.bootstrap"
+                                                            "Number level" : 4,
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "Phone:"
                                                         }
                                                     ]
                                                 }

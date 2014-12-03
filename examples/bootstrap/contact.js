@@ -202,7 +202,9 @@ contact = new Roo.XComponent({
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',
                                                             xtype : 'Header',
-                                                            xns : Roo.bootstrap
+                                                            level : 4,
+                                                            xns : Roo.bootstrap,
+                                                            html : 'Phone:'
                                                         }
                                                     ]
 
