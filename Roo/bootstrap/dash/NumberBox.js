@@ -83,6 +83,9 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                 href : this.fhref || '#',
                 html : this.footer
             };
+            
+            cfg.cn.push(footer);
+            
         }
         
         return  cfg;
