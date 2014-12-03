@@ -62,7 +62,15 @@ contact = new Roo.XComponent({
                                                     tag : 'header',
                                                     cls : 'page-header',
                                                     xtype : 'Element',
-                                                    xns : Roo.bootstrap
+                                                    xns : Roo.bootstrap,
+                                                    items : [
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            xtype : 'Header',
+                                                            xns : Roo.bootstrap
+                                                        }
+                                                    ]
+
                                                 }
                                             ]
 
