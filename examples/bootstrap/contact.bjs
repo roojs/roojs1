@@ -72,8 +72,15 @@
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [
                                                                 {
+                                                                    "String cls" : "col-sm-4",
                                                                     "xtype" : "Container",
-                                                                    "$ xns" : "Roo.bootstrap"
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "xtype" : "Input",
+                                                                            "$ xns" : "Roo.bootstrap"
+                                                                        }
+                                                                    ]
                                                                 }
                                                             ]
                                                         }
