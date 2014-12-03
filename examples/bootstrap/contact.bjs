@@ -136,6 +136,10 @@
                                                     ]
                                                 }
                                             ]
+                                        },
+                                        {
+                                            "xtype" : "NavSidebar",
+                                            "$ xns" : "Roo.bootstrap"
                                         }
                                     ]
                                 }

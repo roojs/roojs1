@@ -172,6 +172,11 @@ contact = new Roo.XComponent({
                                                 }
                                             ]
 
+                                        },
+                                    	{
+                                            '|xns' : 'Roo.bootstrap',
+                                            xtype : 'NavSidebar',
+                                            xns : Roo.bootstrap
                                         }
                                     ]
 
