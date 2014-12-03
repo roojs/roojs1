@@ -80,7 +80,20 @@ contact = new Roo.XComponent({
                                                     tag : 'p',
                                                     xtype : 'Element',
                                                     xns : Roo.bootstrap,
-                                                    html : '\n\t\t\t\t\tWe’d love to hear from you. Interested in working together? Fill out the form below with some info about your project and I will get back to you as soon as I can. Please allow a couple days for me to respond.\n\t\t\t\t'
+                                                    html : 'We’d love to hear from you. Interested in working together? Fill out the form below with some info about your project and I will get back to you as soon as I can. Please allow a couple days for me to respond.\n\t\t\t\t'
+                                                },
+                                            	{
+                                                    '|xns' : 'Roo.bootstrap',
+                                                    xtype : 'Form',
+                                                    xns : Roo.bootstrap,
+                                                    items : [
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            xtype : 'Row',
+                                                            xns : Roo.bootstrap
+                                                        }
+                                                    ]
+
                                                 }
                                             ]
 
