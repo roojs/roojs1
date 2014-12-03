@@ -87,7 +87,7 @@
                                                                 },
                                                                 {
                                                                     "xtype" : "Input",
-                                                                    "string placeholder" : "Email",
+                                                                    "string placeholder" : "Phone",
                                                                     "String inputType" : "text",
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "Number sm" : 4

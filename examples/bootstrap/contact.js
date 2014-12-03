@@ -111,7 +111,7 @@ contact = new Roo.XComponent({
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'Input',
-                                                                    placeholder : 'Email',
+                                                                    placeholder : 'Phone',
                                                                     inputType : 'text',
                                                                     xns : Roo.bootstrap,
                                                                     sm : 4
