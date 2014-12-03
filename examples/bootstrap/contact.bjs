@@ -191,6 +191,7 @@
                                     "String style" : "position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);",
                                     "items" : [
                                         {
+                                            "String cls" : "gm-style",
                                             "xtype" : "Element",
                                             "$ xns" : "Roo.bootstrap"
                                         }
