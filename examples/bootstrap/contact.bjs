@@ -38,6 +38,7 @@
                                     "$ xns" : "Roo.bootstrap",
                                     "items" : [
                                         {
+                                            "String cls" : "col-sm-9 maincontent",
                                             "xtype" : "Container",
                                             "$ xns" : "Roo.bootstrap"
                                         }
