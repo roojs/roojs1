@@ -122,6 +122,13 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             ]
             
         };
+        
+        if(this.submenu){
+            cfg = {
+                tag : 'ul',
+                cls : 'dropdown-menu'
+            }
+        }
 	
         return cfg;
     },
