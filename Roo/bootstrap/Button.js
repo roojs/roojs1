@@ -167,7 +167,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         
         if (this.items) {
             Roo.log('changing to ul' );
-            cfg.tag = 'div';
+            cfg.tag = 'ul';
             this.glyphicon = 'caret';
         }
         
