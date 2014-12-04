@@ -234,7 +234,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      */
     showAt : function(xy, parentMenu, /* private: */_e){
         Roo.log(xy);
-        xy = [0,-100]
+        xy = [77,0]
         this.parentMenu = parentMenu;
         if(!this.el){
             this.render();
@@ -244,7 +244,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             
             //xy = this.el.adjustForConstraints(xy);
         }
-        this.el.setTop(-34).setLeft(77);
+        this.el.setXY(xy);
         //this.el.show();
         this.hideMenuItems();
         this.hidden = false;
