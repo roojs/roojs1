@@ -122,7 +122,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             ]
             
         };
-	Roo.log(cfg);
+	
         return cfg;
     }
 });
