@@ -90,9 +90,9 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     weight : '',
     
     
-//    getChildContainer : function() {
-//        return this.el;  
-//    },
+    getChildContainer : function() {
+        return this.el.select('dropdown-menu', true).first();  
+    },
     
     getAutoCreate : function()
     {
@@ -121,26 +121,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             ]
             
         };
-	 
-        //if (['right'].indexOf(this.align)!==-1) {
-        //    cfg.cn[1].cls += ' pull-right'
-        //}
-        
-        
-        var cfg = {
-            tag : 'ul',
-            cls : 'dropdown-menu' ,
-            style : 'z-index:1000'
-            
-        }
 	
-        if (this.type === 'submenu') {
-            cfg.cls = 'submenu active';
-        }
-        if (this.type === 'treeview') {
-            cfg.cls = 'treeview-menu';
-        }
-        
         return cfg;
     }
 });
