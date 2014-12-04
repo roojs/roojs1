@@ -131,6 +131,37 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         this.triggerEl = this.el.select('button.dropdown-toggle', true).first();
         this.triggerEl.on('click', this.onTriggerPress, this);
         
+    },
+    
+    onTriggerPress  : function(e)
+    {
+        
+        Roo.log('trigger press');
+        
+        if (this.isVisible()) {
+            this.hide();
+        } else {
+            this.show();
+        }
+        
+        
+    },
+    
+    isVisible : function(){
+        return !this.hidden;
+    },
+    
+    show : function()
+    {
+        this.hidden = false;
+        this.el.addClass('open');
+        
+    },
+    
+    hide : function()
+    {
+        this.hidden = true;
+        this.el.removeClass('open');;
     }
     
 });
