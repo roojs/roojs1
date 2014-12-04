@@ -12,6 +12,7 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * Bootstrap Menu class - container for MenuItems
  * @cfg {Boolean} submenu (true | false) default false
  * @cfg {String} html Text of the menu
+ * @cfg {String} weight primary | success | info | warning | danger | inverse default empty
  * 
  * @constructor
  * Create a new Menu
@@ -92,7 +93,12 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
 //        return this.el;  
 //    },
     
-    getAutoCreate : function(){
+    getAutoCreate : function()
+    {
+        var cfg = {
+            tag : 'div',
+            
+        };
 	 
         //if (['right'].indexOf(this.align)!==-1) {
         //    cfg.cn[1].cls += ' pull-right'
@@ -114,213 +120,6 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         }
         
         return cfg;
-    },
-    initEvents : function() {
-        
-       // Roo.log("ADD event");
-       // Roo.log(this.triggerEl.dom);
-        this.triggerEl.on('click', this.onTriggerPress, this);
-        this.triggerEl.addClass('dropdown-toggle');
-        this.el.on(Roo.isTouch ? 'touchstart' : 'click'   , this.onClick, this);
-
-        this.el.on("mouseover", this.onMouseOver, this);
-        this.el.on("mouseout", this.onMouseOut, this);
-        
-        
-    },
-    findTargetItem : function(e){
-        var t = e.getTarget(".dropdown-menu-item", this.el,  true);
-        if(!t){
-            return false;
-        }
-        //Roo.log(t);         Roo.log(t.id);
-        if(t && t.id){
-            //Roo.log(this.menuitems);
-            return this.menuitems.get(t.id);
-            
-            //return this.items.get(t.menuItemId);
-        }
-        
-        return false;
-    },
-    onClick : function(e){
-        Roo.log("menu.onClick");
-        var t = this.findTargetItem(e);
-        if(!t){
-            return;
-        }
-        Roo.log(e);
-        /*
-        if (Roo.isTouch && e.type == 'touchstart' && t.menu  && !t.disabled) {
-            if(t == this.activeItem && t.shouldDeactivate(e)){
-                this.activeItem.deactivate();
-                delete this.activeItem;
-                return;
-            }
-            if(t.canActivate){
-                this.setActiveItem(t, true);
-            }
-            return;
-            
-            
-        }
-        */
-        Roo.log('pass click event');
-        
-        t.onClick(e);
-        
-        this.fireEvent("click", this, t, e);
-        
-        this.hide();
-    },
-     onMouseOver : function(e){
-        var t  = this.findTargetItem(e);
-        //Roo.log(t);
-        //if(t){
-        //    if(t.canActivate && !t.disabled){
-        //        this.setActiveItem(t, true);
-        //    }
-        //}
-        
-        this.fireEvent("mouseover", this, e, t);
-    },
-    isVisible : function(){
-        return !this.hidden;
-    },
-     onMouseOut : function(e){
-        var t  = this.findTargetItem(e);
-        
-        //if(t ){
-        //    if(t == this.activeItem && t.shouldDeactivate(e)){
-        //        this.activeItem.deactivate();
-        //        delete this.activeItem;
-        //    }
-        //}
-        this.fireEvent("mouseout", this, e, t);
-    },
-    
-    
-    /**
-     * Displays this menu relative to another element
-     * @param {String/HTMLElement/Roo.Element} element The element to align to
-     * @param {String} position (optional) The {@link Roo.Element#alignTo} anchor position to use in aligning to
-     * the element (defaults to this.defaultAlign)
-     * @param {Roo.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
-     */
-    show : function(el, pos, parentMenu){
-        this.parentMenu = parentMenu;
-        if(!this.el){
-            this.render();
-        }
-        this.fireEvent("beforeshow", this);
-        this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
-    },
-     /**
-     * Displays this menu at a specific xy position
-     * @param {Array} xyPosition Contains X & Y [x, y] values for the position at which to show the menu (coordinates are page-based)
-     * @param {Roo.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
-     */
-    showAt : function(xy, parentMenu, /* private: */_e){
-        this.parentMenu = parentMenu;
-        if(!this.el){
-            this.render();
-        }
-        if(_e !== false){
-            this.fireEvent("beforeshow", this);
-            
-            //xy = this.el.adjustForConstraints(xy);
-        }
-        //this.el.setXY(xy);
-        //this.el.show();
-        this.hideMenuItems();
-        this.hidden = false;
-        this.triggerEl.addClass('open');
-        this.focus();
-        this.fireEvent("show", this);
-    },
-    
-    focus : function(){
-        return;
-        if(!this.hidden){
-            this.doFocus.defer(50, this);
-        }
-    },
-
-    doFocus : function(){
-        if(!this.hidden){
-            this.focusEl.focus();
-        }
-    },
-
-    /**
-     * Hides this menu and optionally all parent menus
-     * @param {Boolean} deep (optional) True to hide all parent menus recursively, if any (defaults to false)
-     */
-    hide : function(deep){
-        
-        this.hideMenuItems();
-        if(this.el && this.isVisible()){
-            this.fireEvent("beforehide", this);
-            if(this.activeItem){
-                this.activeItem.deactivate();
-                this.activeItem = null;
-            }
-            this.triggerEl.removeClass('open');;
-            this.hidden = true;
-            this.fireEvent("hide", this);
-        }
-        if(deep === true && this.parentMenu){
-            this.parentMenu.hide(true);
-        }
-    },
-    
-    onTriggerPress  : function(e)
-    {
-        
-        Roo.log('trigger press');
-        //Roo.log(e.getTarget());
-       // Roo.log(this.triggerEl.dom);
-        if (Roo.get(e.getTarget()).findParent('.dropdown-menu')) {
-            return;
-        }
-        if (this.isVisible()) {
-            Roo.log('hide');
-            this.hide();
-        } else {
-            this.show(this.triggerEl, false, false);
-        }
-        
-        
-    },
-    
-         
-       
-    
-    hideMenuItems : function()
-    {
-        //$(backdrop).remove()
-        Roo.select('.open',true).each(function(aa) {
-            
-            aa.removeClass('open');
-          //var parent = getParent($(this))
-          //var relatedTarget = { relatedTarget: this }
-          
-           //$parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
-          //if (e.isDefaultPrevented()) return
-           //$parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
-        })
-    },
-    addxtypeChild : function (tree, cntr) {
-        var comp= Roo.bootstrap.Menu.superclass.addxtypeChild.call(this, tree, cntr);
-          
-        this.menuitems.add(comp);
-        return comp;
-
-    },
-    getEl : function()
-    {
-        Roo.log(this.el);
-        return this.el;
     }
 });
 
