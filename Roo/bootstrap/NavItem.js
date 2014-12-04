@@ -65,7 +65,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
          
         var cfg = {
             tag: 'li',
-            cls: 'nav-item',
+            cls: 'nav-item'
             
         }
         if (this.active) {
