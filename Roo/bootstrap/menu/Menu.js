@@ -85,6 +85,8 @@ Roo.bootstrap.Menu = function(config){
 Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     submenu : false,
+    html : '',
+    
     
 //    getChildContainer : function() {
 //        return this.el;  
