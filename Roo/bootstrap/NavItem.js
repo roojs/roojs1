@@ -66,7 +66,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         var cfg = {
             tag: 'li',
             cls: 'nav-item',
-            cn : [
+            
+        }
+        if (this.href || this.html) {
+            cfg.cn = [
                 {
                     tag: this.tagtype,
                     href : this.href || "#",
@@ -74,7 +77,6 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                 }
             ]
         }
-            
         if (this.active) {
             cfg.cls = typeof(cfg.cls) == 'undefined' ? 'active' : cfg.cls + ' active';
         }
