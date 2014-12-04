@@ -35,9 +35,8 @@ Roo.bootstrap.menu.MenuItem = function(config){
         /**
          * @event mouseout
          * Fires when the mouse exits this menu
-         * @param {Roo.menu.Menu} this
+         * @param {Roo.bootstrap.menu.MenuItem} this
          * @param {Roo.EventObject} e
-         * @param {Roo.menu.Item} menuItem The menu item that was clicked
          */
         mouseout : true,
         // raw events
