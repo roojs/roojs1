@@ -147,6 +147,8 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         this.triggerEl = this.el.select('button.dropdown-toggle', true).first();
         this.triggerEl.on('click', this.onTriggerPress, this);
         
+        this.el.on('click', this.onClick, this);
+        
     },
     
     onTriggerPress  : function(e)
