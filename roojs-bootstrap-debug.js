@@ -3391,44 +3391,48 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
          
         var cfg = {
             tag: 'li',
-            cls: 'nav-item',
-            cn : [
+            cls: 'nav-item'
+            
+        }
+        if (this.active) {
+            cfg.cls = typeof(cfg.cls) == 'undefined' ? 'active' : cfg.cls + ' active';
+        }
+        if (this.disabled) {
+            cfg.cls += ' disabled';
+        }
+        
+        if (this.href || this.html) {
+            cfg.cn = [
                 {
                     tag: this.tagtype,
                     href : this.href || "#",
                     html: this.html || ''
                 }
             ]
-        }
-            
-        if (this.active) {
-            cfg.cls = typeof(cfg.cls) == 'undefined' ? 'active' : cfg.cls + ' active';
-        }
-            
+        
         // glyphicon and icon go before content..
-        if (this.glyphicon || this.icon) {
-             if (this.icon) {
-                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
-            } else {
-                cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
+            if (this.glyphicon || this.icon) {
+                 if (this.icon) {
+                    cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
+                } else {
+                    cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
+                }
+            }
+            
+            
+            
+            if (cfg.cn  && this.menu) {
+                
+                cfg.cn[0].html += " <span class='caret'></span>";
+             
+            }
+            
+            if (this.badge !== '') {
+                 
+                cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
             }
         }
         
-        
-        
-        if (this.menu) {
-            
-            cfg.cn[0].html += " <span class='caret'></span>";
-         
-        }
-        
-        if (this.badge !== '') {
-             
-            cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
-        }
-        if (this.disabled) {
-            cfg.cls += ' disabled';
-        }
         
         
         return cfg;
