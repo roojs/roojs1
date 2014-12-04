@@ -91,6 +91,10 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     
     getChildContainer : function() {
+        if(this.submenu){
+            return this.el;
+        }
+        
         return this.el.select('ul.dropdown-menu', true).first();  
     },
     
