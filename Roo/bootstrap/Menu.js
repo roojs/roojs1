@@ -233,24 +233,24 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      * @param {Roo.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
      */
     showAt : function(xy, parentMenu, /* private: */_e){
-        Roo.log(xy);
-        xy = [77,0]
-        this.parentMenu = parentMenu;
-        if(!this.el){
-            this.render();
-        }
-        if(_e !== false){
-            this.fireEvent("beforeshow", this);
-            
-            //xy = this.el.adjustForConstraints(xy);
-        }
+//        Roo.log(xy);
+//        xy = [77,0]
+//        this.parentMenu = parentMenu;
+//        if(!this.el){
+//            this.render();
+//        }
+//        if(_e !== false){
+//            this.fireEvent("beforeshow", this);
+//            
+//            //xy = this.el.adjustForConstraints(xy);
+//        }
         this.el.setLeft(77).setTop(-100);
         //this.el.show();
-        this.hideMenuItems();
-        this.hidden = false;
+//        this.hideMenuItems();
+//        this.hidden = false;
         this.triggerEl.addClass('open');
-        this.focus();
-        this.fireEvent("show", this);
+//        this.focus();
+//        this.fireEvent("show", this);
     },
     
     focus : function(){
