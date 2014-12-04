@@ -113,6 +113,10 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
                             cls : 'caret'
                         }
                     ]
+                },
+                {
+                    tag : 'ul',
+                    cls : 'dropdown-menu'
                 }
             ]
             
