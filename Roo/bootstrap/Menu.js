@@ -234,7 +234,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      */
     showAt : function(xy, parentMenu, /* private: */_e){
         Roo.log(xy);
-        xy = [0,0]
+        xy = [0,-100]
         this.parentMenu = parentMenu;
         if(!this.el){
             this.render();
