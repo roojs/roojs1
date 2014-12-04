@@ -46,6 +46,7 @@ Roo.extend(Roo.bootstrap.menu.MenuItem, Roo.bootstrap.Component,  {
     {
         var cfg = {
             tag : 'li',
+            cls : (this.submenu) ? 'dropdown-submenu' : '',
             cn : [
                 {
                     tag : 'a',
