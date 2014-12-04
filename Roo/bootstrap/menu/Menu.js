@@ -23,63 +23,40 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
 Roo.bootstrap.menu.Menu = function(config){
     Roo.bootstrap.menu.Menu.superclass.constructor.call(this, config);
     
-//    this.addEvents({
-//        /**
-//         * @event beforeshow
-//         * Fires before this menu is displayed
-//         * @param {Roo.menu.Menu} this
-//         */
-//        beforeshow : true,
-//        /**
-//         * @event beforehide
-//         * Fires before this menu is hidden
-//         * @param {Roo.menu.Menu} this
-//         */
-//        beforehide : true,
-//        /**
-//         * @event show
-//         * Fires after this menu is displayed
-//         * @param {Roo.menu.Menu} this
-//         */
-//        show : true,
-//        /**
-//         * @event hide
-//         * Fires after this menu is hidden
-//         * @param {Roo.menu.Menu} this
-//         */
-//        hide : true,
-//        /**
-//         * @event click
-//         * Fires when this menu is clicked (or when the enter key is pressed while it is active)
-//         * @param {Roo.menu.Menu} this
-//         * @param {Roo.menu.Item} menuItem The menu item that was clicked
-//         * @param {Roo.EventObject} e
-//         */
-//        click : true,
-//        /**
-//         * @event mouseover
-//         * Fires when the mouse is hovering over this menu
-//         * @param {Roo.menu.Menu} this
-//         * @param {Roo.EventObject} e
-//         * @param {Roo.menu.Item} menuItem The menu item that was clicked
-//         */
-//        mouseover : true,
-//        /**
-//         * @event mouseout
-//         * Fires when the mouse exits this menu
-//         * @param {Roo.menu.Menu} this
-//         * @param {Roo.EventObject} e
-//         * @param {Roo.menu.Item} menuItem The menu item that was clicked
-//         */
-//        mouseout : true,
-//        /**
-//         * @event itemclick
-//         * Fires when a menu item contained in this menu is clicked
-//         * @param {Roo.menu.BaseItem} baseItem The BaseItem that was clicked
-//         * @param {Roo.EventObject} e
-//         */
-//        itemclick: true
-//    });
+    this.addEvents({
+        /**
+         * @event beforeshow
+         * Fires before this menu is displayed
+         * @param {Roo.menu.Menu} this
+         */
+        beforeshow : true,
+        /**
+         * @event beforehide
+         * Fires before this menu is hidden
+         * @param {Roo.menu.Menu} this
+         */
+        beforehide : true,
+        /**
+         * @event show
+         * Fires after this menu is displayed
+         * @param {Roo.menu.Menu} this
+         */
+        show : true,
+        /**
+         * @event hide
+         * Fires after this menu is hidden
+         * @param {Roo.menu.Menu} this
+         */
+        hide : true,
+        /**
+         * @event click
+         * Fires when this menu is clicked (or when the enter key is pressed while it is active)
+         * @param {Roo.menu.Menu} this
+         * @param {Roo.menu.Item} menuItem The menu item that was clicked
+         * @param {Roo.EventObject} e
+         */
+        click : true
+    });
     
 };
 
