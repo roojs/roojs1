@@ -10,6 +10,7 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * @class Roo.bootstrap.menu.Menu
  * @extends Roo.bootstrap.Component
  * Bootstrap Menu class - container for MenuItems
+ * @cfg {Boolean} submenu (true | false) default false
  * @cfg {String} html Text of the menu
  * @cfg {String} weight (default | primary | success | info | warning | danger | inverse)
  * 
@@ -84,6 +85,7 @@ Roo.bootstrap.menu.Menu = function(config){
 
 Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
+    submenu : false,
     html : '',
     weight : 'default',
     
