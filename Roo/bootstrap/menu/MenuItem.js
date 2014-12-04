@@ -40,7 +40,7 @@ Roo.bootstrap.menu.MenuItem = function(config){
          * @param {Roo.EventObject} e
          * @param {Roo.menu.Item} menuItem The menu item that was clicked
          */
-        mouseout : true
+        mouseout : true,
         // raw events
         /**
          * @event click
