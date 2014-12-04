@@ -34,51 +34,16 @@ Roo.bootstrap.menu.MenuItem = function(config){
 //    });
 };
 
-Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.menu.MenuItem, Roo.bootstrap.Component,  {
     
-    href : false,
-    html : false,
+    href : '',
+    html : '',
     preventDefault: true,
     
-    getAutoCreate : function(){
-        var cfg= {
-            tag: 'li',
-            cls: 'dropdown-menu-item',
-            cn: [
-                    {
-                        tag : 'a',
-                        href : '#',
-                        html : 'Link'
-                    }
-                ]
-        };
-        if (this.parent().type == 'treeview') {
-            cfg.cls = 'treeview-menu';
-        }
-        
-        cfg.cn[0].href = this.href || cfg.cn[0].href ;
-        cfg.cn[0].html = this.html || cfg.cn[0].html ;
-        return cfg;
-    },
-    
-    initEvents: function() {
-        
-        //this.el.select('a').on('click', this.onClick, this);
-        
-    },
-    onClick : function(e)
+    getAutoCreate : function()
     {
-        Roo.log('item on click ');
-        //if(this.preventDefault){
-        //    e.preventDefault();
-        //}
-        //this.parent().hideMenuItems();
         
-        this.fireEvent('click', this, e);
-    },
-    getEl : function()
-    {
-        return this.el;
+        
     }
 });
 
