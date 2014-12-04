@@ -224,7 +224,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.render();
         }
         this.fireEvent("beforeshow", this);
-        this.showAt(this.el.getAlignToXY(el, 'tr-br'), parentMenu, false);
+        this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
     },
      /**
      * Displays this menu at a specific xy position
@@ -232,7 +232,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      * @param {Roo.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
      */
     showAt : function(xy, parentMenu, /* private: */_e){
-        Roo.log(xy);
         this.parentMenu = parentMenu;
         if(!this.el){
             this.render();
