@@ -74,6 +74,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (this.disabled) {
             cfg.cls += ' disabled';
         }
+        
         if (this.href || this.html) {
             cfg.cn = [
                 {
