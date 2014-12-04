@@ -71,8 +71,13 @@ Roo.extend(Roo.bootstrap.menu.MenuItem, Roo.bootstrap.Component,  {
         };
         
         return cfg;
+    },
+    
+    initEvents : function() 
+    {
+        this.el.on('click', this.onClick, this);
         
-    }
+    },
 });
 
  
