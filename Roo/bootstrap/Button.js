@@ -267,6 +267,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
         // add the menu...
         
         if (typeof (this.menu) != 'undefined') {
+            Roo.log('parentType : ' + this.xtype);
             this.menu.parentType = this.xtype;
             this.menu.triggerEl = this.el;
             this.addxtype(Roo.apply({}, this.menu));
