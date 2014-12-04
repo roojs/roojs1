@@ -42,7 +42,18 @@ Roo.extend(Roo.bootstrap.menu.MenuItem, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
+        var cfg = {
+            tag : 'li',
+            cn : [
+                {
+                    tag : 'a',
+                    href : this.href || '#',
+                    html : this.html
+                }
+            ]
+        };
         
+        return cfg;
         
     }
 });
