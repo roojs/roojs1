@@ -1,7 +1,7 @@
-/*.dropup,
+.dropup,
 .dropdown {
   position: relative;
-}
+}/*
 
 .dropdown-toggle {
   *margin-bottom: -3px;
