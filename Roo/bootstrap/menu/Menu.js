@@ -106,7 +106,13 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
                 },
                 {
                     tag : 'button',
-                    cls : 'dropdown-toggle btn ' + ((this.weight) ? ('btn-' + this.weight) : '')
+                    cls : 'dropdown-toggle btn ' + ((this.weight) ? ('btn-' + this.weight) : ''),
+                    cn : [
+                        {
+                            tag : 'span',
+                            cls : 'caret'
+                        }
+                    ]
                 }
             ]
             
