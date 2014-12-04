@@ -84,7 +84,6 @@ Roo.bootstrap.menu.Menu = function(config){
 
 Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
-    submenu : false,
     html : '',
     weight : 'default',
     
