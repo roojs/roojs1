@@ -91,8 +91,6 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     
     getChildContainer : function() {
-        Roo.log('menu child container');
-        Roo.log(this.el);
         return this.el.select('ul.dropdown-menu', true).first();  
     },
     
@@ -123,7 +121,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             ]
             
         };
-	
+	Roo.log(cfg);
         return cfg;
     }
 });
