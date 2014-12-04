@@ -171,6 +171,10 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     show : function()
     {
+        if(this.fireEvent("beforeshow", this) === false){
+            return;
+        };
+        
         this.hidden = false;
         this.el.addClass('open');
         
