@@ -10,6 +10,7 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * @class Roo.bootstrap.menu.MenuItem
  * @extends Roo.bootstrap.Component
  * Bootstrap MenuItem class
+ * @cfg {Boolean} submenu (true | false) default false
  * @cfg {String} html text of the item
  * @cfg {String} href the link
  * @cfg {Boolean} preventDefault (true | false) default true
@@ -36,6 +37,7 @@ Roo.bootstrap.menu.MenuItem = function(config){
 
 Roo.extend(Roo.bootstrap.menu.MenuItem, Roo.bootstrap.Component,  {
     
+    submenu : false,
     href : '',
     html : '',
     preventDefault: true,
