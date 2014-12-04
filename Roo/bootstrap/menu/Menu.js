@@ -12,7 +12,7 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * Bootstrap Menu class - container for MenuItems
  * @cfg {Boolean} submenu (true | false) default false
  * @cfg {String} html Text of the menu
- * @cfg {String} weight primary | success | info | warning | danger | inverse default empty
+ * @cfg {String} weight (primary | success | info | warning | danger | inverse) default empty
  * 
  * @constructor
  * Create a new Menu
@@ -87,6 +87,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     submenu : false,
     html : '',
+    weight : '',
     
     
 //    getChildContainer : function() {
@@ -97,6 +98,17 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     {
         var cfg = {
             tag : 'div',
+            cls : 'btn-group',
+            cn : [
+                {
+                    tag : 'button',
+                    cls : 'btn ' + ((this.weight) ? ('btn-' + this.weight) : '')
+                },
+                {
+                    tag : 'button',
+                    cls : 'dropdown-toggle btn ' + ((this.weight) ? ('btn-' + this.weight) : '')
+                }
+            ]
             
         };
 	 
