@@ -75,6 +75,8 @@ Roo.extend(Roo.bootstrap.menu.MenuItem, Roo.bootstrap.Component,  {
     
     initEvents : function() 
     {
+        this.el.on('mouseover', this.onMouseOver, this);
+        this.el.on('mouseout', this.onMouseOut, this);
         this.el.on('click', this.onClick, this);
         
     },
@@ -82,6 +84,16 @@ Roo.extend(Roo.bootstrap.menu.MenuItem, Roo.bootstrap.Component,  {
     onClick : function(e)
     {
         this.fireEvent("click", this, e);
+    },
+    
+    onMouseOver : function(e)
+    {
+        this.fireEvent("mouseover", this, e);
+    },
+    
+    onMouseOut : function(e)
+    {
+        this.fireEvent("mouseout", this, e);
     }
 });
 
