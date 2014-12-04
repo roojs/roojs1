@@ -155,7 +155,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         this.hidden = false;
         this.el.addClass('open');
         
-        Roo.get(document).on("mousedown", this.onMouseUp, this);
+        Roo.get(document).on("mousedown", this.onMouseDown, this);
         
     },
     
@@ -165,9 +165,9 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         this.el.removeClass('open');;
     },
     
-    onMouseUp : function()
+    onMouseDown : function()
     {
-        Roo.log('onMouseup');
+        Roo.log('onMouseDown');
     }
     
 });
