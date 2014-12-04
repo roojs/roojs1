@@ -78,6 +78,11 @@ Roo.extend(Roo.bootstrap.menu.MenuItem, Roo.bootstrap.Component,  {
         this.el.on('click', this.onClick, this);
         
     },
+    
+    onClick : function(e)
+    {
+        this.fireEvent("click", this, e);
+    }
 });
 
  
