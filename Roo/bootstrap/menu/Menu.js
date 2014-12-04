@@ -124,7 +124,15 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         };
 	
         return cfg;
+    },
+    
+    initEvents : function() {
+        
+        this.triggerEl = this.el.select('button.dropdown-toggle', true).first();
+        this.triggerEl.on('click', this.onTriggerPress, this);
+        
     }
+    
 });
 
  
