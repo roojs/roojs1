@@ -241,7 +241,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             
             //xy = this.el.adjustForConstraints(xy);
         }
-        xy = [77,0]
+        xy = [77,-34]
         this.el.setXY(xy);
         this.el.show();
         this.hideMenuItems();
