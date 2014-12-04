@@ -151,6 +151,11 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         
     },
     
+    onClick : function(e)
+    {
+        this.fireEvent("click", this, e);
+    },
+    
     onTriggerPress  : function(e)
     {   
         Roo.log('trigger press');
