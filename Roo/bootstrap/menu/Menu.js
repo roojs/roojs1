@@ -11,6 +11,7 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * @extends Roo.bootstrap.Component
  * Bootstrap Menu class - container for MenuItems
  * @cfg {Boolean} submenu (true | false) default false
+ * @cfg {String} html Text of the menu
  * 
  * @constructor
  * Create a new Menu
