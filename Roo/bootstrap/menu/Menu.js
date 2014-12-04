@@ -134,8 +134,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     },
     
     onTriggerPress  : function(e)
-    {
-        
+    {   
         Roo.log('trigger press');
         
         if (this.isVisible()) {
