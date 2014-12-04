@@ -171,26 +171,29 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     show : function()
     {
-        if(this.fireEvent("beforeshow", this) === false){
-            return;
-        };
+        this.fireEvent("beforeshow", this);
         
         this.hidden = false;
         this.el.addClass('open');
         
         Roo.get(document).on("mousedown", this.onMouseDown, this);
         
+        this.fireEvent("show", this);
+        
     },
     
     hide : function()
     {
+        this.fireEvent("beforehide", this);
+        
         this.hidden = true;
-        this.el.removeClass('open');;
+        this.el.removeClass('open');
+        
+        this.fireEvent("hide", this);
     },
     
     onMouseDown : function()
     {
-        Roo.log('onMouseDown');
         this.hide();
     }
     
