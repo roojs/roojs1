@@ -168,6 +168,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     onMouseDown : function()
     {
         Roo.log('onMouseDown');
+        this.hide();
     }
     
 });
