@@ -28,9 +28,8 @@ Roo.bootstrap.menu.MenuItem = function(config){
         /**
          * @event mouseover
          * Fires when the mouse is hovering over this menu
-         * @param {Roo.menu.Menu} this
+         * @param {Roo.bootstrap.menu.MenuItem} this
          * @param {Roo.EventObject} e
-         * @param {Roo.menu.Item} menuItem The menu item that was clicked
          */
         mouseover : true,
         /**
