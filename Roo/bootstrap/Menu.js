@@ -224,7 +224,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.render();
         }
         this.fireEvent("beforeshow", this);
-        Roo.log(el.getBox());
         this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
     },
      /**
@@ -233,24 +232,22 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      * @param {Roo.menu.Menu} parentMenu (optional) This menu's parent menu, if applicable (defaults to undefined)
      */
     showAt : function(xy, parentMenu, /* private: */_e){
-//        Roo.log(xy);
-//        xy = [77,0]
-//        this.parentMenu = parentMenu;
-//        if(!this.el){
-//            this.render();
-//        }
-//        if(_e !== false){
-//            this.fireEvent("beforeshow", this);
-//            
-//            //xy = this.el.adjustForConstraints(xy);
-//        }
-        this.el.setLeft(77).setTop(-100);
+        this.parentMenu = parentMenu;
+        if(!this.el){
+            this.render();
+        }
+        if(_e !== false){
+            this.fireEvent("beforeshow", this);
+            
+            //xy = this.el.adjustForConstraints(xy);
+        }
+        //this.el.setXY(xy);
         //this.el.show();
-//        this.hideMenuItems();
-//        this.hidden = false;
-//        this.triggerEl.addClass('open');
-//        this.focus();
-//        this.fireEvent("show", this);
+        this.hideMenuItems();
+        this.hidden = false;
+        this.triggerEl.addClass('open');
+        this.focus();
+        this.fireEvent("show", this);
     },
     
     focus : function(){
