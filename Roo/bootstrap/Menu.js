@@ -248,7 +248,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         //this.el.show();
 //        this.hideMenuItems();
 //        this.hidden = false;
-        this.triggerEl.addClass('open');
+//        this.triggerEl.addClass('open');
 //        this.focus();
 //        this.fireEvent("show", this);
     },
