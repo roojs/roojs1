@@ -20,8 +20,8 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  */
 
 
-Roo.bootstrap.Menu = function(config){
-    Roo.bootstrap.Menu.superclass.constructor.call(this, config);
+Roo.bootstrap.menu.Menu = function(config){
+    Roo.bootstrap.menu.Menu.superclass.constructor.call(this, config);
     
 //    this.addEvents({
 //        /**
