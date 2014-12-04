@@ -4,7 +4,7 @@
  * menu separator
  * 
  */
-
+Roo.bootstrap.menu = Roo.bootstrap.menu || {};
 
 /**
  * @class Roo.bootstrap.menu.MenuSeparator
