@@ -102,7 +102,8 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'button',
-                    cls : 'btn ' + ((this.weight) ? ('btn-' + this.weight) : '')
+                    cls : 'btn ' + ((this.weight) ? ('btn-' + this.weight) : ''),
+                    html : this.html
                 },
                 {
                     tag : 'button',
