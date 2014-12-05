@@ -451,7 +451,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     
                     if(typeof(value) === 'object'){
                         renders.push({
-                            id : id,
+                            container : Roo.get(id),
                             cfg : value 
                         })
                     }
@@ -533,10 +533,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var t = false;
         
+        if(typeof(r.id != 'undefined')){
+            t = r.cfg.render(Roo.get(r.id));
+        }
+        
         if(typeof(container != 'undefined')){
             t = container.getChildContainer();
-        }else{
-            t = r.cfg.render(Roo.get(r.id));
         }
         
         if(r.cfg.cn){
