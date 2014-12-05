@@ -41,7 +41,7 @@
 }
 
 .dropup .dropdown-menu {
-    -webkit-animation-name: inherit;
+    /*-webkit-animation-name: inherit;*/
 }
 
 .dropdown-submenu > a:after {
