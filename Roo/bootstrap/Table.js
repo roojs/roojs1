@@ -535,6 +535,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         if(r.cfg.cn){
             Roo.each(r.cfg.cn, function(c){
+                c.parentId = t.el.id || '';
                 var child = {
                     container: t.getChildContainer(),
                     cfg: c
