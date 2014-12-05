@@ -67,6 +67,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     html : '',
     weight : 'default',
     icon : false,
+    pos : 'bottom',
     
     
     getChildContainer : function() {
@@ -121,6 +122,10 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             ]
             
         };
+        
+        if(this.pos == 'top'){
+            cfg.cls += ' dropup';
+        }
         
         if(this.isSubMenu()){
             cfg = {
