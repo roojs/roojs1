@@ -169,7 +169,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             return this.el;
         }
         
-        return this.el.select('ul.dropdown-menu', true).first();
+        return this.el.select('ul.roo-dropdown-menu', true).first();
     },
     
     onClick : function(e)
