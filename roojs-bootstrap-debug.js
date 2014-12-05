@@ -18418,3 +18418,457 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
 });
 
  
+/*
+ * - LGPL
+ *
+ * TabBox
+ * 
+ */
+Roo.bootstrap.dash = Roo.bootstrap.dash || {};
+
+/**
+ * @class Roo.bootstrap.dash.TabBox
+ * @extends Roo.bootstrap.Component
+ * Bootstrap TabBox class
+ * @cfg {String} title Title of the TabBox
+ * @cfg {String} icon Icon of the TabBox
+ * 
+ * @constructor
+ * Create a new TabBox
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.dash.TabBox = function(config){
+    Roo.bootstrap.dash.TabBox.superclass.constructor.call(this, config);
+    
+};
+
+Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
+
+    title : '',
+    icon : false,
+    
+    getChildContainer : function()
+    {
+        return this.el.select('.tab-content', true).first();
+    },
+    
+    getAutoCreate : function(){
+        
+        var header = {
+            tag: 'li',
+            cls: 'pull-left header',
+            html: this.title,
+            cn : []
+        };
+        
+        if(this.icon){
+            header.cn.push({
+                tag: 'i',
+                cls: 'fa ' + this.icon
+            });
+        }
+        
+        
+        var cfg = {
+            tag: 'div',
+            cls: 'nav-tabs-custom',
+            cn: [
+                {
+                    tag: 'ul',
+                    cls: 'nav nav-tabs pull-right',
+                    cn: [
+                        header
+                    ]
+                },
+                {
+                    tag: 'div',
+                    cls: 'tab-content no-padding',
+                    cn: []
+                }
+            ]
+        }
+
+        return  cfg;
+    },
+    
+    setTitle : function(value)
+    {
+        this.el.select('.header', true).first().dom.innerHTML = value;
+    }
+    
+});
+
+ 
+/*
+ * - LGPL
+ *
+ * Tab pane
+ * 
+ */
+Roo.bootstrap.dash = Roo.bootstrap.dash || {};
+/**
+ * @class Roo.bootstrap.TabPane
+ * @extends Roo.bootstrap.Component
+ * Bootstrap TabPane class
+ * @cfg {Boolean} active (false | true) Default false
+
+ * 
+ * @constructor
+ * Create a new TabPane
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.dash.TabPane = function(config){
+    Roo.bootstrap.dash.TabPane.superclass.constructor.call(this, config);
+    
+};
+
+Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
+    
+    active : false,
+//    
+//    getBox : function()
+//    {
+//        return this.el.findParent('.nav-tabs-custom', false, true);
+//    },
+    
+    getAutoCreate : function() 
+    {
+        var cfg = {
+            tag: 'div',
+            cls: 'tab-pane'
+        }
+        
+        if(this.active){
+            cfg.cls += ' active';
+        }
+        
+        return cfg;
+    }
+    
+    
+});
+
+ 
+
+
+ /*
+ * - LGPL
+ *
+ * menu
+ * 
+ */
+Roo.bootstrap.menu = Roo.bootstrap.menu || {};
+
+/**
+ * @class Roo.bootstrap.menu.Menu
+ * @extends Roo.bootstrap.Component
+ * Bootstrap Menu class - container for Menu
+ * @cfg {Boolean} submenu (true | false) default false
+ * @cfg {String} html Text of the menu
+ * @cfg {String} weight (default | primary | success | info | warning | danger | inverse)
+ * 
+ * @constructor
+ * Create a new Menu
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.menu.Menu = function(config){
+    Roo.bootstrap.menu.Menu.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+        /**
+         * @event beforeshow
+         * Fires before this menu is displayed
+         * @param {Roo.bootstrap.menu.Menu} this
+         */
+        beforeshow : true,
+        /**
+         * @event beforehide
+         * Fires before this menu is hidden
+         * @param {Roo.bootstrap.menu.Menu} this
+         */
+        beforehide : true,
+        /**
+         * @event show
+         * Fires after this menu is displayed
+         * @param {Roo.bootstrap.menu.Menu} this
+         */
+        show : true,
+        /**
+         * @event hide
+         * Fires after this menu is hidden
+         * @param {Roo.bootstrap.menu.Menu} this
+         */
+        hide : true,
+        /**
+         * @event click
+         * Fires when this menu is clicked (or when the enter key is pressed while it is active)
+         * @param {Roo.bootstrap.menu.Menu} this
+         * @param {Roo.EventObject} e
+         */
+        click : true
+    });
+    
+};
+
+Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
+    
+    submenu : false,
+    html : '',
+    weight : 'default',
+    
+    
+    getChildContainer : function() {
+        if(this.submenu){
+            return this.el;
+        }
+        
+        return this.el.select('ul.dropdown-menu', true).first();  
+    },
+    
+    getAutoCreate : function()
+    {
+        var cfg = {
+            tag : 'div',
+            cls : 'btn-group',
+            cn : [
+                {
+                    tag : 'button',
+                    cls : 'btn btn-' + this.weight,
+                    html : this.html
+                },
+                {
+                    tag : 'button',
+                    cls : 'dropdown-toggle btn btn-' + this.weight,
+                    cn : [
+                        {
+                            tag : 'span',
+                            cls : 'caret'
+                        }
+                    ]
+                },
+                {
+                    tag : 'ul',
+                    cls : 'dropdown-menu'
+                }
+            ]
+            
+        };
+        
+        if(this.submenu){
+            cfg = {
+                tag : 'ul',
+                cls : 'dropdown-menu'
+            }
+        }
+	
+        return cfg;
+    },
+    
+    initEvents : function() 
+    {
+        if(this.submenu){
+            return;
+        }
+        
+        this.hidden = true;
+        this.triggerEl = this.el.select('button.dropdown-toggle', true).first();
+        this.triggerEl.on('click', this.onTriggerPress, this);
+        
+        this.el.on('click', this.onClick, this);
+        
+    },
+    
+    onClick : function(e)
+    {
+        this.fireEvent("click", this, e);
+    },
+    
+    onTriggerPress  : function(e)
+    {   
+        if (this.isVisible()) {
+            this.hide();
+        } else {
+            this.show();
+        }
+    },
+    
+    isVisible : function(){
+        return !this.hidden;
+    },
+    
+    show : function()
+    {
+        this.fireEvent("beforeshow", this);
+        
+        this.hidden = false;
+        this.el.addClass('open');
+        
+        Roo.get(document).on("mousedown", this.onMouseDown, this);
+        
+        this.fireEvent("show", this);
+        
+    },
+    
+    hide : function()
+    {
+        this.fireEvent("beforehide", this);
+        
+        this.hidden = true;
+        this.el.removeClass('open');
+        
+        this.fireEvent("hide", this);
+    },
+    
+    onMouseDown : function()
+    {
+        this.hide();
+    }
+    
+});
+
+ 
+ /*
+ * - LGPL
+ *
+ * menu item
+ * 
+ */
+Roo.bootstrap.menu = Roo.bootstrap.menu || {};
+
+/**
+ * @class Roo.bootstrap.menu.MenuItem
+ * @extends Roo.bootstrap.Component
+ * Bootstrap MenuItem class
+ * @cfg {Boolean} submenu (true | false) default false
+ * @cfg {String} html text of the item
+ * @cfg {String} href the link
+ * @cfg {Boolean} preventDefault (true | false) default true
+ * 
+ * 
+ * @constructor
+ * Create a new MenuItem
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.menu.MenuItem = function(config){
+    Roo.bootstrap.menu.MenuItem.superclass.constructor.call(this, config);
+    this.addEvents({
+        /**
+         * @event mouseover
+         * Fires when the mouse is hovering over this menu
+         * @param {Roo.bootstrap.menu.MenuItem} this
+         * @param {Roo.EventObject} e
+         */
+        mouseover : true,
+        /**
+         * @event mouseout
+         * Fires when the mouse exits this menu
+         * @param {Roo.bootstrap.menu.MenuItem} this
+         * @param {Roo.EventObject} e
+         */
+        mouseout : true,
+        // raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.EventObject} e
+         */
+        click : true
+    });
+};
+
+Roo.extend(Roo.bootstrap.menu.MenuItem, Roo.bootstrap.Component,  {
+    
+    submenu : false,
+    href : '',
+    html : '',
+    preventDefault: true,
+    
+    getAutoCreate : function()
+    {
+        var cfg = {
+            tag : 'li',
+            cls : (this.submenu) ? 'dropdown-submenu' : '',
+            cn : [
+                {
+                    tag : 'a',
+                    href : this.href || '#',
+                    html : this.html
+                }
+            ]
+        };
+        
+        return cfg;
+    },
+    
+    initEvents : function() 
+    {
+        this.el.on('mouseover', this.onMouseOver, this);
+        this.el.on('mouseout', this.onMouseOut, this);
+        this.el.on('click', this.onClick, this);
+        
+    },
+    
+    onClick : function(e)
+    {
+        this.fireEvent("click", this, e);
+    },
+    
+    onMouseOver : function(e)
+    {
+        this.fireEvent("mouseover", this, e);
+    },
+    
+    onMouseOut : function(e)
+    {
+        this.fireEvent("mouseout", this, e);
+    }
+});
+
+ 
+
+ /*
+ * - LGPL
+ *
+ * menu separator
+ * 
+ */
+Roo.bootstrap.menu = Roo.bootstrap.menu || {};
+
+/**
+ * @class Roo.bootstrap.menu.MenuSeparator
+ * @extends Roo.bootstrap.Component
+ * Bootstrap MenuSeparator class
+ * 
+ * @constructor
+ * Create a new MenuItem
+ * @param {Object} config The config object
+ */
+
+
+Roo.bootstrap.menu.MenuSeparator = function(config){
+    Roo.bootstrap.menu.MenuSeparator.superclass.constructor.call(this, config);
+};
+
+Roo.extend(Roo.bootstrap.menu.MenuSeparator, Roo.bootstrap.Component,  {
+    
+    getAutoCreate : function(){
+        var cfg = {
+            tag : 'li',
+            cls: 'divider'
+        };
+        
+        return cfg;
+    }
+   
+});
+
+ 
+
+ 
