@@ -78,17 +78,20 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        var text = [
-            {
-                tag : 'i',
-                cls : 'fa fa-search'
-            },
+        var btn = [
             {
                 tag : 'span',
                 cls : 'roo-button-text',
                 html : this.html
             }
         ];
+        
+        if(this.icon){
+            btn.unshift({
+                tag : 'i',
+                cls : 'fa ' + this.icon
+            })
+        }
         
         
         var cfg = {
@@ -98,7 +101,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
                 {
                     tag : 'button',
                     cls : 'dropdown-button btn btn-' + this.weight,
-                    cn : text
+                    cn : btn
                 },
                 {
                     tag : 'button',
