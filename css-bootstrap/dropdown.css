@@ -59,7 +59,7 @@
 }
 
 .dropdown-submenu.pull-left {
-  float: none;
+  float: none !important;
 }
 
 .dropdown-submenu.pull-left > .dropdown-menu {
