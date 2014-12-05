@@ -60,6 +60,21 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
+        var text = [
+            {
+                tag : 'span',
+                cls : 'roo-menu-item-text',
+                html : this.html
+            }
+        ];
+        
+        if(this.icon){
+            text.unshift({
+                tag : 'i',
+                cls : 'fa ' + this.icon
+            })
+        }
+        
         var cfg = {
             tag : 'li',
             cn : [
