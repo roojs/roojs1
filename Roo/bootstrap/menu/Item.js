@@ -107,8 +107,8 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     
     initEvents : function() 
     {
-        this.el.on('mouseover', this.onMouseOver, this);
-        this.el.on('mouseout', this.onMouseOut, this);
+        this.el.select('a', true).first().on('mouseover', this.onMouseOver, this);
+        this.el.select('a', true).first().on('mouseout', this.onMouseOut, this);
         
         this.el.select('a', true).first().on('click', this.onClick, this);
         
