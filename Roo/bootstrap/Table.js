@@ -485,7 +485,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     row.cn.push(td);
                    
                 }
-                
+                Roo.log(row);
                 tbody.createChild(row);
                 
             });
@@ -530,7 +530,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     renderColumn : function(r)
     {
         var _this = this;
-        var p = r.cfg.render(Roo.get(r.id));
+        var t = r.cfg.render(Roo.get(r.id));
         
         if(r.cfg.cn){
             Roo.each(r.cfg.cn, function(c){
