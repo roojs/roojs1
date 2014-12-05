@@ -113,6 +113,19 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         return cfg;
     },
     
+    isSubMenu : function()
+    {
+        if(this.parent() instanceof Roo.bootstrap.menu.Item){
+            Roo.log('sub menu');
+            return true;
+        }
+        
+        Roo.log('not sub menu');
+        
+        return false;
+        
+    },
+    
     initEvents : function() 
     {
         Roo.log(this.parent());
