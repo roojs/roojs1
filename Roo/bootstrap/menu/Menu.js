@@ -140,6 +140,14 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         return cfg;
     },
     
+     // private
+//    onRender : function(ct, position)
+//    {
+//       // Roo.log("Call onRender: " + this.xtype);
+//        this.isSubmen = ct.hasClass('....')
+//        Roo.bootstrap.menu.Menu.superclass.onRender.call(this, ct, position);
+//   
+    
     isSubMenu : function()
     {
         if(this.parent() instanceof Roo.bootstrap.menu.Item){
