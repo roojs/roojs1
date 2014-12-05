@@ -30,6 +30,12 @@
   display: block;
 }
 
+.dropup .dropdown-menu {
+    top:auto;
+    bottom:100%;
+    margin-bottom:1px
+}
+
 .dropup .dropdown-submenu > .dropdown-menu {
   top: auto;
   bottom: 0;
