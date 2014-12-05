@@ -491,7 +491,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             });
         }
         
-        Roo.log(renders);
+        
         if(renders.length){
             var _this = this;
             Roo.each(renders, function(r){
@@ -530,9 +530,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     renderColumn : function(r)
     {
         var _this = this;
-        
+        Roo.log(r);
         var t = r.cfg.render(r.container);
         
+        Roo.log(t);
         
         if(r.cfg.cn){
             Roo.each(r.cfg.cn, function(c){
