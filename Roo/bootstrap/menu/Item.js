@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
         this.el.on('mouseout', this.onMouseOut, this);
         
         if(this.submenu){
-            this.el.select('.dropdown-submenu a', true).first().on('click', this.onClick, this);
+            this.el.select('a', true).first().on('click', this.onClick, this);
         }else{
             this.el.on('click', this.onClick, this);
         }
