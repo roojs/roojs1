@@ -20,20 +20,20 @@
             "Roo/mailer"
     ],
     "exclude-src" : [
-		"roojs-all.js",
-		"roojs-debug.js",
-		"roojs-core.js",
-		"roojs-core-debug.js",
-		"roojs-ui.js",
-		"roojs-ui-debug.js",
-		"roojs-bootstrap.js",
-		"roojs-bootstrap-debug.js",
-        "roojs-mailer-debug.js",
-        "roojs-mailer.js"
+            "roojs-all.js",
+            "roojs-debug.js",
+            "roojs-core.js",
+            "roojs-core-debug.js",
+            "roojs-ui.js",
+            "roojs-ui-debug.js",
+            "roojs-bootstrap.js",
+            "roojs-bootstrap-debug.js",
+            "roojs-mailer-debug.js",
+            "roojs-mailer.js"
         
 		
-	],
+    ],
 		
-	"templateDir" : "buildSDK/doc_templates"
+    "templateDir" : "buildSDK/doc_templates"
 		
 }
