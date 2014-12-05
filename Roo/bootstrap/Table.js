@@ -495,7 +495,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(renders.length){
             var _this = this;
             Roo.each(renders, function(r){
-                _this.renderColumn(r);
+                _this.renderColumn(r, Roo.get(r.id));
             })
         }
 
