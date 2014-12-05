@@ -98,8 +98,8 @@ Roo.bootstrap.dash.TabBox
 Roo.bootstrap.dash.TabPane
 
 Roo.bootstrap.menu.Menu
-Roo.bootstrap.menu.MenuItem
-Roo.bootstrap.menu.MenuSeparator
+Roo.bootstrap.menu.Item
+Roo.bootstrap.menu.Separator
 
 
 
