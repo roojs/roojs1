@@ -66,7 +66,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     
     getChildContainer : function() {
-        if(this.submenu){
+        if(this.isSubMenu()){
             return this.el;
         }
         
