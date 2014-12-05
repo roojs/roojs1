@@ -127,7 +127,9 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     {
         Roo.log('mouseover');
         
-        Roo.log(this);
+        if(this.submenu && this.pos == 'left'){
+            
+        }
         
         this.fireEvent("mouseover", this, e);
     },
