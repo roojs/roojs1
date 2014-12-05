@@ -129,7 +129,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         Roo.log('create menu');
         Roo.log(this);
         Roo.log(this.parent());
-        Roo.log(this.isSubMenu());
+        Roo.log('is sub menu : ' + this.isSubMenu());
         if(this.isSubMenu()){
             cfg = {
                 tag : 'ul',
