@@ -88,7 +88,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
                 cls : 'roo-button-text',
                 html : this.html
             }
-        ],
+        ];
         
         
         var cfg = {
