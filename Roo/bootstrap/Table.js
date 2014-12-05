@@ -530,12 +530,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     renderColumn : function(r)
     {
         var _this = this;
-        var t = r.cfg.render(Roo.get(r.id));
-        Roo.log(t);
+        var p = r.cfg.render(Roo.get(r.id));
+        
         if(r.cfg.cn){
             Roo.each(r.cfg.cn, function(c){
                 var child = {
-                    id: r.id,
+                    id: p.el.id,
                     cfg: c
                 }
                 _this.renderColumn(child);
