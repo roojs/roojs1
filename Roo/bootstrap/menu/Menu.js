@@ -148,6 +148,8 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     {
         this.list = this.el.select('ul.dropdown-menu', true).first();
         
+        this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'none';
+        
         Roo.log(this.list);
         
         if(this.isSubMenu){
