@@ -1,4 +1,9 @@
 
+.dropdown-submenu {
+  position: relative;
+}
+
+
 .dropdown-submenu:hover > .dropdown-menu {
   display: block;
 }
