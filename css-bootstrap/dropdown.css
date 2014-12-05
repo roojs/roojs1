@@ -77,13 +77,3 @@
 .dropdown-button > i {
     margin-right: 10px;
 }
-
-.dropdown-menu.pull-right {
-  right: 0;
-  left: auto;
-}
-
-.pull-right > .dropdown-menu {
-  right: 0;
-  left: auto;
-}
