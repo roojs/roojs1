@@ -117,7 +117,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
                 },
                 {
                     tag : 'ul',
-                    cls : 'dropdown-menu'
+                    cls : 'roo-dropdown-menu'
                 }
             ]
             
@@ -130,7 +130,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         if(this.isSubMenu){
             cfg = {
                 tag : 'ul',
-                cls : 'dropdown-menu'
+                cls : 'roo-dropdown-menu'
             }
         }
 	
