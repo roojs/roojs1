@@ -527,24 +527,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         return this.selModel;
     },
     
-    renderColumn : function(r, container)
+    renderColumn : function(r)
     {
         var _this = this;
         
-        var t = false;
+        var t = r.cfg.render(r.container);
         
-        if(typeof(r.id != 'undefined')){
-            t = r.cfg.render(Roo.get(r.id));
-        }
-        
-        if(typeof(container != 'undefined')){
-            t = container.getChildContainer();
-        }
         
         if(r.cfg.cn){
             Roo.each(r.cfg.cn, function(c){
                 var child = {
-                    id: t.el.id,
+                    container: t.getChildContainer(),
                     cfg: c
                 }
                 _this.renderColumn(child);
