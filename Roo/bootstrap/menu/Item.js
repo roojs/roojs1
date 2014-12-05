@@ -126,7 +126,7 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     onMouseOver : function(e)
     {
         if(this.submenu && this.pos == 'left'){
-            this.el.select('ul.dropdown-menu', true).first().setLeft(this.el.select('ul.dropdown-menu', true).first().getWidth());
+            this.el.select('ul.dropdown-menu', true).first().setLeft(this.el.select('ul.dropdown-menu', true).first().getWidth() * -1);
         }
         
         this.fireEvent("mouseover", this, e);
