@@ -56,7 +56,7 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     href : '',
     html : '',
     preventDefault: true,
-    disable : false
+    disable : false,
     
     getAutoCreate : function()
     {
