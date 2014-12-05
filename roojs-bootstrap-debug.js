@@ -4964,7 +4964,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     
                     if(typeof(value) === 'object'){
                         renders.push({
-                            id : id,
+                            container : id,
                             cfg : value 
                         })
                     }
@@ -5043,12 +5043,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     renderColumn : function(r)
     {
         var _this = this;
-        r.cfg.render(Roo.get(r.id));
+        
+        var t = r.cfg.render(r.container);
         
         if(r.cfg.cn){
             Roo.each(r.cfg.cn, function(c){
                 var child = {
-                    id: r.id,
+                    container: t.getChildContainer(),
                     cfg: c
                 }
                 _this.renderColumn(child);
