@@ -81,8 +81,8 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             cls : 'btn-group',
             cn : [
                 {
-                    tag : 'button dropdown-button',
-                    cls : 'btn btn-' + this.weight,
+                    tag : 'button',
+                    cls : 'dropdown-button btn btn-' + this.weight,
                     html : this.html
                 },
                 {
@@ -125,7 +125,6 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         this.triggerEl.on('click', this.onTriggerPress, this);
         
         this.buttonEl = this.el.select('button.dropdown-button', true).first();
-        Roo.log(this.buttonEl);
         this.buttonEl.on('click', this.onClick, this);
         
     },
