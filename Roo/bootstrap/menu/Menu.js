@@ -192,6 +192,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     show : function()
     {
+        Roo.log('show??');
         this.fireEvent("beforeshow", this);
         
         this.hidden = false;
