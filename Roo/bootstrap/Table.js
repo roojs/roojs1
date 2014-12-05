@@ -536,7 +536,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(r.cfg.cn){
             Roo.each(r.cfg.cn, function(c){
                 var child = {
-                    id: p.el.id,
+                    id: t.el.id,
                     cfg: c
                 }
                 _this.renderColumn(child);
