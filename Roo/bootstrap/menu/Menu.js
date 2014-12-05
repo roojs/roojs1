@@ -172,7 +172,6 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     onMouseUp : function()
     {
-        Roo.log('hide');
         this.hide();
     }
     
