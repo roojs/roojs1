@@ -125,10 +125,8 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     
     onMouseOver : function(e)
     {
-        Roo.log('mouseover');
-        
         if(this.submenu && this.pos == 'left'){
-            
+            Roo.log('left');
         }
         
         this.fireEvent("mouseover", this, e);
