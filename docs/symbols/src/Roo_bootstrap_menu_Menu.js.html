@@ -10,9 +10,9 @@
  * @class Roo.bootstrap.menu.Menu
  * @extends Roo.bootstrap.Component
  * Bootstrap Menu class - container for Menu
- * @cfg {Boolean} submenu (true | false) default false
  * @cfg {String} html Text of the menu
  * @cfg {String} weight (default | primary | success | info | warning | danger | inverse)
+ * 
  * 
  * @constructor
  * Create a new Menu
@@ -67,7 +67,7 @@
     
     
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.submenu</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isSubMenu</span><span class="jsdoc-syntax">()){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
         }
         
@@ -82,7 +82,7 @@
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                 {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'dropdown-button btn btn-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.weight</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
                 </span><span class="jsdoc-syntax">},
                 {
@@ -103,7 +103,7 @@
             
         };
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.submenu</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isSubMenu</span><span class="jsdoc-syntax">()){
             </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'dropdown-menu'
@@ -113,17 +113,30 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
     
+    </span><span class="jsdoc-var">isSubMenu </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">() </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Roo.bootstrap.menu.Item</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        
+    },
+    
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
     {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.submenu</span><span class="jsdoc-syntax">){
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isSubMenu</span><span class="jsdoc-syntax">()){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-var">this.triggerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'button.dropdown-toggle'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.triggerEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTriggerPress</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.buttonEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'button.dropdown-button'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.buttonEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
     },
     
@@ -152,7 +165,7 @@
         </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mousedown&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseup&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;show&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
@@ -165,10 +178,12 @@
         </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
         
+        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseup&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseUp</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hide&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
     
-    </span><span class="jsdoc-var">onMouseDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    </span><span class="jsdoc-var">onMouseUp </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
     }
