@@ -197,7 +197,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         
         this.hidden = false;
 //        this.el.addClass('open');
-        
+        Roo.log(this.list());
         this.list().show();
         
         Roo.get(document).on("mouseup", this.onMouseUp, this);
