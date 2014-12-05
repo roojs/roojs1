@@ -451,7 +451,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     
                     if(typeof(value) === 'object'){
                         renders.push({
-                            container : Roo.get(id),
+                            container : id,
                             cfg : value 
                         })
                     }
