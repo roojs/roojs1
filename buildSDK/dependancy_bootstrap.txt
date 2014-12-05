@@ -94,6 +94,12 @@ Roo.bootstrap.MessageBar
 
 Roo.bootstrap.Graph
 Roo.bootstrap.dash.NumberBox
+Roo.bootstrap.dash.TabBox
+Roo.bootstrap.dash.TabPane
+
+Roo.bootstrap.menu.Menu
+Roo.bootstrap.menu.MenuItem
+Roo.bootstrap.menu.MenuSeparator
 
 
 
