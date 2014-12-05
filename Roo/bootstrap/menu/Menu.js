@@ -208,8 +208,6 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         this.hidden = true;
         this.el.removeClass('open');
         
-        this.list().setLeft('-100');
-        
         Roo.get(document).un("mouseup", this.onMouseUp);
         
         this.fireEvent("hide", this);
