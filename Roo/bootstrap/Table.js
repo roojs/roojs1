@@ -534,7 +534,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var t = false;
         
         if(typeof(container != 'undefined')){
-            t = container;
+            t = container.getChildContainer();
         }else{
             t = r.cfg.render(Roo.get(r.id));
         }
