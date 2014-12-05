@@ -142,6 +142,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     onRender : function(ct, position)
     {
+        Roo.log(ct);
        // Roo.log("Call onRender: " + this.xtype);
 //        this.isSubMenu = ct.hasClass('....')
         Roo.bootstrap.menu.Menu.superclass.onRender.call(this, ct, position);
