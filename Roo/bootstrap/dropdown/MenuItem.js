@@ -4,10 +4,10 @@
  * menu item
  * 
  */
-Roo.bootstrap.menu = Roo.bootstrap.menu || {};
+Roo.bootstrap.dropdown = Roo.bootstrap.dropdown || {};
 
 /**
- * @class Roo.bootstrap.menu.MenuItem
+ * @class Roo.bootstrap.dropdown.MenuItem
  * @extends Roo.bootstrap.Component
  * Bootstrap MenuItem class
  * @cfg {Boolean} submenu (true | false) default false
@@ -22,20 +22,20 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  */
 
 
-Roo.bootstrap.menu.MenuItem = function(config){
-    Roo.bootstrap.menu.MenuItem.superclass.constructor.call(this, config);
+Roo.bootstrap.dropdown.MenuItem = function(config){
+    Roo.bootstrap.dropdown.MenuItem.superclass.constructor.call(this, config);
     this.addEvents({
         /**
          * @event mouseover
          * Fires when the mouse is hovering over this menu
-         * @param {Roo.bootstrap.menu.MenuItem} this
+         * @param {Roo.bootstrap.dropdown.MenuItem} this
          * @param {Roo.EventObject} e
          */
         mouseover : true,
         /**
          * @event mouseout
          * Fires when the mouse exits this menu
-         * @param {Roo.bootstrap.menu.MenuItem} this
+         * @param {Roo.bootstrap.dropdown.MenuItem} this
          * @param {Roo.EventObject} e
          */
         mouseout : true,
@@ -49,7 +49,7 @@ Roo.bootstrap.menu.MenuItem = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.menu.MenuItem, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.dropdown.MenuItem, Roo.bootstrap.Component,  {
     
     submenu : false,
     href : '',
