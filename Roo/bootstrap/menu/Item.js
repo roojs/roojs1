@@ -92,6 +92,7 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     
     onMouseOver : function(e)
     {
+        Roo.log('mouse over');
         this.fireEvent("mouseover", this, e);
     },
     
