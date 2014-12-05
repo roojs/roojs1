@@ -127,7 +127,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     initEvents : function() 
     {
         
-        if(this.isSubMenu){
+        if(this.isSubMenu()){
             Roo.log('is submenu');
             return;
         }
