@@ -13,6 +13,7 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * @cfg {Boolean} submenu (true | false) default false
  * @cfg {String} html text of the item
  * @cfg {String} href the link
+ * @cfg {Boolean} disable (true | false) default false
  * @cfg {Boolean} preventDefault (true | false) default true
  * 
  * 
@@ -55,12 +56,12 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     href : '',
     html : '',
     preventDefault: true,
+    disable : false
     
     getAutoCreate : function()
     {
         var cfg = {
             tag : 'li',
-            cls : (this.submenu) ? 'dropdown-submenu' : '',
             cn : [
                 {
                     tag : 'a',
@@ -69,6 +70,14 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
                 }
             ]
         };
+        
+        if(this.disable){
+            cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'disabled' : (cfg.cls + ' disabled');
+        }
+        
+        if(this.submenu){
+            cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'dropdown-submenu' : (cfg.cls + ' dropdown-submenu');
+        }
         
         return cfg;
     },
