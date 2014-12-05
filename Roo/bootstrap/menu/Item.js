@@ -16,7 +16,7 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * @cfg {Boolean} disable (true | false) default false
  * @cfg {Boolean} preventDefault (true | false) default true
  * @cfg {String} icon Font awesome icon
- * @cfg {String} submenuAlign (left | right) default right 
+ * @cfg {String} pos Submenu position (left | right) default right 
  * 
  * 
  * @constructor
@@ -60,6 +60,7 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     preventDefault: true,
     disable : false,
     icon : false,
+    submenuAlign
     
     getAutoCreate : function()
     {
