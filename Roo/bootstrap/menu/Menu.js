@@ -146,15 +146,8 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     initEvents : function() 
     {
-        Roo.log(this.el);
         
-        this.list = this.el.select('ul.dropdown-menu', true).first();
-        
-        Roo.log(this.list);
-        
-        this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'none';
-        
-        
+        this.list().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'none';
         
         if(this.isSubMenu){
             return;
@@ -168,6 +161,15 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         this.buttonEl = this.el.select('button.dropdown-button', true).first();
         this.buttonEl.on('click', this.onClick, this);
         
+    },
+    
+    list : function()
+    {
+        if(this.isSubMenu){
+            return this.el;
+        }
+        
+        return this.el.select('ul.dropdown-menu', true).first();
     },
     
     onClick : function(e)
