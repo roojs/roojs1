@@ -93,9 +93,9 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
-        if(this.preventDefault){
-            e.preventDefault();
-        }
+//        if(this.preventDefault){
+//            e.preventDefault();
+//        }
         
         this.fireEvent("click", this, e);
     },
