@@ -115,6 +115,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     initEvents : function() 
     {
+        Roo.log(this.parent());
         if(this.submenu){
             return;
         }
