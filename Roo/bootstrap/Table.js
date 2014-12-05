@@ -531,6 +531,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var _this = this;
         Roo.log(r);
+        Roo.log(r.cfg.render);
         var t = r.cfg.render(r.container);
         
         Roo.log(t);
