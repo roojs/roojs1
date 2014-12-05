@@ -15,6 +15,7 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * @cfg {String} href the link
  * @cfg {Boolean} disable (true | false) default false
  * @cfg {Boolean} preventDefault (true | false) default true
+ * @cfg {String} icon Font awesome icon
  * 
  * 
  * @constructor
@@ -57,6 +58,7 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     html : '',
     preventDefault: true,
     disable : false,
+    icon : false,
     
     getAutoCreate : function()
     {
@@ -81,7 +83,7 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
                 {
                     tag : 'a',
                     href : this.href || '#',
-                    html : this.html
+                    cn : text
                 }
             ]
         };
