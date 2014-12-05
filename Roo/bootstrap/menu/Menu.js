@@ -148,6 +148,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     {
         
         this.list().setVisibilityMode(Roo.Element.DISPLAY);
+        this.list().hide();
         
         if(this.isSubMenu){
             return;
