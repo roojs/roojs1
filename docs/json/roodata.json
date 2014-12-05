@@ -16105,6 +16105,18 @@
      "memberOf": ""
     },
     {
+     "name": "icon",
+     "type": "String",
+     "desc": "Font awesome icon",
+     "memberOf": ""
+    },
+    {
+     "name": "pos",
+     "type": "String",
+     "desc": "Submenu align to (left | right) default right",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -16264,6 +16276,18 @@
      "name": "weight",
      "type": "String",
      "desc": "(default | primary | success | info | warning | danger | inverse)",
+     "memberOf": ""
+    },
+    {
+     "name": "icon",
+     "type": "String",
+     "desc": "Font awesome icon",
+     "memberOf": ""
+    },
+    {
+     "name": "pos",
+     "type": "String",
+     "desc": "Menu align to (top | bottom) default bottom",
      "memberOf": ""
     },
     {

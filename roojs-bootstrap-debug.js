@@ -18568,6 +18568,8 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * Bootstrap Menu class - container for Menu
  * @cfg {String} html Text of the menu
  * @cfg {String} weight (default | primary | success | info | warning | danger | inverse)
+ * @cfg {String} icon Font awesome icon
+ * @cfg {String} pos Menu align to (top | bottom) default bottom
  * 
  * 
  * @constructor
@@ -18620,6 +18622,8 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     submenu : false,
     html : '',
     weight : 'default',
+    icon : false,
+    pos : 'bottom',
     
     
     getChildContainer : function() {
@@ -18632,6 +18636,22 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
+        var text = [
+            {
+                tag : 'span',
+                cls : 'roo-menu-text',
+                html : this.html
+            }
+        ];
+        
+        if(this.icon){
+            text.unshift({
+                tag : 'i',
+                cls : 'fa ' + this.icon
+            })
+        }
+        
+        
         var cfg = {
             tag : 'div',
             cls : 'btn-group',
@@ -18639,7 +18659,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
                 {
                     tag : 'button',
                     cls : 'dropdown-button btn btn-' + this.weight,
-                    html : this.html
+                    cn : text
                 },
                 {
                     tag : 'button',
@@ -18658,6 +18678,10 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             ]
             
         };
+        
+        if(this.pos == 'top'){
+            cfg.cls += ' dropup';
+        }
         
         if(this.isSubMenu()){
             cfg = {
@@ -18764,6 +18788,8 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * @cfg {String} href the link
  * @cfg {Boolean} disable (true | false) default false
  * @cfg {Boolean} preventDefault (true | false) default true
+ * @cfg {String} icon Font awesome icon
+ * @cfg {String} pos Submenu align to (left | right) default right 
  * 
  * 
  * @constructor
@@ -18806,16 +18832,33 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     html : '',
     preventDefault: true,
     disable : false,
+    icon : false,
+    pos : 'right',
     
     getAutoCreate : function()
     {
+        var text = [
+            {
+                tag : 'span',
+                cls : 'roo-menu-item-text',
+                html : this.html
+            }
+        ];
+        
+        if(this.icon){
+            text.unshift({
+                tag : 'i',
+                cls : 'fa ' + this.icon
+            })
+        }
+        
         var cfg = {
             tag : 'li',
             cn : [
                 {
                     tag : 'a',
                     href : this.href || '#',
-                    html : this.html
+                    cn : text
                 }
             ]
         };
@@ -18826,6 +18869,10 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
         
         if(this.submenu){
             cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'dropdown-submenu' : (cfg.cls + ' dropdown-submenu');
+            
+            if(this.pos == 'left'){
+                cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'pull-left' : (cfg.cls + ' pull-left');
+            }
         }
         
         return cfg;
