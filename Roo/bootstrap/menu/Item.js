@@ -16,7 +16,7 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * @cfg {Boolean} disable (true | false) default false
  * @cfg {Boolean} preventDefault (true | false) default true
  * @cfg {String} icon Font awesome icon
- * @cfg {String} pos Submenu position (left | right) default right 
+ * @cfg {String} pos Submenu align to (left | right) default right 
  * 
  * 
  * @constructor
