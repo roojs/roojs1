@@ -75,7 +75,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             return this.el;
         }
         
-        return this.el.select('ul.roo-dropdown-menu', true).first();  
+        return this.el.select('ul.dropdown-menu', true).first();  
     },
     
     getAutoCreate : function()
@@ -102,12 +102,12 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'button',
-                    cls : 'roo-dropdown-button btn btn-' + this.weight,
+                    cls : 'dropdown-button btn btn-' + this.weight,
                     cn : text
                 },
                 {
                     tag : 'button',
-                    cls : 'roo-dropdown-toggle btn btn-' + this.weight,
+                    cls : 'dropdown-toggle btn btn-' + this.weight,
                     cn : [
                         {
                             tag : 'span',
@@ -117,7 +117,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
                 },
                 {
                     tag : 'ul',
-                    cls : 'roo-dropdown-menu'
+                    cls : 'dropdown-menu'
                 }
             ]
             
@@ -130,7 +130,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         if(this.isSubMenu){
             cfg = {
                 tag : 'ul',
-                cls : 'roo-dropdown-menu'
+                cls : 'dropdown-menu'
             }
         }
 	
@@ -139,7 +139,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     onRender : function(ct, position)
     {
-        this.isSubMenu = ct.hasClass('roo-dropdown-submenu');
+        this.isSubMenu = ct.hasClass('dropdown-submenu');
         
         Roo.bootstrap.menu.Menu.superclass.onRender.call(this, ct, position);
     },
@@ -155,10 +155,10 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         
         this.hidden = true;
         
-        this.triggerEl = this.el.select('button.roo-dropdown-toggle', true).first();
+        this.triggerEl = this.el.select('button.dropdown-toggle', true).first();
         this.triggerEl.on('click', this.onTriggerPress, this);
         
-        this.buttonEl = this.el.select('button.roo-dropdown-button', true).first();
+        this.buttonEl = this.el.select('button.dropdown-button', true).first();
         this.buttonEl.on('click', this.onClick, this);
         
     },
@@ -169,7 +169,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             return this.el;
         }
         
-        return this.el.select('ul.roo-dropdown-menu', true).first();
+        return this.el.select('ul.dropdown-menu', true).first();
     },
     
     onClick : function(e)
