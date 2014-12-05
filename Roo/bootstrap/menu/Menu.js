@@ -146,6 +146,8 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     initEvents : function() 
     {
+        Roo.log(this.el);
+        
         this.list = this.el.select('ul.dropdown-menu', true).first();
         
         Roo.log(this.list);
