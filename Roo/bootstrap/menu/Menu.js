@@ -126,10 +126,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         if(this.pos == 'top'){
             cfg.cls += ' dropup';
         }
-        Roo.log('create menu');
-        Roo.log(this);
-        Roo.log(this.parent());
-        Roo.log('is sub menu : ' + this.isSubMenu());
+        
         if(this.isSubMenu()){
             cfg = {
                 tag : 'ul',
