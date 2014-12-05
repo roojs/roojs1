@@ -155,10 +155,10 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         
         this.hidden = true;
         
-        this.triggerEl = this.el.select('button.dropdown-toggle', true).first();
+        this.triggerEl = this.el.select('button.roo-dropdown-toggle', true).first();
         this.triggerEl.on('click', this.onTriggerPress, this);
         
-        this.buttonEl = this.el.select('button.dropdown-button', true).first();
+        this.buttonEl = this.el.select('button.roo-dropdown-button', true).first();
         this.buttonEl.on('click', this.onClick, this);
         
     },
