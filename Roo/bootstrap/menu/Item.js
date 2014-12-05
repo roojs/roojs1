@@ -60,7 +60,7 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     preventDefault: true,
     disable : false,
     icon : false,
-    submenuAlign
+    pos : 'right',
     
     getAutoCreate : function()
     {
@@ -96,6 +96,10 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
         
         if(this.submenu){
             cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'dropdown-submenu' : (cfg.cls + ' dropdown-submenu');
+            
+            if(this.pos == 'left'){
+                cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'pull-left' : (cfg.cls + ' pull-left');
+            }
         }
         
         return cfg;
