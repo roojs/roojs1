@@ -18566,9 +18566,9 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * @class Roo.bootstrap.menu.Menu
  * @extends Roo.bootstrap.Component
  * Bootstrap Menu class - container for Menu
- * @cfg {Boolean} submenu (true | false) default false
  * @cfg {String} html Text of the menu
  * @cfg {String} weight (default | primary | success | info | warning | danger | inverse)
+ * 
  * 
  * @constructor
  * Create a new Menu
@@ -18623,7 +18623,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     
     getChildContainer : function() {
-        if(this.submenu){
+        if(this.isSubMenu()){
             return this.el;
         }
         
@@ -18638,7 +18638,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'button',
-                    cls : 'btn btn-' + this.weight,
+                    cls : 'dropdown-button btn btn-' + this.weight,
                     html : this.html
                 },
                 {
@@ -18659,7 +18659,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             
         };
         
-        if(this.submenu){
+        if(this.isSubMenu()){
             cfg = {
                 tag : 'ul',
                 cls : 'dropdown-menu'
@@ -18669,17 +18669,30 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         return cfg;
     },
     
+    isSubMenu : function()
+    {
+        if(this.parent() instanceof Roo.bootstrap.menu.Item){
+            return true;
+        }
+        
+        return false;
+        
+    },
+    
     initEvents : function() 
     {
-        if(this.submenu){
+        
+        if(this.isSubMenu()){
             return;
         }
         
         this.hidden = true;
+        
         this.triggerEl = this.el.select('button.dropdown-toggle', true).first();
         this.triggerEl.on('click', this.onTriggerPress, this);
         
-        this.el.on('click', this.onClick, this);
+        this.buttonEl = this.el.select('button.dropdown-button', true).first();
+        this.buttonEl.on('click', this.onClick, this);
         
     },
     
@@ -18708,7 +18721,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         this.hidden = false;
         this.el.addClass('open');
         
-        Roo.get(document).on("mousedown", this.onMouseDown, this);
+        Roo.get(document).on("mouseup", this.onMouseUp, this);
         
         this.fireEvent("show", this);
         
@@ -18721,10 +18734,12 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         this.hidden = true;
         this.el.removeClass('open');
         
+        Roo.get(document).un("mouseup", this.onMouseUp);
+        
         this.fireEvent("hide", this);
     },
     
-    onMouseDown : function()
+    onMouseUp : function()
     {
         this.hide();
     }
@@ -18747,6 +18762,7 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * @cfg {Boolean} submenu (true | false) default false
  * @cfg {String} html text of the item
  * @cfg {String} href the link
+ * @cfg {Boolean} disable (true | false) default false
  * @cfg {Boolean} preventDefault (true | false) default true
  * 
  * 
@@ -18789,12 +18805,12 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     href : '',
     html : '',
     preventDefault: true,
+    disable : false,
     
     getAutoCreate : function()
     {
         var cfg = {
             tag : 'li',
-            cls : (this.submenu) ? 'dropdown-submenu' : '',
             cn : [
                 {
                     tag : 'a',
@@ -18804,29 +18820,37 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
             ]
         };
         
+        if(this.disable){
+            cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'disabled' : (cfg.cls + ' disabled');
+        }
+        
+        if(this.submenu){
+            cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'dropdown-submenu' : (cfg.cls + ' dropdown-submenu');
+        }
+        
         return cfg;
     },
     
     initEvents : function() 
     {
-        Roo.log('init Menu Items');
-        
-        Roo.log(this.el);
         this.el.on('mouseover', this.onMouseOver, this);
         this.el.on('mouseout', this.onMouseOut, this);
-        this.el.on('click', this.onClick, this);
+        
+        this.el.select('a', true).first().on('click', this.onClick, this);
         
     },
     
     onClick : function(e)
     {
-        Roo.log('item click');
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        
         this.fireEvent("click", this, e);
     },
     
     onMouseOver : function(e)
     {
-        Roo.log('mouse over');
         this.fireEvent("mouseover", this, e);
     },
     
