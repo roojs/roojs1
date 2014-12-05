@@ -12,6 +12,7 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * Bootstrap Menu class - container for Menu
  * @cfg {String} html Text of the menu
  * @cfg {String} weight (default | primary | success | info | warning | danger | inverse)
+ * @cfg {String} icon Font awesome icon
  * 
  * 
  * @constructor
@@ -64,6 +65,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     submenu : false,
     html : '',
     weight : 'default',
+    icon : false,
     
     
     getChildContainer : function() {
