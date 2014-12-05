@@ -87,12 +87,14 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     onClick : function(e)
     {
         Roo.log('item click');
+        Roo.log(this);
         this.fireEvent("click", this, e);
     },
     
     onMouseOver : function(e)
     {
         Roo.log('mouse over');
+        Roo.log(this);
         this.fireEvent("mouseover", this, e);
     },
     
