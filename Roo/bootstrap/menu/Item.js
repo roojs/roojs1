@@ -80,8 +80,6 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
         
         this.el.select('a', true).first().on('click', this.onClick, this);
         
-        
-        
     },
     
     onClick : function(e)
