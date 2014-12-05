@@ -98,6 +98,7 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     
     onMouseOut : function(e)
     {
+        Roo.log('mouse out');
         this.fireEvent("mouseout", this, e);
     }
 });
