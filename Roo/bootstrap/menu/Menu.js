@@ -146,10 +146,6 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     initEvents : function() 
     {
-        
-        this.list().setVisibilityMode(Roo.Element.DISPLAY);
-        this.list().hide();
-        
         if(this.isSubMenu){
             return;
         }
@@ -193,14 +189,10 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     show : function()
     {
-        Roo.log('show??');
         this.fireEvent("beforeshow", this);
         
         this.hidden = false;
 //        this.el.addClass('open');
-        Roo.log(this.list());
-        Roo.log(this.list().show);
-        this.list().show();
         
         Roo.get(document).on("mouseup", this.onMouseUp, this);
         
