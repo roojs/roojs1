@@ -71,7 +71,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     
     getChildContainer : function() {
-        if(this.isSubMenu()){
+        if(this.isSubMenu){
             return this.el;
         }
         
@@ -142,16 +142,15 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     onRender : function(ct, position)
     {
-        Roo.log(ct);
-       // Roo.log("Call onRender: " + this.xtype);
-//        this.isSubMenu = ct.hasClass('....')
+        this.isSubMenu = ct.el.hasClass('dropdown-submenu');
+        
         Roo.bootstrap.menu.Menu.superclass.onRender.call(this, ct, position);
     },
     
     initEvents : function() 
     {
         
-        if(this.isSubMenu()){
+        if(this.isSubMenu){
             return;
         }
         
