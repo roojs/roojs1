@@ -530,7 +530,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     renderColumn : function(r)
     {
         var _this = this;
-     
+        Roo.log(r);
         var t = r.cfg.render(r.container);
         
         Roo.log(t);
