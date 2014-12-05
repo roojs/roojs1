@@ -527,7 +527,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         return this.selModel;
     },
     
-    renderColumn : function(r, container)
+    renderColumn : function(r)
     {
         var _this = this;
      
