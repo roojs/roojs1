@@ -18779,7 +18779,7 @@ Roo.bootstrap.menu.Item = function(config){
          * The raw click event for the entire grid.
          * @param {Roo.EventObject} e
          */
-        "click" : true
+        click : true
     });
 };
 
