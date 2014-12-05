@@ -18741,7 +18741,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
 Roo.bootstrap.menu = Roo.bootstrap.menu || {};
 
 /**
- * @class Roo.bootstrap.menu.MenuItem
+ * @class Roo.bootstrap.menu.Item
  * @extends Roo.bootstrap.Component
  * Bootstrap MenuItem class
  * @cfg {Boolean} submenu (true | false) default false
@@ -18751,25 +18751,25 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * 
  * 
  * @constructor
- * Create a new MenuItem
+ * Create a new Item
  * @param {Object} config The config object
  */
 
 
-Roo.bootstrap.menu.MenuItem = function(config){
-    Roo.bootstrap.menu.MenuItem.superclass.constructor.call(this, config);
+Roo.bootstrap.menu.Item = function(config){
+    Roo.bootstrap.menu.Item.superclass.constructor.call(this, config);
     this.addEvents({
         /**
          * @event mouseover
          * Fires when the mouse is hovering over this menu
-         * @param {Roo.bootstrap.menu.MenuItem} this
+         * @param {Roo.bootstrap.menu.Item} this
          * @param {Roo.EventObject} e
          */
         mouseover : true,
         /**
          * @event mouseout
          * Fires when the mouse exits this menu
-         * @param {Roo.bootstrap.menu.MenuItem} this
+         * @param {Roo.bootstrap.menu.Item} this
          * @param {Roo.EventObject} e
          */
         mouseout : true,
@@ -18783,7 +18783,7 @@ Roo.bootstrap.menu.MenuItem = function(config){
     });
 };
 
-Roo.extend(Roo.bootstrap.menu.MenuItem, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     
     submenu : false,
     href : '',
@@ -18842,21 +18842,21 @@ Roo.extend(Roo.bootstrap.menu.MenuItem, Roo.bootstrap.Component,  {
 Roo.bootstrap.menu = Roo.bootstrap.menu || {};
 
 /**
- * @class Roo.bootstrap.menu.MenuSeparator
+ * @class Roo.bootstrap.menu.Separator
  * @extends Roo.bootstrap.Component
- * Bootstrap MenuSeparator class
+ * Bootstrap Separator class
  * 
  * @constructor
- * Create a new MenuItem
+ * Create a new Separator
  * @param {Object} config The config object
  */
 
 
-Roo.bootstrap.menu.MenuSeparator = function(config){
-    Roo.bootstrap.menu.MenuSeparator.superclass.constructor.call(this, config);
+Roo.bootstrap.menu.Separator = function(config){
+    Roo.bootstrap.menu.Separator.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.menu.MenuSeparator, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.menu.Separator, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         var cfg = {
