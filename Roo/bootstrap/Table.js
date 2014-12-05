@@ -491,7 +491,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             });
         }
         
-        
+        Roo.log(renders);
         if(renders.length){
             var _this = this;
             Roo.each(renders, function(r){
