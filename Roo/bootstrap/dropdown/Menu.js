@@ -4,10 +4,10 @@
  * menu
  * 
  */
-Roo.bootstrap.menu = Roo.bootstrap.menu || {};
+Roo.bootstrap.dropdown = Roo.bootstrap.dropdown || {};
 
 /**
- * @class Roo.bootstrap.menu.Menu
+ * @class Roo.bootstrap.dropdown.Menu
  * @extends Roo.bootstrap.Component
  * Bootstrap Menu class - container for Menu
  * @cfg {Boolean} submenu (true | false) default false
@@ -20,38 +20,38 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  */
 
 
-Roo.bootstrap.menu.Menu = function(config){
-    Roo.bootstrap.menu.Menu.superclass.constructor.call(this, config);
+Roo.bootstrap.dropdown.Menu = function(config){
+    Roo.bootstrap.dropdown.Menu.superclass.constructor.call(this, config);
     
     this.addEvents({
         /**
          * @event beforeshow
          * Fires before this menu is displayed
-         * @param {Roo.bootstrap.menu.Menu} this
+         * @param {Roo.bootstrap.dropdown.Menu} this
          */
         beforeshow : true,
         /**
          * @event beforehide
          * Fires before this menu is hidden
-         * @param {Roo.bootstrap.menu.Menu} this
+         * @param {Roo.bootstrap.dropdown.Menu} this
          */
         beforehide : true,
         /**
          * @event show
          * Fires after this menu is displayed
-         * @param {Roo.bootstrap.menu.Menu} this
+         * @param {Roo.bootstrap.dropdown.Menu} this
          */
         show : true,
         /**
          * @event hide
          * Fires after this menu is hidden
-         * @param {Roo.bootstrap.menu.Menu} this
+         * @param {Roo.bootstrap.dropdown.Menu} this
          */
         hide : true,
         /**
          * @event click
          * Fires when this menu is clicked (or when the enter key is pressed while it is active)
-         * @param {Roo.bootstrap.menu.Menu} this
+         * @param {Roo.bootstrap.dropdown.Menu} this
          * @param {Roo.EventObject} e
          */
         click : true
@@ -59,7 +59,7 @@ Roo.bootstrap.menu.Menu = function(config){
     
 };
 
-Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.dropdown.Menu, Roo.bootstrap.Component,  {
     
     submenu : false,
     html : '',
