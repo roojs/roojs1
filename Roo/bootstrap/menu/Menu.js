@@ -13,6 +13,7 @@ Roo.bootstrap.menu = Roo.bootstrap.menu || {};
  * @cfg {String} html Text of the menu
  * @cfg {String} weight (default | primary | success | info | warning | danger | inverse)
  * @cfg {String} icon Font awesome icon
+ * @cfg {String} pos Menu align to (top | bottom) default bottom
  * 
  * 
  * @constructor
