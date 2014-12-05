@@ -70,7 +70,7 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
                 }
             ]
         };
-        Roo.log(this.disable);
+        
         if(this.disable){
             cfg.cls = (typeof(cfg.cls) == 'undefined') ? 'disabled' : (cfg.cls + ' disabled');
         }
