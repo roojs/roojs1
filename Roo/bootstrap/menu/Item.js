@@ -31,21 +31,21 @@ Roo.bootstrap.menu.Item = function(config){
          * @param {Roo.bootstrap.menu.Item} this
          * @param {Roo.EventObject} e
          */
-        "mouseover" : true,
+        mouseover : true,
         /**
          * @event mouseout
          * Fires when the mouse exits this menu
          * @param {Roo.bootstrap.menu.Item} this
          * @param {Roo.EventObject} e
          */
-        "mouseout" : true,
+        mouseout : true,
         // raw events
         /**
          * @event click
          * The raw click event for the entire grid.
          * @param {Roo.EventObject} e
          */
-        "click" : true
+        click : true
     });
 };
 
