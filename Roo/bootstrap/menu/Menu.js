@@ -143,6 +143,10 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        
         this.fireEvent("click", this, e);
     },
     
