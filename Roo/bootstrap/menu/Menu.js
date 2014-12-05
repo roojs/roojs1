@@ -76,7 +76,6 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        Roo.log(this.isSubMenu());
         var cfg = {
             tag : 'div',
             cls : 'btn-group',
@@ -104,7 +103,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             
         };
         
-        if(this.submenu){
+        if(this.isSubMenu()){
             cfg = {
                 tag : 'ul',
                 cls : 'dropdown-menu'
@@ -117,11 +116,8 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     isSubMenu : function()
     {
         if(this.parent() instanceof Roo.bootstrap.menu.Item){
-            Roo.log('sub menu');
             return true;
         }
-        
-        Roo.log('not sub menu');
         
         return false;
         
