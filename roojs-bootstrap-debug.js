@@ -18779,7 +18779,7 @@ Roo.bootstrap.menu.Item = function(config){
          * The raw click event for the entire grid.
          * @param {Roo.EventObject} e
          */
-        click : true
+        "click" : true
     });
 };
 
@@ -18809,6 +18809,9 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     
     initEvents : function() 
     {
+        Roo.log('init Menu Items');
+        
+        Roo.log(this.el);
         this.el.on('mouseover', this.onMouseOver, this);
         this.el.on('mouseout', this.onMouseOut, this);
         this.el.on('click', this.onClick, this);
@@ -18817,11 +18820,13 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
+        Roo.log('item click');
         this.fireEvent("click", this, e);
     },
     
     onMouseOver : function(e)
     {
+        Roo.log('mouse over');
         this.fireEvent("mouseover", this, e);
     },
     
