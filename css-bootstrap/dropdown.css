@@ -40,6 +40,10 @@
           border-radius: 5px 5px 5px 0;
 }
 
+.dropup .dropdown-menu {
+    -webkit-animation-name: inherit;
+}
+
 .dropdown-submenu > a:after {
   display: block;
   float: right;
