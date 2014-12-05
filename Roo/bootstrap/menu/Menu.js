@@ -76,6 +76,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
+        Roo.log(this.isSubMenu());
         var cfg = {
             tag : 'div',
             cls : 'btn-group',
@@ -128,7 +129,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     initEvents : function() 
     {
-        Roo.log(this.isSubMenu());
+        
         if(this.submenu){
             return;
         }
