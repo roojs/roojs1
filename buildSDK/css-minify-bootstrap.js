@@ -20,6 +20,10 @@ files.forEach(function(f) {
     if (f.match(/^bootstrap/)) {
         return;
     }
+    if (f.match(/^font-awesome/)) {
+        return;
+    }
+    
     out += pack(File.read(pa + '/css-bootstrap/' +f ));
 });
 
