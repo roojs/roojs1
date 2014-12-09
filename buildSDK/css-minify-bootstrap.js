@@ -5,8 +5,9 @@ GLib = imports.gi.GLib;
 // let's see if this works..
 // should be run from top level..
 var pa = GLib.get_current_dir();
+print(pa);
 
-if (!pa.match(/roojs$/)) {
+if (!pa.match(/roojs1$/)) {
     print("this should be run from the top level directory")
     Seed.quit();
 }
