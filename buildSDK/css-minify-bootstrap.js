@@ -34,6 +34,6 @@ files.forEach(function(f) {
 
 
 
-File.write(pa+'/css-bootstrap/roojs-bootstrap.css', out);
+File.write(pa+'/css-bootstrap/roojs-bootstrap.css', debug_out);
 File.write(pa+'/css-bootstrap/roojs-bootstrap-debug.css', out);
     
