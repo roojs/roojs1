@@ -18628,7 +18628,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
     
     
     getChildContainer : function() {
-        if(this.isSubMenu()){
+        if(this.isSubMenu){
             return this.el;
         }
         
@@ -18684,7 +18684,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
             cfg.cls += ' dropup';
         }
         
-        if(this.isSubMenu()){
+        if(this.isSubMenu){
             cfg = {
                 tag : 'ul',
                 cls : 'dropdown-menu'
@@ -18694,20 +18694,16 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         return cfg;
     },
     
-    isSubMenu : function()
+    onRender : function(ct, position)
     {
-        if(this.parent() instanceof Roo.bootstrap.menu.Item){
-            return true;
-        }
+        this.isSubMenu = ct.hasClass('dropdown-submenu');
         
-        return false;
-        
+        Roo.bootstrap.menu.Menu.superclass.onRender.call(this, ct, position);
     },
     
     initEvents : function() 
     {
-        
-        if(this.isSubMenu()){
+        if(this.isSubMenu){
             return;
         }
         
@@ -18719,6 +18715,15 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         this.buttonEl = this.el.select('button.dropdown-button', true).first();
         this.buttonEl.on('click', this.onClick, this);
         
+    },
+    
+    list : function()
+    {
+        if(this.isSubMenu){
+            return this.el;
+        }
+        
+        return this.el.select('ul.dropdown-menu', true).first();
     },
     
     onClick : function(e)
@@ -18749,6 +18754,7 @@ Roo.extend(Roo.bootstrap.menu.Menu, Roo.bootstrap.Component,  {
         Roo.get(document).on("mouseup", this.onMouseUp, this);
         
         this.fireEvent("show", this);
+        
         
     },
     
@@ -18899,6 +18905,10 @@ Roo.extend(Roo.bootstrap.menu.Item, Roo.bootstrap.Component,  {
     
     onMouseOver : function(e)
     {
+        if(this.submenu && this.pos == 'left'){
+            this.el.select('ul.dropdown-menu', true).first().setLeft(this.el.select('ul.dropdown-menu', true).first().getWidth() * -1);
+        }
+        
         this.fireEvent("mouseover", this, e);
     },
     
