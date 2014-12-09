@@ -282,7 +282,7 @@ Roo.extend(Roo.bootstrap.HtmlEditor, Roo.bootstrap.TextArea,  {
 //            Roo.log(this.pushValue()); 
             this.pushValue();
             
-            this.inputEl().addClass('hide');
+            this.inputEl().addClass(['hide', 'x-hidden']);
             this.inputEl().dom.setAttribute('tabIndex', -1);
             //this.deferFocus();
         }
