@@ -13,6 +13,7 @@ if (!pa.match(/roojs1$/)) {
 }
 
 var files = File.list(pa + '/css-bootstrap');
+print(files);
 var out = '';
 files.forEach(function(f) {
     if (f.match(/^roojs/)) {
