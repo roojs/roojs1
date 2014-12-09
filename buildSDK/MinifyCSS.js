@@ -9,51 +9,10 @@
  
  <script type="text/javascript">
  
-// usage. 
-
-File = imports.File.File;
-pack = imports.MinifyCSS.pack;
+// usage. see - css=minify-bootstrap.js
 
 
-
-
-var 
-File.write(pa+'/cssX/roojs.css',
-    
-    pack(File.read(pa+'/cssX/reset-min.css'))+"\n"+
-    pack(File.read(pa+'/cssX/core.css'))+"\n"+
-    pack(File.read(pa+'/cssX/tabs.css'))+"\n"+
-    pack(File.read(pa+'/cssX/form.css'))+"\n"+
-    pack(File.read(pa+'/cssX/button.css')) +"\n"+
-    pack(File.read(pa+'/cssX/toolbar.css'))+"\n"+
-    pack(File.read(pa+'/cssX/resizable.css'))+"\n"+
-    pack(File.read(pa+'/cssX/grid.css'))+"\n"+
-    pack(File.read(pa+'/cssX/layout.css'))+"\n"+
-    pack(File.read(pa+'/cssX/basic-dialog.css'))+"\n"+
-    pack(File.read(pa+'/cssX/dd.css'))+"\n"+
-    pack(File.read(pa+'/cssX/tree.css'))+"\n" +
-    pack(File.read(pa+'/cssX/qtips.css'))+"\n"+
-    pack(File.read(pa+'/cssX/date-picker.css')) +"\n"+
-    pack(File.read(pa+'/cssX/menu.css')) +"\n"+
-    pack(File.read(pa+'/cssX/box.css')) +"\n"+
-    pack(File.read(pa+'/cssX/combo.css')) +"\n"+
-    pack(File.read(pa+'/cssX/editor.css'))+"\n"
-    
-  
-    
-    
-);
- 
- */ 
-   
-// and the themese...
-//ytheme-aero.css
-//ytheme-gray.css
-//ytheme-vista.css
-
-  
-  
-  
+*/
 
   
 pack = function (istr) {
