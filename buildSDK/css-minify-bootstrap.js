@@ -12,7 +12,7 @@ if (!pa.match(/roojs1$/)) {
     Seed.quit();
 }
 
-var files = Files.list(pa + '/css-bootstrap');
+var files = File.list(pa + '/css-bootstrap');
 var out = '';
 files.forEach(function(f) {
     if (f.match(/^roojs/)) {
