@@ -15,6 +15,7 @@ if (!pa.match(/roojs1$/)) {
 var files = File.list(pa + '/css-bootstrap');
 print(files);
 var out = '';
+var debug_out = '';
 files.forEach(function(f) {
     if (f.match(/^roojs/)) {
         return;
@@ -25,7 +26,8 @@ files.forEach(function(f) {
     if (f.match(/^font-awesome/)) {
         return;
     }
-    
+    debug_out += "\n/* -- " + f + " ---- */\n";
+    debug_out += File.read(pa + '/css-bootstrap/' +f );
     out += pack(File.read(pa + '/css-bootstrap/' +f ));
 });
 
@@ -33,4 +35,5 @@ files.forEach(function(f) {
 
 
 File.write(pa+'/css-bootstrap/roojs-bootstrap.css', out);
+File.write(pa+'/css-bootstrap/roojs-bootstrap-debug.css', out);
     
