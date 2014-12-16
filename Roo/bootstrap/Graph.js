@@ -95,7 +95,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         //         this.raphael.setViewBox(0,0,600,600,true);
 //        Roo.log(this.raphael);
 //         this.raphael.setViewBox(0,0,0,0,true);
-//        this.raphael.setSize('100%', 0);
+        this.raphael.setSize('100%', 0);
                     // data1 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
                     // data2 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
                     // data3 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
