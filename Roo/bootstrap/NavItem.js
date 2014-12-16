@@ -94,11 +94,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                 if(this.glyphicon) {
                     cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
                 }
-            }
             
             
             
-            if (cfg.cn  && this.menu) {
+            if (this.menu) {
                 
                 cfg.cn[0].html += " <span class='caret'></span>";
              
