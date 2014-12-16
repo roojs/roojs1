@@ -90,7 +90,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
     onRender : function(ct,position){
         Roo.bootstrap.Graph.superclass.onRender.call(this,ct,position);
         this.raphael = Raphael(this.el.dom);
-        this.raphael.canvas.setAttribute('preserveAspectRatio', 'none');
+        this.raphael.canvas.setAttribute('preserveAspectRatio', 'xMidYMid slice');
         //         this.raphael.setViewBox(0,0,600,600,true);
 //        Roo.log(this.raphael);
 //         this.raphael.setViewBox(0,0,0,0,true);
