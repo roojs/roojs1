@@ -27,6 +27,7 @@
  * @param {Object} config The config object
  */
 Roo.bootstrap.NavItem = function(config){
+    Roo.log(config);
     Roo.bootstrap.NavItem.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
