@@ -76,7 +76,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cfg.cls += ' disabled';
         }
         
-        if (this.href || this.html) {
+        if (this.href || this.html || this.glyphicon || this.icon) {
             cfg.cn = [
                 {
                     tag: this.tagtype,
@@ -86,10 +86,12 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             ]
         
         // glyphicon and icon go before content..
-            if (this.glyphicon || this.icon) {
-                 if (this.icon) {
+            
+                if (this.icon) {
                     cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
-                } else {
+                }
+                
+                if(this.glyphicon) {
                     cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
                 }
             }
