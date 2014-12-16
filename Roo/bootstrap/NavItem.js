@@ -83,19 +83,15 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                     href : this.href || "#",
                     html: this.html || ''
                 }
-            ]
-        
-        // glyphicon and icon go before content..
+            ];
             
-                if (this.icon) {
-                    cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
-                }
-                
-                if(this.glyphicon) {
-                    cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
-                }
-            
-            
+            if (this.icon) {
+                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
+            }
+
+            if(this.glyphicon) {
+                cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
+            }
             
             if (this.menu) {
                 
