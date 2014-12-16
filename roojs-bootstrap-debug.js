@@ -3353,6 +3353,7 @@ Roo.apply(Roo.bootstrap.NavGroup, {
  * @param {Object} config The config object
  */
 Roo.bootstrap.NavItem = function(config){
+    Roo.log(config);
     Roo.bootstrap.NavItem.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
@@ -3401,27 +3402,24 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             cfg.cls += ' disabled';
         }
         
-        if (this.href || this.html) {
+        if (this.href || this.html || this.glyphicon || this.icon) {
             cfg.cn = [
                 {
                     tag: this.tagtype,
                     href : this.href || "#",
                     html: this.html || ''
                 }
-            ]
-        
-        // glyphicon and icon go before content..
-            if (this.glyphicon || this.icon) {
-                 if (this.icon) {
-                    cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
-                } else {
-                    cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
-                }
+            ];
+            
+            if (this.icon) {
+                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
+            }
+
+            if(this.glyphicon) {
+                cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
             }
             
-            
-            
-            if (cfg.cn  && this.menu) {
+            if (this.menu) {
                 
                 cfg.cn[0].html += " <span class='caret'></span>";
              
