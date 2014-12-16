@@ -27,6 +27,7 @@
  * @param {Object} config The config object
  */
 </span><span class="jsdoc-var">Roo.bootstrap.NavItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">Roo.bootstrap.NavItem.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">// raw events
@@ -75,27 +76,24 @@
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' disabled'</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.html</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.glyphicon </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tagtype</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;#&quot;</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
                 </span><span class="jsdoc-syntax">}
-            ]
-        
-        </span><span class="jsdoc-comment">// glyphicon and icon go before content..
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.glyphicon </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">) {
-                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;&lt;/i&gt; &lt;span&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/span&gt;'
-                </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-                    </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;span class=&quot;glyphicon glyphicon-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.glyphicon </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;&lt;/span&gt; '  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html</span><span class="jsdoc-syntax">;
-                }
+            ];
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot;&gt;&lt;/i&gt; &lt;span&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&lt;/span&gt;'
+            </span><span class="jsdoc-syntax">}
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.glyphicon</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;span class=&quot;glyphicon glyphicon-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.glyphicon </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;&lt;/span&gt; '  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html</span><span class="jsdoc-syntax">;
             }
             
-            
-            
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg.cn  </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">) {
                 
                 </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.html </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot; &lt;span class='caret'&gt;&lt;/span&gt;&quot;</span><span class="jsdoc-syntax">;
              
