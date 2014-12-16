@@ -167,13 +167,13 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.afterTextEl =  field.el.select('.x-paging-after',true).first();
         //this.field.setHeight(18);
         //this.addSeparator();
-//        this.next = this.navgroup.addItem({
-//            tooltip: this.nextText,
-//            cls: "next",
-//            html : ' <i class="fa fa-step-forward">',
-//            disabled: true,
-//            listeners : { click :  this.onClick.createDelegate(this, ["next"]) }
-//        });
+        this.next = this.navgroup.addItem({
+            tooltip: this.nextText,
+            cls: "next",
+            html : ' <i class="fa fa-step-forward">',
+            disabled: true,
+            listeners : { click :  this.onClick.createDelegate(this, ["next"]) }
+        });
         this.last = this.navgroup.addItem({
             tooltip: this.lastText,
             icon : 'fa fa-forward',
