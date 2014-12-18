@@ -76,6 +76,7 @@ Roo.bootstrap.ComboBox = function(config){
         'remove' : true
         
     });
+    
     this.item = [];
     
     this.selectedIndex = -1;
