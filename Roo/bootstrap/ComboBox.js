@@ -659,8 +659,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
             this.setFromData(index > -1 ? record.data : false);
             
-//            this.collapse();
-//            this.fireEvent('select', this, record, index);
+            this.collapse();
+            this.fireEvent('select', this, record, index);
         }
     },
 
