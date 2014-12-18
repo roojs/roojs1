@@ -9789,6 +9789,7 @@ Roo.bootstrap.ComboBox = function(config){
         
     });
     
+    this.item = [];
     
     this.selectedIndex = -1;
     if(this.mode == 'local'){
@@ -9976,7 +9977,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     append: false,
     loadNext: false,
     autoFocus : true,
-    item: [],
     
     // element that contains real text value.. (when hidden is used..)
      
@@ -10935,6 +10935,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         close.on('click', this.onRemoveItem, this, { item : choice, data : o} );
         
         this.item.push(o);
+        
         this.lastData = o;
         
         this.syncValue();
@@ -18207,7 +18208,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
     onRender : function(ct,position){
         Roo.bootstrap.Graph.superclass.onRender.call(this,ct,position);
         this.raphael = Raphael(this.el.dom);
-
+        
                     // data1 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
                     // data2 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
                     // data3 = [[55, 20, 13, 32, 5, 1, 2, 10], [10, 2, 1, 5, 32, 13, 20, 55], [12, 20, 30]],
