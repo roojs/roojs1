@@ -1225,7 +1225,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         close.on('click', this.onRemoveItem, this, { item : choice, data : o} );
         
+        Roo.log(this.item);
         this.item.push(o);
+        
+        Roo.log(this.item);
         this.lastData = o;
         
         this.syncValue();
