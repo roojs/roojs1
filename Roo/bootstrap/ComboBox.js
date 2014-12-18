@@ -76,7 +76,7 @@ Roo.bootstrap.ComboBox = function(config){
         'remove' : true
         
     });
-    
+    this.item = [];
     
     this.selectedIndex = -1;
     if(this.mode == 'local'){
@@ -264,7 +264,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     append: false,
     loadNext: false,
     autoFocus : true,
-    item: false,,
+    item: false, 
     
     // element that contains real text value.. (when hidden is used..)
      
