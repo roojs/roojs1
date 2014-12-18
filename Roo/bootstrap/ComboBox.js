@@ -1230,11 +1230,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.item.push(o);
         
         Roo.log(this.item);
-//        this.lastData = o;
-//        
-//        this.syncValue();
-//        
-//        this.inputEl().dom.value = '';
+        this.lastData = o;
+        
+        this.syncValue();
+        
+        this.inputEl().dom.value = '';
         
     },
     
