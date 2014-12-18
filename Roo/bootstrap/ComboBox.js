@@ -1202,6 +1202,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         Roo.log(this.choices);
+        Roo.log(this.searchField);
         var choice = this.choices.createChild({
             tag: 'li',
             cls: 'select2-search-choice',
