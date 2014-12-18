@@ -1224,7 +1224,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log(this);
         Roo.log(o);
         Roo.log(this.item);
-//        this.item.push(o);
+        this.item.push(o);
         Roo.log(this.item);
         this.lastData = o;
         
