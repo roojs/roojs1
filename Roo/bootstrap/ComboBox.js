@@ -653,8 +653,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onSelect : function(record, index){
-        Roo.log(this);
-        Roo.log(record);
+        
         if(this.fireEvent('beforeselect', this, record, index) !== false){
         
             this.setFromData(index > -1 ? record.data : false);
@@ -1200,8 +1199,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(!dv.length){
             return;
         }
-        Roo.log(this.choices);
-        Roo.log(this.searchField);
+        
         var choice = this.choices.createChild({
             tag: 'li',
             cls: 'select2-search-choice',
@@ -1224,11 +1222,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         close.on('click', this.onRemoveItem, this, { item : choice, data : o} );
         
-        Roo.log(this.item);
-        Roo.log(o);
         this.item.push(o);
-        
-        Roo.log(this.item);
         this.lastData = o;
         
         this.syncValue();
