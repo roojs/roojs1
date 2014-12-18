@@ -77,6 +77,7 @@
         
     </span><span class="jsdoc-syntax">});
     
+    </span><span class="jsdoc-var">this.item </span><span class="jsdoc-syntax">= [];
     
     </span><span class="jsdoc-var">this.selectedIndex </span><span class="jsdoc-syntax">= -1;
     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'local'</span><span class="jsdoc-syntax">){
@@ -264,7 +265,6 @@
     </span><span class="jsdoc-var">append</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">loadNext</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">autoFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">: [],
     
     </span><span class="jsdoc-comment">// element that contains real text value.. (when hidden is used..)
      
@@ -1223,6 +1223,7 @@
         </span><span class="jsdoc-var">close.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRemoveItem</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">choice</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">} );
         
         </span><span class="jsdoc-var">this.item.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">this.lastData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">this.syncValue</span><span class="jsdoc-syntax">();
