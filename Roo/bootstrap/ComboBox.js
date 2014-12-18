@@ -1221,7 +1221,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var close = choice.select('a.select2-search-choice-close', true).first()
         
         close.on('click', this.onRemoveItem, this, { item : choice, data : o} );
-        
+        Roo.log(this);
         this.item.push(o);
         this.lastData = o;
         
