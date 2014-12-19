@@ -10498,12 +10498,6 @@
      "memberOf": ""
     },
     {
-     "name": "srButton",
-     "type": "Boolean",
-     "desc": "generate the sr-only button (true | false) default true",
-     "memberOf": ""
-    },
-    {
      "name": "inverse",
      "type": "Boolean",
      "desc": "is inverted color",
