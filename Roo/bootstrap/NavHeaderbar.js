@@ -35,18 +35,6 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     
     getAutoCreate : function(){
         
-        
-        
-        var   cfg = {
-            tag: this.nav || 'nav',
-            cls: 'navbar',
-            role: 'navigation',
-            cn: [
-                ,
-                
-            ]
-        };
-        
         var   cfg = {
             tag: this.nav || 'nav',
             cls: 'navbar',
@@ -60,29 +48,29 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
                 cls: 'navbar-header',
                 cn: [
                     {
-                    tag: 'button',
-                    type: 'button',
-                    cls: 'navbar-toggle',
-                    'data-toggle': 'collapse',
-                    cn: [
-                        {
-                            tag: 'span',
-                            cls: 'sr-only',
-                            html: 'Toggle navigation'
-                        },
-                        {
-                            tag: 'span',
-                            cls: 'icon-bar'
-                        },
-                        {
-                            tag: 'span',
-                            cls: 'icon-bar'
-                        },
-                        {
-                            tag: 'span',
-                            cls: 'icon-bar'
-                        }
-                    ]
+                        tag: 'button',
+                        type: 'button',
+                        cls: 'navbar-toggle',
+                        'data-toggle': 'collapse',
+                        cn: [
+                            {
+                                tag: 'span',
+                                cls: 'sr-only',
+                                html: 'Toggle navigation'
+                            },
+                            {
+                                tag: 'span',
+                                cls: 'icon-bar'
+                            },
+                            {
+                                tag: 'span',
+                                cls: 'icon-bar'
+                            },
+                            {
+                                tag: 'span',
+                                cls: 'icon-bar'
+                            }
+                        ]
                     }
                 ]
             });
