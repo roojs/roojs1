@@ -3462,7 +3462,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (this.disabled) {
             return;
         }
-        Roo.log("fire event clicked");
+        Roo.log("NavItem fire event clicked");
         if(this.fireEvent('click', this, e) === false){
             return;
         };
