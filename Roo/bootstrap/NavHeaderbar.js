@@ -78,7 +78,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         
         cfg.cn.push({
             tag: 'div',
-            cls: '',
+            cls: 'collapse navbar-collapse',
             cn : []
         });
         
