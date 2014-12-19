@@ -2999,6 +2999,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
  * @cfg {String} brand what is brand
  * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
  * @cfg {String} brand_href href of the brand
+ * @cfg {Boolean} srButton generate the sr-only button (true | false) default true
  * 
  * @constructor
  * Create a new Sidebar
@@ -3015,22 +3016,24 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     position: '',
     brand: '',
     brand_href: false,
+    srButton : true,
     
     
     getAutoCreate : function(){
-        
-        
         
         var   cfg = {
             tag: this.nav || 'nav',
             cls: 'navbar',
             role: 'navigation',
-            cn: [
-                {
-                    tag: 'div',
-                    cls: 'navbar-header',
-                    cn: [
-                        {
+            cn: []
+        };
+        
+        if(this.srButton){
+            cfg.cn.push({
+                tag: 'div',
+                cls: 'navbar-header',
+                cn: [
+                    {
                         tag: 'button',
                         type: 'button',
                         cls: 'navbar-toggle',
@@ -3054,15 +3057,15 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
                                 cls: 'icon-bar'
                             }
                         ]
-                        }
-                    ]
-                },
-                {
-                tag: 'div',
-                cls: 'collapse navbar-collapse'
-                }
-            ]
-        };
+                    }
+                ]
+            });
+        }
+        
+        cfg.cn.push({
+            tag: 'div',
+            cls: 'collapse navbar-collapse'
+        });
         
         cfg.cls += this.inverse ? ' navbar-inverse' : ' navbar-default';
         
