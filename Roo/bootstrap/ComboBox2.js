@@ -293,29 +293,23 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         };
         
         
-        var button =  {
-            tag : 'div',
-            cls : 'form-control',
-            cn : [
+        var button =  
                 {
                     tag : 'button',
                     type : 'button',
                     cls : 'btn btn-link',
                     html : 'Edit'
-                }
-            ]
-            
-        };
+                };
         
         if (this.name) {
-            button.cn[0].name = this.name;
+            button.name = this.name;
         }
         if (this.size) {
-            button.cn[0].cls += ' btn-' + this.size;
+            button.cls += ' btn-' + this.size;
         }
         
         if (this.disabled) {
-            button.cn[0].disabled=true;
+            button.disabled=true;
         }
         
         var inputblock = button;
