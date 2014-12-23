@@ -286,7 +286,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
                     t.apply(data)
             );
             
-            html[html.length] = Roo.util.Format.trim(
+            html[html.length-1] = Roo.util.Format.trim(
                     t.apply({'roo-id' : Roo.id()})
             );
         }
