@@ -640,7 +640,6 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         
         Roo.bootstrap.ComboBox2.superclass.initEvents.call(this);
         
-        
         if(this.hiddenName){
             
             this.hiddenField = this.el.select('input.form-hidden-field',true).first();
@@ -655,17 +654,10 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
              
              
         }
-        //if(Roo.isGecko){
-        //    this.el.dom.setAttribute('autocomplete', 'off');
-        //}
 
         var cls = 'x-combo-list';
         this.list = this.el.select('ul.dropdown-menu',true).first();
 
-        //this.list = new Roo.Layer({
-        //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
-        //});
-        
         var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
         this.list.setWidth(lw);
         
