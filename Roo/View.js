@@ -438,12 +438,9 @@ Roo.extend(Roo.View, Roo.util.Observable, {
 
     /** @ignore */
     onClick : function(e){
-        Roo.log('view click');
         var item = this.findItemFromChild(e.getTarget());
-        Roo.log(item);
         if(item){
             var index = this.indexOf(item);
-            Roo.log(index);
             if(this.onItemClick(item, index, e) !== false){
                 this.fireEvent("click", this, index, item, e);
             }
@@ -473,7 +470,6 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         if(this.fireEvent("beforeclick", this, index, item, e) === false){
             return false;
         }
-        Roo.log('onItemClick');
         if (this.toggleSelect) {
             var m = this.isSelected(item) ? 'unselect' : 'select';
             Roo.log(m);
@@ -488,7 +484,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
                 this.select(item, this.multiSelect && e.ctrlKey);
                 this.lastSelection = item;
             }
-//            e.preventDefault();
+            e.preventDefault();
         }
         return true;
     },
