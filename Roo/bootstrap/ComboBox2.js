@@ -1091,7 +1091,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             var i = this.tickItems.indexOf(r) * 1;
             
             if(i !== -1){
-                delete this.tickItems[i];
+                this.tickItems.splice(i, 1);
                 return;
             }
             
