@@ -306,16 +306,16 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             ]
             
         };
-        return button;
+        
         if (this.name) {
-            edit.name = this.name;
+            button.cn[0].name = this.name;
         }
         if (this.size) {
-            input.cls += ' input-' + this.size;
+            button.cn[0].cls += ' btn-' + this.size;
         }
         
         if (this.disabled) {
-            input.disabled=true;
+            button.cn[0].disabled=true;
         }
         
         var inputblock = input;
