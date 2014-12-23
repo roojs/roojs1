@@ -285,7 +285,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
                 Roo.apply(d, {'roo-id' : Roo.id()});
             }
             
-            Roo.each(this.parent.tickItems, function(item){
+            Roo.each(this.parent.item, function(item){
                 Roo.log(item);
             });
             
