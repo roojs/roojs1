@@ -1083,7 +1083,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         var r = this.store.getAt(index);
         Roo.log(r);
         if(this.tickable){
-            
+            Roo.log(this.tickItems.indexOf(r) * 1);
             this.tickItems.push(r);
             return;
         }
