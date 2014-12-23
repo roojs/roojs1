@@ -1335,6 +1335,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         
         if(this.tickable){
             this.footer.hide();
+            this.trigger.show();
         }
         
         Roo.get(document).un('mousedown', this.collapseIf, this);
