@@ -1,5 +1,3 @@
-// from https://github.com/danielfarrell/bootstrap-combobox
-
 
 .combobox-container {
   margin-bottom: 5px;
@@ -193,5 +191,11 @@
 .select2-container .x-combo-noedit[disabled] {
    cursor: not-allowed;
    background-color: #eee;
+
+}
+
+.roo-combobox-tickable .select2-choices {
+   border: none;
+   background-image: none;
 
 }
