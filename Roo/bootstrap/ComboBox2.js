@@ -1081,7 +1081,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         var index = this.view.getSelectedIndexes()[0];
         
         var r = this.store.getAt(index);
-        Roo.log(r);
+        
         if(this.tickable){
             var i = this.tickItems.indexOf(r) * 1;
             
