@@ -1088,8 +1088,6 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-            Roo.log(r);
-            
             var i = this.tickItems.indexOf(r) * 1;
             
             if(i !== -1){
