@@ -633,6 +633,235 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             this.searchField = this.el.select('ul li.select2-search-field', true).first();
         }
     },
+    
+    initTickableEvnets: function(){
+        
+        if (!this.store) {
+            throw "can not find store for combo";
+        }
+        this.store = Roo.factory(this.store, Roo.data);
+        
+        if(this.tickable){
+            this.initTickableEvnets();
+            return;
+        }
+        
+        Roo.bootstrap.ComboBox2.superclass.initEvents.call(this);
+        
+        
+        if(this.hiddenName){
+            
+            this.hiddenField = this.el.select('input.form-hidden-field',true).first();
+            
+            this.hiddenField.dom.value =
+                this.hiddenValue !== undefined ? this.hiddenValue :
+                this.value !== undefined ? this.value : '';
+
+            // prevent input submission
+            this.el.dom.removeAttribute('name');
+            this.hiddenField.dom.setAttribute('name', this.hiddenName);
+             
+             
+        }
+        //if(Roo.isGecko){
+        //    this.el.dom.setAttribute('autocomplete', 'off');
+        //}
+
+        var cls = 'x-combo-list';
+        this.list = this.el.select('ul.dropdown-menu',true).first();
+
+        //this.list = new Roo.Layer({
+        //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
+        //});
+        
+        var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
+        this.list.setWidth(lw);
+        
+        this.list.on('mouseover', this.onViewOver, this);
+        this.list.on('mousemove', this.onViewMove, this);
+        
+        this.list.on('scroll', this.onViewScroll, this);
+        
+        /*
+        this.list.swallowEvent('mousewheel');
+        this.assetHeight = 0;
+
+        if(this.title){
+            this.header = this.list.createChild({cls:cls+'-hd', html: this.title});
+            this.assetHeight += this.header.getHeight();
+        }
+
+        this.innerList = this.list.createChild({cls:cls+'-inner'});
+        this.innerList.on('mouseover', this.onViewOver, this);
+        this.innerList.on('mousemove', this.onViewMove, this);
+        this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
+        
+        if(this.allowBlank && !this.pageSize && !this.disableClear){
+            this.footer = this.list.createChild({cls:cls+'-ft'});
+            this.pageTb = new Roo.Toolbar(this.footer);
+           
+        }
+        if(this.pageSize){
+            this.footer = this.list.createChild({cls:cls+'-ft'});
+            this.pageTb = new Roo.PagingToolbar(this.footer, this.store,
+                    {pageSize: this.pageSize});
+            
+        }
+        
+        if (this.pageTb && this.allowBlank && !this.disableClear) {
+            var _this = this;
+            this.pageTb.add(new Roo.Toolbar.Fill(), {
+                cls: 'x-btn-icon x-btn-clear',
+                text: '&#160;',
+                handler: function()
+                {
+                    _this.collapse();
+                    _this.clearValue();
+                    _this.onSelect(false, -1);
+                }
+            });
+        }
+        if (this.footer) {
+            this.assetHeight += this.footer.getHeight();
+        }
+        */
+            
+        if(!this.tpl){
+            this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
+        }
+
+        this.view = new Roo.View(this.el.select('ul.dropdown-menu',true).first(), this.tpl, {
+            singleSelect:true, store: this.store, selectedClass: this.selectedClass
+        });
+        //this.view.wrapEl.setDisplayed(false);
+        this.view.on('click', this.onViewClick, this);
+        
+        
+        
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('loadexception', this.onLoadException, this);
+        /*
+        if(this.resizable){
+            this.resizer = new Roo.Resizable(this.list,  {
+               pinned:true, handles:'se'
+            });
+            this.resizer.on('resize', function(r, w, h){
+                this.maxHeight = h-this.handleHeight-this.list.getFrameWidth('tb')-this.assetHeight;
+                this.listWidth = w;
+                this.innerList.setWidth(w - this.list.getFrameWidth('lr'));
+                this.restrictHeight();
+            }, this);
+            this[this.pageSize?'footer':'innerList'].setStyle('margin-bottom', this.handleHeight+'px');
+        }
+        */
+        if(!this.editable){
+            this.editable = true;
+            this.setEditable(false);
+        }
+        
+        /*
+        
+        if (typeof(this.events.add.listeners) != 'undefined') {
+            
+            this.addicon = this.wrap.createChild(
+                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-add' });  
+       
+            this.addicon.on('click', function(e) {
+                this.fireEvent('add', this);
+            }, this);
+        }
+        if (typeof(this.events.edit.listeners) != 'undefined') {
+            
+            this.editicon = this.wrap.createChild(
+                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-edit' });  
+            if (this.addicon) {
+                this.editicon.setStyle('margin-left', '40px');
+            }
+            this.editicon.on('click', function(e) {
+                
+                // we fire even  if inothing is selected..
+                this.fireEvent('edit', this, this.lastData );
+                
+            }, this);
+        }
+        */
+        
+        this.keyNav = new Roo.KeyNav(this.inputEl(), {
+            "up" : function(e){
+                this.inKeyMode = true;
+                this.selectPrev();
+            },
+
+            "down" : function(e){
+                if(!this.isExpanded()){
+                    this.onTriggerClick();
+                }else{
+                    this.inKeyMode = true;
+                    this.selectNext();
+                }
+            },
+
+            "enter" : function(e){
+//                this.onViewClick();
+                //return true;
+                this.collapse();
+                
+                if(this.fireEvent("specialkey", this, e)){
+                    this.onViewClick(false);
+                }
+                
+                return true;
+            },
+
+            "esc" : function(e){
+                this.collapse();
+            },
+
+            "tab" : function(e){
+                this.collapse();
+                
+                if(this.fireEvent("specialkey", this, e)){
+                    this.onViewClick(false);
+                }
+                
+                return true;
+            },
+
+            scope : this,
+
+            doRelay : function(foo, bar, hname){
+                if(hname == 'down' || this.scope.isExpanded()){
+                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+                }
+                return true;
+            },
+
+            forceKeyDown: true
+        });
+        
+        
+        this.queryDelay = Math.max(this.queryDelay || 10,
+                this.mode == 'local' ? 10 : 250);
+        
+        
+        this.dqTask = new Roo.util.DelayedTask(this.initQuery, this);
+        
+        if(this.typeAhead){
+            this.taTask = new Roo.util.DelayedTask(this.onTypeAhead, this);
+        }
+        if(this.editable !== false){
+            this.inputEl().on("keyup", this.onKeyUp, this);
+        }
+        if(this.forceSelection){
+            this.inputEl().on('blur', this.doForce, this);
+        }
+        
+        if(this.multiple){
+            this.choices = this.el.select('ul.select2-choices', true).first();
+            this.searchField = this.el.select('ul li.select2-search-field', true).first();
+        }
+    },
 
     onDestroy : function(){
         if(this.view){
