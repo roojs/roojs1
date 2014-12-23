@@ -1565,6 +1565,14 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         });
         
         this.syncValue();
+    },
+    
+    inputEl: function ()
+    {
+        if(this.tickable){
+            return this.searchField;
+        }
+        return this.el.select('input.form-control',true).first();
     }
     
     
