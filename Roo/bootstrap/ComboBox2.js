@@ -672,7 +672,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         this.list.on('scroll', this.onViewScroll, this);
         
         if(!this.tpl){
-            this.tpl = '<li><input type="checkbox"><a href="#">{' + this.displayField + '}</a></li>';
+            this.tpl = '<li><div class="col-md-2"><input type="checkbox"></div><div class="col-md-10"><a href="#"><b>{' + this.displayField + '}</b></a></div></li>';
         }
 
         this.view = new Roo.View(this.el.select('ul.dropdown-menu',true).first(), this.tpl, {
