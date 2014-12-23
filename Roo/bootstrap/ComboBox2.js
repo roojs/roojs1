@@ -702,6 +702,9 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         this.view = new Roo.View(this.el.select('ul.dropdown-menu',true).first(), this.tpl, {
             singleSelect:true, tickable:true, store: this.store, selectedClass: this.selectedClass
         });
+        
+        this.view.tickItems = [];
+        
         //this.view.wrapEl.setDisplayed(false);
         this.view.on('click', this.onViewClick, this);
         
