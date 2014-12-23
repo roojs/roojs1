@@ -275,7 +275,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         var cfg = false;
         if(!this.tickable){
             cfg = Roo.bootstrap.ComboBox2.superclass.getAutoCreate.call(this);
-            return;
+            return cfg;
         }
        
         var parent = this.parent();
