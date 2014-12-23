@@ -1339,9 +1339,14 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         }
          Roo.log('expand');
         this.list.alignTo(this.inputEl(), this.listAlign);
-        
-        this.footer.alignTo(this.inputEl(), 'tl-bl?');
         this.list.show();
+        
+        if(this.tickable){
+            this.footer.alignTo(this.list, 'tl-bl?');
+        }
+        
+        
+        
         Roo.get(document).on('mousedown', this.collapseIf, this);
         Roo.get(document).on('mousewheel', this.collapseIf, this);
         if (!this.editable) {
