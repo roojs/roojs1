@@ -271,6 +271,8 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             return;
         }
         var el = this.el;
+        Roo.log('this.dataName');
+        Roo.log(this.dataName);
         if (this.dataName) {
             this.el.update(t.apply(this.store.meta)); //????
             el = this.el.child('.roo-tpl-' + this.dataName);
