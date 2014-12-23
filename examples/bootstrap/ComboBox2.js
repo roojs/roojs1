@@ -64,7 +64,7 @@ Roo.example.combobox = new Roo.XComponent({
                                 o.params = o.params || {};
                                 
                                 var selected = _this.normalSel.getValue();
-                                
+                                Roo.log(selected);
                                 if(selected.length){
                                     o.params._skip = selected;
                                 }
