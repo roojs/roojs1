@@ -49,6 +49,8 @@
  */
 Roo.View = function(config, depreciated_tpl, depreciated_config){
     
+    this.parent = false;
+    
     if (typeof(depreciated_tpl) == 'undefined') {
         // new way.. - universal constructor.
         Roo.apply(this, config);
@@ -282,7 +284,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             if(this.tickable){
                 Roo.apply(d, {'roo-id' : Roo.id()});
             }
-            Roo.log(this.parent);
+            
 //            Roo.each(this.tickItems, function(item){
 //                
 //            });
