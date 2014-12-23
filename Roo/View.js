@@ -287,7 +287,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             }
             Roo.log(this.tickItems);
             Roo.log(data);
-            Roo.log(this.tickItems.indexOf(data));
+            Roo.log(this.tickItems.indexOf(data) * 1);
             
             
             html[html.length] = Roo.util.Format.trim(
