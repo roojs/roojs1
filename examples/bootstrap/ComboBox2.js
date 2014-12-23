@@ -23,6 +23,11 @@ Roo.example.combobox = new Roo.XComponent({
         var MODULE = this;
         var baseURL = '/web.eventmanager/demo.local.php';
         
+        var store = new Roo.data.SimpleStore({
+            fields: ['code', 'value'],
+            data : [['a', 'apple']]
+        });
+
         return {
             xtype: 'Body',
             xns: Roo.bootstrap,
