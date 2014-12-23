@@ -66,6 +66,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     if(typeof(this.tpl) == "string"){
         Roo.log(this.tpl);
         this.tpl = new Roo.Template(this.tpl);
+        Roo.log(this.tpl);
     } else {
         // support xtype ctors..
         this.tpl = new Roo.factory(this.tpl, Roo);
