@@ -679,7 +679,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             singleSelect:true, store: this.store, selectedClass: this.selectedClass
         });
         //this.view.wrapEl.setDisplayed(false);
-        this.view.on('click', this.onViewClick, this);
+//        this.view.on('click', this.onViewClick, this);
         
         
         
