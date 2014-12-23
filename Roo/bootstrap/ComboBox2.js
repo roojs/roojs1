@@ -658,6 +658,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         this.list = this.el.select('ul.dropdown-menu',true).first();
         
         this.choices = this.el.select('ul.select2-choices', true).first();
+        this.searchField = this.el.select('ul li.select2-search-field', true).first();
         
         var lw = this.listWidth || Math.max(this.searchField.getWidth(), this.minListWidth);
         this.list.setWidth(lw);
