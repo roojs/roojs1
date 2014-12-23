@@ -663,7 +663,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         
         this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
         
-        var lw = this.listWidth || Math.max(this.searchField.getWidth(), this.minListWidth);
+        var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
         this.list.setWidth(lw);
         
         this.list.on('mouseover', this.onViewOver, this);
