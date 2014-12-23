@@ -1117,15 +1117,15 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             if(e.getTarget().nodeName.toLowerCase() != 'input'){
                 return;
             }
-            Roo.log(r);
-            var i = this.tickItems.indexOf(r.data) * 1;
+            
+            var i = this.tickItems.indexOf(r.id) * 1;
             
             if(i !== -1){
                 this.tickItems.splice(i, 1);
                 return;
             }
             
-            this.tickItems.push(r.data);
+            this.tickItems.push(r.id);
             return;
         }
         
