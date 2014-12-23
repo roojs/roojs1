@@ -1118,16 +1118,14 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-            var d = Roo.apply({}, r.data);
-            
-            var i = this.tickItems.indexOf(d) * 1;
+            var i = this.tickItems.indexOf(r.data) * 1;
             
             if(i !== -1){
                 this.tickItems.splice(i, 1);
                 return;
             }
             
-            this.tickItems.push(d);
+            this.tickItems.push(r.data);
             return;
         }
         
