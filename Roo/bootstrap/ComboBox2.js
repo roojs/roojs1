@@ -4,7 +4,7 @@
  */
 
 /**
- * @class Roo.bootstrap.ComboBox
+ * @class Roo.bootstrap.ComboBox2
  * @extends Roo.bootstrap.TriggerField
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
  * @cfg {Boolean} append (true|false) default false
@@ -13,8 +13,8 @@
  * Create a new ComboBox.
  * @param {Object} config Configuration options
  */
-Roo.bootstrap.ComboBox = function(config){
-    Roo.bootstrap.ComboBox.superclass.constructor.call(this, config);
+Roo.bootstrap.ComboBox2 = function(config){
+    Roo.bootstrap.ComboBox2.superclass.constructor.call(this, config);
     this.addEvents({
         /**
          * @event expand
@@ -90,7 +90,7 @@ Roo.bootstrap.ComboBox = function(config){
     }
 };
 
-Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
+Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
      
     /**
      * @cfg {Boolean} lazyRender True to prevent the ComboBox from rendering until requested (should always be used when
