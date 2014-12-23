@@ -305,9 +305,9 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             ]
             
         };
-        return edit;
+        
         if (this.name) {
-            input.name = this.name;
+            edit.name = this.name;
         }
         if (this.size) {
             input.cls += ' input-' + this.size;
