@@ -827,14 +827,15 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
 
     // private
     
-    onBeforeLoad : function(combo,opts){
+    onBeforeLoad : function(combo,opts)
+    {
         if(!this.hasFocus){
             return;
         }
          if (!opts.add) {
             this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
          }
-         return;
+         
         this.restrictHeight();
         this.selectedIndex = -1;
     },
