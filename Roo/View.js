@@ -285,6 +285,10 @@ Roo.extend(Roo.View, Roo.util.Observable, {
                     t.applySubtemplate(this.dataName, data, this.store.meta) :
                     t.apply(data)
             );
+            
+            html[html.length] = Roo.util.Format.trim(
+                    t.apply({'roo-id' : Roo.id()})
+            );
         }
         
         
