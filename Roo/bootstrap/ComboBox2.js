@@ -9,6 +9,7 @@
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
  * @cfg {Boolean} append (true|false) default false
  * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
+ * @cfg {Boolean} Tickable (true|false), default false
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -265,6 +266,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
     append: false,
     loadNext: false,
     autoFocus : true,
+    tickable : false,
     
     // element that contains real text value.. (when hidden is used..)
     
