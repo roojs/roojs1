@@ -827,15 +827,13 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
 
     // private
     
-    onBeforeLoad : function(combo,opts)
-    {
+    onBeforeLoad : function(combo,opts){
         if(!this.hasFocus){
             return;
         }
          if (!opts.add) {
             this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
          }
-         
         this.restrictHeight();
         this.selectedIndex = -1;
     },
@@ -857,7 +855,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             this.expand();
             this.restrictHeight();
             if(this.lastQuery == this.allQuery){
-                if(this.editable && !this.tickable){
+                if(this.editable){
                     this.inputEl().dom.select();
                 }
                 if(!this.selectByValue(this.value, true) && this.autoFocus){
@@ -1097,13 +1095,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         //this.innerList.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
         //this.list.beginUpdate();
         //this.list.setHeight(this.innerList.getHeight()+this.list.getFrameWidth('tb')+(this.resizable?this.handleHeight:0)+this.assetHeight);
-        if(this.tickable){
-            this.list.alignTo(this.searchField, this.listAlign);
-            return;
-        }
-        
         this.list.alignTo(this.inputEl(), this.listAlign);
-        
         //this.list.endUpdate();
     },
 
@@ -1326,12 +1318,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             return;
         }
          Roo.log('expand');
-        if(this.tickable){
-            this.list.alignTo(this.searchField, this.listAlign);
-        }else {
-            this.list.alignTo(this.inputEl(), this.listAlign);
-        }
-        
+        this.list.alignTo(this.inputEl(), this.listAlign);
         this.list.show();
         Roo.get(document).on('mousedown', this.collapseIf, this);
         Roo.get(document).on('mousewheel', this.collapseIf, this);
@@ -1381,8 +1368,6 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
     
     onTickableTriggerClick : function()
     {
-        Roo.log('tickable trigger click');
-        
         this.page = 0;
         this.loadNext = false;
         this.hasFocus = true;
