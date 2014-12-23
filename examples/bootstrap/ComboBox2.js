@@ -100,7 +100,7 @@ Roo.example.combobox = new Roo.XComponent({
                     }
                 },
                 {
-                    xtype: 'ComboBox',
+                    xtype: 'ComboBox2',
                     xns: Roo.bootstrap,
                     placeholder : 'Select a country',
                     displayField : 'name',
