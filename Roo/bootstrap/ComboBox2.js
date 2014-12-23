@@ -10,6 +10,7 @@
  * @cfg {Boolean} append (true|false) default false
  * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
  * @cfg {Boolean} tickable ComboBox with tickable selections (true|false), default false
+ * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -267,6 +268,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
     loadNext: false,
     autoFocus : true,
     tickable : false,
+    btnPosition : 'right',
     
     // element that contains real text value.. (when hidden is used..)
     
@@ -285,9 +287,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         /*
          *  ComboBox with tickable selections
          */
-           
-        var settings=this;
-        
+             
         var align = this.labelAlign || this.parentLabelAlign();
         
         var cfg = {
@@ -299,7 +299,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 {
                     tag : 'button',
                     type : 'button',
-                    cls : 'btn btn-link',
+                    cls : 'btn btn-link pull-' + this.btnPosition,
                     html : 'Edit'
                 };
         
@@ -467,7 +467,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 
         }
          
-        
+        var settings=this;
         ['xs','sm','md','lg'].map(function(size){
             if (settings[size]) {
                 cfg.cls += ' col-' + size + '-' + settings[size];
