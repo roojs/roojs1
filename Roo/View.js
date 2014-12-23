@@ -284,7 +284,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             if(this.tickable){
                 Roo.apply(d, {'roo-id' : Roo.id()});
             }
-            
+            Roo.log(this.parent);
 //            Roo.each(this.tickItems, function(item){
 //                
 //            });
