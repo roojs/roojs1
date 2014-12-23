@@ -662,6 +662,12 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                     tag : 'button',
                     type : 'button',
                     cls : 'btn btn-link pull-right',
+                    html : 'Cancel'
+                },
+                {
+                    tag : 'button',
+                    type : 'button',
+                    cls : 'btn btn-link pull-right',
                     html : 'OK'
                 }
             ]
