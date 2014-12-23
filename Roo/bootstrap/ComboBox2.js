@@ -1372,8 +1372,8 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         this.list.show();
         
         if(this.tickable){
-            (function(){this.footer.alignTo(this.list, 'tl-bl?')}).defer(10, this);
-            this.footer.show();
+            (function(){this.footer.alignTo(this.list, 'tl-bl?'); this.footer.show();}).defer(10, this);
+            
         }
         
         Roo.get(document).on('mousedown', this.collapseIf, this);
