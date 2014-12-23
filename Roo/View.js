@@ -440,6 +440,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     onClick : function(e){
         Roo.log('view click');
         var item = this.findItemFromChild(e.getTarget());
+        Roo.log(item);
         if(item){
             var index = this.indexOf(item);
             if(this.onItemClick(item, index, e) !== false){
