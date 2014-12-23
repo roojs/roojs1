@@ -1118,7 +1118,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-            var d = {};
+            var d = Roo.apply({});
             
             d[this.valueField] = r.data[this.valueField];
             d[this.displayField] = r.data[this.displayField];
