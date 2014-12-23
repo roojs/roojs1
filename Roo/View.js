@@ -227,6 +227,11 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     toggleSelect : false,
     
     /**
+     * @cfg {Boolean} tickable - selecting 
+     */
+    tickable : false,
+    
+    /**
      * Returns the element this view is bound to.
      * @return {Roo.Element}
      */
