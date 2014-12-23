@@ -104,7 +104,7 @@ Roo.example.combobox = new Roo.XComponent({
                     name : 'country_id_name',
                     triggerAction : 'all',
                     minChars : '1',
-                    tpl : '<li class="select2-result"><b>{name}</b></div>',
+//                    tpl : '<li class="select2-result"><b>{name}</b></div>',
                     style : 'margin-top:20px;',
                     multiple: true,
                     tickable: true,
