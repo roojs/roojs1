@@ -285,9 +285,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
                 Roo.apply(d, {'roo-id' : Roo.id()});
             }
             
-            Roo.each(this.parent.item, function(item){
-                Roo.log(item);
-            });
+            Roo.log(this.parent.item.indexOf(data));
             
             html[html.length] = Roo.util.Format.trim(
                 this.dataName ?
