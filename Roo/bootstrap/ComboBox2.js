@@ -405,7 +405,8 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
     },
     
     // private
-    initEvents: function(){
+    initEvents: function()
+    {
         
         if (!this.store) {
             throw "can not find store for combo";
@@ -634,17 +635,8 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         }
     },
     
-    initTickableEvnets: function(){
-        
-        if (!this.store) {
-            throw "can not find store for combo";
-        }
-        this.store = Roo.factory(this.store, Roo.data);
-        
-        if(this.tickable){
-            this.initTickableEvnets();
-            return;
-        }
+    initTickableEvnets: function()
+    {
         
         Roo.bootstrap.ComboBox2.superclass.initEvents.call(this);
         
