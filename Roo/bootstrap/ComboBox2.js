@@ -834,6 +834,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
          if (!opts.add) {
             this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
          }
+         return;
         this.restrictHeight();
         this.selectedIndex = -1;
     },
