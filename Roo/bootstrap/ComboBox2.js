@@ -1307,6 +1307,11 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         }
         
         this.list.hide();
+        
+        if(this.tickable){
+            this.footer.hide();
+        }
+        
         Roo.get(document).un('mousedown', this.collapseIf, this);
         Roo.get(document).un('mousewheel', this.collapseIf, this);
         if (!this.editable) {
