@@ -116,7 +116,7 @@ Roo.example.combobox = new Roo.XComponent({
                     multiple: true,
                     listeners : {
                         render : function (_self) {
-                            _this.countrySel = _self;
+                            _this.checkSel = _self;
                         }
                     },
                     forceSelection : true,
