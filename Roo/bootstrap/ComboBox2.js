@@ -295,13 +295,12 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         };
         
         
-        var button =  
-                {
-                    tag : 'button',
-                    type : 'button',
-                    cls : 'btn btn-link pull-' + this.btnPosition,
-                    html : 'Edit'
-                };
+        var button = {
+            tag : 'button',
+            type : 'button',
+            cls : 'btn btn-link pull-' + this.btnPosition,
+            html : 'Edit'
+        };
         
         if (this.name) {
             button.name = this.name;
