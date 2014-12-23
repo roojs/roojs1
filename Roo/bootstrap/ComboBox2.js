@@ -1365,6 +1365,12 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             }
         }
     },
+    
+    onTickableTriggerClick : function()
+    {
+        
+    },
+    
     listKeyPress : function(e)
     {
         //Roo.log('listkeypress');
