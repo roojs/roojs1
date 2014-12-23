@@ -63,12 +63,6 @@ Roo.example.combobox = new Roo.XComponent({
                             beforeload : function (_self, o) {
                                 o.params = o.params || {};
                                 
-                                var selected = _this.normalSel.getValue();
-                                
-                                if(selected.length){
-                                    o.params._skip = selected;
-                                }
-                                
                             }
                         },
                         remoteSort : true,
@@ -134,12 +128,6 @@ Roo.example.combobox = new Roo.XComponent({
                         listeners : {
                             beforeload : function (_self, o) {
                                 o.params = o.params || {};
-                                
-                                var selected = _this.checkSel.getValue();
-                                
-                                if(selected.length){
-                                    o.params._skip = selected;
-                                }
                                 
                             }
                         },
