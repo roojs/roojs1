@@ -291,7 +291,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         var id = Roo.id();
         
         var cfg = {
-            cls: 'form-group1' //input-group
+            cls: 'form-group' //input-group
         };
         
         
