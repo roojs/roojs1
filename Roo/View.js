@@ -285,7 +285,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             if(this.tickable){
                 Roo.apply(d, {'roo-id' : Roo.id()});
             }
-            Roo.log(d);
+            
             html[html.length] = Roo.util.Format.trim(
                 this.dataName ?
                     t.applySubtemplate(this.dataName, d, this.store.meta) :
