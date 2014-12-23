@@ -44,7 +44,7 @@ Roo.example.combobox = new Roo.XComponent({
                     multiple: true,
                     listeners : {
                         render : function (_self) {
-                            _this.countrySel = _self;
+                            _this.normalSel = _self;
                         }
                     },
                     forceSelection : true,
@@ -63,7 +63,7 @@ Roo.example.combobox = new Roo.XComponent({
                             beforeload : function (_self, o) {
                                 o.params = o.params || {};
                                 
-                                var selected = _this.countrySel.getValue();
+                                var selected = _this.normalSel.getValue();
                                 
                                 if(selected.length){
                                     o.params._skip = selected;
@@ -135,7 +135,7 @@ Roo.example.combobox = new Roo.XComponent({
                             beforeload : function (_self, o) {
                                 o.params = o.params || {};
                                 
-                                var selected = _this.countrySel.getValue();
+                                var selected = _this.checkSel.getValue();
                                 
                                 if(selected.length){
                                     o.params._skip = selected;
