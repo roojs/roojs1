@@ -659,6 +659,9 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         
         this.choices = this.el.select('ul.select2-choices', true).first();
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
+        this.trigger = this.el.select('.select2-search-field > button',true).first();
+        
+        this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
         
         var lw = this.listWidth || Math.max(this.searchField.getWidth(), this.minListWidth);
         this.list.setWidth(lw);
