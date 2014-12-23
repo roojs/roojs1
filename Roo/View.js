@@ -72,8 +72,8 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     
     this.tpl.compile();
-   
-  
+    
+    this.tickItems = [];
     
      
     /** @private */
