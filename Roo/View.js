@@ -488,7 +488,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
                 this.select(item, this.multiSelect && e.ctrlKey);
                 this.lastSelection = item;
             }
-            e.preventDefault();
+//            e.preventDefault();
         }
         return true;
     },
