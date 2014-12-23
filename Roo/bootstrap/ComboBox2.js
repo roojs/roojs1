@@ -274,11 +274,18 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
     {
         var cfg = false;
         
+        /*
+         *  Normal ComboBox
+         */
         if(!this.tickable){
             cfg = Roo.bootstrap.ComboBox2.superclass.getAutoCreate.call(this);
             return cfg;
         }
-       
+        
+        /*
+         *  ComboBox with tickable selections
+         */
+               
         var parent = this.parent();
         
         var align = this.labelAlign || this.parentLabelAlign();
