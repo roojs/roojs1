@@ -307,14 +307,14 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         };
         
         if (this.name) {
-            button.name = this.name;
+            button.cn[0].name = this.name;
         }
         if (this.size) {
-            button.cls += ' btn-' + this.size;
+            button.cn[0].cls += ' btn-' + this.size;
         }
         
         if (this.disabled) {
-            button.disabled=true;
+            button.cn[0].disabled=true;
         }
         
         var inputblock = button;
