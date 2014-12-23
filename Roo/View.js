@@ -271,8 +271,6 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             return;
         }
         var el = this.el;
-        Roo.log('this.dataName');
-        Roo.log(this.dataName);
         if (this.dataName) {
             this.el.update(t.apply(this.store.meta)); //????
             el = this.el.child('.roo-tpl-' + this.dataName);
@@ -280,6 +278,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         
         for(var i = 0, len = records.length; i < len; i++){
             var data = this.prepareData(records[i].data, i, records[i]);
+            Roo.log(data);
             this.fireEvent("preparedata", this, data, i, records[i]);
             html[html.length] = Roo.util.Format.trim(
                 this.dataName ?
