@@ -484,7 +484,11 @@ Roo.extend(Roo.View, Roo.util.Observable, {
                 this.select(item, this.multiSelect && e.ctrlKey);
                 this.lastSelection = item;
             }
-            e.preventDefault();
+            
+            if(!this.tickable){
+                e.preventDefault();
+            }
+            
         }
         return true;
     },
