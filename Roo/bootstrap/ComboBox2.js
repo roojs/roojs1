@@ -1630,8 +1630,9 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
     },
     
     
-    onTickableFooterButtonClick : function()
+    onTickableFooterButtonClick : function(a,b,c,d)
     {
+        Roo.log([a,b,c,d]);
         Roo.log('click');
     }
     
