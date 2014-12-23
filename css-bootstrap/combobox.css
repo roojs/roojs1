@@ -203,3 +203,7 @@
    border: none;
    background-image: none;
 }
+
+.roo-combbox-tickable .select2-result label {
+    width: 100%
+}
