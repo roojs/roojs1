@@ -412,7 +412,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         if (!this.store) {
             throw "can not find store for combo";
         }
-//        this.store = Roo.factory(this.store, Roo.data);
+        this.store = Roo.factory(this.store, Roo.data);
         
         if(this.tickable){
             this.initTickableEvnets();
@@ -652,7 +652,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
              
              
         }
-        return;
+        
         this.list = this.el.select('ul.dropdown-menu',true).first();
         
         this.footer = this.list.findParent('.select2-container', false, true).createChild({tag : 'div', cls : 'footer', html : 'test'});
