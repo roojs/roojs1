@@ -246,6 +246,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      */
     refresh : function(){
         Roo.log('refresh');
+        return;
         var t = this.tpl;
         
         // if we are using something like 'domtemplate', then
