@@ -1377,6 +1377,8 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 this.footer.show();
             }).defer(10, this);
             
+            this.trigger.hide();
+            
         }
         
         Roo.get(document).on('mousedown', this.collapseIf, this);
