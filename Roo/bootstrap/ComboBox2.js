@@ -1318,7 +1318,12 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             return;
         }
          Roo.log('expand');
-        this.list.alignTo(this.inputEl(), this.listAlign);
+        if(this.tickable){
+            this.list.alignTo(this.searchField, this.listAlign);
+        }else {
+            this.list.alignTo(this.inputEl(), this.listAlign);
+        }
+        
         this.list.show();
         Roo.get(document).on('mousedown', this.collapseIf, this);
         Roo.get(document).on('mousewheel', this.collapseIf, this);
