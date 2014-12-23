@@ -443,6 +443,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         Roo.log(item);
         if(item){
             var index = this.indexOf(item);
+            Roo.log(index);
             if(this.onItemClick(item, index, e) !== false){
                 this.fireEvent("click", this, index, item, e);
             }
