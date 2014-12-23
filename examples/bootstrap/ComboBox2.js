@@ -123,7 +123,7 @@ Roo.example.combobox = new Roo.XComponent({
                     editable : true,
                     alwaysQuery : true,
                     allowBlank : false,
-                    fieldLabel : 'Country',
+                    fieldLabel : 'Country With CheckBox',
                     pageSize : '10',
                     append: true,
                     store : {
