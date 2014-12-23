@@ -747,16 +747,6 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         if(this.typeAhead){
             this.taTask = new Roo.util.DelayedTask(this.onTypeAhead, this);
         }
-        if(this.editable !== false){
-            this.inputEl().on("keyup", this.onKeyUp, this);
-        }
-        if(this.forceSelection){
-            this.inputEl().on('blur', this.doForce, this);
-        }
-        
-        if(this.multiple){
-            
-        }
     },
 
     onDestroy : function(){
