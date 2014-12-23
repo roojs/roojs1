@@ -313,24 +313,24 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             button.disabled=true;
         }
         
-        var inputblock = button;
+        var block = button;
         
         if (this.before || this.after) {
             
-            inputblock = {
+            block = {
                 cls : 'input-group',
                 cn :  [] 
             };
             if (this.before) {
-                inputblock.cn.push({
+                block.cn.push({
                     tag :'span',
                     cls : 'input-group-addon',
                     html : this.before
                 });
             }
-            inputblock.cn.push(button);
+            block.cn.push(button);
             if (this.after) {
-                inputblock.cn.push({
+                block.cn.push({
                     tag :'span',
                     cls : 'input-group-addon',
                     html : this.after
@@ -347,7 +347,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                     type : 'hidden',
                     cls: 'form-hidden-field'
                 },
-                inputblock
+                block
             ]
             
         };
