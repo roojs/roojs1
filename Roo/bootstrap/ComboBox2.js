@@ -1650,6 +1650,8 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             _this.addItem(o.data);
         });
         
+        this.collapse();
+        
     }
     
     
