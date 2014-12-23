@@ -285,25 +285,26 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         /*
          *  ComboBox with tickable selections
          */
-        
+             
         var align = this.labelAlign || this.parentLabelAlign();
         
-        var id = Roo.id();
-        
         var cfg = {
-            cls: 'form-group' //input-group
+            cls : 'form-group' //input-group
         };
         
         
-        var input =  {
-            tag: 'input',
-            id : id,
-            type : this.inputType,
+        var button =  {
+            tag : 'div',
             cls : 'form-control',
-            autocomplete: 'off',
-            placeholder : this.placeholder || '' 
+            cn : [
+                {
+                    tag : 'button',
+                    html : 'Edit'
+                }
+            ]
             
         };
+        return button;
         if (this.name) {
             input.name = this.name;
         }
@@ -472,7 +473,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 cfg.cls += ' col-' + size + '-' + settings[size];
             }
         });
-        Roo.log(cfg);
+        
         return cfg;
         
     },
