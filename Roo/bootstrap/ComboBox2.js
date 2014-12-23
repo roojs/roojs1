@@ -1071,6 +1071,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             return;
         }
         var item = this.view.findItemFromChild(t);
+        Roo.log(item);
         if(item){
             var index = this.view.indexOf(item);
             this.select(index, false);
