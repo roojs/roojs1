@@ -472,7 +472,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 cfg.cls += ' col-' + size + '-' + settings[size];
             }
         });
-        
+        Roo.log(cfg);
         return cfg;
         
     },
