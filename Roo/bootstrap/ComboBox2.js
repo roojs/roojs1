@@ -486,7 +486,9 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         }
         this.store = Roo.factory(this.store, Roo.data);
         
-        
+        if(this.tickable){
+            return;
+        }
         
         Roo.bootstrap.ComboBox2.superclass.initEvents.call(this);
         
