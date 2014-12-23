@@ -300,12 +300,13 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 {
                     tag : 'a',
                     href : '#',
+                    cls : 'disabled',
                     html : 'Edit'
                 }
             ]
             
         };
-        
+        return edit;
         if (this.name) {
             edit.name = this.name;
         }
