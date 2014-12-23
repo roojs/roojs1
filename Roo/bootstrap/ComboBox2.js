@@ -296,10 +296,14 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         
         
         var button = {
-            tag : 'button',
-            type : 'button',
-            cls : 'btn btn-link pull-' + this.btnPosition,
-            html : 'Edit'
+            tag : 'div',
+            cn : [{
+                tag : 'button',
+                type : 'button',
+                cls : 'btn btn-link pull-' + this.btnPosition,
+                html : 'Edit'
+            }]
+            
         };
         
         if (this.name) {
@@ -312,8 +316,6 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         if (this.disabled) {
             button.disabled=true;
         }
-        
-        
         
         var inputblock = button;
         
