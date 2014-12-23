@@ -333,7 +333,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                     html : this.before
                 });
             }
-            inputblock.cn.push(input);
+            inputblock.cn.push(button);
             if (this.after) {
                 inputblock.cn.push({
                     tag :'span',
