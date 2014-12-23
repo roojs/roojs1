@@ -473,6 +473,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         if(this.fireEvent("beforeclick", this, index, item, e) === false){
             return false;
         }
+        Roo.log('onItemClick');
         if (this.toggleSelect) {
             var m = this.isSelected(item) ? 'unselect' : 'select';
             Roo.log(m);
