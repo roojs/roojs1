@@ -668,50 +668,6 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         
         this.list.on('scroll', this.onViewScroll, this);
         
-        /*
-        this.list.swallowEvent('mousewheel');
-        this.assetHeight = 0;
-
-        if(this.title){
-            this.header = this.list.createChild({cls:cls+'-hd', html: this.title});
-            this.assetHeight += this.header.getHeight();
-        }
-
-        this.innerList = this.list.createChild({cls:cls+'-inner'});
-        this.innerList.on('mouseover', this.onViewOver, this);
-        this.innerList.on('mousemove', this.onViewMove, this);
-        this.innerList.setWidth(lw - this.list.getFrameWidth('lr'));
-        
-        if(this.allowBlank && !this.pageSize && !this.disableClear){
-            this.footer = this.list.createChild({cls:cls+'-ft'});
-            this.pageTb = new Roo.Toolbar(this.footer);
-           
-        }
-        if(this.pageSize){
-            this.footer = this.list.createChild({cls:cls+'-ft'});
-            this.pageTb = new Roo.PagingToolbar(this.footer, this.store,
-                    {pageSize: this.pageSize});
-            
-        }
-        
-        if (this.pageTb && this.allowBlank && !this.disableClear) {
-            var _this = this;
-            this.pageTb.add(new Roo.Toolbar.Fill(), {
-                cls: 'x-btn-icon x-btn-clear',
-                text: '&#160;',
-                handler: function()
-                {
-                    _this.collapse();
-                    _this.clearValue();
-                    _this.onSelect(false, -1);
-                }
-            });
-        }
-        if (this.footer) {
-            this.assetHeight += this.footer.getHeight();
-        }
-        */
-            
         if(!this.tpl){
             this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
         }
@@ -727,104 +683,59 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         this.store.on('beforeload', this.onBeforeLoad, this);
         this.store.on('load', this.onLoad, this);
         this.store.on('loadexception', this.onLoadException, this);
-        /*
-        if(this.resizable){
-            this.resizer = new Roo.Resizable(this.list,  {
-               pinned:true, handles:'se'
-            });
-            this.resizer.on('resize', function(r, w, h){
-                this.maxHeight = h-this.handleHeight-this.list.getFrameWidth('tb')-this.assetHeight;
-                this.listWidth = w;
-                this.innerList.setWidth(w - this.list.getFrameWidth('lr'));
-                this.restrictHeight();
-            }, this);
-            this[this.pageSize?'footer':'innerList'].setStyle('margin-bottom', this.handleHeight+'px');
-        }
-        */
-        if(!this.editable){
-            this.editable = true;
-            this.setEditable(false);
-        }
         
-        /*
-        
-        if (typeof(this.events.add.listeners) != 'undefined') {
-            
-            this.addicon = this.wrap.createChild(
-                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-add' });  
-       
-            this.addicon.on('click', function(e) {
-                this.fireEvent('add', this);
-            }, this);
-        }
-        if (typeof(this.events.edit.listeners) != 'undefined') {
-            
-            this.editicon = this.wrap.createChild(
-                {tag: 'img', src: Roo.BLANK_IMAGE_URL, cls: 'x-form-combo-edit' });  
-            if (this.addicon) {
-                this.editicon.setStyle('margin-left', '40px');
-            }
-            this.editicon.on('click', function(e) {
-                
-                // we fire even  if inothing is selected..
-                this.fireEvent('edit', this, this.lastData );
-                
-            }, this);
-        }
-        */
-        
-        this.keyNav = new Roo.KeyNav(this.inputEl(), {
-            "up" : function(e){
-                this.inKeyMode = true;
-                this.selectPrev();
-            },
-
-            "down" : function(e){
-                if(!this.isExpanded()){
-                    this.onTriggerClick();
-                }else{
-                    this.inKeyMode = true;
-                    this.selectNext();
-                }
-            },
-
-            "enter" : function(e){
-//                this.onViewClick();
-                //return true;
-                this.collapse();
-                
-                if(this.fireEvent("specialkey", this, e)){
-                    this.onViewClick(false);
-                }
-                
-                return true;
-            },
-
-            "esc" : function(e){
-                this.collapse();
-            },
-
-            "tab" : function(e){
-                this.collapse();
-                
-                if(this.fireEvent("specialkey", this, e)){
-                    this.onViewClick(false);
-                }
-                
-                return true;
-            },
-
-            scope : this,
-
-            doRelay : function(foo, bar, hname){
-                if(hname == 'down' || this.scope.isExpanded()){
-                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
-                }
-                return true;
-            },
-
-            forceKeyDown: true
-        });
+//        this.keyNav = new Roo.KeyNav(this.inputEl(), {
+//            "up" : function(e){
+//                this.inKeyMode = true;
+//                this.selectPrev();
+//            },
+//
+//            "down" : function(e){
+//                if(!this.isExpanded()){
+//                    this.onTriggerClick();
+//                }else{
+//                    this.inKeyMode = true;
+//                    this.selectNext();
+//                }
+//            },
+//
+//            "enter" : function(e){
+////                this.onViewClick();
+//                //return true;
+//                this.collapse();
+//                
+//                if(this.fireEvent("specialkey", this, e)){
+//                    this.onViewClick(false);
+//                }
+//                
+//                return true;
+//            },
+//
+//            "esc" : function(e){
+//                this.collapse();
+//            },
+//
+//            "tab" : function(e){
+//                this.collapse();
+//                
+//                if(this.fireEvent("specialkey", this, e)){
+//                    this.onViewClick(false);
+//                }
+//                
+//                return true;
+//            },
+//
+//            scope : this,
+//
+//            doRelay : function(foo, bar, hname){
+//                if(hname == 'down' || this.scope.isExpanded()){
+//                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+//                }
+//                return true;
+//            },
+//
+//            forceKeyDown: true
+//        });
         
         
         this.queryDelay = Math.max(this.queryDelay || 10,
