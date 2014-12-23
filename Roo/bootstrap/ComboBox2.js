@@ -1626,6 +1626,11 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             return this.searchField;
         }
         return this.el.select('input.form-control',true).first();
+    },
+    
+    onTickableFooterButtonClick : function()
+    {
+        Roo.log('click');
     }
     
     
