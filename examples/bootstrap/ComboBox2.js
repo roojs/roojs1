@@ -23,11 +23,6 @@ Roo.example.combobox = new Roo.XComponent({
         var MODULE = this;
         var baseURL = '/web.eventmanager/demo.local.php';
         
-        var store = new Roo.data.SimpleStore({
-            fields: ['code', 'value'],
-            data : [['a', 'apple']]
-        });
-
         return {
             xtype: 'Body',
             xns: Roo.bootstrap,
@@ -102,14 +97,14 @@ Roo.example.combobox = new Roo.XComponent({
                     xtype: 'ComboBox2',
                     xns: Roo.bootstrap,
                     placeholder : 'Select a country',
-                    displayField : 'value',
+                    displayField : 'name',
                     hiddenName : 'country_id',
                     md : '12',
                     size : 'sm',
                     name : 'country_id_name',
                     triggerAction : 'all',
                     minChars : '1',
-                    tpl : '<li class="select2-result"><b>{value}</b></div>',
+                    tpl : '<li class="select2-result"><b>{name}</b></div>',
                     listWidth : '400',
                     style : 'margin-top:20px;',
                     multiple: true,
@@ -119,7 +114,7 @@ Roo.example.combobox = new Roo.XComponent({
                         }
                     },
                     forceSelection : true,
-                    valueField : 'code',
+                    valueField : 'id',
                     queryParam : 'query[name]',
                     editable : true,
                     alwaysQuery : true,
@@ -127,8 +122,42 @@ Roo.example.combobox = new Roo.XComponent({
                     fieldLabel : 'Country With CheckBox',
                     pageSize : '10',
                     append: true,
-                    store : store,
-                    mode: 'local'
+                    store : {
+                        xtype: 'Store',
+                        xns: Roo.data,
+                        listeners : {
+                            beforeload : function (_self, o) {
+                                o.params = o.params || {};
+                                
+                            }
+                        },
+                        remoteSort : true,
+                        sortInfo : { direction : 'ASC', field: 'name' },
+                        proxy : {
+                            xtype: 'HttpProxy',
+                            xns: Roo.data,
+                            url : baseURL + '/Geoip/Core_geoip_country',
+                            method : 'GET'
+                        },
+                        reader : {
+                            xtype: 'JsonReader',
+                            xns: Roo.data,
+                            fields : [
+                                {
+                                    'name': 'id',
+                                    'type': 'int'
+                                },
+                                {
+                                    'name': 'code',
+                                    'type': 'string'
+                                },
+                                {
+                                    'name': 'name',
+                                    'type': 'string'
+                                }
+                            ]
+                        }
+                    }
                 }
             ]
         };
