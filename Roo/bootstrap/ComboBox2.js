@@ -661,19 +661,23 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 {
                     tag : 'button',
                     type : 'button',
-                    cls : 'btn btn-link pull-right',
+                    cls : 'btn btn-link btn-done pull-right',
                     html : 'Done'
                 },
                 {
                     tag : 'button',
                     type : 'button',
-                    cls : 'btn btn-link pull-right',
+                    cls : 'btn btn-link btn-cancel pull-right',
                     html : 'Cancel'
                 }
             ]
         });
         
         this.footer.hide();
+        
+        Roo.each(this.footer.select('button', true).elements(function(el){
+            this.on('click', this.onTickableFooterButtonClick, this);
+        }))
         
         this.choices = this.el.select('ul.select2-choices', true).first();
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
