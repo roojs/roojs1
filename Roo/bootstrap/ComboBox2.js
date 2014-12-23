@@ -9,7 +9,7 @@
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
  * @cfg {Boolean} append (true|false) default false
  * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
- * @cfg {Boolean} Tickable ComboBox with tickable selections (true|false), default false
+ * @cfg {Boolean} tickable ComboBox with tickable selections (true|false), default false
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
