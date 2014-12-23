@@ -287,6 +287,9 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
          */
                
         var parent = this.parent();
+        Roo.log('parent');
+        Roo.log(parent);
+        var align = this.labelAlign || this.parentLabelAlign();
         
         var id = Roo.id();
         
