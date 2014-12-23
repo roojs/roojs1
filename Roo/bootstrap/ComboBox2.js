@@ -347,42 +347,25 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                     type : 'hidden',
                     cls: 'form-hidden-field'
                 },
-                block
-            ]
-            
-        };
-        
-        if(this.multiple){
-            Roo.log('multiple');
-            
-            box = {
-                tag: 'div',
-                cn: [
-                    {
-                        tag: 'input',
-                        type : 'hidden',
-                        cls: 'form-hidden-field'
-                    },
-                    {
-                        tag: 'ul',
-                        cls: 'select2-choices',
-                        cn:[
-                            {
-                                tag: 'li',
-                                cls: 'select2-search-field',
-                                cn: [
+                {
+                    tag: 'ul',
+                    cls: 'select2-choices',
+                    cn:[
+                        {
+                            tag: 'li',
+                            cls: 'select2-search-field',
+                            cn: [
 
-                                    inputblock
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        };
+                                block
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
         
         var combobox = {
-            cls: 'select2-container input-group',
+            cls: 'select2-container input-group select2-container-multi',
             cn: [
                 box,
                 {
@@ -393,32 +376,8 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             ]
         };
         
-        if(!this.multiple){
-            combobox.cn.push({
-                tag :'span',
-                cls : 'input-group-addon btn dropdown-toggle',
-                cn : [
-                    {
-                        tag: 'span',
-                        cls: 'caret'
-                    },
-                    {
-                        tag: 'span',
-                        cls: 'combobox-clear',
-                        cn  : [
-                            {
-                                tag : 'i',
-                                cls: 'icon-remove'
-                            }
-                        ]
-                    }
-                ]
-
-            })
-        }
-        
         if(this.multiple){
-            combobox.cls += ' select2-container-multi';
+            combobox.cls += ' ';
         }
         
         if (align ==='left' && this.fieldLabel.length) {
