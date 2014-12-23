@@ -317,7 +317,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         if (this.disabled) {
             button.cn[0].disabled=true;
         }
-        return button;
+        
         var inputblock = button;
         
         if (this.before || this.after) {
