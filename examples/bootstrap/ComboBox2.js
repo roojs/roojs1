@@ -127,42 +127,8 @@ Roo.example.combobox = new Roo.XComponent({
                     fieldLabel : 'Country With CheckBox',
                     pageSize : '10',
                     append: true,
-                    store : {
-                        xtype: 'Store',
-                        xns: Roo.data,
-                        listeners : {
-                            beforeload : function (_self, o) {
-                                o.params = o.params || {};
-                                
-                            }
-                        },
-                        remoteSort : true,
-                        sortInfo : { direction : 'ASC', field: 'name' },
-                        proxy : {
-                            xtype: 'HttpProxy',
-                            xns: Roo.data,
-                            url : baseURL + '/Geoip/Core_geoip_country',
-                            method : 'GET'
-                        },
-                        reader : {
-                            xtype: 'JsonReader',
-                            xns: Roo.data,
-                            fields : [
-                                {
-                                    'name': 'id',
-                                    'type': 'int'
-                                },
-                                {
-                                    'name': 'code',
-                                    'type': 'string'
-                                },
-                                {
-                                    'name': 'name',
-                                    'type': 'string'
-                                }
-                            ]
-                        }
-                    }
+                    store : store,
+                    mode: 'local'
                 }
             ]
         };
