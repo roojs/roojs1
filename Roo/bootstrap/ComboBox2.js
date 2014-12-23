@@ -313,32 +313,6 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             button.disabled=true;
         }
         
-        var block = button;
-        
-        if (this.before || this.after) {
-            
-            block = {
-                cls : 'input-group',
-                cn :  [] 
-            };
-            if (this.before) {
-                block.cn.push({
-                    tag :'span',
-                    cls : 'input-group-addon',
-                    html : this.before
-                });
-            }
-            block.cn.push(button);
-            if (this.after) {
-                block.cn.push({
-                    tag :'span',
-                    cls : 'input-group-addon',
-                    html : this.after
-                });
-            }
-            
-        };
-        
         var box = {
             tag: 'div',
             cn: [
@@ -356,7 +330,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                             cls: 'select2-search-field',
                             cn: [
 
-                                block
+                                button
                             ]
                         }
                     ]
