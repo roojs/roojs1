@@ -679,7 +679,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         
         var _this = this;
         Roo.each(this.footer.select('button', true).elements, function(el){
-            el.on('click', _this.onTickableFooterButtonClick, _this, this);
+            el.on('click', _this.onTickableFooterButtonClick, _this, el);
         })
         
         this.choices = this.el.select('ul.select2-choices', true).first();
