@@ -291,7 +291,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         var align = this.labelAlign || this.parentLabelAlign();
         
         var cfg = {
-            cls : 'form-group' //input-group
+            cls : 'form-group roo-combobox-tickable' //input-group
         };
         
         
