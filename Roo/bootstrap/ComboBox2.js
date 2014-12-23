@@ -285,7 +285,9 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         /*
          *  ComboBox with tickable selections
          */
-             
+           
+        var settings=this;
+        
         var align = this.labelAlign || this.parentLabelAlign();
         
         var cfg = {
@@ -311,6 +313,8 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         if (this.disabled) {
             button.disabled=true;
         }
+        
+        
         
         var inputblock = button;
         
@@ -463,7 +467,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 
         }
          
-        var settings=this;
+        
         ['xs','sm','md','lg'].map(function(size){
             if (settings[size]) {
                 cfg.cls += ' col-' + size + '-' + settings[size];
