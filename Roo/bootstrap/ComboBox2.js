@@ -1117,7 +1117,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             if(e.getTarget().nodeName.toLowerCase() != 'input'){
                 return;
             }
-            
+            Roo.log(r);
             var i = this.tickItems.indexOf(r.data) * 1;
             
             if(i !== -1){
