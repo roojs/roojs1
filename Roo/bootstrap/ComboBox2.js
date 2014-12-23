@@ -376,10 +376,6 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             ]
         };
         
-        if(this.multiple){
-            combobox.cls += ' ';
-        }
-        
         if (align ==='left' && this.fieldLabel.length) {
             
                 Roo.log("left and has label");
