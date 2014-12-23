@@ -658,18 +658,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         this.footer = this.list.findParent('.select2-container', false, true).createChild({
             tag : 'div',
             cn : [
-                {
-                    tag : 'button',
-                    type : 'button',
-                    cls : 'btn btn-link btn-done pull-right',
-                    html : 'Done'
-                },
-                {
-                    tag : 'button',
-                    type : 'button',
-                    cls : 'btn btn-link btn-cancel pull-right',
-                    html : 'Cancel'
-                }
+                Roo.bootstrap.ComboBox2.OK
             ]
         });
         
