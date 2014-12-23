@@ -655,6 +655,8 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
 
         this.list = this.el.select('ul.dropdown-menu',true).first();
         
+        Roo.log(this.list.findParent('.select2-container'));
+        
         this.choices = this.el.select('ul.select2-choices', true).first();
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
         this.trigger = this.el.select('.select2-search-field > button',true).first();
