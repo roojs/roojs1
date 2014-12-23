@@ -655,7 +655,17 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         
         this.list = this.el.select('ul.dropdown-menu',true).first();
         
-        this.footer = this.list.findParent('.select2-container', false, true).createChild({tag : 'div', cls : 'footer', html : 'test'});
+        this.footer = this.list.findParent('.select2-container', false, true).createChild({
+            tag : 'div',
+            cn : [
+                {
+                    tag : 'button',
+                    type : 'button',
+                    cls : 'btn btn-link pull-right',
+                    html : 'OK'
+                }
+            ]
+        });
         
         this.choices = this.el.select('ul.select2-choices', true).first();
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
