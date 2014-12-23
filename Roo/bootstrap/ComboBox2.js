@@ -857,7 +857,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             this.expand();
             this.restrictHeight();
             if(this.lastQuery == this.allQuery){
-                if(this.editable){
+                if(this.editable && !this.tickable){
                     this.inputEl().dom.select();
                 }
                 if(!this.selectByValue(this.value, true) && this.autoFocus){
