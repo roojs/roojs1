@@ -1368,7 +1368,10 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
     
     onTickableTriggerClick : function()
     {
+        this.page = 0;
+        this.loadNext = false;
         this.hasFocus = true;
+        
         if(this.triggerAction == 'all') {
             this.doQuery(this.allQuery, true);
         } else {
