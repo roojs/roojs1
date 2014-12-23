@@ -285,13 +285,10 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             if(this.tickable){
                 Roo.apply(d, {'roo-id' : Roo.id()});
             }
-            Roo.log(this.tickItems);
             
-            var ret = [data];
-            
-            Roo.log([data]);
-            Roo.log(this.tickItems.indexOf(data[0]) * 1);
-            
+            Roo.each(this.tickItems, function(item){
+                
+            });
             
             html[html.length] = Roo.util.Format.trim(
                 this.dataName ?
