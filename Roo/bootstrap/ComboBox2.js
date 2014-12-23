@@ -1659,7 +1659,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         Roo.each(this.tickItems, function(index){
             var r = _this.store.getAt(index);
             Roo.log(r);
-            _this.addItem(r);
+            _this.addItem(r.data);
         });
         
         this.collapse();
