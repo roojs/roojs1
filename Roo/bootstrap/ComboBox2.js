@@ -267,7 +267,202 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
     autoFocus : true,
     
     // element that contains real text value.. (when hidden is used..)
-     
+    
+    getAutoCreate : function(){
+       
+        var parent = this.parent();
+        
+        var align = this.labelAlign || this.parentLabelAlign();
+        
+        var id = Roo.id();
+        
+        var cfg = {
+            cls: 'form-group' //input-group
+        };
+        
+        
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            cls : 'form-control',
+            autocomplete: 'off',
+            placeholder : this.placeholder || '' 
+            
+        };
+        if (this.name) {
+            input.name = this.name;
+        }
+        if (this.size) {
+            input.cls += ' input-' + this.size;
+        }
+        
+        if (this.disabled) {
+            input.disabled=true;
+        }
+        
+        var inputblock = input;
+        
+        if (this.before || this.after) {
+            
+            inputblock = {
+                cls : 'input-group',
+                cn :  [] 
+            };
+            if (this.before) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.before
+                });
+            }
+            inputblock.cn.push(input);
+            if (this.after) {
+                inputblock.cn.push({
+                    tag :'span',
+                    cls : 'input-group-addon',
+                    html : this.after
+                });
+            }
+            
+        };
+        
+        var box = {
+            tag: 'div',
+            cn: [
+                {
+                    tag: 'input',
+                    type : 'hidden',
+                    cls: 'form-hidden-field'
+                },
+                inputblock
+            ]
+            
+        };
+        
+        if(this.multiple){
+            Roo.log('multiple');
+            
+            box = {
+                tag: 'div',
+                cn: [
+                    {
+                        tag: 'input',
+                        type : 'hidden',
+                        cls: 'form-hidden-field'
+                    },
+                    {
+                        tag: 'ul',
+                        cls: 'select2-choices',
+                        cn:[
+                            {
+                                tag: 'li',
+                                cls: 'select2-search-field',
+                                cn: [
+
+                                    inputblock
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+        
+        var combobox = {
+            cls: 'select2-container input-group',
+            cn: [
+                box,
+                {
+                    tag: 'ul',
+                    cls: 'typeahead typeahead-long dropdown-menu',
+                    style: 'display:none'
+                }
+            ]
+        };
+        
+        if(!this.multiple){
+            combobox.cn.push({
+                tag :'span',
+                cls : 'input-group-addon btn dropdown-toggle',
+                cn : [
+                    {
+                        tag: 'span',
+                        cls: 'caret'
+                    },
+                    {
+                        tag: 'span',
+                        cls: 'combobox-clear',
+                        cn  : [
+                            {
+                                tag : 'i',
+                                cls: 'icon-remove'
+                            }
+                        ]
+                    }
+                ]
+
+            })
+        }
+        
+        if(this.multiple){
+            combobox.cls += ' select2-container-multi';
+        }
+        
+        if (align ==='left' && this.fieldLabel.length) {
+            
+                Roo.log("left and has label");
+                cfg.cn = [
+                    
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'control-label col-sm-' + this.labelWidth,
+                        html : this.fieldLabel
+                        
+                    },
+                    {
+                        cls : "col-sm-" + (12 - this.labelWidth), 
+                        cn: [
+                            combobox
+                        ]
+                    }
+                    
+                ];
+        } else if ( this.fieldLabel.length) {
+                Roo.log(" label");
+                 cfg.cn = [
+                   
+                    {
+                        tag: 'label',
+                        //cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    combobox
+                    
+                ];
+
+        } else {
+            
+                Roo.log(" no label && no align");
+                cfg = combobox
+                     
+                
+        }
+         
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
+        
+        return cfg;
+        
+    },
+    
     // private
     initEvents: function(){
         
