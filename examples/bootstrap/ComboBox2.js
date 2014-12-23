@@ -110,7 +110,7 @@ Roo.example.combobox = new Roo.XComponent({
                     multiple: true,
                     listeners : {
                         render : function (_self) {
-                            _this.checkSel = _self;
+                            _this.tickableSel = _self;
                         }
                     },
                     forceSelection : true,
