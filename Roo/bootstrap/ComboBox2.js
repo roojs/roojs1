@@ -662,7 +662,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
         this.trigger = this.el.select('.select2-search-field > button',true).first();
         Roo.log(this.list);
-        this.footer = this.list.createChild({cls:'test'});
+        this.footer = this.list.createChild({tag : 'div', cls : 'footer', html : 'test'});
         
         this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
         
