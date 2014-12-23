@@ -293,18 +293,19 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         };
         
         
-        var button =  {
+        var edit =  {
             tag : 'div',
             cls : 'form-control',
             cn : [
                 {
-                    tag : 'button',
+                    tag : 'a',
+                    href : '#',
                     html : 'Edit'
                 }
             ]
             
         };
-        return button;
+        return edit;
         if (this.name) {
             input.name = this.name;
         }
