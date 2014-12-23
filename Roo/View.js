@@ -75,7 +75,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     this.tpl.compile();
    
-  
+    Roo.log(this.tpl);
     
      
     /** @private */
