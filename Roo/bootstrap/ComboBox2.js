@@ -80,6 +80,7 @@ Roo.bootstrap.ComboBox2 = function(config){
     });
     
     this.item = [];
+    this.tickItems = [];
     
     this.selectedIndex = -1;
     if(this.mode == 'local'){
@@ -1117,14 +1118,14 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-            var i = this.view.tickItems.indexOf(r.data) * 1;
+            var i = this.tickItems.indexOf(r.data) * 1;
             
             if(i !== -1){
-                this.view.tickItems.splice(i, 1);
+                this.tickItems.splice(i, 1);
                 return;
             }
             
-            this.view.tickItems.push(r.data);
+            this.tickItems.push(r.data);
             return;
         }
         
@@ -1655,7 +1656,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         
         var _this = this;
         
-        Roo.each(this.view.tickItems, function(o){
+        Roo.each(this.tickItems, function(o){
             Roo.log(o);
             _this.addItem(o.data);
         });
