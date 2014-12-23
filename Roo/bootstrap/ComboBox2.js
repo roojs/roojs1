@@ -1342,7 +1342,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         this.list.show();
         
         if(this.tickable){
-            this.footer.alignTo.defer(500, this.footer, 'tl-bl?', true);
+            this.footer.alignTo(this.list, 'tl-bl?').defer(500);
         }
         
         
