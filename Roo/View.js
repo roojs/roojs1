@@ -286,7 +286,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
                 Roo.apply(d, {'roo-id' : Roo.id()});
             }
             Roo.log(this.tickItems);
-            Roo.log(this.store.getAt(i));
+            Roo.log(this.store.getAt(i).data);
             Roo.log(data);
             Roo.log(this.tickItems.indexOf(data) * 1);
             
