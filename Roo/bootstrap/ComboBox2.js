@@ -1632,8 +1632,13 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
     },
     
     
-    onTickableFooterButtonClick : function(e, btn)
+    onTickableFooterButtonClick : function(a,b,c,d)
     {
+        Roo.log(a);
+        Roo.log(b);
+        Roo.log(c);
+        Roo.log(d);
+        Roo.log(this);
         e.preventDefault();
         
         if(btn.name == 'cancel'){
