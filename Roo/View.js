@@ -280,7 +280,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             var data = this.prepareData(records[i].data, i, records[i]);
             this.fireEvent("preparedata", this, data, i, records[i]);
             
-            var d = Roo.apply(data);
+            var d = Roo.apply({}, data);
             if(this.tickable){
                 d = Roo.apply(d, {'roo-id' : Roo.id()});
             }
