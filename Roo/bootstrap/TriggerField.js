@@ -250,8 +250,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 cfg.cls += ' col-' + size + '-' + settings[size];
             }
         });
-        Roo.log('create');
-        Roo.log(cfg);
+        
         return cfg;
         
     },
