@@ -636,10 +636,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
     },
     
     initTickableEvnets: function()
-    {
-        
-        Roo.bootstrap.ComboBox2.superclass.initEvents.call(this);
-        
+    {   
         if(this.hiddenName){
             
             this.hiddenField = this.el.select('input.form-hidden-field',true).first();
