@@ -280,14 +280,15 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             var data = this.prepareData(records[i].data, i, records[i]);
             this.fireEvent("preparedata", this, data, i, records[i]);
             
+            var d = data;
             if(this.tickable){
-                Roo.apply(data, {'roo-id' : Roo.id()});
+                Roo.apply(d, {'roo-id' : Roo.id()});
             }
             
             html[html.length] = Roo.util.Format.trim(
                 this.dataName ?
-                    t.applySubtemplate(this.dataName, data, this.store.meta) :
-                    t.apply(data)
+                    t.applySubtemplate(this.dataName, d, this.store.meta) :
+                    t.apply(d)
             );
         }
         
