@@ -1110,24 +1110,24 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
     {
         var index = this.view.getSelectedIndexes()[0];
         
+        var r = this.store.getAt(index);
+        
         if(this.tickable){
             
             if(e.getTarget().nodeName.toLowerCase() != 'input'){
                 return;
             }
             
-            var i = this.tickItems.indexOf(index) * 1;
+            var i = this.tickItems.indexOf(r.data) * 1;
             
             if(i !== -1){
                 this.tickItems.splice(i, 1);
                 return;
             }
             
-            this.tickItems.push(index);
+            this.tickItems.push(r.data);
             return;
         }
-        
-        var r = this.store.getAt(index);
         
         if(r){
             this.onSelect(r, index);
@@ -1656,10 +1656,9 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         
         var _this = this;
         
-        Roo.each(this.tickItems, function(index){
-            var r = _this.store.getAt(index);
-            Roo.log(r);
-            _this.addItem(r.data);
+        Roo.each(this.tickItems, function(o){
+            Roo.log(o);
+            _this.addItem(o);
         });
         
         this.collapse();
