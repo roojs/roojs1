@@ -653,15 +653,12 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
              
         }
 
-        var cls = 'x-combo-list';
-        
-        
         this.list = this.el.select('ul.dropdown-menu',true).first();
         
         this.choices = this.el.select('ul.select2-choices', true).first();
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
         this.trigger = this.el.select('.select2-search-field > button',true).first();
-        Roo.log(this.list);
+        
         this.footer = this.list.createChild({tag : 'div', cls : 'footer', html : 'test'});
         
         this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
