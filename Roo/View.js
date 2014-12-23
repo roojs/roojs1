@@ -283,13 +283,16 @@ Roo.extend(Roo.View, Roo.util.Observable, {
             
             if(this.tickable){
                 Roo.apply(d, {'roo-id' : Roo.id()});
-            }
-            
-            var _this = this;
-            Roo.log(this.parent.valueField);
-            Roo.each(this.parent.item, function(item){
                 
-            });
+                var _this = this;
+            
+                Roo.each(this.parent.item, function(item){
+                    if(item[_this.parent.valueField] != data[_this.parent.valueField]){
+                        return;
+                    }
+                    Roo.apply(d, {'roo-data-checked' : 'checked'});
+                });
+            }
             
             html[html.length] = Roo.util.Format.trim(
                 this.dataName ?
