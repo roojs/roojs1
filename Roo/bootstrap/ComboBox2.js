@@ -1340,7 +1340,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
          Roo.log('expand');
         this.list.alignTo(this.inputEl(), this.listAlign);
         
-        this.footer.alignTo(this.list, this.listAlign);
+        this.footer.alignTo(this.inputEl(), this.listAlign);
         this.list.show();
         Roo.get(document).on('mousedown', this.collapseIf, this);
         Roo.get(document).on('mousewheel', this.collapseIf, this);
