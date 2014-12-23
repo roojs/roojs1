@@ -1629,7 +1629,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
     },
     
     
-    : function()
+    onTickableFooterButtonClick : function()
     {
         Roo.log('click');
     }
