@@ -286,9 +286,9 @@ Roo.extend(Roo.View, Roo.util.Observable, {
                 Roo.apply(d, {'roo-id' : Roo.id()});
             }
             Roo.log(this.tickItems);
-            Roo.log(this.store.getAt(i).data);
+            Roo.log();
             Roo.log(data);
-            Roo.log(this.tickItems.indexOf(data) * 1);
+            Roo.log(this.tickItems.indexOf(this.store.getAt(i).data) * 1);
             
             
             html[html.length] = Roo.util.Format.trim(
