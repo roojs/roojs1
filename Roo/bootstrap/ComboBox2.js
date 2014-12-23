@@ -656,7 +656,12 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         }
 
         var cls = 'x-combo-list';
+        
+        
         this.list = this.el.select('ul.dropdown-menu',true).first();
+        
+        this.choices = this.el.select('ul.select2-choices', true).first();
+        this.searchField = this.el.select('ul li.select2-search-field', true).first();
 
         var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
         this.list.setWidth(lw);
@@ -842,8 +847,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         }
         
         if(this.multiple){
-            this.choices = this.el.select('ul.select2-choices', true).first();
-            this.searchField = this.el.select('ul li.select2-search-field', true).first();
+            
         }
     },
 
