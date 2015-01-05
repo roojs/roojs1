@@ -1542,7 +1542,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         if(!dv.length){
             return;
         }
-        
+        Roo.log(o);
         var choice = this.choices.createChild({
             tag: 'li',
             cls: 'select2-search-choice',
