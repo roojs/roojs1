@@ -80,7 +80,7 @@ Roo.bootstrap.ComboBox2 = function(config){
     });
     
     this.item = [];
-    this.tickedItem = []; // for tickable only;
+    this.tickItems = [];
     
     this.selectedIndex = -1;
     if(this.mode == 'local'){
@@ -1118,10 +1118,6 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-            this.tickItems = {
-                
-            };
-            
             var i = this.tickItems.indexOf(r.data) * 1;
             
             if(i !== -1){
@@ -1382,9 +1378,6 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         this.list.show();
         
         if(this.tickable){
-            
-            this.tickedItem = Roo.apply({}, this.item);
-            
             (function(){
                 this.footer.alignTo(this.list, 'tl-bl?'); 
                 this.footer.show();
