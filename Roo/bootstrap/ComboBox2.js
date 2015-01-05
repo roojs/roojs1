@@ -79,7 +79,7 @@ Roo.bootstrap.ComboBox2 = function(config){
         
     });
     
-    this.item = [];
+    this.item = {};
     this.tickItems = [];
     
     this.selectedIndex = -1;
