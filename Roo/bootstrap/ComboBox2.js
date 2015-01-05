@@ -1120,6 +1120,10 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             
             var i = this.tickItems.indexOf(r.data) * 1;
             
+            Roo.each(this.tickItems, function(k, v){
+               Roo.log(k + ':' + v); 
+            });
+            
             if(i !== -1){
                 this.tickItems.splice(i, 1);
                 return;
