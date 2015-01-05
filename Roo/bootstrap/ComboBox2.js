@@ -80,7 +80,7 @@ Roo.bootstrap.ComboBox2 = function(config){
     });
     
     this.item = [];
-    this.tickItems = [];
+    this.tickedItem = []; // for tickable only;
     
     this.selectedIndex = -1;
     if(this.mode == 'local'){
@@ -1382,6 +1382,8 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         this.list.show();
         
         if(this.tickable){
+            
+            this.tickable
             
             (function(){
                 this.footer.alignTo(this.list, 'tl-bl?'); 
