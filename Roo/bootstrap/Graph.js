@@ -138,9 +138,24 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
             },
             fout = function () {
                 this.flag.animate({opacity: 0}, 300, function () {this.remove();});
-            }
+            },
             pfin = function() {
-                
+                this.sector.stop();
+                this.sector.scale(1.1, 1.1, this.cx, this.cy);
+
+                if (this.label) {
+                    this.label[0].stop();
+                    this.label[0].attr({ r: 7.5 });
+                    this.label[1].attr({ "font-weight": 800 });
+                }
+            },
+            pfout = function() {
+                this.sector.animate({ transform: 's1 1 ' + this.cx + ' ' + this.cy }, 500, "bounce");
+
+                if (this.label) {
+                    this.label[0].animate({ r: 5 }, 500, "bounce");
+                    this.label[1].attr({ "font-weight": 400 });
+                }
             };
 
         switch(graphtype){
