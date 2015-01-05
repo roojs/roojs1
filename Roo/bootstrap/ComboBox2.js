@@ -1121,8 +1121,10 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             var rm = false;
             var _this = this;
             
-            Roo.each(_this.tickItems, function(v,k){
-                Roo.log(v);
+            Roo.log(this.tickItems);
+            
+            Roo.each(this.tickItems, function(v,k){
+                
                 if(v[_this.valueField] == r.data[_this.valueField]){
                     _this.tickItems.splice(k, 1);
                     rm = true;
