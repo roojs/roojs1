@@ -138,6 +138,9 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
             },
             fout = function () {
                 this.flag.animate({opacity: 0}, 300, function () {this.remove();});
+            }
+            pfin = function() {
+                
             };
 
         switch(graphtype){
@@ -151,7 +154,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 //                opts = { legend: ["%% - Enterprise Users", "% - ddd","Chrome Users"], legendpos: "west", 
 //                href: ["http://raphaeljs.com", "http://g.raphaeljs.com"]};
 //            
-                this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts).hover(fin, fout);
+                this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts).hover(pfin, pfout);
                 
                 break;
 
