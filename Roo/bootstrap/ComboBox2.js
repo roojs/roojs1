@@ -1118,8 +1118,6 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-//            var i = this.tickItems.indexOf(r.data) * 1;
-            
             for (var i in this.tickItems){
                 if(this.tickItems[i][this.valueField] == r.data[this.valueField]){
                     delete this.tickItems[i];
