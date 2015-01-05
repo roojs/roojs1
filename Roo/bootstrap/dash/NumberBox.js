@@ -107,6 +107,11 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     setFooter: function (value, href)
     {
         this.el.select('a.small-box-footer',true).first().dom.innerHTML = value;
+        
+        if(href){
+            this.el.select('a.small-box-footer',true).first().attr('href', href);
+        }
+        
     },
 
     setContent: function (value)
