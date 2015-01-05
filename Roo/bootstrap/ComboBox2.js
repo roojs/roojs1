@@ -1117,7 +1117,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             if(e.getTarget().nodeName.toLowerCase() != 'input'){
                 return;
             }
-            
+            Roo.log(typeof(this.item));
             for (var i in this.tickItems){
                 if(this.tickItems[i][this.valueField] == r.data[this.valueField]){
                     delete this.tickItems[i];
