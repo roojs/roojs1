@@ -1123,7 +1123,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             
             Roo.each(_this.tickItems, function(v,k){
                 if(v[_this.valueField] == r.data[_this.valueField]){
-                    this.tickItems.splice(k, 1);
+                    _this.tickItems.splice(k, 1);
                     rm = true;
                     return;
                 }
