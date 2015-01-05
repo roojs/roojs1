@@ -1544,7 +1544,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         }
         Roo.log(this.item);
         Roo.log(o);
-        
+        Roo.log(this.item.indexOf(o) * 1);
         var choice = this.choices.createChild({
             tag: 'li',
             cls: 'select2-search-choice',
