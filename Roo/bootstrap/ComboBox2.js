@@ -1663,7 +1663,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         e.preventDefault();
         
         if(btn.name == 'cancel'){
-            this.tickItems = [];
+            this.tickItems = Roo.apply([], this.item);
             this.collapse();
             return;
         }
