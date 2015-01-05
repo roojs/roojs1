@@ -1123,16 +1123,16 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             Roo.each(this.tickItems, function(k,v){
                 Roo.log(k + ":" + v);
             })
-            for (var i in this.tickItems){
-                if(this.tickItems[i][this.valueField] == r.data[this.valueField]){
-                    delete this.tickItems[i];
-                    return;
-                }
-            }
-            if(i !== -1){
-                this.tickItems.splice(i, 1);
-                return;
-            }
+//            for (var i in this.tickItems){
+//                if(this.tickItems[i][this.valueField] == r.data[this.valueField]){
+//                    delete this.tickItems[i];
+//                    return;
+//                }
+//            }
+//            if(i !== -1){
+//                this.tickItems.splice(i, 1);
+//                return;
+//            }
             
             this.tickItems.push(r.data);
             return;
