@@ -1118,21 +1118,20 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-//            var i = this.tickItems.indexOf(r.data) * 1;
-            Roo.log(typeof(this.tickItems));
-            Roo.each(this.tickItems, function(k,v){
-                Roo.log(k + ":" + v);
+            var rm = false;
+            var _this = this;
+            
+            Roo.each(_this.tickItems, function(v,k){
+                if(v[_this.valueField] == r.data[_this.valueField]){
+                    this.tickItems.splice(k, 1);
+                    rm = true;
+                    return;
+                }
             })
-//            for (var i in this.tickItems){
-//                if(this.tickItems[i][this.valueField] == r.data[this.valueField]){
-//                    delete this.tickItems[i];
-//                    return;
-//                }
-//            }
-//            if(i !== -1){
-//                this.tickItems.splice(i, 1);
-//                return;
-//            }
+            
+            if(rm){
+                return;
+            }
             
             this.tickItems.push(r.data);
             return;
