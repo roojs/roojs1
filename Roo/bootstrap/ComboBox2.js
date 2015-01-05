@@ -1124,7 +1124,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             Roo.log(r.data);
             Roo.each(this.tickItems, function(v,k){
                 
-                if(typeof(v[_this.valueField]) != 'undefined' && v[_this.valueField] == r.data[_this.valueField]){
+                if(typeof(v) != 'undefined' && v[_this.valueField] == r.data[_this.valueField]){
                     Roo.log('remove');
                     Roo.log(v);
                     _this.tickItems.splice(k, 1);
