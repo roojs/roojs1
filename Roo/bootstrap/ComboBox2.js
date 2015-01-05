@@ -1383,7 +1383,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         
         if(this.tickable){
             
-            this.tickable
+            this.tickedItem = Roo.apply({}, this.item);
             
             (function(){
                 this.footer.alignTo(this.list, 'tl-bl?'); 
