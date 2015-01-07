@@ -245,6 +245,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.el.on("click", this.onClick, this);
         this.el.on("dblclick", this.onDblClick, this);
         
+        this.el.on("mouseover", this.onMouseover, this);
+        
         this.parent().el.setStyle('position', 'relative');
         if (this.footer) {
             this.footer.parentId = this.id;
