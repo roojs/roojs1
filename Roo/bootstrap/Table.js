@@ -280,6 +280,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onMouseover : function(e, el)
     {
+        Roo.log('mouseover');
         var cell = Roo.get(el);
         
         if(e.getTarget().nodeName.toLowerCase() != 'td'){
@@ -296,7 +297,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onMouseout : function(e, el)
     {
-        Roo.log('out');
+        Roo.log('mouseout');
         
     },
     
