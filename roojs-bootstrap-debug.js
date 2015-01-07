@@ -4630,6 +4630,16 @@ Roo.bootstrap.Table = function(config){
          */
         "mouseover" : true,
         /**
+         * @event mouseover
+         * Fires when a mouseover occur
+         * @param {Roo.bootstrap.Table} this
+         * @param {Roo.Element} el
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "mouseout" : true,
+        /**
          * @event rowclass
          * Fires when a row is rendered, so you can change add a style to it.
          * @param {Roo.bootstrap.Table} this
@@ -4785,6 +4795,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     onMouseover : function(e, el)
     {
         var cell = Roo.get(el);
+        
+        if(e.getTarget().nodeName.toLowerCase() != 'td'){
+            cell = cell.findParent('td', false, true);
+        }
+        
         var row = cell.findParent('tr', false, true);
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = row.dom.rowIndex - 1; // start from 0
@@ -4793,9 +4808,20 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
     },
     
+    onMouseout : function(e, el)
+    {
+        Roo.log('mouseout');
+        
+    },
+    
     onClick : function(e, el)
     {
         var cell = Roo.get(el);
+        
+        if(e.getTarget().nodeName.toLowerCase() != 'td'){
+            cell = cell.findParent('td', false, true);
+        }
+        
         var row = cell.findParent('tr', false, true);
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = row.dom.rowIndex - 1;
@@ -4813,7 +4839,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onDblClick : function(e,el)
     {
-        var cell = Roo.get(el);;
+        var cell = Roo.get(el);
+        
+        if(e.getTarget().nodeName.toLowerCase() != 'td'){
+            cell = cell.findParent('td', false, true);
+        }
+        
         var row = cell.findParent('tr', false, true);
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = row.dom.rowIndex - 1;
@@ -5036,6 +5067,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         Roo.each(this.el.select('tbody td', true).elements, function(e){
             e.on('mouseover', _this.onMouseover, _this);
+        });
+        
+        Roo.each(this.el.select('tbody td', true).elements, function(e){
+            e.on('mouseout', _this.onMouseout, _this);
         });
 
         //if(this.loadMask){
