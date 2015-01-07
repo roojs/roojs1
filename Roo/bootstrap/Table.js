@@ -116,6 +116,16 @@ Roo.bootstrap.Table = function(config){
          */
         "mouseover" : true,
         /**
+         * @event mouseover
+         * Fires when a mouseover occur
+         * @param {Roo.bootstrap.Table} this
+         * @param {Roo.Element} el
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "mouseout" : true,
+        /**
          * @event rowclass
          * Fires when a row is rendered, so you can change add a style to it.
          * @param {Roo.bootstrap.Table} this
