@@ -111,6 +111,7 @@ Roo.bootstrap.Table = function(config){
          * @param {Roo.bootstrap.Table} this
          * @param {Roo.Element} el
          * @param {Number} rowIndex
+         * @param {Number} columnIndex
          * @param {Roo.EventObject} e
          */
         "mouseover" : true,
