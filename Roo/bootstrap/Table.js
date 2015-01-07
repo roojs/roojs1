@@ -247,9 +247,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var _this = this;
         
-        Roo.log('sortable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
-            Roo.log(e);
             e.on('click', _this.sort, _this);
         });
         
