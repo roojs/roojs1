@@ -262,7 +262,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onMouseover : function()
     {
-        
+        Roo.log('mouseover');
     },
     
     onClick : function(e, el)
