@@ -271,6 +271,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         Roo.log('mouseover');
         Roo.log([e, el]);
+        
+        var cell = Roo.get(el);
+        var row = cell.findParent('tr', false, true);
+        var cellIndex = cell.dom.cellIndex;
+        var rowIndex = row.dom.rowIndex;
+        
+        Roo.log([cell, row, cellIndex, rowIndex]);
     },
     
     onClick : function(e, el)
