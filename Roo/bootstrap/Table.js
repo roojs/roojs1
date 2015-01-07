@@ -513,6 +513,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 _this.renderColumn(r);
             })
         }
+        
+        Roo.log('td!!!!!!!!!!!!!!!!!!!!!!!!1');
+        Roo.each(this.el.select('tbody td', true).elements, function(e){
+            Roo.log(e);
+            e.on('mouseover', _this.onMouseover, _this);
+        });
 
         //if(this.loadMask){
         //    this.maskEl.hide();
