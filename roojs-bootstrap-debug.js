@@ -4620,6 +4620,16 @@ Roo.bootstrap.Table = function(config){
          */
         "rowdblclick" : true,
         /**
+         * @event mouseover
+         * Fires when a mouseover occur
+         * @param {Roo.bootstrap.Table} this
+         * @param {Roo.Element} el
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        "mouseover" : true,
+        /**
          * @event rowclass
          * Fires when a row is rendered, so you can change add a style to it.
          * @param {Roo.bootstrap.Table} this
@@ -4769,6 +4779,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
+        
+    },
+    
+    onMouseover : function(e, el)
+    {
+        var cell = Roo.get(el);
+        var row = cell.findParent('tr', false, true);
+        var cellIndex = cell.dom.cellIndex;
+        var rowIndex = row.dom.rowIndex;
+        
+        this.fireEvent('mouseover', this, cell, rowIndex, cellIndex, e);
         
     },
     
@@ -5012,6 +5033,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 _this.renderColumn(r);
             })
         }
+        
+        Roo.each(this.el.select('tbody td', true).elements, function(e){
+            e.on('mouseover', _this.onMouseover, _this);
+        });
 
         //if(this.loadMask){
         //    this.maskEl.hide();
