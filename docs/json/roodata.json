@@ -14159,6 +14159,12 @@
      "desc": "Fires after the component is hidden."
     },
     {
+     "name": "mouseout",
+     "sig": "function (_self, el, rowIndex, columnIndex, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when a mouseout occur"
+    },
+    {
      "name": "mouseover",
      "sig": "function (_self, el, rowIndex, columnIndex, e)\n{\n\n}",
      "type": "function",

@@ -296,7 +296,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onMouseout : function(e, el)
     {
-        Roo.log('mouseout');
+        var cell = Roo.get(el);
+        
+        if(e.getTarget().nodeName.toLowerCase() != 'td'){
+            cell = cell.findParent('td', false, true);
+        }
+        
+        var row = cell.findParent('tr', false, true);
+        var cellIndex = cell.dom.cellIndex;
+        var rowIndex = row.dom.rowIndex - 1; // start from 0
+        
+        this.fireEvent('mouseout', this, cell, rowIndex, cellIndex, e);
         
     },
     
