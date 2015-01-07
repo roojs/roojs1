@@ -113,7 +113,7 @@ Roo.bootstrap.Table = function(config){
          * @param {Number} rowIndex
          * @param {Roo.EventObject} e
          */
-        " @param {Number} columnIndex" : true,
+        "mouseover" : true,
         /**
          * @event rowclass
          * Fires when a row is rendered, so you can change add a style to it.
