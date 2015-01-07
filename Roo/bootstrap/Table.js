@@ -329,6 +329,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cell = Roo.get(el);
         
         if(e.getTarget().nodeName.toLowerCase() != 'td'){
+            return;
             cell = cell.findParent('td', false, true);
         }
         
