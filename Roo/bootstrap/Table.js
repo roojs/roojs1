@@ -254,7 +254,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.el.on("click", this.onClick, this);
         this.el.on("dblclick", this.onDblClick, this);
         
-        Roo.each(this.el.select('tbody td.overable', true).elements, function(e){
+        Roo.each(this.el.select('tbody td', true).elements, function(e){
             e.on('mouseover', _this.sort, _this);
         });
         
