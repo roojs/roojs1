@@ -255,7 +255,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.el.on("dblclick", this.onDblClick, this);
         Roo.log('td!!!!!!!!!!!!!!!!!!!!!!!!1');
         Roo.each(this.el.select('tbody td', true).elements, function(e){
-            Roo.log(e);
+//            Roo.log(e);
             e.on('mouseover', _this.onMouseover, _this);
         });
         
