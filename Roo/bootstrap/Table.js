@@ -242,7 +242,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(!this.store || !this.cm){
             return;
         }
-        return;
+        
         Roo.log('initEvents with ds!!!!');
         
         var _this = this;
