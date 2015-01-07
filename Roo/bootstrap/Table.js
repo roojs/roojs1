@@ -524,6 +524,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         Roo.each(this.el.select('tbody td', true).elements, function(e){
             e.on('mouseover', _this.onMouseover, _this);
         });
+        
+        Roo.each(this.el.select('tbody td', true).elements, function(e){
+            e.on('mouseout', _this.onMouseout, _this);
+        });
 
         //if(this.loadMask){
         //    this.maskEl.hide();
