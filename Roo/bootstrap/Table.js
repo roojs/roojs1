@@ -270,7 +270,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onMouseover : function(e, el)
     {
-        Roo.log(e.getTarget());
+        Roo.log(e.getTarget().nodeName.toLowerCase());
         var cell = Roo.get(el);
         var row = cell.findParent('tr', false, true);
         var cellIndex = cell.dom.cellIndex;
