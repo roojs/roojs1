@@ -280,11 +280,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onMouseover : function(e, el)
     {
-        Roo.log('mouseover');
         var cell = Roo.get(el);
         
         if(e.getTarget().nodeName.toLowerCase() != 'td'){
-            return;
             cell = cell.findParent('td', false, true);
         }
         
