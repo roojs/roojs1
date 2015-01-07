@@ -304,6 +304,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     onClick : function(e, el)
     {
         var cell = Roo.get(el);
+        
+        if(e.getTarget().nodeName.toLowerCase() != 'td'){
+            cell = cell.findParent('td', false, true);
+        }
+        
         var row = cell.findParent('tr', false, true);
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = row.dom.rowIndex - 1;
@@ -321,7 +326,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onDblClick : function(e,el)
     {
-        var cell = Roo.get(el);;
+        var cell = Roo.get(el);
+        
+        if(e.getTarget().nodeName.toLowerCase() != 'td'){
+            cell = cell.findParent('td', false, true);
+        }
+        
         var row = cell.findParent('tr', false, true);
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = row.dom.rowIndex - 1;
