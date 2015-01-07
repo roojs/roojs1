@@ -260,6 +260,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
     },
     
+    onMouseover : function()
+    {
+        
+    },
+    
     onClick : function(e, el)
     {
         var cell = Roo.get(el);
