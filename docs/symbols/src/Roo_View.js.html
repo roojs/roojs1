@@ -49,6 +49,8 @@
  */
 </span><span class="jsdoc-var">Roo.View </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">depreciated_tpl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">depreciated_config</span><span class="jsdoc-syntax">){
     
+    </span><span class="jsdoc-var">this.parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">depreciated_tpl</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-comment">// new way.. - universal constructor.
         </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
@@ -72,10 +74,7 @@
     
     
     </span><span class="jsdoc-var">this.tpl.compile</span><span class="jsdoc-syntax">();
-   
-  
     
-     
     </span><span class="jsdoc-comment">/** @private */
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">/**
@@ -227,6 +226,11 @@
     </span><span class="jsdoc-var">toggleSelect </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} tickable - selecting 
+     */
+    </span><span class="jsdoc-var">tickable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
      * Returns the element this view is bound to.
      * @return {Roo.Element}
      */
@@ -274,10 +278,26 @@
         </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">records.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.prepareData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;preparedata&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">records</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-string">'roo-id' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">()});
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+            
+                </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent.item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">_this.parent.valueField</span><span class="jsdoc-syntax">] != </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">_this.parent.valueField</span><span class="jsdoc-syntax">]){
+                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    }
+                    </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-string">'roo-data-checked' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'checked'</span><span class="jsdoc-syntax">});
+                });
+            }
+            
             </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">html.length</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">Roo.util.Format.trim</span><span class="jsdoc-syntax">(
                 </span><span class="jsdoc-var">this.dataName </span><span class="jsdoc-syntax">?
-                    </span><span class="jsdoc-var">t.applySubtemplate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.store.meta</span><span class="jsdoc-syntax">) :
-                    </span><span class="jsdoc-var">t.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">data</span><span class="jsdoc-syntax">)
+                    </span><span class="jsdoc-var">t.applySubtemplate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.dataName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.store.meta</span><span class="jsdoc-syntax">) :
+                    </span><span class="jsdoc-var">t.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">)
             );
         }
         
@@ -484,7 +504,11 @@
                 </span><span class="jsdoc-var">this.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.multiSelect </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">this.lastSelection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">;
             }
-            </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+            }
+            
         }
         </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
     },

@@ -106,6 +106,16 @@
          */
         </span><span class="jsdoc-string">&quot;rowdblclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
+         * @event mouseover
+         * Fires when a mouseover occur
+         * @param {Roo.bootstrap.Table} this
+         * @param {Roo.Element} el
+         * @param {Number} rowIndex
+         * @param {Number} columnIndex
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;mouseover&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
          * @event rowclass
          * Fires when a row is rendered, so you can change add a style to it.
          * @param {Roo.bootstrap.Table} this
@@ -255,6 +265,17 @@
         
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onBeforeLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-var">onMouseover </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cell </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cellIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell.dom.cellIndex</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">row.dom.rowIndex</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseover'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cellIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
         
     },
     
@@ -498,6 +519,10 @@
                 </span><span class="jsdoc-var">_this.renderColumn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
             })
         }
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody td'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">e.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseover'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this.onMouseover</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">);
+        });
 
         </span><span class="jsdoc-comment">//if(this.loadMask){
         //    this.maskEl.hide();

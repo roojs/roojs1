@@ -138,6 +138,24 @@
             },
             </span><span class="jsdoc-var">fout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
                 </span><span class="jsdoc-var">this.flag.animate</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">opacity</span><span class="jsdoc-syntax">: 0}, 300, </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {</span><span class="jsdoc-var">this.remove</span><span class="jsdoc-syntax">();});
+            },
+            </span><span class="jsdoc-var">pfin </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-var">this.sector.stop</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.sector.scale</span><span class="jsdoc-syntax">(1.1, 1.1, </span><span class="jsdoc-var">this.cx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cy</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.label</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.label</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.stop</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">this.label</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">: 7.5 });
+                    </span><span class="jsdoc-var">this.label</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-string">&quot;font-weight&quot;</span><span class="jsdoc-syntax">: 800 });
+                }
+            },
+            </span><span class="jsdoc-var">pfout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-var">this.sector.animate</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">transform</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'s1 1 ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cx </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cy </span><span class="jsdoc-syntax">}, 500, </span><span class="jsdoc-string">&quot;bounce&quot;</span><span class="jsdoc-syntax">);
+
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.label</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">this.label</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.animate</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">: 5 }, 500, </span><span class="jsdoc-string">&quot;bounce&quot;</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">this.label</span><span class="jsdoc-syntax">[1]</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-string">&quot;font-weight&quot;</span><span class="jsdoc-syntax">: 400 });
+                }
             };
 
         </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">graphtype</span><span class="jsdoc-syntax">){
@@ -148,10 +166,10 @@
                 </span><span class="jsdoc-var">this.raphael.hbarchart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_width</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_height</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hover</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fin</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">fout</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'pie'</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-var">opts </span><span class="jsdoc-syntax">= { </span><span class="jsdoc-var">legend</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">&quot;%% - Enterprise Users&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;% - ddd&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;Chrome Users&quot;</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">legendpos</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;west&quot;</span><span class="jsdoc-syntax">, 
-                </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">&quot;http://raphaeljs.com&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;http://g.raphaeljs.com&quot;</span><span class="jsdoc-syntax">]};
-            
-                </span><span class="jsdoc-var">this.raphael.piechart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_r</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-comment">//                opts = { legend: [&quot;%% - Enterprise Users&quot;, &quot;% - ddd&quot;,&quot;Chrome Users&quot;], legendpos: &quot;west&quot;, 
+//                href: [&quot;http://raphaeljs.com&quot;, &quot;http://g.raphaeljs.com&quot;]};
+//            
+                </span><span class="jsdoc-var">this.raphael.piechart</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.g_x</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_y</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.g_r</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">xdata</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">opts</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hover</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pfin</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pfout</span><span class="jsdoc-syntax">);
                 
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
 
