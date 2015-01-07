@@ -514,9 +514,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             })
         }
         
-        Roo.log('td!!!!!!!!!!!!!!!!!!!!!!!!1');
         Roo.each(this.el.select('tbody td', true).elements, function(e){
-            Roo.log(e);
             e.on('mouseover', _this.onMouseover, _this);
         });
 
