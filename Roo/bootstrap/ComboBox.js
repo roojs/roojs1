@@ -306,9 +306,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
         //});
         
+        var _this = this;
+        
         (function(){
-            var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
-            this.list.setWidth(lw);
+            var lw = _this.listWidth || Math.max(_this.inputEl().getWidth(), _this.minListWidth);
+            _this.list.setWidth(lw);
         }).defer(100);
         
         
