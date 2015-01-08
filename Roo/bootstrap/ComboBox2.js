@@ -447,8 +447,12 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
         //});
         
-        var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
-        this.list.setWidth(lw);
+        var _this = this;
+        
+        (function(){
+            var lw = _this.listWidth || Math.max(_this.inputEl().getWidth(), _this.minListWidth);
+            _this.list.setWidth(lw);
+        }).defer(100);
         
         this.list.on('mouseover', this.onViewOver, this);
         this.list.on('mousemove', this.onViewMove, this);
