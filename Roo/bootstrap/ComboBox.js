@@ -314,10 +314,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.log('checking the width!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
             
             Roo.log(_this);
+            Roo.log(_this.inputEl())
             Roo.log(lw);
             
             _this.list.setWidth(lw);
-        }).defer(200);
+        }).defer(100);
         
         
         this.list.on('mouseover', this.onViewOver, this);
