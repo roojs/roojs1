@@ -314,7 +314,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.log('checking the width!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
             
             Roo.log(_this);
-            Roo.log(_this.inputEl())
+            Roo.log(_this.inputEl());
+            Roo.log(_this.inputEl().getWidth());
             Roo.log(lw);
             
             _this.list.setWidth(lw);
