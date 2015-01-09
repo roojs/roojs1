@@ -317,7 +317,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.log(lw);
             
             _this.list.setWidth(lw);
-        }).defer(100);
+        }).defer(200);
         
         
         this.list.on('mouseover', this.onViewOver, this);
