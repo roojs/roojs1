@@ -9807,7 +9807,7 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
  */
 
 /**
- * @class Roo.bootstrap.ComboBox2
+ * @class Roo.bootstrap.ComboBox
  * @extends Roo.bootstrap.TriggerField
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
  * @cfg {Boolean} append (true|false) default false
@@ -9818,25 +9818,25 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
  * Create a new ComboBox.
  * @param {Object} config Configuration options
  */
-Roo.bootstrap.ComboBox2 = function(config){
-    Roo.bootstrap.ComboBox2.superclass.constructor.call(this, config);
+Roo.bootstrap.ComboBox = function(config){
+    Roo.bootstrap.ComboBox.superclass.constructor.call(this, config);
     this.addEvents({
         /**
          * @event expand
          * Fires when the dropdown list is expanded
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
         'expand' : true,
         /**
          * @event collapse
          * Fires when the dropdown list is collapsed
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
         'collapse' : true,
         /**
          * @event beforeselect
          * Fires before a list item is selected. Return false to cancel the selection.
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     * @param {Roo.data.Record} record The data record returned from the underlying store
 	     * @param {Number} index The index of the selected item in the dropdown list
 	     */
@@ -9844,7 +9844,7 @@ Roo.bootstrap.ComboBox2 = function(config){
         /**
          * @event select
          * Fires when a list item is selected
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
 	     * @param {Number} index The index of the selected item in the dropdown list
 	     */
@@ -9853,7 +9853,7 @@ Roo.bootstrap.ComboBox2 = function(config){
          * @event beforequery
          * Fires before all queries are processed. Return false to cancel the query or set cancel to true.
          * The event object passed has these properties:
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     * @param {String} query The query
 	     * @param {Boolean} forceAll true to force "all" query
 	     * @param {Boolean} cancel true to cancel the query
@@ -9863,20 +9863,20 @@ Roo.bootstrap.ComboBox2 = function(config){
          /**
          * @event add
          * Fires when the 'add' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
         'add' : true,
         /**
          * @event edit
          * Fires when the 'edit' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
 	     */
         'edit' : true,
         /**
          * @event remove
          * Fires when the remove value from the combobox array
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
         'remove' : true
         
@@ -9896,7 +9896,7 @@ Roo.bootstrap.ComboBox2 = function(config){
     }
 };
 
-Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
+Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      
     /**
      * @cfg {Boolean} lazyRender True to prevent the ComboBox from rendering until requested (should always be used when
@@ -10084,7 +10084,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
          *  Normal ComboBox
          */
         if(!this.tickable){
-            cfg = Roo.bootstrap.ComboBox2.superclass.getAutoCreate.call(this);
+            cfg = Roo.bootstrap.ComboBox.superclass.getAutoCreate.call(this);
             return cfg;
         }
         
@@ -10222,7 +10222,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        Roo.bootstrap.ComboBox2.superclass.initEvents.call(this);
+        Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
         
         
         if(this.hiddenName){
@@ -10608,7 +10608,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             this.store.un('load', this.onLoad, this);
             this.store.un('loadexception', this.onLoadException, this);
         }
-        Roo.bootstrap.ComboBox2.superclass.onDestroy.call(this);
+        Roo.bootstrap.ComboBox.superclass.onDestroy.call(this);
     },
 
     // private
@@ -10774,7 +10774,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         if(this.valueField){
             return typeof this.value != 'undefined' ? this.value : '';
         }else{
-            return Roo.bootstrap.ComboBox2.superclass.getValue.call(this);
+            return Roo.bootstrap.ComboBox.superclass.getValue.call(this);
         }
     },
 
@@ -10817,7 +10817,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         if(this.hiddenField){
             this.hiddenField.dom.value = v;
         }
-        Roo.bootstrap.ComboBox2.superclass.setValue.call(this, text);
+        Roo.bootstrap.ComboBox.superclass.setValue.call(this, text);
         this.value = v;
     },
     /**
@@ -10854,14 +10854,14 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             this.hiddenField.dom.value = vv;
             
             this.lastSelectionText = dv;
-            Roo.bootstrap.ComboBox2.superclass.setValue.call(this, dv);
+            Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
             this.value = vv;
             return;
         }
         // no hidden field.. - we store the value in 'value', but still display
         // display field!!!!
         this.lastSelectionText = dv;
-        Roo.bootstrap.ComboBox2.superclass.setValue.call(this, dv);
+        Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
         this.value = vv;
         
         

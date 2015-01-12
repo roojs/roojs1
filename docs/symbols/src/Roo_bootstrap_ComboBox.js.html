@@ -4,7 +4,7 @@
  */
 
 /**
- * @class Roo.bootstrap.ComboBox2
+ * @class Roo.bootstrap.ComboBox
  * @extends Roo.bootstrap.TriggerField
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
  * @cfg {Boolean} append (true|false) default false
@@ -15,25 +15,25 @@
  * Create a new ComboBox.
  * @param {Object} config Configuration options
  */
-</span><span class="jsdoc-var">Roo.bootstrap.ComboBox2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
-    </span><span class="jsdoc-var">Roo.bootstrap.ComboBox2.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-var">Roo.bootstrap.ComboBox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.ComboBox.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">/**
          * @event expand
          * Fires when the dropdown list is expanded
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
         </span><span class="jsdoc-string">'expand' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event collapse
          * Fires when the dropdown list is collapsed
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
         </span><span class="jsdoc-string">'collapse' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event beforeselect
          * Fires before a list item is selected. Return false to cancel the selection.
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     * @param {Roo.data.Record} record The data record returned from the underlying store
 	     * @param {Number} index The index of the selected item in the dropdown list
 	     */
@@ -41,7 +41,7 @@
         </span><span class="jsdoc-comment">/**
          * @event select
          * Fires when a list item is selected
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
 	     * @param {Number} index The index of the selected item in the dropdown list
 	     */
@@ -50,7 +50,7 @@
          * @event beforequery
          * Fires before all queries are processed. Return false to cancel the query or set cancel to true.
          * The event object passed has these properties:
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     * @param {String} query The query
 	     * @param {Boolean} forceAll true to force &quot;all&quot; query
 	     * @param {Boolean} cancel true to cancel the query
@@ -60,20 +60,20 @@
          </span><span class="jsdoc-comment">/**
          * @event add
          * Fires when the 'add' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
         </span><span class="jsdoc-string">'add' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event edit
          * Fires when the 'edit' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
 	     */
         </span><span class="jsdoc-string">'edit' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event remove
          * Fires when the remove value from the combobox array
-	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
         </span><span class="jsdoc-string">'remove' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
@@ -93,7 +93,7 @@
     }
 };
 
-</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.ComboBox2</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.TriggerField</span><span class="jsdoc-syntax">, {
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.ComboBox</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.TriggerField</span><span class="jsdoc-syntax">, {
      
     </span><span class="jsdoc-comment">/**
      * @cfg {Boolean} lazyRender True to prevent the ComboBox from rendering until requested (should always be used when
@@ -281,7 +281,7 @@
          *  Normal ComboBox
          */
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.ComboBox2.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.ComboBox.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
         }
         
@@ -419,7 +419,7 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-var">Roo.bootstrap.ComboBox2.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.bootstrap.ComboBox.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenName</span><span class="jsdoc-syntax">){
@@ -805,7 +805,7 @@
             </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.store.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'loadexception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoadException</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
-        </span><span class="jsdoc-var">Roo.bootstrap.ComboBox2.superclass.onDestroy.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.bootstrap.ComboBox.superclass.onDestroy.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
 
     </span><span class="jsdoc-comment">// private
@@ -971,7 +971,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return typeof </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.bootstrap.ComboBox2.superclass.getValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.bootstrap.ComboBox.superclass.getValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
     },
 
@@ -1014,7 +1014,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenField</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.hiddenField.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-var">Roo.bootstrap.ComboBox2.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.bootstrap.ComboBox.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
     },
     </span><span class="jsdoc-comment">/**
@@ -1051,14 +1051,14 @@
             </span><span class="jsdoc-var">this.hiddenField.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">vv</span><span class="jsdoc-syntax">;
             
             </span><span class="jsdoc-var">this.lastSelectionText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dv</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-var">Roo.bootstrap.ComboBox2.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dv</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.bootstrap.ComboBox.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dv</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">vv</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-comment">// no hidden field.. - we store the value in 'value', but still display
         // display field!!!!
         </span><span class="jsdoc-var">this.lastSelectionText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dv</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">Roo.bootstrap.ComboBox2.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dv</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.bootstrap.ComboBox.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dv</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">vv</span><span class="jsdoc-syntax">;
         
         
