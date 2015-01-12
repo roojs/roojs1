@@ -4836,9 +4836,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var cell = Roo.get(el);
         
-        if(!cell){
+        if(!cell || !this.CellSelection || !this.RowSelection){
             return;
         }
+        
         
         if(e.getTarget().nodeName.toLowerCase() != 'td'){
             cell = cell.findParent('td', false, true);
@@ -4863,7 +4864,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var cell = Roo.get(el);
         
-        if(!cell){
+        if(!cell || !this.CellSelection || !this.RowSelection){
             return;
         }
         
