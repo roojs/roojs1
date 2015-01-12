@@ -321,7 +321,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     onClick : function(e, el)
     {
         var cell = Roo.get(el);
-        
+        Roo.log(cell);
         if(!cell){
             return;
         }
