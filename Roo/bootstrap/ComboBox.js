@@ -93,7 +93,7 @@ Roo.bootstrap.ComboBox = function(config){
     }
 };
 
-Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
+Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      
     /**
      * @cfg {Boolean} lazyRender True to prevent the ComboBox from rendering until requested (should always be used when
@@ -281,7 +281,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
          *  Normal ComboBox
          */
         if(!this.tickable){
-            cfg = Roo.bootstrap.ComboBox2.superclass.getAutoCreate.call(this);
+            cfg = Roo.bootstrap.ComboBox.superclass.getAutoCreate.call(this);
             return cfg;
         }
         
@@ -419,7 +419,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        Roo.bootstrap.ComboBox2.superclass.initEvents.call(this);
+        Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
         
         
         if(this.hiddenName){
@@ -805,7 +805,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             this.store.un('load', this.onLoad, this);
             this.store.un('loadexception', this.onLoadException, this);
         }
-        Roo.bootstrap.ComboBox2.superclass.onDestroy.call(this);
+        Roo.bootstrap.ComboBox.superclass.onDestroy.call(this);
     },
 
     // private
@@ -971,7 +971,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         if(this.valueField){
             return typeof this.value != 'undefined' ? this.value : '';
         }else{
-            return Roo.bootstrap.ComboBox2.superclass.getValue.call(this);
+            return Roo.bootstrap.ComboBox.superclass.getValue.call(this);
         }
     },
 
@@ -1014,7 +1014,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         if(this.hiddenField){
             this.hiddenField.dom.value = v;
         }
-        Roo.bootstrap.ComboBox2.superclass.setValue.call(this, text);
+        Roo.bootstrap.ComboBox.superclass.setValue.call(this, text);
         this.value = v;
     },
     /**
@@ -1051,14 +1051,14 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             this.hiddenField.dom.value = vv;
             
             this.lastSelectionText = dv;
-            Roo.bootstrap.ComboBox2.superclass.setValue.call(this, dv);
+            Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
             this.value = vv;
             return;
         }
         // no hidden field.. - we store the value in 'value', but still display
         // display field!!!!
         this.lastSelectionText = dv;
-        Roo.bootstrap.ComboBox2.superclass.setValue.call(this, dv);
+        Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
         this.value = vv;
         
         
