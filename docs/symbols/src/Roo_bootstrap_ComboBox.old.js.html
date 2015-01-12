@@ -3,18 +3,18 @@
  * * 
  */
 
-/**
- * @class Roo.bootstrap.ComboBox
- * @extends Roo.bootstrap.TriggerField
- * A combobox control with support for autocomplete, remote-loading, paging and many other features.
- * @cfg {Boolean} append (true|false) default false
- * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
- * @constructor
- * Create a new ComboBox.
- * @param {Object} config Configuration options
- */
-
-
+///**
+// * @class Roo.bootstrap.ComboBox
+// * @extends Roo.bootstrap.TriggerField
+// * A combobox control with support for autocomplete, remote-loading, paging and many other features.
+// * @cfg {Boolean} append (true|false) default false
+// * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
+// * @constructor
+// * Create a new ComboBox.
+// * @param {Object} config Configuration options
+// */
+//
+//
 //Roo.bootstrap.ComboBox = function(config){
 //    Roo.bootstrap.ComboBox.superclass.constructor.call(this, config);
 //    this.addEvents({
