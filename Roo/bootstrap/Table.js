@@ -392,16 +392,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
             
             var config = cm.config[i];
-            
-            if(typeof(config.hidden) != 'undefined' && config.hidden){
-                continue;
-            }
                     
             var c = {
                 tag: 'th',
                 style : '',
                 html: cm.getColumnHeader(i)
             };
+            
+            if(typeof(config.hidden) != 'undefined' && config.hidden){
+                c.style += ' display:none';
+            }
             
             if(typeof(config.dataIndex) != 'undefined'){
                 c.sort = config.dataIndex;
