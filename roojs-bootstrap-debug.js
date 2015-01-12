@@ -10464,6 +10464,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.footer = this.list.findParent('.select2-container', false, true).createChild({
             tag : 'div',
+            cls : 'tickable-footer',
             cn : [
                 {
                     tag : 'button',
