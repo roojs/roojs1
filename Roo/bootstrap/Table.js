@@ -400,7 +400,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             };
             
             if(typeof(config.hidden) != 'undefined' && config.hidden){
-                c.style += ' display:none';
+                c.style += ' display:none;';
             }
             
             if(typeof(config.dataIndex) != 'undefined'){
