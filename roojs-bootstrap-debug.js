@@ -5046,7 +5046,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     };
                     
                     if(typeof(config.hidden) != 'undefined' && config.hidden){
-                        td.sytle += ' display:none';
+                        td.style += ' display:none';
                     }
                     
                     if(typeof(config.align) != 'undefined' && config.align.length){
