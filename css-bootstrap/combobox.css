@@ -207,3 +207,7 @@
 .roo-combobox-tickable .select2-result label {
     width: 100%;
 }
+
+.roo-combobox-tickable .tickable-footer {
+  z-index: 9999;
+}
