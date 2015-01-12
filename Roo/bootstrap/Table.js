@@ -531,6 +531,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                         html: (typeof(value) === 'object') ? '' : value
                     };
                     
+                    if(typeof(config.hidden) != 'undefined' && config.hidden){
+                        td.sytle += ' display:none';
+                    }
+                    
                     if(typeof(config.align) != 'undefined' && config.align.length){
                         td.style += ' text-align:' + config.align + ';';
                     }
