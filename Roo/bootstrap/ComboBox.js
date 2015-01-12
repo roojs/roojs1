@@ -4,34 +4,36 @@
  */
 
 /**
- * @class Roo.bootstrap.ComboBox
+ * @class Roo.bootstrap.ComboBox2
  * @extends Roo.bootstrap.TriggerField
  * A combobox control with support for autocomplete, remote-loading, paging and many other features.
  * @cfg {Boolean} append (true|false) default false
  * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
+ * @cfg {Boolean} tickable ComboBox with tickable selections (true|false), default false
+ * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
  */
-Roo.bootstrap.ComboBox = function(config){
-    Roo.bootstrap.ComboBox.superclass.constructor.call(this, config);
+Roo.bootstrap.ComboBox2 = function(config){
+    Roo.bootstrap.ComboBox2.superclass.constructor.call(this, config);
     this.addEvents({
         /**
          * @event expand
          * Fires when the dropdown list is expanded
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
 	     */
         'expand' : true,
         /**
          * @event collapse
          * Fires when the dropdown list is collapsed
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
 	     */
         'collapse' : true,
         /**
          * @event beforeselect
          * Fires before a list item is selected. Return false to cancel the selection.
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
 	     * @param {Roo.data.Record} record The data record returned from the underlying store
 	     * @param {Number} index The index of the selected item in the dropdown list
 	     */
@@ -39,7 +41,7 @@ Roo.bootstrap.ComboBox = function(config){
         /**
          * @event select
          * Fires when a list item is selected
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
 	     * @param {Roo.data.Record} record The data record returned from the underlying store (or false on clear)
 	     * @param {Number} index The index of the selected item in the dropdown list
 	     */
@@ -48,7 +50,7 @@ Roo.bootstrap.ComboBox = function(config){
          * @event beforequery
          * Fires before all queries are processed. Return false to cancel the query or set cancel to true.
          * The event object passed has these properties:
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
 	     * @param {String} query The query
 	     * @param {Boolean} forceAll true to force "all" query
 	     * @param {Boolean} cancel true to cancel the query
@@ -58,26 +60,27 @@ Roo.bootstrap.ComboBox = function(config){
          /**
          * @event add
          * Fires when the 'add' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
 	     */
         'add' : true,
         /**
          * @event edit
          * Fires when the 'edit' icon is pressed (add a listener to enable add button)
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
 	     * @param {Roo.data.Record|false} record The data record returned from the underlying store (or false on nothing selected)
 	     */
         'edit' : true,
         /**
          * @event remove
          * Fires when the remove value from the combobox array
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     * @param {Roo.bootstrap.ComboBox2} combo This combo box
 	     */
         'remove' : true
         
     });
     
     this.item = [];
+    this.tickItems = [];
     
     this.selectedIndex = -1;
     if(this.mode == 'local'){
@@ -90,7 +93,7 @@ Roo.bootstrap.ComboBox = function(config){
     }
 };
 
-Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
+Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
      
     /**
      * @cfg {Boolean} lazyRender True to prevent the ComboBox from rendering until requested (should always be used when
@@ -265,20 +268,158 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     append: false,
     loadNext: false,
     autoFocus : true,
+    tickable : false,
+    btnPosition : 'right',
     
     // element that contains real text value.. (when hidden is used..)
-     
+    
+    getAutoCreate : function()
+    {
+        var cfg = false;
+        
+        /*
+         *  Normal ComboBox
+         */
+        if(!this.tickable){
+            cfg = Roo.bootstrap.ComboBox2.superclass.getAutoCreate.call(this);
+            return cfg;
+        }
+        
+        /*
+         *  ComboBox with tickable selections
+         */
+             
+        var align = this.labelAlign || this.parentLabelAlign();
+        
+        cfg = {
+            cls : 'form-group roo-combobox-tickable' //input-group
+        };
+        
+        
+        var button = {
+            tag : 'button',
+            type : 'button',
+            cls : 'btn btn-link pull-' + this.btnPosition,
+            html : 'Edit'
+        };
+        
+        if (this.name) {
+            button.name = this.name;
+        }
+        if (this.size) {
+            button.cls += ' btn-' + this.size;
+        }
+        
+        if (this.disabled) {
+            button.disabled=true;
+        }
+        
+        var box = {
+            tag: 'div',
+            cn: [
+                {
+                    tag: 'input',
+                    type : 'hidden',
+                    cls: 'form-hidden-field'
+                },
+                {
+                    tag: 'ul',
+                    cls: 'select2-choices',
+                    cn:[
+                        {
+                            tag: 'li',
+                            cls: 'select2-search-field',
+                            cn: [
+
+                                button
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+        
+        var combobox = {
+            cls: 'select2-container input-group select2-container-multi',
+            cn: [
+                box,
+                {
+                    tag: 'ul',
+                    cls: 'typeahead typeahead-long dropdown-menu',
+                    style: 'display:none'
+                }
+            ]
+        };
+        
+        if (align ==='left' && this.fieldLabel.length) {
+            
+                Roo.log("left and has label");
+                cfg.cn = [
+                    
+                    {
+                        tag: 'label',
+                        'for' :  id,
+                        cls : 'control-label col-sm-' + this.labelWidth,
+                        html : this.fieldLabel
+                        
+                    },
+                    {
+                        cls : "col-sm-" + (12 - this.labelWidth), 
+                        cn: [
+                            combobox
+                        ]
+                    }
+                    
+                ];
+        } else if ( this.fieldLabel.length) {
+                Roo.log(" label");
+                 cfg.cn = [
+                   
+                    {
+                        tag: 'label',
+                        //cls : 'input-group-addon',
+                        html : this.fieldLabel
+                        
+                    },
+                    
+                    combobox
+                    
+                ];
+
+        } else {
+            
+                Roo.log(" no label && no align");
+                cfg = combobox
+                     
+                
+        }
+         
+        var settings=this;
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
+        
+        return cfg;
+        
+    },
+    
     // private
-    initEvents: function(){
+    initEvents: function()
+    {
         
         if (!this.store) {
             throw "can not find store for combo";
         }
         this.store = Roo.factory(this.store, Roo.data);
         
+        if(this.tickable){
+            this.initTickableEvnets();
+            return;
+        }
         
-        
-        Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
+        Roo.bootstrap.ComboBox2.superclass.initEvents.call(this);
         
         
         if(this.hiddenName){
@@ -312,7 +453,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             var lw = _this.listWidth || Math.max(_this.inputEl().getWidth(), _this.minListWidth);
             _this.list.setWidth(lw);
         }).defer(100);
-        
         
         this.list.on('mouseover', this.onViewOver, this);
         this.list.on('mousemove', this.onViewMove, this);
@@ -499,6 +639,152 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.searchField = this.el.select('ul li.select2-search-field', true).first();
         }
     },
+    
+    initTickableEvnets: function()
+    {   
+        if(this.hiddenName){
+            
+            this.hiddenField = this.el.select('input.form-hidden-field',true).first();
+            
+            this.hiddenField.dom.value =
+                this.hiddenValue !== undefined ? this.hiddenValue :
+                this.value !== undefined ? this.value : '';
+
+            // prevent input submission
+            this.el.dom.removeAttribute('name');
+            this.hiddenField.dom.setAttribute('name', this.hiddenName);
+             
+             
+        }
+        
+        this.list = this.el.select('ul.dropdown-menu',true).first();
+        
+        this.footer = this.list.findParent('.select2-container', false, true).createChild({
+            tag : 'div',
+            cn : [
+                {
+                    tag : 'button',
+                    type : 'button',
+                    name : 'ok',
+                    cls : 'btn btn-link pull-right',
+                    html : 'Done'
+                },
+                {
+                    tag : 'button',
+                    type : 'button',
+                    name : 'cancel',
+                    cls : 'btn btn-link btn-cancel pull-right',
+                    html : 'Cancel'
+                }
+            ]
+        });
+        
+        this.footer.hide();
+        
+        var _this = this;
+        Roo.each(this.footer.select('button', true).elements, function(el){
+            el.on('click', _this.onTickableFooterButtonClick, _this, el);
+        })
+        
+        this.choices = this.el.select('ul.select2-choices', true).first();
+        this.searchField = this.el.select('ul li.select2-search-field', true).first();
+        this.trigger = this.el.select('.select2-search-field > button',true).first();
+        
+        this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
+        
+        var _this = this;
+        
+        (function(){
+            var lw = _this.listWidth || Math.max(_this.inputEl().getWidth(), _this.minListWidth);
+            _this.list.setWidth(lw);
+        }).defer(100);
+        
+        this.list.on('mouseover', this.onViewOver, this);
+        this.list.on('mousemove', this.onViewMove, this);
+        
+        this.list.on('scroll', this.onViewScroll, this);
+        
+        if(!this.tpl){
+            this.tpl = '<li class="select2-result"><div class="checkbox"><input id="{roo-id}" type="checkbox" {roo-data-checked}><label for="{roo-id}"><b>{' + this.displayField + '}</b></label></li>';
+        }
+
+        this.view = new Roo.View(this.el.select('ul.dropdown-menu',true).first(), this.tpl, {
+            singleSelect:true, tickable:true, parent:this, store: this.store, selectedClass: this.selectedClass
+        });
+        
+        //this.view.wrapEl.setDisplayed(false);
+        this.view.on('click', this.onViewClick, this);
+        
+        
+        
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('loadexception', this.onLoadException, this);
+        
+//        this.keyNav = new Roo.KeyNav(this.inputEl(), {
+//            "up" : function(e){
+//                this.inKeyMode = true;
+//                this.selectPrev();
+//            },
+//
+//            "down" : function(e){
+//                if(!this.isExpanded()){
+//                    this.onTriggerClick();
+//                }else{
+//                    this.inKeyMode = true;
+//                    this.selectNext();
+//                }
+//            },
+//
+//            "enter" : function(e){
+////                this.onViewClick();
+//                //return true;
+//                this.collapse();
+//                
+//                if(this.fireEvent("specialkey", this, e)){
+//                    this.onViewClick(false);
+//                }
+//                
+//                return true;
+//            },
+//
+//            "esc" : function(e){
+//                this.collapse();
+//            },
+//
+//            "tab" : function(e){
+//                this.collapse();
+//                
+//                if(this.fireEvent("specialkey", this, e)){
+//                    this.onViewClick(false);
+//                }
+//                
+//                return true;
+//            },
+//
+//            scope : this,
+//
+//            doRelay : function(foo, bar, hname){
+//                if(hname == 'down' || this.scope.isExpanded()){
+//                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+//                }
+//                return true;
+//            },
+//
+//            forceKeyDown: true
+//        });
+        
+        
+        this.queryDelay = Math.max(this.queryDelay || 10,
+                this.mode == 'local' ? 10 : 250);
+        
+        
+        this.dqTask = new Roo.util.DelayedTask(this.initQuery, this);
+        
+        if(this.typeAhead){
+            this.taTask = new Roo.util.DelayedTask(this.onTypeAhead, this);
+        }
+    },
 
     onDestroy : function(){
         if(this.view){
@@ -510,12 +796,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.list){
             this.list.dom.innerHTML  = '';
         }
+        
+        if(this.footer){
+            this.footer.dom.innerHTML = '';
+        }
         if(this.store){
             this.store.un('beforeload', this.onBeforeLoad, this);
             this.store.un('load', this.onLoad, this);
             this.store.un('loadexception', this.onLoadException, this);
         }
-        Roo.bootstrap.ComboBox.superclass.onDestroy.call(this);
+        Roo.bootstrap.ComboBox2.superclass.onDestroy.call(this);
     },
 
     // private
@@ -603,7 +893,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.expand();
             this.restrictHeight();
             if(this.lastQuery == this.allQuery){
-                if(this.editable){
+                if(this.editable && !this.tickable){
                     this.inputEl().dom.select();
                 }
                 if(!this.selectByValue(this.value, true) && this.autoFocus){
@@ -681,7 +971,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.valueField){
             return typeof this.value != 'undefined' ? this.value : '';
         }else{
-            return Roo.bootstrap.ComboBox.superclass.getValue.call(this);
+            return Roo.bootstrap.ComboBox2.superclass.getValue.call(this);
         }
     },
 
@@ -724,7 +1014,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.hiddenField){
             this.hiddenField.dom.value = v;
         }
-        Roo.bootstrap.ComboBox.superclass.setValue.call(this, text);
+        Roo.bootstrap.ComboBox2.superclass.setValue.call(this, text);
         this.value = v;
     },
     /**
@@ -761,14 +1051,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.hiddenField.dom.value = vv;
             
             this.lastSelectionText = dv;
-            Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
+            Roo.bootstrap.ComboBox2.superclass.setValue.call(this, dv);
             this.value = vv;
             return;
         }
         // no hidden field.. - we store the value in 'value', but still display
         // display field!!!!
         this.lastSelectionText = dv;
-        Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
+        Roo.bootstrap.ComboBox2.superclass.setValue.call(this, dv);
         this.value = vv;
         
         
@@ -816,6 +1106,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         var item = this.view.findItemFromChild(t);
+        
         if(item){
             var index = this.view.indexOf(item);
             this.select(index, false);
@@ -823,10 +1114,38 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     },
 
     // private
-    onViewClick : function(doFocus)
+    onViewClick : function(view, doFocus, el, e)
     {
         var index = this.view.getSelectedIndexes()[0];
+        
         var r = this.store.getAt(index);
+        
+        if(this.tickable){
+            
+            if(e.getTarget().nodeName.toLowerCase() != 'input'){
+                return;
+            }
+            
+            var rm = false;
+            var _this = this;
+            
+            Roo.each(this.tickItems, function(v,k){
+                
+                if(typeof(v) != 'undefined' && v[_this.valueField] == r.data[_this.valueField]){
+                    _this.tickItems.splice(k, 1);
+                    rm = true;
+                    return;
+                }
+            })
+            
+            if(rm){
+                return;
+            }
+            
+            this.tickItems.push(r.data);
+            return;
+        }
+        
         if(r){
             this.onSelect(r, index);
         }
@@ -1035,6 +1354,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         this.list.hide();
+        
+        if(this.tickable){
+            this.footer.hide();
+            this.trigger.show();
+        }
+        
         Roo.get(document).un('mousedown', this.collapseIf, this);
         Roo.get(document).un('mousewheel', this.collapseIf, this);
         if (!this.editable) {
@@ -1068,6 +1393,20 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          Roo.log('expand');
         this.list.alignTo(this.inputEl(), this.listAlign);
         this.list.show();
+        
+        if(this.tickable){
+            
+            this.tickItems = Roo.apply([], this.item);
+            
+            (function(){
+                this.footer.alignTo(this.list, 'tl-bl?'); 
+                this.footer.show();
+            }).defer(10, this);
+            
+            this.trigger.hide();
+            
+        }
+        
         Roo.get(document).on('mousedown', this.collapseIf, this);
         Roo.get(document).on('mousewheel', this.collapseIf, this);
         if (!this.editable) {
@@ -1084,6 +1423,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log('trigger click');
         
         if(this.disabled){
+            return;
+        }
+        
+        if(this.tickable){
+            this.onTickableTriggerClick();
             return;
         }
         
@@ -1108,6 +1452,20 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }
         }
     },
+    
+    onTickableTriggerClick : function()
+    {
+        this.page = 0;
+        this.loadNext = false;
+        this.hasFocus = true;
+        
+        if(this.triggerAction == 'all') {
+            this.doQuery(this.allQuery, true);
+        } else {
+            this.doQuery(this.getRawValue());
+        }
+    },
+    
     listKeyPress : function(e)
     {
         //Roo.log('listkeypress');
@@ -1294,6 +1652,37 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         });
         
         this.syncValue();
+    },
+    
+    inputEl: function ()
+    {
+        if(this.tickable){
+            return this.searchField;
+        }
+        return this.el.select('input.form-control',true).first();
+    },
+    
+    
+    onTickableFooterButtonClick : function(e, btn, el)
+    {
+        e.preventDefault();
+        
+        if(btn.name == 'cancel'){
+            this.tickItems = Roo.apply([], this.item);
+            this.collapse();
+            return;
+        }
+        
+        this.clearItem();
+        
+        var _this = this;
+        
+        Roo.each(this.tickItems, function(o){
+            _this.addItem(o);
+        });
+        
+        this.collapse();
+        
     }
     
     
