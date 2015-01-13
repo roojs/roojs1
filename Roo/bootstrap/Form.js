@@ -131,6 +131,8 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             if (e.getCharCode() != 13) {
                 return true;
             }
+            Roo.log("keypress blocked");
+            
             e.preventDefault();
             return false;
         });
