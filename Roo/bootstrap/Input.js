@@ -497,7 +497,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
      // private
     fireKey : function(e){
-        //Roo.log('field ' + e.getKey());
+        Roo.log('field ' + e.getKey());
         if(e.isNavKeyPress()){
             this.fireEvent("specialkey", this, e);
         }
