@@ -134,9 +134,11 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             // we might need to allow it for textareas.. and some other items.
             // check e.getTarget().
             
+            if(e.getTarget().nodeName.toLowerCase() === 'textarea'){
+                return true;
+            }
+        
             Roo.log("keypress blocked");
-            
-            Roo.log(e.getTarget());
             
             e.preventDefault();
             return false;
