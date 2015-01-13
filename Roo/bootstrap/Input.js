@@ -497,7 +497,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     
      // private
     fireKey : function(e){
-        Roo.log('field ' + e.getKey());
+        //Roo.log('field ' + e.getKey());
         if(e.isNavKeyPress()){
             this.fireEvent("specialkey", this, e);
         }
@@ -634,7 +634,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(!Roo.isIE && (e.isNavKeyPress() || k == e.BACKSPACE || (k == e.DELETE && e.button == -1))){
             return;
         }
-        Roo.log('run!!!!!!!!!!');
         var c = e.getCharCode(), cc = String.fromCharCode(c);
         if(Roo.isIE && (e.isSpecialKey() || !cc)){
             return;
