@@ -280,6 +280,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     },
     
     fill: function() {
+        Roo.log('fill');
+        Roo.log(this.date);
+        Roo.log(this.viewDate);
         var d = new Date(this.viewDate),
                 year = d.getUTCFullYear(),
                 month = d.getUTCMonth(),
