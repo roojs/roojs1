@@ -539,8 +539,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.bootstrap.DateField.superclass.setValue.call(this, v);
         
         var d = new Date(v);
-        
+        Roo.log(d);
         if(d instanceof Date){
+            Roo.log('run');
             this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
         
             this.update();
