@@ -296,22 +296,42 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         };
         
         
-        var button = {
-            tag : 'button',
-            type : 'button',
-            cls : 'btn btn-link pull-' + this.btnPosition,
-            html : 'Edit'
+        var buttons = {
+            tag : 'div',
+            cls : 'tickable-buttons',
+            cn : [
+                {
+                    tag : 'button',
+                    type : 'button',
+                    cls : 'btn btn-link pull-' + this.btnPosition,
+                    html : 'Edit'
+                },
+                {
+                    tag : 'button',
+                    type : 'button',
+                    name : 'ok',
+                    cls : 'btn btn-link pull-' + this.btnPosition,
+                    html : 'Done'
+                },
+                {
+                    tag : 'button',
+                    type : 'button',
+                    name : 'cancel',
+                    cls : 'btn btn-link pull-' + this.btnPosition,
+                    html : 'Cancel'
+                }
+            ]
         };
         
-        if (this.name) {
-            button.name = this.name;
-        }
+        Roo.each(buttons.cn, function(c){
+            Roo.log(c);
+        });
         if (this.size) {
-            button.cls += ' btn-' + this.size;
+            buttons.cls += ' btn-' + this.size;
         }
         
         if (this.disabled) {
-            button.disabled=true;
+            buttons.disabled=true;
         }
         
         var box = {
