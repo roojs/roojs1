@@ -218,5 +218,6 @@ select2-container-multi .dropdown-menu .active {
 }
 
 select2-container-multi .dropdown-menu .select2-result checkbox {
-    margin: 0;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
