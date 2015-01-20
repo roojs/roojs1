@@ -545,6 +545,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             Roo.log('invalid date');
             return;
         }
+        if(true){
+            return;
+        }
         Roo.log('still here??');
         return;
         Roo.log('valid date');
