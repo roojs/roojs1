@@ -651,8 +651,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     case 'today':
                         var date = new Date();
                         this.date = this.UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
-                        this.fill()
-                        this.setValue(this.formatDate(this.date));
+//                        this.fill()
+//                        this.setValue(this.formatDate(this.date));
+                        this.setValue(this.date);
+                        
                         this.hide();
                         break;
                 }
