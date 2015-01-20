@@ -492,6 +492,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onBlur : function()
     {
         Roo.bootstrap.DateField.superclass.onBlur.call(this);
+        
+        var d = this.inputEl().getValue();
+        
+        if(d && d.length){
+            this.setValue(d);
+        }
+        
         this.hide();
     },
     
