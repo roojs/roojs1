@@ -323,13 +323,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             ]
         };
         
+        var _this = this;
         Roo.each(buttons.cn, function(c){
-            if (this.size) {
-                c.cls += ' btn-' + this.size;
+            if (_this.size) {
+                c.cls += ' btn-' + _this.size;
             }
 
-            if (this.disabled) {
-                c.disabled=true;
+            if (_this.disabled) {
+                c.disabled = true;
             }
         });
         
