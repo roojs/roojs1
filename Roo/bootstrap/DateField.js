@@ -571,6 +571,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     this.date = newDate;
                     this.viewDate = newViewDate;
                     this.setValue(this.formatDate(this.date));
+//                    this.update();
                     e.preventDefault();
                     dateChanged = true;
                 }
@@ -595,7 +596,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     this.date = newDate;
                     this.viewDate = newViewDate;
                     this.setValue(this.formatDate(this.date));
-                    this.update();
+//                    this.update();
                     e.preventDefault();
                     dateChanged = true;
                 }
