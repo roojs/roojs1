@@ -524,6 +524,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     setValue: function(v){
         Roo.bootstrap.DateField.superclass.setValue.call(this, v);
         
+        this.date = new Date(v);
+        
         this.fireEvent('select', this, this.date);
         
     },
