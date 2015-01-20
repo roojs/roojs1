@@ -689,8 +689,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.okBtn.on('click', this.onTickableFooterButtonClick, this, this.okBtn);
         this.cancelBtn.on('click', this.onTickableFooterButtonClick, this, this.cancelBtn);
-        Roo.log(this.trigger);
+        
         this.trigger.setVisibilityMode(Roo.Element.DISPLAY);
+        this.okBtn.setVisibilityMode(Roo.Element.DISPLAY);
+        this.cancelBtn.setVisibilityMode(Roo.Element.DISPLAY);
         
         var _this = this;
         
