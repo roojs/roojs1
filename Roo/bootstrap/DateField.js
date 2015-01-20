@@ -627,14 +627,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 this.setValue(this.formatDate(this.date));
                 this.hide();
                 break;
-            default : // allow free input to set the value
-                var d = this.inputEl().getValue();
-                Roo.log('run firkey');
-                Roo.log(d);
-                if(d && d.length){
-                    this.setValue(d);
-                }
-                break;
                 
         }
     },
