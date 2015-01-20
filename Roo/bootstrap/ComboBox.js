@@ -682,10 +682,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.okBtn = this.el.select('.tickable-buttons > .btn-ok', true).first();
         this.cancelBtn = this.el.select('.tickable-buttons > .btn-cancel', true).first();
         
-        var _this = this;
-        Roo.each(this.footer.select('button', true).elements, function(el){
-            el.on('click', _this.onTickableFooterButtonClick, _this, el);
-        })
+//        
+//        
+//        var _this = this;
+//        Roo.each(this.footer.select('button', true).elements, function(el){
+//            el.on('click', _this.onTickableFooterButtonClick, _this, el);
+//        })
         
         this.choices = this.el.select('ul.select2-choices', true).first();
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
