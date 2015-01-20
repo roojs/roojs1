@@ -1378,6 +1378,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             //e.stopPropagation();
             return;
         }
+        
+        if(this.tickable){
+            this.clearItem();
+        
+            var _this = this;
+
+            Roo.each(this.tickItems, function(o){
+                _this.addItem(o);
+            });
+        }
 
         this.collapse();
         
