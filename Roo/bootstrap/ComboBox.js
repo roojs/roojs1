@@ -1405,11 +1405,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             this.tickItems = Roo.apply([], this.item);
             
-            (function(){
-                this.footer.alignTo(this.list, 'tl-bl?'); 
-                this.footer.show();
-            }).defer(10, this);
-            
+            this.okBtn.show();
+            this.cancelBtn.show();
             this.trigger.hide();
             
         }
