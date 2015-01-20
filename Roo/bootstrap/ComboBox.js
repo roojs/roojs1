@@ -1358,7 +1358,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.list.hide();
         
         if(this.tickable){
-            this.footer.hide();
+            this.okBtn.hide();
+            this.cancelBtn.hide();
             this.trigger.show();
         }
         
