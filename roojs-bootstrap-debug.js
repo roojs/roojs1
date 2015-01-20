@@ -10109,23 +10109,43 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         };
         
         
-        var button = {
-            tag : 'button',
-            type : 'button',
-            cls : 'btn btn-link pull-' + this.btnPosition,
-            html : 'Edit'
+        var buttons = {
+            tag : 'div',
+            cls : 'tickable-buttons',
+            cn : [
+                {
+                    tag : 'button',
+                    type : 'button',
+                    cls : 'btn btn-link btn-edit pull-' + this.btnPosition,
+                    html : 'Edit'
+                },
+                {
+                    tag : 'button',
+                    type : 'button',
+                    name : 'ok',
+                    cls : 'btn btn-link btn-ok pull-' + this.btnPosition,
+                    html : 'Done'
+                },
+                {
+                    tag : 'button',
+                    type : 'button',
+                    name : 'cancel',
+                    cls : 'btn btn-link btn-cancel pull-' + this.btnPosition,
+                    html : 'Cancel'
+                }
+            ]
         };
         
-        if (this.name) {
-            button.name = this.name;
-        }
-        if (this.size) {
-            button.cls += ' btn-' + this.size;
-        }
-        
-        if (this.disabled) {
-            button.disabled=true;
-        }
+        var _this = this;
+        Roo.each(buttons.cn, function(c){
+            if (_this.size) {
+                c.cls += ' btn-' + _this.size;
+            }
+
+            if (_this.disabled) {
+                c.disabled = true;
+            }
+        });
         
         var box = {
             tag: 'div',
@@ -10144,7 +10164,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                             cls: 'select2-search-field',
                             cn: [
 
-                                button
+                                buttons
                             ]
                         }
                     ]
@@ -10472,39 +10492,24 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.list = this.el.select('ul.dropdown-menu',true).first();
         
-        this.footer = this.list.findParent('.select2-container', false, true).createChild({
-            tag : 'div',
-            cls : 'tickable-footer',
-            cn : [
-                {
-                    tag : 'button',
-                    type : 'button',
-                    name : 'ok',
-                    cls : 'btn btn-link pull-right',
-                    html : 'Done'
-                },
-                {
-                    tag : 'button',
-                    type : 'button',
-                    name : 'cancel',
-                    cls : 'btn btn-link btn-cancel pull-right',
-                    html : 'Cancel'
-                }
-            ]
-        });
-        
-        this.footer.hide();
-        
-        var _this = this;
-        Roo.each(this.footer.select('button', true).elements, function(el){
-            el.on('click', _this.onTickableFooterButtonClick, _this, el);
-        })
-        
         this.choices = this.el.select('ul.select2-choices', true).first();
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
-        this.trigger = this.el.select('.select2-search-field > button',true).first();
         
+        this.trigger = this.el.select('.tickable-buttons > .btn-edit', true).first();
         this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
+        
+        this.okBtn = this.el.select('.tickable-buttons > .btn-ok', true).first();
+        this.cancelBtn = this.el.select('.tickable-buttons > .btn-cancel', true).first();
+        
+        this.okBtn.on('click', this.onTickableFooterButtonClick, this, this.okBtn);
+        this.cancelBtn.on('click', this.onTickableFooterButtonClick, this, this.cancelBtn);
+        
+        this.trigger.setVisibilityMode(Roo.Element.DISPLAY);
+        this.okBtn.setVisibilityMode(Roo.Element.DISPLAY);
+        this.cancelBtn.setVisibilityMode(Roo.Element.DISPLAY);
+        
+        this.okBtn.hide();
+        this.cancelBtn.hide();
         
         var _this = this;
         
@@ -10611,9 +10616,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.list.dom.innerHTML  = '';
         }
         
-        if(this.footer){
-            this.footer.dom.innerHTML = '';
-        }
         if(this.store){
             this.store.un('beforeload', this.onBeforeLoad, this);
             this.store.un('load', this.onLoad, this);
@@ -11170,7 +11172,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.list.hide();
         
         if(this.tickable){
-            this.footer.hide();
+            this.okBtn.hide();
+            this.cancelBtn.hide();
             this.trigger.show();
         }
         
@@ -11216,11 +11219,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             this.tickItems = Roo.apply([], this.item);
             
-            (function(){
-                this.footer.alignTo(this.list, 'tl-bl?'); 
-                this.footer.show();
-            }).defer(10, this);
-            
+            this.okBtn.show();
+            this.cancelBtn.show();
             this.trigger.hide();
             
         }
