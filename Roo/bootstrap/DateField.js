@@ -542,7 +542,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.bootstrap.DateField.superclass.setValue.call(this, v);
         
         var d = this.parseDate(v);
-        
+        Roo.log(d);
         if(!(d instanceof Date)){
             return;
         }
