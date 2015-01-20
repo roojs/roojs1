@@ -802,9 +802,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.list.dom.innerHTML  = '';
         }
         
-        if(this.footer){
-            this.footer.dom.innerHTML = '';
-        }
         if(this.store){
             this.store.un('beforeload', this.onBeforeLoad, this);
             this.store.un('load', this.onLoad, this);
