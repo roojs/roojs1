@@ -108,7 +108,7 @@ Roo.example.combobox = new Roo.XComponent({
                     style : 'margin-top:20px;',
                     multiple: true,
                     tickable: true,
-                    listAlign : 'tl',
+                    listAlign : 'tl-bl',
                     listeners : {
                         render : function (_self) {
                             _this.tickableSel = _self;
