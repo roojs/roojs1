@@ -524,6 +524,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     keyup: function(e)
     {
+        Roo.log('key up');
         Roo.bootstrap.DateField.superclass.keyup.call(this);
         
         var d = this.inputEl().getValue();
