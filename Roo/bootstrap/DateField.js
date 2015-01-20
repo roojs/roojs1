@@ -556,7 +556,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         dir, day, month,
         newDate, newViewDate;
         
-        Roo.log(e.keyCode);
         switch(e.keyCode){
             case 27: // escape
                 this.hide();
@@ -622,6 +621,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 this.setValue(this.formatDate(this.date));
                 this.hide();
                 break;
+            default : // allow free input to set the value
+                var d = this.inputEl().getValue();
+        
+                if(d && d.length){
+                    this.setValue(d);
+                }
+                break;
+                
         }
     },
     
