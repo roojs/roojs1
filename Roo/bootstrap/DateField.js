@@ -491,6 +491,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     onBlur : function()
     {
+        Roo.log('blur');
         Roo.bootstrap.DateField.superclass.onBlur.call(this);
         
         this.hide();
