@@ -346,7 +346,7 @@
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'typeahead typeahead-long dropdown-menu'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display:none'
+                    </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display:none; max-height:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.maxHeight </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px;'
                 </span><span class="jsdoc-syntax">}
             ]
         };
@@ -1378,6 +1378,10 @@
             </span><span class="jsdoc-comment">//e.stopPropagation();
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.onTickableFooterButtonClick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+        }
 
         </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
         
@@ -1668,7 +1672,7 @@
     {
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn.name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'cancel'</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">btn.name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'cancel'</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.tickItems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">([], </span><span class="jsdoc-var">this.item</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
