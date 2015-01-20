@@ -526,11 +526,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.DateField.superclass.keyup.call(this);
         
-//        var d = this.inputEl().getValue();
-//        
-//        if(d && d.length){
-//            this.setValue(d);
-//        }
+        var d = this.inputEl().getValue();
+        
+        if(d && d.length){
+            this.setValue(d);
+        }
         
         this.update();
         
