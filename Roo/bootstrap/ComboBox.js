@@ -1672,7 +1672,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         e.preventDefault();
         
-        if(btn.name == 'cancel'){
+        if(btn && btn.name == 'cancel'){
             this.tickItems = Roo.apply([], this.item);
             this.collapse();
             return;
