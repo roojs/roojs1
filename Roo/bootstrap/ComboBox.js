@@ -346,7 +346,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 {
                     tag: 'ul',
                     cls: 'typeahead typeahead-long dropdown-menu',
-                    style: 'display:none'
+                    style: 'display:none; height:' + this.maxHeight + 'px;'
                 }
             ]
         };
