@@ -366,9 +366,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 prevMonth.getUTCDate() == today.getDate()) {
                 clsName += ' today';
             }
-            Roo.log(currentDate);
-            Roo.log(prevMonth.valueOf());
+            
             if (currentDate && prevMonth.valueOf() === currentDate) {
+                Roo.log(currentDate);
+            Roo.log(prevMonth.valueOf());
                 clsName += ' active';
             }
             
