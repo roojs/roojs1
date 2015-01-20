@@ -694,6 +694,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.okBtn.setVisibilityMode(Roo.Element.DISPLAY);
         this.cancelBtn.setVisibilityMode(Roo.Element.DISPLAY);
         
+        this.okBtn.hide();
+        this.cancelBtn.hide();
+        
         var _this = this;
         
         (function(){
