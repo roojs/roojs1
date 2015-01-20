@@ -524,9 +524,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     setValue: function(v){
         Roo.bootstrap.DateField.superclass.setValue.call(this, v);
         
-        this.date = this.parseDate(v);
-        Roo.log(v);
-        Roo.log(this.date);
+//        this.date = this.parseDate(v);
+        
         this.fireEvent('select', this, this.date);
         
     },
@@ -547,7 +546,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
             case 37: // left
             case 39: // right
-                Roo.log('key left right');
                 if (!this.keyboardNavigation) break;
                 dir = e.keyCode == 37 ? -1 : 1;
                 
