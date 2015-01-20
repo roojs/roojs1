@@ -128,7 +128,7 @@
   filter: alpha(opacity=100);
 }
 .typeahead-long {
-  max-height: 300px;
+  max-height: 500px;
   overflow-y: auto;
 }
 .control-group.error .combobox-container .add-on {
