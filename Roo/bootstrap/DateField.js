@@ -541,7 +541,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.log(v);
         var d = new Date(v);
         Roo.log(d);
-        if(!(d instanceof Date)){
+        if(!(d instanceof Date) && true){
             Roo.log('invalid date');
             return;
         }
