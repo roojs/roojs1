@@ -211,3 +211,8 @@
 .roo-combobox-tickable .tickable-footer {
   z-index: 9999;
 }
+
+select2-container-multi .dropdown-menu .active {
+    background: #3875d7 !important;
+    color: #fff !important;
+}
