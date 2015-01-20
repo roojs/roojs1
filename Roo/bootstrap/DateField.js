@@ -530,6 +530,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         if(d && d.length){
             this.setValue(d);
+            return;
         }
         
         this.update();
