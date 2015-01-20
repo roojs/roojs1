@@ -106,6 +106,7 @@ Roo.example.combobox = new Roo.XComponent({
                     minChars : '1',
 //                    tpl : '<li class="select2-result"><b>{name}</b></div>',
                     style : 'margin-top:20px;',
+                    maxHeight : 500,
                     multiple: true,
                     tickable: true,
                     listAlign : 'tl',
