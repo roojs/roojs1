@@ -217,7 +217,7 @@ select2-container-multi .dropdown-menu .active {
     color: #fff !important;
 }
 
-select2-container-multi .dropdown-menu .select2-result checkbox {
+select2-container-multi .dropdown-menu .select2-result .checkbox {
     margin-top: 0px;
     margin-bottom: 0px;
 }
