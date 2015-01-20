@@ -545,6 +545,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
     },
     
+    getValue: function()
+    {
+        return this.formatDate(this.date);
+    },
+    
     fireKey: function(e)
     {
         if (!this.picker().isVisible()){
