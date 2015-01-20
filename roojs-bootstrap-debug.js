@@ -5900,10 +5900,20 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         this.el.on('submit', this.onSubmit, this);
+        // this was added as random key presses on the form where triggering form submit.
         this.el.on('keypress', function(e) {
             if (e.getCharCode() != 13) {
                 return true;
             }
+            // we might need to allow it for textareas.. and some other items.
+            // check e.getTarget().
+            
+            if(e.getTarget().nodeName.toLowerCase() === 'textarea'){
+                return true;
+            }
+        
+            Roo.log("keypress blocked");
+            
             e.preventDefault();
             return false;
         });
@@ -10149,7 +10159,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 {
                     tag: 'ul',
                     cls: 'typeahead typeahead-long dropdown-menu',
-                    style: 'display:none'
+                    style: 'display:none; max-height:' + this.maxHeight + 'px;'
                 }
             ]
         };
@@ -11181,6 +11191,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             //e.stopPropagation();
             return;
         }
+        
+        if(this.tickable){
+            this.onTickableFooterButtonClick(e, false, false);
+        }
 
         this.collapse();
         
@@ -11471,7 +11485,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         e.preventDefault();
         
-        if(btn.name == 'cancel'){
+        if(btn && btn.name == 'cancel'){
             this.tickItems = Roo.apply([], this.item);
             this.collapse();
             return;
