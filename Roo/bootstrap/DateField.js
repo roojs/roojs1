@@ -529,7 +529,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.date = this.parseDate(v);
         
-//        this.update();
+        this.update();
         
         this.fireEvent('select', this, this.date);
         
