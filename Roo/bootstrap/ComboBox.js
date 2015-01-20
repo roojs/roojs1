@@ -303,21 +303,21 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 {
                     tag : 'button',
                     type : 'button',
-                    cls : 'btn btn-link pull-' + this.btnPosition,
+                    cls : 'btn btn-link btn-edit pull-' + this.btnPosition,
                     html : 'Edit'
                 },
                 {
                     tag : 'button',
                     type : 'button',
                     name : 'ok',
-                    cls : 'btn btn-link pull-' + this.btnPosition,
+                    cls : 'btn btn-link btn-ok pull-' + this.btnPosition,
                     html : 'Done'
                 },
                 {
                     tag : 'button',
                     type : 'button',
                     name : 'cancel',
-                    cls : 'btn btn-link pull-' + this.btnPosition,
+                    cls : 'btn btn-link btn-cancel pull-' + this.btnPosition,
                     html : 'Cancel'
                 }
             ]
@@ -678,28 +678,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.list = this.el.select('ul.dropdown-menu',true).first();
         
-        this.footer = this.list.findParent('.select2-container', false, true).createChild({
-            tag : 'div',
-            cls : 'tickable-footer',
-            cn : [
-                {
-                    tag : 'button',
-                    type : 'button',
-                    name : 'ok',
-                    cls : 'btn btn-link pull-right',
-                    html : 'Done'
-                },
-                {
-                    tag : 'button',
-                    type : 'button',
-                    name : 'cancel',
-                    cls : 'btn btn-link btn-cancel pull-right',
-                    html : 'Cancel'
-                }
-            ]
-        });
-        
-        this.footer.hide();
+        this.editBtn = this.el.select('.tickable-buttons > ')
         
         var _this = this;
         Roo.each(this.footer.select('button', true).elements, function(el){
