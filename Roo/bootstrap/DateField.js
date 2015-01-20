@@ -494,8 +494,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.bootstrap.DateField.superclass.onBlur.call(this);
         
         var d = this.inputEl().getValue();
-        Roo.log('run onblur');
-        Roo.log(d);
+        
         if(d && d.length){
             this.setValue(d);
         }
@@ -538,25 +537,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     setValue: function(v)
     {
         Roo.bootstrap.DateField.superclass.setValue.call(this, v);
-        Roo.log(v);
+        
         var d = new Date(v);
-        Roo.log(d);
-        if(!(d instanceof Date) && true){
-            Roo.log('invalid date');
-            return;
+        
+        if(d instanceof Date){
+            this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
+        
+            this.update();
+
+            this.fireEvent('select', this, this.date);
         }
-        Roo.log('still here??');
-        if(true){
-            return;
-        }
-        
-        return;
-        Roo.log('valid date');
-        this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
-        
-        this.update();
-        
-        this.fireEvent('select', this, this.date);
         
     },
     
