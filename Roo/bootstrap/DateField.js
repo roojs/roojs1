@@ -566,11 +566,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 if (this.dateWithinRange(newDate)){
                     this.date = newDate;
                     this.viewDate = newViewDate;
+                    Roo.log(this.date);
+                Roo.log(this.viewDate);
                     this.setValue(this.formatDate(this.date));
                     this.update();
                     e.preventDefault();
                     dateChanged = true;
                 }
+                
                 break;
             case 38: // up
             case 40: // down
