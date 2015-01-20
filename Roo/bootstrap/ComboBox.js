@@ -678,7 +678,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.list = this.el.select('ul.dropdown-menu',true).first();
         
-        this.editBtn = this.el.select('.tickable-buttons > ')
+        this.editBtn = this.el.select('.tickable-buttons > .btn-edit', true).first();
+        this.okBtn = this.el.select('.tickable-buttons > .btn-ok', true).first();
+        this.cancelBtn = this.el.select('.tickable-buttons > .btn-cancel', true).first();
         
         var _this = this;
         Roo.each(this.footer.select('button', true).elements, function(el){
