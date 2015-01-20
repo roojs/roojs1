@@ -545,10 +545,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             Roo.log('invalid date');
             return;
         }
+        Roo.log('still here??');
         if(true){
             return;
         }
-        Roo.log('still here??');
+        
         return;
         Roo.log('valid date');
         this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
