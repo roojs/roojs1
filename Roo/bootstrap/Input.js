@@ -430,7 +430,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
     },
     filterValidation : function(e){
-        Roo.log('run??');
         if(!e.isNavKeyPress()){
             this.validationTask.delay(this.validationDelay);
         }
