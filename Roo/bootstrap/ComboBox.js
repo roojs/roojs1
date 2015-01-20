@@ -1380,13 +1380,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         if(this.tickable){
-            this.clearItem();
-        
-            var _this = this;
-
-            Roo.each(this.tickItems, function(o){
-                _this.addItem(o);
-            });
+            this.onTickableFooterButtonClick(e, false, false);
+//            this.clearItem();
+//        
+//            var _this = this;
+//
+//            Roo.each(this.tickItems, function(o){
+//                _this.addItem(o);
+//            });
         }
 
         this.collapse();
