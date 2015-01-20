@@ -13875,7 +13875,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
     },
     
-    update: function(){
+    update: function()
+    {
         
         this.date = (typeof(this.date) === 'undefined') ? this.UTCToday() : (typeof(this.date) === 'string') ? this.parseDate(this.date) : this.date;
         
@@ -13890,7 +13891,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.fill();
     },
     
-    fill: function() {
+    fill: function() 
+    {
         var d = new Date(this.viewDate),
                 year = d.getUTCFullYear(),
                 month = d.getUTCMonth(),
@@ -14031,7 +14033,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
     },
     
-    showMode: function(dir) {
+    showMode: function(dir) 
+    {
         if (dir) {
             this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
         }
@@ -14065,7 +14068,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().setTop(this.inputEl().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
     },
     
-    parseDate : function(value){
+    parseDate : function(value)
+    {
         if(!value || value instanceof Date){
             return value;
         }
@@ -14084,7 +14088,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         return v;
     },
     
-    formatDate : function(date, fmt){
+    formatDate : function(date, fmt)
+    {
         return (!date || !(date instanceof Date)) ?
         date : date.dateFormat(fmt || this.format);
     },
@@ -14098,6 +14103,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onBlur : function()
     {
         Roo.bootstrap.DateField.superclass.onBlur.call(this);
+        
+        var d = this.inputEl().getValue();
+        
+        if(d && d.length){
+            this.setValue(d);
+        }
+                
         this.hide();
     },
     
@@ -14121,25 +14133,43 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
     },
     
-    onMousedown: function(e){
+    onMousedown: function(e)
+    {
         e.stopPropagation();
         e.preventDefault();
     },
     
-    keyup: function(e){
+    keyup: function(e)
+    {
         Roo.bootstrap.DateField.superclass.keyup.call(this);
         this.update();
-        
     },
 
-    setValue: function(v){
+    setValue: function(v)
+    {
         Roo.bootstrap.DateField.superclass.setValue.call(this, v);
         
+        var d = new Date(v);
+        
+        if(isNaN(d.getTime())){
+            return;
+        }
+        
+        this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
+
+        this.update();
+
         this.fireEvent('select', this, this.date);
         
     },
     
-    fireKey: function(e){
+    getValue: function()
+    {
+        return this.formatDate(this.date);
+    },
+    
+    fireKey: function(e)
+    {
         if (!this.picker().isVisible()){
             if (e.keyCode == 27) // allow escape to hide and re-show picker
                 this.show();
@@ -14148,6 +14178,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var dateChanged = false,
         dir, day, month,
         newDate, newViewDate;
+        
         switch(e.keyCode){
             case 27: // escape
                 this.hide();
@@ -14174,7 +14205,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     this.date = newDate;
                     this.viewDate = newViewDate;
                     this.setValue(this.formatDate(this.date));
-                    this.update();
+//                    this.update();
                     e.preventDefault();
                     dateChanged = true;
                 }
@@ -14199,7 +14230,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     this.date = newDate;
                     this.viewDate = newViewDate;
                     this.setValue(this.formatDate(this.date));
-                    this.update();
+//                    this.update();
                     e.preventDefault();
                     dateChanged = true;
                 }
@@ -14213,11 +14244,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 this.setValue(this.formatDate(this.date));
                 this.hide();
                 break;
+                
         }
     },
     
     
-    onClick: function(e) {
+    onClick: function(e) 
+    {
         e.stopPropagation();
         e.preventDefault();
         
@@ -14254,8 +14287,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     case 'today':
                         var date = new Date();
                         this.date = this.UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
-                        this.fill()
+//                        this.fill()
                         this.setValue(this.formatDate(this.date));
+                        
                         this.hide();
                         break;
                 }
@@ -14298,7 +14332,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     }
                     this.date = this.UTCDate(year, month, day,0,0,0,0);
                     this.viewDate = this.UTCDate(year, month, Math.min(28, day),0,0,0,0);
-                    this.fill();
+//                    this.fill();
                     this.setValue(this.formatDate(this.date));
                     this.hide();
                 }
@@ -14306,7 +14340,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
     },
     
-    setStartDate: function(startDate){
+    setStartDate: function(startDate)
+    {
         this.startDate = startDate || -Infinity;
         if (this.startDate !== -Infinity) {
             this.startDate = this.parseDate(this.startDate);
@@ -14315,7 +14350,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.updateNavArrows();
     },
 
-    setEndDate: function(endDate){
+    setEndDate: function(endDate)
+    {
         this.endDate = endDate || Infinity;
         if (this.endDate !== Infinity) {
             this.endDate = this.parseDate(this.endDate);
@@ -14324,7 +14360,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.updateNavArrows();
     },
     
-    setDaysOfWeekDisabled: function(daysOfWeekDisabled){
+    setDaysOfWeekDisabled: function(daysOfWeekDisabled)
+    {
         this.daysOfWeekDisabled = daysOfWeekDisabled || [];
         if (typeof(this.daysOfWeekDisabled) !== 'object') {
             this.daysOfWeekDisabled = this.daysOfWeekDisabled.split(/,\s*/);
@@ -14336,7 +14373,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.updateNavArrows();
     },
     
-    updateNavArrows: function() {
+    updateNavArrows: function() 
+    {
         var d = new Date(this.viewDate),
         year = d.getUTCFullYear(),
         month = d.getUTCMonth();
@@ -14378,7 +14416,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         })
     },
     
-    moveMonth: function(date, dir){
+    moveMonth: function(date, dir)
+    {
         if (!dir) return date;
         var new_date = new Date(date.valueOf()),
         day = new_date.getUTCDate(),
@@ -14424,16 +14463,19 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         return new_date;
     },
 
-    moveYear: function(date, dir){
+    moveYear: function(date, dir)
+    {
         return this.moveMonth(date, dir*12);
     },
 
-    dateWithinRange: function(date){
+    dateWithinRange: function(date)
+    {
         return date >= this.startDate && date <= this.endDate;
     },
 
     
-    remove: function() {
+    remove: function() 
+    {
         this.picker().remove();
     }
    
