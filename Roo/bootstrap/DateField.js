@@ -532,7 +532,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.DateField.superclass.setValue.call(this, v);
         
-        var d = this.parseDate(v);
+        var d = new Date(v);
         
         this.date = this.UTCDate(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate());
         
