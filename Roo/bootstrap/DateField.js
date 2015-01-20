@@ -534,9 +534,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var d = this.parseDate(v);
         Roo.log(d);
         if(!(d instanceof Date)){
+            Roo.log('invalid date');
             return;
         }
-        
+        Roo.log('valid date');
         this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
         
         this.update();
