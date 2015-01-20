@@ -555,6 +555,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var dateChanged = false,
         dir, day, month,
         newDate, newViewDate;
+        
+        Roo.log(e);
         switch(e.keyCode){
             case 27: // escape
                 this.hide();
