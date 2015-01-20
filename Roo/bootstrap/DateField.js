@@ -264,9 +264,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
     },
     
-    update: function(){
+    update: function()
+    {
         
-        Roo.log('update');
         this.date = (typeof(this.date) === 'undefined') ? this.UTCToday() : (typeof(this.date) === 'string') ? this.parseDate(this.date) : this.date;
         
         if (this.date < this.startDate) {
@@ -280,8 +280,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.fill();
     },
     
-    fill: function() {
-        
+    fill: function() 
+    {
         var d = new Date(this.viewDate),
                 year = d.getUTCFullYear(),
                 month = d.getUTCMonth(),
@@ -306,11 +306,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var prevMonth = this.UTCDate(year, month-1, 28,0,0,0,0),
         
         day = prevMonth.getDaysInMonth(prevMonth.getUTCFullYear(), prevMonth.getUTCMonth());
-         Roo.log(prevMonth);
+         
         prevMonth.setUTCDate(day);
         
         prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.weekStart + 7)%7);
-        Roo.log(prevMonth);
+        
         var nextMonth = new Date(prevMonth);
         
         nextMonth.setUTCDate(nextMonth.getUTCDate() + 42);
@@ -368,8 +368,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             }
             
             if (currentDate && prevMonth.valueOf() === currentDate) {
-                Roo.log(currentDate);
-            Roo.log(prevMonth.valueOf());
                 clsName += ' active';
             }
             
