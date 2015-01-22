@@ -208,7 +208,7 @@
     width: 100%;
 }
 
-.roo-combobox-tickable .tickable-footer {
+.select2-container .dropdown-menu {
   z-index: 9999;
 }
 
