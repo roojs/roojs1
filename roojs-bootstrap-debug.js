@@ -4645,7 +4645,14 @@ Roo.bootstrap.Table = function(config){
          * @param {Roo.bootstrap.Table} this
          * @param {Object} rowcfg   contains record  rowIndex colIndex and rowClass - set rowClass to add a style.
          */
-        'rowclass' : true
+        'rowclass' : true,
+        /**
+         * @event afterload
+         * Fires when record have been loaded
+         * @param {Roo.bootstrap.Table} this
+         * @param {Object} records  store records
+         */
+        'afterload' : true
         
     });
 };
@@ -5100,6 +5107,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             e.on('mouseout', _this.onMouseout, _this);
         });
 
+        this.fireEvent('afterload', this, this.store.data);
         //if(this.loadMask){
         //    this.maskEl.hide();
         //}

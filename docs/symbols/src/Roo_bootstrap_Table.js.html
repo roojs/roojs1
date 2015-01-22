@@ -131,7 +131,14 @@
          * @param {Roo.bootstrap.Table} this
          * @param {Object} rowcfg   contains record  rowIndex colIndex and rowClass - set rowClass to add a style.
          */
-        </span><span class="jsdoc-string">'rowclass' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">'rowclass' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event afterload
+         * Fires when record have been loaded
+         * @param {Roo.bootstrap.Table} this
+         * @param {Object} records  store records
+         */
+        </span><span class="jsdoc-string">'afterload' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
     </span><span class="jsdoc-syntax">});
 };
@@ -586,6 +593,7 @@
             </span><span class="jsdoc-var">e.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseout'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this.onMouseout</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">);
         });
 
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'afterload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.store.data</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//if(this.loadMask){
         //    this.maskEl.hide();
         //}
