@@ -136,7 +136,7 @@ Roo.bootstrap.Table = function(config){
          * @event afterload
          * Fires when record have been loaded
          * @param {Roo.bootstrap.Table} this
-         * @param {Object} rowcfg   contains record  rowIndex colIndex and rowClass - set rowClass to add a style.
+         * @param {Object} records  store records
          */
         'afterload' : true
         
