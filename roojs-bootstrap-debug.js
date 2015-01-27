@@ -6487,7 +6487,14 @@ Roo.bootstrap.Input = function(config){
              * @param {Roo.form.Field} this
              * @param {Roo.EventObject}  e The event Object
              */
-            keyup : true
+            keyup : true,
+            /**
+             * @event formatedValue
+             * Fires when get the value of the formated input
+             * @param {Roo.bootstrap.Input} this
+             * @param {String} value
+             */
+            formatedValue : true
         });
 };
 
@@ -6965,11 +6972,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     getValue : function(){
         
+        var v = this.inputEl().getValue();
+        
         if(this.formatedValue){
-            return this.inputEl().getValue().replace(',', '');
+            return this.fireEvent("formatedValue", this, v);
         }
         
-        return this.inputEl().getValue();
+        return v;
     },
     /**
      * Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.
