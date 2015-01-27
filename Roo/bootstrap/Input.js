@@ -28,7 +28,6 @@
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} align (left|center|right) Default left
- * @cfg {Boolean} formatedValue (true | false) Default false
  * 
  * 
  * @constructor
@@ -202,7 +201,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     labelAlign : false,
     readOnly : false,
     align : false,
-    formatedValue : false,
     
     parentLabelAlign : function()
     {
@@ -564,14 +562,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @return {Mixed} value The field value
      */
     getValue : function(){
-        /*
-         * Not sure why getValue and getRawValue are doing the same thing..
-         * 
-         */
-        if(this.formatedValue){
-            return this.value;
-        }
-        
         return this.inputEl().getValue();
     },
     /**
