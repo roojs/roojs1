@@ -86,7 +86,19 @@ Roo.bootstrap.Input = function(config){
              * @param {Roo.form.Field} this
              * @param {Roo.EventObject}  e The event Object
              */
-            keyup : true
+            keyup : true,
+            /**
+             * @event formatInput
+             * Fires when set the value to this input
+             * @param {Roo.bootstrap.Input} this
+             */
+            formatInput : true,
+            /**
+             * @event formatOutput
+             * Fires when get the value from this input
+             * @param {Roo.bootstrap.Input} this
+             */
+            formatOutput : true
         });
 };
 
