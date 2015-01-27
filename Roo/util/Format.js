@@ -194,6 +194,7 @@ Roo.util.Format = function(){
             while (r.test(whole)) {
                 Roo.log(whole);
                 whole = whole.replace(r, '$1' + ',' + '$2');
+                Roo.log(whole);
             }
             
             
