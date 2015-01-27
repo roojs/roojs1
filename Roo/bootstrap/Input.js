@@ -564,6 +564,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @return {Mixed} value The field value
      */
     getValue : function(){
+        
+        if(this.formatedValue){
+            return this.value;
+        }
+        
         return this.inputEl().getValue();
     },
     /**
