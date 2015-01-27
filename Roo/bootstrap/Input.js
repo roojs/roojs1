@@ -28,7 +28,6 @@
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} align (left|center|right) Default left
- * @cfg {Boolean} formatValue (true | false) Default false
  * 
  * 
  * @constructor
@@ -87,19 +86,7 @@ Roo.bootstrap.Input = function(config){
              * @param {Roo.form.Field} this
              * @param {Roo.EventObject}  e The event Object
              */
-            keyup : true,
-            /**
-             * @event formatInput
-             * Fires when set the value to this input
-             * @param {Roo.bootstrap.Input} this
-             */
-            formatInput : true,
-            /**
-             * @event formatOutput
-             * Fires when get the value from this input
-             * @param {Roo.bootstrap.Input} this
-             */
-            formatOutput : true
+            keyup : true
         });
 };
 
@@ -214,7 +201,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     labelAlign : false,
     readOnly : false,
     align : false,
-    formatValue : false,
     
     parentLabelAlign : function()
     {
@@ -576,13 +562,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @return {Mixed} value The field value
      */
     getValue : function(){
-        var v = this.inputEl().getValue();
-        
-        if(this.formatValue){
-            v = this.fireEvent('formatOutput', this, v);
-        }
-        
-        return v;
+        return this.inputEl().getValue();
     },
     /**
      * Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.
