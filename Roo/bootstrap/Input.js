@@ -566,6 +566,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     getValue : function(){
         /*
          * Not sure why getValue and getRawValue are doing the same thing..
+         * 
          */
         if(this.formatedValue){
             return this.value;
