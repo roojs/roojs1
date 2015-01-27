@@ -579,9 +579,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 value : v
             };
             
-            var vv = this.fireEvent("formatedValue", this, v);
+            this.fireEvent("formatedValue", this, v);
             
-            return vv;
+            return cfg.value;
         }
         
         return v;
