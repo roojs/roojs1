@@ -6052,6 +6052,12 @@
      "desc": "Fires when this field receives input focus."
     },
     {
+     "name": "formatedValue",
+     "sig": "function (_self, value)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when get the value of the formated input"
+    },
+    {
      "name": "hide",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -6892,6 +6898,12 @@
      "desc": "Fires when this field receives input focus."
     },
     {
+     "name": "formatedValue",
+     "sig": "function (_self, value)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when get the value of the formated input"
+    },
+    {
      "name": "hide",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -7582,6 +7594,12 @@
      "desc": "Fires when this field receives input focus."
     },
     {
+     "name": "formatedValue",
+     "sig": "function (_self, value)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when get the value of the formated input"
+    },
+    {
      "name": "hide",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -8258,6 +8276,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
+    },
+    {
+     "name": "formatedValue",
+     "sig": "function (_self, value)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -9044,6 +9068,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
+    },
+    {
+     "name": "formatedValue",
+     "sig": "function (_self, value)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -10162,6 +10192,12 @@
      "desc": "Fires when on first focus - needed by toolbars.."
     },
     {
+     "name": "formatedValue",
+     "sig": "function (_self, value)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when get the value of the formated input"
+    },
+    {
      "name": "hide",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -10736,6 +10772,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
+    },
+    {
+     "name": "formatedValue",
+     "sig": "function (_self, value)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -14159,6 +14201,12 @@
      "desc": "Fires when this field receives input focus."
     },
     {
+     "name": "formatedValue",
+     "sig": "function (_self, value)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when get the value of the formated input"
+    },
+    {
      "name": "hide",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -15904,6 +15952,12 @@
      "desc": "Fires when this field receives input focus."
     },
     {
+     "name": "formatedValue",
+     "sig": "function (_self, value)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when get the value of the formated input"
+    },
+    {
      "name": "hide",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -16292,6 +16346,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
+    },
+    {
+     "name": "formatedValue",
+     "sig": "function (_self, value)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -16694,6 +16754,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
+    },
+    {
+     "name": "formatedValue",
+     "sig": "function (_self, value)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
