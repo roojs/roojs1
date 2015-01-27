@@ -578,7 +578,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     getValue : function(){
         var v = this.inputEl().getValue();
         
-        return this.inputEl().getValue();
+        if(this.formatValue){
+            v = this.fireEvent('formatOutput', this, v);
+        }
+        
+        return v;
     },
     /**
      * Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.
