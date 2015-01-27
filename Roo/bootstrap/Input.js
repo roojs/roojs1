@@ -578,7 +578,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return this.fireEvent("formatedValue", this, v);
         }
         
-        return ;
+        return v;
     },
     /**
      * Returns the raw data value which may or may not be a valid, defined value.  To return a normalized value see {@link #getValue}.
