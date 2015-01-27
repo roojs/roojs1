@@ -92,7 +92,7 @@ Roo.bootstrap.Input = function(config){
              * @event formatedValue
              * Fires when get the value of the formated input
              * @param {Roo.bootstrap.Input} this
-             * @param {String} value
+             * @param {Object} cfg
              */
             formatedValue : true
         });
