@@ -92,7 +92,7 @@ Roo.bootstrap.Input = function(config){
              * @event formatedValue
              * Fires when get the value of the formated input
              * @param {Roo.bootstrap.Input} this
-             * @param {Object} cfg
+             * @param {String} value
              */
             formatedValue : true
         });
@@ -575,13 +575,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         var v = this.inputEl().getValue();
         
         if(this.formatedValue){
-            var cfg = {
-                value : v
-            };
             
-            this.fireEvent("formatedValue", this, cfg);
+            this.fireEvent("formatedValue", this, v);
             
-            return cfg.value;
+            return this.value;
         }
         
         return v;
