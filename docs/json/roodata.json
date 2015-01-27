@@ -5810,6 +5810,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "formatedValue",
+     "type": "Boolean",
+     "desc": "(true | false) Default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -6620,6 +6626,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "formatedValue",
+     "type": "Boolean",
+     "desc": "(true | false) Default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -7304,6 +7316,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "formatedValue",
+     "type": "Boolean",
+     "desc": "(true | false) Default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -7973,6 +7991,12 @@
      "name": "align",
      "type": "String",
      "desc": "(left|center|right) Default left",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "formatedValue",
+     "type": "Boolean",
+     "desc": "(true | false) Default false",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -8783,6 +8807,12 @@
      "name": "align",
      "type": "String",
      "desc": "(left|center|right) Default left",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "formatedValue",
+     "type": "Boolean",
+     "desc": "(true | false) Default false",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -9890,6 +9920,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "formatedValue",
+     "type": "Boolean",
+     "desc": "(true | false) Default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -10463,6 +10499,12 @@
      "name": "align",
      "type": "String",
      "desc": "(left|center|right) Default left",
+     "memberOf": ""
+    },
+    {
+     "name": "formatedValue",
+     "type": "Boolean",
+     "desc": "(true | false) Default false",
      "memberOf": ""
     },
     {
@@ -13875,6 +13917,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "formatedValue",
+     "type": "Boolean",
+     "desc": "(true | false) Default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -15620,6 +15668,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "formatedValue",
+     "type": "Boolean",
+     "desc": "(true | false) Default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -16001,6 +16055,12 @@
      "name": "align",
      "type": "String",
      "desc": "(left|center|right) Default left",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "formatedValue",
+     "type": "Boolean",
+     "desc": "(true | false) Default false",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -16397,6 +16457,12 @@
      "name": "align",
      "type": "String",
      "desc": "(left|center|right) Default left",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "formatedValue",
+     "type": "Boolean",
+     "desc": "(true | false) Default false",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
