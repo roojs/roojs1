@@ -28,7 +28,7 @@
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} align (left|center|right) Default left
- * @cfg {Boolean} Format (true | false) Default false
+ * @cfg {Boolean} formatValue (true | false) Default false
  * 
  * 
  * @constructor
@@ -214,6 +214,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     labelAlign : false,
     readOnly : false,
     align : false,
+    formatValue : false,
     
     parentLabelAlign : function()
     {
