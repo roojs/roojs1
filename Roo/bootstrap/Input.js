@@ -575,7 +575,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         var v = this.inputEl().getValue();
         Roo.log(v);
         if(this.formatedValue){
-            v = this.fireEvent("formatedValue", this, v);
+            this.fireEvent("formatedValue", this, v);
             Roo.log(v);
             return v;
         }
