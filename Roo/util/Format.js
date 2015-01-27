@@ -192,6 +192,7 @@ Roo.util.Format = function(){
             var r = /(\d+)(\d{3})/;
             // add comma's
             while (r.test(whole)) {
+                Roo.log(whole);
                 whole = whole.replace(r, '$1' + ',' + '$2');
             }
             
