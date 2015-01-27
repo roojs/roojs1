@@ -6053,7 +6053,7 @@
     },
     {
      "name": "formatedValue",
-     "sig": "function (_self, cfg)\n{\n\n}",
+     "sig": "function (_self, value)\n{\n\n}",
      "type": "function",
      "desc": "Fires when get the value of the formated input"
     },
@@ -6899,7 +6899,7 @@
     },
     {
      "name": "formatedValue",
-     "sig": "function (_self, cfg)\n{\n\n}",
+     "sig": "function (_self, value)\n{\n\n}",
      "type": "function",
      "desc": "Fires when get the value of the formated input"
     },
@@ -7595,7 +7595,7 @@
     },
     {
      "name": "formatedValue",
-     "sig": "function (_self, cfg)\n{\n\n}",
+     "sig": "function (_self, value)\n{\n\n}",
      "type": "function",
      "desc": "Fires when get the value of the formated input"
     },
@@ -8279,7 +8279,7 @@
     },
     {
      "name": "formatedValue",
-     "sig": "function (_self, cfg)\n{\n\n}",
+     "sig": "function (_self, value)\n{\n\n}",
      "type": "function",
      "desc": "Fires when get the value of the formated input"
     },
@@ -9071,7 +9071,7 @@
     },
     {
      "name": "formatedValue",
-     "sig": "function (_self, cfg)\n{\n\n}",
+     "sig": "function (_self, value)\n{\n\n}",
      "type": "function",
      "desc": "Fires when get the value of the formated input"
     },
@@ -10193,7 +10193,7 @@
     },
     {
      "name": "formatedValue",
-     "sig": "function (_self, cfg)\n{\n\n}",
+     "sig": "function (_self, value)\n{\n\n}",
      "type": "function",
      "desc": "Fires when get the value of the formated input"
     },
@@ -10775,7 +10775,7 @@
     },
     {
      "name": "formatedValue",
-     "sig": "function (_self, cfg)\n{\n\n}",
+     "sig": "function (_self, value)\n{\n\n}",
      "type": "function",
      "desc": "Fires when get the value of the formated input"
     },
@@ -14202,7 +14202,7 @@
     },
     {
      "name": "formatedValue",
-     "sig": "function (_self, cfg)\n{\n\n}",
+     "sig": "function (_self, value)\n{\n\n}",
      "type": "function",
      "desc": "Fires when get the value of the formated input"
     },
@@ -15953,7 +15953,7 @@
     },
     {
      "name": "formatedValue",
-     "sig": "function (_self, cfg)\n{\n\n}",
+     "sig": "function (_self, value)\n{\n\n}",
      "type": "function",
      "desc": "Fires when get the value of the formated input"
     },
@@ -16349,7 +16349,7 @@
     },
     {
      "name": "formatedValue",
-     "sig": "function (_self, cfg)\n{\n\n}",
+     "sig": "function (_self, value)\n{\n\n}",
      "type": "function",
      "desc": "Fires when get the value of the formated input"
     },
@@ -16757,7 +16757,7 @@
     },
     {
      "name": "formatedValue",
-     "sig": "function (_self, cfg)\n{\n\n}",
+     "sig": "function (_self, value)\n{\n\n}",
      "type": "function",
      "desc": "Fires when get the value of the formated input"
     },
