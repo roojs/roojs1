@@ -6966,7 +6966,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     getValue : function(){
         
         if(this.formatedValue){
-            return this.value;
+            return this.inputEl().getValue().replace(',', '');
         }
         
         return this.inputEl().getValue();
