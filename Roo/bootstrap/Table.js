@@ -131,14 +131,7 @@ Roo.bootstrap.Table = function(config){
          * @param {Roo.bootstrap.Table} this
          * @param {Object} rowcfg   contains record  rowIndex colIndex and rowClass - set rowClass to add a style.
          */
-        'rowclass' : true,
-        /**
-         * @event afterload
-         * Fires when record have been loaded
-         * @param {Roo.bootstrap.Table} this
-         * @param {Object} records  store records
-         */
-        'afterload' : true
+        'rowclass' : true
         
     });
 };
