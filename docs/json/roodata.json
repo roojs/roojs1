@@ -14879,12 +14879,6 @@
    ],
    "events": [
     {
-     "name": "afterload",
-     "sig": "function (_self, records)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when record have been loaded"
-    },
-    {
      "name": "beforedestroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
