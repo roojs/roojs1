@@ -683,7 +683,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
         
         //this.trigger = this.el.select('.tickable-buttons > .btn-edit', true).first();
-        this.trigger = this.el.select('ul li.select2-search-field', true).first();
+        this.trigger = this.el.select('.tickable-buttons', true).first();
         this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
         
         this.okBtn = this.el.select('.tickable-buttons > .btn-ok', true).first();
