@@ -682,8 +682,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.choices = this.el.select('ul.select2-choices', true).first();
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
         
-        this.trigger = this.el.select('.tickable-buttons > .btn-edit', true).first();
-        //this.trigger = this.el.select('.select2-choices', true).first();
+        //this.trigger = this.el.select('.tickable-buttons > .btn-edit', true).first();
+        this.trigger = this.el.select('.select2-choices', true).first();
         this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
         
         this.okBtn = this.el.select('.tickable-buttons > .btn-ok', true).first();
