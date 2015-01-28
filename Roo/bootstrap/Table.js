@@ -586,7 +586,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             e.on('mouseout', _this.onMouseout, _this);
         });
 
-        this.fireEvent('afterload', this, this.store.data);
         //if(this.loadMask){
         //    this.maskEl.hide();
         //}
