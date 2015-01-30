@@ -55,6 +55,11 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
         Roo.log('trigger add pane handler');
         this.parent().fireEvent('addpane', this)
     },
+    
+     /**
+     * Updates the tab title 
+     * @param {String} html to set the title to.
+     */
     setTitle: function(str)
     {
         if (!this.tab) {
