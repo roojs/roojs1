@@ -11,6 +11,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * Bootstrap TabPane class
  * @cfg {Boolean} active (false | true) Default false
  * @cfg {String} title title of panel
+
  * 
  * @constructor
  * Create a new TabPane
@@ -26,6 +27,9 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
     
     active : false,
     title : '',
+    
+    // the tabBox that this is attached to.
+    tab : false,
     
 //    
 //    getBox : function()
@@ -50,6 +54,15 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
     {
         Roo.log('trigger add pane handler');
         this.parent().fireEvent('addpane', this)
+    },
+    setTitle: function(str)
+    {
+        if (!this.tab) {
+            return;
+        }
+        this.title = str;
+        this.tab.select('a'.true).first().dom.innerHTML = str;
+        
     }
     
     
