@@ -6420,6 +6420,7 @@ Roo.form.VTypes = function(){
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} align (left|center|right) Default left
+ * @cfg {Boolean} formatedValue (true | false) Default false
  * 
  * 
  * @constructor
@@ -6478,7 +6479,14 @@ Roo.bootstrap.Input = function(config){
              * @param {Roo.form.Field} this
              * @param {Roo.EventObject}  e The event Object
              */
-            keyup : true
+            keyup : true,
+            /**
+             * @event formatedValue
+             * Fires when get the value of the formated input
+             * @param {Roo.bootstrap.Input} this
+             * @param {String} value
+             */
+            formatedValue : true
         });
 };
 
@@ -6593,6 +6601,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     labelAlign : false,
     readOnly : false,
     align : false,
+    formatedValue : false,
     
     parentLabelAlign : function()
     {
@@ -6954,7 +6963,15 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @return {Mixed} value The field value
      */
     getValue : function(){
+        
         var v = this.inputEl().getValue();
+        
+        if(this.formatedValue){
+            
+            this.fireEvent("formatedValue", this, v);
+            
+            return this.value;
+        }
         
         return v;
     },
@@ -19148,6 +19165,9 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     },
     onTabClick : function(ev,un,ob,pane)
     {
+        Roo.log('tab - prev default');
+        ev.preventDefault();
+        
         
         this.el.select('.nav-tabs li.nav-tab', true).removeClass('active');
         pane.tab.addClass('active');
