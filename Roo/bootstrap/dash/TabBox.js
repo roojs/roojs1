@@ -88,7 +88,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     },
      /**
      * Updates the box title
-     * @param {String/} html to set the title to.
+     * @param {String} html to set the title to.
      */
     setTitle : function(value)
     {
