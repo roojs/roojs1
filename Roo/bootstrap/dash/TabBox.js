@@ -101,7 +101,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         
         var tab = ctr.createChild({
             tag : 'li',
-            cls : 'active nav-tab-li',
+            cls : 'active nav-tab',
             cn : [
                 {
                     tag : 'a',
@@ -119,6 +119,9 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     },
     onTabClick : function(ev,un,ob,pane)
     {
+        
+        this.el.select('.nav-tabs li.nav-tab', true).removeClass('active');
+        panel.tab.addClass('active');
         Roo.log(pane.title);
         
     }
