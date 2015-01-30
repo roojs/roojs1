@@ -26,7 +26,7 @@ Roo.bootstrap.dash.TabBox = function(config){
         /**
          * @event addpane
          * When a pane is added
-         * @param {Roo.EventObject} e
+         * @param {Roo.bootstrap.dash.TabPane} pane
          */
         "addpane" : true
          
