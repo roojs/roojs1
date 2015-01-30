@@ -83,7 +83,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     },
     initEvents : function()
     {
-        Roo.log('add add pane handler');
+        //Roo.log('add add pane handler');
         this.on('addpane', this.onAddPane, this);
     },
      /**
@@ -96,8 +96,8 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     },
     onAddPane : function(pane)
     {
-        Roo.log('addpane');
-        Roo.log(pane);
+        //Roo.log('addpane');
+        //Roo.log(pane);
         // tabs are rendere left to right..
         var ctr = this.el.select('.nav-tabs', true).first();
          
