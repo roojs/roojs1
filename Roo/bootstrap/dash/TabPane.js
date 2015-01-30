@@ -48,7 +48,8 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
     },
     initEvents  : function()
     {
-        var p= this.parent().fireEvent('addpane', this)
+        Roo.log('trigger add pane handler');
+        this.parent().fireEvent('addpane', this)
     }
     
     
