@@ -23,8 +23,8 @@ dashboard3 = new Roo.XComponent({
             	Roo.apply(Dashboard.Header1._tree(), {
                     '|xns' : 'Roo.bootstrap',
                     cls : 'header',
-                    xtype : 'Container',
                     tag : 'header',
+                    xtype : 'Container',
                     xns : Roo.bootstrap
                 }),
             	{
@@ -79,8 +79,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     md : 3,
-                                                    lg : 3,
                                                     xtype : 'Column',
+                                                    lg : 3,
                                                     xns : Roo.bootstrap,
                                                     items : [
                                                     	{
@@ -101,8 +101,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     md : 3,
-                                                    lg : 3,
                                                     xtype : 'Column',
+                                                    lg : 3,
                                                     xns : Roo.bootstrap,
                                                     items : [
                                                     	{
@@ -123,8 +123,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     md : 3,
-                                                    lg : 3,
                                                     xtype : 'Column',
+                                                    lg : 3,
                                                     xns : Roo.bootstrap,
                                                     items : [
                                                     	{
@@ -144,8 +144,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     md : 3,
-                                                    xtype : 'Column',
                                                     lg : 3,
+                                                    xtype : 'Column',
                                                     xns : Roo.bootstrap,
                                                     items : [
                                                     	{
@@ -173,8 +173,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     md : 6,
-                                                    lg : 6,
                                                     xtype : 'Column',
+                                                    lg : 6,
                                                     xns : Roo.bootstrap,
                                                     style : '',
                                                     sm : 12,
@@ -186,16 +186,8 @@ dashboard3 = new Roo.XComponent({
                                                             items : [
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap.dash',
-                                                                    xtype : 'TabGroup',
-                                                                    xns : Roo.bootstrap.dash,
-                                                                    items : [
-                                                                    	{
-                                                                            '|xns' : 'Roo.bootstrap.dash',
-                                                                            xtype : 'TabItem',
-                                                                            xns : Roo.bootstrap.dash
-                                                                        }
-                                                                    ]
-
+                                                                    xtype : 'TabPane',
+                                                                    xns : Roo.bootstrap.dash
                                                                 }
                                                             ]
 
@@ -206,8 +198,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     md : 6,
-                                                    xtype : 'Column',
                                                     lg : 6,
+                                                    xtype : 'Column',
                                                     xns : Roo.bootstrap,
                                                     style : '',
                                                     sm : 12,
@@ -260,8 +252,8 @@ dashboard3 = new Roo.XComponent({
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',
                                                             g_y : 200,
-                                                            g_r : 120,
                                                             xtype : 'Graph',
+                                                            g_r : 120,
                                                             graphtype : 'pie',
                                                             xns : Roo.bootstrap,
                                                             height : 500,
