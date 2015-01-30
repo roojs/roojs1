@@ -160,6 +160,11 @@
                                                                     "xtype" : "TabPane",
                                                                     "$ xns" : "Roo.bootstrap.dash",
                                                                     "string title" : "tab 1"
+                                                                },
+                                                                {
+                                                                    "xtype" : "TabPane",
+                                                                    "$ xns" : "Roo.bootstrap.dash",
+                                                                    "string title" : "tab 2"
                                                                 }
                                                             ]
                                                         }
