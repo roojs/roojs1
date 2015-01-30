@@ -122,7 +122,9 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         
         this.el.select('.nav-tabs li.nav-tab', true).removeClass('active');
         pane.tab.addClass('active');
-        Roo.log(pane.title);
+        //Roo.log(pane.title);
+        this.getChildContainer().select('.tab-pane',true).removeClass('active');
+        pane.el.addClass('active');
         
     }
     
