@@ -30,13 +30,7 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
     
     // the tabBox that this is attached to.
     tab : false,
-    
-//    
-//    getBox : function()
-//    {
-//        return this.el.findParent('.nav-tabs-custom', false, true);
-//    },
-    
+     
     getAutoCreate : function() 
     {
         var cfg = {
