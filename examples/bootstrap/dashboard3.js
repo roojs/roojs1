@@ -216,17 +216,6 @@ dashboard3 = new Roo.XComponent({
                                                                     xns : Roo.bootstrap,
                                                                     html : 'income',
                                                                     style : 'margin: 10,10,0,0'
-                                                                },
-                                                            	{
-                                                                    '|xns' : 'Roo.bootstrap',
-                                                                    g_height : 250,
-                                                                    g_y : 80,
-                                                                    xtype : 'Graph',
-                                                                    g_r : 30,
-                                                                    graphtype : 'hbar',
-                                                                    xns : Roo.bootstrap,
-                                                                    g_width : 500,
-                                                                    g_x : 30
                                                                 }
                                                             ]
 
@@ -247,20 +236,7 @@ dashboard3 = new Roo.XComponent({
                                                     lg : 6,
                                                     xtype : 'Column',
                                                     xns : Roo.bootstrap,
-                                                    height : 500,
-                                                    items : [
-                                                    	{
-                                                            '|xns' : 'Roo.bootstrap',
-                                                            g_y : 200,
-                                                            xtype : 'Graph',
-                                                            g_r : 120,
-                                                            graphtype : 'pie',
-                                                            xns : Roo.bootstrap,
-                                                            height : 500,
-                                                            g_x : 300
-                                                        }
-                                                    ]
-
+                                                    height : 500
                                                 },
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
