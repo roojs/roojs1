@@ -115,6 +115,10 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         pane.tab = tab;
         
         tab.on('click', this.onTabClick.createDelegate(this, [pane], true));
+        if (!qty) {
+            pane.el.addClass('active');
+        }
+        
                 
     },
     onTabClick : function(ev,un,ob,pane)
