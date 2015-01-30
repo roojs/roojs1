@@ -1157,7 +1157,7 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     
     initEvents: function() {
         
-        if(!this.href){
+        if(!this.href || this.preventDefault){
             this.el.on('click', this.onClick, this);
         }
     },
@@ -4836,7 +4836,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var cell = Roo.get(el);
         
-        if(!cell || !this.CellSelection || !this.RowSelection){
+        if(!cell || (!this.CellSelection && !this.RowSelection)){
             return;
         }
         
@@ -4864,7 +4864,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var cell = Roo.get(el);
         
-        if(!cell || !this.CellSelection || !this.RowSelection){
+        if(!cell || (!this.CellSelection && !this.RowSelection)){
             return;
         }
         
@@ -19120,7 +19120,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     },
     initEvents : function()
     {
-        Roo.log('add add pane handler');
+        //Roo.log('add add pane handler');
         this.on('addpane', this.onAddPane, this);
     },
      /**
@@ -19133,8 +19133,8 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     },
     onAddPane : function(pane)
     {
-        Roo.log('addpane');
-        Roo.log(pane);
+        //Roo.log('addpane');
+        //Roo.log(pane);
         // tabs are rendere left to right..
         var ctr = this.el.select('.nav-tabs', true).first();
          
@@ -19165,7 +19165,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     },
     onTabClick : function(ev,un,ob,pane)
     {
-        Roo.log('tab - prev default');
+        //Roo.log('tab - prev default');
         ev.preventDefault();
         
         
@@ -19218,13 +19218,7 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
     
     // the tabBox that this is attached to.
     tab : false,
-    
-//    
-//    getBox : function()
-//    {
-//        return this.el.findParent('.nav-tabs-custom', false, true);
-//    },
-    
+     
     getAutoCreate : function() 
     {
         var cfg = {
@@ -19240,7 +19234,7 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
     },
     initEvents  : function()
     {
-        Roo.log('trigger add pane handler');
+        //Roo.log('trigger add pane handler');
         this.parent().fireEvent('addpane', this)
     },
     
