@@ -6420,7 +6420,6 @@ Roo.form.VTypes = function(){
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} align (left|center|right) Default left
- * @cfg {Boolean} formatedValue (true | false) Default false
  * 
  * 
  * @constructor
@@ -6479,14 +6478,7 @@ Roo.bootstrap.Input = function(config){
              * @param {Roo.form.Field} this
              * @param {Roo.EventObject}  e The event Object
              */
-            keyup : true,
-            /**
-             * @event formatedValue
-             * Fires when get the value of the formated input
-             * @param {Roo.bootstrap.Input} this
-             * @param {String} value
-             */
-            formatedValue : true
+            keyup : true
         });
 };
 
@@ -6601,7 +6593,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     labelAlign : false,
     readOnly : false,
     align : false,
-    formatedValue : false,
     
     parentLabelAlign : function()
     {
@@ -6963,15 +6954,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @return {Mixed} value The field value
      */
     getValue : function(){
-        
         var v = this.inputEl().getValue();
-        
-        if(this.formatedValue){
-            
-            this.fireEvent("formatedValue", this, v);
-            
-            return this.value;
-        }
         
         return v;
     },
@@ -19123,7 +19106,10 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         Roo.log('add add pane handler');
         this.on('addpane', this.onAddPane, this);
     },
-    
+     /**
+     * Updates the box title
+     * @param {String} html to set the title to.
+     */
     setTitle : function(value)
     {
         this.el.select('.nav-tabs .header', true).first().dom.innerHTML = value;
@@ -19167,7 +19153,12 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         pane.tab.addClass('active');
         //Roo.log(pane.title);
         this.getChildContainer().select('.tab-pane',true).removeClass('active');
+        // technically we should have a deactivate event.. but maybe add later.
+        // and it should not de-activate the selected tab...
+        
         pane.el.addClass('active');
+        pane.fireEvent('activate');
+        
         
     }
     
@@ -19188,6 +19179,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * Bootstrap TabPane class
  * @cfg {Boolean} active (false | true) Default false
  * @cfg {String} title title of panel
+
  * 
  * @constructor
  * Create a new TabPane
@@ -19203,6 +19195,9 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
     
     active : false,
     title : '',
+    
+    // the tabBox that this is attached to.
+    tab : false,
     
 //    
 //    getBox : function()
@@ -19227,6 +19222,20 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
     {
         Roo.log('trigger add pane handler');
         this.parent().fireEvent('addpane', this)
+    },
+    
+     /**
+     * Updates the tab title 
+     * @param {String} html to set the title to.
+     */
+    setTitle: function(str)
+    {
+        if (!this.tab) {
+            return;
+        }
+        this.title = str;
+        this.tab.select('a'.true).first().dom.innerHTML = str;
+        
     }
     
     
