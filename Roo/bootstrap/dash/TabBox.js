@@ -98,10 +98,12 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         // tabs are rendere left to right..
         var ctr = this.el.select('.nav-tabs', true).first();
          
+        var qty = this.getChildContainer().select('.tab-pane',true).length;
+        
         
         var tab = ctr.createChild({
             tag : 'li',
-            cls : 'nav-tab',
+            cls : 'nav-tab' + (qty ? '' : ' active'),
             cn : [
                 {
                     tag : 'a',
@@ -109,7 +111,6 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                     html : pane.title
                 }
             ]
-             
         });
         pane.tab = tab;
         
