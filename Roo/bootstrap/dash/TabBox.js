@@ -81,11 +81,23 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
 
         return  cfg;
     },
+    initEvents : function()
+    {
+        this.on('addpane', this.onAddPane, this);
+    },
     
     setTitle : function(value)
     {
         this.el.select('.header', true).first().dom.innerHTML = value;
+    },
+    onAddPane : function(pane)
+    {
+        Roo.log('addpane');
+        Roo.log(pane);
+        
+        
     }
+    
     
 });
 
