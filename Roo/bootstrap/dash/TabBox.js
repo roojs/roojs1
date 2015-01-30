@@ -109,8 +109,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                     html : pane.title
                 }
             ]
-            
-            
+             
         });
         pane.tab = tab;
         
