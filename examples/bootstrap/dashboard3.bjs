@@ -149,6 +149,9 @@
                                                     "Number sm" : 12,
                                                     "items" : [
                                                         {
+                                                            "listeners" : {
+                                                                "render" : "function (_self)\n{\n\n}"
+                                                            },
                                                             "xtype" : "TabBox",
                                                             "$ xns" : "Roo.bootstrap.dash",
                                                             "String title" : "test 1",
