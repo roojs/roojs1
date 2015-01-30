@@ -158,7 +158,8 @@
                                                             "items" : [
                                                                 {
                                                                     "xtype" : "TabPane",
-                                                                    "$ xns" : "Roo.bootstrap.dash"
+                                                                    "$ xns" : "Roo.bootstrap.dash",
+                                                                    "string title" : "tab 1"
                                                                 }
                                                             ]
                                                         }
