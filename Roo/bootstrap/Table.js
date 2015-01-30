@@ -322,7 +322,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var cell = Roo.get(el);
         
-        if(!cell || !this.CellSelection || !this.RowSelection){
+        if(!cell || (!this.CellSelection && !this.RowSelection)){
             return;
         }
         
@@ -350,7 +350,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var cell = Roo.get(el);
         
-        if(!cell || !this.CellSelection || !this.RowSelection){
+        if(!cell || (!this.CellSelection && !this.RowSelection)){
             return;
         }
         
