@@ -63,7 +63,7 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     
     initEvents: function() {
         
-        if(!this.href){
+        if(!this.href || this.preventDefault){
             this.el.on('click', this.onClick, this);
         }
     },
