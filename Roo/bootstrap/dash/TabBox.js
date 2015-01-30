@@ -100,10 +100,18 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         ctr.append
         
         var tab = ctr.createChild({
+            tag : 'li',
+            cls : 'active',
+            cn : [
+                {
+                    tag : 'a',
+                    href:'#',
+                    html : pane.title
+                }
+            ]
             
             
-            
-        }, position);
+        });
         
         
         
