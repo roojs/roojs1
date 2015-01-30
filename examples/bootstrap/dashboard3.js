@@ -183,6 +183,7 @@ dashboard3 = new Roo.XComponent({
                                                             '|xns' : 'Roo.bootstrap.dash',
                                                             xtype : 'TabBox',
                                                             xns : Roo.bootstrap.dash,
+                                                            title : "test 1",
                                                             items : [
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap.dash',
