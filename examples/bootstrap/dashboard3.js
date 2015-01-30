@@ -187,7 +187,7 @@ dashboard3 = new Roo.XComponent({
                                                             listeners : {
                                                             	render : function (_self)
                                                             	   {
-                                                            	   
+                                                            	       _this.testbox = _self;
                                                             	   }
                                                             },
                                                             items : [

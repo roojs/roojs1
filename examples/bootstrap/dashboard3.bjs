@@ -150,7 +150,7 @@
                                                     "items" : [
                                                         {
                                                             "listeners" : {
-                                                                "render" : "function (_self)\n{\n\n}"
+                                                                "render" : "function (_self)\n{\n    _this.testbox = _self;\n}"
                                                             },
                                                             "xtype" : "TabBox",
                                                             "$ xns" : "Roo.bootstrap.dash",
