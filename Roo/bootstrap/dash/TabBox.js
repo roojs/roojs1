@@ -21,7 +21,16 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 
 Roo.bootstrap.dash.TabBox = function(config){
     Roo.bootstrap.dash.TabBox.superclass.constructor.call(this, config);
-    
+    this.addEvents({
+        // raw events
+        /**
+         * @event addpane
+         * When a pane is added
+         * @param {Roo.EventObject} e
+         */
+        "addpane" : true
+         
+    });
 };
 
 Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
