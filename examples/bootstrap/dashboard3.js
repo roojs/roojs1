@@ -195,7 +195,15 @@ dashboard3 = new Roo.XComponent({
                                                                     '|xns' : 'Roo.bootstrap.dash',
                                                                     xtype : 'TabPane',
                                                                     xns : Roo.bootstrap.dash,
-                                                                    title : "tab 1"
+                                                                    title : "tab 1",
+                                                                    items : [
+                                                                    	{
+                                                                            '|xns' : 'Roo.bootstrap',
+                                                                            xtype : 'Column',
+                                                                            xns : Roo.bootstrap
+                                                                        }
+                                                                    ]
+
                                                                 },
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap.dash',
