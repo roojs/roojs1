@@ -128,7 +128,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     },
     onTabClick : function(ev,un,ob,pane)
     {
-        
+        ev.preventDefault();
         this.el.select('.nav-tabs li.nav-tab', true).removeClass('active');
         pane.tab.addClass('active');
         //Roo.log(pane.title);
