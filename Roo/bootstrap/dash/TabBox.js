@@ -128,7 +128,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     },
     onTabClick : function(ev,un,ob,pane)
     {
-        Roo.log('tab - prev default');
+        //Roo.log('tab - prev default');
         ev.preventDefault();
         
         
