@@ -200,7 +200,8 @@ dashboard3 = new Roo.XComponent({
                                                                     	{
                                                                             '|xns' : 'Roo.bootstrap',
                                                                             xtype : 'Column',
-                                                                            xns : Roo.bootstrap
+                                                                            xns : Roo.bootstrap,
+                                                                            html : 'tab 1 content'
                                                                         }
                                                                     ]
 
@@ -209,7 +210,16 @@ dashboard3 = new Roo.XComponent({
                                                                     '|xns' : 'Roo.bootstrap.dash',
                                                                     xtype : 'TabPane',
                                                                     xns : Roo.bootstrap.dash,
-                                                                    title : "tab 2"
+                                                                    title : "tab 2",
+                                                                    items : [
+                                                                    	{
+                                                                            '|xns' : 'Roo.bootstrap',
+                                                                            xtype : 'Column',
+                                                                            xns : Roo.bootstrap,
+                                                                            html : 'tab 2 content'
+                                                                        }
+                                                                    ]
+
                                                                 }
                                                             ]
 

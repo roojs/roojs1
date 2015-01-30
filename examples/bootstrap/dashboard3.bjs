@@ -163,14 +163,22 @@
                                                                     "items" : [
                                                                         {
                                                                             "xtype" : "Column",
-                                                                            "$ xns" : "Roo.bootstrap"
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "String html" : "tab 1 content"
                                                                         }
                                                                     ]
                                                                 },
                                                                 {
                                                                     "xtype" : "TabPane",
                                                                     "$ xns" : "Roo.bootstrap.dash",
-                                                                    "string title" : "tab 2"
+                                                                    "string title" : "tab 2",
+                                                                    "items" : [
+                                                                        {
+                                                                            "xtype" : "Column",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "String html" : "tab 2 content"
+                                                                        }
+                                                                    ]
                                                                 }
                                                             ]
                                                         }
