@@ -89,7 +89,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     
     setTitle : function(value)
     {
-        this.el.select('.header', true).first().dom.innerHTML = value;
+        this.el.select('.nav-tabs .header', true).first().dom.innerHTML = value;
     },
     onAddPane : function(pane)
     {
@@ -99,7 +99,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         var ctr = this.el.select('.nav-tabs', true).first();
          
          
-        var existing = ctr.select('.nav-tab',true);
+        var existing = ctr.select('.nav-tabs .nav-tab',true);
         var qty = existing.getCount();;
         
         
@@ -113,7 +113,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                     html : pane.title
                 }
             ]
-        }, qty ? existing.first().dom : false );
+        }, qty ? existing.first().dom : this.el.select('nav-tabs .header', true).first() );
         pane.tab = tab;
         
         tab.on('click', this.onTabClick.createDelegate(this, [pane], true));
