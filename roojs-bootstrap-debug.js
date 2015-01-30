@@ -19058,7 +19058,16 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 
 Roo.bootstrap.dash.TabBox = function(config){
     Roo.bootstrap.dash.TabBox.superclass.constructor.call(this, config);
-    
+    this.addEvents({
+        // raw events
+        /**
+         * @event addpane
+         * When a pane is added
+         * @param {Roo.bootstrap.dash.TabPane} pane
+         */
+        "addpane" : true
+         
+    });
 };
 
 Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
@@ -19109,11 +19118,59 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
 
         return  cfg;
     },
+    initEvents : function()
+    {
+        Roo.log('add add pane handler');
+        this.on('addpane', this.onAddPane, this);
+    },
     
     setTitle : function(value)
     {
-        this.el.select('.header', true).first().dom.innerHTML = value;
+        this.el.select('.nav-tabs .header', true).first().dom.innerHTML = value;
+    },
+    onAddPane : function(pane)
+    {
+        Roo.log('addpane');
+        Roo.log(pane);
+        // tabs are rendere left to right..
+        var ctr = this.el.select('.nav-tabs', true).first();
+         
+         
+        var existing = ctr.select('.nav-tab',true);
+        var qty = existing.getCount();;
+        
+        
+        var tab = ctr.createChild({
+            tag : 'li',
+            cls : 'nav-tab' + (qty ? '' : ' active'),
+            cn : [
+                {
+                    tag : 'a',
+                    href:'#',
+                    html : pane.title
+                }
+            ]
+        }, qty ? existing.first().dom : ctr.select('.header', true).first().dom );
+        pane.tab = tab;
+        
+        tab.on('click', this.onTabClick.createDelegate(this, [pane], true));
+        if (!qty) {
+            pane.el.addClass('active');
+        }
+        
+                
+    },
+    onTabClick : function(ev,un,ob,pane)
+    {
+        
+        this.el.select('.nav-tabs li.nav-tab', true).removeClass('active');
+        pane.tab.addClass('active');
+        //Roo.log(pane.title);
+        this.getChildContainer().select('.tab-pane',true).removeClass('active');
+        pane.el.addClass('active');
+        
     }
+    
     
 });
 
@@ -19130,7 +19187,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * @extends Roo.bootstrap.Component
  * Bootstrap TabPane class
  * @cfg {Boolean} active (false | true) Default false
-
+ * @cfg {String} title title of panel
  * 
  * @constructor
  * Create a new TabPane
@@ -19145,6 +19202,8 @@ Roo.bootstrap.dash.TabPane = function(config){
 Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
     
     active : false,
+    title : '',
+    
 //    
 //    getBox : function()
 //    {
@@ -19163,7 +19222,13 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+    },
+    initEvents  : function()
+    {
+        Roo.log('trigger add pane handler');
+        this.parent().fireEvent('addpane', this)
     }
+    
     
     
 });
