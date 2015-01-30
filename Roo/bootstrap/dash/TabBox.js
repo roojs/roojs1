@@ -113,7 +113,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                     html : pane.title
                 }
             ]
-        });
+        }, qty ? existing.first().dom : false );
         pane.tab = tab;
         
         tab.on('click', this.onTabClick.createDelegate(this, [pane], true));
