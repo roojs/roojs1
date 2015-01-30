@@ -114,12 +114,12 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         });
         pane.tab = tab;
         
-        tab.on('click', this.onTabClick, pane);
+        tab.on('click', this.onTabClick.createDelegate(this, [pane], true));
                 
     },
-    onTabClick : function(e,el, o, pane)
+    onTabClick : function(a,b,c,d)
     {
-        Roo.log(pane)
+        Roo.log([a,b,c,d]);
     }
     
     
