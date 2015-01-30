@@ -5810,12 +5810,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "formatedValue",
-     "type": "Boolean",
-     "desc": "(true | false) Default false",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -6050,12 +6044,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
-    },
-    {
-     "name": "formatedValue",
-     "sig": "function (_self, value)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -6632,12 +6620,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "formatedValue",
-     "type": "Boolean",
-     "desc": "(true | false) Default false",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -6896,12 +6878,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
-    },
-    {
-     "name": "formatedValue",
-     "sig": "function (_self, value)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -7328,12 +7304,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "formatedValue",
-     "type": "Boolean",
-     "desc": "(true | false) Default false",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -7592,12 +7562,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
-    },
-    {
-     "name": "formatedValue",
-     "sig": "function (_self, value)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -8012,12 +7976,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "formatedValue",
-     "type": "Boolean",
-     "desc": "(true | false) Default false",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -8276,12 +8234,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
-    },
-    {
-     "name": "formatedValue",
-     "sig": "function (_self, value)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -8834,12 +8786,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "formatedValue",
-     "type": "Boolean",
-     "desc": "(true | false) Default false",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -9068,12 +9014,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
-    },
-    {
-     "name": "formatedValue",
-     "sig": "function (_self, value)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -9950,12 +9890,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "formatedValue",
-     "type": "Boolean",
-     "desc": "(true | false) Default false",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -10190,12 +10124,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when on first focus - needed by toolbars.."
-    },
-    {
-     "name": "formatedValue",
-     "sig": "function (_self, value)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -10538,12 +10466,6 @@
      "memberOf": ""
     },
     {
-     "name": "formatedValue",
-     "type": "Boolean",
-     "desc": "(true | false) Default false",
-     "memberOf": ""
-    },
-    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -10772,12 +10694,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
-    },
-    {
-     "name": "formatedValue",
-     "sig": "function (_self, value)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -13959,12 +13875,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "formatedValue",
-     "type": "Boolean",
-     "desc": "(true | false) Default false",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -14199,12 +14109,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
-    },
-    {
-     "name": "formatedValue",
-     "sig": "function (_self, value)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -15710,12 +15614,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "formatedValue",
-     "type": "Boolean",
-     "desc": "(true | false) Default false",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -15944,12 +15842,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
-    },
-    {
-     "name": "formatedValue",
-     "sig": "function (_self, value)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -16106,12 +15998,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "formatedValue",
-     "type": "Boolean",
-     "desc": "(true | false) Default false",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -16340,12 +16226,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
-    },
-    {
-     "name": "formatedValue",
-     "sig": "function (_self, value)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -16514,12 +16394,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "formatedValue",
-     "type": "Boolean",
-     "desc": "(true | false) Default false",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -16748,12 +16622,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when this field receives input focus."
-    },
-    {
-     "name": "formatedValue",
-     "sig": "function (_self, value)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when get the value of the formated input"
     },
     {
      "name": "hide",
@@ -17054,6 +16922,12 @@
    ],
    "events": [
     {
+     "name": "addpane",
+     "sig": "function (pane)\n{\n\n}",
+     "type": "function",
+     "desc": "When a pane is added"
+    },
+    {
      "name": "beforedestroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -17121,6 +16995,12 @@
      "name": "active",
      "type": "Boolean",
      "desc": "(false | true) Default false",
+     "memberOf": ""
+    },
+    {
+     "name": "title",
+     "type": "String",
+     "desc": "title of panel",
      "memberOf": ""
     },
     {
