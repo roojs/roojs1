@@ -98,7 +98,9 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         // tabs are rendere left to right..
         var ctr = this.el.select('.nav-tabs', true).first();
          
-        var qty = ctr.select('.nav-tab',true).getCount();;
+         
+        var existing = ctr.select('.nav-tab',true);
+        var qty = existing.getCount();;
         
         
         var tab = ctr.createChild({
