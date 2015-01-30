@@ -99,7 +99,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         var ctr = this.el.select('.nav-tabs', true).first();
          
          
-        var existing = ctr.select('.nav-tabs .nav-tab',true);
+        var existing = ctr.select('.nav-tab',true);
         var qty = existing.getCount();;
         
         
