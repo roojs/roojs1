@@ -112,9 +112,12 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
             
             
         });
-        
-        
-        
+        tab.on('click', this.onTabClick, pane);
+                
+    },
+    onTabClick : function(tab)
+    {
+        Roo.log(pane)
     }
     
     
