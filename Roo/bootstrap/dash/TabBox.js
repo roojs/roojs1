@@ -86,7 +86,10 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         Roo.log('add add pane handler');
         this.on('addpane', this.onAddPane, this);
     },
-    
+     /**
+     * Updates the box title
+     * @param {String/} html to set the title to.
+     */
     setTitle : function(value)
     {
         this.el.select('.nav-tabs .header', true).first().dom.innerHTML = value;
