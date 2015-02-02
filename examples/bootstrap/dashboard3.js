@@ -276,7 +276,15 @@ dashboard3 = new Roo.XComponent({
                                                                                     	           rec.commit();
                                                                                     	           return;
                                                                                     	       }
-                                                                                    	       
+                                                                                    	         if (cm.dataIndex == 'aspire') {
+                                                                                    	           var rec = _this.listTable.ds.getAt(rowIndex);
+                                                                                    	           
+                                                                                    	           rec.set('aspire', rec.data.current * 1 ? '0' : '1');
+                                                                                    	   
+                                                                                    	           //_this.listTable.ds.fireEvent("datachanged", this);
+                                                                                    	           rec.commit();
+                                                                                    	           return;
+                                                                                    	       }
                                                                                     	   
                                                                                     	        
                                                                                     	   }
