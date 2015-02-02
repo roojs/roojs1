@@ -164,7 +164,70 @@
                                                                         {
                                                                             "xtype" : "Column",
                                                                             "$ xns" : "Roo.bootstrap",
-                                                                            "String html" : "tab 1 content"
+                                                                            "String html" : "tab 1 content",
+                                                                            "items" : [
+                                                                                {
+                                                                                    "listeners" : {
+                                                                                        "|render" : "function (_self)\n{\n     _this.listTable = _self;\n    (function() { _self.store.load({}); }).defer(100)\n}",
+                                                                                        "cellclick" : "function (_self, el, rowIndex, columnIndex, e)\n{\n    \n    var ce = this.colModel.getCellEditor(columnIndex,rowIndex);\n    var cm = this.colModel.getColumnById(this.colModel.getColumnId(columnIndex));\n    /*if (ce.field.value == 0) {\n        cm.renderer(1);\n        return;\n    }*/\n    \n    var rec = _this.listTable.ds.getAt(rowIndex);\n        \n        rec.set('current', rec.data.current ? 0 : 1);\n        cm.renderer(1);\n        //_this.listTable.ds.fireEvent(\"datachanged\", this);\n        rec.commit();\n     \n}"
+                                                                                    },
+                                                                                    "xtype" : "Table",
+                                                                                    "Boolean CellSelection" : true,
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "Boolean RowSelection" : true,
+                                                                                    "items" : [
+                                                                                        {
+                                                                                            "listeners" : {
+                                                                                                "update" : "function (_self, record, operation)\n{\n    if (operation != Roo.data.Record.COMMIT) {\n        return;\n    }\n    \n}",
+                                                                                                "beforeload" : "function (_self, options)\n{\n \n    options.params = options.params || {};\n    options.params.etype = 'Hydra.Department';\n    options.params.table = 1;\n}"
+                                                                                            },
+                                                                                            "xtype" : "Store",
+                                                                                            "boolean remoteSort" : true,
+                                                                                            "$ xns" : "Roo.data",
+                                                                                            "$ sortInfo" : "{field:'id',direction:'ASC'}",
+                                                                                            "* prop" : "store",
+                                                                                            "items" : [
+                                                                                                {
+                                                                                                    "$ url" : "baseURL+'/Roo/Core_enum'",
+                                                                                                    "xtype" : "HttpProxy",
+                                                                                                    "$ xns" : "Roo.data",
+                                                                                                    "String method" : "GET",
+                                                                                                    "* prop" : "proxy"
+                                                                                                },
+                                                                                                {
+                                                                                                    "xtype" : "JsonReader",
+                                                                                                    "$ xns" : "Roo.data",
+                                                                                                    "$ fields" : "[\n    {\n        'name': 'id',\n        'type': 'int'\n    },\n    {\n        'name': 'name',\n        'type': 'string'\n    },\n    {\n        'name': 'display_name',\n        'type': 'string'\n    },\n    {\n        'name': 'current',\n        'type': 'int'\n    }\n    \n]",
+                                                                                                    "* prop" : "reader"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "String header" : "Department",
+                                                                                            "String dataIndex" : "display_name",
+                                                                                            "xtype" : "ColumnModel",
+                                                                                            "$ xns" : "Roo.grid",
+                                                                                            "* prop" : "cm[]"
+                                                                                        },
+                                                                                        {
+                                                                                            "String header" : "Current",
+                                                                                            "String dataIndex" : "current",
+                                                                                            "xtype" : "ColumnModel",
+                                                                                            "$ xns" : "Roo.grid",
+                                                                                            "$ renderer" : "function(v) {  \n\n    var state = v> 0 ?  '-checked' : '';\n\n    return '<img class=\"x-grid-check-icon' + state + '\" src=\"/web.Hydra/roojs1/images/gray/s.gif\"/>';\n                \n }",
+                                                                                            "* prop" : "cm[]"
+                                                                                        },
+                                                                                        {
+                                                                                            "String header" : "Aspire",
+                                                                                            "String dataIndex" : "aspire",
+                                                                                            "xtype" : "ColumnModel",
+                                                                                            "$ xns" : "Roo.grid",
+                                                                                            "$ renderer" : "function(v) {  \n    var state = v> 0 ?  '-checked' : '';\n\n    return '<img class=\"x-grid-check-icon' + state + '\" src=\"/web.Hydra/roojs1/images/gray/s.gif\"/>';\n                \n }",
+                                                                                            "* prop" : "cm[]"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
                                                                         }
                                                                     ]
                                                                 },
@@ -230,70 +293,7 @@
                                                             "items" : [
                                                                 {
                                                                     "xtype" : "TabPane",
-                                                                    "$ xns" : "Roo.bootstrap.dash",
-                                                                    "items" : [
-                                                                        {
-                                                                            "listeners" : {
-                                                                                "|render" : "function (_self)\n{\n     _this.listTable = _self;\n    (function() { _self.store.load({}); }).defer(100)\n}",
-                                                                                "cellclick" : "function (_self, el, rowIndex, columnIndex, e)\n{\n    \n    var ce = this.colModel.getCellEditor(columnIndex,rowIndex);\n    var cm = this.colModel.getColumnById(this.colModel.getColumnId(columnIndex));\n    /*if (ce.field.value == 0) {\n        cm.renderer(1);\n        return;\n    }*/\n    \n    var rec = _this.listTable.ds.getAt(rowIndex);\n        \n        rec.set('current', rec.data.current ? 0 : 1);\n        cm.renderer(1);\n        //_this.listTable.ds.fireEvent(\"datachanged\", this);\n        rec.commit();\n     \n}"
-                                                                            },
-                                                                            "xtype" : "Table",
-                                                                            "Boolean CellSelection" : true,
-                                                                            "$ xns" : "Roo.bootstrap",
-                                                                            "Boolean RowSelection" : true,
-                                                                            "items" : [
-                                                                                {
-                                                                                    "listeners" : {
-                                                                                        "update" : "function (_self, record, operation)\n{\n    if (operation != Roo.data.Record.COMMIT) {\n        return;\n    }\n    \n}",
-                                                                                        "beforeload" : "function (_self, options)\n{\n \n    options.params = options.params || {};\n    options.params.etype = 'Hydra.Department';\n    options.params.table = 1;\n}"
-                                                                                    },
-                                                                                    "xtype" : "Store",
-                                                                                    "boolean remoteSort" : true,
-                                                                                    "$ xns" : "Roo.data",
-                                                                                    "$ sortInfo" : "{field:'id',direction:'ASC'}",
-                                                                                    "* prop" : "store",
-                                                                                    "items" : [
-                                                                                        {
-                                                                                            "$ url" : "baseURL+'/Roo/Core_enum'",
-                                                                                            "xtype" : "HttpProxy",
-                                                                                            "$ xns" : "Roo.data",
-                                                                                            "String method" : "GET",
-                                                                                            "* prop" : "proxy"
-                                                                                        },
-                                                                                        {
-                                                                                            "xtype" : "JsonReader",
-                                                                                            "$ xns" : "Roo.data",
-                                                                                            "$ fields" : "[\n    {\n        'name': 'id',\n        'type': 'int'\n    },\n    {\n        'name': 'name',\n        'type': 'string'\n    },\n    {\n        'name': 'display_name',\n        'type': 'string'\n    },\n    {\n        'name': 'current',\n        'type': 'int'\n    }\n    \n]",
-                                                                                            "* prop" : "reader"
-                                                                                        }
-                                                                                    ]
-                                                                                },
-                                                                                {
-                                                                                    "String header" : "Department",
-                                                                                    "String dataIndex" : "display_name",
-                                                                                    "xtype" : "ColumnModel",
-                                                                                    "$ xns" : "Roo.grid",
-                                                                                    "* prop" : "cm[]"
-                                                                                },
-                                                                                {
-                                                                                    "String header" : "Current",
-                                                                                    "String dataIndex" : "current",
-                                                                                    "xtype" : "ColumnModel",
-                                                                                    "$ xns" : "Roo.grid",
-                                                                                    "$ renderer" : "function(v) {  \n\n    var state = v> 0 ?  '-checked' : '';\n\n    return '<img class=\"x-grid-check-icon' + state + '\" src=\"/web.Hydra/roojs1/images/gray/s.gif\"/>';\n                \n }",
-                                                                                    "* prop" : "cm[]"
-                                                                                },
-                                                                                {
-                                                                                    "String header" : "Aspire",
-                                                                                    "String dataIndex" : "aspire",
-                                                                                    "xtype" : "ColumnModel",
-                                                                                    "$ xns" : "Roo.grid",
-                                                                                    "$ renderer" : "function(v) {  \n    var state = v> 0 ?  '-checked' : '';\n\n    return '<img class=\"x-grid-check-icon' + state + '\" src=\"/web.Hydra/roojs1/images/gray/s.gif\"/>';\n                \n }",
-                                                                                    "* prop" : "cm[]"
-                                                                                }
-                                                                            ]
-                                                                        }
-                                                                    ]
+                                                                    "$ xns" : "Roo.bootstrap.dash"
                                                                 }
                                                             ]
                                                         }
