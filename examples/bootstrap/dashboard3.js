@@ -23,8 +23,8 @@ dashboard3 = new Roo.XComponent({
             	Roo.apply(Dashboard.Header1._tree(), {
                     '|xns' : 'Roo.bootstrap',
                     cls : 'header',
-                    tag : 'header',
                     xtype : 'Container',
+                    tag : 'header',
                     xns : Roo.bootstrap
                 }),
             	{
@@ -79,8 +79,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     md : 3,
-                                                    xtype : 'Column',
                                                     lg : 3,
+                                                    xtype : 'Column',
                                                     xns : Roo.bootstrap,
                                                     items : [
                                                     	{
@@ -101,8 +101,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     md : 3,
-                                                    xtype : 'Column',
                                                     lg : 3,
+                                                    xtype : 'Column',
                                                     xns : Roo.bootstrap,
                                                     items : [
                                                     	{
@@ -123,8 +123,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     md : 3,
-                                                    xtype : 'Column',
                                                     lg : 3,
+                                                    xtype : 'Column',
                                                     xns : Roo.bootstrap,
                                                     items : [
                                                     	{
@@ -144,8 +144,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     md : 3,
-                                                    lg : 3,
                                                     xtype : 'Column',
+                                                    lg : 3,
                                                     xns : Roo.bootstrap,
                                                     items : [
                                                     	{
@@ -173,8 +173,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     md : 6,
-                                                    xtype : 'Column',
                                                     lg : 6,
+                                                    xtype : 'Column',
                                                     xns : Roo.bootstrap,
                                                     style : '',
                                                     sm : 12,
@@ -230,8 +230,8 @@ dashboard3 = new Roo.XComponent({
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
                                                     md : 6,
-                                                    lg : 6,
                                                     xtype : 'Column',
+                                                    lg : 6,
                                                     xns : Roo.bootstrap,
                                                     style : '',
                                                     sm : 12,
@@ -284,7 +284,140 @@ dashboard3 = new Roo.XComponent({
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap.dash',
                                                                     xtype : 'TabPane',
-                                                                    xns : Roo.bootstrap.dash
+                                                                    xns : Roo.bootstrap.dash,
+                                                                    items : [
+                                                                    	{
+                                                                            store : {
+                                                                                proxy : {
+                                                                                    '|xns' : 'Roo.data',
+                                                                                    url : baseURL+'/Roo/Core_enum',
+                                                                                    xtype : 'HttpProxy',
+                                                                                    xns : Roo.data,
+                                                                                    method : 'GET'
+                                                                                },
+                                                                                reader : {
+                                                                                    '|xns' : 'Roo.data',
+                                                                                    xtype : 'JsonReader',
+                                                                                    xns : Roo.data,
+                                                                                    fields : [
+                                                                                        {
+                                                                                            'name': 'id',
+                                                                                            'type': 'int'
+                                                                                        },
+                                                                                        {
+                                                                                            'name': 'name',
+                                                                                            'type': 'string'
+                                                                                        },
+                                                                                        {
+                                                                                            'name': 'display_name',
+                                                                                            'type': 'string'
+                                                                                        },
+                                                                                        {
+                                                                                            'name': 'current',
+                                                                                            'type': 'int'
+                                                                                        }
+                                                                                        
+                                                                                    ]
+                                                                                },
+                                                                                '|xns' : 'Roo.data',
+                                                                                xtype : 'Store',
+                                                                                remoteSort : true,
+                                                                                xns : Roo.data,
+                                                                                sortInfo : {field:'id',direction:'ASC'},
+                                                                                listeners : {
+                                                                                	update : function (_self, record, operation)
+                                                                                	   {
+                                                                                	       if (operation != Roo.data.Record.COMMIT) {
+                                                                                	           return;
+                                                                                	       }
+                                                                                	       
+                                                                                	   },
+                                                                                	beforeload : function (_self, options)
+                                                                                	   {
+                                                                                	    
+                                                                                	       options.params = options.params || {};
+                                                                                	       options.params.etype = 'Hydra.Department';
+                                                                                	       options.params.table = 1;
+                                                                                	   }
+                                                                                },
+                                                                                items : [
+
+                                                                                ]
+
+                                                                            },
+                                                                            '|xns' : 'Roo.bootstrap',
+                                                                            xtype : 'Table',
+                                                                            CellSelection : true,
+                                                                            xns : Roo.bootstrap,
+                                                                            RowSelection : true,
+                                                                            cm : [
+                                                                            	 {
+                                                                            	        '|xns' : 'Roo.grid',
+                                                                            	        header : 'Department',
+                                                                            	        dataIndex : 'display_name',
+                                                                            	        xtype : 'ColumnModel',
+                                                                            	        xns : Roo.grid
+                                                                            	    },
+{
+                                                                            	        '|xns' : 'Roo.grid',
+                                                                            	        header : 'Current',
+                                                                            	        dataIndex : 'current',
+                                                                            	        xtype : 'ColumnModel',
+                                                                            	        xns : Roo.grid,
+                                                                            	        renderer : function(v) {  
+                                                                            	        
+                                                                            	            var state = v> 0 ?  '-checked' : '';
+                                                                            	        
+                                                                            	            return '<img class="x-grid-check-icon' + state + '" src="/web.Hydra/roojs1/images/gray/s.gif"/>';
+                                                                            	                        
+                                                                            	         }
+                                                                            	    },
+{
+                                                                            	        '|xns' : 'Roo.grid',
+                                                                            	        header : 'Aspire',
+                                                                            	        dataIndex : 'aspire',
+                                                                            	        xtype : 'ColumnModel',
+                                                                            	        xns : Roo.grid,
+                                                                            	        renderer : function(v) {  
+                                                                            	            var state = v> 0 ?  '-checked' : '';
+                                                                            	        
+                                                                            	            return '<img class="x-grid-check-icon' + state + '" src="/web.Hydra/roojs1/images/gray/s.gif"/>';
+                                                                            	                        
+                                                                            	         }
+                                                                            	    }
+                                                                            ],
+                                                                            listeners : {
+                                                                            	render : function (_self)
+                                                                            	   {
+                                                                            	        _this.listTable = _self;
+                                                                            	       (function() { _self.store.load({}); }).defer(100)
+                                                                            	   },
+                                                                            	cellclick : function (_self, el, rowIndex, columnIndex, e)
+                                                                            	   {
+                                                                            	       
+                                                                            	       var ce = this.colModel.getCellEditor(columnIndex,rowIndex);
+                                                                            	       var cm = this.colModel.getColumnById(this.colModel.getColumnId(columnIndex));
+                                                                            	       /*if (ce.field.value == 0) {
+                                                                            	           cm.renderer(1);
+                                                                            	           return;
+                                                                            	       }*/
+                                                                            	       
+                                                                            	       var rec = _this.listTable.ds.getAt(rowIndex);
+                                                                            	           
+                                                                            	           rec.set('current', rec.data.current ? 0 : 1);
+                                                                            	           cm.renderer(1);
+                                                                            	           //_this.listTable.ds.fireEvent("datachanged", this);
+                                                                            	           rec.commit();
+                                                                            	        
+                                                                            	   }
+                                                                            },
+                                                                            items : [
+
+                                                                            ]
+
+                                                                        }
+                                                                    ]
+
                                                                 }
                                                             ]
 
