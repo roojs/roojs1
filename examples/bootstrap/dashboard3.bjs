@@ -176,6 +176,11 @@
                                                                                     "Boolean RowSelection" : true,
                                                                                     "items" : [
                                                                                         {
+                                                                                            "xtype" : "SimpleStore",
+                                                                                            "$ xns" : "Roo.data",
+                                                                                            "* prop" : "store"
+                                                                                        },
+                                                                                        {
                                                                                             "listeners" : {
                                                                                                 "update" : "function (_self, record, operation)\n{\n    if (operation != Roo.data.Record.COMMIT) {\n        return;\n    }\n    \n}",
                                                                                                 "beforeload" : "function (_self, options)\n{\n \n    options.params = options.params || {};\n    options.params.etype = 'Hydra.Department';\n    options.params.table = 1;\n}"

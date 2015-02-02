@@ -204,6 +204,11 @@ dashboard3 = new Roo.XComponent({
                                                                             items : [
                                                                             	{
                                                                                     store : {
+                                                                                        '|xns' : 'Roo.data',
+                                                                                        xtype : 'SimpleStore',
+                                                                                        xns : Roo.data
+                                                                                    },
+                                                                                    store : {
                                                                                         proxy : {
                                                                                             '|xns' : 'Roo.data',
                                                                                             url : baseURL+'/Roo/Core_enum',
