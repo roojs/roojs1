@@ -276,8 +276,8 @@ dashboard3 = new Roo.XComponent({
                                                                                     	       
                                                                                     	       var rec = _this.listTable.ds.getAt(rowIndex);
                                                                                     	           
-                                                                                    	           rec.set('current', rec.data.current ? 0 : 1);
-                                                                                    	           cm.renderer(1);
+                                                                                    	           rec.set('current', rec.data.current * 1 ? '0' : '1');
+                                                                                    	   
                                                                                     	           //_this.listTable.ds.fireEvent("datachanged", this);
                                                                                     	           rec.commit();
                                                                                     	        
