@@ -177,6 +177,7 @@
                                                                                     "items" : [
                                                                                         {
                                                                                             "xtype" : "SimpleStore",
+                                                                                            "Array fields" : "[ 'display_name', 'current', 'aspire' ]",
                                                                                             "$ xns" : "Roo.data",
                                                                                             "* prop" : "store"
                                                                                         },
