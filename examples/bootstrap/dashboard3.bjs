@@ -203,7 +203,7 @@
                                                                                             "String dataIndex" : "aspire",
                                                                                             "xtype" : "ColumnModel",
                                                                                             "$ xns" : "Roo.grid",
-                                                                                            "$ renderer" : "function(v) {  \n    var state = v> 0 ?  '-checked' : '';\n    return v*1  > 'X' : '-';             \n }",
+                                                                                            "$ renderer" : "function(v) {  \n    var state = v> 0 ?  '-checked' : '';\n    return v*1  > 0 ? 'X' : '-';             \n }",
                                                                                             "* prop" : "cm[]"
                                                                                         }
                                                                                     ]

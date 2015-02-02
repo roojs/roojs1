@@ -252,7 +252,7 @@ dashboard3 = new Roo.XComponent({
                                                                                     	        xns : Roo.grid,
                                                                                     	        renderer : function(v) {  
                                                                                     	            var state = v> 0 ?  '-checked' : '';
-                                                                                    	            return v*1  > 'X' : '-';             
+                                                                                    	            return v*1  > 0 ? 'X' : '-';             
                                                                                     	         }
                                                                                     	    }
                                                                                     ],
