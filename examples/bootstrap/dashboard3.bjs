@@ -176,6 +176,7 @@
                                                                                     "Boolean RowSelection" : true,
                                                                                     "items" : [
                                                                                         {
+                                                                                            "boolean isLocal" : true,
                                                                                             "xtype" : "SimpleStore",
                                                                                             "Array fields" : "[ 'display_name', 'current', 'aspire' ]",
                                                                                             "$ xns" : "Roo.data",
