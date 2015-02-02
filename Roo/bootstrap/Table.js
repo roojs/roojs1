@@ -648,7 +648,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 rowClass : ''
             }
 
-            _this.fireEvent('rowclass', this, rowcfg);
+            this.fireEvent('rowclass', this, rowcfg);
             
             var td = {
                 tag: 'td',
