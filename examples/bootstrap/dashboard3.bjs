@@ -195,7 +195,7 @@
                                                                                             "String dataIndex" : "current",
                                                                                             "xtype" : "ColumnModel",
                                                                                             "$ xns" : "Roo.grid",
-                                                                                            "$ renderer" : "function(v) {  \n\n    var state = v> 0 ?  '-checked' : '';\n\n    return v*1  > 'X' : '-';\n                \n }",
+                                                                                            "$ renderer" : "function(v) {  \n\n    var state = v> 0 ?  '-checked' : '';\n\n    return v*1  > 0 ? 'X' : '-';             \n                \n }",
                                                                                             "* prop" : "cm[]"
                                                                                         },
                                                                                         {
