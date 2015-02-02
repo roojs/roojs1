@@ -269,10 +269,10 @@ dashboard3 = new Roo.XComponent({
                                                                                     	       
                                                                                     	       var ce = this.colModel.getCellEditor(columnIndex,rowIndex);
                                                                                     	       var cm = this.colModel.getColumnById(this.colModel.getColumnId(columnIndex));
-                                                                                    	       /*if (ce.field.value == 0) {
-                                                                                    	           cm.renderer(1);
+                                                                                    	       if (ce.field.value == 0) {
+                                                                                    	   
                                                                                     	           return;
-                                                                                    	       }*/
+                                                                                    	       }
                                                                                     	       
                                                                                     	       var rec = _this.listTable.ds.getAt(rowIndex);
                                                                                     	           
