@@ -164,7 +164,6 @@
                                                                         {
                                                                             "xtype" : "Column",
                                                                             "$ xns" : "Roo.bootstrap",
-                                                                            "String html" : "tab 1 content",
                                                                             "items" : [
                                                                                 {
                                                                                     "listeners" : {

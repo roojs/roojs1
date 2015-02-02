@@ -201,7 +201,6 @@ dashboard3 = new Roo.XComponent({
                                                                             '|xns' : 'Roo.bootstrap',
                                                                             xtype : 'Column',
                                                                             xns : Roo.bootstrap,
-                                                                            html : 'tab 1 content',
                                                                             items : [
                                                                             	{
                                                                                     store : {
