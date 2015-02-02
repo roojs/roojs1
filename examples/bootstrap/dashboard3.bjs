@@ -178,36 +178,10 @@
                                                                                         {
                                                                                             "boolean isLocal" : true,
                                                                                             "$ Array fields" : "[ 'display_name', 'current', 'aspire' ]",
-                                                                                            "$ Array data" : "",
+                                                                                            "$ Array data" : "[\n  [ 'A TEST', '1', '0' ],\n  \n    [ 'B test', '1', '0' ],\n      [ 'C test', '1', '0' ],\n    [ 'D test', '1', '0' ]\n]",
                                                                                             "xtype" : "SimpleStore",
                                                                                             "$ xns" : "Roo.data",
                                                                                             "* prop" : "store"
-                                                                                        },
-                                                                                        {
-                                                                                            "listeners" : {
-                                                                                                "update" : "function (_self, record, operation)\n{\n    if (operation != Roo.data.Record.COMMIT) {\n        return;\n    }\n    \n}",
-                                                                                                "beforeload" : "function (_self, options)\n{\n \n    options.params = options.params || {};\n    options.params.etype = 'Hydra.Department';\n    options.params.table = 1;\n}"
-                                                                                            },
-                                                                                            "xtype" : "Store",
-                                                                                            "boolean remoteSort" : true,
-                                                                                            "$ xns" : "Roo.data",
-                                                                                            "$ sortInfo" : "{field:'id',direction:'ASC'}",
-                                                                                            "* prop" : "store",
-                                                                                            "items" : [
-                                                                                                {
-                                                                                                    "$ url" : "baseURL+'/Roo/Core_enum'",
-                                                                                                    "xtype" : "HttpProxy",
-                                                                                                    "$ xns" : "Roo.data",
-                                                                                                    "String method" : "GET",
-                                                                                                    "* prop" : "proxy"
-                                                                                                },
-                                                                                                {
-                                                                                                    "xtype" : "JsonReader",
-                                                                                                    "$ xns" : "Roo.data",
-                                                                                                    "$ fields" : "[\n    {\n        'name': 'id',\n        'type': 'int'\n    },\n    {\n        'name': 'name',\n        'type': 'string'\n    },\n    {\n        'name': 'display_name',\n        'type': 'string'\n    },\n    {\n        'name': 'current',\n        'type': 'int'\n    }\n    \n]",
-                                                                                                    "* prop" : "reader"
-                                                                                                }
-                                                                                            ]
                                                                                         },
                                                                                         {
                                                                                             "String header" : "Department",

@@ -207,66 +207,15 @@ dashboard3 = new Roo.XComponent({
                                                                                         '|xns' : 'Roo.data',
                                                                                         isLocal : true,
                                                                                         fields : [ 'display_name', 'current', 'aspire' ],
+                                                                                        data : [
+                                                                                          [ 'A TEST', '1', '0' ],
+                                                                                          
+                                                                                            [ 'B test', '1', '0' ],
+                                                                                              [ 'C test', '1', '0' ],
+                                                                                            [ 'D test', '1', '0' ]
+                                                                                        ],
                                                                                         xtype : 'SimpleStore',
                                                                                         xns : Roo.data
-                                                                                    },
-                                                                                    store : {
-                                                                                        proxy : {
-                                                                                            '|xns' : 'Roo.data',
-                                                                                            url : baseURL+'/Roo/Core_enum',
-                                                                                            xtype : 'HttpProxy',
-                                                                                            xns : Roo.data,
-                                                                                            method : 'GET'
-                                                                                        },
-                                                                                        reader : {
-                                                                                            '|xns' : 'Roo.data',
-                                                                                            xtype : 'JsonReader',
-                                                                                            xns : Roo.data,
-                                                                                            fields : [
-                                                                                                {
-                                                                                                    'name': 'id',
-                                                                                                    'type': 'int'
-                                                                                                },
-                                                                                                {
-                                                                                                    'name': 'name',
-                                                                                                    'type': 'string'
-                                                                                                },
-                                                                                                {
-                                                                                                    'name': 'display_name',
-                                                                                                    'type': 'string'
-                                                                                                },
-                                                                                                {
-                                                                                                    'name': 'current',
-                                                                                                    'type': 'int'
-                                                                                                }
-                                                                                                
-                                                                                            ]
-                                                                                        },
-                                                                                        '|xns' : 'Roo.data',
-                                                                                        xtype : 'Store',
-                                                                                        remoteSort : true,
-                                                                                        xns : Roo.data,
-                                                                                        sortInfo : {field:'id',direction:'ASC'},
-                                                                                        listeners : {
-                                                                                        	update : function (_self, record, operation)
-                                                                                        	   {
-                                                                                        	       if (operation != Roo.data.Record.COMMIT) {
-                                                                                        	           return;
-                                                                                        	       }
-                                                                                        	       
-                                                                                        	   },
-                                                                                        	beforeload : function (_self, options)
-                                                                                        	   {
-                                                                                        	    
-                                                                                        	       options.params = options.params || {};
-                                                                                        	       options.params.etype = 'Hydra.Department';
-                                                                                        	       options.params.table = 1;
-                                                                                        	   }
-                                                                                        },
-                                                                                        items : [
-
-                                                                                        ]
-
                                                                                     },
                                                                                     '|xns' : 'Roo.bootstrap',
                                                                                     xtype : 'Table',
