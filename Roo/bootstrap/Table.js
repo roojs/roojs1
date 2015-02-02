@@ -164,6 +164,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     CellSelection : false,
     layout : false,
     
+    // Roo.Element - the tbody
+    mainBody: false, 
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Table.superclass.getAutoCreate.call(this));
@@ -254,7 +256,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log('initEvents with ds!!!!');
+        //Roo.log('initEvents with ds!!!!');
+        
+        this.mainBody = this.el.select('tbody', true).first();
+        
         
         var _this = this;
         
@@ -275,6 +280,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
+        this.store.on('update', this.onUpdate, this);
         
     },
     
@@ -482,6 +488,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         return footer;
     },
     
+    
+    
     onLoad : function()
     {
         Roo.log('ds onload');
@@ -489,6 +497,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var _this = this;
         var cm = this.cm;
+        var ds = this.store;
         
         Roo.each(this.el.select('thead th.sortable', true).elements, function(e){
             e.removeClass(['glyphicon', 'glyphicon-arrow-up', 'glyphicon-arrow-down']);
@@ -502,68 +511,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
         });
         
-        var tbody = this.el.select('tbody', true).first();
+        var tbody = this.mainBody;
         
         var renders = [];
                     
-        if(this.store.getCount() > 0){
-            this.store.data.each(function(d,rowIndex){
-                var row = {
-                    tag : 'tr',
-                    cn : []
-                };
-                
-                for(var i = 0, len = cm.getColumnCount(); i < len; i++){
-                    var config = cm.config[i];
-                    
-                    var renderer = cm.getRenderer(i);
-                    var value = '';
-                    var id = Roo.id();
-                    
-                    if(typeof(renderer) !== 'undefined'){
-                        value = renderer(d.data[cm.getDataIndex(i)], false, d);
-                    }
-                    
-                    if(typeof(value) === 'object'){
-                        renders.push({
-                            container : id,
-                            cfg : value 
-                        })
-                    }
-                    
-                    var rowcfg = {
-                        record: d,
-                        rowIndex : rowIndex,
-                        colIndex : i,
-                        rowClass : ''
-                    }
-
-                    _this.fireEvent('rowclass', this, rowcfg);
-                    
-                    var td = {
-                        tag: 'td',
-                        id: id,
-                        cls : rowcfg.rowClass,
-                        style: '',
-                        html: (typeof(value) === 'object') ? '' : value
-                    };
-                    
-                    if(typeof(config.hidden) != 'undefined' && config.hidden){
-                        td.style += ' display:none;';
-                    }
-                    
-                    if(typeof(config.align) != 'undefined' && config.align.length){
-                        td.style += ' text-align:' + config.align + ';';
-                    }
-                    
-                    if(typeof(config.width) != 'undefined'){
-                        td.style += ' width:' +  config.width + 'px;';
-                    }
-                    
-                    
-                    row.cn.push(td);
-                   
-                }
+        if(ds.getCount() > 0){
+            ds.data.each(function(d,rowIndex){
+                var row =  this.renderRow(cm, ds, rowIndex);
                 
                 tbody.createChild(row);
                 
@@ -590,6 +544,140 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         //    this.maskEl.hide();
         //}
     },
+    
+    
+    onUpdate : function(ds,record)
+    {
+        this.refreshRow(record);
+    },
+    onRemove : function(ds, record, index, isUpdate){
+        if(isUpdate !== true){
+            this.fireEvent("beforerowremoved", this, index, record);
+        }
+        var bt = this.mainBody.dom;
+        if(bt.rows[index]){
+            bt.removeChild(bt.rows[index]);
+        }
+        
+        if(isUpdate !== true){
+            //this.stripeRows(index);
+            //this.syncRowHeights(index, index);
+            //this.layout();
+            this.fireEvent("rowremoved", this, index, record);
+        }
+    },
+    
+    
+    refreshRow : function(record){
+        var ds = this.store, index;
+        if(typeof record == 'number'){
+            index = record;
+            record = ds.getAt(index);
+        }else{
+            index = ds.indexOf(record);
+        }
+        this.insertRow(ds, index, true);
+        this.onRemove(ds, record, index+1, true);
+        //this.syncRowHeights(index, index);
+        //this.layout();
+        this.fireEvent("rowupdated", this, index, record);
+    },
+    
+    insertRow : function(dm, rowIndex, isUpdate){
+        
+        if(!isUpdate){
+            this.fireEvent("beforerowsinserted", this, firstRow, lastRow);
+        }
+            //var s = this.getScrollState();
+        var row = this.renderRow(this.cm, this.store, rowIndex);
+        // insert before rowIndex..
+        this.mainBody.createChild(row,this.getRowDom(rowIndex));
+            
+        if(!isUpdate){
+            this.fireEvent("rowsinserted", this, firstRow, lastRow);
+            //this.syncRowHeights(firstRow, lastRow);
+            //this.stripeRows(firstRow);
+            //this.layout();
+        }
+        
+    },
+    
+    
+    getRowDom : function(rowIndex)
+    {
+        // not sure if I need to check this.. but let's do it anyway..
+        return (this.mainBody.dom.rows && (rowIndex-1) < this.mainBody.dom.rows.length ) ?
+                this.mainBody.dom.rows[rowIndex] : false
+    },
+    // returns the object tree for a tr..
+  
+    
+    renderRow : function(cm, ds, rowIndex) {
+        
+        var d = ds.getAt(rowIndex);
+        
+        var row = {
+            tag : 'tr',
+            cn : []
+        };
+            
+        
+        
+        for(var i = 0, len = cm.getColumnCount(); i < len; i++){
+            var config = cm.config[i];
+            
+            var renderer = cm.getRenderer(i);
+            var value = '';
+            var id = Roo.id();
+            
+            if(typeof(renderer) !== 'undefined'){
+                value = renderer(d.data[cm.getDataIndex(i)], false, d);
+            }
+            
+            if(typeof(value) === 'object'){
+                renders.push({
+                    container : id,
+                    cfg : value 
+                })
+            }
+            
+            var rowcfg = {
+                record: d,
+                rowIndex : rowIndex,
+                colIndex : i,
+                rowClass : ''
+            }
+
+            _this.fireEvent('rowclass', this, rowcfg);
+            
+            var td = {
+                tag: 'td',
+                id: id,
+                cls : rowcfg.rowClass,
+                style: '',
+                html: (typeof(value) === 'object') ? '' : value
+            };
+            
+            if(typeof(config.hidden) != 'undefined' && config.hidden){
+                td.style += ' display:none;';
+            }
+            
+            if(typeof(config.align) != 'undefined' && config.align.length){
+                td.style += ' text-align:' + config.align + ';';
+            }
+            
+            if(typeof(config.width) != 'undefined'){
+                td.style += ' width:' +  config.width + 'px;';
+            }
+             
+            row.cn.push(td);
+           
+        }
+        return row;
+          
+    },
+    
+    
     
     onBeforeLoad : function()
     {
