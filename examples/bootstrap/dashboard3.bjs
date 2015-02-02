@@ -177,8 +177,9 @@
                                                                                     "items" : [
                                                                                         {
                                                                                             "boolean isLocal" : true,
+                                                                                            "$ Array fields" : "[ 'display_name', 'current', 'aspire' ]",
+                                                                                            "$ Array data" : "",
                                                                                             "xtype" : "SimpleStore",
-                                                                                            "Array fields" : "[ 'display_name', 'current', 'aspire' ]",
                                                                                             "$ xns" : "Roo.data",
                                                                                             "* prop" : "store"
                                                                                         },

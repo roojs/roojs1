@@ -206,8 +206,8 @@ dashboard3 = new Roo.XComponent({
                                                                                     store : {
                                                                                         '|xns' : 'Roo.data',
                                                                                         isLocal : true,
+                                                                                        fields : [ 'display_name', 'current', 'aspire' ],
                                                                                         xtype : 'SimpleStore',
-                                                                                        fields : '[ \'display_name\', \'current\', \'aspire\' ]',
                                                                                         xns : Roo.data
                                                                                     },
                                                                                     store : {
