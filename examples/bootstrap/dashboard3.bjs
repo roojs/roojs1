@@ -195,7 +195,7 @@
                                                                                             "String dataIndex" : "current",
                                                                                             "xtype" : "ColumnModel",
                                                                                             "$ xns" : "Roo.grid",
-                                                                                            "$ renderer" : "function(v) {  \n\n    var state = v> 0 ?  '-checked' : '';\n\n    return '<img class=\"x-grid-check-icon' + state + '\" src=\"/web.Hydra/roojs1/images/gray/s.gif\"/>';\n                \n }",
+                                                                                            "$ renderer" : "function(v) {  \n\n    var state = v> 0 ?  '-checked' : '';\n\n    return v*1  > 'X' : '-';\n                \n }",
                                                                                             "* prop" : "cm[]"
                                                                                         },
                                                                                         {
@@ -203,7 +203,7 @@
                                                                                             "String dataIndex" : "aspire",
                                                                                             "xtype" : "ColumnModel",
                                                                                             "$ xns" : "Roo.grid",
-                                                                                            "$ renderer" : "function(v) {  \n    var state = v> 0 ?  '-checked' : '';\n\n    return '<img class=\"x-grid-check-icon' + state + '\" src=\"/web.Hydra/roojs1/images/gray/s.gif\"/>';\n                \n }",
+                                                                                            "$ renderer" : "function(v) {  \n    var state = v> 0 ?  '-checked' : '';\n    return v*1  > 'X' : '-';             \n }",
                                                                                             "* prop" : "cm[]"
                                                                                         }
                                                                                     ]

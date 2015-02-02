@@ -240,7 +240,7 @@ dashboard3 = new Roo.XComponent({
                                                                                     	        
                                                                                     	            var state = v> 0 ?  '-checked' : '';
                                                                                     	        
-                                                                                    	            return '<img class="x-grid-check-icon' + state + '" src="/web.Hydra/roojs1/images/gray/s.gif"/>';
+                                                                                    	            return v*1  > 'X' : '-';
                                                                                     	                        
                                                                                     	         }
                                                                                     	    },
@@ -252,9 +252,7 @@ dashboard3 = new Roo.XComponent({
                                                                                     	        xns : Roo.grid,
                                                                                     	        renderer : function(v) {  
                                                                                     	            var state = v> 0 ?  '-checked' : '';
-                                                                                    	        
-                                                                                    	            return '<img class="x-grid-check-icon' + state + '" src="/web.Hydra/roojs1/images/gray/s.gif"/>';
-                                                                                    	                        
+                                                                                    	            return v*1  > 'X' : '-';             
                                                                                     	         }
                                                                                     	    }
                                                                                     ],
