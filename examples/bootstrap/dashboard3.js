@@ -265,19 +265,19 @@ dashboard3 = new Roo.XComponent({
                                                                                     	cellclick : function (_self, el, rowIndex, columnIndex, e)
                                                                                     	   {
                                                                                     	       
-                                                                                    	       var ce = this.colModel.getCellEditor(columnIndex,rowIndex);
-                                                                                    	       var cm = this.colModel.getColumnById(this.colModel.getColumnId(columnIndex));
-                                                                                    	       if (ce.field.value == 0) {
                                                                                     	   
-                                                                                    	           return;
-                                                                                    	       }
-                                                                                    	       
-                                                                                    	       var rec = _this.listTable.ds.getAt(rowIndex);
+                                                                                    	       var cm = this.colModel.getColumnById(this.colModel.getColumnId(columnIndex));
+                                                                                    	       if (cm.dataIndex == 'current') {
+                                                                                    	           var rec = _this.listTable.ds.getAt(rowIndex);
                                                                                     	           
                                                                                     	           rec.set('current', rec.data.current * 1 ? '0' : '1');
                                                                                     	   
                                                                                     	           //_this.listTable.ds.fireEvent("datachanged", this);
                                                                                     	           rec.commit();
+                                                                                    	           return;
+                                                                                    	       }
+                                                                                    	       
+                                                                                    	   
                                                                                     	        
                                                                                     	   }
                                                                                     },
