@@ -372,6 +372,7 @@ dashboard3 = new Roo.XComponent({
                                                             xtype : 'TabPanel',
                                                             xns : Roo.bootstrap,
                                                             tabId : '#first',
+                                                            navId : '#sample1',
                                                             listeners : {
                                                             	render : function (_self)
                                                             	   {
@@ -456,6 +457,7 @@ dashboard3 = new Roo.XComponent({
                                                             xtype : 'TabPanel',
                                                             xns : Roo.bootstrap,
                                                             tabId : '#second',
+                                                            navId : '#sample1',
                                                             listeners : {
                                                             	render : function (_self)
                                                             	   {

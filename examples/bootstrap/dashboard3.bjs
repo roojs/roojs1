@@ -273,6 +273,7 @@
                                                             "xtype" : "TabPanel",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "String tabId" : "#first",
+                                                            "String navId" : "#sample1",
                                                             "items" : [
                                                                 {
                                                                     "xtype" : "Header",
@@ -338,6 +339,7 @@
                                                             "xtype" : "TabPanel",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "String tabId" : "#second",
+                                                            "String navId" : "#sample1",
                                                             "items" : [
                                                                 {
                                                                     "xtype" : "Header",
