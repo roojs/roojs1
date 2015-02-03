@@ -456,6 +456,12 @@ dashboard3 = new Roo.XComponent({
                                                             xtype : 'TabPanel',
                                                             xns : Roo.bootstrap,
                                                             tabId : '#second',
+                                                            listeners : {
+                                                            	render : function (_self)
+                                                            	   {
+                                                            	   _this.tab_second = _self;
+                                                            	   }
+                                                            },
                                                             items : [
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',

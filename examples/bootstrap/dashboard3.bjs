@@ -330,6 +330,9 @@
                                                             ]
                                                         },
                                                         {
+                                                            "listeners" : {
+                                                                "render" : "function (_self)\n{\n_this.tab_second = _self;\n}"
+                                                            },
                                                             "Boolean active" : false,
                                                             "String cls" : "carousel slide",
                                                             "xtype" : "TabPanel",
