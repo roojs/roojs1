@@ -94,8 +94,10 @@ Roo.apply(dashboard3.slidetest.prototype, {
             top : '',
             width :'',
             height: ''
-          });  
-            
+        });
+          
+        this.tba.setActive(false);
+        this.tbb.setActive(true);
         
     }
     
