@@ -78,7 +78,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
         this.nel.removeClass('active');
         this.pel.setStyle('overflow', '');
           
-          
+        // reset the styles
           this.nel.setStyle({
             position: '',
             left : '',
@@ -96,7 +96,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
             width :'',
             height: ''
         });
-          
+        // apply the data..
         this.tba.setActive(false);
         this.tbb.setActive(true);
         
