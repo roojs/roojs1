@@ -259,7 +259,7 @@
                                             "items" : [
                                                 {
                                                     "String cls" : "tab-content",
-                                                    "Number lg" : 6,
+                                                    "Number lg" : 12,
                                                     "xtype" : "Column",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "height" : 500,
