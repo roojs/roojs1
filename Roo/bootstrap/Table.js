@@ -637,13 +637,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var renderer = cm.getRenderer(i);
             var value = '';
-            var id = Roo.id();
+            var id = false;
             
             if(typeof(renderer) !== 'undefined'){
                 value = renderer(d.data[cm.getDataIndex(i)], false, d);
             }
+            // if object are returned, then they are expected to be Roo.bootstrap.Component instances
+            // and are rendered into the cells after the row is rendered - using the id for the element.
             
             if(typeof(value) === 'object'){
+                id = Roo.id();
                 cellObjects.push({
                     container : id,
                     cfg : value 
@@ -661,12 +664,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var td = {
                 tag: 'td',
-                id: id,
                 cls : rowcfg.rowClass,
                 style: '',
                 html: (typeof(value) === 'object') ? '' : value
             };
-            
+            if (id) {
+                td.id = id;
+            }
             if(typeof(config.hidden) != 'undefined' && config.hidden){
                 td.style += ' display:none;';
             }
