@@ -163,11 +163,21 @@ Roo.apply(Roo.bootstrap.NavGroup, {
     
     register : function(navgrp)
     {
-	this.groups[navgrp.navId] = navgrp;
+        this.groups[navgrp.navId] = navgrp;
 	
     },
     get: function(navId) {
         return this.groups[navId];
+    },
+    getActive : function()
+    {
+        
+        for (var i in this.groups) {
+            if (this.groups[i].active) {
+                return this.groups[i];
+            }
+        }
+        return false;
     }
     
     
