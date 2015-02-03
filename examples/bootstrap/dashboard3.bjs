@@ -265,6 +265,9 @@
                                                     "height" : 500,
                                                     "items" : [
                                                         {
+                                                            "listeners" : {
+                                                                "render" : "function (_self)\n{\n_this.tab_first = _self;\n}"
+                                                            },
                                                             "Boolean active" : true,
                                                             "String cls" : "carousel slide",
                                                             "xtype" : "TabPanel",
