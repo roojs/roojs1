@@ -397,7 +397,7 @@ dashboard3 = new Roo.XComponent({
                                                                                     	{
                                                                                             '|xns' : 'Roo.bootstrap',
                                                                                             labelAlign : 'top',
-                                                                                            fieldLabel : 'Job Title (for your reference)',
+                                                                                            fieldLabel : 'Some input',
                                                                                             xtype : 'Input',
                                                                                             allowBlank : true,
                                                                                             xns : Roo.bootstrap,
