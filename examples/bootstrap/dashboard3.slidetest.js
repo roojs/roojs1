@@ -10,11 +10,14 @@ dashboard3.slidetest = {
         var tc = el.findParent('.tab-content', 3, true);
         tc.setStyle('overflow', 'hidden');
         
-        var bx = el.getBox();
+        var box = el.getBox();
         el.setStyle({
             position: 'absolute',
-            left : bx.x + 'px',
-            top : bx.y + 'px'
+            left : 0,
+            top : 0,
+            width : box.width + 'px',
+            height: box.height+ 'px',
+            
         });
         
         
