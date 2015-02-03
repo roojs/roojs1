@@ -15,7 +15,7 @@ dashboard3.slidetest = {
         var box = el.getBox();
         el.setStyle({
             position: 'absolute',
-            left : obox+ 'px',
+            left : obox.left+ 'px',
             top : 0,
             width : box.width + 'px',
             height: box.height+ 'px',
@@ -32,7 +32,7 @@ dashboard3.slidetest = {
         
         nel.setStyle({
             position: 'absolute',
-            left : (box.width + obox ) + 'px',
+            left : (box.width + obox.left. ) + 'px',
             top : 0,
             width : box.width + 'px',
             height: nbox.height+ 'px',
