@@ -8,6 +8,10 @@ dashboard3.slidetest = function (tba,tbb, dir)
     this.nel = tbb.el;
     
     // we can work out the direction based on the sequence..
+    this.pel = this.el.findParent('.tab-content', 3, true);
+    var cn = this.pel.select('.tab-pane',true);
+    this.dir = cn.indexOf(this.nel) -  cn.indexOf(this.el);
+    
     
     this.dir = dir;
     this.slide();
@@ -23,7 +27,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
         
         // first tabcontent - needs overflow hidden..
         
-        this.pel = this.el.findParent('.tab-content', 3, true);
+        
         this.pel.setStyle('overflow', 'hidden');
         var obox = this.pel.getBox(true,true);
         
