@@ -16,7 +16,7 @@ dashboard3.slidetest = {
         Roo.log([obox,box]);
         el.setStyle({
             position: 'absolute',
-            left : obox.left+ 'px',
+            left : obox.x+ 'px',
             top : 0,
             width : box.width + 'px',
             height: box.height+ 'px',
@@ -33,7 +33,7 @@ dashboard3.slidetest = {
         Roo.log([nbox]);
         nel.setStyle({
             position: 'absolute',
-            left : (box.width + obox.left ) + 'px',
+            left : (box.width + obox.x ) + 'px',
             top : 0,
             width : box.width + 'px',
             height: nbox.height+ 'px',
