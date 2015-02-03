@@ -83,19 +83,22 @@
     },
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'add add pane handler'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//Roo.log('add add pane handler');
         </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'addpane'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onAddPane</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
-    
+     </span><span class="jsdoc-comment">/**
+     * Updates the box title
+     * @param {String} html to set the title to.
+     */
     </span><span class="jsdoc-var">setTitle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.nav-tabs .header'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
     },
     </span><span class="jsdoc-var">onAddPane </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pane</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'addpane'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pane</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-comment">// tabs are rendere left to right..
+        </span><span class="jsdoc-comment">//Roo.log('addpane');
+        //Roo.log(pane);
+        // tabs are rendere left to right..
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ctr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.nav-tabs'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
          
          
@@ -125,6 +128,9 @@
     },
     </span><span class="jsdoc-var">onTabClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">un</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ob</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">pane</span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-comment">//Roo.log('tab - prev default');
+        </span><span class="jsdoc-var">ev.preventDefault</span><span class="jsdoc-syntax">();
+        
         
         </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.nav-tabs li.nav-tab'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'active'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">pane.tab.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'active'</span><span class="jsdoc-syntax">);
