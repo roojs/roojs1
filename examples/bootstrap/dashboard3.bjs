@@ -307,7 +307,8 @@
                                                                 {
                                                                     "String cls" : "carousel-control left",
                                                                     "xtype" : "Link",
-                                                                    "$ xns" : "Roo.bootstrap"
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "<span class=\"glyphicon glyphicon-chevron-left\"></span>"
                                                                 }
                                                             ]
                                                         }
