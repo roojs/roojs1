@@ -153,7 +153,8 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {Function} renderer (Optional) A function used to generate HTML markup for a cell
      * given the cell's data value. See {@link #setRenderer}. If not specified, the
-     * default renderer uses the raw data value.
+     * default renderer uses the raw data value. If an object is returned (bootstrap only)
+     * then it is treated as a Roo Component object instance, and it is rendered after the initial row is rendered
      */
        /**
      * @cfg {Roo.grid.GridEditor} editor (Optional) For grid editors - returns the grid editor 
