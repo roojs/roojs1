@@ -34,7 +34,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
         });
         // need to fix the left/right....
         var panes = this.pel.select('.tab-pane',true);
-        var ix = panes.indexOf(el);
+        var ix = panes.indexOf(this.el);
         
         // dir = 1...
         
