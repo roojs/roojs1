@@ -1,20 +1,30 @@
 
 
-dashboard3.slidetest = function ({
+dashboard3.slidetest = function (el,dir)
+{
+    this.el = el;
+    this.dir = dir;
+    this.slide();
+}
+Roo.apply(dashboard3.slidetest.prototype, {
+    el : false,
+    dir : 1,
+    nel : false, // next el.
+    pel : false, // parent el.
     
     
-    slide: function(el, dir) {
+    slide: function() {
         
         // first tabcontent - needs overflow hidden..
         
-        var tc = el.findParent('.tab-content', 3, true);
-        tc.setStyle('overflow', 'hidden');
-        var obox = tc.getBox(true,true);
+        this.pel = this.el.findParent('.tab-content', 3, true);
+        this.pel.setStyle('overflow', 'hidden');
+        var obox = this.pel.getBox(true,true);
         
         
-        var box = el.getBox();
+        var box = this.el.getBox();
         Roo.log([obox,box]);
-        el.setStyle({
+        this.el.setStyle({
             position: 'absolute',
             left : obox.x+ 'px',
             top : 0,
@@ -28,28 +38,28 @@ dashboard3.slidetest = function ({
         
         // dir = 1...
         
-        var nel = panes.item(ix+1);
+        this.nel = panes.item(ix+1);
         var nbox = nel.getBox();
-        Roo.log([nbox]);
-        nel.setStyle({
+        
+        this.nel.setStyle({
             position: 'absolute',
             left : (box.width + obox.x + 50 ) + 'px',
             top : 0,
             width : box.width + 'px',
             height: nbox.height+ 'px',
         });
-        nel.addClass('active');
+        this.nel.addClass('active');
         
         // now we need to animate the both boxes moving from box.width + obox.x + 50 --> obox.x
         
-        nel.animate({
+        this.nel.animate({
             left : {
                 from : (box.width + obox.x + 50 ),
                 to : obox.x 
             }
         }, this.completeSlide.createDelegate(this), 'easeOut', 'run');
         
-        el.animate({
+        this.el.animate({
             left : {
                 from : obox.x , 
                 to : -1 * (box.width + 50 )
@@ -58,11 +68,27 @@ dashboard3.slidetest = function ({
         
         
         
-    }
+    },
     completeSlide : function()
     {
+          this.pel.setStyle('overflow', '');
+          this.nel.setStyle({
+            position: 'relative',
+            left : '',
+            top : '',
+            width :'',
+            height: ''
+          });
+          this.el.setStyle({
+            position: 'relative',
+            left : '',
+            top : '',
+            width :'',
+            height: ''
+          });  
+    
         
     }
     
     
-}
+});
