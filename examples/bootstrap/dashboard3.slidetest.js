@@ -6,6 +6,9 @@ dashboard3.slidetest = function (tba,tbb, dir)
     this.tbb = tbb;
     this.el = tba.el;
     this.nel = tbb.el;
+    
+    // we can work out the direction based on the sequence..
+    
     this.dir = dir;
     this.slide();
 }
