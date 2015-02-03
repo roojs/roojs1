@@ -74,10 +74,9 @@ Roo.apply(dashboard3.slidetest.prototype, {
     },
     completeSlide : function()
     {
-        // remove styles..
+        // remove styles + classes.. that we have added..
         this.nel.removeClass('active');
-          
-          this.pel.setStyle('overflow', '');
+        this.pel.setStyle('overflow', '');
           
           
           this.nel.setStyle({
