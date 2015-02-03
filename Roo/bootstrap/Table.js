@@ -720,7 +720,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         return this.selModel;
     },
     /*
-     * render the roo.bootstarp object from renderder
+     * render the roo.bootstrap object from renderder
      */
     renderCellObject : function(r)
     {
