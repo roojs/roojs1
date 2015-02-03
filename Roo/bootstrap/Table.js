@@ -523,9 +523,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 var _this = this;
                 
-                if(row.renders.length){
-                    Roo.each(row.renders, function(r){
-                        _this.renderColumn(r);
+                if(row.cellObjects.length){
+                    Roo.each(row.cellObjects, function(r){
+                        _this.renderCellObject(r);
                     })
                 }
                 
