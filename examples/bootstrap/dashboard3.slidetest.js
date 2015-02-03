@@ -1,8 +1,11 @@
 
 
-dashboard3.slidetest = function (el,dir)
+dashboard3.slidetest = function (tba,tbb, dir)
 {
-    this.el = el;
+    this.tba = tba;
+    this.tbb = tbb;
+    this.el = tba.el;
+    this.nel = tbb.el;
     this.dir = dir;
     this.slide();
 }
@@ -33,17 +36,16 @@ Roo.apply(dashboard3.slidetest.prototype, {
             
         });
         // need to fix the left/right....
-        var panes = this.pel.select('.tab-pane',true);
-        var ix = panes.indexOf(this.el);
         
-        // dir = 1...
-        
-        this.nel = panes.item(ix+1);
         var nbox = this.nel.getBox();
+        // if dir = 1 - then put on right..
         
+        var start = this.dir > 0 ? (box.width + obox.x + 50 ) : (-1 * (box.width + 50)) + obox.x;
+        
+        var end = this.dir > 0 ? -1 * (box.width + 50 ) : (box.width + obox.x + 50 );
         this.nel.setStyle({
             position: 'absolute',
-            left : (box.width + obox.x + 50 ) + 'px',
+            left : start + 'px',
             top : 0,
             width : box.width + 'px',
             height: nbox.height+ 'px',
@@ -54,7 +56,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
         var _t = this;
         this.nel.animate({
             left : {
-                from : (box.width + obox.x + 50 ),
+                from : start,
                 to : obox.x 
             }
         }, 0.5,function() { _t.completeSlide(); }, 'easeOut', 'run');
