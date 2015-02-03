@@ -622,7 +622,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cn : []
         };
             
-        
+        var renders = [];
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
             var config = cm.config[i];
@@ -674,6 +674,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             row.cn.push(td);
            
         }
+        
+        row.renders = renders;
+        
         return row;
           
     },
