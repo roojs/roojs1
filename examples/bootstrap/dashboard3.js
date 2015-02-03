@@ -380,6 +380,7 @@ dashboard3 = new Roo.XComponent({
                                                                 },
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
+                                                                    cls : 'carousel-inner',
                                                                     xtype : 'Container',
                                                                     xns : Roo.bootstrap,
                                                                     well : 'md',

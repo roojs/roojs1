@@ -276,6 +276,7 @@
                                                                     "String html" : "some title"
                                                                 },
                                                                 {
+                                                                    "String cls" : "carousel-inner",
                                                                     "xtype" : "Container",
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "String well" : "md",
