@@ -1,6 +1,6 @@
 
 
-dashboard3.slidetest = {
+dashboard3.slidetest = function ({
     
     
     slide: function(el, dir) {
@@ -47,7 +47,7 @@ dashboard3.slidetest = {
                 from : (box.width + obox.x + 50 ),
                 to : obox.x 
             }
-        }, dashboard3.slidetest.completeSlide, 'easeOut', 'run');
+        }, this.completeSlide.createDelegate(this), 'easeOut', 'run');
         
         el.animate({
             left : {
@@ -57,6 +57,10 @@ dashboard3.slidetest = {
         }, dashboard3.slidetest.completeSlide, 'easeOut', 'run');
         
         
+        
+    }
+    completeSlide : function()
+    {
         
     }
     
