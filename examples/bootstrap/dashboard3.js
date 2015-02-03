@@ -442,6 +442,7 @@ dashboard3 = new Roo.XComponent({
                                                     cls : 'carousel slide',
                                                     xtype : 'TabPanel',
                                                     xns : Roo.bootstrap,
+                                                    tabId : '#second',
                                                     items : [
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',

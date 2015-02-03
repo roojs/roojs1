@@ -327,6 +327,7 @@
                                                     "String cls" : "carousel slide",
                                                     "xtype" : "TabPanel",
                                                     "$ xns" : "Roo.bootstrap",
+                                                    "String tabId" : "#second",
                                                     "items" : [
                                                         {
                                                             "xtype" : "Header",
