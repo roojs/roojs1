@@ -122,6 +122,22 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         
     },
     
+    getActive : function()
+    {
+        
+        var prev = false;
+        Roo.each(this.navItems, function(v){
+            
+            if (v.isActive()) {
+                prev = v;
+                
+            }
+            
+        });
+        return prev;
+    },
+    
+    
     addItem : function(cfg)
     {
         var cn = new Roo.bootstrap.NavItem(cfg);
@@ -169,16 +185,6 @@ Roo.apply(Roo.bootstrap.NavGroup, {
     get: function(navId) {
         return this.groups[navId] ? this.groups[navId] : new Roo.bootstrap.NavGroup({ navId : navId });
     },
-    getActive : function()
-    {
-        
-        for (var i in this.groups) {
-            if (this.groups[i].active) {
-                return this.groups[i];
-            }
-        }
-        return false;
-    }
     
     
     
