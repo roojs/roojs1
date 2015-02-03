@@ -40,6 +40,23 @@ dashboard3.slidetest = {
         });
         nel.addClass('active');
         
+        // now we need to animate the both boxes moving from box.width + obox.x + 50 --> obox.x
+        
+        nel.animate({
+            left : {
+                from : (box.width + obox.x + 50 ),
+                to : obox.x 
+            }
+        }, dashboard3.slidetest.completeSlide, 'easeOut', 'run');
+        
+        el.animate({
+            left : {
+                from : obox.x , 
+                to : -1 * (box.width + 50 )
+            }
+        }, dashboard3.slidetest.completeSlide, 'easeOut', 'run');
+        
+        
         
     }
     
