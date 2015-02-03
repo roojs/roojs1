@@ -359,6 +359,7 @@ dashboard3 = new Roo.XComponent({
                                             items : [
                                             	{
                                                     '|xns' : 'Roo.bootstrap',
+                                                    cls : 'tab-content',
                                                     lg : 6,
                                                     xtype : 'Column',
                                                     xns : Roo.bootstrap,

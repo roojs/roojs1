@@ -258,6 +258,7 @@
                                             "$ xns" : "Roo.bootstrap",
                                             "items" : [
                                                 {
+                                                    "String cls" : "tab-content",
                                                     "Number lg" : 6,
                                                     "xtype" : "Column",
                                                     "$ xns" : "Roo.bootstrap",
