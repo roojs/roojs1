@@ -277,7 +277,30 @@
                                                                 {
                                                                     "xtype" : "Container",
                                                                     "$ xns" : "Roo.bootstrap",
-                                                                    "String well" : "md"
+                                                                    "String well" : "md",
+                                                                    "items" : [
+                                                                        {
+                                                                            "xtype" : "Row",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "items" : [
+                                                                                {
+                                                                                    "Number md" : 6,
+                                                                                    "xtype" : "Column",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "items" : [
+                                                                                        {
+                                                                                            "labelAlign" : "top",
+                                                                                            "fieldLabel" : "Job Title (for your reference)",
+                                                                                            "xtype" : "Input",
+                                                                                            "allowBlank" : true,
+                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                            "name" : "chosen_title"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
                                                                 }
                                                             ]
                                                         }

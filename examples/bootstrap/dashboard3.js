@@ -381,7 +381,36 @@ dashboard3 = new Roo.XComponent({
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'Container',
                                                                     xns : Roo.bootstrap,
-                                                                    well : 'md'
+                                                                    well : 'md',
+                                                                    items : [
+                                                                    	{
+                                                                            '|xns' : 'Roo.bootstrap',
+                                                                            xtype : 'Row',
+                                                                            xns : Roo.bootstrap,
+                                                                            items : [
+                                                                            	{
+                                                                                    '|xns' : 'Roo.bootstrap',
+                                                                                    md : 6,
+                                                                                    xtype : 'Column',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    items : [
+                                                                                    	{
+                                                                                            '|xns' : 'Roo.bootstrap',
+                                                                                            labelAlign : 'top',
+                                                                                            fieldLabel : 'Job Title (for your reference)',
+                                                                                            xtype : 'Input',
+                                                                                            allowBlank : true,
+                                                                                            xns : Roo.bootstrap,
+                                                                                            name : 'chosen_title'
+                                                                                        }
+                                                                                    ]
+
+                                                                                }
+                                                                            ]
+
+                                                                        }
+                                                                    ]
+
                                                                 }
                                                             ]
 
