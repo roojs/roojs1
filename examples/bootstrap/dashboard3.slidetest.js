@@ -74,10 +74,12 @@ Roo.apply(dashboard3.slidetest.prototype, {
     },
     completeSlide : function()
     {
-          
-          this.el.removeClass('active');
+        // remove styles..
+        this.nel.removeClass('active');
           
           this.pel.setStyle('overflow', '');
+          
+          
           this.nel.setStyle({
             position: '',
             left : '',
