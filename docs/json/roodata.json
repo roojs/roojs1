@@ -27932,7 +27932,7 @@
     {
      "name": "renderer",
      "type": "Function",
-     "desc": "(Optional) A function used to generate HTML markup for a cell\ngiven the cell's data value. See {@link #setRenderer}. If not specified, the\ndefault renderer uses the raw data value.",
+     "desc": "(Optional) A function used to generate HTML markup for a cell\ngiven the cell's data value. See {@link #setRenderer}. If not specified, the\ndefault renderer uses the raw data value. If an object is returned (bootstrap only)\nthen it is treated as a Roo Component object instance, and it is rendered after the initial row is rendered",
      "memberOf": ""
     },
     {
