@@ -80,6 +80,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
             width :'',
             height: ''
           });
+          this.el.removeClass('active'):
           this.el.setStyle({
             position: 'relative',
             left : '',
@@ -87,7 +88,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
             width :'',
             height: ''
           });  
-    
+            this.el.removeClass('active'):
         
     }
     
