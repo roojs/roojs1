@@ -76,7 +76,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
           
           this.pel.setStyle('overflow', '');
           this.nel.setStyle({
-            position: 'relative',
+            position: '',
             left : '',
             top : '',
             width :'',
@@ -86,7 +86,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
           
           
           this.el.setStyle({
-            position: 'relative',
+            position: '',
             left : '',
             top : '',
             width :'',
