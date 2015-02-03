@@ -21,6 +21,7 @@ dashboard3.slidetest = {
             height: box.height+ 'px',
             
         });
+        // need to fix the left/right....
         
         
     }
