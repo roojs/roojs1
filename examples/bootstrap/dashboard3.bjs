@@ -265,6 +265,7 @@
                                                     "items" : [
                                                         {
                                                             "Boolean active" : true,
+                                                            "String cls" : "carousel slide",
                                                             "xtype" : "TabPanel",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "items" : [
