@@ -9,7 +9,7 @@ dashboard3.slidetest = {
         
         var tc = el.findParent('.tab-content', 3, true);
         tc.setStyle('overflow', 'hidden');
-        var obox = tc.getBox();
+        var obox = tc.getBox(true);
         
         
         var box = el.getBox();
