@@ -273,6 +273,10 @@
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "Number level" : 3,
                                                                     "String html" : "some title"
+                                                                },
+                                                                {
+                                                                    "xtype" : "Container",
+                                                                    "$ xns" : "Roo.bootstrap"
                                                                 }
                                                             ]
                                                         }

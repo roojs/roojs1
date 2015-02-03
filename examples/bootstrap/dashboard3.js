@@ -376,6 +376,11 @@ dashboard3 = new Roo.XComponent({
                                                                     xns : Roo.bootstrap,
                                                                     level : 3,
                                                                     html : 'some title'
+                                                                },
+                                                            	{
+                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    xtype : 'Container',
+                                                                    xns : Roo.bootstrap
                                                                 }
                                                             ]
 
