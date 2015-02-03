@@ -316,7 +316,7 @@
                                                                 },
                                                                 {
                                                                     "listeners" : {
-                                                                        "click" : "function (e)\n{\n  _this.tab_first.hide();\n}"
+                                                                        "click" : "function (e)\n{\n  _this.tab_first.hide();\n_this.tab_second.show();\n}"
                                                                     },
                                                                     "String cls" : "carousel-control right",
                                                                     "Boolean preventDefault" : true,

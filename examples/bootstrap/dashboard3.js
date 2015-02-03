@@ -436,6 +436,7 @@ dashboard3 = new Roo.XComponent({
                                                                     	click : function (e)
                                                                     	   {
                                                                     	     _this.tab_first.hide();
+                                                                    	   _this.tab_second.show();
                                                                     	   }
                                                                     }
                                                                 }
