@@ -37,6 +37,7 @@ dashboard3.slidetest = {
             width : box.width + 'px',
             height: nbox.height+ 'px',
         });
+        nel.addClass('active');
         
         
     }
