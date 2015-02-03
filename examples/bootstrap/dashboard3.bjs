@@ -320,6 +320,62 @@
                                                             ]
                                                         }
                                                     ]
+                                                },
+                                                {
+                                                    "Boolean active" : false,
+                                                    "String cls" : "carousel slide",
+                                                    "xtype" : "TabPanel",
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "items" : [
+                                                        {
+                                                            "xtype" : "Header",
+                                                            "Number level" : 3,
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "some title"
+                                                        },
+                                                        {
+                                                            "String cls" : "carousel-inner",
+                                                            "xtype" : "Container",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String well" : "md",
+                                                            "String style" : "padding-left:50px;padding-right:50px;",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "Row",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "items" : [
+                                                                        {
+                                                                            "Number md" : 6,
+                                                                            "xtype" : "Column",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "items" : [
+                                                                                {
+                                                                                    "labelAlign" : "top",
+                                                                                    "fieldLabel" : "Some input",
+                                                                                    "xtype" : "Input",
+                                                                                    "allowBlank" : true,
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "name" : "chosen_title"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "String cls" : "carousel-control left",
+                                                            "xtype" : "Link",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "<span class=\"glyphicon glyphicon-chevron-left\"></span>"
+                                                        },
+                                                        {
+                                                            "String cls" : "carousel-control right",
+                                                            "xtype" : "Link",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "<span class=\"glyphicon glyphicon-chevron-right\"></span>"
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
