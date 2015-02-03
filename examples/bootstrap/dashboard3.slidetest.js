@@ -71,7 +71,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
     },
     completeSlide : function()
     {
-          return;
+          
           this.pel.setStyle('overflow', '');
           this.nel.setStyle({
             position: 'relative',
