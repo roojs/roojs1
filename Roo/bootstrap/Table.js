@@ -630,7 +630,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cn : []
         };
             
-        var renders = [];
+        var cellObjects = [];
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
             var config = cm.config[i];
@@ -644,7 +644,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             
             if(typeof(value) === 'object'){
-                renders.push({
+                cellObjects.push({
                     container : id,
                     cfg : value 
                 })
@@ -683,7 +683,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
            
         }
         
-        row.renders = renders;
+        row.cellObjects = cellObjects;
         
         return row;
           
@@ -713,8 +713,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         return this.selModel;
     },
-    
-    renderColumn : function(r)
+    /*
+     * render the roo.bootstarp object from renderder
+     */
+    renderCellObject : function(r)
     {
         var _this = this;
         
@@ -726,7 +728,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     container: t.getChildContainer(),
                     cfg: c
                 }
-                _this.renderColumn(child);
+                _this.renderCellObject(child);
             })
         }
     }
