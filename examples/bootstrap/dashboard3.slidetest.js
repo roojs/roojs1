@@ -28,8 +28,15 @@ dashboard3.slidetest = {
         // dir = 1...
         
         var nel = panes.item(ix+1);
+        var nbox = nel.getBox();
         
-        
+        nel.setStyle({
+            position: 'absolute',
+            left : (box.width + obox ) + 'px',
+            top : 0,
+            width : box.width + 'px',
+            height: nbox.height+ 'px',
+        });
         
         
     }
