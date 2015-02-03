@@ -586,16 +586,24 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     insertRow : function(dm, rowIndex, isUpdate){
         
         if(!isUpdate){
-            this.fireEvent("beforerowsinserted", this, firstRow, lastRow);
+            this.fireEvent("beforerowsinserted", this, rowIndex);
         }
             //var s = this.getScrollState();
         var row = this.renderRow(this.cm, this.store, rowIndex);
         // insert before rowIndex..
         var e = this.mainBody.createChild(row,this.getRowDom(rowIndex));
         Roo.log(e);
+        
+        var _this = this;
+                
+        if(row.renders.length){
+            Roo.each(row.renders, function(r){
+                _this.renderCell(r);
+            })
+        }
             
         if(!isUpdate){
-            this.fireEvent("rowsinserted", this, firstRow, lastRow);
+            this.fireEvent("rowsinserted", this, rowIndex);
             //this.syncRowHeights(firstRow, lastRow);
             //this.stripeRows(firstRow);
             //this.layout();
