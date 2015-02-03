@@ -261,7 +261,13 @@
                                                     "Number lg" : 6,
                                                     "xtype" : "Column",
                                                     "$ xns" : "Roo.bootstrap",
-                                                    "height" : 500
+                                                    "height" : 500,
+                                                    "items" : [
+                                                        {
+                                                            "xtype" : "TabPanel",
+                                                            "$ xns" : "Roo.bootstrap"
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
