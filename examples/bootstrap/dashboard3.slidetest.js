@@ -22,6 +22,14 @@ dashboard3.slidetest = {
             
         });
         // need to fix the left/right....
+        var panes = tc.select('.tab-pane',true);
+        var ix = panes.indexOf(el);
+        
+        // dir = 1...
+        
+        var nel = panes.item(ix+1);
+        
+        
         
         
     }
