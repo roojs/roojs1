@@ -5035,15 +5035,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 tbody.createChild(row);
                 
+                var _this = this;
+                
+                if(row.renders.length){
+                    Roo.each(row.renders, function(r){
+                        _this.renderColumn(r);
+                    })
+                }
+                
             }, this);
-        }
-        
-        
-        if(renders.length){
-            var _this = this;
-            Roo.each(renders, function(r){
-                _this.renderColumn(r);
-            })
         }
         
         Roo.each(this.el.select('tbody td', true).elements, function(e){
@@ -5136,7 +5136,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cn : []
         };
             
-        
+        var renders = [];
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
             var config = cm.config[i];
@@ -5188,6 +5188,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             row.cn.push(td);
            
         }
+        
+        row.renders = renders;
+        
         return row;
           
     },
