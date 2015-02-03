@@ -668,9 +668,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 style: '',
                 html: (typeof(value) === 'object') ? '' : value
             };
+            
             if (id) {
                 td.id = id;
             }
+            
             if(typeof(config.hidden) != 'undefined' && config.hidden){
                 td.style += ' display:none;';
             }
