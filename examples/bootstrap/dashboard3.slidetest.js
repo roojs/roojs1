@@ -33,7 +33,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
             
         });
         // need to fix the left/right....
-        var panes = tc.select('.tab-pane',true);
+        var panes = this.pel.select('.tab-pane',true);
         var ix = panes.indexOf(el);
         
         // dir = 1...
