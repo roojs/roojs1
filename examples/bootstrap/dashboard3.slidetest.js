@@ -51,13 +51,13 @@ Roo.apply(dashboard3.slidetest.prototype, {
         this.nel.addClass('active');
         
         // now we need to animate the both boxes moving from box.width + obox.x + 50 --> obox.x
-        
+        var _t = this;
         this.nel.animate({
             left : {
                 from : (box.width + obox.x + 50 ),
                 to : obox.x 
             }
-        }, false, 'easeOut', 'run');
+        }, function() { _t.completeSlide(); }, 'easeOut', 'run');
         
         this.el.animate({
             left : {
