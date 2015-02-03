@@ -280,6 +280,7 @@
                                                                     "xtype" : "Container",
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "String well" : "md",
+                                                                    "String style" : "padding-left:20px",
                                                                     "items" : [
                                                                         {
                                                                             "xtype" : "Row",
