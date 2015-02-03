@@ -521,15 +521,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 tbody.createChild(row);
                 
+                var _this = this;
+                
+                if(row.renders.length){
+                    Roo.each(row.renders, function(r){
+                        _this.renderColumn(r);
+                    })
+                }
+                
             }, this);
-        }
-        
-        
-        if(renders.length){
-            var _this = this;
-            Roo.each(renders, function(r){
-                _this.renderColumn(r);
-            })
         }
         
         Roo.each(this.el.select('tbody td', true).elements, function(e){
