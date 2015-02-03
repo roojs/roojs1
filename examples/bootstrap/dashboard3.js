@@ -420,6 +420,7 @@ dashboard3 = new Roo.XComponent({
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     cls : 'carousel-control left',
+                                                                    preventDefault : true,
                                                                     xtype : 'Link',
                                                                     xns : Roo.bootstrap,
                                                                     html : '<span class=\"glyphicon glyphicon-chevron-left\"></span>'
