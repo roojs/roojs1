@@ -28,7 +28,6 @@
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} align (left|center|right) Default left
- * @cfg {Boolean} formatedValue (true | false) Default false
  * 
  * 
  * @constructor
@@ -87,14 +86,7 @@ Roo.bootstrap.Input = function(config){
              * @param {Roo.form.Field} this
              * @param {Roo.EventObject}  e The event Object
              */
-            keyup : true,
-            /**
-             * @event formatedValue
-             * Fires when get the value of the formated input
-             * @param {Roo.bootstrap.Input} this
-             * @param {String} value
-             */
-            formatedValue : true
+            keyup : true
         });
 };
 
