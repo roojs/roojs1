@@ -167,7 +167,7 @@ Roo.apply(Roo.bootstrap.NavGroup, {
 	
     },
     get: function(navId) {
-        return this.groups[navId];
+        return this.groups[navId] ? this.groups[navId] : new Roo.bootstrap.NavGroup({ navId : navId });
     },
     getActive : function()
     {
