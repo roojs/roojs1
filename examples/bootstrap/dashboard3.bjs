@@ -276,7 +276,8 @@
                                                                 },
                                                                 {
                                                                     "xtype" : "Container",
-                                                                    "$ xns" : "Roo.bootstrap"
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String well" : "md"
                                                                 }
                                                             ]
                                                         }
