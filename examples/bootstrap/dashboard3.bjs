@@ -311,10 +311,10 @@
                                                                     "String html" : "<span class=\"glyphicon glyphicon-chevron-left\"></span>"
                                                                 },
                                                                 {
-                                                                    "String cls" : "carousel-control left",
+                                                                    "String cls" : "carousel-control right",
                                                                     "xtype" : "Link",
                                                                     "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "<span class=\"glyphicon glyphicon-chevron-left\"></span>"
+                                                                    "String html" : "<span class=\"glyphicon glyphicon-chevron-right\"></span>"
                                                                 }
                                                             ]
                                                         }
