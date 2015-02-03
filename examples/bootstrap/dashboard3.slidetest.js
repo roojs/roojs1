@@ -57,7 +57,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
                 from : (box.width + obox.x + 50 ),
                 to : obox.x 
             }
-        }, this.completeSlide.createDelegate(this), 'easeOut', 'run');
+        }, false, 'easeOut', 'run');
         
         this.el.animate({
             left : {
