@@ -39,7 +39,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
         // dir = 1...
         
         this.nel = panes.item(ix+1);
-        var nbox = nel.getBox();
+        var nbox = this.nel.getBox();
         
         this.nel.setStyle({
             position: 'absolute',
