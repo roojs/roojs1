@@ -33,7 +33,7 @@ dashboard3.slidetest = {
         Roo.log([nbox]);
         nel.setStyle({
             position: 'absolute',
-            left : (box.width + obox.x ) + 'px',
+            left : (box.width + obox.x + 50 ) + 'px',
             top : 0,
             width : box.width + 'px',
             height: nbox.height+ 'px',
