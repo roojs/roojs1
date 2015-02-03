@@ -303,6 +303,10 @@
                                                                             ]
                                                                         }
                                                                     ]
+                                                                },
+                                                                {
+                                                                    "xtype" : "Link",
+                                                                    "$ xns" : "Roo.bootstrap"
                                                                 }
                                                             ]
                                                         }

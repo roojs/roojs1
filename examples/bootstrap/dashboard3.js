@@ -413,6 +413,11 @@ dashboard3 = new Roo.XComponent({
                                                                         }
                                                                     ]
 
+                                                                },
+                                                            	{
+                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    xtype : 'Link',
+                                                                    xns : Roo.bootstrap
                                                                 }
                                                             ]
 
