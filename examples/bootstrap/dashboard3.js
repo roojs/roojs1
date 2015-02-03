@@ -431,7 +431,13 @@ dashboard3 = new Roo.XComponent({
                                                                     preventDefault : true,
                                                                     xtype : 'Link',
                                                                     xns : Roo.bootstrap,
-                                                                    html : '<span class=\"glyphicon glyphicon-chevron-right\"></span>'
+                                                                    html : '<span class=\"glyphicon glyphicon-chevron-right\"></span>',
+                                                                    listeners : {
+                                                                    	click : function (e)
+                                                                    	   {
+                                                                    	     _this.tab_first.hide();
+                                                                    	   }
+                                                                    }
                                                                 }
                                                             ]
 

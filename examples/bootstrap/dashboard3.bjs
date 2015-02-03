@@ -315,6 +315,9 @@
                                                                     "String html" : "<span class=\"glyphicon glyphicon-chevron-left\"></span>"
                                                                 },
                                                                 {
+                                                                    "listeners" : {
+                                                                        "click" : "function (e)\n{\n  _this.tab_first.hide();\n}"
+                                                                    },
                                                                     "String cls" : "carousel-control right",
                                                                     "Boolean preventDefault" : true,
                                                                     "xtype" : "Link",
