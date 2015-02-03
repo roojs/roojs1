@@ -32,7 +32,7 @@ dashboard3.slidetest = {
         
         nel.setStyle({
             position: 'absolute',
-            left : (box.width + obox.left. ) + 'px',
+            left : (box.width + obox.left ) + 'px',
             top : 0,
             width : box.width + 'px',
             height: nbox.height+ 'px',
