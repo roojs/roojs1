@@ -72,6 +72,8 @@ Roo.apply(dashboard3.slidetest.prototype, {
     completeSlide : function()
     {
           
+          this.el.removeClass('active'):
+          
           this.pel.setStyle('overflow', '');
           this.nel.setStyle({
             position: 'relative',
@@ -80,7 +82,9 @@ Roo.apply(dashboard3.slidetest.prototype, {
             width :'',
             height: ''
           });
-          this.el.removeClass('active'):
+          
+          
+          
           this.el.setStyle({
             position: 'relative',
             left : '',
@@ -88,7 +92,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
             width :'',
             height: ''
           });  
-            this.el.removeClass('active'):
+            
         
     }
     
