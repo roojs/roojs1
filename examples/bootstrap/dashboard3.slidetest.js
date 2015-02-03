@@ -1,8 +1,11 @@
 
 
-dashboard3.slidetest = function (tba,tbb)
+dashboard3.slidetest = function (tbb)
 {
-    this.tba = tba;
+    
+    
+    this.tba =  Roo.bootstrap.NavGroup.get(tba).getActive();;
+    
     this.tbb = tbb;
     this.el = tba.el;
     this.nel = tbb.el;
