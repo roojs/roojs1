@@ -4023,7 +4023,8 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {Function} renderer (Optional) A function used to generate HTML markup for a cell
      * given the cell's data value. See {@link #setRenderer}. If not specified, the
-     * default renderer uses the raw data value.
+     * default renderer uses the raw data value. If an object is returned (bootstrap only)
+     * then it is treated as a Roo Component object instance, and it is rendered after the initial row is rendered
      */
        /**
      * @cfg {Roo.grid.GridEditor} editor (Optional) For grid editors - returns the grid editor 
@@ -5037,9 +5038,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 
                 var _this = this;
                 
-                if(row.renders.length){
-                    Roo.each(row.renders, function(r){
-                        _this.renderColumn(r);
+                if(row.cellObjects.length){
+                    Roo.each(row.cellObjects, function(r){
+                        _this.renderCellObject(r);
                     })
                 }
                 
@@ -5100,16 +5101,24 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     insertRow : function(dm, rowIndex, isUpdate){
         
         if(!isUpdate){
-            this.fireEvent("beforerowsinserted", this, firstRow, lastRow);
+            this.fireEvent("beforerowsinserted", this, rowIndex);
         }
             //var s = this.getScrollState();
         var row = this.renderRow(this.cm, this.store, rowIndex);
         // insert before rowIndex..
         var e = this.mainBody.createChild(row,this.getRowDom(rowIndex));
         Roo.log(e);
+        
+        var _this = this;
+                
+        if(row.cellObjects.length){
+            Roo.each(row.cellObjects, function(r){
+                _this.renderCellObject(r);
+            })
+        }
             
         if(!isUpdate){
-            this.fireEvent("rowsinserted", this, firstRow, lastRow);
+            this.fireEvent("rowsinserted", this, rowIndex);
             //this.syncRowHeights(firstRow, lastRow);
             //this.stripeRows(firstRow);
             //this.layout();
@@ -5136,21 +5145,24 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cn : []
         };
             
-        var renders = [];
+        var cellObjects = [];
         
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
             var config = cm.config[i];
             
             var renderer = cm.getRenderer(i);
             var value = '';
-            var id = Roo.id();
+            var id = false;
             
             if(typeof(renderer) !== 'undefined'){
                 value = renderer(d.data[cm.getDataIndex(i)], false, d);
             }
+            // if object are returned, then they are expected to be Roo.bootstrap.Component instances
+            // and are rendered into the cells after the row is rendered - using the id for the element.
             
             if(typeof(value) === 'object'){
-                renders.push({
+                id = Roo.id();
+                cellObjects.push({
                     container : id,
                     cfg : value 
                 })
@@ -5167,11 +5179,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var td = {
                 tag: 'td',
-                id: id,
                 cls : rowcfg.rowClass,
                 style: '',
                 html: (typeof(value) === 'object') ? '' : value
             };
+            
+            if (id) {
+                td.id = id;
+            }
             
             if(typeof(config.hidden) != 'undefined' && config.hidden){
                 td.style += ' display:none;';
@@ -5189,7 +5204,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
            
         }
         
-        row.renders = renders;
+        row.cellObjects = cellObjects;
         
         return row;
           
@@ -5219,8 +5234,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         return this.selModel;
     },
-    
-    renderColumn : function(r)
+    /*
+     * Render the Roo.bootstrap object from renderder
+     */
+    renderCellObject : function(r)
     {
         var _this = this;
         
@@ -5232,7 +5249,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     container: t.getChildContainer(),
                     cfg: c
                 }
-                _this.renderColumn(child);
+                _this.renderCellObject(child);
             })
         }
     }
