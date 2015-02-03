@@ -264,6 +264,7 @@
                                                     "height" : 500,
                                                     "items" : [
                                                         {
+                                                            "Boolean active" : true,
                                                             "xtype" : "TabPanel",
                                                             "$ xns" : "Roo.bootstrap"
                                                         }
