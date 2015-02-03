@@ -1,6 +1,6 @@
 
 
-dashboard3.slidetest = function (tba,tbb, dir)
+dashboard3.slidetest = function (tba,tbb)
 {
     this.tba = tba;
     this.tbb = tbb;
@@ -13,7 +13,6 @@ dashboard3.slidetest = function (tba,tbb, dir)
     this.dir = cn.indexOf(this.nel) -  cn.indexOf(this.el);
     
     
-    this.dir = dir;
     this.slide();
 }
 Roo.apply(dashboard3.slidetest.prototype, {
