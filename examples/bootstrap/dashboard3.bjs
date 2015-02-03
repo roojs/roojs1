@@ -305,6 +305,7 @@
                                                                     ]
                                                                 },
                                                                 {
+                                                                    "String cls" : "carousel-control left",
                                                                     "xtype" : "Link",
                                                                     "$ xns" : "Roo.bootstrap"
                                                                 }

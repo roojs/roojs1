@@ -416,6 +416,7 @@ dashboard3 = new Roo.XComponent({
                                                                 },
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
+                                                                    cls : 'carousel-control left',
                                                                     xtype : 'Link',
                                                                     xns : Roo.bootstrap
                                                                 }
