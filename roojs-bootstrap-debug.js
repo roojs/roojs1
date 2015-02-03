@@ -5025,7 +5025,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
         });
         
-        var tbody = this.mainBody;
+        var tbody =  this.mainBody;
         
         var renders = [];
                     
@@ -5105,7 +5105,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             //var s = this.getScrollState();
         var row = this.renderRow(this.cm, this.store, rowIndex);
         // insert before rowIndex..
-        this.mainBody.createChild(row,this.getRowDom(rowIndex));
+        var e = this.mainBody.createChild(row,this.getRowDom(rowIndex));
+        Roo.log(e);
             
         if(!isUpdate){
             this.fireEvent("rowsinserted", this, firstRow, lastRow);
@@ -6508,7 +6509,6 @@ Roo.form.VTypes = function(){
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
  * @cfg {String} align (left|center|right) Default left
- * @cfg {Boolean} formatedValue (true | false) Default false
  * 
  * 
  * @constructor
@@ -6567,14 +6567,7 @@ Roo.bootstrap.Input = function(config){
              * @param {Roo.form.Field} this
              * @param {Roo.EventObject}  e The event Object
              */
-            keyup : true,
-            /**
-             * @event formatedValue
-             * Fires when get the value of the formated input
-             * @param {Roo.bootstrap.Input} this
-             * @param {String} value
-             */
-            formatedValue : true
+            keyup : true
         });
 };
 
@@ -7053,13 +7046,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     getValue : function(){
         
         var v = this.inputEl().getValue();
-        
-        if(this.formatedValue){
-            
-            this.fireEvent("formatedValue", this, v);
-            
-            return this.value;
-        }
         
         return v;
     },
