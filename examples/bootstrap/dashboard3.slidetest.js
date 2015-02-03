@@ -43,6 +43,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
         var start = this.dir > 0 ? (box.width + obox.x + 50 ) : (-1 * (box.width + 50)) + obox.x;
         
         var end = this.dir > 0 ? -1 * (box.width + 50 ) : (box.width + obox.x + 50 );
+        
         this.nel.setStyle({
             position: 'absolute',
             left : start + 'px',
@@ -64,7 +65,7 @@ Roo.apply(dashboard3.slidetest.prototype, {
         this.el.animate({
             left : {
                 from : obox.x , 
-                to : -1 * (box.width + 50 )
+                to : end 
             }
         }, 0.5, false, 'easeOut', 'run');
         
