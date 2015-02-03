@@ -4,7 +4,7 @@ dashboard3.slidetest = function (tbb)
 {
     
     
-    this.tba =  Roo.bootstrap.NavGroup.get(tbb.navId);
+    this.tba =  Roo.bootstrap.NavGroup.get(tbb.navId).getActive();
     this.tbb = tbb;
     if (!this.tba) {
         alert("could not get active tab");
