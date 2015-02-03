@@ -266,7 +266,13 @@
                                                         {
                                                             "Boolean active" : true,
                                                             "xtype" : "TabPanel",
-                                                            "$ xns" : "Roo.bootstrap"
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "Header",
+                                                                    "$ xns" : "Roo.bootstrap"
+                                                                }
+                                                            ]
                                                         }
                                                     ]
                                                 }
