@@ -13,6 +13,7 @@ dashboard3.slidetest = {
         
         
         var box = el.getBox();
+        Roo.log([obox,box]);
         el.setStyle({
             position: 'absolute',
             left : obox.left+ 'px',
@@ -29,7 +30,7 @@ dashboard3.slidetest = {
         
         var nel = panes.item(ix+1);
         var nbox = nel.getBox();
-        
+        Roo.log([nbox]);
         nel.setStyle({
             position: 'absolute',
             left : (box.width + obox.left ) + 'px',
