@@ -266,6 +266,55 @@
                                                     "items" : [
                                                         {
                                                             "listeners" : {
+                                                                "render" : "function (_self)\n{\n_this.tab_second = _self;\n}"
+                                                            },
+                                                            "Boolean active" : false,
+                                                            "String cls" : "carousel slide",
+                                                            "xtype" : "TabPanel",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String tabId" : "#second",
+                                                            "String navId" : "#sample1",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "Header",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "Number level" : 3,
+                                                                    "String html" : "next tab"
+                                                                },
+                                                                {
+                                                                    "String cls" : "carousel-inner",
+                                                                    "xtype" : "Container",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String well" : "md",
+                                                                    "String style" : "padding-left:50px;padding-right:50px;",
+                                                                    "items" : [
+                                                                        {
+                                                                            "xtype" : "Row",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "items" : [
+                                                                                {
+                                                                                    "Number md" : 6,
+                                                                                    "xtype" : "Column",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "items" : [
+                                                                                        {
+                                                                                            "labelAlign" : "top",
+                                                                                            "fieldLabel" : "Some input",
+                                                                                            "xtype" : "Input",
+                                                                                            "allowBlank" : true,
+                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                            "name" : "chosen_title"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "listeners" : {
                                                                 "render" : "function (_self)\n{\n_this.tab_first = _self;\n}"
                                                             },
                                                             "Boolean active" : true,
