@@ -318,7 +318,7 @@
                                                                 "render" : "function (_self)\n{\n_this.tab_first = _self;\n}"
                                                             },
                                                             "Boolean active" : true,
-                                                            "String cls" : "carousel slide",
+                                                            "String cls" : "item",
                                                             "xtype" : "TabPanel",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "String tabId" : "#first",
