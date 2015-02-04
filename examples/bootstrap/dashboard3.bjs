@@ -141,6 +141,7 @@
                                             "$ xns" : "Roo.bootstrap",
                                             "items" : [
                                                 {
+                                                    "String cls" : "alert alert-danger alert-dismissable",
                                                     "xtype" : "Container",
                                                     "$ xns" : "Roo.bootstrap"
                                                 }
