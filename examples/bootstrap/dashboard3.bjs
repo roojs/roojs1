@@ -260,7 +260,7 @@
                                                 {
                                                     "String cls" : "tab-content carousel slide",
                                                     "Number lg" : 12,
-                                                    "xtype" : "Column",
+                                                    "xtype" : "TabGroup",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "height" : 500,
                                                     "items" : [

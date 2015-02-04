@@ -361,7 +361,7 @@ dashboard3 = new Roo.XComponent({
                                                     '|xns' : 'Roo.bootstrap',
                                                     cls : 'tab-content carousel slide',
                                                     lg : 12,
-                                                    xtype : 'Column',
+                                                    xtype : 'TabGroup',
                                                     xns : Roo.bootstrap,
                                                     height : 500,
                                                     items : [
