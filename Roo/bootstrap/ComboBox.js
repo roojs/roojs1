@@ -1427,7 +1427,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // Implements the default empty TriggerField.onTriggerClick function
     onTriggerClick : function(e)
     {
-        Roo.log(e);
         Roo.log('trigger click');
         
         if(this.disabled){
@@ -1435,7 +1434,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         if(this.tickable){
-            this.onTickableTriggerClick();
+            this.onTickableTriggerClick(e);
             return;
         }
         
@@ -1461,7 +1460,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
     },
     
-    onTickableTriggerClick : function()
+    onTickableTriggerClick : function(e)
     {
         this.page = 0;
         this.loadNext = false;
