@@ -18,7 +18,7 @@
 Roo.bootstrap.TabGroup = function(config){
     Roo.bootstrap.TabGroup.superclass.constructor.call(this, config);
     if (!this.navId) {
-        
+        this.navId = Roo.id();
     }
     
 };
