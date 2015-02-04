@@ -22,12 +22,7 @@ Roo.EventManager = function(){
     var E = Roo.lib.Event;
     var D = Roo.lib.Dom;
 
-    var transEndEventNames = {
-        WebkitTransition : 'webkitTransitionEnd',
-        MozTransition    : 'transitionend',
-        OTransition      : 'oTransitionEnd otransitionend',
-        transition       : 'transitionend'
-      }
+    
     
 
     var fireDocReady = function(){
@@ -175,16 +170,9 @@ Roo.EventManager = function(){
         fn._handlers.push([Roo.id(el), ename, h]);
         
         if (ename == 'transitionend') {
-            
-          
-              for (var name in transEndEventNames) {
-                if (el.style[name] !== undefined) {
-                  return { end: transEndEventNames[name] }
-                }
-              }
+            ename = transitionEnd();
         }
-        
-        
+         
         E.on(el, ename, h);
         if(ename == "mousewheel" && el.addEventListener){ // workaround for jQuery
             el.addEventListener("DOMMouseScroll", h, false);
