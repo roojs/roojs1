@@ -1474,8 +1474,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onSearchFieldClick : function(e)
     {
+        var target = e.getTarget();
         
-        if(this.disabled){
+        if(this.disabled || target.nodeName.toLowerCase() == 'button'){
             return;
         }
         
