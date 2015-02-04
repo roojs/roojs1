@@ -58,6 +58,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         if (typeof (pan) == 'number') {
             pan = this.tabs[pan];
         }
+        if (typeof (pan) == 'string') {
+            pan = this.getPanelByName(pan);
+        }
         if (pan.navId == this.getActivePanel().navId) {
             return;
         }
