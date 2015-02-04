@@ -636,8 +636,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
             case 17: // ctrl
                 break;
-            default :
-                this.hide();
+            
                 
         }
     },
