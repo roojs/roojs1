@@ -48,6 +48,17 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     },
     
+    
+    
+    showPanel : function (pan) {
+        if (typeof (pan) == 'number') {
+            pan = this.tabs[pan];
+        }
+        
+    }
+    
+    
+    
   
 });
 
