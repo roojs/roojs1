@@ -123,7 +123,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 pan.el.removeClass([lr,dir]);
                 pan.setActive(true);
                 cur.active = false;
-                cur.el.removeClass(lr, 'active');
+                cur.el.removeClass([lr, 'active']);
                 
                 
                 
