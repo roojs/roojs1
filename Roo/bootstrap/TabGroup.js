@@ -144,8 +144,7 @@ Roo.apply(Roo.bootstrap.TabGroup, {
     */
     get: function(navId) {
         if (typeof(this.groups[navId]) == 'undefined') {
-            return false;
-            //this.register(new Roo.bootstrap.NavGroup({ navId : navId }));
+            this.register(new Roo.bootstrap.TabGroup({ navId : navId }));
         }
         return this.groups[navId] ;
     }
