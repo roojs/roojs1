@@ -73,7 +73,18 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         });
         return r;
     },
-    
+    indexOfPanel : function(p)
+    {
+        var r = false;
+        Roo.each(this.tabs, function(t,i) {
+            if (t.tabId == p.tabId) {
+                r = i;
+                return false;
+            }
+            return null;
+        });
+        return r;
+    },
     showPanel : function (pan)
     {
         if (typeof (pan) == 'number') {
@@ -88,6 +99,14 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         this.getActivePanel().setActive(false);
         pan.setActive(true);
         
+    },
+    showNextPanel : function()
+    {
+        var i = this.indexOfPanel(this.getActivePanel());
+        if (i+2 > this.tabs.length) {
+            return;
+        }
+        this.showPanel(this.tabs[i+1]);
     }
     
     
