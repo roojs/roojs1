@@ -32,14 +32,14 @@ Roo.bootstrap.TabPanel = function(config){
          */
         'changed': true
      });
-    this.navId = this.navId  || Roo.id();
-    
+    this.tabId = this.tabId || Roo.id();
+    if (typeof(p.navId) != 'undefined') {
           // not really needed.. but just in case.. parent should be a NavGroup.
-    var tg = Roo.bootstrap.TabGroup.get(p.navId);
-    this.navId = this.navId || p.navId;
-    Roo.log(['register', tg, this]);
-    tg.register(this);
-    
+        var tg = Roo.bootstrap.TabGroup.get(p.navId);
+        this.navId = this.navId || p.navId;
+        Roo.log(['register', tg, this]);
+        tg.register(this);
+    }
 };
 
 Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
