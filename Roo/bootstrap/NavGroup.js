@@ -199,7 +199,8 @@ Roo.apply(Roo.bootstrap.NavGroup, {
     },
     get: function(navId) {
         if (typeof(this.groups[navId]) == 'undefined') {
-            this.register(new Roo.bootstrap.NavGroup({ navId : navId }));
+            return false;
+            //this.register(new Roo.bootstrap.NavGroup({ navId : navId }));
         }
         return this.groups[navId] ;
     },
