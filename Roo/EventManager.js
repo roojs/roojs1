@@ -100,7 +100,7 @@ Roo.EventManager = function(){
     };
     var transitionEndVal = false;
     
-    var transitionEnd = funciton()
+    var transitionEnd = function()
     {
         if (transitionEndVal) {
             return transitionEndVal;
