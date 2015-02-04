@@ -41,6 +41,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             cfg.cls += ' carousel slide';
         }
         
+        
         return cfg;
     },
     
