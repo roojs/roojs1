@@ -66,13 +66,17 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         // registration with navgroups..
         if (this.navId && this.tabId) {
-            var item = Roo.bootstrap.NavGroup.get(this.navId).getNavItem(this.tabId);
-            if (!item) {
-                Roo.log("could not find navID:"  + this.navId + ", tabId: " + this.tabId);
-            } else {
-                item.on('changed', function(item, state) {
-                    this.setActive(state);
-                }, this);
+            var grp = Roo.bootstrap.NavGroup.get(this.navId);
+            if (grp) {
+                //code
+                var item = grp.getNavItem(this.tabId);
+                if (!item) {
+                    Roo.log("could not find navID:"  + this.navId + ", tabId: " + this.tabId);
+                } else {
+                    item.on('changed', function(item, state) {
+                        this.setActive(state);
+                    }, this);
+                }
             }
         }
         // tabgroup.
