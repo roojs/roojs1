@@ -70,7 +70,7 @@
                                                             "bgcolor" : "",
                                                             "String cls" : "",
                                                             "xtype" : "NumberBox",
-                                                            "String headline" : 150,
+                                                            "String headline" : 160,
                                                             "$ xns" : "Roo.bootstrap.dash",
                                                             "width" : "col-md-5",
                                                             "String title" : "New Orders",
