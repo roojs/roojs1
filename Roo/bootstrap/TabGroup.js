@@ -9,6 +9,7 @@
  * @class Roo.bootstrap.TabGroup
  * @extends Roo.bootstrap.Column
  * Bootstrap Column class
+ * @cfg {String} navId the navigation id (for use with navbars)
  * 
  * @constructor
  * Create a new TabGroup
@@ -24,6 +25,7 @@ Roo.bootstrap.TabGroup = function(config){
 };
 
 Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
+    
     
     
     getAutoCreate : function(){
