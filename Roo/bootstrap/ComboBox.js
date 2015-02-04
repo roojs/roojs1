@@ -1462,7 +1462,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onTickableTriggerClick : function(e)
     {
-        Roo.log(e);
+        Roo.log(e.getTarget());
         this.page = 0;
         this.loadNext = false;
         this.hasFocus = true;
