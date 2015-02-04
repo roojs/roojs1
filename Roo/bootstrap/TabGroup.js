@@ -128,7 +128,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 
                 
                 
-            }, this, {single:  true} );
+            }, this, { single:  true } );
             return;
         }
         
