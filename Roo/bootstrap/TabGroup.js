@@ -21,6 +21,7 @@ Roo.bootstrap.TabGroup = function(config){
     if (!this.navId) {
         this.navId = Roo.id();
     }
+    this.tabs = [];
     Roo.bootstrap.TabGroup.register(this);
     
 };
@@ -36,7 +37,17 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         return cfg;
     },
     
-   
+    /**
+    * register a Navigation item
+    * @param {Roo.bootstrap.NavItem} the navitem to add
+    */
+    register : function(item)
+    {
+        this.tabs.push( item);
+        item.navId = this.navId;
+    
+    },
+  
 });
 
  
