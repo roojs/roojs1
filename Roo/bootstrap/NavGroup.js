@@ -23,6 +23,7 @@
 Roo.bootstrap.NavGroup = function(config){
     Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
     this.navItems = [];
+    this.tabs = [];
     Roo.bootstrap.NavGroup.register(this);
      this.addEvents({
         /**
@@ -47,6 +48,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     // private
     
     navItems : false,
+    tabs : false,
     
     getAutoCreate : function()
     {
@@ -100,7 +102,10 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         
         return cfg;
     },
-    
+    /**
+    * sets the active Navigation item
+    * @param {Roo.bootstrap.NavItem} the new current navitem
+    */
     setActiveItem : function(item)
     {
         var prev = false;
@@ -121,7 +126,10 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         
         
     },
-    
+    /**
+    * gets the active Navigation item
+    * @return {Roo.bootstrap.NavItem} the current navitem
+    */
     getActive : function()
     {
         
@@ -136,8 +144,10 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         });
         return prev;
     },
-    
-    
+    /**
+    * adds a Navigation item
+    * @param {Roo.bootstrap.NavItem} the navitem to add
+    */
     addItem : function(cfg)
     {
         var cn = new Roo.bootstrap.NavItem(cfg);
@@ -146,18 +156,17 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         cn.onRender(this.el, null);
         return cn;
     },
-    
+    /**
+    * register a Navigation item
+    * @param {Roo.bootstrap.NavItem} the navitem to add
+    */
     register : function(item)
     {
         this.navItems.push( item);
         item.navId = this.navId;
     
     },
-    registerTab : function(item)
-    {
-        this.tabs.push(item);
-    }
-    
+  
     
     getNavItem: function(tabId)
     {
