@@ -191,19 +191,27 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
 Roo.apply(Roo.bootstrap.NavGroup, {
     
     groups: {},
-    
+     /**
+    * register a Navigation Group
+    * @param {Roo.bootstrap.NavGroup} the navgroup to add
+    */
     register : function(navgrp)
     {
         this.groups[navgrp.navId] = navgrp;
 	
     },
+    /**
+    * fetch a Navigation Group based on the navigation ID
+    * @param {string} the navgroup to add
+    * @returns {Roo.bootstrap.NavGroup} the navgroup 
+    */
     get: function(navId) {
         if (typeof(this.groups[navId]) == 'undefined') {
             return false;
             //this.register(new Roo.bootstrap.NavGroup({ navId : navId }));
         }
         return this.groups[navId] ;
-    },
+    }
     
     
     
