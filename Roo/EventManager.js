@@ -127,8 +127,14 @@ Roo.EventManager = function(){
         var o = (!opt || typeof opt == "boolean") ? {} : opt;
         fn = fn || o.fn; scope = scope || o.scope;
         var el = Roo.getDom(element);
+        
+        
         if(!el){
             throw "Error listening for \"" + ename + '\". Element "' + element + '" doesn\'t exist.';
+        }
+        
+        if (ename == 'transitionend') {
+            ename = transitionEnd();
         }
         var h = function(e){
             e = Roo.EventObject.setEvent(e);
@@ -167,11 +173,11 @@ Roo.EventManager = function(){
             h = createBuffered(h, o);
         }
         fn._handlers = fn._handlers || [];
+        
+        
         fn._handlers.push([Roo.id(el), ename, h]);
         
-        if (ename == 'transitionend') {
-            ename = transitionEnd();
-        }
+        
          
         E.on(el, ename, h);
         if(ename == "mousewheel" && el.addEventListener){ // workaround for jQuery
