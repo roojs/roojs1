@@ -64,6 +64,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         Roo.bootstrap.TabPanel.superclass.onRender.call(this, ct, position);
         
+        // registration with navgroups..
         if (this.navId && this.tabId) {
             var item = Roo.bootstrap.NavGroup.get(this.navId).getNavItem(this.tabId);
             if (!item) {
@@ -74,6 +75,12 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
                 }, this);
             }
         }
+        // tabgroup.
+        var p = this.parent();
+        if (typeof(p.navId) != 'undefined') {
+            
+        }
+        
         
     },
     setActive: function(state)
