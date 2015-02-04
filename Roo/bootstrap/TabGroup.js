@@ -119,9 +119,11 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             pan.el.addClass('left');
             cur.el.on('transitionend', function() {
                 pan.el.removeClass(['left','next']);
-                cur.el.removeClass('left');
-                cur.setActive(false);
                 pan.setActive(true);
+                cur.setActive(false);
+                cur.el.removeClass('left');
+                
+                
                 
             }, this, {single:  true} );
             return;
