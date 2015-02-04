@@ -1477,6 +1477,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.disabled){
             return;
         }
+        
+        this.page = 0;
+        this.loadNext = false;
+        this.hasFocus = true;
+        
+        if(this.triggerAction == 'all') {
+            this.doQuery(this.allQuery, true);
+        } else {
+            this.doQuery(this.getRawValue());
+        }
     },
     
     listKeyPress : function(e)
