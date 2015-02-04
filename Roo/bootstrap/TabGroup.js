@@ -113,7 +113,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 cur.setActive(false);
                 pan.setActive(true);
                 
-            }, this, {single:: true} )
+            }, this, {single:  true} );
             return;
         }
         
