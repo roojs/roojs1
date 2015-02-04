@@ -114,16 +114,16 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         var cur = this.getActivePanel();
         if (this.carousel) {
             var dir = this.indexOfPanel(pan) > this.indexOfPanel(cur)  ? 'next' : 'prev';
-            
+            var lr = dir == 'next' ? 'left' : 'right';
             pan.el.addClass(dir); // or prev
             pan.el.dom.offsetWidth; // find the offset with - causing a reflow?
-            cur.el.addClass('left'); // or right
-            pan.el.addClass('left');
+            cur.el.addClass(lr); // or right
+            pan.el.addClass(lr);
             cur.el.on('transitionend', function() {
-                pan.el.removeClass(['left',dir]);
+                pan.el.removeClass([lr,dir]);
                 pan.setActive(true);
                 cur.setActive(false);
-                cur.el.removeClass('left');
+                cur.el.removeClass(lr);
                 
                 
                 
