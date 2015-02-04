@@ -634,6 +634,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 this.setValue(this.formatDate(this.date));
                 this.hide();
                 break;
+            case 17: // ctrl
+                break;
             default :
                 this.hide();
                 
