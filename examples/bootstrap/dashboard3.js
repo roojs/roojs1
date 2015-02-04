@@ -377,6 +377,7 @@ dashboard3 = new Roo.XComponent({
                                                     lg : 12,
                                                     xtype : 'TabGroup',
                                                     carousel : true,
+                                                    cls : 'carousel-inner',
                                                     xns : Roo.bootstrap,
                                                     navId : '#sample1',
                                                     items : [

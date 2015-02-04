@@ -273,6 +273,7 @@
                                                     "Number lg" : 12,
                                                     "xtype" : "TabGroup",
                                                     "boolean carousel" : true,
+                                                    "string cls" : "carousel-inner",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "string navId" : "#sample1",
                                                     "items" : [
