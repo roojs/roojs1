@@ -174,7 +174,8 @@ dashboard3 = new Roo.XComponent({
                                                     '|xns' : 'Roo.bootstrap',
                                                     cls : 'alert alert-danger alert-dismissable',
                                                     xtype : 'Container',
-                                                    xns : Roo.bootstrap
+                                                    xns : Roo.bootstrap,
+                                                    html : '<b> Alert </b> test allert'
                                                 }
                                             ]
 
