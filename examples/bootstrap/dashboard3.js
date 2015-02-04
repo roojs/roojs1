@@ -367,29 +367,6 @@ dashboard3 = new Roo.XComponent({
                                                     items : [
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',
-                                                            cls : 'carousel-control left',
-                                                            preventDefault : true,
-                                                            xtype : 'Link',
-                                                            xns : Roo.bootstrap,
-                                                            html : '<span class=\"glyphicon glyphicon-chevron-left\"></span>'
-                                                        },
-                                                    	{
-                                                            '|xns' : 'Roo.bootstrap',
-                                                            cls : 'carousel-control right',
-                                                            preventDefault : true,
-                                                            xtype : 'Link',
-                                                            xns : Roo.bootstrap,
-                                                            html : '<span class=\"glyphicon glyphicon-chevron-right\"></span>',
-                                                            listeners : {
-                                                            	click : function (e)
-                                                            	   {
-                                                            	     _this.tab_first.setActive(false);
-                                                            	   _this.tab_second.setActive(true);
-                                                            	   }
-                                                            }
-                                                        },
-                                                    	{
-                                                            '|xns' : 'Roo.bootstrap',
                                                             active : true,
                                                             cls : 'carousel slide',
                                                             xtype : 'TabPanel',
@@ -406,8 +383,8 @@ dashboard3 = new Roo.XComponent({
                                                             	{
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     xtype : 'Header',
-                                                                    xns : Roo.bootstrap,
                                                                     level : 3,
+                                                                    xns : Roo.bootstrap,
                                                                     html : 'some title'
                                                                 },
                                                             	{
@@ -449,6 +426,29 @@ dashboard3 = new Roo.XComponent({
                                                                 }
                                                             ]
 
+                                                        },
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            cls : 'carousel-control left',
+                                                            preventDefault : true,
+                                                            xtype : 'Link',
+                                                            xns : Roo.bootstrap,
+                                                            html : '<span class=\"glyphicon glyphicon-chevron-left\"></span>'
+                                                        },
+                                                    	{
+                                                            '|xns' : 'Roo.bootstrap',
+                                                            cls : 'carousel-control right',
+                                                            preventDefault : true,
+                                                            xtype : 'Link',
+                                                            xns : Roo.bootstrap,
+                                                            html : '<span class=\"glyphicon glyphicon-chevron-right\"></span>',
+                                                            listeners : {
+                                                            	click : function (e)
+                                                            	   {
+                                                            	     _this.tab_first.setActive(false);
+                                                            	   _this.tab_second.setActive(true);
+                                                            	   }
+                                                            }
                                                         },
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',
