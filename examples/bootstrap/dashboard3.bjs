@@ -138,7 +138,13 @@
                                         },
                                         {
                                             "xtype" : "Row",
-                                            "$ xns" : "Roo.bootstrap"
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "xtype" : "Container",
+                                                    "$ xns" : "Roo.bootstrap"
+                                                }
+                                            ]
                                         },
                                         {
                                             "xtype" : "Row",
