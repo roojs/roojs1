@@ -31,10 +31,15 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     carousel : false,
      
-    getAutoCreate : function(){
+    getAutoCreate : function()
+    {
         var cfg = Roo.apply({}, Roo.bootstrap.TabGroup.superclass.getAutoCreate.call(this));
         
         cfg.cls += ' tab-content';
+        
+        if (this.carousel) {
+            cfg.cls += ' carousel slide';
+        }
         
         return cfg;
     },
