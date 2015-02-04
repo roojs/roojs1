@@ -269,7 +269,7 @@
                                                                 "render" : "function (_self)\n{\n_this.tab_second = _self;\n}"
                                                             },
                                                             "Boolean active" : false,
-                                                            "String cls" : "carousel slide",
+                                                            "String cls" : "item",
                                                             "xtype" : "TabPanel",
                                                             "$ xns" : "Roo.bootstrap",
                                                             "String tabId" : "#second",
