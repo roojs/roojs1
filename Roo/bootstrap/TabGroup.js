@@ -21,6 +21,7 @@ Roo.bootstrap.TabGroup = function(config){
     if (!this.navId) {
         this.navId = Roo.id();
     }
+    Roo.bootstrap.TabGroup.register(this);
     
 };
 
