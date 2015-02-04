@@ -14601,6 +14601,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 this.setValue(this.formatDate(this.date));
                 this.hide();
                 break;
+            default :
+                this.hide();
                 
         }
     },
