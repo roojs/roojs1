@@ -1433,11 +1433,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        if(this.tickable){
-            this.onTickableTriggerClick(e);
-            return;
-        }
-        
         this.page = 0;
         this.loadNext = false;
         
@@ -1462,7 +1457,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onTickableTriggerClick : function(e)
     {
-        Roo.log(e.getTarget());
+        if(this.disabled){
+            return;
+        }
+        
         this.page = 0;
         this.loadNext = false;
         this.hasFocus = true;
@@ -1471,6 +1469,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.doQuery(this.allQuery, true);
         } else {
             this.doQuery(this.getRawValue());
+        }
+    },
+    
+    onSearchFieldClick : function(e)
+    {
+        if(this.disabled){
+            return;
         }
     },
     
