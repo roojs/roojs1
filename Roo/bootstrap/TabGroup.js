@@ -10,6 +10,7 @@
  * @extends Roo.bootstrap.Column
  * Bootstrap Column class
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
+ * @cfg {Boolean} carousel true to make the group behave like a carousel
  * 
  * @constructor
  * Create a new TabGroup
@@ -28,6 +29,7 @@ Roo.bootstrap.TabGroup = function(config){
 
 Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
+    carousel : false,
      
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TabGroup.superclass.getAutoCreate.call(this));
