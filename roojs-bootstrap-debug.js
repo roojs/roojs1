@@ -3177,6 +3177,7 @@ Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
 Roo.bootstrap.NavGroup = function(config){
     Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
     this.navItems = [];
+   
     Roo.bootstrap.NavGroup.register(this);
      this.addEvents({
         /**
@@ -3200,7 +3201,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     navId : '',
     // private
     
-    navItems : false,
+    navItems : false, 
     
     getAutoCreate : function()
     {
@@ -3254,7 +3255,10 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         
         return cfg;
     },
-    
+    /**
+    * sets the active Navigation item
+    * @param {Roo.bootstrap.NavItem} the new current navitem
+    */
     setActiveItem : function(item)
     {
         var prev = false;
@@ -3275,7 +3279,28 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         
         
     },
-    
+    /**
+    * gets the active Navigation item
+    * @return {Roo.bootstrap.NavItem} the current navitem
+    */
+    getActive : function()
+    {
+        
+        var prev = false;
+        Roo.each(this.navItems, function(v){
+            
+            if (v.isActive()) {
+                prev = v;
+                
+            }
+            
+        });
+        return prev;
+    },
+    /**
+    * adds a Navigation item
+    * @param {Roo.bootstrap.NavItem} the navitem to add
+    */
     addItem : function(cfg)
     {
         var cn = new Roo.bootstrap.NavItem(cfg);
@@ -3284,13 +3309,18 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         cn.onRender(this.el, null);
         return cn;
     },
-    
+    /**
+    * register a Navigation item
+    * @param {Roo.bootstrap.NavItem} the navitem to add
+    */
     register : function(item)
     {
         this.navItems.push( item);
         item.navId = this.navId;
     
     },
+  
+    
     getNavItem: function(tabId)
     {
         var ret = false;
@@ -3314,14 +3344,26 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
 Roo.apply(Roo.bootstrap.NavGroup, {
     
     groups: {},
-    
+     /**
+    * register a Navigation Group
+    * @param {Roo.bootstrap.NavGroup} the navgroup to add
+    */
     register : function(navgrp)
     {
-	this.groups[navgrp.navId] = navgrp;
+        this.groups[navgrp.navId] = navgrp;
 	
     },
+    /**
+    * fetch a Navigation Group based on the navigation ID
+    * @param {string} the navgroup to add
+    * @returns {Roo.bootstrap.NavGroup} the navgroup 
+    */
     get: function(navId) {
-        return this.groups[navId];
+        if (typeof(this.groups[navId]) == 'undefined') {
+            return false;
+            //this.register(new Roo.bootstrap.NavGroup({ navId : navId }));
+        }
+        return this.groups[navId] ;
     }
     
     
@@ -10607,10 +10649,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.choices = this.el.select('ul.select2-choices', true).first();
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
-        this.searchField.on("click", this.onTriggerClick, this, {preventDefault:true});
+        
+        this.searchField.on("click", this.onSearchFieldClick, this, {preventDefault:true});
          
         this.trigger = this.el.select('.tickable-buttons > .btn-edit', true).first();
-        this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
+        this.trigger.on("click", this.onTickableTriggerClick, this, {preventDefault:true});
         
         this.okBtn = this.el.select('.tickable-buttons > .btn-ok', true).first();
         this.cancelBtn = this.el.select('.tickable-buttons > .btn-cancel', true).first();
@@ -11283,6 +11326,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
+        this.hasFocus = false;
+        
         this.list.hide();
         
         if(this.tickable){
@@ -11350,16 +11395,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     // Implements the default empty TriggerField.onTriggerClick function
-    onTriggerClick : function()
+    onTriggerClick : function(e)
     {
         Roo.log('trigger click');
         
         if(this.disabled){
-            return;
-        }
-        
-        if(this.tickable){
-            this.onTickableTriggerClick();
             return;
         }
         
@@ -11385,8 +11425,29 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
     },
     
-    onTickableTriggerClick : function()
+    onTickableTriggerClick : function(e)
     {
+        if(this.disabled){
+            return;
+        }
+        
+        this.page = 0;
+        this.loadNext = false;
+        this.hasFocus = true;
+        
+        if(this.triggerAction == 'all') {
+            this.doQuery(this.allQuery, true);
+        } else {
+            this.doQuery(this.getRawValue());
+        }
+    },
+    
+    onSearchFieldClick : function(e)
+    {
+        if(this.hasFocus || this.disabled || e.getTarget().nodeName.toLowerCase() == 'button'){
+            return;
+        }
+        
         this.page = 0;
         this.loadNext = false;
         this.hasFocus = true;
@@ -13638,7 +13699,7 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
  * Bootstrap TabPanel class
  * @cfg {Boolean} active panel active
  * @cfg {String} html panel content
- * @cfg {String} tabId tab relate id
+ * @cfg {String} tabId  unique tab ID (will be autogenerated if not set. - used to match TabItem to Panel)
  * @cfg {String} navId The Roo.bootstrap.NavGroup which triggers show hide ()
  * 
  * 
@@ -13659,6 +13720,8 @@ Roo.bootstrap.TabPanel = function(config){
          */
         'changed': true
      });
+    this.tabId = this.tabId || Roo.id();
+  
 };
 
 Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
@@ -13685,22 +13748,46 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         return cfg;
     },
+    
+    initEvents:  function()
+    {
+        Roo.log('-------- init events on tab panel ---------');
+        
+        var p = this.parent();
+        this.navId = this.navId || p.navId;
+        
+        if (typeof(this.navId) != 'undefined') {
+            // not really needed.. but just in case.. parent should be a NavGroup.
+            var tg = Roo.bootstrap.TabGroup.get(this.navId);
+             Roo.log(['register', tg, this]);
+            tg.register(this);
+        }
+    },
+    
+    
     onRender : function(ct, position)
     {
        // Roo.log("Call onRender: " + this.xtype);
         
         Roo.bootstrap.TabPanel.superclass.onRender.call(this, ct, position);
         
+        // registration with navgroups..
         if (this.navId && this.tabId) {
-            var item = Roo.bootstrap.NavGroup.get(this.navId).getNavItem(this.tabId);
-            if (!item) {
-                Roo.log("could not find navID:"  + this.navId + ", tabId: " + this.tabId);
-            } else {
-                item.on('changed', function(item, state) {
-                    this.setActive(state);
-                }, this);
+            var grp = Roo.bootstrap.NavGroup.get(this.navId);
+            if (grp) {
+                //code
+                var item = grp.getNavItem(this.tabId);
+                if (!item) {
+                    Roo.log("could not find navID:"  + this.navId + ", tabId: " + this.tabId);
+                } else {
+                    item.on('changed', function(item, state) {
+                        this.setActive(state);
+                    }, this);
+                }
             }
         }
+        
+        
         
     },
     setActive: function(state)
