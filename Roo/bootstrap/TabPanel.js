@@ -33,13 +33,7 @@ Roo.bootstrap.TabPanel = function(config){
         'changed': true
      });
     this.tabId = this.tabId || Roo.id();
-    if (typeof(p.navId) != 'undefined') {
-          // not really needed.. but just in case.. parent should be a NavGroup.
-        var tg = Roo.bootstrap.TabGroup.get(p.navId);
-        this.navId = this.navId || p.navId;
-        Roo.log(['register', tg, this]);
-        tg.register(this);
-    }
+  
 };
 
 Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
@@ -66,6 +60,21 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         return cfg;
     },
+    
+    initEvents:  function()
+    {
+        var p = this.parent();
+
+        if (typeof(p.navId) != 'undefined') {
+            // not really needed.. but just in case.. parent should be a NavGroup.
+            var tg = Roo.bootstrap.TabGroup.get(p.navId);
+            this.navId = this.navId || p.navId;
+            Roo.log(['register', tg, this]);
+            tg.register(this);
+        }
+    },
+    
+    
     onRender : function(ct, position)
     {
        // Roo.log("Call onRender: " + this.xtype);
@@ -83,12 +92,10 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
                 } else {
                     item.on('changed', function(item, state) {
                         this.setActive(state);
-                    }, this);
                 }
             }
         }
         // tabgroup.
-        var p = this.parent();
        
         
         
