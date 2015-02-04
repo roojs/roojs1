@@ -294,7 +294,6 @@
                                                                     "String html" : "first tab"
                                                                 },
                                                                 {
-                                                                    "String cls" : "carousel-inner",
                                                                     "xtype" : "Container",
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "String well" : "md",
@@ -343,7 +342,6 @@
                                                                     "String html" : "second tab"
                                                                 },
                                                                 {
-                                                                    "String cls" : "carousel-inner",
                                                                     "xtype" : "Container",
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "String well" : "md",
