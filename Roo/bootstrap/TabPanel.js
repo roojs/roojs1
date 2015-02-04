@@ -78,7 +78,10 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         // tabgroup.
         var p = this.parent();
         if (typeof(p.navId) != 'undefined') {
-            
+            // not really needed.. but just in case.. parent should be a NavGroup.
+            var tg = Roo.bootstrap.TabGroup.get(p.navId);
+            this.navId = this.navId || p.navId;
+            tg.register(this);
         }
         
         
