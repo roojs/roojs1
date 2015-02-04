@@ -270,7 +270,6 @@
                                             "$ xns" : "Roo.bootstrap",
                                             "items" : [
                                                 {
-                                                    "String cls" : "tab-content",
                                                     "Number lg" : 12,
                                                     "xtype" : "TabGroup",
                                                     "boolean carousel" : true,
