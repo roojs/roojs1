@@ -111,10 +111,10 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     showPrevPanel : function()
     {
         var i = this.indexOfPanel(this.getActivePanel());
-        if (i-1  < 0) {
+        if (i  < 1) {
             return;
         }
-        this.showPanel(this.tabs[i+1]);
+        this.showPanel(this.tabs[i-1]);
     }
     
     
