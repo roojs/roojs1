@@ -291,7 +291,7 @@
                                                                     "xtype" : "Header",
                                                                     "$ xns" : "Roo.bootstrap",
                                                                     "Number level" : 3,
-                                                                    "String html" : "next tab"
+                                                                    "String html" : "first tab"
                                                                 },
                                                                 {
                                                                     "String cls" : "carousel-inner",
@@ -340,7 +340,7 @@
                                                                     "xtype" : "Header",
                                                                     "Number level" : 3,
                                                                     "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "some title"
+                                                                    "String html" : "second tab"
                                                                 },
                                                                 {
                                                                     "String cls" : "carousel-inner",
