@@ -153,6 +153,12 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         item.navId = this.navId;
     
     },
+    registerTab : function(item)
+    {
+        this.tabs.push(item);
+    }
+    
+    
     getNavItem: function(tabId)
     {
         var ret = false;
