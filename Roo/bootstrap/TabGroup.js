@@ -107,8 +107,15 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return;
         }
         this.showPanel(this.tabs[i+1]);
+    },
+    showPrevPanel : function()
+    {
+        var i = this.indexOfPanel(this.getActivePanel());
+        if (i-1  < 0) {
+            return;
+        }
+        this.showPanel(this.tabs[i+1]);
     }
-    
     
     
   
