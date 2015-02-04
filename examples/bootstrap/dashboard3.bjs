@@ -273,6 +273,7 @@
                                                     "String cls" : "tab-content carousel slide",
                                                     "Number lg" : 12,
                                                     "xtype" : "TabGroup",
+                                                    "string carousel" : "",
                                                     "$ xns" : "Roo.bootstrap",
                                                     "items" : [
                                                         {
