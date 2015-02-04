@@ -50,13 +50,30 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     getActivePanel : function()
     {
-        
+        var r = false;
+        Roo.each(this.tabs, function(t) {
+            if (t.active) {
+                r = t;
+                return false;
+            }
+            return null;
+        });
+        return r;
         
     },
-    getPanelByName : function()
+    getPanelByName : function(n)
     {
-        
+        var r = false;
+        Roo.each(this.tabs, function(t) {
+            if (t.tabId == n) {
+                r = t;
+                return false;
+            }
+            return null;
+        });
+        return r;
     },
+    
     showPanel : function (pan) {
         if (typeof (pan) == 'number') {
             pan = this.tabs[pan];
