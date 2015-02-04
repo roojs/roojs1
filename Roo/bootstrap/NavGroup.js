@@ -23,7 +23,7 @@
 Roo.bootstrap.NavGroup = function(config){
     Roo.bootstrap.NavGroup.superclass.constructor.call(this, config);
     this.navItems = [];
-    this.tabs = [];
+   
     Roo.bootstrap.NavGroup.register(this);
      this.addEvents({
         /**
@@ -47,8 +47,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     navId : '',
     // private
     
-    navItems : false,
-    tabs : false,
+    navItems : false, 
     
     getAutoCreate : function()
     {
