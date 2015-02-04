@@ -274,6 +274,7 @@
                                                     "xtype" : "TabGroup",
                                                     "boolean carousel" : true,
                                                     "$ xns" : "Roo.bootstrap",
+                                                    "string navId" : "",
                                                     "items" : [
                                                         {
                                                             "listeners" : {
