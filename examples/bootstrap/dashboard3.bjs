@@ -265,6 +265,23 @@
                                                     "height" : 500,
                                                     "items" : [
                                                         {
+                                                            "String cls" : "carousel-control left",
+                                                            "Boolean preventDefault" : true,
+                                                            "xtype" : "Link",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "<span class=\"glyphicon glyphicon-chevron-left\"></span>"
+                                                        },
+                                                        {
+                                                            "listeners" : {
+                                                                "click" : "function (e)\n{\n  _this.tab_first.setActive(false);\n_this.tab_second.setActive(true);\n}"
+                                                            },
+                                                            "String cls" : "carousel-control right",
+                                                            "Boolean preventDefault" : true,
+                                                            "xtype" : "Link",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "<span class=\"glyphicon glyphicon-chevron-right\"></span>"
+                                                        },
+                                                        {
                                                             "listeners" : {
                                                                 "render" : "function (_self)\n{\n_this.tab_first = _self;\n}"
                                                             },
@@ -310,23 +327,6 @@
                                                                             ]
                                                                         }
                                                                     ]
-                                                                },
-                                                                {
-                                                                    "String cls" : "carousel-control left",
-                                                                    "Boolean preventDefault" : true,
-                                                                    "xtype" : "Link",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "<span class=\"glyphicon glyphicon-chevron-left\"></span>"
-                                                                },
-                                                                {
-                                                                    "listeners" : {
-                                                                        "click" : "function (e)\n{\n  _this.tab_first.setActive(false);\n_this.tab_second.setActive(true);\n}"
-                                                                    },
-                                                                    "String cls" : "carousel-control right",
-                                                                    "Boolean preventDefault" : true,
-                                                                    "xtype" : "Link",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "<span class=\"glyphicon glyphicon-chevron-right\"></span>"
                                                                 }
                                                             ]
                                                         },
@@ -376,18 +376,6 @@
                                                                             ]
                                                                         }
                                                                     ]
-                                                                },
-                                                                {
-                                                                    "String cls" : "carousel-control left",
-                                                                    "xtype" : "Link",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "<span class=\"glyphicon glyphicon-chevron-left\"></span>"
-                                                                },
-                                                                {
-                                                                    "String cls" : "carousel-control right",
-                                                                    "xtype" : "Link",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "<span class=\"glyphicon glyphicon-chevron-right\"></span>"
                                                                 }
                                                             ]
                                                         }
