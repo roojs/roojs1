@@ -47,6 +47,10 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         return cfg;
     },
+    getChildContainer : function()
+    {
+        return this.carousel ? this.el.select('.carousel-inner', true).first() : this.el;
+    },
     
     /**
     * register a Navigation item
