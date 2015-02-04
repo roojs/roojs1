@@ -87,13 +87,13 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     },
     showPanel : function (pan)
     {
-        if (typeof (pan) == 'number') {
+        if (typeof(pan) == 'pnumber') {
             pan = this.tabs[pan];
         }
-        if (typeof (pan) == 'string') {
+        if (typeof(pan) == 'string') {
             pan = this.getPanelByName(pan);
         }
-        if (pan.navId == this.getActivePanel().navId) {
+        if (pan.tabId == this.getActivePanel().tabId) {
             return;
         }
         this.getActivePanel().setActive(false);
