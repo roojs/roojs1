@@ -564,7 +564,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 this.show();
             return;
         }
-        Roo.log(e.keyCode);
+        
         var dateChanged = false,
         dir, day, month,
         newDate, newViewDate;
@@ -634,9 +634,12 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 this.setValue(this.formatDate(this.date));
                 this.hide();
                 break;
+            case 16: // shift
             case 17: // ctrl
+            case 18: // alt
                 break;
-            
+            default :
+                this.hide();
                 
         }
     },
