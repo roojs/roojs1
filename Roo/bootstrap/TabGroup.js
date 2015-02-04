@@ -44,9 +44,10 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     register : function(item)
     {
         this.tabs.push( item);
-        item.navId = this.navId;
+        item.navId = this.navId; // not really needed..
     
     },
+    
   
 });
 
