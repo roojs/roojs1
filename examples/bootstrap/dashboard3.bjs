@@ -268,7 +268,7 @@
                                                             "listeners" : {
                                                                 "render" : "function (_self)\n{\n_this.tab_second = _self;\n}"
                                                             },
-                                                            "Boolean active" : false,
+                                                            "Boolean active" : true,
                                                             "String cls" : "item",
                                                             "xtype" : "TabPanel",
                                                             "$ xns" : "Roo.bootstrap",
