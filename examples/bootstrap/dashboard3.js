@@ -511,68 +511,6 @@ dashboard3 = new Roo.XComponent({
                                                             	   _this.tab_second.setActive(true);
                                                             	   }
                                                             }
-                                                        },
-                                                    	{
-                                                            '|xns' : 'Roo.bootstrap',
-                                                            active : false,
-                                                            cls : 'carousel slide',
-                                                            xtype : 'TabPanel',
-                                                            xns : Roo.bootstrap,
-                                                            tabId : '#second',
-                                                            navId : '#sample1',
-                                                            listeners : {
-                                                            	render : function (_self)
-                                                            	   {
-                                                            	   _this.tab_second = _self;
-                                                            	   }
-                                                            },
-                                                            items : [
-                                                            	{
-                                                                    '|xns' : 'Roo.bootstrap',
-                                                                    xtype : 'Header',
-                                                                    level : 3,
-                                                                    xns : Roo.bootstrap,
-                                                                    html : 'next tab'
-                                                                },
-                                                            	{
-                                                                    '|xns' : 'Roo.bootstrap',
-                                                                    cls : 'carousel-inner',
-                                                                    xtype : 'Container',
-                                                                    xns : Roo.bootstrap,
-                                                                    well : 'md',
-                                                                    style : 'padding-left:50px;padding-right:50px;',
-                                                                    items : [
-                                                                    	{
-                                                                            '|xns' : 'Roo.bootstrap',
-                                                                            xtype : 'Row',
-                                                                            xns : Roo.bootstrap,
-                                                                            items : [
-                                                                            	{
-                                                                                    '|xns' : 'Roo.bootstrap',
-                                                                                    md : 6,
-                                                                                    xtype : 'Column',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    items : [
-                                                                                    	{
-                                                                                            '|xns' : 'Roo.bootstrap',
-                                                                                            labelAlign : 'top',
-                                                                                            fieldLabel : 'Some input',
-                                                                                            xtype : 'Input',
-                                                                                            allowBlank : true,
-                                                                                            xns : Roo.bootstrap,
-                                                                                            name : 'chosen_title'
-                                                                                        }
-                                                                                    ]
-
-                                                                                }
-                                                                            ]
-
-                                                                        }
-                                                                    ]
-
-                                                                }
-                                                            ]
-
                                                         }
                                                     ]
 
