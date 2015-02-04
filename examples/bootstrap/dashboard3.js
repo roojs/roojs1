@@ -409,7 +409,7 @@ dashboard3 = new Roo.XComponent({
                                                                                     	{
                                                                                             '|xns' : 'Roo.bootstrap',
                                                                                             labelAlign : 'top',
-                                                                                            fieldLabel : 'Some input',
+                                                                                            fieldLabel : 'This is a label',
                                                                                             xtype : 'Input',
                                                                                             allowBlank : true,
                                                                                             xns : Roo.bootstrap,

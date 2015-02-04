@@ -299,7 +299,7 @@
                                                                                     "items" : [
                                                                                         {
                                                                                             "labelAlign" : "top",
-                                                                                            "fieldLabel" : "Some input",
+                                                                                            "fieldLabel" : "This is a label",
                                                                                             "xtype" : "Input",
                                                                                             "allowBlank" : true,
                                                                                             "$ xns" : "Roo.bootstrap",
