@@ -122,8 +122,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             cur.el.on('transitionend', function() {
                 pan.el.removeClass([lr,dir]);
                 pan.setActive(true);
-                cur.setActive(false);
-                cur.el.removeClass(lr);
+                cur.active = false;
+                cur.el.removeClass(lr, 'active');
                 
                 
                 
