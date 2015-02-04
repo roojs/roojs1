@@ -22,6 +22,13 @@ Roo.EventManager = function(){
     var E = Roo.lib.Event;
     var D = Roo.lib.Dom;
 
+    var transEndEventNames = {
+        WebkitTransition : 'webkitTransitionEnd',
+        MozTransition    : 'transitionend',
+        OTransition      : 'oTransitionEnd otransitionend',
+        transition       : 'transitionend'
+      }
+    
 
     var fireDocReady = function(){
         if(!docReadyState){
@@ -96,6 +103,30 @@ Roo.EventManager = function(){
             }, o.delay || 10);
         };
     };
+    var transitionEndVal = false;
+    
+    var transitionEnd = funciton()
+    {
+        if (transitionEndVal) {
+            return transitionEndVal;
+        }
+        var el = document.createElement('div')
+
+        var transEndEventNames = {
+            WebkitTransition : 'webkitTransitionEnd',
+            MozTransition    : 'transitionend',
+            OTransition      : 'oTransitionEnd otransitionend',
+            transition       : 'transitionend'
+        }
+    
+        for (var name in transEndEventNames) {
+            if (el.style[name] !== undefined) {
+                transitionEndVal = transEndEventNames[name];
+                return  transitionEndVal ;
+            }
+        }
+    }
+    
 
     var listen = function(element, ename, opt, fn, scope){
         var o = (!opt || typeof opt == "boolean") ? {} : opt;
@@ -142,7 +173,18 @@ Roo.EventManager = function(){
         }
         fn._handlers = fn._handlers || [];
         fn._handlers.push([Roo.id(el), ename, h]);
-
+        
+        if (ename == 'transitionend') {
+            
+          
+              for (var name in transEndEventNames) {
+                if (el.style[name] !== undefined) {
+                  return { end: transEndEventNames[name] }
+                }
+              }
+        }
+        
+        
         E.on(el, ename, h);
         if(ename == "mousewheel" && el.addEventListener){ // workaround for jQuery
             el.addEventListener("DOMMouseScroll", h, false);
