@@ -262,7 +262,6 @@
                                                     "Number lg" : 12,
                                                     "xtype" : "TabGroup",
                                                     "$ xns" : "Roo.bootstrap",
-                                                    "height" : 500,
                                                     "items" : [
                                                         {
                                                             "listeners" : {
