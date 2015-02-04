@@ -103,7 +103,21 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         if (pan.tabId == this.getActivePanel().tabId) {
             return;
         }
-        this.getActivePanel().setActive(false);
+        var cur = this.getActivePanel();
+        if (this.carousel) {
+            pan.el.addClass('next'); // or prev
+            cur.el.addClass('left'); // or right
+            pan.el.addClass('left');
+            cur.el.on('transitionend', function() {
+                pan.el.removeClass(['left','next']);
+                cur.setActive(false);
+                pan.setActive(true);
+                
+            }, this, {single:: true} )
+            return;
+        }
+        
+        cur.setActive(false);
         pan.setActive(true);
         
     },
