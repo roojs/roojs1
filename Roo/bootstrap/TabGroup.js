@@ -139,6 +139,7 @@ Roo.apply(Roo.bootstrap.TabGroup, {
     },
     /**
     * fetch a Navigation Group based on the navigation ID
+    * if one does not exist , it will get created.
     * @param {string} the navgroup to add
     * @returns {Roo.bootstrap.NavGroup} the navgroup 
     */
