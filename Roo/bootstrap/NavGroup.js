@@ -179,9 +179,24 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             
         });
         return ret;
+    },
+    
+    showPanelNext : function()
+    {
+        var i = this.indexOfPanel(this.getActiveNav());
+        if (i > this.navItems.length) {
+            return;
+        }
+        this.setActiveItem(this.navItems[i+1]);
+    },
+    showPanelPrev : function()
+    {
+        var i = this.indexOfPanel(this.getActiveNav());
+        if (i  < 1) {
+            return;
+        }
+        this.setActiveItem(this.navItems[i-1]);
     }
-    
-    
     
     
 });
