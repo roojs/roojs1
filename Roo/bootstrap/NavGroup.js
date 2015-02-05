@@ -196,7 +196,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         return ret;
     },
     
-    showPanelNext : function()
+    setActiveNext : function()
     {
         var i = this.indexOfNav(this.getActive());
         if (i > this.navItems.length) {
@@ -204,7 +204,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         }
         this.setActiveItem(this.navItems[i+1]);
     },
-    showPanelPrev : function()
+    setActivePrev : function()
     {
         var i = this.indexOfNav(this.getActive());
         if (i  < 1) {
