@@ -141,9 +141,6 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             if (typeof(this.parent().setActiveItem) !== 'undefined') {
                 this.parent().setActiveItem(this);
             }
-	    
-	    
-	    
         } 
     },
     
@@ -176,7 +173,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (!pan) {
             return;
         }
-        tg.showPanel(pan);
+        if (false == tg.showPanel(pan)) {
+            
+            
+            
+        }
         
         
 	
