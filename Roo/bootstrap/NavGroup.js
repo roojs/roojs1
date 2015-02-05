@@ -216,10 +216,24 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         Roo.each(this.navItems, function(e) {
             if (e.tabId != except.tabId && e.was_active) {
                e.was_active = false;
+               return false;
             }
             return true;
             
         });
+    },
+    getWasActive : function ()
+    {
+        var r = false;
+        Roo.each(this.navItems, function(e) {
+            if (e.was_active) {
+               r = e;
+               return false;
+            }
+            return true;
+            
+        });
+        return r;
     }
     
     
