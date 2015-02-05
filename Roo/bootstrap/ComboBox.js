@@ -861,11 +861,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.editable = value;
         if(!value){
             this.inputEl().dom.setAttribute('readOnly', true);
-            //this.inputEl().on('mousedown', this.onTriggerClick,  this);
+            this.inputEl().on('mousedown', this.onTriggerClick,  this);
             this.inputEl().addClass('x-combo-noedit');
         }else{
             this.inputEl().dom.setAttribute('readOnly', false);
-            //this.inputEl().un('mousedown', this.onTriggerClick,  this);
+            this.inputEl().un('mousedown', this.onTriggerClick,  this);
             this.inputEl().removeClass('x-combo-noedit');
         }
     },
