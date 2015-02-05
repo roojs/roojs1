@@ -3463,6 +3463,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     tagtype : 'a',
     disabled : false,
     
+    was_active : false,
+    
     getAutoCreate : function(){
          
         var cfg = {
@@ -3543,9 +3545,6 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             if (typeof(this.parent().setActiveItem) !== 'undefined') {
                 this.parent().setActiveItem(this);
             }
-	    
-	    
-	    
         } 
     },
     
@@ -3578,7 +3577,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (!pan) {
             return;
         }
-        tg.showPanel(pan);
+        if (false == tg.showPanel(pan)) {
+            
+            
+            
+        }
         
         
 	
@@ -5038,9 +5041,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.cls = 'sortable';
             }
             
-//            if(typeof(config.align) != 'undefined' && config.align.length){
-//                c.style += ' text-align:' + config.align + ';';
-//            }
+            if(typeof(config.align) != 'undefined' && config.align.length){
+                c.style += ' text-align:' + config.align + ';';
+            }
             
             if(typeof(config.width) != 'undefined'){
                 c.style += ' width:' + config.width + 'px;';
@@ -13835,8 +13838,16 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         });
         return r;
     },
+    /**
+     * show a specific panel
+     * @param {Roo.bootstrap.TabPanel|number|string} panel to change to (use the tabId to specify a specific one)
+     * @return {boolean} false if panel was not shown (invalid entry or beforedeactivate fails.)
+     */
     showPanel : function (pan)
     {
+        
+        
+        
         if (typeof(pan) == 'number') {
             pan = this.tabs[pan];
         }
@@ -13844,9 +13855,16 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             pan = this.getPanelByName(pan);
         }
         if (pan.tabId == this.getActivePanel().tabId) {
-            return;
+            return true;
         }
         var cur = this.getActivePanel();
+        
+        if (false === cur.fireEvent('beforedeactivate')) {
+            return false;
+        }
+        
+        
+        
         if (this.carousel) {
             var dir = this.indexOfPanel(pan) > this.indexOfPanel(cur)  ? 'next' : 'prev';
             var lr = dir == 'next' ? 'left' : 'right';
@@ -13865,11 +13883,12 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 
                 
             }, this, { single:  true } );
-            return;
+            return true;
         }
         
         cur.setActive(false);
         pan.setActive(true);
+        return true;
         
     },
     showPanelNext : function()
@@ -13950,7 +13969,7 @@ Roo.apply(Roo.bootstrap.TabGroup, {
 
 Roo.bootstrap.TabPanel = function(config){
     Roo.bootstrap.TabPanel.superclass.constructor.call(this, config);
-     this.addEvents({
+    this.addEvents({
         /**
 	     * @event changed
 	     * Fires when the active status changes
@@ -13958,8 +13977,17 @@ Roo.bootstrap.TabPanel = function(config){
 	     * @param {Boolean} state the new state
 	    
          */
-        'changed': true
+        'changed': true,
+        /**
+	     * @event beforedeactivate
+	     * Fires before a tab is de-activated - can be used to do validation on a form.
+	     * @param {Roo.bootstrap.TabPanel} this
+	     * @return {Boolean} false if there is an error
+	    
+         */
+        'beforedeactivate': true
      });
+    
     this.tabId = this.tabId || Roo.id();
   
 };
@@ -14018,6 +14046,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         
     },
+    
     setActive: function(state)
     {
         Roo.log("panel - set active " + this.tabId + "=" + state);
