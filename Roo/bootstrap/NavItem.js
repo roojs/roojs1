@@ -161,7 +161,24 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (fire) {
             this.fireEvent('changed', this, state);
         }
-	
+        
+        // show a panel if it's registered and related..
+        
+        if (!this.navId || !this.tabId || !state) {
+            return;
+        }
+        
+        var tg = Roo.bootstrap.TabGroup.get(this.navId);
+        if (!tg) {
+            return;
+        }
+        var pan = tg.get(this.tabId);
+        if (!pan) {
+            return;
+        }
+        tg.showPanel(pan);
+        
+        
 	
     },
      // this should not be here...
