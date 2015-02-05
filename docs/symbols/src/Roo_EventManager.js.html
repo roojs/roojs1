@@ -22,6 +22,8 @@
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">E </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Event</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">D </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom</span><span class="jsdoc-syntax">;
 
+    
+    
 
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fireDocReady </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">docReadyState</span><span class="jsdoc-syntax">){
@@ -96,13 +98,43 @@
             }, </span><span class="jsdoc-var">o.delay </span><span class="jsdoc-syntax">|| 10);
         };
     };
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">transitionEndVal </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">transitionEnd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">transitionEndVal</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">transitionEndVal</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">)
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">transEndEventNames </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">WebkitTransition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'webkitTransitionEnd'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">MozTransition    </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'transitionend'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">OTransition      </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'oTransitionEnd otransitionend'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">transition       </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'transitionend'
+        </span><span class="jsdoc-syntax">}
+    
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">name </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">transEndEventNames</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">] !== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">transitionEndVal </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">transEndEventNames</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-keyword">return  </span><span class="jsdoc-var">transitionEndVal </span><span class="jsdoc-syntax">;
+            }
+        }
+    }
+    
 
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listen </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">element</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ename</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">= (!</span><span class="jsdoc-var">opt </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">opt </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;boolean&quot;</span><span class="jsdoc-syntax">) ? {} : </span><span class="jsdoc-var">opt</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">o.fn</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">o.scope</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">element</span><span class="jsdoc-syntax">);
+        
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;Error listening for \&quot;&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">ename </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'\&quot;. Element &quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">element </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot; doesn\'t exist.'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ename </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'transitionend'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">ename </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">transitionEnd</span><span class="jsdoc-syntax">();
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.EventObject.setEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
@@ -141,8 +173,12 @@
             </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">createBuffered</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-var">fn._handlers </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">fn._handlers </span><span class="jsdoc-syntax">|| [];
+        
+        
         </span><span class="jsdoc-var">fn._handlers.push</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">ename</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">]);
-
+        
+        
+         
         </span><span class="jsdoc-var">E.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ename</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ename </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;mousewheel&quot; </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">el.addEventListener</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// workaround for jQuery
             </span><span class="jsdoc-var">el.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;DOMMouseScroll&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
