@@ -3574,7 +3574,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (!tg) {
             return;
         }
-        var pan = tg.get(this.tabId);
+        var pan = tg.getPanelByName(this.tabId);
         if (!pan) {
             return;
         }
