@@ -22,7 +22,7 @@
 
 Roo.bootstrap.TabPanel = function(config){
     Roo.bootstrap.TabPanel.superclass.constructor.call(this, config);
-     this.addEvents({
+    this.addEvents({
         /**
 	     * @event changed
 	     * Fires when the active status changes
@@ -30,8 +30,17 @@ Roo.bootstrap.TabPanel = function(config){
 	     * @param {Boolean} state the new state
 	    
          */
-        'changed': true
+        'changed': true,
+        /**
+	     * @event beforedeactivate
+	     * Fires before a tab is de-activated - can be used to do validation on a form.
+	     * @param {Roo.bootstrap.TabPanel} this
+	     * @return {Boolean} false if there is an error
+	    
+         */
+        'beforedeactivate': true
      });
+    
     this.tabId = this.tabId || Roo.id();
   
 };
