@@ -10326,7 +10326,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     autoFocus : true,
     tickable : false,
     btnPosition : 'right',
-    
+    editNotList : false,
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
@@ -10737,8 +10737,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.choices = this.el.select('ul.select2-choices', true).first();
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
-        
-        this.searchField.on("click", this.onSearchFieldClick, this, {preventDefault:true});
+        if(this.editNotList){
+            this.searchField.on("click", this.onSearchFieldClick, this, {preventDefault:true});
+        }
          
         this.trigger = this.el.select('.tickable-buttons > .btn-edit', true).first();
         this.trigger.on("click", this.onTickableTriggerClick, this, {preventDefault:true});
