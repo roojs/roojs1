@@ -83,26 +83,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         Roo.bootstrap.TabPanel.superclass.onRender.call(this, ct, position);
         
-        // registration with navgroups..
-        if (this.navId && this.tabId) {
-            var grp = Roo.bootstrap.NavGroup.get(this.navId);
-            if (grp) {
-                //code
-                var item = grp.getNavItem(this.tabId);
-                if (!item) {
-                    Roo.log("could not find navID:"  + this.navId + ", tabId: " + this.tabId);
-                } else {
-                    item.on('changed', function(item, state) {
-                        var tg = Roo.bootstrap.TabGroup.get(this.navId);
-                        if (state) {
-                            tg.showPanel(this)
-                        }
-                        return;
-                        
-                    }, this);
-                }
-            }
-        }
+        
         
         
         
