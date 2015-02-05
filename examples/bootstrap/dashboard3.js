@@ -508,7 +508,13 @@ dashboard3 = new Roo.XComponent({
                                                             preventDefault : true,
                                                             xtype : 'Link',
                                                             xns : Roo.bootstrap,
-                                                            html : '<span class=\"glyphicon glyphicon-chevron-left\"></span>'
+                                                            html : '<span class=\"glyphicon glyphicon-chevron-left\"></span>',
+                                                            listeners : {
+                                                            	click : function (e)
+                                                            	   {
+                                                            	       _this.tabgroup.showPanelNext();
+                                                            	   }
+                                                            }
                                                         },
                                                     	{
                                                             '|xns' : 'Roo.bootstrap',

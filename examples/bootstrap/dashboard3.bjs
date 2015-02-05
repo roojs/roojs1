@@ -373,6 +373,9 @@
                                                             ]
                                                         },
                                                         {
+                                                            "listeners" : {
+                                                                "click" : "function (e)\n{\n    _this.tabgroup.showPanelNext();\n}"
+                                                            },
                                                             "String cls" : "carousel-control left",
                                                             "Boolean preventDefault" : true,
                                                             "xtype" : "Link",
