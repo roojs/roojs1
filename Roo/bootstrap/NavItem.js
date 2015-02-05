@@ -185,8 +185,13 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             return;
         }
         if (false == tg.showPanel(pan)) {
-            
-            
+            var nv = Roo.bootstrap.NavGroup.get(this.navId);
+            if (nv) {
+                var onav = nv.getWasActive();
+                if (onav) {
+                    onav.setActive(true, false);
+                }
+            }
             
         }
         
