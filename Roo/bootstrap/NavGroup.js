@@ -143,6 +143,21 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         });
         return prev;
     },
+    
+     getActive : function()
+    {
+        
+        var prev = false;
+        Roo.each(this.navItems, function(v){
+            
+            if (v.isActive()) {
+                prev = v;
+                
+            }
+            
+        });
+        return prev;
+    },
     /**
     * adds a Navigation item
     * @param {Roo.bootstrap.NavItem} the navitem to add
@@ -183,7 +198,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     
     showPanelNext : function()
     {
-        var i = this.indexOfPanel(this.getActiveNav());
+        var i = this.indexOfNav(this.getActive());
         if (i > this.navItems.length) {
             return;
         }
@@ -191,7 +206,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     },
     showPanelPrev : function()
     {
-        var i = this.indexOfPanel(this.getActiveNav());
+        var i = this.indexOfNav(this.getActive());
         if (i  < 1) {
             return;
         }
