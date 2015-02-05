@@ -46,7 +46,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = {
             tag: 'div',
-            cls: 'tab-pane',
+            cls: 'tab-pane item',
             html: this.html || ''
         };
         
@@ -57,6 +57,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         if(this.tabId){
             cfg.tabId = this.tabId;
         }
+        
         
         return cfg;
     },
@@ -71,7 +72,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         if (typeof(this.navId) != 'undefined') {
             // not really needed.. but just in case.. parent should be a NavGroup.
             var tg = Roo.bootstrap.TabGroup.get(this.navId);
-             Roo.log(['register', tg, this]);
+            Roo.log(['register', tg, this]);
             tg.register(this);
         }
     },
