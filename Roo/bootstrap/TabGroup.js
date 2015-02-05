@@ -100,6 +100,11 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         });
         return r;
     },
+    /**
+     * show a specific panel
+     * @param {Roo.bootstrap.TabPanel|number|string} panel to change to (use the tabId to specify a specific one)
+     * @return {boolean} false if panel was not shown (invalid entry or beforedeactivate fails.)
+     */
     showPanel : function (pan)
     {
         
@@ -112,7 +117,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             pan = this.getPanelByName(pan);
         }
         if (pan.tabId == this.getActivePanel().tabId) {
-            return;
+            return true;
         }
         var cur = this.getActivePanel();
         
@@ -140,11 +145,12 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 
                 
             }, this, { single:  true } );
-            return;
+            return true;
         }
         
         cur.setActive(false);
         pan.setActive(true);
+        return true;
         
     },
     showPanelNext : function()
