@@ -133,134 +133,6 @@
                                                             "height" : 150
                                                         }
                                                     ]
-                                                },
-                                                {
-                                                    "xtype" : "Row",
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "items" : [
-                                                        {
-                                                            "Number lg" : 12,
-                                                            "xtype" : "TabGroup",
-                                                            "boolean carousel" : true,
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "string navId" : "#sample1",
-                                                            "items" : [
-                                                                {
-                                                                    "listeners" : {
-                                                                        "render" : "function (_self)\n{\n_this.tab_second = _self;\n}"
-                                                                    },
-                                                                    "Boolean active" : true,
-                                                                    "String cls" : "item",
-                                                                    "xtype" : "TabPanel",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String tabId" : "#second",
-                                                                    "String navId" : "#sample1",
-                                                                    "items" : [
-                                                                        {
-                                                                            "xtype" : "Header",
-                                                                            "$ xns" : "Roo.bootstrap",
-                                                                            "Number level" : 3,
-                                                                            "String html" : "first tab"
-                                                                        },
-                                                                        {
-                                                                            "xtype" : "Container",
-                                                                            "$ xns" : "Roo.bootstrap",
-                                                                            "String well" : "md",
-                                                                            "String style" : "padding-left:50px;padding-right:50px;",
-                                                                            "items" : [
-                                                                                {
-                                                                                    "xtype" : "Row",
-                                                                                    "$ xns" : "Roo.bootstrap",
-                                                                                    "items" : [
-                                                                                        {
-                                                                                            "Number md" : 6,
-                                                                                            "xtype" : "Column",
-                                                                                            "$ xns" : "Roo.bootstrap",
-                                                                                            "items" : [
-                                                                                                {
-                                                                                                    "labelAlign" : "top",
-                                                                                                    "fieldLabel" : "Some input",
-                                                                                                    "xtype" : "Input",
-                                                                                                    "allowBlank" : true,
-                                                                                                    "$ xns" : "Roo.bootstrap",
-                                                                                                    "name" : "chosen_title"
-                                                                                                }
-                                                                                            ]
-                                                                                        }
-                                                                                    ]
-                                                                                }
-                                                                            ]
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "listeners" : {
-                                                                        "render" : "function (_self)\n{\n_this.tab_first = _self;\n}"
-                                                                    },
-                                                                    "Boolean active" : false,
-                                                                    "String cls" : "item",
-                                                                    "xtype" : "TabPanel",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String tabId" : "#first",
-                                                                    "String navId" : "#sample1",
-                                                                    "items" : [
-                                                                        {
-                                                                            "xtype" : "Header",
-                                                                            "Number level" : 3,
-                                                                            "$ xns" : "Roo.bootstrap",
-                                                                            "String html" : "second tab"
-                                                                        },
-                                                                        {
-                                                                            "xtype" : "Container",
-                                                                            "$ xns" : "Roo.bootstrap",
-                                                                            "String well" : "md",
-                                                                            "String style" : "padding-left:50px;padding-right:50px;",
-                                                                            "items" : [
-                                                                                {
-                                                                                    "xtype" : "Row",
-                                                                                    "$ xns" : "Roo.bootstrap",
-                                                                                    "items" : [
-                                                                                        {
-                                                                                            "Number md" : 6,
-                                                                                            "xtype" : "Column",
-                                                                                            "$ xns" : "Roo.bootstrap",
-                                                                                            "items" : [
-                                                                                                {
-                                                                                                    "labelAlign" : "top",
-                                                                                                    "fieldLabel" : "This is a label",
-                                                                                                    "xtype" : "Input",
-                                                                                                    "allowBlank" : true,
-                                                                                                    "$ xns" : "Roo.bootstrap",
-                                                                                                    "name" : "chosen_title"
-                                                                                                }
-                                                                                            ]
-                                                                                        }
-                                                                                    ]
-                                                                                }
-                                                                            ]
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "String cls" : "carousel-control left",
-                                                                    "Boolean preventDefault" : true,
-                                                                    "xtype" : "Link",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "<span class=\"glyphicon glyphicon-chevron-left\"></span>"
-                                                                },
-                                                                {
-                                                                    "listeners" : {
-                                                                        "click" : "function (e)\n{\n  _this.tab_first.setActive(false);\n_this.tab_second.setActive(true);\n}"
-                                                                    },
-                                                                    "String cls" : "carousel-control right",
-                                                                    "Boolean preventDefault" : true,
-                                                                    "xtype" : "Link",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "<span class=\"glyphicon glyphicon-chevron-right\"></span>"
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
                                                 }
                                             ]
                                         },
@@ -388,6 +260,134 @@
                                                                     "String style" : "margin: 10,10,0,0"
                                                                 }
                                                             ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "xtype" : "Row",
+                                            "$ xns" : "Roo.bootstrap",
+                                            "items" : [
+                                                {
+                                                    "Number lg" : 12,
+                                                    "xtype" : "TabGroup",
+                                                    "boolean carousel" : true,
+                                                    "$ xns" : "Roo.bootstrap",
+                                                    "string navId" : "#sample1",
+                                                    "items" : [
+                                                        {
+                                                            "listeners" : {
+                                                                "render" : "function (_self)\n{\n_this.tab_second = _self;\n}"
+                                                            },
+                                                            "Boolean active" : true,
+                                                            "String cls" : "item",
+                                                            "xtype" : "TabPanel",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String tabId" : "#second",
+                                                            "String navId" : "#sample1",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "Header",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "Number level" : 3,
+                                                                    "String html" : "first tab"
+                                                                },
+                                                                {
+                                                                    "xtype" : "Container",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String well" : "md",
+                                                                    "String style" : "padding-left:50px;padding-right:50px;",
+                                                                    "items" : [
+                                                                        {
+                                                                            "xtype" : "Row",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "items" : [
+                                                                                {
+                                                                                    "Number md" : 6,
+                                                                                    "xtype" : "Column",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "items" : [
+                                                                                        {
+                                                                                            "labelAlign" : "top",
+                                                                                            "fieldLabel" : "Some input",
+                                                                                            "xtype" : "Input",
+                                                                                            "allowBlank" : true,
+                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                            "name" : "chosen_title"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "listeners" : {
+                                                                "render" : "function (_self)\n{\n_this.tab_first = _self;\n}"
+                                                            },
+                                                            "Boolean active" : false,
+                                                            "String cls" : "item",
+                                                            "xtype" : "TabPanel",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String tabId" : "#first",
+                                                            "String navId" : "#sample1",
+                                                            "items" : [
+                                                                {
+                                                                    "xtype" : "Header",
+                                                                    "Number level" : 3,
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String html" : "second tab"
+                                                                },
+                                                                {
+                                                                    "xtype" : "Container",
+                                                                    "$ xns" : "Roo.bootstrap",
+                                                                    "String well" : "md",
+                                                                    "String style" : "padding-left:50px;padding-right:50px;",
+                                                                    "items" : [
+                                                                        {
+                                                                            "xtype" : "Row",
+                                                                            "$ xns" : "Roo.bootstrap",
+                                                                            "items" : [
+                                                                                {
+                                                                                    "Number md" : 6,
+                                                                                    "xtype" : "Column",
+                                                                                    "$ xns" : "Roo.bootstrap",
+                                                                                    "items" : [
+                                                                                        {
+                                                                                            "labelAlign" : "top",
+                                                                                            "fieldLabel" : "This is a label",
+                                                                                            "xtype" : "Input",
+                                                                                            "allowBlank" : true,
+                                                                                            "$ xns" : "Roo.bootstrap",
+                                                                                            "name" : "chosen_title"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            "String cls" : "carousel-control left",
+                                                            "Boolean preventDefault" : true,
+                                                            "xtype" : "Link",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "<span class=\"glyphicon glyphicon-chevron-left\"></span>"
+                                                        },
+                                                        {
+                                                            "listeners" : {
+                                                                "click" : "function (e)\n{\n  _this.tab_first.setActive(false);\n_this.tab_second.setActive(true);\n}"
+                                                            },
+                                                            "String cls" : "carousel-control right",
+                                                            "Boolean preventDefault" : true,
+                                                            "xtype" : "Link",
+                                                            "$ xns" : "Roo.bootstrap",
+                                                            "String html" : "<span class=\"glyphicon glyphicon-chevron-right\"></span>"
                                                         }
                                                     ]
                                                 }
