@@ -211,6 +211,15 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             return;
         }
         this.setActiveItem(this.navItems[i-1]);
+    },
+    clearWasActive : function(except) {
+        Roo.each(this.navItems, function(e) {
+            if (e.tabId != except.tabId && e.was_active) {
+               e.was_active = false;
+            }
+            return true;
+            
+        });
     }
     
     
