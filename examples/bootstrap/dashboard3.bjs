@@ -374,7 +374,7 @@
                                                         },
                                                         {
                                                             "listeners" : {
-                                                                "click" : "function (e)\n{\n    _this.tabgroup.showPanelNext();\n}"
+                                                                "click" : "function (e)\n{\n    _this.tabgroup.showPanelPrev();\n}"
                                                             },
                                                             "String cls" : "carousel-control left",
                                                             "Boolean preventDefault" : true,

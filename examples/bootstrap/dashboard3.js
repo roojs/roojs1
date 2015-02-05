@@ -512,7 +512,7 @@ dashboard3 = new Roo.XComponent({
                                                             listeners : {
                                                             	click : function (e)
                                                             	   {
-                                                            	       _this.tabgroup.showPanelNext();
+                                                            	       _this.tabgroup.showPanelPrev();
                                                             	   }
                                                             }
                                                         },
