@@ -94,13 +94,11 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
                 } else {
                     item.on('changed', function(item, state) {
                         var tg = Roo.bootstrap.TabGroup.get(this.navId);
-                        if (tg) {
-                            if (state) {
-                                tg.showPanel(this)
-                            }
-                            return;
+                        if (state) {
+                            tg.showPanel(this)
                         }
-                        this.setActive(state);
+                        return;
+                        
                     }, this);
                 }
             }
