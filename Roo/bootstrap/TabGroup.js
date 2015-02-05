@@ -136,7 +136,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         pan.setActive(true);
         
     },
-    showNextPanel : function()
+    showPanelNext : function()
     {
         var i = this.indexOfPanel(this.getActivePanel());
         if (i > this.tabs.length) {
@@ -144,7 +144,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         }
         this.showPanel(this.tabs[i+1]);
     },
-    showPrevPanel : function()
+    showPanelPrev : function()
     {
         var i = this.indexOfPanel(this.getActivePanel());
         if (i  < 1) {
