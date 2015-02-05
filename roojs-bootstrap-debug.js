@@ -3297,6 +3297,21 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         });
         return prev;
     },
+    
+    indexOfNav : function()
+    {
+        
+        var prev = false;
+        Roo.each(this.navItems, function(v,i){
+            
+            if (v.isActive()) {
+                prev = i;
+                
+            }
+            
+        });
+        return prev;
+    },
     /**
     * adds a Navigation item
     * @param {Roo.bootstrap.NavItem} the navitem to add
@@ -3333,9 +3348,24 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             
         });
         return ret;
+    },
+    
+    setActiveNext : function()
+    {
+        var i = this.indexOfNav(this.getActive());
+        if (i > this.navItems.length) {
+            return;
+        }
+        this.setActiveItem(this.navItems[i+1]);
+    },
+    setActivePrev : function()
+    {
+        var i = this.indexOfNav(this.getActive());
+        if (i  < 1) {
+            return;
+        }
+        this.setActiveItem(this.navItems[i-1]);
     }
-    
-    
     
     
 });
@@ -3533,7 +3563,24 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (fire) {
             this.fireEvent('changed', this, state);
         }
-	
+        
+        // show a panel if it's registered and related..
+        
+        if (!this.navId || !this.tabId || !state) {
+            return;
+        }
+        
+        var tg = Roo.bootstrap.TabGroup.get(this.navId);
+        if (!tg) {
+            return;
+        }
+        var pan = tg.get(this.tabId);
+        if (!pan) {
+            return;
+        }
+        tg.showPanel(pan);
+        
+        
 	
     },
      // this should not be here...
@@ -13727,9 +13774,17 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         if (this.carousel) {
             cfg.cls += ' carousel slide';
+            cfg.cn = [{
+               cls : 'carousel-inner'
+            }]
         }
         
+        
         return cfg;
+    },
+    getChildContainer : function()
+    {
+        return this.carousel ? this.el.select('.carousel-inner', true).first() : this.el;
     },
     
     /**
@@ -13782,7 +13837,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     },
     showPanel : function (pan)
     {
-        if (typeof(pan) == 'pnumber') {
+        if (typeof(pan) == 'number') {
             pan = this.tabs[pan];
         }
         if (typeof(pan) == 'string') {
@@ -13791,11 +13846,32 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         if (pan.tabId == this.getActivePanel().tabId) {
             return;
         }
-        this.getActivePanel().setActive(false);
+        var cur = this.getActivePanel();
+        if (this.carousel) {
+            var dir = this.indexOfPanel(pan) > this.indexOfPanel(cur)  ? 'next' : 'prev';
+            var lr = dir == 'next' ? 'left' : 'right';
+            pan.el.addClass(dir); // or prev
+            pan.el.dom.offsetWidth; // find the offset with - causing a reflow?
+            cur.el.addClass(lr); // or right
+            pan.el.addClass(lr);
+            cur.el.on('transitionend', function() {
+                Roo.log("trans end?");
+                pan.el.removeClass([lr,dir]);
+                pan.setActive(true);
+                cur.active = false;
+                cur.el.removeClass([lr, 'active']);
+                
+                
+                
+            }, this, { single:  true } );
+            return;
+        }
+        
+        cur.setActive(false);
         pan.setActive(true);
         
     },
-    showNextPanel : function()
+    showPanelNext : function()
     {
         var i = this.indexOfPanel(this.getActivePanel());
         if (i > this.tabs.length) {
@@ -13803,7 +13879,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         }
         this.showPanel(this.tabs[i+1]);
     },
-    showPrevPanel : function()
+    showPanelPrev : function()
     {
         var i = this.indexOfPanel(this.getActivePanel());
         if (i  < 1) {
@@ -13934,21 +14010,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         Roo.bootstrap.TabPanel.superclass.onRender.call(this, ct, position);
         
-        // registration with navgroups..
-        if (this.navId && this.tabId) {
-            var grp = Roo.bootstrap.NavGroup.get(this.navId);
-            if (grp) {
-                //code
-                var item = grp.getNavItem(this.tabId);
-                if (!item) {
-                    Roo.log("could not find navID:"  + this.navId + ", tabId: " + this.tabId);
-                } else {
-                    item.on('changed', function(item, state) {
-                        this.setActive(state);
-                    }, this);
-                }
-            }
-        }
+        
         
         
         
