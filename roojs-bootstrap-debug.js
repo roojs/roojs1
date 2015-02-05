@@ -3365,6 +3365,29 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             return;
         }
         this.setActiveItem(this.navItems[i-1]);
+    },
+    clearWasActive : function(except) {
+        Roo.each(this.navItems, function(e) {
+            if (e.tabId != except.tabId && e.was_active) {
+               e.was_active = false;
+               return false;
+            }
+            return true;
+            
+        });
+    },
+    getWasActive : function ()
+    {
+        var r = false;
+        Roo.each(this.navItems, function(e) {
+            if (e.was_active) {
+               r = e;
+               return false;
+            }
+            return true;
+            
+        });
+        return r;
     }
     
     
@@ -3551,9 +3574,18 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     isActive: function () {
         return this.active
     },
-    setActive : function(state, fire)
+    setActive : function(state, fire, is_was_active)
     {
+        if (this.active && !state & this.navId) {
+            this.was_active = true;
+            var nv = Roo.bootstrap.NavGroup.get(this.navId);
+            if (nv) {
+                nv.clearWasActive(this);
+            }
+            
+        }
         this.active = state;
+        
         if (!state ) {
             this.el.removeClass('active');
         } else if (!this.el.hasClass('active')) {
@@ -3565,7 +3597,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         // show a panel if it's registered and related..
         
-        if (!this.navId || !this.tabId || !state) {
+        if (!this.navId || !this.tabId || !state || is_was_active) {
             return;
         }
         
@@ -3577,9 +3609,15 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (!pan) {
             return;
         }
+        // if we can not flip to new panel - go back to old nav highlight..
         if (false == tg.showPanel(pan)) {
-            
-            
+            var nv = Roo.bootstrap.NavGroup.get(this.navId);
+            if (nv) {
+                var onav = nv.getWasActive();
+                if (onav) {
+                    onav.setActive(true, false, true);
+                }
+            }
             
         }
         
@@ -11376,7 +11414,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        this.hasFocus = false;
+//        this.hasFocus = false;
         
         this.list.hide();
         
