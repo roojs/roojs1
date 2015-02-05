@@ -270,7 +270,7 @@
     </span><span class="jsdoc-var">autoFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">tickable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">btnPosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">,
-    
+    </span><span class="jsdoc-var">editNotList </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">// element that contains real text value.. (when hidden is used..)
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -681,8 +681,9 @@
         
         </span><span class="jsdoc-var">this.choices </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul.select2-choices'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.searchField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul li.select2-search-field'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        
-        </span><span class="jsdoc-var">this.searchField.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onSearchFieldClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">preventDefault</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">});
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editNotList</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.searchField.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onSearchFieldClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">preventDefault</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">});
+        }
          
         </span><span class="jsdoc-var">this.trigger </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.tickable-buttons &gt; .btn-edit'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.trigger.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTickableTriggerClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">preventDefault</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">});

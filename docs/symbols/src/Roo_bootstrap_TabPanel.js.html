@@ -22,7 +22,7 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.TabPanel </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.TabPanel.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
-     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">/**
 	     * @event changed
 	     * Fires when the active status changes
@@ -30,8 +30,17 @@
 	     * @param {Boolean} state the new state
 	    
          */
-        </span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+	     * @event beforedeactivate
+	     * Fires before a tab is de-activated - can be used to do validation on a form.
+	     * @param {Roo.bootstrap.TabPanel} this
+	     * @return {Boolean} false if there is an error
+	    
+         */
+        </span><span class="jsdoc-string">'beforedeactivate'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
      </span><span class="jsdoc-syntax">});
+    
     </span><span class="jsdoc-var">this.tabId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tabId </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
   
 };
@@ -46,7 +55,8 @@
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tab-pane'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">// item is needed for carousel - not sure if it has any effect otherwise
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tab-pane item'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
         </span><span class="jsdoc-syntax">};
         
@@ -57,6 +67,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabId</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cfg.tabId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tabId</span><span class="jsdoc-syntax">;
         }
+        
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
@@ -71,7 +82,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// not really needed.. but just in case.. parent should be a NavGroup.
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.TabGroup.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">);
-             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'register'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'register'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">]);
             </span><span class="jsdoc-var">tg.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
     },
@@ -83,25 +94,12 @@
         
         </span><span class="jsdoc-var">Roo.bootstrap.TabPanel.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-comment">// registration with navgroups..
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navId </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.tabId</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">grp </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.NavGroup.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">grp</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-comment">//code
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">grp.getNavItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabId</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;could not find navID:&quot;  </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.navId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;, tabId: &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.tabId</span><span class="jsdoc-syntax">);
-                } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-                    </span><span class="jsdoc-var">item.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">) {
-                        </span><span class="jsdoc-var">this.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
-                    }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-                }
-            }
-        }
+        
         
         
         
     },
+    
     </span><span class="jsdoc-var">setActive</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;panel - set active &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.tabId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;=&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);

@@ -143,6 +143,21 @@
         });
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">prev</span><span class="jsdoc-syntax">;
     },
+    
+    </span><span class="jsdoc-var">indexOfNav </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.isActive</span><span class="jsdoc-syntax">()) {
+                </span><span class="jsdoc-var">prev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+                
+            }
+            
+        });
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">prev</span><span class="jsdoc-syntax">;
+    },
     </span><span class="jsdoc-comment">/**
     * adds a Navigation item
     * @param {Roo.bootstrap.NavItem} the navitem to add
@@ -179,9 +194,47 @@
             
         });
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">setActiveNext </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indexOfNav</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getActive</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.navItems.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.setActiveItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navItems</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">+1]);
+    },
+    </span><span class="jsdoc-var">setActivePrev </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indexOfNav</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getActive</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i  </span><span class="jsdoc-syntax">&lt; 1) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.setActiveItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navItems</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">-1]);
+    },
+    </span><span class="jsdoc-var">clearWasActive </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">except</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.tabId </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">except.tabId </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.was_active</span><span class="jsdoc-syntax">) {
+               </span><span class="jsdoc-var">e.was_active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+               </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            
+        });
+    },
+    </span><span class="jsdoc-var">getWasActive </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.was_active</span><span class="jsdoc-syntax">) {
+               </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">;
+               </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+            
+        });
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
     }
-    
-    
     
     
 });

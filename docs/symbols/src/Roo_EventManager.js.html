@@ -105,14 +105,14 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">transitionEndVal</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">transitionEndVal</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">)
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">transEndEventNames </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">WebkitTransition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'webkitTransitionEnd'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">MozTransition    </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'transitionend'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">OTransition      </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'oTransitionEnd otransitionend'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">transition       </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'transitionend'
-        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-syntax">};
     
         </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">name </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">transEndEventNames</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.style</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">name</span><span class="jsdoc-syntax">] !== </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">) {

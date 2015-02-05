@@ -14687,6 +14687,12 @@
    ],
    "events": [
     {
+     "name": "beforedeactivate",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before a tab is de-activated - can be used to do validation on a form."
+    },
+    {
      "name": "beforedestroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",

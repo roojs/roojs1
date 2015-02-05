@@ -61,6 +61,8 @@
     </span><span class="jsdoc-var">tagtype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
+    </span><span class="jsdoc-var">was_active </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
          
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
@@ -141,18 +143,24 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setActiveItem</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setActiveItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             }
-	    
-	    
-	    
         } 
     },
     
     </span><span class="jsdoc-var">isActive</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.active
     </span><span class="jsdoc-syntax">},
-    </span><span class="jsdoc-var">setActive </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fire</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">setActive </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fire</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">is_was_active</span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">&amp; </span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.was_active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.NavGroup.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nv</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">nv.clearWasActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }
+            
+        }
         </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'active'</span><span class="jsdoc-syntax">);
         } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'active'</span><span class="jsdoc-syntax">)) {
@@ -161,7 +169,34 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fire</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">);
         }
-	
+        
+        </span><span class="jsdoc-comment">// show a panel if it's registered and related..
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.navId </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.tabId </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">is_was_active</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.TabGroup.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tg</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tg.getPanelByName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabId</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// if we can not flip to new panel - go back to old nav highlight..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">tg.showPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.NavGroup.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nv</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">onav </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nv.getWasActive</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">onav</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">onav.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+                }
+            }
+            
+        }
+        
+        
 	
     },
      </span><span class="jsdoc-comment">// this should not be here...

@@ -100,8 +100,16 @@
         });
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
     },
+    </span><span class="jsdoc-comment">/**
+     * show a specific panel
+     * @param {Roo.bootstrap.TabPanel|number|string} panel to change to (use the tabId to specify a specific one)
+     * @return {boolean} false if panel was not shown (invalid entry or beforedeactivate fails.)
+     */
     </span><span class="jsdoc-var">showPanel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">)
     {
+        
+        
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">pan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">];
         }
@@ -109,9 +117,16 @@
             </span><span class="jsdoc-var">pan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPanelByName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan.tabId </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.getActivePanel</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.tabId</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cur </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getActivePanel</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-var">cur.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforedeactivate'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.carousel</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indexOfPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">) &gt; </span><span class="jsdoc-var">this.indexOfPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cur</span><span class="jsdoc-syntax">)  ? </span><span class="jsdoc-string">'next' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'prev'</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dir </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'next' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">;
@@ -121,22 +136,24 @@
             </span><span class="jsdoc-var">pan.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">cur.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'transitionend'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;trans end?&quot;</span><span class="jsdoc-syntax">);
+                
                 </span><span class="jsdoc-var">pan.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">]);
                 </span><span class="jsdoc-var">pan.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">cur.active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">cur.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'active'</span><span class="jsdoc-syntax">]);
                 
+                </span><span class="jsdoc-var">cur.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">]);
+                </span><span class="jsdoc-var">cur.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
                 
                 
             }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">single</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">} );
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-var">cur.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">pan.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         
     },
-    </span><span class="jsdoc-var">showNextPanel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    </span><span class="jsdoc-var">showPanelNext </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indexOfPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getActivePanel</span><span class="jsdoc-syntax">());
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.tabs.length</span><span class="jsdoc-syntax">) {
@@ -144,7 +161,7 @@
         }
         </span><span class="jsdoc-var">this.showPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">+1]);
     },
-    </span><span class="jsdoc-var">showPrevPanel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    </span><span class="jsdoc-var">showPanelPrev </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indexOfPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getActivePanel</span><span class="jsdoc-syntax">());
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i  </span><span class="jsdoc-syntax">&lt; 1) {
