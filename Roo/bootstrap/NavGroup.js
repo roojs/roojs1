@@ -144,14 +144,14 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         return prev;
     },
     
-     getActive : function()
+    indexOfNav : function()
     {
         
         var prev = false;
-        Roo.each(this.navItems, function(v){
+        Roo.each(this.navItems, function(v,i){
             
             if (v.isActive()) {
-                prev = v;
+                prev = i;
                 
             }
             
