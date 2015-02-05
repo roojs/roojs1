@@ -46,6 +46,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = {
             tag: 'div',
+            // item is needed for carousel - not sure if it has any effect otherwise
             cls: 'tab-pane item',
             html: this.html || ''
         };
