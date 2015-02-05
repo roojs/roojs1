@@ -151,7 +151,16 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     },
     setActive : function(state, fire)
     {
+        if (this.active && !state & this.navId) {
+            this.was_active = true;
+            var nv = Roo.bootstrap.NavGroup.get(this.navId);
+            if (nv) {
+                nv.clearWasActive(this);
+            }
+            
+        }
         this.active = state;
+        
         if (!state ) {
             this.el.removeClass('active');
         } else if (!this.el.hasClass('active')) {
