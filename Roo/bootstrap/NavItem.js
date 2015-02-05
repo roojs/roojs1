@@ -149,7 +149,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     isActive: function () {
         return this.active
     },
-    setActive : function(state, fire)
+    setActive : function(state, fire, is_was_active)
     {
         if (this.active && !state & this.navId) {
             this.was_active = true;
@@ -172,7 +172,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         // show a panel if it's registered and related..
         
-        if (!this.navId || !this.tabId || !state) {
+        if (!this.navId || !this.tabId || !state || is_was_active) {
             return;
         }
         
@@ -190,7 +190,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             if (nv) {
                 var onav = nv.getWasActive();
                 if (onav) {
-                    onav.setActive(true, false);
+                    onav.setActive(true, false, true);
                 }
             }
             
