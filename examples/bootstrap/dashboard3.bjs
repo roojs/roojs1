@@ -384,7 +384,7 @@
                                                         },
                                                         {
                                                             "listeners" : {
-                                                                "click" : "function (e)\n{\n  _this.tab_first.setActive(false);\n_this.tab_second.setActive(true);\n}"
+                                                                "click" : "function (e)\n{\n      _this.tabgroup.showPanelNext();\n}"
                                                             },
                                                             "String cls" : "carousel-control right",
                                                             "Boolean preventDefault" : true,
