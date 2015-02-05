@@ -13856,11 +13856,12 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             pan.el.addClass(lr);
             cur.el.on('transitionend', function() {
                 Roo.log("trans end?");
+                
                 pan.el.removeClass([lr,dir]);
                 pan.setActive(true);
-                cur.active = false;
-                cur.el.removeClass([lr, 'active']);
                 
+                cur.el.removeClass([lr]);
+                cur.setActive(false);
                 
                 
             }, this, { single:  true } );
