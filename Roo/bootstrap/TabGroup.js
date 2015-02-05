@@ -102,6 +102,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     },
     showPanel : function (pan)
     {
+        
+        
+        
         if (typeof(pan) == 'number') {
             pan = this.tabs[pan];
         }
@@ -112,6 +115,13 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return;
         }
         var cur = this.getActivePanel();
+        
+        if (false === cur.fireEvent('beforedeactivate')) {
+            return false;
+        }
+        
+        
+        
         if (this.carousel) {
             var dir = this.indexOfPanel(pan) > this.indexOfPanel(cur)  ? 'next' : 'prev';
             var lr = dir == 'next' ? 'left' : 'right';
