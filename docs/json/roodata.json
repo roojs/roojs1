@@ -6272,6 +6272,12 @@
      "memberOf": ""
     },
     {
+     "name": "editNotList",
+     "type": "Boolean",
+     "desc": "allow text type,but not show pull down, default false",
+     "memberOf": ""
+    },
+    {
      "name": "btnPosition",
      "type": "String",
      "desc": "set the position of the trigger button (left | right) default right",
