@@ -61,6 +61,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     tagtype : 'a',
     disabled : false,
     
+    was_active : false,
+    
     getAutoCreate : function(){
          
         var cfg = {
