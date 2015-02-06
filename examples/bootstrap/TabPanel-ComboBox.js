@@ -226,7 +226,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                 },
                                                                 {
                                                                     xtype : 'Container',
-                                                                    well : 'md',
+                                                                    
                                                                     xns : Roo.bootstrap,
                                                                     items : [
                                                                         {
