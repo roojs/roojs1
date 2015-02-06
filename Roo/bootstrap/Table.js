@@ -546,6 +546,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     onUpdate : function(ds,record)
     {
+        Roo.log('running onupdate!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
         this.refreshRow(record);
     },
     onRemove : function(ds, record, index, isUpdate){
