@@ -1404,11 +1404,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
          Roo.log('expand');
-//        this.list.alignTo(this.inputEl(), this.listAlign);
         
         this.list.show();
-        var _this = this;
-        (function() {_this.list.alignTo(_this.inputEl(), _this.listAlign);}).defer(100);
+        
+        this.list.alignTo(this.inputEl(), this.listAlign);
         
         if(this.tickable){
             
