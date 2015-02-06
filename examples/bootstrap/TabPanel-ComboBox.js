@@ -338,6 +338,14 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                             xns : Roo.bootstrap,
                                                             navId : '#top',
                                                             active : false,
+                                                            listeners : {
+                                                                   changed : function (_self, state)
+                                                                   {
+                                                                       if(state){
+                                                                            _this.multipleSel.list.setWidth(Math.max(_this.multipleSel.inputEl().getWidth(), _this.multipleSel.minListWidth));
+                                                                        }
+                                                                   }
+                                                            },
                                                             items : [
                                                                 {
                                                                     level : 4,
