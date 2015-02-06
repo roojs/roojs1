@@ -726,7 +726,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     renderCellObject : function(r)
     {
         Roo.log('run render cell Object????');
-        return;
+        
         var _this = this;
         
         var t = r.cfg.render(r.container);
