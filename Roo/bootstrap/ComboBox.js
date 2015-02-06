@@ -661,6 +661,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     initTickableEvnets: function()
     {   
+        this.createList();
+        
         if(this.hiddenName){
             
             this.hiddenField = this.el.select('input.form-hidden-field',true).first();
@@ -676,7 +678,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
              
         }
         
-        this.list = this.el.select('ul.dropdown-menu',true).first();
+//        this.list = this.el.select('ul.dropdown-menu',true).first();
         
         this.choices = this.el.select('ul.select2-choices', true).first();
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
