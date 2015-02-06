@@ -223,7 +223,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
 
                                                         },
                                                         {
-                                                            tabId : '#one',
+                                                            tabId : '#multiple',
                                                             xtype : 'TabPanel',
                                                             xns : Roo.bootstrap,
                                                             navId : '#top',
@@ -262,7 +262,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                             minChars : '1',
                                                                                             tpl : '<li class="select2-result"><b>{name}</b></div>',
                                                                                             style : 'margin-top:20px;',
-//                                                                                            multiple: true,
+                                                                                            multiple: true,
                                                                                             listeners : {
                                                                                                 render : function (_self) {
                                                                                                     _this.normalSel = _self;
