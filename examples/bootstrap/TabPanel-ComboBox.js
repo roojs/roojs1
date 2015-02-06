@@ -234,20 +234,70 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                             xns : Roo.bootstrap,
                                                                             items : [
                                                                                 {
-                                                                                    md : 12,
-                                                                                    xtype : 'Column',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    items : [
-                                                                                        {
-                                                                                            labelAlign : 'top',
-                                                                                            fieldLabel : 'Family Name',
-                                                                                            xtype : 'Input',
-                                                                                            allowBlank : true,
-                                                                                            xns : Roo.bootstrap,
-                                                                                            name : 'lastname'
+                                                                                    xtype: 'ComboBox',
+                                                                                    xns: Roo.bootstrap,
+                                                                                    placeholder : 'Select a country',
+                                                                                    displayField : 'name',
+                                                                                    hiddenName : 'country_id',
+                                                                                    md : '12',
+                                                                                    size : 'sm',
+                                                                                    name : 'country_id_name',
+                                                                                    triggerAction : 'all',
+                                                                                    minChars : '1',
+                                                                //                    tpl : '<li class="select2-result"><b>{name}</b></div>',
+                                                                                    style : 'margin-top:20px;',
+                                                                                    multiple: true,
+                                                                                    tickable: true,
+                                                                                    listeners : {
+                                                                                        render : function (_self) {
+                                                                                            _this.tickableSel = _self;
                                                                                         }
-                                                                                    ]
+                                                                                    },
+                                                                                    forceSelection : true,
+                                                                                    valueField : 'id',
+                                                                                    queryParam : 'query[name]',
+                                                                                    editable : true,
+                                                                                    alwaysQuery : true,
+                                                                                    allowBlank : false,
+                                                                                    fieldLabel : 'Country With Tickable',
+                                                                //                    pageSize : '10',
+                                                                //                    append: true,
+                                                                                    store : {
+                                                                                        xtype: 'Store',
+                                                                                        xns: Roo.data,
+                                                                                        listeners : {
+                                                                                            beforeload : function (_self, o) {
+                                                                                                o.params = o.params || {};
 
+                                                                                            }
+                                                                                        },
+                                                                                        remoteSort : true,
+                                                                                        sortInfo : { direction : 'ASC', field: 'name' },
+                                                                                        proxy : {
+                                                                                            xtype: 'HttpProxy',
+                                                                                            xns: Roo.data,
+                                                                                            url : baseURL + '/Geoip/Core_geoip_country',
+                                                                                            method : 'GET'
+                                                                                        },
+                                                                                        reader : {
+                                                                                            xtype: 'JsonReader',
+                                                                                            xns: Roo.data,
+                                                                                            fields : [
+                                                                                                {
+                                                                                                    'name': 'id',
+                                                                                                    'type': 'int'
+                                                                                                },
+                                                                                                {
+                                                                                                    'name': 'code',
+                                                                                                    'type': 'string'
+                                                                                                },
+                                                                                                {
+                                                                                                    'name': 'name',
+                                                                                                    'type': 'string'
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    }
                                                                                 }
                                                                             ]
 
