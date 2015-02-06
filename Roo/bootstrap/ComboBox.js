@@ -1407,8 +1407,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 //        this.list.alignTo(this.inputEl(), this.listAlign);
         
         this.list.show();
-        
-        (function() {this.list.alignTo(this.inputEl(), this.listAlign);}).defer(100);
+        var _this = this;
+        (function() {_this.list.alignTo(_this.inputEl(), _this.listAlign);}).defer(100);
         
         if(this.tickable){
             
