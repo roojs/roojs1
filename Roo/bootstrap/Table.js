@@ -518,14 +518,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 var row =  this.renderRow(cm, ds, rowIndex);
                 
                 tbody.createChild(row);
-                Roo.log(row.cellObjects);
-//                var _this = this;
-//                
-//                if(row.cellObjects.length){
-//                    Roo.each(row.cellObjects, function(r){
-//                        _this.renderCellObject(r);
-//                    })
-//                }
+                
+                var _this = this;
+                
+                if(row.cellObjects.length){
+                    Roo.each(row.cellObjects, function(r){
+                        Roo.log(r);
+                        _this.renderCellObject(r);
+                    })
+                }
                 
             }, this);
         }
