@@ -441,7 +441,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
-        return;
         
         if(this.hiddenName){
             
