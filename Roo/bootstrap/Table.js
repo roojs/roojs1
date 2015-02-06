@@ -512,22 +512,20 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         });
         
         var tbody =  this.mainBody;
-        
-        var renders = [];
-                    
+              
         if(ds.getCount() > 0){
             ds.data.each(function(d,rowIndex){
                 var row =  this.renderRow(cm, ds, rowIndex);
                 
                 tbody.createChild(row);
                 
-                var _this = this;
-                
-                if(row.cellObjects.length){
-                    Roo.each(row.cellObjects, function(r){
-                        _this.renderCellObject(r);
-                    })
-                }
+//                var _this = this;
+//                
+//                if(row.cellObjects.length){
+//                    Roo.each(row.cellObjects, function(r){
+//                        _this.renderCellObject(r);
+//                    })
+//                }
                 
             }, this);
         }
