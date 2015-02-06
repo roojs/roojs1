@@ -1403,7 +1403,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
          Roo.log('expand');
-         this.restrictHeight();
+         
 //        this.list.alignTo(this.inputEl(), this.listAlign);
         var _this = this;
         (function(){ _this.list.show(); }).defer(100);
