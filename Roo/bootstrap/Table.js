@@ -732,7 +732,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         //return;
         Roo.log('the render function!!!!');
         Roo.log(r.cfg.render);
-        return;
+//        return;
         Roo.log('doing render!!!!!!!!!!!!!!!');
         var t = r.cfg.render(r.container);
         Roo.log(t);
