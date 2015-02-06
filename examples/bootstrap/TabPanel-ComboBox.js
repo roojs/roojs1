@@ -94,7 +94,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                     }
                                                                 },
                                                                 {
-                                                                    tabId : '#th',
+                                                                    tabId : '#tickable',
                                                                     xtype : 'NavItem',
                                                                     preventDefault : true,
                                                                     html : 2,
@@ -103,7 +103,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                     listeners : {
                                                                     	render : function (_self)
                                                                     	   {
-                                                                    	      _this.two = this;
+                                                                    	      _this.tickable = this;
                                                                     	      
                                                                     	   }
                                                                     }
