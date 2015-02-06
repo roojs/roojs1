@@ -144,13 +144,13 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                             name : 'country_id_name',
                                                                                             triggerAction : 'all',
                                                                                             minChars : '1',
-                                                                        //                    tpl : '<li class="select2-result"><b>{name}</b></div>',
+                                                                                            tpl : '<li class="select2-result"><b>{name}</b></div>',
+                                                                                            listWidth : '400',
                                                                                             style : 'margin-top:20px;',
                                                                                             multiple: true,
-                                                                                            tickable: true,
                                                                                             listeners : {
                                                                                                 render : function (_self) {
-                                                                                                    _this.tickableSel = _self;
+                                                                                                    _this.normalSel = _self;
                                                                                                 }
                                                                                             },
                                                                                             forceSelection : true,
@@ -159,9 +159,9 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                             editable : true,
                                                                                             alwaysQuery : true,
                                                                                             allowBlank : false,
-                                                                                            fieldLabel : 'Country With Tickable',
-                                                                        //                    pageSize : '10',
-                                                                        //                    append: true,
+                                                                                            fieldLabel : 'Country Normal',
+                                                                                            pageSize : '10',
+                                                                                            append: true,
                                                                                             store : {
                                                                                                 xtype: 'Store',
                                                                                                 xns: Roo.data,
@@ -198,7 +198,6 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                                     ]
                                                                                                 }
                                                                                             }
-                                                                                        }
                                                                                     ]
 
                                                                                 }
