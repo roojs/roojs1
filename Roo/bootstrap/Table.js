@@ -730,13 +730,14 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var _this = this;
         Roo.log(r);
         //return;
+        Roo.log('the render function!!!!');
+        Roo.log(r.cfg.render);
         
         Roo.log('doing render!!!!!!!!!!!!!!!');
         var t = r.cfg.render(r.container);
         Roo.log(t);
         
-        Roo.log('the render function!!!!');
-        Roo.log(r.cfg.render);
+        
         return;
         if(r.cfg.cn){
             Roo.each(r.cfg.cn, function(c){
