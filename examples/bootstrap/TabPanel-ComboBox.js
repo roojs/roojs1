@@ -710,10 +710,7 @@ Roo.example.combobox = new Roo.XComponent({
                                                                 }
                                                             ]
 
-                                                        },
-                                                        
-                                                        
-                                                        
+                                                        }
                                                     ]
 
                                                 }
