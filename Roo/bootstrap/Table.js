@@ -518,7 +518,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 var row =  this.renderRow(cm, ds, rowIndex);
                 
                 tbody.createChild(row);
-                
+                Roo.log(row.cellObjects);
 //                var _this = this;
 //                
 //                if(row.cellObjects.length){
