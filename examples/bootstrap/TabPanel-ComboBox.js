@@ -67,7 +67,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                     tabId : '#normal',
                                                                     xtype : 'NavItem',
                                                                     preventDefault : true,
-                                                                    html : Normal,
+                                                                    html : 'Normal',
                                                                     xns : Roo.bootstrap,
                                                                     active : true,
                                                                     listeners : {
@@ -82,7 +82,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                     tabId : '#multiple',
                                                                     xtype : 'NavItem',
                                                                     preventDefault : true,
-                                                                    html : Multiple,
+                                                                    html : 'Multiple',
                                                                     xns : Roo.bootstrap,
                                                                     active : false,
                                                                     listeners : {
@@ -97,7 +97,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                     tabId : '#tickable',
                                                                     xtype : 'NavItem',
                                                                     preventDefault : true,
-                                                                    html : Tickable,
+                                                                    html : 'Tickable',
                                                                     xns : Roo.bootstrap,
                                                                     active : false,
                                                                     listeners : {
