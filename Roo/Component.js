@@ -194,6 +194,8 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
                 this.disable();
             }
         }
+        Roo.log('render the component');
+        Roo.log(this);
         return this;
     },
 
