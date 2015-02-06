@@ -28,192 +28,70 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
             xns: Roo.bootstrap,
             items : [
                  {
-                    xtype : 'Container',
-                    cls : 'content',
-                    xns : Roo.bootstrap,
-                    style : 'margin-top:100px',
-                    items : [
-                    	{
-                            xtype : 'Container',
-                            cls : 'pad-wrapper',
-                            xns : Roo.bootstrap,
-                            items : [
-                            	{
-                                    xtype : 'Container',
-                                    cls : 'container alpha',
-                                    xns : Roo.bootstrap,
-                                    items : [
-                                    	{
-                                            xtype : 'Container',
-                                            xns : Roo.bootstrap,
-                                            items : [
-                                            	{
-                                                    xtype : 'NavSimplebar',
-                                                    xns : Roo.bootstrap,
-                                                    items : [
-                                                    	{
-                                                            navId : '#top',
-                                                            xtype : 'NavGroup',
-                                                            xns : Roo.bootstrap,
-                                                            type : 'pills',
-                                                            listeners : {
-                                                            	render : function (_self)
-                                                            	   {
-                                                            	        _this.navGroup = this;
-                                                            	   }
-                                                            },
-                                                            items : [
-                                                            	{
-                                                                    tabId : '#one',
-                                                                    xtype : 'NavItem',
-                                                                    preventDefault : true,
-                                                                    html : 1,
-                                                                    xns : Roo.bootstrap,
-                                                                    active : true,
-                                                                    listeners : {
-                                                                    	render : function (_self)
-                                                                    	   {
-                                                                    	      _this.one = this;
-                                                                    	      
-                                                                    	   }
-                                                                    }
-                                                                },
-                                                            	{
-                                                                    tabId : '#two',
-                                                                    xtype : 'NavItem',
-                                                                    preventDefault : true,
-                                                                    html : 2,
-                                                                    xns : Roo.bootstrap,
-                                                                    active : false,
-                                                                    listeners : {
-                                                                    	render : function (_self)
-                                                                    	   {
-                                                                    	      _this.two = this;
-                                                                    	      
-                                                                    	   }
-                                                                    }
-                                                                }
-                                                            ]
-
-                                                        }
-                                                    ]
-
-                                                },
-                                            	{
-                                                    xtype : 'TabGroup',
-                                                    style : 'margin-top:20px;',
-                                                    xns : Roo.bootstrap,
-                                                    navId : '#top',
-                                                    carousel : true,
-                                                    items : [
-                                                        {
-                                                            tabId : '#one',
-                                                            xtype : 'TabPanel',
-                                                            xns : Roo.bootstrap,
-                                                            navId : '#top',
-                                                            active : true,
-                                                            items : [
-                                                                {
-                                                                    level : 4,
-                                                                    xtype : 'Header',
-                                                                    html : 'First TabPanel With ComboBox',
-                                                                    xns : Roo.bootstrap
-                                                                },
-                                                                {
-                                                                    xtype : 'Container',
-                                                                    well : 'md',
-                                                                    xns : Roo.bootstrap,
-                                                                    items : [
-                                                                        {
-                                                                            xtype : 'Row',
-                                                                            xns : Roo.bootstrap,
-                                                                            items : [
-                                                                                {
-                                                                                    md : 12,
-                                                                                    xtype : 'Column',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    items : [
-                                                                                        {
-                                                                                            labelAlign : 'top',
-                                                                                            fieldLabel : 'Family Name',
-                                                                                            xtype : 'Input',
-                                                                                            allowBlank : true,
-                                                                                            xns : Roo.bootstrap,
-                                                                                            name : 'lastname'
-                                                                                        }
-                                                                                    ]
-
-                                                                                }
-                                                                            ]
-
-                                                                        }
-                                                                    ]
-
-                                                                }
-                                                            ]
-
-                                                        },
-                                                        {
-                                                            tabId : '#two',
-                                                            xtype : 'TabPanel',
-                                                            xns : Roo.bootstrap,
-                                                            navId : '#top',
-                                                            active : false,
-                                                            items : [
-                                                                {
-                                                                    level : 4,
-                                                                    xtype : 'Header',
-                                                                    html : 'Second TabPanel With ComboBox',
-                                                                    xns : Roo.bootstrap
-                                                                },
-                                                                {
-                                                                    xtype : 'Container',
-                                                                    well : 'md',
-                                                                    xns : Roo.bootstrap,
-                                                                    items : [
-                                                                        {
-                                                                            xtype : 'Row',
-                                                                            xns : Roo.bootstrap,
-                                                                            items : [
-                                                                                {
-                                                                                    md : 12,
-                                                                                    xtype : 'Column',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    items : [
-                                                                                        {
-                                                                                            labelAlign : 'top',
-                                                                                            fieldLabel : 'Family Name',
-                                                                                            xtype : 'Input',
-                                                                                            allowBlank : true,
-                                                                                            xns : Roo.bootstrap,
-                                                                                            name : 'lastname'
-                                                                                        }
-                                                                                    ]
-
-                                                                                }
-                                                                            ]
-
-                                                                        }
-                                                                    ]
-
-                                                                }
-                                                            ]
-
-                                                        }
-                                                    ]
-
-                                                }
-                                            ]
-
-                                        }
-                                    ]
-
+                    xtype: 'ComboBox',
+                    xns: Roo.bootstrap,
+                    placeholder : 'Select a country',
+                    displayField : 'name',
+                    hiddenName : 'country_id',
+                    md : '12',
+                    size : 'sm',
+                    name : 'country_id_name',
+                    triggerAction : 'all',
+                    minChars : '1',
+                    tpl : '<li class="select2-result"><b>{name}</b></div>',
+                    listWidth : '400',
+                    style : 'margin-top:20px;',
+                    multiple: true,
+                    listeners : {
+                        render : function (_self) {
+                            _this.normalSel = _self;
+                        }
+                    },
+                    forceSelection : true,
+                    valueField : 'id',
+                    queryParam : 'query[name]',
+                    editable : true,
+                    alwaysQuery : true,
+                    allowBlank : false,
+                    fieldLabel : 'Country Normal',
+                    pageSize : '10',
+                    append: true,
+                    store : {
+                        xtype: 'Store',
+                        xns: Roo.data,
+                        listeners : {
+                            beforeload : function (_self, o) {
+                                o.params = o.params || {};
+                                
+                            }
+                        },
+                        remoteSort : true,
+                        sortInfo : { direction : 'ASC', field: 'name' },
+                        proxy : {
+                            xtype: 'HttpProxy',
+                            xns: Roo.data,
+                            url : baseURL + '/Geoip/Core_geoip_country',
+                            method : 'GET'
+                        },
+                        reader : {
+                            xtype: 'JsonReader',
+                            xns: Roo.data,
+                            fields : [
+                                {
+                                    'name': 'id',
+                                    'type': 'int'
+                                },
+                                {
+                                    'name': 'code',
+                                    'type': 'string'
+                                },
+                                {
+                                    'name': 'name',
+                                    'type': 'string'
                                 }
                             ]
-
                         }
-                    ]
-
+                    }
                 }
             ]
         };
