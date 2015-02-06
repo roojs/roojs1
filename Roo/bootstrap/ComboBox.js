@@ -1404,7 +1404,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
          Roo.log('expand');
-         this.restrictHeight();
 //        this.list.alignTo(this.inputEl(), this.listAlign);
         
         this.list.show();
