@@ -325,7 +325,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
 
                                                         },
                                                         {
-                                                            tabId : '#two',
+                                                            tabId : '#tickable',
                                                             xtype : 'TabPanel',
                                                             xns : Roo.bootstrap,
                                                             navId : '#top',
@@ -373,8 +373,6 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                     alwaysQuery : true,
                                                                                     allowBlank : false,
                                                                                     fieldLabel : 'Country With Tickable',
-                                                                //                    pageSize : '10',
-                                                                //                    append: true,
                                                                                     store : {
                                                                                         xtype: 'Store',
                                                                                         xns: Roo.data,
