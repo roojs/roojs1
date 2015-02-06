@@ -737,7 +737,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var t = r.cfg.render(r.container);
         Roo.log(t);
         
-        
+        Roo.log('after render!!!!!!!!!!!!!!!!!!!');
         return;
         if(r.cfg.cn){
             Roo.each(r.cfg.cn, function(c){
