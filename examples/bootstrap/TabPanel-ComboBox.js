@@ -198,6 +198,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                                     ]
                                                                                                 }
                                                                                             }
+                                                                                        }
                                                                                     ]
 
                                                                                 }
