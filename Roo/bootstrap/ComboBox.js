@@ -459,10 +459,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         //if(Roo.isGecko){
         //    this.el.dom.setAttribute('autocomplete', 'off');
         //}
-        Roo.log(this.list);return;
+        
         var cls = 'x-combo-list';
-        this.list = this.el.select('ul.dropdown-menu',true).first();
-
+        
         //this.list = new Roo.Layer({
         //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
         //});
