@@ -2,7 +2,7 @@
 
 Roo.example = Roo.example || {};
 
-Roo.example.combobox = new Roo.XComponent({
+Roo.example.TabPanel-Combobox = new Roo.XComponent({
     part     :  ["layout","viewpanel"],
     order    : '001-viewpanel',
     region   : '',
