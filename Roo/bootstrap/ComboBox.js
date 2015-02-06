@@ -877,7 +877,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          if (!opts.add) {
             this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
          }
-        this.restrictHeight();
+        
         this.selectedIndex = -1;
     },
 
@@ -896,7 +896,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.store.getCount() > 0){
             this.expand();
-            
+            this.restrictHeight();
             if(this.lastQuery == this.allQuery){
                 if(this.editable && !this.tickable){
                     this.inputEl().dom.select();
