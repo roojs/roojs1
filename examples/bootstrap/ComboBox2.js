@@ -119,7 +119,7 @@ Roo.example.combobox = new Roo.XComponent({
                     editable : true,
                     alwaysQuery : true,
                     allowBlank : false,
-                    editNotList : true,
+                    editNotList : false,
                     fieldLabel : 'Country With Tickable',
 //                    pageSize : '10',
 //                    append: true,
