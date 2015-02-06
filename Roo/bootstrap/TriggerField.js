@@ -292,7 +292,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             style: 'display:none'
         }, false, true);
         
-        ROo.log(this.list);
+        Roo.log(this.list);
         Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
         if(!this.multiple){
