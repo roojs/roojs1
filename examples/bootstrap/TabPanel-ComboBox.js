@@ -227,7 +227,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                             xtype : 'TabPanel',
                                                             xns : Roo.bootstrap,
                                                             navId : '#top',
-                                                            active : true,
+                                                            active : false,
                                                             items : [
                                                                 {
                                                                     level : 4,
