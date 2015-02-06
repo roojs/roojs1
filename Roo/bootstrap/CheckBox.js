@@ -178,6 +178,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 
             });
         }
+        
+        
        
         return cfg;
         

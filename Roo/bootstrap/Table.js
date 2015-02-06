@@ -522,14 +522,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 var _this = this;
                 
                 if(row.cellObjects.length){
-                    Roo.log(row.cellObjects.length);
                     Roo.each(row.cellObjects, function(r){
-                        Roo.log('run??');
-                        Roo.log(r);
                         _this.renderCellObject(r);
                     })
                 }
-                //delete row.cellOjbects;
                 
             }, this);
         }
@@ -725,20 +721,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
      */
     renderCellObject : function(r)
     {
-        Roo.log('run render cell Object????');
-        
         var _this = this;
-        Roo.log(r);
-        //return;
-        Roo.log('the render function!!!!');
-        Roo.log(r.cfg.render);
-//        return;
-        Roo.log('doing render!!!!!!!!!!!!!!!');
-        var t = r.cfg.render(r.container);
-        Roo.log(t);
         
-        Roo.log('after render!!!!!!!!!!!!!!!!!!!');
-        return;
+        var t = r.cfg.render(r.container);
+        
         if(r.cfg.cn){
             Roo.each(r.cfg.cn, function(c){
                 var child = {
