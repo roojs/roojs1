@@ -28,36 +28,36 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
             xns: Roo.bootstrap,
             items : [
                  {
-                    '|xns' : 'Roo.bootstrap',
+                    xns: Roo.bootstrap,
                     xtype : 'Container',
                     cls : 'content',
                     xns : Roo.bootstrap,
                     style : 'margin-top:100px',
                     items : [
                     	{
-                            '|xns' : 'Roo.bootstrap',
+                            xns: Roo.bootstrap,
                             xtype : 'Container',
                             cls : 'pad-wrapper',
                             xns : Roo.bootstrap,
                             items : [
                             	{
-                                    '|xns' : 'Roo.bootstrap',
+                                    xns: Roo.bootstrap,
                                     xtype : 'Container',
                                     cls : 'container alpha',
                                     xns : Roo.bootstrap,
                                     items : [
                                     	{
-                                            '|xns' : 'Roo.bootstrap',
+                                            xns: Roo.bootstrap,
                                             xtype : 'Container',
                                             xns : Roo.bootstrap,
                                             items : [
                                             	{
-                                                    '|xns' : 'Roo.bootstrap',
+                                                    xns: Roo.bootstrap,
                                                     xtype : 'NavSimplebar',
                                                     xns : Roo.bootstrap,
                                                     items : [
                                                     	{
-                                                            '|xns' : 'Roo.bootstrap',
+                                                            xns: Roo.bootstrap,
                                                             navId : '#top',
                                                             xtype : 'NavGroup',
                                                             xns : Roo.bootstrap,
@@ -70,7 +70,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                             },
                                                             items : [
                                                             	{
-                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    xns: Roo.bootstrap,
                                                                     tabId : '#one',
                                                                     xtype : 'NavItem',
                                                                     preventDefault : true,
@@ -86,7 +86,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                     }
                                                                 },
                                                             	{
-                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    xns: Roo.bootstrap,
                                                                     tabId : '#two',
                                                                     xtype : 'NavItem',
                                                                     preventDefault : true,
@@ -108,7 +108,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
 
                                                 },
                                             	{
-                                                    '|xns' : 'Roo.bootstrap',
+                                                    xns: Roo.bootstrap,
                                                     xtype : 'TabGroup',
                                                     style : 'margin-top:20px;',
                                                     xns : Roo.bootstrap,
@@ -116,7 +116,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                     carousel : true,
                                                     items : [
                                                         {
-                                                            '|xns' : 'Roo.bootstrap',
+                                                            xns: Roo.bootstrap,
                                                             tabId : '#one',
                                                             xtype : 'TabPanel',
                                                             xns : Roo.bootstrap,
@@ -124,31 +124,31 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                             active : true,
                                                             items : [
                                                                 {
-                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    xns: Roo.bootstrap,
                                                                     level : 4,
                                                                     xtype : 'Header',
                                                                     html : 'First TabPanel With ComboBox',
                                                                     xns : Roo.bootstrap
                                                                 },
                                                                 {
-                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    xns: Roo.bootstrap,
                                                                     xtype : 'Container',
                                                                     well : 'md',
                                                                     xns : Roo.bootstrap,
                                                                     items : [
                                                                         {
-                                                                            '|xns' : 'Roo.bootstrap',
+                                                                            xns: Roo.bootstrap,
                                                                             xtype : 'Row',
                                                                             xns : Roo.bootstrap,
                                                                             items : [
                                                                                 {
-                                                                                    '|xns' : 'Roo.bootstrap',
+                                                                                    xns: Roo.bootstrap,
                                                                                     md : 12,
                                                                                     xtype : 'Column',
                                                                                     xns : Roo.bootstrap,
                                                                                     items : [
                                                                                         {
-                                                                                            '|xns' : 'Roo.bootstrap',
+                                                                                            xns: Roo.bootstrap,
                                                                                             labelAlign : 'top',
                                                                                             fieldLabel : 'Family Name',
                                                                                             xtype : 'Input',
@@ -169,7 +169,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
 
                                                         },
                                                         {
-                                                            '|xns' : 'Roo.bootstrap',
+                                                            xns: Roo.bootstrap,
                                                             tabId : '#two',
                                                             xtype : 'TabPanel',
                                                             xns : Roo.bootstrap,
@@ -177,31 +177,31 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                             active : false,
                                                             items : [
                                                                 {
-                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    xns: Roo.bootstrap,
                                                                     level : 4,
                                                                     xtype : 'Header',
                                                                     html : 'Second TabPanel With ComboBox',
                                                                     xns : Roo.bootstrap
                                                                 },
                                                                 {
-                                                                    '|xns' : 'Roo.bootstrap',
+                                                                    xns: Roo.bootstrap,
                                                                     xtype : 'Container',
                                                                     well : 'md',
                                                                     xns : Roo.bootstrap,
                                                                     items : [
                                                                         {
-                                                                            '|xns' : 'Roo.bootstrap',
+                                                                            xns: Roo.bootstrap,
                                                                             xtype : 'Row',
                                                                             xns : Roo.bootstrap,
                                                                             items : [
                                                                                 {
-                                                                                    '|xns' : 'Roo.bootstrap',
+                                                                                    xns: Roo.bootstrap,
                                                                                     md : 12,
                                                                                     xtype : 'Column',
                                                                                     xns : Roo.bootstrap,
                                                                                     items : [
                                                                                         {
-                                                                                            '|xns' : 'Roo.bootstrap',
+                                                                                            xns: Roo.bootstrap,
                                                                                             labelAlign : 'top',
                                                                                             fieldLabel : 'Family Name',
                                                                                             xtype : 'Input',
