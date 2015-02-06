@@ -6272,9 +6272,9 @@
      "memberOf": ""
     },
     {
-     "name": "editNotList",
+     "name": "triggerList",
      "type": "Boolean",
-     "desc": "allow text type,but not show pull down, default false",
+     "desc": "trigger show the list or not (true|false) default true",
      "memberOf": ""
     },
     {

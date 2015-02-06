@@ -10,7 +10,7 @@
  * @cfg {Boolean} append (true|false) default false
  * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
  * @cfg {Boolean} tickable ComboBox with tickable selections (true|false), default false
- * @cfg {Boolean} editNotList allow text type,but not show pull down, default false
+ * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
  * @constructor
  * Create a new ComboBox.
@@ -271,7 +271,7 @@
     </span><span class="jsdoc-var">autoFocus </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">tickable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">btnPosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">editNotList </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">triggerList </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">// element that contains real text value.. (when hidden is used..)
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -363,13 +363,13 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">combobox </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-container input-group select2-container-multi'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-                </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">,
-                {
-                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'typeahead typeahead-long dropdown-menu'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display:none; max-height:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.maxHeight </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px;'
-                </span><span class="jsdoc-syntax">}
-            ]
+                </span><span class="jsdoc-var">box
+</span><span class="jsdoc-comment">//                {
+//                    tag: 'ul',
+//                    cls: 'typeahead typeahead-long dropdown-menu',
+//                    style: 'display:none; max-height:' + this.maxHeight + 'px;'
+//                }
+            </span><span class="jsdoc-syntax">]
         };
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">===</span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">) {
@@ -442,7 +442,6 @@
         
         </span><span class="jsdoc-var">Roo.bootstrap.ComboBox.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
-        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenName</span><span class="jsdoc-syntax">){
             
             </span><span class="jsdoc-var">this.hiddenField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input.form-hidden-field'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
@@ -460,10 +459,9 @@
         </span><span class="jsdoc-comment">//if(Roo.isGecko){
         //    this.el.dom.setAttribute('autocomplete', 'off');
         //}
-
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'x-combo-list'</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.list </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul.dropdown-menu'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-
+        
         </span><span class="jsdoc-comment">//this.list = new Roo.Layer({
         //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
         //});
@@ -528,7 +526,7 @@
             </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;li&gt;&lt;a href=&quot;#&quot;&gt;{' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.displayField </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'}&lt;/a&gt;&lt;/li&gt;'</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.View</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul.dropdown-menu'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">, {
+        </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.View</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.list</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">, {
             </span><span class="jsdoc-var">singleSelect</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">selectedClass</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.selectedClass
         </span><span class="jsdoc-syntax">});
         </span><span class="jsdoc-comment">//this.view.wrapEl.setDisplayed(false);
@@ -663,6 +661,8 @@
     
     </span><span class="jsdoc-var">initTickableEvnets</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {   
+        </span><span class="jsdoc-var">this.createList</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenName</span><span class="jsdoc-syntax">){
             
             </span><span class="jsdoc-var">this.hiddenField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input.form-hidden-field'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
@@ -678,11 +678,11 @@
              
         }
         
-        </span><span class="jsdoc-var">this.list </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul.dropdown-menu'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+</span><span class="jsdoc-comment">//        this.list = this.el.select('ul.dropdown-menu',true).first();
         
         </span><span class="jsdoc-var">this.choices </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul.select2-choices'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.searchField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul li.select2-search-field'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editNotList</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.triggerList</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.searchField.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onSearchFieldClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, {</span><span class="jsdoc-var">preventDefault</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">});
         }
          
@@ -718,7 +718,7 @@
             </span><span class="jsdoc-var">this.tpl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;li class=&quot;select2-result&quot;&gt;&lt;div class=&quot;checkbox&quot;&gt;&lt;input id=&quot;{roo-id}&quot; type=&quot;checkbox&quot; {roo-data-checked}&gt;&lt;label for=&quot;{roo-id}&quot;&gt;&lt;b&gt;{' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.displayField </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'}&lt;/b&gt;&lt;/label&gt;&lt;/li&gt;'</span><span class="jsdoc-syntax">;
         }
 
-        </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.View</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul.dropdown-menu'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">, {
+        </span><span class="jsdoc-var">this.view </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.View</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.list</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.tpl</span><span class="jsdoc-syntax">, {
             </span><span class="jsdoc-var">singleSelect</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tickable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">parent</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">store</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">selectedClass</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.selectedClass
         </span><span class="jsdoc-syntax">});
         
@@ -879,7 +879,7 @@
          </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">opts.add</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.list.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;li class=&quot;loading-indicator&quot;&gt;'</span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">this.loadingText</span><span class="jsdoc-syntax">||</span><span class="jsdoc-string">'loading'</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-string">'&lt;/li&gt;' </span><span class="jsdoc-syntax">;
          }
-        </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
+</span><span class="jsdoc-comment">//        this.restrictHeight();
         </span><span class="jsdoc-var">this.selectedIndex </span><span class="jsdoc-syntax">= -1;
     },
 
@@ -898,7 +898,7 @@
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.getCount</span><span class="jsdoc-syntax">() &gt; 0){
             </span><span class="jsdoc-var">this.expand</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
+</span><span class="jsdoc-comment">//            this.restrictHeight();
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastQuery </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.allQuery</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editable </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.select</span><span class="jsdoc-syntax">();
@@ -1170,6 +1170,7 @@
         //this.list.beginUpdate();
         //this.list.setHeight(this.innerList.getHeight()+this.list.getFrameWidth('tb')+(this.resizable?this.handleHeight:0)+this.assetHeight);
         </span><span class="jsdoc-var">this.list.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.listAlign</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.list.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.listAlign</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//this.list.endUpdate();
     </span><span class="jsdoc-syntax">},
 
@@ -1405,8 +1406,10 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
          </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'expand'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.list.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.listAlign</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">this.list.show</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
             
@@ -1433,7 +1436,7 @@
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'trigger click'</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.triggerList</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         

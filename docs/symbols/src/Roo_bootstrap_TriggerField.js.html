@@ -62,8 +62,6 @@ trigger.applyTo('my-field');
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">parent </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">();
-        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.labelAlign </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.parentLabelAlign</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">();
@@ -164,13 +162,13 @@ trigger.applyTo('my-field');
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">combobox </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-container input-group'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-                </span><span class="jsdoc-var">box</span><span class="jsdoc-syntax">,
-                {
-                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'typeahead typeahead-long dropdown-menu'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display:none'
-                </span><span class="jsdoc-syntax">}
-            ]
+                </span><span class="jsdoc-var">box
+</span><span class="jsdoc-comment">//                {
+//                    tag: 'ul',
+//                    cls: 'typeahead typeahead-long dropdown-menu',
+//                    style: 'display:none'
+//                }
+            </span><span class="jsdoc-syntax">]
         };
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
@@ -288,6 +286,8 @@ trigger.applyTo('my-field');
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
+        </span><span class="jsdoc-var">this.createList</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-var">Roo.bootstrap.TriggerField.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//this.wrap = this.el.wrap({cls: &quot;x-form-field-wrap&quot;});
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
@@ -309,6 +309,15 @@ trigger.applyTo('my-field');
         //    this.wrap.setWidth(this.el.getWidth()+this.trigger.getWidth());
         //}
     </span><span class="jsdoc-syntax">},
+    
+    </span><span class="jsdoc-var">createList </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.list </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'typeahead typeahead-long dropdown-menu'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display:none'
+        </span><span class="jsdoc-syntax">});
+    },
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">initTrigger </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
