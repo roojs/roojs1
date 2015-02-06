@@ -286,11 +286,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     // private
     initEvents : function(){
         
-        this.list = Roo.get(document.body).createChild({
-            tag: 'ul',
-            cls: 'typeahead typeahead-long dropdown-menu',
-            style: 'display:none'
-        });
+        this.createList();
         
         Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
@@ -312,6 +308,15 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         //if(!this.width){
         //    this.wrap.setWidth(this.el.getWidth()+this.trigger.getWidth());
         //}
+    },
+    
+    createList : function()
+    {
+        this.list = Roo.get(document.body).createChild({
+            tag: 'ul',
+            cls: 'typeahead typeahead-long dropdown-menu',
+            style: 'display:none'
+        });
     },
 
     // private
