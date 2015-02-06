@@ -1167,7 +1167,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         //this.innerList.setHeight(h < this.maxHeight ? 'auto' : this.maxHeight);
         //this.list.beginUpdate();
         //this.list.setHeight(this.innerList.getHeight()+this.list.getFrameWidth('tb')+(this.resizable?this.handleHeight:0)+this.assetHeight);
-        (function(){ this.list.alignTo(this.inputEl(), this.listAlign); }).defer(1000);
+        (function(){ this.list.alignTo(this.inputEl(), this.listAlign); }).defer(100);
         //this.list.endUpdate();
     },
 
