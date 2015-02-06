@@ -120,8 +120,6 @@ Roo.example.combobox = new Roo.XComponent({
                     alwaysQuery : true,
                     allowBlank : false,
                     fieldLabel : 'Country With Tickable',
-//                    pageSize : '10',
-//                    append: true,
                     store : {
                         xtype: 'Store',
                         xns: Roo.data,
