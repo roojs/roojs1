@@ -730,7 +730,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var _this = this;
         
         var t = r.cfg.render(r.container);
-        
+        Roo.log(t);
+        return;
         if(r.cfg.cn){
             Roo.each(r.cfg.cn, function(c){
                 var child = {
