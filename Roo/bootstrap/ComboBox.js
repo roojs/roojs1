@@ -10,7 +10,7 @@
  * @cfg {Boolean} append (true|false) default false
  * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
  * @cfg {Boolean} tickable ComboBox with tickable selections (true|false), default false
- * @cfg {Boolean} editNotList allow text type,but not show pull down, default false
+ * @cfg {Boolean} triggerList allow text type,but not show pull down, default false
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
  * @constructor
  * Create a new ComboBox.
@@ -271,7 +271,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     autoFocus : true,
     tickable : false,
     btnPosition : 'right',
-    editNotList : false,
+    triggerList : true,
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
