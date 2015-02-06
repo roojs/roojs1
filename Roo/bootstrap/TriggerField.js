@@ -162,12 +162,12 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         var combobox = {
             cls: 'select2-container input-group',
             cn: [
-                box,
-                {
-                    tag: 'ul',
-                    cls: 'typeahead typeahead-long dropdown-menu',
-                    style: 'display:none'
-                }
+                box
+//                {
+//                    tag: 'ul',
+//                    cls: 'typeahead typeahead-long dropdown-menu',
+//                    style: 'display:none'
+//                }
             ]
         };
         
