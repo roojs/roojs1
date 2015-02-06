@@ -290,7 +290,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             tag: 'ul',
             cls: 'typeahead typeahead-long dropdown-menu',
             style: 'display:none'
-        }, false, true);
+        });
         
         Roo.log(this.list);
         Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
