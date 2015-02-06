@@ -525,7 +525,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                     Roo.each(row.cellObjects, function(r){
                         Roo.log('run??');
                         Roo.log(r);
-                        //_this.renderCellObject(r);
+                        _this.renderCellObject(r);
                     })
                 }
                 //delete row.cellOjbects;
@@ -728,15 +728,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var t = r.cfg.render(r.container);
         Roo.log(t);
-        if(r.cfg.cn){
-            Roo.each(r.cfg.cn, function(c){
-                var child = {
-                    container: t.getChildContainer(),
-                    cfg: c
-                }
-                _this.renderCellObject(child);
-            })
-        }
+//        if(r.cfg.cn){
+//            Roo.each(r.cfg.cn, function(c){
+//                var child = {
+//                    container: t.getChildContainer(),
+//                    cfg: c
+//                }
+//                _this.renderCellObject(child);
+//            })
+//        }
     }
    
 });
