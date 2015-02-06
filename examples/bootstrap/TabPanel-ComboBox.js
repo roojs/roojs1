@@ -122,6 +122,107 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                     carousel : true,
                                                     items : [
                                                         {
+                                                            tabId : '#normal',
+                                                            xtype : 'TabPanel',
+                                                            xns : Roo.bootstrap,
+                                                            navId : '#top',
+                                                            active : true,
+                                                            items : [
+                                                                {
+                                                                    level : 4,
+                                                                    xtype : 'Header',
+                                                                    html : 'First TabPanel With ComboBox',
+                                                                    xns : Roo.bootstrap
+                                                                },
+                                                                {
+                                                                    xtype : 'Container',
+                                                                    well : 'md',
+                                                                    xns : Roo.bootstrap,
+                                                                    items : [
+                                                                        {
+                                                                            xtype : 'Row',
+                                                                            xns : Roo.bootstrap,
+                                                                            items : [
+                                                                                {
+                                                                                    md : 12,
+                                                                                    xtype : 'Column',
+                                                                                    xns : Roo.bootstrap,
+                                                                                    items : [
+                                                                                        {
+                                                                                            xtype: 'ComboBox',
+                                                                                            xns: Roo.bootstrap,
+                                                                                            placeholder : 'Select a country',
+                                                                                            displayField : 'name',
+                                                                                            hiddenName : 'country_id',
+                                                                                            md : '12',
+                                                                                            size : 'sm',
+                                                                                            name : 'country_id_name',
+                                                                                            triggerAction : 'all',
+                                                                                            minChars : '1',
+                                                                                            tpl : '<li class="select2-result"><b>{name}</b></div>',
+                                                                                            style : 'margin-top:20px;',
+                                                                                            listeners : {
+                                                                                                render : function (_self) {
+                                                                                                    _this.normalSel = _self;
+                                                                                                }
+                                                                                            },
+                                                                                            forceSelection : true,
+                                                                                            valueField : 'id',
+                                                                                            queryParam : 'query[name]',
+                                                                                            editable : true,
+                                                                                            alwaysQuery : true,
+                                                                                            allowBlank : false,
+                                                                                            fieldLabel : 'Country Normal',
+                                                                                            store : {
+                                                                                                xtype: 'Store',
+                                                                                                xns: Roo.data,
+                                                                                                listeners : {
+                                                                                                    beforeload : function (_self, o) {
+                                                                                                        o.params = o.params || {};
+
+                                                                                                    }
+                                                                                                },
+                                                                                                remoteSort : true,
+                                                                                                sortInfo : { direction : 'ASC', field: 'name' },
+                                                                                                proxy : {
+                                                                                                    xtype: 'HttpProxy',
+                                                                                                    xns: Roo.data,
+                                                                                                    url : baseURL + '/Geoip/Core_geoip_country',
+                                                                                                    method : 'GET'
+                                                                                                },
+                                                                                                reader : {
+                                                                                                    xtype: 'JsonReader',
+                                                                                                    xns: Roo.data,
+                                                                                                    fields : [
+                                                                                                        {
+                                                                                                            'name': 'id',
+                                                                                                            'type': 'int'
+                                                                                                        },
+                                                                                                        {
+                                                                                                            'name': 'code',
+                                                                                                            'type': 'string'
+                                                                                                        },
+                                                                                                        {
+                                                                                                            'name': 'name',
+                                                                                                            'type': 'string'
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    ]
+
+                                                                                }
+                                                                            ]
+
+                                                                        }
+                                                                    ]
+
+                                                                }
+                                                            ]
+
+                                                        },
+                                                        {
                                                             tabId : '#one',
                                                             xtype : 'TabPanel',
                                                             xns : Roo.bootstrap,
