@@ -274,7 +274,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                             editable : true,
                                                                                             alwaysQuery : true,
                                                                                             allowBlank : false,
-                                                                                            fieldLabel : 'Country Normal',
+                                                                                            fieldLabel : 'Country Multiple',
                                                                                             store : {
                                                                                                 xtype: 'Store',
                                                                                                 xns: Roo.data,
