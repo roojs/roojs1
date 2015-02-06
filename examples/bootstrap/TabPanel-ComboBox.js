@@ -64,7 +64,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                             },
                                                             items : [
                                                             	{
-                                                                    tabId : '#one',
+                                                                    tabId : '#normal',
                                                                     xtype : 'NavItem',
                                                                     preventDefault : true,
                                                                     html : 1,
@@ -73,13 +73,28 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                     listeners : {
                                                                     	render : function (_self)
                                                                     	   {
-                                                                    	      _this.one = this;
+                                                                    	      _this.normal = this;
                                                                     	      
                                                                     	   }
                                                                     }
                                                                 },
                                                             	{
-                                                                    tabId : '#two',
+                                                                    tabId : '#multiple',
+                                                                    xtype : 'NavItem',
+                                                                    preventDefault : true,
+                                                                    html : 2,
+                                                                    xns : Roo.bootstrap,
+                                                                    active : false,
+                                                                    listeners : {
+                                                                    	render : function (_self)
+                                                                    	   {
+                                                                    	      _this.multiple = this;
+                                                                    	      
+                                                                    	   }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    tabId : '#th',
                                                                     xtype : 'NavItem',
                                                                     preventDefault : true,
                                                                     html : 2,
