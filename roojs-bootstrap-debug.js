@@ -5157,9 +5157,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         });
         
         var tbody =  this.mainBody;
-        
-        var renders = [];
-                    
+              
         if(ds.getCount() > 0){
             ds.data.each(function(d,rowIndex){
                 var row =  this.renderRow(cm, ds, rowIndex);
@@ -7657,8 +7655,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     
     getAutoCreate : function(){
        
-        var parent = this.parent();
-        
         var align = this.labelAlign || this.parentLabelAlign();
         
         var id = Roo.id();
@@ -7759,12 +7755,12 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         var combobox = {
             cls: 'select2-container input-group',
             cn: [
-                box,
-                {
-                    tag: 'ul',
-                    cls: 'typeahead typeahead-long dropdown-menu',
-                    style: 'display:none'
-                }
+                box
+//                {
+//                    tag: 'ul',
+//                    cls: 'typeahead typeahead-long dropdown-menu',
+//                    style: 'display:none'
+//                }
             ]
         };
         
@@ -7883,6 +7879,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     // private
     initEvents : function(){
         
+        this.createList();
+        
         Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
         if(!this.multiple){
@@ -7903,6 +7901,15 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         //if(!this.width){
         //    this.wrap.setWidth(this.el.getWidth()+this.trigger.getWidth());
         //}
+    },
+    
+    createList : function()
+    {
+        this.list = Roo.get(document.body).createChild({
+            tag: 'ul',
+            cls: 'typeahead typeahead-long dropdown-menu',
+            style: 'display:none'
+        });
     },
 
     // private
@@ -10065,7 +10072,7 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
  * @cfg {Boolean} append (true|false) default false
  * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
  * @cfg {Boolean} tickable ComboBox with tickable selections (true|false), default false
- * @cfg {Boolean} editNotList allow text type,but not show pull down, default false
+ * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
  * @constructor
  * Create a new ComboBox.
@@ -10326,7 +10333,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     autoFocus : true,
     tickable : false,
     btnPosition : 'right',
-    editNotList : false,
+    triggerList : true,
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
@@ -10418,12 +10425,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var combobox = {
             cls: 'select2-container input-group select2-container-multi',
             cn: [
-                box,
-                {
-                    tag: 'ul',
-                    cls: 'typeahead typeahead-long dropdown-menu',
-                    style: 'display:none; max-height:' + this.maxHeight + 'px;'
-                }
+                box
+//                {
+//                    tag: 'ul',
+//                    cls: 'typeahead typeahead-long dropdown-menu',
+//                    style: 'display:none; max-height:' + this.maxHeight + 'px;'
+//                }
             ]
         };
         
@@ -10497,7 +10504,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         Roo.bootstrap.ComboBox.superclass.initEvents.call(this);
         
-        
         if(this.hiddenName){
             
             this.hiddenField = this.el.select('input.form-hidden-field',true).first();
@@ -10515,10 +10521,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         //if(Roo.isGecko){
         //    this.el.dom.setAttribute('autocomplete', 'off');
         //}
-
+        
         var cls = 'x-combo-list';
-        this.list = this.el.select('ul.dropdown-menu',true).first();
-
+        
         //this.list = new Roo.Layer({
         //    shadow: this.shadow, cls: [cls, this.listClass].join(' '), constrain:false
         //});
@@ -10583,7 +10588,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.tpl = '<li><a href="#">{' + this.displayField + '}</a></li>';
         }
 
-        this.view = new Roo.View(this.el.select('ul.dropdown-menu',true).first(), this.tpl, {
+        this.view = new Roo.View(this.list, this.tpl, {
             singleSelect:true, store: this.store, selectedClass: this.selectedClass
         });
         //this.view.wrapEl.setDisplayed(false);
@@ -10718,6 +10723,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     initTickableEvnets: function()
     {   
+        this.createList();
+        
         if(this.hiddenName){
             
             this.hiddenField = this.el.select('input.form-hidden-field',true).first();
@@ -10733,11 +10740,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
              
         }
         
-        this.list = this.el.select('ul.dropdown-menu',true).first();
+//        this.list = this.el.select('ul.dropdown-menu',true).first();
         
         this.choices = this.el.select('ul.select2-choices', true).first();
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
-        if(this.editNotList){
+        if(this.triggerList){
             this.searchField.on("click", this.onSearchFieldClick, this, {preventDefault:true});
         }
          
@@ -10773,7 +10780,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.tpl = '<li class="select2-result"><div class="checkbox"><input id="{roo-id}" type="checkbox" {roo-data-checked}><label for="{roo-id}"><b>{' + this.displayField + '}</b></label></li>';
         }
 
-        this.view = new Roo.View(this.el.select('ul.dropdown-menu',true).first(), this.tpl, {
+        this.view = new Roo.View(this.list, this.tpl, {
             singleSelect:true, tickable:true, parent:this, store: this.store, selectedClass: this.selectedClass
         });
         
@@ -10934,7 +10941,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          if (!opts.add) {
             this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
          }
-        this.restrictHeight();
+//        this.restrictHeight();
         this.selectedIndex = -1;
     },
 
@@ -10953,7 +10960,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.store.getCount() > 0){
             this.expand();
-            this.restrictHeight();
+//            this.restrictHeight();
             if(this.lastQuery == this.allQuery){
                 if(this.editable && !this.tickable){
                     this.inputEl().dom.select();
@@ -11225,6 +11232,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         //this.list.beginUpdate();
         //this.list.setHeight(this.innerList.getHeight()+this.list.getFrameWidth('tb')+(this.resizable?this.handleHeight:0)+this.assetHeight);
         this.list.alignTo(this.inputEl(), this.listAlign);
+        this.list.alignTo(this.inputEl(), this.listAlign);
         //this.list.endUpdate();
     },
 
@@ -11460,8 +11468,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
          Roo.log('expand');
-        this.list.alignTo(this.inputEl(), this.listAlign);
+        
         this.list.show();
+        
+        this.restrictHeight();
         
         if(this.tickable){
             
@@ -11488,7 +11498,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         Roo.log('trigger click');
         
-        if(this.disabled || this.editNotList){
+        if(this.disabled || this.triggerList){
             return;
         }
         
