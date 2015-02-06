@@ -11498,7 +11498,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         Roo.log('trigger click');
         
-        if(this.disabled || this.triggerList){
+        if(this.disabled || !this.triggerList){
             return;
         }
         
