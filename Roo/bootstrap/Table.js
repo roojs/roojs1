@@ -522,10 +522,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 var _this = this;
                 
                 if(row.cellObjects.length){
+                    Roo.log(row.cellObjects.length);
                     Roo.each(row.cellObjects, function(r){
                         Roo.log('run??');
                         Roo.log(r);
-                        _this.renderCellObject(r);
+                        //_this.renderCellObject(r);
                     })
                 }
                 //delete row.cellOjbects;
