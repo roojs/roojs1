@@ -127,7 +127,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                     style : 'margin-top:20px;',
                                                     xns : Roo.bootstrap,
                                                     navId : '#top',
-                                                    
+                                                    carousel : true,
                                                     items : [
                                                         {
                                                             tabId : '#normal',
