@@ -285,7 +285,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
 
     // private
     initEvents : function(){
-        
+        Roo.log('id here?????????????????');
+        Roo.log(this);
         Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
         if(!this.multiple){
