@@ -94,6 +94,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                            changed : function (_self, state)
                                                                            {
                                                                                Roo.log('chnaged???');
+                                                                               Roo.log(this.multipleSel.inputEl().getWidth());
                                                                                if(state){
                                                                                     _this.multipleSel.list.setWidth(Math.max(_this.multipleSel.inputEl().getWidth(), _this.multipleSel.minListWidth));
                                                                                 }
