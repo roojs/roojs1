@@ -265,7 +265,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
                                                                                             multiple: true,
                                                                                             listeners : {
                                                                                                 render : function (_self) {
-                                                                                                    _this.normalSel = _self;
+                                                                                                    _this.multipleSel = _self;
                                                                                                 }
                                                                                             },
                                                                                             forceSelection : true,
