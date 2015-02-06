@@ -286,14 +286,11 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     // private
     initEvents : function(){
         
-        Roo.get(document.body).createChild({
-            
-        })
-//        {
-//                    tag: 'ul',
-//                    cls: 'typeahead typeahead-long dropdown-menu',
-//                    style: 'display:none'
-//                }
+        this.list = Roo.get(document.body).createChild({
+            tag: 'ul',
+            cls: 'typeahead typeahead-long dropdown-menu',
+            style: 'display:none'
+        }, false, true);
         
         Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
