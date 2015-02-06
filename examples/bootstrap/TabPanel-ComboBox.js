@@ -127,7 +127,7 @@ Roo.example.combobox = new Roo.XComponent({
                                                                     '|xns' : 'Roo.bootstrap',
                                                                     level : 4,
                                                                     xtype : 'Header',
-                                                                    html : 'Your Basic Details',
+                                                                    html : 'First TabPanel With ComboBox',
                                                                     xns : Roo.bootstrap
                                                                 },
                                                                 {
@@ -143,7 +143,7 @@ Roo.example.combobox = new Roo.XComponent({
                                                                             items : [
                                                                                 {
                                                                                     '|xns' : 'Roo.bootstrap',
-                                                                                    md : 6,
+                                                                                    md : 12,
                                                                                     xtype : 'Column',
                                                                                     xns : Roo.bootstrap,
                                                                                     items : [
@@ -155,181 +155,6 @@ Roo.example.combobox = new Roo.XComponent({
                                                                                             allowBlank : true,
                                                                                             xns : Roo.bootstrap,
                                                                                             name : 'lastname'
-                                                                                        }
-                                                                                    ]
-
-                                                                                },
-                                                                                {
-                                                                                    '|xns' : 'Roo.bootstrap',
-                                                                                    md : 6,
-                                                                                    xtype : 'Column',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    items : [
-                                                                                        {
-                                                                                            '|xns' : 'Roo.bootstrap',
-                                                                                            labelAlign : 'top',
-                                                                                            fieldLabel : 'Family Name - Local Language (optional)',
-                                                                                            xtype : 'Input',
-                                                                                            allowBlank : true,
-                                                                                            xns : Roo.bootstrap,
-                                                                                            name : 'lastname_alt'
-                                                                                        }
-                                                                                    ]
-
-                                                                                }
-                                                                            ]
-
-                                                                        },
-                                                                        {
-                                                                            '|xns' : 'Roo.bootstrap',
-                                                                            xtype : 'Row',
-                                                                            xns : Roo.bootstrap,
-                                                                            items : [
-                                                                                {
-                                                                                    '|xns' : 'Roo.bootstrap',
-                                                                                    md : 6,
-                                                                                    xtype : 'Column',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    items : [
-                                                                                        {
-                                                                                            '|xns' : 'Roo.bootstrap',
-                                                                                            labelAlign : 'top',
-                                                                                            fieldLabel : 'Given Name',
-                                                                                            xtype : 'Input',
-                                                                                            allowBlank : true,
-                                                                                            xns : Roo.bootstrap,
-                                                                                            name : 'firstname'
-                                                                                        }
-                                                                                    ]
-
-                                                                                },
-                                                                                {
-                                                                                    '|xns' : 'Roo.bootstrap',
-                                                                                    md : 6,
-                                                                                    xtype : 'Column',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    items : [
-                                                                                        {
-                                                                                            '|xns' : 'Roo.bootstrap',
-                                                                                            labelAlign : 'top',
-                                                                                            fieldLabel : 'Given Name - Local Language (optional)',
-                                                                                            xtype : 'Input',
-                                                                                            allowBlank : true,
-                                                                                            xns : Roo.bootstrap,
-                                                                                            name : 'firstname_alt'
-                                                                                        }
-                                                                                    ]
-
-                                                                                }
-                                                                            ]
-
-                                                                        },
-                                                                        {
-                                                                            '|xns' : 'Roo.bootstrap',
-                                                                            xtype : 'Row',
-                                                                            xns : Roo.bootstrap,
-                                                                            items : [
-                                                                                {
-                                                                                    '|xns' : 'Roo.bootstrap',
-                                                                                    md : 6,
-                                                                                    xtype : 'Column',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    items : [
-                                                                                        {
-                                                                                            '|xns' : 'Roo.bootstrap',
-                                                                                            allowBlank : false,
-                                                                                            name : 'birth_date',
-                                                                                            format : 'd/M/Y',
-                                                                                            xtype : 'DateField',
-                                                                                            placeholder : 'Day/Month/Year',
-                                                                                            xns : Roo.bootstrap,
-                                                                                            fieldLabel : 'Date of Birth',
-                                                                                            before : '<i class=\"fa fa-clock-o\"></i>',
-                                                                                            disableKeyFilter : true
-                                                                                        }
-                                                                                    ]
-
-                                                                                }
-                                                                            ]
-
-                                                                        }
-                                                                    ]
-
-                                                                },
-                                                                {
-                                                                    '|xns' : 'Roo.bootstrap',
-                                                                    level : 4,
-                                                                    xtype : 'Header',
-                                                                    html : 'Your Plans',
-                                                                    xns : Roo.bootstrap
-                                                                },
-                                                                {
-                                                                    '|xns' : 'Roo.bootstrap',
-                                                                    xtype : 'Container',
-                                                                    xns : Roo.bootstrap,
-                                                                    well : 'md',
-                                                                    items : [
-                                                                        {
-                                                                            '|xns' : 'Roo.bootstrap',
-                                                                            xtype : 'Row',
-                                                                            xns : Roo.bootstrap,
-                                                                            items : [
-                                                                                {
-                                                                                    '|xns' : 'Roo.bootstrap',
-                                                                                    md : 6,
-                                                                                    xtype : 'Column',
-                                                                                    xns : Roo.bootstrap,
-                                                                                    items : [
-                                                                                        {
-                                                                                            store : {
-                                                                                                '|xns' : 'Roo.data',
-                                                                                                data : [
-                                                                                                    ['I am actively looking for work','YES'],
-                                                                                                    [
-                                                                                                        'Would consider a relivant offer',
-                                                                                                        'MAYBE'
-                                                                                                    ],
-                                                                                                    [ 
-                                                                                                       'Not currently interesetd unless meets aspirational goals',
-                                                                                                       'ASPIRE'
-                                                                                                    ]
-                                                                                                ],
-                                                                                                xtype : 'SimpleStore',
-                                                                                                xns : Roo.data,
-                                                                                                fields : [ 'label','value' ]
-                                                                                            },
-                                                                                            '|xns' : 'Roo.bootstrap',
-                                                                                            selectOnFocus : true,
-                                                                                            mode : 'local',
-                                                                                            name : '',
-                                                                                            valueField : 'value',
-                                                                                            xtype : 'ComboBox',
-                                                                                            editable : false,
-                                                                                            triggerAction : 'all',
-                                                                                            alwaysQuery : true,
-                                                                                            placeholder : '',
-                                                                                            listWidth : 400,
-                                                                                            xns : Roo.bootstrap,
-                                                                                            tpl : '<div class=\"select2-result\"><b>{label}</b></div>',
-                                                                                            fieldLabel : 'How would you describe your career plans',
-                                                                                            hiddenName : 'employ_plan',
-                                                                                            displayField : 'label',
-                                                                                            forceSelection : true,
-                                                                                            listeners : {
-                                                                                                render : function (_self)
-                                                                                                   {
-                                                                                                      // this.setValue('Individual');
-                                                                                                      this.el.select('span').removeClass('btn');
-                                                                                                   },
-                                                                                                select : function (combo, record, index)
-                                                                                                   {
-
-                                                                                                   }
-                                                                                            },
-                                                                                            items : [
-
-                                                                                            ]
-
                                                                                         }
                                                                                     ]
 
