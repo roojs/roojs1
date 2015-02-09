@@ -19543,6 +19543,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * Bootstrap TabBox class
  * @cfg {String} title Title of the TabBox
  * @cfg {String} icon Icon of the TabBox
+ * @cfg {Boolean} showtabs (true|false) show the tabs default true
  * 
  * @constructor
  * Create a new TabBox
@@ -19568,6 +19569,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
 
     title : '',
     icon : false,
+    showtabs : true,
     
     getChildContainer : function()
     {
@@ -19630,6 +19632,10 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         //Roo.log('addpane');
         //Roo.log(pane);
         // tabs are rendere left to right..
+        if(!this.showtabs){
+            return;
+        }
+        
         var ctr = this.el.select('.nav-tabs', true).first();
          
          
