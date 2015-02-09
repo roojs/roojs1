@@ -1219,6 +1219,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     select : function(index, scrollIntoView){
         this.selectedIndex = index;
+        Roo.log('select !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(this.selectedIndex);
         this.view.select(index);
         if(scrollIntoView !== false){
             var el = this.view.getNode(index);
