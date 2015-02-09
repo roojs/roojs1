@@ -1195,13 +1195,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @return {Boolean} True if the value matched an item in the list, else false
      */
     selectByValue : function(v, scrollIntoView){
-        Roo.log('select by value!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(v);
-        
         if(v !== undefined && v !== null){
             var r = this.findRecord(this.valueField || this.displayField, v);
-            Roo.log(r);
-            Roo.log(this.store.indexOf(r));
             if(r){
                 this.select(this.store.indexOf(r), scrollIntoView);
                 return true;
@@ -1219,14 +1214,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     select : function(index, scrollIntoView){
         this.selectedIndex = index;
-        Roo.log('select !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.selectedIndex);
         this.view.select(index);
         if(scrollIntoView !== false){
             var el = this.view.getNode(index);
-            Roo.log(el);
             if(el){
-//                this.list.scrollChildIntoView(el, false);
+                //this.innerList.scrollChildIntoView(el, false);
                 
             }
         }
