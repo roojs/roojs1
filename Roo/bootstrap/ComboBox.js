@@ -1226,7 +1226,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             var el = this.view.getNode(index);
             Roo.log(el);
             if(el){
-                this.list.scrollChildIntoView(el, false);
+//                this.list.scrollChildIntoView(el, false);
                 
             }
         }
