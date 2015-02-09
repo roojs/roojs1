@@ -38,6 +38,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
 
     title : '',
     icon : false,
+    showtabs : true,
     
     getChildContainer : function()
     {
