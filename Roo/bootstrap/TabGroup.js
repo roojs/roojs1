@@ -136,6 +136,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             pan.el.dom.offsetWidth; // find the offset with - causing a reflow?
             cur.el.addClass(lr); // or right
             pan.el.addClass(lr);
+            
+            var _this = this;
             cur.el.on('transitionend', function() {
                 Roo.log("trans end?");
                 
@@ -145,6 +147,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 cur.el.removeClass([lr]);
                 cur.setActive(false);
                 
+                _this.transition = false;
                 
             }, this, { single:  true } );
             return true;
