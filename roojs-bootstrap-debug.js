@@ -3559,6 +3559,13 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (this.disabled) {
             return;
         }
+        
+        var tg = Roo.bootstrap.TabGroup.get(this.navId);
+        if (tg && tg.transition) {
+            Roo.log("waiting for the transitionend");
+            return;
+        }
+        
         Roo.log("fire event clicked");
         if(this.fireEvent('click', this, e) === false){
             return;
@@ -13817,6 +13824,7 @@ Roo.bootstrap.TabGroup = function(config){
 Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     carousel : false,
+    transition : false,
      
     getAutoCreate : function()
     {
@@ -13895,8 +13903,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     showPanel : function (pan)
     {
         
-        
-        
         if (typeof(pan) == 'number') {
             pan = this.tabs[pan];
         }
@@ -13912,15 +13918,16 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return false;
         }
         
-        
-        
         if (this.carousel) {
+            this.transition = true;
             var dir = this.indexOfPanel(pan) > this.indexOfPanel(cur)  ? 'next' : 'prev';
             var lr = dir == 'next' ? 'left' : 'right';
             pan.el.addClass(dir); // or prev
             pan.el.dom.offsetWidth; // find the offset with - causing a reflow?
             cur.el.addClass(lr); // or right
             pan.el.addClass(lr);
+            
+            var _this = this;
             cur.el.on('transitionend', function() {
                 Roo.log("trans end?");
                 
@@ -13930,6 +13937,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 cur.el.removeClass([lr]);
                 cur.setActive(false);
                 
+                _this.transition = false;
                 
             }, this, { single:  true } );
             return true;
