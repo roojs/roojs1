@@ -30,6 +30,7 @@ Roo.bootstrap.TabGroup = function(config){
 Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     carousel : false,
+    transition : false,
      
     getAutoCreate : function()
     {
@@ -128,6 +129,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         
         if (this.carousel) {
+            this.transition = true;
             var dir = this.indexOfPanel(pan) > this.indexOfPanel(cur)  ? 'next' : 'prev';
             var lr = dir == 'next' ? 'left' : 'right';
             pan.el.addClass(dir); // or prev
