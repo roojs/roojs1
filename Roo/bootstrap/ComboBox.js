@@ -1201,6 +1201,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(v !== undefined && v !== null){
             var r = this.findRecord(this.valueField || this.displayField, v);
             Roo.log(r);
+            Roo.log(this.store.indexOf(r));
             if(r){
                 this.select(this.store.indexOf(r), scrollIntoView);
                 return true;
