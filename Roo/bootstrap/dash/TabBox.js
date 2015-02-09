@@ -12,6 +12,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * Bootstrap TabBox class
  * @cfg {String} title Title of the TabBox
  * @cfg {String} icon Icon of the TabBox
+ * @cfg {Boolean} showtabs (true|false) show the tabs default true
  * 
  * @constructor
  * Create a new TabBox
