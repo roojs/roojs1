@@ -1384,6 +1384,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var in_list =  e.within(this.list);
         var is_list = (Roo.get(e.getTarget()) == this.list) ? true : false;
         
+        Roo.log(Roo.get(e.getTarget());
+        
         if (in_combo || in_list || !is_list) {
             //e.stopPropagation();
             return;
