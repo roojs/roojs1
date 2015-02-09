@@ -17040,6 +17040,12 @@
      "memberOf": ""
     },
     {
+     "name": "showtabs",
+     "type": "Boolean",
+     "desc": "(true|false) show the tabs default true",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
