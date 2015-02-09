@@ -1195,6 +1195,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @return {Boolean} True if the value matched an item in the list, else false
      */
     selectByValue : function(v, scrollIntoView){
+        Roo.log('select by value!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(v);
+        
         if(v !== undefined && v !== null){
             var r = this.findRecord(this.valueField || this.displayField, v);
             if(r){
