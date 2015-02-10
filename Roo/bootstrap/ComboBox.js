@@ -1426,7 +1426,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if (!this.editable) {
             Roo.get(document).on('keydown', this.listKeyPress, this);
         }
-        Roo.log('got');
+        
         this.fireEvent('expand', this);
     },
 
