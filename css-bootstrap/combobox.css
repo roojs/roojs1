@@ -208,10 +208,6 @@
     width: 100%;
 }
 
-.dropdown-menu {
-  z-index: 10002;
-}
-
 .select2-container-multi .dropdown-menu .select2-result .checkbox {
     margin-top: 0px;
     margin-bottom: 0px;
