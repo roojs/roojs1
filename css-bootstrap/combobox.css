@@ -208,8 +208,8 @@
     width: 100%;
 }
 
-.select2-container .dropdown-menu {
-  z-index: 9999;
+.dropdown-menu {
+  z-index: 10002;
 }
 
 .select2-container-multi .dropdown-menu .select2-result .checkbox {
