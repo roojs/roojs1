@@ -1038,7 +1038,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.multiple){
             if(typeof o.display_name !== 'string'){
                 for(var i=0;i<o.display_name.length;i++){
-                    this.addItem({'id':o.id,'display_name':o.display_name[i]});
+                    this.addItem({'id':o.id[i],'display_name':o.display_name[i]});
                 }
             }
             //this.addItem(o);
