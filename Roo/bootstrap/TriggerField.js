@@ -319,7 +319,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         });
         
         this.list.setVisibilityMode(Roo.Element.DISPLAY);
-        this.hide();
+        this.list.hide();
     },
 
     // private
