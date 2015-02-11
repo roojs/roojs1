@@ -7918,8 +7918,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             style: 'display:none'
         });
         
-        this.list.setVisibilityMode(Roo.Element.DISPLAY);
-        this.list.hide();
+        this.list.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';;
+        
     },
 
     // private
