@@ -60,7 +60,7 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
             return;
         }
         this.title = str;
-        this.tab.select('a'.true).first().dom.innerHTML = str;
+        this.tab.select('a', true).first().dom.innerHTML = str;
         
     }
     
