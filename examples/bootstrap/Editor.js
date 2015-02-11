@@ -50,9 +50,9 @@ Roo.example.Editor = new Roo.XComponent({
                                             xns : Roo.bootstrap
                                         },
                                         {
-                                            xtype : 'Pan',
+                                            xtype : 'Panel',
                                             html : 'Inline Editor',
-                                            xns : Roo.bootstrap.Editor
+                                            xns : Roo.bootstrap.editor
                                         }
                                     ]
 
