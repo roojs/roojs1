@@ -43,7 +43,12 @@ Roo.example.Editor = new Roo.XComponent({
                                     cls : 'container alpha',
                                     xns : Roo.bootstrap,
                                     items : [
-                                    	
+                                    	{
+                                            level : 4,
+                                            xtype : 'Header',
+                                            html : 'First TabPanel With ComboBox',
+                                            xns : Roo.bootstrap
+                                        }
                                     ]
 
                                 }
