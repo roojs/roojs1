@@ -46,7 +46,7 @@ Roo.example.Editor = new Roo.XComponent({
                                     	{
                                             level : 4,
                                             xtype : 'Header',
-                                            html : 'First TabPanel With ComboBox',
+                                            html : 'Inline Editor',
                                             xns : Roo.bootstrap
                                         }
                                     ]
