@@ -1036,12 +1036,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     setFromData : function(o){
         
         if(this.multiple){
-            // if(typeof o.display_name !== 'string'){
-            //     for(var i=0;i<o.display_name.length;i++){
-            //         this.addItem({'id':o.id[i],'display_name':o.display_name[i]});
-            //     }
-            // }
-            this.addItem(o);
+            if(typeof o.display_name !== 'string'){
+                for(var i=0;i<o.display_name.length;i++){
+                    this.addItem({'id':o.id[i],'display_name':o.display_name[i]});
+                }
+            }
+            //this.addItem(o);
             return;
         }
             
