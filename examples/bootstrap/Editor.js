@@ -2,7 +2,7 @@
 
 Roo.example = Roo.example || {};
 
-Roo.example.TabPanelCombobox = new Roo.XComponent({
+Roo.example.Editor = new Roo.XComponent({
     part     :  ["layout","viewpanel"],
     order    : '001-viewpanel',
     region   : '',
