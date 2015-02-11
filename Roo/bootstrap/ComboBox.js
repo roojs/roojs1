@@ -436,7 +436,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store = Roo.factory(this.store, Roo.data);
         
         if(this.tickable){
-            this.initTickableEvnets();
+            this.initTickableEvents();
             return;
         }
         
