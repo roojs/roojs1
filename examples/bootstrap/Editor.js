@@ -48,6 +48,11 @@ Roo.example.Editor = new Roo.XComponent({
                                             xtype : 'Header',
                                             html : 'Inline Editor',
                                             xns : Roo.bootstrap
+                                        },
+                                        {
+                                            xtype : 'Pan',
+                                            html : 'Inline Editor',
+                                            xns : Roo.bootstrap.Editor
                                         }
                                     ]
 
