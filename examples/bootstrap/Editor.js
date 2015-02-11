@@ -54,6 +54,7 @@ Roo.example.Editor = new Roo.XComponent({
                                             html : 'Inline Editor',
                                             xns : Roo.bootstrap.editor
                                         }
+                                        
                                     ]
 
                                 }
