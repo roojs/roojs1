@@ -21,7 +21,7 @@ Roo.example.TabPanelCombobox = new Roo.XComponent({
         
         var _this = this;
         var MODULE = this;
-        var baseURL = '/web.eventmanager/demo.local.php';
+        var baseURL = '/web.campaign/index.local.php';
         
         return {
             xtype: 'Body',
