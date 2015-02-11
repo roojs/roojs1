@@ -317,6 +317,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             cls: 'typeahead typeahead-long dropdown-menu',
             style: 'display:none'
         });
+        
+        this.list..setVisibilityMode(Roo.Element.DISPLAY);
     },
 
     // private
