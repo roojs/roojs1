@@ -659,7 +659,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
     },
     
-    initTickableEvnets: function()
+    initTickableEvents: function()
     {   
         this.createList();
         
