@@ -7917,6 +7917,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             cls: 'typeahead typeahead-long dropdown-menu',
             style: 'display:none'
         });
+        
+        this.list..setVisibilityMode(Roo.Element.DISPLAY);
     },
 
     // private
@@ -10505,7 +10507,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store = Roo.factory(this.store, Roo.data);
         
         if(this.tickable){
-            this.initTickableEvnets();
+            this.initTickableEvents();
             return;
         }
         
@@ -10728,7 +10730,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
     },
     
-    initTickableEvnets: function()
+    initTickableEvents: function()
     {   
         this.createList();
         
@@ -11105,11 +11107,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     setFromData : function(o){
         
         if(this.multiple){
-            // if(typeof o.display_name !== 'string'){
-            //     for(var i=0;i<o.display_name.length;i++){
-            //         this.addItem({'id':o.id[i],'display_name':o.display_name[i]});
-            //     }
-            // }
+            if(typeof o.display_name !== 'string'){
+                for(var i=0;i<o.display_name.length;i++){
+                    this.addItem({'id':o.id[i],'display_name':o.display_name[i]});
+                }
+                return;
+            }
             this.addItem(o);
             return;
         }
