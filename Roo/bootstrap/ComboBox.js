@@ -1036,7 +1036,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     setFromData : function(o){
         
         if(this.multiple){
-            this.addItem(o);
+            if(typeof o.display_name !== 'string'){
+                for(var dn in o.display_name){
+                    this.addItem({'id':o.id,'display_name':dn});
+                }
+            }
+            //this.addItem(o);
             return;
         }
             
