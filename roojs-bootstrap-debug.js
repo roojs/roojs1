@@ -806,7 +806,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         ['xs','sm','md','lg'].map(function(size){
             if (settings[size] !== false) {
                 if (!settings[size]) { // 0 = hidden
-                    cfg.cls += 'hidden-' + size;
+                    cfg.cls += ' hidden-' + size;
                     return;
                 }
                 cfg.cls += ' col-' + size + '-' + settings[size];
