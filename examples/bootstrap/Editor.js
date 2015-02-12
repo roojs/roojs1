@@ -56,6 +56,7 @@ Roo.example.Editor = new Roo.XComponent({
                                             width : 1000,
                                             height : 1000,
                                             frameborder : true,
+                                            marginwidth : 100,
                                             marginheight : 100,
                                             items : [
                                                 {
