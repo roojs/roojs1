@@ -9,10 +9,10 @@
  * @class Roo.bootstrap.Column
  * @extends Roo.bootstrap.Component
  * Bootstrap Column class
- * @cfg {Number} xs colspan out of 12 for mobile-sized screens or hide
- * @cfg {Number} sm colspan out of 12 for tablet-sized screens or hide
- * @cfg {Number} md colspan out of 12 for computer-sized screens or hide
- * @cfg {Number} lg colspan out of 12 for large computer-sized screens or hide
+ * @cfg {Number} xs colspan out of 12 for mobile-sized screens or 0 for hidden
+ * @cfg {Number} sm colspan out of 12 for tablet-sized screens or 0 for hidden
+ * @cfg {Number} md colspan out of 12 for computer-sized screens or 0 for hidden
+ * @cfg {Number} lg colspan out of 12 for large computer-sized screens or 0 for hidden
  * @cfg {String} html content of column.
  * 
  * @constructor
@@ -44,7 +44,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
             if (settings[size] !== false) {
-                if (!settings[size]) {
+                if (!settings[size]) { // 0 = hidden
                     cfg.cls += 'hidden-' + size;
                     return;
                 }
