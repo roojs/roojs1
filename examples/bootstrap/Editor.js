@@ -67,16 +67,13 @@ Roo.example.Editor = new Roo.XComponent({
                                                     xtype : 'TextBlock',
                                                     xns : Roo.bootstrap.editor,
                                                     name : 'block1',
-                                                    height : 300,
-                                                    items : [
-                                                        
-//                                                        {
-//                                                            xtype : 'HtmlEditor',
-//                                                            xns : Roo.bootstrap,
-//                                                            height : 200,
-//                                                            name : 'block1'
-//                                                        }
-                                                    ]
+                                                    height : 300
+                                                },
+                                                {
+                                                    xtype : 'TextBlock',
+                                                    xns : Roo.bootstrap.editor,
+                                                    name : 'block2',
+                                                    height : 300
                                                 }
                                             ]
                                         }
