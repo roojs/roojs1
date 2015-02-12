@@ -11,6 +11,7 @@
  * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
  * @cfg {Boolean} tickable ComboBox with tickable selections (true|false), default false
  * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
+ * @cfg {Boolean} show toggle button or not (true|false) default true
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
  * @constructor
  * Create a new ComboBox.
@@ -272,6 +273,7 @@
     </span><span class="jsdoc-var">tickable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">btnPosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">triggerList </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">showToggleBtn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">// element that contains real text value.. (when hidden is used..)
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -436,7 +438,7 @@
         </span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.initTickableEvnets</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.initTickableEvents</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
@@ -659,7 +661,7 @@
         }
     },
     
-    </span><span class="jsdoc-var">initTickableEvnets</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    </span><span class="jsdoc-var">initTickableEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {   
         </span><span class="jsdoc-var">this.createList</span><span class="jsdoc-syntax">();
         
@@ -1036,6 +1038,12 @@
     </span><span class="jsdoc-var">setFromData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">o.display_name </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">o.display_name.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                    </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">({</span><span class="jsdoc-string">'id'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">o.id</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],</span><span class="jsdoc-string">'display_name'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">o.display_name</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]});
+                }
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
             </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
@@ -1217,10 +1225,9 @@
         </span><span class="jsdoc-var">this.view.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scrollIntoView </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view.getNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-comment">//this.innerList.scrollChildIntoView(el, false);
-                
-            </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.multiple </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.list.scrollChildIntoView</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+            }
         }
     },
 
@@ -1383,8 +1390,9 @@
     </span><span class="jsdoc-var">collapseIf </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">in_combo  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.within</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">in_list </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">e.within</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.list</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">is_list </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">())</span><span class="jsdoc-var">.id </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.list.id</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">in_combo </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">in_list</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">in_combo </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">in_list </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">is_list</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">//e.stopPropagation();
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }

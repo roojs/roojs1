@@ -171,7 +171,7 @@ trigger.applyTo('my-field');
             </span><span class="jsdoc-syntax">]
         };
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.multiple </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.showToggleBtn</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">combobox.cn.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group-addon btn dropdown-toggle'</span><span class="jsdoc-syntax">,
@@ -317,6 +317,9 @@ trigger.applyTo('my-field');
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'typeahead typeahead-long dropdown-menu'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">style</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display:none'
         </span><span class="jsdoc-syntax">});
+        
+        </span><span class="jsdoc-var">this.list.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;;
+        
     },
 
     </span><span class="jsdoc-comment">// private

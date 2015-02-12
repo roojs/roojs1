@@ -9,10 +9,10 @@
  * @class Roo.bootstrap.Column
  * @extends Roo.bootstrap.Component
  * Bootstrap Column class
- * @cfg {Number} xs colspan out of 12 for mobile-sized screens
- * @cfg {Number} sm colspan out of 12 for tablet-sized screens
- * @cfg {Number} md colspan out of 12 for computer-sized screens
- * @cfg {Number} lg colspan out of 12 for large computer-sized screens
+ * @cfg {Number} xs colspan out of 12 for mobile-sized screens or 0 for hidden
+ * @cfg {Number} sm colspan out of 12 for tablet-sized screens or 0 for hidden
+ * @cfg {Number} md colspan out of 12 for computer-sized screens or 0 for hidden
+ * @cfg {Number} lg colspan out of 12 for large computer-sized screens or 0 for hidden
  * @cfg {String} html content of column.
  * 
  * @constructor
@@ -26,10 +26,10 @@
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Column</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
-    </span><span class="jsdoc-var">xs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">sm</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">md</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">lg</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">xs</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">sm</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">md</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">lg</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">: 0,
     
@@ -43,7 +43,11 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">] !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]) { </span><span class="jsdoc-comment">// 0 = hidden
+                    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' hidden-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
                 </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">];
             }
         });

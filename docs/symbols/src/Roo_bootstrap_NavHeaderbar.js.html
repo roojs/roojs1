@@ -14,6 +14,7 @@
  * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
  * @cfg {String} brand_href href of the brand
  * @cfg {Boolean} srButton generate the sr-only button (true | false) default true
+ * @cfg {Boolean} autohide a top nav bar header that hides on scroll.
  * 
  * @constructor
  * Create a new Sidebar
@@ -31,7 +32,7 @@
     </span><span class="jsdoc-var">brand</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">brand_href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">srButton </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-    
+    </span><span class="jsdoc-var">autohide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -111,8 +112,35 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
 
         
-    }
-    
+    },
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.bootstrap.NavHeaderbar.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autohide</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prevScroll </span><span class="jsdoc-syntax">= 0;
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">os </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">prevScroll</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">prevScroll </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ns</span><span class="jsdoc-syntax">;
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ns </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">os</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">ft.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'slideDown'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">ft.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'slideUp'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-var">ft.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'slideUp'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">ft.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'slideDown'</span><span class="jsdoc-syntax">);
+                 
+              
+          },</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+    }    
+          
+      
     
     
 });
