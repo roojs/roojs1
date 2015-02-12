@@ -14,6 +14,7 @@
  * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
  * @cfg {String} brand_href href of the brand
  * @cfg {Boolean} srButton generate the sr-only button (true | false) default true
+ * @cfg {Boolean} autohide a top nav bar header that hides on scroll.
  * 
  * @constructor
  * Create a new Sidebar
@@ -31,7 +32,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     brand: '',
     brand_href: false,
     srButton : true,
-    
+    autohide : false,
     
     getAutoCreate : function(){
         
@@ -114,7 +115,8 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     },
     initEvents : function()
     {
-    // parent
+        Ro.bootstrap.NavHeaderbar.superclass.initEvents.call(this);
+        
         if (this.autohide) {
             Roo.get(document.body).on('mousewheel',function(e){
                 var ft = this.select('.navbar-fixed-top').first();
