@@ -1390,6 +1390,10 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
         if(this.isExpanded() || !this.hasFocus){
             return;
         }
+        
+        var lw = _this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
+        this.list.setWidth(lw);
+        
          Roo.log('expand');
         this.list.alignTo(this.inputEl(), this.listAlign);
         this.list.show();
