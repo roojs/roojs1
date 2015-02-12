@@ -55,7 +55,13 @@ Roo.example.Editor = new Roo.XComponent({
                                             width : 1000,
                                             height : 1000,
                                             name : 'email-inline-editor',
-                                            css : baseURL + '/test',
+                                            stylesheets : (function(){
+                                                var css = [];
+                                                
+                                                css.push(rootURL + '/roojs1/css-bootstrap/bootstrap.css');
+                                                
+                                                return css;
+                                            })(),
                                             items : [
                                                 {
                                                     xtype : 'Block',
