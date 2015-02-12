@@ -52,15 +52,7 @@ Roo.example.Editor = new Roo.XComponent({
                                         {
                                             xtype : 'Panel',
                                             xns : Roo.bootstrap.editor,
-                                            src : 'http://www.google.com',
-                                            items : [
-                                                {
-                                                    level : 4,
-                                                    xtype : 'Header',
-                                                    html : 'Inline Editor',
-                                                    xns : Roo.bootstrap
-                                                }
-                                            ]
+                                            src : 'http://www.google.com'
                                         }
                                         
                                     ]
