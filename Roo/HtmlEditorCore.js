@@ -386,7 +386,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             if (!Roo.get(this.frameId) && !iframe.contentDocument) {
                 return;
             }
-            Roo.log(iframe.dom.contentDocument);
+            
             this.doc = (iframe.contentDocument || Roo.get(this.frameId).dom.document);
             this.win = Roo.get(this.frameId).dom.contentWindow;
         }
