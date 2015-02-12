@@ -26,10 +26,10 @@ Roo.bootstrap.Column = function(config){
 
 Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     
-    xs: null,
-    sm: null,
-    md: null,
-    lg: null,
+    xs: false,
+    sm: false,
+    md: false,
+    lg: false,
     html: '',
     offset: 0,
     
@@ -43,8 +43,8 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
-            if (settings[size]) {
-                if (settings[size] == 'hide') {
+            if (settings[size] !== false) {
+                if (!settings[size]) {
                     cfg.cls += 'hidden-' + size;
                     return;
                 }
