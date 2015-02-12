@@ -79,8 +79,13 @@ Roo.example.Editor = new Roo.XComponent({
                                                         },
                                                         beforedelete : function (_self, el, e)
                                                         {
-                                                            Roo.log('fire beforedelete');
-                                                            Roo.log([_self, el, e]);
+                                                            Roo.bootstrap.MessageBox.confirm("Save first?", "Do you want to save", function(v) {
+                                                                if(v != 'yes'){
+                                                                    return false;
+                                                                }
+                                                                
+                                                                return true;
+                                                            });
                                                         }
                                                     }
                                                 },
