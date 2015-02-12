@@ -118,12 +118,15 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         Roo.bootstrap.NavHeaderbar.superclass.initEvents.call(this);
         
         if (this.autohide) {
+            
             var prevScroll = 0;
+            var ft = this.select('.navbar-fixed-top').first();
+            
             Roo.get(document).on('scroll',function(e) {
                 var ns = Roo.get(document).getScroll().top;
                 var os = prevScroll;
                 prevScroll = ns;
-                var ft = this.select('.navbar-fixed-top').first();
+                
                 if(ns > os){
                     ft.removeClass('slideDown');
                     ft.addClass('slideUp');
