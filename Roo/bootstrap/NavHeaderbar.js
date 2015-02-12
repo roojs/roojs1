@@ -111,8 +111,26 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         return cfg;
 
         
-    }
-    
+    },
+    initEvents : function()
+    {
+    // parent
+        if (this.autohide) {
+            Roo.get(document.body).on('mousewheel',function(e){
+                var ft = this.select('.navbar-fixed-top').first();
+                if(e.wheelDelta < 0 ){
+                    ft.removeClass('slideDown');
+                    ft.addClass('slideUp');
+                    return;
+                }
+                ft.removeClass('slideUp').addClass('slideDown');
+                 
+              
+          },this);
+        }
+    }    
+          
+      
     
     
 });
