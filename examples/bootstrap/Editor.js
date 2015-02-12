@@ -79,7 +79,7 @@ Roo.example.Editor = new Roo.XComponent({
                                                         },
                                                         beforedelete : function (_self, el, e)
                                                         {
-                                                            Roo.bootstrap.MessageBox.confirm("Save first?", "Do you want to save", function(v) {
+                                                            Roo.bootstrap.MessageBox.confirm("Confirm", "Are you sure want to delete the content?", function(v) {
                                                                 if(v != 'yes'){
                                                                     return false;
                                                                 }
