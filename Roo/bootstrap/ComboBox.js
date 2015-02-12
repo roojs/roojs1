@@ -272,6 +272,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     tickable : false,
     btnPosition : 'right',
     triggerList : true,
+    showToggleBtn : true,
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
