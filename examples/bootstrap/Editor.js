@@ -74,11 +74,13 @@ Roo.example.Editor = new Roo.XComponent({
                                                         beforeedit : function (_self, el, e) 
                                                         {
                                                             Roo.log('fire beforeedit');
+                                                            Roo.log([_self, el, e]);
 
                                                         },
                                                         beforedelete : function (_self, el, e)
                                                         {
                                                             Roo.log('fire beforedelete');
+                                                            Roo.log([_self, el, e]);
                                                         }
                                                     }
                                                 },
