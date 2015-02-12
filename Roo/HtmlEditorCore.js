@@ -388,7 +388,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             
             this.doc = (iframe.contentDocument || Roo.get(this.frameId).dom.document);
-            this.win = Roo.get(this.frameId).dom.contentWindow;
+            this.win = (iframe.dom.contentWindow || Roo.get(this.frameId).dom.contentWindow);
         }
     },
     
