@@ -120,7 +120,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         if (this.autohide) {
             
             var prevScroll = 0;
-            var ft = this.select('.navbar-fixed-top').first();
+            var ft = this.el.select('.navbar-fixed-top').first();
             
             Roo.get(document).on('scroll',function(e) {
                 var ns = Roo.get(document).getScroll().top;
