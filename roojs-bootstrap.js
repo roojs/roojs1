@@ -249,8 +249,7 @@ this.loadNext=false;},getParams:function(q){var p={};if(this.pageSize){p.start=0
 this.hasFocus=false;this.list.hide();if(this.tickable){this.okBtn.hide();this.cancelBtn.hide();this.trigger.show();}
 Roo.get(document).un('mousedown',this.collapseIf,this);Roo.get(document).un('mousewheel',this.collapseIf,this);if(!this.editable){Roo.get(document).un('keydown',this.listKeyPress,this);}
 this.fireEvent('collapse',this);},collapseIf:function(e){var A=e.within(this.el);var B=e.within(this.list);var C=(Roo.get(e.getTarget()).id==this.list.id)?true:false;if(A||B||C){return;}if(this.tickable){this.onTickableFooterButtonClick(e,false,false);}
-this.collapse();},expand:function(){if(this.isExpanded()||!this.hasFocus){return;}
-Roo.log('expand');this.list.show();this.restrictHeight();if(this.tickable){this.tickItems=Roo.apply([],this.item);this.okBtn.show();this.cancelBtn.show();this.trigger.hide();}
+this.collapse();},expand:function(){if(this.isExpanded()||!this.hasFocus){return;}var lw=this.listWidth||Math.max(this.inputEl().getWidth(),this.minListWidth);this.list.setWidth(lw);Roo.log('expand');this.list.show();this.restrictHeight();if(this.tickable){this.tickItems=Roo.apply([],this.item);this.okBtn.show();this.cancelBtn.show();this.trigger.hide();}
 Roo.get(document).on('mousedown',this.collapseIf,this);Roo.get(document).on('mousewheel',this.collapseIf,this);if(!this.editable){Roo.get(document).on('keydown',this.listKeyPress,this);}
 this.fireEvent('expand',this);},onTriggerClick:function(e){Roo.log('trigger click');if(this.disabled||!this.triggerList){return;}
 this.page=0;this.loadNext=false;if(this.isExpanded()){this.collapse();if(!this.blockFocus){this.inputEl().focus();}}else {this.hasFocus=true;if(this.triggerAction=='all'){this.doQuery(this.allQuery,true);}else {this.doQuery(this.getRawValue());}if(!this.blockFocus){this.inputEl().focus();}}},onTickableTriggerClick:function(e){if(this.disabled){return;}
