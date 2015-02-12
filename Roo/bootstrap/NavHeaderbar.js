@@ -132,7 +132,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
                     ft.addClass('slideUp');
                     return;
                 }
-                ft.removeClass('slideUp').
+                ft.removeClass('slideUp');
                 ft.addClass('slideDown');
                  
               
