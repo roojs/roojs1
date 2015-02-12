@@ -11,7 +11,7 @@
  * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
  * @cfg {Boolean} tickable ComboBox with tickable selections (true|false), default false
  * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
- * @cfg {Boolean} show toggle button or not (true|false) default true
+ * @cfg {Boolean} showToggleBtn show toggle button or not (true|false) default true
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
  * @constructor
  * Create a new ComboBox.

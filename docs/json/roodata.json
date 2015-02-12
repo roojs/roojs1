@@ -6278,9 +6278,9 @@
      "memberOf": ""
     },
     {
-     "name": "show",
+     "name": "showToggleBtn",
      "type": "Boolean",
-     "desc": "toggle button or not (true|false) default true",
+     "desc": "show toggle button or not (true|false) default true",
      "memberOf": ""
     },
     {
