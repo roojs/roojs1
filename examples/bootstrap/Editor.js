@@ -69,25 +69,7 @@ Roo.example.Editor = new Roo.XComponent({
                                                     xtype : 'TextBlock',
                                                     xns : Roo.bootstrap.editor,
                                                     name : 'block1',
-                                                    height : 300,
-                                                    listeners : {
-                                                        beforeedit : function (_self, el, e) 
-                                                        {
-                                                            Roo.log('fire beforeedit');
-                                                            Roo.log([_self, el, e]);
-
-                                                        },
-                                                        beforedelete : function (_self, el, e)
-                                                        {
-                                                            Roo.bootstrap.MessageBox.confirm("Confirm", "Are you sure want to delete the content?", function(v) {
-                                                                if(v != 'yes'){
-                                                                    return false;
-                                                                }
-                                                                
-                                                                return true;
-                                                            });
-                                                        }
-                                                    }
+                                                    height : 300
                                                 },
                                                 {
                                                     xtype : 'TextBlock',
