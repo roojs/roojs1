@@ -383,7 +383,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.doc = iframe.contentWindow.document;
             this.win = iframe.contentWindow;
         } else {
-            if (!Roo.get(this.frameId)) {
+            if (!Roo.get(this.frameId) || !iframe.contentDocument) {
                 return;
             }
             this.doc = (iframe.contentDocument || Roo.get(this.frameId).dom.document);
