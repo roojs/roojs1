@@ -3000,6 +3000,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
  * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
  * @cfg {String} brand_href href of the brand
  * @cfg {Boolean} srButton generate the sr-only button (true | false) default true
+ * @cfg {Boolean} autohide a top nav bar header that hides on scroll.
  * 
  * @constructor
  * Create a new Sidebar
@@ -3017,7 +3018,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     brand: '',
     brand_href: false,
     srButton : true,
-    
+    autohide : false,
     
     getAutoCreate : function(){
         
@@ -3097,8 +3098,35 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         return cfg;
 
         
-    }
-    
+    },
+    initEvents : function()
+    {
+        Roo.bootstrap.NavHeaderbar.superclass.initEvents.call(this);
+        
+        if (this.autohide) {
+            
+            var prevScroll = 0;
+            var ft = this.el;
+            
+            Roo.get(document).on('scroll',function(e) {
+                var ns = Roo.get(document).getScroll().top;
+                var os = prevScroll;
+                prevScroll = ns;
+                
+                if(ns > os){
+                    ft.removeClass('slideDown');
+                    ft.addClass('slideUp');
+                    return;
+                }
+                ft.removeClass('slideUp').
+                ft.addClass('slideDown');
+                 
+              
+          },this);
+        }
+    }    
+          
+      
     
     
 });
