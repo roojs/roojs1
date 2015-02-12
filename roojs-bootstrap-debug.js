@@ -7803,7 +7803,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             ]
         };
         
-        if(!this.multiple){
+        if(!this.multiple && this.showToggleBtn){
             combobox.cn.push({
                 tag :'span',
                 cls : 'input-group-addon btn dropdown-toggle',
@@ -7922,7 +7922,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         Roo.bootstrap.TriggerField.superclass.initEvents.call(this);
         //this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
-        if(!this.multiple){
+        if(!this.multiple && this.showToggleBtn){
             this.trigger = this.el.select('span.dropdown-toggle',true).first();
             if(this.hideTrigger){
                 this.trigger.setDisplayed(false);
@@ -10115,6 +10115,7 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
  * @cfg {Boolean} autoFocus (true|false) auto focus the first item, default true
  * @cfg {Boolean} tickable ComboBox with tickable selections (true|false), default false
  * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
+ * @cfg {Boolean} showToggleBtn show toggle button or not (true|false) default true
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
  * @constructor
  * Create a new ComboBox.
@@ -10376,6 +10377,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     tickable : false,
     btnPosition : 'right',
     triggerList : true,
+    showToggleBtn : true,
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
@@ -16535,11 +16537,18 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.doc = iframe.contentWindow.document;
             this.win = iframe.contentWindow;
         } else {
-            if (!Roo.get(this.frameId)) {
+//            if (!Roo.get(this.frameId)) {
+//                return;
+//            }
+//            this.doc = (iframe.contentDocument || Roo.get(this.frameId).dom.document);
+//            this.win = Roo.get(this.frameId).dom.contentWindow;
+            
+            if (!Roo.get(this.frameId) && !iframe.contentDocument) {
                 return;
             }
+            
             this.doc = (iframe.contentDocument || Roo.get(this.frameId).dom.document);
-            this.win = Roo.get(this.frameId).dom.contentWindow;
+            this.win = (iframe.contentWindow || Roo.get(this.frameId).dom.contentWindow);
         }
     },
     

@@ -55,21 +55,27 @@ Roo.example.Editor = new Roo.XComponent({
                                             width : 1000,
                                             height : 1000,
                                             name : 'email-inline-editor',
+                                            stylesheets : (function(){
+                                                var css = [];
+                                                
+                                                css.push(rootURL + '/roojs1/css-bootstrap/bootstrap.css');
+                                                
+                                                return css;
+                                            })(),
                                             items : [
                                                 {
-                                                    xtype : 'Block',
+                                                    xtype : 'TextBlock',
                                                     xns : Roo.bootstrap.editor,
+                                                    name : 'block1',
+                                                    height : 300,
                                                     items : [
-                                                        {
-                                                            xtype : 'Text',
-                                                            xns : Roo.bootstrap.editor.block,
-                                                            cols : 50
-                                                        },
-                                                        {
-                                                            xtype : 'HtmlEditor',
-                                                            xns : Roo.bootstrap,
-                                                            name : 'block1'
-                                                        }
+                                                        
+//                                                        {
+//                                                            xtype : 'HtmlEditor',
+//                                                            xns : Roo.bootstrap,
+//                                                            height : 200,
+//                                                            name : 'block1'
+//                                                        }
                                                     ]
                                                 }
                                             ]

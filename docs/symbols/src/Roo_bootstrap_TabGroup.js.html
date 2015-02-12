@@ -30,6 +30,7 @@
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.TabGroup</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Column</span><span class="jsdoc-syntax">,  {
     
     </span><span class="jsdoc-var">carousel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">transition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
      
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -108,8 +109,6 @@
     </span><span class="jsdoc-var">showPanel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">)
     {
         
-        
-        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">pan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">];
         }
@@ -125,15 +124,16 @@
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
         
-        
-        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.carousel</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.transition </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dir </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indexOfPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">) &gt; </span><span class="jsdoc-var">this.indexOfPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cur</span><span class="jsdoc-syntax">)  ? </span><span class="jsdoc-string">'next' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'prev'</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dir </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'next' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">pan.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dir</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// or prev
             </span><span class="jsdoc-var">pan.el.dom.offsetWidth</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// find the offset with - causing a reflow?
             </span><span class="jsdoc-var">cur.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">); </span><span class="jsdoc-comment">// or right
             </span><span class="jsdoc-var">pan.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">cur.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'transitionend'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;trans end?&quot;</span><span class="jsdoc-syntax">);
                 
@@ -143,6 +143,7 @@
                 </span><span class="jsdoc-var">cur.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">lr</span><span class="jsdoc-syntax">]);
                 </span><span class="jsdoc-var">cur.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
                 
+                </span><span class="jsdoc-var">_this.transition </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
                 
             }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, { </span><span class="jsdoc-var">single</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">} );
             </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;

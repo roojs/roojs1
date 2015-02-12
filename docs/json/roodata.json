@@ -6094,25 +6094,25 @@
     {
      "name": "xs",
      "type": "Number",
-     "desc": "colspan out of 12 for mobile-sized screens",
+     "desc": "colspan out of 12 for mobile-sized screens or 0 for hidden",
      "memberOf": ""
     },
     {
      "name": "sm",
      "type": "Number",
-     "desc": "colspan out of 12 for tablet-sized screens",
+     "desc": "colspan out of 12 for tablet-sized screens or 0 for hidden",
      "memberOf": ""
     },
     {
      "name": "md",
      "type": "Number",
-     "desc": "colspan out of 12 for computer-sized screens",
+     "desc": "colspan out of 12 for computer-sized screens or 0 for hidden",
      "memberOf": ""
     },
     {
      "name": "lg",
      "type": "Number",
-     "desc": "colspan out of 12 for large computer-sized screens",
+     "desc": "colspan out of 12 for large computer-sized screens or 0 for hidden",
      "memberOf": ""
     },
     {
@@ -6275,6 +6275,12 @@
      "name": "triggerList",
      "type": "Boolean",
      "desc": "trigger show the list or not (true|false) default true",
+     "memberOf": ""
+    },
+    {
+     "name": "showToggleBtn",
+     "type": "Boolean",
+     "desc": "show toggle button or not (true|false) default true",
      "memberOf": ""
     },
     {
@@ -11890,6 +11896,12 @@
      "memberOf": ""
     },
     {
+     "name": "autohide",
+     "type": "Boolean",
+     "desc": "a top nav bar header that hides on scroll.",
+     "memberOf": ""
+    },
+    {
      "name": "inverse",
      "type": "Boolean",
      "desc": "is inverted color",
@@ -14441,25 +14453,25 @@
     {
      "name": "xs",
      "type": "Number",
-     "desc": "colspan out of 12 for mobile-sized screens",
+     "desc": "colspan out of 12 for mobile-sized screens or 0 for hidden",
      "memberOf": "Roo.bootstrap.Column"
     },
     {
      "name": "sm",
      "type": "Number",
-     "desc": "colspan out of 12 for tablet-sized screens",
+     "desc": "colspan out of 12 for tablet-sized screens or 0 for hidden",
      "memberOf": "Roo.bootstrap.Column"
     },
     {
      "name": "md",
      "type": "Number",
-     "desc": "colspan out of 12 for computer-sized screens",
+     "desc": "colspan out of 12 for computer-sized screens or 0 for hidden",
      "memberOf": "Roo.bootstrap.Column"
     },
     {
      "name": "lg",
      "type": "Number",
-     "desc": "colspan out of 12 for large computer-sized screens",
+     "desc": "colspan out of 12 for large computer-sized screens or 0 for hidden",
      "memberOf": "Roo.bootstrap.Column"
     },
     {

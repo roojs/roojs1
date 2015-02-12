@@ -383,11 +383,18 @@
             </span><span class="jsdoc-var">this.doc </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">iframe.contentWindow.document</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">this.win </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">iframe.contentWindow</span><span class="jsdoc-syntax">;
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">)) {
+</span><span class="jsdoc-comment">//            if (!Roo.get(this.frameId)) {
+//                return;
+//            }
+//            this.doc = (iframe.contentDocument || Roo.get(this.frameId).dom.document);
+//            this.win = Roo.get(this.frameId).dom.contentWindow;
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">) &amp;&amp; !</span><span class="jsdoc-var">iframe.contentDocument</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
+            
             </span><span class="jsdoc-var">this.doc </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">iframe.contentDocument </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.dom.document</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-var">this.win </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.dom.contentWindow</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.win </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">iframe.contentWindow </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.frameId</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.dom.contentWindow</span><span class="jsdoc-syntax">);
         }
     },
     
