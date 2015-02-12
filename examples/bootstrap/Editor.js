@@ -53,6 +53,8 @@ Roo.example.Editor = new Roo.XComponent({
                                             xtype : 'Panel',
                                             xns : Roo.bootstrap.editor,
                                             src : 'http://www.roojs.com',
+                                            width : 1000,
+                                            height : 1000,
                                             items : [
                                                 {
                                                     level : 4,
