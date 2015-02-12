@@ -63,7 +63,7 @@ Roo.example.Editor = new Roo.XComponent({
                                                         {
                                                             xtype : 'Text',
                                                             xns : Roo.bootstrap.editor.block,
-                                                            cols : 20
+                                                            cols : 50
                                                         }
                                                     ]
                                                 }
