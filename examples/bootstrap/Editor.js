@@ -59,7 +59,12 @@ Roo.example.Editor = new Roo.XComponent({
                                                 {
                                                     xtype : 'Block',
                                                     xns : Roo.bootstrap.editor,
-                                                    panel : 'email-inline-editor'
+                                                    items : [
+                                                        {
+                                                            xtype : 'Text',
+                                                            xns : Roo.bootstrap.editor.block
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
