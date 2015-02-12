@@ -69,7 +69,18 @@ Roo.example.Editor = new Roo.XComponent({
                                                     xtype : 'TextBlock',
                                                     xns : Roo.bootstrap.editor,
                                                     name : 'block1',
-                                                    height : 300
+                                                    height : 300,
+                                                    listeners : {
+                                                        beforeedit : function (_self, el, e) 
+                                                        {
+                                                            
+
+                                                        },
+                                                        beforedelete : function (_self, el, e)
+                                                        {
+                                                            
+                                                        }
+                                                    }
                                                 },
                                                 {
                                                     xtype : 'TextBlock',
