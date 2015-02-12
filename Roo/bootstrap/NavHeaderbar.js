@@ -115,17 +115,22 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     },
     initEvents : function()
     {
-        Ro.bootstrap.NavHeaderbar.superclass.initEvents.call(this);
+        Roo.bootstrap.NavHeaderbar.superclass.initEvents.call(this);
         
         if (this.autohide) {
-            Roo.get(document.body).on('mousewheel',function(e){
+            var prevScroll = 0;
+            Roo.get(document).on('scroll',function(e) {
+                var ns = Roo.get(document).getScroll().top;
+                var os = prevScroll;
+                prevScroll = ns;
                 var ft = this.select('.navbar-fixed-top').first();
-                if(e.wheelDelta < 0 ){
+                if(ns > os){
                     ft.removeClass('slideDown');
                     ft.addClass('slideUp');
                     return;
                 }
-                ft.removeClass('slideUp').addClass('slideDown');
+                ft.removeClass('slideUp').
+                ft.addClass('slideDown');
                  
               
           },this);
