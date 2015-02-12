@@ -52,14 +52,9 @@ Roo.example.Editor = new Roo.XComponent({
                                         {
                                             xtype : 'Panel',
                                             xns : Roo.bootstrap.editor,
-                                            src : 'http://www.roojs.com',
                                             width : 1000,
                                             height : 1000,
-                                            frameborder : true,
-                                            marginwidth : 100,
-                                            marginheight : 100,
                                             name : 'email-inline-editor',
-                                            scrolling : 'no',
                                             items : [
                                                 {
                                                     level : 4,
