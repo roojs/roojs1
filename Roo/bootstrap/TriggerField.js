@@ -171,7 +171,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             ]
         };
         
-        if(!this.multiple){
+        if(!this.multiple && this.showToggleBtn){
             combobox.cn.push({
                 tag :'span',
                 cls : 'input-group-addon btn dropdown-toggle',
