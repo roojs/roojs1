@@ -169,6 +169,9 @@
 
 .dropdown-menu .active {
     background: #3875d7;
+}
+
+.dropdown-menu .active label{
     color: #fff;
 }
 
