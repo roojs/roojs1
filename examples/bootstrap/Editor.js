@@ -59,6 +59,7 @@ Roo.example.Editor = new Roo.XComponent({
                                                 var css = [];
                                                 
                                                 css.push(rootURL + '/roojs1/css-bootstrap/bootstrap.css');
+                                                css.push(rootURL + '/roojs1/css-bootstrap/font-awesome.css');
                                                 css.push(rootURL + '/Campaign/editor/editor.css');
                                                 
                                                 return css;
