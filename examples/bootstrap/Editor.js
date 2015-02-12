@@ -59,7 +59,7 @@ Roo.example.Editor = new Roo.XComponent({
                                             marginwidth : 100,
                                             marginheight : 100,
                                             name : 'email-inline-editor',
-                                            scrolling : 'yes',
+                                            scrolling : 'no',
                                             items : [
                                                 {
                                                     level : 4,
