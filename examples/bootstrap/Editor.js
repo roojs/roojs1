@@ -67,7 +67,8 @@ Roo.example.Editor = new Roo.XComponent({
                                                         },
                                                         {
                                                             xtype : 'HtmlEditor',
-                                                            xns : Roo.bootstrap
+                                                            xns : Roo.bootstrap,
+                                                            name : 'block1'
                                                         }
                                                     ]
                                                 }
