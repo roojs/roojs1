@@ -1391,7 +1391,7 @@ Roo.extend(Roo.bootstrap.ComboBox2, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        var lw = _this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
+        var lw = this.listWidth || Math.max(this.inputEl().getWidth(), this.minListWidth);
         this.list.setWidth(lw);
         
          Roo.log('expand');
