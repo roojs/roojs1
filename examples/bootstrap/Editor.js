@@ -13,11 +13,11 @@ Roo.example.Editor = new Roo.XComponent({
     _tree : function()
     {
         
-////        this.parent = {
-////            el : new Roo.bootstrap.Body()
-////        }
-//        this.parent.el.layout = false;
-//        this.parent.el.render(document.body);
+        this.parent = {
+            el : new Roo.bootstrap.Body()
+        }
+        this.parent.el.layout = false;
+        this.parent.el.render(document.body);
         
         var _this = this;
         var MODULE = this;
