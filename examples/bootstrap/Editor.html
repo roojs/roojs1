@@ -98,12 +98,14 @@
             Roo.Ajax.request({
                 url : baseURL + '/editor/data.php',
                 method: 'GET',
-                success : function(res)
+                success : function(r)
                 {
-                    Roo.log(res);
+                    var res = Roo.decode(r.responseText);
+                    
                     if(!res.success){
                         return;
                     }
+                    
                     Roo.log('data !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
                     Roo.log(Roo.example.Editor.panel);
                 }
