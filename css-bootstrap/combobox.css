@@ -172,6 +172,10 @@
     color: #fff;
 }
 
+.dropdown-menu .active label{
+    color: #fff;
+}
+
 .dropdown-menu .select2-result {
     padding: 3px 7px 4px;
     margin: 0;
@@ -219,4 +223,8 @@
 .select2-container-multi .dropdown-menu .select2-result .checkbox {
     margin-top: 0px;
     margin-bottom: 0px;
+}
+.dropdown-menu .select2-result .checkbox {
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
