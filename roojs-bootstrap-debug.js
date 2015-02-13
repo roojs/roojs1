@@ -293,12 +293,16 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Body = function(config){
+Roo.bootstrap.Body = function(config)
+{
+    //Roo.log(config);
     Roo.bootstrap.Body.superclass.constructor.call(this, config);
     this.el = Roo.get(document.body);
     if (this.cls && this.cls.length) {
         Roo.get(document.body).addClass(this.cls);
     }
+    this.initEvents();
+    this.fireEvent('render',this);
 };
 
 Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
@@ -308,12 +312,12 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
     },
     onRender : function(ct, position)
     {
-       /* Roo.log("Roo.bootstrap.Body - onRender");
-        if (this.cls && this.cls.length) {
-            Roo.get(document.body).addClass(this.cls);
-        }
-        // style??? xttr???
-        */
+       
+        // code has to go in the constructor,
+        // as body is not really rendered, it just picks up the document.body in the 
+        // constructor.
+        
+       
     }
     
     
