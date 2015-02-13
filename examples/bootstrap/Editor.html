@@ -89,17 +89,14 @@
         var rootURL = '/web.campaign';
         
         Roo.XComponent.hideProgress = true;
-        
-        Roo.onReady(function() {
-            Roo.XComponent.build();
-            Roo.XComponent.on('buildcomplete', function() {
-                try {
-                    var length = Roo.XComponent.modules.length;
-                    Roo.XComponent.modules[length - 1].el.fireEvent('render');
+        Roo.XComponent.build();
+        Roo.XComponent.on('buildcomplete', function() {
+            try {
+                var length = Roo.XComponent.modules.length;
+                Roo.XComponent.modules[length - 1].el.fireEvent('render');
 
-                } catch(e) {}
+            } catch(e) {}
 
-            });
         });
 
     </script>
