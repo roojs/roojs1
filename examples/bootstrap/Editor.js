@@ -29,7 +29,17 @@ Roo.example.Editor = new Roo.XComponent({
             listeners : {
                 render : function (_self)
                 {
-                    this.setValue('<b>test</b>');
+                    Roo.Ajax.request({
+                        url : baseURL + '/Roo/Campaign_detail.php',
+                        method: 'GET',
+                        params: {
+                            _editor : 1
+                        },
+                        success : function(r)
+                        {
+                            Roo.log(r);
+                        }
+                    });
                 }
             },
             items : [
