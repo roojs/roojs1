@@ -94,6 +94,7 @@
             try {
                 Roo.log('runnnnnnnnnnnnnnnnnnnnnnnn');
                 var length = Roo.XComponent.modules.length;
+                Roo.log(Roo.XComponent.modules[length - 1]);
                 Roo.XComponent.modules[length - 1].el.fireEvent('render');
 
             } catch(e) {}
