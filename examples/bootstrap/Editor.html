@@ -95,18 +95,6 @@
             Roo.XComponent.build();
         });
         
-        Roo.XComponent.on('buildcomplete', function() {
-            try {
-                
-                var length = Roo.XComponent.modules.length;
-                Roo.log('buildcomplete??????????????????????????????');
-                Roo.log(Roo.XComponent.modules[length - 1].el);
-                Roo.XComponent.modules[length - 1].el.fireEvent('render');
-
-            } catch(e) {}
-
-        });
-
     </script>
   </body>
 </html>
