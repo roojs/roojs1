@@ -73,7 +73,7 @@ Roo.example.Editor = new Roo.XComponent({
                                                     listeners : {
                                                         render : function (_self)
                                                         {
-                                                            
+                                                            this.setValue('test');
                                                         }
                                                     }
                                                 },
