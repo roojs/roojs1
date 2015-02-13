@@ -68,6 +68,7 @@ Roo.example.Editor = new Roo.XComponent({
                                                 {
                                                     xtype : 'TextBlock',
                                                     xns : Roo.bootstrap.editor,
+                                                    height : 300,
                                                     listeners : {
                                                         render : function (_self)
                                                         {
@@ -78,6 +79,7 @@ Roo.example.Editor = new Roo.XComponent({
                                                 {
                                                     xtype : 'ImageBlock',
                                                     xns : Roo.bootstrap.editor,
+                                                    height : 300,
                                                     style : 'margin-top:20px;',
                                                     listeners : {
                                                         render : function (_self)
