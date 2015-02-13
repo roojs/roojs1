@@ -131,7 +131,7 @@
                         Roo.example.Editor[target] = new Roo.bootstrap.editor.ImageBlock({ panel : 'thanks-email' }).render(el);
                         
                     })
-                    
+                    Roo.log(res.data.campaign.emails);
                     Roo.each(res.data.campaign.emails, function(v, k){
                         Roo.log(v + ' : ' + k);
                     })
