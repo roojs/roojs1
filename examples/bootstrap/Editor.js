@@ -77,7 +77,7 @@ Roo.example.Editor = new Roo.XComponent({
                                                     }
                                                 },
                                                 {
-                                                    xtype : 'TextBlock',
+                                                    xtype : 'ImageBlock',
                                                     xns : Roo.bootstrap.editor,
                                                     height : 300,
                                                     style : 'margin-top:20px;',
