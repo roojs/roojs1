@@ -12,6 +12,17 @@ Roo.example.Editor = new Roo.XComponent({
     permname : '', 
     _tree : function()
     {
+        Roo.Ajax.request({
+            url : baseURL + '/CampaignEdit/237',
+            method: 'GET',
+            params: {
+                _editor : 1
+            },
+            success : function(r)
+            {
+                Roo.log(r);
+            }
+        });
         
         this.parent = {
             el : new Roo.bootstrap.Body()
