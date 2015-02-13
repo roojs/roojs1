@@ -69,7 +69,13 @@ Roo.example.Editor = new Roo.XComponent({
                                                     xtype : 'TextBlock',
                                                     xns : Roo.bootstrap.editor,
                                                     name : 'block1',
-                                                    height : 300
+                                                    height : 300,
+                                                    listeners : {
+                                                        render : function (_self)
+                                                        {
+                                                            
+                                                        }
+                                                    }
                                                 },
                                                 {
                                                     xtype : 'TextBlock',
