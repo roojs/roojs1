@@ -52,7 +52,7 @@ Roo.example.Editor = new Roo.XComponent({
                                             xtype : 'Panel',
                                             xns : Roo.bootstrap.editor,
                                             width : 1000,
-                                            height : 1000,
+                                            height : 1500,
 //                                            stylesheets : (function(){
 //                                                var css = [];
 //                                                
