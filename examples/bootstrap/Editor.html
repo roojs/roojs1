@@ -98,9 +98,13 @@
             Roo.Ajax.request({
                 url : baseURL + '/editor/data.php',
                 method: 'GET',
-                success : function(r)
+                success : function(res)
                 {
-                    Roo.log(r);
+                    if(!res.success){
+                        return;
+                    }
+                    
+                    Roo.log(Roo.example.Editor.panel);
                 }
             });
         });
