@@ -89,7 +89,11 @@
         var rootURL = '/web.campaign';
         
         Roo.XComponent.hideProgress = true;
-        Roo.XComponent.build();
+        
+        Roo.onReady(function() {
+            Roo.XComponent.build();
+        });
+        
         Roo.XComponent.on('buildcomplete', function() {
             try {
                 
