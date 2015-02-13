@@ -110,7 +110,9 @@
                     
                     Roo.example.Editor.previewPanel.body().dom.innerHTML = res.data
                     
-                    Roo.log(Roo.example.Editor.previewPanel.body());
+                    Roo.each(Roo.example.Editor.previewPanel.body().select('.campaign-editable', true).elements, function(el){
+                        Roo.log(el);
+                    })
                     
                 }
             });
