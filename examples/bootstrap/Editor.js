@@ -82,7 +82,13 @@ Roo.example.Editor = new Roo.XComponent({
                                                     xns : Roo.bootstrap.editor,
                                                     name : 'block2',
                                                     height : 300,
-                                                    style : 'margin-top:20px;'
+                                                    style : 'margin-top:20px;',
+                                                    listeners : {
+                                                        render : function (_self)
+                                                        {
+                                                            this.setValue('<b>test 2</b>');
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         }
