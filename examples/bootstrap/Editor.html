@@ -131,7 +131,7 @@
                         Roo.example.Editor[target] = new Roo.bootstrap.editor.ImageBlock({ panel : 'thanks-email' }).render(el);
                         
                     })
-                    
+                    return;
                     for ( var p in res.data.campaign.emails ){
                         var f = res.data.campaign.emails[p];
                         
@@ -140,6 +140,8 @@
                         }
                         
                         for (var d in f['image']){
+                            
+                            Roo.example.Editor[d].setValue(baseURL + '/Images/Thumb')
                             Roo.example.Editor[d].setValue(f['image'][d])
                         }
                         
