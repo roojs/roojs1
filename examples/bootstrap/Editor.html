@@ -93,8 +93,7 @@
         Roo.onReady(function() {
             Roo.XComponent.build();
         });
-        Roo.log('this');
-        Roo.log(this);
+        
         Roo.XComponent.on('buildcomplete', function() {
             Roo.Ajax.request({
                 url : baseURL + '/editor/data.php',
@@ -110,6 +109,8 @@
                     Roo.log(res);
                     
                     Roo.example.Editor.previewPanel.body().dom.innerHTML = res.data
+                    
+                    Roo.log(Roo.example.Editor.previewPanel.body());
                     
                 }
             });
