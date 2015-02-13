@@ -107,8 +107,8 @@
                     }
                     
                     Roo.log(res);
-                    return;
-                    Roo.example.Editor.previewPanel.body().dom.innerHTML = res.data
+                    
+                    Roo.example.Editor.previewPanel.body().dom.innerHTML = res.data.email;
                     
                     Roo.each(Roo.example.Editor.previewPanel.body().select('.campaign-editable', true).elements, function(el){
                         Roo.log(el);
