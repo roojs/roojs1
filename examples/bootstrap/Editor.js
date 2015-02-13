@@ -52,56 +52,7 @@ Roo.example.Editor = new Roo.XComponent({
                             	{
                                     xtype : 'Container',
                                     cls : 'container alpha',
-                                    xns : Roo.bootstrap,
-                                    items : [
-                                    	{
-                                            level : 4,
-                                            xtype : 'Header',
-                                            html : 'Inline Editor',
-                                            xns : Roo.bootstrap
-                                        },
-                                        {
-                                            xtype : 'Panel',
-                                            xns : Roo.bootstrap.editor,
-                                            width : 1000,
-                                            height : 1000,
-                                            name : 'email-inline-editor',
-                                            stylesheets : (function(){
-                                                var css = [];
-                                                
-                                                css.push(rootURL + '/roojs1/css-bootstrap/bootstrap.css');
-                                                css.push(rootURL + '/roojs1/css-bootstrap/font-awesome.css');
-                                                css.push(rootURL + '/Campaign/editor/editor.css');
-                                                
-                                                return css;
-                                            })(),
-                                            items : [
-                                                {
-                                                    xtype : 'TextBlock',
-                                                    xns : Roo.bootstrap.editor,
-                                                    listeners : {
-                                                        render : function (_self)
-                                                        {
-                                                            _this.block1 = _self;
-                                                        }
-                                                    }
-                                                },
-                                                {
-                                                    xtype : 'ImageBlock',
-                                                    xns : Roo.bootstrap.editor,
-                                                    style : 'margin-top:20px;',
-                                                    listeners : {
-                                                        render : function (_self)
-                                                        {
-                                                            _this.block2 = _self;
-                                                        }
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                        
-                                    ]
-
+                                    xns : Roo.bootstrap
                                 }
                             ]
 
