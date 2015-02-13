@@ -52,7 +52,14 @@ Roo.example.Editor = new Roo.XComponent({
                             	{
                                     xtype : 'Container',
                                     cls : 'container alpha',
-                                    xns : Roo.bootstrap
+                                    xns : Roo.bootstrap,
+                                    listeners : {
+                                        render : function (_self)
+                                        {
+                                            _this.panel = _self;
+                                        }
+                                    }
+
                                 }
                             ]
 
