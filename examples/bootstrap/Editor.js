@@ -53,15 +53,15 @@ Roo.example.Editor = new Roo.XComponent({
                                             xns : Roo.bootstrap.editor,
                                             width : 1000,
                                             height : 1500,
-//                                            stylesheets : (function(){
-//                                                var css = [];
-//                                                
-//                                                css.push(rootURL + '/roojs1/css-bootstrap/bootstrap.css');
-//                                                css.push(rootURL + '/roojs1/css-bootstrap/font-awesome.css');
-//                                                css.push(rootURL + '/Campaign/editor/editor.css');
-//                                                
-//                                                return css;
-//                                            })(),
+                                            stylesheets : (function(){
+                                                var css = [];
+                                                
+                                                css.push(rootURL + '/roojs1/css-bootstrap/bootstrap.css');
+                                                css.push(rootURL + '/roojs1/css-bootstrap/font-awesome.css');
+                                                css.push(rootURL + '/Campaign/editor/editor.css');
+                                                
+                                                return css;
+                                            })(),
                                             listeners : {
                                                 render : function (_self)
                                                 {
