@@ -30,7 +30,7 @@ Roo.example.Editor = new Roo.XComponent({
                 render : function (_self)
                 {
                     Roo.Ajax.request({
-                        url : baseURL + '/Roo/Campaign_detail.php',
+                        url : baseURL + '/CampaignEdit.php',
                         method: 'GET',
                         params: {
                             _editor : 1
