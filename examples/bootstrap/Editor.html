@@ -129,7 +129,7 @@
                         Roo.log(target);
                         
                         Roo.example.Editor[target] = new Roo.bootstrap.editor.ImageBlock({ panel : 'thanks-email' }).render(el);
-                        Roo.example.Editor[target]['parent'] = el;
+                        Roo.example.Editor[target].parent = el;
                         
                     })
                     return;
@@ -141,7 +141,9 @@
                         }
                         
                         for (var d in f['image']){
-                            
+                            var width = Roo.example.Editor[d].parent.getWidth();
+                            Roo.log(width);
+                            continue;
                             Roo.example.Editor[d].setValue(baseURL + '/Images/Thumb')
                             Roo.example.Editor[d].setValue(f['image'][d])
                         }
