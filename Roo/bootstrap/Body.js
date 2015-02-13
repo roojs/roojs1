@@ -34,13 +34,10 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
     },
     onRender : function(ct, position)
     {
-       /* Roo.log("Roo.bootstrap.Body - onRender");
-        if (this.cls && this.cls.length) {
-            Roo.get(document.body).addClass(this.cls);
-        }
-        // style??? xttr???
-        */
-       //Roo.log("Roo.bootstrap.Body.onRender");
+       
+        // code has to go in the constructor,
+        // as body is not really rendered, it just picks up the document.body in the 
+        // constructor.
         
        
     }
