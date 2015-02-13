@@ -41,12 +41,36 @@ Roo.example.Editor = new Roo.XComponent({
                                     xtype : 'Container',
                                     cls : 'container alpha',
                                     xns : Roo.bootstrap,
-                                    listeners : {
-                                        render : function (_self)
+                                    items : [
+                                    	{
+                                            level : 4,
+                                            xtype : 'Header',
+                                            html : 'Inline Editor',
+                                            xns : Roo.bootstrap
+                                        },
                                         {
-                                            _this.previewContianer = _self;
+                                            xtype : 'Panel',
+                                            xns : Roo.bootstrap.editor,
+                                            width : 1000,
+                                            height : 1000,
+//                                            stylesheets : (function(){
+//                                                var css = [];
+//                                                
+//                                                css.push(rootURL + '/roojs1/css-bootstrap/bootstrap.css');
+//                                                css.push(rootURL + '/roojs1/css-bootstrap/font-awesome.css');
+//                                                css.push(rootURL + '/Campaign/editor/editor.css');
+//                                                
+//                                                return css;
+//                                            })(),
+                                            listeners : {
+                                                render : function (_self)
+                                                {
+                                                    _this.previewPanel = _self;
+                                                }
+                                            }
                                         }
-                                    }
+                                        
+                                    ]
 
                                 }
                             ]
