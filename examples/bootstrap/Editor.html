@@ -135,9 +135,12 @@
                     for ( var p in res.data.campaign.emails ){
                         var f = res.data.campaign.emails[p];
                         
-                        for (var d in f){
-                            Roo.log(d);
-                            Roo.example.Editor[d].setValue(f[d])
+                        for (var d in f['message']){
+                            Roo.example.Editor[d].setValue(f['message'][d])
+                        }
+                        
+                        for (var d in f['image']){
+                            Roo.example.Editor[d].setValue(f['message'][d])
                         }
                     }
                     
