@@ -23,7 +23,8 @@ Roo.bootstrap.Body = function(config)
     if (this.cls && this.cls.length) {
         Roo.get(document.body).addClass(this.cls);
     }
-    
+    this.initEvents();
+    this.fireEvent('render',this);
 };
 
 Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
@@ -39,9 +40,9 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
         }
         // style??? xttr???
         */
-       Roo.log("Roo.bootstrap.Body.onRender");
-        this.initEvents();
-       this.fireEvent('render',this);
+       //Roo.log("Roo.bootstrap.Body.onRender");
+        
+       
     }
     
     
