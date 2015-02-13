@@ -22,18 +22,6 @@ Roo.example.Editor = new Roo.XComponent({
         var MODULE = this;
         var baseURL = '/web.campaign/index.local.php';
         
-//        Roo.Ajax.request({
-//            url : baseURL + '/CampaignEdit/237',
-//            method: 'GET',
-//            params: {
-//                _editor : 1
-//            },
-//            success : function(r)
-//            {
-//                Roo.log(r);
-//            }
-//        });
-        
         return {
             xtype: 'Body',
             xns: Roo.bootstrap,
