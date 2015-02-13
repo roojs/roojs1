@@ -40,6 +40,7 @@ Roo.extend(Roo.bootstrap.Body, Roo.bootstrap.Component,  {
         // style??? xttr???
         */
        Roo.log("Roo.bootstrap.Body.onRender");
+        this.initEvents();
        this.fireEvent('render',this);
     }
     
