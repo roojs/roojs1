@@ -129,6 +129,7 @@
                         Roo.log(target);
                         
                         Roo.example.Editor[target] = new Roo.bootstrap.editor.ImageBlock({ panel : 'thanks-email' }).render(el);
+                        Roo.example.Editor[target]['parent'] = el;
                         
                     })
                     return;
