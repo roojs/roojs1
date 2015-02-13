@@ -142,10 +142,7 @@
                         
                         for (var d in f['image']){
                             var width = Roo.example.Editor[d].parent.getWidth();
-                            Roo.log(width);
-                            continue;
-                            Roo.example.Editor[d].setValue(baseURL + '/Images/Thumb')
-                            Roo.example.Editor[d].setValue(f['image'][d])
+                            Roo.example.Editor[d].setValue(baseURL + '/Images/Thumb/' + width + '/' + f['image'][d]);
                         }
                         
                     }
