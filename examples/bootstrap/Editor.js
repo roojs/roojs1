@@ -44,7 +44,7 @@ Roo.example.Editor = new Roo.XComponent({
                                     listeners : {
                                         render : function (_self)
                                         {
-                                            _this.panel123 = _self;
+                                            _this.previewContianer = _self;
                                         }
                                     }
 
