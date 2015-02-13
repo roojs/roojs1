@@ -94,6 +94,19 @@
             Roo.XComponent.build();
         });
         
+        Roo.XComponent.on('buildcomplete', function() {
+            Roo.Ajax.request({
+                url : baseURL + '/editor/data.php',
+                method: 'GET',
+                success : function(r)
+                {
+                    Roo.log(r);
+                }
+            });
+        });
+        
+
+        
     </script>
   </body>
 </html>
