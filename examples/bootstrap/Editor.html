@@ -92,6 +92,7 @@
         Roo.XComponent.build();
         Roo.XComponent.on('buildcomplete', function() {
             try {
+                Roo.log(Roo.XComponent.modules[length - 1].el);
                 var length = Roo.XComponent.modules.length;
                 Roo.XComponent.modules[length - 1].el.fireEvent('render');
 
