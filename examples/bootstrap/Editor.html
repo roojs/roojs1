@@ -121,6 +121,17 @@
                         
                     })
                     
+                    Roo.each(Roo.example.Editor.previewPanel.body().select('.campaign-image-editable', true).elements, function(el){
+                        Roo.log(el);
+                        
+                        var target = el.attr('data-target');
+                        
+                        Roo.log(target);
+                        
+                        Roo.example.Editor[target] = new Roo.bootstrap.editor.ImageBlock({}).render(el);
+                        
+                    })
+                    
                 }
             });
         });
