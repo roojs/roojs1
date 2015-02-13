@@ -80,7 +80,13 @@ Roo.example.Editor = new Roo.XComponent({
                                                     xtype : 'ImageBlock',
                                                     xns : Roo.bootstrap.editor,
                                                     height : 300,
-                                                    style : 'margin-top:20px;'
+                                                    style : 'margin-top:20px;',
+                                                    listeners : {
+                                                        render : function (_self)
+                                                        {
+                                                            this.setValue('http://localhost/web.campaign/index.local.php/Images/Thumb/100/1351/');
+                                                        }
+                                                    }
                                                 }
                                             ]
                                         }
