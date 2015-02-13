@@ -30,17 +30,17 @@ Roo.example.Editor = new Roo.XComponent({
                 render : function (_self)
                 {
                     Roo.log('body render ???????????????????????/');
-                    Roo.Ajax.request({
-                        url : baseURL + '/CampaignEdit/237',
-                        method: 'GET',
-                        params: {
-                            _editor : 1
-                        },
-                        success : function(r)
-                        {
-                            Roo.log(r);
-                        }
-                    });
+//                    Roo.Ajax.request({
+//                        url : baseURL + '/CampaignEdit/237',
+//                        method: 'GET',
+//                        params: {
+//                            _editor : 1
+//                        },
+//                        success : function(r)
+//                        {
+//                            Roo.log(r);
+//                        }
+//                    });
                 }
             },
             items : [
