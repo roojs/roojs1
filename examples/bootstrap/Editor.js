@@ -26,6 +26,12 @@ Roo.example.Editor = new Roo.XComponent({
         return {
             xtype: 'Body',
             xns: Roo.bootstrap,
+            listeners : {
+                render : function (_self)
+                {
+                    this.setValue('<b>test</b>');
+                }
+            },
             items : [
                  {
                     xtype : 'Container',
@@ -71,7 +77,7 @@ Roo.example.Editor = new Roo.XComponent({
                                                     listeners : {
                                                         render : function (_self)
                                                         {
-                                                            this.setValue('<b>test</b>');
+                                                            _this.block1 = _self;
                                                         }
                                                     }
                                                 },
@@ -82,7 +88,7 @@ Roo.example.Editor = new Roo.XComponent({
                                                     listeners : {
                                                         render : function (_self)
                                                         {
-                                                            this.setValue('http://localhost/web.campaign/index.local.php/Images/Thumb/100/1351/');
+                                                            _this.block2 = _self;
                                                         }
                                                     }
                                                 }
