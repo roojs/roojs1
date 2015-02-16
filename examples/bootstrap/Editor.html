@@ -127,8 +127,6 @@
                         Roo.example.Editor[target].parent = el;
                         
                         Roo.example.Editor[target].on('upload', function(){
-                            Roo.log('fire upload');
-                            
                             Campaign.Dialog.Images.show(
                                 {
                                     onid : 237,
@@ -136,6 +134,7 @@
                                     imgtype : target
                                 }, 
                                 function(res){
+                                    Roo.log('upload completed!!!!!!!!!!!!!!!!!!!!!!!!!!');
                                     Roo.log(res);
                                 }
                             );
