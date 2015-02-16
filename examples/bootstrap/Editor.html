@@ -144,10 +144,11 @@
                                         success : function(r)
                                         {
                                             var res = Roo.decode(r.responseText);
-
-                                            _this.explainationLogoPreview.el.attr('src', baseURL + '/Images/Thumb/250/' + res.data.id + '/' + res.data.filename);
-
-                                            _this.explainationLogoPreview.el.show();
+                                            Roo.log('upload completed');
+                                            Roo.log(res);
+//                                            _this.explainationLogoPreview.el.attr('src', baseURL + '/Images/Thumb/250/' + res.data.id + '/' + res.data.filename);
+//
+//                                            _this.explainationLogoPreview.el.show();
                                         }
                                     });
                                 }
