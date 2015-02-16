@@ -164,19 +164,19 @@ Roo.apply(Roo.bootstrap.dash.TabBox, {
     
     boxes: {},
      /**
-    * register a Navigation Group
-    * @param {Roo.bootstrap.NavGroup} the navgroup to add
+    * register a TabBox
+    * @param {Roo.bootstrap.dash.TabBox} the box to add
     */
-    register : function(navgrp)
+    register : function(box)
     {
-        this.groups[navgrp.navId] = navgrp;
+        this.boxes[box.name] = box;
 	
     },
     /**
-    * fetch a Navigation Group based on the navigation ID
+    * fetch a box based on the box name
     * if one does not exist , it will get created.
-    * @param {string} the navgroup to add
-    * @returns {Roo.bootstrap.NavGroup} the navgroup 
+    * @param {string} the box name
+    * @returns {Roo.bootstrap.dash.TabBox} the box 
     */
     get: function(navId) {
         if (typeof(this.groups[navId]) == 'undefined') {
