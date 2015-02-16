@@ -178,11 +178,11 @@ Roo.apply(Roo.bootstrap.dash.TabBox, {
     * @param {string} the box name
     * @returns {Roo.bootstrap.dash.TabBox} the box 
     */
-    get: function(navId) {
-        if (typeof(this.groups[navId]) == 'undefined') {
-            this.register(new Roo.bootstrap.TabGroup({ navId : navId }));
+    get: function(name) {
+        if (typeof(this.boxes[name]) == 'undefined') {
+            this.register(new Roo.bootstrap.dash.TabBox({ name : name }));
         }
-        return this.groups[navId] ;
+        return this.boxes[name] ;
     }
     
     
