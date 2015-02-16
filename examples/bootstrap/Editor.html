@@ -126,6 +126,10 @@
                         Roo.example.Editor[target] = new Roo.bootstrap.editor.ImageBlock({ panel : 'thanks-email' }).render(el);
                         Roo.example.Editor[target].parent = el;
                         
+                        Roo.example.Editor[target].on('delete', function(){
+                            Roo.log('fire delete');
+                        })
+                        
                     })
                     
                     for ( var p in res.data.campaign.emails ){
