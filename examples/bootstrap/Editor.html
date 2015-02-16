@@ -125,6 +125,15 @@
                         
                         Roo.example.Editor[target].on('upload', function(){
                             Roo.log('fire upload');
+                            Campaign.Dialog.EmailPreview.show(
+                                {
+                                    id : id,
+                                    method : method
+                                }, 
+                                function(){
+                                    Roo.MessageBox.alert('Notice', 'Sent');
+                                }
+                            );
                         })
                         
                     })
