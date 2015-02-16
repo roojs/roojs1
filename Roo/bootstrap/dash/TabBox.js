@@ -24,7 +24,6 @@ Roo.bootstrap.dash.TabBox = function(config){
     Roo.bootstrap.dash.TabBox.superclass.constructor.call(this, config);
     
     this.panes = [];
-    Roo.bootstrap.dash.TabBox.register(this);
     
     this.addEvents({
         // raw events
@@ -157,35 +156,3 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     
     
 });
-
-
- 
-Roo.apply(Roo.bootstrap.dash.TabBox, {
-    
-    boxes: {},
-     /**
-    * register a TabBox
-    * @param {Roo.bootstrap.dash.TabBox} the box to add
-    */
-    register : function(box)
-    {
-        this.boxes[box.name] = box;
-	
-    },
-    /**
-    * fetch a box based on the box name
-    * if one does not exist , it will get created.
-    * @param {string} the box name
-    * @returns {Roo.bootstrap.dash.TabBox} the box 
-    */
-    get: function(name) {
-        if (typeof(this.boxes[name]) == 'undefined') {
-            this.register(new Roo.bootstrap.dash.TabBox({ name : name }));
-        }
-        return this.boxes[name] ;
-    }
-    
-    
-    
-});
- 
