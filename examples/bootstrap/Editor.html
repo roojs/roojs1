@@ -106,12 +106,9 @@
                         return;
                     }
                     
-                    Roo.log(res);
-                    
                     Roo.example.Editor.previewPanel.body().dom.innerHTML = res.data.email;
                     
                     Roo.each(Roo.example.Editor.previewPanel.body().select('.campaign-editable', true).elements, function(el){
-                        Roo.log(el);
                         
                         var target = el.attr('data-target');
                         
@@ -125,8 +122,6 @@
                         Roo.log(el);
                         
                         var target = el.attr('data-target');
-                        
-                        Roo.log(target);
                         
                         Roo.example.Editor[target] = new Roo.bootstrap.editor.ImageBlock({ panel : 'thanks-email' }).render(el);
                         Roo.example.Editor[target].parent = el;
