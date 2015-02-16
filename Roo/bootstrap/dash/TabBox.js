@@ -23,7 +23,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 Roo.bootstrap.dash.TabBox = function(config){
     Roo.bootstrap.dash.TabBox.superclass.constructor.call(this, config);
     
-    this.boxes = [];
+    this.panes = [];
     Roo.bootstrap.dash.TabBox.register(this);
     
     this.addEvents({
@@ -158,4 +158,34 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     
 });
 
+
+ 
+Roo.apply(Roo.bootstrap.dash.TabBox, {
+    
+    boxes: {},
+     /**
+    * register a Navigation Group
+    * @param {Roo.bootstrap.NavGroup} the navgroup to add
+    */
+    register : function(navgrp)
+    {
+        this.groups[navgrp.navId] = navgrp;
+	
+    },
+    /**
+    * fetch a Navigation Group based on the navigation ID
+    * if one does not exist , it will get created.
+    * @param {string} the navgroup to add
+    * @returns {Roo.bootstrap.NavGroup} the navgroup 
+    */
+    get: function(navId) {
+        if (typeof(this.groups[navId]) == 'undefined') {
+            this.register(new Roo.bootstrap.TabGroup({ navId : navId }));
+        }
+        return this.groups[navId] ;
+    }
+    
+    
+    
+});
  
