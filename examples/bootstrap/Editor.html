@@ -133,9 +133,23 @@
                                     ontable : 'campaign_detail',
                                     imgtype : target
                                 }, 
-                                function(res){
-                                    Roo.log('upload completed!!!!!!!!!!!!!!!!!!!!!!!!!!');
-                                    Roo.log(res);
+                                function(){
+                                    Roo.Ajax.request({
+                                        url : baseURL + '/Roo/Images',
+                                        method: 'GET',
+                                        params: {
+                                            _preview : target,
+                                            onid : 237
+                                        },
+                                        success : function(r)
+                                        {
+                                            var res = Roo.decode(r.responseText);
+
+                                            _this.explainationLogoPreview.el.attr('src', baseURL + '/Images/Thumb/250/' + res.data.id + '/' + res.data.filename);
+
+                                            _this.explainationLogoPreview.el.show();
+                                        }
+                                    });
                                 }
                             );
                         })
