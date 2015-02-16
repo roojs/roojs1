@@ -22,9 +22,6 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 
 Roo.bootstrap.dash.TabBox = function(config){
     Roo.bootstrap.dash.TabBox.superclass.constructor.call(this, config);
-    
-    this.panes = [];
-    
     this.addEvents({
         // raw events
         /**
@@ -156,3 +153,5 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     
     
 });
+
+ 
