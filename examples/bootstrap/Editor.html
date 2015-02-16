@@ -130,10 +130,12 @@
                             
                             Campaign.Dialog.Images.show(
                                 {
-                                    
+                                    onid : 237,
+                                    ontable : 'campaign_detail',
+                                    imgtype : target
                                 }, 
-                                function(){
-                                    Roo.MessageBox.alert('Notice', 'Sent');
+                                function(res){
+                                    Roo.log(res);
                                 }
                             );
                         })
