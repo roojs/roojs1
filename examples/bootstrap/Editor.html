@@ -64,6 +64,7 @@
     <script type="text/javascript" src="../../Roo/data/ArrayReader.js"></script>
     
     <script type="text/javascript" src="../../Roo/form/VTypes.js"></script>
+    <script type="text/javascript" src="../../Roo/form/Action.js"></script>
     <script type="text/javascript" src="../../Roo/View.js"></script>
     
     <script type="text/javascript" src="../../../Campaign/editor/Panel.js"></script>
@@ -85,6 +86,8 @@
   
   <body id="body">
     <script type="text/javascript">
+        Campaign = { Dialog : {} };
+        
         var baseURL = '/web.campaign/index.local.php';
         var rootURL = '/web.campaign';
         
@@ -93,7 +96,92 @@
         Roo.onReady(function() {
             Roo.XComponent.build();
         });
+        
+        Roo.XComponent.on('buildcomplete', function() {
+            Roo.Ajax.request({
+                url : baseURL + '/editor/data.php',
+                method: 'GET',
+                success : function(r)
+                {
+                    var res = Roo.decode(r.responseText);
+                    
+                    if(!res.success){
+                        return;
+                    }
+                    
+                    Roo.example.Editor.previewPanel.body().dom.innerHTML = res.data.email;
+                    
+                    Roo.each(Roo.example.Editor.previewPanel.body().select('.campaign-editable', true).elements, function(el){
+                        
+                        var target = el.attr('data-target');
+                        
+                        Roo.example.Editor[target] = new Roo.bootstrap.editor.TextBlock({ panel : 'thanks-email' }).render(el);
+                        
+                    })
+                    
+                    Roo.each(Roo.example.Editor.previewPanel.body().select('.campaign-image-editable', true).elements, function(el){
+                        
+                        var target = el.attr('data-target');
+                        
+                        Roo.example.Editor[target] = new Roo.bootstrap.editor.ImageBlock({ panel : 'thanks-email' }).render(el);
+                        Roo.example.Editor[target].parent = el;
+                        
+                        Roo.example.Editor[target].on('upload', function(){
+                            Campaign.Dialog.Images.show(
+                                {
+                                    onid : 237,
+                                    ontable : 'campaign_detail',
+                                    imgtype : target
+                                }, 
+                                function(){
+                                    Roo.Ajax.request({
+                                        url : baseURL + '/Roo/Images',
+                                        method: 'GET',
+                                        params: {
+                                            _preview : target,
+                                            onid : 237
+                                        },
+                                        success : function(r)
+                                        {
+                                            var res = Roo.decode(r.responseText);
+                                            
+                                            if(!res.success){
+                                                return;
+                                            }
+                                            
+                                            var width = Roo.example.Editor[target].parent.getWidth();
+                                            
+                                            Roo.example.Editor[target].setValue((baseURL + '/Images/Thumb/' + width + '/' + res.data.id));
+                                        }
+                                    });
+                                }
+                            );
+                        })
+                        
+                    })
+                    
+                    for ( var p in res.data.campaign.emails ){
+                        var f = res.data.campaign.emails[p];
+                        
+                        for (var d in f['message']){
+                            Roo.example.Editor[d].setValue(f['message'][d])
+                        }
+                        
+                        for (var d in f['image']){
+                            var width = Roo.example.Editor[d].parent.getWidth();
+                            Roo.example.Editor[d].setValue(baseURL + '/Images/Thumb/' + width + '/' + f['image'][d]);
+                        }
+                        
+                    }
+                    
+                }
+            });
+        });
+        
 
+        
     </script>
+    
+    <script src="../../../Campaign/Campaign.Dialog.Images.js" type="text/javascript"></script>
   </body>
 </html>

@@ -12,7 +12,6 @@ Roo.example.Editor = new Roo.XComponent({
     permname : '', 
     _tree : function()
     {
-        
         this.parent = {
             el : new Roo.bootstrap.Body()
         }
@@ -52,9 +51,9 @@ Roo.example.Editor = new Roo.XComponent({
                                         {
                                             xtype : 'Panel',
                                             xns : Roo.bootstrap.editor,
+                                            name : 'thanks-email',
                                             width : 1000,
-                                            height : 1000,
-                                            name : 'email-inline-editor',
+                                            height : 1500,
                                             stylesheets : (function(){
                                                 var css = [];
                                                 
@@ -64,29 +63,12 @@ Roo.example.Editor = new Roo.XComponent({
                                                 
                                                 return css;
                                             })(),
-                                            items : [
+                                            listeners : {
+                                                render : function (_self)
                                                 {
-                                                    xtype : 'TextBlock',
-                                                    xns : Roo.bootstrap.editor,
-                                                    listeners : {
-                                                        render : function (_self)
-                                                        {
-                                                            this.setValue('<b>test</b>');
-                                                        }
-                                                    }
-                                                },
-                                                {
-                                                    xtype : 'ImageBlock',
-                                                    xns : Roo.bootstrap.editor,
-                                                    style : 'margin-top:20px;',
-                                                    listeners : {
-                                                        render : function (_self)
-                                                        {
-                                                            this.setValue('http://localhost/web.campaign/index.local.php/Images/Thumb/100/1351/');
-                                                        }
-                                                    }
+                                                    _this.previewPanel = _self;
                                                 }
-                                            ]
+                                            }
                                         }
                                         
                                     ]
