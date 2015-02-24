@@ -11472,7 +11472,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        this.hasFocus = false;
+//        this.hasFocus = false;
         
         this.list.hide();
         
@@ -19767,6 +19767,16 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 Roo.bootstrap.dash.TabPane = function(config){
     Roo.bootstrap.dash.TabPane.superclass.constructor.call(this, config);
     
+    this.addEvents({
+        // raw events
+        /**
+         * @event activate
+         * When a pane is activated
+         * @param {Roo.bootstrap.dash.TabPane} pane
+         */
+        "activate" : true
+         
+    });
 };
 
 Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
