@@ -442,8 +442,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if(this.isInline) return;
         
         this.picker().removeClass(['bottom', 'top']);
-        Roo.log(this.inputEl().getBottom());
-        Roo.log(this.picker().getHeight());
+        
         if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){
             /*
              * place to the top of element!
@@ -451,14 +450,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
              */
             
             this.picker().addClass('top');
-            this.picker().setTop(0 - this.picker().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+//            this.picker().setTop(0 - this.picker().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
             
             return;
         }
         
         this.picker().addClass('bottom');
         
-        this.picker().setTop(this.inputEl().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+//        this.picker().setTop(this.inputEl().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
     },
     
     parseDate : function(value)
