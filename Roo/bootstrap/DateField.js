@@ -168,7 +168,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             }
         }
                 
-        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
+        this.picker = Roo.get(document.body).createChild(Roo.bootstrap.DateField.template);
+        
+//        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
