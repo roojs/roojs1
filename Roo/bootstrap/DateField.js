@@ -442,7 +442,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if(this.isInline) return;
         
         this.picker().removeClass(['bottom', 'top']);
-        Roo.log(this.inputEl);
+        Roo.log(this.inputEl());
         if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){
             /*
              * place to the top of element!
