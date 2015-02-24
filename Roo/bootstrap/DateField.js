@@ -443,6 +443,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.picker().removeClass(['bottom', 'top']);
         Roo.log(this.inputEl());
+        Roo.log(this.el);
         
         if((Roo.lib.Dom.getViewHeight() + Roo.get(document.body).getScroll().top) - (this.inputEl().getBottom() + this.picker().getHeight()) < 0){
             /*
