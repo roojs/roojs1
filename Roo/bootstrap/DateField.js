@@ -168,7 +168,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             }
         }
                 
-        this.picker = Roo.get(document.body).createChild(Roo.bootstrap.DateField.template);
+        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.DateField.template);
         
 //        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
         
@@ -214,7 +214,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     picker : function()
     {
-        return this.el.select('.datepicker', true).first();
+        return this.pickerEl;
+//        return this.el.select('.datepicker', true).first();
     },
     
     fillDow: function()
