@@ -450,7 +450,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
              */
             
             this.picker().addClass('top');
-            this.picker().setTop(this.el().getTop() - this.picker().getHeight()).setLeft(this.inputEl().getLeft());
+            this.picker().setTop(this.el.getTop() - this.picker().getHeight()).setLeft(this.inputEl().getLeft());
             
             return;
         }
