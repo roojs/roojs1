@@ -1368,7 +1368,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        this.hasFocus = false;
+//        this.hasFocus = false;
         
         this.list.hide();
         

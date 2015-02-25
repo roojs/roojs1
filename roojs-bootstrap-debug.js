@@ -11472,7 +11472,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        this.hasFocus = false;
+//        this.hasFocus = false;
         
         this.list.hide();
         
@@ -14342,7 +14342,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             }
         }
                 
-        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
+        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.DateField.template);
+        
+//        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
@@ -14386,7 +14388,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     picker : function()
     {
-        return this.el.select('.datepicker', true).first();
+        return this.pickerEl;
+//        return this.el.select('.datepicker', true).first();
     },
     
     fillDow: function()
@@ -14621,14 +14624,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
              */
             
             this.picker().addClass('top');
-            this.picker().setTop(0 - this.picker().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+            this.picker().setTop(this.el.getTop() - this.picker().getHeight()).setLeft(this.inputEl().getLeft());
             
             return;
         }
         
         this.picker().addClass('bottom');
-        
-        this.picker().setTop(this.inputEl().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+        this.picker().setTop(this.el.getTop() + this.inputEl().getHeight()).setLeft(this.inputEl().getLeft());
     },
     
     parseDate : function(value)
@@ -19772,6 +19774,16 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
 Roo.bootstrap.dash.TabPane = function(config){
     Roo.bootstrap.dash.TabPane.superclass.constructor.call(this, config);
     
+    this.addEvents({
+        // raw events
+        /**
+         * @event activate
+         * When a pane is activated
+         * @param {Roo.bootstrap.dash.TabPane} pane
+         */
+        "activate" : true
+         
+    });
 };
 
 Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {

@@ -168,7 +168,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             }
         }
                 
-        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
+        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.DateField.template);
+        
+//        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
@@ -212,7 +214,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     picker : function()
     {
-        return this.el.select('.datepicker', true).first();
+        return this.pickerEl;
+//        return this.el.select('.datepicker', true).first();
     },
     
     fillDow: function()
@@ -447,14 +450,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
              */
             
             this.picker().addClass('top');
-            this.picker().setTop(0 - this.picker().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+            this.picker().setTop(this.el.getTop() - this.picker().getHeight()).setLeft(this.inputEl().getLeft());
             
             return;
         }
         
         this.picker().addClass('bottom');
-        
-        this.picker().setTop(this.inputEl().getHeight()).setLeft(this.inputEl().getLeft() - this.el.getLeft());
+        this.picker().setTop(this.el.getTop() + this.inputEl().getHeight()).setLeft(this.inputEl().getLeft());
     },
     
     parseDate : function(value)
