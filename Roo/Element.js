@@ -2074,9 +2074,9 @@ if(opt.anim.isAnimated()){
          */
         mask : function(msg, msgCls)
         {
-//            if(this.getStyle("position") == "static"){
-//                this.setStyle("position", "relative");
-//            }
+            if(this.getStyle("position") == "static"){
+                this.setStyle("position", "relative");
+            }
             if(!this._mask){
                 this._mask = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask"}, true);
             }
