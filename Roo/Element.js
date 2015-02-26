@@ -2078,8 +2078,7 @@ if(opt.anim.isAnimated()){
                 this.setStyle("position", "relative");
             }
             if(!this._mask){
-//                this._mask = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask"}, true);
-                this._mask = this.createChild({cls:"roo-el-mask"});
+                this._mask = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask"}, true);
             }
             this.addClass("x-masked");
             this._mask.setDisplayed(true);
@@ -2102,8 +2101,7 @@ if(opt.anim.isAnimated()){
            
             if(typeof msg == 'string'){
                 if(!this._maskMsg){
-//                    this._maskMsg = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask-msg", cn:{tag:'div'}}, true);
-                    this._maskMsg = this.createChild({cls:"roo-el-mask-msg", cn:{tag:'div'}});
+                    this._maskMsg = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask-msg", cn:{tag:'div'}}, true);
                 }
                 var mm = this._maskMsg;
                 mm.dom.className = msgCls ? "roo-el-mask-msg " + msgCls : "roo-el-mask-msg";
@@ -2125,7 +2123,6 @@ if(opt.anim.isAnimated()){
          * it is cached for reuse.
          */
         unmask : function(removeEl){
-//            this.setStyle("position", "static");
             if(this._mask){
                 if(removeEl === true){
                     this._mask.remove();
