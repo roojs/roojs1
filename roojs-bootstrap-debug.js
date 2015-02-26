@@ -14711,13 +14711,15 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
     setValue: function(v)
     {
-        Roo.bootstrap.DateField.superclass.setValue.call(this, v);
-        
         var d = new Date(v);
         
         if(isNaN(d.getTime())){
             return;
         }
+        
+        v = this.formatDate(d);
+        
+        Roo.bootstrap.DateField.superclass.setValue.call(this, v);
         
         this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
 
