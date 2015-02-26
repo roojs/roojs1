@@ -540,7 +540,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var d = new Date(v);
         
         if(isNaN(d.getTime())){
-            this.date = false;
+            this.date = '';
             return;
         }
         
