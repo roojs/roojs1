@@ -11827,7 +11827,7 @@
     },
     {
      "name": "changed",
-     "sig": "function (_self, item, item)\n{\n\n}",
+     "sig": "function (_self, selected, prev)\n{\n\n}",
      "type": "function",
      "desc": "Fires when the active item changes"
     },
@@ -17275,6 +17275,12 @@
     }
    ],
    "events": [
+    {
+     "name": "activate",
+     "sig": "function (pane)\n{\n\n}",
+     "type": "function",
+     "desc": "When a pane is activated"
+    },
     {
      "name": "beforedestroy",
      "sig": "function (_self)\n{\n\n}",

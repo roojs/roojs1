@@ -2074,7 +2074,7 @@ if(opt.anim.isAnimated()){
          */
         </span><span class="jsdoc-var">mask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msgCls</span><span class="jsdoc-syntax">)
         {
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;position&quot;</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">&quot;static&quot;</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;position&quot;</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">&quot;static&quot; </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.dom.tagName </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'BODY'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;position&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;relative&quot;</span><span class="jsdoc-syntax">);
             }
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this._mask</span><span class="jsdoc-syntax">){
