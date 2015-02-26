@@ -539,6 +539,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
     setValue: function(v)
     {
+        Roo.log('datafield setValue!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(this);
+        Roo.log(v);
         Roo.bootstrap.DateField.superclass.setValue.call(this, v);
         
         var d = new Date(v);
