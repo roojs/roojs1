@@ -539,12 +539,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
     setValue: function(v)
     {
+        v = '2015-01-01';
         Roo.log('datafield setValue!!!!!!!!!!!!!!!!!!!!!!!!!!');
         Roo.log(this);
         Roo.log(v);
         Roo.bootstrap.DateField.superclass.setValue.call(this, v);
         
-        var d = new Date('2015-01-01');
+        var d = new Date(v);
         Roo.log(d);
         if(isNaN(d.getTime())){
             return;
