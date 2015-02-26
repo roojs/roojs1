@@ -2123,6 +2123,7 @@ if(opt.anim.isAnimated()){
          * it is cached for reuse.
          */
         unmask : function(removeEl){
+//            this.setStyle("position", "static");
             if(this._mask){
                 if(removeEl === true){
                     this._mask.remove();
