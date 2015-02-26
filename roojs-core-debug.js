@@ -8970,7 +8970,7 @@ if(opt.anim.isAnimated()){
          */
         mask : function(msg, msgCls)
         {
-            if(this.getStyle("position") == "static"){
+            if(this.getStyle("position") == "static" && this.dom.tagName !== 'BODY'){
                 this.setStyle("position", "relative");
             }
             if(!this._mask){
@@ -16008,11 +16008,11 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
             }
         }
         
-		if (!this.parent.el) {
-			// probably an old style ctor, which has been disabled.
-			return;
-			
-		}
+        if (!this.parent.el) {
+                // probably an old style ctor, which has been disabled.
+                return;
+
+        }
 		// The 'tree' method is  '_tree now' 
             
         tree.region = tree.region || this.region;
@@ -16027,7 +16027,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         
         this.panel = this.el;
         this.layout = this.panel.layout;
-		this.parentLayout = this.parent.layout  || false;  
+        this.parentLayout = this.parent.layout  || false;  
          
     }
     

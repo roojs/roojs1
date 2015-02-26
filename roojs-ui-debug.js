@@ -8428,6 +8428,8 @@ Roo.SplitBar.BOTTOM = 4;
  */
 Roo.View = function(config, depreciated_tpl, depreciated_config){
     
+    this.parent = false;
+    
     if (typeof(depreciated_tpl) == 'undefined') {
         // new way.. - universal constructor.
         Roo.apply(this, config);
@@ -8451,10 +8453,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
     
     
     this.tpl.compile();
-   
-  
     
-     
     /** @private */
     this.addEvents({
         /**
@@ -8606,6 +8605,11 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     toggleSelect : false,
     
     /**
+     * @cfg {Boolean} tickable - selecting 
+     */
+    tickable : false,
+    
+    /**
      * Returns the element this view is bound to.
      * @return {Roo.Element}
      */
@@ -8653,10 +8657,26 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         for(var i = 0, len = records.length; i < len; i++){
             var data = this.prepareData(records[i].data, i, records[i]);
             this.fireEvent("preparedata", this, data, i, records[i]);
+            
+            var d = Roo.apply({}, data);
+            
+            if(this.tickable){
+                Roo.apply(d, {'roo-id' : Roo.id()});
+                
+                var _this = this;
+            
+                Roo.each(this.parent.item, function(item){
+                    if(item[_this.parent.valueField] != data[_this.parent.valueField]){
+                        return;
+                    }
+                    Roo.apply(d, {'roo-data-checked' : 'checked'});
+                });
+            }
+            
             html[html.length] = Roo.util.Format.trim(
                 this.dataName ?
-                    t.applySubtemplate(this.dataName, data, this.store.meta) :
-                    t.apply(data)
+                    t.applySubtemplate(this.dataName, d, this.store.meta) :
+                    t.apply(d)
             );
         }
         
@@ -8863,7 +8883,11 @@ Roo.extend(Roo.View, Roo.util.Observable, {
                 this.select(item, this.multiSelect && e.ctrlKey);
                 this.lastSelection = item;
             }
-            e.preventDefault();
+            
+            if(!this.tickable){
+                e.preventDefault();
+            }
+            
         }
         return true;
     },
@@ -24954,11 +24978,18 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.doc = iframe.contentWindow.document;
             this.win = iframe.contentWindow;
         } else {
-            if (!Roo.get(this.frameId)) {
+//            if (!Roo.get(this.frameId)) {
+//                return;
+//            }
+//            this.doc = (iframe.contentDocument || Roo.get(this.frameId).dom.document);
+//            this.win = Roo.get(this.frameId).dom.contentWindow;
+            
+            if (!Roo.get(this.frameId) && !iframe.contentDocument) {
                 return;
             }
+            
             this.doc = (iframe.contentDocument || Roo.get(this.frameId).dom.document);
-            this.win = Roo.get(this.frameId).dom.contentWindow;
+            this.win = (iframe.contentWindow || Roo.get(this.frameId).dom.contentWindow);
         }
     },
     
@@ -38396,7 +38427,8 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {Function} renderer (Optional) A function used to generate HTML markup for a cell
      * given the cell's data value. See {@link #setRenderer}. If not specified, the
-     * default renderer uses the raw data value.
+     * default renderer uses the raw data value. If an object is returned (bootstrap only)
+     * then it is treated as a Roo Component object instance, and it is rendered after the initial row is rendered
      */
        /**
      * @cfg {Roo.grid.GridEditor} editor (Optional) For grid editors - returns the grid editor 
