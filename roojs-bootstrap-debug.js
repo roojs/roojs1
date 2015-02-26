@@ -14712,7 +14712,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var d = new Date(v);
         
         if(isNaN(d.getTime())){
-            Roo.bootstrap.DateField.superclass.setValue.call(this, '');
+            this.date = false;
             return;
         }
         
