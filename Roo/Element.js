@@ -2078,7 +2078,8 @@ if(opt.anim.isAnimated()){
                 this.setStyle("position", "relative");
             }
             if(!this._mask){
-                this._mask = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask"}, true);
+//                this._mask = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask"}, true);
+                this._mask = this.createChild({cls:"roo-el-mask"});
             }
             this.addClass("x-masked");
             this._mask.setDisplayed(true);
