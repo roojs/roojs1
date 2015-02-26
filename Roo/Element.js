@@ -2103,7 +2103,7 @@ if(opt.anim.isAnimated()){
             if(typeof msg == 'string'){
                 if(!this._maskMsg){
 //                    this._maskMsg = Roo.DomHelper.append(this.dom, {cls:"roo-el-mask-msg", cn:{tag:'div'}}, true);
-                    this.createChild({cls:"roo-el-mask-msg", cn:{tag:'div'}});
+                    this._maskMsg = this.createChild({cls:"roo-el-mask-msg", cn:{tag:'div'}});
                 }
                 var mm = this._maskMsg;
                 mm.dom.className = msgCls ? "roo-el-mask-msg " + msgCls : "roo-el-mask-msg";
