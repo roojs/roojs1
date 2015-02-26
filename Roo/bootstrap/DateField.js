@@ -439,6 +439,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     place: function()
     {
+        Roo.log('place!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(this.inputEl());
         if(this.isInline) return;
         
         this.picker().removeClass(['bottom', 'top']);
