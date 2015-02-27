@@ -905,7 +905,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 if(this.editable && !this.tickable){
                     this.inputEl().dom.select();
                 }
-                Roo.log(this.store);
+                Roo.log(this.store.lastOptions);
                 if(!this.selectByValue(this.value, true) && this.autoFocus){
                     this.select(0, true);
                 }
