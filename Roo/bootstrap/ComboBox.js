@@ -1323,7 +1323,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     this.onLoad();
                 }else{
                     this.store.baseParams[this.queryParam] = q;
-                    Roo.log(this.getParams);
+                    
                     var options = {params : this.getParams(q)};
                     
                     if(this.loadNext){
