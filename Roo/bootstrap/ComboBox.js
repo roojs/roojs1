@@ -1579,10 +1579,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.loading.show();
         
-        var _combo = this;
-        
         this.page++;
         this.loadNext = true;
+        
+        var _combo = this;
+        
         Roo.log('loading???');
         Roo.log(_combo);return;
         (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
