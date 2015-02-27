@@ -897,12 +897,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(typeof(this.loading) !== 'undefined' && this.loading !== null){
             this.loading.hide();
         }
-        Roo.log('onload???');
+        
         if(this.store.getCount() > 0){
             this.expand();
 //            this.restrictHeight();
             if(this.lastQuery == this.allQuery){
-                Roo.log(this.autoFocus);
                 if(this.editable && !this.tickable){
                     this.inputEl().dom.select();
                 }
@@ -1311,8 +1310,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(forceAll === true || (q.length >= this.minChars)){
             
             this.hasQuery = true;
-            Roo.log('query here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-            Roo.log(this.lastQuery);
+            
             if(this.lastQuery != q || this.alwaysQuery){
                 this.lastQuery = q;
                 if(this.mode == 'local'){
@@ -1324,11 +1322,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }
                     this.onLoad();
                 }else{
-                    
                     this.store.baseParams[this.queryParam] = q;
                     
                     var options = {params : this.getParams(q)};
-                    Roo.log(options);
+                    
                     if(this.loadNext){
                         options.add = true;
                         options.params.start = this.page * this.pageSize;
