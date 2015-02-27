@@ -1325,9 +1325,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }else{
                     
                     this.store.baseParams[this.queryParam] = q;
-                    Roo.log(this.store.baseParams[this.queryParam]);
-                    var options = {params : this.getParams(q)};
                     
+                    var options = {params : this.getParams(q)};
+                    Roo.log(options);
                     if(this.loadNext){
                         options.add = true;
                         options.params.start = this.page * this.pageSize;
