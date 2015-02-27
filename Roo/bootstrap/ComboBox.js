@@ -1368,8 +1368,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(!this.isExpanded()){
             return;
         }
-        
-//        this.hasFocus = false;
+        if(this.append){
+            this.page = 0;
+            this.loadNext = false;
+        }
         
         this.list.hide();
         
