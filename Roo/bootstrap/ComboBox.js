@@ -1305,7 +1305,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return false;
         }
         q = qe.query;
-        
+        Roo.log('query here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(q);
         forceAll = qe.forceAll;
         if(forceAll === true || (q.length >= this.minChars)){
             
