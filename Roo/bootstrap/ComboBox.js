@@ -1583,7 +1583,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.page++;
         this.loadNext = true;
-        
+        Roo.log(_combo.allQuery);return;
         (function() { _combo.doQuery(_combo.allQuery, true); }).defer(500);
         
         return;
