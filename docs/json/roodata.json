@@ -6116,6 +6116,24 @@
      "memberOf": ""
     },
     {
+     "name": "alert",
+     "type": "String",
+     "desc": "(success|info|warning|danger) type alert (changes background / border...)",
+     "memberOf": ""
+    },
+    {
+     "name": "fa",
+     "type": "String",
+     "desc": "(ban|check|...) font awesome icon",
+     "memberOf": ""
+    },
+    {
+     "name": "icon",
+     "type": "String",
+     "desc": "(info-sign|check|...) glyphicon name",
+     "memberOf": ""
+    },
+    {
      "name": "html",
      "type": "String",
      "desc": "content of column.",
@@ -14490,6 +14508,24 @@
      "name": "lg",
      "type": "Number",
      "desc": "colspan out of 12 for large computer-sized screens or 0 for hidden",
+     "memberOf": "Roo.bootstrap.Column"
+    },
+    {
+     "name": "alert",
+     "type": "String",
+     "desc": "(success|info|warning|danger) type alert (changes background / border...)",
+     "memberOf": "Roo.bootstrap.Column"
+    },
+    {
+     "name": "fa",
+     "type": "String",
+     "desc": "(ban|check|...) font awesome icon",
+     "memberOf": "Roo.bootstrap.Column"
+    },
+    {
+     "name": "icon",
+     "type": "String",
+     "desc": "(info-sign|check|...) glyphicon name",
      "memberOf": "Roo.bootstrap.Column"
     },
     {
