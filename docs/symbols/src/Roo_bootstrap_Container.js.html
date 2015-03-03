@@ -18,6 +18,9 @@
  * @cfg {String} footer content of footer (for panel)
  * @cfg {String} sticky (footer|wrap|push) block to use as footer or body- needs css-bootstrap/sticky-footer.css
  * @cfg {String} tag (header|aside|section) type of HTML tag.
+ * @cfg {String} alert (success|info|warning|danger) type alert (changes background / border...)
+ * @cfg {String} fa (ban|check|...) font awesome icon
+ * @cfg {String} icon (info-sign|check|...) glyphicon name
 
  *     
  * @constructor
@@ -38,6 +41,7 @@
     </span><span class="jsdoc-var">footer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">sticky</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">alert </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
   
      
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
@@ -64,6 +68,9 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.jumbotron</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'jumbotron'</span><span class="jsdoc-syntax">;
         }
+        
+        
+        
         </span><span class="jsdoc-comment">// - this is applied by the parent..
         //if (this.cls) {
         //    cfg.cls = this.cls + '';
@@ -91,6 +98,9 @@
                     </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+=</span><span class="jsdoc-string">' well'</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             }
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alert </span><span class="jsdoc-syntax">&amp;&amp; [</span><span class="jsdoc-string">&quot;success&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;info&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;warning&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;danger&quot;</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alert</span><span class="jsdoc-syntax">) &gt; -1) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' alert alert-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.alert</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">body </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
@@ -129,6 +139,15 @@
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">body</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">body.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">cfg.html</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">// prefix with the icons..
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fa</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">body.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;fa fa-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.fa </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;&lt;/i&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">body.html </span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">body.html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;i class=&quot;glyphicon glyphicon-'</span><span class="jsdoc-syntax">+</span><span class="jsdoc-var">this.icon </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;&lt;/i&gt;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">body.html </span><span class="jsdoc-syntax">;
+            }
+            
+            
         }
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((!</span><span class="jsdoc-var">this.cls </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.cls.length</span><span class="jsdoc-syntax">) &amp;&amp; (!</span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">cfg.cls.length</span><span class="jsdoc-syntax">)) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-string">'container'</span><span class="jsdoc-syntax">;

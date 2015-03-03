@@ -18,6 +18,9 @@
  * @cfg {String} footer content of footer (for panel)
  * @cfg {String} sticky (footer|wrap|push) block to use as footer or body- needs css-bootstrap/sticky-footer.css
  * @cfg {String} tag (header|aside|section) type of HTML tag.
+ * @cfg {String} alert (success|info|warning|danger) type alert (changes background / border...)
+ * @cfg {String} fa (ban|check|...) font awesome icon
+ * @cfg {String} icon (info-sign|check|...) glyphicon name
 
  *     
  * @constructor
@@ -38,6 +41,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     footer : '',
     sticky: '',
     tag : false,
+    alert : false,
+    fa: false,
+    icon : false,
   
      
     getChildContainer : function() {
@@ -64,6 +70,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         if (this.jumbotron) {
             cfg.cls = 'jumbotron';
         }
+        
+        
+        
         // - this is applied by the parent..
         //if (this.cls) {
         //    cfg.cls = this.cls + '';
@@ -91,6 +100,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                     cfg.cls +=' well';
                     break;
             }
+        }
+        if (this.alert && ["success","info","warning", "danger"].indexOf(this.alert) > -1) {
+            cfg.cls +=' alert alert-' + this.alert;
         }
         
         var body = cfg;
@@ -129,6 +141,15 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         
         if (body) {
             body.html = this.html || cfg.html;
+            // prefix with the icons..
+            if (this.fa) {
+                body.html = '<i class="fa fa-'+this.fa + '"></i>' + body.html ;
+            }
+            if (this.icon) {
+                body.html = '<i class="glyphicon glyphicon-'+this.icon + '"></i>' + body.html ;
+            }
+            
+            
         }
         if ((!this.cls || !this.cls.length) && (!cfg.cls || !cfg.cls.length)) {
             cfg.cls =  'container';

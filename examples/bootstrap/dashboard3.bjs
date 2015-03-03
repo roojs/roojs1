@@ -1,411 +1,412 @@
 {
-    "name" : "dashboard3",
-    "parent" : "",
-    "title" : "",
-    "path" : "/home/alan/gitlive/roojs1/examples/bootstrap/dashboard3.bjs",
-    "permname" : "",
-    "modOrder" : "001",
-    "items" : [
+ "name" : "dashboard3",
+ "parent" : "",
+ "title" : "",
+ "path" : "/home/alan/gitlive/roojs1/examples/bootstrap/dashboard3.bjs",
+ "permname" : "",
+ "modOrder" : "001",
+ "items" : [
+  {
+   "String cls" : "skin-blue",
+   "xtype" : "Body",
+   "$ xns" : "Roo.bootstrap",
+   "items" : [
+    {
+     "String cls" : "header",
+     "tag" : "header",
+     "xtype" : "Container",
+     "* xinclude" : "Dashboard.Header1",
+     "$ xns" : "Roo.bootstrap"
+    },
+    {
+     "String cls" : "wrapper row-offcanvas row-offcanvas-left",
+     "xtype" : "Container",
+     "flexy:include" : "Sidebar.html",
+     "$ xns" : "Roo.bootstrap",
+     "items" : [
+      {
+       "String tag" : "aside",
+       "String cls" : "left-side sidebar-offcanvas",
+       "xtype" : "Container",
+       "* xinclude" : "Dashboard.Sidebar2",
+       "$ xns" : "Roo.bootstrap"
+      },
+      {
+       "String tag" : "aside",
+       "String cls" : "right-side",
+       "xtype" : "Container",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
         {
-            "String cls" : "skin-blue",
-            "xtype" : "Body",
-            "$ xns" : "Roo.bootstrap",
-            "items" : [
+         "String tag" : "section",
+         "String cls" : "content-header",
+         "xtype" : "Container",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "xtype" : "Header",
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "Dashboard  <small> Control panel </small>"
+          }
+         ]
+        },
+        {
+         "String tag" : "section",
+         "String cls" : "content",
+         "xtype" : "Container",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "xtype" : "Container",
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "Number md" : 3,
+             "xtype" : "Column",
+             "Number lg" : 3,
+             "$ xns" : "Roo.bootstrap",
+             "items" : [
+              {
+               "bgcolor" : "",
+               "String cls" : "",
+               "xtype" : "NumberBox",
+               "String headline" : 160,
+               "$ xns" : "Roo.bootstrap.dash",
+               "width" : "col-md-5",
+               "String title" : "New Orders",
+               "String style" : "col-md-3",
+               "height" : 150
+              }
+             ]
+            },
+            {
+             "Number md" : 3,
+             "xtype" : "Column",
+             "Number lg" : 3,
+             "$ xns" : "Roo.bootstrap",
+             "items" : [
+              {
+               "bgcolor" : "green",
+               "String cls" : "",
+               "xtype" : "NumberBox",
+               "String headline" : 150,
+               "$ xns" : "Roo.bootstrap.dash",
+               "width" : "col-md-5",
+               "String title" : "New Orders",
+               "String style" : "col-lg-3",
+               "height" : 150
+              }
+             ]
+            },
+            {
+             "Number md" : 3,
+             "xtype" : "Column",
+             "Number lg" : 3,
+             "$ xns" : "Roo.bootstrap",
+             "items" : [
+              {
+               "bgcolor" : "yellow",
+               "xtype" : "NumberBox",
+               "String headline" : 150,
+               "$ xns" : "Roo.bootstrap.dash",
+               "width" : "col-md-5",
+               "String title" : "New Orders",
+               "String style" : "col-lg-3",
+               "height" : 150
+              }
+             ]
+            },
+            {
+             "Number md" : 3,
+             "Number lg" : 3,
+             "xtype" : "Column",
+             "$ xns" : "Roo.bootstrap",
+             "items" : [
+              {
+               "bgcolor" : "red",
+               "xtype" : "NumberBox",
+               "String headline" : 150,
+               "$ xns" : "Roo.bootstrap.dash",
+               "width" : "",
+               "String title" : "New Orders",
+               "String style" : "col-lg-3",
+               "height" : 150
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "xtype" : "Row",
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "string alert" : "danger",
+             "string fa" : "ban",
+             "xtype" : "Container",
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "<b> Alert </b> test allert\n"
+            }
+           ]
+          },
+          {
+           "xtype" : "Row",
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "Number md" : 6,
+             "xtype" : "Column",
+             "Number lg" : 6,
+             "$ xns" : "Roo.bootstrap",
+             "String style" : "",
+             "Number sm" : 12,
+             "items" : [
+              {
+               "listeners" : {
+                "render" : "function (_self)\n{\n    _this.testbox = _self;\n}"
+               },
+               "xtype" : "TabBox",
+               "$ xns" : "Roo.bootstrap.dash",
+               "String title" : "test 1",
+               "items" : [
                 {
-                    "String cls" : "header",
-                    "xtype" : "Container",
-                    "tag" : "header",
-                    "* xinclude" : "Dashboard.Header1",
-                    "$ xns" : "Roo.bootstrap"
+                 "xtype" : "TabPane",
+                 "$ xns" : "Roo.bootstrap.dash",
+                 "string title" : "tab 1",
+                 "items" : [
+                  {
+                   "xtype" : "Column",
+                   "$ xns" : "Roo.bootstrap",
+                   "items" : [
+                    {
+                     "listeners" : {
+                      "cellclick" : "function (_self, el, rowIndex, columnIndex, e)\n{\n    \n\n    var cm = this.colModel.getColumnById(this.colModel.getColumnId(columnIndex));\n    if (cm.dataIndex == 'current') {\n        var rec = _this.listTable.ds.getAt(rowIndex);\n        \n        rec.set('current', rec.data.current * 1 ? '0' : '1');\n\n        //_this.listTable.ds.fireEvent(\"datachanged\", this);\n        rec.commit();\n        return;\n    }\n      if (cm.dataIndex == 'aspire') {\n        var rec = _this.listTable.ds.getAt(rowIndex);\n        \n        rec.set('aspire', rec.data.aspire * 1 ? '0' : '1');\n\n        //_this.listTable.ds.fireEvent(\"datachanged\", this);\n        rec.commit();\n        return;\n    }\n\n     \n}",
+                      "|render" : "function (_self)\n{\n     _this.listTable = _self;\n    (function() { _self.store.load({}); }).defer(100)\n}"
+                     },
+                     "xtype" : "Table",
+                     "Boolean CellSelection" : true,
+                     "$ xns" : "Roo.bootstrap",
+                     "Boolean RowSelection" : true,
+                     "items" : [
+                      {
+                       "boolean isLocal" : true,
+                       "$ Array fields" : "[ 'display_name', 'current', 'aspire' ]",
+                       "$ Array data" : "[\n  [ 'A TEST', '1', '0' ],\n  \n    [ 'B test', '1', '0' ],\n      [ 'C test', '1', '0' ],\n    [ 'D test', '1', '0' ]\n]",
+                       "xtype" : "SimpleStore",
+                       "$ xns" : "Roo.data",
+                       "* prop" : "store"
+                      },
+                      {
+                       "String header" : "Department",
+                       "String dataIndex" : "display_name",
+                       "xtype" : "ColumnModel",
+                       "$ xns" : "Roo.grid",
+                       "* prop" : "cm[]"
+                      },
+                      {
+                       "String header" : "Current",
+                       "String dataIndex" : "current",
+                       "xtype" : "ColumnModel",
+                       "$ xns" : "Roo.grid",
+                       "$ renderer" : "function(v) {  \n\n    var state = v> 0 ?  '-checked' : '';\n\n    return v*1  > 0 ? 'X' : '-';             \n                \n }",
+                       "* prop" : "cm[]"
+                      },
+                      {
+                       "String header" : "Aspire",
+                       "String dataIndex" : "aspire",
+                       "xtype" : "ColumnModel",
+                       "$ xns" : "Roo.grid",
+                       "$ renderer" : "function(v) {  \n    var state = v> 0 ?  '-checked' : '';\n    return v*1  > 0 ? 'X' : '-';             \n }",
+                       "* prop" : "cm[]"
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
                 },
                 {
-                    "String cls" : "wrapper row-offcanvas row-offcanvas-left",
-                    "xtype" : "Container",
-                    "flexy:include" : "Sidebar.html",
-                    "$ xns" : "Roo.bootstrap",
-                    "items" : [
-                        {
-                            "String tag" : "aside",
-                            "String cls" : "left-side sidebar-offcanvas",
-                            "xtype" : "Container",
-                            "* xinclude" : "Dashboard.Sidebar2",
-                            "$ xns" : "Roo.bootstrap"
-                        },
-                        {
-                            "String tag" : "aside",
-                            "String cls" : "right-side",
-                            "xtype" : "Container",
-                            "$ xns" : "Roo.bootstrap",
-                            "items" : [
-                                {
-                                    "String tag" : "section",
-                                    "String cls" : "content-header",
-                                    "xtype" : "Container",
-                                    "$ xns" : "Roo.bootstrap",
-                                    "items" : [
-                                        {
-                                            "xtype" : "Header",
-                                            "$ xns" : "Roo.bootstrap",
-                                            "String html" : "Dashboard  <small> Control panel </small>"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "String tag" : "section",
-                                    "String cls" : "content",
-                                    "xtype" : "Container",
-                                    "$ xns" : "Roo.bootstrap",
-                                    "items" : [
-                                        {
-                                            "xtype" : "Container",
-                                            "$ xns" : "Roo.bootstrap",
-                                            "items" : [
-                                                {
-                                                    "Number md" : 3,
-                                                    "Number lg" : 3,
-                                                    "xtype" : "Column",
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "items" : [
-                                                        {
-                                                            "bgcolor" : "",
-                                                            "String cls" : "",
-                                                            "xtype" : "NumberBox",
-                                                            "String headline" : 160,
-                                                            "$ xns" : "Roo.bootstrap.dash",
-                                                            "width" : "col-md-5",
-                                                            "String title" : "New Orders",
-                                                            "String style" : "col-md-3",
-                                                            "height" : 150
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "Number md" : 3,
-                                                    "Number lg" : 3,
-                                                    "xtype" : "Column",
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "items" : [
-                                                        {
-                                                            "bgcolor" : "green",
-                                                            "String cls" : "",
-                                                            "xtype" : "NumberBox",
-                                                            "String headline" : 150,
-                                                            "$ xns" : "Roo.bootstrap.dash",
-                                                            "width" : "col-md-5",
-                                                            "String title" : "New Orders",
-                                                            "String style" : "col-lg-3",
-                                                            "height" : 150
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "Number md" : 3,
-                                                    "Number lg" : 3,
-                                                    "xtype" : "Column",
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "items" : [
-                                                        {
-                                                            "bgcolor" : "yellow",
-                                                            "xtype" : "NumberBox",
-                                                            "String headline" : 150,
-                                                            "$ xns" : "Roo.bootstrap.dash",
-                                                            "width" : "col-md-5",
-                                                            "String title" : "New Orders",
-                                                            "String style" : "col-lg-3",
-                                                            "height" : 150
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "Number md" : 3,
-                                                    "xtype" : "Column",
-                                                    "Number lg" : 3,
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "items" : [
-                                                        {
-                                                            "bgcolor" : "red",
-                                                            "xtype" : "NumberBox",
-                                                            "String headline" : 150,
-                                                            "$ xns" : "Roo.bootstrap.dash",
-                                                            "width" : "",
-                                                            "String title" : "New Orders",
-                                                            "String style" : "col-lg-3",
-                                                            "height" : 150
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "xtype" : "Row",
-                                            "$ xns" : "Roo.bootstrap",
-                                            "items" : [
-                                                {
-                                                    "String cls" : "alert alert-danger ",
-                                                    "xtype" : "Container",
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "String html" : "<i class=\"fa fa-ban\"></i><b> Alert </b> test allert"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "xtype" : "Row",
-                                            "$ xns" : "Roo.bootstrap",
-                                            "items" : [
-                                                {
-                                                    "Number md" : 6,
-                                                    "Number lg" : 6,
-                                                    "xtype" : "Column",
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "String style" : "",
-                                                    "Number sm" : 12,
-                                                    "items" : [
-                                                        {
-                                                            "listeners" : {
-                                                                "render" : "function (_self)\n{\n    _this.testbox = _self;\n}"
-                                                            },
-                                                            "xtype" : "TabBox",
-                                                            "$ xns" : "Roo.bootstrap.dash",
-                                                            "String title" : "test 1",
-                                                            "items" : [
-                                                                {
-                                                                    "xtype" : "TabPane",
-                                                                    "$ xns" : "Roo.bootstrap.dash",
-                                                                    "string title" : "tab 1",
-                                                                    "items" : [
-                                                                        {
-                                                                            "xtype" : "Column",
-                                                                            "$ xns" : "Roo.bootstrap",
-                                                                            "items" : [
-                                                                                {
-                                                                                    "listeners" : {
-                                                                                        "|render" : "function (_self)\n{\n     _this.listTable = _self;\n    (function() { _self.store.load({}); }).defer(100)\n}",
-                                                                                        "cellclick" : "function (_self, el, rowIndex, columnIndex, e)\n{\n    \n\n    var cm = this.colModel.getColumnById(this.colModel.getColumnId(columnIndex));\n    if (cm.dataIndex == 'current') {\n        var rec = _this.listTable.ds.getAt(rowIndex);\n        \n        rec.set('current', rec.data.current * 1 ? '0' : '1');\n\n        //_this.listTable.ds.fireEvent(\"datachanged\", this);\n        rec.commit();\n        return;\n    }\n      if (cm.dataIndex == 'aspire') {\n        var rec = _this.listTable.ds.getAt(rowIndex);\n        \n        rec.set('aspire', rec.data.aspire * 1 ? '0' : '1');\n\n        //_this.listTable.ds.fireEvent(\"datachanged\", this);\n        rec.commit();\n        return;\n    }\n\n     \n}"
-                                                                                    },
-                                                                                    "xtype" : "Table",
-                                                                                    "Boolean CellSelection" : true,
-                                                                                    "$ xns" : "Roo.bootstrap",
-                                                                                    "Boolean RowSelection" : true,
-                                                                                    "items" : [
-                                                                                        {
-                                                                                            "$ Array fields" : "[ 'display_name', 'current', 'aspire' ]",
-                                                                                            "$ Array data" : "[\n  [ 'A TEST', '1', '0' ],\n  \n    [ 'B test', '1', '0' ],\n      [ 'C test', '1', '0' ],\n    [ 'D test', '1', '0' ]\n]",
-                                                                                            "boolean isLocal" : true,
-                                                                                            "xtype" : "SimpleStore",
-                                                                                            "$ xns" : "Roo.data",
-                                                                                            "* prop" : "store"
-                                                                                        },
-                                                                                        {
-                                                                                            "String header" : "Department",
-                                                                                            "String dataIndex" : "display_name",
-                                                                                            "xtype" : "ColumnModel",
-                                                                                            "$ xns" : "Roo.grid",
-                                                                                            "* prop" : "cm[]"
-                                                                                        },
-                                                                                        {
-                                                                                            "String header" : "Current",
-                                                                                            "String dataIndex" : "current",
-                                                                                            "xtype" : "ColumnModel",
-                                                                                            "$ xns" : "Roo.grid",
-                                                                                            "$ renderer" : "function(v) {  \n\n    var state = v> 0 ?  '-checked' : '';\n\n    return v*1  > 0 ? 'X' : '-';             \n                \n }",
-                                                                                            "* prop" : "cm[]"
-                                                                                        },
-                                                                                        {
-                                                                                            "String header" : "Aspire",
-                                                                                            "String dataIndex" : "aspire",
-                                                                                            "xtype" : "ColumnModel",
-                                                                                            "$ xns" : "Roo.grid",
-                                                                                            "$ renderer" : "function(v) {  \n    var state = v> 0 ?  '-checked' : '';\n    return v*1  > 0 ? 'X' : '-';             \n }",
-                                                                                            "* prop" : "cm[]"
-                                                                                        }
-                                                                                    ]
-                                                                                }
-                                                                            ]
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "xtype" : "TabPane",
-                                                                    "$ xns" : "Roo.bootstrap.dash",
-                                                                    "string title" : "tab 2",
-                                                                    "items" : [
-                                                                        {
-                                                                            "xtype" : "Column",
-                                                                            "$ xns" : "Roo.bootstrap",
-                                                                            "String html" : "tab 2 content"
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "Number md" : 6,
-                                                    "xtype" : "Column",
-                                                    "Number lg" : 6,
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "String style" : "",
-                                                    "Number sm" : 12,
-                                                    "items" : [
-                                                        {
-                                                            "String cls" : "nav-tabs-custom",
-                                                            "xtype" : "Container",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "items" : [
-                                                                {
-                                                                    "xtype" : "Header",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "income",
-                                                                    "String style" : "margin: 10,10,0,0"
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "xtype" : "Row",
-                                            "$ xns" : "Roo.bootstrap",
-                                            "items" : [
-                                                {
-                                                    "listeners" : {
-                                                        "render" : "function (_self)\n{\n    _this.tabgroup = _self;\n}"
-                                                    },
-                                                    "Number lg" : 12,
-                                                    "xtype" : "TabGroup",
-                                                    "boolean carousel" : true,
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "string navId" : "#sample1",
-                                                    "items" : [
-                                                        {
-                                                            "listeners" : {
-                                                                "render" : "function (_self)\n{\n_this.tab_second = _self;\n}"
-                                                            },
-                                                            "Boolean active" : true,
-                                                            "String cls" : "item",
-                                                            "xtype" : "TabPanel",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "String tabId" : "#second",
-                                                            "String navId" : "#sample1",
-                                                            "items" : [
-                                                                {
-                                                                    "xtype" : "Header",
-                                                                    "Number level" : 3,
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "first tab"
-                                                                },
-                                                                {
-                                                                    "xtype" : "Container",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String well" : "md",
-                                                                    "String style" : "padding-left:50px;padding-right:50px;",
-                                                                    "items" : [
-                                                                        {
-                                                                            "xtype" : "Row",
-                                                                            "$ xns" : "Roo.bootstrap",
-                                                                            "items" : [
-                                                                                {
-                                                                                    "Number md" : 6,
-                                                                                    "xtype" : "Column",
-                                                                                    "$ xns" : "Roo.bootstrap",
-                                                                                    "items" : [
-                                                                                        {
-                                                                                            "labelAlign" : "top",
-                                                                                            "fieldLabel" : "Some input",
-                                                                                            "xtype" : "Input",
-                                                                                            "allowBlank" : true,
-                                                                                            "$ xns" : "Roo.bootstrap",
-                                                                                            "name" : "chosen_title"
-                                                                                        }
-                                                                                    ]
-                                                                                }
-                                                                            ]
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "listeners" : {
-                                                                "render" : "function (_self)\n{\n_this.tab_first = _self;\n}"
-                                                            },
-                                                            "Boolean active" : false,
-                                                            "String cls" : "item",
-                                                            "xtype" : "TabPanel",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "String tabId" : "#first",
-                                                            "String navId" : "#sample1",
-                                                            "items" : [
-                                                                {
-                                                                    "xtype" : "Header",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "Number level" : 3,
-                                                                    "String html" : "second tab"
-                                                                },
-                                                                {
-                                                                    "xtype" : "Container",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String well" : "md",
-                                                                    "String style" : "padding-left:50px;padding-right:50px;",
-                                                                    "items" : [
-                                                                        {
-                                                                            "xtype" : "Row",
-                                                                            "$ xns" : "Roo.bootstrap",
-                                                                            "items" : [
-                                                                                {
-                                                                                    "Number md" : 6,
-                                                                                    "xtype" : "Column",
-                                                                                    "$ xns" : "Roo.bootstrap",
-                                                                                    "items" : [
-                                                                                        {
-                                                                                            "labelAlign" : "top",
-                                                                                            "fieldLabel" : "This is a label",
-                                                                                            "xtype" : "Input",
-                                                                                            "allowBlank" : true,
-                                                                                            "$ xns" : "Roo.bootstrap",
-                                                                                            "name" : "chosen_title"
-                                                                                        }
-                                                                                    ]
-                                                                                }
-                                                                            ]
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "listeners" : {
-                                                                "click" : "function (e)\n{\n    _this.tabgroup.showPanelPrev();\n}"
-                                                            },
-                                                            "String cls" : "carousel-control left",
-                                                            "Boolean preventDefault" : true,
-                                                            "xtype" : "Link",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "String html" : "<span class=\"glyphicon glyphicon-chevron-left\"></span>"
-                                                        },
-                                                        {
-                                                            "listeners" : {
-                                                                "click" : "function (e)\n{\n      _this.tabgroup.showPanelNext();\n}"
-                                                            },
-                                                            "String cls" : "carousel-control right",
-                                                            "Boolean preventDefault" : true,
-                                                            "xtype" : "Link",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "String html" : "<span class=\"glyphicon glyphicon-chevron-right\"></span>"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
+                 "xtype" : "TabPane",
+                 "$ xns" : "Roo.bootstrap.dash",
+                 "string title" : "tab 2",
+                 "items" : [
+                  {
+                   "xtype" : "Column",
+                   "$ xns" : "Roo.bootstrap",
+                   "String html" : "tab 2 content"
+                  }
+                 ]
                 }
-            ]
+               ]
+              }
+             ]
+            },
+            {
+             "Number md" : 6,
+             "Number lg" : 6,
+             "xtype" : "Column",
+             "$ xns" : "Roo.bootstrap",
+             "String style" : "",
+             "Number sm" : 12,
+             "items" : [
+              {
+               "String cls" : "nav-tabs-custom",
+               "xtype" : "Container",
+               "$ xns" : "Roo.bootstrap",
+               "items" : [
+                {
+                 "xtype" : "Header",
+                 "$ xns" : "Roo.bootstrap",
+                 "String html" : "income",
+                 "String style" : "margin: 10,10,0,0"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "xtype" : "Row",
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "listeners" : {
+              "render" : "function (_self)\n{\n    _this.tabgroup = _self;\n}"
+             },
+             "Number lg" : 12,
+             "xtype" : "TabGroup",
+             "boolean carousel" : true,
+             "$ xns" : "Roo.bootstrap",
+             "string navId" : "#sample1",
+             "items" : [
+              {
+               "listeners" : {
+                "render" : "function (_self)\n{\n_this.tab_second = _self;\n}"
+               },
+               "Boolean active" : true,
+               "String cls" : "item",
+               "xtype" : "TabPanel",
+               "$ xns" : "Roo.bootstrap",
+               "String tabId" : "#second",
+               "String navId" : "#sample1",
+               "items" : [
+                {
+                 "xtype" : "Header",
+                 "$ xns" : "Roo.bootstrap",
+                 "Number level" : 3,
+                 "String html" : "first tab"
+                },
+                {
+                 "xtype" : "Container",
+                 "$ xns" : "Roo.bootstrap",
+                 "String well" : "md",
+                 "String style" : "padding-left:50px;padding-right:50px;",
+                 "items" : [
+                  {
+                   "xtype" : "Row",
+                   "$ xns" : "Roo.bootstrap",
+                   "items" : [
+                    {
+                     "Number md" : 6,
+                     "xtype" : "Column",
+                     "$ xns" : "Roo.bootstrap",
+                     "items" : [
+                      {
+                       "labelAlign" : "top",
+                       "fieldLabel" : "Some input",
+                       "xtype" : "Input",
+                       "allowBlank" : true,
+                       "$ xns" : "Roo.bootstrap",
+                       "name" : "chosen_title"
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "listeners" : {
+                "render" : "function (_self)\n{\n_this.tab_first = _self;\n}"
+               },
+               "Boolean active" : false,
+               "String cls" : "item",
+               "xtype" : "TabPanel",
+               "$ xns" : "Roo.bootstrap",
+               "String tabId" : "#first",
+               "String navId" : "#sample1",
+               "items" : [
+                {
+                 "xtype" : "Header",
+                 "Number level" : 3,
+                 "$ xns" : "Roo.bootstrap",
+                 "String html" : "second tab"
+                },
+                {
+                 "xtype" : "Container",
+                 "$ xns" : "Roo.bootstrap",
+                 "String well" : "md",
+                 "String style" : "padding-left:50px;padding-right:50px;",
+                 "items" : [
+                  {
+                   "xtype" : "Row",
+                   "$ xns" : "Roo.bootstrap",
+                   "items" : [
+                    {
+                     "Number md" : 6,
+                     "xtype" : "Column",
+                     "$ xns" : "Roo.bootstrap",
+                     "items" : [
+                      {
+                       "labelAlign" : "top",
+                       "fieldLabel" : "This is a label",
+                       "xtype" : "Input",
+                       "allowBlank" : true,
+                       "$ xns" : "Roo.bootstrap",
+                       "name" : "chosen_title"
+                      }
+                     ]
+                    }
+                   ]
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "listeners" : {
+                "click" : "function (e)\n{\n    _this.tabgroup.showPanelPrev();\n}"
+               },
+               "String cls" : "carousel-control left",
+               "Boolean preventDefault" : true,
+               "xtype" : "Link",
+               "$ xns" : "Roo.bootstrap",
+               "String html" : "<span class=\"glyphicon glyphicon-chevron-left\"></span>"
+              },
+              {
+               "listeners" : {
+                "click" : "function (e)\n{\n      _this.tabgroup.showPanelNext();\n}"
+               },
+               "String cls" : "carousel-control right",
+               "Boolean preventDefault" : true,
+               "xtype" : "Link",
+               "$ xns" : "Roo.bootstrap",
+               "String html" : "<span class=\"glyphicon glyphicon-chevron-right\"></span>"
+              }
+             ]
+            }
+           ]
+          }
+         ]
         }
-    ]
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
 }

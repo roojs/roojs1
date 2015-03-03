@@ -1368,7 +1368,7 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-var">this.hasFocus </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+</span><span class="jsdoc-comment">//        this.hasFocus = false;
         
         </span><span class="jsdoc-var">this.list.hide</span><span class="jsdoc-syntax">();
         
@@ -1413,8 +1413,16 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isExpanded</span><span class="jsdoc-syntax">() || !</span><span class="jsdoc-var">this.hasFocus</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.listWidth </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.minListWidth</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.list.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">);
+        
+        
          </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'expand'</span><span class="jsdoc-syntax">);
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.listWidth </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.minListWidth</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.list.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">);
+            
         </span><span class="jsdoc-var">this.list.show</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
