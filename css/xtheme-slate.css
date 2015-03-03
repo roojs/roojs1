@@ -557,6 +557,13 @@ body.x-body-masked .x-window-mc, body.x-body-masked .x-window-plain .x-window-mc
 	border:1px dotted  #ccc;
     
 }
+/*fade out effect by Michael*/
+.fadeout {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+/******/
 .x-grid-hd-btn{
 	background:#f2daa9 url(../images/slate/grid/grid3-hd-btn.gif) no-repeat left center;
 }
