@@ -50,13 +50,15 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
-            if (settings[size] !== false) {
-                if (!settings[size]) { // 0 = hidden
-                    cfg.cls += ' hidden-' + size;
-                    return;
-                }
-                cfg.cls += ' col-' + size + '-' + settings[size];
+            if (settings[size] === false) {
+                return;
             }
+            if (!settings[size]) { // 0 = hidden
+                cfg.cls += ' hidden-' + size;
+                return;
+            }
+            cfg.cls += ' col-' + size + '-' + settings[size];
+            
         });
         
         if (this.alert && ["success","info","warning", "danger"].indexOf(this.alert) > -1) {
