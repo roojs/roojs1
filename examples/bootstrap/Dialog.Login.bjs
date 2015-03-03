@@ -6,9 +6,11 @@
  "permname" : "",
  "modOrder" : "001",
  "strings" : {
-  "8458bad978f4fd6d6c7f8ec2ec0824b4" : "Forgot password?",
+  "dc647eb65e6711e155375218212b3964" : "Password",
+  "01a569ddc6cf67ddec2a683f0a5f5956" : "Forgot your password?",
   "d837cc5a72556c5e2abf4b9fe10ddef8" : "Login ",
-  "5047040b025ce0295b58d42250014417" : "<div id=\"login-err\" class=\"dialog-err\" style=\"color:red\"></div>"
+  "5047040b025ce0295b58d42250014417" : "<div id=\"login-err\" class=\"dialog-err\" style=\"color:red\"></div>",
+  "643a860f992333b8600ea264aca7c4fc" : "Email Address"
  },
  "items" : [
   {
@@ -35,9 +37,9 @@
        "items" : [
         {
          "listeners" : {
+          "|actionfailed" : "function (_self, action) {\n    Roo.log('action failed?!');\n    Roo.log(action);\n    \n    if (typeof(action) != 'undefined' && action.failureType == 'server') {    \n\n        Roo.get('login-err').dom.innerHTML = action.result.errorMsg;\n        return;\n    }\n    \n    Roo.get('login-err').dom.innerHTML = \"Fill in all the required fields\";\n}",
           "|actioncomplete" : "function (_self, action) {\n    \n    if (action.type =='submit') {\n        Roo.log(action);\n        _this.dialog.hide();\n    \n        if (_this.callback) {\n            _this.callback.call(_this, action.result);\n         }\n         \n         _this.form.reset();\n         \n         return;\n    }\n}",
-          "|render" : "function (_self) {\n    _this.form = _self;\n}",
-          "|actionfailed" : "function (_self, action) {\n    Roo.log('action failed?!');\n    Roo.log(action);\n    \n    if (typeof(action) != 'undefined' && action.failureType == 'server') {    \n\n        Roo.get('login-err').dom.innerHTML = action.result.errorMsg;\n        return;\n    }\n    \n    Roo.get('login-err').dom.innerHTML = \"Fill in all the required fields\";\n}"
+          "|render" : "function (_self) {\n    _this.form = _self;\n}"
          },
          "$ url" : "baseURL + '/Login'",
          "labelAlign" : "left",
@@ -55,8 +57,8 @@
               "specialkey" : "function (_self, e)\n{\n    if(e.getKey() == 13){\n        _this.form.doAction('submit');\n    }\n    \n}"
              },
              "inputType" : "email",
-             "vtype" : "email",
              "xtype" : "Input",
+             "vtype" : "email",
              "placeholder" : "Email Address",
              "allowBlank" : false,
              "$ xns" : "Roo.bootstrap",
@@ -67,8 +69,8 @@
               "specialkey" : "function (_self, e)\n{\n    if(e.getKey() == 13){\n        _this.form.doAction('submit');\n    }\n}"
              },
              "inputType" : "password",
-             "placeholder" : "Password",
              "xtype" : "Input",
+             "placeholder" : "Password",
              "allowBlank" : false,
              "$ xns" : "Roo.bootstrap",
              "name" : "password"
@@ -97,7 +99,7 @@
          },
          "tag" : "a",
          "xtype" : "Button",
-         "html" : "Forgot password?",
+         "html" : "Forgot your password?",
          "Boolean removeClass" : true,
          "$ xns" : "Roo.bootstrap",
          "weight" : "link",
