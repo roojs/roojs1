@@ -21,6 +21,7 @@
  * @cfg {String} alert (success|info|warning|danger) type alert (changes background / border...)
  * @cfg {String} fa (ban|check|...) font awesome icon
  * @cfg {String} icon (info-sign|check|...) glyphicon name
+ * @cfg {Boolean} hidden (true|false) hide the element
 
  *     
  * @constructor

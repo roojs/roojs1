@@ -774,6 +774,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
  * @cfg {Number} sm colspan out of 12 for tablet-sized screens or 0 for hidden
  * @cfg {Number} md colspan out of 12 for computer-sized screens or 0 for hidden
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens or 0 for hidden
+ * @cfg {Boolean} hidden (true|false) hide the element
  * @cfg {String} alert (success|info|warning|danger) type alert (changes background / border...)
  * @cfg {String} fa (ban|check|...) font awesome icon
  * @cfg {String} icon (info-sign|check|...) glyphicon name
@@ -800,6 +801,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     alert: false,
     fa: false,
     icon : false,
+    hidden : false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
@@ -823,6 +825,10 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
             cfg.cls += ' col-' + size + '-' + settings[size];
             
         });
+        
+        if (this.hidden) {
+            cfg.cls += ' hidden';
+        }
         
         if (this.alert && ["success","info","warning", "danger"].indexOf(this.alert) > -1) {
             cfg.cls +=' alert alert-' + this.alert;
@@ -869,6 +875,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
  * @cfg {String} alert (success|info|warning|danger) type alert (changes background / border...)
  * @cfg {String} fa (ban|check|...) font awesome icon
  * @cfg {String} icon (info-sign|check|...) glyphicon name
+ * @cfg {Boolean} hidden (true|false) hide the element
 
  *     
  * @constructor
@@ -949,6 +956,12 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                     break;
             }
         }
+        
+        if (this.hidden) {
+            cfg.cls += ' hidden';
+        }
+        
+        
         if (this.alert && ["success","info","warning", "danger"].indexOf(this.alert) > -1) {
             cfg.cls +=' alert alert-' + this.alert;
         }
