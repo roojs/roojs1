@@ -101,6 +101,12 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                     break;
             }
         }
+        
+        if (this.hidden) {
+            cfg.cls += ' hidden';
+        }
+        
+        
         if (this.alert && ["success","info","warning", "danger"].indexOf(this.alert) > -1) {
             cfg.cls +=' alert alert-' + this.alert;
         }
