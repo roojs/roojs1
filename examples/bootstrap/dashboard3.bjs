@@ -5,6 +5,13 @@
  "path" : "/home/alan/gitlive/roojs1/examples/bootstrap/dashboard3.bjs",
  "permname" : "",
  "modOrder" : "001",
+ "strings" : {
+  "1f9ff97aa2f49a79388004e1e57f2320" : "New Orders ",
+  "c4f5a294a273c3a1c97642a76f15c5c7" : "tab 1",
+  "9a7b64c98b066602b21f869ae7cd673a" : "test 1",
+  "9fc10133312e352754f8ca264a3e272d" : "New Orders",
+  "58a00f6a3da23fc3821f24115493b750" : "tab 2"
+ },
  "items" : [
   {
    "String cls" : "skin-blue",
@@ -13,8 +20,8 @@
    "items" : [
     {
      "String cls" : "header",
-     "xtype" : "Container",
      "tag" : "header",
+     "xtype" : "Container",
      "* xinclude" : "Dashboard.Header1",
      "$ xns" : "Roo.bootstrap"
     },
@@ -62,8 +69,8 @@
            "items" : [
             {
              "Number md" : 3,
-             "Number lg" : 3,
              "xtype" : "Column",
+             "Number lg" : 3,
              "$ xns" : "Roo.bootstrap",
              "items" : [
               {
@@ -73,7 +80,7 @@
                "String headline" : 160,
                "$ xns" : "Roo.bootstrap.dash",
                "width" : "col-md-5",
-               "String title" : "New Orders",
+               "String title" : "New Orders ",
                "String style" : "col-md-3",
                "height" : 150
               }
@@ -81,8 +88,8 @@
             },
             {
              "Number md" : 3,
-             "Number lg" : 3,
              "xtype" : "Column",
+             "Number lg" : 3,
              "$ xns" : "Roo.bootstrap",
              "items" : [
               {
@@ -100,8 +107,8 @@
             },
             {
              "Number md" : 3,
-             "Number lg" : 3,
              "xtype" : "Column",
+             "Number lg" : 3,
              "$ xns" : "Roo.bootstrap",
              "items" : [
               {
@@ -118,8 +125,8 @@
             },
             {
              "Number md" : 3,
-             "xtype" : "Column",
              "Number lg" : 3,
+             "xtype" : "Column",
              "$ xns" : "Roo.bootstrap",
              "items" : [
               {
@@ -155,8 +162,8 @@
            "items" : [
             {
              "Number md" : 6,
-             "Number lg" : 6,
              "xtype" : "Column",
+             "Number lg" : 6,
              "$ xns" : "Roo.bootstrap",
              "String style" : "",
              "Number sm" : 12,
@@ -180,8 +187,8 @@
                    "items" : [
                     {
                      "listeners" : {
-                      "|render" : "function (_self)\n{\n     _this.listTable = _self;\n    (function() { _self.store.load({}); }).defer(100)\n}",
-                      "cellclick" : "function (_self, el, rowIndex, columnIndex, e)\n{\n    \n\n    var cm = this.colModel.getColumnById(this.colModel.getColumnId(columnIndex));\n    if (cm.dataIndex == 'current') {\n        var rec = _this.listTable.ds.getAt(rowIndex);\n        \n        rec.set('current', rec.data.current * 1 ? '0' : '1');\n\n        //_this.listTable.ds.fireEvent(\"datachanged\", this);\n        rec.commit();\n        return;\n    }\n      if (cm.dataIndex == 'aspire') {\n        var rec = _this.listTable.ds.getAt(rowIndex);\n        \n        rec.set('aspire', rec.data.aspire * 1 ? '0' : '1');\n\n        //_this.listTable.ds.fireEvent(\"datachanged\", this);\n        rec.commit();\n        return;\n    }\n\n     \n}"
+                      "cellclick" : "function (_self, el, rowIndex, columnIndex, e)\n{\n    \n\n    var cm = this.colModel.getColumnById(this.colModel.getColumnId(columnIndex));\n    if (cm.dataIndex == 'current') {\n        var rec = _this.listTable.ds.getAt(rowIndex);\n        \n        rec.set('current', rec.data.current * 1 ? '0' : '1');\n\n        //_this.listTable.ds.fireEvent(\"datachanged\", this);\n        rec.commit();\n        return;\n    }\n      if (cm.dataIndex == 'aspire') {\n        var rec = _this.listTable.ds.getAt(rowIndex);\n        \n        rec.set('aspire', rec.data.aspire * 1 ? '0' : '1');\n\n        //_this.listTable.ds.fireEvent(\"datachanged\", this);\n        rec.commit();\n        return;\n    }\n\n     \n}",
+                      "|render" : "function (_self)\n{\n     _this.listTable = _self;\n    (function() { _self.store.load({}); }).defer(100)\n}"
                      },
                      "xtype" : "Table",
                      "Boolean CellSelection" : true,
@@ -189,9 +196,9 @@
                      "Boolean RowSelection" : true,
                      "items" : [
                       {
+                       "$ Array fields" : "[ 'display_name', 'current', 'aspire' ]",
                        "$ Array data" : "[\n  [ 'A TEST', '1', '0' ],\n  \n    [ 'B test', '1', '0' ],\n      [ 'C test', '1', '0' ],\n    [ 'D test', '1', '0' ]\n]",
                        "boolean isLocal" : true,
-                       "$ Array fields" : "[ 'display_name', 'current', 'aspire' ]",
                        "xtype" : "SimpleStore",
                        "$ xns" : "Roo.data",
                        "* prop" : "store"
@@ -243,8 +250,8 @@
             },
             {
              "Number md" : 6,
-             "xtype" : "Column",
              "Number lg" : 6,
+             "xtype" : "Column",
              "$ xns" : "Roo.bootstrap",
              "String style" : "",
              "Number sm" : 12,
@@ -293,8 +300,8 @@
                "items" : [
                 {
                  "xtype" : "Header",
-                 "Number level" : 3,
                  "$ xns" : "Roo.bootstrap",
+                 "Number level" : 3,
                  "String html" : "first tab"
                 },
                 {
@@ -341,8 +348,8 @@
                "items" : [
                 {
                  "xtype" : "Header",
-                 "$ xns" : "Roo.bootstrap",
                  "Number level" : 3,
+                 "$ xns" : "Roo.bootstrap",
                  "String html" : "second tab"
                 },
                 {
