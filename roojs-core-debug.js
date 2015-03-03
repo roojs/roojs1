@@ -8970,7 +8970,7 @@ if(opt.anim.isAnimated()){
          */
         mask : function(msg, msgCls)
         {
-            if(this.getStyle("position") == "static"){
+            if(this.getStyle("position") == "static" && this.dom.tagName !== 'BODY'){
                 this.setStyle("position", "relative");
             }
             if(!this._mask){

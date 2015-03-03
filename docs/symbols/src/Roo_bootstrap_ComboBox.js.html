@@ -905,7 +905,8 @@
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editable </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.select</span><span class="jsdoc-syntax">();
                 }
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.selectByValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">this.autoFocus</span><span class="jsdoc-syntax">){
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.selectByValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">this.autoFocus </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.lastOptions.add</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.store.lastOptions.add </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)){
                     </span><span class="jsdoc-var">this.select</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
                 }
             }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
@@ -1368,8 +1369,6 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-</span><span class="jsdoc-comment">//        this.hasFocus = false;
-        
         </span><span class="jsdoc-var">this.list.hide</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
@@ -1560,7 +1559,7 @@
     
     </span><span class="jsdoc-var">onViewScroll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.el.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.view.el.dom.scrollHeight </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.view.el.dom.clientHeight </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.hasFocus </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.append </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.hasQuery</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.view.el.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top </span><span class="jsdoc-syntax">== 0 ||</span><span class="jsdoc-var">this.view.el.getScroll</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.top </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.view.el.dom.scrollHeight </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.view.el.dom.clientHeight </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.hasFocus </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.append </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.hasQuery</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         

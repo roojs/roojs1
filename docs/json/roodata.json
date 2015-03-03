@@ -11845,7 +11845,7 @@
     },
     {
      "name": "changed",
-     "sig": "function (_self, item, item)\n{\n\n}",
+     "sig": "function (_self, selected, prev)\n{\n\n}",
      "type": "function",
      "desc": "Fires when the active item changes"
     },

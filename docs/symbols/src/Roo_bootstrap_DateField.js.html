@@ -270,7 +270,7 @@
     </span><span class="jsdoc-var">update</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         
-        </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.UTCToday</span><span class="jsdoc-syntax">() : (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.date.length</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.UTCToday</span><span class="jsdoc-syntax">() : (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.startDate</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.viewDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.startDate</span><span class="jsdoc-syntax">);
@@ -498,9 +498,7 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getValue</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">d.length</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
-        }
+        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
                 
         </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
     },
@@ -539,13 +537,16 @@
 
     </span><span class="jsdoc-var">setValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">Roo.bootstrap.DateField.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
-        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getTime</span><span class="jsdoc-syntax">())){
+            </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
+        </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">Roo.bootstrap.DateField.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getTime</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">d.getTimezoneOffset</span><span class="jsdoc-syntax">()*60000);
 

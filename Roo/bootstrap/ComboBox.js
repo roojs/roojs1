@@ -905,7 +905,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 if(this.editable && !this.tickable){
                     this.inputEl().dom.select();
                 }
-                if(!this.selectByValue(this.value, true) && this.autoFocus){
+                
+                if(!this.selectByValue(this.value, true) && this.autoFocus && (typeof(this.store.lastOptions.add) == 'undefined' || this.store.lastOptions.add != true)){
                     this.select(0, true);
                 }
             }else{
@@ -1368,8 +1369,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-//        this.hasFocus = false;
-        
         this.list.hide();
         
         if(this.tickable){
@@ -1560,7 +1559,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onViewScroll : function(e, t){
         
-        if(this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append || this.hasQuery){
+        if(this.view.el.getScroll().top == 0 ||this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append || this.hasQuery){
             return;
         }
         

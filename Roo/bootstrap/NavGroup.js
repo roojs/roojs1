@@ -30,8 +30,8 @@ Roo.bootstrap.NavGroup = function(config){
 	     * @event changed
 	     * Fires when the active item changes
 	     * @param {Roo.bootstrap.NavGroup} this
-	     * @param {Roo.bootstrap.Navbar.Item} item The item selected
-	     * @param {Roo.bootstrap.Navbar.Item} item The previously selected item 
+	     * @param {Roo.bootstrap.Navbar.Item} selected The item selected
+	     * @param {Roo.bootstrap.Navbar.Item} prev The previously selected item 
          */
         'changed': true
      });

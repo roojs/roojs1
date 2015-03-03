@@ -3237,8 +3237,8 @@ Roo.bootstrap.NavGroup = function(config){
 	     * @event changed
 	     * Fires when the active item changes
 	     * @param {Roo.bootstrap.NavGroup} this
-	     * @param {Roo.bootstrap.Navbar.Item} item The item selected
-	     * @param {Roo.bootstrap.Navbar.Item} item The previously selected item 
+	     * @param {Roo.bootstrap.Navbar.Item} selected The item selected
+	     * @param {Roo.bootstrap.Navbar.Item} prev The previously selected item 
          */
         'changed': true
      });
@@ -14468,7 +14468,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     update: function()
     {
         
-        this.date = (typeof(this.date) === 'undefined') ? this.UTCToday() : (typeof(this.date) === 'string') ? this.parseDate(this.date) : this.date;
+        this.date = (typeof(this.date) === 'undefined' || !this.date.length) ? this.UTCToday() : (typeof(this.date) === 'string') ? this.parseDate(this.date) : this.date;
         
         if (this.date < this.startDate) {
             this.viewDate = new Date(this.startDate);
@@ -14696,9 +14696,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         var d = this.inputEl().getValue();
         
-        if(d && d.length){
-            this.setValue(d);
-        }
+        this.setValue(d);
                 
         this.hide();
     },
@@ -14737,13 +14735,16 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
     setValue: function(v)
     {
-        Roo.bootstrap.DateField.superclass.setValue.call(this, v);
-        
         var d = new Date(v);
         
         if(isNaN(d.getTime())){
+            this.date = '';
             return;
         }
+        
+        v = this.formatDate(d);
+        
+        Roo.bootstrap.DateField.superclass.setValue.call(this, v);
         
         this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
 
