@@ -13,8 +13,8 @@
    "items" : [
     {
      "String cls" : "header",
-     "tag" : "header",
      "xtype" : "Container",
+     "tag" : "header",
      "* xinclude" : "Dashboard.Header1",
      "$ xns" : "Roo.bootstrap"
     },
@@ -46,7 +46,7 @@
           {
            "xtype" : "Header",
            "$ xns" : "Roo.bootstrap",
-           "String html" : "Dashboard  <small> Control panel </small>"
+           "String html" : "Dashboard  <small>  Example Control panel </small>"
           }
          ]
         },
@@ -62,8 +62,8 @@
            "items" : [
             {
              "Number md" : 3,
-             "xtype" : "Column",
              "Number lg" : 3,
+             "xtype" : "Column",
              "$ xns" : "Roo.bootstrap",
              "items" : [
               {
@@ -81,8 +81,8 @@
             },
             {
              "Number md" : 3,
-             "xtype" : "Column",
              "Number lg" : 3,
+             "xtype" : "Column",
              "$ xns" : "Roo.bootstrap",
              "items" : [
               {
@@ -100,8 +100,8 @@
             },
             {
              "Number md" : 3,
-             "xtype" : "Column",
              "Number lg" : 3,
+             "xtype" : "Column",
              "$ xns" : "Roo.bootstrap",
              "items" : [
               {
@@ -118,8 +118,8 @@
             },
             {
              "Number md" : 3,
-             "Number lg" : 3,
              "xtype" : "Column",
+             "Number lg" : 3,
              "$ xns" : "Roo.bootstrap",
              "items" : [
               {
@@ -155,8 +155,8 @@
            "items" : [
             {
              "Number md" : 6,
-             "xtype" : "Column",
              "Number lg" : 6,
+             "xtype" : "Column",
              "$ xns" : "Roo.bootstrap",
              "String style" : "",
              "Number sm" : 12,
@@ -180,8 +180,8 @@
                    "items" : [
                     {
                      "listeners" : {
-                      "cellclick" : "function (_self, el, rowIndex, columnIndex, e)\n{\n    \n\n    var cm = this.colModel.getColumnById(this.colModel.getColumnId(columnIndex));\n    if (cm.dataIndex == 'current') {\n        var rec = _this.listTable.ds.getAt(rowIndex);\n        \n        rec.set('current', rec.data.current * 1 ? '0' : '1');\n\n        //_this.listTable.ds.fireEvent(\"datachanged\", this);\n        rec.commit();\n        return;\n    }\n      if (cm.dataIndex == 'aspire') {\n        var rec = _this.listTable.ds.getAt(rowIndex);\n        \n        rec.set('aspire', rec.data.aspire * 1 ? '0' : '1');\n\n        //_this.listTable.ds.fireEvent(\"datachanged\", this);\n        rec.commit();\n        return;\n    }\n\n     \n}",
-                      "|render" : "function (_self)\n{\n     _this.listTable = _self;\n    (function() { _self.store.load({}); }).defer(100)\n}"
+                      "|render" : "function (_self)\n{\n     _this.listTable = _self;\n    (function() { _self.store.load({}); }).defer(100)\n}",
+                      "cellclick" : "function (_self, el, rowIndex, columnIndex, e)\n{\n    \n\n    var cm = this.colModel.getColumnById(this.colModel.getColumnId(columnIndex));\n    if (cm.dataIndex == 'current') {\n        var rec = _this.listTable.ds.getAt(rowIndex);\n        \n        rec.set('current', rec.data.current * 1 ? '0' : '1');\n\n        //_this.listTable.ds.fireEvent(\"datachanged\", this);\n        rec.commit();\n        return;\n    }\n      if (cm.dataIndex == 'aspire') {\n        var rec = _this.listTable.ds.getAt(rowIndex);\n        \n        rec.set('aspire', rec.data.aspire * 1 ? '0' : '1');\n\n        //_this.listTable.ds.fireEvent(\"datachanged\", this);\n        rec.commit();\n        return;\n    }\n\n     \n}"
                      },
                      "xtype" : "Table",
                      "Boolean CellSelection" : true,
@@ -189,9 +189,9 @@
                      "Boolean RowSelection" : true,
                      "items" : [
                       {
+                       "$ Array data" : "[\n  [ 'A TEST', '1', '0' ],\n  \n    [ 'B test', '1', '0' ],\n      [ 'C test', '1', '0' ],\n    [ 'D test', '1', '0' ]\n]",
                        "boolean isLocal" : true,
                        "$ Array fields" : "[ 'display_name', 'current', 'aspire' ]",
-                       "$ Array data" : "[\n  [ 'A TEST', '1', '0' ],\n  \n    [ 'B test', '1', '0' ],\n      [ 'C test', '1', '0' ],\n    [ 'D test', '1', '0' ]\n]",
                        "xtype" : "SimpleStore",
                        "$ xns" : "Roo.data",
                        "* prop" : "store"
@@ -243,8 +243,8 @@
             },
             {
              "Number md" : 6,
-             "Number lg" : 6,
              "xtype" : "Column",
+             "Number lg" : 6,
              "$ xns" : "Roo.bootstrap",
              "String style" : "",
              "Number sm" : 12,
@@ -293,8 +293,8 @@
                "items" : [
                 {
                  "xtype" : "Header",
-                 "$ xns" : "Roo.bootstrap",
                  "Number level" : 3,
+                 "$ xns" : "Roo.bootstrap",
                  "String html" : "first tab"
                 },
                 {
@@ -341,8 +341,8 @@
                "items" : [
                 {
                  "xtype" : "Header",
-                 "Number level" : 3,
                  "$ xns" : "Roo.bootstrap",
+                 "Number level" : 3,
                  "String html" : "second tab"
                 },
                 {
