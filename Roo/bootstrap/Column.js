@@ -37,6 +37,8 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     html: '',
     offset: 0,
     alert: false,
+    fa: false,
+    icon : false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
@@ -65,7 +67,13 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         if (this.html.length) {
             cfg.html = this.html;
         }
-	
+        if (this.fa) {
+            cfg.html = '<i class="fa fa-'+this.fa + '"></i>' + (cfg.html || '');
+        }
+        if (this.icon) {
+            cfg.html = '<i class="glyphicon glyphicon-'+this.icon + '"></i>' + + (cfg.html || '')
+        }
+        
         return cfg;
     }
    
