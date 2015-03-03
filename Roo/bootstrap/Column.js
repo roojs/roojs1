@@ -13,6 +13,10 @@
  * @cfg {Number} sm colspan out of 12 for tablet-sized screens or 0 for hidden
  * @cfg {Number} md colspan out of 12 for computer-sized screens or 0 for hidden
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens or 0 for hidden
+ * @cfg {String} alert (success|info|warning|danger) type alert (changes background / border...)
+ * @cfg {String} fa (ban|check|...) font awesome icon
+ * @cfg {String} icon (info-sign|check|...) glyphicon name
+
  * @cfg {String} html content of column.
  * 
  * @constructor
