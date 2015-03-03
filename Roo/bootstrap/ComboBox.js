@@ -1040,7 +1040,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.multiple){
             if(typeof o.display_name !== 'string'){
-                Roo.log('$multipe');
+                Roo.log('$multipe!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
                 Roo.log(o);
                 for(var i=0;i<o.display_name.length;i++){
                     this.addItem({'id':o.id[i],'display_name':o.display_name[i]});
