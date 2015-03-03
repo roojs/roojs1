@@ -40,6 +40,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     alert: false,
     fa: false,
     icon : false,
+    hidden : false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
@@ -63,6 +64,10 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
             cfg.cls += ' col-' + size + '-' + settings[size];
             
         });
+        
+        if (this.hidden) {
+            cfg.cls += ' hidden';
+        }
         
         if (this.alert && ["success","info","warning", "danger"].indexOf(this.alert) > -1) {
             cfg.cls +=' alert alert-' + this.alert;
