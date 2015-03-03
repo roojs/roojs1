@@ -4,113 +4,229 @@
 
 Roo.namespace('Dialog');
 
-Dialog.Login = new Roo.XComponent({
-  part     :  ["bootstrap", "Login" ],
-  order    : '001-Dialog.Login',
-  region   : 'center',
-  parent   : false,
-  name     : "unnamed module",
-  disabled : false, 
-  permname : '', 
-  _tree : function()
-  {
-   var _this = this;
-   var MODULE = this;
-   return {
-   '|xns' : 'Roo.bootstrap',
-   xtype : 'Body',
-   xns : Roo.bootstrap,
-   items : [
-    Roo.apply(Hydra.Header._tree(), {
-     '|xns' : 'Roo.bootstrap',
-     xtype : 'NavHeaderbar',
-     xns : Roo.bootstrap
-    }),
-    {
-     '|xns' : 'Roo.bootstrap',
-     xtype : 'Container',
-     xns : Roo.bootstrap,
-     style : 'margin-top:25px',
-     items : [
+Dialog.Login = {
+
+ dialog : false,
+ callback:  false,
+
+ show : function(data, cb)
+ {
+  if (!this.dialog) {
+   this.create();
+  }
+
+  this.callback = cb;
+  this.data = data;
+  this.dialog.show(this.data._el);
+  if (this.form) {
+   this.form.reset();
+   this.form.setValues(data);
+   this.form.fireEvent('actioncomplete', this.form,  { type: 'setdata', data: data });
+  }
+
+ },
+
+ create : function()
+ {
+  var _this = this;
+  this.dialog = Roo.factory({
+    '|xns' : 'Roo.bootstrap',
+    title : "Login",
+    xtype : 'Modal',
+    buttonPosition : 'center',
+    buttons : Roo.bootstrap.Modal.OKCANCEL,
+    xns : Roo.bootstrap,
+    listeners : {
+     btnclick : function (e)
       {
-       '|xns' : 'Roo.bootstrap',
-       tag : 'ol',
-       cls : 'breadcrumb',
-       xtype : 'Container',
-       xns : Roo.bootstrap,
-       items : [
-        {
-         '|xns' : 'Roo.bootstrap',
-         xtype : 'Link',
-         xns : Roo.bootstrap,
-         html : 'Home',
-         href : baseURL
-        }
-       ]
-
-      },
-      {
-       '|xns' : 'Roo.bootstrap',
-       xtype : 'Row',
-       xns : Roo.bootstrap,
-       items : [
-        {
-         '|xns' : 'Roo.bootstrap',
-         cls : 'col-md-8 maincontent',
-         xtype : 'Container',
-         xns : Roo.bootstrap,
-         items : [
-          {
-           '|xns' : 'Roo.bootstrap',
-           tag : 'header',
-           cls : 'page-header',
-           xtype : 'Container',
-           xns : Roo.bootstrap,
-           items : [
-            {
-             '|xns' : 'Roo.bootstrap',
-             cls : 'page-title',
-             xtype : 'Header',
-             xns : Roo.bootstrap,
-             level : 1,
-             html : 'Sorry an error has occured'
-            }
-           ]
-
-          },
-          {
-           '|xns' : 'Roo.bootstrap',
-           alert : 'danger',
-           fa : 'ban',
-           xtype : 'Container',
-           xns : Roo.bootstrap,
-           items : [
-            {
-             '|xns' : 'Roo.bootstrap',
-             tag : 'p',
-             html : error_data.error_message,
-             xtype : 'Element',
-             xns : Roo.bootstrap
-            }
-           ]
-
+          if(e == 'cancel'){
+              _this.dialog.hide();
+              return;
           }
-         ]
-
-        }
-       ]
-
+          
+          _this.form.doAction('submit');
+      },
+     render : function (_self) {
+      
+          Roo.get('login-err').dom.innerHTML = "";
+          
+      },
+     show : function (_self)
+      {
+          Roo.get('login-err').dom.innerHTML = "";
       }
-     ]
-
     },
-    Roo.apply(Hydra.Footer._tree(), {
-     '|xns' : 'Roo.bootstrap',
-     cls : 'top-space',
-     xtype : 'Container',
-     xns : Roo.bootstrap
-    })
-   ]
+    items : [
+     {
+      '|xns' : 'Roo.bootstrap',
+      xtype : 'Row',
+      xns : Roo.bootstrap,
+      style : 'margin-top:20px;',
+      items : [
+       {
+        '|xns' : 'Roo.bootstrap',
+        xtype : 'Container',
+        cls : 'col-md-12',
+        xns : Roo.bootstrap,
+        items : [
+         {
+          '|xns' : 'Roo.bootstrap',
+          url : baseURL + '/Login',
+          labelAlign : 'left',
+          xtype : 'Form',
+          method : 'POST',
+          xns : Roo.bootstrap,
+          listeners : {
+           render : function (_self) {
+                _this.form = _self;
+            },
+           actionfailed : function (_self, action) {
+                Roo.log('action failed?!');
+                Roo.log(action);
+                
+                if (typeof(action) != 'undefined' && action.failureType == 'server') {    
+            
+                    Roo.get('login-err').dom.innerHTML = action.result.errorMsg;
+                    return;
+                }
+                
+                Roo.get('login-err').dom.innerHTML = "Fill in all the required fields";
+            },
+           actioncomplete : function (_self, action) {
+                
+                if (action.type =='submit') {
+                    Roo.log(action);
+                    _this.dialog.hide();
+                
+                    if (_this.callback) {
+                        _this.callback.call(_this, action.result);
+                     }
+                     
+                     _this.form.reset();
+                     
+                     return;
+                }
+            }
+          },
+          items : [
+           {
+            '|xns' : 'Roo.bootstrap',
+            xtype : 'Container',
+            cls : 'col-sm-12',
+            xns : Roo.bootstrap,
+            items : [
+             {
+              '|xns' : 'Roo.bootstrap',
+              inputType : 'email',
+              xtype : 'Input',
+              vtype : 'email',
+              placeholder : 'Email Address',
+              allowBlank : false,
+              xns : Roo.bootstrap,
+              name : 'email',
+              listeners : {
+               specialkey : function (_self, e)
+                {
+                    if(e.getKey() == 13){
+                        _this.form.doAction('submit');
+                    }
+                    
+                }
+              }
+             },
+             {
+              '|xns' : 'Roo.bootstrap',
+              inputType : 'password',
+              xtype : 'Input',
+              placeholder : 'Password',
+              allowBlank : false,
+              xns : Roo.bootstrap,
+              name : 'password',
+              listeners : {
+               specialkey : function (_self, e)
+                {
+                    if(e.getKey() == 13){
+                        _this.form.doAction('submit');
+                    }
+                }
+              }
+             }
+            ]
 
-  };  }
-});
+           }
+          ]
+
+         }
+        ]
+
+       }
+      ]
+
+     },
+     {
+      '|xns' : 'Roo.bootstrap',
+      xtype : 'Row',
+      xns : Roo.bootstrap,
+      style : 'margin-top:20px;',
+      items : [
+       {
+        '|xns' : 'Roo.bootstrap',
+        xtype : 'Container',
+        cls : 'col-md-12',
+        xns : Roo.bootstrap,
+        items : [
+         {
+          '|xns' : 'Roo.bootstrap',
+          tag : 'a',
+          xtype : 'Button',
+          html : 'Forgot password?',
+          removeClass : true,
+          xns : Roo.bootstrap,
+          weight : 'link',
+          href : '#',
+          listeners : {
+           click : function () {
+                _this.dialog.hide();
+                
+                Hydra.Dialog.ForgotPassword.show({}, function(){
+                    Roo.bootstrap.MessageBox.alert('Notice', 'The password has been sent to your email');
+                });
+            }
+          }
+         }
+        ]
+
+       }
+      ]
+
+     },
+     {
+      '|xns' : 'Roo.bootstrap',
+      xtype : 'Row',
+      xns : Roo.bootstrap,
+      items : [
+       {
+        '|xns' : 'Roo.bootstrap',
+        xtype : 'Container',
+        cls : 'col-md-12',
+        xns : Roo.bootstrap,
+        items : [
+         {
+          '|xns' : 'Roo.bootstrap',
+          xtype : 'Container',
+          style : 'margin-top:20px;',
+          cls : 'bg-danger',
+          html : '<div id=\"login-err\" class=\"dialog-err\" style=\"color:red\"></div>',
+          xns : Roo.bootstrap
+         }
+        ]
+
+       }
+      ]
+
+     }
+    ]
+
+   }  );
+ }
+};

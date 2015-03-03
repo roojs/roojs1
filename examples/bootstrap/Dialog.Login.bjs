@@ -7,68 +7,66 @@
  "modOrder" : "001",
  "items" : [
   {
-   "xtype" : "Body",
+   "listeners" : {
+    "btnclick" : "function (e)\n{\n    if(e == 'cancel'){\n        _this.dialog.hide();\n        return;\n    }\n    \n    _this.form.doAction('submit');\n}",
+    "|render" : "function (_self) {\n\n    Roo.get('login-err').dom.innerHTML = \"\";\n    \n}\n    ",
+    "show" : "function (_self)\n{\n    Roo.get('login-err').dom.innerHTML = \"\";\n}"
+   },
+   "title" : "Login",
+   "xtype" : "Modal",
+   "buttonPosition" : "center",
+   "$ buttons" : "Roo.bootstrap.Modal.OKCANCEL",
    "$ xns" : "Roo.bootstrap",
    "items" : [
     {
-     "xtype" : "NavHeaderbar",
-     "* xinclude" : "Hydra.Header",
-     "$ xns" : "Roo.bootstrap"
-    },
-    {
-     "xtype" : "Container",
+     "xtype" : "Row",
      "$ xns" : "Roo.bootstrap",
-     "String style" : "margin-top:25px",
+     "String style" : "margin-top:20px;",
      "items" : [
       {
-       "String tag" : "ol",
-       "String cls" : "breadcrumb",
        "xtype" : "Container",
+       "cls" : "col-md-12",
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
-         "xtype" : "Link",
-         "$ xns" : "Roo.bootstrap",
-         "String html" : "Home",
-         "$ String href" : "baseURL"
-        }
-       ]
-      },
-      {
-       "xtype" : "Row",
-       "$ xns" : "Roo.bootstrap",
-       "items" : [
-        {
-         "String cls" : "col-md-8 maincontent",
-         "xtype" : "Container",
+         "listeners" : {
+          "|render" : "function (_self) {\n    _this.form = _self;\n}",
+          "|actionfailed" : "function (_self, action) {\n    Roo.log('action failed?!');\n    Roo.log(action);\n    \n    if (typeof(action) != 'undefined' && action.failureType == 'server') {    \n\n        Roo.get('login-err').dom.innerHTML = action.result.errorMsg;\n        return;\n    }\n    \n    Roo.get('login-err').dom.innerHTML = \"Fill in all the required fields\";\n}",
+          "|actioncomplete" : "function (_self, action) {\n    \n    if (action.type =='submit') {\n        Roo.log(action);\n        _this.dialog.hide();\n    \n        if (_this.callback) {\n            _this.callback.call(_this, action.result);\n         }\n         \n         _this.form.reset();\n         \n         return;\n    }\n}"
+         },
+         "$ url" : "baseURL + '/Login'",
+         "labelAlign" : "left",
+         "xtype" : "Form",
+         "method" : "POST",
          "$ xns" : "Roo.bootstrap",
          "items" : [
           {
-           "String tag" : "header",
-           "String cls" : "page-header",
            "xtype" : "Container",
+           "cls" : "col-sm-12",
            "$ xns" : "Roo.bootstrap",
            "items" : [
             {
-             "String cls" : "page-title",
-             "xtype" : "Header",
+             "listeners" : {
+              "specialkey" : "function (_self, e)\n{\n    if(e.getKey() == 13){\n        _this.form.doAction('submit');\n    }\n    \n}"
+             },
+             "inputType" : "email",
+             "xtype" : "Input",
+             "vtype" : "email",
+             "placeholder" : "Email Address",
+             "allowBlank" : false,
              "$ xns" : "Roo.bootstrap",
-             "Number level" : 1,
-             "String html" : "Sorry an error has occured"
-            }
-           ]
-          },
-          {
-           "string alert" : "danger",
-           "string fa" : "ban",
-           "xtype" : "Container",
-           "$ xns" : "Roo.bootstrap",
-           "items" : [
+             "name" : "email"
+            },
             {
-             "String tag" : "p",
-             "$ String html" : "error_data.error_message",
-             "xtype" : "Element",
-             "$ xns" : "Roo.bootstrap"
+             "listeners" : {
+              "specialkey" : "function (_self, e)\n{\n    if(e.getKey() == 13){\n        _this.form.doAction('submit');\n    }\n}"
+             },
+             "inputType" : "password",
+             "xtype" : "Input",
+             "placeholder" : "Password",
+             "allowBlank" : false,
+             "$ xns" : "Roo.bootstrap",
+             "name" : "password"
             }
            ]
           }
@@ -79,10 +77,50 @@
      ]
     },
     {
-     "String cls" : "top-space",
-     "xtype" : "Container",
-     "* xinclude" : "Hydra.Footer",
-     "$ xns" : "Roo.bootstrap"
+     "xtype" : "Row",
+     "$ xns" : "Roo.bootstrap",
+     "String style" : "margin-top:20px;",
+     "items" : [
+      {
+       "xtype" : "Container",
+       "cls" : "col-md-12",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "listeners" : {
+          "|click" : "function () {\n    _this.dialog.hide();\n    \n    Hydra.Dialog.ForgotPassword.show({}, function(){\n        Roo.bootstrap.MessageBox.alert('Notice', 'The password has been sent to your email');\n    });\n}"
+         },
+         "tag" : "a",
+         "xtype" : "Button",
+         "html" : "Forgot password?",
+         "Boolean removeClass" : true,
+         "$ xns" : "Roo.bootstrap",
+         "weight" : "link",
+         "href" : "#"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "xtype" : "Row",
+     "$ xns" : "Roo.bootstrap",
+     "items" : [
+      {
+       "xtype" : "Container",
+       "cls" : "col-md-12",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "xtype" : "Container",
+         "style" : "margin-top:20px;",
+         "cls" : "bg-danger",
+         "html" : "<div id=\"login-err\" class=\"dialog-err\" style=\"color:red\"></div>",
+         "$ xns" : "Roo.bootstrap"
+        }
+       ]
+      }
+     ]
     }
    ]
   }
