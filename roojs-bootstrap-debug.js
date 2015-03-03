@@ -774,6 +774,10 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
  * @cfg {Number} sm colspan out of 12 for tablet-sized screens or 0 for hidden
  * @cfg {Number} md colspan out of 12 for computer-sized screens or 0 for hidden
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens or 0 for hidden
+ * @cfg {String} alert (success|info|warning|danger) type alert (changes background / border...)
+ * @cfg {String} fa (ban|check|...) font awesome icon
+ * @cfg {String} icon (info-sign|check|...) glyphicon name
+
  * @cfg {String} html content of column.
  * 
  * @constructor
@@ -793,6 +797,9 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     lg: false,
     html: '',
     offset: 0,
+    alert: false,
+    fa: false,
+    icon : false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
@@ -812,10 +819,22 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
                 cfg.cls += ' col-' + size + '-' + settings[size];
             }
         });
+        
+        if (this.alert && ["success","info","warning", "danger"].indexOf(this.alert) > -1) {
+            cfg.cls +=' alert alert-' + this.alert;
+        }
+        
+        
         if (this.html.length) {
             cfg.html = this.html;
         }
-	
+        if (this.fa) {
+            cfg.html = '<i class="fa fa-'+this.fa + '"></i>' + (cfg.html || '');
+        }
+        if (this.icon) {
+            cfg.html = '<i class="glyphicon glyphicon-'+this.icon + '"></i>' + + (cfg.html || '')
+        }
+        
         return cfg;
     }
    
@@ -11030,7 +11049,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 if(this.editable && !this.tickable){
                     this.inputEl().dom.select();
                 }
-                if(!this.selectByValue(this.value, true) && this.autoFocus){
+                
+                if(!this.selectByValue(this.value, true) && this.autoFocus && (typeof(this.store.lastOptions.add) == 'undefined' || this.store.lastOptions.add != true)){
                     this.select(0, true);
                 }
             }else{
@@ -11493,8 +11513,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-//        this.hasFocus = false;
-        
         this.list.hide();
         
         if(this.tickable){
@@ -11685,7 +11703,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onViewScroll : function(e, t){
         
-        if(this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append || this.hasQuery){
+        if(this.view.el.getScroll().top == 0 ||this.view.el.getScroll().top < this.view.el.dom.scrollHeight - this.view.el.dom.clientHeight || !this.hasFocus || !this.append || this.hasQuery){
             return;
         }
         
