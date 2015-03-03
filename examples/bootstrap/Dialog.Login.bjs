@@ -6,5 +6,85 @@
  "permname" : "",
  "modOrder" : "001",
  "items" : [
+  {
+   "xtype" : "Body",
+   "$ xns" : "Roo.bootstrap",
+   "items" : [
+    {
+     "xtype" : "NavHeaderbar",
+     "* xinclude" : "Hydra.Header",
+     "$ xns" : "Roo.bootstrap"
+    },
+    {
+     "xtype" : "Container",
+     "$ xns" : "Roo.bootstrap",
+     "String style" : "margin-top:25px",
+     "items" : [
+      {
+       "String tag" : "ol",
+       "String cls" : "breadcrumb",
+       "xtype" : "Container",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "xtype" : "Link",
+         "$ xns" : "Roo.bootstrap",
+         "String html" : "Home",
+         "$ String href" : "baseURL"
+        }
+       ]
+      },
+      {
+       "xtype" : "Row",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "String cls" : "col-md-8 maincontent",
+         "xtype" : "Container",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "String tag" : "header",
+           "String cls" : "page-header",
+           "xtype" : "Container",
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "String cls" : "page-title",
+             "xtype" : "Header",
+             "$ xns" : "Roo.bootstrap",
+             "Number level" : 1,
+             "String html" : "Sorry an error has occured"
+            }
+           ]
+          },
+          {
+           "string alert" : "danger",
+           "string fa" : "ban",
+           "xtype" : "Container",
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "String tag" : "p",
+             "$ String html" : "error_data.error_message",
+             "xtype" : "Element",
+             "$ xns" : "Roo.bootstrap"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "String cls" : "top-space",
+     "xtype" : "Container",
+     "* xinclude" : "Hydra.Footer",
+     "$ xns" : "Roo.bootstrap"
+    }
+   ]
+  }
  ]
 }
