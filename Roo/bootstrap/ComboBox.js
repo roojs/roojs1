@@ -1006,6 +1006,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @param {String} value The value to match
      */
     setValue : function(v){
+        Roo.log('setValue!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(v);
         if(this.multiple){
             this.syncValue();
             return;
