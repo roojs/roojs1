@@ -12,7 +12,7 @@
     "|render" : "function (_self) {\n\n    Roo.get('login-err').dom.innerHTML = \"\";\n    \n}\n    ",
     "show" : "function (_self)\n{\n    Roo.get('login-err').dom.innerHTML = \"\";\n}"
    },
-   "title" : "Login ",
+   "title" : "Login",
    "xtype" : "Modal",
    "buttonPosition" : "center",
    "$ buttons" : "Roo.bootstrap.Modal.OKCANCEL",
