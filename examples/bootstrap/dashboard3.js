@@ -11,11 +11,11 @@ dashboard3 = new Roo.XComponent({
   '7ef605fc8dba5425d6965fbd4c8fbe1f' :"150",
   '70ce2e7a27cab2a670ca954f8362e19f' :"tab 2 content",
   'f3ff0ceca73743a13990e970c318fc36' :"<span class=\"glyphicon glyphicon-chevron-left\"></span>",
-  'a98754d574a7f7e4f3a686eb21c50720' :"Dashboard  <small>  Example Control panel </small> ",
   '34ae6773410925b4574e656be194f0ad' :"income",
   'e864378363f435160e7c2209cc2949b7' :"<span class=\"glyphicon glyphicon-chevron-right\"></span>",
   '1d17cb9923b99f823da9f5a16dc460e5' :"Department",
   '222a267cc5778206b253be35ee3ddab5' :"Current",
+  '2fce962271c2edac1c38f8b9c0c763cd' :"Dashboard  <small>  Example Control panel </small>",
   'c4f5a294a273c3a1c97642a76f15c5c7' :"tab 1",
   '2d0175894e0fe09186d38fe7a7160294' :"second tab",
   '1b9b097340a24b31632ed601a9107832' :"This is a random string ",
@@ -46,8 +46,8 @@ dashboard3 = new Roo.XComponent({
     Roo.apply(Dashboard.Header1._tree(), {
      '|xns' : 'Roo.bootstrap',
      cls : 'header',
-     tag : 'header',
      xtype : 'Container',
+     tag : 'header',
      xns : Roo.bootstrap
     }),
     {
@@ -82,7 +82,7 @@ dashboard3 = new Roo.XComponent({
            '|xns' : 'Roo.bootstrap',
            xtype : 'Header',
            xns : Roo.bootstrap,
-           html : _this._strings['a98754d574a7f7e4f3a686eb21c50720']
+           html : _this._strings['2fce962271c2edac1c38f8b9c0c763cd']
           }
          ]
 
@@ -102,8 +102,8 @@ dashboard3 = new Roo.XComponent({
             {
              '|xns' : 'Roo.bootstrap',
              md : 3,
-             xtype : 'Column',
              lg : 3,
+             xtype : 'Column',
              xns : Roo.bootstrap,
              items : [
               {
@@ -125,8 +125,8 @@ dashboard3 = new Roo.XComponent({
             {
              '|xns' : 'Roo.bootstrap',
              md : 3,
-             xtype : 'Column',
              lg : 3,
+             xtype : 'Column',
              xns : Roo.bootstrap,
              items : [
               {
@@ -147,8 +147,8 @@ dashboard3 = new Roo.XComponent({
             {
              '|xns' : 'Roo.bootstrap',
              md : 3,
-             xtype : 'Column',
              lg : 3,
+             xtype : 'Column',
              xns : Roo.bootstrap,
              items : [
               {
@@ -168,8 +168,8 @@ dashboard3 = new Roo.XComponent({
             {
              '|xns' : 'Roo.bootstrap',
              md : 3,
-             lg : 3,
              xtype : 'Column',
+             lg : 3,
              xns : Roo.bootstrap,
              items : [
               {
@@ -213,8 +213,8 @@ dashboard3 = new Roo.XComponent({
             {
              '|xns' : 'Roo.bootstrap',
              md : 6,
-             xtype : 'Column',
              lg : 6,
+             xtype : 'Column',
              xns : Roo.bootstrap,
              style : '',
              sm : 12,
@@ -245,6 +245,7 @@ dashboard3 = new Roo.XComponent({
                     {
                      store : {
                       '|xns' : 'Roo.data',
+                      fields : [ 'display_name', 'current', 'aspire' ],
                       data : [
                         [ 'A TEST', '1', '0' ],
                         
@@ -253,7 +254,6 @@ dashboard3 = new Roo.XComponent({
                           [ 'D test', '1', '0' ]
                       ],
                       isLocal : true,
-                      fields : [ 'display_name', 'current', 'aspire' ],
                       xtype : 'SimpleStore',
                       xns : Roo.data
                      },
@@ -297,6 +297,11 @@ dashboard3 = new Roo.XComponent({
                        }
                      ],
                      listeners : {
+                      render : function (_self)
+                       {
+                            _this.listTable = _self;
+                           (function() { _self.store.load({}); }).defer(100)
+                       },
                       cellclick : function (_self, el, rowIndex, columnIndex, e)
                        {
                            
@@ -322,11 +327,6 @@ dashboard3 = new Roo.XComponent({
                            }
                        
                             
-                       },
-                      render : function (_self)
-                       {
-                            _this.listTable = _self;
-                           (function() { _self.store.load({}); }).defer(100)
                        }
                      },
                      items : [
@@ -364,8 +364,8 @@ dashboard3 = new Roo.XComponent({
             {
              '|xns' : 'Roo.bootstrap',
              md : 6,
-             lg : 6,
              xtype : 'Column',
+             lg : 6,
              xns : Roo.bootstrap,
              style : '',
              sm : 12,
@@ -429,8 +429,8 @@ dashboard3 = new Roo.XComponent({
                 {
                  '|xns' : 'Roo.bootstrap',
                  xtype : 'Header',
-                 xns : Roo.bootstrap,
                  level : 3,
+                 xns : Roo.bootstrap,
                  html : _this._strings['fc0d5184491559c092364744b2247373']
                 },
                 {
@@ -490,8 +490,8 @@ dashboard3 = new Roo.XComponent({
                 {
                  '|xns' : 'Roo.bootstrap',
                  xtype : 'Header',
-                 level : 3,
                  xns : Roo.bootstrap,
+                 level : 3,
                  html : _this._strings['2d0175894e0fe09186d38fe7a7160294']
                 },
                 {
