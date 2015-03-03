@@ -6,6 +6,12 @@ Roo.namespace('Dialog');
 
 Dialog.Login = {
 
+ strings : {
+  '8458bad978f4fd6d6c7f8ec2ec0824b4' :"Forgot password?",
+  'd837cc5a72556c5e2abf4b9fe10ddef8' :"Login ",
+  '5047040b025ce0295b58d42250014417' :"<div id=\"login-err\" class=\"dialog-err\" style=\"color:red\"></div>"
+ },
+
  dialog : false,
  callback:  false,
 
@@ -31,7 +37,7 @@ Dialog.Login = {
   var _this = this;
   this.dialog = Roo.factory({
     '|xns' : 'Roo.bootstrap',
-    title : "Login",
+    title : "Login ",
     xtype : 'Modal',
     buttonPosition : 'center',
     buttons : Roo.bootstrap.Modal.OKCANCEL,
@@ -77,21 +83,6 @@ Dialog.Login = {
           method : 'POST',
           xns : Roo.bootstrap,
           listeners : {
-           render : function (_self) {
-                _this.form = _self;
-            },
-           actionfailed : function (_self, action) {
-                Roo.log('action failed?!');
-                Roo.log(action);
-                
-                if (typeof(action) != 'undefined' && action.failureType == 'server') {    
-            
-                    Roo.get('login-err').dom.innerHTML = action.result.errorMsg;
-                    return;
-                }
-                
-                Roo.get('login-err').dom.innerHTML = "Fill in all the required fields";
-            },
            actioncomplete : function (_self, action) {
                 
                 if (action.type =='submit') {
@@ -106,6 +97,21 @@ Dialog.Login = {
                      
                      return;
                 }
+            },
+           render : function (_self) {
+                _this.form = _self;
+            },
+           actionfailed : function (_self, action) {
+                Roo.log('action failed?!');
+                Roo.log(action);
+                
+                if (typeof(action) != 'undefined' && action.failureType == 'server') {    
+            
+                    Roo.get('login-err').dom.innerHTML = action.result.errorMsg;
+                    return;
+                }
+                
+                Roo.get('login-err').dom.innerHTML = "Fill in all the required fields";
             }
           },
           items : [
@@ -118,8 +124,8 @@ Dialog.Login = {
              {
               '|xns' : 'Roo.bootstrap',
               inputType : 'email',
-              xtype : 'Input',
               vtype : 'email',
+              xtype : 'Input',
               placeholder : 'Email Address',
               allowBlank : false,
               xns : Roo.bootstrap,
@@ -137,8 +143,8 @@ Dialog.Login = {
              {
               '|xns' : 'Roo.bootstrap',
               inputType : 'password',
-              xtype : 'Input',
               placeholder : 'Password',
+              xtype : 'Input',
               allowBlank : false,
               xns : Roo.bootstrap,
               name : 'password',
@@ -179,7 +185,7 @@ Dialog.Login = {
           '|xns' : 'Roo.bootstrap',
           tag : 'a',
           xtype : 'Button',
-          html : 'Forgot password?',
+          html : "Forgot password?",
           removeClass : true,
           xns : Roo.bootstrap,
           weight : 'link',
@@ -216,7 +222,7 @@ Dialog.Login = {
           xtype : 'Container',
           style : 'margin-top:20px;',
           cls : 'bg-danger',
-          html : '<div id=\"login-err\" class=\"dialog-err\" style=\"color:red\"></div>',
+          html : "<div id=\"login-err\" class=\"dialog-err\" style=\"color:red\"></div>",
           xns : Roo.bootstrap
          }
         ]
