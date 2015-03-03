@@ -23,8 +23,8 @@ dashboard3 = new Roo.XComponent({
     Roo.apply(Dashboard.Header1._tree(), {
      '|xns' : 'Roo.bootstrap',
      cls : 'header',
-     tag : 'header',
      xtype : 'Container',
+     tag : 'header',
      xns : Roo.bootstrap
     }),
     {
@@ -79,8 +79,8 @@ dashboard3 = new Roo.XComponent({
             {
              '|xns' : 'Roo.bootstrap',
              md : 3,
-             xtype : 'Column',
              lg : 3,
+             xtype : 'Column',
              xns : Roo.bootstrap,
              items : [
               {
@@ -94,7 +94,7 @@ dashboard3 = new Roo.XComponent({
                title : "New Orders ",
                style : 'col-md-3',
                height : 150,
-               _aformat : 'This is a random string'
+               _aformat : 'This is a random string  '
               }
              ]
 
@@ -102,8 +102,8 @@ dashboard3 = new Roo.XComponent({
             {
              '|xns' : 'Roo.bootstrap',
              md : 3,
-             xtype : 'Column',
              lg : 3,
+             xtype : 'Column',
              xns : Roo.bootstrap,
              items : [
               {
@@ -124,8 +124,8 @@ dashboard3 = new Roo.XComponent({
             {
              '|xns' : 'Roo.bootstrap',
              md : 3,
-             xtype : 'Column',
              lg : 3,
+             xtype : 'Column',
              xns : Roo.bootstrap,
              items : [
               {
@@ -145,8 +145,8 @@ dashboard3 = new Roo.XComponent({
             {
              '|xns' : 'Roo.bootstrap',
              md : 3,
-             lg : 3,
              xtype : 'Column',
+             lg : 3,
              xns : Roo.bootstrap,
              items : [
               {
@@ -190,8 +190,8 @@ dashboard3 = new Roo.XComponent({
             {
              '|xns' : 'Roo.bootstrap',
              md : 6,
-             xtype : 'Column',
              lg : 6,
+             xtype : 'Column',
              xns : Roo.bootstrap,
              style : '',
              sm : 12,
@@ -222,6 +222,7 @@ dashboard3 = new Roo.XComponent({
                     {
                      store : {
                       '|xns' : 'Roo.data',
+                      isLocal : true,
                       fields : [ 'display_name', 'current', 'aspire' ],
                       data : [
                         [ 'A TEST', '1', '0' ],
@@ -230,7 +231,6 @@ dashboard3 = new Roo.XComponent({
                             [ 'C test', '1', '0' ],
                           [ 'D test', '1', '0' ]
                       ],
-                      isLocal : true,
                       xtype : 'SimpleStore',
                       xns : Roo.data
                      },
@@ -274,6 +274,11 @@ dashboard3 = new Roo.XComponent({
                        }
                      ],
                      listeners : {
+                      render : function (_self)
+                       {
+                            _this.listTable = _self;
+                           (function() { _self.store.load({}); }).defer(100)
+                       },
                       cellclick : function (_self, el, rowIndex, columnIndex, e)
                        {
                            
@@ -299,11 +304,6 @@ dashboard3 = new Roo.XComponent({
                            }
                        
                             
-                       },
-                      render : function (_self)
-                       {
-                            _this.listTable = _self;
-                           (function() { _self.store.load({}); }).defer(100)
                        }
                      },
                      items : [
@@ -341,8 +341,8 @@ dashboard3 = new Roo.XComponent({
             {
              '|xns' : 'Roo.bootstrap',
              md : 6,
-             lg : 6,
              xtype : 'Column',
+             lg : 6,
              xns : Roo.bootstrap,
              style : '',
              sm : 12,
@@ -406,8 +406,8 @@ dashboard3 = new Roo.XComponent({
                 {
                  '|xns' : 'Roo.bootstrap',
                  xtype : 'Header',
-                 xns : Roo.bootstrap,
                  level : 3,
+                 xns : Roo.bootstrap,
                  html : 'first tab'
                 },
                 {
@@ -467,8 +467,8 @@ dashboard3 = new Roo.XComponent({
                 {
                  '|xns' : 'Roo.bootstrap',
                  xtype : 'Header',
-                 level : 3,
                  xns : Roo.bootstrap,
+                 level : 3,
                  html : 'second tab'
                 },
                 {
