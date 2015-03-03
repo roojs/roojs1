@@ -50,9 +50,11 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
+            Roo.log( size + ':' + settings[size]);
             if (settings[size] === false) {
                 return;
             }
+            Roo.log(settings[size]);
             if (!settings[size]) { // 0 = hidden
                 cfg.cls += ' hidden-' + size;
                 return;
