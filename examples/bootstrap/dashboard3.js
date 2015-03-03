@@ -93,7 +93,8 @@ dashboard3 = new Roo.XComponent({
                width : 'col-md-5',
                title : "New Orders ",
                style : 'col-md-3',
-               height : 150
+               height : 150,
+               _aformat : 'This is a random string'
               }
              ]
 

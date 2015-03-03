@@ -82,7 +82,8 @@
                "width" : "col-md-5",
                "String title" : "New Orders ",
                "String style" : "col-md-3",
-               "height" : 150
+               "height" : 150,
+               "string _aformat" : "This is a random string"
               }
              ]
             },
