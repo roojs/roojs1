@@ -31,7 +31,7 @@ Dialog.Login = {
   var _this = this;
   this.dialog = Roo.factory({
     '|xns' : 'Roo.bootstrap',
-    title : "Login",
+    title : "Login ",
     xtype : 'Modal',
     buttonPosition : 'center',
     buttons : Roo.bootstrap.Modal.OKCANCEL,
