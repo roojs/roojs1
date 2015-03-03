@@ -36,6 +36,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     lg: false,
     html: '',
     offset: 0,
+    alert: false,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
@@ -55,6 +56,12 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
                 cfg.cls += ' col-' + size + '-' + settings[size];
             }
         });
+        
+        if (this.alert && ["success","info","warning", "danger"].indexOf(this.alert) > -1) {
+            cfg.cls +=' alert alert-' + this.alert;
+        }
+        
+        
         if (this.html.length) {
             cfg.html = this.html;
         }
