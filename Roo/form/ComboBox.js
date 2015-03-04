@@ -642,6 +642,9 @@ Roo.extend(Roo.form.ComboBox, Roo.form.TriggerField, {
      */
     getValue : function(){
         if(this.valueField){
+            if(this.editable && this.selectedIndex == -1){
+                return this.lastQuery ? this.lastQuery : this. value;
+            }
             return typeof this.value != 'undefined' ? this.value : '';
         }else{
             return Roo.form.ComboBox.superclass.getValue.call(this);
