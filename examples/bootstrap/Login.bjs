@@ -1,101 +1,109 @@
 {
-    "name" : "Login",
-    "parent" : "",
-    "title" : "",
-    "path" : "/home/alan/gitlive/roojs1/examples/bootstrap/Login.bjs",
-    "permname" : "",
-    "modOrder" : "001",
-    "items" : [
+ "name" : "Login",
+ "parent" : "",
+ "title" : "",
+ "path" : "/home/alan/gitlive/roojs1/examples/bootstrap/Login.bjs",
+ "permname" : "",
+ "modOrder" : "001",
+ "strings" : {
+  "0c83f57c786a0b4a39efab23731c7ebc" : "email",
+  "3c0445c81a81e7508168c61674497f7d" : "Sign me in",
+  "b05d72142020283dc6812fd3a9bc691c" : "I forgot my password",
+  "b6d4223e60986fa4c9af77ee5f7149c5" : "Sign in",
+  "5f4dcc3b5aa765d61d8327deb882cf99" : "password",
+  "11268c03b59cc646b0fb7c4cb592130b" : "Register a new menbership"
+ },
+ "items" : [
+  {
+   "String cls" : "bg-black",
+   "xtype" : "Body",
+   "$ xns" : "Roo.bootstrap",
+   "String style" : "min-height: 100%;",
+   "items" : [
+    {
+     "String cls" : "form-box",
+     "xtype" : "Container",
+     "$ xns" : "Roo.bootstrap",
+     "items" : [
+      {
+       "String cls" : "header",
+       "xtype" : "Container",
+       "$ xns" : "Roo.bootstrap",
+       "String html" : "Sign in"
+      },
+      {
+       "xtype" : "Form",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
         {
-            "String cls" : "bg-black",
-            "xtype" : "Body",
-            "$ xns" : "Roo.bootstrap",
-            "String style" : "min-height: 100%;",
-            "items" : [
-                {
-                    "String cls" : "form-box",
-                    "xtype" : "Container",
-                    "$ xns" : "Roo.bootstrap",
-                    "items" : [
-                        {
-                            "String cls" : "header",
-                            "xtype" : "Container",
-                            "$ xns" : "Roo.bootstrap",
-                            "String html" : "Sign in"
-                        },
-                        {
-                            "xtype" : "Form",
-                            "$ xns" : "Roo.bootstrap",
-                            "items" : [
-                                {
-                                    "String cls" : "body bg-gray",
-                                    "xtype" : "Container",
-                                    "$ xns" : "Roo.bootstrap",
-                                    "items" : [
-                                        {
-                                            "xtype" : "Input",
-                                            "string placeholder" : "email",
-                                            "$ xns" : "Roo.bootstrap"
-                                        },
-                                        {
-                                            "xtype" : "Input",
-                                            "string placeholder" : "password",
-                                            "String inputType" : "password",
-                                            "$ xns" : "Roo.bootstrap"
-                                        },
-                                        {
-                                            "xtype" : "CheckBox",
-                                            "String boxLabel" : "Remember me",
-                                            "$ xns" : "Roo.bootstrap"
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "String cls" : "footer",
-                            "xtype" : "Container",
-                            "$ xns" : "Roo.bootstrap",
-                            "items" : [
-                                {
-                                    "String cls" : "btn-block",
-                                    "String weight" : "primary",
-                                    "xtype" : "Button",
-                                    "$ xns" : "Roo.bootstrap",
-                                    "String html" : "Sign me in"
-                                },
-                                {
-                                    "String tag" : "p",
-                                    "xtype" : "Container",
-                                    "$ xns" : "Roo.bootstrap",
-                                    "items" : [
-                                        {
-                                            "String href" : "#",
-                                            "xtype" : "Link",
-                                            "$ xns" : "Roo.bootstrap",
-                                            "String html" : "I forgot my password"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "String tag" : "p",
-                                    "xtype" : "Container",
-                                    "$ xns" : "Roo.bootstrap",
-                                    "items" : [
-                                        {
-                                            "String cls" : "text-center",
-                                            "String href" : "#",
-                                            "xtype" : "Link",
-                                            "$ xns" : "Roo.bootstrap",
-                                            "String html" : "Register a new menbership"
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+         "String cls" : "body bg-gray",
+         "xtype" : "Container",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "xtype" : "Input",
+           "string placeholder" : "email",
+           "$ xns" : "Roo.bootstrap"
+          },
+          {
+           "xtype" : "Input",
+           "string placeholder" : "password",
+           "String inputType" : "password",
+           "$ xns" : "Roo.bootstrap"
+          },
+          {
+           "xtype" : "CheckBox",
+           "String boxLabel" : "Remember me",
+           "$ xns" : "Roo.bootstrap"
+          }
+         ]
         }
-    ]
+       ]
+      },
+      {
+       "String cls" : "footer",
+       "xtype" : "Container",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "String cls" : "btn-block",
+         "String weight" : "primary",
+         "xtype" : "Button",
+         "$ xns" : "Roo.bootstrap",
+         "String html" : "Sign me in"
+        },
+        {
+         "String tag" : "p",
+         "xtype" : "Container",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "String href" : "#",
+           "xtype" : "Link",
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "I forgot my password"
+          }
+         ]
+        },
+        {
+         "String tag" : "p",
+         "xtype" : "Container",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "String cls" : "text-center",
+           "String href" : "#",
+           "xtype" : "Link",
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "Register a new menbership"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
 }
