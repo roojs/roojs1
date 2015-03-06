@@ -6116,6 +6116,12 @@
      "memberOf": ""
     },
     {
+     "name": "hidden",
+     "type": "Boolean",
+     "desc": "(true|false) hide the element",
+     "memberOf": ""
+    },
+    {
      "name": "alert",
      "type": "String",
      "desc": "(success|info|warning|danger) type alert (changes background / border...)",
@@ -8522,6 +8528,12 @@
      "memberOf": ""
     },
     {
+     "name": "hidden",
+     "type": "Boolean",
+     "desc": "(true|false) hide the element",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -9275,6 +9287,12 @@
      "name": "align",
      "type": "String",
      "desc": "left  | right - for navbars",
+     "memberOf": ""
+    },
+    {
+     "name": "loadMask",
+     "type": "Boolean",
+     "desc": "load mask when submit (default true)",
      "memberOf": ""
     },
     {
@@ -14508,6 +14526,12 @@
      "name": "lg",
      "type": "Number",
      "desc": "colspan out of 12 for large computer-sized screens or 0 for hidden",
+     "memberOf": "Roo.bootstrap.Column"
+    },
+    {
+     "name": "hidden",
+     "type": "Boolean",
+     "desc": "(true|false) hide the element",
      "memberOf": "Roo.bootstrap.Column"
     },
     {

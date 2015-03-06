@@ -643,9 +643,8 @@
     </span><span class="jsdoc-var">getValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return typeof </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.form.ComboBox.superclass.getValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.form.ComboBox.superclass.getValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
 
     </span><span class="jsdoc-comment">/**

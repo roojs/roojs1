@@ -13,6 +13,7 @@
  * @cfg {Number} sm colspan out of 12 for tablet-sized screens or 0 for hidden
  * @cfg {Number} md colspan out of 12 for computer-sized screens or 0 for hidden
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens or 0 for hidden
+ * @cfg {Boolean} hidden (true|false) hide the element
  * @cfg {String} alert (success|info|warning|danger) type alert (changes background / border...)
  * @cfg {String} fa (ban|check|...) font awesome icon
  * @cfg {String} icon (info-sign|check|...) glyphicon name
@@ -39,6 +40,7 @@
     </span><span class="jsdoc-var">alert</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">fa</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">icon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">hidden </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">Roo.bootstrap.Column.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
@@ -50,14 +52,22 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         [</span><span class="jsdoc-string">'xs'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'sm'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'md'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'lg'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">] !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]) { </span><span class="jsdoc-comment">// 0 = hidden
-                    </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' hidden-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-                }
-                </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">':' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">] === </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">]) { </span><span class="jsdoc-comment">// 0 = hidden
+                </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' hidden-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">];
+            
         });
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hidden</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' hidden'</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alert </span><span class="jsdoc-syntax">&amp;&amp; [</span><span class="jsdoc-string">&quot;success&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;info&quot;</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">&quot;warning&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;danger&quot;</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.alert</span><span class="jsdoc-syntax">) &gt; -1) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+=</span><span class="jsdoc-string">' alert alert-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.alert</span><span class="jsdoc-syntax">;
