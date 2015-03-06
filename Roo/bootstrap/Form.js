@@ -213,6 +213,9 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     beforeAction : function(action){
         var o = action.options;
         
+        if(this.loadMask){
+            this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
+        }
         // not really supported yet.. ??
         
         //if(this.waitMsgTarget === true){
