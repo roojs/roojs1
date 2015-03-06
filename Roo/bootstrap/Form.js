@@ -96,13 +96,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
      */
     waitMsgTarget : false,
     
-     
-    
-    /**
-     * By default wait messages are displayed with Roo.MessageBox.wait. You can target a specific
-     * element by passing it or its id or mask the form itself by passing in true.
-     * @type Mixed
-     */
+    loadMask : true,
     
     getAutoCreate : function(){
         
