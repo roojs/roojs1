@@ -11,7 +11,8 @@
  * Bootstrap Form class
  * @cfg {String} method  GET | POST (default POST)
  * @cfg {String} labelAlign top | left (default top)
-  * @cfg {String} align left  | right - for navbars
+ * @cfg {String} align left  | right - for navbars
+ * @cfg {Boolean} loadMask load mask when submit (default true)
 
  * 
  * @constructor
