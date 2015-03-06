@@ -6117,7 +6117,8 @@ Roo.form.Action.ACTION_TYPES = {
  * Bootstrap Form class
  * @cfg {String} method  GET | POST (default POST)
  * @cfg {String} labelAlign top | left (default top)
-  * @cfg {String} align left  | right - for navbars
+ * @cfg {String} align left  | right - for navbars
+ * @cfg {Boolean} loadMask load mask when submit (default true)
 
  * 
  * @constructor
@@ -6201,13 +6202,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
      */
     waitMsgTarget : false,
     
-     
-    
-    /**
-     * By default wait messages are displayed with Roo.MessageBox.wait. You can target a specific
-     * element by passing it or its id or mask the form itself by passing in true.
-     * @type Mixed
-     */
+    loadMask : true,
     
     getAutoCreate : function(){
         
@@ -6319,10 +6314,13 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
     beforeAction : function(action){
         var o = action.options;
         
+        if(this.loadMask){
+            this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
+        }
         // not really supported yet.. ??
         
         //if(this.waitMsgTarget === true){
-            this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
+        //  this.el.mask(o.waitMsg || "Sending", 'x-mask-loading');
         //}else if(this.waitMsgTarget){
         //    this.waitMsgTarget = Roo.get(this.waitMsgTarget);
         //    this.waitMsgTarget.mask(o.waitMsg || "Sending", 'x-mask-loading');
