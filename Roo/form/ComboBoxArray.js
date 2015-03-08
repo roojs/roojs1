@@ -308,7 +308,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
             }, this) 
              
         }
-        if (typeof(v) == 'string' ) {
+        if (typeof(v) == 'object' ) {
             // then let's assume it's an array of objects..
             Roo.each(v, function(l) {
                 this.addItem(l);
