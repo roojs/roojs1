@@ -27,7 +27,6 @@
    "items" : [
     {
      "Boolean autohide" : true,
-     "String cls" : "navbar-default",
      "xtype" : "NavHeaderbar",
      "Boolean inverse" : true,
      "$ xns" : "Roo.bootstrap",
