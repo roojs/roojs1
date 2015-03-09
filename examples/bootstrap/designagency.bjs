@@ -6,6 +6,7 @@
  "permname" : "",
  "modOrder" : "001",
  "strings" : {
+  "0f9263536b9fc61ada745644735bfd8f" : "Work",
   "992a0f0542384f1ee5ef51b7cf4ae6c4" : "Services"
  },
  "items" : [
@@ -23,6 +24,7 @@
      "items" : [
       {
        "xtype" : "NavGroup",
+       "String align" : "right",
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
@@ -30,6 +32,12 @@
          "xtype" : "NavItem",
          "$ xns" : "Roo.bootstrap",
          "String html" : "Services"
+        },
+        {
+         "String href" : "#",
+         "xtype" : "NavItem",
+         "$ xns" : "Roo.bootstrap",
+         "String html" : "Work"
         }
        ]
       }
