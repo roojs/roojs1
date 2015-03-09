@@ -16,6 +16,8 @@
  * @cfg {Boolean} hidden (true|false) hide the element
  * @cfg {String} alert (success|info|warning|danger) type alert (changes background / border...)
  * @cfg {String} fa (ban|check|...) font awesome icon
+ * @cfg {Number} fasize (1|2|....) font awsome size
+
  * @cfg {String} icon (info-sign|check|...) glyphicon name
 
  * @cfg {String} html content of column.
@@ -41,6 +43,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     fa: false,
     icon : false,
     hidden : false,
+    fasize : 1,
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
@@ -78,7 +81,13 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
             cfg.html = this.html;
         }
         if (this.fa) {
-            cfg.html = '<i class="fa fa-'+this.fa + '"></i>' + (cfg.html || '');
+            var fasize = '';
+            if (this.fasize > 1) {
+                fasize = ' fa-' + this.fasize + 'x';
+            }
+            cfg.html = '<i class="fa fa-'+this.fa + fasize + '"></i>' + (cfg.html || '');
+            
+            
         }
         if (this.icon) {
             cfg.html = '<i class="glyphicon glyphicon-'+this.icon + '"></i>' + + (cfg.html || '')
