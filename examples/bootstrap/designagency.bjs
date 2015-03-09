@@ -74,6 +74,7 @@
     },
     {
      "String tag" : "section",
+     "String cls" : " services",
      "xtype" : "Container",
      "$ xns" : "Roo.bootstrap",
      "items" : [
