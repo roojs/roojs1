@@ -206,31 +206,37 @@
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
-         "String cls" : " ",
-         "xtype" : "Row",
+         "xtype" : "Container",
          "$ xns" : "Roo.bootstrap",
          "items" : [
           {
-           "Number md" : 4,
            "String cls" : " ",
-           "xtype" : "Column",
+           "xtype" : "Row",
            "$ xns" : "Roo.bootstrap",
-           "String html" : "<b>100</b><p>Projects</p>",
-           "Number sm" : 4
-          },
-          {
-           "Number md" : 4,
-           "xtype" : "Column",
-           "$ xns" : "Roo.bootstrap",
-           "String html" : "<strong>100</strong><p>Projects</p>",
-           "Number sm" : 4
-          },
-          {
-           "Number md" : 4,
-           "xtype" : "Column",
-           "$ xns" : "Roo.bootstrap",
-           "String html" : "<strong>100</strong><p>Projects</p>",
-           "Number sm" : 4
+           "items" : [
+            {
+             "Number md" : 4,
+             "String cls" : " ",
+             "xtype" : "Column",
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "<b>100</b><p>Projects</p>",
+             "Number sm" : 4
+            },
+            {
+             "Number md" : 4,
+             "xtype" : "Column",
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "<strong>100</strong><p>Projects</p>",
+             "Number sm" : 4
+            },
+            {
+             "Number md" : 4,
+             "xtype" : "Column",
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "<strong>100</strong><p>Projects</p>",
+             "Number sm" : 4
+            }
+           ]
           }
          ]
         }

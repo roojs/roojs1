@@ -256,34 +256,42 @@ designagency = new Roo.XComponent({
        items : [
         {
          '|xns' : 'Roo.bootstrap',
-         cls : ' ',
          xns : Roo.bootstrap,
-         xtype : 'Row',
+         xtype : 'Container',
          items : [
           {
            '|xns' : 'Roo.bootstrap',
            cls : ' ',
-           html : _this._strings['c6bd7c609e99aacdff25214ffd3e8fe7'],
-           md : 4,
-           sm : 4,
            xns : Roo.bootstrap,
-           xtype : 'Column'
-          },
-          {
-           '|xns' : 'Roo.bootstrap',
-           html : _this._strings['519d8078a6279f149f310c70cbdc296a'],
-           md : 4,
-           sm : 4,
-           xns : Roo.bootstrap,
-           xtype : 'Column'
-          },
-          {
-           '|xns' : 'Roo.bootstrap',
-           html : _this._strings['519d8078a6279f149f310c70cbdc296a'],
-           md : 4,
-           sm : 4,
-           xns : Roo.bootstrap,
-           xtype : 'Column'
+           xtype : 'Row',
+           items : [
+            {
+             '|xns' : 'Roo.bootstrap',
+             cls : ' ',
+             html : _this._strings['c6bd7c609e99aacdff25214ffd3e8fe7'],
+             md : 4,
+             sm : 4,
+             xns : Roo.bootstrap,
+             xtype : 'Column'
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             html : _this._strings['519d8078a6279f149f310c70cbdc296a'],
+             md : 4,
+             sm : 4,
+             xns : Roo.bootstrap,
+             xtype : 'Column'
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             html : _this._strings['519d8078a6279f149f310c70cbdc296a'],
+             md : 4,
+             sm : 4,
+             xns : Roo.bootstrap,
+             xtype : 'Column'
+            }
+           ]
+
           }
          ]
 
