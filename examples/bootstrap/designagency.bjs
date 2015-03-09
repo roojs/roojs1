@@ -206,7 +206,7 @@
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
-         "String cls" : "text-center ",
+         "String cls" : " ",
          "xtype" : "Row",
          "$ xns" : "Roo.bootstrap",
          "items" : [
