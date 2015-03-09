@@ -8,16 +8,25 @@ designagency = new Roo.XComponent({
   '209cb9d0164fe6038115b87e0656cfee' :"OUR WORK",
   '0f9263536b9fc61ada745644735bfd8f' :"Work",
   'cc6d906151ac9361a25911478347b961' :"OUR SERVICES",
+  'fa7d0f3e094ac32ae6947791153a4ff7' :"Eius consequatur nihil quibusdam! Laborum, rerum, quis, inventore ipsa autem repellat provident assumenda labore soluta minima alias temporibus facere distinctio quas adipisci nam sunt explicabo officia tenetur at ea quos doloribus dolorum voluptate reprehenderit architecto sint libero illo et hic.",
   '519d8078a6279f149f310c70cbdc296a' :"<strong>100</strong><p>Projects</p>",
   'd57f08db66c4cafaa9d6d747927bda1d' :"Project Title",
+  '3cf1ef47ec04254f4a98d9fde7f70581' :"Text widget",
   'bbaff12800505b22a853e8b7f4eb6a22' :"Contact",
   '992a0f0542384f1ee5ef51b7cf4ae6c4' :"Services",
   'c6bd7c609e99aacdff25214ffd3e8fe7' :"<b>100</b><p>Projects</p>",
+  'd54164e86d9e4d31e5c683861d3832a2' :"<i class=\"fa fa-dribbble fa-2\"></i>",
   'ae9f975dc3c437397b6882f4e3136e0e' :"<h1>DESIGN AGENCY </h1>\n                    <h2>You Think, We Deliver </h2>\n                    <p class=\"p-cls\">\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                    </p>",
   '6b4dbea0b39fb5927c10ee09ae0df2dc' :" for more about it",
+  '9b66469f3780f4f8f07f19706e45cc7d' :"+234 23 9873237\n<br>\n<a href=\"mailto:#\">some.email@somewhere.com</a>\n<br>\n<br>\n234 Hidden Pond Road, Ashland City, TN 37015\n\t\t\t\t\t\t\t",
+  '4e01ca94bcef3d1d6e1caff7fa42a099' :"Follow me",
+  '0b6d966a2b73f4617ae20d9d0f286926' :"<i class=\"fa fa-twitter fa-2\"></i>",
+  '8e9efcdf6f236ccbbd6ba45378fc5938' :"<i class=\"fa fa-facebook fa-2\"></i>",
   'd9519092bd06a9916f80cdb0a1fd2859' :"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.",
   '7215ee9c7d9dc229d2921a40e899ec5f' :" ",
-  '714341d9339756588d1dc724991c2b9a' :"Click Here"
+  '714341d9339756588d1dc724991c2b9a' :"Click Here",
+  '89f57a5ba6334d012ddb709b186b3a98' :"<i class=\"fa fa-github fa-2\"></i>",
+  '2a2f84bd9854960f2c63eeb3af60fb70' :"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?"
  },
 
   part     :  ["bootstrap", "designagency" ],
@@ -510,6 +519,177 @@ designagency = new Roo.XComponent({
                  '|xns' : 'Roo.bootstrap',
                  html : _this._strings['6b4dbea0b39fb5927c10ee09ae0df2dc'],
                  tag : 'span',
+                 xns : Roo.bootstrap,
+                 xtype : 'Element'
+                }
+               ]
+
+              }
+             ]
+
+            }
+           ]
+
+          }
+         ]
+
+        }
+       ]
+
+      }
+     ]
+
+    },
+    {
+     '|xns' : 'Roo.bootstrap',
+     cls : 'top-space',
+     xns : Roo.bootstrap,
+     xtype : 'Container',
+     items : [
+      {
+       '|xns' : 'Roo.bootstrap',
+       cls : 'footer1',
+       xns : Roo.bootstrap,
+       xtype : 'Container',
+       items : [
+        {
+         '|xns' : 'Roo.bootstrap',
+         xns : Roo.bootstrap,
+         xtype : 'Container',
+         items : [
+          {
+           '|xns' : 'Roo.bootstrap',
+           xns : Roo.bootstrap,
+           xtype : 'Row',
+           items : [
+            {
+             '|xns' : 'Roo.bootstrap',
+             cls : 'col-md-3 widget',
+             xns : Roo.bootstrap,
+             xtype : 'Element',
+             items : [
+              {
+               '|xns' : 'Roo.bootstrap',
+               cls : 'widget-title',
+               html : _this._strings['bbaff12800505b22a853e8b7f4eb6a22'],
+               level : 3,
+               xns : Roo.bootstrap,
+               xtype : 'Header'
+              },
+              {
+               '|xns' : 'Roo.bootstrap',
+               cls : 'widget-body',
+               xns : Roo.bootstrap,
+               xtype : 'Element',
+               items : [
+                {
+                 '|xns' : 'Roo.bootstrap',
+                 html : _this._strings['9b66469f3780f4f8f07f19706e45cc7d'],
+                 tag : 'p',
+                 xns : Roo.bootstrap,
+                 xtype : 'Element'
+                }
+               ]
+
+              }
+             ]
+
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             cls : 'col-md-3 widget',
+             xns : Roo.bootstrap,
+             xtype : 'Element',
+             items : [
+              {
+               '|xns' : 'Roo.bootstrap',
+               cls : 'widget-title',
+               html : _this._strings['4e01ca94bcef3d1d6e1caff7fa42a099'],
+               level : 3,
+               xns : Roo.bootstrap,
+               xtype : 'Header'
+              },
+              {
+               '|xns' : 'Roo.bootstrap',
+               cls : 'widget-body',
+               xns : Roo.bootstrap,
+               xtype : 'Element',
+               items : [
+                {
+                 '|xns' : 'Roo.bootstrap',
+                 cls : 'follow-me-icons',
+                 tag : 'p',
+                 xns : Roo.bootstrap,
+                 xtype : 'Element',
+                 items : [
+                  {
+                   '|xns' : 'Roo.bootstrap',
+                   html : _this._strings['0b6d966a2b73f4617ae20d9d0f286926'],
+                   tag : 'a',
+                   xns : Roo.bootstrap,
+                   xtype : 'Element'
+                  },
+                  {
+                   '|xns' : 'Roo.bootstrap',
+                   html : _this._strings['d54164e86d9e4d31e5c683861d3832a2'],
+                   tag : 'a',
+                   xns : Roo.bootstrap,
+                   xtype : 'Element'
+                  },
+                  {
+                   '|xns' : 'Roo.bootstrap',
+                   html : _this._strings['89f57a5ba6334d012ddb709b186b3a98'],
+                   tag : 'a',
+                   xns : Roo.bootstrap,
+                   xtype : 'Element'
+                  },
+                  {
+                   '|xns' : 'Roo.bootstrap',
+                   html : _this._strings['8e9efcdf6f236ccbbd6ba45378fc5938'],
+                   tag : 'a',
+                   xns : Roo.bootstrap,
+                   xtype : 'Element'
+                  }
+                 ]
+
+                }
+               ]
+
+              }
+             ]
+
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             cls : 'col-md-6 widget',
+             xns : Roo.bootstrap,
+             xtype : 'Element',
+             items : [
+              {
+               '|xns' : 'Roo.bootstrap',
+               cls : 'widget-title',
+               html : _this._strings['3cf1ef47ec04254f4a98d9fde7f70581'],
+               level : 3,
+               xns : Roo.bootstrap,
+               xtype : 'Header'
+              },
+              {
+               '|xns' : 'Roo.bootstrap',
+               cls : 'widget-body',
+               xns : Roo.bootstrap,
+               xtype : 'Element',
+               items : [
+                {
+                 '|xns' : 'Roo.bootstrap',
+                 html : _this._strings['2a2f84bd9854960f2c63eeb3af60fb70'],
+                 tag : 'p',
+                 xns : Roo.bootstrap,
+                 xtype : 'Element'
+                },
+                {
+                 '|xns' : 'Roo.bootstrap',
+                 html : _this._strings['fa7d0f3e094ac32ae6947791153a4ff7'],
+                 tag : 'p',
                  xns : Roo.bootstrap,
                  xtype : 'Element'
                 }
