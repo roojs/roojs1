@@ -29,7 +29,6 @@
      "Boolean autohide" : true,
      "String position" : "fixed-top",
      "xtype" : "NavHeaderbar",
-     "Boolean inverse" : true,
      "$ xns" : "Roo.bootstrap",
      "String brand" : "Brand here",
      "Boolean main" : true,
