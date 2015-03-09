@@ -13,7 +13,6 @@ designagency = new Roo.XComponent({
   'bbaff12800505b22a853e8b7f4eb6a22' :"Contact",
   '992a0f0542384f1ee5ef51b7cf4ae6c4' :"Services",
   'c6bd7c609e99aacdff25214ffd3e8fe7' :"<b>100</b><p>Projects</p>",
-  'e8722250d11c9b245deddb2d44d41912' :"Click for details",
   'ae9f975dc3c437397b6882f4e3136e0e' :"<h1>DESIGN AGENCY </h1>\n                    <h2>You Think, We Deliver </h2>\n                    <p class=\"p-cls\">\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                    </p>",
   '6b4dbea0b39fb5927c10ee09ae0df2dc' :" for more about it",
   'd9519092bd06a9916f80cdb0a1fd2859' :"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.",
@@ -395,6 +394,7 @@ designagency = new Roo.XComponent({
           },
           {
            '|xns' : 'Roo.bootstrap',
+           alert : 'info',
            md : 4,
            sm : 4,
            xns : Roo.bootstrap,
@@ -423,7 +423,55 @@ designagency = new Roo.XComponent({
              items : [
               {
                '|xns' : 'Roo.bootstrap',
-               html : _this._strings['e8722250d11c9b245deddb2d44d41912'],
+               html : _this._strings['714341d9339756588d1dc724991c2b9a'],
+               xns : Roo.bootstrap,
+               xtype : 'Link'
+              },
+              {
+               '|xns' : 'Roo.bootstrap',
+               html : _this._strings['6b4dbea0b39fb5927c10ee09ae0df2dc'],
+               tag : 'span',
+               xns : Roo.bootstrap,
+               xtype : 'Element'
+              }
+             ]
+
+            }
+           ]
+
+          },
+          {
+           '|xns' : 'Roo.bootstrap',
+           alert : 'info',
+           md : 4,
+           sm : 4,
+           xns : Roo.bootstrap,
+           xtype : 'Column',
+           items : [
+            {
+             '|xns' : 'Roo.bootstrap',
+             cls : 'img-responsive',
+             src : 'http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg',
+             xns : Roo.bootstrap,
+             xtype : 'Img'
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             html : _this._strings['d57f08db66c4cafaa9d6d747927bda1d'],
+             level : 3,
+             xns : Roo.bootstrap,
+             xtype : 'Header'
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             html : _this._strings['7215ee9c7d9dc229d2921a40e899ec5f'],
+             level : 5,
+             xns : Roo.bootstrap,
+             xtype : 'Header',
+             items : [
+              {
+               '|xns' : 'Roo.bootstrap',
+               html : _this._strings['714341d9339756588d1dc724991c2b9a'],
                xns : Roo.bootstrap,
                xtype : 'Link'
               },

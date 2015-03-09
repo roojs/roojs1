@@ -14,7 +14,6 @@
   "bbaff12800505b22a853e8b7f4eb6a22" : "Contact",
   "992a0f0542384f1ee5ef51b7cf4ae6c4" : "Services",
   "c6bd7c609e99aacdff25214ffd3e8fe7" : "<b>100</b><p>Projects</p>",
-  "e8722250d11c9b245deddb2d44d41912" : "Click for details",
   "ae9f975dc3c437397b6882f4e3136e0e" : "<h1>DESIGN AGENCY </h1>\n                    <h2>You Think, We Deliver </h2>\n                    <p class=\"p-cls\">\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                    </p>",
   "6b4dbea0b39fb5927c10ee09ae0df2dc" : " for more about it",
   "d9519092bd06a9916f80cdb0a1fd2859" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.",
@@ -322,6 +321,7 @@
           },
           {
            "Number md" : 4,
+           "String alert" : "info",
            "xtype" : "Column",
            "$ xns" : "Roo.bootstrap",
            "Number sm" : 4,
@@ -334,20 +334,60 @@
             },
             {
              "xtype" : "Header",
-             "Number level" : 3,
              "$ xns" : "Roo.bootstrap",
+             "Number level" : 3,
              "String html" : "Project Title"
             },
             {
              "xtype" : "Header",
-             "Number level" : 5,
              "$ xns" : "Roo.bootstrap",
+             "Number level" : 5,
              "String html" : " ",
              "items" : [
               {
                "xtype" : "Link",
                "$ xns" : "Roo.bootstrap",
-               "String html" : "Click for details"
+               "String html" : "Click Here"
+              },
+              {
+               "String tag" : "span",
+               "xtype" : "Element",
+               "$ xns" : "Roo.bootstrap",
+               "String html" : " for more about it"
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "Number md" : 4,
+           "String alert" : "info",
+           "xtype" : "Column",
+           "$ xns" : "Roo.bootstrap",
+           "Number sm" : 4,
+           "items" : [
+            {
+             "String cls" : "img-responsive",
+             "xtype" : "Img",
+             "String src" : "http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg",
+             "$ xns" : "Roo.bootstrap"
+            },
+            {
+             "xtype" : "Header",
+             "$ xns" : "Roo.bootstrap",
+             "Number level" : 3,
+             "String html" : "Project Title"
+            },
+            {
+             "xtype" : "Header",
+             "$ xns" : "Roo.bootstrap",
+             "Number level" : 5,
+             "String html" : " ",
+             "items" : [
+              {
+               "xtype" : "Link",
+               "$ xns" : "Roo.bootstrap",
+               "String html" : "Click Here"
               },
               {
                "String tag" : "span",
