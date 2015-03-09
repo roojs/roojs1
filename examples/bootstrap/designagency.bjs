@@ -11,7 +11,7 @@
    "$ xns" : "Roo.bootstrap",
    "items" : [
     {
-     "Boolean autohide" : true,
+     "Boolean autohide" : false,
      "xtype" : "NavHeaderbar",
      "$ xns" : "Roo.bootstrap",
      "String brand" : "Brand here"
