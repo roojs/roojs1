@@ -288,7 +288,6 @@
          "items" : [
           {
            "Number md" : 4,
-           "String alert" : "info",
            "xtype" : "Column",
            "$ xns" : "Roo.bootstrap",
            "Number sm" : 4,
@@ -296,116 +295,114 @@
             {
              "String alert" : "info",
              "xtype" : "Container",
-             "$ xns" : "Roo.bootstrap"
-            },
-            {
-             "String cls" : "img-responsive",
-             "xtype" : "Img",
-             "String src" : "http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg",
-             "$ xns" : "Roo.bootstrap"
-            },
-            {
-             "xtype" : "Header",
-             "Number level" : 3,
              "$ xns" : "Roo.bootstrap",
-             "String html" : "Project Title"
-            },
-            {
-             "xtype" : "Header",
-             "Number level" : 5,
-             "$ xns" : "Roo.bootstrap",
-             "String html" : " ",
              "items" : [
               {
-               "xtype" : "Link",
-               "$ xns" : "Roo.bootstrap",
-               "String html" : "Click Here"
+               "String cls" : "img-responsive",
+               "xtype" : "Img",
+               "String src" : "http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg",
+               "$ xns" : "Roo.bootstrap"
               },
               {
-               "String tag" : "span",
-               "xtype" : "Element",
+               "xtype" : "Header",
+               "Number level" : 3,
                "$ xns" : "Roo.bootstrap",
-               "String html" : " for more about it"
+               "String html" : "Project Title"
+              },
+              {
+               "xtype" : "Header",
+               "Number level" : 5,
+               "$ xns" : "Roo.bootstrap",
+               "String html" : " ",
+               "items" : [
+                {
+                 "xtype" : "Link",
+                 "$ xns" : "Roo.bootstrap",
+                 "String html" : "Click Here"
+                },
+                {
+                 "String tag" : "span",
+                 "xtype" : "Element",
+                 "$ xns" : "Roo.bootstrap",
+                 "String html" : " for more about it"
+                }
+               ]
               }
              ]
-            }
-           ]
-          },
-          {
-           "Number md" : 4,
-           "String alert" : "info",
-           "xtype" : "Column",
-           "$ xns" : "Roo.bootstrap",
-           "Number sm" : 4,
-           "items" : [
-            {
-             "String cls" : "img-responsive",
-             "xtype" : "Img",
-             "String src" : "http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg",
-             "$ xns" : "Roo.bootstrap"
             },
             {
-             "xtype" : "Header",
+             "String alert" : "info",
+             "xtype" : "Container",
              "$ xns" : "Roo.bootstrap",
-             "Number level" : 3,
-             "String html" : "Project Title"
-            },
-            {
-             "xtype" : "Header",
-             "$ xns" : "Roo.bootstrap",
-             "Number level" : 5,
-             "String html" : " ",
              "items" : [
               {
-               "xtype" : "Link",
-               "$ xns" : "Roo.bootstrap",
-               "String html" : "Click Here"
+               "String cls" : "img-responsive",
+               "xtype" : "Img",
+               "String src" : "http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg",
+               "$ xns" : "Roo.bootstrap"
               },
               {
-               "String tag" : "span",
-               "xtype" : "Element",
+               "xtype" : "Header",
                "$ xns" : "Roo.bootstrap",
-               "String html" : " for more about it"
+               "Number level" : 3,
+               "String html" : "Project Title"
+              },
+              {
+               "xtype" : "Header",
+               "$ xns" : "Roo.bootstrap",
+               "Number level" : 5,
+               "String html" : " ",
+               "items" : [
+                {
+                 "xtype" : "Link",
+                 "$ xns" : "Roo.bootstrap",
+                 "String html" : "Click Here"
+                },
+                {
+                 "String tag" : "span",
+                 "xtype" : "Element",
+                 "$ xns" : "Roo.bootstrap",
+                 "String html" : " for more about it"
+                }
+               ]
               }
              ]
-            }
-           ]
-          },
-          {
-           "Number md" : 4,
-           "String alert" : "info",
-           "xtype" : "Column",
-           "$ xns" : "Roo.bootstrap",
-           "Number sm" : 4,
-           "items" : [
-            {
-             "String cls" : "img-responsive",
-             "xtype" : "Img",
-             "String src" : "http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg",
-             "$ xns" : "Roo.bootstrap"
             },
             {
-             "xtype" : "Header",
+             "String alert" : "info",
+             "xtype" : "Container",
              "$ xns" : "Roo.bootstrap",
-             "Number level" : 3,
-             "String html" : "Project Title"
-            },
-            {
-             "xtype" : "Header",
-             "$ xns" : "Roo.bootstrap",
-             "Number level" : 5,
-             "String html" : " ",
              "items" : [
               {
-               "xtype" : "Link",
-               "$ xns" : "Roo.bootstrap",
-               "String html" : "Click Here"
+               "String cls" : "img-responsive",
+               "xtype" : "Img",
+               "String src" : "http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg",
+               "$ xns" : "Roo.bootstrap"
               },
               {
-               "String tag" : "span",
-               "xtype" : "Element",
+               "xtype" : "Header",
+               "Number level" : 3,
                "$ xns" : "Roo.bootstrap",
-               "String html" : " for more about it"
+               "String html" : "Project Title"
+              },
+              {
+               "xtype" : "Header",
+               "Number level" : 5,
+               "$ xns" : "Roo.bootstrap",
+               "String html" : " ",
+               "items" : [
+                {
+                 "xtype" : "Link",
+                 "$ xns" : "Roo.bootstrap",
+                 "String html" : "Click Here"
+                },
+                {
+                 "String tag" : "span",
+                 "xtype" : "Element",
+                 "$ xns" : "Roo.bootstrap",
+                 "String html" : " for more about it"
+                }
+               ]
               }
              ]
             }

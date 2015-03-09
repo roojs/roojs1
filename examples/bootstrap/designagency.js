@@ -355,7 +355,6 @@ designagency = new Roo.XComponent({
          items : [
           {
            '|xns' : 'Roo.bootstrap',
-           alert : 'info',
            md : 4,
            sm : 4,
            xns : Roo.bootstrap,
@@ -365,137 +364,136 @@ designagency = new Roo.XComponent({
              '|xns' : 'Roo.bootstrap',
              alert : 'info',
              xns : Roo.bootstrap,
-             xtype : 'Container'
-            },
-            {
-             '|xns' : 'Roo.bootstrap',
-             cls : 'img-responsive',
-             src : 'http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg',
-             xns : Roo.bootstrap,
-             xtype : 'Img'
-            },
-            {
-             '|xns' : 'Roo.bootstrap',
-             html : _this._strings['d57f08db66c4cafaa9d6d747927bda1d'],
-             level : 3,
-             xns : Roo.bootstrap,
-             xtype : 'Header'
-            },
-            {
-             '|xns' : 'Roo.bootstrap',
-             html : _this._strings['7215ee9c7d9dc229d2921a40e899ec5f'],
-             level : 5,
-             xns : Roo.bootstrap,
-             xtype : 'Header',
+             xtype : 'Container',
              items : [
               {
                '|xns' : 'Roo.bootstrap',
-               html : _this._strings['714341d9339756588d1dc724991c2b9a'],
+               cls : 'img-responsive',
+               src : 'http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg',
                xns : Roo.bootstrap,
-               xtype : 'Link'
+               xtype : 'Img'
               },
               {
                '|xns' : 'Roo.bootstrap',
-               html : _this._strings['6b4dbea0b39fb5927c10ee09ae0df2dc'],
-               tag : 'span',
+               html : _this._strings['d57f08db66c4cafaa9d6d747927bda1d'],
+               level : 3,
                xns : Roo.bootstrap,
-               xtype : 'Element'
+               xtype : 'Header'
+              },
+              {
+               '|xns' : 'Roo.bootstrap',
+               html : _this._strings['7215ee9c7d9dc229d2921a40e899ec5f'],
+               level : 5,
+               xns : Roo.bootstrap,
+               xtype : 'Header',
+               items : [
+                {
+                 '|xns' : 'Roo.bootstrap',
+                 html : _this._strings['714341d9339756588d1dc724991c2b9a'],
+                 xns : Roo.bootstrap,
+                 xtype : 'Link'
+                },
+                {
+                 '|xns' : 'Roo.bootstrap',
+                 html : _this._strings['6b4dbea0b39fb5927c10ee09ae0df2dc'],
+                 tag : 'span',
+                 xns : Roo.bootstrap,
+                 xtype : 'Element'
+                }
+               ]
+
               }
              ]
 
-            }
-           ]
-
-          },
-          {
-           '|xns' : 'Roo.bootstrap',
-           alert : 'info',
-           md : 4,
-           sm : 4,
-           xns : Roo.bootstrap,
-           xtype : 'Column',
-           items : [
-            {
-             '|xns' : 'Roo.bootstrap',
-             cls : 'img-responsive',
-             src : 'http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg',
-             xns : Roo.bootstrap,
-             xtype : 'Img'
             },
             {
              '|xns' : 'Roo.bootstrap',
-             html : _this._strings['d57f08db66c4cafaa9d6d747927bda1d'],
-             level : 3,
+             alert : 'info',
              xns : Roo.bootstrap,
-             xtype : 'Header'
-            },
-            {
-             '|xns' : 'Roo.bootstrap',
-             html : _this._strings['7215ee9c7d9dc229d2921a40e899ec5f'],
-             level : 5,
-             xns : Roo.bootstrap,
-             xtype : 'Header',
+             xtype : 'Container',
              items : [
               {
                '|xns' : 'Roo.bootstrap',
-               html : _this._strings['714341d9339756588d1dc724991c2b9a'],
+               cls : 'img-responsive',
+               src : 'http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg',
                xns : Roo.bootstrap,
-               xtype : 'Link'
+               xtype : 'Img'
               },
               {
                '|xns' : 'Roo.bootstrap',
-               html : _this._strings['6b4dbea0b39fb5927c10ee09ae0df2dc'],
-               tag : 'span',
+               html : _this._strings['d57f08db66c4cafaa9d6d747927bda1d'],
+               level : 3,
                xns : Roo.bootstrap,
-               xtype : 'Element'
+               xtype : 'Header'
+              },
+              {
+               '|xns' : 'Roo.bootstrap',
+               html : _this._strings['7215ee9c7d9dc229d2921a40e899ec5f'],
+               level : 5,
+               xns : Roo.bootstrap,
+               xtype : 'Header',
+               items : [
+                {
+                 '|xns' : 'Roo.bootstrap',
+                 html : _this._strings['714341d9339756588d1dc724991c2b9a'],
+                 xns : Roo.bootstrap,
+                 xtype : 'Link'
+                },
+                {
+                 '|xns' : 'Roo.bootstrap',
+                 html : _this._strings['6b4dbea0b39fb5927c10ee09ae0df2dc'],
+                 tag : 'span',
+                 xns : Roo.bootstrap,
+                 xtype : 'Element'
+                }
+               ]
+
               }
              ]
 
-            }
-           ]
-
-          },
-          {
-           '|xns' : 'Roo.bootstrap',
-           alert : 'info',
-           md : 4,
-           sm : 4,
-           xns : Roo.bootstrap,
-           xtype : 'Column',
-           items : [
-            {
-             '|xns' : 'Roo.bootstrap',
-             cls : 'img-responsive',
-             src : 'http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg',
-             xns : Roo.bootstrap,
-             xtype : 'Img'
             },
             {
              '|xns' : 'Roo.bootstrap',
-             html : _this._strings['d57f08db66c4cafaa9d6d747927bda1d'],
-             level : 3,
+             alert : 'info',
              xns : Roo.bootstrap,
-             xtype : 'Header'
-            },
-            {
-             '|xns' : 'Roo.bootstrap',
-             html : _this._strings['7215ee9c7d9dc229d2921a40e899ec5f'],
-             level : 5,
-             xns : Roo.bootstrap,
-             xtype : 'Header',
+             xtype : 'Container',
              items : [
               {
                '|xns' : 'Roo.bootstrap',
-               html : _this._strings['714341d9339756588d1dc724991c2b9a'],
+               cls : 'img-responsive',
+               src : 'http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg',
                xns : Roo.bootstrap,
-               xtype : 'Link'
+               xtype : 'Img'
               },
               {
                '|xns' : 'Roo.bootstrap',
-               html : _this._strings['6b4dbea0b39fb5927c10ee09ae0df2dc'],
-               tag : 'span',
+               html : _this._strings['d57f08db66c4cafaa9d6d747927bda1d'],
+               level : 3,
                xns : Roo.bootstrap,
-               xtype : 'Element'
+               xtype : 'Header'
+              },
+              {
+               '|xns' : 'Roo.bootstrap',
+               html : _this._strings['7215ee9c7d9dc229d2921a40e899ec5f'],
+               level : 5,
+               xns : Roo.bootstrap,
+               xtype : 'Header',
+               items : [
+                {
+                 '|xns' : 'Roo.bootstrap',
+                 html : _this._strings['714341d9339756588d1dc724991c2b9a'],
+                 xns : Roo.bootstrap,
+                 xtype : 'Link'
+                },
+                {
+                 '|xns' : 'Roo.bootstrap',
+                 html : _this._strings['6b4dbea0b39fb5927c10ee09ae0df2dc'],
+                 tag : 'span',
+                 xns : Roo.bootstrap,
+                 xtype : 'Element'
+                }
+               ]
+
               }
              ]
 
