@@ -215,6 +215,48 @@
        ]
       }
      ]
+    },
+    {
+     "String tag" : "section",
+     "String cls" : "parallax-like",
+     "xtype" : "Container",
+     "$ xns" : "Roo.bootstrap",
+     "items" : [
+      {
+       "xtype" : "Container",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "String cls" : "text-center pad-bottom",
+         "xtype" : "Row",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "Number md" : 4,
+           "xtype" : "Column",
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "<strong>100</strong><p>Projects</p>",
+           "Number sm" : 4
+          },
+          {
+           "Number md" : 4,
+           "xtype" : "Column",
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "<strong>100</strong><p>Projects</p>",
+           "Number sm" : 4
+          },
+          {
+           "Number md" : 4,
+           "xtype" : "Column",
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "<strong>100</strong><p>Projects</p>",
+           "Number sm" : 4
+          }
+         ]
+        }
+       ]
+      }
+     ]
     }
    ]
   }

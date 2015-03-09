@@ -269,6 +269,57 @@ designagency = new Roo.XComponent({
       }
      ]
 
+    },
+    {
+     '|xns' : 'Roo.bootstrap',
+     cls : 'parallax-like',
+     tag : 'section',
+     xns : Roo.bootstrap,
+     xtype : 'Container',
+     items : [
+      {
+       '|xns' : 'Roo.bootstrap',
+       xns : Roo.bootstrap,
+       xtype : 'Container',
+       items : [
+        {
+         '|xns' : 'Roo.bootstrap',
+         cls : 'text-center pad-bottom',
+         xns : Roo.bootstrap,
+         xtype : 'Row',
+         items : [
+          {
+           '|xns' : 'Roo.bootstrap',
+           html : _this._strings['519d8078a6279f149f310c70cbdc296a'],
+           md : 4,
+           sm : 4,
+           xns : Roo.bootstrap,
+           xtype : 'Column'
+          },
+          {
+           '|xns' : 'Roo.bootstrap',
+           html : _this._strings['519d8078a6279f149f310c70cbdc296a'],
+           md : 4,
+           sm : 4,
+           xns : Roo.bootstrap,
+           xtype : 'Column'
+          },
+          {
+           '|xns' : 'Roo.bootstrap',
+           html : _this._strings['519d8078a6279f149f310c70cbdc296a'],
+           md : 4,
+           sm : 4,
+           xns : Roo.bootstrap,
+           xtype : 'Column'
+          }
+         ]
+
+        }
+       ]
+
+      }
+     ]
+
     }
    ]
 
