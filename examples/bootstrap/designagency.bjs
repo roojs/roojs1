@@ -83,6 +83,7 @@
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
+         "String cls" : "text-center pad-bottom",
          "xtype" : "Row",
          "$ xns" : "Roo.bootstrap",
          "items" : [

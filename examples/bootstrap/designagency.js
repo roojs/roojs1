@@ -109,6 +109,7 @@ designagency = new Roo.XComponent({
        items : [
         {
          '|xns' : 'Roo.bootstrap',
+         cls : 'text-center pad-bottom',
          xns : Roo.bootstrap,
          xtype : 'Row',
          items : [
