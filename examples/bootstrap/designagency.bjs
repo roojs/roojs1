@@ -14,6 +14,7 @@
      "Boolean autohide" : false,
      "String cls" : "navbar-default",
      "xtype" : "NavHeaderbar",
+     "Boolean inverse" : true,
      "$ xns" : "Roo.bootstrap",
      "String brand" : "Brand here"
     }
