@@ -31,6 +31,7 @@
      "Boolean inverse" : true,
      "$ xns" : "Roo.bootstrap",
      "String brand" : "Brand here",
+     "Boolean main" : true,
      "items" : [
       {
        "xtype" : "NavGroup",
