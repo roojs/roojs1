@@ -548,11 +548,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
         
         v = this.formatDate(d);
-        
+        Roo.log(v);
         Roo.bootstrap.DateField.superclass.setValue.call(this, v);
         
         this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
-
+        Roo.log(this.date);
         this.update();
 
         this.fireEvent('select', this, this.date);
