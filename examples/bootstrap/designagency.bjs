@@ -175,7 +175,7 @@
     },
     {
      "String tag" : "section",
-     "String cls" : " services",
+     "String cls" : "parallax-like",
      "xtype" : "Container",
      "$ xns" : "Roo.bootstrap",
      "items" : [
