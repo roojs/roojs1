@@ -7,7 +7,7 @@ designagency = new Roo.XComponent({
  _strings : {
   '0f9263536b9fc61ada745644735bfd8f' :"Work",
   'cc6d906151ac9361a25911478347b961' :"OUR SERVICES",
-  'ae482010a1fc4a9d94501c205523b7a4' :"<strong>100</strong>Projects",
+  '519d8078a6279f149f310c70cbdc296a' :"<strong>100</strong><p>Projects</p>",
   'bbaff12800505b22a853e8b7f4eb6a22' :"Contact",
   '992a0f0542384f1ee5ef51b7cf4ae6c4' :"Services",
   'ae9f975dc3c437397b6882f4e3136e0e' :"<h1>DESIGN AGENCY </h1>\n                    <h2>You Think, We Deliver </h2>\n                    <p class=\"p-cls\">\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                    </p>",
@@ -239,20 +239,12 @@ designagency = new Roo.XComponent({
          items : [
           {
            '|xns' : 'Roo.bootstrap',
-           html : _this._strings['ae482010a1fc4a9d94501c205523b7a4'],
+           html : _this._strings['519d8078a6279f149f310c70cbdc296a'],
            md : 4,
            sm : 4,
            xns : Roo.bootstrap,
            xtype : 'Column',
            items : [
-            {
-             '|xns' : 'Roo.bootstrap',
-             cls : 'head-set',
-             html : _this._strings['cc6d906151ac9361a25911478347b961'],
-             level : 2,
-             xns : Roo.bootstrap,
-             xtype : 'Header'
-            },
             {
              '|xns' : 'Roo.bootstrap',
              html : _this._strings['d9519092bd06a9916f80cdb0a1fd2859'],
