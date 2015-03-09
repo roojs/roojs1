@@ -331,13 +331,12 @@ designagency = new Roo.XComponent({
             {
              '|xns' : 'Roo.bootstrap',
              html : _this._strings['d57f08db66c4cafaa9d6d747927bda1d'],
-             level : 5,
+             level : 3,
              xns : Roo.bootstrap,
              xtype : 'Header'
             },
             {
              '|xns' : 'Roo.bootstrap',
-             html : _this._strings['d57f08db66c4cafaa9d6d747927bda1d'],
              level : 5,
              xns : Roo.bootstrap,
              xtype : 'Header'

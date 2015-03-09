@@ -267,15 +267,14 @@
             },
             {
              "xtype" : "Header",
-             "Number level" : 5,
+             "Number level" : 3,
              "$ xns" : "Roo.bootstrap",
              "String html" : "Project Title"
             },
             {
              "xtype" : "Header",
-             "$ xns" : "Roo.bootstrap",
              "Number level" : 5,
-             "String html" : "Project Title"
+             "$ xns" : "Roo.bootstrap"
             }
            ]
           }
