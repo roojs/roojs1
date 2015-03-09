@@ -218,7 +218,7 @@
     },
     {
      "String tag" : "section",
-     "String cls" : "parallax-like",
+     "String cls" : "works",
      "xtype" : "Container",
      "$ xns" : "Roo.bootstrap",
      "items" : [
