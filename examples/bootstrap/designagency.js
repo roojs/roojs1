@@ -350,6 +350,7 @@ designagency = new Roo.XComponent({
               },
               {
                '|xns' : 'Roo.bootstrap',
+               tag : 'span',
                xns : Roo.bootstrap,
                xtype : 'Container'
               }

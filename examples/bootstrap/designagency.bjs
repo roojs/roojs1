@@ -283,6 +283,7 @@
                "String html" : "Click for details"
               },
               {
+               "String tag" : "span",
                "xtype" : "Container",
                "$ xns" : "Roo.bootstrap"
               }
