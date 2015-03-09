@@ -114,7 +114,14 @@
              "String html" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere."
             }
            ]
-          },
+          }
+         ]
+        },
+        {
+         "String cls" : "text-center pad-bottom",
+         "xtype" : "Row",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
           {
            "Number md" : 4,
            "int fasize" : 5,
