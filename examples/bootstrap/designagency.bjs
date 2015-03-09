@@ -212,6 +212,7 @@
          "items" : [
           {
            "Number md" : 4,
+           "String cls" : "text-left",
            "xtype" : "Column",
            "$ xns" : "Roo.bootstrap",
            "String html" : "<b>100</b><p>Projects</p>",
