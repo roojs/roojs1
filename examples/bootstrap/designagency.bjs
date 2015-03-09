@@ -109,7 +109,6 @@
           },
           {
            "Number md" : 4,
-           "String cls" : "col-md-offset-3",
            "xtype" : "Column",
            "$ xns" : "Roo.bootstrap",
            "items" : [

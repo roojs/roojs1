@@ -139,7 +139,6 @@ designagency = new Roo.XComponent({
           },
           {
            '|xns' : 'Roo.bootstrap',
-           cls : 'col-md-offset-3',
            md : 4,
            xns : Roo.bootstrap,
            xtype : 'Column',
