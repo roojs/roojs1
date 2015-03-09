@@ -16,7 +16,6 @@ designagency = new Roo.XComponent({
   'e8722250d11c9b245deddb2d44d41912' :"Click for details",
   'ae9f975dc3c437397b6882f4e3136e0e' :"<h1>DESIGN AGENCY </h1>\n                    <h2>You Think, We Deliver </h2>\n                    <p class=\"p-cls\">\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                    </p>",
   '6b4dbea0b39fb5927c10ee09ae0df2dc' :" for more about it",
-  '362941b352bfa1c7456569357508476f' :"more about it",
   'd9519092bd06a9916f80cdb0a1fd2859' :"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere.",
   '7215ee9c7d9dc229d2921a40e899ec5f' :" ",
   '714341d9339756588d1dc724991c2b9a' :"Click Here"
@@ -383,10 +382,10 @@ designagency = new Roo.XComponent({
               },
               {
                '|xns' : 'Roo.bootstrap',
-               html : _this._strings['362941b352bfa1c7456569357508476f'],
+               html : _this._strings['6b4dbea0b39fb5927c10ee09ae0df2dc'],
                tag : 'span',
                xns : Roo.bootstrap,
-               xtype : 'Container'
+               xtype : 'Element'
               }
              ]
 
