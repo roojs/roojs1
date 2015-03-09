@@ -73,7 +73,7 @@
      ]
     },
     {
-     "String tag" : "section",
+     "String tag" : "section services",
      "xtype" : "Container",
      "$ xns" : "Roo.bootstrap",
      "items" : [
