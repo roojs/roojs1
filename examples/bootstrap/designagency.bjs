@@ -13,7 +13,8 @@
     {
      "Boolean autohide" : true,
      "xtype" : "NavHeaderbar",
-     "$ xns" : "Roo.bootstrap"
+     "$ xns" : "Roo.bootstrap",
+     "String brand" : "Brand here"
     }
    ]
   }
