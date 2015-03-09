@@ -447,8 +447,6 @@
      "$ xns" : "Roo.bootstrap",
      "items" : [
       {
-       "String tag" : "a",
-       "String cls" : "footer1",
        "xtype" : "Container",
        "$ xns" : "Roo.bootstrap",
        "items" : [
