@@ -441,6 +441,7 @@
      ]
     },
     {
+     "String tag" : "footer",
      "String cls" : "top-space",
      "xtype" : "Container",
      "$ xns" : "Roo.bootstrap",
