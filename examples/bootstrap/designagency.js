@@ -123,6 +123,11 @@ designagency = new Roo.XComponent({
              level : 2,
              xns : Roo.bootstrap,
              xtype : 'Header'
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             xns : Roo.bootstrap,
+             xtype : 'Container'
             }
            ]
 

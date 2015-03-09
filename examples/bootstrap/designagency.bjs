@@ -95,6 +95,10 @@
              "Number level" : 2,
              "$ xns" : "Roo.bootstrap",
              "String html" : "OUR SERVICES"
+            },
+            {
+             "xtype" : "Container",
+             "$ xns" : "Roo.bootstrap"
             }
            ]
           }
