@@ -106,6 +106,26 @@
              "String html" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere."
             }
            ]
+          },
+          {
+           "Number md" : 4,
+           "String cls" : "col-md-offset-3",
+           "xtype" : "Column",
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "String cls" : "head-set",
+             "xtype" : "Header",
+             "Number level" : 2,
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "OUR SERVICES"
+            },
+            {
+             "xtype" : "Column",
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere."
+            }
+           ]
           }
          ]
         }
