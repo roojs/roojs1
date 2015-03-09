@@ -12,6 +12,7 @@
    "items" : [
     {
      "Boolean autohide" : false,
+     "String cls" : "navbar-default",
      "xtype" : "NavHeaderbar",
      "$ xns" : "Roo.bootstrap",
      "String brand" : "Brand here"
