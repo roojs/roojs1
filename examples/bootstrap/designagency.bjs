@@ -137,6 +137,7 @@
           },
           {
            "Number md" : 4,
+           "int fasize" : 5,
            "xtype" : "Column",
            "String fa" : "desktop",
            "$ xns" : "Roo.bootstrap",

@@ -172,6 +172,7 @@ designagency = new Roo.XComponent({
           {
            '|xns' : 'Roo.bootstrap',
            fa : 'desktop',
+           fasize : 5,
            md : 4,
            sm : 4,
            xns : Roo.bootstrap,
