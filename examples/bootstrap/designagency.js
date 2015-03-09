@@ -97,7 +97,15 @@ designagency = new Roo.XComponent({
      '|xns' : 'Roo.bootstrap',
      tag : 'section',
      xns : Roo.bootstrap,
-     xtype : 'Container'
+     xtype : 'Container',
+     items : [
+      {
+       '|xns' : 'Roo.bootstrap',
+       xns : Roo.bootstrap,
+       xtype : 'Container'
+      }
+     ]
+
     }
    ]
 
