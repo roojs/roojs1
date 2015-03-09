@@ -554,6 +554,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
         this.fireEvent('select', this, this.date);
         
+        this.show();
+        
     },
     
     getValue: function()
