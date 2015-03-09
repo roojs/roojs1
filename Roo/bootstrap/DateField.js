@@ -550,6 +550,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.date = this.viewDate = new Date(d.getTime() - d.getTimezoneOffset()*60000);
      
+        this.hasFocus = false;
+        
         this.update();
 
         this.fireEvent('select', this, this.date);
