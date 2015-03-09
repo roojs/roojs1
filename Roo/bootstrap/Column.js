@@ -43,6 +43,10 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     sm: false,
     md: false,
     lg: false,
+    xsoff: false,
+    smoff: false,
+    mdoff: false,
+    lgoff: false,
     html: '',
     offset: 0,
     alert: false,
@@ -61,7 +65,12 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
-            Roo.log( size + ':' + settings[size]);
+            //Roo.log( size + ':' + settings[size]);
+            
+            if (settings[size+'off'] 1== false) {
+                
+            }
+            
             if (settings[size] === false) {
                 return;
             }
