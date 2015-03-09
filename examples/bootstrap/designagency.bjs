@@ -65,6 +65,7 @@
      "$ xns" : "Roo.bootstrap",
      "items" : [
       {
+       "String cls" : "overlay",
        "xtype" : "Container",
        "$ xns" : "Roo.bootstrap",
        "items" : [

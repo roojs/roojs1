@@ -85,6 +85,7 @@ designagency = new Roo.XComponent({
      items : [
       {
        '|xns' : 'Roo.bootstrap',
+       cls : 'overlay',
        xns : Roo.bootstrap,
        xtype : 'Container',
        items : [
