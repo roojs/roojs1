@@ -281,6 +281,7 @@
          "items" : [
           {
            "Number md" : 4,
+           "String alert" : "info",
            "xtype" : "Column",
            "$ xns" : "Roo.bootstrap",
            "Number sm" : 4,

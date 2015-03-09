@@ -346,6 +346,7 @@ designagency = new Roo.XComponent({
          items : [
           {
            '|xns' : 'Roo.bootstrap',
+           alert : 'info',
            md : 4,
            sm : 4,
            xns : Roo.bootstrap,
