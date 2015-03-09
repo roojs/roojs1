@@ -536,7 +536,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
     setValue: function(v)
     {
-        var d = new Date(v);
+        var d = new Date(v).clearTime();
         Roo.log(d);
         
         if(isNaN(d.getTime())){
