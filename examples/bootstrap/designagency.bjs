@@ -94,6 +94,7 @@
            "$ xns" : "Roo.bootstrap",
            "items" : [
             {
+             "String cls" : "head-set",
              "xtype" : "Header",
              "Number level" : 2,
              "$ xns" : "Roo.bootstrap",
