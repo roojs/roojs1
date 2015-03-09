@@ -37,7 +37,7 @@ designagency = new Roo.XComponent({
    items : [
     {
      '|xns' : 'Roo.bootstrap',
-     autohide : false,
+     autohide : true,
      brand : 'Brand here',
      cls : 'navbar-default',
      inverse : true,
