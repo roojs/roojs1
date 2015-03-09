@@ -494,10 +494,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     onBlur : function()
     {
         Roo.bootstrap.DateField.superclass.onBlur.call(this);
-        
-        var d = this.inputEl().getValue();
-        
-        this.setValue(d);
+//        
+//        var d = this.inputEl().getValue();
+//        
+//        this.setValue(d);
                 
         this.hide();
     },
@@ -505,10 +505,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     show : function()
     {
         this.picker().show();
-//        this.update();
-//        this.place();
-//        
-//        this.fireEvent('show', this, this.date);
+        this.update();
+        this.place();
+        
+        this.fireEvent('show', this, this.date);
     },
     
     hide : function()
