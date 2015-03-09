@@ -274,7 +274,13 @@
             {
              "xtype" : "Header",
              "Number level" : 5,
-             "$ xns" : "Roo.bootstrap"
+             "$ xns" : "Roo.bootstrap",
+             "items" : [
+              {
+               "xtype" : "Link",
+               "$ xns" : "Roo.bootstrap"
+              }
+             ]
             }
            ]
           }
