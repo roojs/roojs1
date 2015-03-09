@@ -28,6 +28,7 @@
     {
      "Boolean autohide" : true,
      "String position" : "fixed-top",
+     "String cls" : "navbar-default",
      "xtype" : "NavHeaderbar",
      "$ xns" : "Roo.bootstrap",
      "String brand" : "Brand here",
