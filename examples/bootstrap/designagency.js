@@ -326,6 +326,12 @@ designagency = new Roo.XComponent({
              src : 'http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg',
              xns : Roo.bootstrap,
              xtype : 'Img'
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             level : 5,
+             xns : Roo.bootstrap,
+             xtype : 'Header'
             }
            ]
 
