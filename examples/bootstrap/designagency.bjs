@@ -84,7 +84,7 @@
          "$ xns" : "Roo.bootstrap",
          "items" : [
           {
-           "xtype" : "CheckBox",
+           "xtype" : "Column",
            "$ xns" : "Roo.bootstrap"
           }
          ]

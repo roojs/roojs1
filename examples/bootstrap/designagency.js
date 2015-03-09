@@ -112,7 +112,7 @@ designagency = new Roo.XComponent({
           {
            '|xns' : 'Roo.bootstrap',
            xns : Roo.bootstrap,
-           xtype : 'CheckBox'
+           xtype : 'Column'
           }
          ]
 
