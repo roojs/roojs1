@@ -9,7 +9,8 @@ designagency = new Roo.XComponent({
   'cc6d906151ac9361a25911478347b961' :"OUR SERVICES",
   'bbaff12800505b22a853e8b7f4eb6a22' :"Contact",
   '992a0f0542384f1ee5ef51b7cf4ae6c4' :"Services",
-  'ae9f975dc3c437397b6882f4e3136e0e' :"<h1>DESIGN AGENCY </h1>\n                    <h2>You Think, We Deliver </h2>\n                    <p class=\"p-cls\">\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                    </p>"
+  'ae9f975dc3c437397b6882f4e3136e0e' :"<h1>DESIGN AGENCY </h1>\n                    <h2>You Think, We Deliver </h2>\n                    <p class=\"p-cls\">\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                    </p>",
+  'd9519092bd06a9916f80cdb0a1fd2859' :"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere."
  },
 
   part     :  ["bootstrap", "designagency" ],
@@ -126,6 +127,7 @@ designagency = new Roo.XComponent({
             },
             {
              '|xns' : 'Roo.bootstrap',
+             html : _this._strings['d9519092bd06a9916f80cdb0a1fd2859'],
              xns : Roo.bootstrap,
              xtype : 'Container'
             }
