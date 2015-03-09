@@ -14504,8 +14504,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     update: function()
     {
-        
-        this.date = (typeof(this.date) === 'undefined' || !this.date.length) ? this.UTCToday() : (typeof(this.date) === 'string') ? this.parseDate(this.date) : this.date;
+        this.date = (typeof(this.date) === 'undefined' || ((typeof(this.date) === 'string') && !this.date.length)) ? this.UTCToday() : (typeof(this.date) === 'string') ? this.parseDate(this.date) : this.date;
         
         if (this.date < this.startDate) {
             this.viewDate = new Date(this.startDate);
@@ -14772,10 +14771,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
     setValue: function(v)
     {
-        var d = new Date(v);
+        var d = new Date(v).clearTime();
         
         if(isNaN(d.getTime())){
-            this.date = '';
+            this.date = this.viewDate = '';
             Roo.bootstrap.DateField.superclass.setValue.call(this, '');
             return;
         }
@@ -14785,7 +14784,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.bootstrap.DateField.superclass.setValue.call(this, v);
         
         this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
-
+     
         this.update();
 
         this.fireEvent('select', this, this.date);
