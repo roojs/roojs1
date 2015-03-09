@@ -158,6 +158,7 @@
           {
            "Number md" : 4,
            "xtype" : "Column",
+           "String fa" : "bolt",
            "$ xns" : "Roo.bootstrap",
            "Number sm" : 4,
            "items" : [
