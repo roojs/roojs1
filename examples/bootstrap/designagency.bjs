@@ -16,7 +16,19 @@
      "xtype" : "NavHeaderbar",
      "Boolean inverse" : true,
      "$ xns" : "Roo.bootstrap",
-     "String brand" : "Brand here"
+     "String brand" : "Brand here",
+     "items" : [
+      {
+       "xtype" : "NavGroup",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "xtype" : "NavItem",
+         "$ xns" : "Roo.bootstrap"
+        }
+       ]
+      }
+     ]
     }
    ]
   }

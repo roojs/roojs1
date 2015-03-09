@@ -29,7 +29,23 @@ designagency = new Roo.XComponent({
      cls : 'navbar-default',
      inverse : true,
      xns : Roo.bootstrap,
-     xtype : 'NavHeaderbar'
+     xtype : 'NavHeaderbar',
+     items : [
+      {
+       '|xns' : 'Roo.bootstrap',
+       xns : Roo.bootstrap,
+       xtype : 'NavGroup',
+       items : [
+        {
+         '|xns' : 'Roo.bootstrap',
+         xns : Roo.bootstrap,
+         xtype : 'NavItem'
+        }
+       ]
+
+      }
+     ]
+
     }
    ]
 
