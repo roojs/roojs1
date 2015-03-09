@@ -56,7 +56,14 @@
      "items" : [
       {
        "xtype" : "Container",
-       "$ xns" : "Roo.bootstrap"
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "Number md" : 8,
+         "xtype" : "Column",
+         "$ xns" : "Roo.bootstrap"
+        }
+       ]
       }
      ]
     }
