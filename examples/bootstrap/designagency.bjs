@@ -281,6 +281,10 @@
                "xtype" : "Link",
                "$ xns" : "Roo.bootstrap",
                "String html" : "Click for details"
+              },
+              {
+               "xtype" : "Container",
+               "$ xns" : "Roo.bootstrap"
               }
              ]
             }

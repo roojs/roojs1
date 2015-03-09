@@ -347,6 +347,11 @@ designagency = new Roo.XComponent({
                html : _this._strings['e8722250d11c9b245deddb2d44d41912'],
                xns : Roo.bootstrap,
                xtype : 'Link'
+              },
+              {
+               '|xns' : 'Roo.bootstrap',
+               xns : Roo.bootstrap,
+               xtype : 'Container'
               }
              ]
 
