@@ -541,8 +541,7 @@ select.x-grid-editor{
     border-bottom: 20px solid #fcfcfc;
     
 }
-
-/*fade out effect by Michael*/
+ 
 .x-grid-row-fadeout {
   visibility: hidden;
   opacity: 0;
