@@ -61,7 +61,7 @@
        "items" : [
         {
          "Number md" : 8,
-         "String cls" : "text-center",
+         "String cls" : "text-center col-md-offset-2",
          "xtype" : "Column",
          "$ xns" : "Roo.bootstrap",
          "String html" : "<h1>DESIGN AGENCY </h1>\n                    <h2>You Think, We Deliver </h2>\n                    <p class=\"p-cls\">\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                    </p>"
