@@ -479,7 +479,7 @@ designagency = new Roo.XComponent({
                html : _this._strings['362941b352bfa1c7456569357508476f'],
                tag : 'span',
                xns : Roo.bootstrap,
-               xtype : 'Container'
+               xtype : 'Element'
               }
              ]
 
