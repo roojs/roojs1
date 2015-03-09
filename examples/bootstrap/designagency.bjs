@@ -77,7 +77,19 @@
      "items" : [
       {
        "xtype" : "Container",
-       "$ xns" : "Roo.bootstrap"
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "xtype" : "Row",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "xtype" : "CheckBox",
+           "$ xns" : "Roo.bootstrap"
+          }
+         ]
+        }
+       ]
       }
      ]
     }
