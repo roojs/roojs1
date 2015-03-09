@@ -363,6 +363,100 @@ designagency = new Roo.XComponent({
             }
            ]
 
+          },
+          {
+           '|xns' : 'Roo.bootstrap',
+           md : 4,
+           sm : 4,
+           xns : Roo.bootstrap,
+           xtype : 'Column',
+           items : [
+            {
+             '|xns' : 'Roo.bootstrap',
+             cls : 'img-responsive',
+             src : 'http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg',
+             xns : Roo.bootstrap,
+             xtype : 'Img'
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             html : _this._strings['d57f08db66c4cafaa9d6d747927bda1d'],
+             level : 3,
+             xns : Roo.bootstrap,
+             xtype : 'Header'
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             html : _this._strings['7215ee9c7d9dc229d2921a40e899ec5f'],
+             level : 5,
+             xns : Roo.bootstrap,
+             xtype : 'Header',
+             items : [
+              {
+               '|xns' : 'Roo.bootstrap',
+               html : _this._strings['e8722250d11c9b245deddb2d44d41912'],
+               xns : Roo.bootstrap,
+               xtype : 'Link'
+              },
+              {
+               '|xns' : 'Roo.bootstrap',
+               html : _this._strings['362941b352bfa1c7456569357508476f'],
+               tag : 'span',
+               xns : Roo.bootstrap,
+               xtype : 'Container'
+              }
+             ]
+
+            }
+           ]
+
+          },
+          {
+           '|xns' : 'Roo.bootstrap',
+           md : 4,
+           sm : 4,
+           xns : Roo.bootstrap,
+           xtype : 'Column',
+           items : [
+            {
+             '|xns' : 'Roo.bootstrap',
+             cls : 'img-responsive',
+             src : 'http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg',
+             xns : Roo.bootstrap,
+             xtype : 'Img'
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             html : _this._strings['d57f08db66c4cafaa9d6d747927bda1d'],
+             level : 3,
+             xns : Roo.bootstrap,
+             xtype : 'Header'
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             html : _this._strings['7215ee9c7d9dc229d2921a40e899ec5f'],
+             level : 5,
+             xns : Roo.bootstrap,
+             xtype : 'Header',
+             items : [
+              {
+               '|xns' : 'Roo.bootstrap',
+               html : _this._strings['e8722250d11c9b245deddb2d44d41912'],
+               xns : Roo.bootstrap,
+               xtype : 'Link'
+              },
+              {
+               '|xns' : 'Roo.bootstrap',
+               html : _this._strings['362941b352bfa1c7456569357508476f'],
+               tag : 'span',
+               xns : Roo.bootstrap,
+               xtype : 'Container'
+              }
+             ]
+
+            }
+           ]
+
           }
          ]
 
