@@ -256,13 +256,13 @@ designagency = new Roo.XComponent({
        items : [
         {
          '|xns' : 'Roo.bootstrap',
-         cls : 'text-center',
+         cls : ' ',
          xns : Roo.bootstrap,
          xtype : 'Row',
          items : [
           {
            '|xns' : 'Roo.bootstrap',
-           cls : 'text-left',
+           cls : ' ',
            html : _this._strings['c6bd7c609e99aacdff25214ffd3e8fe7'],
            md : 4,
            sm : 4,

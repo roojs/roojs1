@@ -206,13 +206,13 @@
        "$ xns" : "Roo.bootstrap",
        "items" : [
         {
-         "String cls" : "text-center",
+         "String cls" : " ",
          "xtype" : "Row",
          "$ xns" : "Roo.bootstrap",
          "items" : [
           {
            "Number md" : 4,
-           "String cls" : "text-left",
+           "String cls" : " ",
            "xtype" : "Column",
            "$ xns" : "Roo.bootstrap",
            "String html" : "<b>100</b><p>Projects</p>",
