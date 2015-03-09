@@ -322,6 +322,7 @@ designagency = new Roo.XComponent({
            items : [
             {
              '|xns' : 'Roo.bootstrap',
+             src : 'http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg',
              xns : Roo.bootstrap,
              xtype : 'Img'
             }
