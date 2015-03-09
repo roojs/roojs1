@@ -272,7 +272,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.log('update');
         Roo.log(this.date);
         if((typeof(this.date) === 'undefined' || !this.date.length)){
-            Roo.log(typeof(this.date));
+            Roo.log(this.date.length);
         }
         this.date = (typeof(this.date) === 'undefined' || !this.date.length) ? this.UTCToday() : (typeof(this.date) === 'string') ? this.parseDate(this.date) : this.date;
         Roo.log(this.date);
