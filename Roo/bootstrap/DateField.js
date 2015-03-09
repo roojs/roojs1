@@ -536,6 +536,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
     setValue: function(v)
     {
+        Roo.log(this);
         Roo.log(v);
         var d = new Date(v);
         
@@ -555,6 +556,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.update();
 
         this.fireEvent('select', this, this.date);
+        
         
     },
     
