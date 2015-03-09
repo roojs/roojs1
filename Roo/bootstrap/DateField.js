@@ -545,8 +545,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             return;
         }
         
-        v = this.startValue = this.formatDate(d);
-        Roo.log(v);
+        v = this.formatDate(d);
+        
         Roo.bootstrap.DateField.superclass.setValue.call(this, v);
         
         this.date = this.viewDate = new Date(d.getTime());
