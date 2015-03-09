@@ -85,7 +85,14 @@
          "items" : [
           {
            "xtype" : "Column",
-           "$ xns" : "Roo.bootstrap"
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "xtype" : "Header",
+             "Number level" : 2,
+             "$ xns" : "Roo.bootstrap"
+            }
+           ]
           }
          ]
         }
