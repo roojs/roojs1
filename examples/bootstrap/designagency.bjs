@@ -194,54 +194,21 @@
            "xtype" : "Column",
            "$ xns" : "Roo.bootstrap",
            "String html" : "<strong>100</strong><p>Projects</p>",
-           "Number sm" : 4,
-           "items" : [
-            {
-             "xtype" : "Column",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere."
-            }
-           ]
+           "Number sm" : 4
           },
           {
            "Number md" : 4,
            "xtype" : "Column",
            "$ xns" : "Roo.bootstrap",
-           "Number sm" : 4,
-           "items" : [
-            {
-             "String cls" : "head-set",
-             "xtype" : "Header",
-             "Number level" : 2,
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "OUR SERVICES"
-            },
-            {
-             "xtype" : "Column",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere."
-            }
-           ]
+           "String html" : "<strong>100</strong><p>Projects</p>",
+           "Number sm" : 4
           },
           {
            "Number md" : 4,
            "xtype" : "Column",
            "$ xns" : "Roo.bootstrap",
-           "Number sm" : 4,
-           "items" : [
-            {
-             "String cls" : "head-set",
-             "xtype" : "Header",
-             "Number level" : 2,
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "OUR SERVICES"
-            },
-            {
-             "xtype" : "Column",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere."
-            }
-           ]
+           "String html" : "<strong>100</strong><p>Projects</p>",
+           "Number sm" : 4
           }
          ]
         }

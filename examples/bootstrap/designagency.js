@@ -243,64 +243,23 @@ designagency = new Roo.XComponent({
            md : 4,
            sm : 4,
            xns : Roo.bootstrap,
-           xtype : 'Column',
-           items : [
-            {
-             '|xns' : 'Roo.bootstrap',
-             html : _this._strings['d9519092bd06a9916f80cdb0a1fd2859'],
-             xns : Roo.bootstrap,
-             xtype : 'Column'
-            }
-           ]
-
+           xtype : 'Column'
           },
           {
            '|xns' : 'Roo.bootstrap',
+           html : _this._strings['519d8078a6279f149f310c70cbdc296a'],
            md : 4,
            sm : 4,
            xns : Roo.bootstrap,
-           xtype : 'Column',
-           items : [
-            {
-             '|xns' : 'Roo.bootstrap',
-             cls : 'head-set',
-             html : _this._strings['cc6d906151ac9361a25911478347b961'],
-             level : 2,
-             xns : Roo.bootstrap,
-             xtype : 'Header'
-            },
-            {
-             '|xns' : 'Roo.bootstrap',
-             html : _this._strings['d9519092bd06a9916f80cdb0a1fd2859'],
-             xns : Roo.bootstrap,
-             xtype : 'Column'
-            }
-           ]
-
+           xtype : 'Column'
           },
           {
            '|xns' : 'Roo.bootstrap',
+           html : _this._strings['519d8078a6279f149f310c70cbdc296a'],
            md : 4,
            sm : 4,
            xns : Roo.bootstrap,
-           xtype : 'Column',
-           items : [
-            {
-             '|xns' : 'Roo.bootstrap',
-             cls : 'head-set',
-             html : _this._strings['cc6d906151ac9361a25911478347b961'],
-             level : 2,
-             xns : Roo.bootstrap,
-             xtype : 'Header'
-            },
-            {
-             '|xns' : 'Roo.bootstrap',
-             html : _this._strings['d9519092bd06a9916f80cdb0a1fd2859'],
-             xns : Roo.bootstrap,
-             xtype : 'Column'
-            }
-           ]
-
+           xtype : 'Column'
           }
          ]
 
