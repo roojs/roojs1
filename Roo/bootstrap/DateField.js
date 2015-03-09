@@ -508,7 +508,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.picker().show();
         this.update();
         this.place();
-        
+        Roo.log(this);
         this.fireEvent('show', this, this.date);
     },
     
