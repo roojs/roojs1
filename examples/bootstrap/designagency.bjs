@@ -349,6 +349,12 @@
                "xtype" : "Link",
                "$ xns" : "Roo.bootstrap",
                "String html" : "Click for details"
+              },
+              {
+               "String tag" : "span",
+               "xtype" : "Element",
+               "$ xns" : "Roo.bootstrap",
+               "String html" : " for more about it"
               }
              ]
             }
