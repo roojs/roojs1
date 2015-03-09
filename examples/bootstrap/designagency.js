@@ -244,7 +244,6 @@ designagency = new Roo.XComponent({
     {
      '|xns' : 'Roo.bootstrap',
      cls : 'parallax-like',
-     tag : 'section',
      xns : Roo.bootstrap,
      xtype : 'Container',
      items : [
