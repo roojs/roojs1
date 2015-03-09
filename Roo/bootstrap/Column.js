@@ -67,8 +67,8 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         ['xs','sm','md','lg'].map(function(size){
             //Roo.log( size + ':' + settings[size]);
             
-            if (settings[size+'off'] 1== false) {
-                
+            if (settings[size+'off'] !== false) {
+                cfg.cls += ' col-' + settings[size+'off'] + '-offset';
             }
             
             if (settings[size] === false) {
