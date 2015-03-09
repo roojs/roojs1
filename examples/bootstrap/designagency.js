@@ -20,6 +20,14 @@ designagency = new Roo.XComponent({
    return {
    '|xns' : 'Roo.bootstrap',
    xns : Roo.bootstrap,
-   xtype : 'Body'
+   xtype : 'Body',
+   items : [
+    {
+     '|xns' : 'Roo.bootstrap',
+     xns : Roo.bootstrap,
+     xtype : 'NavHeaderbar'
+    }
+   ]
+
   };  }
 });
