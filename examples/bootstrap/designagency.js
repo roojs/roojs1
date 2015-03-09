@@ -79,6 +79,7 @@ designagency = new Roo.XComponent({
     },
     {
      '|xns' : 'Roo.bootstrap',
+     cls : 'home',
      xns : Roo.bootstrap,
      xtype : 'Container',
      items : [

@@ -60,6 +60,7 @@
      ]
     },
     {
+     "String cls" : "home",
      "xtype" : "Container",
      "$ xns" : "Roo.bootstrap",
      "items" : [
