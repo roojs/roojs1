@@ -13,6 +13,12 @@
  * @cfg {Number} sm colspan out of 12 for tablet-sized screens or 0 for hidden
  * @cfg {Number} md colspan out of 12 for computer-sized screens or 0 for hidden
  * @cfg {Number} lg colspan out of 12 for large computer-sized screens or 0 for hidden
+ * @cfg {Number} xsoff colspan offset out of 12 for mobile-sized screens or 0 for hidden
+ * @cfg {Number} smoff colspan offset out of 12 for tablet-sized screens or 0 for hidden
+ * @cfg {Number} mdoff colspan offset out of 12 for computer-sized screens or 0 for hidden
+ * @cfg {Number} lgoff colspan offset out of 12 for large computer-sized screens or 0 for hidden
+ *
+ * 
  * @cfg {Boolean} hidden (true|false) hide the element
  * @cfg {String} alert (success|info|warning|danger) type alert (changes background / border...)
  * @cfg {String} fa (ban|check|...) font awesome icon
