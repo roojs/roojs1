@@ -271,112 +271,14 @@
              "String html" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere."
             }
            ]
-          },
-          {
-           "Number md" : 4,
-           "xtype" : "Column",
-           "$ xns" : "Roo.bootstrap",
-           "Number sm" : 4,
-           "items" : [
-            {
-             "String cls" : "img-responsive",
-             "xtype" : "Img",
-             "String src" : "http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg",
-             "$ xns" : "Roo.bootstrap"
-            },
-            {
-             "xtype" : "Header",
-             "$ xns" : "Roo.bootstrap",
-             "Number level" : 3,
-             "String html" : "Project Title"
-            },
-            {
-             "xtype" : "Header",
-             "$ xns" : "Roo.bootstrap",
-             "Number level" : 5,
-             "String html" : " ",
-             "items" : [
-              {
-               "xtype" : "Link",
-               "$ xns" : "Roo.bootstrap",
-               "String html" : "Click for details"
-              },
-              {
-               "String tag" : "span",
-               "xtype" : "Container",
-               "$ xns" : "Roo.bootstrap",
-               "String html" : "more about it"
-              }
-             ]
-            }
-           ]
-          },
-          {
-           "Number md" : 4,
-           "xtype" : "Column",
-           "$ xns" : "Roo.bootstrap",
-           "Number sm" : 4,
-           "items" : [
-            {
-             "String cls" : "img-responsive",
-             "xtype" : "Img",
-             "String src" : "http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg",
-             "$ xns" : "Roo.bootstrap"
-            },
-            {
-             "xtype" : "Header",
-             "Number level" : 3,
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "Project Title"
-            },
-            {
-             "xtype" : "Header",
-             "Number level" : 5,
-             "$ xns" : "Roo.bootstrap",
-             "String html" : " ",
-             "items" : [
-              {
-               "xtype" : "Link",
-               "$ xns" : "Roo.bootstrap",
-               "String html" : "Click for details"
-              },
-              {
-               "String tag" : "span",
-               "xtype" : "Container",
-               "$ xns" : "Roo.bootstrap",
-               "String html" : "more about it"
-              }
-             ]
-            }
-           ]
           }
          ]
         },
         {
-         "String cls" : "text-center pad-bottom",
+         "String cls" : "text-center portfolio-item",
          "xtype" : "Row",
          "$ xns" : "Roo.bootstrap",
          "items" : [
-          {
-           "Number md" : 6,
-           "String cls" : "col-md-offset-3",
-           "xtype" : "Column",
-           "$ xns" : "Roo.bootstrap",
-           "items" : [
-            {
-             "String cls" : "head-set",
-             "xtype" : "Header",
-             "Number level" : 2,
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "OUR WORK"
-            },
-            {
-             "xtype" : "Column",
-             "$ xns" : "Roo.bootstrap",
-             "String html" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere."
-            }
-           ]
-          },
           {
            "Number md" : 4,
            "xtype" : "Column",
