@@ -544,7 +544,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             return;
         }
         
-        v = this.formatDate(d);
+        v = this.startValue = this.formatDate(d);
         
         Roo.bootstrap.DateField.superclass.setValue.call(this, v);
         
