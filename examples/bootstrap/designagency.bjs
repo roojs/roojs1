@@ -172,6 +172,87 @@
        ]
       }
      ]
+    },
+    {
+     "String tag" : "section",
+     "String cls" : " services",
+     "xtype" : "Container",
+     "$ xns" : "Roo.bootstrap",
+     "items" : [
+      {
+       "xtype" : "Container",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "String cls" : "text-center pad-bottom",
+         "xtype" : "Row",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "Number md" : 4,
+           "xtype" : "Column",
+           "$ xns" : "Roo.bootstrap",
+           "Number sm" : 4,
+           "items" : [
+            {
+             "String cls" : "head-set",
+             "xtype" : "Header",
+             "Number level" : 2,
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "OUR SERVICES"
+            },
+            {
+             "xtype" : "Column",
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere."
+            }
+           ]
+          },
+          {
+           "Number md" : 4,
+           "xtype" : "Column",
+           "$ xns" : "Roo.bootstrap",
+           "Number sm" : 4,
+           "items" : [
+            {
+             "String cls" : "head-set",
+             "xtype" : "Header",
+             "Number level" : 2,
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "OUR SERVICES"
+            },
+            {
+             "xtype" : "Column",
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere."
+            }
+           ]
+          },
+          {
+           "Number md" : 4,
+           "xtype" : "Column",
+           "$ xns" : "Roo.bootstrap",
+           "Number sm" : 4,
+           "items" : [
+            {
+             "String cls" : "head-set",
+             "xtype" : "Header",
+             "Number level" : 2,
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "OUR SERVICES"
+            },
+            {
+             "xtype" : "Column",
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n                         Curabitur nec nisl odio. Mauris vehicula at nunc id posuere."
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     ]
     }
    ]
   }

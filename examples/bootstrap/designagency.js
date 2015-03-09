@@ -217,6 +217,105 @@ designagency = new Roo.XComponent({
       }
      ]
 
+    },
+    {
+     '|xns' : 'Roo.bootstrap',
+     cls : ' services',
+     tag : 'section',
+     xns : Roo.bootstrap,
+     xtype : 'Container',
+     items : [
+      {
+       '|xns' : 'Roo.bootstrap',
+       xns : Roo.bootstrap,
+       xtype : 'Container',
+       items : [
+        {
+         '|xns' : 'Roo.bootstrap',
+         cls : 'text-center pad-bottom',
+         xns : Roo.bootstrap,
+         xtype : 'Row',
+         items : [
+          {
+           '|xns' : 'Roo.bootstrap',
+           md : 4,
+           sm : 4,
+           xns : Roo.bootstrap,
+           xtype : 'Column',
+           items : [
+            {
+             '|xns' : 'Roo.bootstrap',
+             cls : 'head-set',
+             html : _this._strings['cc6d906151ac9361a25911478347b961'],
+             level : 2,
+             xns : Roo.bootstrap,
+             xtype : 'Header'
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             html : _this._strings['d9519092bd06a9916f80cdb0a1fd2859'],
+             xns : Roo.bootstrap,
+             xtype : 'Column'
+            }
+           ]
+
+          },
+          {
+           '|xns' : 'Roo.bootstrap',
+           md : 4,
+           sm : 4,
+           xns : Roo.bootstrap,
+           xtype : 'Column',
+           items : [
+            {
+             '|xns' : 'Roo.bootstrap',
+             cls : 'head-set',
+             html : _this._strings['cc6d906151ac9361a25911478347b961'],
+             level : 2,
+             xns : Roo.bootstrap,
+             xtype : 'Header'
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             html : _this._strings['d9519092bd06a9916f80cdb0a1fd2859'],
+             xns : Roo.bootstrap,
+             xtype : 'Column'
+            }
+           ]
+
+          },
+          {
+           '|xns' : 'Roo.bootstrap',
+           md : 4,
+           sm : 4,
+           xns : Roo.bootstrap,
+           xtype : 'Column',
+           items : [
+            {
+             '|xns' : 'Roo.bootstrap',
+             cls : 'head-set',
+             html : _this._strings['cc6d906151ac9361a25911478347b961'],
+             level : 2,
+             xns : Roo.bootstrap,
+             xtype : 'Header'
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             html : _this._strings['d9519092bd06a9916f80cdb0a1fd2859'],
+             xns : Roo.bootstrap,
+             xtype : 'Column'
+            }
+           ]
+
+          }
+         ]
+
+        }
+       ]
+
+      }
+     ]
+
     }
    ]
 
