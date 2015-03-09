@@ -329,7 +329,15 @@
                ]
               }
              ]
-            },
+            }
+           ]
+          },
+          {
+           "Number md" : 4,
+           "xtype" : "Column",
+           "$ xns" : "Roo.bootstrap",
+           "Number sm" : 4,
+           "items" : [
             {
              "String alert" : "info",
              "xtype" : "Container",
@@ -367,7 +375,15 @@
                ]
               }
              ]
-            },
+            }
+           ]
+          },
+          {
+           "Number md" : 4,
+           "xtype" : "Column",
+           "$ xns" : "Roo.bootstrap",
+           "Number sm" : 4,
+           "items" : [
             {
              "String alert" : "info",
              "xtype" : "Container",
@@ -381,14 +397,14 @@
               },
               {
                "xtype" : "Header",
-               "Number level" : 3,
                "$ xns" : "Roo.bootstrap",
+               "Number level" : 3,
                "String html" : "Project Title"
               },
               {
                "xtype" : "Header",
-               "Number level" : 5,
                "$ xns" : "Roo.bootstrap",
+               "Number level" : 5,
                "String html" : " ",
                "items" : [
                 {

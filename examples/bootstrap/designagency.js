@@ -405,7 +405,17 @@ designagency = new Roo.XComponent({
               }
              ]
 
-            },
+            }
+           ]
+
+          },
+          {
+           '|xns' : 'Roo.bootstrap',
+           md : 4,
+           sm : 4,
+           xns : Roo.bootstrap,
+           xtype : 'Column',
+           items : [
             {
              '|xns' : 'Roo.bootstrap',
              alert : 'info',
@@ -451,7 +461,17 @@ designagency = new Roo.XComponent({
               }
              ]
 
-            },
+            }
+           ]
+
+          },
+          {
+           '|xns' : 'Roo.bootstrap',
+           md : 4,
+           sm : 4,
+           xns : Roo.bootstrap,
+           xtype : 'Column',
+           items : [
             {
              '|xns' : 'Roo.bootstrap',
              alert : 'info',
