@@ -259,6 +259,7 @@
            "Number sm" : 4,
            "items" : [
             {
+             "String cls" : "img-responsive",
              "xtype" : "Img",
              "String src" : "http://www.designbootstrap.com/livedemos/2015/01/18/design-agency/assets/img/1.jpg",
              "$ xns" : "Roo.bootstrap"
