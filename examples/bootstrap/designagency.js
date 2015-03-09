@@ -53,6 +53,13 @@ designagency = new Roo.XComponent({
          html : _this._strings['0f9263536b9fc61ada745644735bfd8f'],
          xns : Roo.bootstrap,
          xtype : 'NavItem'
+        },
+        {
+         '|xns' : 'Roo.bootstrap',
+         href : '#',
+         html : _this._strings['0f9263536b9fc61ada745644735bfd8f'],
+         xns : Roo.bootstrap,
+         xtype : 'NavItem'
         }
        ]
 

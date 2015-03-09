@@ -38,6 +38,12 @@
          "xtype" : "NavItem",
          "$ xns" : "Roo.bootstrap",
          "String html" : "Work"
+        },
+        {
+         "String href" : "#",
+         "xtype" : "NavItem",
+         "$ xns" : "Roo.bootstrap",
+         "String html" : "Work"
         }
        ]
       }
