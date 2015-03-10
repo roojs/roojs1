@@ -44,18 +44,25 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     target: false,
     preventDefault: false,
 
-    getAutoCreate : function(){
+    getAutoCreate : function()
+    {
         
         var cfg = {
             tag: 'a',
-            html : this.html || 'html-missing'
-        }
         
+        }
+        if (this.anchor === false) {
+            cfg.html = this.html || 'html-missing';
+            cfg.href = this.href || '#';
+        } else {
+            cfg.name = this.anchor;
+        }
         
         if(this.alt){
             cfg.alt = this.alt;
         }
-        cfg.href = this.href || '#';
+        
+        
         if(this.target){
             cfg.target = this.target;
         }
