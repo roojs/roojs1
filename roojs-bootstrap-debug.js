@@ -3700,12 +3700,18 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if(this.fireEvent('click', this, e) === false){
             return;
         };
-        
-        if (['tabs','pills'].indexOf(this.parent().type)!==-1) {
-            if (typeof(this.parent().setActiveItem) !== 'undefined') {
-                this.parent().setActiveItem(this);
+        var p = this.parent();
+        if (['tabs','pills'].indexOf(p.type)!==-1) {
+            if (typeof(p.setActiveItem) !== 'undefined') {
+                p.setActiveItem(this);
             }
-        } 
+        }
+        // if parent is a navbarheader....
+        if (p.parentType == 'NavHeaderbar' && !this.menu) {
+            // remove the collapsed menu expand...
+            p.parent().el.select('.navbar-collapse',true).removeClass('in');  
+        }
+        
     },
     
     isActive: function () {
