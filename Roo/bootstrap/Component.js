@@ -222,6 +222,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                     Roo.log("MISSING " + cn.xtype + " on child of " + (this.el ? this.el.attr('xbuilderid') : 'no parent'));
                     Roo.log(self_cntr_el);
                    Roo.log(echild);
+                    Roo.log(cn);
                 }
             }
            
