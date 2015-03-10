@@ -230,6 +230,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             if (build_from_html && has_flexy && !cn.el &&  cn.can_build_overlaid) {
                 // skip a flexy if element.
                 Roo.log('skipping render');
+                Roo.log(tree);
                 if (!cn.el) {
                     skip_children = true;
                 }
