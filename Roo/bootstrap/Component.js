@@ -232,6 +232,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 Roo.log('skipping render');
                 Roo.log(tree);
                 if (!cn.el) {
+                    Roo.log('skipping all children');
                     skip_children = true;
                 }
                 
