@@ -6116,6 +6116,30 @@
      "memberOf": ""
     },
     {
+     "name": "xsoff",
+     "type": "Number",
+     "desc": "colspan offset out of 12 for mobile-sized screens or 0 for hidden",
+     "memberOf": ""
+    },
+    {
+     "name": "smoff",
+     "type": "Number",
+     "desc": "colspan offset out of 12 for tablet-sized screens or 0 for hidden",
+     "memberOf": ""
+    },
+    {
+     "name": "mdoff",
+     "type": "Number",
+     "desc": "colspan offset out of 12 for computer-sized screens or 0 for hidden",
+     "memberOf": ""
+    },
+    {
+     "name": "lgoff",
+     "type": "Number",
+     "desc": "colspan offset out of 12 for large computer-sized screens or 0 for hidden",
+     "memberOf": ""
+    },
+    {
      "name": "hidden",
      "type": "Boolean",
      "desc": "(true|false) hide the element",
@@ -6131,6 +6155,12 @@
      "name": "fa",
      "type": "String",
      "desc": "(ban|check|...) font awesome icon",
+     "memberOf": ""
+    },
+    {
+     "name": "fasize",
+     "type": "Number",
+     "desc": "(1|2|....) font awsome size",
      "memberOf": ""
     },
     {
@@ -10832,6 +10862,12 @@
      "memberOf": ""
     },
     {
+     "name": "anchor",
+     "type": "String",
+     "desc": "name for the anchor link",
+     "memberOf": ""
+    },
+    {
      "name": "preventDefault",
      "type": "Boolean",
      "desc": "(true | false) default false",
@@ -14529,6 +14565,30 @@
      "memberOf": "Roo.bootstrap.Column"
     },
     {
+     "name": "xsoff",
+     "type": "Number",
+     "desc": "colspan offset out of 12 for mobile-sized screens or 0 for hidden",
+     "memberOf": "Roo.bootstrap.Column"
+    },
+    {
+     "name": "smoff",
+     "type": "Number",
+     "desc": "colspan offset out of 12 for tablet-sized screens or 0 for hidden",
+     "memberOf": "Roo.bootstrap.Column"
+    },
+    {
+     "name": "mdoff",
+     "type": "Number",
+     "desc": "colspan offset out of 12 for computer-sized screens or 0 for hidden",
+     "memberOf": "Roo.bootstrap.Column"
+    },
+    {
+     "name": "lgoff",
+     "type": "Number",
+     "desc": "colspan offset out of 12 for large computer-sized screens or 0 for hidden",
+     "memberOf": "Roo.bootstrap.Column"
+    },
+    {
      "name": "hidden",
      "type": "Boolean",
      "desc": "(true|false) hide the element",
@@ -14544,6 +14604,12 @@
      "name": "fa",
      "type": "String",
      "desc": "(ban|check|...) font awesome icon",
+     "memberOf": "Roo.bootstrap.Column"
+    },
+    {
+     "name": "fasize",
+     "type": "Number",
+     "desc": "(1|2|....) font awsome size",
      "memberOf": "Roo.bootstrap.Column"
     },
     {
