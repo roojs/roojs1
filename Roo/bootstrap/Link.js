@@ -44,6 +44,7 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     target: false,
     preventDefault: false,
     anchor : false,
+    alt : false,
 
     getAutoCreate : function()
     {
@@ -66,12 +67,12 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
             }
         }
         
-        if(this.alt){
+        if(this.alt !== false){
             cfg.alt = this.alt;
         }
         
         
-        if(this.target){
+        if(this.target) !== false{
             cfg.target = this.target;
         }
         
