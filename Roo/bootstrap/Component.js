@@ -189,7 +189,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
           
         
         
-        
+         skip_children = false;
         // render the element if it's not BODY.
         if (tree.xtype != 'Body') {
            
@@ -225,7 +225,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             }
            
             
-            skip_children = false;
+           
             // if object has flexy:if - then it may or may not be rendered.
             if (build_from_html && has_flexy && !cn.el &&  cn.can_build_overlaid) {
                 // skip a flexy if element.
