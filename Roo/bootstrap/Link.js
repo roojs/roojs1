@@ -43,6 +43,7 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     href: false,
     target: false,
     preventDefault: false,
+    anchor : false,
 
     getAutoCreate : function()
     {
@@ -51,11 +52,18 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
             tag: 'a',
         
         }
+        // anchor's do not require html/href...
         if (this.anchor === false) {
             cfg.html = this.html || 'html-missing';
             cfg.href = this.href || '#';
         } else {
             cfg.name = this.anchor;
+            if (this.html !== false) {
+                cfg.html = this.html;
+            }
+            if (this.href !== false) {
+                cfg.href = this.href;
+            }
         }
         
         if(this.alt){
