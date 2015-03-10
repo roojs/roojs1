@@ -266,10 +266,12 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         //Roo.log(items.length);
             // add the items..
-        for(var i =0;i < items.length;i++) {
-            nitems.push(cn.addxtype(Roo.apply({}, items[i])));
+        if (!skip_children) {    
+            for(var i =0;i < items.length;i++) {
+                nitems.push(cn.addxtype(Roo.apply({}, items[i])));
+            }
         }
-	
+        
         cn.items = nitems;
 	
         return cn;
