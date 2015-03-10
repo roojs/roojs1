@@ -152,7 +152,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             }
         }
         // if parent is a navbarheader....
-        
+        if (p.parentType == 'NavHeaderbar' && !this.menu) {
+            // remove the collapsed menu expand...
+            p.parent().el.select('.navbar-collapse',true).toggleClass('in');  
+        }
         
     },
     
