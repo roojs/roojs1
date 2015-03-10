@@ -220,7 +220,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                     //echild.dom.removeAttribute('xtype');
                 } else {
                     Roo.log("MISSING " + cn.xtype + " on child of " + (this.el ? this.el.attr('xbuilderid') : 'no parent'));
-                   Roo.log(this.el);
+                   Roo.log(echild);
                 }
             }
            
