@@ -72,7 +72,7 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
         }
         
         
-        if(this.target) !== false) {
+        if(this.target !== false) {
             cfg.target = this.target;
         }
         
