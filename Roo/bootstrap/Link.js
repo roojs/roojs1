@@ -50,9 +50,8 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
     {
         
         var cfg = {
-            tag: 'a',
-        
-        }
+            tag: 'a'
+        };
         // anchor's do not require html/href...
         if (this.anchor === false) {
             cfg.html = this.html || 'html-missing';
