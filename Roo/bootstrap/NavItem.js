@@ -150,7 +150,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             if (typeof(this.parent().setActiveItem) !== 'undefined') {
                 this.parent().setActiveItem(this);
             }
-        } 
+        }
+        // if parent is a navbarheader....
+        
+        
     },
     
     isActive: function () {
