@@ -215,6 +215,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 // and are not displayed -this causes this to use up the wrong element when matching.
                 
                 
+                
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
                   
@@ -226,7 +227,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 } else {
                     Roo.log("MISSING " + cn.xtype + " on child of " + (this.el ? this.el.attr('xbuilderid') : 'no parent'));
                     Roo.log(self_cntr_el);
-                   Roo.log(echild);
+                    Roo.log(echild);
                     Roo.log(cn);
                 }
             }
