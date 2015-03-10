@@ -225,11 +225,15 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             }
            
             
-               
+            skip_children = false;
             // if object has flexy:if - then it may or may not be rendered.
             if (build_from_html && has_flexy && !cn.el &&  cn.can_build_overlaid) {
                 // skip a flexy if element.
                 Roo.log('skipping render');
+                if (!cn.el) {
+                    skip_children = true;
+                }
+                
              } else {
                  
                 // actually if flexy:foreach is found, we really want to create 
@@ -262,10 +266,12 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         //Roo.log(items.length);
             // add the items..
-        for(var i =0;i < items.length;i++) {
-            nitems.push(cn.addxtype(Roo.apply({}, items[i])));
+        if (!skip_children) {    
+            for(var i =0;i < items.length;i++) {
+                nitems.push(cn.addxtype(Roo.apply({}, items[i])));
+            }
         }
-	
+        
         cn.items = nitems;
 	
         return cn;
@@ -3706,7 +3712,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                 p.setActiveItem(this);
             }
         }
-        // if parent is a navbarheader....
+        // if parent is a navbarheader....- and link is probably a '#' page ref.. then remove the expanded menu.
         if (p.parentType == 'NavHeaderbar' && !this.menu) {
             // remove the collapsed menu expand...
             p.parent().el.select('.navbar-collapse',true).removeClass('in');  
