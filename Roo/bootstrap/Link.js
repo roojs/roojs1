@@ -14,6 +14,8 @@
  * @cfg {String} href a tag href
  * @cfg {String} target (_self|_blank|_parent|_top) target for a href.
  * @cfg {String} html the content of the link.
+ * @cfg {String} anchor name for the anchor link
+
  * @cfg {Boolean} preventDefault (true | false) default false
 
  * 
