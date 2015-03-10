@@ -213,7 +213,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 
                 // there is a scenario where some of the child elements are flexy:if (and all of the same type)
                 // and are not displayed -this causes this to use up the wrong element when matching.
-                
+                // at present the only work around for this is to nest flexy:if elements in another element that is always rendered.
                 
                 
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
