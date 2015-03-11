@@ -210,6 +210,12 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 var self_cntr_el = Roo.get(this[cntr](false));
                 var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
                 
+                
+                // there is a scenario where some of the child elements are flexy:if (and all of the same type)
+                // and are not displayed -this causes this to use up the wrong element when matching.
+                // at present the only work around for this is to nest flexy:if elements in another element that is always rendered.
+                
+                
                 if (echild && echild.attr('xtype').split('.').pop() == cn.xtype) {
                   //  Roo.log("found child for " + this.xtype +": " + echild.attr('xtype') );
                   
@@ -221,7 +227,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 } else {
                     Roo.log("MISSING " + cn.xtype + " on child of " + (this.el ? this.el.attr('xbuilderid') : 'no parent'));
                     Roo.log(self_cntr_el);
-                   Roo.log(echild);
+                    Roo.log(echild);
                     Roo.log(cn);
                 }
             }
@@ -839,7 +845,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
             //Roo.log( size + ':' + settings[size]);
             
             if (settings[size+'off'] !== false) {
-                cfg.cls += ' col-' + settings[size+'off'] + '-offset';
+                cfg.cls += ' col-' + size + '-' + settings[size+'off'] + '-offset';
             }
             
             if (settings[size] === false) {
