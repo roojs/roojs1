@@ -845,7 +845,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
             //Roo.log( size + ':' + settings[size]);
             
             if (settings[size+'off'] !== false) {
-                cfg.cls += ' col-' + size + '-' + settings[size+'off'] + '-offset';
+                cfg.cls += ' col-' + size + '-offset-' + settings[size+'off'] ;
             }
             
             if (settings[size] === false) {
