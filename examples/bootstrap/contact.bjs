@@ -1,187 +1,207 @@
 {
-    "name" : "contact",
-    "parent" : "",
-    "title" : "",
-    "path" : "/home/michael/gitlive/roojs1/examples/bootstrap/contact.bjs",
-    "permname" : "",
-    "modOrder" : "001",
-    "items" : [
+ "name" : "contact",
+ "parent" : "",
+ "title" : "",
+ "path" : "/home/alan/gitlive/roojs1/examples/bootstrap/contact.bjs",
+ "permname" : "",
+ "modOrder" : "001",
+ "strings" : {
+  "ce8ae9da5b7cd6c3df2929543a9af92d" : "Email",
+  "02d4482d332e1aef3437cd61c9bcc624" : "Contact us",
+  "14a7ee7b1e7af70fc73fe7c499323fc1" : "2002 Holcombe Boulevard, Houston, TX 77030, USA\n\t\t\t\t\t",
+  "bcc254b55c4a1babdf1dcb82c207506b" : "Phone",
+  "88512a88100c22e54a61aaec8ed842ba" : "Type your message here...",
+  "7d221f9a8ebbfb877cadd779623b7bc8" : "<input class=\"btn btn-action\" type=\"submit\" value=\"Send message\">",
+  "d06f99a47cb961884ded656082615dd2" : "<a href=\"index.html\">Home</a>",
+  "69847143f57cba5d08123f1df77e1b44" : "Left Sidebar",
+  "ee921a36c743182915ce71f8c27a2c0b" : "(713) 791-1414\n\t\t\t\t\t",
+  "24b1f9fa141848f82277f1446bbea0fe" : "We’d love to hear from you. Interested in working together? Fill out the form below with some info about your project and I will get back to you as soon as I can. Please allow a couple days for me to respond.\n\t\t\t\t",
+  "49ee3087348e8d44e1feda1917443987" : "Name",
+  "a4c18b2713705a4395abdcdee3949d8d" : "<input type=\"checkbox\"> \nSign up for newsletter\n",
+  "dd7bf230fde8d4836917806aff6a6b27" : "Address",
+  "673ae02fffb72f0fe68a66f096a01347" : "Phone:"
+ },
+ "items" : [
+  {
+   "xtype" : "Body",
+   "$ xns" : "Roo.bootstrap",
+   "items" : [
+    {
+     "xtype" : "Container",
+     "$ xns" : "Roo.bootstrap",
+     "items" : [
+      {
+       "String tag" : "ol",
+       "String cls" : "breadcrumb",
+       "xtype" : "Container",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
         {
-            "xtype" : "Body",
-            "$ xns" : "Roo.bootstrap",
-            "items" : [
+         "String tag" : "li",
+         "xtype" : "Element",
+         "$ xns" : "Roo.bootstrap",
+         "String html" : "<a href=\"index.html\">Home</a>"
+        },
+        {
+         "String tag" : "li",
+         "String cls" : "active",
+         "xtype" : "Element",
+         "$ xns" : "Roo.bootstrap",
+         "String html" : "Left Sidebar"
+        },
+        {
+         "xtype" : "Row",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "String cls" : "col-sm-9 maincontent",
+           "xtype" : "Container",
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "String tag" : "header",
+             "String cls" : "page-header",
+             "xtype" : "Element",
+             "$ xns" : "Roo.bootstrap",
+             "items" : [
+              {
+               "xtype" : "Link",
+               "$ xns" : "Roo.bootstrap"
+              },
+              {
+               "String cls" : "page-title",
+               "xtype" : "Header",
+               "Number level" : 1,
+               "$ xns" : "Roo.bootstrap",
+               "String html" : "Contact us"
+              }
+             ]
+            },
+            {
+             "String tag" : "p",
+             "xtype" : "Element",
+             "$ xns" : "Roo.bootstrap",
+             "String html" : "We’d love to hear from you. Interested in working together? Fill out the form below with some info about your project and I will get back to you as soon as I can. Please allow a couple days for me to respond.\n\t\t\t\t"
+            },
+            {
+             "xtype" : "Form",
+             "$ xns" : "Roo.bootstrap",
+             "items" : [
+              {
+               "xtype" : "Row",
+               "$ xns" : "Roo.bootstrap",
+               "items" : [
                 {
-                    "xtype" : "Container",
-                    "$ xns" : "Roo.bootstrap",
-                    "items" : [
-                        {
-                            "String tag" : "ol",
-                            "String cls" : "breadcrumb",
-                            "xtype" : "Container",
-                            "$ xns" : "Roo.bootstrap",
-                            "items" : [
-                                {
-                                    "String tag" : "li",
-                                    "xtype" : "Element",
-                                    "$ xns" : "Roo.bootstrap",
-                                    "String html" : "<a href=\"index.html\">Home</a>"
-                                },
-                                {
-                                    "String tag" : "li",
-                                    "String cls" : "active",
-                                    "xtype" : "Element",
-                                    "$ xns" : "Roo.bootstrap",
-                                    "String html" : "Left Sidebar"
-                                },
-                                {
-                                    "xtype" : "Row",
-                                    "$ xns" : "Roo.bootstrap",
-                                    "items" : [
-                                        {
-                                            "String cls" : "col-sm-9 maincontent",
-                                            "xtype" : "Container",
-                                            "$ xns" : "Roo.bootstrap",
-                                            "items" : [
-                                                {
-                                                    "String tag" : "header",
-                                                    "String cls" : "page-header",
-                                                    "xtype" : "Element",
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "items" : [
-                                                        {
-                                                            "String cls" : "page-title",
-                                                            "xtype" : "Header",
-                                                            "Number level" : 1,
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "String html" : "Contact us"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "String tag" : "p",
-                                                    "xtype" : "Element",
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "String html" : "We’d love to hear from you. Interested in working together? Fill out the form below with some info about your project and I will get back to you as soon as I can. Please allow a couple days for me to respond.\n\t\t\t\t"
-                                                },
-                                                {
-                                                    "xtype" : "Form",
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "items" : [
-                                                        {
-                                                            "xtype" : "Row",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "items" : [
-                                                                {
-                                                                    "xtype" : "Input",
-                                                                    "string placeholder" : "Name",
-                                                                    "String inputType" : "text",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "Number sm" : 4
-                                                                },
-                                                                {
-                                                                    "xtype" : "Input",
-                                                                    "string placeholder" : "Email",
-                                                                    "String inputType" : "text",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "Number sm" : 4
-                                                                },
-                                                                {
-                                                                    "xtype" : "Input",
-                                                                    "string placeholder" : "Phone",
-                                                                    "String inputType" : "text",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "Number sm" : 4
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "xtype" : "Row",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "items" : [
-                                                                {
-                                                                    "xtype" : "TextArea",
-                                                                    "Number rows" : 9,
-                                                                    "string placeholder" : "Type your message here...",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "Number sm" : 12
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "xtype" : "Row",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "items" : [
-                                                                {
-                                                                    "String cls" : "col-sm-6",
-                                                                    "xtype" : "Container",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "items" : [
-                                                                        {
-                                                                            "String tag" : "label",
-                                                                            "String cls" : "checkbox",
-                                                                            "xtype" : "Element",
-                                                                            "$ xns" : "Roo.bootstrap",
-                                                                            "String html" : "<input type=\"checkbox\"> \nSign up for newsletter\n"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "String cls" : "col-sm-6 text-right",
-                                                                    "xtype" : "Container",
-                                                                    "$ xns" : "Roo.bootstrap",
-                                                                    "String html" : "<input class=\"btn btn-action\" type=\"submit\" value=\"Send message\">"
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "String cls" : "col-sm-3 sidebar sidebar-right",
-                                            "xtype" : "NavSidebar",
-                                            "$ xns" : "Roo.bootstrap",
-                                            "items" : [
-                                                {
-                                                    "String cls" : "widget",
-                                                    "xtype" : "Container",
-                                                    "$ xns" : "Roo.bootstrap",
-                                                    "items" : [
-                                                        {
-                                                            "xtype" : "Header",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "Number level" : 4,
-                                                            "String html" : "Address"
-                                                        },
-                                                        {
-                                                            "String tag" : "address",
-                                                            "xtype" : "Element",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "String html" : "2002 Holcombe Boulevard, Houston, TX 77030, USA\n\t\t\t\t\t"
-                                                        },
-                                                        {
-                                                            "xtype" : "Header",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "Number level" : 4,
-                                                            "String html" : "Phone:"
-                                                        },
-                                                        {
-                                                            "String tag" : "address",
-                                                            "xtype" : "Element",
-                                                            "$ xns" : "Roo.bootstrap",
-                                                            "String html" : "(713) 791-1414\n\t\t\t\t\t"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
+                 "xtype" : "Input",
+                 "string placeholder" : "Name",
+                 "String inputType" : "text",
+                 "$ xns" : "Roo.bootstrap",
+                 "Number sm" : 4
+                },
+                {
+                 "xtype" : "Input",
+                 "string placeholder" : "Email",
+                 "String inputType" : "text",
+                 "$ xns" : "Roo.bootstrap",
+                 "Number sm" : 4
+                },
+                {
+                 "xtype" : "Input",
+                 "string placeholder" : "Phone",
+                 "String inputType" : "text",
+                 "$ xns" : "Roo.bootstrap",
+                 "Number sm" : 4
                 }
-            ]
+               ]
+              },
+              {
+               "xtype" : "Row",
+               "$ xns" : "Roo.bootstrap",
+               "items" : [
+                {
+                 "xtype" : "TextArea",
+                 "string placeholder" : "Type your message here...",
+                 "Number rows" : 9,
+                 "$ xns" : "Roo.bootstrap",
+                 "Number sm" : 12
+                }
+               ]
+              },
+              {
+               "xtype" : "Row",
+               "$ xns" : "Roo.bootstrap",
+               "items" : [
+                {
+                 "String cls" : "col-sm-6",
+                 "xtype" : "Container",
+                 "$ xns" : "Roo.bootstrap",
+                 "items" : [
+                  {
+                   "String tag" : "label",
+                   "String cls" : "checkbox",
+                   "xtype" : "Element",
+                   "$ xns" : "Roo.bootstrap",
+                   "String html" : "<input type=\"checkbox\"> \nSign up for newsletter\n"
+                  }
+                 ]
+                },
+                {
+                 "String cls" : "col-sm-6 text-right",
+                 "xtype" : "Container",
+                 "$ xns" : "Roo.bootstrap",
+                 "String html" : "<input class=\"btn btn-action\" type=\"submit\" value=\"Send message\">"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "String cls" : "col-sm-3 sidebar sidebar-right",
+           "xtype" : "NavSidebar",
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "String cls" : "widget",
+             "xtype" : "Container",
+             "$ xns" : "Roo.bootstrap",
+             "items" : [
+              {
+               "xtype" : "Header",
+               "Number level" : 4,
+               "$ xns" : "Roo.bootstrap",
+               "String html" : "Address"
+              },
+              {
+               "String tag" : "address",
+               "xtype" : "Element",
+               "$ xns" : "Roo.bootstrap",
+               "String html" : "2002 Holcombe Boulevard, Houston, TX 77030, USA\n\t\t\t\t\t"
+              },
+              {
+               "xtype" : "Header",
+               "Number level" : 4,
+               "$ xns" : "Roo.bootstrap",
+               "String html" : "Phone:"
+              },
+              {
+               "String tag" : "address",
+               "xtype" : "Element",
+               "$ xns" : "Roo.bootstrap",
+               "String html" : "(713) 791-1414\n\t\t\t\t\t"
+              }
+             ]
+            }
+           ]
+          }
+         ]
         }
-    ]
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
 }
