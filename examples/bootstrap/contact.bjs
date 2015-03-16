@@ -65,6 +65,7 @@
              "$ xns" : "Roo.bootstrap",
              "items" : [
               {
+               "String anchor" : "contact",
                "xtype" : "Link",
                "$ xns" : "Roo.bootstrap"
               },

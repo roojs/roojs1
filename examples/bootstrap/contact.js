@@ -84,6 +84,7 @@ contact = new Roo.XComponent({
              items : [
               {
                '|xns' : 'Roo.bootstrap',
+               anchor : 'contact',
                xns : Roo.bootstrap,
                xtype : 'Link'
               },
