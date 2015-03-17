@@ -127,6 +127,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     clearUp: true,
     
+    cblack: false,
+    cwhite: false,
      
     
 
