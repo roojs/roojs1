@@ -25,6 +25,7 @@ Roo.onReady(function(){
             {
                 xtype : 'HtmlEditor',
                 xns: Roo.form,
+                white : [ 'iframe' ],
                 toolbars : [    
                     {
                         xtype : 'ToolbarStandard',
