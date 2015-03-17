@@ -1068,8 +1068,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.removeAttribute(n);
                 return;
             }
-            var cwhite = typeof(ed.cwhite) != 'undefined' && ed.cwhite !== false ? ed.cwhite : Roo.HtmlEditorCore.cwhite;
-            var cblack = typeof(ed.cblack) != 'undefined' && ed.cwhite !== false ? ed.cblack : Roo.HtmlEditorCore.cblack;
+            var cwhite = this.cwhite;
+            var cblack = this.cblack;
             
             
             var parts = v.split(/;/);
