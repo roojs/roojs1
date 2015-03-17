@@ -1052,7 +1052,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return; 
         }
         
-        if (Roo.HtmlEditorCore.black.indexOf(node.tagName.toLowerCase()) > -1 && this.clearUp) {
+        if (this.black.indexOf(node.tagName.toLowerCase()) > -1 && this.clearUp) {
             // remove node.
             node.parentNode.removeChild(node);
             return;
