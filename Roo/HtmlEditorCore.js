@@ -77,50 +77,7 @@ Roo.HtmlEditorCore = function(config){
     // at this point this.owner is set, so we can start working out the whitelisted / blacklisted elements
     
     // defaults : white / black...
-    
-    var w = typeof(this.owner.white) != 'undefined' && this.owner.white ? this.owner.white  : [];
-    var b = typeof(this.owner.black) != 'undefined' && this.owner.black ? this.owner.black :  [];
-    
-    this.white = [];
-    this.black = [];
-    Roo.each(Roo.HtmlEditorCore.white, function(tag) {
-        if (b.indexOf(tag) > -1) {
-            return;
-        }
-        this.white.push(tag);
-        
-    }, this);
-    
-    Roo.each(w, function(tag) {
-        if (b.indexOf(tag) > -1) {
-            return;
-        }
-        if (this.white.indexOf(tag) > -1) {
-            return;
-        }
-        this.white.push(tag);
-        
-    }, this);
-    
-    
-    Roo.each(Roo.HtmlEditorCore.black, function(tag) {
-        if (w.indexOf(tag) > -1) {
-            return;
-        }
-        this.black.push(tag);
-        
-    }, this);
-    
-    Roo.each(b, function(tag) {
-        if (w.indexOf(tag) > -1) {
-            return;
-        }
-        if (this.black.indexOf(tag) > -1) {
-            return;
-        }
-        this.black.push(tag);
-        
-    }, this);
+    this.applyBlacklists();
     
     
     
@@ -1391,6 +1348,98 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
             return ret;
             
+        },
+        
+        applyBlacklists : function()
+        {
+            var w = typeof(this.owner.white) != 'undefined' && this.owner.white ? this.owner.white  : [];
+            var b = typeof(this.owner.black) != 'undefined' && this.owner.black ? this.owner.black :  [];
+            
+            this.white = [];
+            this.black = [];
+            Roo.each(Roo.HtmlEditorCore.white, function(tag) {
+                if (b.indexOf(tag) > -1) {
+                    return;
+                }
+                this.white.push(tag);
+                
+            }, this);
+            
+            Roo.each(w, function(tag) {
+                if (b.indexOf(tag) > -1) {
+                    return;
+                }
+                if (this.white.indexOf(tag) > -1) {
+                    return;
+                }
+                this.white.push(tag);
+                
+            }, this);
+            
+            
+            Roo.each(Roo.HtmlEditorCore.black, function(tag) {
+                if (w.indexOf(tag) > -1) {
+                    return;
+                }
+                this.black.push(tag);
+                
+            }, this);
+            
+            Roo.each(b, function(tag) {
+                if (w.indexOf(tag) > -1) {
+                    return;
+                }
+                if (this.black.indexOf(tag) > -1) {
+                    return;
+                }
+                this.black.push(tag);
+                
+            }, this);
+            
+            
+            w = typeof(this.owner.cwhite) != 'undefined' && this.owner.cwhite ? this.owner.cwhite  : [];
+            b = typeof(this.owner.cblack) != 'undefined' && this.owner.cblack ? this.owner.cblack :  [];
+            
+            this.cwhite = [];
+            this.cblack = [];
+            Roo.each(Roo.HtmlEditorCore.cwhite, function(tag) {
+                if (b.indexOf(tag) > -1) {
+                    return;
+                }
+                this.cwhite.push(tag);
+                
+            }, this);
+            
+            Roo.each(w, function(tag) {
+                if (b.indexOf(tag) > -1) {
+                    return;
+                }
+                if (this.cwhite.indexOf(tag) > -1) {
+                    return;
+                }
+                this.cwhite.push(tag);
+                
+            }, this);
+            
+            
+            Roo.each(Roo.HtmlEditorCore.cblack, function(tag) {
+                if (w.indexOf(tag) > -1) {
+                    return;
+                }
+                this.cblack.push(tag);
+                
+            }, this);
+            
+            Roo.each(b, function(tag) {
+                if (w.indexOf(tag) > -1) {
+                    return;
+                }
+                if (this.cblack.indexOf(tag) > -1) {
+                    return;
+                }
+                this.cblack.push(tag);
+                
+            }, this);
         }
     
     // hide stuff that is not compatible
