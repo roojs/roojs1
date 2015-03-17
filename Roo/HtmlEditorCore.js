@@ -90,14 +90,16 @@ Roo.HtmlEditorCore = function(config){
         
     }, this);
     
-    if (typeof(this.owner.white) != 'undefined' && this.owner.white) {
-        Roo.each(this.owner.white, function(tag) {
-            if (this.white.indexOf(tag) > -1) {
-                return;
-            }
-            
-        })
-    }
+    Roo.each(w, function(tag) {
+        if (b.indexOf(tag) > -1) {
+            return;
+        }
+        if (this.white.indexOf(tag) > -1) {
+            return;
+        }
+        this.white.push(tag);
+        
+    }, this); 
     
     
     
