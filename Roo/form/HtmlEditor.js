@@ -82,7 +82,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      */
     black: false,
     /**
-     * @cfg {Array} whitelist of css styles style attributes (blacklist overrides whitelist)
+     * @cfg {Array} whitelist of html tags - in addition to statndard whitelist
      * 
      */
     white: false,
