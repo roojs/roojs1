@@ -1248,199 +1248,199 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     },
     domToHTML : function(currentElement, depth, nopadtext) {
         
-            depth = depth || 0;
-            nopadtext = nopadtext || false;
-        
-            if (!currentElement) {
-                return this.domToHTML(this.doc.body);
-            }
-            
-            //Roo.log(currentElement);
-            var j;
-            var allText = false;
-            var nodeName = currentElement.nodeName;
-            var tagName = Roo.util.Format.htmlEncode(currentElement.tagName);
-            
-            if  (nodeName == '#text') {
-                return currentElement.nodeValue;
-            }
-            
-            
-            var ret = '';
-            if (nodeName != 'BODY') {
-                 
-                var i = 0;
-                // Prints the node tagName, such as <A>, <IMG>, etc
-                if (tagName) {
-                    var attr = [];
-                    for(i = 0; i < currentElement.attributes.length;i++) {
-                        // quoting?
-                        var aname = currentElement.attributes.item(i).name;
-                        if (!currentElement.attributes.item(i).value.length) {
-                            continue;
-                        }
-                        attr.push(aname + '="' + Roo.util.Format.htmlEncode(currentElement.attributes.item(i).value) + '"' );
-                    }
-                    
-                    ret = "<"+currentElement.tagName+ ( attr.length ? (' ' + attr.join(' ') ) : '') + ">";
-                } 
-                else {
-                    
-                    // eack
-                }
-            } else {
-                tagName = false;
-            }
-            if (['IMG', 'BR', 'HR', 'INPUT'].indexOf(tagName) > -1) {
-                return ret;
-            }
-            if (['PRE', 'TEXTAREA', 'TD', 'A', 'SPAN'].indexOf(tagName) > -1) { // or code?
-                nopadtext = true;
-            }
-            
-            
-            // Traverse the tree
-            i = 0;
-            var currentElementChild = currentElement.childNodes.item(i);
-            var allText = true;
-            var innerHTML  = '';
-            lastnode = '';
-            while (currentElementChild) {
-                // Formatting code (indent the tree so it looks nice on the screen)
-                var nopad = nopadtext;
-                if (lastnode == 'SPAN') {
-                    nopad  = true;
-                }
-                // text
-                if  (currentElementChild.nodeName == '#text') {
-                    var toadd = Roo.util.Format.htmlEncode(currentElementChild.nodeValue);
-                    if (!nopad && toadd.length > 80) {
-                        innerHTML  += "\n" + (new Array( depth + 1 )).join( "  "  );
-                    }
-                    innerHTML  += toadd;
-                    
-                    i++;
-                    currentElementChild = currentElement.childNodes.item(i);
-                    lastNode = '';
-                    continue;
-                }
-                allText = false;
-                
-                innerHTML  += nopad ? '' : "\n" + (new Array( depth + 1 )).join( "  "  );
-                    
-                // Recursively traverse the tree structure of the child node
-                innerHTML   += this.domToHTML(currentElementChild, depth+1, nopadtext);
-                lastnode = currentElementChild.nodeName;
-                i++;
-                currentElementChild=currentElement.childNodes.item(i);
-            }
-            
-            ret += innerHTML;
-            
-            if (!allText) {
-                    // The remaining code is mostly for formatting the tree
-                ret+= nopadtext ? '' : "\n" + (new Array( depth  )).join( "  "  );
-            }
-            
-            
-            if (tagName) {
-                ret+= "</"+tagName+">";
-            }
-            return ret;
-            
-        },
-        
-        applyBlacklists : function()
-        {
-            var w = typeof(this.owner.white) != 'undefined' && this.owner.white ? this.owner.white  : [];
-            var b = typeof(this.owner.black) != 'undefined' && this.owner.black ? this.owner.black :  [];
-            
-            this.white = [];
-            this.black = [];
-            Roo.each(Roo.HtmlEditorCore.white, function(tag) {
-                if (b.indexOf(tag) > -1) {
-                    return;
-                }
-                this.white.push(tag);
-                
-            }, this);
-            
-            Roo.each(w, function(tag) {
-                if (b.indexOf(tag) > -1) {
-                    return;
-                }
-                if (this.white.indexOf(tag) > -1) {
-                    return;
-                }
-                this.white.push(tag);
-                
-            }, this);
-            
-            
-            Roo.each(Roo.HtmlEditorCore.black, function(tag) {
-                if (w.indexOf(tag) > -1) {
-                    return;
-                }
-                this.black.push(tag);
-                
-            }, this);
-            
-            Roo.each(b, function(tag) {
-                if (w.indexOf(tag) > -1) {
-                    return;
-                }
-                if (this.black.indexOf(tag) > -1) {
-                    return;
-                }
-                this.black.push(tag);
-                
-            }, this);
-            
-            
-            w = typeof(this.owner.cwhite) != 'undefined' && this.owner.cwhite ? this.owner.cwhite  : [];
-            b = typeof(this.owner.cblack) != 'undefined' && this.owner.cblack ? this.owner.cblack :  [];
-            
-            this.cwhite = [];
-            this.cblack = [];
-            Roo.each(Roo.HtmlEditorCore.cwhite, function(tag) {
-                if (b.indexOf(tag) > -1) {
-                    return;
-                }
-                this.cwhite.push(tag);
-                
-            }, this);
-            
-            Roo.each(w, function(tag) {
-                if (b.indexOf(tag) > -1) {
-                    return;
-                }
-                if (this.cwhite.indexOf(tag) > -1) {
-                    return;
-                }
-                this.cwhite.push(tag);
-                
-            }, this);
-            
-            
-            Roo.each(Roo.HtmlEditorCore.cblack, function(tag) {
-                if (w.indexOf(tag) > -1) {
-                    return;
-                }
-                this.cblack.push(tag);
-                
-            }, this);
-            
-            Roo.each(b, function(tag) {
-                if (w.indexOf(tag) > -1) {
-                    return;
-                }
-                if (this.cblack.indexOf(tag) > -1) {
-                    return;
-                }
-                this.cblack.push(tag);
-                
-            }, this);
+        depth = depth || 0;
+        nopadtext = nopadtext || false;
+    
+        if (!currentElement) {
+            return this.domToHTML(this.doc.body);
         }
+        
+        //Roo.log(currentElement);
+        var j;
+        var allText = false;
+        var nodeName = currentElement.nodeName;
+        var tagName = Roo.util.Format.htmlEncode(currentElement.tagName);
+        
+        if  (nodeName == '#text') {
+            return currentElement.nodeValue;
+        }
+        
+        
+        var ret = '';
+        if (nodeName != 'BODY') {
+             
+            var i = 0;
+            // Prints the node tagName, such as <A>, <IMG>, etc
+            if (tagName) {
+                var attr = [];
+                for(i = 0; i < currentElement.attributes.length;i++) {
+                    // quoting?
+                    var aname = currentElement.attributes.item(i).name;
+                    if (!currentElement.attributes.item(i).value.length) {
+                        continue;
+                    }
+                    attr.push(aname + '="' + Roo.util.Format.htmlEncode(currentElement.attributes.item(i).value) + '"' );
+                }
+                
+                ret = "<"+currentElement.tagName+ ( attr.length ? (' ' + attr.join(' ') ) : '') + ">";
+            } 
+            else {
+                
+                // eack
+            }
+        } else {
+            tagName = false;
+        }
+        if (['IMG', 'BR', 'HR', 'INPUT'].indexOf(tagName) > -1) {
+            return ret;
+        }
+        if (['PRE', 'TEXTAREA', 'TD', 'A', 'SPAN'].indexOf(tagName) > -1) { // or code?
+            nopadtext = true;
+        }
+        
+        
+        // Traverse the tree
+        i = 0;
+        var currentElementChild = currentElement.childNodes.item(i);
+        var allText = true;
+        var innerHTML  = '';
+        lastnode = '';
+        while (currentElementChild) {
+            // Formatting code (indent the tree so it looks nice on the screen)
+            var nopad = nopadtext;
+            if (lastnode == 'SPAN') {
+                nopad  = true;
+            }
+            // text
+            if  (currentElementChild.nodeName == '#text') {
+                var toadd = Roo.util.Format.htmlEncode(currentElementChild.nodeValue);
+                if (!nopad && toadd.length > 80) {
+                    innerHTML  += "\n" + (new Array( depth + 1 )).join( "  "  );
+                }
+                innerHTML  += toadd;
+                
+                i++;
+                currentElementChild = currentElement.childNodes.item(i);
+                lastNode = '';
+                continue;
+            }
+            allText = false;
+            
+            innerHTML  += nopad ? '' : "\n" + (new Array( depth + 1 )).join( "  "  );
+                
+            // Recursively traverse the tree structure of the child node
+            innerHTML   += this.domToHTML(currentElementChild, depth+1, nopadtext);
+            lastnode = currentElementChild.nodeName;
+            i++;
+            currentElementChild=currentElement.childNodes.item(i);
+        }
+        
+        ret += innerHTML;
+        
+        if (!allText) {
+                // The remaining code is mostly for formatting the tree
+            ret+= nopadtext ? '' : "\n" + (new Array( depth  )).join( "  "  );
+        }
+        
+        
+        if (tagName) {
+            ret+= "</"+tagName+">";
+        }
+        return ret;
+        
+    },
+        
+    applyBlacklists : function()
+    {
+        var w = typeof(this.owner.white) != 'undefined' && this.owner.white ? this.owner.white  : [];
+        var b = typeof(this.owner.black) != 'undefined' && this.owner.black ? this.owner.black :  [];
+        
+        this.white = [];
+        this.black = [];
+        Roo.each(Roo.HtmlEditorCore.white, function(tag) {
+            if (b.indexOf(tag) > -1) {
+                return;
+            }
+            this.white.push(tag);
+            
+        }, this);
+        
+        Roo.each(w, function(tag) {
+            if (b.indexOf(tag) > -1) {
+                return;
+            }
+            if (this.white.indexOf(tag) > -1) {
+                return;
+            }
+            this.white.push(tag);
+            
+        }, this);
+        
+        
+        Roo.each(Roo.HtmlEditorCore.black, function(tag) {
+            if (w.indexOf(tag) > -1) {
+                return;
+            }
+            this.black.push(tag);
+            
+        }, this);
+        
+        Roo.each(b, function(tag) {
+            if (w.indexOf(tag) > -1) {
+                return;
+            }
+            if (this.black.indexOf(tag) > -1) {
+                return;
+            }
+            this.black.push(tag);
+            
+        }, this);
+        
+        
+        w = typeof(this.owner.cwhite) != 'undefined' && this.owner.cwhite ? this.owner.cwhite  : [];
+        b = typeof(this.owner.cblack) != 'undefined' && this.owner.cblack ? this.owner.cblack :  [];
+        
+        this.cwhite = [];
+        this.cblack = [];
+        Roo.each(Roo.HtmlEditorCore.cwhite, function(tag) {
+            if (b.indexOf(tag) > -1) {
+                return;
+            }
+            this.cwhite.push(tag);
+            
+        }, this);
+        
+        Roo.each(w, function(tag) {
+            if (b.indexOf(tag) > -1) {
+                return;
+            }
+            if (this.cwhite.indexOf(tag) > -1) {
+                return;
+            }
+            this.cwhite.push(tag);
+            
+        }, this);
+        
+        
+        Roo.each(Roo.HtmlEditorCore.cblack, function(tag) {
+            if (w.indexOf(tag) > -1) {
+                return;
+            }
+            this.cblack.push(tag);
+            
+        }, this);
+        
+        Roo.each(b, function(tag) {
+            if (w.indexOf(tag) > -1) {
+                return;
+            }
+            if (this.cblack.indexOf(tag) > -1) {
+                return;
+            }
+            this.cblack.push(tag);
+            
+        }, this);
+    }
     
     // hide stuff that is not compatible
     /**
