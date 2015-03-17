@@ -1008,8 +1008,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // clean up silly Windows -- stuff?
             return; 
         }
+        var lcname = node.tagName.toLowerCase();
+        // we ignore whitelists... ?? = not really the way to go, but we probably have not got a full
+        // whitelist of tags..
         
-        if (this.black.indexOf(node.tagName.toLowerCase()) > -1 && this.clearUp) {
+        if (this.black.indexOf(lcname) > -1 && this.clearUp ) {
             // remove node.
             node.parentNode.removeChild(node);
             return;
