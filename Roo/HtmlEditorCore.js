@@ -19,6 +19,8 @@ Roo.HtmlEditorCore = function(config){
     
     
     Roo.HtmlEditorCore.superclass.constructor.call(this, config);
+    
+    
     this.addEvents({
         /**
          * @event initialize
@@ -71,7 +73,13 @@ Roo.HtmlEditorCore = function(config){
          */
         editorevent: true
     });
-     
+    
+    // at this point this.owner is set, so we can start working out the whitelisted / blacklisted elements
+    
+    
+    
+    
+    
 };
 
 
