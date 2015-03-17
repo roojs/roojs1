@@ -127,8 +127,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     clearUp: true,
     
-    cblack: false,
-    cwhite: false,
+    // blacklist + whitelisted elements..
+    black: false,
+    white: false,
      
     
 
