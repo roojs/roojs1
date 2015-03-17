@@ -290,7 +290,7 @@ side          Add an error icon to the right of the field with a popup on hover
         if(!Roo.isOpera && this.focusClass){ // don't touch in Opera
             this.el.addClass(this.focusClass);
         }
-        if(this.hasFocus){
+        if(!this.hasFocus){
             this.hasFocus = true;
             this.startValue = this.getValue();
             this.fireEvent("focus", this);
