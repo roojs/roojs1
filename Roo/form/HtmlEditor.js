@@ -64,6 +64,18 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      */
     stylesheets: false,
     
+    
+     /**
+     * @cfg {Array} blacklist of css styles style attributes (blacklist overrides whitelist)
+     * 
+     */
+    cblack: false,
+    /**
+     * @cfg {Array} whitelist of css styles style attributes (blacklist overrides whitelist)
+     * 
+     */
+    cwhite: false,
+    
     // id of frame..
     frameId: false,
     
