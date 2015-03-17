@@ -76,7 +76,28 @@ Roo.HtmlEditorCore = function(config){
     
     // at this point this.owner is set, so we can start working out the whitelisted / blacklisted elements
     
+    // defaults : white / black...
     
+    var w = typeof(this.owner.white) != 'undefined' && this.owner.white ? this.owner.white  : [];
+    var b = typeof(this.owner.black) != 'undefined' && this.owner.black ? this.owner.black : [];
+    
+    this.white = [];
+    Roo.each(Roo.HtmlEditorCore.white, function(tag) {
+        if (b.indexOf(tag) > -1) {
+            return;
+        }
+        this.white.push(tag);
+        
+    }, this);
+    
+    if (typeof(this.owner.white) != 'undefined' && this.owner.white) {
+        Roo.each(this.owner.white, function(tag) {
+            if (this.white.indexOf(tag) > -1) {
+                return;
+            }
+            
+        })
+    }
     
     
     
