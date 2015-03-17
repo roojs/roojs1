@@ -111,14 +111,14 @@ Roo.HtmlEditorCore = function(config){
         
     }, this);
     
-    Roo.each(w, function(tag) {
-        if (b.indexOf(tag) > -1) {
+    Roo.each(b, function(tag) {
+        if (w.indexOf(tag) > -1) {
             return;
         }
-        if (this.white.indexOf(tag) > -1) {
+        if (this.black.indexOf(tag) > -1) {
             return;
         }
-        this.white.push(tag);
+        this.black.push(tag);
         
     }, this);
     
