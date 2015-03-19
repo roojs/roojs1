@@ -1110,7 +1110,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
         }
         
-        
+        Roo.log(this);
         for (var i = node.attributes.length-1; i > -1 ; i--) {
             var a = node.attributes[i];
             //console.log(a);
