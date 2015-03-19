@@ -1074,7 +1074,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             Roo.log('cwhite');
             Roo.log(cwhite);
             Roo.log('cblack');
-            Roo.lgo(cblack);
+            Roo.log(cblack);
             
             var parts = v.split(/;/);
             var clean = [];
