@@ -1378,8 +1378,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.white.push(tag);
             
         }, this);
-        Roo.log('white');
-        Roo.log(this.white);
+        
         
         Roo.each(Roo.HtmlEditorCore.black, function(tag) {
             if (w.indexOf(tag) > -1) {
@@ -1399,8 +1398,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.black.push(tag);
             
         }, this);
-        Roo.log('black');
-        Roo.log(this.black);
+        
         
         w = typeof(this.owner.cwhite) != 'undefined' && this.owner.cwhite ? this.owner.cwhite  : [];
         b = typeof(this.owner.cblack) != 'undefined' && this.owner.cblack ? this.owner.cblack :  [];
