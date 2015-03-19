@@ -1355,6 +1355,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
     applyBlacklists : function()
     {
+        Roo.log('applyBlacklists!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         var w = typeof(this.owner.white) != 'undefined' && this.owner.white ? this.owner.white  : [];
         var b = typeof(this.owner.black) != 'undefined' && this.owner.black ? this.owner.black :  [];
         
