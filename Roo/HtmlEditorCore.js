@@ -1399,7 +1399,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.black.push(tag);
             
         }, this);
-        
+        Roo.log('black');
+        Roo.log(this.black);
         
         w = typeof(this.owner.cwhite) != 'undefined' && this.owner.cwhite ? this.owner.cwhite  : [];
         b = typeof(this.owner.cblack) != 'undefined' && this.owner.cblack ? this.owner.cblack :  [];
