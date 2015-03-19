@@ -997,6 +997,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     cleanUpChild : function (node)
     {
+        Roo.log('cleanUpChild!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         var ed = this;
         //console.log(node);
         if (node.nodeName == "#text") {
