@@ -1424,7 +1424,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
         }, this);
         
-        
+        Roo.log(Roo.HtmlEditorCore);
         Roo.each(Roo.HtmlEditorCore.cblack, function(tag) {
             if (w.indexOf(tag) > -1) {
                 return;
