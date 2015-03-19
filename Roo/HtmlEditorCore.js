@@ -1378,6 +1378,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.white.push(tag);
             
         }, this);
+        Roo.log('white');
         Roo.log(this.white);
         
         Roo.each(Roo.HtmlEditorCore.black, function(tag) {
