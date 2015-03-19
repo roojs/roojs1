@@ -1062,15 +1062,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
         }
         
+        var cwhite = this.cwhite;
+        var cblack = this.cblack;
+            
         function cleanStyle(n,v)
         {
             if (v.match(/expression/)) { //XSS?? should we even bother..
                 node.removeAttribute(n);
                 return;
             }
-            var cwhite = this.cwhite;
-            var cblack = this.cblack;
-            
             
             var parts = v.split(/;/);
             var clean = [];
