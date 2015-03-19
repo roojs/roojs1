@@ -1443,11 +1443,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.cblack.push(tag);
             
         }, this);
-        
-        Roo.log('white');
-        Roo.log(this.cwhite);
-        Roo.log('black');
-        Roo.log(this.cblack);
     }
     
     // hide stuff that is not compatible
