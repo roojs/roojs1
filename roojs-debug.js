@@ -42081,15 +42081,15 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
         }
         
+        var cwhite = this.cwhite;
+        var cblack = this.cblack;
+            
         function cleanStyle(n,v)
         {
             if (v.match(/expression/)) { //XSS?? should we even bother..
                 node.removeAttribute(n);
                 return;
             }
-            var cwhite = this.cwhite;
-            var cblack = this.cblack;
-            
             
             var parts = v.split(/;/);
             var clean = [];
@@ -42102,7 +42102,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
                 
-                if ( cblack.indexOf(l) > -1) {
+                if ( cwhite.length && cblack.indexOf(l) > -1) {
 //                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
                     //node.removeAttribute(n);
                     return true;
