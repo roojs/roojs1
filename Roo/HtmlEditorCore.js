@@ -1360,12 +1360,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         this.white = [];
         this.black = [];
-        Roo.log('white');
-        Roo.log(Roo.HtmlEditorCore.white);
-        
-        Roo.log('black');
-        Roo.log(Roo.HtmlEditorCore.black);
-        
         Roo.each(Roo.HtmlEditorCore.white, function(tag) {
             if (b.indexOf(tag) > -1) {
                 return;
