@@ -997,7 +997,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     cleanUpChild : function (node)
     {
-        Roo.log('cleanUpChild!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         var ed = this;
         //console.log(node);
         if (node.nodeName == "#text") {
@@ -1084,7 +1083,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
                 
-                if ( cblack.length && cblack.indexOf(l) > -1) {
+                if ( cwhite.length && cblack.indexOf(l) > -1) {
 //                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
                     //node.removeAttribute(n);
                     return true;
@@ -1356,7 +1355,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
     applyBlacklists : function()
     {
-        Roo.log('applyBlacklists!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         var w = typeof(this.owner.white) != 'undefined' && this.owner.white ? this.owner.white  : [];
         var b = typeof(this.owner.black) != 'undefined' && this.owner.black ? this.owner.black :  [];
         
