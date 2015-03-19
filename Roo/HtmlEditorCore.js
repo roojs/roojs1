@@ -1083,7 +1083,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 var l = p.split(':').shift().replace(/\s+/g,'');
                 l = l.replace(/^\s+/g,'').replace(/\s+$/g,'');
                 
-                if ( cblack.indexOf(l) > -1) {
+                if ( cblack.length && cblack.indexOf(l) > -1) {
 //                    Roo.log('(REMOVE CSS)' + node.tagName +'.' + n + ':'+l + '=' + v);
                     //node.removeAttribute(n);
                     return true;
