@@ -1367,6 +1367,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.white.push(tag);
             
         }, this);
+        Roo.log('owner white');
         Roo.log(w);
         Roo.each(w, function(tag) {
             if (b.indexOf(tag) > -1) {
