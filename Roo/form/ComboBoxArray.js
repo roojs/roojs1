@@ -183,7 +183,9 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
             // add to list
             
         }, this);
-        
+        this.combo.on('specialkey',function(cb, rec, ix){
+            alert('here');
+        })
         
         
     },
