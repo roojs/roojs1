@@ -180,7 +180,15 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         item.navId = this.navId;
     
     },
-  
+    
+    /**
+    * clear all the Navigation item
+    */
+   
+    clearAll : function()
+    {
+        Roo.log(this.el);
+    },
     
     getNavItem: function(tabId)
     {
