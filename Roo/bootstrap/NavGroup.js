@@ -187,6 +187,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
    
     clearAll : function()
     {
+        Roo.log(this.el);
         this.navItems = false;
         this.el.innerHMTL = '';
     },
