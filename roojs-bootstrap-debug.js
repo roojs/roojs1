@@ -3487,7 +3487,6 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
    
     clearAll : function()
     {
-        Roo.log(this.el);
         this.navItems = [];
         this.el.dom.innerHTML = '';
     },
