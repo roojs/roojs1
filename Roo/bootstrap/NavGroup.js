@@ -189,7 +189,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     {
         Roo.log(this.el);
         this.navItems = false;
-        this.el.innerHMTL = '';
+        this.el.dom.innerHMTL = '';
     },
     
     getNavItem: function(tabId)
