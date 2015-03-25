@@ -40887,6 +40887,9 @@ Roo.extend(Roo.form.Checkbox, Roo.form.Field,  {
 
 	// private
     onClick : function(){ 
+        if (this.disabled) {
+            return;
+        }
         this.setChecked(!this.checked);
 
         //if(this.el.dom.checked != this.checked){
