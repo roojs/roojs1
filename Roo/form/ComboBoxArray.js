@@ -452,6 +452,10 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
                         String.format('{0}',this.data[this.tipField])
         );
         
+        if(this.cb.disabled){
+            return;
+        }
+
         this.el.child('img').on('click', this.remove, this);
         
     },
