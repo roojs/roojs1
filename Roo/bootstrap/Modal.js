@@ -158,7 +158,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         };
         
         var modal = {
-            cls: "modal fade",
+            cls: "modal",
             style : 'display: none',
             cn : [
                 {
