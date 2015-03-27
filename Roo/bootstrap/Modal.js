@@ -221,9 +221,13 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.render();
         }
        
-        this.el.addClass('on');
-        this.el.removeClass('fade');
+        this.el.addClass('in');
+//        this.el.removeClass('fade');
         this.el.setStyle('display', 'block');
+        this.el.on('transitionend', function() {
+                Roo.log("trans end?");
+                
+            }, this, { single:  true } );
         Roo.get(document.body).addClass("x-body-masked");
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         this.maskEl.show();
