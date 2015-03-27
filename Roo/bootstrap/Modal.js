@@ -222,7 +222,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         var _this = this
        this.el.setStyle('display', 'block');
-        (function(){ _this.el.addClass('in'); }).defer(100);
+        (function(){ _this.el.addClass('in'); }).defer(1000);
 //        this.el.removeClass('fade');
 //        this.el.setStyle('display', 'block');
 //        Roo.get(document.body).addClass("x-body-masked");
@@ -241,7 +241,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.el.removeClass('in');
 //        this.el.addClass('fade');
 var _this = this;
-(function(){ _this.el.setStyle('display', 'none'); }).defer(100);
+(function(){ _this.el.setStyle('display', 'none'); }).defer(1000);
         
         this.fireEvent('hide', this);
     },
