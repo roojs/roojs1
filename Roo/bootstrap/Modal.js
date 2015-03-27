@@ -67,7 +67,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     buttonPosition: 'right',
     
-    animate : false,
+    animate : true,
     
     onRender : function(ct, position)
     {
