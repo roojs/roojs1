@@ -100,6 +100,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     iframePad:3,
     hideMode:'offsets',
     
+    actionMode : 'container', // defaults to hiding it...
+    
     defaultAutoCreate : { // modified by initCompnoent..
         tag: "textarea",
         style:"width:500px;height:300px;",
