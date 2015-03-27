@@ -177,9 +177,9 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
         */
        
-//       if(t.isContainer){
-//           return;
-//       }
+       if(t.isContainer){
+           return;
+       }
        
         Roo.log('pass click event');
         
