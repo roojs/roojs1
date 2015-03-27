@@ -223,7 +223,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
        
         this.el.addClass('in');
 //        this.el.removeClass('fade');
-        this.el.setStyle('display', 'block');
+//        this.el.setStyle('display', 'block');
         this.el.on('transitionend', function() {
                 Roo.log("trans end?");
                 
