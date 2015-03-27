@@ -13,6 +13,7 @@
  * @cfg {String} html the menu label
  * @cfg {String} href the link
  * @cfg {Boolean} preventDefault (true | false) default true
+ * @cfg {Boolean} isContainer (true | false) default false
  * 
  * 
  * @constructor
@@ -39,8 +40,17 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     href : false,
     html : false,
     preventDefault: true,
+    isContainer : false,
     
     getAutoCreate : function(){
+        
+        if(this.isContainer){
+            return {
+                tag: 'li',
+                cls: 'dropdown-menu-item'
+            };
+        }
+        
         var cfg= {
             tag: 'li',
             cls: 'dropdown-menu-item',
