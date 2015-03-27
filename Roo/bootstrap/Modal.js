@@ -221,26 +221,26 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.render();
         }
        
-        this.el.addClass('in');
-//        this.el.removeClass('fade');
+        this.el.addClass('on');
+        this.el.removeClass('fade');
         this.el.setStyle('display', 'block');
-//        Roo.get(document.body).addClass("x-body-masked");
-//        this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
-//        this.maskEl.show();
-//        this.el.setStyle('zIndex', '10001');
-//        this.fireEvent('show', this);
+        Roo.get(document.body).addClass("x-body-masked");
+        this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+        this.maskEl.show();
+        this.el.setStyle('zIndex', '10001');
+        this.fireEvent('show', this);
         
         
     },
     hide : function()
     {
-//        Roo.log('Modal hide?!');
-//        this.maskEl.hide();
-//        Roo.get(document.body).removeClass("x-body-masked");
-        this.el.removeClass('in');
-//        this.el.addClass('fade');
-//        this.el.setStyle('display', 'none');
-//        this.fireEvent('hide', this);
+        Roo.log('Modal hide?!');
+        this.maskEl.hide();
+        Roo.get(document.body).removeClass("x-body-masked");
+        this.el.removeClass('on');
+        this.el.addClass('fade');
+        this.el.setStyle('display', 'none');
+        this.fireEvent('hide', this);
     },
     
     addButton : function(str, cb)
