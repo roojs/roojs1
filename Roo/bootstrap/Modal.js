@@ -220,8 +220,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (!this.rendered) {
             this.render();
         }
+        var _this = this
        this.el.setStyle('display', 'block');
-        (function(){ this.el.addClass('in'); }).defer(100);
+        (function(){ _this.el.addClass('in'); }).defer(100);
 //        this.el.removeClass('fade');
 //        this.el.setStyle('display', 'block');
 //        Roo.get(document.body).addClass("x-body-masked");
