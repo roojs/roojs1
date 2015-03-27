@@ -248,10 +248,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     hide : function()
     {
         Roo.log('Modal hide?!');
-//        this.maskEl.hide();
-//        Roo.get(document.body).removeClass("x-body-masked");
+        this.maskEl.hide();
+        Roo.get(document.body).removeClass("x-body-masked");
         this.el.removeClass('in');
-//        this.el.addClass('fade');
         
         if(this.animate){
             var _this = this;
@@ -259,7 +258,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }else{
             this.el.setStyle('display', 'none');
         }
-        
         
         this.fireEvent('hide', this);
     },
