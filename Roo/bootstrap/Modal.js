@@ -221,8 +221,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.render();
         }
        
-        this.el.addClass('on');
-        this.el.removeClass('fade');
+        this.el.addClass('in');
+//        this.el.removeClass('fade');
         this.el.setStyle('display', 'block');
         Roo.get(document.body).addClass("x-body-masked");
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
@@ -237,8 +237,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         Roo.log('Modal hide?!');
         this.maskEl.hide();
         Roo.get(document.body).removeClass("x-body-masked");
-        this.el.removeClass('on');
-        this.el.addClass('fade');
+        this.el.removeClass('in');
+//        this.el.addClass('fade');
         this.el.setStyle('display', 'none');
         this.fireEvent('hide', this);
     },
