@@ -228,7 +228,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.render();
         }
         var _this = this
-       this.el.setStyle('display', 'block');
+        this.el.setStyle('display', 'block');
         (function(){ _this.el.addClass('in'); }).defer(150);
 //        this.el.removeClass('fade');
 //        this.el.setStyle('display', 'block');
@@ -247,8 +247,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
 //        Roo.get(document.body).removeClass("x-body-masked");
         this.el.removeClass('in');
 //        this.el.addClass('fade');
-var _this = this;
-(function(){ _this.el.setStyle('display', 'none'); }).defer(150);
+        var _this = this;
+        (function(){ _this.el.setStyle('display', 'none'); }).defer(150);
         
         this.fireEvent('hide', this);
     },
