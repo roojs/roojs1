@@ -1710,10 +1710,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             
         }
         */
-       Roo.log(t);
-       if(t.isContainer){
-           return;
-       }
        
         Roo.log('pass click event');
         
