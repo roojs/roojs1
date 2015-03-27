@@ -1885,6 +1885,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
  * @cfg {String} html the menu label
  * @cfg {String} href the link
  * @cfg {Boolean} preventDefault (true | false) default true
+ * @cfg {Boolean} isContainer (true | false) default false
  * 
  * 
  * @constructor
@@ -1911,8 +1912,17 @@ Roo.extend(Roo.bootstrap.MenuItem, Roo.bootstrap.Component,  {
     href : false,
     html : false,
     preventDefault: true,
+    isContainer : false,
     
     getAutoCreate : function(){
+        
+        if(this.isContainer){
+            return {
+                tag: 'li',
+                cls: 'dropdown-menu-item'
+            };
+        }
+        
         var cfg= {
             tag: 'li',
             cls: 'dropdown-menu-item',
@@ -2243,7 +2253,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     hide : function()
     {
-        Roo.log('Modal hide?!');
         this.maskEl.hide();
         Roo.get(document.body).removeClass("x-body-masked");
         this.el.removeClass('in');

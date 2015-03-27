@@ -11198,6 +11198,12 @@
      "memberOf": ""
     },
     {
+     "name": "isContainer",
+     "type": "Boolean",
+     "desc": "(true | false) default false",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
