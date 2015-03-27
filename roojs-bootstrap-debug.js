@@ -2029,6 +2029,7 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @cfg {Boolean} specificTitle (true|false) default false
  * @cfg {Array} buttons Array of buttons or standard button set..
  * @cfg {String} buttonPosition (left|right|center) default right
+ * @cfg {Boolean} animate (true | false) default true
  * 
  * @constructor
  * Create a new Modal Dialog
@@ -2061,6 +2062,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     specificTitle: false,
     
     buttonPosition: 'right',
+    
+    animate : true,
     
     onRender : function(ct, position)
     {
@@ -2150,8 +2153,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             title = this.title;
         };
         
-        return modal = {
-            cls: "modal fade",
+        var modal = {
+            cls: "modal",
             style : 'display: none',
             cn : [
                 {
@@ -2191,9 +2194,13 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                         
                 }
             ]
-            
-            
         };
+        
+        if(this.animate){
+            modal.cls += ' fade';
+        }
+        
+        return modal;
           
     },
     getChildContainer : function() {
@@ -2216,10 +2223,16 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (!this.rendered) {
             this.render();
         }
-       
-        this.el.addClass('on');
-        this.el.removeClass('fade');
+        
         this.el.setStyle('display', 'block');
+        
+        if(this.animate){
+            var _this = this;
+            (function(){ _this.el.addClass('in'); }).defer(50);
+        }else{
+            this.el.addClass('in');
+        }
+        
         Roo.get(document.body).addClass("x-body-masked");
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         this.maskEl.show();
@@ -2233,9 +2246,15 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         Roo.log('Modal hide?!');
         this.maskEl.hide();
         Roo.get(document.body).removeClass("x-body-masked");
-        this.el.removeClass('on');
-        this.el.addClass('fade');
-        this.el.setStyle('display', 'none');
+        this.el.removeClass('in');
+        
+        if(this.animate){
+            var _this = this;
+            (function(){ _this.el.setStyle('display', 'none'); }).defer(150);
+        }else{
+            this.el.setStyle('display', 'none');
+        }
+        
         this.fireEvent('hide', this);
     },
     
