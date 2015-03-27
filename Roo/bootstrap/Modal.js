@@ -221,7 +221,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.render();
         }
        this.el.setStyle('display', 'block');
-        this.el.addClass('in');
+        (function(){ this.el.addClass('in'); }).defer(100);
 //        this.el.removeClass('fade');
 //        this.el.setStyle('display', 'block');
 //        Roo.get(document.body).addClass("x-body-masked");
