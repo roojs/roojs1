@@ -232,7 +232,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         if(this.animate){
             var _this = this;
-            (function(){ _this.el.addClass('in'); }).defer(10);
+            (function(){ _this.el.addClass('in'); }).defer(50);
         }else{
             this.el.addClass('in');
         }
