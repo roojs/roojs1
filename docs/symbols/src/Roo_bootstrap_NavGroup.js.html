@@ -180,7 +180,16 @@
         </span><span class="jsdoc-var">item.navId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">;
     
     },
-  
+    
+    </span><span class="jsdoc-comment">/**
+    * clear all the Navigation item
+    */
+   
+    </span><span class="jsdoc-var">clearAll </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.navItems </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-var">this.el.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+    },
     
     </span><span class="jsdoc-var">getNavItem</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tabId</span><span class="jsdoc-syntax">)
     {

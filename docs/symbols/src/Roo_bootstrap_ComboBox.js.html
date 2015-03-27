@@ -881,7 +881,7 @@
          </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">opts.add</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.list.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;li class=&quot;loading-indicator&quot;&gt;'</span><span class="jsdoc-syntax">+(</span><span class="jsdoc-var">this.loadingText</span><span class="jsdoc-syntax">||</span><span class="jsdoc-string">'loading'</span><span class="jsdoc-syntax">)+</span><span class="jsdoc-string">'&lt;/li&gt;' </span><span class="jsdoc-syntax">;
          }
-</span><span class="jsdoc-comment">//        this.restrictHeight();
+        </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.selectedIndex </span><span class="jsdoc-syntax">= -1;
     },
 
@@ -1423,9 +1423,6 @@
         
          </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'expand'</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.listWidth </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.minListWidth</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.list.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">lw</span><span class="jsdoc-syntax">);
-            
         </span><span class="jsdoc-var">this.list.show</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();

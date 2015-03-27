@@ -33,6 +33,7 @@
  * @cfg {Boolean} specificTitle (true|false) default false
  * @cfg {Array} buttons Array of buttons or standard button set..
  * @cfg {String} buttonPosition (left|right|center) default right
+ * @cfg {Boolean} animate (true | false) default true
  * 
  * @constructor
  * Create a new Modal Dialog
@@ -65,6 +66,8 @@
     </span><span class="jsdoc-var">specificTitle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">buttonPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">animate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">onRender </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
     {
@@ -154,8 +157,8 @@
             </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.title</span><span class="jsdoc-syntax">;
         };
         
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">modal </span><span class="jsdoc-syntax">= {
-            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;modal fade&quot;</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">modal </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;modal&quot;</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'display: none'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                 {
@@ -195,9 +198,13 @@
                         
                 }
             ]
-            
-            
         };
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">modal.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' fade'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">modal</span><span class="jsdoc-syntax">;
           
     },
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
@@ -220,10 +227,16 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.rendered</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">();
         }
-       
-        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'on'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fade'</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+            (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-var">_this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(50);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">);
+        }
+        
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-body-masked&quot;</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.maskEl.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
         </span><span class="jsdoc-var">this.maskEl.show</span><span class="jsdoc-syntax">();
@@ -237,9 +250,15 @@
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Modal hide?!'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.maskEl.hide</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;x-body-masked&quot;</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'on'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fade'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+            (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-var">_this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(150);
+        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">);
+        }
+        
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
     

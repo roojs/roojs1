@@ -146,6 +146,9 @@
 
 	</span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-var">this.setChecked</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.checked</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-comment">//if(this.el.dom.checked != this.checked){

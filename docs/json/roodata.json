@@ -11662,6 +11662,12 @@
      "memberOf": ""
     },
     {
+     "name": "animate",
+     "type": "Boolean",
+     "desc": "(true | false) default true",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -24090,6 +24096,18 @@
      "name": "stylesheets",
      "type": "Array",
      "desc": "url of stylesheets. set to [] to disable stylesheets.",
+     "memberOf": ""
+    },
+    {
+     "name": "blacklist",
+     "type": "Array",
+     "desc": "of css styles style attributes (blacklist overrides whitelist)",
+     "memberOf": ""
+    },
+    {
+     "name": "whitelist",
+     "type": "Array",
+     "desc": "of css styles style attributes (blacklist overrides whitelist)",
      "memberOf": ""
     },
     {

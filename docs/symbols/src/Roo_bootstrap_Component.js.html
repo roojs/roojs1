@@ -189,7 +189,7 @@
           
         
         
-        
+         </span><span class="jsdoc-var">skip_children </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-comment">// render the element if it's not BODY.
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.xtype </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'Body'</span><span class="jsdoc-syntax">) {
            
@@ -210,6 +210,12 @@
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">self_cntr_el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">](</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">));
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">echild </span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">self_cntr_el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">self_cntr_el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;*[xtype]'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
                 
+                
+                </span><span class="jsdoc-comment">// there is a scenario where some of the child elements are flexy:if (and all of the same type)
+                // and are not displayed -this causes this to use up the wrong element when matching.
+                // at present the only work around for this is to nest flexy:if elements in another element that is always rendered.
+                
+                
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">echild </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">echild.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.pop</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-var">cn.xtype</span><span class="jsdoc-syntax">) {
                   </span><span class="jsdoc-comment">//  Roo.log(&quot;found child for &quot; + this.xtype +&quot;: &quot; + echild.attr('xtype') );
                   
@@ -220,16 +226,24 @@
                     //echild.dom.removeAttribute('xtype');
                 </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
                     </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;MISSING &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cn.xtype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; on child of &quot; </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xbuilderid'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">'no parent'</span><span class="jsdoc-syntax">));
-                   
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">self_cntr_el</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">echild</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
                 }
             }
            
             
-               
+           
             </span><span class="jsdoc-comment">// if object has flexy:if - then it may or may not be rendered.
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">build_from_html </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">has_flexy </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">cn.el </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">cn.can_build_overlaid</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-comment">// skip a flexy if element.
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'skipping render'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cn.el</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'skipping all children'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">skip_children </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                }
+                
              } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
                  
                 </span><span class="jsdoc-comment">// actually if flexy:foreach is found, we really want to create 
@@ -262,10 +276,12 @@
         
         </span><span class="jsdoc-comment">//Roo.log(items.length);
             // add the items..
-        </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
-            </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])));
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">skip_children</span><span class="jsdoc-syntax">) {    
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">items.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-var">nitems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn.addxtype</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">items</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">])));
+            }
         }
-	
+        
         </span><span class="jsdoc-var">cn.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
 	
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
