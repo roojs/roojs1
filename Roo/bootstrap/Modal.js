@@ -198,9 +198,11 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                         
                 }
             ]
-            
-            
         };
+        
+        if(this.animate){
+            modal.cls += ' fade';
+        }
         
         return modal;
           
