@@ -232,7 +232,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         if(this.animate){
             var _this = this;
-            (function(){ _this.el.addClass('in'); }).defer(50);
+            (function(){ _this.el.addClass('in'); }).defer(10);
         }else{
             this.el.addClass('in');
         }
@@ -257,7 +257,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         if(this.animate){
             var _this = this;
-            (function(){ _this.el.setStyle('display', 'none'); }).defer(10);
+            (function(){ _this.el.setStyle('display', 'none'); }).defer(150);
         }else{
             this.el.setStyle('display', 'none');
         }
