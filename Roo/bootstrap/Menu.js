@@ -300,7 +300,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if (Roo.get(e.getTarget()).findParent('.dropdown-menu') || Roo.get(e.getTarget()).findParent('.user-menu')) {
             return;
         }
-        
+        Roo.log(Roo.get(e.getTarget()).findParent('.dropdown-menu'));
         if (this.isVisible()) {
             Roo.log('hide');
             this.hide();
