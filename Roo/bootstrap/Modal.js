@@ -257,7 +257,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         if(this.animate){
             var _this = this;
-            (function(){ _this.el.setStyle('display', 'none'); }).defer(150);
+            (function(){ _this.el.setStyle('display', 'none'); }).defer(10);
         }else{
             this.el.setStyle('display', 'none');
         }
