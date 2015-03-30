@@ -295,6 +295,12 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if (Roo.get(e.getTarget()).findParent('.dropdown-menu')) {
             return;
         }
+        
+        var t = this.findTargetItem(e);
+        if(t && t.isContainer){
+            return;
+        }
+        
         if (this.isVisible()) {
             Roo.log('hide');
             this.hide();
