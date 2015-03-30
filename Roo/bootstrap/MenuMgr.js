@@ -90,7 +90,7 @@ Roo.bootstrap.MenuMgr = function(){
    // private
    function onMouseDown(e){
         Roo.log("on MouseDown");
-        Roo.log(e);
+        Roo.log(e.getTarget);
         if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu")){
 //           hideAll();
         }
