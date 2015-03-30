@@ -157,7 +157,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     onClick : function(e){
         Roo.log("menu.onClick");
         var t = this.findTargetItem(e);
-        if(!t || t.isContainer){
+        if(!t){
             return;
         }
         Roo.log(e);
