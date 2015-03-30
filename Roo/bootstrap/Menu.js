@@ -157,8 +157,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     onClick : function(e){
         Roo.log("menu.onClick");
         var t = this.findTargetItem(e);
-        Roo.log(t);
-        if(!t){
+        if(!t || t.isContainer){
             return;
         }
         Roo.log(e);
@@ -184,10 +183,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         this.fireEvent("click", this, t, e);
         
-        if(!t.isContainer){
-            this.hide();
-        }
-        
+        this.hide();
     },
      onMouseOver : function(e){
         var t  = this.findTargetItem(e);
