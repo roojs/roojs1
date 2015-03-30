@@ -296,11 +296,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             return;
         }
         
-        var t = this.findTargetItem(e);
-        if(t && t.isContainer){
-            return;
-        }
-        
         if (this.isVisible()) {
             Roo.log('hide');
             this.hide();
