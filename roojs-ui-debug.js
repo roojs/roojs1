@@ -6278,7 +6278,7 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
 	        if (s.id) {
 	        	var g = this.getJsonAccessor(s.id);
 	        	this.getId = function(rec) {
-	        		var r = g(rec);
+	        		var r = g(rec.json); // used to be 'rec..'
 		        	return (r === undefined || r === "") ? null : r;
 	        	};
 	        } else {
