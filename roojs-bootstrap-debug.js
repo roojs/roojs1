@@ -1429,7 +1429,7 @@ Roo.bootstrap.MenuMgr = function(){
    // private
    function onMouseDown(e){
         Roo.log("on MouseDown");
-        if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu")){
+        if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu") && !e.getTarget('.user-menu')){
            hideAll();
         }
         
@@ -1691,7 +1691,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
     onClick : function(e){
         Roo.log("menu.onClick");
         var t = this.findTargetItem(e);
-        if(!t){
+        if(!t || t.isContainer){
             return;
         }
         Roo.log(e);
