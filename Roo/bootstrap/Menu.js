@@ -184,7 +184,10 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         this.fireEvent("click", this, t, e);
         
-        this.hide();
+        if(!t.isContainer){
+            this.hide();
+        }
+        
     },
      onMouseOver : function(e){
         var t  = this.findTargetItem(e);
