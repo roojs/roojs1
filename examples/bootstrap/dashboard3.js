@@ -399,6 +399,98 @@ dashboard3 = new Roo.XComponent({
            items : [
             {
              '|xns' : 'Roo.bootstrap',
+             lg : 6,
+             md : 6,
+             sm : 12,
+             style : '',
+             xns : Roo.bootstrap,
+             xtype : 'Column',
+             items : [
+              {
+               '|xns' : 'Roo.bootstrap.dash',
+               title : _this._strings['9a7b64c98b066602b21f869ae7cd673a'],
+               xns : Roo.bootstrap.dash,
+               xtype : 'TabBox',
+               listeners : {
+                render : function (_self)
+                 {
+                     _this.testbox = _self;
+                 }
+               },
+               items : [
+                {
+                 '|xns' : 'Roo.bootstrap.dash',
+                 title : _this._strings['c4f5a294a273c3a1c97642a76f15c5c7'],
+                 xns : Roo.bootstrap.dash,
+                 xtype : 'TabPane',
+                 items : [
+                  {
+                   '|xns' : 'Roo.bootstrap',
+                   xns : Roo.bootstrap,
+                   xtype : 'Column'
+                  }
+                 ]
+
+                },
+                {
+                 '|xns' : 'Roo.bootstrap.dash',
+                 title : _this._strings['58a00f6a3da23fc3821f24115493b750'],
+                 xns : Roo.bootstrap.dash,
+                 xtype : 'TabPane',
+                 items : [
+                  {
+                   '|xns' : 'Roo.bootstrap',
+                   html : _this._strings['70ce2e7a27cab2a670ca954f8362e19f'],
+                   xns : Roo.bootstrap,
+                   xtype : 'Column'
+                  }
+                 ]
+
+                }
+               ]
+
+              }
+             ]
+
+            },
+            {
+             '|xns' : 'Roo.bootstrap',
+             lg : 6,
+             md : 6,
+             sm : 12,
+             style : '',
+             xns : Roo.bootstrap,
+             xtype : 'Column',
+             items : [
+              {
+               '|xns' : 'Roo.bootstrap',
+               cls : 'nav-tabs-custom',
+               xns : Roo.bootstrap,
+               xtype : 'Container',
+               items : [
+                {
+                 '|xns' : 'Roo.bootstrap',
+                 html : _this._strings['34ae6773410925b4574e656be194f0ad'],
+                 style : 'margin: 10,10,0,0',
+                 xns : Roo.bootstrap,
+                 xtype : 'Header'
+                }
+               ]
+
+              }
+             ]
+
+            }
+           ]
+
+          },
+          {
+           '|xns' : 'Roo.bootstrap',
+           xns : Roo.bootstrap,
+           xtype : 'Row',
+           items : [
+            {
+             '|xns' : 'Roo.bootstrap',
              carousel : true,
              lg : 12,
              navId : '#sample1',
