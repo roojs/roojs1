@@ -134,6 +134,21 @@ dashboard4 = new Roo.XComponent({
                   }
                  ]
 
+                },
+                {
+                 '|xns' : 'Roo.bootstrap.dash',
+                 title : _this._strings['9d5ed678fe57bcca610140957afab571'],
+                 xns : Roo.bootstrap.dash,
+                 xtype : 'TabPane',
+                 items : [
+                  {
+                   '|xns' : 'Roo.bootstrap',
+                   html : _this._strings['70ce2e7a27cab2a670ca954f8362e19f'],
+                   xns : Roo.bootstrap,
+                   xtype : 'Column'
+                  }
+                 ]
+
                 }
                ]
 
