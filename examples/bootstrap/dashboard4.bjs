@@ -117,6 +117,18 @@
                    "String html" : "tab 2 content"
                   }
                  ]
+                },
+                {
+                 "xtype" : "TabPane",
+                 "$ xns" : "Roo.bootstrap.dash",
+                 "string title" : "B",
+                 "items" : [
+                  {
+                   "xtype" : "Column",
+                   "$ xns" : "Roo.bootstrap",
+                   "String html" : "tab 2 content"
+                  }
+                 ]
                 }
                ]
               }
