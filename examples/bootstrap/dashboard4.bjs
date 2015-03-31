@@ -97,6 +97,7 @@
                    "$ xns" : "Roo.bootstrap",
                    "items" : [
                     {
+                     "String size" : "sm",
                      "xtype" : "Button",
                      "$ xns" : "Roo.bootstrap"
                     }

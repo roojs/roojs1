@@ -123,6 +123,7 @@ dashboard4 = new Roo.XComponent({
                    items : [
                     {
                      '|xns' : 'Roo.bootstrap',
+                     size : 'sm',
                      xns : Roo.bootstrap,
                      xtype : 'Button'
                     }
