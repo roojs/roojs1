@@ -35,7 +35,7 @@ Roo.bootstrap.dash.TabBox = function(config){
          * When a pane is activated
          * @param {Roo.bootstrap.dash.TabPane} pane
          */
-        "activatepane" : true,
+        "activatepane" : true
         
          
     });
