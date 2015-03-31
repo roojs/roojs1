@@ -94,7 +94,13 @@
                  "items" : [
                   {
                    "xtype" : "Column",
-                   "$ xns" : "Roo.bootstrap"
+                   "$ xns" : "Roo.bootstrap",
+                   "items" : [
+                    {
+                     "xtype" : "Button",
+                     "$ xns" : "Roo.bootstrap"
+                    }
+                   ]
                   }
                  ]
                 },
