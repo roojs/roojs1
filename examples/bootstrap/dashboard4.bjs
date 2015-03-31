@@ -6,7 +6,11 @@
  "permname" : "",
  "modOrder" : "001",
  "strings" : {
-  "30bd2ce65d1e43e9c498b7d5d49f3b78" : "Dashboard <small>  Example Control panel </small>"
+  "30bd2ce65d1e43e9c498b7d5d49f3b78" : "Dashboard <small>  Example Control panel </small>",
+  "70ce2e7a27cab2a670ca954f8362e19f" : "tab 2 content",
+  "c4f5a294a273c3a1c97642a76f15c5c7" : "tab 1",
+  "9a7b64c98b066602b21f869ae7cd673a" : "test 1",
+  "58a00f6a3da23fc3821f24115493b750" : "tab 2"
  },
  "items" : [
   {
@@ -50,6 +54,63 @@
            "xtype" : "Header",
            "$ xns" : "Roo.bootstrap",
            "String html" : "Dashboard <small>  Example Control panel </small>"
+          }
+         ]
+        },
+        {
+         "String tag" : "section",
+         "String cls" : "content",
+         "xtype" : "Container",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "xtype" : "Row",
+           "$ xns" : "Roo.bootstrap",
+           "items" : [
+            {
+             "Number md" : 6,
+             "Number lg" : 6,
+             "xtype" : "Column",
+             "$ xns" : "Roo.bootstrap",
+             "String style" : "",
+             "Number sm" : 12,
+             "items" : [
+              {
+               "listeners" : {
+                "render" : "function (_self)\n{\n    _this.testbox = _self;\n}"
+               },
+               "xtype" : "TabBox",
+               "$ xns" : "Roo.bootstrap.dash",
+               "String title" : "test 1",
+               "items" : [
+                {
+                 "xtype" : "TabPane",
+                 "$ xns" : "Roo.bootstrap.dash",
+                 "string title" : "tab 1",
+                 "items" : [
+                  {
+                   "xtype" : "Column",
+                   "$ xns" : "Roo.bootstrap"
+                  }
+                 ]
+                },
+                {
+                 "xtype" : "TabPane",
+                 "$ xns" : "Roo.bootstrap.dash",
+                 "string title" : "tab 2",
+                 "items" : [
+                  {
+                   "xtype" : "Column",
+                   "$ xns" : "Roo.bootstrap",
+                   "String html" : "tab 2 content"
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
           }
          ]
         }

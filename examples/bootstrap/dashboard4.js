@@ -5,7 +5,11 @@
 dashboard4 = new Roo.XComponent({
 
  _strings : {
-  '30bd2ce65d1e43e9c498b7d5d49f3b78' :"Dashboard <small>  Example Control panel </small>"
+  '30bd2ce65d1e43e9c498b7d5d49f3b78' :"Dashboard <small>  Example Control panel </small>",
+  '70ce2e7a27cab2a670ca954f8362e19f' :"tab 2 content",
+  'c4f5a294a273c3a1c97642a76f15c5c7' :"tab 1",
+  '9a7b64c98b066602b21f869ae7cd673a' :"test 1",
+  '58a00f6a3da23fc3821f24115493b750' :"tab 2"
  },
 
   part     :  ["bootstrap", "dashboard4" ],
@@ -65,6 +69,80 @@ dashboard4 = new Roo.XComponent({
            html : _this._strings['30bd2ce65d1e43e9c498b7d5d49f3b78'],
            xns : Roo.bootstrap,
            xtype : 'Header'
+          }
+         ]
+
+        },
+        {
+         '|xns' : 'Roo.bootstrap',
+         cls : 'content',
+         tag : 'section',
+         xns : Roo.bootstrap,
+         xtype : 'Container',
+         items : [
+          {
+           '|xns' : 'Roo.bootstrap',
+           xns : Roo.bootstrap,
+           xtype : 'Row',
+           items : [
+            {
+             '|xns' : 'Roo.bootstrap',
+             lg : 6,
+             md : 6,
+             sm : 12,
+             style : '',
+             xns : Roo.bootstrap,
+             xtype : 'Column',
+             items : [
+              {
+               '|xns' : 'Roo.bootstrap.dash',
+               title : _this._strings['9a7b64c98b066602b21f869ae7cd673a'],
+               xns : Roo.bootstrap.dash,
+               xtype : 'TabBox',
+               listeners : {
+                render : function (_self)
+                 {
+                     _this.testbox = _self;
+                 }
+               },
+               items : [
+                {
+                 '|xns' : 'Roo.bootstrap.dash',
+                 title : _this._strings['c4f5a294a273c3a1c97642a76f15c5c7'],
+                 xns : Roo.bootstrap.dash,
+                 xtype : 'TabPane',
+                 items : [
+                  {
+                   '|xns' : 'Roo.bootstrap',
+                   xns : Roo.bootstrap,
+                   xtype : 'Column'
+                  }
+                 ]
+
+                },
+                {
+                 '|xns' : 'Roo.bootstrap.dash',
+                 title : _this._strings['58a00f6a3da23fc3821f24115493b750'],
+                 xns : Roo.bootstrap.dash,
+                 xtype : 'TabPane',
+                 items : [
+                  {
+                   '|xns' : 'Roo.bootstrap',
+                   html : _this._strings['70ce2e7a27cab2a670ca954f8362e19f'],
+                   xns : Roo.bootstrap,
+                   xtype : 'Column'
+                  }
+                 ]
+
+                }
+               ]
+
+              }
+             ]
+
+            }
+           ]
+
           }
          ]
 
