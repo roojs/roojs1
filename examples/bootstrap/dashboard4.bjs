@@ -103,6 +103,13 @@
                      "xtype" : "Button",
                      "$ xns" : "Roo.bootstrap",
                      "String html" : "Some text"
+                    },
+                    {
+                     "String size" : "sm",
+                     "String weight" : "warning",
+                     "xtype" : "Button",
+                     "$ xns" : "Roo.bootstrap",
+                     "String html" : "Some text"
                     }
                    ]
                   }
