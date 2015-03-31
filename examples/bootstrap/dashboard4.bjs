@@ -7,6 +7,7 @@
  "modOrder" : "001",
  "strings" : {
   "9d5ed678fe57bcca610140957afab571" : "B",
+  "f623e75af30e62bbd73d6df5b50bb7b5" : "D",
   "30bd2ce65d1e43e9c498b7d5d49f3b78" : "Dashboard <small>  Example Control panel </small>",
   "70ce2e7a27cab2a670ca954f8362e19f" : "tab 2 content",
   "18327168fcb401af02b4615b43d637ad" : "Pick from list",
@@ -98,6 +99,30 @@
                  "xtype" : "TabPane",
                  "$ xns" : "Roo.bootstrap.dash",
                  "string title" : "B",
+                 "items" : [
+                  {
+                   "xtype" : "Column",
+                   "$ xns" : "Roo.bootstrap",
+                   "String html" : "tab 2 content"
+                  }
+                 ]
+                },
+                {
+                 "xtype" : "TabPane",
+                 "$ xns" : "Roo.bootstrap.dash",
+                 "string title" : "B",
+                 "items" : [
+                  {
+                   "xtype" : "Column",
+                   "$ xns" : "Roo.bootstrap",
+                   "String html" : "tab 2 content"
+                  }
+                 ]
+                },
+                {
+                 "xtype" : "TabPane",
+                 "$ xns" : "Roo.bootstrap.dash",
+                 "string title" : "D",
                  "items" : [
                   {
                    "xtype" : "Column",
