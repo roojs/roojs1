@@ -1043,12 +1043,6 @@
     </span><span class="jsdoc-var">setFromData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">){
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">o.display_name </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">=0;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">&lt;</span><span class="jsdoc-var">o.display_name.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-                    </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">({</span><span class="jsdoc-string">'id'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">o.id</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">],</span><span class="jsdoc-string">'display_name'</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">o.display_name</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]});
-                }
-                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-            }
             </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }

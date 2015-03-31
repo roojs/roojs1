@@ -17282,6 +17282,12 @@
    ],
    "events": [
     {
+     "name": "activatepane",
+     "sig": "function (pane)\n{\n\n}",
+     "type": "function",
+     "desc": "When a pane is activated"
+    },
+    {
      "name": "addpane",
      "sig": "function (pane)\n{\n\n}",
      "type": "function",
