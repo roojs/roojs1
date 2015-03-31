@@ -99,6 +99,7 @@
                    "items" : [
                     {
                      "String size" : "sm",
+                     "String weight" : "primary",
                      "xtype" : "Button",
                      "$ xns" : "Roo.bootstrap",
                      "String html" : "Some text"
