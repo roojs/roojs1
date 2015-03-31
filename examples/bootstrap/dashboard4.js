@@ -7,9 +7,9 @@ dashboard4 = new Roo.XComponent({
  _strings : {
   '30bd2ce65d1e43e9c498b7d5d49f3b78' :"Dashboard <small>  Example Control panel </small>",
   '70ce2e7a27cab2a670ca954f8362e19f' :"tab 2 content",
-  'c4f5a294a273c3a1c97642a76f15c5c7' :"tab 1",
-  '9a7b64c98b066602b21f869ae7cd673a' :"test 1",
-  '58a00f6a3da23fc3821f24115493b750' :"tab 2"
+  '18327168fcb401af02b4615b43d637ad' :"Pick from list",
+  '58a00f6a3da23fc3821f24115493b750' :"tab 2",
+  '7fc56270e7a70fa81a5935b72eacbe29' :"A"
  },
 
   part     :  ["bootstrap", "dashboard4" ],
@@ -96,7 +96,7 @@ dashboard4 = new Roo.XComponent({
              items : [
               {
                '|xns' : 'Roo.bootstrap.dash',
-               title : _this._strings['9a7b64c98b066602b21f869ae7cd673a'],
+               title : _this._strings['18327168fcb401af02b4615b43d637ad'],
                xns : Roo.bootstrap.dash,
                xtype : 'TabBox',
                listeners : {
@@ -108,7 +108,7 @@ dashboard4 = new Roo.XComponent({
                items : [
                 {
                  '|xns' : 'Roo.bootstrap.dash',
-                 title : _this._strings['c4f5a294a273c3a1c97642a76f15c5c7'],
+                 title : _this._strings['7fc56270e7a70fa81a5935b72eacbe29'],
                  xns : Roo.bootstrap.dash,
                  xtype : 'TabPane',
                  items : [
