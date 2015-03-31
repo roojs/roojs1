@@ -151,7 +151,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         this.getChildContainer().select('.tab-pane',true).removeClass('active');
         // technically we should have a deactivate event.. but maybe add later.
         // and it should not de-activate the selected tab...
-        thie.fireEvent('activatepane', pane);
+        this.fireEvent('activatepane', pane);
         pane.el.addClass('active');
         pane.fireEvent('activate');
         
