@@ -6,6 +6,7 @@ dashboard4 = new Roo.XComponent({
 
  _strings : {
   '9d5ed678fe57bcca610140957afab571' :"B",
+  '9db5682a4d778ca2cb79580bdb67083f' :"Some text",
   '0d61f8370cad1d412f80b84d143e1257' :"C",
   'f623e75af30e62bbd73d6df5b50bb7b5' :"D",
   '3a3ea00cfc35332cedf6e5e9a32e94da' :"E",
@@ -123,6 +124,7 @@ dashboard4 = new Roo.XComponent({
                    items : [
                     {
                      '|xns' : 'Roo.bootstrap',
+                     html : _this._strings['9db5682a4d778ca2cb79580bdb67083f'],
                      size : 'sm',
                      xns : Roo.bootstrap,
                      xtype : 'Button'
