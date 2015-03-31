@@ -5,6 +5,59 @@
  "path" : "/home/alan/gitlive/roojs1/examples/bootstrap/dashboard4.bjs",
  "permname" : "",
  "modOrder" : "001",
+ "strings" : {
+  "30bd2ce65d1e43e9c498b7d5d49f3b78" : "Dashboard <small>  Example Control panel </small>"
+ },
  "items" : [
+  {
+   "String cls" : "skin-blue",
+   "xtype" : "Body",
+   "$ xns" : "Roo.bootstrap",
+   "items" : [
+    {
+     "String cls" : "header",
+     "tag" : "header",
+     "xtype" : "Container",
+     "* xinclude" : "Dashboard.Header1",
+     "$ xns" : "Roo.bootstrap"
+    },
+    {
+     "String cls" : "wrapper row-offcanvas row-offcanvas-left",
+     "xtype" : "Container",
+     "flexy:include" : "Sidebar.html",
+     "$ xns" : "Roo.bootstrap",
+     "items" : [
+      {
+       "String tag" : "aside",
+       "String cls" : "left-side sidebar-offcanvas",
+       "xtype" : "Container",
+       "* xinclude" : "Dashboard.Sidebar2",
+       "$ xns" : "Roo.bootstrap"
+      },
+      {
+       "String tag" : "aside",
+       "String cls" : "right-side",
+       "xtype" : "Container",
+       "$ xns" : "Roo.bootstrap",
+       "items" : [
+        {
+         "String tag" : "section",
+         "String cls" : "content-header",
+         "xtype" : "Container",
+         "$ xns" : "Roo.bootstrap",
+         "items" : [
+          {
+           "xtype" : "Header",
+           "$ xns" : "Roo.bootstrap",
+           "String html" : "Dashboard <small>  Example Control panel </small>"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
  ]
 }
