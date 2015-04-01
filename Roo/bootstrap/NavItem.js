@@ -148,6 +148,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if(this.fireEvent('click', this, e) === false){
             return;
         };
+        
+        if(this.tagtype == 'span'){
+            return;
+        }
+        
         var p = this.parent();
         if (['tabs','pills'].indexOf(p.type)!==-1) {
             if (typeof(p.setActiveItem) !== 'undefined') {
