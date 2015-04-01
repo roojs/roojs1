@@ -3496,8 +3496,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         var cn = new Roo.bootstrap.NavItem(cfg);
         this.register(cn);
         cn.parentId = this.id;
-//        cn.onRender(this.el, null);
-        cn.render(this.el, null);
+        cn.onRender(this.el, null);
         return cn;
     },
     /**
