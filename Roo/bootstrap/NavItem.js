@@ -110,17 +110,20 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         return cfg;
     },
-    initEvents: function() {
-       // Roo.log('init events?');
-       // Roo.log(this.el.dom);
+    initEvents: function() 
+    {
         if (typeof (this.menu) != 'undefined') {
             this.menu.parentType = this.xtype;
             this.menu.triggerEl = this.el;
             this.addxtype(Roo.apply({}, this.menu));
         }
-
-       
+        
         this.el.select('a',true).on('click', this.onClick, this);
+        
+        if(this.tagtype == 'span'){
+            this.el.select('span',true).on('click', this.onClick, this);
+        }
+       
         // at this point parent should be available..
         this.parent().register(this);
     },
