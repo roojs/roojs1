@@ -77,7 +77,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
             cn: [
                 {
                     tag: 'div',
-                    cls: 'tab-title',
+                    cls: 'tab-header',
                     cn: [
                         {
                             tag: 'ul',
