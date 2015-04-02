@@ -80,7 +80,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
             ]
         };
         
-        if(this.headerScrollable){
+        if(this.tabScrollable){
             header = {
                 tag: 'div',
                 cls: 'tab-header',
