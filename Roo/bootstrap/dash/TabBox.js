@@ -72,7 +72,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
             });
         }
         
-        var header = {
+        header = {
             tag: 'ul',
             cls: 'nav nav-tabs pull-right',
             cn: [
