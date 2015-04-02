@@ -76,16 +76,10 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
             cls: 'nav-tabs-custom',
             cn: [
                 {
-                    tag: 'div',
-                    cls: 'tab-header',
+                    tag: 'ul',
+                    cls: 'nav nav-tabs pull-right',
                     cn: [
-                        {
-                            tag: 'ul',
-                            cls: 'nav nav-tabs pull-right',
-                            cn: [
-                                header
-                            ]
-                        }
+                        header
                     ]
                 },
                 {
