@@ -13,7 +13,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * @cfg {String} title Title of the TabBox
  * @cfg {String} icon Icon of the TabBox
  * @cfg {Boolean} showtabs (true|false) show the tabs default true
- * @cfg {Boolean} headerScrollable (true|false) header scrollable when mobile view
+ * @cfg {Boolean} headerScrollable (true|false) header scrollable when mobile view default false
  * 
  * @constructor
  * Create a new TabBox
