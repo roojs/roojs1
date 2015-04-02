@@ -39,6 +39,8 @@ Roo.bootstrap.dash.TabBox = function(config){
         
          
     });
+    
+    this.panes = [];
 };
 
 Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
