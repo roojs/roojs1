@@ -49,6 +49,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     title : '',
     icon : false,
     showtabs : true,
+    headerScrollable : false,
     
     getChildContainer : function()
     {
@@ -71,18 +72,29 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
             });
         }
         
+        var header = {
+            tag: 'ul',
+            cls: 'nav nav-tabs pull-right',
+            cn: [
+                header
+            ]
+        };
+        
+        if(this.headerScrollable){
+            header = {
+                tag: 'div',
+                cls: 'tab-header',
+                cn: [
+                    header
+                ]
+            }
+        }
         
         var cfg = {
             tag: 'div',
             cls: 'nav-tabs-custom',
             cn: [
-                {
-                    tag: 'ul',
-                    cls: 'nav nav-tabs pull-right',
-                    cn: [
-                        header
-                    ]
-                },
+                header,
                 {
                     tag: 'div',
                     cls: 'tab-content no-padding',
