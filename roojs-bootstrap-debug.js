@@ -19938,7 +19938,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
             });
         }
         
-        var header = {
+        var h = {
             tag: 'ul',
             cls: 'nav nav-tabs pull-right',
             cn: [
@@ -19947,11 +19947,17 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         };
         
         if(this.tabScrollable){
-            header = {
+            h = {
                 tag: 'div',
                 cls: 'tab-header',
                 cn: [
-                    header
+                    {
+                        tag: 'ul',
+                        cls: 'nav nav-tabs pull-right',
+                        cn: [
+                            header
+                        ]
+                    }
                 ]
             }
         }
@@ -19960,7 +19966,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
             tag: 'div',
             cls: 'nav-tabs-custom',
             cn: [
-                header,
+                h,
                 {
                     tag: 'div',
                     cls: 'tab-content no-padding',
