@@ -19905,6 +19905,8 @@ Roo.bootstrap.dash.TabBox = function(config){
         
          
     });
+    
+    this.panes = [];
 };
 
 Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
@@ -19971,6 +19973,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     },
     onAddPane : function(pane)
     {
+        this.panes.push(pane);
         //Roo.log('addpane');
         //Roo.log(pane);
         // tabs are rendere left to right..
@@ -20022,6 +20025,21 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         pane.fireEvent('activate');
         
         
+    },
+    
+    getActivePane : function()
+    {
+        var r = false;
+        Roo.each(this.panes, function(p) {
+            if(p.el.hasClass('active')){
+                r = p;
+                return false;
+            }
+            
+            return;
+        });
+        
+        return r;
     }
     
     
