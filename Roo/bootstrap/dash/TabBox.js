@@ -107,6 +107,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     },
     onAddPane : function(pane)
     {
+        this.panes.push(pane);
         //Roo.log('addpane');
         //Roo.log(pane);
         // tabs are rendere left to right..
