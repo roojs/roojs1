@@ -17214,6 +17214,12 @@
      "memberOf": ""
     },
     {
+     "name": "headerScrollable",
+     "type": "Boolean",
+     "desc": "(true|false) header scrollable when mobile view default false",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",

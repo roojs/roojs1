@@ -13,6 +13,7 @@
  * @cfg {String} title Title of the TabBox
  * @cfg {String} icon Icon of the TabBox
  * @cfg {Boolean} showtabs (true|false) show the tabs default true
+ * @cfg {Boolean} headerScrollable (true|false) header scrollable when mobile view default false
  * 
  * @constructor
  * Create a new TabBox
@@ -39,6 +40,8 @@
         
          
     </span><span class="jsdoc-syntax">});
+    
+    </span><span class="jsdoc-var">this.panes </span><span class="jsdoc-syntax">= [];
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.dash.TabBox</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
@@ -46,6 +49,7 @@
     </span><span class="jsdoc-var">title </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">icon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">showtabs </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">headerScrollable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -68,18 +72,29 @@
             </span><span class="jsdoc-syntax">});
         }
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'nav nav-tabs pull-right'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                </span><span class="jsdoc-var">header
+            </span><span class="jsdoc-syntax">]
+        };
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.headerScrollable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">header </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tab-header'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
+                    </span><span class="jsdoc-var">header
+                </span><span class="jsdoc-syntax">]
+            }
+        }
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'nav-tabs-custom'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-                {
-                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'nav nav-tabs pull-right'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
-                        </span><span class="jsdoc-var">header
-                    </span><span class="jsdoc-syntax">]
-                },
+                </span><span class="jsdoc-var">header</span><span class="jsdoc-syntax">,
                 {
                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tab-content no-padding'</span><span class="jsdoc-syntax">,
@@ -105,6 +120,7 @@
     },
     </span><span class="jsdoc-var">onAddPane </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pane</span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-var">this.panes.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pane</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">//Roo.log('addpane');
         //Roo.log(pane);
         // tabs are rendere left to right..
@@ -151,11 +167,26 @@
         </span><span class="jsdoc-var">this.getChildContainer</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.tab-pane'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'active'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-comment">// technically we should have a deactivate event.. but maybe add later.
         // and it should not de-activate the selected tab...
-        </span><span class="jsdoc-var">thie.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activatepane'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pane</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activatepane'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pane</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">pane.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'active'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">pane.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'activate'</span><span class="jsdoc-syntax">);
         
         
+    },
+    
+    </span><span class="jsdoc-var">getActivePane </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.panes</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p.el.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'active'</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        });
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
     }
     
     

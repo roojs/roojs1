@@ -19879,6 +19879,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * @cfg {String} title Title of the TabBox
  * @cfg {String} icon Icon of the TabBox
  * @cfg {Boolean} showtabs (true|false) show the tabs default true
+ * @cfg {Boolean} headerScrollable (true|false) header scrollable when mobile view default false
  * 
  * @constructor
  * Create a new TabBox
@@ -19914,6 +19915,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     title : '',
     icon : false,
     showtabs : true,
+    headerScrollable : false,
     
     getChildContainer : function()
     {
@@ -19936,18 +19938,29 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
             });
         }
         
+        var header = {
+            tag: 'ul',
+            cls: 'nav nav-tabs pull-right',
+            cn: [
+                header
+            ]
+        };
+        
+        if(this.headerScrollable){
+            header = {
+                tag: 'div',
+                cls: 'tab-header',
+                cn: [
+                    header
+                ]
+            }
+        }
         
         var cfg = {
             tag: 'div',
             cls: 'nav-tabs-custom',
             cn: [
-                {
-                    tag: 'ul',
-                    cls: 'nav nav-tabs pull-right',
-                    cn: [
-                        header
-                    ]
-                },
+                header,
                 {
                     tag: 'div',
                     cls: 'tab-content no-padding',
