@@ -159,6 +159,11 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         pane.fireEvent('activate');
         
         
+    },
+    
+    getActive : function()
+    {
+        
     }
     
     
