@@ -161,9 +161,14 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
         
     },
     
-    getActive : function()
+    getActivePane : function()
     {
+        var r = false;
+        Roo.each(this.panes, function(p) {
+            Roo.log(p);
+        });
         
+        return r;
     }
     
     
