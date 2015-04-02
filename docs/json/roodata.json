@@ -17214,9 +17214,9 @@
      "memberOf": ""
     },
     {
-     "name": "headerScrollable",
+     "name": "tabScrollable",
      "type": "Boolean",
-     "desc": "(true|false) header scrollable when mobile view default false",
+     "desc": "(true|false) tab scrollable when mobile view default false",
      "memberOf": ""
     },
     {
