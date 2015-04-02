@@ -165,7 +165,12 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
     {
         var r = false;
         Roo.each(this.panes, function(p) {
-            Roo.log(p);
+            if(p.el.hasClass('active')){
+                r = p;
+                return false;
+            }
+            
+            return;
         });
         
         return r;
