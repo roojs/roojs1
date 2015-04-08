@@ -663,7 +663,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var nodeName = target.nodeName;
         var className = target.className;
         var html = target.innerHTML;
-        Roo.log(nodeName);
+        //Roo.log(nodeName);
         
         switch(nodeName.toLowerCase()) {
             case 'th':
@@ -711,20 +711,20 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
                 
             case 'td':
-                Roo.log(className);
+                //Roo.log(className);
                 if (className.indexOf('day') > -1 && className.indexOf('disabled') < 0 ){
                     var day = parseInt(html, 10) || 1;
                     var year = this.viewDate.getUTCFullYear(),
                         month = this.viewDate.getUTCMonth();
 
-                    if (className.indexOf('old') !== -1) {
+                    if (className.indexOf('old') > -1) {
                         if(month === 0 ){
                             month = 11;
                             year -= 1;
                         }else{
                             month -= 1;
                         }
-                    } else if (className.indexOf('new') !== -1) {
+                    } else if (className.indexOf('new') > -1) {
                         if (month == 11) {
                             month = 0;
                             year += 1;
