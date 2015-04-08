@@ -711,6 +711,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
                 
             case 'td':
+                Roo.log(className);
                 if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
                     var day = parseInt(html, 10) || 1;
                     var year = this.viewDate.getUTCFullYear(),
