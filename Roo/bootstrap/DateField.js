@@ -538,6 +538,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         var d = new Date(v).clearTime();
         
+        Roo.log(d);
+        Roo.log(d.getTime());
+        
         if(isNaN(d.getTime())){
             this.date = this.viewDate = '';
             Roo.bootstrap.DateField.superclass.setValue.call(this, '');
