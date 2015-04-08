@@ -14800,7 +14800,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             return value;
         }
         var v = Date.parseDate(value, this.format);
-        if (!v && this.useIso) {
+        if (!v && (this.useIso || value.match(/^(\d{4})-0?(\d+)-0?(\d+)/))) {
             v = Date.parseDate(value, 'Y-m-d');
         }
         if(!v && this.altFormats){
@@ -14871,8 +14871,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
     setValue: function(v)
     {
-        var d = new Date(v).clearTime();
         
+        // v can be a string or a date..
+        
+        
+        var d = new Date(this.parseDate(v) ).clearTime();
+        
+        Roo.log(d);
+        Roo.log(d);
         if(isNaN(d.getTime())){
             this.date = this.viewDate = '';
             Roo.bootstrap.DateField.superclass.setValue.call(this, '');
@@ -14998,6 +15004,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var nodeName = target.nodeName;
         var className = target.className;
         var html = target.innerHTML;
+        //Roo.log(nodeName);
         
         switch(nodeName.toLowerCase()) {
             case 'th':
@@ -15030,9 +15037,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 }
                 break;
             case 'span':
-                if (className.indexOf('disabled') === -1) {
+                if (className.indexOf('disabled') < 0) {
                     this.viewDate.setUTCDate(1);
-                    if (className.indexOf('month') !== -1) {
+                    if (className.indexOf('month') > -1) {
                         this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
                     } else {
                         var year = parseInt(html, 10) || 0;
@@ -15045,19 +15052,20 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 break;
                 
             case 'td':
-                if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
+                //Roo.log(className);
+                if (className.indexOf('day') > -1 && className.indexOf('disabled') < 0 ){
                     var day = parseInt(html, 10) || 1;
                     var year = this.viewDate.getUTCFullYear(),
                         month = this.viewDate.getUTCMonth();
 
-                    if (className.indexOf('old') !== -1) {
+                    if (className.indexOf('old') > -1) {
                         if(month === 0 ){
                             month = 11;
                             year -= 1;
                         }else{
                             month -= 1;
                         }
-                    } else if (className.indexOf('new') !== -1) {
+                    } else if (className.indexOf('new') > -1) {
                         if (month == 11) {
                             month = 0;
                             year += 1;
@@ -15065,9 +15073,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                             month += 1;
                         }
                     }
+                    //Roo.log([year,month,day]);
                     this.date = this.UTCDate(year, month, day,0,0,0,0);
                     this.viewDate = this.UTCDate(year, month, Math.min(28, day),0,0,0,0);
 //                    this.fill();
+                    //Roo.log(this.formatDate(this.date));
                     this.setValue(this.formatDate(this.date));
                     this.hide();
                 }
