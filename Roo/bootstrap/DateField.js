@@ -696,9 +696,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 }
                 break;
             case 'span':
-                if (className.indexOf('disabled') === -1) {
+                if (className.indexOf('disabled') < 0) {
                     this.viewDate.setUTCDate(1);
-                    if (className.indexOf('month') !== -1) {
+                    if (className.indexOf('month') > -1) {
                         this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
                     } else {
                         var year = parseInt(html, 10) || 0;
@@ -712,7 +712,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 
             case 'td':
                 Roo.log(className);
-                if (className.indexOf('day') !== -1 && className.indexOf('disabled') === -1){
+                if (className.indexOf('day') > -1 && className.indexOf('disabled') < 0 ){
                     var day = parseInt(html, 10) || 1;
                     var year = this.viewDate.getUTCFullYear(),
                         month = this.viewDate.getUTCMonth();
