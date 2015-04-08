@@ -732,6 +732,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                             month += 1;
                         }
                     }
+                    Roo.log([year,month,day]);
                     this.date = this.UTCDate(year, month, day,0,0,0,0);
                     this.viewDate = this.UTCDate(year, month, Math.min(28, day),0,0,0,0);
 //                    this.fill();
