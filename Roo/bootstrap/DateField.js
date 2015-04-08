@@ -465,7 +465,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             return value;
         }
         var v = Date.parseDate(value, this.format);
-        if (!v && this.useIso) {
+        if (!v && (this.useIso || value.match(/^(\d{4})-0?(\d+)-0?(\d+)/))) {
             v = Date.parseDate(value, 'Y-m-d');
         }
         if(!v && this.altFormats){
