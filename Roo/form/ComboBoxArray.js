@@ -230,7 +230,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         var valueField = this.combo.valueField;
         var displayField = this.combo.displayField;
         if (this.items.indexOfKey(rec[valueField]) > -1) {
-            console.log("GOT " + rec.data.id);
+            Roo.log("GOT " + rec.data.id);
             return;
         }
         
