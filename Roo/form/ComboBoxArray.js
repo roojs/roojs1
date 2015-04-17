@@ -175,6 +175,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         
         
         this.combo.on('select', function(cb, rec, ix) {
+            Roo.log([cb, rec, ix]);
             this.addItem(rec.data);
             
             cb.setValue('');
