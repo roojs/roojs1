@@ -175,7 +175,6 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         
         
         this.combo.on('select', function(cb, rec, ix) {
-            Roo.log([cb, rec, ix]);
             this.addItem(rec.data);
             
             cb.setValue('');
@@ -231,9 +230,7 @@ Roo.extend(Roo.form.ComboBoxArray, Roo.form.TextField,
         var valueField = this.combo.valueField;
         var displayField = this.combo.displayField;
         if (this.items.indexOfKey(rec[valueField]) > -1) {
-            Roo.log("GOT Record");
-            Roo.log(this.items);
-            Roo.log(rec);
+            //console.log("GOT " + rec.data.id);
             return;
         }
         
