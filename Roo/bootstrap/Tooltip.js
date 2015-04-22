@@ -41,8 +41,9 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         this.currentTip = new Roo.bootstrap.Tooltip();
     },
     
-    enter : function(el)
+    enter : function(ev)
     {
+        var el = ev.getTarget();
         if (this.currentEl == el) {
             return;
         }
@@ -64,7 +65,9 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         if (!this.currentEl) {
             return;
         }
-        
+        if (this.currentTip) {
+            this.currentTip.hide();
+        }  
         
     },
     alignment : {
