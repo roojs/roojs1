@@ -31,6 +31,9 @@ Roo.appply(Roo.bootstrap.Tooltip, {
     currentEl : false,
     currentTip : false,
     
+    
+    //  init : delay?
+    
     init : function()
     {
         Roo.get(document.documentElement).on('mouseenter', this.enter ,this);
