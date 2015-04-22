@@ -45,11 +45,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
      */
     initEvents : function()
     {
-        Roo.log("------------ component init events ----------");
-        Roo.log(this.tooltip);
-        if (this.tooltip) {
-            this.getTooltipEl().attr('tooltip', this.tooltip);
-        }
+        
     },
     
     xattr : false,
@@ -114,7 +110,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if(this.name){
             cfg.name = this.name;
         }
-         
+        
+        if (this.tooltip) {
+            this.getTooltipEl().attr('tooltip', this.tooltip);
+        }
         
         this.el = ct.createChild(cfg, position);
         
