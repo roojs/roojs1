@@ -947,7 +947,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     },
     // private
     onTypeAhead : function(){
-        Roo.log('onTypeAhead!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         if(this.store.getCount() > 0){
             var r = this.store.getAt(0);
             var newValue = r.data[this.displayField];
@@ -963,7 +962,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onSelect : function(record, index){
-        Roo.log('onSelect!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        
         if(this.fireEvent('beforeselect', this, record, index) !== false){
         
             this.setFromData(index > -1 ? record.data : false);
