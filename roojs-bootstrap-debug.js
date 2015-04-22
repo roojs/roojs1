@@ -200,7 +200,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     addxtypeChild : function (tree, cntr)
     {
-        Roo.log('addxtypeChild:' + cntr);
+        Roo.debug && Roo.log('addxtypeChild:' + cntr);
         var cn = this;
         cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
         
@@ -246,10 +246,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                   //  Roo.log("GOT");
                     //echild.dom.removeAttribute('xtype');
                 } else {
-                    Roo.log("MISSING " + cn.xtype + " on child of " + (this.el ? this.el.attr('xbuilderid') : 'no parent'));
-                    Roo.log(self_cntr_el);
-                    Roo.log(echild);
-                    Roo.log(cn);
+                    Roo.debug && Roo.log("MISSING " + cn.xtype + " on child of " + (this.el ? this.el.attr('xbuilderid') : 'no parent'));
+                    Roo.debug && Roo.log(self_cntr_el);
+                    Roo.debug && Roo.log(echild);
+                    Roo.debug && Roo.log(cn);
                 }
             }
            
@@ -258,10 +258,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             // if object has flexy:if - then it may or may not be rendered.
             if (build_from_html && has_flexy && !cn.el &&  cn.can_build_overlaid) {
                 // skip a flexy if element.
-                Roo.log('skipping render');
-                Roo.log(tree);
+                Roo.debug && Roo.log('skipping render');
+                Roo.debug && Roo.log(tree);
                 if (!cn.el) {
-                    Roo.log('skipping all children');
+                    Roo.debug && Roo.log('skipping all children');
                     skip_children = true;
                 }
                 
