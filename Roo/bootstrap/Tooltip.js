@@ -166,7 +166,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         clearTimeout(this.timeout);
     
         this.hoverState = 'out'
-        var delay = this.delay && this.delay.hide ? this.delay.hide : 500;
+        var delay = this.delay && this.delay.hide ? this.delay.hide : 1000;
        /* if (!this.delay || !this.delay.hide) {
             this.hide();
             return 
