@@ -62,7 +62,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         
         
         
-        if (this.currentTip) {
+        if (this.currentTip.el) {
             this.currentTip.el.hide(); // force hiding...
         }    
         //Roo.log(el);
