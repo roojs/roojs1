@@ -55,7 +55,7 @@ Roo.appply(Roo.bootstrap.Tooltip, {
             return;
         }
         this.currentTip.bind(el);
-        this.currentTip.show();
+        this.currentTip.enter();
         
     }
     
@@ -69,6 +69,9 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     
     delay : 0,
     
+    timeout : null,
+    
+    hoverState : null, //???
     
     bind : function(el)
     {
@@ -78,9 +81,10 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     
     enter : function () {
        
-    
-        clearTimeout(this.timeout);
-    
+        if (this.timeout != null) {
+            clearTimeout(this.timeout);
+        }
+        
         this.hoverState = 'in'
     
         if (!this.delay || !this.delay.show) {
