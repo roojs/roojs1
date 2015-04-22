@@ -63,7 +63,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         
         
         if (this.currentTip) {
-            this.currentTip.hide();
+            this.currentTip.leave();
         }    
         //Roo.log(el);
         if (!el.attr('tooltip')) { // parents who have tip?
