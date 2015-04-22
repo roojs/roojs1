@@ -1517,6 +1517,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log(k);
         var match  = false;
         var csel = this.view.getSelectedNodes();
+        Roo.log(csel);
         var cselitem = false;
         if (csel.length) {
             var ix = this.view.indexOf(csel[0]);
