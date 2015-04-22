@@ -194,6 +194,7 @@ dashboard1 = new Roo.XComponent({
                     {
                      '|xns' : 'Roo.bootstrap',
                      html : _this._strings['a4d3b161ce1309df1c4e25df28694b7b'],
+                     tooltip : 'A button',
                      weight : 'primary',
                      xns : Roo.bootstrap,
                      xtype : 'Button'

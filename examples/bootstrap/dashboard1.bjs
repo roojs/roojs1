@@ -166,7 +166,8 @@
                      "String weight" : "primary",
                      "xtype" : "Button",
                      "$ xns" : "Roo.bootstrap",
-                     "String html" : "Submit"
+                     "String html" : "Submit",
+                     "string tooltip" : "A button"
                     }
                    ]
                   }
