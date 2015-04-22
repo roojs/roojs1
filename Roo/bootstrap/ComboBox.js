@@ -1256,9 +1256,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onKeyUp : function(e){
-        Roo.log('onKeyUp!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
         if(this.editable !== false && !e.isSpecialKey()){
-            
             this.lastKey = e.getKey();
             this.dqTask.delay(this.queryDelay);
         }
