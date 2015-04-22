@@ -23,7 +23,7 @@ Roo.bootstrap.Tooltip = function(config){
     Roo.bootstrap.Tooltip.superclass.constructor.call(this, config);
 };
 
-Roo.appply(Roo.bootstrap.Tooltip, {
+Roo.apply(Roo.bootstrap.Tooltip, {
     /**
      * @function init initialize tooltip monitoring.
      * @static
