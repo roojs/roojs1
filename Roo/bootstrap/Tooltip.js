@@ -152,7 +152,9 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     
     show : function ()
     {
-        
+        if (!this.el) {
+            this.render(document.body);
+        }
         // set content.
         this.el.select('.popover-inner',true).first().dom.innerHtml = this.bindEl.attr('tooltip');
         
