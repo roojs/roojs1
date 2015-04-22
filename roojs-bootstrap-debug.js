@@ -43,14 +43,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     /**
      * Initialize Events for the element
      */
-    initEvents : function()
-    {
-        Roo.log("------------ component init events ----------");
-        Roo.log(this.tooltip);
-        if (this.tooltip) {
-            this.getTooltipEl().attr('tooltip', this.tooltip);
-        }
-    },
+    initEvents : function() { },
     
     xattr : false,
     
@@ -114,7 +107,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if(this.name){
             cfg.name = this.name;
         }
-         
+        
+        if (this.tooltip) {
+            this.getTooltipEl().attr('tooltip', this.tooltip);
+        }
         
         this.el = ct.createChild(cfg, position);
         
@@ -7246,8 +7242,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     },
     initEvents : function()
     {
-        Roo.bootstrap.Input.superclass.initEvents.call(this);
-         
+          
         this.inputEl().on("keydown" , this.fireKey,  this);
         this.inputEl().on("focus", this.onFocus,  this);
         this.inputEl().on("blur", this.onBlur,  this);
