@@ -87,7 +87,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         }
         
         if (this.currentTip) {
-            this.currentTip.hide();
+            this.currentTip.leave();
         }
         Roo.log('clear currentEl');
         
