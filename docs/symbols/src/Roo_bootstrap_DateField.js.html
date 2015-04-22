@@ -465,7 +465,7 @@
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.useIso</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.useIso </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">value.match</span><span class="jsdoc-syntax">(/^(\d{4})-0?(\d+)-0?(\d+)/))) {
             </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Date.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'Y-m-d'</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.altFormats</span><span class="jsdoc-syntax">){
@@ -536,8 +536,14 @@
 
     </span><span class="jsdoc-var">setValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">();
         
+        </span><span class="jsdoc-comment">// v can be a string or a date..
+        
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parseDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) )</span><span class="jsdoc-var">.clearTime</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isNaN</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d.getTime</span><span class="jsdoc-syntax">())){
             </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.viewDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">Roo.bootstrap.DateField.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
@@ -663,6 +669,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nodeName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.nodeName</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.className</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">target.innerHTML</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">//Roo.log(nodeName);
         
         </span><span class="jsdoc-keyword">switch</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeName.toLowerCase</span><span class="jsdoc-syntax">()) {
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'th'</span><span class="jsdoc-syntax">:
@@ -695,9 +702,9 @@
                 }
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'disabled'</span><span class="jsdoc-syntax">) === -1) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'disabled'</span><span class="jsdoc-syntax">) &lt; 0) {
                     </span><span class="jsdoc-var">this.viewDate.setUTCDate</span><span class="jsdoc-syntax">(1);
-                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'month'</span><span class="jsdoc-syntax">) !== -1) {
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'month'</span><span class="jsdoc-syntax">) &gt; -1) {
                         </span><span class="jsdoc-var">this.viewDate.setUTCMonth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.DateField.dates</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.monthsShort.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">));
                     } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
                         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">year </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">, 10) || 0;
@@ -710,19 +717,20 @@
                 </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
                 
             </span><span class="jsdoc-keyword">case </span><span class="jsdoc-string">'td'</span><span class="jsdoc-syntax">:
-                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'day'</span><span class="jsdoc-syntax">) !== -1 &amp;&amp; </span><span class="jsdoc-var">className.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'disabled'</span><span class="jsdoc-syntax">) === -1){
+                </span><span class="jsdoc-comment">//Roo.log(className);
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'day'</span><span class="jsdoc-syntax">) &gt; -1 &amp;&amp; </span><span class="jsdoc-var">className.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'disabled'</span><span class="jsdoc-syntax">) &lt; 0 ){
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">day </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">, 10) || 1;
                     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">year </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.viewDate.getUTCFullYear</span><span class="jsdoc-syntax">(),
                         </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.viewDate.getUTCMonth</span><span class="jsdoc-syntax">();
 
-                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'old'</span><span class="jsdoc-syntax">) !== -1) {
+                    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'old'</span><span class="jsdoc-syntax">) &gt; -1) {
                         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">=== 0 ){
                             </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">= 11;
                             </span><span class="jsdoc-var">year </span><span class="jsdoc-syntax">-= 1;
                         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                             </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">-= 1;
                         }
-                    } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'new'</span><span class="jsdoc-syntax">) !== -1) {
+                    } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">className.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'new'</span><span class="jsdoc-syntax">) &gt; -1) {
                         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">== 11) {
                             </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">= 0;
                             </span><span class="jsdoc-var">year </span><span class="jsdoc-syntax">+= 1;
@@ -730,9 +738,11 @@
                             </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">+= 1;
                         }
                     }
+                    </span><span class="jsdoc-comment">//Roo.log([year,month,day]);
                     </span><span class="jsdoc-var">this.date </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.UTCDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">month</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">day</span><span class="jsdoc-syntax">,0,0,0,0);
                     </span><span class="jsdoc-var">this.viewDate </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.UTCDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">month</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(28, </span><span class="jsdoc-var">day</span><span class="jsdoc-syntax">),0,0,0,0);
 </span><span class="jsdoc-comment">//                    this.fill();
+                    //Roo.log(this.formatDate(this.date));
                     </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.date</span><span class="jsdoc-syntax">));
                     </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
                 }

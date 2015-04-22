@@ -4988,6 +4988,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -5228,6 +5234,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -5402,6 +5414,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -5549,6 +5567,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -5948,6 +5972,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -6209,6 +6239,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -6815,6 +6851,12 @@
      "name": "dataId",
      "type": "string",
      "desc": "cutomer id",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -7502,6 +7544,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -8174,6 +8222,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -8396,6 +8450,12 @@
      "memberOf": ""
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": ""
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -8597,6 +8657,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -9014,6 +9080,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -9206,6 +9278,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -9383,6 +9461,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -9584,6 +9668,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -9731,6 +9821,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -10106,6 +10202,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -10355,6 +10457,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -10700,6 +10808,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -10910,6 +11024,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -11057,6 +11177,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -11240,6 +11366,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -11379,6 +11511,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -11541,6 +11679,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -11710,6 +11854,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -11869,6 +12019,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -12082,6 +12238,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -12280,6 +12442,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -12421,6 +12589,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -12622,6 +12796,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -12808,6 +12988,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -12937,6 +13123,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -13081,6 +13273,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -13237,6 +13435,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -13413,6 +13617,12 @@
      "memberOf": ""
     },
     {
+     "name": "delay",
+     "type": "Number",
+     "desc": "- delay before showing",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -13446,6 +13656,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -13590,6 +13806,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -13764,6 +13986,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -14133,6 +14361,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -14313,6 +14547,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -14442,6 +14682,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -14673,6 +14919,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -14826,6 +15078,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -15105,6 +15363,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -15362,6 +15626,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -15584,6 +15854,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -15737,6 +16013,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -16103,6 +16385,12 @@
      "name": "dataId",
      "type": "string",
      "desc": "cutomer id",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -16490,6 +16778,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -16630,6 +16924,10 @@
      "desc": "Fires after the field has been validated with no errors."
     }
    ]
+  },
+  "Roo.bootstrap.Tooltip": {
+   "props": [],
+   "events": []
   },
   "Roo.bootstrap.TriggerField": {
    "props": [
@@ -16886,6 +17184,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -17100,6 +17404,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -17256,6 +17566,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -17409,6 +17725,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -17617,6 +17939,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -17791,6 +18119,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -17926,6 +18260,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -29727,6 +30067,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -29856,6 +30202,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -30012,6 +30364,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -33193,6 +33551,12 @@
      "name": "name",
      "type": "string",
      "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
      "memberOf": "Roo.bootstrap.Component"
     },
     {

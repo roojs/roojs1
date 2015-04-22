@@ -1,0 +1,256 @@
+<html><head><title>../roojs1/Roo/bootstrap/Tooltip.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * Tooltip
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Tooltip
+ * Bootstrap Tooltip class
+ * This is basic at present - all componets support it by default, however they should add tooltipEl() method
+ * to determine which dom element triggers the tooltip.
+ * 
+ * It needs to add support for additional attributes like tooltip-position
+ * 
+ * @constructor
+ * Create a new Toolti
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.Tooltip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.Tooltip.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+};
+
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Tooltip</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-comment">/**
+     * @function init initialize tooltip monitoring.
+     * @static
+     */
+    </span><span class="jsdoc-var">currentEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">currentTip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">currentRegion </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">//  init : delay?
+    
+    </span><span class="jsdoc-var">init </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseover'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.enter </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseout'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.leave</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+         
+        
+        </span><span class="jsdoc-var">this.currentTip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.Tooltip</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">enter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.getTarget</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//Roo.log(['enter',dom]);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">//Roo.log(dom);
+            //Roo.log(this.currentEl);
+            //Roo.log(this.currentEl.contains(dom));
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentEl </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.currentEl.dom </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.currentEl.contains</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">)) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+        }
+        
+        
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentTip</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.currentTip.hide</span><span class="jsdoc-syntax">();
+        }    
+        </span><span class="jsdoc-comment">//Roo.log(el);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">)) { </span><span class="jsdoc-comment">// parents who have tip?
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this.currentEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.currentTip.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.currentRegion </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Region.getRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.currentTip.enter</span><span class="jsdoc-syntax">();
+        
+    },
+    </span><span class="jsdoc-var">leave </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.getTarget</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//Roo.log(['leave',dom]);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.currentEl</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.currentEl.dom</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.getXY</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentRegion.contains</span><span class="jsdoc-syntax">( </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.lib.Region</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] ,</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0]  ))) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// only activate leave if mouse cursor is outside... bounding box..
+        
+        
+        
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentTip</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.currentTip.leave</span><span class="jsdoc-syntax">();
+        }
+        </span><span class="jsdoc-comment">//Roo.log('clear currentEl');
+        </span><span class="jsdoc-var">this.currentEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        
+    },
+    </span><span class="jsdoc-var">alignment </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-string">'left' </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'r-l'</span><span class="jsdoc-syntax">, [-2,0], </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">],
+        </span><span class="jsdoc-string">'right' </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'l-r'</span><span class="jsdoc-syntax">, [2,0], </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">],
+        </span><span class="jsdoc-string">'bottom' </span><span class="jsdoc-syntax">: [</span><span class="jsdoc-string">'t-b'</span><span class="jsdoc-syntax">, [0,2], </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">],
+        </span><span class="jsdoc-string">'top' </span><span class="jsdoc-syntax">: [ </span><span class="jsdoc-string">'b-t'</span><span class="jsdoc-syntax">, [0,-2], </span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">]
+    }
+    
+});
+
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Tooltip</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    
+    </span><span class="jsdoc-var">bindEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">delay </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// can be { show : 300 , hide: 500}
+    
+    </span><span class="jsdoc-var">timeout </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">hoverState </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">//???
+    
+    </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">, 
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+    
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+           </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">role </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">,
+           </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tooltip-arrow'
+                </span><span class="jsdoc-syntax">},
+                {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tooltip-inner'
+                </span><span class="jsdoc-syntax">}
+           ]
+        };
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    </span><span class="jsdoc-var">bind </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.bindEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+    },
+      
+    
+    </span><span class="jsdoc-var">enter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+       
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-var">this.hoverState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'in'
+         </span><span class="jsdoc-comment">//Roo.log(&quot;enter - show&quot;);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.delay </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.delay.show</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.show</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.timeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_t.hoverState </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">_t.show</span><span class="jsdoc-syntax">();
+            }
+        }, </span><span class="jsdoc-var">this.delay.show</span><span class="jsdoc-syntax">);
+    },
+    </span><span class="jsdoc-var">leave </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout</span><span class="jsdoc-syntax">);
+    
+        </span><span class="jsdoc-var">this.hoverState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'out'
+         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.delay </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.delay.hide</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return 
+        </span><span class="jsdoc-syntax">}
+       
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.timeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
+            </span><span class="jsdoc-comment">//Roo.log(&quot;leave - timeout&quot;);
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_t.hoverState </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'out'</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">_t.hide</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">Roo.bootstrap.Tooltip.currentEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            }
+        }, </span><span class="jsdoc-var">delay</span><span class="jsdoc-syntax">)
+    },
+    
+    </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-comment">// set content.
+        //Roo.log([this.bindEl, this.bindEl.attr('tooltip')]);
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.tooltip-inner'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bindEl.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'fade'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">]);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.placement </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'function' </span><span class="jsdoc-syntax">?
+            </span><span class="jsdoc-var">this.placement.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">on_el</span><span class="jsdoc-syntax">) :
+            </span><span class="jsdoc-var">this.placement</span><span class="jsdoc-syntax">;
+            
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">autoToken </span><span class="jsdoc-syntax">= /\s?auto?\s?/i;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">autoPlace </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">autoToken.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">autoPlace</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">placement.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">autoToken</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-comment">//this.el.detach()
+        //this.el.setXY([0,0]);
+        </span><span class="jsdoc-var">this.el.show</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//this.el.dom.style.display='block';
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-comment">//this.el.appendTo(on_el);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPosition</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getBox</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">autoPlace</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-comment">// fixme..
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Tooltip.alignment</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">]
+        </span><span class="jsdoc-var">this.el.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bindEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[0],</span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[1]);
+        </span><span class="jsdoc-comment">//var arrow = this.el.select('.arrow',true).first();
+        //arrow.set(align[2], 
+        
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in fade'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.hoverState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fade'</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-comment">// fade it?
+        </span><span class="jsdoc-syntax">}
+        
+    },
+    </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+         
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">//this.el.setXY([0,0]);
+        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//this.el.hide();
+        
+    </span><span class="jsdoc-syntax">}
+    
+});
+ 
+
+ </span></code></body></html>
