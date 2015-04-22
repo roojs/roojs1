@@ -16,6 +16,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @cfg {Boolean} can_build_overlaid  True if element can be rebuild from a HTML page
  * @cfg {string} dataId cutomer id
  * @cfg {string} name Specifies name attribute
+ * @cfg {string} tooltip  Text for the tooltip
  * 
  * @constructor
  * Do not use directly - it does not do anything..
@@ -12636,6 +12637,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         }
         
         Roo.log(this.parent);
+        Roo.log(this.list);
 //        var el = this.view.getNode(index);
 //        if(el && !this.multiple && !this.tickable){
 //            this.list.scrollChildIntoView(el, false);
@@ -20663,7 +20665,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         
         
         if (this.currentTip) {
-            this.currentTip.hide();
+            this.currentTip.el.hide(); // force hiding...
         }    
         //Roo.log(el);
         if (!el.attr('tooltip')) { // parents who have tip?

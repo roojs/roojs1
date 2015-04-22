@@ -63,8 +63,8 @@
         
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentTip</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.currentTip.hide</span><span class="jsdoc-syntax">();
-        }    
+            </span><span class="jsdoc-var">this.currentTip.el.hide</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// force hiding...
+        </span><span class="jsdoc-syntax">}    
         </span><span class="jsdoc-comment">//Roo.log(el);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">)) { </span><span class="jsdoc-comment">// parents who have tip?
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
