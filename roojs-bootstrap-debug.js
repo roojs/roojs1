@@ -38,12 +38,15 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     style : false,
     
     autoCreate : false,
+    
+    tooltip : null,
     /**
      * Initialize Events for the element
      */
     initEvents : function()
     {
         Roo.log("------------ component init events ----------");
+        Roo.log(this.tooltip);
         if (this.tooltip) {
             this.getTooltipEl().attr('tooltip', this.tooltip);
         }
