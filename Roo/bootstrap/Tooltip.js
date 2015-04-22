@@ -30,7 +30,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
      */
     currentEl : false,
     currentTip : false,
-    
+    currentRegion : false,
     
     //  init : delay?
     
@@ -87,6 +87,11 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         if (dom != this.currentEl.dom) {
             return;
         }
+        
+        // only activate leave if mouse cursor is outside... bounding box..
+        Roo.lib.Region.getRegion(el);
+        
+        
         
         if (this.currentTip) {
             this.currentTip.leave();
