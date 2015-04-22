@@ -15937,18 +15937,18 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         
         el = el || false;
         var hp = this.parent ? 1 : 0;
-        Roo.log(this);
+        Roo.debug &&  Roo.log(this);
         
         if (!el && typeof(this.parent) == 'string' && this.parent.substring(0,1) == '#') {
             // if parent is a '#.....' string, then let's use that..
             var ename = this.parent.substr(1);
             this.parent = false;
-            Roo.log(ename);
+            Roo.debug && Roo.log(ename);
             switch (ename) {
                 case 'bootstrap-body' :
                     if (typeof(Roo.bootstrap.Body) != 'undefined') {
                         this.parent = { el :  new  Roo.bootstrap.Body() };
-                        Roo.log("setting el to doc body");
+                        Roo.debug && Roo.log("setting el to doc body");
                          
                     } else {
                         throw "Container is bootstrap body, but Roo.bootstrap.Body is not defined";
@@ -15964,12 +15964,14 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
                 
             
             if (!el && !this.parent) {
-                Roo.log("Warning - element can not be found :#" + ename );
+                Roo.debug && Roo.log("Warning - element can not be found :#" + ename );
                 return;
             }
         }
-        Roo.log("EL:");Roo.log(el);
-        Roo.log("this.parent.el:");Roo.log(this.parent.el);
+        Roo.debug && Roo.log("EL:");
+        Roo.debug && Roo.log(el);
+        Roo.debug && Roo.log("this.parent.el:");
+        Roo.debug && Roo.log(this.parent.el);
         
         var tree = this._tree ? this._tree() : this.tree();
 
@@ -15986,7 +15988,7 @@ Roo.extend(Roo.XComponent, Roo.util.Observable, {
         
         if (!this.parent) {
             
-            Roo.log("no parent - creating one");
+            Roo.debug && Roo.log("no parent - creating one");
             
             el = el ? Roo.get(el) : false; 	
             
@@ -16179,7 +16181,7 @@ Roo.apply(Roo.XComponent, {
             try { 
                 obj.parent = this.toObject(opar);
             } catch(e) {
-                Roo.log("parent:toObject failed: " + e.toString());
+                Roo.debug && Roo.log("parent:toObject failed: " + e.toString());
                 return;
             }
             
@@ -16198,7 +16200,7 @@ Roo.apply(Roo.XComponent, {
                 return;
             }
             if (obj.parent.constructor != Roo.XComponent) {
-                Roo.log("Warning : Object Parent is not instance of XComponent:" + obj.name)
+                Roo.debug && Roo.log("Warning : Object Parent is not instance of XComponent:" + obj.name)
             }
             if (!obj.parent.modules) {
                 obj.parent.modules = new Roo.util.MixedCollection(false, 
