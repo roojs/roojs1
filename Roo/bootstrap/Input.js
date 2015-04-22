@@ -375,6 +375,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     {
         return this.el.select('input.form-control',true).first();
     },
+    
+    tooltipEl : function()
+    {
+        return this.inputEl();
+    },
+    
     setDisabled : function(v)
     {
         var i  = this.inputEl().dom;

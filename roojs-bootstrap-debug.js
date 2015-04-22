@@ -39,7 +39,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     autoCreate : false,
     
-    initEvents : function() {  },
+    initEvents : function() {
+        if (this.tooltip) {
+            this.getTooltipEl().attr('tooltip', this.tooltip);
+        }
+    },
     
     xattr : false,
     
@@ -103,9 +107,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         if(this.name){
             cfg.name = this.name;
         }
-         if(this.tooltip){
-            cfg.tooltip= this.tooltip;
-        }
+         
         
         this.el = ct.createChild(cfg, position);
         
@@ -116,13 +118,23 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
 	
         
     },
-    
+    /**
+     * Fetch the element to add children to
+     * @return {Roo.Element} defaults to this.el
+     */
     getChildContainer : function()
     {
         return this.el;
     },
-    
-    
+    /**
+     * Fetch the element to display the tooltip on.
+     * @return {Roo.Element} defaults to this.el
+     */
+    getTooltipEl : function()
+    {
+        return this.el;
+    },
+        
     addxtype  : function(tree,cntr)
     {
         var cn = this;
@@ -7209,6 +7221,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     {
         return this.el.select('input.form-control',true).first();
     },
+    
+    tooltipEl : function()
+    {
+        return this.inputEl();
+    },
+    
     setDisabled : function(v)
     {
         var i  = this.inputEl().dom;
