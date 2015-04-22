@@ -49,13 +49,14 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         if (this.currentEl == el) {
             return;
         }
-        if (this.currentTip) {
-            this.currentTip.hide();
-        }
-        if (el.dom != this.currentEl.dom && this.currentEl.contains(el.dom)) {
+        
+        if (this.currentEl && el.dom != this.currentEl.dom && this.currentEl.contains(el.dom)) {
             return;
         }
-            
+        
+        if (this.currentTip) {
+            this.currentTip.hide();
+        }    
         //Roo.log(el);
         if (!el.attr('tooltip')) { // parents who have tip?
             return;
