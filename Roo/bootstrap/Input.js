@@ -393,6 +393,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     },
     initEvents : function()
     {
+        Roo.bootstrap.Input.superclass.initEvents();
         
         this.inputEl().on("keydown" , this.fireKey,  this);
         this.inputEl().on("focus", this.onFocus,  this);
