@@ -8,14 +8,13 @@
 /**
  * @class Roo.bootstrap.Tooltip
  * Bootstrap Tooltip class
- * @cfg {String} html contents of the popover   (or false to use children..)
- * @cfg {String} title of popover (or false to hide)
- * @cfg {String} placement how it is placed
- * @cfg {String} trigger click || hover (or false to trigger manually)
- * @cfg {String} over what (parent or false to trigger manually.)
+ * This is basic at present - all componets support it by default, however they should add tooltipEl() method
+ * to determine which dom element triggers the tooltip.
+ * 
+ * It needs to add support for additional attributes like tooltip-position
  * 
  * @constructor
- * Create a new Popover
+ * Create a new Toolti
  * @param {Object} config The config object
  */
 
