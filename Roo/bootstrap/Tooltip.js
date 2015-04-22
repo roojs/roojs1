@@ -197,7 +197,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         //var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 
         
-        this.el.addClass('in');
+        this.el.addClass('in','fade');
         this.hoverState = null;
         
         if (this.el.hasClass('fade')) {
