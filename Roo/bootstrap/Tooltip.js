@@ -205,6 +205,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     },
     hide : function()
     {
+        return;
         if (!this.el) {
             return;
         }
