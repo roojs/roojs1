@@ -118,7 +118,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
 	
         
     },
-    
+    /**
+     * Fetch the element to add children to
+     * @return {Roo.Element} defaults to this.el
+     */
     getChildContainer : function()
     {
         return this.el;
