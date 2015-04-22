@@ -1223,6 +1223,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log('run select!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         this.selectedIndex = index;
         this.view.select(index);
+        Roo.log(scrollIntoView);
         if(scrollIntoView !== false){
             var el = this.view.getNode(index);
             if(el && !this.multiple && !this.tickable){
