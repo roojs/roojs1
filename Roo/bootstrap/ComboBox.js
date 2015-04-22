@@ -1549,7 +1549,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         // scroll to?
         this.view.select(match);
         var sn = Roo.get(this.view.getSelectedNodes()[0])
-        //sn.scrollIntoView(sn.dom.parentNode, false);
+        Roo.log(sn);
+        sn.scrollIntoView(sn.dom.parentNode, false);
     },
     
     onViewScroll : function(e, t){
