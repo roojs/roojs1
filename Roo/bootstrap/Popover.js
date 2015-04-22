@@ -14,7 +14,8 @@
  * @cfg {String} placement how it is placed
  * @cfg {String} trigger click || hover (or false to trigger manually)
  * @cfg {String} over what (parent or false to trigger manually.)
- * 
+ * @cfg {Number} delay - delay before showing
+ 
  * @constructor
  * Create a new Popover
  * @param {Object} config The config object
@@ -31,6 +32,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
     placement : 'right',
     trigger : 'hover', // hover
+    
+    delay : 0,
     
     over: 'parent',
     
