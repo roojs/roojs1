@@ -1545,7 +1545,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }
             return true;
         }, this);
-        
+        Roo.log(match);
         if (match === false) {
             return true; // no more action?
         }
