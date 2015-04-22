@@ -211,7 +211,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         if (!this.el) {
             return;
         }
-        this.el.setXY([0,0]);
+        //this.el.setXY([0,0]);
         this.el.removeClass('in');
         //this.el.hide();
         
