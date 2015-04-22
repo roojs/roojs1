@@ -577,6 +577,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange vent
      */
     select : function(nodeInfo, keepExisting, suppressEvent){
+        Roo.log('running here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         if(nodeInfo instanceof Array){
             if(!keepExisting){
                 this.clearSelections(true);
