@@ -43,10 +43,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     /**
      * Initialize Events for the element
      */
-    initEvents : function()
-    {
-        
-    },
+    initEvents : function() { },
     
     xattr : false,
     
