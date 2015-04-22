@@ -72,6 +72,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         }
         this.currentEl = el;
         this.currentTip.bind(el);
+        this.currentRegion = Roo.lib.Region.getRegion(dom);
         this.currentTip.enter();
         
     },
