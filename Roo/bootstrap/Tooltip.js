@@ -88,9 +88,12 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         if (dom != this.currentEl.dom) {
             return;
         }
-        
+        var xy = ev.getXY();
+        if (this.currentRegion.contains( new Roo.lib.Region( xy[1], xy[0] ,xy[1], xy[0]  ))) {
+            return;
+        }
         // only activate leave if mouse cursor is outside... bounding box..
-        Roo.lib.Region.getRegion(el);
+        
         
         
         
