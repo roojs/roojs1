@@ -1508,7 +1508,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     listKeyPress : function(e)
     {
-        Roo.log('listkeypress!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        //Roo.log('listkeypress');
         // scroll to first matching element based on key pres..
         if (e.isSpecialKey()) {
             return false;
