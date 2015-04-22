@@ -51,7 +51,7 @@ Roo.appply(Roo.bootstrap.Tooltip, {
         }  
             
         
-        if (!el.attr('qtip')) { // parents who have tip?
+        if (!el.attr('tooltip')) { // parents who have tip?
             return;
         }
         this.currentEl = el;
@@ -81,6 +81,9 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     timeout : null,
     
     hoverState : null, //???
+    
+    placement : 'top',
+    
     getAutoCreate : function(){
     
         var cfg = {
@@ -145,13 +148,8 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         
         // set content.
         this.el.select('.popover-inner',true).first().dom.innerHtml = this.bindEl.attr('tooltip');
-        if (this.html !== false) {
-            this.el.select('.popover-content',true).first().dom.innerHtml = this.title;
-        }
+        
         this.el.removeClass(['fade','top','bottom', 'left', 'right','in']);
-        if (!this.title.length) {
-            this.el.select('.popover-title',true).hide();
-        }
         
         var placement = typeof this.placement == 'function' ?
             this.placement.call(this, this.el, on_el) :
