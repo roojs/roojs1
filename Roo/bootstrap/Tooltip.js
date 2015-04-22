@@ -144,7 +144,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     {
         
         // set content.
-        this.el.select('.popover-title',true).first().dom.innerHtml = this.title;
+        this.el.select('.popover-inner',true).first().dom.innerHtml = this.bindEl.attr('tooltip');
         if (this.html !== false) {
             this.el.select('.popover-content',true).first().dom.innerHtml = this.title;
         }
