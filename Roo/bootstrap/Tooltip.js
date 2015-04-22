@@ -132,7 +132,8 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             }
         }, this.delay.show)
     },
-    leave : function() {
+    leave : function()
+    {
         clearTimeout(this.timeout);
     
         this.hoverState = 'out'
