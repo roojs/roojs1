@@ -66,6 +66,12 @@ Roo.appply(Roo.bootstrap.Tooltip, {
         }
         
         
+    },
+    alignment : {
+        'left' : ['r-l', [-10,0], 'right'],
+        'right' : ['l-r', [10,0], 'left'],
+        'bottom' : ['t-b', [0,10], 'top'],
+        'top' : [ 'b-t', [0,-10], 'bottom']
     }
     
 }
@@ -82,7 +88,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     
     hoverState : null, //???
     
-    placement : 'top',
+    placement : 'top', 
     
     getAutoCreate : function(){
     
@@ -175,7 +181,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         if (autoPlace) {
             // fixme..
         }
-        var align = Roo.bootstrap.Popover.alignment[placement]
+        var align = Roo.bootstrap.Tooltip.alignment[placement]
         this.el.alignTo(on_el, align[0],align[1]);
         //var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 
@@ -198,11 +204,6 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     
 });
 
-Roo.bootstrap.Popover.alignment = {
-    'left' : ['r-l', [-10,0], 'right'],
-    'right' : ['l-r', [10,0], 'left'],
-    'bottom' : ['t-b', [0,10], 'top'],
-    'top' : [ 'b-t', [0,-10], 'bottom']
-};
+Roo.bootstrap.Popover.
 
  
