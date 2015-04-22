@@ -48,14 +48,18 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         var dom = ev.getTarget();
         Roo.log(dom);
         var el = Roo.fly(dom);
-        if (this.currentEl == el) {
-            return;
+        if (this.currentEl) {
+            Roo.log(this.currentEl.contains(dom));
+            if (this.currentEl == el) {
+                return;
+            }
+            if (dom != this.currentEl.dom && this.currentEl.contains(dom)) {
+                return;
+        }
+
         }
         
         
-        if (this.currentEl && el.dom != this.currentEl.dom && this.currentEl.contains(el.dom)) {
-            return;
-        }
         
         if (this.currentTip) {
             this.currentTip.hide();
