@@ -176,6 +176,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             
             if (_t.hoverState == 'out') {
                 _t.hide();
+                Roo.bootstrap.Tooltip.currentEl = false;
             }
         }, delay)
     },
