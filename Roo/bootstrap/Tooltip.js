@@ -50,6 +50,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         var el = Roo.fly(dom);
         if (this.currentEl) {
             Roo.log(dom);
+            Roo.log(this.currentEl);
             Roo.log(this.currentEl.contains(dom));
             if (this.currentEl == el) {
                 return;
