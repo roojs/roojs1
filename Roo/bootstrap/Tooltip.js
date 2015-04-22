@@ -179,7 +179,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         //this.el.detach()
         //this.el.setXY([0,0]);
         this.el.show();
-        this.el.dom.style.display='block';
+        //this.el.dom.style.display='block';
         this.el.addClass(placement);
         
         //this.el.appendTo(on_el);
