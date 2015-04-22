@@ -1220,6 +1220,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * selected item if it is not currently in view (defaults to true)
      */
     select : function(index, scrollIntoView){
+        Roo.log('run select!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         this.selectedIndex = index;
         this.view.select(index);
         if(scrollIntoView !== false){
