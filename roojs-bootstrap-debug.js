@@ -20737,7 +20737,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
                     cls : 'tooltip-arrow'
                 },
                 {
-                    cls : 'tooltip-inner',
+                    cls : 'tooltip-inner'
                 }
            ]
         };
@@ -20760,14 +20760,14 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
          //Roo.log("enter - show");
         if (!this.delay || !this.delay.show) {
             this.show();
-            return 
+            return;
         }
         var _t = this;
         this.timeout = setTimeout(function () {
             if (_t.hoverState == 'in') {
                 _t.show();
             }
-        }, this.delay.show)
+        }, this.delay.show);
     },
     leave : function()
     {
