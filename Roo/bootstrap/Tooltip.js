@@ -206,7 +206,6 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     }
     
 });
-
-Roo.bootstrap.Popover.
+ 
 
  
