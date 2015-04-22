@@ -577,7 +577,6 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange vent
      */
     select : function(nodeInfo, keepExisting, suppressEvent){
-        Roo.log('running Roo.View select!!!!!!!!!!!!!!!!!!!!!!1');
         if(nodeInfo instanceof Array){
             if(!keepExisting){
                 this.clearSelections(true);
@@ -594,13 +593,6 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         if(!keepExisting){
             this.clearSelections(true);
         }
-        
-        Roo.log(this.parent);
-//        Roo.log(this.list);
-//        var el = this.view.getNode(index);
-//        if(el && !this.multiple && !this.tickable){
-//            this.list.scrollChildIntoView(el, false);
-//        }
         
         if(this.fireEvent("beforeselect", this, node, this.selections) !== false){
             Roo.fly(node).addClass(this.selectedClass);
