@@ -51,11 +51,20 @@ Roo.appply(Roo.bootstrap.Tooltip, {
         }  
             
         
-        if (!el.attr('qtip')) {
+        if (!el.attr('qtip')) { // parents who have tip?
             return;
         }
+        this.currentEl = el;
         this.currentTip.bind(el);
         this.currentTip.enter();
+        
+    },
+    leave : function(el)
+    {
+        if (!this.currentEl) {
+            return;
+        }
+        
         
     }
     
@@ -72,7 +81,23 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     timeout : null,
     
     hoverState : null, //???
+    getAutoCreate : function(){
     
+        var cfg = {
+           cls : 'tooltip',
+           role : 'tooltip',
+           cn : [
+                {
+                    cls : 'tooltip-arrow'
+                },
+                {
+                    cls : 'tooltip-inner',
+                }
+           ]
+        };
+        
+        return cfg;
+    },
     bind : function(el)
     {
         this.bindEl = el;
@@ -115,11 +140,9 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         }, this.delay.hide)
     },
     
-    show : function (on_el)
+    show : function ()
     {
-        if (!on_el) {
-            on_el= (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
-        }
+        
         // set content.
         this.el.select('.popover-title',true).first().dom.innerHtml = this.title;
         if (this.html !== false) {
