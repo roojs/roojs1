@@ -80,7 +80,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         if (!this.currentEl) {
             return;
         }
-        Roo.log(dom);
+        Roo.log([dom, this.currentEl.dom]);
         Roo.log(this.currentEl.contains(dom));
         if (dom != this.currentEl.dom && this.currentEl.contains(dom)) {
             return;
