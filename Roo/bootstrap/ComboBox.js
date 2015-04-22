@@ -1514,7 +1514,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return false;
         }
         var k = String.fromCharCode(e.getKey()).toUpperCase();
-        Roo.log(k);
+        //Roo.log(k);
         var match  = false;
         var csel = this.view.getSelectedNodes();
         var cselitem = false;
