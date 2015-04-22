@@ -93,7 +93,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     
     hoverState : null, //???
     
-    placement : 'below', 
+    placement : 'bottom', 
     
     getAutoCreate : function(){
     
