@@ -123,8 +123,15 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     {
         return this.el;
     },
-    
-    
+    /**
+     * Fetch the element to display the tooltip on.
+     * @return {Roo.Element} defaults to this.el
+     */
+    getTooltipEl : function()
+    {
+        return this.el;
+    },
+        
     addxtype  : function(tree,cntr)
     {
         var cn = this;
