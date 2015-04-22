@@ -61,115 +61,17 @@ Roo.appply(Roo.bootstrap.Tooltip, {
 
 Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     
-    title: 'Fill in a title',
-    html: false,
     
-    placement : 'right',
-    trigger : 'hover', // hover
+    bindEl : false,
     
-    over: 'parent',
+    delay : 0,
     
-    can_build_overlaid : false,
     
-    getChildContainer : function()
+    bind : function(el)
     {
-        return this.el.select('.popover-content',true).first();
-    },
-    
-    getAutoCreate : function(){
-         Roo.log('make popover?');
-        var cfg = {
-           cls : 'popover roo-dynamic',
-           style: 'display:block',
-           cn : [
-                {
-                    cls : 'arrow'
-                },
-                {
-                    cls : 'popover-inner',
-                    cn : [
-                        {
-                            tag: 'h3',
-                            cls: 'popover-title',
-                            html : this.title
-                        },
-                        {
-                            cls : 'popover-content',
-                            html : this.html
-                        }
-                    ]
-                    
-                }
-           ]
-        };
-        
-        return cfg;
-    },
-    setTitle: function(str)
-    {
-        this.el.select('.popover-title',true).first().dom.innerHTML = str;
-    },
-    setContent: function(str)
-    {
-        this.el.select('.popover-content',true).first().dom.innerHTML = str;
-    },
-    // as it get's added to the bottom of the page.
-    onRender : function(ct, position)
-    {
-        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
-        if(!this.el){
-            var cfg = Roo.apply({},  this.getAutoCreate());
-            cfg.id = Roo.id();
-            
-            if (this.cls) {
-                cfg.cls += ' ' + this.cls;
-            }
-            if (this.style) {
-                cfg.style = this.style;
-            }
-            Roo.log("adding to ")
-            this.el = Roo.get(document.body).createChild(cfg, position);
-            Roo.log(this.el);
-        }
-        this.initEvents();
-    },
-    
-    initEvents : function()
-    {
-        this.el.select('.popover-title',true).setVisibilityMode(Roo.Element.DISPLAY);
-        this.el.enableDisplayMode('block');
-        this.el.hide();
-        if (this.over === false) {
-            return; 
-        }
-        if (this.triggers === false) {
-            return;
-        }
-        var on_el = (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
-        var triggers = this.trigger ? this.trigger.split(' ') : [];
-        Roo.each(triggers, function(trigger) {
-        
-            if (trigger == 'click') {
-                on_el.on('click', this.toggle, this);
-            } else if (trigger != 'manual') {
-                var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
-                var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
+        this.bindEl = el;
+    }
       
-                on_el.on(eventIn  ,this.enter, this);
-                on_el.on(eventOut, this.leave, this);
-            }
-        }, this);
-        
-    },
-    
-    
-    // private
-    timeout : null,
-    hoverState : null,
-    
-    toggle : function () {
-        this.hoverState == 'in' ? this.leave() : this.enter();
-    },
     
     enter : function () {
        
