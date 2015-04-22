@@ -1528,6 +1528,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
         }
         
+        Roo.log(cselitem);
+        
         this.store.each(function(v) { 
             if (cselitem) {
                 // start at existing selection.
