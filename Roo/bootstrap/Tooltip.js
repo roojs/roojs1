@@ -45,10 +45,13 @@ Roo.apply(Roo.bootstrap.Tooltip, {
     
     enter : function(ev)
     {
-        var el = Roo.fly(ev.getTarget());
+        var dom = ev.getTarget();
+        Roo.log(dom);
+        var el = Roo.fly(dom);
         if (this.currentEl == el) {
             return;
         }
+        
         
         if (this.currentEl && el.dom != this.currentEl.dom && this.currentEl.contains(el.dom)) {
             return;
