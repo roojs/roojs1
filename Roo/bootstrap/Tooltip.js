@@ -49,9 +49,9 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         //Roo.log(['enter',dom]);
         var el = Roo.fly(dom);
         if (this.currentEl) {
-            Roo.log(dom);
-            Roo.log(this.currentEl);
-            Roo.log(this.currentEl.contains(dom));
+            //Roo.log(dom);
+            //Roo.log(this.currentEl);
+            //Roo.log(this.currentEl.contains(dom));
             if (this.currentEl == el) {
                 return;
             }
@@ -158,7 +158,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         }
         
         this.hoverState = 'in'
-         Roo.log("enter - show");
+         //Roo.log("enter - show");
         if (!this.delay || !this.delay.show) {
             this.show();
             return 
@@ -182,7 +182,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
        
         var _t = this;
         this.timeout = setTimeout(function () {
-            Roo.log("leave - timeout");
+            //Roo.log("leave - timeout");
             
             if (_t.hoverState == 'out') {
                 _t.hide();
@@ -197,7 +197,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             this.render(document.body);
         }
         // set content.
-        Roo.log([this.bindEl, this.bindEl.attr('tooltip')]);
+        //Roo.log([this.bindEl, this.bindEl.attr('tooltip')]);
         this.el.select('.tooltip-inner',true).first().dom.innerHTML = this.bindEl.attr('tooltip');
         
         this.el.removeClass(['fade','top','bottom', 'left', 'right','in']);
