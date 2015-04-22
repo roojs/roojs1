@@ -91,7 +91,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         }
         Roo.log('clear currentEl');
         
-        this.currentEl = false;
+        
         
     },
     alignment : {
