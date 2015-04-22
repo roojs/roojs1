@@ -103,4 +103,5 @@ Roo.bootstrap.menu.Item
 Roo.bootstrap.menu.Separator
 
 
+Roo.bootstrap.Tooltip
 

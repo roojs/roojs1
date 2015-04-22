@@ -12617,6 +12617,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * @param {Boolean} suppressEvent (optional) true to skip firing of the selectionchange vent
      */
     select : function(nodeInfo, keepExisting, suppressEvent){
+        Roo.log('running Roo.View select!!!!!!!!!!!!!!!!!!!!!!1');
         if(nodeInfo instanceof Array){
             if(!keepExisting){
                 this.clearSelections(true);
@@ -12633,6 +12634,13 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         if(!keepExisting){
             this.clearSelections(true);
         }
+        
+        Roo.log(this.parent);
+//        var el = this.view.getNode(index);
+//        if(el && !this.multiple && !this.tickable){
+//            this.list.scrollChildIntoView(el, false);
+//        }
+        
         if(this.fireEvent("beforeselect", this, node, this.selections) !== false){
             Roo.fly(node).addClass(this.selectedClass);
             this.selections.push(node);
@@ -20588,6 +20596,261 @@ Roo.extend(Roo.bootstrap.menu.Separator, Roo.bootstrap.Component,  {
    
 });
 
+ 
+
+ /*
+ * - LGPL
+ *
+ * Tooltip
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.Tooltip
+ * Bootstrap Tooltip class
+ * This is basic at present - all componets support it by default, however they should add tooltipEl() method
+ * to determine which dom element triggers the tooltip.
+ * 
+ * It needs to add support for additional attributes like tooltip-position
+ * 
+ * @constructor
+ * Create a new Toolti
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.Tooltip = function(config){
+    Roo.bootstrap.Tooltip.superclass.constructor.call(this, config);
+};
+
+Roo.apply(Roo.bootstrap.Tooltip, {
+    /**
+     * @function init initialize tooltip monitoring.
+     * @static
+     */
+    currentEl : false,
+    currentTip : false,
+    currentRegion : false,
+    
+    //  init : delay?
+    
+    init : function()
+    {
+        Roo.get(document).on('mouseover', this.enter ,this);
+        Roo.get(document).on('mouseout', this.leave, this);
+         
+        
+        this.currentTip = new Roo.bootstrap.Tooltip();
+    },
+    
+    enter : function(ev)
+    {
+        var dom = ev.getTarget();
+        //Roo.log(['enter',dom]);
+        var el = Roo.fly(dom);
+        if (this.currentEl) {
+            //Roo.log(dom);
+            //Roo.log(this.currentEl);
+            //Roo.log(this.currentEl.contains(dom));
+            if (this.currentEl == el) {
+                return;
+            }
+            if (dom != this.currentEl.dom && this.currentEl.contains(dom)) {
+                return;
+            }
+
+        }
+        
+        
+        
+        if (this.currentTip) {
+            this.currentTip.hide();
+        }    
+        //Roo.log(el);
+        if (!el.attr('tooltip')) { // parents who have tip?
+            return;
+        }
+        this.currentEl = el;
+        this.currentTip.bind(el);
+        this.currentRegion = Roo.lib.Region.getRegion(dom);
+        this.currentTip.enter();
+        
+    },
+    leave : function(ev)
+    {
+        var dom = ev.getTarget();
+        //Roo.log(['leave',dom]);
+        if (!this.currentEl) {
+            return;
+        }
+        
+        
+        if (dom != this.currentEl.dom) {
+            return;
+        }
+        var xy = ev.getXY();
+        if (this.currentRegion.contains( new Roo.lib.Region( xy[1], xy[0] ,xy[1], xy[0]  ))) {
+            return;
+        }
+        // only activate leave if mouse cursor is outside... bounding box..
+        
+        
+        
+        
+        if (this.currentTip) {
+            this.currentTip.leave();
+        }
+        //Roo.log('clear currentEl');
+        this.currentEl = false;
+        
+        
+    },
+    alignment : {
+        'left' : ['r-l', [-2,0], 'right'],
+        'right' : ['l-r', [2,0], 'left'],
+        'bottom' : ['t-b', [0,2], 'top'],
+        'top' : [ 'b-t', [0,-2], 'bottom']
+    }
+    
+});
+
+
+Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
+    
+    
+    bindEl : false,
+    
+    delay : null, // can be { show : 300 , hide: 500}
+    
+    timeout : null,
+    
+    hoverState : null, //???
+    
+    placement : 'bottom', 
+    
+    getAutoCreate : function(){
+    
+        var cfg = {
+           cls : 'tooltip',
+           role : 'tooltip',
+           cn : [
+                {
+                    cls : 'tooltip-arrow'
+                },
+                {
+                    cls : 'tooltip-inner',
+                }
+           ]
+        };
+        
+        return cfg;
+    },
+    bind : function(el)
+    {
+        this.bindEl = el;
+    },
+      
+    
+    enter : function () {
+       
+        if (this.timeout != null) {
+            clearTimeout(this.timeout);
+        }
+        
+        this.hoverState = 'in'
+         //Roo.log("enter - show");
+        if (!this.delay || !this.delay.show) {
+            this.show();
+            return 
+        }
+        var _t = this;
+        this.timeout = setTimeout(function () {
+            if (_t.hoverState == 'in') {
+                _t.show();
+            }
+        }, this.delay.show)
+    },
+    leave : function()
+    {
+        clearTimeout(this.timeout);
+    
+        this.hoverState = 'out'
+         if (!this.delay || !this.delay.hide) {
+            this.hide();
+            return 
+        }
+       
+        var _t = this;
+        this.timeout = setTimeout(function () {
+            //Roo.log("leave - timeout");
+            
+            if (_t.hoverState == 'out') {
+                _t.hide();
+                Roo.bootstrap.Tooltip.currentEl = false;
+            }
+        }, delay)
+    },
+    
+    show : function ()
+    {
+        if (!this.el) {
+            this.render(document.body);
+        }
+        // set content.
+        //Roo.log([this.bindEl, this.bindEl.attr('tooltip')]);
+        this.el.select('.tooltip-inner',true).first().dom.innerHTML = this.bindEl.attr('tooltip');
+        
+        this.el.removeClass(['fade','top','bottom', 'left', 'right','in']);
+        
+        var placement = typeof this.placement == 'function' ?
+            this.placement.call(this, this.el, on_el) :
+            this.placement;
+            
+        var autoToken = /\s?auto?\s?/i;
+        var autoPlace = autoToken.test(placement);
+        if (autoPlace) {
+            placement = placement.replace(autoToken, '') || 'top';
+        }
+        
+        //this.el.detach()
+        //this.el.setXY([0,0]);
+        this.el.show();
+        //this.el.dom.style.display='block';
+        this.el.addClass(placement);
+        
+        //this.el.appendTo(on_el);
+        
+        var p = this.getPosition();
+        var box = this.el.getBox();
+        
+        if (autoPlace) {
+            // fixme..
+        }
+        var align = Roo.bootstrap.Tooltip.alignment[placement]
+        this.el.alignTo(this.bindEl, align[0],align[1]);
+        //var arrow = this.el.select('.arrow',true).first();
+        //arrow.set(align[2], 
+        
+        this.el.addClass('in fade');
+        this.hoverState = null;
+        
+        if (this.el.hasClass('fade')) {
+            // fade it?
+        }
+        
+    },
+    hide : function()
+    {
+         
+        if (!this.el) {
+            return;
+        }
+        //this.el.setXY([0,0]);
+        this.el.removeClass('in');
+        //this.el.hide();
+        
+    }
+    
+});
  
 
  
