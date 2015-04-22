@@ -164,7 +164,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         clearTimeout(this.timeout);
     
         this.hoverState = 'out'
-    
+        var delay = this.delay && this.delay.hide ? this.delay.hide : 500;
        /* if (!this.delay || !this.delay.hide) {
             this.hide();
             return 
@@ -175,7 +175,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             if (_t.hoverState == 'out') {
                 _t.hide();
             }
-        }, this.delay.hide || 500)
+        }, delay)
     },
     
     show : function ()
