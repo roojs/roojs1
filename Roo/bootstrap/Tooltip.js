@@ -74,7 +74,7 @@ Roo.appply(Roo.bootstrap.Tooltip, {
         'top' : [ 'b-t', [0,-10], 'bottom']
     }
     
-}
+});
 
 
 Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
@@ -110,7 +110,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     bind : function(el)
     {
         this.bindEl = el;
-    }
+    },
       
     
     enter : function () {
