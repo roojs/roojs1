@@ -109,7 +109,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         if (this.tooltip) {
-            this.getTooltipEl().attr('tooltip', this.tooltip);
+            this.tooltipEl().attr('tooltip', this.tooltip);
         }
         
         this.el = ct.createChild(cfg, position);
