@@ -594,6 +594,13 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         if(!keepExisting){
             this.clearSelections(true);
         }
+        
+        Roo.log(this.parent);
+//        var el = this.view.getNode(index);
+//        if(el && !this.multiple && !this.tickable){
+//            this.list.scrollChildIntoView(el, false);
+//        }
+        
         if(this.fireEvent("beforeselect", this, node, this.selections) !== false){
             Roo.fly(node).addClass(this.selectedClass);
             this.selections.push(node);
