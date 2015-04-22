@@ -76,11 +76,13 @@ Roo.apply(Roo.bootstrap.Tooltip, {
     },
     leave : function(ev)
     {
-        var el = ev.getTarget();
+        var dom = ev.getTarget();
         if (!this.currentEl) {
             return;
         }
-        if (el != this.currentEl.dom && this.currentEl.contains(el)) {
+        Roo.log(dom);
+        Roo.log(this.currentEl.contains(dom));
+        if (dom != this.currentEl.dom && this.currentEl.contains(dom)) {
             return;
         }
         
