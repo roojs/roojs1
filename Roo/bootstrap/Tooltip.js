@@ -165,16 +165,17 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     
         this.hoverState = 'out'
     
-        if (!this.delay || !this.delay.hide) {
+       /* if (!this.delay || !this.delay.hide) {
             this.hide();
             return 
         }
+        */
         var _t = this;
         this.timeout = setTimeout(function () {
             if (_t.hoverState == 'out') {
                 _t.hide();
             }
-        }, this.delay.hide)
+        }, this.delay.hide || 500)
     },
     
     show : function ()
