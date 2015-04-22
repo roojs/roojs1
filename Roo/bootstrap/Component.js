@@ -108,11 +108,13 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             cfg.name = this.name;
         }
         
+       
+        
+        this.el = ct.createChild(cfg, position);
+        
         if (this.tooltip) {
             this.tooltipEl().attr('tooltip', this.tooltip);
         }
-        
-        this.el = ct.createChild(cfg, position);
         
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
