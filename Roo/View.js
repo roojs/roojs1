@@ -596,6 +596,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         }
         
         Roo.log(this.parent);
+        Roo.log(this.list);
 //        var el = this.view.getNode(index);
 //        if(el && !this.multiple && !this.tickable){
 //            this.list.scrollChildIntoView(el, false);
