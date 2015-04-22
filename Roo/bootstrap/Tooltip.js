@@ -109,7 +109,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     
     bindEl : false,
     
-    delay : 500,
+    delay : null, // can be { show : 300 , hide: 500}
     
     timeout : null,
     
