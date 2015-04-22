@@ -43,7 +43,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
     
     enter : function(ev)
     {
-        var el = ev.getTarget();
+        var el = Roo.fly(ev.getTarget());
         if (this.currentEl == el) {
             return;
         }
