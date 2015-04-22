@@ -39,7 +39,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     autoCreate : false,
     
-    initEvents : function() {  },
+    initEvents : function() {
+        if (this.tooltip) {
+            this.getTooltipEl().attr('tooltip', this.tooltip);
+        }
+    },
     
     xattr : false,
     
