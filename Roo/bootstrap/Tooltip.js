@@ -56,7 +56,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
             }
             if (dom != this.currentEl.dom && this.currentEl.contains(dom)) {
                 return;
-          }
+            }
 
         }
         
