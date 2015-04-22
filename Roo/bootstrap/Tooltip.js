@@ -36,8 +36,8 @@ Roo.apply(Roo.bootstrap.Tooltip, {
     
     init : function()
     {
-        Roo.get(document.documentElement).on('mouseenter', this.enter ,this);
-        Roo.get(document.documentElement).on('mouseleave', this.leave, this);
+        Roo.get(document).on('enter', this.enter ,this);
+        Roo.get(document).on('leave', this.leave, this);
         this.currentTip = new Roo.bootstrap.Tooltip();
     },
     
