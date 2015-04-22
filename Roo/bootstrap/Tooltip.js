@@ -147,7 +147,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         }
         
         this.hoverState = 'in'
-    
+         Roo.log("enter - show");
         if (!this.delay || !this.delay.show) {
             this.show();
             return 
