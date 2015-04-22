@@ -69,7 +69,9 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         }
         if (this.currentTip) {
             this.currentTip.hide();
-        }  
+        }
+        
+        this.currentEl = false;
         
     },
     alignment : {
