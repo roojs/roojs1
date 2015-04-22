@@ -46,7 +46,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
     enter : function(ev)
     {
         var dom = ev.getTarget();
-        Roo.log(['enter',dom]);
+        //Roo.log(['enter',dom]);
         var el = Roo.fly(dom);
         if (this.currentEl) {
             Roo.log(dom);
@@ -77,7 +77,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
     leave : function(ev)
     {
         var dom = ev.getTarget();
-        Roo.log(['leave',dom]);
+        //Roo.log(['leave',dom]);
         if (!this.currentEl) {
             return;
         }
