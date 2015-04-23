@@ -723,11 +723,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         
                     }
                     
-                    if(this.singleMode){
-                        this.setValue(this.formatDate(this.date));
-                        this.hide();
-                        return;
-                    }
+//                    if(this.singleMode){
+//                        this.setValue(this.formatDate(this.date));
+//                        this.hide();
+//                        return;
+//                    }
                     
                     this.showMode(-1);
                     this.fill();
