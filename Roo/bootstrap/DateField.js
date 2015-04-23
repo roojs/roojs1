@@ -10,7 +10,6 @@
  * @extends Roo.bootstrap.Input
  * Bootstrap DateField class
  * @cfg {Number} weekStart default 0
- * @cfg {Number} weekStart default 0
  * @cfg {Number} viewMode default empty, (months|years)
  * @cfg {Number} minViewMode default empty, (months|years)
  * @cfg {Number} startDate default -Infinity
