@@ -793,6 +793,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     updateNavArrows: function() 
     {
+        if(this.singleMode){
+            return;
+        }
+        
         var d = new Date(this.viewDate),
         year = d.getUTCFullYear(),
         month = d.getUTCMonth();
