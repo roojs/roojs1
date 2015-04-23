@@ -716,6 +716,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         this.viewDate.setUTCFullYear(year);
                         
                     }
+                    Roo.log('got here');
                     this.showMode(-1);
                     this.fill();
                 }
