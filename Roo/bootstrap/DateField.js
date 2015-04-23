@@ -183,6 +183,11 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.startViewMode = this.viewMode;
         
+        if(this.singleMode){
+            Roo.each(this.picker().select('thead tr th', true).elements, function(v){
+                v.remove();
+            })
+        }
         
         Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
             if(!this.calendarWeeks){
