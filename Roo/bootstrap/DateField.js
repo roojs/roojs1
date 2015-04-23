@@ -188,6 +188,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 v.setVisibilityMode(Roo.Element.DISPLAY)
                 v.hide();
             })
+            Roo.log('run1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
             Roo.log(this.picker().select('tbody > tr > td', true).first());
             this.picker().select('tbody > tr > td', true).first().setStyle('width', '189px');
         }
