@@ -425,6 +425,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     showMode: function(dir) 
     {
+        Roo.log('show mode!!!');
+        Roo.log(dir);
         if (dir) {
             this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
         }
