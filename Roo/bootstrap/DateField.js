@@ -189,6 +189,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             Roo.each(this.picker().select('thead tr th', true).elements, function(v){
                 v.hide();
             })
+            
+            this.picker().select('thead tr', true).first().setStyle('height', 0);
         }
         
         Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
