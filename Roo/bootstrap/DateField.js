@@ -186,9 +186,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         this.singleMode = true;
         
         if(this.singleMode){
-            Roo.each(this.picker().select('thead tr th', true).elements, function(v){
+            Roo.each(this.picker().select('thead > tr > th', true).elements, function(v){
                 v.setStyle('height', 0);
                 v.hide();
+            })
+            
+            Roo.each(this.picker().select('thead > tr > th > i', true).elements, function(v){
+                v.remove();
             })
             
             this.picker().select('thead tr', true).first().setStyle('height', 0);
