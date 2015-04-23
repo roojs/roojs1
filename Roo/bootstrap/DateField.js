@@ -18,6 +18,7 @@
  * @cfg {Boolean} todayBtn default false
  * @cfg {Boolean} calendarWeeks default false
  * @cfg {Object} daysOfWeekDisabled default empty
+ * @cfg {Boolean} singleMode default false (true | false)
  * 
  * @cfg {Boolean} keyboardNavigation default true
  * @cfg {String} language default en
