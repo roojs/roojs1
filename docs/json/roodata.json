@@ -8769,7 +8769,7 @@
     },
     {
      "name": "viewMode",
-     "type": "Number",
+     "type": "String",
      "desc": "default empty, (months|years)",
      "memberOf": ""
     },

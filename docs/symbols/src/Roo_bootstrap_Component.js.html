@@ -200,7 +200,7 @@
     
     </span><span class="jsdoc-var">addxtypeChild </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'addxtypeChild:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'addxtypeChild:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'getChildContainer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">;
         
@@ -246,10 +246,10 @@
                   </span><span class="jsdoc-comment">//  Roo.log(&quot;GOT&quot;);
                     //echild.dom.removeAttribute('xtype');
                 </span><span class="jsdoc-syntax">} </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;MISSING &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cn.xtype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; on child of &quot; </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xbuilderid'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">'no parent'</span><span class="jsdoc-syntax">));
-                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">self_cntr_el</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">echild</span><span class="jsdoc-syntax">);
-                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;MISSING &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">cn.xtype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot; on child of &quot; </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xbuilderid'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-string">'no parent'</span><span class="jsdoc-syntax">));
+                    </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">self_cntr_el</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">echild</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">);
                 }
             }
            
@@ -258,10 +258,10 @@
             </span><span class="jsdoc-comment">// if object has flexy:if - then it may or may not be rendered.
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">build_from_html </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">has_flexy </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">cn.el </span><span class="jsdoc-syntax">&amp;&amp;  </span><span class="jsdoc-var">cn.can_build_overlaid</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-comment">// skip a flexy if element.
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'skipping render'</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'skipping render'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">cn.el</span><span class="jsdoc-syntax">) {
-                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'skipping all children'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.debug </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'skipping all children'</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">skip_children </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
                 }
                 
