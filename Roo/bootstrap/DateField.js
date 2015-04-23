@@ -433,8 +433,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         }
         Roo.log(this.viewMode);
         if(this.viewMode < 1){
-            this.setValue(this.formatDate(this.date));
-                this.hide();
+//            this.setValue(this.formatDate(this.date));
+//                this.hide();
             return;
         }
         
