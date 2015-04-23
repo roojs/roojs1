@@ -303,7 +303,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 currentDate = this.date && this.date.valueOf(),
                 today = this.UTCToday();
         
-        this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].months[month]+' '+year;
+        if(!this.singleMode){
+            this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].months[month]+' '+year;
+        }
         
 //        this.picker().select('>tfoot th.today', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today;
         
