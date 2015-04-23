@@ -183,6 +183,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.startViewMode = this.viewMode;
         
+        this.singleMode = true;
+        
         if(this.singleMode){
             Roo.each(this.picker().select('thead tr th', true).elements, function(v){
                 v.remove();
