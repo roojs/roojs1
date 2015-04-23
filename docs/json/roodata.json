@@ -8816,6 +8816,12 @@
      "memberOf": ""
     },
     {
+     "name": "singleMode",
+     "type": "Boolean",
+     "desc": "default false (true | false)",
+     "memberOf": ""
+    },
+    {
      "name": "keyboardNavigation",
      "type": "Boolean",
      "desc": "default true",

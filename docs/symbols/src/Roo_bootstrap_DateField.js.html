@@ -18,6 +18,7 @@
  * @cfg {Boolean} todayBtn default false
  * @cfg {Boolean} calendarWeeks default false
  * @cfg {Object} daysOfWeekDisabled default empty
+ * @cfg {Boolean} singleMode default false (true | false)
  * 
  * @cfg {Boolean} keyboardNavigation default true
  * @cfg {String} language default en
@@ -92,6 +93,8 @@
     </span><span class="jsdoc-var">daysOfWeekDisabled</span><span class="jsdoc-syntax">: [],
     
     </span><span class="jsdoc-var">_events</span><span class="jsdoc-syntax">: [],
+    
+    </span><span class="jsdoc-var">singleMode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">UTCDate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -180,6 +183,14 @@
         
         </span><span class="jsdoc-var">this.startViewMode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.viewMode</span><span class="jsdoc-syntax">;
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.singleMode</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'thead &gt; tr &gt; th'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">v.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)
+                </span><span class="jsdoc-var">v.hide</span><span class="jsdoc-syntax">();
+            })
+            
+            </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody &gt; tr &gt; td'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'189px'</span><span class="jsdoc-syntax">);
+        }
         
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot th.today'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.calendarWeeks</span><span class="jsdoc-syntax">){
@@ -709,6 +720,13 @@
                         </span><span class="jsdoc-var">this.viewDate.setUTCFullYear</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">year</span><span class="jsdoc-syntax">);
                         
                     }
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.singleMode</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.formatDate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.viewDate</span><span class="jsdoc-syntax">));
+                        </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    }
+                    
                     </span><span class="jsdoc-var">this.showMode</span><span class="jsdoc-syntax">(-1);
                     </span><span class="jsdoc-var">this.fill</span><span class="jsdoc-syntax">();
                 }
@@ -783,6 +801,10 @@
     
     </span><span class="jsdoc-var">updateNavArrows</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
     {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.singleMode</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.viewDate</span><span class="jsdoc-syntax">),
         </span><span class="jsdoc-var">year </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.getUTCFullYear</span><span class="jsdoc-syntax">(),
         </span><span class="jsdoc-var">month </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.getUTCMonth</span><span class="jsdoc-syntax">();
