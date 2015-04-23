@@ -191,7 +191,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 v.hide();
             })
             
-            this.picker().select('thead > tr', true).first().setStyle('width', '189px');
+            this.picker().select('tbody > tr > td', true).first().setStyle('width', '189px');
 //            Roo.each(this.picker().select('thead > tr > th > i', true).elements, function(v){
 //                v.remove();
 //            })
