@@ -187,7 +187,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         if(this.singleMode){
             Roo.each(this.picker().select('thead tr th', true).elements, function(v){
-                v.remove();
+                v.hide();
             })
         }
         
@@ -303,9 +303,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 currentDate = this.date && this.date.valueOf(),
                 today = this.UTCToday();
         
-        if(!this.singleMode){
-            this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].months[month]+' '+year;
-        }
+        this.picker().select('>.datepicker-days thead th.switch', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].months[month]+' '+year;
         
 //        this.picker().select('>tfoot th.today', true).first().dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today;
         
@@ -401,9 +399,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var currentYear = this.date && this.date.getUTCFullYear();
         var currentMonth = this.date && this.date.getUTCMonth();
         
-        if(!this.singleMode){
-            this.picker().select('>.datepicker-months th.switch',true).first().dom.innerHTML = year;
-        }
+        this.picker().select('>.datepicker-months th.switch',true).first().dom.innerHTML = year;
         
         Roo.each(this.picker().select('>.datepicker-months tbody span',true).elements, function(v,k){
             v.removeClass('active');
@@ -421,9 +417,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         year = parseInt(year/10, 10) * 10;
         
-        if(!this.singleMode){
-            this.picker().select('>.datepicker-years th.switch', true).first().dom.innerHTML = year + '-' + (year + 9);
-        }
+        this.picker().select('>.datepicker-years th.switch', true).first().dom.innerHTML = year + '-' + (year + 9);
         
         this.picker().select('>.datepicker-years tbody td',true).first().dom.innerHTML = '';
         
