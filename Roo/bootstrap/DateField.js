@@ -94,6 +94,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     _events: [],
     
+    singleMode : false,
+    
     UTCDate: function()
     {
         return new Date(Date.UTC.apply(Date, arguments));
