@@ -14377,13 +14377,14 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
  * Bootstrap DateField class
  * @cfg {Number} weekStart default 0
  * @cfg {String} viewMode default empty, (months|years)
- * @cfg {Number} minViewMode default empty, (months|years)
+ * @cfg {String} minViewMode default empty, (months|years)
  * @cfg {Number} startDate default -Infinity
  * @cfg {Number} endDate default Infinity
  * @cfg {Boolean} todayHighlight default false
  * @cfg {Boolean} todayBtn default false
  * @cfg {Boolean} calendarWeeks default false
  * @cfg {Object} daysOfWeekDisabled default empty
+ * @cfg {Boolean} singleMode default false (true | false)
  * 
  * @cfg {Boolean} keyboardNavigation default true
  * @cfg {String} language default en
@@ -14458,6 +14459,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     daysOfWeekDisabled: [],
     
     _events: [],
+    
+    singleMode : false,
     
     UTCDate: function()
     {
@@ -14546,6 +14549,14 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         this.startViewMode = this.viewMode;
         
+        if(this.singleMode){
+            Roo.each(this.picker().select('thead > tr > th', true).elements, function(v){
+                v.setVisibilityMode(Roo.Element.DISPLAY)
+                v.hide();
+            })
+            
+            this.picker().select('tbody > tr > td', true).first().setStyle('width', '189px');
+        }
         
         Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
             if(!this.calendarWeeks){
@@ -14794,6 +14805,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if (dir) {
             this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
         }
+        
         Roo.each(this.picker().select('>div',true).elements, function(v){
             v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
             v.hide();
@@ -14907,8 +14919,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         var d = new Date(this.parseDate(v) ).clearTime();
         
-        Roo.log(d);
-        Roo.log(d);
         if(isNaN(d.getTime())){
             this.date = this.viewDate = '';
             Roo.bootstrap.DateField.superclass.setValue.call(this, '');
@@ -15076,6 +15086,13 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                         this.viewDate.setUTCFullYear(year);
                         
                     }
+                    
+                    if(this.singleMode){
+                        this.setValue(this.formatDate(this.viewDate));
+                        this.hide();
+                        return;
+                    }
+                    
                     this.showMode(-1);
                     this.fill();
                 }
@@ -15150,6 +15167,10 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     updateNavArrows: function() 
     {
+        if(this.singleMode){
+            return;
+        }
+        
         var d = new Date(this.viewDate),
         year = d.getUTCFullYear(),
         month = d.getUTCMonth();
