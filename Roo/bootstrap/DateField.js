@@ -494,8 +494,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     formatDate : function(date, fmt)
     {
-        Roo.log(date);
-        Roo.log(this.format);
         return (!date || !(date instanceof Date)) ?
         date : date.dateFormat(fmt || this.format);
     },
