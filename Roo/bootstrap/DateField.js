@@ -497,7 +497,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         Roo.log(date);
         Roo.log(this.format);
         return (!date || !(date instanceof Date)) ?
-        date : date.format(fmt || this.format);
+        date : date.dateFormat(fmt || this.format);
     },
     
     onFocus : function()
