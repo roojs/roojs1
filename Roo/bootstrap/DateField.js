@@ -11,7 +11,7 @@
  * Bootstrap DateField class
  * @cfg {Number} weekStart default 0
  * @cfg {String} viewMode default empty, (months|years)
- * @cfg {Number} minViewMode default empty, (months|years)
+ * @cfg {String} minViewMode default empty, (months|years)
  * @cfg {Number} startDate default -Infinity
  * @cfg {Number} endDate default Infinity
  * @cfg {Boolean} todayHighlight default false
