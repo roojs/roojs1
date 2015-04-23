@@ -14555,7 +14555,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 v.hide();
             })
             
-            this.picker().select('tbody > tr > td', true).first().setStyle('width', '189px');
+            Roo.each(this.picker().select('tbody > tr > td', true).elements, function(v){
+                v.setStyle('width', '189px');
+            });
         }
         
         Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
@@ -14857,7 +14859,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     },
     
     formatDate : function(date, fmt)
-    {
+    {   
         return (!date || !(date instanceof Date)) ?
         date : date.dateFormat(fmt || this.format);
     },
