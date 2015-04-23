@@ -1237,6 +1237,7 @@ Date.createParser = function(format) {
         + "y = d.getFullYear();\n"
         + "m = d.getMonth();\n"
         + "d = d.getDate();\n"
+        + "if (typeof(input) !== 'string') { input = input.toString(); }\n"
         + "var results = input.match(Date.parseRegexes[" + regexNum + "]);\n"
         + "if (results && results.length > 0) {";
     var regex = "";

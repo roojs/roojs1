@@ -8972,6 +8972,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         if(!keepExisting){
             this.clearSelections(true);
         }
+        
         if(this.fireEvent("beforeselect", this, node, this.selections) !== false){
             Roo.fly(node).addClass(this.selectedClass);
             this.selections.push(node);
