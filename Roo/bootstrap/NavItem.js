@@ -212,6 +212,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             Roo.log(nv);
             if (nv) {
                 var onav = nv.getWasActive();
+                Roo.log(onav);
                 if (onav) {
                     onav.setActive(true, false, true);
                 }
