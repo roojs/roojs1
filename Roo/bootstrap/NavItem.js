@@ -180,12 +180,6 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             }
             
         }
-        
-        if(is_was_active){
-            this.was_active = true;
-            return;
-        }
-        
         this.active = state;
         
         if (!state ) {
@@ -214,11 +208,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         // if we can not flip to new panel - go back to old nav highlight..
         if (false == tg.showPanel(pan)) {
             var nv = Roo.bootstrap.NavGroup.get(this.navId);
-            Roo.log('navGroup');
-            Roo.log(nv);
             if (nv) {
                 var onav = nv.getWasActive();
-                Roo.log(onav);
                 if (onav) {
                     onav.setActive(true, false, true);
                 }

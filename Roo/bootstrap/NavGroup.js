@@ -113,15 +113,13 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
                 return ;
             }
             if (v.isActive()) {
-                Roo.log('isActive');
-                Roo.log(v);
-                v.setActive(false, true, true);
+                v.setActive(false, true);
                 prev = v;
                 
             }
             
         });
-        
+
         item.setActive(true, true);
         this.fireEvent('changed', this, item, prev);
         
