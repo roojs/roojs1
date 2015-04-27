@@ -113,6 +113,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
                 return ;
             }
             if (v.isActive()) {
+                Roo.log(v);
                 v.setActive(false, true, true);
                 prev = v;
                 
