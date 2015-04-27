@@ -247,22 +247,18 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     hide : function()
     {
-        if(this.fireEvent("beforehide", this) !== false){
-            this.maskEl.hide();
-            Roo.get(document.body).removeClass("x-body-masked");
-            this.el.removeClass('in');
-
-            if(this.animate){
-                var _this = this;
-                (function(){ _this.el.setStyle('display', 'none'); }).defer(150);
-            }else{
-                this.el.setStyle('display', 'none');
-            }
-
-            this.fireEvent('hide', this);
+        this.maskEl.hide();
+        Roo.get(document.body).removeClass("x-body-masked");
+        this.el.removeClass('in');
+        
+        if(this.animate){
+            var _this = this;
+            (function(){ _this.el.setStyle('display', 'none'); }).defer(150);
+        }else{
+            this.el.setStyle('display', 'none');
         }
         
-        
+        this.fireEvent('hide', this);
     },
     
     addButton : function(str, cb)
