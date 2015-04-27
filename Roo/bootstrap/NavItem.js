@@ -208,6 +208,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         // if we can not flip to new panel - go back to old nav highlight..
         if (false == tg.showPanel(pan)) {
             var nv = Roo.bootstrap.NavGroup.get(this.navId);
+            Roo.log('navGroup');
             Roo.log(nv);
             if (nv) {
                 var onav = nv.getWasActive();
