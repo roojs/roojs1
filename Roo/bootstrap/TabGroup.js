@@ -119,8 +119,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return true;
         }
         var cur = this.getActivePanel();
-        Roo.log('cur!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(cur);
+        
         if (false === cur.fireEvent('beforedeactivate')) {
             return false;
         }
