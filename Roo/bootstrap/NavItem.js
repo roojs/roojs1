@@ -183,6 +183,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         if(is_was_active){
             this.was_active = true;
+            return;
         }
         
         this.active = state;
