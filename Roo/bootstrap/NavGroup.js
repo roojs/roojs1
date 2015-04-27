@@ -107,6 +107,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
     */
     setActiveItem : function(item)
     {
+        Roo.log('init run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         var prev = false;
         Roo.each(this.navItems, function(v){
             if (v == item) {
