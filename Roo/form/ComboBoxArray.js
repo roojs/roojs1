@@ -469,7 +469,7 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
             return;
         }
         
-        if(false !== this.cb.fireEvent('remove', this.cb, this)){
+        if(false !== this.cb.fireEvent('beforeremove', this.cb, this)){
             this.cb.items.remove(this);
             this.el.child('img').un('click', this.remove, this);
             this.el.remove();
