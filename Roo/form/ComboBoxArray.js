@@ -469,11 +469,14 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
             return;
         }
         
-        this.cb.items.remove(this);
-        this.el.child('img').un('click', this.remove, this);
-        this.el.remove();
-        this.cb.updateHiddenEl();
+        if(false !== this.cb.fireEvent('remove', this.cb, this)){
+            this.cb.items.remove(this);
+            this.el.child('img').un('click', this.remove, this);
+            this.el.remove();
+            this.cb.updateHiddenEl();
+
+            this.cb.fireEvent('remove', this.cb, this);
+        }
         
-        this.cb.fireEvent('remove', this.cb, this);
     }
 });
