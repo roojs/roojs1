@@ -23888,6 +23888,13 @@ Roo.form.ComboBoxArray = function(config)
 {
     this.addEvents({
         /**
+         * @event beforeremove
+         * Fires before remove the value from the list
+	     * @param {Roo.form.ComboBoxArray} _self This combo box array
+             * @param {Roo.form.ComboBoxArray.Item} item removed item
+	     */
+        'beforeremove' : true,
+        /**
          * @event remove
          * Fires when remove the value from the list
 	     * @param {Roo.form.ComboBoxArray} _self This combo box array
@@ -24311,12 +24318,16 @@ Roo.extend(Roo.form.ComboBoxArray.Item, Roo.BoxComponent, {
         if(this.cb.disabled){
             return;
         }
-        this.cb.items.remove(this);
-        this.el.child('img').un('click', this.remove, this);
-        this.el.remove();
-        this.cb.updateHiddenEl();
         
-        this.cb.fireEvent('remove', this.cb, this);
+        if(false !== this.cb.fireEvent('remove', this.cb, this)){
+            this.cb.items.remove(this);
+            this.el.child('img').un('click', this.remove, this);
+            this.el.remove();
+            this.cb.updateHiddenEl();
+
+            this.cb.fireEvent('remove', this.cb, this);
+        }
+        
     }
 });/*
  * Based on:
