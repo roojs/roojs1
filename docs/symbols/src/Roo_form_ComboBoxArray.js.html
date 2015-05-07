@@ -38,6 +38,13 @@
 {
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">/**
+         * @event beforeremove
+         * Fires before remove the value from the list
+	     * @param {Roo.form.ComboBoxArray} _self This combo box array
+             * @param {Roo.form.ComboBoxArray.Item} item removed item
+	     */
+        </span><span class="jsdoc-string">'beforeremove' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
          * @event remove
          * Fires when remove the value from the list
 	     * @param {Roo.form.ComboBoxArray} _self This combo box array
@@ -461,11 +468,15 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cb.disabled</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-var">this.cb.items.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.remove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.el.remove</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.cb.updateHiddenEl</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-var">this.cb.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'remove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-var">this.cb.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeremove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">this.cb.items.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.remove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.remove</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.cb.updateHiddenEl</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-var">this.cb.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'remove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cb</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        
     }
 });</span></code></body></html>

@@ -189,7 +189,9 @@
                 </span><span class="jsdoc-var">v.hide</span><span class="jsdoc-syntax">();
             })
             
-            </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody &gt; tr &gt; td'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'189px'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody &gt; tr &gt; td'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">v.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'189px'</span><span class="jsdoc-syntax">);
+            });
         }
         
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tfoot th.today'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
@@ -491,7 +493,7 @@
     },
     
     </span><span class="jsdoc-var">formatDate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">date</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fmt</span><span class="jsdoc-syntax">)
-    {
+    {   
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">|| !(</span><span class="jsdoc-var">date </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Date</span><span class="jsdoc-syntax">)) ?
         </span><span class="jsdoc-var">date </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">date.dateFormat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fmt </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.format</span><span class="jsdoc-syntax">);
     },
