@@ -32,7 +32,6 @@
  * @cfg {Boolean} thead (true|false) generate thead, default true
  * @cfg {Boolean} RowSelection (true|false) default false
  * @cfg {Boolean} CellSelection (true|false) default false
- * @cfg {String} cursor default auto
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  
  * 
@@ -163,7 +162,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     RowSelection : false,
     CellSelection : false,
     layout : false,
-    cursor : 'auto',
     
     // Roo.Element - the tbody
     mainBody: false, 
