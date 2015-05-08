@@ -163,6 +163,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     RowSelection : false,
     CellSelection : false,
     layout : false,
+    cursor : 'auto',
     
     // Roo.Element - the tbody
     mainBody: false, 
