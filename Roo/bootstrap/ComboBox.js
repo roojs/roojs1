@@ -1732,7 +1732,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.multiple){
             v = this.getValue();
         }
-        Roo.log(v);
+        
         if(this.disabled || this.validateValue(v)){
             this.clearInvalid();
             return true;
