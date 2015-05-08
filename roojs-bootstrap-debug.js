@@ -5555,7 +5555,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             }
             
             if(typeof(config.cursor) != 'undefined'){
-                td.style += ' cursor:' +  this.cursor + ';';
+                td.style += ' cursor:' +  config.cursor + ';';
             }
              
             row.cn.push(td);
