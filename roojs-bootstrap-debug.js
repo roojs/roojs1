@@ -12023,6 +12023,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.collapse();
         
+    },
+    
+    validate : function()
+    {
+        if(this.disabled || this.validateValue(this.getValue())){
+            this.clearInvalid();
+            return true;
+        }
+        return false;
     }
     
     
