@@ -15333,6 +15333,12 @@
      "memberOf": ""
     },
     {
+     "name": "cursor",
+     "type": "String",
+     "desc": "default auto",
+     "memberOf": ""
+    },
+    {
      "name": "footer",
      "type": "Roo.bootstrap.PagingToolbar",
      "desc": "a paging toolbar",
