@@ -681,7 +681,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 td.style += ' width:' +  config.width + 'px;';
             }
             
-            if(this.RowSelection && typeof(this.cursor) != 'undefined'){
+            if(typeof(config.cursor) != 'undefined'){
                 td.style += ' cursor:' +  this.cursor + ';';
             }
              
