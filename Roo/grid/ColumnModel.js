@@ -162,7 +162,9 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {String} align (Optional) Set the CSS text-align property of the column.  Defaults to undefined.
      */
-
+    /**
+     * @cfg {String} cursor (Optional)
+     */
     /**
      * Returns the id of the column at the specified index.
      * @param {Number} index The column index
