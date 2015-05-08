@@ -4388,7 +4388,9 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
     /**
      * @cfg {String} align (Optional) Set the CSS text-align property of the column.  Defaults to undefined.
      */
-
+    /**
+     * @cfg {String} cursor (Optional)
+     */
     /**
      * Returns the id of the column at the specified index.
      * @param {Number} index The column index
@@ -4903,7 +4905,6 @@ Roo.LoadMask.prototype = {
  * @cfg {Boolean} thead (true|false) generate thead, default true
  * @cfg {Boolean} RowSelection (true|false) default false
  * @cfg {Boolean} CellSelection (true|false) default false
- *
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  
  * 
@@ -5551,6 +5552,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             if(typeof(config.width) != 'undefined'){
                 td.style += ' width:' +  config.width + 'px;';
+            }
+            
+            if(typeof(config.cursor) != 'undefined'){
+                td.style += ' cursor:' +  this.cursor + ';';
             }
              
             row.cn.push(td);
