@@ -1160,8 +1160,15 @@
     {
      "name": "region",
      "type": "String",
-     "desc": "(center|north|south|east|west) which region to put this panel on (when used with xtype constructors)",
-     "memberOf": ""
+     "desc": "which region to put this panel on (when used with xtype constructors)",
+     "memberOf": "",
+     "optvals": [
+      "center",
+      "north",
+      "south",
+      "east",
+      "west"
+     ]
     },
     {
      "name": "params",
@@ -1853,8 +1860,15 @@
     {
      "name": "region",
      "type": "String",
-     "desc": "(center|north|south|east|west) which region to put this panel on (when used with xtype constructors)",
-     "memberOf": "Roo.ContentPanel"
+     "desc": "which region to put this panel on (when used with xtype constructors)",
+     "memberOf": "Roo.ContentPanel",
+     "optvals": [
+      "center",
+      "north",
+      "south",
+      "east",
+      "west"
+     ]
     },
     {
      "name": "params",
@@ -3131,8 +3145,15 @@
     {
      "name": "region",
      "type": "String",
-     "desc": "(center|north|south|east|west) which region to put this panel on (when used with xtype constructors)",
-     "memberOf": "Roo.ContentPanel"
+     "desc": "which region to put this panel on (when used with xtype constructors)",
+     "memberOf": "Roo.ContentPanel",
+     "optvals": [
+      "center",
+      "north",
+      "south",
+      "east",
+      "west"
+     ]
     },
     {
      "name": "params",
@@ -4527,8 +4548,15 @@
     {
      "name": "region",
      "type": "String",
-     "desc": "(center|north|south|east|west) which region to put this panel on (when used with xtype constructors)",
-     "memberOf": "Roo.ContentPanel"
+     "desc": "which region to put this panel on (when used with xtype constructors)",
+     "memberOf": "Roo.ContentPanel",
+     "optvals": [
+      "center",
+      "north",
+      "south",
+      "east",
+      "west"
+     ]
     },
     {
      "name": "params",
@@ -4811,8 +4839,15 @@
     {
      "name": "region",
      "type": "String",
-     "desc": "(center|north|south|east|west) which region to put this panel on (when used with xtype constructors)",
-     "memberOf": "Roo.ContentPanel"
+     "desc": "which region to put this panel on (when used with xtype constructors)",
+     "memberOf": "Roo.ContentPanel",
+     "optvals": [
+      "center",
+      "north",
+      "south",
+      "east",
+      "west"
+     ]
     },
     {
      "name": "params",
@@ -5182,8 +5217,12 @@
     {
      "name": "preventDefault",
      "type": "Boolean",
-     "desc": "(true | false) default true",
-     "memberOf": ""
+     "desc": "default true",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "removeClass",
@@ -5194,8 +5233,14 @@
     {
      "name": "target",
      "type": "String",
-     "desc": "(_self|_blank|_parent|_top)target for a href.",
-     "memberOf": ""
+     "desc": "target for a href.",
+     "memberOf": "",
+     "optvals": [
+      "_self",
+      "_blank",
+      "_parent",
+      "_top"
+     ]
     },
     {
      "name": "cls",
@@ -5518,8 +5563,12 @@
     {
      "name": "loadMask",
      "type": "Boolean",
-     "desc": "(true|false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "header",
@@ -5722,8 +5771,15 @@
     {
      "name": "weight",
      "type": "String",
-     "desc": "(primary|warning|info|danger|success) The text that appears beside the checkbox",
-     "memberOf": ""
+     "desc": "The text that appears beside the checkbox",
+     "memberOf": "",
+     "optvals": [
+      "primary",
+      "warning",
+      "info",
+      "danger",
+      "success"
+     ]
     },
     {
      "name": "checked",
@@ -5818,8 +5874,12 @@
     {
      "name": "labelAlign",
      "type": "String",
-     "desc": "(top|left)",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "top",
+      "left"
+     ]
     },
     {
      "name": "readOnly",
@@ -5830,8 +5890,13 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "(left|center|right) Default left",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "Default left",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "left",
+      "center",
+      "right"
+     ]
     },
     {
      "name": "validationEvent",
@@ -6172,32 +6237,57 @@
     {
      "name": "hidden",
      "type": "Boolean",
-     "desc": "(true|false) hide the element",
-     "memberOf": ""
+     "desc": "hide the element",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "alert",
      "type": "String",
-     "desc": "(success|info|warning|danger) type alert (changes background / border...)",
-     "memberOf": ""
+     "desc": "type alert (changes background / border...)",
+     "memberOf": "",
+     "optvals": [
+      "success",
+      "info",
+      "warning",
+      "danger"
+     ]
     },
     {
      "name": "fa",
      "type": "String",
-     "desc": "(ban|check|...) font awesome icon",
-     "memberOf": ""
+     "desc": "font awesome icon",
+     "memberOf": "",
+     "optvals": [
+      "ban",
+      "check",
+      "..."
+     ]
     },
     {
      "name": "fasize",
      "type": "Number",
-     "desc": "(1|2|....) font awsome size",
-     "memberOf": ""
+     "desc": "font awsome size",
+     "memberOf": "",
+     "optvals": [
+      "1",
+      "2",
+      "...."
+     ]
     },
     {
      "name": "icon",
      "type": "String",
-     "desc": "(info-sign|check|...) glyphicon name",
-     "memberOf": ""
+     "desc": "glyphicon name",
+     "memberOf": "",
+     "optvals": [
+      "info-sign",
+      "check",
+      "..."
+     ]
     },
     {
      "name": "html",
@@ -6346,14 +6436,22 @@
     {
      "name": "append",
      "type": "Boolean",
-     "desc": "(true|false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "autoFocus",
      "type": "Boolean",
-     "desc": "(true|false) auto focus the first item, default true",
-     "memberOf": ""
+     "desc": "auto focus the first item, default true",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "tickable",
@@ -6604,8 +6702,12 @@
     {
      "name": "multiple",
      "type": "Boolean",
-     "desc": "(true|false) ComboBobArray, default false",
-     "memberOf": ""
+     "desc": "ComboBobArray, default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "triggerClass",
@@ -6706,8 +6808,12 @@
     {
      "name": "labelAlign",
      "type": "String",
-     "desc": "(top|left)",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "top",
+      "left"
+     ]
     },
     {
      "name": "readOnly",
@@ -6718,8 +6824,13 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "(left|center|right) Default left",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "Default left",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "left",
+      "center",
+      "right"
+     ]
     },
     {
      "name": "validationEvent",
@@ -7048,14 +7159,22 @@
     {
      "name": "append",
      "type": "Boolean",
-     "desc": "(true|false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "autoFocus",
      "type": "Boolean",
-     "desc": "(true|false) auto focus the first item, default true",
-     "memberOf": ""
+     "desc": "auto focus the first item, default true",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "tickable",
@@ -7294,8 +7413,12 @@
     {
      "name": "multiple",
      "type": "Boolean",
-     "desc": "(true|false) ComboBobArray, default false",
-     "memberOf": ""
+     "desc": "ComboBobArray, default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "triggerClass",
@@ -7396,8 +7519,12 @@
     {
      "name": "labelAlign",
      "type": "String",
-     "desc": "(top|left)",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "top",
+      "left"
+     ]
     },
     {
      "name": "readOnly",
@@ -7408,8 +7535,13 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "(left|center|right) Default left",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "Default left",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "left",
+      "center",
+      "right"
+     ]
     },
     {
      "name": "validationEvent",
@@ -7738,14 +7870,22 @@
     {
      "name": "append",
      "type": "Boolean",
-     "desc": "(true|false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "autoFocus",
      "type": "Boolean",
-     "desc": "(true|false) auto focus the first item, default true",
-     "memberOf": ""
+     "desc": "auto focus the first item, default true",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "lazyRender",
@@ -7972,8 +8112,12 @@
     {
      "name": "multiple",
      "type": "Boolean",
-     "desc": "(true|false) ComboBobArray, default false",
-     "memberOf": ""
+     "desc": "ComboBobArray, default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "triggerClass",
@@ -8074,8 +8218,12 @@
     {
      "name": "labelAlign",
      "type": "String",
-     "desc": "(top|left)",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "top",
+      "left"
+     ]
     },
     {
      "name": "readOnly",
@@ -8086,8 +8234,13 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "(left|center|right) Default left",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "Default left",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "left",
+      "center",
+      "right"
+     ]
     },
     {
      "name": "validationEvent",
@@ -8566,14 +8719,26 @@
     {
      "name": "well",
      "type": "String",
-     "desc": "(lg|sm|md) a well, large, small or medium.",
-     "memberOf": ""
+     "desc": "a well, large, small or medium.",
+     "memberOf": "",
+     "optvals": [
+      "lg",
+      "sm",
+      "md"
+     ]
     },
     {
      "name": "panel",
      "type": "String",
-     "desc": "(primary|success|info|warning|danger) render as a panel.",
-     "memberOf": ""
+     "desc": "render as a panel.",
+     "memberOf": "",
+     "optvals": [
+      "primary",
+      "success",
+      "info",
+      "warning",
+      "danger"
+     ]
     },
     {
      "name": "header",
@@ -8590,38 +8755,68 @@
     {
      "name": "sticky",
      "type": "String",
-     "desc": "(footer|wrap|push) block to use as footer or body- needs css-bootstrap/sticky-footer.css",
-     "memberOf": ""
+     "desc": "block to use as footer or body- needs css-bootstrap/sticky-footer.css",
+     "memberOf": "",
+     "optvals": [
+      "footer",
+      "wrap",
+      "push"
+     ]
     },
     {
      "name": "tag",
      "type": "String",
-     "desc": "(header|aside|section) type of HTML tag.",
-     "memberOf": ""
+     "desc": "type of HTML tag.",
+     "memberOf": "",
+     "optvals": [
+      "header",
+      "aside",
+      "section"
+     ]
     },
     {
      "name": "alert",
      "type": "String",
-     "desc": "(success|info|warning|danger) type alert (changes background / border...)",
-     "memberOf": ""
+     "desc": "type alert (changes background / border...)",
+     "memberOf": "",
+     "optvals": [
+      "success",
+      "info",
+      "warning",
+      "danger"
+     ]
     },
     {
      "name": "fa",
      "type": "String",
-     "desc": "(ban|check|...) font awesome icon",
-     "memberOf": ""
+     "desc": "font awesome icon",
+     "memberOf": "",
+     "optvals": [
+      "ban",
+      "check",
+      "..."
+     ]
     },
     {
      "name": "icon",
      "type": "String",
-     "desc": "(info-sign|check|...) glyphicon name",
-     "memberOf": ""
+     "desc": "glyphicon name",
+     "memberOf": "",
+     "optvals": [
+      "info-sign",
+      "check",
+      "..."
+     ]
     },
     {
      "name": "hidden",
      "type": "Boolean",
-     "desc": "(true|false) hide the element",
-     "memberOf": ""
+     "desc": "hide the element",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "cls",
@@ -8932,8 +9127,12 @@
     {
      "name": "labelAlign",
      "type": "String",
-     "desc": "(top|left)",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "top",
+      "left"
+     ]
     },
     {
      "name": "readOnly",
@@ -8944,8 +9143,13 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "(left|center|right) Default left",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "Default left",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "left",
+      "center",
+      "right"
+     ]
     },
     {
      "name": "validationEvent",
@@ -9790,8 +9994,16 @@
     {
      "name": "level",
      "type": "Number",
-     "desc": "(1|2|3|4|5|6) default 1",
-     "memberOf": ""
+     "desc": "default 1",
+     "memberOf": "",
+     "optvals": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6"
+     ]
     },
     {
      "name": "cls",
@@ -9976,14 +10188,26 @@
     {
      "name": "wrap",
      "type": "string",
-     "desc": "(soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form",
-     "memberOf": "Roo.bootstrap.TextArea"
+     "desc": "Specifies how the text in a text area is to be wrapped when submitted in a form",
+     "memberOf": "Roo.bootstrap.TextArea",
+     "optvals": [
+      "soft",
+      "hard"
+     ]
     },
     {
      "name": "resize",
      "type": "string",
-     "desc": "(none|both|horizontal|vertical|inherit|initial)",
-     "memberOf": "Roo.bootstrap.TextArea"
+     "desc": "",
+     "memberOf": "Roo.bootstrap.TextArea",
+     "optvals": [
+      "none",
+      "both",
+      "horizontal",
+      "vertical",
+      "inherit",
+      "initial"
+     ]
     },
     {
      "name": "html",
@@ -10072,8 +10296,12 @@
     {
      "name": "labelAlign",
      "type": "String",
-     "desc": "(top|left)",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "top",
+      "left"
+     ]
     },
     {
      "name": "readOnly",
@@ -10084,8 +10312,13 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "(left|center|right) Default left",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "Default left",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "left",
+      "center",
+      "right"
+     ]
     },
     {
      "name": "validationEvent",
@@ -10426,8 +10659,14 @@
     {
      "name": "target",
      "type": "String",
-     "desc": "(_self|_blank|_parent|_top)target for a href.",
-     "memberOf": ""
+     "desc": "target for a href.",
+     "memberOf": "",
+     "optvals": [
+      "_self",
+      "_blank",
+      "_parent",
+      "_top"
+     ]
     },
     {
      "name": "cls",
@@ -10660,8 +10899,12 @@
     {
      "name": "labelAlign",
      "type": "String",
-     "desc": "(top|left)",
-     "memberOf": ""
+     "desc": "",
+     "memberOf": "",
+     "optvals": [
+      "top",
+      "left"
+     ]
     },
     {
      "name": "readOnly",
@@ -10672,8 +10915,13 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "(left|center|right) Default left",
-     "memberOf": ""
+     "desc": "Default left",
+     "memberOf": "",
+     "optvals": [
+      "left",
+      "center",
+      "right"
+     ]
     },
     {
      "name": "validationEvent",
@@ -10972,8 +11220,14 @@
     {
      "name": "target",
      "type": "String",
-     "desc": "(_self|_blank|_parent|_top) target for a href.",
-     "memberOf": ""
+     "desc": "target for a href.",
+     "memberOf": "",
+     "optvals": [
+      "_self",
+      "_blank",
+      "_parent",
+      "_top"
+     ]
     },
     {
      "name": "html",
@@ -10990,8 +11244,12 @@
     {
      "name": "preventDefault",
      "type": "Boolean",
-     "desc": "(true | false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "cls",
@@ -11140,8 +11398,13 @@
     {
      "name": "type",
      "type": "String",
-     "desc": "(dropdown|treeview|submenu) type of menu",
-     "memberOf": ""
+     "desc": "type of menu",
+     "memberOf": "",
+     "optvals": [
+      "dropdown",
+      "treeview",
+      "submenu"
+     ]
     },
     {
      "name": "registerMenu",
@@ -11326,14 +11589,22 @@
     {
      "name": "preventDefault",
      "type": "Boolean",
-     "desc": "(true | false) default true",
-     "memberOf": ""
+     "desc": "default true",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "isContainer",
      "type": "Boolean",
-     "desc": "(true | false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "cls",
@@ -11630,8 +11901,14 @@
     {
      "name": "weight",
      "type": "String",
-     "desc": "(info | success | warning | danger) default info",
-     "memberOf": ""
+     "desc": "default info",
+     "memberOf": "",
+     "optvals": [
+      "info",
+      "success",
+      "warning",
+      "danger"
+     ]
     },
     {
      "name": "beforeClass",
@@ -11642,14 +11919,22 @@
     {
      "name": "closable",
      "type": "Boolean",
-     "desc": "(true | false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "fixed",
      "type": "Boolean",
-     "desc": "(true | false) default false, fix the bar at the top",
-     "memberOf": ""
+     "desc": "default false, fix the bar at the top",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "cls",
@@ -11802,8 +12087,12 @@
     {
      "name": "specificTitle",
      "type": "Boolean",
-     "desc": "(true|false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "buttons",
@@ -11814,14 +12103,23 @@
     {
      "name": "buttonPosition",
      "type": "String",
-     "desc": "(left|right|center) default right",
-     "memberOf": ""
+     "desc": "default right",
+     "memberOf": "",
+     "optvals": [
+      "left",
+      "right",
+      "center"
+     ]
     },
     {
      "name": "animate",
      "type": "Boolean",
-     "desc": "(true | false) default true",
-     "memberOf": ""
+     "desc": "default true",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "cls",
@@ -11982,8 +12280,13 @@
     {
      "name": "type",
      "type": "String",
-     "desc": "(nav|pills|tab) default nav",
-     "memberOf": ""
+     "desc": "default nav",
+     "memberOf": "",
+     "optvals": [
+      "nav",
+      "pills",
+      "tab"
+     ]
     },
     {
      "name": "navId",
@@ -12144,8 +12447,13 @@
     {
      "name": "position",
      "type": "String",
-     "desc": "(fixed-top|fixed-bottom|static-top) position",
-     "memberOf": ""
+     "desc": "position",
+     "memberOf": "",
+     "optvals": [
+      "fixed-top",
+      "fixed-bottom",
+      "static-top"
+     ]
     },
     {
      "name": "brand_href",
@@ -12174,8 +12482,13 @@
     {
      "name": "type",
      "type": "String",
-     "desc": "(nav | pills | tabs)",
-     "memberOf": "Roo.bootstrap.NavSimplebar"
+     "desc": "",
+     "memberOf": "Roo.bootstrap.NavSimplebar",
+     "optvals": [
+      "nav",
+      "pills",
+      "tabs"
+     ]
     },
     {
      "name": "arrangement",
@@ -12186,26 +12499,44 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "(left | right) alignment",
-     "memberOf": "Roo.bootstrap.NavSimplebar"
+     "desc": "alignment",
+     "memberOf": "Roo.bootstrap.NavSimplebar",
+     "optvals": [
+      "left",
+      "right"
+     ]
     },
     {
      "name": "main",
      "type": "Boolean",
-     "desc": "(true|false) main nav bar? default false",
-     "memberOf": "Roo.bootstrap.NavSimplebar"
+     "desc": "main nav bar? default false",
+     "memberOf": "Roo.bootstrap.NavSimplebar",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "loadMask",
      "type": "Boolean",
-     "desc": "(true|false) loadMask on the bar",
-     "memberOf": "Roo.bootstrap.NavSimplebar"
+     "desc": "loadMask on the bar",
+     "memberOf": "Roo.bootstrap.NavSimplebar",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "tag",
      "type": "String",
-     "desc": "(header|footer|nav|div) default is nav",
-     "memberOf": "Roo.bootstrap.NavSimplebar"
+     "desc": "default is nav",
+     "memberOf": "Roo.bootstrap.NavSimplebar",
+     "optvals": [
+      "header",
+      "footer",
+      "nav",
+      "div"
+     ]
     },
     {
      "name": "cls",
@@ -12366,8 +12697,13 @@
     {
      "name": "badgecls",
      "type": "String",
-     "desc": "(bg-green|bg-red|bg-yellow)the extra classes for the badge",
-     "memberOf": ""
+     "desc": "the extra classes for the badge",
+     "memberOf": "",
+     "optvals": [
+      "bg-green",
+      "bg-red",
+      "bg-yellow"
+     ]
     },
     {
      "name": "glyphicon",
@@ -12396,8 +12732,12 @@
     {
      "name": "preventDefault",
      "type": "Boolean",
-     "desc": "(true | false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "tabId",
@@ -12408,8 +12748,12 @@
     {
      "name": "tagtype",
      "type": "String",
-     "desc": "(a|span) render as a href or span?",
-     "memberOf": ""
+     "desc": "render as a href or span?",
+     "memberOf": "",
+     "optvals": [
+      "a",
+      "span"
+     ]
     },
     {
      "name": "cls",
@@ -12720,8 +13064,13 @@
     {
      "name": "badgecls",
      "type": "String",
-     "desc": "(bg-green|bg-red|bg-yellow)the extra classes for the badge",
-     "memberOf": "Roo.bootstrap.NavItem"
+     "desc": "the extra classes for the badge",
+     "memberOf": "Roo.bootstrap.NavItem",
+     "optvals": [
+      "bg-green",
+      "bg-red",
+      "bg-yellow"
+     ]
     },
     {
      "name": "glyphicon",
@@ -12750,8 +13099,12 @@
     {
      "name": "preventDefault",
      "type": "Boolean",
-     "desc": "(true | false) default false",
-     "memberOf": "Roo.bootstrap.NavItem"
+     "desc": "default false",
+     "memberOf": "Roo.bootstrap.NavItem",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "tabId",
@@ -12762,8 +13115,12 @@
     {
      "name": "tagtype",
      "type": "String",
-     "desc": "(a|span) render as a href or span?",
-     "memberOf": "Roo.bootstrap.NavItem"
+     "desc": "render as a href or span?",
+     "memberOf": "Roo.bootstrap.NavItem",
+     "optvals": [
+      "a",
+      "span"
+     ]
     },
     {
      "name": "cls",
@@ -12924,8 +13281,13 @@
     {
      "name": "type",
      "type": "String",
-     "desc": "(nav | pills | tabs)",
-     "memberOf": ""
+     "desc": "",
+     "memberOf": "",
+     "optvals": [
+      "nav",
+      "pills",
+      "tabs"
+     ]
     },
     {
      "name": "arrangement",
@@ -12936,26 +13298,44 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "(left | right) alignment",
-     "memberOf": ""
+     "desc": "alignment",
+     "memberOf": "",
+     "optvals": [
+      "left",
+      "right"
+     ]
     },
     {
      "name": "main",
      "type": "Boolean",
-     "desc": "(true|false) main nav bar? default false",
-     "memberOf": ""
+     "desc": "main nav bar? default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "loadMask",
      "type": "Boolean",
-     "desc": "(true|false) loadMask on the bar",
-     "memberOf": ""
+     "desc": "loadMask on the bar",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "tag",
      "type": "String",
-     "desc": "(header|footer|nav|div) default is nav",
-     "memberOf": ""
+     "desc": "default is nav",
+     "memberOf": "",
+     "optvals": [
+      "header",
+      "footer",
+      "nav",
+      "div"
+     ]
     },
     {
      "name": "cls",
@@ -13398,14 +13778,22 @@
     {
      "name": "preventDefault",
      "type": "Boolean",
-     "desc": "(true | false) default true",
-     "memberOf": ""
+     "desc": "default true",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "active",
      "type": "Boolean",
-     "desc": "(true | false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "cls",
@@ -13943,8 +14331,14 @@
     {
      "name": "panel",
      "type": "String",
-     "desc": "(success | info | warning | danger )",
-     "memberOf": ""
+     "desc": "",
+     "memberOf": "",
+     "optvals": [
+      "success",
+      "info",
+      "warning",
+      "danger "
+     ]
     },
     {
      "name": "role",
@@ -14117,8 +14511,15 @@
     {
      "name": "weight",
      "type": "String",
-     "desc": "(primary|warning|info|danger|success) The text that appears beside the checkbox",
-     "memberOf": "Roo.bootstrap.CheckBox"
+     "desc": "The text that appears beside the checkbox",
+     "memberOf": "Roo.bootstrap.CheckBox",
+     "optvals": [
+      "primary",
+      "warning",
+      "info",
+      "danger",
+      "success"
+     ]
     },
     {
      "name": "checked",
@@ -14213,8 +14614,12 @@
     {
      "name": "labelAlign",
      "type": "String",
-     "desc": "(top|left)",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "top",
+      "left"
+     ]
     },
     {
      "name": "readOnly",
@@ -14225,8 +14630,13 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "(left|center|right) Default left",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "Default left",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "left",
+      "center",
+      "right"
+     ]
     },
     {
      "name": "validationEvent",
@@ -14855,32 +15265,57 @@
     {
      "name": "hidden",
      "type": "Boolean",
-     "desc": "(true|false) hide the element",
-     "memberOf": "Roo.bootstrap.Column"
+     "desc": "hide the element",
+     "memberOf": "Roo.bootstrap.Column",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "alert",
      "type": "String",
-     "desc": "(success|info|warning|danger) type alert (changes background / border...)",
-     "memberOf": "Roo.bootstrap.Column"
+     "desc": "type alert (changes background / border...)",
+     "memberOf": "Roo.bootstrap.Column",
+     "optvals": [
+      "success",
+      "info",
+      "warning",
+      "danger"
+     ]
     },
     {
      "name": "fa",
      "type": "String",
-     "desc": "(ban|check|...) font awesome icon",
-     "memberOf": "Roo.bootstrap.Column"
+     "desc": "font awesome icon",
+     "memberOf": "Roo.bootstrap.Column",
+     "optvals": [
+      "ban",
+      "check",
+      "..."
+     ]
     },
     {
      "name": "fasize",
      "type": "Number",
-     "desc": "(1|2|....) font awsome size",
-     "memberOf": "Roo.bootstrap.Column"
+     "desc": "font awsome size",
+     "memberOf": "Roo.bootstrap.Column",
+     "optvals": [
+      "1",
+      "2",
+      "...."
+     ]
     },
     {
      "name": "icon",
      "type": "String",
-     "desc": "(info-sign|check|...) glyphicon name",
-     "memberOf": "Roo.bootstrap.Column"
+     "desc": "glyphicon name",
+     "memberOf": "Roo.bootstrap.Column",
+     "optvals": [
+      "info-sign",
+      "check",
+      "..."
+     ]
     },
     {
      "name": "html",
@@ -15209,8 +15644,13 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "(left|center|right) Specifies the alignment of a table according to surrounding text",
-     "memberOf": ""
+     "desc": "Specifies the alignment of a table according to surrounding text",
+     "memberOf": "",
+     "optvals": [
+      "left",
+      "center",
+      "right"
+     ]
     },
     {
      "name": "bgcolor",
@@ -15305,32 +15745,52 @@
     {
      "name": "loadMask",
      "type": "Boolean",
-     "desc": "(true|false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "tfoot",
      "type": "Boolean",
-     "desc": "(true|false) generate tfoot, default true",
-     "memberOf": ""
+     "desc": "generate tfoot, default true",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "thead",
      "type": "Boolean",
-     "desc": "(true|false) generate thead, default true",
-     "memberOf": ""
+     "desc": "generate thead, default true",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "RowSelection",
      "type": "Boolean",
-     "desc": "(true|false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "CellSelection",
      "type": "Boolean",
-     "desc": "(true|false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "footer",
@@ -16138,14 +16598,26 @@
     {
      "name": "wrap",
      "type": "string",
-     "desc": "(soft|hard)Specifies how the text in a text area is to be wrapped when submitted in a form",
-     "memberOf": ""
+     "desc": "Specifies how the text in a text area is to be wrapped when submitted in a form",
+     "memberOf": "",
+     "optvals": [
+      "soft",
+      "hard"
+     ]
     },
     {
      "name": "resize",
      "type": "string",
-     "desc": "(none|both|horizontal|vertical|inherit|initial)",
-     "memberOf": ""
+     "desc": "",
+     "memberOf": "",
+     "optvals": [
+      "none",
+      "both",
+      "horizontal",
+      "vertical",
+      "inherit",
+      "initial"
+     ]
     },
     {
      "name": "html",
@@ -16240,8 +16712,12 @@
     {
      "name": "labelAlign",
      "type": "String",
-     "desc": "(top|left)",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "top",
+      "left"
+     ]
     },
     {
      "name": "readOnly",
@@ -16252,8 +16728,13 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "(left|center|right) Default left",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "Default left",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "left",
+      "center",
+      "right"
+     ]
     },
     {
      "name": "validationEvent",
@@ -16630,8 +17111,12 @@
     {
      "name": "labelAlign",
      "type": "String",
-     "desc": "(top|left)",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "top",
+      "left"
+     ]
     },
     {
      "name": "readOnly",
@@ -16642,8 +17127,13 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "(left|center|right) Default left",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "Default left",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "left",
+      "center",
+      "right"
+     ]
     },
     {
      "name": "validationEvent",
@@ -17036,8 +17526,12 @@
     {
      "name": "labelAlign",
      "type": "String",
-     "desc": "(top|left)",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "top",
+      "left"
+     ]
     },
     {
      "name": "readOnly",
@@ -17048,8 +17542,13 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "(left|center|right) Default left",
-     "memberOf": "Roo.bootstrap.Input"
+     "desc": "Default left",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "left",
+      "center",
+      "right"
+     ]
     },
     {
      "name": "validationEvent",
@@ -17526,14 +18025,22 @@
     {
      "name": "showtabs",
      "type": "Boolean",
-     "desc": "(true|false) show the tabs default true",
-     "memberOf": ""
+     "desc": "show the tabs default true",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "tabScrollable",
      "type": "Boolean",
-     "desc": "(true|false) tab scrollable when mobile view default false",
-     "memberOf": ""
+     "desc": "tab scrollable when mobile view default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "cls",
@@ -17688,8 +18195,12 @@
     {
      "name": "active",
      "type": "Boolean",
-     "desc": "(false | true) Default false",
-     "memberOf": ""
+     "desc": "Default false",
+     "memberOf": "",
+     "optvals": [
+      "false",
+      "true"
+     ]
     },
     {
      "name": "title",
@@ -17869,8 +18380,12 @@
     {
      "name": "submenu",
      "type": "Boolean",
-     "desc": "(true | false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "html",
@@ -17887,14 +18402,22 @@
     {
      "name": "disable",
      "type": "Boolean",
-     "desc": "(true | false) default false",
-     "memberOf": ""
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "preventDefault",
      "type": "Boolean",
-     "desc": "(true | false) default true",
-     "memberOf": ""
+     "desc": "default true",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "icon",
@@ -18073,8 +18596,17 @@
     {
      "name": "weight",
      "type": "String",
-     "desc": "(default | primary | success | info | warning | danger | inverse)",
-     "memberOf": ""
+     "desc": "",
+     "memberOf": "",
+     "optvals": [
+      "default",
+      "primary",
+      "success",
+      "info",
+      "warning",
+      "danger",
+      "inverse"
+     ]
     },
     {
      "name": "icon",
@@ -30051,8 +30583,15 @@
     {
      "name": "blocktype",
      "type": "String",
-     "desc": "(header|preheader|footer|body|row)",
-     "memberOf": ""
+     "desc": "",
+     "memberOf": "",
+     "optvals": [
+      "header",
+      "preheader",
+      "footer",
+      "body",
+      "row"
+     ]
     },
     {
      "name": "style",
@@ -30345,8 +30884,12 @@
     {
      "name": "column",
      "type": "String",
-     "desc": "(left|right)",
-     "memberOf": ""
+     "desc": "",
+     "memberOf": "",
+     "optvals": [
+      "left",
+      "right"
+     ]
     },
     {
      "name": "",
