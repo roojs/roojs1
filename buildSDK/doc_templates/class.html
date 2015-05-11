@@ -211,7 +211,10 @@
 			</div>
 			
 			<div class="mdesc">
-			    <div class="long">{+resolveLinks(dtag.desc)+}</div> 
+			    <div class="long">
+                    {+resolveLinks(dtag.desc)+}
+                    {+dtag.optvalues ? ("<BR/>Possible Values: " + dtag.optvalues.map(function(v) { return v.length ? v : "<B>Empty</B>"; }).join(", ")) : '' +}
+                </div> 
 			</div>
 			
 			

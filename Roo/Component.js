@@ -133,7 +133,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
 	 * Whether the component can move the Dom node when rendering (defaults to true).
 	 */
     allowDomMove : true,
-    /** @cfg {String} hideMode
+    /** @cfg {String} hideMode (display|visibility)
      * How this component should hidden. Supported values are
      * "visibility" (css visibility), "offsets" (negative offset position) and
      * "display" (css display) - defaults to "display".
