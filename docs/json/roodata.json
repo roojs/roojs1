@@ -459,7 +459,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -747,7 +751,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -897,7 +905,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -999,7 +1011,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": ""
+     "memberOf": "",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -1395,7 +1411,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -1598,7 +1618,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -1970,7 +1994,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -5044,7 +5072,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -5133,20 +5165,38 @@
     {
      "name": "weight",
      "type": "String",
-     "desc": "default (or empty) | primary | success | info | warning | danger | link",
-     "memberOf": ""
+     "desc": "default",
+     "memberOf": "",
+     "optvals": [
+      "  primary",
+      "success",
+      "info",
+      "warning",
+      "danger",
+      "link "
+     ]
     },
     {
      "name": "size",
      "type": "String",
-     "desc": "empty | lg | sm | xs",
-     "memberOf": ""
+     "desc": "",
+     "memberOf": "",
+     "optvals": [
+      " lg",
+      "sm",
+      "xs"
+     ]
     },
     {
      "name": "tag",
      "type": "String",
-     "desc": "empty | a | input | submit",
-     "memberOf": ""
+     "desc": "",
+     "memberOf": "",
+     "optvals": [
+      " a",
+      "input",
+      "submit"
+     ]
     },
     {
      "name": "href",
@@ -5157,20 +5207,223 @@
     {
      "name": "disabled",
      "type": "Boolean",
-     "desc": "false | true",
+     "desc": "default false;",
      "memberOf": ""
     },
     {
      "name": "isClose",
      "type": "Boolean",
-     "desc": "false | true",
+     "desc": "default false;",
      "memberOf": ""
     },
     {
      "name": "glyphicon",
      "type": "String",
-     "desc": "empty | adjust | align-center | align-justify | align-left | align-right | arrow-down | arrow-left | arrow-right | arrow-up | asterisk | backward | ban-circle | barcode | bell | bold | book | bookmark | briefcase | bullhorn | calendar | camera | certificate | check | chevron-down | chevron-left | chevron-right | chevron-up | circle-arrow-down | circle-arrow-left | circle-arrow-right | circle-arrow-up | cloud | cloud-download | cloud-upload | cog | collapse-down | collapse-up | comment | compressed | copyright-mark | credit-card | cutlery | dashboard | download | download-alt | earphone | edit | eject | envelope | euro | exclamation-sign | expand | export | eye-close | eye-open | facetime-video | fast-backward | fast-forward | file | film | filter | fire | flag | flash | floppy-disk | floppy-open | floppy-remove | floppy-save | floppy-saved | folder-close | folder-open | font | forward | fullscreen | gbp | gift | glass | globe | hand-down | hand-left | hand-right | hand-up | hd-video | hdd | header | headphones | heart | heart-empty | home | import | inbox | indent-left | indent-right | info-sign | italic | leaf | link | list | list-alt | lock | log-in | log-out | magnet | map-marker | minus | minus-sign | move | music | new-window | off | ok | ok-circle | ok-sign | open | paperclip | pause | pencil | phone | phone-alt | picture | plane | play | play-circle | plus | plus-sign | print | pushpin | qrcode | question-sign | random | record | refresh | registration-mark | remove | remove-circle | remove-sign | repeat | resize-full | resize-horizontal | resize-small | resize-vertical | retweet | road | save | saved | screenshot | sd-video | search | send | share | share-alt | shopping-cart | signal | sort | sort-by-alphabet | sort-by-alphabet-alt | sort-by-attributes | sort-by-attributes-alt | sort-by-order | sort-by-order-alt | sound-5-1 | sound-6-1 | sound-7-1 | sound-dolby | sound-stereo | star | star-empty | stats | step-backward | step-forward | stop | subtitles | tag | tags | tasks | text-height | text-width | th | th-large | th-list | thumbs-down | thumbs-up | time | tint | tower | transfer | trash | tree-conifer | tree-deciduous | unchecked | upload | usd | user | volume-down | volume-off | volume-up | warning-sign | wrench | zoom-in | zoom-out",
-     "memberOf": ""
+     "desc": "",
+     "memberOf": "",
+     "optvals": [
+      "",
+      "adjust",
+      "align-center",
+      "align-justify",
+      "align-left",
+      "align-right",
+      "arrow-down",
+      "arrow-left",
+      "arrow-right",
+      "arrow-up",
+      "asterisk",
+      "backward",
+      "ban-circle",
+      "barcode",
+      "bell",
+      "bold",
+      "book",
+      "bookmark",
+      "briefcase",
+      "bullhorn",
+      "calendar",
+      "camera",
+      "certificate",
+      "check",
+      "chevron-down",
+      "chevron-left",
+      "chevron-right",
+      "chevron-up",
+      "circle-arrow-down",
+      "circle-arrow-left",
+      "circle-arrow-right",
+      "circle-arrow-up",
+      "cloud",
+      "cloud-download",
+      "cloud-upload",
+      "cog",
+      "collapse-down",
+      "collapse-up",
+      "comment",
+      "compressed",
+      "copyright-mark",
+      "credit-card",
+      "cutlery",
+      "dashboard",
+      "download",
+      "download-alt",
+      "earphone",
+      "edit",
+      "eject",
+      "envelope",
+      "euro",
+      "exclamation-sign",
+      "expand",
+      "export",
+      "eye-close",
+      "eye-open",
+      "facetime-video",
+      "fast-backward",
+      "fast-forward",
+      "file",
+      "film",
+      "filter",
+      "fire",
+      "flag",
+      "flash",
+      "floppy-disk",
+      "floppy-open",
+      "floppy-remove",
+      "floppy-save",
+      "floppy-saved",
+      "folder-close",
+      "folder-open",
+      "font",
+      "forward",
+      "fullscreen",
+      "gbp",
+      "gift",
+      "glass",
+      "globe",
+      "hand-down",
+      "hand-left",
+      "hand-right",
+      "hand-up",
+      "hd-video",
+      "hdd",
+      "header",
+      "headphones",
+      "heart",
+      "heart-empty",
+      "home",
+      "import",
+      "inbox",
+      "indent-left",
+      "indent-right",
+      "info-sign",
+      "italic",
+      "leaf",
+      "link",
+      "list",
+      "list-alt",
+      "lock",
+      "log-in",
+      "log-out",
+      "magnet",
+      "map-marker",
+      "minus",
+      "minus-sign",
+      "move",
+      "music",
+      "new-window",
+      "off",
+      "ok",
+      "ok-circle",
+      "ok-sign",
+      "open",
+      "paperclip",
+      "pause",
+      "pencil",
+      "phone",
+      "phone-alt",
+      "picture",
+      "plane",
+      "play",
+      "play-circle",
+      "plus",
+      "plus-sign",
+      "print",
+      "pushpin",
+      "qrcode",
+      "question-sign",
+      "random",
+      "record",
+      "refresh",
+      "registration-mark",
+      "remove",
+      "remove-circle",
+      "remove-sign",
+      "repeat",
+      "resize-full",
+      "resize-horizontal",
+      "resize-small",
+      "resize-vertical",
+      "retweet",
+      "road",
+      "save",
+      "saved",
+      "screenshot",
+      "sd-video",
+      "search",
+      "send",
+      "share",
+      "share-alt",
+      "shopping-cart",
+      "signal",
+      "sort",
+      "sort-by-alphabet",
+      "sort-by-alphabet-alt",
+      "sort-by-attributes",
+      "sort-by-attributes-alt",
+      "sort-by-order",
+      "sort-by-order-alt",
+      "sound-5-1",
+      "sound-6-1",
+      "sound-7-1",
+      "sound-dolby",
+      "sound-stereo",
+      "star",
+      "star-empty",
+      "stats",
+      "step-backward",
+      "step-forward",
+      "stop",
+      "subtitles",
+      "tag",
+      "tags",
+      "tasks",
+      "text-height",
+      "text-width",
+      "th",
+      "th-large",
+      "th-list",
+      "thumbs-down",
+      "thumbs-up",
+      "time",
+      "tint",
+      "tower",
+      "transfer",
+      "trash",
+      "tree-conifer",
+      "tree-deciduous",
+      "unchecked",
+      "upload",
+      "usd",
+      "user",
+      "volume-down",
+      "volume-off",
+      "volume-up",
+      "warning-sign",
+      "wrench",
+      "zoom-in",
+      "zoom-out"
+     ]
     },
     {
      "name": "badge",
@@ -5181,19 +5434,19 @@
     {
      "name": "theme",
      "type": "String",
-     "desc": "default (or empty) | glow",
+     "desc": "default",
      "memberOf": ""
     },
     {
      "name": "inverse",
      "type": "Boolean",
-     "desc": "false | true",
+     "desc": "",
      "memberOf": ""
     },
     {
      "name": "toggle",
      "type": "Boolean",
-     "desc": "false | true",
+     "desc": "",
      "memberOf": ""
     },
     {
@@ -5211,36 +5464,26 @@
     {
      "name": "defaulton",
      "type": "Boolean",
-     "desc": "true | false",
+     "desc": "",
      "memberOf": ""
     },
     {
      "name": "preventDefault",
      "type": "Boolean",
      "desc": "default true",
-     "memberOf": "",
-     "optvals": [
-      "true",
-      "false"
-     ]
+     "memberOf": ""
     },
     {
      "name": "removeClass",
      "type": "Boolean",
-     "desc": "true | false remove the standard class..",
+     "desc": "remove the standard class..",
      "memberOf": ""
     },
     {
      "name": "target",
      "type": "String",
-     "desc": "target for a href.",
-     "memberOf": "",
-     "optvals": [
-      "_self",
-      "_blank",
-      "_parent",
-      "_top"
-     ]
+     "desc": "target for a href. (_self|_blank|_parent|_top| other)",
+     "memberOf": ""
     },
     {
      "name": "cls",
@@ -5300,7 +5543,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -5480,7 +5727,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -5640,7 +5891,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -6058,7 +6313,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -6353,7 +6612,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -6986,7 +7249,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -7697,7 +7964,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -8396,7 +8667,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -8624,7 +8899,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -8876,7 +9155,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -9311,7 +9594,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -9509,7 +9796,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -9695,7 +9986,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -9899,7 +10194,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -10063,7 +10362,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -10462,7 +10765,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -10726,7 +11033,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -11083,7 +11394,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -11309,7 +11624,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -11470,7 +11789,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -11664,7 +11987,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -11812,7 +12139,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -11994,7 +12325,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -12179,7 +12514,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -12352,7 +12691,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -12596,7 +12939,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -12813,7 +13160,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -12963,7 +13314,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -13180,7 +13535,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -13395,7 +13754,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -13533,7 +13896,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -13683,7 +14050,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -13853,7 +14224,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -14074,7 +14449,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -14224,7 +14603,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -14410,7 +14793,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -14798,7 +15185,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -14984,7 +15375,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -15122,7 +15517,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -15381,7 +15780,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -15543,7 +15946,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -15850,7 +16257,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -16113,7 +16524,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -16341,7 +16756,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -16503,7 +16922,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -16896,7 +17319,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -17295,7 +17722,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -17710,7 +18141,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -17930,7 +18365,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -18100,7 +18539,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -18266,7 +18709,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -18489,7 +18936,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -18678,7 +19129,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -18822,7 +19277,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -20240,7 +20699,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -20444,7 +20907,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -20978,7 +21445,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -21416,7 +21887,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -21596,7 +22071,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -22142,7 +22621,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -22628,7 +23111,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -22916,7 +23403,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -23198,7 +23689,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -23588,7 +24083,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -23876,7 +24375,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -24074,7 +24577,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -24446,7 +24953,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -24824,7 +25335,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -25094,7 +25609,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -25386,7 +25905,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -25770,7 +26293,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -26214,7 +26741,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -26520,7 +27051,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -26730,7 +27265,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -27270,7 +27809,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -27564,7 +28107,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -27960,7 +28507,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -28344,7 +28895,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -28722,7 +29277,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -30017,7 +30576,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -30645,7 +31208,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -30783,7 +31350,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -30949,7 +31520,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -31085,7 +31660,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -31235,7 +31814,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -31433,7 +32016,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -31595,7 +32182,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -31847,7 +32438,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -32129,7 +32724,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -32385,7 +32984,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -32547,7 +33150,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -33134,7 +33741,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
@@ -34136,7 +34747,11 @@
      "name": "hideMode",
      "type": "String",
      "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
-     "memberOf": "Roo.Component"
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
     },
     {
      "name": "actionMode",
