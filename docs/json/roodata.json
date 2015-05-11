@@ -5168,12 +5168,12 @@
      "desc": "default",
      "memberOf": "",
      "optvals": [
-      "  primary",
+      "primary",
       "success",
       "info",
       "warning",
       "danger",
-      "link "
+      "link"
      ]
     },
     {
@@ -5182,7 +5182,7 @@
      "desc": "",
      "memberOf": "",
      "optvals": [
-      " lg",
+      "lg",
       "sm",
       "xs"
      ]
@@ -5193,7 +5193,7 @@
      "desc": "",
      "memberOf": "",
      "optvals": [
-      " a",
+      "a",
       "input",
       "submit"
      ]
@@ -14720,7 +14720,7 @@
       "success",
       "info",
       "warning",
-      "danger "
+      "danger"
      ]
     },
     {
