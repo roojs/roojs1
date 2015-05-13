@@ -2105,7 +2105,9 @@ if(opt.anim.isAnimated()){
                 }
                 var mm = this._maskMsg;
                 mm.dom.className = msgCls ? "roo-el-mask-msg " + msgCls : "roo-el-mask-msg";
-                mm.dom.firstChild.innerHTML = msg;
+                if (mm.dom.firstChild) { // weird IE issue?
+                    mm.dom.firstChild.innerHTML = msg;
+                }
                 mm.setDisplayed(true);
                 mm.center(this);
                 mm.setStyle('z-index', z + 102);
