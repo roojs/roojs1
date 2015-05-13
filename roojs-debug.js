@@ -9002,7 +9002,9 @@ if(opt.anim.isAnimated()){
                 }
                 var mm = this._maskMsg;
                 mm.dom.className = msgCls ? "roo-el-mask-msg " + msgCls : "roo-el-mask-msg";
-                mm.dom.firstChild.innerHTML = msg;
+                if (mm.dom.firstChild) { // weird IE issue?
+                    mm.dom.firstChild.innerHTML = msg;
+                }
                 mm.setDisplayed(true);
                 mm.center(this);
                 mm.setStyle('z-index', z + 102);
@@ -15204,7 +15206,7 @@ Roo.extend(Roo.Component, Roo.util.Observable, {
 	 * Whether the component can move the Dom node when rendering (defaults to true).
 	 */
     allowDomMove : true,
-    /** @cfg {String} hideMode
+    /** @cfg {String} hideMode (display|visibility)
      * How this component should hidden. Supported values are
      * "visibility" (css visibility), "offsets" (negative offset position) and
      * "display" (css display) - defaults to "display".
