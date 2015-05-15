@@ -6264,7 +6264,7 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
          */
         this.o = o;
         var s = this.meta, Record = this.recordType,
-            f = Record.prototype.fields, fi = f.items, fl = f.length;
+            f = Record ? Record.prototype.fields : null, fi = f.items, fl = f.length;
 
 //      Generate extraction functions for the totalProperty, the root, the id, and for each field
         if (!this.ef) {
@@ -6306,30 +6306,30 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
             }
         }
         var records = [];
-	    for(var i = 0; i < c; i++){
-		    var n = root[i];
-	        var values = {};
-	        var id = this.getId(n);
-	        for(var j = 0; j < fl; j++){
-	            f = fi[j];
-                var v = this.ef[j](n);
-                if (!f.convert) {
-                    Roo.log('missing convert for ' + f.name);
-                    Roo.log(f);
-                    continue;
-                }
-                values[f.name] = f.convert((v !== undefined) ? v : f.defaultValue);
-	        }
-	        var record = new Record(values, id);
-	        record.json = n;
-	        records[i] = record;
-	    }
-	    return {
+        for(var i = 0; i < c; i++){
+                var n = root[i];
+            var values = {};
+            var id = this.getId(n);
+            for(var j = 0; j < fl; j++){
+                f = fi[j];
+            var v = this.ef[j](n);
+            if (!f.convert) {
+                Roo.log('missing convert for ' + f.name);
+                Roo.log(f);
+                continue;
+            }
+            values[f.name] = f.convert((v !== undefined) ? v : f.defaultValue);
+            }
+            var record = new Record(values, id);
+            record.json = n;
+            records[i] = record;
+        }
+        return {
             raw : o,
-	        success : success,
-	        records : records,
-	        totalRecords : totalRecords
-	    };
+            success : success,
+            records : records,
+            totalRecords : totalRecords
+        };
     }
 });/*
  * Based on:
