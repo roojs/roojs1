@@ -22694,7 +22694,7 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
          */
         this.o = o;
         var s = this.meta, Record = this.recordType,
-            f = Record ? Record.prototype.fields : null, fi = f.items, fl = f.length;
+            f = Record ? Record.prototype.fields : null, fi = f ? f.items : [], fl = f ? f.length: 0;
 
 //      Generate extraction functions for the totalProperty, the root, the id, and for each field
         if (!this.ef) {
