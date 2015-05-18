@@ -444,23 +444,23 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Button class
  * @cfg {String} html The button content
- * @cfg {String} weight default (or empty) | primary | success | info | warning | danger | link
- * @cfg {String} size empty | lg | sm | xs
- * @cfg {String} tag empty | a | input | submit
+ * @cfg {String} weight (  primary | success | info | warning | danger | link ) default 
+ * @cfg {String} size ( lg | sm | xs)
+ * @cfg {String} tag ( a | input | submit)
  * @cfg {String} href empty or href
- * @cfg {Boolean} disabled false | true
- * @cfg {Boolean} isClose false | true
- * @cfg {String} glyphicon empty | adjust | align-center | align-justify | align-left | align-right | arrow-down | arrow-left | arrow-right | arrow-up | asterisk | backward | ban-circle | barcode | bell | bold | book | bookmark | briefcase | bullhorn | calendar | camera | certificate | check | chevron-down | chevron-left | chevron-right | chevron-up | circle-arrow-down | circle-arrow-left | circle-arrow-right | circle-arrow-up | cloud | cloud-download | cloud-upload | cog | collapse-down | collapse-up | comment | compressed | copyright-mark | credit-card | cutlery | dashboard | download | download-alt | earphone | edit | eject | envelope | euro | exclamation-sign | expand | export | eye-close | eye-open | facetime-video | fast-backward | fast-forward | file | film | filter | fire | flag | flash | floppy-disk | floppy-open | floppy-remove | floppy-save | floppy-saved | folder-close | folder-open | font | forward | fullscreen | gbp | gift | glass | globe | hand-down | hand-left | hand-right | hand-up | hd-video | hdd | header | headphones | heart | heart-empty | home | import | inbox | indent-left | indent-right | info-sign | italic | leaf | link | list | list-alt | lock | log-in | log-out | magnet | map-marker | minus | minus-sign | move | music | new-window | off | ok | ok-circle | ok-sign | open | paperclip | pause | pencil | phone | phone-alt | picture | plane | play | play-circle | plus | plus-sign | print | pushpin | qrcode | question-sign | random | record | refresh | registration-mark | remove | remove-circle | remove-sign | repeat | resize-full | resize-horizontal | resize-small | resize-vertical | retweet | road | save | saved | screenshot | sd-video | search | send | share | share-alt | shopping-cart | signal | sort | sort-by-alphabet | sort-by-alphabet-alt | sort-by-attributes | sort-by-attributes-alt | sort-by-order | sort-by-order-alt | sound-5-1 | sound-6-1 | sound-7-1 | sound-dolby | sound-stereo | star | star-empty | stats | step-backward | step-forward | stop | subtitles | tag | tags | tasks | text-height | text-width | th | th-large | th-list | thumbs-down | thumbs-up | time | tint | tower | transfer | trash | tree-conifer | tree-deciduous | unchecked | upload | usd | user | volume-down | volume-off | volume-up | warning-sign | wrench | zoom-in | zoom-out
+ * @cfg {Boolean} disabled default false;
+ * @cfg {Boolean} isClose default false;
+ * @cfg {String} glyphicon (| adjust | align-center | align-justify | align-left | align-right | arrow-down | arrow-left | arrow-right | arrow-up | asterisk | backward | ban-circle | barcode | bell | bold | book | bookmark | briefcase | bullhorn | calendar | camera | certificate | check | chevron-down | chevron-left | chevron-right | chevron-up | circle-arrow-down | circle-arrow-left | circle-arrow-right | circle-arrow-up | cloud | cloud-download | cloud-upload | cog | collapse-down | collapse-up | comment | compressed | copyright-mark | credit-card | cutlery | dashboard | download | download-alt | earphone | edit | eject | envelope | euro | exclamation-sign | expand | export | eye-close | eye-open | facetime-video | fast-backward | fast-forward | file | film | filter | fire | flag | flash | floppy-disk | floppy-open | floppy-remove | floppy-save | floppy-saved | folder-close | folder-open | font | forward | fullscreen | gbp | gift | glass | globe | hand-down | hand-left | hand-right | hand-up | hd-video | hdd | header | headphones | heart | heart-empty | home | import | inbox | indent-left | indent-right | info-sign | italic | leaf | link | list | list-alt | lock | log-in | log-out | magnet | map-marker | minus | minus-sign | move | music | new-window | off | ok | ok-circle | ok-sign | open | paperclip | pause | pencil | phone | phone-alt | picture | plane | play | play-circle | plus | plus-sign | print | pushpin | qrcode | question-sign | random | record | refresh | registration-mark | remove | remove-circle | remove-sign | repeat | resize-full | resize-horizontal | resize-small | resize-vertical | retweet | road | save | saved | screenshot | sd-video | search | send | share | share-alt | shopping-cart | signal | sort | sort-by-alphabet | sort-by-alphabet-alt | sort-by-attributes | sort-by-attributes-alt | sort-by-order | sort-by-order-alt | sound-5-1 | sound-6-1 | sound-7-1 | sound-dolby | sound-stereo | star | star-empty | stats | step-backward | step-forward | stop | subtitles | tag | tags | tasks | text-height | text-width | th | th-large | th-list | thumbs-down | thumbs-up | time | tint | tower | transfer | trash | tree-conifer | tree-deciduous | unchecked | upload | usd | user | volume-down | volume-off | volume-up | warning-sign | wrench | zoom-in | zoom-out)
  * @cfg {String} badge text for badge
- * @cfg {String} theme default (or empty) | glow
- * @cfg {Boolean} inverse false | true
- * @cfg {Boolean} toggle false | true
+ * @cfg {String} theme default 
+ * @cfg {Boolean} inverse 
+ * @cfg {Boolean} toggle 
  * @cfg {String} ontext text for on toggle state
  * @cfg {String} offtext text for off toggle state
- * @cfg {Boolean} defaulton true | false
- * @cfg {Boolean} preventDefault (true | false) default true
- * @cfg {Boolean} removeClass true | false remove the standard class..
- * @cfg {String} target (_self|_blank|_parent|_top)target for a href.
+ * @cfg {Boolean} defaulton 
+ * @cfg {Boolean} preventDefault  default true
+ * @cfg {Boolean} removeClass remove the standard class..
+ * @cfg {String} target  target for a href. (_self|_blank|_parent|_top| other)
  * 
  * @constructor
  * Create a new button
@@ -7904,7 +7904,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             id : id,
             type : this.inputType,
             cls : 'form-control',
-            autocomplete: 'off',
+            autocomplete: 'false',
             placeholder : this.placeholder || '' 
             
         };
@@ -10152,7 +10152,7 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
          */
         this.o = o;
         var s = this.meta, Record = this.recordType,
-            f = Record.prototype.fields, fi = f.items, fl = f.length;
+            f = Record ? Record.prototype.fields : null, fi = f ? f.items : [], fl = f ? f.length : 0;
 
 //      Generate extraction functions for the totalProperty, the root, the id, and for each field
         if (!this.ef) {
@@ -10194,30 +10194,30 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
             }
         }
         var records = [];
-	    for(var i = 0; i < c; i++){
-		    var n = root[i];
-	        var values = {};
-	        var id = this.getId(n);
-	        for(var j = 0; j < fl; j++){
-	            f = fi[j];
-                var v = this.ef[j](n);
-                if (!f.convert) {
-                    Roo.log('missing convert for ' + f.name);
-                    Roo.log(f);
-                    continue;
-                }
-                values[f.name] = f.convert((v !== undefined) ? v : f.defaultValue);
-	        }
-	        var record = new Record(values, id);
-	        record.json = n;
-	        records[i] = record;
-	    }
-	    return {
+        for(var i = 0; i < c; i++){
+                var n = root[i];
+            var values = {};
+            var id = this.getId(n);
+            for(var j = 0; j < fl; j++){
+                f = fi[j];
+            var v = this.ef[j](n);
+            if (!f.convert) {
+                Roo.log('missing convert for ' + f.name);
+                Roo.log(f);
+                continue;
+            }
+            values[f.name] = f.convert((v !== undefined) ? v : f.defaultValue);
+            }
+            var record = new Record(values, id);
+            record.json = n;
+            records[i] = record;
+        }
+        return {
             raw : o,
-	        success : success,
-	        records : records,
-	        totalRecords : totalRecords
-	    };
+            success : success,
+            records : records,
+            totalRecords : totalRecords
+        };
     }
 });/*
  * Based on:
