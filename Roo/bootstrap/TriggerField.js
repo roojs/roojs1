@@ -76,7 +76,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             id : id,
             type : this.inputType,
             cls : 'form-control',
-            autocomplete: 'off',
+            autocomplete: 'false',
             placeholder : this.placeholder || '' 
             
         };
