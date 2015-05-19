@@ -356,6 +356,11 @@ Roo.Toolbar.prototype = {
  * @param {HTMLElement} el 
  */
 Roo.Toolbar.Item = function(el){
+    if (typeof (el.xtype) != 'undefined') {
+        cfg = el;
+        el = cfg.el;
+    }
+    
     this.el = Roo.getDom(el);
     this.id = Roo.id(this.el);
     this.hidden = false;
@@ -368,7 +373,7 @@ Roo.Toolbar.Item = function(el){
 	     */
         'render': true
     });
-    Roo.Toolbar.Item.superclass.constructor.call(this);
+    Roo.Toolbar.Item.superclass.constructor.call(this,cfg);
 };
 Roo.extend(Roo.Toolbar.Item, Roo.util.Observable, {
 //Roo.Toolbar.Item.prototype = {
