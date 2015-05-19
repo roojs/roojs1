@@ -528,7 +528,7 @@ Roo.Toolbar.Fill = Roo.extend(Roo.Toolbar.Spacer, {
 Roo.Toolbar.TextItem = function(cfg){
     var text ="";
     if (typeof(cfg) == 'object') {
-        text = cfg.text;
+        text = cfg.text || "";
     } else {
         cfg = null;
     }
