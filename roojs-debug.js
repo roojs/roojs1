@@ -28543,16 +28543,13 @@ Roo.extend(Roo.Toolbar.Item, Roo.util.Observable, {
     },
 
     // private
-//    render : function(td){
-//        this.td = td;
-//        td.appendChild(this.el);
-//        
-//        this.fireEvent('render', this);
-//    },
     render : function(td){
         this.td = td;
-        Roo.Toolbar.Item.superclass.render.call(this, td);
+        td.appendChild(this.el);
+        
+        this.fireEvent('render', this);
     },
+    
     /**
      * Removes and destroys this item.
      */
@@ -28684,6 +28681,12 @@ Roo.Toolbar.TextItem = function(text){
     Roo.Toolbar.TextItem.superclass.constructor.call(this, s);
 };
 Roo.extend(Roo.Toolbar.TextItem, Roo.Toolbar.Item, {
+    
+    render : function(td){
+        this.td = td;
+        Roo.Toolbar.TextItem.superclass.render.call(this, td);
+    },
+    
     enable:Roo.emptyFn,
     disable:Roo.emptyFn,
     focus:Roo.emptyFn
