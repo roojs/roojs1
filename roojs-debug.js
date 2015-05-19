@@ -28544,6 +28544,8 @@ Roo.extend(Roo.Toolbar.Item, Roo.util.Observable, {
 
     // private
     render : function(td){
+        
+        Roo.log("Toolbar Item - render");
         this.td = td;
         td.appendChild(this.el);
         
