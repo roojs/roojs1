@@ -2105,7 +2105,9 @@ if(opt.anim.isAnimated()){
                 }
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this._maskMsg</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">mm.dom.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">msgCls </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">&quot;roo-el-mask-msg &quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">msgCls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;roo-el-mask-msg&quot;</span><span class="jsdoc-syntax">;
-                </span><span class="jsdoc-var">mm.dom.firstChild.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mm.dom.firstChild</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// weird IE issue?
+                    </span><span class="jsdoc-var">mm.dom.firstChild.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">;
+                }
                 </span><span class="jsdoc-var">mm.setDisplayed</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">mm.center</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">mm.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'z-index'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">z </span><span class="jsdoc-syntax">+ 102);

@@ -4283,19 +4283,47 @@
   },
   "Roo.Toolbar.Fill": {
    "props": [],
-   "events": []
+   "events": [
+    {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the button is rendered"
+    }
+   ]
   },
   "Roo.Toolbar.Item": {
    "props": [],
-   "events": []
+   "events": [
+    {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the button is rendered"
+    }
+   ]
   },
   "Roo.Toolbar.Separator": {
    "props": [],
-   "events": []
+   "events": [
+    {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the button is rendered"
+    }
+   ]
   },
   "Roo.Toolbar.Spacer": {
    "props": [],
-   "events": []
+   "events": [
+    {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the button is rendered"
+    }
+   ]
   },
   "Roo.Toolbar.SplitButton": {
    "props": [
@@ -4497,7 +4525,14 @@
   },
   "Roo.Toolbar.TextItem": {
    "props": [],
-   "events": []
+   "events": [
+    {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the button is rendered"
+    }
+   ]
   },
   "Roo.TreePanel": {
    "props": [
@@ -12423,11 +12458,7 @@
      "name": "specificTitle",
      "type": "Boolean",
      "desc": "default false",
-     "memberOf": "",
-     "optvals": [
-      "true",
-      "false"
-     ]
+     "memberOf": ""
     },
     {
      "name": "buttons",
@@ -12450,11 +12481,13 @@
      "name": "animate",
      "type": "Boolean",
      "desc": "default true",
-     "memberOf": "",
-     "optvals": [
-      "true",
-      "false"
-     ]
+     "memberOf": ""
+    },
+    {
+     "name": "allow_close",
+     "type": "Boolean",
+     "desc": "default true",
+     "memberOf": ""
     },
     {
      "name": "cls",
