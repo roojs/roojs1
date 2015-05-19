@@ -469,6 +469,9 @@ Roo.Toolbar.Separator = function(cfg){
     
     var s = document.createElement("span");
     s.className = "ytb-sep";
+    if (cfg) {
+        cfg.el = s;
+    }
     
     Roo.Toolbar.Separator.superclass.constructor.call(this, cfg || s);
 };
