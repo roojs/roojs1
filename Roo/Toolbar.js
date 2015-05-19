@@ -384,6 +384,7 @@ Roo.Toolbar.Item.prototype = {
     render : function(td){
         this.td = td;
         td.appendChild(this.el);
+        this.fireEvent('render', this);
     },
     
     /**
