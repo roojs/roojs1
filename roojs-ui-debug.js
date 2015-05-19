@@ -12258,12 +12258,20 @@ Roo.Toolbar.Fill = Roo.extend(Roo.Toolbar.Spacer, {
  * @param {String} text
  */
 Roo.Toolbar.TextItem = function(cfg){
+    var text ="";
     if (typeof(cfg) == 'object') {
         text = cfg.text;
+    } else {
+        cfg = null;
     }
+     
     var s = document.createElement("span");
     s.className = "ytb-text";
     s.innerHTML = text;
+    if (cfg) {
+        cfg.el  = s;
+    }
+    
     Roo.Toolbar.TextItem.superclass.constructor.call(this, cfg ||  s);
 };
 Roo.extend(Roo.Toolbar.TextItem, Roo.Toolbar.Item, {
