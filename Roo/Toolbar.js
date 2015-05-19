@@ -368,6 +368,7 @@ Roo.Toolbar.Item = function(el){
 	     */
         'render': true
     });
+    Roo.Toolbar.Item.superclass.constructor.call(this);
 };
 Roo.extend(Roo.Toolbar.Item, Roo.util.Observable, {
 //Roo.Toolbar.Item.prototype = {
