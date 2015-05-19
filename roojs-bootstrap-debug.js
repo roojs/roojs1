@@ -2058,10 +2058,11 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
- * @cfg {Boolean} specificTitle (true|false) default false
+ * @cfg {Boolean} specificTitle default false
  * @cfg {Array} buttons Array of buttons or standard button set..
  * @cfg {String} buttonPosition (left|right|center) default right
- * @cfg {Boolean} animate (true | false) default true
+ * @cfg {Boolean} animate default true
+ * @cfg {Boolean} allow_close default true
  * 
  * @constructor
  * Create a new Modal Dialog
@@ -2094,6 +2095,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     specificTitle: false,
     
     buttonPosition: 'right',
+    
+    allow_close : true,
     
     animate : true,
     
@@ -2183,7 +2186,18 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         if(this.specificTitle){
             title = this.title;
+            
         };
+        
+        var header = [];
+        if (this.allow_close) {
+            header.push({
+                tag: 'button',
+                cls : 'close',
+                html : '&times'
+            });
+        }
+        header.push(title);
         
         var modal = {
             cls: "modal",
@@ -2197,14 +2211,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                             cn : [
                                 {
                                     cls : 'modal-header',
-                                    cn : [
-                                        {
-                                            tag: 'button',
-                                            cls : 'close',
-                                            html : '&times'
-                                        },
-                                        title
-                                    ]
+                                    cn : header
                                 },
                                 bdy,
                                 {
