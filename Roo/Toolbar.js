@@ -519,6 +519,12 @@ Roo.Toolbar.TextItem = function(text){
     Roo.Toolbar.TextItem.superclass.constructor.call(this, s);
 };
 Roo.extend(Roo.Toolbar.TextItem, Roo.Toolbar.Item, {
+    
+    render : function(td){
+        this.td = td;
+        Roo.Toolbar.TextItem.superclass.render.call(this, td);
+    },
+    
     enable:Roo.emptyFn,
     disable:Roo.emptyFn,
     focus:Roo.emptyFn
