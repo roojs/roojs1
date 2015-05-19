@@ -381,16 +381,13 @@ Roo.extend(Roo.Toolbar.Item, Roo.util.Observable, {
     },
 
     // private
-//    render : function(td){
-//        this.td = td;
-//        td.appendChild(this.el);
-//        
-//        this.fireEvent('render', this);
-//    },
     render : function(td){
         this.td = td;
-        Roo.Toolbar.Item.superclass.render.call(this, td);
+        td.appendChild(this.el);
+        
+        this.fireEvent('render', this);
     },
+    
     /**
      * Removes and destroys this item.
      */
