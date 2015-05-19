@@ -369,10 +369,10 @@
         </span><span class="jsdoc-string">'render'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
 };
-
-</span><span class="jsdoc-var">Roo.Toolbar.Item.prototype </span><span class="jsdoc-syntax">= {
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Toolbar.Item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
+</span><span class="jsdoc-comment">//Roo.Toolbar.Item.prototype = {
     
-    </span><span class="jsdoc-comment">/**
+    /**
      * Get this item's HTML Element
      * @return {HTMLElement}
      */
@@ -446,7 +446,7 @@
         </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.el.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
     }
-};
+});
 
 
 </span><span class="jsdoc-comment">/**
