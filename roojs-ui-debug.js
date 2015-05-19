@@ -12261,7 +12261,9 @@ Roo.Toolbar.TextItem = function(cfg){
     var  text = cfg || "";
     if (typeof(cfg) == 'object') {
         text = cfg.text || "";
-    }  
+    }  else {
+        cfg = null;
+    }
     var s = document.createElement("span");
     s.className = "ytb-text";
     s.innerHTML = text;
