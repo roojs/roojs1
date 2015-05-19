@@ -356,6 +356,7 @@ Roo.Toolbar.prototype = {
  * @param {HTMLElement} el 
  */
 Roo.Toolbar.Item = function(el){
+    var cfg = {};
     if (typeof (el.xtype) != 'undefined') {
         cfg = el;
         el = cfg.el;
