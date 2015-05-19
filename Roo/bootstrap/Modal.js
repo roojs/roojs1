@@ -30,10 +30,11 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
- * @cfg {Boolean} specificTitle (true|false) default false
+ * @cfg {Boolean} specificTitle default false
  * @cfg {Array} buttons Array of buttons or standard button set..
  * @cfg {String} buttonPosition (left|right|center) default right
- * @cfg {Boolean} animate (true | false) default true
+ * @cfg {Boolean} animate default true
+ * @cfg {Boolean} allow_close default true
  * 
  * @constructor
  * Create a new Modal Dialog
