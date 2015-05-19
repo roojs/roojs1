@@ -12100,6 +12100,7 @@ Roo.Toolbar.Item = function(el){
 	     */
         'render': true
     });
+    Roo.Toolbar.Item.superclass.constructor.call(this);
 };
 Roo.extend(Roo.Toolbar.Item, Roo.util.Observable, {
 //Roo.Toolbar.Item.prototype = {
@@ -12254,11 +12255,7 @@ Roo.Toolbar.TextItem = function(text){
 };
 Roo.extend(Roo.Toolbar.TextItem, Roo.Toolbar.Item, {
     
-    render : function(td){
-        this.td = td;
-        Roo.Toolbar.TextItem.superclass.render.call(this, td);
-    },
-    
+     
     enable:Roo.emptyFn,
     disable:Roo.emptyFn,
     focus:Roo.emptyFn
