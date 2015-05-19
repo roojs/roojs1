@@ -22694,7 +22694,7 @@ Roo.extend(Roo.data.JsonReader, Roo.data.DataReader, {
          */
         this.o = o;
         var s = this.meta, Record = this.recordType,
-            f = Record ? Record.prototype.fields : null, fi = f ? f.items : [], fl = f ? f.length: 0;
+            f = Record ? Record.prototype.fields : null, fi = f ? f.items : [], fl = f ? f.length : 0;
 
 //      Generate extraction functions for the totalProperty, the root, the id, and for each field
         if (!this.ef) {
@@ -28521,6 +28521,15 @@ Roo.Toolbar.Item = function(el){
     this.el = Roo.getDom(el);
     this.id = Roo.id(this.el);
     this.hidden = false;
+    
+    this.addEvents({
+         /**
+	     * @event render
+	     * Fires when the button is rendered
+	     * @param {Button} this
+	     */
+        'render': true
+    });
 };
 
 Roo.Toolbar.Item.prototype = {
@@ -28537,6 +28546,7 @@ Roo.Toolbar.Item.prototype = {
     render : function(td){
         this.td = td;
         td.appendChild(this.el);
+        this.fireEvent('render', this);
     },
     
     /**
