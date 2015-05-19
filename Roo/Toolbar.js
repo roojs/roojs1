@@ -465,10 +465,12 @@ Roo.extend(Roo.Toolbar.Item, Roo.util.Observable, {
  * @constructor
  * Creates a new Separator
  */
-Roo.Toolbar.Separator = function(){
+Roo.Toolbar.Separator = function(cfg){
+    
     var s = document.createElement("span");
     s.className = "ytb-sep";
-    Roo.Toolbar.Separator.superclass.constructor.call(this, s);
+    
+    Roo.Toolbar.Separator.superclass.constructor.call(this, cfg || s);
 };
 Roo.extend(Roo.Toolbar.Separator, Roo.Toolbar.Item, {
     enable:Roo.emptyFn,
