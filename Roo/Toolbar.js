@@ -530,7 +530,7 @@ Roo.Toolbar.TextItem = function(cfg){
     if (typeof(cfg) == 'object') {
         text = cfg.text || "";
     } else {
-        cfg = null;
+        text = cfg;
     }
      
     var s = document.createElement("span");
