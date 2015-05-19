@@ -68,6 +68,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     buttonPosition: 'right',
     
+    allow_close : true,
+    
     animate : true,
     
     onRender : function(ct, position)
@@ -156,7 +158,18 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         if(this.specificTitle){
             title = this.title;
+            
         };
+        
+        var header = [];
+        if (this.allow_close) {
+            header.push({
+                tag: 'button',
+                cls : 'close',
+                html : '&times'
+            });
+        }
+        header.push(title);
         
         var modal = {
             cls: "modal",
@@ -170,14 +183,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
                             cn : [
                                 {
                                     cls : 'modal-header',
-                                    cn : [
-                                        {
-                                            tag: 'button',
-                                            cls : 'close',
-                                            html : '&times'
-                                        },
-                                        title
-                                    ]
+                                    cn : header
                                 },
                                 bdy,
                                 {
