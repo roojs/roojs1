@@ -12088,6 +12088,12 @@ Roo.Toolbar.prototype = {
  * @param {HTMLElement} el 
  */
 Roo.Toolbar.Item = function(el){
+    var cfg = {};
+    if (typeof (el.xtype) != 'undefined') {
+        cfg = el;
+        el = cfg.el;
+    }
+    
     this.el = Roo.getDom(el);
     this.id = Roo.id(this.el);
     this.hidden = false;
@@ -12100,7 +12106,7 @@ Roo.Toolbar.Item = function(el){
 	     */
         'render': true
     });
-    Roo.Toolbar.Item.superclass.constructor.call(this);
+    Roo.Toolbar.Item.superclass.constructor.call(this,cfg);
 };
 Roo.extend(Roo.Toolbar.Item, Roo.util.Observable, {
 //Roo.Toolbar.Item.prototype = {
@@ -12191,10 +12197,15 @@ Roo.extend(Roo.Toolbar.Item, Roo.util.Observable, {
  * @constructor
  * Creates a new Separator
  */
-Roo.Toolbar.Separator = function(){
+Roo.Toolbar.Separator = function(cfg){
+    
     var s = document.createElement("span");
     s.className = "ytb-sep";
-    Roo.Toolbar.Separator.superclass.constructor.call(this, s);
+    if (cfg) {
+        cfg.el = s;
+    }
+    
+    Roo.Toolbar.Separator.superclass.constructor.call(this, cfg || s);
 };
 Roo.extend(Roo.Toolbar.Separator, Roo.Toolbar.Item, {
     enable:Roo.emptyFn,
@@ -12209,10 +12220,13 @@ Roo.extend(Roo.Toolbar.Separator, Roo.Toolbar.Item, {
  * @constructor
  * Creates a new Spacer
  */
-Roo.Toolbar.Spacer = function(){
+Roo.Toolbar.Spacer = function(cfg){
     var s = document.createElement("div");
     s.className = "ytb-spacer";
-    Roo.Toolbar.Spacer.superclass.constructor.call(this, s);
+    if (cfg) {
+        cfg.el = s;
+    }
+    Roo.Toolbar.Spacer.superclass.constructor.call(this, cfg || s);
 };
 Roo.extend(Roo.Toolbar.Spacer, Roo.Toolbar.Item, {
     enable:Roo.emptyFn,
@@ -12243,14 +12257,14 @@ Roo.Toolbar.Fill = Roo.extend(Roo.Toolbar.Spacer, {
  * Creates a new TextItem
  * @param {String} text
  */
-Roo.Toolbar.TextItem = function(text){
-    if (typeof(text) == 'object') {
-        text = text.text;
+Roo.Toolbar.TextItem = function(cfg){
+    if (typeof(cfg) == 'object') {
+        text = cfg.text;
     }
     var s = document.createElement("span");
     s.className = "ytb-text";
     s.innerHTML = text;
-    Roo.Toolbar.TextItem.superclass.constructor.call(this, s);
+    Roo.Toolbar.TextItem.superclass.constructor.call(this, cfg ||  s);
 };
 Roo.extend(Roo.Toolbar.TextItem, Roo.Toolbar.Item, {
     
