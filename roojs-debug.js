@@ -28551,7 +28551,7 @@ Roo.extend(Roo.Toolbar.Item, Roo.util.Observable, {
 //    },
     render : function(td){
         this.td = td;
-        Roo.Toolbar.Button.superclass.render.call(this, td);
+        Roo.Toolbar.Item.superclass.render.call(this, td);
     },
     /**
      * Removes and destroys this item.
