@@ -28531,8 +28531,8 @@ Roo.Toolbar.Item = function(el){
         'render': true
     });
 };
-
-Roo.Toolbar.Item.prototype = {
+Roo.extend(Roo.Toolbar.Item, Roo.util.Observable, {
+//Roo.Toolbar.Item.prototype = {
     
     /**
      * Get this item's HTML Element
@@ -28608,7 +28608,7 @@ Roo.Toolbar.Item.prototype = {
         this.disabled = false;
         this.el.disabled = false;
     }
-};
+});
 
 
 /**
