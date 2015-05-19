@@ -526,13 +526,10 @@ Roo.Toolbar.Fill = Roo.extend(Roo.Toolbar.Spacer, {
  * @param {String} text
  */
 Roo.Toolbar.TextItem = function(cfg){
-    var text ="";
+    var  text = cfg;
     if (typeof(cfg) == 'object') {
         text = cfg.text || "";
-    } else {
-        text = cfg;
-    }
-     
+    }  
     var s = document.createElement("span");
     s.className = "ytb-text";
     s.innerHTML = text;
