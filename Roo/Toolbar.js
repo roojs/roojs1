@@ -359,6 +359,15 @@ Roo.Toolbar.Item = function(el){
     this.el = Roo.getDom(el);
     this.id = Roo.id(this.el);
     this.hidden = false;
+    
+    this.addEvents({
+         /**
+	     * @event render
+	     * Fires when the button is rendered
+	     * @param {Button} this
+	     */
+        'render': true
+    });
 };
 
 Roo.Toolbar.Item.prototype = {
