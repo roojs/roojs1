@@ -30,7 +30,7 @@ Roo.bootstrap.dash.NumberBox = function(config){
 
 Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     
-    bgcolor : 'aqua',
+    bgcolor : '',
     headline : '',
     content : '',
     icon : '',
