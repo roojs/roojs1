@@ -42,7 +42,7 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag : 'div',
-            cls : 'small-box bg-' + this.bgcolor,
+            cls : 'small-box ',
             cn : [
                 {
                     tag : 'div',
