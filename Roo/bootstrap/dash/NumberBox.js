@@ -63,6 +63,10 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
             ]
         }
         
+        if(this.bgcolor){
+            cfg.cls += "bg-" + this.bgcolor;
+        }
+        
         if(this.icon){
             cfg.cn.push({
                 tag : 'div',

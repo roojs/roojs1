@@ -19857,7 +19857,7 @@ Roo.bootstrap.dash.NumberBox = function(config){
 
 Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     
-    bgcolor : 'aqua',
+    bgcolor : false,
     headline : '',
     content : '',
     icon : '',
@@ -19869,7 +19869,7 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag : 'div',
-            cls : 'small-box bg-' + this.bgcolor,
+            cls : 'small-box ',
             cn : [
                 {
                     tag : 'div',
@@ -19888,6 +19888,10 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                     ]
                 }
             ]
+        }
+        
+        if(this.bgcolor){
+            cfg.cls += "bg-" + this.bgcolor;
         }
         
         if(this.icon){
