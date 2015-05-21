@@ -56,7 +56,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         return cfg
     },
     
-    onRender: function(ct, position)
+    initEvents: function(ct, position)
     {
         
         
