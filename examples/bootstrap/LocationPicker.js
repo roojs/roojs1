@@ -28,7 +28,7 @@ Roo.example.locationpicker = new Roo.XComponent({
             items :
             [
                 {
-                    xtype : 'TabBox',
+                    xtype : 'LocationPicker',
                     xns: Roo.bootstrap
                 }
             ]
