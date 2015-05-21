@@ -356,6 +356,12 @@
  * @param {HTMLElement} el 
  */
 </span><span class="jsdoc-var">Roo.Toolbar.Item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {};
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el.xtype</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.el</span><span class="jsdoc-syntax">;
+    }
+    
     </span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.getDom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.id </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.id</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
@@ -368,6 +374,7 @@
 	     */
         </span><span class="jsdoc-string">'render'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
+    </span><span class="jsdoc-var">Roo.Toolbar.Item.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
 };
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Toolbar.Item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.util.Observable</span><span class="jsdoc-syntax">, {
 </span><span class="jsdoc-comment">//Roo.Toolbar.Item.prototype = {
@@ -382,8 +389,10 @@
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">render </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">this.td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">;
+        
+         </span><span class="jsdoc-var">this.td </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">td.appendChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'render'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
     
@@ -456,10 +465,15 @@
  * @constructor
  * Creates a new Separator
  */
-</span><span class="jsdoc-var">Roo.Toolbar.Separator </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+</span><span class="jsdoc-var">Roo.Toolbar.Separator </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">){
+    
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;span&quot;</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">s.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;ytb-sep&quot;</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-var">Roo.Toolbar.Separator.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">cfg.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">;
+    }
+    
+    </span><span class="jsdoc-var">Roo.Toolbar.Separator.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
 };
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Toolbar.Separator</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Toolbar.Item</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-var">enable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
@@ -474,10 +488,13 @@
  * @constructor
  * Creates a new Spacer
  */
-</span><span class="jsdoc-var">Roo.Toolbar.Spacer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+</span><span class="jsdoc-var">Roo.Toolbar.Spacer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;div&quot;</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">s.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;ytb-spacer&quot;</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-var">Roo.Toolbar.Spacer.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">cfg.el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">;
+    }
+    </span><span class="jsdoc-var">Roo.Toolbar.Spacer.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
 };
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Toolbar.Spacer</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Toolbar.Item</span><span class="jsdoc-syntax">, {
     </span><span class="jsdoc-var">enable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
@@ -508,16 +525,25 @@
  * Creates a new TextItem
  * @param {String} text
  */
-</span><span class="jsdoc-var">Roo.Toolbar.TextItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">){
-    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
-        </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text.text</span><span class="jsdoc-syntax">;
+</span><span class="jsdoc-var">Roo.Toolbar.TextItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-keyword">var  </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'object'</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">text </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.text </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+    }  </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+        </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
     }
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;span&quot;</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">s.className </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;ytb-text&quot;</span><span class="jsdoc-syntax">;
     </span><span class="jsdoc-var">s.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">;
-    </span><span class="jsdoc-var">Roo.Toolbar.TextItem.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">cfg.el  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">;
+    }
+    
+    </span><span class="jsdoc-var">Roo.Toolbar.TextItem.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">||  </span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">);
 };
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Toolbar.TextItem</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.Toolbar.Item</span><span class="jsdoc-syntax">, {
+    
+     
     </span><span class="jsdoc-var">enable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">disable</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">focus</span><span class="jsdoc-syntax">:</span><span class="jsdoc-var">Roo.emptyFn

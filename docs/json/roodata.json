@@ -18305,12 +18305,6 @@
   "Roo.bootstrap.dash.NumberBox": {
    "props": [
     {
-     "name": "bgcolor",
-     "type": "String",
-     "desc": "Box background color, such as (aqua | green | yellow | red etc..) Default aqua",
-     "memberOf": ""
-    },
-    {
      "name": "headline",
      "type": "String",
      "desc": "Box headline",
