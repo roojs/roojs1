@@ -19837,7 +19837,6 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * @class Roo.bootstrap.dash.NumberBox
  * @extends Roo.bootstrap.Component
  * Bootstrap NumberBox class
- * @cfg {String} bgcolor Box background color, such as (aqua | green | yellow | red etc..) Default aqua
  * @cfg {String} headline Box headline
  * @cfg {String} content Box content
  * @cfg {String} icon Box icon
@@ -19857,7 +19856,6 @@ Roo.bootstrap.dash.NumberBox = function(config){
 
 Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
     
-    bgcolor : false,
     headline : '',
     content : '',
     icon : '',
@@ -19888,10 +19886,6 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                     ]
                 }
             ]
-        }
-        
-        if(this.bgcolor){
-            cfg.cls += "bg-" + this.bgcolor;
         }
         
         if(this.icon){
