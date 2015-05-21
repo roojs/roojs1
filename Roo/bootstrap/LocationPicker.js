@@ -50,11 +50,16 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     {
         var cfg = {
             tag: 'div',
-            cls: 'roo-location-picker',
-            html : 'test'
+            cls: 'roo-location-picker'
         };
         Roo.log(cfg);
         return cfg
+    },
+    
+    onRender: function(ct, position)
+    {
+        
+        
     }
     
 });
