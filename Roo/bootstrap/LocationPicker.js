@@ -9,8 +9,6 @@
  * @class Roo.bootstrap.LocationPicker
  * @extends Roo.bootstrap.Component
  * Bootstrap LocationPicker class
- * @cfg {Number} width
- * @cfg {Number} height
  * 
  * @constructor
  * Create a new LocationPicker
