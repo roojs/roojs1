@@ -230,6 +230,15 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             this.el.addClass('disabled');
         }
         
+    },
+    
+    /**
+     * Fetch the element to display the tooltip on.
+     * @return {Roo.Element} defaults to this.el
+     */
+    tooltipEl : function()
+    {
+        return this.el.select('' + this.tagtype + '', true).first();
     }
 });
  
