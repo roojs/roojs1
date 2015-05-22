@@ -208,7 +208,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 fillOpacity: .2
             });
             
-            options.map = this.gmapContext.map;
+            options.map = this.gMapContext.map;
             options.radius = radius;
             options.center = center;
             this.gMapContext.circle = new google.maps.Circle(options);
