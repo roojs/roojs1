@@ -44,10 +44,10 @@ Roo.example.locationpicker = new Roo.XComponent({
                                     _this.picker = _self;
                                 },
                                 positionchanged : function (_self, location) {
-                                    var position = this.getCurrentPosition();
-                                    
-                                    _this.latitude.setValue(position.latitude);
-                                    _this.longitude.setValue(position.longitude);
+//                                    var position = this.getCurrentPosition();
+//                                    
+//                                    _this.latitude.setValue(position.latitude);
+//                                    _this.longitude.setValue(position.longitude);
                                 }
                             }
                         }
