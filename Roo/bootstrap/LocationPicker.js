@@ -151,6 +151,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.setPosition(this.gMapContext.location, function() {
             Roo.log('setPosition');
             Roo.log(this);
+            
+            this.setupInputListenersInput();
 //            updateInputValues(settings.inputBinding, gmapContext);
 //            setupInputListenersInput(settings.inputBinding, gmapContext);
 //            context.settings.oninitialized($target);
