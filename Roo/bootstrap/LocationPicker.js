@@ -121,6 +121,20 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
 //            locationNameInput: this.locationNameInput
 //        }
         
+//        this.gmapContext = this.GMapContext(this, {
+//            zoom: this.zoom,
+//            center: new google.maps.LatLng(this.latitude, this.longitude),
+//            mapTypeId: this.mapTypeId,
+//            mapTypeControl: this.mapTypeControl,
+//            disableDoubleClickZoom: this.disableDoubleClickZoom,
+//            scrollwheel: this.scrollwheel,
+//            streetViewControl: this.streetViewControl,
+//            radius: this.radius,
+//            locationName: this.locationName,
+//            settings: this,
+//            draggable: this.draggable
+//        });
+        
         this.gmapContext = this.GMapContext();
         
 //        google.maps.event.addListener(gmapContext.marker, "dragend", function(event) {
@@ -146,21 +160,22 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         return this.gmapContext
     },
     
-    GMapContext: function(options) {
-        var _map = new google.maps.Map(this.el.dom, options);
+    GMapContext: function() {
+        var _map = new google.maps.Map(this.el.dom, this);
         var _marker = new google.maps.Marker({
             position: new google.maps.LatLng(54.19335, -3.92695),
             map: _map,
             title: "Drag Me",
-            draggable: options.draggable
+            draggable: this.draggable
         });
+        
         return {
             map: _map,
             marker: _marker,
             circle: null,
             location: _marker.position,
-            radius: options.radius,
-            locationName: options.locationName,
+            radius: this.radius,
+            locationName: this.locationName,
             addressComponents: {
                 formatted_address: null,
                 addressLine1: null,
@@ -172,7 +187,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 state: null,
                 stateOrProvince: null
             },
-            settings: options.settings,
+            settings: this,
             domContainer: this.el.dom,
             geodecoder: new google.maps.Geocoder()
         };
