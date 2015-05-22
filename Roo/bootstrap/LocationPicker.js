@@ -138,8 +138,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.gMapContext = this.GMapContext();
         
         google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
-            GmUtility.setPosition(gmapContext, gmapContext.marker.position, function(context) {
-                var currentLocation = GmUtility.locationFromLatLng(gmapContext.location);
+            GmUtility.setPosition(this.gMapContext.marker.position, function(context) {
+                var currentLocation = this.locationFromLatLng(this.gMapContext.latitude, this.gMapContext.latitude);
                 context.settings.onchanged.apply(gmapContext.domContainer, [ currentLocation, context.radius, true ]);
                 updateInputValues(gmapContext.settings.inputBinding, gmapContext);
             });
@@ -245,12 +245,12 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             }
         }
     },
-//    locationFromLatLng: function(lnlg) {
-//        return {
-//            latitude: lnlg.lat(),
-//            longitude: lnlg.lng()
-//        };
-//    },
+    locationFromLatLng: function(lnlg) {
+        return {
+            latitude: lnlg.lat(),
+            longitude: lnlg.lng()
+        };
+    },
     address_component_from_google_geocode: function(address_components) {
         var result = {};
         for (var i = address_components.length - 1; i >= 0; i--) {
