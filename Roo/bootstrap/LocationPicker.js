@@ -74,7 +74,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         }
         
         this.gmapContext = new GMapContext(this, {
-            zoom: settings.zoom,
+            zoom: this.zoom,
             center: new google.maps.LatLng(settings.location.latitude, settings.location.longitude),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             mapTypeControl: false,
