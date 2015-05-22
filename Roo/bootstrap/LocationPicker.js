@@ -64,8 +64,12 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initEvents: function(ct, position)
     {
+        if(this.rendered){
+            return;
+        }
+        
         Roo.log('location picker initEvents');
-        Roo.log(this);
+        
     }
     
 });
