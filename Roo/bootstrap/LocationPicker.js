@@ -73,7 +73,19 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             return;
         }
         
-        
+        this.gmapContext = new GMapContext(this, {
+            zoom: settings.zoom,
+            center: new google.maps.LatLng(settings.location.latitude, settings.location.longitude),
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: false,
+            disableDoubleClickZoom: false,
+            scrollwheel: settings.scrollwheel,
+            streetViewControl: false,
+            radius: settings.radius,
+            locationName: settings.locationName,
+            settings: settings,
+            draggable: settings.draggable
+        });
         
     },
     
@@ -83,6 +95,38 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     getGmapContext: function() {
         return this.gmapContext
+    },
+    
+    GMapContext: function(domElement, options) {
+        var _map = new google.maps.Map(domElement, options);
+        var _marker = new google.maps.Marker({
+            position: new google.maps.LatLng(54.19335, -3.92695),
+            map: _map,
+            title: "Drag Me",
+            draggable: options.draggable
+        });
+        return {
+            map: _map,
+            marker: _marker,
+            circle: null,
+            location: _marker.position,
+            radius: options.radius,
+            locationName: options.locationName,
+            addressComponents: {
+                formatted_address: null,
+                addressLine1: null,
+                addressLine2: null,
+                streetName: null,
+                streetNumber: null,
+                city: null,
+                district: null,
+                state: null,
+                stateOrProvince: null
+            },
+            settings: options.settings,
+            domContainer: domElement,
+            geodecoder: new google.maps.Geocoder()
+        };
     }
     
 });
