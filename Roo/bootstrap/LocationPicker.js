@@ -238,12 +238,12 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                     _this.gMapContext.addressComponents = _this.address_component_from_google_geocode(results[0].address_components);
                 }
                 if (callback) {
-                    callback.call(_this);
+                    callback.call(_this, _this);
                 }
             });
         } else {
             if (callback) {
-                callback.call(this);
+                callback.call(this, this);
             }
         }
     },
