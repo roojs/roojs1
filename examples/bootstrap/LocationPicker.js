@@ -35,15 +35,15 @@ Roo.example.locationpicker = new Roo.XComponent({
                             xtype : 'Column',
                             xns: Roo.bootstrap,
                             md : 6,
+                            cls : 'col-md-offset-3',
                             items : [
                                 {
                                     xtype : 'Input',
                                     xns: Roo.bootstrap,
-                                    fieldLabel : 'Latitude',
-                                    labelAlign : 'top',
+                                    fieldLabel : 'Location',
                                     listeners : {
                                         render : function (_self) {
-                                            _this.latitude = _self;
+                                            _this.location = _self;
                                         }
                                     }
                                 }
