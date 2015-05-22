@@ -30,7 +30,6 @@ Roo.example.locationpicker = new Roo.XComponent({
                 {
                     xtype : 'Container',
                     xns : Roo.bootstrap,
-                    cls : 'col-md-12',
                     items : [
                         {
                             xtype : 'LocationPicker',
