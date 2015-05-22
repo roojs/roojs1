@@ -72,20 +72,20 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             Roo.log('location picker applied');
             return;
         }
-        
-        this.gmapContext = new GMapContext(this, {
-            zoom: settings.zoom,
-            center: new google.maps.LatLng(settings.location.latitude, settings.location.longitude),
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            mapTypeControl: false,
-            disableDoubleClickZoom: false,
-            scrollwheel: settings.scrollwheel,
-            streetViewControl: false,
-            radius: settings.radius,
-            locationName: settings.locationName,
-            settings: settings,
-            draggable: settings.draggable
-        });
+        Roo.log(this.el);
+//        this.gmapContext = new GMapContext(this, {
+//            zoom: settings.zoom,
+//            center: new google.maps.LatLng(settings.location.latitude, settings.location.longitude),
+//            mapTypeId: google.maps.MapTypeId.ROADMAP,
+//            mapTypeControl: false,
+//            disableDoubleClickZoom: false,
+//            scrollwheel: settings.scrollwheel,
+//            streetViewControl: false,
+//            radius: settings.radius,
+//            locationName: settings.locationName,
+//            settings: settings,
+//            draggable: settings.draggable
+//        });
         
     },
     
