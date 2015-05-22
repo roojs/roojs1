@@ -106,7 +106,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         });
         
         google.maps.event.addListener(gmapContext.marker, "dragend", function(event) {
-            GmUtility.setPosition(gmapContext, gmapContext.marker.position, function(context) {
+            this.setPosition(function(context) {
 //                var currentLocation = GmUtility.locationFromLatLng(gmapContext.location);
 //                context.settings.onchanged.apply(gmapContext.domContainer, [ currentLocation, context.radius, true ]);
 //                updateInputValues(gmapContext.settings.inputBinding, gmapContext);
@@ -183,7 +183,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         return null;
     },
     
-    setPosition: function(gMapContext, location, callback) 
+    setPosition: function(callback) 
     {
         gMapContext.location = location;
         gMapContext.marker.setPosition(location);
