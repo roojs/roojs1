@@ -97,8 +97,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         return this.gmapContext
     },
     
-    GMapContext: function(domElement, options) {
-        var _map = new google.maps.Map(domElement, options);
+    GMapContext: function(options) {
+        var _map = new google.maps.Map(this.el.dom, options);
         var _marker = new google.maps.Marker({
             position: new google.maps.LatLng(54.19335, -3.92695),
             map: _map,
