@@ -30,12 +30,12 @@ Roo.example.locationpicker = new Roo.XComponent({
                 {
                     xtype : 'Container',
                     xns : Roo.bootstrap,
-                    cls : 'col-md-12 text-center',
+                    cls : 'col-md-12',
                     items : [
                         {
                             xtype : 'LocationPicker',
                             xns: Roo.bootstrap,
-                            style : 'width:500px; height: 400px; border: 1px solid #000;',
+                            style : 'width:500px; height: 400px; border: 1px solid #000; margin: 50px auto;',
                             latitude : 46.15242437752303,
                             longitude : 2.7470703125,
                             radius : 300,
