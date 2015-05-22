@@ -67,7 +67,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             tag: 'div',
             cls: 'roo-location-picker'
         };
-        Roo.log('location picker render!!!!!!!!!!!!!!!!');
+        
         return cfg
     },
     
@@ -77,11 +77,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     },
     
     initial: function()
-    {
-        if (this.isApplied()){
-            return;
-        }
-        
+    {   
         this.gMapContext = this.GMapContext();
         
         var _this = this;
