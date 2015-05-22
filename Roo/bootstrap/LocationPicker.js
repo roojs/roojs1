@@ -195,8 +195,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     },
     
     drawCircle: function(center, radius, options) {
-        if (this.gmapContext.circle != null) {
-            this.gmapContext.circle.setMap(null);
+        if (this.gMapContext.circle != null) {
+            this.gMapContext.circle.setMap(null);
         }
         if (radius > 0) {
             radius *= 1;
@@ -211,8 +211,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             options.map = this.gmapContext.map;
             options.radius = radius;
             options.center = center;
-            this.gmapContext.circle = new google.maps.Circle(options);
-            return this.gmapContext.circle;
+            this.gMapContext.circle = new google.maps.Circle(options);
+            return this.gMapContext.circle;
         }
         
         return null;
