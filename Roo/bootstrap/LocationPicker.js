@@ -16,7 +16,7 @@
  * @cfg {Boolean} mapTypeControl default false
  * @cfg {Boolean} disableDoubleClickZoom default false
  * @cfg {Boolean} scrollwheel default true
- * @cfg {Boolean} scrollwheel default true
+ * @cfg {Boolean} streetViewControl default false
  * 
  * @constructor
  * Create a new LocationPicker
@@ -63,6 +63,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     mapTypeControl: false,
     disableDoubleClickZoom: false,
     scrollwheel: true,
+    streetViewControl: false,
     
     getAutoCreate: function()
     {
