@@ -64,7 +64,7 @@ Roo.bootstrap.LocationPicker = function(config){
 
 Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
-    gmapContext: false,
+    gMapContext: false,
     
     latitude: 0,
     longitude: 0,
