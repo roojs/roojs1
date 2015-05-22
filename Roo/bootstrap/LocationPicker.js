@@ -184,6 +184,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         this.fireEvent('positionchanged', this, location);
     },
+    
     locationFromLatLng: function(lnlg) 
     {
         return {
@@ -191,6 +192,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             longitude: lnlg.lng()
         };
     },
+    
     address_component_from_google_geocode: function(address_components) 
     {
         var result = {};
