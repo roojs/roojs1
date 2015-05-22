@@ -9,6 +9,8 @@
  * @class Roo.bootstrap.LocationPicker
  * @extends Roo.bootstrap.Component
  * Bootstrap LocationPicker class
+ * @cfg {Number} latitude Position when init default 0
+ * @cfg {Number} longitude Position when init default 0
  * 
  * @constructor
  * Create a new LocationPicker
