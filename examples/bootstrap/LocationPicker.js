@@ -30,7 +30,12 @@ Roo.example.locationpicker = new Roo.XComponent({
                 {
                     xtype : 'LocationPicker',
                     xns: Roo.bootstrap,
-                    style : 'width:500px; height: 400px; border: 1px solid #000; margin: 50px auto;'
+                    style : 'width:500px; height: 400px; border: 1px solid #000; margin: 50px auto;',
+                    listeners : {
+                        render : function (_self) {
+                            _this.locationpicker = _self;
+                        }
+                    }
                 }
             ]
 	}
