@@ -76,7 +76,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         if (this.isApplied()){
             return;
         }
-        
+        Roo.log('location picker initEvent!!!!!!!!!!!!!!!!');
         this.gMapContext = this.GMapContext();
         
         var _this = this;
