@@ -63,7 +63,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     getAutoCreate: function()
     {
-        Roo.log('location picker render');
         var cfg = {
             tag: 'div',
             cls: 'roo-location-picker'
@@ -73,11 +72,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     },
     
     initEvents: function(ct, position)
-    {
-        Roo.log('location picker initEvents');
-        
+    {   
         if (this.isApplied()){
-            Roo.log('location picker applied');
             return;
         }
         
