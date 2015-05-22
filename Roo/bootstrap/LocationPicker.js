@@ -33,26 +33,11 @@ Roo.bootstrap.LocationPicker = function(config){
     
      this.addEvents({
             /**
-             * @event show
-             * Fires when this field show.
-             * @param {Roo.bootstrap.DateField} this
-             * @param {Mixed} date The date value
+             * @event oninitialized
+             * Fires when the picker initialized.
+             * @param {Roo.bootstrap.LocationPicker} this
              */
-            show : true,
-            /**
-             * @event show
-             * Fires when this field hide.
-             * @param {Roo.bootstrap.DateField} this
-             * @param {Mixed} date The date value
-             */
-            hide : true,
-            /**
-             * @event select
-             * Fires when select a date.
-             * @param {Roo.bootstrap.DateField} this
-             * @param {Mixed} date The date value
-             */
-            select : true
+            oninitialized : true
         });
         
 };
