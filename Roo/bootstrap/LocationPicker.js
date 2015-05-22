@@ -15,7 +15,8 @@
  * @cfg {String} mapTypeId default google.maps.MapTypeId.ROADMAP
  * @cfg {Boolean} mapTypeControl default false
  * @cfg {Boolean} disableDoubleClickZoom default false
-* @cfg {Boolean} scrollwheel default true
+ * @cfg {Boolean} scrollwheel default true
+ * @cfg {Boolean} scrollwheel default true
  * 
  * @constructor
  * Create a new LocationPicker
