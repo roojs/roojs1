@@ -158,10 +158,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         return null;
     },
     
-    setPosition: function(latitude, longitude) 
+    setPosition: function(location) 
     {
-        var location = new google.maps.LatLng(latitude, longitude);
-        
         this.gMapContext.location = location;
         this.gMapContext.marker.setPosition(location);
         this.gMapContext.map.panTo(location);
