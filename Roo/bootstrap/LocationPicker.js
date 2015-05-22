@@ -303,7 +303,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                     _this.gMapContext.settings.onlocationnotfound(place.name);
                     return;
                 }
-                this.setPosition(place.geometry.location, function() {
+                _this.setPosition(place.geometry.location, function() {
 //                    updateInputValues(inputBinding, context);
                     _this.gMapContext.settings.onchanged.apply(_this.gMapContext.domContainer, [ _this.locationFromLatLng(_this.gMapContext.location), _this.gMapContext.radius, false ]);
                 });
