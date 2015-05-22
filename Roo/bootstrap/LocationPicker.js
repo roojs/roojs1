@@ -33,11 +33,11 @@ Roo.bootstrap.LocationPicker = function(config){
     
      this.addEvents({
             /**
-             * @event oninitialized
+             * @event positionchanged
              * Fires when the picker initialized.
              * @param {Roo.bootstrap.LocationPicker} this
              */
-            oninitialized : true
+            positionchanged : true
         });
         
 };
