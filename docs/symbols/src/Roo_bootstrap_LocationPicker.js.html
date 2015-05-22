@@ -1,0 +1,227 @@
+<html><head><title>../roojs1/Roo/bootstrap/LocationPicker.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * Location Picker
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.LocationPicker
+ * @extends Roo.bootstrap.Component
+ * Bootstrap LocationPicker class
+ * @cfg {Number} latitude Position when init default 0
+ * @cfg {Number} longitude Position when init default 0
+ * @cfg {Number} zoom default 15
+ * @cfg {String} mapTypeId default google.maps.MapTypeId.ROADMAP
+ * @cfg {Boolean} mapTypeControl default false
+ * @cfg {Boolean} disableDoubleClickZoom default false
+ * @cfg {Boolean} scrollwheel default true
+ * @cfg {Boolean} streetViewControl default false
+ * @cfg {Number} radius default 0
+ * @cfg {String} locationName
+ * @cfg {Boolean} draggable default true
+ * @cfg {Boolean} enableAutocomplete default false
+ * @cfg {Boolean} enableReverseGeocode default true
+ * 
+ * @constructor
+ * Create a new LocationPicker
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.LocationPicker </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.LocationPicker.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-comment">/**
+             * @event positionchanged
+             * Fires when the picker initialized.
+             * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Google Location} location
+             */
+            </span><span class="jsdoc-var">positionchanged </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">});
+        
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.LocationPicker</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    </span><span class="jsdoc-var">gMapContext</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">latitude</span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">longitude</span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">zoom</span><span class="jsdoc-syntax">: 15,
+    </span><span class="jsdoc-var">mapTypeId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">google.maps.MapTypeId.ROADMAP</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">mapTypeControl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">disableDoubleClickZoom</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">scrollwheel</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">streetViewControl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">radius</span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">locationName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">draggable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">enableAutocomplete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">enableReverseGeocode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">getAutoCreate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-location-picker'
+        </span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg
+    </span><span class="jsdoc-syntax">},
+    
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
+    {   
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isApplied</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.gMapContext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.GMapContext</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">google.maps.event.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.marker</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;dragend&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">_this.setPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.gMapContext.marker.position</span><span class="jsdoc-syntax">);
+        });
+        
+        </span><span class="jsdoc-var">this.setPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.location</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-var">isApplied</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getGmapContext</span><span class="jsdoc-syntax">() == </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">getGmapContext</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.gMapContext
+    </span><span class="jsdoc-syntax">},
+    
+    </span><span class="jsdoc-var">GMapContext</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_map </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.Map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_marker </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.Marker</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.LatLng</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.latitude</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.longitude</span><span class="jsdoc-syntax">),
+            </span><span class="jsdoc-var">map</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_map</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Drag Me&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">draggable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.draggable
+        </span><span class="jsdoc-syntax">});
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">map</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_map</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">marker</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_marker</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">circle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">location</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_marker.position</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">radius</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.radius</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">locationName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.locationName</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">addressComponents</span><span class="jsdoc-syntax">: {
+                </span><span class="jsdoc-var">formatted_address</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">addressLine1</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">addressLine2</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">streetName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">streetNumber</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">city</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">district</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">stateOrProvince</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null
+            </span><span class="jsdoc-syntax">},
+            </span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">domContainer</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">geodecoder</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.Geocoder</span><span class="jsdoc-syntax">()
+        };
+    },
+    
+    </span><span class="jsdoc-var">drawCircle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">center</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">radius</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">) 
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.circle </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.gMapContext.circle.setMap</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">radius </span><span class="jsdoc-syntax">&gt; 0) {
+            </span><span class="jsdoc-var">radius </span><span class="jsdoc-syntax">*= 1;
+            </span><span class="jsdoc-var">options </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">, {
+                </span><span class="jsdoc-var">strokeColor</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;#0000FF&quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">strokeOpacity</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">.</span><span class="jsdoc-syntax">35,
+                </span><span class="jsdoc-var">strokeWeight</span><span class="jsdoc-syntax">: 2,
+                </span><span class="jsdoc-var">fillColor</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;#0000FF&quot;</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">fillOpacity</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">.</span><span class="jsdoc-syntax">2
+            });
+            
+            </span><span class="jsdoc-var">options.map </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.gMapContext.map</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">options.radius </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">radius</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">options.center </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">center</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.gMapContext.circle </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.Circle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.gMapContext.circle</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return null</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">setPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">location</span><span class="jsdoc-syntax">) 
+    {
+        </span><span class="jsdoc-var">this.gMapContext.location </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">location</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.gMapContext.marker.setPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">location</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.gMapContext.map.panTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">location</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.drawCircle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">location</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.gMapContext.radius</span><span class="jsdoc-syntax">, {});
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.settings.enableReverseGeocode</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.gMapContext.geodecoder.geocode</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">latLng</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.gMapContext.location
+            </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">status</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">status </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">google.maps.GeocoderStatus.OK </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">results.length </span><span class="jsdoc-syntax">&gt; 0) {
+                    </span><span class="jsdoc-var">_this.gMapContext.locationName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.formatted_address</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">_this.gMapContext.addressComponents </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_this.address_component_from_google_geocode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.address_components</span><span class="jsdoc-syntax">);
+                }
+            });
+        }
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'positionchanged'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">location</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">setPositionByLatLng</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">latitude</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">longitude</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.setPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.LatLng</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">latitude</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">longitude</span><span class="jsdoc-syntax">));
+    },
+    
+    </span><span class="jsdoc-var">getCurrentPosition</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">latitude</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.gMapContext.location.lat</span><span class="jsdoc-syntax">(),
+            </span><span class="jsdoc-var">longitude</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.gMapContext.location.lng</span><span class="jsdoc-syntax">()
+        };
+    },
+    
+    </span><span class="jsdoc-var">address_component_from_google_geocode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">address_components</span><span class="jsdoc-syntax">) 
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">= {};
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">address_components.length </span><span class="jsdoc-syntax">- 1; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt;= 0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">component </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">address_components</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;postal_code&quot;</span><span class="jsdoc-syntax">) &gt;= 0) {
+                </span><span class="jsdoc-var">result.postalCode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;street_number&quot;</span><span class="jsdoc-syntax">) &gt;= 0) {
+                </span><span class="jsdoc-var">result.streetNumber </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;route&quot;</span><span class="jsdoc-syntax">) &gt;= 0) {
+                </span><span class="jsdoc-var">result.streetName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;locality&quot;</span><span class="jsdoc-syntax">) &gt;= 0) {
+                </span><span class="jsdoc-var">result.city </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;neighborhood&quot;</span><span class="jsdoc-syntax">) &gt;= 0) {
+                </span><span class="jsdoc-var">result.city </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;sublocality&quot;</span><span class="jsdoc-syntax">) &gt;= 0) {
+                </span><span class="jsdoc-var">result.district </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;administrative_area_level_1&quot;</span><span class="jsdoc-syntax">) &gt;= 0) {
+                </span><span class="jsdoc-var">result.stateOrProvince </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;country&quot;</span><span class="jsdoc-syntax">) &gt;= 0) {
+                </span><span class="jsdoc-var">result.country </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
+            }
+        }
+        </span><span class="jsdoc-var">result.addressLine1 </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-var">result.streetNumber</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">result.streetName </span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.trim</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">result.addressLine2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">;
+    }
+    
+});
+</span></code></body></html>

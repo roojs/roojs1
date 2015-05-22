@@ -230,6 +230,15 @@
             </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'disabled'</span><span class="jsdoc-syntax">);
         }
         
+    },
+    
+    </span><span class="jsdoc-comment">/**
+     * Fetch the element to display the tooltip on.
+     * @return {Roo.Element} defaults to this.el
+     */
+    </span><span class="jsdoc-var">tooltipEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.tagtype </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
     }
 });
  
