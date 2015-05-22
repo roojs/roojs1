@@ -109,17 +109,17 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.location = {
-            latitude: this.latitude,
-            longitude: this.longitude
-        }
-        
-        this.inputBinding = {
-            latitudeInput: this.latitudeInput,
-            longitudeInput: this.longitudeInput,
-            radiusInput: this.radiusInput,
-            locationNameInput: this.locationNameInput
-        }
+//        this.location = {
+//            latitude: this.latitude,
+//            longitude: this.longitude
+//        }
+//        
+//        this.inputBinding = {
+//            latitudeInput: this.latitudeInput,
+//            longitudeInput: this.longitudeInput,
+//            radiusInput: this.radiusInput,
+//            locationNameInput: this.locationNameInput
+//        }
         
         this.gmapContext = this.GMapContext(this, {
             zoom: this.zoom,
