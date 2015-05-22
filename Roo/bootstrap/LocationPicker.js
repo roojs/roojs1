@@ -11,6 +11,7 @@
  * Bootstrap LocationPicker class
  * @cfg {Number} latitude Position when init default 0
  * @cfg {Number} longitude Position when init default 0
+ * @cfg {Number} zoom default 15
  * 
  * @constructor
  * Create a new LocationPicker
@@ -52,6 +53,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     latitude: 0,
     longitude: 0,
+    zoom: 15,
+    
     
     getAutoCreate: function()
     {
