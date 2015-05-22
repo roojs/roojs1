@@ -195,24 +195,26 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     },
     
     drawCircle: function(center, radius, options) {
-        if (gmapContext.circle != null) {
-            gmapContext.circle.setMap(null);
+        if (this.gmapContext.circle != null) {
+            this.gmapContext.circle.setMap(null);
         }
         if (radius > 0) {
             radius *= 1;
-            options = $.extend({
+            options = Roo.apply({}, options, {
                 strokeColor: "#0000FF",
                 strokeOpacity: .35,
                 strokeWeight: 2,
                 fillColor: "#0000FF",
                 fillOpacity: .2
-            }, options);
-            options.map = gmapContext.map;
+            });
+            
+            options.map = this.gmapContext.map;
             options.radius = radius;
             options.center = center;
-            gmapContext.circle = new google.maps.Circle(options);
-            return gmapContext.circle;
+            this.gmapContext.circle = new google.maps.Circle(options);
+            return this.gmapContext.circle;
         }
+        
         return null;
     },
     
