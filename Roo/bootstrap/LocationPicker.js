@@ -297,7 +297,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         }
         if (this.locationNameInput && this.gMapContext.settings.enableAutocomplete) {
             this.gMapContext.autocomplete = new google.maps.places.Autocomplete(this.locationNameInput.get(0));
-            google.maps.event.addListener(_this.gMapContext.autocomplete, "place_changed", function() {
+            google.maps.event.addListener(this.gMapContext.autocomplete, "place_changed", function() {
                 var place = _this.gMapContext.autocomplete.getPlace();
                 if (!place.geometry) {
                     _this.gMapContext.settings.onlocationnotfound(place.name);
