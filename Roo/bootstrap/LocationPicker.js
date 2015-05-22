@@ -149,7 +149,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             });
         });
         
-        this.setPosition(new google.maps.LatLng(this.latitude, this.longitude), function(context) {
+        this.setPosition(this.gMapContext.location, function() {
             Roo.log('setPosition');
 //            updateInputValues(settings.inputBinding, gmapContext);
 //            setupInputListenersInput(settings.inputBinding, gmapContext);
@@ -240,12 +240,12 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                     _this.gMapContext.addressComponents = _this.address_component_from_google_geocode(results[0].address_components);
                 }
                 if (callback) {
-                    callback.call(_this, _this);
+                    callback.call(_this);
                 }
             });
         } else {
             if (callback) {
-                callback.call(this, this);
+                callback.call(this);
             }
         }
     },
