@@ -173,7 +173,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             }, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
                     _this.gMapContext.locationName = results[0].formatted_address;
-                    Roo.log(results);
                     _this.gMapContext.addressComponents = _this.address_component_from_google_geocode(results[0].address_components);
                 }
             });
@@ -194,6 +193,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             longitude: this.gMapContext.location.lng()
         };
     },
+    
+    getAd
     
     address_component_from_google_geocode: function(address_components) 
     {
