@@ -199,6 +199,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         return this.gMapContext.locationName;
     },
     
+    getAddressComponents: function() 
+    {
+        return this.gMapContext.addressComponents;
+    },
+    
     address_component_from_google_geocode: function(address_components) 
     {
         var result = {};
