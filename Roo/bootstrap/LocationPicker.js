@@ -194,7 +194,10 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         };
     },
     
-    getAd
+    getAddressName: function() 
+    {
+        
+    },
     
     address_component_from_google_geocode: function(address_components) 
     {
