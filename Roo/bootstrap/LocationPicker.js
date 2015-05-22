@@ -194,7 +194,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         };
     },
     
-    drawCircle: function(gmapContext, center, radius, options) {
+    drawCircle: function(center, radius, options) {
         if (gmapContext.circle != null) {
             gmapContext.circle.setMap(null);
         }
@@ -220,7 +220,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.gMapContext.location = location;
         this.gMapContext.marker.setPosition(location);
         this.gMapContext.map.panTo(location);
-        this.drawCircle(this.gMapContext, location, this.gMapContext.radius, {});
+        this.drawCircle(location, this.gMapContext.radius, {});
         if (this.gMapContext.settings.enableReverseGeocode) {
             this.gMapContext.geodecoder.geocode({
                 latLng: this.gMapContext.location
