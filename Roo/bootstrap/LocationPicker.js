@@ -187,11 +187,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.setPosition(new google.maps.LatLng(latitude, longitude));
     },
     
-    locationFromLatLng: function(lnlg) 
+    getPosition: function() 
     {
         return {
-            latitude: lnlg.lat(),
-            longitude: lnlg.lng()
+            latitude: this.gMapContext.location.lat(),
+            longitude: this.gMapContext.location.lng()
         };
     },
     
