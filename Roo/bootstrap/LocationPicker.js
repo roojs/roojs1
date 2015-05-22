@@ -85,8 +85,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             _this.setPosition(_this.gMapContext.marker.position);
         });
         
-//        this.setPosition(this.gMapContext.location);
-        this.setPosition(this.latitude, this.longitude);
+        this.setPosition(this.gMapContext.location);
         
     },
     
