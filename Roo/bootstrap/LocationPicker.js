@@ -15,6 +15,7 @@
  * @cfg {Boolean} scrollwheel default true
  * @cfg {String} mapTypeId default google.maps.MapTypeId.ROADMAP
  * @cfg {Boolean} mapTypeControl default false
+ * @cfg {Boolean} disableDoubleClickZoom default false
  * 
  * @constructor
  * Create a new LocationPicker
@@ -59,7 +60,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     zoom: 15,
     scrollwheel: true,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    
+    mapTypeControl: false,
+    disableDoubleClickZoom: false,
     
     getAutoCreate: function()
     {
@@ -85,7 +87,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             zoom: this.zoom,
             center: new google.maps.LatLng(this.latitude, this.longitude),
             mapTypeId: this.mapTypeId,
-            mapTypeControl: false,
+            mapTypeControl: this.mapTypeControl,
             disableDoubleClickZoom: false,
             scrollwheel: this.scrollwheel,
             streetViewControl: false,
