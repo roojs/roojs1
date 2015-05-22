@@ -135,7 +135,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
 //            draggable: this.draggable
 //        });
         
-        this.gmapContext = this.GMapContext();
+        this.gMapContext = this.GMapContext();
         
 //        google.maps.event.addListener(gmapContext.marker, "dragend", function(event) {
 //            GmUtility.setPosition(gmapContext, gmapContext.marker.position, function(context) {
