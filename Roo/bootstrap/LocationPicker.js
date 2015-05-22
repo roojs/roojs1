@@ -282,6 +282,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     setupInputListenersInput: function() 
     {
+        var _this = this;
         
         if (this.radiusInput) {
             this.radiusInput.on("change", function(e) {
@@ -294,17 +295,17 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 });
             });
         }
-        if (inputBinding.locationNameInput && gmapContext.settings.enableAutocomplete) {
-            gmapContext.autocomplete = new google.maps.places.Autocomplete(inputBinding.locationNameInput.get(0));
-            google.maps.event.addListener(gmapContext.autocomplete, "place_changed", function() {
-                var place = gmapContext.autocomplete.getPlace();
+        if (this.locationNameInput && this.gMapContext.settings.enableAutocomplete) {
+            this.gMapContext.autocomplete = new google.maps.places.Autocomplete(this.locationNameInput.get(0));
+            google.maps.event.addListener(this.gMapContext.autocomplete, "place_changed", function() {
+                var place = _this.gMapContext.autocomplete.getPlace();
                 if (!place.geometry) {
-                    gmapContext.settings.onlocationnotfound(place.name);
+                    _this.gMapContext.settings.onlocationnotfound(place.name);
                     return;
                 }
-                GmUtility.setPosition(gmapContext, place.geometry.location, function(context) {
-                    updateInputValues(inputBinding, context);
-                    context.settings.onchanged.apply(gmapContext.domContainer, [ GmUtility.locationFromLatLng(context.location), context.radius, false ]);
+                this.setPosition(place.geometry.location, function() {
+//                    updateInputValues(inputBinding, context);
+                    _this.gMapContext.settings.onchanged.apply(_this.gMapContext.domContainer, [ GmUtility.locationFromLatLng(context.location), context.radius, false ]);
                 });
             });
         }
