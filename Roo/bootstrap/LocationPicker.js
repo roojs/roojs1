@@ -20,6 +20,8 @@
  * @cfg {Number} radius default 0
  * @cfg {String} locationName
  * @cfg {Boolean} draggable default true
+ * @cfg {Boolean} enableAutocomplete default false
+ * @cfg {Boolean} enableReverseGeocode default true
  * 
  * @cfg {Element} latitudeInput
  * @cfg {Element} longitudeInput
