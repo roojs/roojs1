@@ -42,6 +42,11 @@ Roo.example.locationpicker = new Roo.XComponent({
                             listeners : {
                                 render : function (_self) {
                                     _this.picker = _self;
+                                },
+                                positionchanged : function (_self, location) {
+                                    Roo.log(this);
+                                    Roo.log(location);
+
                                 }
                             }
                         }
