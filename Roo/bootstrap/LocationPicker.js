@@ -137,13 +137,14 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         this.gMapContext = this.GMapContext();
         
-//        google.maps.event.addListener(gmapContext.marker, "dragend", function(event) {
-//            GmUtility.setPosition(gmapContext, gmapContext.marker.position, function(context) {
-//                var currentLocation = GmUtility.locationFromLatLng(gmapContext.location);
-//                context.settings.onchanged.apply(gmapContext.domContainer, [ currentLocation, context.radius, true ]);
-//                updateInputValues(gmapContext.settings.inputBinding, gmapContext);
-//            });
-//        });
+        google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
+            GmUtility.setPosition(gmapContext, gmapContext.marker.position, function(context) {
+                var currentLocation = GmUtility.locationFromLatLng(gmapContext.location);
+                context.settings.onchanged.apply(gmapContext.domContainer, [ currentLocation, context.radius, true ]);
+                updateInputValues(gmapContext.settings.inputBinding, gmapContext);
+            });
+        });
+        
         this.setPosition(new google.maps.LatLng(this.latitude, this.longitude), function(context) {
             Roo.log('setPosition');
 //            updateInputValues(settings.inputBinding, gmapContext);
