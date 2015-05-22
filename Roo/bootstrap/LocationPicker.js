@@ -105,22 +105,18 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             draggable: this.draggable
         });
         
-        google.maps.event.addListener(this.gmapContext.marker, "dragend", function(event) {
-            this.setPosition(function(context) {
-                    Roo.log('dragend and setPostion');
-                    Roo.log(context);
-//                var currentLocation = GmUtility.locationFromLatLng(gmapContext.location);
-//                context.settings.onchanged.apply(gmapContext.domContainer, [ currentLocation, context.radius, true ]);
-//                updateInputValues(gmapContext.settings.inputBinding, gmapContext);
+        google.maps.event.addListener(gmapContext.marker, "dragend", function(event) {
+                GmUtility.setPosition(gmapContext, gmapContext.marker.position, function(context) {
+                    var currentLocation = GmUtility.locationFromLatLng(gmapContext.location);
+                    context.settings.onchanged.apply(gmapContext.domContainer, [ currentLocation, context.radius, true ]);
+                    updateInputValues(gmapContext.settings.inputBinding, gmapContext);
+                });
             });
-        });
-        this.setPosition(new google.maps.LatLng(this.latitude, this.longitude), function(context) {
-            Roo.log('setPostion');
-            Roo.log(context);
-//            updateInputValues(settings.inputBinding, gmapContext);
-//            setupInputListenersInput(settings.inputBinding, gmapContext);
-//            context.settings.oninitialized($target);
-        });
+            GmUtility.setPosition(gmapContext, new google.maps.LatLng(settings.location.latitude, settings.location.longitude), function(context) {
+                updateInputValues(settings.inputBinding, gmapContext);
+                setupInputListenersInput(settings.inputBinding, gmapContext);
+                context.settings.oninitialized($target);
+            });
         
     },
     
@@ -162,89 +158,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             domContainer: this.el.dom,
             geodecoder: new google.maps.Geocoder()
         };
-    },
-    
-    drawCircle: function(options) 
-    {
-        if (this.gmapContext.circle != null) {
-            this.gmapContext.circle.setMap(null);
-        }
-        if (this.radius > 0) {
-            this.radius *= 1;
-            options = Roo.apply({}, options, {
-                strokeColor: "#0000FF",
-                strokeOpacity: .35,
-                strokeWeight: 2,
-                fillColor: "#0000FF",
-                fillOpacity: .2
-            });
-            
-            options.map = this.gmapContext.map;
-            options.radius = this.radius;
-            options.center = this.gmapContext.marker.position;
-            this.gmapContext.circle = new google.maps.Circle(options);
-            return this.gmapContext.circle;
-        }
-        return null;
-    },
-    
-    setPosition: function(callback) 
-    {
-        this.gMapContext.location = this.gmapContext.marker.position;
-        this.gMapContext.marker.setPosition(this.gmapContext.marker.position);
-        this.gMapContext.map.panTo(this.gmapContext.marker.position);
-        this.drawCircle({});
-        if (this.gMapContext.settings.enableReverseGeocode) {
-            this.gMapContext.geodecoder.geocode({
-                latLng: this.gMapContext.location
-            }, function(results, status) {
-                if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
-                    this.gMapContext.locationName = results[0].formatted_address;
-                    this.gMapContext.addressComponents = this.address_component_from_google_geocode(results[0].address_components);
-                }
-                if (callback) {
-                    callback.call(this);
-                }
-            });
-        } else {
-            if (callback) {
-                callback.call(this);
-            }
-        }
-    },
-    
-    locationFromLatLng: function(lnlg) 
-    {
-        return {
-            latitude: lnlg.lat(),
-            longitude: lnlg.lng()
-        };
-    },
-    
-    address_component_from_google_geocode: function(address_components) 
-    {
-        var result = {};
-        for (var i = address_components.length - 1; i >= 0; i--) {
-            var component = address_components[i];
-            if (component.types.indexOf("postal_code") >= 0) {
-                result.postalCode = component.short_name;
-            } else if (component.types.indexOf("street_number") >= 0) {
-                result.streetNumber = component.short_name;
-            } else if (component.types.indexOf("route") >= 0) {
-                result.streetName = component.short_name;
-            } else if (component.types.indexOf("locality") >= 0) {
-                result.city = component.short_name;
-            } else if (component.types.indexOf("sublocality") >= 0) {
-                result.district = component.short_name;
-            } else if (component.types.indexOf("administrative_area_level_1") >= 0) {
-                result.stateOrProvince = component.short_name;
-            } else if (component.types.indexOf("country") >= 0) {
-                result.country = component.short_name;
-            }
-        }
-        result.addressLine1 = [ result.streetNumber, result.streetName ].join(" ").trim();
-        result.addressLine2 = "";
-        return result;
     }
     
 });
