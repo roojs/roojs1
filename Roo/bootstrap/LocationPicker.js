@@ -142,7 +142,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 stateOrProvince: null
             },
             settings: options.settings,
-            domContainer: domElement,
+            domContainer: this.el.dom,
             geodecoder: new google.maps.Geocoder()
         };
     }
