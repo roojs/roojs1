@@ -61,10 +61,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     enableAutocomplete: false,
     enableReverseGeocode: true,
     
-//    onchanged: function(currentLocation, radius, isMarkerDropped) {},
-//    onlocationnotfound: function(locationName) {},
-//    oninitialized: function(component) {},
-    
     getAutoCreate: function()
     {
         Roo.log('location picker render');
@@ -84,32 +80,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             Roo.log('location picker applied');
             return;
         }
-        
-//        this.location = {
-//            latitude: this.latitude,
-//            longitude: this.longitude
-//        }
-//        
-//        this.inputBinding = {
-//            latitudeInput: this.latitudeInput,
-//            longitudeInput: this.longitudeInput,
-//            radiusInput: this.radiusInput,
-//            locationNameInput: this.locationNameInput
-//        }
-        
-//        this.gmapContext = this.GMapContext(this, {
-//            zoom: this.zoom,
-//            center: new google.maps.LatLng(this.latitude, this.longitude),
-//            mapTypeId: this.mapTypeId,
-//            mapTypeControl: this.mapTypeControl,
-//            disableDoubleClickZoom: this.disableDoubleClickZoom,
-//            scrollwheel: this.scrollwheel,
-//            streetViewControl: this.streetViewControl,
-//            radius: this.radius,
-//            locationName: this.locationName,
-//            settings: this,
-//            draggable: this.draggable
-//        });
         
         this.gMapContext = this.GMapContext();
         
