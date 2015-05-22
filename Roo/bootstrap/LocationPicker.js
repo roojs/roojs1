@@ -36,6 +36,7 @@ Roo.bootstrap.LocationPicker = function(config){
              * @event positionchanged
              * Fires when the picker initialized.
              * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Google Location} location
              */
             positionchanged : true
         });
