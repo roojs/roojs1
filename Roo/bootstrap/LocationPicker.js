@@ -18,6 +18,8 @@
  * @cfg {Boolean} scrollwheel default true
  * @cfg {Boolean} streetViewControl default false
  * @cfg {Number} radius default 0
+ * @cfg {String} locationName
+ * @cfg {Boolean} draggable default true
  * 
  * @constructor
  * Create a new LocationPicker
@@ -66,7 +68,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     scrollwheel: true,
     streetViewControl: false,
     radius: 0,
-    
+    locationName: '',
+    draggable: true,
     
     getAutoCreate: function()
     {
@@ -96,10 +99,10 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             disableDoubleClickZoom: this.disableDoubleClickZoom,
             scrollwheel: this.scrollwheel,
             streetViewControl: this.streetViewControl,
-            radius: settings.radius,
-            locationName: settings.locationName,
-            settings: settings,
-            draggable: settings.draggable
+            radius: this.radius,
+            locationName: this.locationName,
+            settings: this,
+            draggable: this.draggable
         });
         
     },
