@@ -74,7 +74,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     disableDoubleClickZoom: false,
     scrollwheel: true,
     streetViewControl: false,
-    radius: 0,
+    radius: 300,
     locationName: '',
     draggable: true,
     enableAutocomplete: false,
