@@ -139,7 +139,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
             GmUtility.setPosition(this.gMapContext.marker.position, function(context) {
-                var currentLocation = this.locationFromLatLng(this.gMapContext.latitude, this.gMapContext.latitude);
+                var currentLocation = this.locationFromLatLng(this.gMapContext.location);
                 context.settings.onchanged.apply(gmapContext.domContainer, [ currentLocation, context.radius, true ]);
                 updateInputValues(gmapContext.settings.inputBinding, gmapContext);
             });
