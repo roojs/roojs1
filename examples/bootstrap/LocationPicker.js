@@ -47,7 +47,7 @@ Roo.example.locationpicker = new Roo.XComponent({
                                     Roo.log('positionchanged');
                                     Roo.log(this);
                                     Roo.log(location);
-
+                                    
                                 }
                             }
                         }
@@ -69,7 +69,12 @@ Roo.example.locationpicker = new Roo.XComponent({
                                     xtype : 'Input',
                                     xns: Roo.bootstrap,
                                     fieldLabel : 'Latitude',
-                                    labelAlign : 'top'
+                                    labelAlign : 'top',
+                                    listeners : {
+                                        render : function (_self) {
+                                            _this.latitude = _self;
+                                        }
+                                    }
                                 }
                             ]
                         },
@@ -82,7 +87,12 @@ Roo.example.locationpicker = new Roo.XComponent({
                                     xtype : 'Input',
                                     xns: Roo.bootstrap,
                                     fieldLabel : 'Longitude',
-                                    labelAlign : 'top'
+                                    labelAlign : 'top',
+                                    listeners : {
+                                        render : function (_self) {
+                                            _this.longitude = _self;
+                                        }
+                                    }
                                 }
                             ]
                         }
