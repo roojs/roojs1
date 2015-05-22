@@ -73,7 +73,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initEvents: function(ct, position)
     {   
-        
+        this.initial();
     },
     
     initial: function()
