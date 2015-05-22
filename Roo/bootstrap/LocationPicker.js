@@ -223,16 +223,16 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.gMapContext.marker.setPosition(location);
         this.gMapContext.map.panTo(location);
         this.drawCircle(location, this.gMapContext.radius, {});
+        
+        var _this = this;
+        
         if (this.gMapContext.settings.enableReverseGeocode) {
             this.gMapContext.geodecoder.geocode({
                 latLng: this.gMapContext.location
             }, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
-                    Roo.log(results);
-                    Roo.log(status);
-                    Roo.log(this.gMapContext);
-                    this.gMapContext.locationName = results[0].formatted_address;
-                    this.gMapContext.addressComponents = this.address_component_from_google_geocode(results[0].address_components);
+                    _this.gMapContext.locationName = results[0].formatted_address;
+                    _this.gMapContext.addressComponents = _this.address_component_from_google_geocode(results[0].address_components);
                 }
                 if (callback) {
                     callback.call(this);
