@@ -144,7 +144,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
 //                updateInputValues(gmapContext.settings.inputBinding, gmapContext);
 //            });
 //        });
-        GmUtility.setPosition(new google.maps.LatLng(this.latitude, this.longitude), function(context) {
+        this.setPosition(new google.maps.LatLng(this.latitude, this.longitude), function(context) {
             Roo.log('setPosition');
 //            updateInputValues(settings.inputBinding, gmapContext);
 //            setupInputListenersInput(settings.inputBinding, gmapContext);
