@@ -290,7 +290,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 }
                 this.gMapContext.radius = $(this).val();
                 this.setPosition(this.gMapContext.location, function() {
-                    context.settings.onchanged.apply(gmapContext.domContainer, [ GmUtility.locationFromLatLng(context.location), context.radius, false ]);
+                    this.gMapContext.settings.onchanged.apply(this.gMapContext.domContainer, [ this.locationFromLatLng(this.gMapContext.location), this.gMapContext.radius, false ]);
                 });
             });
         }
