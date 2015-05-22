@@ -152,7 +152,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             Roo.log('setPosition');
             Roo.log(this);
             
-            this.setupInputListenersInput();
+//            this.setupInputListenersInput();
 //            updateInputValues(settings.inputBinding, gmapContext);
 //            setupInputListenersInput(settings.inputBinding, gmapContext);
 //            context.settings.oninitialized($target);
@@ -280,57 +280,57 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         result.addressLine1 = [ result.streetNumber, result.streetName ].join(" ").trim();
         result.addressLine2 = "";
         return result;
-    },
-    
-    setupInputListenersInput: function() 
-    {
-        var _this = this;
-        
-        if (this.radiusInput) {
-            this.radiusInput.on("change", function(e) {
-                if (!e.originalEvent) {
-                    return;
-                }
-                _this.gMapContext.radius = $(this).val();
-                _this.setPosition(_this.gMapContext.location, function() {
-                    _this.gMapContext.settings.onchanged.apply(_this.gMapContext.domContainer, [ _this.locationFromLatLng(_this.gMapContext.location), _this.gMapContext.radius, false ]);
-                });
-            });
-        }
-        if (this.locationNameInput && this.gMapContext.settings.enableAutocomplete) {
-            this.gMapContext.autocomplete = new google.maps.places.Autocomplete(this.locationNameInput.get(0));
-            google.maps.event.addListener(this.gMapContext.autocomplete, "place_changed", function() {
-                var place = _this.gMapContext.autocomplete.getPlace();
-                if (!place.geometry) {
-                    _this.gMapContext.settings.onlocationnotfound(place.name);
-                    return;
-                }
-                _this.setPosition(place.geometry.location, function() {
-//                    updateInputValues(inputBinding, context);
-                    _this.gMapContext.settings.onchanged.apply(_this.gMapContext.domContainer, [ _this.locationFromLatLng(_this.gMapContext.location), _this.gMapContext.radius, false ]);
-                });
-            });
-        }
-        if (this.latitudeInput) {
-            this.latitudeInput.on("change", function(e) {
-                if (!e.originalEvent) {
-                    return;
-                }
-                _this.setPosition(new google.maps.LatLng($(this).val(), _this.gMapContext.location.lng()), function() {
-                    _this.gMapContext.settings.onchanged.apply(_this.gMapContext.domContainer, [ _this.locationFromLatLng(_this.gMapContext.location), _this.gMapContext.radius, false ]);
-                });
-            });
-        }
-        if (this.longitudeInput) {
-            this.longitudeInput.on("change", function(e) {
-                if (!e.originalEvent) {
-                    return;
-                }
-                _this.setPosition(new google.maps.LatLng(_this.gMapContext.location.lat(), $(this).val()), function() {
-                    _this.gMapContext.settings.onchanged.apply(_this.gMapContext.domContainer, [ _this.locationFromLatLng(_this.gMapContext.location), _this.gMapContext.radius, false ]);
-                });
-            });
-        }
     }
+    
+//    setupInputListenersInput: function() 
+//    {
+//        var _this = this;
+//        
+//        if (this.radiusInput) {
+//            this.radiusInput.on("change", function(e) {
+//                if (!e.originalEvent) {
+//                    return;
+//                }
+//                _this.gMapContext.radius = $(this).val();
+//                _this.setPosition(_this.gMapContext.location, function() {
+//                    _this.gMapContext.settings.onchanged.apply(_this.gMapContext.domContainer, [ _this.locationFromLatLng(_this.gMapContext.location), _this.gMapContext.radius, false ]);
+//                });
+//            });
+//        }
+//        if (this.locationNameInput && this.gMapContext.settings.enableAutocomplete) {
+//            this.gMapContext.autocomplete = new google.maps.places.Autocomplete(this.locationNameInput.get(0));
+//            google.maps.event.addListener(this.gMapContext.autocomplete, "place_changed", function() {
+//                var place = _this.gMapContext.autocomplete.getPlace();
+//                if (!place.geometry) {
+//                    _this.gMapContext.settings.onlocationnotfound(place.name);
+//                    return;
+//                }
+//                _this.setPosition(place.geometry.location, function() {
+////                    updateInputValues(inputBinding, context);
+//                    _this.gMapContext.settings.onchanged.apply(_this.gMapContext.domContainer, [ _this.locationFromLatLng(_this.gMapContext.location), _this.gMapContext.radius, false ]);
+//                });
+//            });
+//        }
+//        if (this.latitudeInput) {
+//            this.latitudeInput.on("change", function(e) {
+//                if (!e.originalEvent) {
+//                    return;
+//                }
+//                _this.setPosition(new google.maps.LatLng($(this).val(), _this.gMapContext.location.lng()), function() {
+//                    _this.gMapContext.settings.onchanged.apply(_this.gMapContext.domContainer, [ _this.locationFromLatLng(_this.gMapContext.location), _this.gMapContext.radius, false ]);
+//                });
+//            });
+//        }
+//        if (this.longitudeInput) {
+//            this.longitudeInput.on("change", function(e) {
+//                if (!e.originalEvent) {
+//                    return;
+//                }
+//                _this.setPosition(new google.maps.LatLng(_this.gMapContext.location.lat(), $(this).val()), function() {
+//                    _this.gMapContext.settings.onchanged.apply(_this.gMapContext.domContainer, [ _this.locationFromLatLng(_this.gMapContext.location), _this.gMapContext.radius, false ]);
+//                });
+//            });
+//        }
+//    }
     
 });
