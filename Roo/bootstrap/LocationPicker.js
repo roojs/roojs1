@@ -48,10 +48,10 @@ Roo.bootstrap.LocationPicker = function(config){
 
 Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
-    latitude : 0,
-    longitude : 0,
+    latitude: 0,
+    longitude: 0,
     
-    getAutoCreate : function()
+    getAutoCreate: function()
     {
         Roo.log('location picker render');
         var cfg = {
@@ -66,6 +66,14 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     {
         Roo.log('location picker initEvents');
         
+    },
+    
+    isApplied: function() {
+        return this.getGmapContext() != undefined;
+    },
+    
+    getGmapContext: function() {
+        return this.gmapContext
     }
     
 });
