@@ -314,18 +314,18 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 if (!e.originalEvent) {
                     return;
                 }
-                _this.setPosition(gmapContext, new google.maps.LatLng($(this).val(), gmapContext.location.lng()), function(context) {
-                    context.settings.onchanged.apply(gmapContext.domContainer, [ GmUtility.locationFromLatLng(context.location), context.radius, false ]);
+                _this.setPosition(new google.maps.LatLng($(this).val(), _this.gMapContext.location.lng()), function() {
+                    _this.gMapContext.settings.onchanged.apply(_this.gMapContext.domContainer, [ _this.locationFromLatLng(_this.gMapContext.location), _this.gMapContext.radius, false ]);
                 });
             });
         }
-        if (inputBinding.longitudeInput) {
-            inputBinding.longitudeInput.on("change", function(e) {
+        if (this.longitudeInput) {
+            this.longitudeInput.on("change", function(e) {
                 if (!e.originalEvent) {
                     return;
                 }
-                GmUtility.setPosition(gmapContext, new google.maps.LatLng(gmapContext.location.lat(), $(this).val()), function(context) {
-                    context.settings.onchanged.apply(gmapContext.domContainer, [ GmUtility.locationFromLatLng(context.location), context.radius, false ]);
+                _this.setPosition(new google.maps.LatLng(_this.gMapContext.location.lat(), $(this).val()), function() {
+                    _this.gMapContext.settings.onchanged.apply(_this.gMapContext.domContainer, [ _this.locationFromLatLng(_this.gMapContext.location), _this.gMapContext.radius, false ]);
                 });
             });
         }
