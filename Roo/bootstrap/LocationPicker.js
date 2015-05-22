@@ -229,7 +229,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             }, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
                     this.gMapContext.locationName = results[0].formatted_address;
-                    this.gMapContext.addressComponents = GmUtility.address_component_from_google_geocode(results[0].address_components);
+                    this.gMapContext.addressComponents = this.address_component_from_google_geocode(results[0].address_components);
                 }
                 if (callback) {
                     callback.call(this);
@@ -240,36 +240,36 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 callback.call(this);
             }
         }
-    }
+    },
 //    locationFromLatLng: function(lnlg) {
 //        return {
 //            latitude: lnlg.lat(),
 //            longitude: lnlg.lng()
 //        };
 //    },
-//    address_component_from_google_geocode: function(address_components) {
-//        var result = {};
-//        for (var i = address_components.length - 1; i >= 0; i--) {
-//            var component = address_components[i];
-//            if (component.types.indexOf("postal_code") >= 0) {
-//                result.postalCode = component.short_name;
-//            } else if (component.types.indexOf("street_number") >= 0) {
-//                result.streetNumber = component.short_name;
-//            } else if (component.types.indexOf("route") >= 0) {
-//                result.streetName = component.short_name;
-//            } else if (component.types.indexOf("locality") >= 0) {
-//                result.city = component.short_name;
-//            } else if (component.types.indexOf("sublocality") >= 0) {
-//                result.district = component.short_name;
-//            } else if (component.types.indexOf("administrative_area_level_1") >= 0) {
-//                result.stateOrProvince = component.short_name;
-//            } else if (component.types.indexOf("country") >= 0) {
-//                result.country = component.short_name;
-//            }
-//        }
-//        result.addressLine1 = [ result.streetNumber, result.streetName ].join(" ").trim();
-//        result.addressLine2 = "";
-//        return result;
-//    }
+    address_component_from_google_geocode: function(address_components) {
+        var result = {};
+        for (var i = address_components.length - 1; i >= 0; i--) {
+            var component = address_components[i];
+            if (component.types.indexOf("postal_code") >= 0) {
+                result.postalCode = component.short_name;
+            } else if (component.types.indexOf("street_number") >= 0) {
+                result.streetNumber = component.short_name;
+            } else if (component.types.indexOf("route") >= 0) {
+                result.streetName = component.short_name;
+            } else if (component.types.indexOf("locality") >= 0) {
+                result.city = component.short_name;
+            } else if (component.types.indexOf("sublocality") >= 0) {
+                result.district = component.short_name;
+            } else if (component.types.indexOf("administrative_area_level_1") >= 0) {
+                result.stateOrProvince = component.short_name;
+            } else if (component.types.indexOf("country") >= 0) {
+                result.country = component.short_name;
+            }
+        }
+        result.addressLine1 = [ result.streetNumber, result.streetName ].join(" ").trim();
+        result.addressLine2 = "";
+        return result;
+    }
     
 });
