@@ -182,6 +182,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.fireEvent('positionchanged', this, location);
     },
     
+    setPositionByLatLng: function(latitude, longitude)
+    {
+        this.setPosition(new google.maps.LatLng(latitude, longitude));
+    },
+    
     locationFromLatLng: function(lnlg) 
     {
         return {
