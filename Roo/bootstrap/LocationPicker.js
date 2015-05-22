@@ -86,9 +86,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         var _this = this;
         
         google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
-            _this.setPosition(_this.gMapContext.marker.position, function() {
-                var currentLocation = _this.locationFromLatLng(_this.gMapContext.location);
-            });
+            _this.setPosition(_this.gMapContext.marker.position);
         });
         
         this.setPosition(this.gMapContext.location);
