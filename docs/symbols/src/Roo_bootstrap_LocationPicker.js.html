@@ -173,7 +173,6 @@
             </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">status</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">status </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">google.maps.GeocoderStatus.OK </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">results.length </span><span class="jsdoc-syntax">&gt; 0) {
                     </span><span class="jsdoc-var">_this.gMapContext.locationName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.formatted_address</span><span class="jsdoc-syntax">;
-                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">);
                     </span><span class="jsdoc-var">_this.gMapContext.addressComponents </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_this.address_component_from_google_geocode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.address_components</span><span class="jsdoc-syntax">);
                 }
             });
@@ -193,6 +192,16 @@
             </span><span class="jsdoc-var">latitude</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.gMapContext.location.lat</span><span class="jsdoc-syntax">(),
             </span><span class="jsdoc-var">longitude</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.gMapContext.location.lng</span><span class="jsdoc-syntax">()
         };
+    },
+    
+    </span><span class="jsdoc-var">getAddressName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.gMapContext.locationName</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">getAddressComponents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.gMapContext.addressComponents</span><span class="jsdoc-syntax">;
     },
     
     </span><span class="jsdoc-var">address_component_from_google_geocode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">address_components</span><span class="jsdoc-syntax">) 
