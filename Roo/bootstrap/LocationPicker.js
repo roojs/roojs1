@@ -184,7 +184,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     setPositionByLatLng: function(latitude, longitude)
     {
-        Roo.log('run??');
         this.setPosition(new google.maps.LatLng(latitude, longitude));
     },
     
