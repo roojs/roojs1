@@ -74,10 +74,7 @@ Roo.example.locationpicker = new Roo.XComponent({
                                             Roo.log('location not found');
                                             return;
                                         }
-                                        GmUtility.setPosition(gmapContext, place.geometry.location, function(context) {
-                                            updateInputValues(inputBinding, context);
-                                            context.settings.onchanged.apply(gmapContext.domContainer, [ GmUtility.locationFromLatLng(context.location), context.radius, false ]);
-                                        });
+                                        _this.picker.setPosition(place.geometry.location);
                                     });
                                 },
                                 positionchanged : function (_self, location) {
