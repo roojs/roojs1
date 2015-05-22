@@ -14,6 +14,7 @@
  * @cfg {Number} zoom default 15
  * @cfg {Boolean} scrollwheel default true
  * @cfg {String} mapTypeId default google.maps.MapTypeId.ROADMAP
+ * @cfg {Boolean} mapTypeControl default false
  * 
  * @constructor
  * Create a new LocationPicker
@@ -83,7 +84,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.gmapContext = new GMapContext(this, {
             zoom: this.zoom,
             center: new google.maps.LatLng(this.latitude, this.longitude),
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeId: this.mapTypeId,
             mapTypeControl: false,
             disableDoubleClickZoom: false,
             scrollwheel: this.scrollwheel,
