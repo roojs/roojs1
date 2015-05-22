@@ -230,6 +230,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
                     Roo.log(results);
                     Roo.log(status);
+                    Roo.log(this.gMapContext);
                     this.gMapContext.locationName = results[0].formatted_address;
                     this.gMapContext.addressComponents = this.address_component_from_google_geocode(results[0].address_components);
                 }
