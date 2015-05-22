@@ -107,6 +107,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         google.maps.event.addListener(gmapContext.marker, "dragend", function(event) {
             this.setPosition(gmapContext, gmapContext.marker.position, function(context) {
+                    Roo.log('setPostion');
+                    Roo.log(context);
 //                var currentLocation = GmUtility.locationFromLatLng(gmapContext.location);
 //                context.settings.onchanged.apply(gmapContext.domContainer, [ currentLocation, context.radius, true ]);
 //                updateInputValues(gmapContext.settings.inputBinding, gmapContext);
