@@ -217,6 +217,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 callback.call(this);
             }
         }
+        
+        this.fireEvent('positionchanged', this, location);
     },
     locationFromLatLng: function(lnlg) {
         return {
