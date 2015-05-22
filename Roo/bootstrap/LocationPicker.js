@@ -23,11 +23,6 @@
  * @cfg {Boolean} enableAutocomplete default false
  * @cfg {Boolean} enableReverseGeocode default true
  * 
- * @cfg {Element} latitudeInput
- * @cfg {Element} longitudeInput
- * @cfg {Element} radiusInput
- * @cfg {Element} locationNameInput
- * 
  * @constructor
  * Create a new LocationPicker
  * @param {Object} config The config object
@@ -36,29 +31,29 @@
 Roo.bootstrap.LocationPicker = function(config){
     Roo.bootstrap.LocationPicker.superclass.constructor.call(this, config);
     
-//     this.addEvents({
-//            /**
-//             * @event show
-//             * Fires when this field show.
-//             * @param {Roo.bootstrap.DateField} this
-//             * @param {Mixed} date The date value
-//             */
-//            show : true,
-//            /**
-//             * @event show
-//             * Fires when this field hide.
-//             * @param {Roo.bootstrap.DateField} this
-//             * @param {Mixed} date The date value
-//             */
-//            hide : true,
-//            /**
-//             * @event select
-//             * Fires when select a date.
-//             * @param {Roo.bootstrap.DateField} this
-//             * @param {Mixed} date The date value
-//             */
-//            select : true
-//        });
+     this.addEvents({
+            /**
+             * @event show
+             * Fires when this field show.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            show : true,
+            /**
+             * @event show
+             * Fires when this field hide.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            hide : true,
+            /**
+             * @event select
+             * Fires when select a date.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            select : true
+        });
         
 };
 
@@ -80,14 +75,9 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     enableAutocomplete: false,
     enableReverseGeocode: true,
     
-    latitudeInput: false,
-    longitudeInput: false,
-    radiusInput: false,
-    locationNameInput: false,
-    
-    onchanged: function(currentLocation, radius, isMarkerDropped) {},
-    onlocationnotfound: function(locationName) {},
-    oninitialized: function(component) {},
+//    onchanged: function(currentLocation, radius, isMarkerDropped) {},
+//    onlocationnotfound: function(locationName) {},
+//    oninitialized: function(component) {},
     
     getAutoCreate: function()
     {
