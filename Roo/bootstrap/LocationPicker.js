@@ -77,15 +77,13 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     radius: 0,
     locationName: '',
     draggable: true,
+    enableAutocomplete: false,
+    enableReverseGeocode: true,
     
     latitudeInput: null,
     longitudeInput: null,
     radiusInput: null,
     locationNameInput: null,
-    
-    enableAutocomplete: false,
-    enableReverseGeocode: true,
-    draggable: true,
     
     onchanged: function(currentLocation, radius, isMarkerDropped) {},
     onlocationnotfound: function(locationName) {},
