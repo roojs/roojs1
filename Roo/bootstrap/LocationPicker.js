@@ -21,6 +21,11 @@
  * @cfg {String} locationName
  * @cfg {Boolean} draggable default true
  * 
+ * @cfg {Element} latitudeInput
+ * @cfg {Element} longitudeInput
+ * @cfg {Element} radiusInput
+ * @cfg {Element} locationNameInput
+ * 
  * @constructor
  * Create a new LocationPicker
  * @param {Object} config The config object
@@ -71,6 +76,19 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     locationName: '',
     draggable: true,
     
+    latitudeInput: null,
+    longitudeInput: null,
+    radiusInput: null,
+    locationNameInput: null,
+    
+    enableAutocomplete: false,
+    enableReverseGeocode: true,
+    draggable: true,
+    
+    onchanged: function(currentLocation, radius, isMarkerDropped) {},
+    onlocationnotfound: function(locationName) {},
+    oninitialized: function(component) {},
+    
     getAutoCreate: function()
     {
         Roo.log('location picker render');
@@ -89,6 +107,18 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         if (this.isApplied()){
             Roo.log('location picker applied');
             return;
+        }
+        
+        this.location = {
+            latitude: this.latitude,
+            longitude: this.longitude
+        }
+        
+        this.inputBinding = {
+            latitudeInput: this.latitudeInput,
+            longitudeInput: this.longitudeInput,
+            radiusInput: this.radiusInput,
+            locationNameInput: this.locationNameInput
         }
         
         this.gmapContext = this.GMapContext(this, {
