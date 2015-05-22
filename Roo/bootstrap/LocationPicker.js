@@ -77,11 +77,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     },
     
     initial: function()
-    {
-        if (this.isApplied()){
-            return;
-        }
-        
+    {   
         this.gMapContext = this.GMapContext();
         
         var _this = this;
@@ -91,11 +87,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         });
         
         this.setPosition(this.gMapContext.location);
-    },
-    
-    isApplied: function() 
-    {
-        return this.getGmapContext() == false ? false : true;
     },
     
     getGmapContext: function() 
