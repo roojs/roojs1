@@ -187,12 +187,12 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.setPosition(new google.maps.LatLng(latitude, longitude));
     },
     
-    position: function() 
+    getPosition: function() 
     {
-        return {
-            latitude: this.gMapContext.location.lat(),
-            longitude: this.gMapContext.location.lng()
-        };
+//        return {
+//            latitude: this.gMapContext.location.lat(),
+//            longitude: this.gMapContext.location.lng()
+//        };
     },
     
     address_component_from_google_geocode: function(address_components) 
