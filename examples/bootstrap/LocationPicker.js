@@ -65,6 +65,8 @@ Roo.example.locationpicker = new Roo.XComponent({
                             listeners : {
                                 render : function (_self) {
                                     _this.picker = _self;
+                                    
+                                    this.gMapContext.autocomplete = new google.maps.places.Autocomplete(_this.location.inputEl().dom);
                                 },
                                 positionchanged : function (_self, location) {
                                     if(_this.latitude){
