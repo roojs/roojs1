@@ -90,15 +90,18 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
     },
     
-    isApplied: function() {
+    isApplied: function() 
+    {
         return this.getGmapContext() == false ? false : true;
     },
     
-    getGmapContext: function() {
+    getGmapContext: function() 
+    {
         return this.gMapContext
     },
     
-    GMapContext: function() {
+    GMapContext: function() 
+    {
         var _map = new google.maps.Map(this.el.dom, this);
         var _marker = new google.maps.Marker({
             position: new google.maps.LatLng(this.latitude, this.longitude),
@@ -131,7 +134,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         };
     },
     
-    drawCircle: function(center, radius, options) {
+    drawCircle: function(center, radius, options) 
+    {
         if (this.gMapContext.circle != null) {
             this.gMapContext.circle.setMap(null);
         }
@@ -155,7 +159,10 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         return null;
     },
     
-    setPosition: function(location) {
+    setPosition: function(latitude, longitude) 
+    {
+        var location = new google.maps.LatLng(latitude, longitude);
+        
         this.gMapContext.location = location;
         this.gMapContext.marker.setPosition(location);
         this.gMapContext.map.panTo(location);
@@ -176,13 +183,15 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         this.fireEvent('positionchanged', this, location);
     },
-    locationFromLatLng: function(lnlg) {
+    locationFromLatLng: function(lnlg) 
+    {
         return {
             latitude: lnlg.lat(),
             longitude: lnlg.lng()
         };
     },
-    address_component_from_google_geocode: function(address_components) {
+    address_component_from_google_geocode: function(address_components) 
+    {
         var result = {};
         for (var i = address_components.length - 1; i >= 0; i--) {
             var component = address_components[i];
