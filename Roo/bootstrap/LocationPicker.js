@@ -194,47 +194,48 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         };
     },
     
-//    drawCircle: function(gmapContext, center, radius, options) {
-//        if (gmapContext.circle != null) {
-//            gmapContext.circle.setMap(null);
-//        }
-//        if (radius > 0) {
-//            radius *= 1;
-//            options = $.extend({
-//                strokeColor: "#0000FF",
-//                strokeOpacity: .35,
-//                strokeWeight: 2,
-//                fillColor: "#0000FF",
-//                fillOpacity: .2
-//            }, options);
-//            options.map = gmapContext.map;
-//            options.radius = radius;
-//            options.center = center;
-//            gmapContext.circle = new google.maps.Circle(options);
-//            return gmapContext.circle;
-//        }
-//        return null;
-//    },
+    drawCircle: function(gmapContext, center, radius, options) {
+        if (gmapContext.circle != null) {
+            gmapContext.circle.setMap(null);
+        }
+        if (radius > 0) {
+            radius *= 1;
+            options = $.extend({
+                strokeColor: "#0000FF",
+                strokeOpacity: .35,
+                strokeWeight: 2,
+                fillColor: "#0000FF",
+                fillOpacity: .2
+            }, options);
+            options.map = gmapContext.map;
+            options.radius = radius;
+            options.center = center;
+            gmapContext.circle = new google.maps.Circle(options);
+            return gmapContext.circle;
+        }
+        return null;
+    },
+    
     setPosition: function(gMapContext, location, callback) {
-        gMapContext.location = location;
-        gMapContext.marker.setPosition(location);
-        gMapContext.map.panTo(location);
-        this.drawCircle(gMapContext, location, gMapContext.radius, {});
-        if (gMapContext.settings.enableReverseGeocode) {
-            gMapContext.geodecoder.geocode({
-                latLng: gMapContext.location
+        this.gMapContext.location = location;
+        this.gMapContext.marker.setPosition(location);
+        this.gMapContext.map.panTo(location);
+        this.drawCircle(this.gMapContext, location, this.gMapContext.radius, {});
+        if (this.gMapContext.settings.enableReverseGeocode) {
+            this.gMapContext.geodecoder.geocode({
+                latLng: this.gMapContext.location
             }, function(results, status) {
                 if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
-                    gMapContext.locationName = results[0].formatted_address;
-                    gMapContext.addressComponents = GmUtility.address_component_from_google_geocode(results[0].address_components);
+                    this.gMapContext.locationName = results[0].formatted_address;
+                    this.gMapContext.addressComponents = GmUtility.address_component_from_google_geocode(results[0].address_components);
                 }
                 if (callback) {
-                    callback.call(this, gMapContext);
+                    callback.call(this);
                 }
             });
         } else {
             if (callback) {
-                callback.call(this, gMapContext);
+                callback.call(this);
             }
         }
     }
