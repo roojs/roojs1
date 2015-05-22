@@ -63,6 +63,18 @@ Roo.example.locationpicker = new Roo.XComponent({
                                     fieldLabel : 'Latitude'
                                 }
                             ]
+                        },
+                        {
+                            xtype : 'Column',
+                            xns: Roo.bootstrap,
+                            md : 6,
+                            items : [
+                                {
+                                    xtype : 'Input',
+                                    xns: Roo.bootstrap,
+                                    fieldLabel : 'Longitude'
+                                }
+                            ]
                         }
                     ]
                 }
