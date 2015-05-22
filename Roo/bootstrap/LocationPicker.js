@@ -121,19 +121,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
 //            locationNameInput: this.locationNameInput
 //        }
         
-        this.gmapContext = this.GMapContext(this, {
-            zoom: this.zoom,
-            center: new google.maps.LatLng(this.latitude, this.longitude),
-            mapTypeId: this.mapTypeId,
-            mapTypeControl: this.mapTypeControl,
-            disableDoubleClickZoom: this.disableDoubleClickZoom,
-            scrollwheel: this.scrollwheel,
-            streetViewControl: this.streetViewControl,
-            radius: this.radius,
-            locationName: this.locationName,
-            settings: this,
-            draggable: this.draggable
-        });
+        this.gmapContext = this.GMapContext();
         
 //        google.maps.event.addListener(gmapContext.marker, "dragend", function(event) {
 //            GmUtility.setPosition(gmapContext, gmapContext.marker.position, function(context) {
