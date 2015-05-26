@@ -20980,15 +20980,15 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initEvents: function(ct, position)
     {   
+        if(!this.el.getWidth() || this.isApplied()){
+            return;
+        }
+        
         this.initial();
     },
     
     initial: function()
     {
-        if(!this.el.getWidth() || this.isApplied()){
-            return;
-        }
-        
         this.gMapContext = this.GMapContext();
         
         var _this = this;
@@ -21082,11 +21082,16 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             this.gMapContext.geodecoder.geocode({
                 latLng: this.gMapContext.location
             }, function(results, status) {
+                
                 if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
                     _this.gMapContext.locationName = results[0].formatted_address;
                     _this.gMapContext.addressComponents = _this.address_component_from_google_geocode(results[0].address_components);
+                    
+                    _this.fireEvent('positionchanged', this, location);
                 }
             });
+            
+            return;
         }
         
         this.fireEvent('positionchanged', this, location);
