@@ -20980,12 +20980,12 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initEvents: function(ct, position)
     {   
-        
+        this.initial();
     },
     
     initial: function()
     {
-        if (this.isApplied()){
+        if(!this.el.getWidth() || this.isApplied()){
             return;
         }
         
