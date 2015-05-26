@@ -20927,6 +20927,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
  * @cfg {Boolean} draggable default true
  * @cfg {Boolean} enableAutocomplete default false
  * @cfg {Boolean} enableReverseGeocode default true
+ * @cfg {String} markerTitle
  * 
  * @constructor
  * Create a new LocationPicker
@@ -20965,6 +20966,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     draggable: true,
     enableAutocomplete: false,
     enableReverseGeocode: true,
+    markerTitle: '',
     
     getAutoCreate: function()
     {
@@ -20978,6 +20980,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initEvents: function(ct, position)
     {   
+        
+    },
+    
+    initial: function()
+    {
         if (this.isApplied()){
             return;
         }
@@ -20991,7 +20998,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         });
         
         this.setPosition(this.gMapContext.location);
-        
     },
     
     isApplied: function() 
@@ -21010,7 +21016,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         var _marker = new google.maps.Marker({
             position: new google.maps.LatLng(this.latitude, this.longitude),
             map: _map,
-            title: "Drag Me",
+            title: this.markerTitle,
             draggable: this.draggable
         });
         
