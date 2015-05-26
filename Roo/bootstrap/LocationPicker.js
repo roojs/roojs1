@@ -75,15 +75,15 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initEvents: function(ct, position)
     {   
+        if(!this.el.getWidth() || this.isApplied()){
+            return;
+        }
+        
         this.initial();
     },
     
     initial: function()
     {
-        if(!this.el.getWidth() || this.isApplied()){
-            return;
-        }
-        
         this.gMapContext = this.GMapContext();
         
         var _this = this;
