@@ -181,7 +181,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                     _this.gMapContext.locationName = results[0].formatted_address;
                     _this.gMapContext.addressComponents = _this.address_component_from_google_geocode(results[0].address_components);
                     
-                    this.fireEvent('positionchanged', this, location);
+                    _this.fireEvent('positionchanged', this, location);
                 }
             });
             
