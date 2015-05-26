@@ -75,12 +75,12 @@
     
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
     {   
-        
+        </span><span class="jsdoc-var">this.initial</span><span class="jsdoc-syntax">();
     },
     
     </span><span class="jsdoc-var">initial</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isApplied</span><span class="jsdoc-syntax">()){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">this.isApplied</span><span class="jsdoc-syntax">()){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
