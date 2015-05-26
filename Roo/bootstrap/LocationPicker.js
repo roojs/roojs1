@@ -109,7 +109,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         var _marker = new google.maps.Marker({
             position: new google.maps.LatLng(this.latitude, this.longitude),
             map: _map,
-            title: "Drag Me",
+            title: this.markerTitle,
             draggable: this.draggable
         });
         
