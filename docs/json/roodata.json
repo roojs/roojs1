@@ -11828,6 +11828,12 @@
      "memberOf": ""
     },
     {
+     "name": "markerTitle",
+     "type": "String",
+     "desc": "",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",

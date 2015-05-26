@@ -22,6 +22,7 @@
  * @cfg {Boolean} draggable default true
  * @cfg {Boolean} enableAutocomplete default false
  * @cfg {Boolean} enableReverseGeocode default true
+ * @cfg {String} markerTitle
  * 
  * @constructor
  * Create a new LocationPicker
@@ -60,6 +61,7 @@
     </span><span class="jsdoc-var">draggable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">enableAutocomplete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">enableReverseGeocode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">markerTitle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -73,6 +75,11 @@
     
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
     {   
+        
+    },
+    
+    </span><span class="jsdoc-var">initial</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isApplied</span><span class="jsdoc-syntax">()){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
@@ -86,7 +93,6 @@
         });
         
         </span><span class="jsdoc-var">this.setPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.location</span><span class="jsdoc-syntax">);
-        
     },
     
     </span><span class="jsdoc-var">isApplied</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
@@ -105,7 +111,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_marker </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.Marker</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.LatLng</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.latitude</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.longitude</span><span class="jsdoc-syntax">),
             </span><span class="jsdoc-var">map</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_map</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;Drag Me&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.markerTitle</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">draggable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.draggable
         </span><span class="jsdoc-syntax">});
         
