@@ -180,8 +180,12 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
                     _this.gMapContext.locationName = results[0].formatted_address;
                     _this.gMapContext.addressComponents = _this.address_component_from_google_geocode(results[0].address_components);
+                    
+                    this.fireEvent('positionchanged', this, location);
                 }
             });
+            
+            return;
         }
         
         this.fireEvent('positionchanged', this, location);
