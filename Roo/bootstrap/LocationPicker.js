@@ -187,7 +187,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             
             return;
         }
-        Roo.log('run here');
+        
         this.fireEvent('positionchanged', this, location);
     },
     
