@@ -22,6 +22,7 @@
  * @cfg {Boolean} draggable default true
  * @cfg {Boolean} enableAutocomplete default false
  * @cfg {Boolean} enableReverseGeocode default true
+ * @
  * 
  * @constructor
  * Create a new LocationPicker
