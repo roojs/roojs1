@@ -20972,6 +20972,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     getAutoCreate: function()
     {
+
         var cfg = {
             tag: 'div',
             cls: 'roo-location-picker'
