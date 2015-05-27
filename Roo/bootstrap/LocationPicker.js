@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     latitude: 0,
     longitude: 0,
     zoom: 15,
-    mapTypeId: google.maps.MapTypeId.ROADMAP;,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
     mapTypeControl: false,
     disableDoubleClickZoom: false,
     scrollwheel: true,
