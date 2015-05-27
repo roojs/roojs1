@@ -32,10 +32,6 @@
 
 Roo.bootstrap.LocationPicker = function(config){
     
-    if(typeof(google) == 'undefined'){
-        return;
-    }
-    
     Roo.bootstrap.LocationPicker.superclass.constructor.call(this, config);
     
      this.addEvents({
@@ -71,6 +67,10 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     getAutoCreate: function()
     {
+        if(typeof(google) == 'undefined'){
+            return;
+        }
+
         var cfg = {
             tag: 'div',
             cls: 'roo-location-picker'
