@@ -67,10 +67,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     getAutoCreate: function()
     {
-        if(typeof(google) == 'undefined'){
-            return;
-        }
-
         var cfg = {
             tag: 'div',
             cls: 'roo-location-picker'
