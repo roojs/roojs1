@@ -29,7 +29,6 @@
  * @param {Object} config The config object
  */
 
-document.write('<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places" ></script>');
 
 Roo.bootstrap.LocationPicker = function(config){
     Roo.bootstrap.LocationPicker.superclass.constructor.call(this, config);
