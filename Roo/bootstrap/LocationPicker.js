@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     latitude: 0,
     longitude: 0,
     zoom: 15,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    mapTypeId: false,
     mapTypeControl: false,
     disableDoubleClickZoom: false,
     scrollwheel: true,
@@ -67,6 +67,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     getAutoCreate: function()
     {
+
         var cfg = {
             tag: 'div',
             cls: 'roo-location-picker'
@@ -77,9 +78,9 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initEvents: function(ct, position)
     {   
-//        if(!this.mapTypeId){
-//            this.mapTypeId = google.maps.MapTypeId.ROADMAP;
-//        }
+        if(!this.mapTypeId){
+            this.mapTypeId = google.maps.MapTypeId.ROADMAP;
+        }
             
         if(!this.el.getWidth() || this.isApplied()){
             return;
