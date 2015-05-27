@@ -31,6 +31,11 @@
 
 
 Roo.bootstrap.LocationPicker = function(config){
+    
+    if(typeof(google) == 'undefined'){
+        return;
+    }
+    
     Roo.bootstrap.LocationPicker.superclass.constructor.call(this, config);
     
      this.addEvents({
