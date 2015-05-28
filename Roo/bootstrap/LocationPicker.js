@@ -218,6 +218,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     {
         google.maps.event.trigger(this.gMapContext.map, "resize");
         
+        this.gMapContext.map.setCenter(this.gMapContext.marker.position);
+        
         this.fireEvent('resize', this);
     },
     
