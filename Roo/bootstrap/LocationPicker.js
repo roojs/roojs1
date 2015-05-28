@@ -48,7 +48,13 @@ Roo.bootstrap.LocationPicker = function(config){
              * @param {Roo.bootstrap.LocationPicker} this
              * @param {Google Location} location
              */
-            positionchanged : true
+            positionchanged : true,
+            /**
+             * @event resize
+             * Fires when the map resize.
+             * @param {Roo.bootstrap.LocationPicker} this
+             */
+            resize : true
         });
         
 };
