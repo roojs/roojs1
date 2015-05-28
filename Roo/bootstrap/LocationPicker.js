@@ -263,7 +263,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     address_component_from_google_geocode: function(address_components) 
     {
         var result = {};
-        Roo.log(address_components);
+        
         for (var i = 0; i < address_components.length; i++) {
             var component = address_components[i];
             if (component.types.indexOf("postal_code") >= 0) {
@@ -273,10 +273,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             } else if (component.types.indexOf("route") >= 0) {
                 result.streetName = component.short_name;
             } else if (component.types.indexOf("neighborhood") >= 0) {
-                Roo.log('get neighborhood');
                 result.city = component.short_name;
             } else if (component.types.indexOf("locality") >= 0) {
-                Roo.log('get locality');
                 result.city = component.short_name;
             } else if (component.types.indexOf("sublocality") >= 0) {
                 result.district = component.short_name;
@@ -286,7 +284,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 result.country = component.short_name;
             }
         }
-        Roo.log(result);
+        
         result.addressLine1 = [ result.streetNumber, result.streetName ].join(" ").trim();
         result.addressLine2 = "";
         return result;
