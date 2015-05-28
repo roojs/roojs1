@@ -21168,7 +21168,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     address_component_from_google_geocode: function(address_components) 
     {
         var result = {};
-        for (var i = address_components.length - 1; i >= 0; i--) {
+        
+        for (var i = 0; i < address_components.length; i++) {
             var component = address_components[i];
             if (component.types.indexOf("postal_code") >= 0) {
                 result.postalCode = component.short_name;
@@ -21176,9 +21177,9 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 result.streetNumber = component.short_name;
             } else if (component.types.indexOf("route") >= 0) {
                 result.streetName = component.short_name;
-            } else if (component.types.indexOf("locality") >= 0) {
-                result.city = component.short_name;
             } else if (component.types.indexOf("neighborhood") >= 0) {
+                result.city = component.short_name;
+            } else if (component.types.indexOf("locality") >= 0) {
                 result.city = component.short_name;
             } else if (component.types.indexOf("sublocality") >= 0) {
                 result.district = component.short_name;
@@ -21188,9 +21189,15 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 result.country = component.short_name;
             }
         }
+        
         result.addressLine1 = [ result.streetNumber, result.streetName ].join(" ").trim();
         result.addressLine2 = "";
         return result;
+    },
+    
+    setZoomLevel: function(zoom)
+    {
+        this.gMapContext.map.setZoom(zoom);
     },
     
     show: function()
