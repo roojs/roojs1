@@ -271,7 +271,9 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 result.streetNumber = component.short_name;
             } else if (component.types.indexOf("route") >= 0) {
                 result.streetName = component.short_name;
-            }   else if (component.types.indexOf("locality") >= 0) {
+            } else if (component.types.indexOf("neighborhood") >= 0) {
+                result.city = component.short_name;
+            } else if (component.types.indexOf("locality") >= 0) {
                 result.city = component.short_name;
             } else if (component.types.indexOf("sublocality") >= 0) {
                 result.district = component.short_name;
