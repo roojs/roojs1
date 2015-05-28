@@ -288,6 +288,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         return result;
     },
     
+    setZoom: function(zoom)
+    {
+        this.gMapContext.map.setZoom(zoom);
+    },
+    
     show: function()
     {
         if(!this.el){
