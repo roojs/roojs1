@@ -283,6 +283,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                 result.country = component.short_name;
             }
         }
+        Roo.log(result);
         result.addressLine1 = [ result.streetNumber, result.streetName ].join(" ").trim();
         result.addressLine2 = "";
         return result;
