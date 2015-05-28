@@ -295,7 +295,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         this.el.hide();
         
-        this.resize();
     }
     
 });
