@@ -11957,7 +11957,7 @@
      "name": "hide",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
-     "desc": "Fires after the component is hidden."
+     "desc": "Fires when the map hide."
     },
     {
      "name": "initial",
@@ -11978,10 +11978,16 @@
      "desc": "Fires after the component is rendered."
     },
     {
+     "name": "resize",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the map resize."
+    },
+    {
      "name": "show",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
-     "desc": "Fires after the component is shown."
+     "desc": "Fires when the map show."
     }
    ]
   },

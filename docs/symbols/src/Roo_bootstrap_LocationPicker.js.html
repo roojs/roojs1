@@ -48,7 +48,25 @@
              * @param {Roo.bootstrap.LocationPicker} this
              * @param {Google Location} location
              */
-            </span><span class="jsdoc-var">positionchanged </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+            </span><span class="jsdoc-var">positionchanged </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event resize
+             * Fires when the map resize.
+             * @param {Roo.bootstrap.LocationPicker} this
+             */
+            </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event show
+             * Fires when the map show.
+             * @param {Roo.bootstrap.LocationPicker} this
+             */
+            </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event hide
+             * Fires when the map hide.
+             * @param {Roo.bootstrap.LocationPicker} this
+             */
+            </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         </span><span class="jsdoc-syntax">});
         
 };
@@ -92,6 +110,8 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">this.isApplied</span><span class="jsdoc-syntax">()){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
+        </span><span class="jsdoc-var">this.el.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.initial</span><span class="jsdoc-syntax">();
     },
@@ -208,6 +228,15 @@
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'positionchanged'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">location</span><span class="jsdoc-syntax">);
     },
     
+    </span><span class="jsdoc-var">resize</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">google.maps.event.trigger</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.map</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;resize&quot;</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.gMapContext.map.setCenter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.marker.position</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
     </span><span class="jsdoc-var">setPositionByLatLng</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">latitude</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">longitude</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">this.setPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.LatLng</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">latitude</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">longitude</span><span class="jsdoc-syntax">));
@@ -257,6 +286,30 @@
         </span><span class="jsdoc-var">result.addressLine1 </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-var">result.streetNumber</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">result.streetName </span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.trim</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">result.addressLine2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.el.show</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'show'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.el.hide</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     }
     
 });
