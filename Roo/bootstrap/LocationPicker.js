@@ -274,6 +274,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             } else if (component.types.indexOf("neighborhood") >= 0) {
                 result.city = component.short_name;
             } else if (component.types.indexOf("locality") >= 0) {
+                Roo.log('get locality');
                 result.city = component.short_name;
             } else if (component.types.indexOf("sublocality") >= 0) {
                 result.district = component.short_name;
