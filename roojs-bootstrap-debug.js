@@ -20944,6 +20944,7 @@ Roo.bootstrap.LocationPicker = function(config){
              * @event onInitial
              * Fires when the picker initialized.
              * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Google Location} location
              */
             onInitial : true,
             /**
@@ -21012,7 +21013,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         this.setPosition(this.gMapContext.location);
         
-        this.fireEvent('onInitial', this);
+        this.fireEvent('onInitial', this, this.gMapContext.location);
     },
     
     isApplied: function() 
