@@ -11961,7 +11961,7 @@
     },
     {
      "name": "onInitial",
-     "sig": "function (_self)\n{\n\n}",
+     "sig": "function (_self, location)\n{\n\n}",
      "type": "function",
      "desc": "Fires when the picker initialized."
     },

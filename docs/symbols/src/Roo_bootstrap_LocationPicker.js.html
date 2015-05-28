@@ -39,6 +39,7 @@
              * @event onInitial
              * Fires when the picker initialized.
              * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Google Location} location
              */
             </span><span class="jsdoc-var">onInitial </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-comment">/**
@@ -107,7 +108,7 @@
         
         </span><span class="jsdoc-var">this.setPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.location</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'onInitial'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'onInitial'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.gMapContext.location</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">isApplied</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
