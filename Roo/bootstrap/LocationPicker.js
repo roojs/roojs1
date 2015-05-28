@@ -189,6 +189,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         var _this = this;
         
+        google.maps.event.trigger(this.gMapContext.map, "resize");
+        
         if (this.gMapContext.settings.enableReverseGeocode) {
             this.gMapContext.geodecoder.geocode({
                 latLng: this.gMapContext.location
