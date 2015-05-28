@@ -263,7 +263,8 @@
     </span><span class="jsdoc-var">address_component_from_google_geocode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">address_components</span><span class="jsdoc-syntax">) 
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">result </span><span class="jsdoc-syntax">= {};
-        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">address_components.length </span><span class="jsdoc-syntax">- 1; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt;= 0; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">--) {
+        
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">address_components.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">component </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">address_components</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;postal_code&quot;</span><span class="jsdoc-syntax">) &gt;= 0) {
                 </span><span class="jsdoc-var">result.postalCode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
@@ -271,9 +272,9 @@
                 </span><span class="jsdoc-var">result.streetNumber </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
             } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;route&quot;</span><span class="jsdoc-syntax">) &gt;= 0) {
                 </span><span class="jsdoc-var">result.streetName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
-            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;locality&quot;</span><span class="jsdoc-syntax">) &gt;= 0) {
-                </span><span class="jsdoc-var">result.city </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
             } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;neighborhood&quot;</span><span class="jsdoc-syntax">) &gt;= 0) {
+                </span><span class="jsdoc-var">result.city </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
+            } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;locality&quot;</span><span class="jsdoc-syntax">) &gt;= 0) {
                 </span><span class="jsdoc-var">result.city </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
             } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">component.types.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;sublocality&quot;</span><span class="jsdoc-syntax">) &gt;= 0) {
                 </span><span class="jsdoc-var">result.district </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
@@ -283,9 +284,15 @@
                 </span><span class="jsdoc-var">result.country </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">component.short_name</span><span class="jsdoc-syntax">;
             }
         }
+        
         </span><span class="jsdoc-var">result.addressLine1 </span><span class="jsdoc-syntax">= [ </span><span class="jsdoc-var">result.streetNumber</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">result.streetName </span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot; &quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.trim</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">result.addressLine2 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">&quot;&quot;</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">result</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">setZoomLevel</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">zoom</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.gMapContext.map.setZoom</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">zoom</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
