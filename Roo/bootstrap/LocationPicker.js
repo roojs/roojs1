@@ -54,7 +54,19 @@ Roo.bootstrap.LocationPicker = function(config){
              * Fires when the map resize.
              * @param {Roo.bootstrap.LocationPicker} this
              */
-            resize : true
+            resize : true,
+            /**
+             * @event show
+             * Fires when the map show.
+             * @param {Roo.bootstrap.LocationPicker} this
+             */
+            show : true,
+            /**
+             * @event hide
+             * Fires when the map hide.
+             * @param {Roo.bootstrap.LocationPicker} this
+             */
+            hide : true
         });
         
 };
