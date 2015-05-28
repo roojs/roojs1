@@ -98,7 +98,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
             _this.setPosition(_this.gMapContext.marker.position);
         });
-        Roo.log('run???????');
+        
         this.setPosition(this.gMapContext.location);
     },
     
@@ -184,9 +184,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             this.gMapContext.geodecoder.geocode({
                 latLng: this.gMapContext.location
             }, function(results, status) {
+                
                 if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
                     _this.gMapContext.locationName = results[0].formatted_address;
                     _this.gMapContext.addressComponents = _this.address_component_from_google_geocode(results[0].address_components);
+                    
                     _this.fireEvent('positionchanged', this, location);
                 }
             });
