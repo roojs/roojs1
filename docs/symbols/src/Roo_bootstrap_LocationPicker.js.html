@@ -29,13 +29,21 @@
  * @param {Object} config The config object
  */
 
+
 </span><span class="jsdoc-var">Roo.bootstrap.LocationPicker </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    
     </span><span class="jsdoc-var">Roo.bootstrap.LocationPicker.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
     
      </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-comment">/**
-             * @event positionchanged
+             * @event onInitial
              * Fires when the picker initialized.
+             * @param {Roo.bootstrap.LocationPicker} this
+             */
+            </span><span class="jsdoc-var">onInitial </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event positionchanged
+             * Fires when the picker position changed.
              * @param {Roo.bootstrap.LocationPicker} this
              * @param {Google Location} location
              */
@@ -51,7 +59,7 @@
     </span><span class="jsdoc-var">latitude</span><span class="jsdoc-syntax">: 0,
     </span><span class="jsdoc-var">longitude</span><span class="jsdoc-syntax">: 0,
     </span><span class="jsdoc-var">zoom</span><span class="jsdoc-syntax">: 15,
-    </span><span class="jsdoc-var">mapTypeId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">google.maps.MapTypeId.ROADMAP</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">mapTypeId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">mapTypeControl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">disableDoubleClickZoom</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">scrollwheel</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
@@ -65,6 +73,7 @@
     
     </span><span class="jsdoc-var">getAutoCreate</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-location-picker'
@@ -75,15 +84,19 @@
     
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
     {   
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.mapTypeId</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.mapTypeId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">google.maps.MapTypeId.ROADMAP</span><span class="jsdoc-syntax">;
+        }
+            
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">this.isApplied</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-var">this.initial</span><span class="jsdoc-syntax">();
     },
     
     </span><span class="jsdoc-var">initial</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">this.isApplied</span><span class="jsdoc-syntax">()){
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        
         </span><span class="jsdoc-var">this.gMapContext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.GMapContext</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
@@ -93,6 +106,8 @@
         });
         
         </span><span class="jsdoc-var">this.setPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.location</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'onInitial'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">isApplied</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
@@ -177,11 +192,16 @@
             </span><span class="jsdoc-var">this.gMapContext.geodecoder.geocode</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">latLng</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.gMapContext.location
             </span><span class="jsdoc-syntax">}, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">status</span><span class="jsdoc-syntax">) {
+                
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">status </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">google.maps.GeocoderStatus.OK </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">results.length </span><span class="jsdoc-syntax">&gt; 0) {
                     </span><span class="jsdoc-var">_this.gMapContext.locationName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.formatted_address</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-var">_this.gMapContext.addressComponents </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">_this.address_component_from_google_geocode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">results</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.address_components</span><span class="jsdoc-syntax">);
+                    
+                    </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'positionchanged'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">location</span><span class="jsdoc-syntax">);
                 }
             });
+            
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'positionchanged'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">location</span><span class="jsdoc-syntax">);
