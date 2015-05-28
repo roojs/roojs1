@@ -278,7 +278,24 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     show: function()
     {
+        if(!this.el){
+            return;
+        }
         
+        this.el.show();
+        
+        this.resize();
+    },
+    
+    hide: function()
+    {
+        if(!this.el){
+            return;
+        }
+        
+        this.el.hide();
+        
+        this.resize();
     }
     
 });
