@@ -182,6 +182,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     setPosition: function(location) 
     {
+        google.maps.event.trigger(this.gMapContext.map, "resize");
+        
         this.gMapContext.location = location;
         this.gMapContext.marker.setPosition(location);
         this.gMapContext.map.panTo(location);
