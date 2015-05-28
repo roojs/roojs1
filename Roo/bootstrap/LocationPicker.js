@@ -99,6 +99,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             return;
         }
         
+        this.el.setVisibilityMode(Roo.Element.DISPLAY);
+        
         this.initial();
     },
     
@@ -272,6 +274,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         result.addressLine1 = [ result.streetNumber, result.streetName ].join(" ").trim();
         result.addressLine2 = "";
         return result;
+    },
+    
+    show: function()
+    {
+        
     }
     
 });
