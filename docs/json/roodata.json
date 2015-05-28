@@ -11960,7 +11960,7 @@
      "desc": "Fires after the component is hidden."
     },
     {
-     "name": "onInitial",
+     "name": "initial",
      "sig": "function (_self, location)\n{\n\n}",
      "type": "function",
      "desc": "Fires when the picker initialized."
