@@ -107,7 +107,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         this.setPosition(this.gMapContext.location);
         
-        this.fireEvent('onInitial', this);
+        this.fireEvent('onInitial', this, this.gMapContext.location);
     },
     
     isApplied: function() 
