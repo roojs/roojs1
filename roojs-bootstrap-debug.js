@@ -20953,7 +20953,25 @@ Roo.bootstrap.LocationPicker = function(config){
              * @param {Roo.bootstrap.LocationPicker} this
              * @param {Google Location} location
              */
-            positionchanged : true
+            positionchanged : true,
+            /**
+             * @event resize
+             * Fires when the map resize.
+             * @param {Roo.bootstrap.LocationPicker} this
+             */
+            resize : true,
+            /**
+             * @event show
+             * Fires when the map show.
+             * @param {Roo.bootstrap.LocationPicker} this
+             */
+            show : true,
+            /**
+             * @event hide
+             * Fires when the map hide.
+             * @param {Roo.bootstrap.LocationPicker} this
+             */
+            hide : true
         });
         
 };
@@ -20997,6 +21015,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         if(!this.el.getWidth() || this.isApplied()){
             return;
         }
+        
+        this.el.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.initial();
     },
@@ -21113,6 +21133,15 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.fireEvent('positionchanged', this, location);
     },
     
+    resize: function()
+    {
+        google.maps.event.trigger(this.gMapContext.map, "resize");
+        
+        this.gMapContext.map.setCenter(this.gMapContext.marker.position);
+        
+        this.fireEvent('resize', this);
+    },
+    
     setPositionByLatLng: function(latitude, longitude)
     {
         this.setPosition(new google.maps.LatLng(latitude, longitude));
@@ -21162,6 +21191,30 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         result.addressLine1 = [ result.streetNumber, result.streetName ].join(" ").trim();
         result.addressLine2 = "";
         return result;
+    },
+    
+    show: function()
+    {
+        if(!this.el){
+            return;
+        }
+        
+        this.el.show();
+        
+        this.resize();
+        
+        this.fireEvent('show', this);
+    },
+    
+    hide: function()
+    {
+        if(!this.el){
+            return;
+        }
+        
+        this.el.hide();
+        
+        this.fireEvent('hide', this);
     }
     
 });
