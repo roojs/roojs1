@@ -208,6 +208,13 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.fireEvent('positionchanged', this, location);
     },
     
+    resize: function()
+    {
+        google.maps.event.trigger(this.gMapContext.map, "resize");
+        
+        this.fireEvent('resize', this);
+    },
+    
     setPositionByLatLng: function(latitude, longitude)
     {
         this.setPosition(new google.maps.LatLng(latitude, longitude));
