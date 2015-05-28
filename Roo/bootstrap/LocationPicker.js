@@ -297,6 +297,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.el.show();
         
         this.resize();
+        
+        this.fireEvent('show', this);
     },
     
     hide: function()
@@ -307,6 +309,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         this.el.hide();
         
+        this.fireEvent('hide', this);
     }
     
 });
