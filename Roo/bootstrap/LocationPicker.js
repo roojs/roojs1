@@ -264,7 +264,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     {
         var result = {};
         Roo.log(address_components);
-        for (var i = address_components.length - 1; i >= 0; i--) {
+        for (var i = 0; i < address_components.length; i++) {
             var component = address_components[i];
             if (component.types.indexOf("postal_code") >= 0) {
                 result.postalCode = component.short_name;
