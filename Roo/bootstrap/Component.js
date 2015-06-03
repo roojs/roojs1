@@ -52,6 +52,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     can_build_overlaid : true,
     
+    container_method : false,
+    
     dataId : false,
     
     name : false,
@@ -152,7 +154,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
         if (typeof(cn.container_method) == 'string') {
-            cntr = n.container_method;
+            cntr = cn.container_method;
         }
         
         
