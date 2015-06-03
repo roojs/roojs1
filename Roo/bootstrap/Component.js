@@ -186,7 +186,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             return cn;
             
         }
-        
+        // do not build element flagged as unbuildable..
         if (tree.can_build_overlaid === false) {
             return false;
         }
