@@ -428,7 +428,8 @@ Roo.extend(Roo.Button, Roo.util.Observable, {
     },
 
     // private
-    onClick : function(e){
+    onClick : function(e)
+    {
         if(e){
             e.preventDefault();
         }
