@@ -27,7 +27,7 @@ Roo.bootstrap.NavHeaderbar = function(config){
     Roo.bootstrap.NavHeaderbar.superclass.constructor.call(this, config);
     
     if (this.mobilerow !== false) {
-        
+        this.mobilerow = Roo.factory(this.mobilerow);
     }
     
 };
