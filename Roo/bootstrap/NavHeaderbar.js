@@ -15,6 +15,7 @@
  * @cfg {String} brand_href href of the brand
  * @cfg {Boolean} srButton generate the (screen reader / mobile) sr-only button   default true
  * @cfg {Boolean} autohide a top nav bar header that hides on scroll.
+ * @cfg {Boolean} userContainer should the header be centered on desktop
  * @cfg {Roo.bootstrap.Row} mobilerow - a row to display on mobile only..
  * 
  * @constructor
@@ -35,7 +36,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     brand_href: false,
     srButton : true,
     autohide : false,
-    user_container : true,
+    userContainer : false,
    
     
     getAutoCreate : function(){
