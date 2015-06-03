@@ -17,6 +17,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @cfg {string} dataId cutomer id
  * @cfg {string} name Specifies name attribute
  * @cfg {string} tooltip  Text for the tooltip
+ * @cfg {string} container_method method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)
  * 
  * @constructor
  * Do not use directly - it does not do anything..
@@ -51,6 +52,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     parentId : false,
     
     can_build_overlaid : true,
+    
+    container_method : false,
     
     dataId : false,
     
@@ -151,6 +154,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         cn.parentId = this.id;
         
         cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
+        if (typeof(cn.container_method) == 'string') {
+            cntr = cn.container_method;
+        }
+        
         
         var has_flexy_each =  (typeof(tree['flexy:foreach']) != 'undefined');
         
@@ -3174,8 +3181,9 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
  * @cfg {String} brand what is brand
  * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
  * @cfg {String} brand_href href of the brand
- * @cfg {Boolean} srButton generate the sr-only button (true | false) default true
+ * @cfg {Boolean} srButton generate the (screen reader / mobile) sr-only button   default true
  * @cfg {Boolean} autohide a top nav bar header that hides on scroll.
+ * @cfg {Roo.bootstrap.Row} mobilerow - a row to display on mobile only..
  * 
  * @constructor
  * Create a new Sidebar
@@ -3185,6 +3193,7 @@ Roo.extend(Roo.bootstrap.NavSimplebar, Roo.bootstrap.Navbar,  {
 
 Roo.bootstrap.NavHeaderbar = function(config){
     Roo.bootstrap.NavHeaderbar.superclass.constructor.call(this, config);
+      
 };
 
 Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
@@ -3194,6 +3203,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     brand_href: false,
     srButton : true,
     autohide : false,
+   
     
     getAutoCreate : function(){
         
@@ -3274,6 +3284,16 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
 
         
     },
+    getHeaderChildContainer : function()
+    {
+        if (this.el.select('.navbar-header').getCount()) {
+            return this.el.select('.navbar-header',true).first();
+        }
+        
+        return this.getChildContainer();
+    },
+    
+    
     initEvents : function()
     {
         Roo.bootstrap.NavHeaderbar.superclass.initEvents.call(this);
