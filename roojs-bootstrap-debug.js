@@ -3219,8 +3219,8 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         
         var cn = cfg.cn;
         if (this.desktopCenter) {
-            cn.push({cls : 'container'});
-            cn = cn[0];
+            cn.push({cls : 'container', cn : []});
+            cn = cn[0].cn;
         }
         
         if(this.srButton){
