@@ -116,6 +116,16 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
 
         
     },
+    getHeaderChildContainer : function()
+    {
+        if (this.el.select('.navbar-header').getCount()) {
+            return this.el.select('.navbar-header',true).first();
+        }
+        
+        return this.el;
+    },
+    
+    
     initEvents : function()
     {
         Roo.bootstrap.NavHeaderbar.superclass.initEvents.call(this);
