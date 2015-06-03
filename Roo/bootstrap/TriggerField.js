@@ -176,7 +176,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             var caret = {
                         tag: 'span',
                         cls: 'caret'
-                    };
+             };
             if (this.caret) {
                 caret = {
                      tag: 'i',
@@ -189,10 +189,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 tag :'span',
                 cls : 'input-group-addon btn dropdown-toggle',
                 cn : [
-                    {
-                        tag: 'span',
-                        cls: 'caret'
-                    },
+                    caret,
                     {
                         tag: 'span',
                         cls: 'combobox-clear',
