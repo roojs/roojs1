@@ -36,7 +36,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     brand_href: false,
     srButton : true,
     autohide : false,
-    useContainer : false,
+    desktopCenter : false,
    
     
     getAutoCreate : function(){
@@ -49,7 +49,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         };
         
         var cn = cfg.cn;
-        if (useContainer) {
+        if (this.desktopCenter) {
             cn.push({cls : 'container'});
             cn = cn[0];
         }
