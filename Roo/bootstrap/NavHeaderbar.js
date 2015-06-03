@@ -122,7 +122,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
             return this.el.select('.navbar-header',true).first();
         }
         
-        return this.el;
+        return this.getChildContainer();
     },
     
     
