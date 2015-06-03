@@ -171,9 +171,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
           
         var self_cntr_el = Roo.get(this[cntr](false));
         
-        Roo.log([tree.xtype, has_flexy_each]);
+        
         if (has_flexy_each) {
-            
             return false;
         }
         
