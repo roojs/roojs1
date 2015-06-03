@@ -172,6 +172,19 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         };
         
         if(!this.multiple && this.showToggleBtn){
+            
+            var caret = {
+                        tag: 'span',
+                        cls: 'caret'
+                    };
+            if (this.caret) {
+                caret = {
+                     tag: 'i',
+                     cls: 'fa fa-' + this.caret
+                };
+                
+            }
+            
             combobox.cn.push({
                 tag :'span',
                 cls : 'input-group-addon btn dropdown-toggle',
