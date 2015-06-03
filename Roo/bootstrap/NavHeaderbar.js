@@ -15,7 +15,7 @@
  * @cfg {String} brand_href href of the brand
  * @cfg {Boolean} srButton generate the (screen reader / mobile) sr-only button   default true
  * @cfg {Boolean} autohide a top nav bar header that hides on scroll.
- * @cfg {Boolean} userContainer should the header be centered on desktop
+ * @cfg {Boolean} desktopCenter should the header be centered on desktop using a container class
  * @cfg {Roo.bootstrap.Row} mobilerow - a row to display on mobile only..
  * 
  * @constructor
@@ -36,7 +36,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     brand_href: false,
     srButton : true,
     autohide : false,
-    userContainer : false,
+    useContainer : false,
    
     
     getAutoCreate : function(){
@@ -48,8 +48,14 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
             cn: []
         };
         
+        var cn = cfg.cn;
+        if (useContainer) {
+            cn.push({cls : 'container'});
+            cn = cn[0];
+        }
+        
         if(this.srButton){
-            cfg.cn.push({
+            cn.push({
                 tag: 'div',
                 cls: 'navbar-header',
                 cn: [
@@ -82,7 +88,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
             });
         }
         
-        cfg.cn.push({
+        cn.push({
             tag: 'div',
             cls: 'collapse navbar-collapse',
             cn : []
@@ -99,7 +105,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
         }
         
         if (this.brand !== '') {
-            cfg.cn[0].cn.push({
+            cn[0].cn.push({
                 tag: 'a',
                 href: this.brand_href ? this.brand_href : '#',
                 cls: 'navbar-brand',
