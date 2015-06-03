@@ -292,6 +292,7 @@ Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
             return;
         }
         
+        
         Roo.log('button on click ');
         if(this.preventDefault){
             e.preventDefault();
