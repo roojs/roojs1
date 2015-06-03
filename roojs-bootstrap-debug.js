@@ -8053,7 +8053,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                         tag: 'span',
                         cls: 'caret'
              };
-            if (this.caret) {
+            if (this.caret != false) {
                 caret = {
                      tag: 'i',
                      cls: 'fa fa-' + this.caret
