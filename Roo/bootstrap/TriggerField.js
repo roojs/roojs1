@@ -58,6 +58,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     
     actionMode : 'wrap',
     
+    caret : false,
     
     
     getAutoCreate : function(){
