@@ -25,11 +25,7 @@
 
 Roo.bootstrap.NavHeaderbar = function(config){
     Roo.bootstrap.NavHeaderbar.superclass.constructor.call(this, config);
-    
-    if (this.mobilerow !== false) {
-        this.mobilerow = Roo.factory(this.mobilerow);
-    }
-    
+      
 };
 
 Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
@@ -39,7 +35,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     brand_href: false,
     srButton : true,
     autohide : false,
-    mobilerow : false,
+   
     
     getAutoCreate : function(){
         
