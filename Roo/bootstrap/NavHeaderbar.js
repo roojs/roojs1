@@ -35,6 +35,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     brand_href: false,
     srButton : true,
     autohide : false,
+    user_container : true,
    
     
     getAutoCreate : function(){
