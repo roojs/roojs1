@@ -15,6 +15,7 @@
  * @cfg {String} brand_href href of the brand
  * @cfg {Boolean} srButton generate the (screen reader / mobile) sr-only button   default true
  * @cfg {Boolean} autohide a top nav bar header that hides on scroll.
+ * @cfg {Roo.bootstrap.Row} mobilerow - a row to display on mobile only..
  * 
  * @constructor
  * Create a new Sidebar
@@ -24,6 +25,11 @@
 
 Roo.bootstrap.NavHeaderbar = function(config){
     Roo.bootstrap.NavHeaderbar.superclass.constructor.call(this, config);
+    
+    if (this.mobilerow !== false) {
+        
+    }
+    
 };
 
 Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
@@ -33,6 +39,7 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
     brand_href: false,
     srButton : true,
     autohide : false,
+    mobilerow : false,
     
     getAutoCreate : function(){
         
