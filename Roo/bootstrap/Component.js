@@ -151,6 +151,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         cn.parentId = this.id;
         
         cntr = (typeof(cntr) == 'undefined' ) ? 'getChildContainer' : cntr;
+        if (typeof(cn.container_method) == 'string') {
+            cntr = n.container_method;
+        }
+        
         
         var has_flexy_each =  (typeof(tree['flexy:foreach']) != 'undefined');
         
