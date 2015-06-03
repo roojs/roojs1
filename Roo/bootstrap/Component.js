@@ -17,6 +17,7 @@ Roo.bootstrap = Roo.bootstrap || {};
  * @cfg {string} dataId cutomer id
  * @cfg {string} name Specifies name attribute
  * @cfg {string} tooltip  Text for the tooltip
+ * @cfg {string} container_method method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)
  * 
  * @constructor
  * Do not use directly - it does not do anything..
