@@ -187,6 +187,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             
         }
         
+        if (tree.can_build_overlaid === false) {
+            return false;
+        }
+        
         var ret = false;
         
         while (true) {
