@@ -231,7 +231,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
     },
     
-    getValue : function(){
+    getValue : function()
+    {
         
         if(this.inputType == 'radio'){
             return this.getGroupValue();
@@ -240,6 +241,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         return this.inputEl().getValue();
         
     },
+    
+    getGroupValue : function()
+    {
+        this.el.up('form').child('input[name='+this.el.dom.name+']:checked', true).value;
+    }
     
     setValue : function(v,suppressEvent)
     {
