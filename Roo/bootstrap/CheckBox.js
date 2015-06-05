@@ -215,7 +215,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     setChecked : function(state,suppressEvent)
     {
-        if(this.inputType == 'radio' && this.checked){
+        if(this.inputType == 'radio' && this.inputEl().dom.checked){
             return;
         }
         
