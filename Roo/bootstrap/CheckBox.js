@@ -223,6 +223,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 e.dom.checked = false;
             }})
             
+            if(suppressEvent !== true){
+                this.fireEvent('check', this, state);
+            }
+
             return;
         }
         
