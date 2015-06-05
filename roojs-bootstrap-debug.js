@@ -16035,7 +16035,7 @@ Roo.apply(Roo.bootstrap.TimeField,  {
  * @cfg {String} boxLabel The text that appears beside the checkbox
  * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the checkbox
  * @cfg {Boolean} checked initnal the element
- * 
+ * @cfg {Boolean} inline inline the element (default false)
  * 
  * @constructor
  * Create a new CheckBox
@@ -16064,6 +16064,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     boxLabel: false,
     checked: false,
     weight : false,
+    inline: false,
     
     getAutoCreate : function()
     {
@@ -16074,6 +16075,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         var cfg = {};
         
         cfg.cls = 'form-group ' + this.inputType //input-group
+        
+        if(this.inline){
+            cfg.cls += ' ' + this.inputType + '-inline';
+        }
         
         var input =  {
             tag: 'input',
