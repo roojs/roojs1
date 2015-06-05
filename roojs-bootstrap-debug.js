@@ -16073,23 +16073,20 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         var cfg = {};
         
-        cfg.cls = 'form-group checkbox' //input-group
-        
-        
-        
+        cfg.cls = 'form-group ' + this.inputType //input-group
         
         var input =  {
             tag: 'input',
             id : id,
             type : this.inputType,
             value : (!this.checked) ? this.valueOff : this.inputValue,
-            cls : 'roo-checkbox', //'form-box',
+            cls : 'roo-' + this.inputType, //'form-box',
             placeholder : this.placeholder || ''
             
         };
         
         if (this.weight) { // Validity check?
-            cfg.cls += " checkbox-" + this.weight;
+            cfg.cls += " " + this.inputType + "-" + this.weight;
         }
         
         if (this.disabled) {
