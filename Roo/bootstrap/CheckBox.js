@@ -243,7 +243,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     getGroupValue : function()
     {
-        Roo.log(this.el.up);
+        Roo.log(this.el.up('form').child('input[name='+this.name+']:checked', true));
         this.el.up('form').child('input[name='+this.name+']:checked', true).value;
     },
     
