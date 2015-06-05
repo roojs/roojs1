@@ -222,7 +222,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             
             Roo.each(this.el.up('form').child('input[name='+this.name+']', true).elements, function(e){
                 e.dom.checked = false;
-            }})
+            });
             
             if(suppressEvent !== true){
                 this.fireEvent('check', this, state);
