@@ -17,6 +17,7 @@
  * @cfg {string} dataId cutomer id
  * @cfg {string} name Specifies name attribute
  * @cfg {string} tooltip  Text for the tooltip
+ * @cfg {string} container_method method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)
  * 
  * @constructor
  * Do not use directly - it does not do anything..
@@ -51,6 +52,8 @@
     </span><span class="jsdoc-var">parentId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">can_build_overlaid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">container_method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">dataId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
@@ -151,6 +154,10 @@
         </span><span class="jsdoc-var">cn.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-string">'getChildContainer' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cn.container_method</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cntr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cn.container_method</span><span class="jsdoc-syntax">;
+        }
+        
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">has_flexy_each </span><span class="jsdoc-syntax">=  (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree</span><span class="jsdoc-syntax">[</span><span class="jsdoc-string">'flexy:foreach'</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">);
         
@@ -163,6 +170,11 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">page_has_body </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'Roo.bootstrap.Body'</span><span class="jsdoc-syntax">);
           
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">self_cntr_el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">](</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">));
+        
+        </span><span class="jsdoc-comment">// do not try and build conditional elements 
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">has_flexy_each </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">has_flexy_if</span><span class="jsdoc-syntax">) &amp;&amp; </span><span class="jsdoc-var">build_from_html</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">has_flexy_each </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">build_from_html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">is_body </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">page_has_body</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">has_flexy_if </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tree.name</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">build_from_html </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">is_body </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">page_has_body</span><span class="jsdoc-syntax">){

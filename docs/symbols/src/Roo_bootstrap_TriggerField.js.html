@@ -22,6 +22,8 @@ trigger.applyTo('my-field');
  * {@link Roo.bootstrap.DateField} and {@link Roo.bootstrap.ComboBox} are perfect examples of this.
  * @cfg {String} triggerClass An additional CSS class used to style the trigger button.  The trigger will always get the
  * class 'x-form-trigger' by default and triggerClass will be &lt;b&gt;appended&lt;/b&gt; if specified.
+ * @cfg {String} caret (search|calendar) a fontawesome for the trigger icon see http://fortawesome.github.io/Font-Awesome/icons/
+
  * @constructor
  * Create a new TriggerField.
  * @param {Object} config Configuration options (valid {@Roo.bootstrap.Input} config options will also be applied
@@ -58,6 +60,7 @@ trigger.applyTo('my-field');
     
     </span><span class="jsdoc-var">actionMode </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'wrap'</span><span class="jsdoc-syntax">,
     
+    </span><span class="jsdoc-var">caret </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
@@ -172,14 +175,24 @@ trigger.applyTo('my-field');
         };
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.multiple </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.showToggleBtn</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">caret </span><span class="jsdoc-syntax">= {
+                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'caret'
+             </span><span class="jsdoc-syntax">};
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.caret </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">caret </span><span class="jsdoc-syntax">= {
+                     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fa fa-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.caret
+                </span><span class="jsdoc-syntax">};
+                
+            }
+            
             </span><span class="jsdoc-var">combobox.cn.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group-addon btn dropdown-toggle'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
-                    {
-                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'caret'
-                    </span><span class="jsdoc-syntax">},
+                    </span><span class="jsdoc-var">caret</span><span class="jsdoc-syntax">,
                     {
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'combobox-clear'</span><span class="jsdoc-syntax">,

@@ -13744,6 +13744,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -14367,6 +14373,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -14715,6 +14727,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -15028,6 +15046,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -15350,6 +15374,12 @@
      "memberOf": ""
     },
     {
+     "name": "inline",
+     "type": "Boolean",
+     "desc": "inline the element (default false)",
+     "memberOf": ""
+    },
+    {
      "name": "disabled",
      "type": "Boolean",
      "desc": "is it disabled",
@@ -15602,6 +15632,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -16119,6 +16155,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -16656,6 +16698,16 @@
      "memberOf": "Roo.bootstrap.TriggerField"
     },
     {
+     "name": "caret",
+     "type": "String",
+     "desc": "a fontawesome for the trigger icon see http://fortawesome.github.io/Font-Awesome/icons/",
+     "memberOf": "Roo.bootstrap.TriggerField",
+     "optvals": [
+      "search",
+      "calendar"
+     ]
+    },
+    {
      "name": "hideTrigger",
      "type": "Boolean",
      "desc": "True to hide the trigger element and display only the base text field (defaults to false)",
@@ -16908,6 +16960,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -17649,6 +17707,16 @@
      "memberOf": "Roo.bootstrap.TriggerField"
     },
     {
+     "name": "caret",
+     "type": "String",
+     "desc": "a fontawesome for the trigger icon see http://fortawesome.github.io/Font-Awesome/icons/",
+     "memberOf": "Roo.bootstrap.TriggerField",
+     "optvals": [
+      "search",
+      "calendar"
+     ]
+    },
+    {
      "name": "hideTrigger",
      "type": "Boolean",
      "desc": "True to hide the trigger element and display only the base text field (defaults to false)",
@@ -17901,6 +17969,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -18630,6 +18704,16 @@
      "memberOf": "Roo.bootstrap.TriggerField"
     },
     {
+     "name": "caret",
+     "type": "String",
+     "desc": "a fontawesome for the trigger icon see http://fortawesome.github.io/Font-Awesome/icons/",
+     "memberOf": "Roo.bootstrap.TriggerField",
+     "optvals": [
+      "search",
+      "calendar"
+     ]
+    },
+    {
      "name": "hideTrigger",
      "type": "Boolean",
      "desc": "True to hide the trigger element and display only the base text field (defaults to false)",
@@ -18882,6 +18966,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -19395,6 +19485,12 @@
      "memberOf": ""
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": ""
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -19800,6 +19896,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -20394,6 +20496,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -20814,6 +20922,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -21153,6 +21267,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -21576,6 +21696,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -21893,6 +22019,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -22451,6 +22583,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -22946,6 +23084,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -23462,6 +23606,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -23910,6 +24060,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -24294,6 +24450,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -24620,6 +24782,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -24979,6 +25147,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -25294,6 +25468,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -25632,6 +25812,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -26042,6 +26228,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -26371,6 +26563,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -26696,13 +26894,25 @@
     {
      "name": "srButton",
      "type": "Boolean",
-     "desc": "generate the sr-only button (true | false) default true",
+     "desc": "generate the (screen reader / mobile) sr-only button   default true",
      "memberOf": ""
     },
     {
      "name": "autohide",
      "type": "Boolean",
      "desc": "a top nav bar header that hides on scroll.",
+     "memberOf": ""
+    },
+    {
+     "name": "desktopCenter",
+     "type": "Boolean",
+     "desc": "should the header be centered on desktop using a container class",
+     "memberOf": ""
+    },
+    {
+     "name": "mobilerow",
+     "type": "Roo.bootstrap.Row",
+     "desc": "- a row to display on mobile only..",
      "memberOf": ""
     },
     {
@@ -26810,6 +27020,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -27186,6 +27402,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -27489,6 +27711,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -27865,6 +28093,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -28236,6 +28470,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -28527,6 +28767,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -28833,6 +29079,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -29159,6 +29411,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -29553,6 +29811,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -29856,6 +30120,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -30201,6 +30471,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -30490,6 +30766,12 @@
      "memberOf": "Roo.bootstrap.CheckBox"
     },
     {
+     "name": "inline",
+     "type": "Boolean",
+     "desc": "inline the element (default false)",
+     "memberOf": "Roo.bootstrap.CheckBox"
+    },
+    {
      "name": "disabled",
      "type": "Boolean",
      "desc": "is it disabled",
@@ -30742,6 +31024,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -31153,6 +31441,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -31444,6 +31738,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -31862,6 +32162,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -32201,6 +32507,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -32664,6 +32976,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -33354,6 +33672,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -33738,6 +34062,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -34053,6 +34383,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -34602,6 +34938,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -35226,6 +35568,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -35610,6 +35958,16 @@
      "memberOf": ""
     },
     {
+     "name": "caret",
+     "type": "String",
+     "desc": "a fontawesome for the trigger icon see http://fortawesome.github.io/Font-Awesome/icons/",
+     "memberOf": "",
+     "optvals": [
+      "search",
+      "calendar"
+     ]
+    },
+    {
      "name": "hideTrigger",
      "type": "Boolean",
      "desc": "True to hide the trigger element and display only the base text field (defaults to false)",
@@ -35868,6 +36226,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -36314,6 +36678,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -36637,6 +37007,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -36965,6 +37341,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -37363,6 +37745,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -37708,6 +38096,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -38005,6 +38399,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -62765,6 +63165,12 @@
      "memberOf": "Roo.bootstrap.Component"
     },
     {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
      "name": "disableClass",
      "type": "String",
      "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
@@ -63056,6 +63462,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -63378,6 +63790,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {
@@ -70165,6 +70583,12 @@
      "name": "tooltip",
      "type": "string",
      "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
      "memberOf": "Roo.bootstrap.Component"
     },
     {

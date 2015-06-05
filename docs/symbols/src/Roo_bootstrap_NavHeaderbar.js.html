@@ -13,8 +13,10 @@
  * @cfg {String} brand what is brand
  * @cfg {String} position (fixed-top|fixed-bottom|static-top) position
  * @cfg {String} brand_href href of the brand
- * @cfg {Boolean} srButton generate the sr-only button (true | false) default true
+ * @cfg {Boolean} srButton generate the (screen reader / mobile) sr-only button   default true
  * @cfg {Boolean} autohide a top nav bar header that hides on scroll.
+ * @cfg {Boolean} desktopCenter should the header be centered on desktop using a container class
+ * @cfg {Roo.bootstrap.Row} mobilerow - a row to display on mobile only..
  * 
  * @constructor
  * Create a new Sidebar
@@ -24,6 +26,7 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.NavHeaderbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.NavHeaderbar.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+      
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.NavHeaderbar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.NavSimplebar</span><span class="jsdoc-syntax">,  {
@@ -33,6 +36,8 @@
     </span><span class="jsdoc-var">brand_href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">srButton </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">autohide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">desktopCenter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+   
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
@@ -43,8 +48,14 @@
             </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: []
         };
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.desktopCenter</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cn.push</span><span class="jsdoc-syntax">({</span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'container'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []});
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cn</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.srButton</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">cn.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'navbar-header'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: [
@@ -77,7 +88,7 @@
             });
         }
         
-        </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-var">cn.push</span><span class="jsdoc-syntax">({
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'collapse navbar-collapse'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
@@ -94,7 +105,7 @@
         }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.brand </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cn.push</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cn.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">href</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.brand_href </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.brand_href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'navbar-brand'</span><span class="jsdoc-syntax">,
@@ -113,6 +124,16 @@
 
         
     },
+    </span><span class="jsdoc-var">getHeaderChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.navbar-header'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.getCount</span><span class="jsdoc-syntax">()) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.navbar-header'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.getChildContainer</span><span class="jsdoc-syntax">();
+    },
+    
+    
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">Roo.bootstrap.NavHeaderbar.superclass.initEvents.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
