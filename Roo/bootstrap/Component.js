@@ -171,7 +171,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
           
         var self_cntr_el = Roo.get(this[cntr](false));
         
-        
+        // do not try and build conditional elements 
         if ((has_flexy_each || has_flexy_if) && build_from_html) {
             return false;
         }
