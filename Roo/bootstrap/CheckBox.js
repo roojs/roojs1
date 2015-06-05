@@ -219,7 +219,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             
             Roo.log('in');
             this.inputEl().dom.checked = true;
-            Roo.log(this.el.up('form').child);
+            Roo.log(this.el.up('form').child('input[name='+this.name+']', true));
             Roo.each(this.el.up('form').child('input[name='+this.name+']', true).elements, function(e){
                 e.dom.checked = false;
             });
