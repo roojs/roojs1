@@ -16212,7 +16212,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     inputEl: function ()
     {
-        return this.el.select('input.roo-checkbox',true).first();
+        return this.el.select('input.roo-' + this.inputType,true).first();
     },
     
     label: function()
