@@ -217,6 +217,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     {
         if(this.inputType == 'radio'){
             
+            Roo.log('in');
             this.inputEl().dom.checked = true;
             
             Roo.each(this.el.up('form').child('input[name='+this.name+']', true).elements, function(e){
@@ -229,7 +230,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 
             return;
         }
-        
+        Roo.log('out??');
         this.checked = state;
         
         if(suppressEvent !== true){
