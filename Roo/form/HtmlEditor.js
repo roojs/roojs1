@@ -259,23 +259,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         Roo.log('el!!!!');
         Roo.log(this.el);
         this.keyNav = new Roo.KeyNav(this.el, {
-            "up" : function(e){
-                Roo.log('up');
-            },
-
-            "down" : function(e){
-                Roo.log('dOWN');
-            },
-
-            "enter" : function(e){
-                Roo.log('ENTER');
-                //return true;
-            },
-
-            "esc" : function(e){
-                Roo.log('ESC');
-            },
-
+            
             "tab" : function(e){
                 Roo.log('TAB');
             },
@@ -283,12 +267,14 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             "home" : function(e){
                 Roo.log('HOme');
             },
+            
+            "end" : function(e){
+                Roo.log('HOme');
+            },
 
             scope : this,
 
             doRelay : function(foo, bar, hname){
-                Roo.log([foo, bar, hname]);
-                
                 return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
             },
 
