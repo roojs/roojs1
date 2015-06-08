@@ -321,6 +321,9 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             Roo.each(this.toolbars, function(t){
                 Roo.log('toolbars!!!');
                 Roo.log(t);
+                if(t instanceof Roo.form.HtmlEditor.ToolbarContext){
+                    Roo.log('context');
+                }
             });
             
         }else{
