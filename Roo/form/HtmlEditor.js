@@ -315,7 +315,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                     break;
                 }
                 
-                if()
                 this.el.dom.setSelectionRange(pos, pos);
             },
             
