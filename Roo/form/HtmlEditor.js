@@ -318,7 +318,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                     break;
                 }
                 
-                this.el.dom.setSelectionRange(pos, pos);
+                if(!e.shiftKey){
+                    this.el.dom.setSelectionRange(pos, pos);
+                    return;
+                }
+                
+                
+                
             },
             
             "end" : function(e){
