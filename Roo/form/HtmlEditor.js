@@ -320,6 +320,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             
             Roo.each(this.toolbars, function(t){
                 if(t instanceof Roo.form.HtmlEditor.ToolbarContext){
+                    Roo.log(t.tb.el.getHeight());
                     t.tb.hide();
                     t.footer.hide();
                 }
