@@ -333,6 +333,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             
             this.el.addClass('x-hidden');
             this.el.dom.setAttribute('tabIndex', -1);
+            
+            Roo.each(this.toolbars, function(t){
+                if(t instanceof Roo.form.HtmlEditor.ToolbarContext){
+                    t.tb.el.setVisibilityMode(Roo.Element.DISPLAY).show();
+                    t.footer.el.setVisibilityMode(Roo.Element.DISPLAY).show();
+                }
+            });
             //this.deferFocus();
         }
          
