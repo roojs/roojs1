@@ -265,11 +265,11 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             },
             
             "home" : function(e){
-                Roo.log('HOme');
+                Roo.log('HOME');
             },
             
             "end" : function(e){
-                Roo.log('HOme');
+                Roo.log('END');
             },
 
             scope : this,
