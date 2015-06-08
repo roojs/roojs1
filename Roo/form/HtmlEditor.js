@@ -330,6 +330,12 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 if(!lines.length){
                     return;
                 }
+                
+                if(e.ctrlKey){
+                    this.el.dom.setSelectionRange(this.getValue().length, this.getValue().length);
+                    return;
+                }
+                
                 var pos = 0;
                 
                 for (var i = 0; i < lines.length;i++) {
