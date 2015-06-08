@@ -256,7 +256,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.resizeEl.resizeTo.defer(100, this.resizeEl,[ this.width,this.height ] );
             // should trigger onReize..
         }
-        
+        Roo.log('el!!!!');
+        Roo.log(this.el);
         this.keyNav = new Roo.KeyNav(this.el, {
             "up" : function(e){
                 this.inKeyMode = true;
