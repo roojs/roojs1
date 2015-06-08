@@ -364,8 +364,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                     return;
                 }
                 
-                this.el.dom.selectionStart = pos;
-                this.el.dom.selectionEnd = curr;
+                this.el.dom.selectionStart = curr;
+                this.el.dom.selectionEnd = pos;
             },
 
             scope : this,
