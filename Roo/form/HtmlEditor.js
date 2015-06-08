@@ -274,12 +274,27 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             "end" : function(e){
                 e.preventDefault();
                 Roo.log('END');
-                Roo.log(this.el.dom.selectionStart);
-                Roo.log(this.getValue());
+                var curr = this.el.dom.selectionStart;
+                var lines = this.getValue().split("\n");
                 
-                Roo.log(this.getValue().split("\n"));
+                if(!lines.length){
+                    return;
+                }
+                var pos = 0;
                 
-                Roo.log(this.el.dom.setSelectionRange(this.getValue().length,this.getValue().length));
+                for (var i = 0; i < lines.length;i++) {
+                    
+                    pos += lines[i].length;
+                    
+                    if(pos < curr){
+                        continue;
+                    }
+                    
+                    break;
+                }
+                
+                
+                Roo.log(this.el.dom.setSelectionRange(pos, pos));
             },
 
             scope : this,
