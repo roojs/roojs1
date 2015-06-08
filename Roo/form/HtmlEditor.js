@@ -260,7 +260,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.keyNav = new Roo.KeyNav(this.el, {
             
             "tab" : function(e){
-                Roo.log(e);
+                
                 e.preventDefault();
                 Roo.log('TAB');
                 
@@ -269,9 +269,15 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 var start = this.el.dom.selectionStart;
                 var end = this.el.dom.selectionEnd;
                 
-                this.setValue(value.substring(0, start) + "\t" + value.substring(end));
+                if(!e.shiftKey){
+                    this.setValue(value.substring(0, start) + "\t" + value.substring(end));
                 
-                this.el.dom.setSelectionRange(end + 1, end + 1);
+                    this.el.dom.setSelectionRange(end + 1, end + 1);
+                    return;
+                }
+                
+                
+                
             },
             
             "home" : function(e){
