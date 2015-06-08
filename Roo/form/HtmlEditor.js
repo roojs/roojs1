@@ -319,6 +319,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.el.focus();
             
             Roo.each(this.toolbars, function(t){
+                Roo.log('toolbars!!!');
                 Roo.log(t);
             });
             
