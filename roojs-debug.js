@@ -42906,7 +42906,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     // private
     onResize : function(w, h)
     {
-        //Roo.log('resize: ' +w + ',' + h );
         Roo.form.HtmlEditor.superclass.onResize.apply(this, arguments);
         var ew = false;
         var eh = false;
@@ -42932,6 +42931,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 
                 var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
                 ah -= 5; // knock a few pixes off for look..
+                Roo.log(ah);
                 this.el.setHeight(this.adjustWidth('textarea', ah));
                 var eh = ah;
             }
@@ -42959,12 +42959,12 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.el.dom.removeAttribute('tabIndex');
             this.el.focus();
             
-            Roo.each(this.toolbars, function(t){
-                if(t instanceof Roo.form.HtmlEditor.ToolbarContext){
-                    t.tb.hide();
-                    t.footer.hide();
+            for (var i = 0; i < this.toolbars.length; i++) {
+                if(this.toolbars[i] instanceof Roo.form.HtmlEditor.ToolbarContext){
+                    this.toolbars[i].tb.hide();
+                    this.toolbars[i].footer.hide();
                 }
-            });
+            }
             
         }else{
             Roo.log('editor - hiding textarea');
@@ -42975,16 +42975,19 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.el.addClass('x-hidden');
             this.el.dom.setAttribute('tabIndex', -1);
             
-            Roo.each(this.toolbars, function(t){
-                if(t instanceof Roo.form.HtmlEditor.ToolbarContext){
-                    t.tb.show();
-                    t.footer.show();
+            for (var i = 0; i < this.toolbars.length; i++) {
+                if(this.toolbars[i] instanceof Roo.form.HtmlEditor.ToolbarContext){
+                    this.toolbars[i].tb.show();
+                    this.toolbars[i].footer.show();
                 }
-            });
+            }
+            
             //this.deferFocus();
         }
-         
+        
         this.setSize(this.wrap.getSize());
+        this.onResize(this.wrap.getSize().width, this.wrap.getSize().height);
+        
         this.fireEvent('editmodechange', this, this.editorcore.sourceEditMode);
     },
  
