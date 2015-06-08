@@ -284,7 +284,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
 
             doRelay : function(foo, bar, hname){
                 Roo.log([foo, bar, hname]);
-                return true;
+                return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
             },
 
             forceKeyDown: true
