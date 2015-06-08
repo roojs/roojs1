@@ -262,6 +262,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             "tab" : function(e){
                 e.preventDefault();
                 Roo.log('TAB');
+                
+                
             },
             
             "home" : function(e){
