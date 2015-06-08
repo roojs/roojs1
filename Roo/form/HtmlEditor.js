@@ -342,7 +342,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                     t.tb.show();
                     t.footer.show();
 //                    
-                    size.height -= 46;
                 }
             });
             //this.deferFocus();
