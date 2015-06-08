@@ -265,7 +265,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     // private
     onResize : function(w, h)
     {
-        //Roo.log('resize: ' +w + ',' + h );
+        Roo.log('resize: ' +w + ',' + h );
         Roo.form.HtmlEditor.superclass.onResize.apply(this, arguments);
         var ew = false;
         var eh = false;
