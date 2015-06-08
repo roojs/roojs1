@@ -260,6 +260,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.keyNav = new Roo.KeyNav(this.el, {
             
             "tab" : function(e){
+                Roo.log(e);
                 e.preventDefault();
                 Roo.log('TAB');
                 
