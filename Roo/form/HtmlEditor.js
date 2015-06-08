@@ -294,6 +294,9 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 if(!lines.length){
                     return;
                 }
+                
+                Roo.log(e);
+                
                 var pos = 0;
                 
                 for (var i = 0; i < lines.length;i++) {
@@ -312,6 +315,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                     break;
                 }
                 
+                if()
                 this.el.dom.setSelectionRange(pos, pos);
             },
             
