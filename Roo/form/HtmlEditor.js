@@ -318,14 +318,12 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.el.dom.removeAttribute('tabIndex');
             this.el.focus();
             
-            Roo.each(this.toolbars, function(t){
-                if(t instanceof Roo.form.HtmlEditor.ToolbarContext){
-                    t.tb.hide();
-                    t.footer.hide();
-                    
-                    
+            for (var i = 0; i < this.toolbars.length; i++) {
+                if(this.toolbars[i] instanceof Roo.form.HtmlEditor.ToolbarContext){
+                    this.toolbars[i].tb.hide();
+                    this.toolbars[i].footer.hide();
                 }
-            });
+            }
             
         }else{
             Roo.log('editor - hiding textarea');
@@ -340,11 +338,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 if(this.toolbars[i] instanceof Roo.form.HtmlEditor.ToolbarContext){
                     this.toolbars[i].tb.show();
                     this.toolbars[i].footer.show();
- 
-                    var ah = this.wrap.getSize().height - this.wrap.getFrameWidth('tb') - 46;// this.tb.el.getHeight();
-                    ah -= 5; // knock a few pixes off for look..
-                    Roo.log(ah);
-                    this.el.setHeight(this.adjustWidth('textarea', ah));
                 }
             }
             
