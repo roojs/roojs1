@@ -279,11 +279,16 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             "tab" : function(e){
                 Roo.log('TAB');
             },
+            
+            "home" : function(e){
+                Roo.log('HOme');
+            },
 
             scope : this,
 
             doRelay : function(foo, bar, hname){
                 Roo.log([foo, bar, hname]);
+                
                 return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
             },
 
