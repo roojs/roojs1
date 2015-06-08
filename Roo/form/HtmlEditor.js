@@ -346,6 +346,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         Roo.log('this.wrap.getSize()');
         Roo.log(this.wrap.getSize());
         this.setSize(this.wrap.getSize());
+        this.onResize(this.wrap.getSize().width, this.wrap.getSize().height);
         this.fireEvent('editmodechange', this, this.editorcore.sourceEditMode);
     },
  
