@@ -261,14 +261,17 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.keyNav = new Roo.KeyNav(this.el, {
             
             "tab" : function(e){
+                e.preventDefault();
                 Roo.log('TAB');
             },
             
             "home" : function(e){
+                e.preventDefault();
                 Roo.log('HOME');
             },
             
             "end" : function(e){
+                e.preventDefault();
                 Roo.log('END');
             },
 
