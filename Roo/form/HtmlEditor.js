@@ -297,7 +297,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 e.preventDefault();
                 Roo.log('END');
                 
-                var curr = this.el.dom.selectionStart;
+                var curr = this.el.dom.selectionStart - 1;
                 var lines = this.getValue().split("\n");
                 
                 if(!lines.length){
