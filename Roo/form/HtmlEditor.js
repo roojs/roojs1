@@ -293,8 +293,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                     break;
                 }
                 
-                
-                Roo.log(this.el.dom.setSelectionRange(pos, pos));
+                this.el.dom.setSelectionRange(pos, pos)
             },
 
             scope : this,
