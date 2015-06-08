@@ -278,7 +278,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 for (var i = 0; i < lines.length;i++) {
                     pos += lines[i].length;
                     
-                    
                     if(i != 0){
                         pos += 1;
                     }
@@ -310,6 +309,10 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 for (var i = 0; i < lines.length;i++) {
                     
                     pos += lines[i].length;
+                    
+                    if(i != 0){
+                        pos += 1;
+                    }
                     
                     if(pos < curr){
                         continue;
