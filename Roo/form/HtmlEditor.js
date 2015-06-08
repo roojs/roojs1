@@ -286,7 +286,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                         continue;
                     }
                     
-                    pos -= lines[i].length;
+                    pos -= lines[i].length + 1;
                     
                     break;
                 }
