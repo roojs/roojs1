@@ -267,6 +267,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 var end = this.getValue().legnth;
                 
                 Roo.log(start);
+                Roo.log(end);
                 
             },
             
