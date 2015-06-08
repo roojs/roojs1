@@ -270,6 +270,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 
                 this.setValue(value.substring(0, start) + "\t" + value.substring(end));
                 
+                this.el.dom.setSelectionRange(end, end);
             },
             
             "home" : function(e){
@@ -299,7 +300,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                     break;
                 }
                 
-                this.el.dom.setSelectionRange(pos, pos)
+                this.el.dom.setSelectionRange(pos, pos);
             },
             
             "end" : function(e){
@@ -328,7 +329,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                     break;
                 }
                 
-                this.el.dom.setSelectionRange(pos, pos)
+                this.el.dom.setSelectionRange(pos, pos);
             },
 
             scope : this,
