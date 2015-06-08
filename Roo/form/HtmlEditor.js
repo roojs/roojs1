@@ -325,7 +325,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 
                 //var selection = window.getSelection();
                 var range = document.createRange();
-                range.selectNodeContents(text);
+                range.selectNodeContents(this.el.dom);
                 range.collapse(true);
 		range.moveEnd('character', pos);
 		range.moveStart('character', pos);
