@@ -264,10 +264,11 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 Roo.log('TAB');
                 
                 var value = this.getValue();
-                var start = this.el.dom.selectionStart;
-                var end = value.length;
                 
-                this.setValue()
+                var start = this.el.dom.selectionStart;
+                var end = this.el.dom.selectionEnd;
+                
+                this.setValue(value.substring(0, start) + "\t" + value.substring(end));
                 
             },
             
