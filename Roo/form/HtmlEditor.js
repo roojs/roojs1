@@ -323,8 +323,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             
             Roo.each(this.toolbars, function(t){
                 if(t instanceof Roo.form.HtmlEditor.ToolbarContext){
-                    t.tb.hide();
-                    t.footer.hide();
+//                    t.tb.hide();
+//                    t.footer.hide();
                 }
             });
             
@@ -339,10 +339,10 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             
             Roo.each(this.toolbars, function(t){
                 if(t instanceof Roo.form.HtmlEditor.ToolbarContext){
-                    t.tb.show();
-                    t.footer.show();
-                    
-                    size.height -= 46;
+//                    t.tb.show();
+//                    t.footer.show();
+//                    
+//                    size.height -= 46;
                 }
             });
             //this.deferFocus();
