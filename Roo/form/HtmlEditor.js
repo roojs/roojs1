@@ -278,7 +278,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 
                 var f = value.substring(0, start).split("\t");
                 
-                Roo.log(f.pop());
+                Roo.log(f.pop().length);
                 
                 
             },
