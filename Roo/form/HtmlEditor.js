@@ -339,7 +339,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 if(this.toolbars[i] instanceof Roo.form.HtmlEditor.ToolbarContext){
                     this.toolbars[i].tb.show();
                     this.toolbars[i].footer.show();
-//                    
+ 
                     var ah = this.wrap.getSize().height - this.wrap.getFrameWidth('tb') - 46;// this.tb.el.getHeight();
                     ah -= 5; // knock a few pixes off for look..
                     this.el.setHeight(this.adjustWidth('textarea', ah));
