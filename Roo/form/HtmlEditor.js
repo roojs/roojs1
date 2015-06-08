@@ -264,7 +264,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 Roo.log('TAB');
                 
                 var start = this.el.dom.selectionStart;
-                var end = this.getValue().legnth;
+                var end = this.getValue().length;
                 
                 Roo.log(start);
                 Roo.log(end);
