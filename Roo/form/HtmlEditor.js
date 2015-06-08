@@ -277,8 +277,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 var pos = 0;
                 Roo.log(curr);
                 for (var i = 0; i < lines.length;i++) {
+                    pos += lines[i].length;
                     
-                    pos += lines[i].length + i;
+                    
+                    if(i != 0){
+                        pos += 1;
+                    }
+                    
                     Roo.log(pos);
                     if(pos < curr){
                         continue;
