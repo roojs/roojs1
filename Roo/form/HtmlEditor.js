@@ -321,6 +321,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 if(t instanceof Roo.form.HtmlEditor.ToolbarContext){
                     t.tb.hide();
                     t.footer.hide();
+                    
+                    
                 }
             });
             
