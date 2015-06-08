@@ -274,6 +274,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             "end" : function(e){
                 e.preventDefault();
                 Roo.log('END');
+                Roo.log(this.getValue());
+                Roo.log(this.el.dom.setSelectionRange(0,0));
             },
 
             scope : this,
