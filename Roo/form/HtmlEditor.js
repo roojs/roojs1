@@ -323,10 +323,12 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                     return;
                 }
                 
-                var selection = window.getSelection();
+                //var selection = window.getSelection();
                 var range = document.createRange();
-                selection.removeAllRanges();
-                selection.addRange(range);
+                range.collapse(true);
+		range.moveEnd('character', pos);
+		range.moveStart('character', pos);
+		range.select();
             },
             
             "end" : function(e){
