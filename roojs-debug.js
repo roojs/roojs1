@@ -27859,7 +27859,8 @@ Roo.extend(Roo.Button, Roo.util.Observable, {
     },
 
     // private
-    onClick : function(e){
+    onClick : function(e)
+    {
         if(e){
             e.preventDefault();
         }
@@ -42957,6 +42958,12 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.el.removeClass('x-hidden');
             this.el.dom.removeAttribute('tabIndex');
             this.el.focus();
+            
+            Roo.each(this.toolbars, function(t){
+                Roo.log('toolbars!!!');
+                Roo.log(t);
+            });
+            
         }else{
             Roo.log('editor - hiding textarea');
 //            Roo.log('out')
