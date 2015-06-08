@@ -308,8 +308,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     {
         this.editorcore.toggleSourceEdit(sourceEditMode);
         
-        this.setSize(this.wrap.getSize());
-        
         if(this.editorcore.sourceEditMode){
             Roo.log('editor - showing textarea');
             
@@ -323,7 +321,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             Roo.each(this.toolbars, function(t){
                 if(t instanceof Roo.form.HtmlEditor.ToolbarContext){
                     t.tb.hide();
-                    t.footer.hide();
+//                    t.footer.hide();
                 }
             });
             
@@ -339,13 +337,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             Roo.each(this.toolbars, function(t){
                 if(t instanceof Roo.form.HtmlEditor.ToolbarContext){
                     t.tb.show();
-                    t.footer.show();
+//                    t.footer.show();
                 }
             });
             //this.deferFocus();
         }
          
-        
+        this.setSize(this.wrap.getSize());
         this.fireEvent('editmodechange', this, this.editorcore.sourceEditMode);
     },
  
