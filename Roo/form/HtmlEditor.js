@@ -319,11 +319,9 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.el.focus();
             
             Roo.each(this.toolbars, function(t){
-                Roo.log('toolbars!!!');
-                Roo.log(t);
                 if(t instanceof Roo.form.HtmlEditor.ToolbarContext){
-                    t.tb.el.hide();
-                    t.footer.el.hide();
+                    t.tb.el.setVisibilityMode(Roo.Element.DISPLAY).hide();
+                    t.footer.el.setVisibilityMode(Roo.Element.DISPLAY).hide();
                 }
             });
             
