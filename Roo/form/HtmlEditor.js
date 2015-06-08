@@ -260,32 +260,24 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         Roo.log(this.el);
         this.keyNav = new Roo.KeyNav(this.el, {
             "up" : function(e){
-                this.inKeyMode = true;
-                this.selectPrev();
+                Roo.log('up');
             },
 
             "down" : function(e){
-                if(!this.isExpanded()){
-                    this.onTriggerClick();
-                }else{
-                    this.inKeyMode = true;
-                    this.selectNext();
-                }
+                Roo.log('dOWN');
             },
 
             "enter" : function(e){
-                this.onViewClick();
+                Roo.log('ENTER');
                 //return true;
             },
 
             "esc" : function(e){
-                this.collapse();
+                Roo.log('ESC');
             },
 
             "tab" : function(e){
-                this.onViewClick(false);
-                this.fireEvent("specialkey", this, e);
-                return true;
+                Roo.log('TAB');
             },
 
             scope : this,
