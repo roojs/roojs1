@@ -16035,7 +16035,7 @@ Roo.apply(Roo.bootstrap.TimeField,  {
  * @cfg {String} boxLabel The text that appears beside the checkbox
  * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the checkbox
  * @cfg {Boolean} checked initnal the element
- * 
+ * @cfg {Boolean} inline inline the element (default false)
  * 
  * @constructor
  * Create a new CheckBox
@@ -16064,6 +16064,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     boxLabel: false,
     checked: false,
     weight : false,
+    inline: false,
     
     getAutoCreate : function()
     {
@@ -16073,23 +16074,24 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         var cfg = {};
         
-        cfg.cls = 'form-group checkbox' //input-group
+        cfg.cls = 'form-group ' + this.inputType //input-group
         
-        
-        
+        if(this.inline){
+            cfg.cls += ' ' + this.inputType + '-inline';
+        }
         
         var input =  {
             tag: 'input',
             id : id,
             type : this.inputType,
             value : (!this.checked) ? this.valueOff : this.inputValue,
-            cls : 'roo-checkbox', //'form-box',
+            cls : 'roo-' + this.inputType, //'form-box',
             placeholder : this.placeholder || ''
             
         };
         
         if (this.weight) { // Validity check?
-            cfg.cls += " checkbox-" + this.weight;
+            cfg.cls += " " + this.inputType + "-" + this.weight;
         }
         
         if (this.disabled) {
@@ -16210,7 +16212,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     inputEl: function ()
     {
-        return this.el.select('input.roo-checkbox',true).first();
+        return this.el.select('input.roo-' + this.inputType,true).first();
     },
     
     label: function()
@@ -16233,16 +16235,48 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     setChecked : function(state,suppressEvent)
     {
-        this.checked = state;
+        if(this.inputType == 'radio'){
+            
+            Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
+                e.dom.checked = false;
+            });
+            
+            this.inputEl().dom.checked = true;
+            
+            if(suppressEvent !== true){
+                this.fireEvent('check', this, true);
+            }
+            
+            this.inputEl().dom.value = this.inputValue;
+            
+            return;
+        }
         
-        this.inputEl().dom.checked = state;
+        this.checked = state;
         
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
         }
         
+        this.inputEl().dom.checked = state;
+        
         this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
         
+    },
+    
+    getValue : function()
+    {
+        if(this.inputType == 'radio'){
+            return this.getGroupValue();
+        }
+        
+        return this.inputEl().getValue();
+        
+    },
+    
+    getGroupValue : function()
+    {
+        return this.el.up('form').child('input[name='+this.name+']:checked', true).value;
     },
     
     setValue : function(v,suppressEvent)
