@@ -283,7 +283,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 }
                 
                 this.setValue(f.join("\t") + value.substring(end));
-                this.el.dom.setSelectionRange(end, end);
+                this.el.dom.setSelectionRange(start, start);
                 
             },
             
