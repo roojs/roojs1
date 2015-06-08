@@ -309,7 +309,8 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.editorcore.toggleSourceEdit(sourceEditMode);
         
         var size = this.wrap.getSize();
-        
+        Roo.log('original size');
+        Roo.log(size);
         if(this.editorcore.sourceEditMode){
             Roo.log('editor - showing textarea');
             
