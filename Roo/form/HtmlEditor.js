@@ -283,9 +283,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             scope : this,
 
             doRelay : function(foo, bar, hname){
-                if(hname == 'down' || this.scope.isExpanded()){
-                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
-                }
                 return true;
             },
 
