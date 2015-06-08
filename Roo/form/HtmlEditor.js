@@ -283,6 +283,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             scope : this,
 
             doRelay : function(foo, bar, hname){
+                Roo.log([foo, bar, hname]);
                 return true;
             },
 
