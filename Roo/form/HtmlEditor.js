@@ -270,7 +270,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 
                 this.setValue(value.substring(0, start) + "\t" + value.substring(end));
                 
-                this.el.dom.setSelectionRange(end, end);
+                this.el.dom.setSelectionRange(end + 1, end + 1);
             },
             
             "home" : function(e){
