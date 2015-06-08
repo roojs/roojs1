@@ -260,16 +260,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.keyNav = new Roo.KeyNav(this.el, {
             
             "tab" : function(e){
-                
                 e.preventDefault();
-                Roo.log('TAB');
                 
                 var value = this.getValue();
                 
                 var start = this.el.dom.selectionStart;
                 var end = this.el.dom.selectionEnd;
-                Roo.log(start);
-                Roo.log(end);
+                
                 if(!e.shiftKey){
                     this.setValue(value.substring(0, start) + "\t" + value.substring(end));
                 
