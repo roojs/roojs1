@@ -282,7 +282,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                     return;
                 }
                 
-                Roo.log(f);
+                this.setValue(f.join("\t") + value.substring(end));
                 
                 
             },
