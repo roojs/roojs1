@@ -257,6 +257,48 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             // should trigger onReize..
         }
         
+        this.keyNav = new Roo.KeyNav(this.el, {
+            "up" : function(e){
+                this.inKeyMode = true;
+                this.selectPrev();
+            },
+
+            "down" : function(e){
+                if(!this.isExpanded()){
+                    this.onTriggerClick();
+                }else{
+                    this.inKeyMode = true;
+                    this.selectNext();
+                }
+            },
+
+            "enter" : function(e){
+                this.onViewClick();
+                //return true;
+            },
+
+            "esc" : function(e){
+                this.collapse();
+            },
+
+            "tab" : function(e){
+                this.onViewClick(false);
+                this.fireEvent("specialkey", this, e);
+                return true;
+            },
+
+            scope : this,
+
+            doRelay : function(foo, bar, hname){
+                if(hname == 'down' || this.scope.isExpanded()){
+                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+                }
+                return true;
+            },
+
+            forceKeyDown: true
+        });
+        
 //        if(this.autosave && this.w){
 //            this.autoSaveFn = setInterval(this.autosave, 1000);
 //        }
