@@ -296,7 +296,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             
             "end" : function(e){
                 e.preventDefault();
-                Roo.log('END');
                 
                 var curr = this.el.dom.selectionStart;
                 var lines = this.getValue().split("\n");
