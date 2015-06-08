@@ -268,7 +268,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             "home" : function(e){
                 e.preventDefault();
                 Roo.log('HOME');
-                Roo.log(this.el.dom.setSelectionRange(0,0));
+                Roo.log(this.el.dom.setSelectionRange(1,0));
             },
             
             "end" : function(e){
