@@ -270,7 +270,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 if(!e.shiftKey){
                     
                     this.setValue(value.substring(0, start) + "\t" + value.substring(end));
-                
+                    Roo.log(this.getValue());
                     this.el.dom.setSelectionRange(end + 1, end + 1);
                     return;
                 }
