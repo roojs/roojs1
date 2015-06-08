@@ -287,7 +287,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             
             "home" : function(e){
                 e.preventDefault();
-                Roo.log("HOME");
+                
                 var curr = this.el.dom.selectionStart;
                 var lines = this.getValue().split("\n");
                 
@@ -295,7 +295,10 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                     return;
                 }
                 
-                Roo.log(e);
+                if(e.ctrlKey){
+                    this.el.dom.setSelectionRange(0, 0);
+                    return;
+                }
                 
                 var pos = 0;
                 
