@@ -42960,11 +42960,9 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.el.focus();
             
             Roo.each(this.toolbars, function(t){
-                Roo.log('toolbars!!!');
-                Roo.log(t);
                 if(t instanceof Roo.form.HtmlEditor.ToolbarContext){
-                    t.tb.el.hide();
-                    t.footer.el.hide();
+                    t.tb.el.setVisibilityMode(Roo.Element.DISPLAY).hide();
+                    t.footer.el.setVisibilityMode(Roo.Element.DISPLAY).hide();
                 }
             });
             
@@ -42976,6 +42974,13 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             
             this.el.addClass('x-hidden');
             this.el.dom.setAttribute('tabIndex', -1);
+            
+            Roo.each(this.toolbars, function(t){
+                if(t instanceof Roo.form.HtmlEditor.ToolbarContext){
+                    t.tb.el.setVisibilityMode(Roo.Element.DISPLAY).show();
+                    t.footer.el.setVisibilityMode(Roo.Element.DISPLAY).show();
+                }
+            });
             //this.deferFocus();
         }
          
