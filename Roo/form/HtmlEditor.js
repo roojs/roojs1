@@ -263,11 +263,11 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 e.preventDefault();
                 Roo.log('TAB');
                 
+                var value = this.getValue();
                 var start = this.el.dom.selectionStart;
-                var end = this.getValue().length;
+                var end = value.length;
                 
-                Roo.log(start);
-                Roo.log(end);
+                this.setValue()
                 
             },
             
