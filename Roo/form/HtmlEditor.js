@@ -257,6 +257,126 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             // should trigger onReize..
         }
         
+        this.keyNav = new Roo.KeyNav(this.el, {
+            
+            "tab" : function(e){
+                e.preventDefault();
+                
+                var value = this.getValue();
+                
+                var start = this.el.dom.selectionStart;
+                var end = this.el.dom.selectionEnd;
+                
+                if(!e.shiftKey){
+                    
+                    this.setValue(value.substring(0, start) + "\t" + value.substring(end));
+                    this.el.dom.setSelectionRange(end + 1, end + 1);
+                    return;
+                }
+                
+                var f = value.substring(0, start).split("\t");
+                
+                if(f.pop().length != 0){
+                    return;
+                }
+                
+                this.setValue(f.join("\t") + value.substring(end));
+                this.el.dom.setSelectionRange(start - 1, start - 1);
+                
+            },
+            
+            "home" : function(e){
+                e.preventDefault();
+                
+                var curr = this.el.dom.selectionStart;
+                var lines = this.getValue().split("\n");
+                
+                if(!lines.length){
+                    return;
+                }
+                
+                if(e.ctrlKey){
+                    this.el.dom.setSelectionRange(0, 0);
+                    return;
+                }
+                
+                var pos = 0;
+                
+                for (var i = 0; i < lines.length;i++) {
+                    pos += lines[i].length;
+                    
+                    if(i != 0){
+                        pos += 1;
+                    }
+                    
+                    if(pos < curr){
+                        continue;
+                    }
+                    
+                    pos -= lines[i].length;
+                    
+                    break;
+                }
+                
+                if(!e.shiftKey){
+                    this.el.dom.setSelectionRange(pos, pos);
+                    return;
+                }
+                
+                this.el.dom.selectionStart = pos;
+                this.el.dom.selectionEnd = curr;
+            },
+            
+            "end" : function(e){
+                e.preventDefault();
+                
+                var curr = this.el.dom.selectionStart;
+                var lines = this.getValue().split("\n");
+                
+                if(!lines.length){
+                    return;
+                }
+                
+                if(e.ctrlKey){
+                    this.el.dom.setSelectionRange(this.getValue().length, this.getValue().length);
+                    return;
+                }
+                
+                var pos = 0;
+                
+                for (var i = 0; i < lines.length;i++) {
+                    
+                    pos += lines[i].length;
+                    
+                    if(i != 0){
+                        pos += 1;
+                    }
+                    
+                    if(pos < curr){
+                        continue;
+                    }
+                    
+                    break;
+                }
+                
+                if(!e.shiftKey){
+                    this.el.dom.setSelectionRange(pos, pos);
+                    return;
+                }
+                
+                this.el.dom.selectionStart = curr;
+                this.el.dom.selectionEnd = pos;
+            },
+
+            scope : this,
+
+            doRelay : function(foo, bar, hname){
+                return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+            },
+
+            forceKeyDown: true
+        });
+        
 //        if(this.autosave && this.w){
 //            this.autoSaveFn = setInterval(this.autosave, 1000);
 //        }
@@ -265,7 +385,6 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     // private
     onResize : function(w, h)
     {
-        //Roo.log('resize: ' +w + ',' + h );
         Roo.form.HtmlEditor.superclass.onResize.apply(this, arguments);
         var ew = false;
         var eh = false;
@@ -291,6 +410,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 
                 var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
                 ah -= 5; // knock a few pixes off for look..
+                Roo.log(ah);
                 this.el.setHeight(this.adjustWidth('textarea', ah));
                 var eh = ah;
             }
@@ -317,6 +437,14 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             this.el.removeClass('x-hidden');
             this.el.dom.removeAttribute('tabIndex');
             this.el.focus();
+            
+            for (var i = 0; i < this.toolbars.length; i++) {
+                if(this.toolbars[i] instanceof Roo.form.HtmlEditor.ToolbarContext){
+                    this.toolbars[i].tb.hide();
+                    this.toolbars[i].footer.hide();
+                }
+            }
+            
         }else{
             Roo.log('editor - hiding textarea');
 //            Roo.log('out')
@@ -325,10 +453,20 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             
             this.el.addClass('x-hidden');
             this.el.dom.setAttribute('tabIndex', -1);
+            
+            for (var i = 0; i < this.toolbars.length; i++) {
+                if(this.toolbars[i] instanceof Roo.form.HtmlEditor.ToolbarContext){
+                    this.toolbars[i].tb.show();
+                    this.toolbars[i].footer.show();
+                }
+            }
+            
             //this.deferFocus();
         }
-         
+        
         this.setSize(this.wrap.getSize());
+        this.onResize(this.wrap.getSize().width, this.wrap.getSize().height);
+        
         this.fireEvent('editmodechange', this, this.editorcore.sourceEditMode);
     },
  
