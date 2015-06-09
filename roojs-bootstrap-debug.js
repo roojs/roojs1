@@ -2276,7 +2276,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.render();
         }
         
-        this.el.setStyle('display', 'block');
+        //this.el.setStyle('display', 'block');
         
         if(this.animate){
             var _this = this;
@@ -2288,7 +2288,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         Roo.get(document.body).addClass("x-body-masked");
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         this.maskEl.show();
-        //this.el.setStyle('zIndex', '10001');
+        this.el.setStyle('zIndex', '10001');
         this.fireEvent('show', this);
         
         
