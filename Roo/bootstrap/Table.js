@@ -565,7 +565,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
     },
     
-    onAdd : function(ds, records, index){
+    onAdd : function(ds, records, rowIndex){
         
         var bt = this.mainBody.dom;
         for (var i =0 ; i < records.length;i++) {
