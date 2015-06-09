@@ -723,11 +723,27 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         //    this.maskEl.show();
         //}
     },
-    
+     /**
+     * Remove all rows
+     */
     clear : function()
     {
         this.el.select('tbody', true).first().dom.innerHTML = '';
     },
+    /**
+     * Show or hide a row.
+     * @param {Number} rowIndex to show or hide
+     * @param {Boolean} state hide
+     */
+    setRowVisibility : function(rowIndex, state)
+    {
+        var bt = this.mainBody.dom;
+        if(typeof(bt.rows[index]) == 'undefined'){
+            return;
+        }
+        bt.rows[index].style.display = state ? '' : 'none';
+    },
+    
     
     getSelectionModel : function(){
         if(!this.selModel){
