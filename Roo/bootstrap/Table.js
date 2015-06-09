@@ -565,13 +565,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
     },
     
-    onAdd : function(ds, records, rowIndex){
-        Roo.log('on Add called');
+    onAdd : function(ds, records, rowIndex)
+    {
+        //Roo.log('on Add called');
+        // - note this does not handle multiple adding very well..
         var bt = this.mainBody.dom;
         for (var i =0 ; i < records.length;i++) {
-            Roo.log('call insert row Add called on ' + rowIndex + ':' + i);
-            Roo.log(records[i]);
-            Roo.log(this.store.getAt(rowIndex+i));
+            //Roo.log('call insert row Add called on ' + rowIndex + ':' + i);
+            //Roo.log(records[i]);
+            //Roo.log(this.store.getAt(rowIndex+i));
             this.insertRow(this.store, rowIndex + i, false);
             return;
         }
