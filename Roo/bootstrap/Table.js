@@ -280,6 +280,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
         this.store.on('update', this.onUpdate, this);
+         this.store.on('add', this.onAdd, this);
         
     },
     
@@ -562,6 +563,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             //this.layout();
             this.fireEvent("rowremoved", this, index, record);
         }
+    },
+    
+    onAdd : function(ds, records, index){
+        
+        var bt = this.mainBody.dom;
+        for (var i =0 ; i < records.length;i++) {
+            this.insertRow(this.store, rowIndex, false);
+        }
+        
     },
     
     
