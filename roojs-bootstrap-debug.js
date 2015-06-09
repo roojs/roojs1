@@ -5494,7 +5494,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         for (var i =0 ; i < records.length;i++) {
             Roo.log('call insert row Add called on ' + rowIndex + ':' + i);
             Roo.log(records[i]);
-            this.insertRow(this.store, rowIndex +  2 + i, false);
+            this.insertRow(this.store, rowIndex +  1 + i, false);
         }
         
     },
