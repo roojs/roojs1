@@ -277,7 +277,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             if(e.dom.value == v){
                 e.dom.checked = true;
             }
-            
         });
 
         if(suppressEvent !== true){
