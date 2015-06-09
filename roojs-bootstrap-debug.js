@@ -2276,7 +2276,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.render();
         }
         
-        //this.el.setStyle('display', 'block');
+        this.el.setStyle('display', 'block');
         
         if(this.animate){
             var _this = this;
@@ -2289,6 +2289,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         this.maskEl.show();
         this.el.setStyle('zIndex', '10001');
+       
         this.fireEvent('show', this);
         
         
@@ -5192,7 +5193,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.el.on("click", this.onClick, this);
         this.el.on("dblclick", this.onDblClick, this);
         
-        this.parent().el.setStyle('position', 'relative');
+        // why is this done????? = it breaks dialogs??
+        //this.parent().el.setStyle('position', 'relative');
+        
+        
         if (this.footer) {
             this.footer.parentId = this.id;
             this.footer.onRender(this.el.select('tfoot tr td').first(), null);        
