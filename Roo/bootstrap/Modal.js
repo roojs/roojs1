@@ -235,7 +235,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.render();
         }
         
-        //this.el.setStyle('display', 'block');
+        this.el.setStyle('display', 'block');
         
         if(this.animate){
             var _this = this;
