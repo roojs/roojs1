@@ -248,6 +248,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         this.maskEl.show();
         this.el.setStyle('zIndex', '10001');
+       
         this.fireEvent('show', this);
         
         
