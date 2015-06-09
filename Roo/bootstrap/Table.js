@@ -269,7 +269,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         this.el.on("click", this.onClick, this);
         this.el.on("dblclick", this.onDblClick, this);
         
-        this.parent().el.setStyle('position', 'relative');
+        // why is this done????? = it breaks dialogs??
+        //this.parent().el.setStyle('position', 'relative');
+        
+        
         if (this.footer) {
             this.footer.parentId = this.id;
             this.footer.onRender(this.el.select('tfoot tr td').first(), null);        
