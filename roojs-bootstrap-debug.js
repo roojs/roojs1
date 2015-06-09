@@ -5661,10 +5661,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     setRowVisibility : function(rowIndex, state)
     {
         var bt = this.mainBody.dom;
-        if(typeof(bt.rows[index]) == 'undefined'){
+        if(typeof(bt.rows[rowIndex]) == 'undefined'){
             return;
         }
-        bt.rows[index].style.display = state ? '' : 'none';
+        bt.rows[rowIndex].style.display = state ? '' : 'none';
     },
     
     
