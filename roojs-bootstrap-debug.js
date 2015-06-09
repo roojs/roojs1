@@ -5488,13 +5488,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
     },
     
-    onAdd : function(ds, records, rowIndex){
-        Roo.log('on Add called');
+    onAdd : function(ds, records, rowIndex)
+    {
+        //Roo.log('on Add called');
+        // - note this does not handle multiple adding very well..
         var bt = this.mainBody.dom;
         for (var i =0 ; i < records.length;i++) {
-            Roo.log('call insert row Add called on ' + rowIndex + ':' + i);
-            Roo.log(records[i]);
-            Roo.log(this.store.getAt(rowIndex+i));
+            //Roo.log('call insert row Add called on ' + rowIndex + ':' + i);
+            //Roo.log(records[i]);
+            //Roo.log(this.store.getAt(rowIndex+i));
             this.insertRow(this.store, rowIndex + i, false);
             return;
         }
@@ -5644,11 +5646,27 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         //    this.maskEl.show();
         //}
     },
-    
+     /**
+     * Remove all rows
+     */
     clear : function()
     {
         this.el.select('tbody', true).first().dom.innerHTML = '';
     },
+    /**
+     * Show or hide a row.
+     * @param {Number} rowIndex to show or hide
+     * @param {Boolean} state hide
+     */
+    setRowVisibility : function(rowIndex, state)
+    {
+        var bt = this.mainBody.dom;
+        if(typeof(bt.rows[index]) == 'undefined'){
+            return;
+        }
+        bt.rows[index].style.display = state ? '' : 'none';
+    },
+    
     
     getSelectionModel : function(){
         if(!this.selModel){
