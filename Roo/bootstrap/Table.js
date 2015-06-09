@@ -566,10 +566,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     },
     
     onAdd : function(ds, records, rowIndex){
-        
+        Roo.log('on Add called');
         var bt = this.mainBody.dom;
         for (var i =0 ; i < records.length;i++) {
-            this.insertRow(this.store, rowIndex, false);
+            Roo.log('call insert row Add called');
+            this.insertRow(this.store, rowIndex +i, false);
         }
         
     },
