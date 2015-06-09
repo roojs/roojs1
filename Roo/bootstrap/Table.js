@@ -570,6 +570,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var bt = this.mainBody.dom;
         for (var i =0 ; i < records.length;i++) {
             Roo.log('call insert row Add called on ' + rowIndex + ':' + i);
+            Roo.log(records[i]);
             this.insertRow(this.store, rowIndex +   i, false);
         }
         
