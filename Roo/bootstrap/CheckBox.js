@@ -261,7 +261,17 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     setValue : function(v,suppressEvent)
     {
+        if(this.inputType == 'radio'){
+            this.setGroupValue(v);
+            return;
+        }
+        
         this.setChecked(((typeof(v) == 'undefined') ? this.checked : (String(v) === String(this.inputValue))), suppressEvent);
+    },
+    
+    setGroupValue : function(v)
+    {
+        
     }
     
 });
