@@ -16387,7 +16387,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             tag: 'input',
             id : id,
             type : this.inputType,
-            value : (!this.checked) ? this.valueOff : this.inputValue,
+            //value : (!this.checked) ? this.valueOff : this.inputValue,
+            value : this.inputValue,
             cls : 'roo-radio',
             placeholder : this.placeholder || ''
             
