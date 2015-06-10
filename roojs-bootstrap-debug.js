@@ -16251,9 +16251,15 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         return this.el.select('input.roo-' + this.inputType,true).first();
     },
     
-    label: function()
+    labelEl: function()
     {
         return this.el.select('label.control-label',true).first();
+    },
+    /* depricated... */
+    
+    label: function()
+    {
+        return this.labelEl();
     },
     
     initEvents : function()
@@ -16261,6 +16267,9 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 //        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
         
         this.inputEl().on('click', this.onClick,  this);
+        if (this.boxLabel) { 
+            this.this.el.select('label.box-label',true).first().on('click', this.onClick,  this);
+        }
         
     },
     
