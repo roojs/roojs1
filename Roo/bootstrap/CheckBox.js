@@ -212,7 +212,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.inputEl().on('click', this.onClick,  this);
         if (this.boxLabel) { 
-            this.this.el.select('label.box-label',true).first().on('click', this.onClick,  this);
+            this.el.select('label.box-label',true).first().on('click', this.onClick,  this);
         }
         
     },
