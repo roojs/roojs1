@@ -59,8 +59,6 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
             });
         }
         
-        
-        
         return cfg;
     },
     
