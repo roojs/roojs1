@@ -40,6 +40,10 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
             cls : 'alert',
             cn : [
                 {
+                    tag : 'i'
+                    
+                },
+                {
                     tag : 'b',
                     cls : 'roo-alert-title',
                     html : this.title
@@ -53,10 +57,7 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
         };
         
         if(this.faicon){
-            cfg.cn.unshift({
-                tag : 'i',
-                cls : 'fa ' + this.faicon
-            });
+            cfg.cn[0].cls = 'fa ' + this.faicon;
         }
         
         if(this.weight){
@@ -94,6 +95,9 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
     
     setIcon : function(str)
     {
+        if(this.faicon){
+            
+        }
         this.el.select('.roo-alert-text',true).first().dom.innerHTML = str;
     },
     
