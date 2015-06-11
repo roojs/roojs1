@@ -12,32 +12,17 @@
  * @cfg {String} title The title of alert
  * @cfg {String} html The content of alert
  * @cfg {String} weight (  success | info | warning | danger ) default info
- * 
+ * @cfg {String} faicon font-awesomeicon
  * 
  * @constructor
- * Create a new button
+ * Create a new alert
  * @param {Object} config The config object
  */
 
 
-Roo.bootstrap.Button = function(config){
-    Roo.bootstrap.Button.superclass.constructor.call(this, config);
-    this.addEvents({
-        // raw events
-        /**
-         * @event click
-         * When a butotn is pressed
-         * @param {Roo.EventObject} e
-         */
-        "click" : true,
-         /**
-         * @event toggle
-         * After the button has been toggles
-         * @param {Roo.EventObject} e
-         * @param {boolean} pressed (also available as button.pressed)
-         */
-        "toggle" : true
-    });
+Roo.bootstrap.Alert = function(config){
+    Roo.bootstrap.Alert.superclass.constructor.call(this, config);
+    
 };
 
 Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
