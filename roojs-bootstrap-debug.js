@@ -3787,7 +3787,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (typeof (this.menu) != 'undefined') {
             this.menu.parentType = this.xtype;
             this.menu.triggerEl = this.el;
-            this.addxtype(Roo.apply({}, this.menu));
+            this.menu = this.addxtype(Roo.apply({}, this.menu));
         }
         
         this.el.select('a',true).on('click', this.onClick, this);
