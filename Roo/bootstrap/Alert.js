@@ -30,7 +30,7 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
     title: '',
     html: '',
     weight: '',
-    faicon: '',
+    faicon: false,
     
     getAutoCreate : function()
     {
@@ -51,6 +51,13 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
                 }
             ]
         };
+        
+        if(this.faicon){
+            cfg.cn.unshift({
+                tag : 'i',
+                cls : 'fa ' + this.faicon
+            });
+        }
         
         
         
