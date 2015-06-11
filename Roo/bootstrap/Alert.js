@@ -38,8 +38,21 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
         var cfg = {
             tag : 'div',
             cls : 'alert',
-            cn : []
+            cn : [
+                {
+                    tag : 'b',
+                    cls : 'roo-alert-title',
+                    html : this.title
+                },
+                {
+                    tag : 'span',
+                    cls : 'roo-alert-content',
+                    html : this.html
+                }
+            ]
         };
+        
+        
         
         return cfg;
     },
