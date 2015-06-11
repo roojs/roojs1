@@ -29,7 +29,7 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
     
     title: '',
     html: '',
-    weight: '',
+    weight: false,
     faicon: false,
     
     getAutoCreate : function()
@@ -59,6 +59,10 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
             });
         }
         
+        if(this.weight){
+            cfg.cls += ' alert-' + this.weight;
+        }
+        
         return cfg;
     },
     
@@ -70,6 +74,11 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
     setTitle : function(str)
     {
         this.el.select('.roo-alert-title',true).first().dom.innerHTML = str;
+    },
+    
+    setText : function(str)
+    {
+        this.el.select('.roo-alert-text',true).first().dom.innerHTML = str;
     },
     
     setText : function(str)
