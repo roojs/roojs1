@@ -11,7 +11,7 @@
  * Bootstrap Alert class
  * @cfg {String} title The title of alert
  * @cfg {String} html The content of alert
- * @cfg {String} weight (  success | info | warning | danger ) default info
+ * @cfg {String} weight (  success | info | warning | danger )
  * @cfg {String} faicon font-awesomeicon
  * 
  * @constructor
@@ -26,31 +26,11 @@ Roo.bootstrap.Alert = function(config){
 };
 
 Roo.extend(Roo.bootstrap.Button, Roo.bootstrap.Component,  {
-    html: false,
-    active: false,
+    
+    title: '',
+    html: '',
     weight: '',
-    size: '',
-    tag: 'button',
-    href: '',
-    disabled: false,
-    isClose: false,
-    glyphicon: '',
-    badge: '',
-    theme: 'default',
-    inverse: false,
-    
-    toggle: false,
-    ontext: 'ON',
-    offtext: 'OFF',
-    defaulton: true,
-    preventDefault: true,
-    removeClass: false,
-    name: false,
-    target: false,
-    
-    
-    pressed : null,
-     
+    faicon: '',
     
     getAutoCreate : function(){
         
