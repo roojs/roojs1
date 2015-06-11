@@ -46,7 +46,7 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
                 },
                 {
                     tag : 'span',
-                    cls : 'roo-alert-content',
+                    cls : 'roo-alert-text',
                     html : this.html
                 }
             ]
@@ -64,12 +64,17 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        
+        this.el.setVisibilityMode(Roo.Element.DISPLAY);
+    },
+    
+    setTitle : function(str)
+    {
+        this.el.select('.roo-alert-title',true).first().dom.innerHTML = str;
     },
     
     setText : function(str)
     {
-        this.el.select('.roo-button-text',true).first().dom.innerHTML = str;
+        this.el.select('.roo-alert-text',true).first().dom.innerHTML = str;
     },
     
     hide: function() 
