@@ -257,6 +257,126 @@
             </span><span class="jsdoc-comment">// should trigger onReize..
         </span><span class="jsdoc-syntax">}
         
+        </span><span class="jsdoc-var">this.keyNav </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.KeyNav</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, {
+            
+            </span><span class="jsdoc-string">&quot;tab&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom.selectionStart</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom.selectionEnd</span><span class="jsdoc-syntax">;
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">){
+                    
+                    </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.substring</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">&quot;\t&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">value.substring</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">));
+                    </span><span class="jsdoc-var">this.el.dom.setSelectionRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">+ 1, </span><span class="jsdoc-var">end </span><span class="jsdoc-syntax">+ 1);
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">f </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">value.substring</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">start</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\t&quot;</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.pop</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">!= 0){
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f.join</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\t&quot;</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">value.substring</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">end</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-var">this.el.dom.setSelectionRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">- 1, </span><span class="jsdoc-var">start </span><span class="jsdoc-syntax">- 1);
+                
+            },
+            
+            </span><span class="jsdoc-string">&quot;home&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">curr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom.selectionStart</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lines </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\n&quot;</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">lines.length</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.el.dom.setSelectionRange</span><span class="jsdoc-syntax">(0, 0);
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= 0;
+                
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">lines.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                    </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">lines</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">;
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">!= 0){
+                        </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">+= 1;
+                    }
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">curr</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                    }
+                    
+                    </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">-= </span><span class="jsdoc-var">lines</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">;
+                    
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.el.dom.setSelectionRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-var">this.el.dom.selectionStart </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.el.dom.selectionEnd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">curr</span><span class="jsdoc-syntax">;
+            },
+            
+            </span><span class="jsdoc-string">&quot;end&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">curr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom.selectionStart</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">lines </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;\n&quot;</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">lines.length</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.ctrlKey</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.el.dom.setSelectionRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">= 0;
+                
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">lines.length</span><span class="jsdoc-syntax">;</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                    
+                    </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">lines</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">;
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">!= 0){
+                        </span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">+= 1;
+                    }
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">curr</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                    }
+                    
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">e.shiftKey</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.el.dom.setSelectionRange</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-var">this.el.dom.selectionStart </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">curr</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.el.dom.selectionEnd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">pos</span><span class="jsdoc-syntax">;
+            },
+
+            </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,
+
+            </span><span class="jsdoc-var">doRelay </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">foo</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">hname</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.KeyNav.prototype.doRelay.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+            },
+
+            </span><span class="jsdoc-var">forceKeyDown</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">});
+        
 </span><span class="jsdoc-comment">//        if(this.autosave &amp;&amp; this.w){
 //            this.autoSaveFn = setInterval(this.autosave, 1000);
 //        }
@@ -265,7 +385,6 @@
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onResize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-comment">//Roo.log('resize: ' +w + ',' + h );
         </span><span class="jsdoc-var">Roo.form.HtmlEditor.superclass.onResize.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ew </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">eh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
@@ -291,6 +410,7 @@
                 
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.wrap.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">tbh</span><span class="jsdoc-syntax">;</span><span class="jsdoc-comment">// this.tb.el.getHeight();
                 </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">-= 5; </span><span class="jsdoc-comment">// knock a few pixes off for look..
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.adjustWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'textarea'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">));
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">eh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">;
             }
@@ -317,6 +437,14 @@
             </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-hidden'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.el.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tabIndex'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.el.focus</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.toolbars.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Roo.form.HtmlEditor.ToolbarContext</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.tb.hide</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.footer.hide</span><span class="jsdoc-syntax">();
+                }
+            }
+            
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editor - hiding textarea'</span><span class="jsdoc-syntax">);
 </span><span class="jsdoc-comment">//            Roo.log('out')
@@ -325,10 +453,20 @@
             
             </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'x-hidden'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">this.el.dom.setAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tabIndex'</span><span class="jsdoc-syntax">, -1);
+            
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.toolbars.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++) {
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] </span><span class="jsdoc-keyword">instanceof </span><span class="jsdoc-var">Roo.form.HtmlEditor.ToolbarContext</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.tb.show</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">this.toolbars</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.footer.show</span><span class="jsdoc-syntax">();
+                }
+            }
+            
             </span><span class="jsdoc-comment">//this.deferFocus();
         </span><span class="jsdoc-syntax">}
-         
+        
         </span><span class="jsdoc-var">this.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap.getSize</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-var">this.onResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.wrap.getSize</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.wrap.getSize</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.height</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'editmodechange'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.editorcore.sourceEditMode</span><span class="jsdoc-syntax">);
     },
  
