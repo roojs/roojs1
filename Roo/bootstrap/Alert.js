@@ -81,7 +81,18 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
         this.el.select('.roo-alert-text',true).first().dom.innerHTML = str;
     },
     
-    setText : function(str)
+    setWeight : function(weight)
+    {
+        if(this.weight){
+            this.el.select('.alert',true).first().removeClass('alert-' + this.weight);
+        }
+        
+        this.weight = weight;
+        
+        this.el.select('.alert',true).first().addClass('alert-' + this.weight);
+    },
+    
+    setIcon : function(str)
     {
         this.el.select('.roo-alert-text',true).first().dom.innerHTML = str;
     },
