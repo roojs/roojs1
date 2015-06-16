@@ -757,7 +757,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(isSelectAll  && event.getCharCode() > 31){ // backspace and delete key
+        if(isSelectAll  && event.getCharCode() > 31){ // not backspace and delete key
             
             event.preventDefault();
             // this is very hacky as keydown always get's upper case.
