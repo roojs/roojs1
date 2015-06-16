@@ -312,12 +312,14 @@ Roo.extend(Roo.form.TextField, Roo.form.Field,  {
             return;
         }
         
-        if(isSelectAll){ // backspace and delete key
+        if(isSelectAll && event.getCharCode() > 31){ // backspace and delete key
             
             event.preventDefault();
             // this is very hacky as keydown always get's upper case.
-            //
+            
             var cc = String.fromCharCode(event.getCharCode());
+            
+            
             this.setValue( event.shiftKey ?  cc : cc.toLowerCase());
             
         }
