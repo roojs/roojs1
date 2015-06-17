@@ -25969,6 +25969,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             // text
             if  (currentElementChild.nodeName == '#text') {
                 var toadd = Roo.util.Format.htmlEncode(currentElementChild.nodeValue);
+                toadd = nopadtext ? toadd : toadd.strip();
                 if (!nopad && toadd.length > 80) {
                     innerHTML  += "\n" + (new Array( depth + 1 )).join( "  "  );
                 }
