@@ -42346,7 +42346,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var tagName = Roo.util.Format.htmlEncode(currentElement.tagName);
         
         if  (nodeName == '#text') {
-            return currentElement.nodeValue;
+            
+            return nopadtext ? currentElement.nodeValue : currentElement.nodeValue.trim();
         }
         
         
