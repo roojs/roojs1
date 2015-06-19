@@ -476,7 +476,10 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         // disable everything...
         
         this.tb.items.each(function(item){
-           if(item.id != editorcore.frameId+ '-sourceedit'){
+           if(
+                item.id != editorcore.frameId+ '-sourceedit'
+                
+            ){
                 item.disable();
             }
         });
