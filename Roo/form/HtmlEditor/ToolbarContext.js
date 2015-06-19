@@ -636,21 +636,20 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         var _this = this;
         
-        Roo.log('body?????!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(nm);
+        if(nm == 'BODY'){
+            tb.addSeparator();
         
-        tb.addSeparator();
-        
-        tb.addButton( {
-            text: 'Stylesheets',
-    
-            listeners : {
-                click : function ()
-                {
-                    _this.editor.fireEvent('stylesheetsclick', _this.editor);
+            tb.addButton( {
+                text: 'Stylesheets',
+
+                listeners : {
+                    click : function ()
+                    {
+                        _this.editor.fireEvent('stylesheetsclick', _this.editor);
+                    }
                 }
-            }
-        });
+            });
+        }
         
         tb.addFill();
         tb.addButton( {
