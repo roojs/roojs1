@@ -513,6 +513,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     },
     buildToolbar: function(tlist, nm)
     {
+        Roo.log(tlist, m)
         var editor = this.editor;
         var editorcore = this.editorcore;
          // create a new element.
