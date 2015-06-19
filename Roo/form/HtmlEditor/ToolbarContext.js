@@ -642,10 +642,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
              
         }
         
+        var _this = this;
+        
         tb.addSeparator();
         
         tb.addFill();
-        var _this = this;
+        
         tb.addButton( {
             text: 'Remove Tag',
     
