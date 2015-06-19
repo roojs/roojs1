@@ -26633,7 +26633,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 
                 var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
                 ah -= 5; // knock a few pixes off for look..
-                Roo.log(ah);
+//                Roo.log(ah);
                 this.el.setHeight(this.adjustWidth('textarea', ah));
                 var eh = ah;
             }
@@ -27206,8 +27206,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     actiontype : this.cleanStyles[i],
                     html: 'Remove ' + this.cleanStyles[i],
                     handler: function(a,b) {
-                        Roo.log(a);
-                        Roo.log(b);
+//                        Roo.log(a);
+//                        Roo.log(b);
                         var c = Roo.get(editorcore.doc.body);
                         c.select('[style]').each(function(s) {
                             s.dom.style.removeProperty(a.actiontype);
@@ -27881,6 +27881,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             this.toolbars[i] = this.buildToolbar(ty[i],i);
         }
         this.tb = this.toolbars.BODY;
+        Roo.log('this.toolbars.BODY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(this.toolbars.BODY);
         this.tb.el.show();
         this.buildFooter();
         this.footer.show();
@@ -36222,7 +36224,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     // private
     processEvent : function(name, e){
         // does this fire select???
-        Roo.log('grid:processEvent '  + name);
+        //Roo.log('grid:processEvent '  + name);
         
         if (name != 'touchstart' ) {
             this.fireEvent(name, e);    
