@@ -27881,8 +27881,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             this.toolbars[i] = this.buildToolbar(ty[i],i);
         }
         this.tb = this.toolbars.BODY;
-        Roo.log('this.toolbars.BODY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.toolbars.BODY);
         this.tb.el.show();
         this.buildFooter();
         this.footer.show();
@@ -28201,8 +28199,23 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             }));
              
         }
-        tb.addFill();
+        
         var _this = this;
+        
+        tb.addSeparator();
+        
+        tb.addButton( {
+            text: 'Stylesheets',
+    
+            listeners : {
+                click : function ()
+                {
+                    _this.editor.fireEvent('stylesheetsclick', _this.editor);
+                }
+            }
+        });
+        
+        tb.addFill();
         tb.addButton( {
             text: 'Remove Tag',
     
