@@ -417,7 +417,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
                 
                 var ah = h - this.wrap.getFrameWidth('tb') - tbh;// this.tb.el.getHeight();
                 ah -= 5; // knock a few pixes off for look..
-                Roo.log(ah);
+//                Roo.log(ah);
                 this.el.setHeight(this.adjustWidth('textarea', ah));
                 var eh = ah;
             }
