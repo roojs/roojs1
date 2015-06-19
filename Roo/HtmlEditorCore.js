@@ -1450,7 +1450,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     setStylesheets : function(stylesheet)
     {
-        Roo.log();
         Roo.get(this.iframe.contentDocument.head).createChild({
             tag : 'link',
             rel : 'stylesheet',
