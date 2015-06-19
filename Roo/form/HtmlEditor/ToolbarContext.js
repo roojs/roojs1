@@ -309,6 +309,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         // disable everything...
         var ty= Roo.form.HtmlEditor.ToolbarContext.types;
         this.toolbars = {};
+        Roo.log('this.styles!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         Roo.log(this.styles);
         for (var i in  ty) {
           
