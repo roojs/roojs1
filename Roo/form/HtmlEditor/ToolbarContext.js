@@ -636,6 +636,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         var _this = this;
         
+        Roo.log('body?????!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(nm);
+        
         tb.addSeparator();
         
         tb.addButton( {
