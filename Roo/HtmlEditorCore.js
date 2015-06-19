@@ -1446,8 +1446,9 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }, this);
     },
     
-    setStylesheets : function(href)
+    setStylesheets : function(stylesheets)
     {
+//        if(typeof(href) ==)
 //        Roo.each(this.stylesheets, function(s) {
 //            st += '<link rel="stylesheet" type="text/css" href="' + s +'" />'
 //        });
