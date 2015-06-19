@@ -524,6 +524,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
        Roo.log(wdiv);
         var tb = new Roo.Toolbar(wdiv);
+        Roo.log(tb);
         // add the name..
         
         tb.add(nm+ ":&nbsp;");
