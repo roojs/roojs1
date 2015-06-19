@@ -522,7 +522,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 tag: 'div'
             }, editor.wrap.dom.firstChild.nextSibling, true);
         
-       
+       Roo.log(wdiv);
         var tb = new Roo.Toolbar(wdiv);
         // add the name..
         
