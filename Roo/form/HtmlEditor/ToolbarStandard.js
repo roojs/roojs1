@@ -477,7 +477,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         
         this.tb.items.each(function(item){
             Roo.log('Itme!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-            Roo.log('item');
+            Roo.log(item);
            if(
                 item.id != editorcore.frameId+ '-sourceedit'
                 
