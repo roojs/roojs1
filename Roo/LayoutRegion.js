@@ -444,7 +444,7 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
      */
     showPanel : function(panel)
     {
-        var panel = this.getPanel(panel);
+        panel = this.getPanel(panel);
         if(panel){
             if(this.tabs){
                 var tab = this.tabs.getTab(panel.getEl().id);
