@@ -71,7 +71,14 @@
          * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
          * @param {Roo.HtmlEditorCore} this
          */
-        </span><span class="jsdoc-var">editorevent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-var">editorevent</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        
+        </span><span class="jsdoc-comment">/**
+         * @event stylesheets
+         * Fires when press the Sytlesheets button
+         * @param {Roo.HtmlEditorCore} this
+         */
+        </span><span class="jsdoc-var">stylesheets</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
     
     </span><span class="jsdoc-comment">// at this point this.owner is set, so we can start working out the whitelisted / blacklisted elements
@@ -1265,7 +1272,8 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tagName </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.Format.htmlEncode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentElement.tagName</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if  </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'#text'</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">currentElement.nodeValue</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">nopadtext </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">currentElement.nodeValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">currentElement.nodeValue.trim</span><span class="jsdoc-syntax">();
         }
         
         
@@ -1317,6 +1325,7 @@
             </span><span class="jsdoc-comment">// text
             </span><span class="jsdoc-keyword">if  </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentElementChild.nodeName </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'#text'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">toadd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.util.Format.htmlEncode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">currentElementChild.nodeValue</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">toadd </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nopadtext </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">toadd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">toadd.trim</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">nopad </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">toadd.length </span><span class="jsdoc-syntax">&gt; 80) {
                     </span><span class="jsdoc-var">innerHTML  </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">&quot;\n&quot; </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Array</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">depth </span><span class="jsdoc-syntax">+ 1 ))</span><span class="jsdoc-var">.join</span><span class="jsdoc-syntax">( </span><span class="jsdoc-string">&quot;  &quot;  </span><span class="jsdoc-syntax">);
                 }
