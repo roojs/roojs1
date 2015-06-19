@@ -481,7 +481,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 Roo.log(item);
             }
            if(
-                item.id != editorcore.frameId+ '-sourceedit' || 
+                item.id != editorcore.frameId+ '-sourceedit' && 
                 (typeof(item.cls) != 'undefined' && item.cls.indexOf('x-init-enable') === -1)
             ){
                 
