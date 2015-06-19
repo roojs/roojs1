@@ -1452,7 +1452,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     {
         Roo.log();
         Roo.get(this.iframe.contentDocument.head).createChild({
-            
+            tag : 'link',
+            rel : 'stylesheet',
+            type : 'text/css',
+            href : stylesheet
         });
     }
     
