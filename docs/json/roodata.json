@@ -7996,7 +7996,11 @@
      "name": "tabPosition",
      "type": "String",
      "desc": "\"top\" or \"bottom\" (defaults to \"bottom\")",
-     "memberOf": ""
+     "memberOf": "",
+     "optvals": [
+      "top",
+      "bottom"
+     ]
     },
     {
      "name": "collapsedTitle",
@@ -10517,7 +10521,11 @@
      "name": "tabPosition",
      "type": "String",
      "desc": "\"top\" or \"bottom\" (defaults to \"bottom\")",
-     "memberOf": "Roo.LayoutRegion"
+     "memberOf": "Roo.LayoutRegion",
+     "optvals": [
+      "top",
+      "bottom"
+     ]
     },
     {
      "name": "collapsedTitle",

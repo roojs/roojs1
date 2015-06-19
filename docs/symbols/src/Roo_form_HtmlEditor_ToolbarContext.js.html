@@ -633,8 +633,25 @@ Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.f
             }));
              
         }
-        </span><span class="jsdoc-var">tb.addFill</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nm </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'BODY'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">tb.addSeparator</span><span class="jsdoc-syntax">();
+        
+            </span><span class="jsdoc-var">tb.addButton</span><span class="jsdoc-syntax">( {
+                </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Stylesheets'</span><span class="jsdoc-syntax">,
+
+                </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {
+                    </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
+                    {
+                        </span><span class="jsdoc-var">_this.editor.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'stylesheetsclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this.editor</span><span class="jsdoc-syntax">);
+                    }
+                }
+            });
+        }
+        
+        </span><span class="jsdoc-var">tb.addFill</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">tb.addButton</span><span class="jsdoc-syntax">( {
             </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Remove Tag'</span><span class="jsdoc-syntax">,
     

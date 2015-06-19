@@ -417,7 +417,7 @@
                 
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.wrap.getFrameWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">tbh</span><span class="jsdoc-syntax">;</span><span class="jsdoc-comment">// this.tb.el.getHeight();
                 </span><span class="jsdoc-var">ah </span><span class="jsdoc-syntax">-= 5; </span><span class="jsdoc-comment">// knock a few pixes off for look..
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">);
+//                Roo.log(ah);
                 </span><span class="jsdoc-var">this.el.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.adjustWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'textarea'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">));
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">eh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ah</span><span class="jsdoc-syntax">;
             }
@@ -560,6 +560,16 @@
     </span><span class="jsdoc-var">pushValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.editorcore.pushValue</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">setStylesheets </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stylesheets</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.editorcore.setStylesheets</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stylesheets</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">removeStylesheets </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.editorcore.removeStylesheets</span><span class="jsdoc-syntax">();
     }
      
     

@@ -143,7 +143,6 @@
     </span><span class="jsdoc-var">getDocMarkup </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-comment">// body styles..
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stylesheets</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-comment">// inherit styels from page...?? 
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stylesheets </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
@@ -161,10 +160,7 @@
                 </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'&lt;style type=&quot;text/css&quot;&gt;' </span><span class="jsdoc-syntax">+
                     </span><span class="jsdoc-string">'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' </span><span class="jsdoc-syntax">+
                    </span><span class="jsdoc-string">'&lt;/style&gt;'</span><span class="jsdoc-syntax">;
-        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.stylesheets</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">st </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">'&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">s </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'&quot; /&gt;'
-            </span><span class="jsdoc-syntax">});
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{ 
             
         }
         
@@ -245,8 +241,6 @@
         </span><span class="jsdoc-syntax">};
         </span><span class="jsdoc-var">Roo.TaskMgr.start</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">task</span><span class="jsdoc-syntax">);
 
-        
-         
     },
 
     </span><span class="jsdoc-comment">// private
@@ -1446,6 +1440,45 @@
             </span><span class="jsdoc-var">this.cblack.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">);
             
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">setStylesheets </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stylesheets</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stylesheets</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.iframe.contentDocument.head</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">rel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'stylesheet'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text/css'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">stylesheets
+            </span><span class="jsdoc-syntax">});
+            
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+     
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">stylesheets</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">s.length</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.iframe.contentDocument.head</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'link'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">rel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'stylesheet'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text/css'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">href </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">s
+            </span><span class="jsdoc-syntax">});
+        });
+
+        
+    },
+    
+    </span><span class="jsdoc-var">removeStylesheets </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.iframe.contentDocument.head</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'link[rel=stylesheet]'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">s</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">s.remove</span><span class="jsdoc-syntax">();
+        });
     }
     
     </span><span class="jsdoc-comment">// hide stuff that is not compatible
