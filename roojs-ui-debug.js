@@ -26403,11 +26403,11 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
             savedpreview: true,
             
             /**
-            * @event stylesheets
+            * @event stylesheets_click
             * Fires when press the Sytlesheets button
             * @param {Roo.HtmlEditorCore} this
             */
-            stylesheets: true
+            stylesheets_click: true
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
