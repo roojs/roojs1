@@ -1470,7 +1470,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     removeStylesheets : function()
     {
+        var _this = this;
         
+        Roo.each(Roo.get(_this.iframe.contentDocument.head).select('link[rel=stylesheet]', true).elements, function(s){
+            s.remove();
+        });
     }
     
     // hide stuff that is not compatible
