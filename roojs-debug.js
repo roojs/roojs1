@@ -43706,6 +43706,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             for(var i =0; i< this.btns.length;i++) {
                 var b = Roo.factory(this.btns[i],Roo.form);
                 b.cls =  'x-edit-none';
+                
+                if(typeof(this.btns[i].cls) != 'undefined' && this.btns[i].cls.indexOf('x-init-enable') !== -1){
+                    b.cls += ' x-init-enable';
+                }
+                
                 b.scope = editorcore;
                 tb.add(b);
             }
@@ -43717,7 +43722,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         // disable everything...
         
         this.tb.items.each(function(item){
-           if(item.id != editorcore.frameId+ '-sourceedit'){
+            
+           if(
+                item.id != editorcore.frameId+ '-sourceedit' && 
+                (typeof(item.cls) != 'undefined' && item.cls.indexOf('x-init-enable') === -1)
+            ){
+                
                 item.disable();
             }
         });
