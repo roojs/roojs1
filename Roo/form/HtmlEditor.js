@@ -560,6 +560,11 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     pushValue : function()
     {
         this.editorcore.pushValue();
+    },
+    
+    setStylesheets : function(stylesheet)
+    {
+        this.editorcore.setStylesheets(stylesheet)
     }
      
     
