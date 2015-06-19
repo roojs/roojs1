@@ -309,16 +309,12 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         // disable everything...
         var ty= Roo.form.HtmlEditor.ToolbarContext.types;
         this.toolbars = {};
-        Roo.log('this.styles!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.styles);
+           
         for (var i in  ty) {
           
             this.toolbars[i] = this.buildToolbar(ty[i],i);
         }
         this.tb = this.toolbars.BODY;
-        Roo.log('this.toolbars.BODY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.toolbars.BODY);
-        
         this.tb.el.show();
         this.buildFooter();
         this.footer.show();
@@ -514,8 +510,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     },
     buildToolbar: function(tlist, nm)
     {
-        Roo.log('build Toolbar!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log([tlist, nm])
         var editor = this.editor;
         var editorcore = this.editorcore;
          // create a new element.
@@ -523,9 +517,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 tag: 'div'
             }, editor.wrap.dom.firstChild.nextSibling, true);
         
-       Roo.log(wdiv);
+       
         var tb = new Roo.Toolbar(wdiv);
-        Roo.log(tb);
         // add the name..
         
         tb.add(nm+ ":&nbsp;");
@@ -568,8 +561,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         var tbc = Roo.form.HtmlEditor.ToolbarContext;
         var tbops = tbc.options;
-        Roo.log('tbc!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(tbc.options);
+        
         for (var i in tlist) {
             
             var item = tlist[i];
@@ -655,14 +647,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                     
                 }
             }
-            
-                    
-                
-            
         });
         
         tb.addFill();
-        
         tb.addButton( {
             text: 'Remove Tag',
     
