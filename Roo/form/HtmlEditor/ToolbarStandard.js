@@ -176,8 +176,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         
         
         var tb = new Roo.Toolbar(editor.wrap.dom.firstChild);
-        Roo.log('ToobarStandard tb!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(tb);
         this.tb = tb;
          // stop form submits
         tb.el.on('click', function(e){
@@ -206,10 +204,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             */
             
         };
-        
-        Roo.log('disable formats????????????????????????')
-        Roo.log(this.disable);
-        Roo.log(this.disable.formats);
         if(!this.disable.formats){
             this.formatCombo = new Roo.form.ComboBox({
                 store: new Roo.data.SimpleStore({
@@ -465,8 +459,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         if (this.btns) {
             for(var i =0; i< this.btns.length;i++) {
                 var b = Roo.factory(this.btns[i],Roo.form);
-                //b.cls =  'x-edit-none';
-                
+                b.cls =  'x-edit-none';
                 b.scope = editorcore;
                 tb.add(b);
             }
@@ -478,8 +471,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         // disable everything...
         
         this.tb.items.each(function(item){
-            Roo.log('items!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-            Roo.log(item);
            if(item.id != editorcore.frameId+ '-sourceedit'){
                 item.disable();
             }
