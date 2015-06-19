@@ -645,6 +645,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
                 click : function ()
                 {
                     Roo.log('sylesheets click');
+                    Roo.log(_this);
                 }
             }
         });
