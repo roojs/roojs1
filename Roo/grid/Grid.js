@@ -531,7 +531,7 @@ Roo.extend(Roo.grid.Grid, Roo.util.Observable, {
     // private
     processEvent : function(name, e){
         // does this fire select???
-        Roo.log('grid:processEvent '  + name);
+        //Roo.log('grid:processEvent '  + name);
         
         if (name != 'touchstart' ) {
             this.fireEvent(name, e);    
