@@ -165,7 +165,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
 //            Roo.each(this.stylesheets, function(s) {
 //                st += '<link rel="stylesheet" type="text/css" href="' + s +'" />'
 //            });
-            this.setStylesheets(this.stylesheets);
+//            this.setStylesheets(this.stylesheets);
         }
         
         st +=  '<style type="text/css">' +
