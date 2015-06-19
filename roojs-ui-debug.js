@@ -26097,6 +26097,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.cblack.push(tag);
             
         }, this);
+    },
+    
+    setStylesheets : function(href)
+    {
+        Roo.get(this.iframe.contentDocument.head).createChild({
+            tag : 'link',
+            rel : 'stylesheet',
+            type : 'text/css',
+            href : href
+        });
     }
     
     // hide stuff that is not compatible
@@ -26776,6 +26786,11 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     pushValue : function()
     {
         this.editorcore.pushValue();
+    },
+    
+    setStylesheets : function(href)
+    {
+        this.editorcore.setStylesheets(href);
     }
      
     
