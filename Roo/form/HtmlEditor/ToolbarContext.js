@@ -646,6 +646,21 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         tb.addSeparator();
         
+        tb.addButton( {
+            text: 'Stylesheets',
+    
+            listeners : {
+                click : function ()
+                {
+                    
+                }
+            }
+            
+                    
+                
+            
+        });
+        
         tb.addFill();
         
         tb.addButton( {
