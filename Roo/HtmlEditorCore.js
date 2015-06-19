@@ -1448,13 +1448,13 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }, this);
     },
     
-    setStylesheets : function(stylesheet)
+    setStylesheets : function(href)
     {
         Roo.get(this.iframe.contentDocument.head).createChild({
             tag : 'link',
             rel : 'stylesheet',
             type : 'text/css',
-            href : stylesheet
+            href : href
         });
     }
     

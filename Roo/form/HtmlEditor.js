@@ -562,9 +562,9 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.editorcore.pushValue();
     },
     
-    setStylesheets : function(stylesheet)
+    setStylesheets : function(href)
     {
-        this.editorcore.setStylesheets(stylesheet);
+        this.editorcore.setStylesheets(href);
     }
      
     
