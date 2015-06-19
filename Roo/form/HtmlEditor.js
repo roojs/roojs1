@@ -184,7 +184,14 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
              * preview the saved version of htmlEditor
              * @param {HtmlEditor} this
              */
-            savedpreview: true
+            savedpreview: true,
+            
+            /**
+            * @event stylesheets
+            * Fires when press the Sytlesheets button
+            * @param {Roo.HtmlEditorCore} this
+            */
+            stylesheets: true
         });
         this.defaultAutoCreate =  {
             tag: "textarea",
