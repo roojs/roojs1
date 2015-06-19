@@ -8623,7 +8623,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      * Refreshes the view. - called by datachanged on the store. - do not call directly.
      */
     refresh : function(){
-        Roo.log('refresh');
+        //Roo.log('refresh');
         var t = this.tpl;
         
         // if we are using something like 'domtemplate', then
@@ -8702,7 +8702,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     },
 
     onUpdate : function(ds, record){
-         Roo.log('on update');   
+        // Roo.log('on update');   
         this.clearSelections();
         var index = this.store.indexOf(record);
         var n = this.nodes[index];
@@ -8716,7 +8716,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
 // --------- FIXME     
     onAdd : function(ds, records, index)
     {
-        Roo.log(['on Add', ds, records, index] );        
+        //Roo.log(['on Add', ds, records, index] );        
         this.clearSelections();
         if(this.nodes.length == 0){
             this.refresh();
@@ -8736,7 +8736,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
     },
 
     onRemove : function(ds, record, index){
-        Roo.log('onRemove');
+       // Roo.log('onRemove');
         this.clearSelections();
         var el = this.dataName  ?
             this.el.child('.roo-tpl-' + this.dataName) :
@@ -8800,7 +8800,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
      */
     onBeforeLoad : function(store,opts)
     {
-         Roo.log('onBeforeLoad');   
+         //Roo.log('onBeforeLoad');   
         if (!opts.add) {
             this.el.update("");
         }
@@ -8871,7 +8871,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         }
         if (this.toggleSelect) {
             var m = this.isSelected(item) ? 'unselect' : 'select';
-            Roo.log(m);
+            //Roo.log(m);
             var _t = this;
             _t[m](item, true, false);
             return true;
@@ -8999,7 +8999,7 @@ Roo.extend(Roo.View, Roo.util.Observable, {
         }
         var node = this.getNode(nodeInfo);
         if(!node || !this.isSelected(node)){
-            Roo.log("not selected");
+            //Roo.log("not selected");
             return; // not selected.
         }
         // fireevent???
