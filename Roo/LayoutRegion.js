@@ -442,8 +442,10 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
      * @param {Number/String/ContentPanel} panelId The panel's index, id or the panel itself
      * @return {Roo.ContentPanel} The shown panel, or null if a panel could not be found from panelId
      */
-    showPanel : function(panel){
-        if(panel = this.getPanel(panel)){
+    showPanel : function(panel)
+    {
+        var panel = this.getPanel(panel);
+        if(panel){
             if(this.tabs){
                 var tab = this.tabs.getTab(panel.getEl().id);
                 if(tab.isHidden()){
