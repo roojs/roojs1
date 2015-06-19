@@ -1444,8 +1444,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     setStylesheets : function(stylesheets)
     {
-        Roo.log('setting stylesheets!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(stylesheets);
         if(typeof(stylesheets) == 'string'){
             Roo.get(this.iframe.contentDocument.head).createChild({
                 tag : 'link',
@@ -1457,7 +1455,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return;
         }
         var _this = this;
-        Roo.log(_this.iframe.contentDocument.head);
+     
         Roo.each(stylesheets, function(s) {
             if(!s.length){
                 return;
