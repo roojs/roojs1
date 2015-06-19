@@ -41152,7 +41152,14 @@ Roo.HtmlEditorCore = function(config){
          * Fires when on any editor (mouse up/down cursor movement etc.) - used for toolbar hooks.
          * @param {Roo.HtmlEditorCore} this
          */
-        editorevent: true
+        editorevent: true,
+        
+        /**
+         * @event stylesheets
+         * Fires when press the Sytlesheets button
+         * @param {Roo.HtmlEditorCore} this
+         */
+        stylesheets: true
     });
     
     // at this point this.owner is set, so we can start working out the whitelisted / blacklisted elements
