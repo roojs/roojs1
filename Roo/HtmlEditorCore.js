@@ -1448,17 +1448,19 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     setStylesheets : function(stylesheets)
     {
-//        if(typeof(href) ==)
+        if(typeof(stylesheets) == 'string'){
+            Roo.get(this.iframe.contentDocument.head).createChild({
+                tag : 'link',
+                rel : 'stylesheet',
+                type : 'text/css',
+                href : stylesheets
+            });
+        }
 //        Roo.each(this.stylesheets, function(s) {
 //            st += '<link rel="stylesheet" type="text/css" href="' + s +'" />'
 //        });
 
-        Roo.get(this.iframe.contentDocument.head).createChild({
-            tag : 'link',
-            rel : 'stylesheet',
-            type : 'text/css',
-            href : href
-        });
+        
     },
     
     removeStylesheets : function()
