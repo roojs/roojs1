@@ -26106,7 +26106,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return;
         }
         var _this = this;
-        
+     
         Roo.each(stylesheets, function(s) {
             if(!s.length){
                 return;
