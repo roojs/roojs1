@@ -176,6 +176,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         
         
         var tb = new Roo.Toolbar(editor.wrap.dom.firstChild);
+        Roo.log('ToobarStandard tb!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         Roo.log(tb);
         this.tb = tb;
          // stop form submits
