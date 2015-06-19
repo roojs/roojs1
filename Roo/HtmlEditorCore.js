@@ -1450,7 +1450,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     setStylesheets : function(stylesheet)
     {
-        Roo.log(this);
+        Roo.log(this.iframe.contentDocument.head);
     }
     
     // hide stuff that is not compatible
