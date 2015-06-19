@@ -200,11 +200,11 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
      * @param {HtmlEditor} editor
      */
     createToolbar : function(editor){
-        Roo.log("create toolbars");
+        Roo.log("create toolbars!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1");
         if (!editor.toolbars || !editor.toolbars.length) {
             editor.toolbars = [ new Roo.form.HtmlEditor.ToolbarStandard() ]; // can be empty?
         }
-        
+        Roo.log(editor.toolbars);
         for (var i =0 ; i < editor.toolbars.length;i++) {
             editor.toolbars[i] = Roo.factory(
                     typeof(editor.toolbars[i]) == 'string' ?
