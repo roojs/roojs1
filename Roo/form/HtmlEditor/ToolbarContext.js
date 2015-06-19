@@ -569,7 +569,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         var tbc = Roo.form.HtmlEditor.ToolbarContext;
         var tbops = tbc.options;
         Roo.log('tbc!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(tbc);
+        Roo.log(tbc.options);
         for (var i in tlist) {
             
             var item = tlist[i];
