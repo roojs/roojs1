@@ -382,8 +382,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     actiontype : this.cleanStyles[i],
                     html: 'Remove ' + this.cleanStyles[i],
                     handler: function(a,b) {
-                        Roo.log(a);
-                        Roo.log(b);
+//                        Roo.log(a);
+//                        Roo.log(b);
                         var c = Roo.get(editorcore.doc.body);
                         c.select('[style]').each(function(s) {
                             s.dom.style.removeProperty(a.actiontype);
