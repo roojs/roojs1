@@ -241,10 +241,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         };
         Roo.TaskMgr.start(task);
 
-        if(this.stylesheets){
-            this.setStylesheets(this.stylesheets);
-        }
-         
     },
 
     // private
