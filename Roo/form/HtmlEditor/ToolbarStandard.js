@@ -461,7 +461,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 var b = Roo.factory(this.btns[i],Roo.form);
                 b.cls =  'x-edit-none';
                 
-                if(this.btns[i].cls.indexOf('x-init-enable')){
+                if(typeof(this.btns[i].cls) != 'undefined' && this.btns[i].cls.indexOf('x-init-enable')){
                     b.cls += ' x-init-enable';
                 }
                 
