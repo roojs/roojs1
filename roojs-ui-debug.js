@@ -24794,7 +24794,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     getDocMarkup : function(){
         // body styles..
         var st = '';
-        Roo.log(this.stylesheets);
         
         // inherit styels from page...?? 
         if (this.stylesheets === false) {
@@ -24812,10 +24811,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 st = '<style type="text/css">' +
                     'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
                    '</style>';
-        } else {
-            Roo.each(this.stylesheets, function(s) {
-                st += '<link rel="stylesheet" type="text/css" href="' + s +'" />'
-            });
+        } else { 
             
         }
         
@@ -24896,8 +24892,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         };
         Roo.TaskMgr.start(task);
 
-        
-         
     },
 
     // private
@@ -26099,13 +26093,42 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }, this);
     },
     
-    setStylesheets : function(href)
+    setStylesheets : function(stylesheets)
     {
-        Roo.get(this.iframe.contentDocument.head).createChild({
-            tag : 'link',
-            rel : 'stylesheet',
-            type : 'text/css',
-            href : href
+        if(typeof(stylesheets) == 'string'){
+            Roo.get(this.iframe.contentDocument.head).createChild({
+                tag : 'link',
+                rel : 'stylesheet',
+                type : 'text/css',
+                href : stylesheets
+            });
+            
+            return;
+        }
+        var _this = this;
+        
+        Roo.each(stylesheets, function(s) {
+            if(!s.length){
+                return;
+            }
+            
+            Roo.get(_this.iframe.contentDocument.head).createChild({
+                tag : 'link',
+                rel : 'stylesheet',
+                type : 'text/css',
+                href : s
+            });
+        });
+
+        
+    },
+    
+    removeStylesheets : function()
+    {
+        var _this = this;
+        
+        Roo.each(Roo.get(_this.iframe.contentDocument.head).select('link[rel=stylesheet]', true).elements, function(s){
+            s.remove();
         });
     }
     
@@ -26788,9 +26811,14 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.editorcore.pushValue();
     },
     
-    setStylesheets : function(href)
+    setStylesheets : function(stylesheets)
     {
-        this.editorcore.setStylesheets(href);
+        this.editorcore.setStylesheets(stylesheets);
+    },
+    
+    removeStylesheets : function()
+    {
+        this.editorcore.removeStylesheets();
     }
      
     
@@ -33620,7 +33648,7 @@ Roo.extend(Roo.BasicLayoutRegion, Roo.util.Observable, {
  * @cfg {Boolean}   floatable       False to disable floating (defaults to true)
  * @cfg {Object}    margins         Margins for the element (defaults to {top: 0, left: 0, right:0, bottom: 0})
  * @cfg {Object}    cmargins        Margins for the element when collapsed (defaults to: north/south {top: 2, left: 0, right:0, bottom: 2} or east/west {top: 0, left: 2, right:2, bottom: 0})
- * @cfg {String}    tabPosition     "top" or "bottom" (defaults to "bottom")
+ * @cfg {String}    tabPosition     (top|bottom) "top" or "bottom" (defaults to "bottom")
  * @cfg {String}    collapsedTitle  Optional string message to display in the collapsed block of a north or south region
  * @cfg {Boolean}   alwaysShowTabs  True to always display tabs even when there is only 1 panel (defaults to false)
  * @cfg {Boolean}   autoScroll      True to enable overflow scrolling (defaults to false)
@@ -34044,8 +34072,10 @@ Roo.extend(Roo.LayoutRegion, Roo.BasicLayoutRegion, {
      * @param {Number/String/ContentPanel} panelId The panel's index, id or the panel itself
      * @return {Roo.ContentPanel} The shown panel, or null if a panel could not be found from panelId
      */
-    showPanel : function(panel){
-        if(panel = this.getPanel(panel)){
+    showPanel : function(panel)
+    {
+        panel = this.getPanel(panel);
+        if(panel){
             if(this.tabs){
                 var tab = this.tabs.getTab(panel.getEl().id);
                 if(tab.isHidden()){
