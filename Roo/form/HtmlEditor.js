@@ -564,7 +564,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     
     setStylesheets : function(stylesheet)
     {
-        this.editorcore.setStylesheets(stylesheet)
+        this.editorcore.setStylesheets(stylesheet);
     }
      
     
