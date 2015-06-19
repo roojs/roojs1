@@ -460,6 +460,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             for(var i =0; i< this.btns.length;i++) {
                 var b = Roo.factory(this.btns[i],Roo.form);
                 b.cls =  'x-edit-none';
+                
+                if(this.btns[i].cls.indexOf('x-init-enable')){
+                    b.cls += ' x-init-enable';
+                }
+                
                 b.scope = editorcore;
                 tb.add(b);
             }
