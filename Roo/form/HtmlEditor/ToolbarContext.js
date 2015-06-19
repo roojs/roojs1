@@ -702,7 +702,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             e.preventDefault(); // what does this do?
         });
         tb.el.setVisibilityMode( Roo.Element.DISPLAY);
-        tb.el.hide();
+//        tb.el.hide();
         tb.name = nm;
         // dont need to disable them... as they will get hidden
         return tb;
