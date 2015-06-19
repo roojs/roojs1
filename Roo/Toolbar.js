@@ -104,6 +104,7 @@ Roo.Toolbar.prototype = {
     // private..
     _add : function(el) {
         Roo.log('Toolbar _add el !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+        Roo.log(el);
         if (el.xtype) {
             el = Roo.factory(el, typeof(Roo.Toolbar[el.xtype]) == 'undefined' ? Roo.form : Roo.Toolbar);
         }
