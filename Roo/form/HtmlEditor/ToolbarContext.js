@@ -644,8 +644,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             listeners : {
                 click : function ()
                 {
-                    Roo.log('sylesheets click');
-                    Roo.log(_this);
+                    _this.editor.fireEvent('stylesheetsclick', _this.editor);
                 }
             }
         });
