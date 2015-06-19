@@ -188,7 +188,7 @@ Roo.form.HtmlEditor.ToolbarContext.types = {
     // should this just be 
     'BODY' : {
         title : {
-            title: "Title?",
+            title: "Title",
             width: 200,
             disabled : true
         }
