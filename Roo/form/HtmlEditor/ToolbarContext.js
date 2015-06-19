@@ -641,6 +641,9 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
             }));
              
         }
+        
+        tb.addSeparator();
+        
         tb.addFill();
         var _this = this;
         tb.addButton( {
