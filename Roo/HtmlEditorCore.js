@@ -1455,10 +1455,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 type : 'text/css',
                 href : stylesheets
             });
+            
+            return;
         }
-//        Roo.each(this.stylesheets, function(s) {
-//            st += '<link rel="stylesheet" type="text/css" href="' + s +'" />'
-//        });
+        Roo.each(stylesheets, function(s) {
+            Roo.get(this.iframe.contentDocument.head).createChild({
+                tag : 'link',
+                rel : 'stylesheet',
+                type : 'text/css',
+                href : stylesheets
+            });
+        });
 
         
     },
