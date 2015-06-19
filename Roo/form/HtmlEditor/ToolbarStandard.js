@@ -208,6 +208,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         };
         
         Roo.log('disable formats????????????????????????')
+        Roo.log(this.disable);
         Roo.log(this.disable.formats);
         if(!this.disable.formats){
             this.formatCombo = new Roo.form.ComboBox({
