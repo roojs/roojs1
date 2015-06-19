@@ -162,10 +162,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     'body{border:0;margin:0;padding:3px;height:98%;cursor:text;}' +
                    '</style>';
         } else {
-            Roo.each(this.stylesheets, function(s) {
-                st += '<link rel="stylesheet" type="text/css" href="' + s +'" />'
-            });
-            
+//            Roo.each(this.stylesheets, function(s) {
+//                st += '<link rel="stylesheet" type="text/css" href="' + s +'" />'
+//            });
+            this.setStylesheets(this.stylesheets);
         }
         
         st +=  '<style type="text/css">' +
