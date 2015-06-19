@@ -44632,18 +44632,20 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         var _this = this;
         
-        tb.addSeparator();
+        if(nm == 'BODY'){
+            tb.addSeparator();
         
-        tb.addButton( {
-            text: 'Stylesheets',
-    
-            listeners : {
-                click : function ()
-                {
-                    _this.editor.fireEvent('stylesheetsclick', _this.editor);
+            tb.addButton( {
+                text: 'Stylesheets',
+
+                listeners : {
+                    click : function ()
+                    {
+                        _this.editor.fireEvent('stylesheetsclick', _this.editor);
+                    }
                 }
-            }
-        });
+            });
+        }
         
         tb.addFill();
         tb.addButton( {
