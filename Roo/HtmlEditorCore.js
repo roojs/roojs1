@@ -1458,12 +1458,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             
             return;
         }
+        var _this = this;
+        
         Roo.each(stylesheets, function(s) {
-            Roo.get(this.iframe.contentDocument.head).createChild({
+            Roo.get(_this.iframe.contentDocument.head).createChild({
                 tag : 'link',
                 rel : 'stylesheet',
                 type : 'text/css',
-                href : stylesheets
+                href : s
             });
         });
 
