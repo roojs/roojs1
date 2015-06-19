@@ -476,10 +476,15 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         // disable everything...
         
         this.tb.items.each(function(item){
+            if((typeof(item.cls) != 'undefined' && item.cls.indexOf('x-init-enable') !== -1)){
+                Roo.log('itme!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11');
+                Roo.log(item);
+            }
            if(
                 item.id != editorcore.frameId+ '-sourceedit' || 
                 (typeof(item.cls) != 'undefined' && item.cls.indexOf('x-init-enable') === -1)
             ){
+                
                 item.disable();
             }
         });
