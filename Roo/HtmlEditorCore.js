@@ -1444,6 +1444,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     
     setStylesheets : function(stylesheets)
     {
+        Roo.log('setting stylesheets!!!!!!!!!!!!!!!!!!!!!!!!!!');
         if(typeof(stylesheets) == 'string'){
             Roo.get(this.iframe.contentDocument.head).createChild({
                 tag : 'link',
