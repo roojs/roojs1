@@ -18,7 +18,7 @@
  * @cfg {Boolean}   floatable       False to disable floating (defaults to true)
  * @cfg {Object}    margins         Margins for the element (defaults to {top: 0, left: 0, right:0, bottom: 0})
  * @cfg {Object}    cmargins        Margins for the element when collapsed (defaults to: north/south {top: 2, left: 0, right:0, bottom: 2} or east/west {top: 0, left: 2, right:2, bottom: 0})
- * @cfg {String}    tabPosition     "top" or "bottom" (defaults to "bottom")
+ * @cfg {String}    tabPosition     (top|bottom) "top" or "bottom" (defaults to "bottom")
  * @cfg {String}    collapsedTitle  Optional string message to display in the collapsed block of a north or south region
  * @cfg {Boolean}   alwaysShowTabs  True to always display tabs even when there is only 1 panel (defaults to false)
  * @cfg {Boolean}   autoScroll      True to enable overflow scrolling (defaults to false)
