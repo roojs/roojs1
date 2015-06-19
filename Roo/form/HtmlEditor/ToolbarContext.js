@@ -317,6 +317,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.tb = this.toolbars.BODY;
         Roo.log('this.toolbars.BODY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         Roo.log(this.toolbars.BODY);
+        
         this.tb.el.show();
         this.buildFooter();
         this.footer.show();
