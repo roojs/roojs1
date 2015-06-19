@@ -1459,6 +1459,11 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             type : 'text/css',
             href : href
         });
+    },
+    
+    removeStylesheets : function()
+    {
+        
     }
     
     // hide stuff that is not compatible

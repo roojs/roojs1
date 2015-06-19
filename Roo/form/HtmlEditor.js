@@ -567,9 +567,9 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.editorcore.setStylesheets(stylesheets);
     },
     
-    removeStylesheets : function(stylesheets)
+    removeStylesheets : function()
     {
-        this.editorcore.removeStylesheets(stylesheets);
+        this.editorcore.removeStylesheets();
     }
      
     
