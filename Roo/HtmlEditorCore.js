@@ -1446,11 +1446,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             this.cblack.push(tag);
             
         }, this);
-    },
-    
-    setStylesheets : function()
-    {
-        Roo.log(this);
     }
     
     // hide stuff that is not compatible
