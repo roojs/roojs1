@@ -1457,6 +1457,10 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         var _this = this;
         
         Roo.each(stylesheets, function(s) {
+            if(!s.length){
+                return;
+            }
+            
             Roo.get(_this.iframe.contentDocument.head).createChild({
                 tag : 'link',
                 rel : 'stylesheet',
