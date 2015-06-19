@@ -1457,7 +1457,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return;
         }
         var _this = this;
-        
+        Roo.log(_this.iframe.contentDocument.head);
         Roo.each(stylesheets, function(s) {
             if(!s.length){
                 return;
