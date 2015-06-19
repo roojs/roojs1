@@ -43578,7 +43578,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 tb.add(
                     '-',
                     btn('sourceedit', true, function(btn){
-                        Roo.log(this);
                         this.toggleSourceEdit(btn.pressed);
                     })
                 );
@@ -43850,7 +43849,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         if(sourceEditMode){
             Roo.log("disabling buttons");
             this.tb.items.each(function(item){
-                if(item.cmd != 'sourceedit'){
+                if(item.cmd != 'sourceedit' && (typeof(item.cls) != 'undefined' && item.cls.indexOf('x-init-enable') === -1)){
                     item.disable();
                 }
             });
