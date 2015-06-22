@@ -288,6 +288,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             }
         });
         Roo.log(this);
+        
         if(suppressEvent !== true){
             this.fireEvent('check', this, true);
         }
