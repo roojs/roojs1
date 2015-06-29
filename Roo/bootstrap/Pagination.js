@@ -11,6 +11,7 @@
  * Bootstrap Pagination class
  * @cfg {String} size xs | sm | md | lg
  * @cfg {Boolean} inverse false | true
+ * @cfg {Boolean} disabled default false
  * 
  * @constructor
  * Create a new Pagination
