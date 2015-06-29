@@ -64,7 +64,7 @@
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">id </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.inputType</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: (!</span><span class="jsdoc-var">this.checked</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.valueOff </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.inputValue</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'radio' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.inputValue </span><span class="jsdoc-syntax">: ((!</span><span class="jsdoc-var">this.checked</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.valueOff </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.inputValue</span><span class="jsdoc-syntax">),
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.inputType</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">//'form-box',
             </span><span class="jsdoc-var">placeholder </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.placeholder </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">''
             
@@ -172,13 +172,18 @@
                 
         };
          </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boxLabel</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">( {
+             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">boxLabelCfg </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-comment">//'for': id, // box label is handled by onclick - so no for...
                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'box-label'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.boxLabel
-                
-            </span><span class="jsdoc-syntax">});
+            </span><span class="jsdoc-syntax">}
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tooltip</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">boxLabelCfg.tooltip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tooltip</span><span class="jsdoc-syntax">;
+            }
+             
+            </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">boxLabelCfg</span><span class="jsdoc-syntax">);
         }
         
         
@@ -287,7 +292,7 @@
                 </span><span class="jsdoc-var">e.dom.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
             }
         });
-
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">suppressEvent </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'check'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         }

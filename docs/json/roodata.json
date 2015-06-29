@@ -29710,6 +29710,12 @@
      ]
     },
     {
+     "name": "disabled",
+     "type": "Boolean",
+     "desc": "default false",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
