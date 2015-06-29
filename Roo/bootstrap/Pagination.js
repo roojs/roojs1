@@ -11,7 +11,6 @@
  * Bootstrap Pagination class
  * @cfg {String} size xs | sm | md | lg
  * @cfg {Boolean} inverse false | true
- * @cfg {Boolean} disabled default false
  * 
  * @constructor
  * Create a new Pagination
@@ -26,7 +25,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
     
     cls: false,
     size: false,
-    inverse: false
+    inverse: false,
     
     getAutoCreate : function(){
         var cfg = {
