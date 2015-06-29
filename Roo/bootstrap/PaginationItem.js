@@ -61,6 +61,10 @@ Roo.extend(Roo.bootstrap.PaginationItem, Roo.bootstrap.Component,  {
             cfg.cls = this.cls;
         }
         
+        if(this.disabled){
+            cfg.cls = typeof(cfg.cls) !== 'undefined' ? cfg.cls + ' disabled' : 'disabled';
+        }
+        
         if(this.active){
             cfg.cls = typeof(cfg.cls) !== 'undefined' ? cfg.cls + ' active' : 'active';
         }
