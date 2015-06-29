@@ -84,6 +84,10 @@ Roo.extend(Roo.bootstrap.PaginationItem, Roo.bootstrap.Component,  {
             e.preventDefault();
         }
         
+        if(this.disabled){
+            
+        }
+        
         this.fireEvent('click', this, e);
     }
    
