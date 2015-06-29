@@ -4162,6 +4162,7 @@ Roo.extend(Roo.bootstrap.Pagination, Roo.bootstrap.Component,  {
  * @cfg {String} href the link
  * @cfg {Boolean} preventDefault (true | false) default true
  * @cfg {Boolean} active (true | false) default false
+ * @cfg {Boolean} disabled default false
  * 
  * 
  * @constructor
@@ -4190,6 +4191,7 @@ Roo.extend(Roo.bootstrap.PaginationItem, Roo.bootstrap.Component,  {
     preventDefault: true,
     active : false,
     cls : false,
+    disabled: false,
     
     getAutoCreate : function(){
         var cfg= {
@@ -4205,6 +4207,10 @@ Roo.extend(Roo.bootstrap.PaginationItem, Roo.bootstrap.Component,  {
         
         if(this.cls){
             cfg.cls = this.cls;
+        }
+        
+        if(this.disabled){
+            cfg.cls = typeof(cfg.cls) !== 'undefined' ? cfg.cls + ' disabled' : 'disabled';
         }
         
         if(this.active){
@@ -4224,6 +4230,10 @@ Roo.extend(Roo.bootstrap.PaginationItem, Roo.bootstrap.Component,  {
         Roo.log('PaginationItem on click ');
         if(this.preventDefault){
             e.preventDefault();
+        }
+        
+        if(this.disabled){
+            return;
         }
         
         this.fireEvent('click', this, e);
