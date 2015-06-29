@@ -14,6 +14,7 @@
  * @cfg {String} href the link
  * @cfg {Boolean} preventDefault (true | false) default true
  * @cfg {Boolean} active (true | false) default false
+ * @cfg {Boolean} disabled default false
  * 
  * 
  * @constructor
@@ -42,6 +43,7 @@ Roo.extend(Roo.bootstrap.PaginationItem, Roo.bootstrap.Component,  {
     preventDefault: true,
     active : false,
     cls : false,
+    disabled: false,
     
     getAutoCreate : function(){
         var cfg= {
