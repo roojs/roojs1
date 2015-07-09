@@ -4383,9 +4383,6 @@ Roo.DomHelper = function(){
      */
     insertHtml : function(where, el, html){
         where = where.toLowerCase();
-        Roo.log(where);
-        Roo.log(el);
-        Roo.log(html);
         if(el.insertAdjacentHTML){
             if(tableRe.test(el.tagName)){
                 var rs;
