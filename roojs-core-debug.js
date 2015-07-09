@@ -4383,6 +4383,9 @@ Roo.DomHelper = function(){
      */
     insertHtml : function(where, el, html){
         where = where.toLowerCase();
+        Roo.log(where);
+        Roo.log(el);
+        Roo.log(html);
         if(el.insertAdjacentHTML){
             if(tableRe.test(el.tagName)){
                 var rs;
@@ -4398,7 +4401,6 @@ Roo.DomHelper = function(){
                     el.insertAdjacentHTML('AfterBegin', html);
                     return el.firstChild;
                 case "beforeend":
-                    Roo.log('got here');
                     el.insertAdjacentHTML('BeforeEnd', html);
                     return el.lastChild;
                 case "afterend":
