@@ -638,6 +638,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     getRowDom : function(rowIndex)
     {
+        Roo.log('getRowDom!!!');
+        Roo.log(this.mainBody.dom.rows);
         // not sure if I need to check this.. but let's do it anyway..
         return (this.mainBody.dom.rows && (rowIndex-1) < this.mainBody.dom.rows.length ) ?
                 this.mainBody.dom.rows[rowIndex] : false
