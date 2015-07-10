@@ -570,6 +570,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             bt.removeChild(rows[index]);
         }
         
+//        if(bt.rows[index]){
+//            bt.removeChild(bt.rows[index]);
+//        }
+        
         if(isUpdate !== true){
             //this.stripeRows(index);
             //this.syncRowHeights(index, index);
