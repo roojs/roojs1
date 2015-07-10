@@ -640,9 +640,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         return (typeof(rows[rowIndex]) == 'undefined') ? false : rows[rowIndex];
         
-        // not sure if I need to check this.. but let's do it anyway..
-        return (this.mainBody.dom.rows && (rowIndex-1) < this.mainBody.dom.rows.length ) ?
-                this.mainBody.dom.rows[rowIndex] : false
     },
     // returns the object tree for a tr..
   
