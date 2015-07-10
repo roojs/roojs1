@@ -257,8 +257,12 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      */
     insert : function(index, records){
         records = [].concat(records);
+        Roo.log('insert!!!!');
+        Roo.log(index);
+        Roo.log(records);
         for(var i = 0, len = records.length; i < len; i++){
             this.data.insert(index, records[i]);
+            Roo.log(this.data);
             records[i].join(this);
         }
         this.fireEvent("add", this, records, index);
