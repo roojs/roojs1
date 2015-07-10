@@ -265,7 +265,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             Roo.log(this.data);
             records[i].join(this);
         }
-        this.fireEvent("add", this, records, index);
+//        this.fireEvent("add", this, records, index);
     },
 
     /**
