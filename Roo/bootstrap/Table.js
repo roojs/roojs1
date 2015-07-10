@@ -557,6 +557,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         this.refreshRow(record);
     },
+    
     onRemove : function(ds, record, index, isUpdate){
         if(isUpdate !== true){
             this.fireEvent("beforerowremoved", this, index, record);
