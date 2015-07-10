@@ -5282,7 +5282,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var row = cell.findParent('tr', false, true);
         var cellIndex = cell.dom.cellIndex;
-        var rowIndex = row.dom.rowIndex - 1;
+        var rowIndex = this.getRowIndex(row);
         
         if(this.CellSelection){
             this.fireEvent('cellclick', this, cell, rowIndex, cellIndex, e);
@@ -5309,7 +5309,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var row = cell.findParent('tr', false, true);
         var cellIndex = cell.dom.cellIndex;
-        var rowIndex = row.dom.rowIndex - 1;
+        var rowIndex = this.getRowIndex(row);
         
         if(this.CellSelection){
             this.fireEvent('celldblclick', this, cell, rowIndex, cellIndex, e);
@@ -5491,14 +5491,22 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         this.refreshRow(record);
     },
+    
     onRemove : function(ds, record, index, isUpdate){
         if(isUpdate !== true){
             this.fireEvent("beforerowremoved", this, index, record);
         }
         var bt = this.mainBody.dom;
-        if(bt.rows[index]){
-            bt.removeChild(bt.rows[index]);
+        
+        var rows = this.el.select('tbody > tr', true).elements;
+        
+        if(typeof(rows[index]) != 'undefined'){
+            bt.removeChild(rows[index].dom);
         }
+        
+//        if(bt.rows[index]){
+//            bt.removeChild(bt.rows[index]);
+//        }
         
         if(isUpdate !== true){
             //this.stripeRows(index);
@@ -5569,14 +5577,16 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     getRowDom : function(rowIndex)
     {
-        // not sure if I need to check this.. but let's do it anyway..
-        return (this.mainBody.dom.rows && (rowIndex-1) < this.mainBody.dom.rows.length ) ?
-                this.mainBody.dom.rows[rowIndex] : false
+        var rows = this.el.select('tbody > tr', true).elements;
+        
+        return (typeof(rows[rowIndex]) == 'undefined') ? false : rows[rowIndex];
+        
     },
     // returns the object tree for a tr..
   
     
-    renderRow : function(cm, ds, rowIndex) {
+    renderRow : function(cm, ds, rowIndex) 
+    {
         
         var d = ds.getAt(rowIndex);
         
@@ -5681,10 +5691,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     setRowVisibility : function(rowIndex, state)
     {
         var bt = this.mainBody.dom;
-        if(typeof(bt.rows[rowIndex]) == 'undefined'){
+        
+        var rows = this.el.select('tbody > tr', true).elements;
+        
+        if(typeof(rows[rowIndex]) == 'undefined'){
             return;
         }
-        bt.rows[rowIndex].style.display = state ? '' : 'none';
+        rows[rowIndex].dom.style.display = state ? '' : 'none';
     },
     
     
@@ -5712,6 +5725,21 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 _this.renderCellObject(child);
             })
         }
+    },
+    
+    getRowIndex : function(row)
+    {
+        var rowIndex = -1;
+        
+        Roo.each(this.el.select('tbody > tr', true).elements, function(el, index){
+            if(!el.dom.isSameNode(row.dom)){
+                return;
+            }
+            
+            rowIndex = index;
+        });
+        
+        return rowIndex;
     }
    
 });
