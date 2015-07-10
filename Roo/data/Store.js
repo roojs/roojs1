@@ -217,8 +217,6 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      * @param {Roo.data.Record[]} records An Array of Roo.data.Record objects to add to the cache.
      */
     add : function(records){
-        Roo.log('add!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(records);
         records = [].concat(records);
         for(var i = 0, len = records.length; i < len; i++){
             records[i].join(this);
