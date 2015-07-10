@@ -782,7 +782,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var rowIndex = -1;
         
         Roo.each(this.el.select('tbody > tr', true).elements, function(el, index){
-            if(!el.dom.isSameNode(row)){
+            if(!el.dom.isSameNode(row.dom)){
                 return;
             }
             
