@@ -680,6 +680,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var td = {
                 tag: 'td',
+                'roo-cellindex' : i,
                 cls : rowcfg.rowClass,
                 style: '',
                 html: (typeof(value) === 'object') ? '' : value
