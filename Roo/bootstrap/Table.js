@@ -646,7 +646,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     // returns the object tree for a tr..
   
     
-    renderRow : function(cm, ds, rowIndex) {
+    renderRow : function(cm, ds, rowIndex) 
+    {
         
         var d = ds.getAt(rowIndex);
         
