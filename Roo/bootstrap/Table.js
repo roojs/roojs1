@@ -777,8 +777,17 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     getRowIndex : function(row)
     {
-        Roo.log(this.el.select('tbody > tr', true).elements);
-//        Roo.each(this.el.select('tbody > tr'))
+        var rowIndex = -1;
+        
+        Roo.each(this.el.select('tbody > tr', true).elements, function(el, index){
+            if(!el.dom.isSameNode(row)){
+                return;
+            }
+            
+            rowIndex = index;
+        });
+        
+        return rowIndex;
     }
    
 });
