@@ -33461,6 +33461,12 @@
      "desc": "Fires when a row is double clicked"
     },
     {
+     "name": "rowsrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when all the  rows have been rendered"
+    },
+    {
      "name": "show",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
