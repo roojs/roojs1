@@ -346,10 +346,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         Roo.log('table onclick');
         Roo.log(row.dom.rowIndex);
-        Roo.log(cell);
         Roo.log(row);
-        Roo.log(cellIndex);
-        Roo.log(rowIndex);
         
         if(this.CellSelection){
             this.fireEvent('cellclick', this, cell, rowIndex, cellIndex, e);
