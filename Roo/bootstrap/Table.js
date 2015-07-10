@@ -341,10 +341,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         var row = cell.findParent('tr', false, true);
-        var cellIndex = cell.attr('roo-cellindex') * 1;
-        var rowIndex = row.attr('roo-rowindex') * 1;
-        
-        Roo.log([rowIndex, cellIndex]);
+        var cellIndex = cell.dom.cellIndex;
+        var rowIndex = row.dom.rowIndex - 1;
         
         if(this.CellSelection){
             this.fireEvent('cellclick', this, cell, rowIndex, cellIndex, e);
@@ -644,7 +642,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var row = {
             tag : 'tr',
-            'roo-rowindex' : rowIndex,
             cn : []
         };
             
@@ -682,7 +679,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var td = {
                 tag: 'td',
-                'roo-cellindex' : i,
                 cls : rowcfg.rowClass,
                 style: '',
                 html: (typeof(value) === 'object') ? '' : value
