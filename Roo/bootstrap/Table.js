@@ -757,10 +757,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     setRowVisibility : function(rowIndex, state)
     {
         var bt = this.mainBody.dom;
-        if(typeof(bt.rows[rowIndex]) == 'undefined'){
+        
+        var rows = this.el.select('tbody > tr', true).elements;
+        
+        if(typeof(rows[rowIndex]) == 'undefined'){
             return;
         }
-        bt.rows[rowIndex].style.display = state ? '' : 'none';
+        rows[rowIndex].dom.style.display = state ? '' : 'none';
     },
     
     
