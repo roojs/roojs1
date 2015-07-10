@@ -343,7 +343,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var row = cell.findParent('tr', false, true);
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = row.dom.rowIndex - 1;
-        
+        Roo.log(row);
         Roo.log([rowIndex, cellIndex]);
         if(this.CellSelection){
             this.fireEvent('cellclick', this, cell, rowIndex, cellIndex, e);
