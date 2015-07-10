@@ -566,7 +566,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var rows = this.el.select('tbody > tr', true).elements;
         Roo.log('bt!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(bt);
+        Roo.log(bt.removeChild);
         if(typeof(rows[index]) != 'undefined'){
        //     bt.removeChild(rows[index]);
         }
