@@ -346,6 +346,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         Roo.log('table onclick');
         Roo.log(cell);
+        Roo.log(row);
         Roo.log(cellIndex);
         Roo.log(rowIndex);
         
