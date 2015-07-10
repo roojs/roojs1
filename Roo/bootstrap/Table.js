@@ -613,6 +613,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             //var s = this.getScrollState();
         var row = this.renderRow(this.cm, this.store, rowIndex);
         // insert before rowIndex..
+        Roo.log('inserting!!!!!!!!!!1');
+        Roo.log(rowIndex);
+        Roo.log(this.getRowDom(rowIndex));
         var e = this.mainBody.createChild(row,this.getRowDom(rowIndex));
         
         var _this = this;
