@@ -565,10 +565,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var bt = this.mainBody.dom;
         
         var rows = this.el.select('tbody > tr', true).elements;
-        Roo.log('bt!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(bt.removeChild);
+        
         if(typeof(rows[index]) != 'undefined'){
-       //     bt.removeChild(rows[index]);
+            bt.removeChild(rows[index].dom);
         }
         
 //        if(bt.rows[index]){
