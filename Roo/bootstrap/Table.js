@@ -563,8 +563,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             this.fireEvent("beforerowremoved", this, index, record);
         }
         var bt = this.mainBody.dom;
-        if(bt.rows[index]){
-            bt.removeChild(bt.rows[index]);
+        
+        var rows = this.el.select('tbody > tr', true).elements;
+        
+        if(typeof(rows[index]) != 'undefined'){
+            bt.removeChild(rows[index]);
         }
         
         if(isUpdate !== true){
