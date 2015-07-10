@@ -773,6 +773,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 _this.renderCellObject(child);
             })
         }
+    },
+    
+    getRowIndex : function(row)
+    {
+        Roo.log(this.el.select('tbody > tr', true).elements);
+//        Roo.each(this.el.select('tbody > tr'))
     }
    
 });
