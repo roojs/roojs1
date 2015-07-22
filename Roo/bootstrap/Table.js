@@ -795,9 +795,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     getRowIndex : function(row)
     {
-        Roo.log('get row index');
-        
-        Roo.log(row);
         var rowIndex = -1;
         
         Roo.each(this.el.select('tbody > tr', true).elements, function(el, index){
