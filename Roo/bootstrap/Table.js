@@ -801,11 +801,18 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var rowIndex = -1;
         
         Roo.each(this.el.select('tbody > tr', true).elements, function(el, index){
-            if(!el.dom.isSameNode(row.dom)){
+            if(el == row){
+                Roo.log('smae!!!!!!!!!!!!!!!!!!!!!!');
                 return;
             }
             
-            rowIndex = index;
+            Roo.log('not the same???????????????????????');
+            
+//            if(!el.dom.isSameNode(row.dom)){
+//                return;
+//            }
+//            
+//            rowIndex = index;
         });
         
         return rowIndex;
