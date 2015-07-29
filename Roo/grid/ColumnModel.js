@@ -166,6 +166,9 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @cfg {String} cursor (Optional)
      */
     /**
+     * @cfg {String} tooltip (Optional)
+     */
+    /**
      * Returns the id of the column at the specified index.
      * @param {Number} index The column index
      * @return {String} the id
