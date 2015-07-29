@@ -348,7 +348,7 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cellIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell.dom.cellIndex</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">row.dom.rowIndex </span><span class="jsdoc-syntax">- 1;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRowIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.CellSelection</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'cellclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cellIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
@@ -375,7 +375,7 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">row </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cellIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">cell.dom.cellIndex</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">row.dom.rowIndex </span><span class="jsdoc-syntax">- 1;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRowIndex</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.CellSelection</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'celldblclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cell</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cellIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
@@ -430,6 +430,10 @@
                 </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">cm.getColumnHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)
             };
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.tooltip </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">)){
+                </span><span class="jsdoc-var">c.tooltip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.tooltip</span><span class="jsdoc-syntax">;
+            }
             
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.hidden</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">config.hidden</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">c.style </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' display:none;'</span><span class="jsdoc-syntax">;
@@ -557,14 +561,22 @@
     {
         </span><span class="jsdoc-var">this.refreshRow</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">);
     },
+    
     </span><span class="jsdoc-var">onRemove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">isUpdate</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isUpdate </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforerowremoved&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">record</span><span class="jsdoc-syntax">);
         }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mainBody.dom</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bt.rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">]){
-            </span><span class="jsdoc-var">bt.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bt.rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">]);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody &gt; tr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">]) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">bt.removeChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.dom</span><span class="jsdoc-syntax">);
         }
+        
+</span><span class="jsdoc-comment">//        if(bt.rows[index]){
+//            bt.removeChild(bt.rows[index]);
+//        }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">isUpdate </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-comment">//this.stripeRows(index);
@@ -635,14 +647,16 @@
     
     </span><span class="jsdoc-var">getRowDom </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-comment">// not sure if I need to check this.. but let's do it anyway..
-        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.mainBody.dom.rows </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">-1) &lt; </span><span class="jsdoc-var">this.mainBody.dom.rows.length </span><span class="jsdoc-syntax">) ?
-                </span><span class="jsdoc-var">this.mainBody.dom.rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">] : </span><span class="jsdoc-keyword">false
-    </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody &gt; tr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">];
+        
+    },
     </span><span class="jsdoc-comment">// returns the object tree for a tr..
   
     
-    </span><span class="jsdoc-var">renderRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">) {
+    </span><span class="jsdoc-var">renderRow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cm</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">) 
+    {
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">d </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ds.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
         
@@ -747,10 +761,13 @@
     </span><span class="jsdoc-var">setRowVisibility </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.mainBody.dom</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bt.rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rows </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody &gt; tr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-var">bt.rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">rows</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.dom.style.display </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">;
     },
     
     
@@ -778,6 +795,21 @@
                 </span><span class="jsdoc-var">_this.renderCellObject</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">child</span><span class="jsdoc-syntax">);
             })
         }
+    },
+    
+    </span><span class="jsdoc-var">getRowIndex </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">= -1;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody &gt; tr'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">row</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">rowIndex </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">;
+        });
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">;
     }
    
 });
