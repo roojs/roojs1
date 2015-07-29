@@ -431,6 +431,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 html: cm.getColumnHeader(i)
             };
             
+            if(typeof(config.tooltip != 'undefined')){
+                c.tooltip = config.tooltip;
+            }
+            
             if(typeof(config.hidden) != 'undefined' && config.hidden){
                 c.style += ' display:none;';
             }
