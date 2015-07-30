@@ -16520,13 +16520,14 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         var lbl = {
                 tag: 'label' ,
                 'for' :  id,
-                cls : 'control-label col-md-' + this.labelWidth,
+                cls : 'control-label',
+                style :  'width: ' + this.labelWidth+'px',
                 html : this.fieldLabel
                 
         };
         if (this.boxLabel) {
             lbl.tag = 'span';
-            lbl.cls =  'col-md-' + this.labelWidth;
+            
         }
         
         
@@ -16539,7 +16540,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                     
                     lbl,
                     {
-                        cls : "col-md-" + (12 - this.labelWidth),  // very focused on md ???
+                          
                         cn: [
                             inputblock
                         ]
@@ -16549,6 +16550,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         } else if ( this.fieldLabel.length) {
                 Roo.log(" label");
                 lbl.cls = '';
+                lbl.style  = '';
                  cfg.cn = [  lbl,    inputblock ];
 
         } else {
