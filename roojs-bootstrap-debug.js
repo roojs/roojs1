@@ -16485,8 +16485,9 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         var fieldLabel = {
             tag: 'label' ,
             cls : 'control-label' + inline,
-            html : this.fieldLabel
-        }
+            html : this.fieldLabel,
+            style : 'cursor:pointer'
+        };
         
  
         
@@ -16581,6 +16582,18 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         return cfg;
         
     },
+    
+    initEvents : function()
+    {
+//        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
+        
+        this.inputEl().on('click', this.onClick,  this);
+        if (this.boxLabel) { 
+            this.el.select('label.box-label',true).first().on('click', this.onClick,  this);
+        }
+        
+    },
+    
     inputEl: function ()
     {
         return this.el.select('input.roo-radio',true).first();
