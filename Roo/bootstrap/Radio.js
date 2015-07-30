@@ -14,10 +14,12 @@
  *
  *
  *inline
+ *<span>
  *<label class="radio-inline">fieldLabel</label>
  *<label class="radio-inline">
   <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
 </label>
+<span>
  * 
  * 
  */
@@ -54,15 +56,21 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
         var cfg = { tag : 'span' };
         
+        var inline = this.inline ? 'radio-inline' : '';
+        
         var lbl = {
                 tag: 'label' ,
-                'for' :  id,
-                cls : 'control-label radio-inline',
-            
-                html : this.fieldLabel
+                // does not need for, as we wrap the input with it..
+                cls : 'control-label ' + inline,
+                html : boxLabel
                 
         };
-         
+        
+        var fieldLabel = {
+            tag: 'label' ,
+            cls : 'control-label' + inline,
+            html : this.fieldLabel
+        }
         cfg.cls = 'form-group radio' //input-group
         
         if (this.inline) {
