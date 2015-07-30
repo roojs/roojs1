@@ -65,7 +65,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                 tag: 'label' ,
                 // does not need for, as we wrap the input with it..
                 cls : 'control-label ' + inline,
-                html : boxLabel
+                html : boxLabel,
                 cn : []
         };
         
