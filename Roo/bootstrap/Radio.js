@@ -151,7 +151,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         lbl.cn.push(inputblock);
         cfg.cn.push( {
             tag: 'span',
-            cls: 'radio',
+            cls: 'radio' + inline,
             cn: [
                 lbl
             ]
