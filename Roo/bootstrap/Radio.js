@@ -32,6 +32,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         align = align || 'left'; // default...
         
         
+        
         var id = Roo.id();
         
         var cfg = {};
@@ -110,11 +111,13 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                 tag: 'label' ,
                 'for' :  id,
                 cls : 'control-label',
-                style :  'width: ' + (this.labelWidth *1) +'px',
+            
                 html : this.fieldLabel
                 
         };
         if (this.boxLabel) {
+            this.labelWidth = this.labelWidth  || 100;
+            lbl.style =  'width: ' + (this.labelWidth *1) +'px';
             lbl.tag = 'span';
             
         }
@@ -139,7 +142,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         } else if ( this.fieldLabel.length) {
                 Roo.log(" label");
                 lbl.cls = '';
-                lbl.style  = '';
+                
                  cfg.cn = [  lbl,    inputblock ];
 
         } else {
