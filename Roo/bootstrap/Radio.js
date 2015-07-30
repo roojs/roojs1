@@ -2,6 +2,23 @@
  * - LGPL
  *
  * Radio
+ *
+ *
+ * not inline
+ *<div class="radio">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+    Option one is this and that&mdash;be sure to include why it's great
+  </label>
+</div>
+ *
+ *
+ *inline
+ *<label class="radio-inline">fieldLabel</label>
+ *<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+</label>
+ * 
  * 
  */
 
@@ -35,8 +52,17 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
         var id = Roo.id();
         
-        var cfg = {};
+        var cfg = { tag : 'span' };
         
+        var lbl = {
+                tag: 'label' ,
+                'for' :  id,
+                cls : 'control-label radio-inline',
+            
+                html : this.fieldLabel
+                
+        };
+         
         cfg.cls = 'form-group radio' //input-group
         
         if (this.inline) {
