@@ -190,7 +190,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     onClick : function()
     {   
         Roo.log("click");
-        Roo.log("click");
         this.setChecked(true);
     },
     
