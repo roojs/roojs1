@@ -147,50 +147,15 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             cfg.cn.push(fieldLabel);
         }
         
-        
-        if (align ==='left' && this.fieldLabel.length) {
-                Roo.log("left and has label");
-                
-                
-                
-                cfg.cn = [
-                    
-                    lbl,
-                    {
-                        tag: 'span',
-                        cls : 'radio-inline',
-                        cn: [
-                            inputblock
-                        ]
-                    }
-                    
-                ];
-        } else if ( this.fieldLabel.length) {
-                Roo.log(" label");
-                lbl.cls = '';
-                
-                 cfg.cn = [  lbl,    inputblock ];
-
-        } else {
-            
-                   Roo.log(" no label && no align");
-                cfg.cn = [
-                    
-                        inputblock
-                    
-                ];
-                
-                
-        };
-        
+        cfg.cn.push(lbl);
+        lbl.cn.push(inputblock);
         if(this.boxLabel){
             cfg.cn.push({
-                tag: 'label',
-                'for': id,
-                cls: 'box-label',
+                tag: 'span',
                 html: this.boxLabel
             })
         }
+         
         
         return cfg;
         
