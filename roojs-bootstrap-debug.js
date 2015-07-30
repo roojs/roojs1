@@ -16468,6 +16468,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
         var cfg = {
                 tag : this.inline ? 'span' : 'div',
+                cls : '',
                 cn : []
         };
         
