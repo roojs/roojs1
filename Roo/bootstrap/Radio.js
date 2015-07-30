@@ -105,10 +105,13 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
         if (align ==='left' && this.fieldLabel.length) {
                 Roo.log("left and has label");
+                
+                
+                
                 cfg.cn = [
                     
                     {
-                        tag: 'label',
+                        tag: 'label' ,
                         'for' :  id,
                         cls : 'control-label col-md-' + this.labelWidth,
                         html : this.fieldLabel
