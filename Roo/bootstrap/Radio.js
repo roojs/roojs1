@@ -154,14 +154,17 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         // however with our styled version - it has to go after the input.
        
         //lbl.cn.push(inputblock);
-        cfg.cn.push( {
+        
+        var lblwrap =  {
             tag: 'span',
             cls: 'radio' + inline,
             cn: [
-                lbl,
-                inputblock
+                inputblock,
+                lbl
             ]
-        });
+        };
+        
+        cfg.cn.push( lblwrap);
         
         if(this.boxLabel){
             lbl.cn.push({
