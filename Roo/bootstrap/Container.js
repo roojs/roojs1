@@ -200,8 +200,11 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     show : function() {
         this.el.removeClass('hidden');
     },
-    show : function() {
-        this.el.addClass('hidden');
+    hide: function() {
+        if (!this.el.hasClass('hidden')) {
+            this.el.addClass('hidden');
+        }
+        
     },
    
 });
