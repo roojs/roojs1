@@ -16468,7 +16468,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
         var cfg = {
                 tag : this.inline ? 'span' : 'div',
-                cls : 'radio',
                 cn : []
         };
         
@@ -16559,11 +16558,18 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         if (this.fieldLabel && this.fieldLabel.length) {
             cfg.cn.push(fieldLabel);
         }
-        
-        cfg.cn.push(lbl);
+       
         lbl.cn.push(inputblock);
+        cfg.cn.push( {
+            tag: 'span',
+            cls: 'radio',
+            cn: [
+                lbl
+            ]
+        });
+        
         if(this.boxLabel){
-            cfg.cn.push({
+            lbl.cn.push({
                 tag: 'span',
                 html: this.boxLabel
             })
