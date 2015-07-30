@@ -177,7 +177,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
         this.inputEl().on('click', this.onClick,  this);
         if (this.boxLabel) { 
-            this.el.select('label.box-label',true).on('click', this.onClick,  this);
+            this.el.select('label.box-label',true).first().on('click', this.onClick,  this);
         }
         
     },
