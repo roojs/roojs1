@@ -66,7 +66,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                 // does not need for, as we wrap the input with it..
                 cls : 'control-label ' + inline,
                 html : boxLabel
-                
+                cn : []
         };
         
         var fieldLabel = {
@@ -146,7 +146,6 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
         if (this.fieldLabel && this.fieldLabel.length) {
             cfg.cn.push(fieldLabel);
-            
         }
         
         
