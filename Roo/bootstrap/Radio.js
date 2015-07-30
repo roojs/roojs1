@@ -36,6 +36,11 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
         cfg.cls = 'form-group radio' //input-group
         
+        if (this.inline) {
+            cfg.cls  += " radio-inline";
+        }
+        
+        
         var input =  {
             tag: 'input',
             id : id,
