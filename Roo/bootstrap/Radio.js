@@ -87,8 +87,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             placeholder : this.placeholder || '' // ?? needed????
             
         };
-          if (this.weight) { // Validity check?
-            cfg.cls += " radio-" + this.weight;
+        if (this.weight) { // Validity check?
+            input.cls += " radio-" + this.weight;
         }
         if (this.disabled) {
             input.disabled=true;
@@ -105,6 +105,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         if (this.size) {
             input.cls += ' input-' + this.size;
         }
+        
+        //?? can span's inline have a width??
         
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
