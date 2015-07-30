@@ -85,6 +85,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             
             inputblock = {
                 cls : 'input-group',
+                tag : 'span',
                 cn :  [] 
             };
             if (this.before) {
