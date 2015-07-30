@@ -129,7 +129,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                     
                     lbl,
                     {
-                          
+                        tag: 'span',  
                         cn: [
                             inputblock
                         ]
