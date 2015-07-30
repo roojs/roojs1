@@ -205,7 +205,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             this.el.addClass('hidden');
         }
         
-    },
+    }
    
 });
 
