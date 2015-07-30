@@ -195,7 +195,14 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         return titleEl.dom.innerHTML;
-    }
+    },
+    
+    show : function() {
+        this.el.removeClass('hidden');
+    },
+    show : function() {
+        this.el.addClass('hidden');
+    },
    
 });
 
