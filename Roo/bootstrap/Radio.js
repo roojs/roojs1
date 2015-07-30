@@ -55,7 +55,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         var id = Roo.id();
         
         var cfg = {
-                tag : this.inline ? 'span' : 'div'
+                tag : this.inline ? 'span' : 'div',
+                cn : []
         };
         
         var inline = this.inline ? 'radio-inline' : '';
@@ -142,20 +143,9 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             
         };
         
-        var lbl = {
-                tag: 'label' ,
-                'for' :  id,
-                cls : 'control-label radio-inline',
-            
-                html : this.fieldLabel
-                
-        };
-        if (this.boxLabel) {
-            this.labelWidth = this.labelWidth  || 100;
-            lbl.style =  'width: ' + (this.labelWidth *1) +'px';
-            lbl.tag = 'span';
-            lbl['for'] = '';
-           
+        
+        if (this.fieldLabel) {
+            cfg.cn.push(fieldLabel);
             
         }
         
