@@ -103,6 +103,19 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             
         };
         
+        var lbl = {
+                tag: 'label' ,
+                'for' :  id,
+                cls : 'control-label col-md-' + this.labelWidth,
+                html : this.fieldLabel
+                
+        };
+        if (this.boxLabel) {
+            lbl.tag = 'span';
+             
+        }
+        
+        
         if (align ==='left' && this.fieldLabel.length) {
                 Roo.log("left and has label");
                 
@@ -110,13 +123,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                 
                 cfg.cn = [
                     
-                    {
-                        tag: 'label' ,
-                        'for' :  id,
-                        cls : 'control-label col-md-' + this.labelWidth,
-                        html : this.fieldLabel
-                        
-                    },
+                    lbl,
                     {
                         cls : "col-md-" + (12 - this.labelWidth), 
                         cn: [
@@ -127,20 +134,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                 ];
         } else if ( this.fieldLabel.length) {
                 Roo.log(" label");
-                 cfg.cn = [
-                   
-                    {
-                        tag: 'label',
-                        'for': id,
-                        cls: 'control-label box-input-label',
-                        //cls : 'input-group-addon',
-                        html : this.fieldLabel
-                        
-                    },
-                    
-                    inputblock
-                    
-                ];
+                lbl.cls = '';
+                 cfg.cn = [  lbl,    inputblock ];
 
         } else {
             
