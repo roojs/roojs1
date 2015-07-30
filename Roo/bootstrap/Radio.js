@@ -74,7 +74,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             tag: 'label' ,
             cls : 'control-label' + inline,
             html : this.fieldLabel,
-            style : 'cursor:pointer'
+            style : 'cursor:default'
         };
         
  
