@@ -16441,6 +16441,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
     getAutoCreate : function()
     {
         var align = (!this.labelAlign) ? this.parentLabelAlign() : this.labelAlign;
+        align = align || 'left'; // default...
+        
         
         var id = Roo.id();
         
