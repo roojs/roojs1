@@ -16590,7 +16590,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         this.inputEl().on('click', this.onClick,  this);
         if (this.boxLabel) {
             Roo.log('find label')
-            this.el.select('span.radio',true).first().on('click', this.onClick,  this);
+            this.el.select('span.radio label span',true).first().on('click', this.onClick,  this);
         }
         
     },
