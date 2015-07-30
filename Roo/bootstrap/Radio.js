@@ -144,7 +144,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         };
         
         
-        if (this.fieldLabel) {
+        if (this.fieldLabel && this.fieldLabel.length) {
             cfg.cn.push(fieldLabel);
             
         }
