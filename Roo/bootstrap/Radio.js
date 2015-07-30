@@ -200,7 +200,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                 v.dom.checked = false;
             });
         }
-        
+        Roo.log(this.inputEl().dom);
         this.checked = state;
         this.inputEl().dom.checked = state;
         
