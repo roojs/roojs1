@@ -16414,6 +16414,25 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
  * - LGPL
  *
  * Radio
+ *
+ *
+ * not inline
+ *<div class="radio">
+  <label>
+    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+    Option one is this and that&mdash;be sure to include why it's great
+  </label>
+</div>
+ *
+ *
+ *inline
+ *<span>
+ *<label class="radio-inline">fieldLabel</label>
+ *<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+</label>
+<span>
+ * 
  * 
  */
 
@@ -16447,13 +16466,27 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
         var id = Roo.id();
         
-        var cfg = {};
+        var cfg = {
+                tag : this.inline ? 'span' : 'div',
+                cn : []
+        };
         
-        cfg.cls = 'form-group radio' //input-group
+        var inline = this.inline ? 'radio-inline' : '';
         
-        if (this.inline) {
-            cfg.cls  += " radio-inline";
+        var lbl = {
+                tag: 'label' ,
+                // does not need for, as we wrap the input with it..
+                cls : 'control-label ' + inline,
+                cn : []
+        };
+        
+        var fieldLabel = {
+            tag: 'label' ,
+            cls : 'control-label' + inline,
+            html : this.fieldLabel
         }
+        
+ 
         
         
         var input =  {
@@ -16463,11 +16496,11 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             //value : (!this.checked) ? this.valueOff : this.inputValue,
             value : this.inputValue,
             cls : 'roo-radio',
-            placeholder : this.placeholder || ''
+            placeholder : this.placeholder || '' // ?? needed????
             
         };
-          if (this.weight) { // Validity check?
-            cfg.cls += " radio-" + this.weight;
+        if (this.weight) { // Validity check?
+            input.cls += " radio-" + this.weight;
         }
         if (this.disabled) {
             input.disabled=true;
@@ -16484,6 +16517,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         if (this.size) {
             input.cls += ' input-' + this.size;
         }
+        
+        //?? can span's inline have a width??
         
         var settings=this;
         ['xs','sm','md','lg'].map(function(size){
@@ -16519,67 +16554,20 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             
         };
         
-        var lbl = {
-                tag: 'label' ,
-                'for' :  id,
-                cls : 'control-label',
-            
-                html : this.fieldLabel
-                
-        };
-        if (this.boxLabel) {
-            this.labelWidth = this.labelWidth  || 100;
-            lbl.style =  'width: ' + (this.labelWidth *1) +'px';
-            lbl.tag = 'span';
-            lbl['for'] = '';
-           
-            
+        
+        if (this.fieldLabel && this.fieldLabel.length) {
+            cfg.cn.push(fieldLabel);
         }
         
-        
-        if (align ==='left' && this.fieldLabel.length) {
-                Roo.log("left and has label");
-                
-                
-                
-                cfg.cn = [
-                    
-                    lbl,
-                    {
-                        tag: 'span',
-                        cls : 'radio-inline',
-                        cn: [
-                            inputblock
-                        ]
-                    }
-                    
-                ];
-        } else if ( this.fieldLabel.length) {
-                Roo.log(" label");
-                lbl.cls = '';
-                
-                 cfg.cn = [  lbl,    inputblock ];
-
-        } else {
-            
-                   Roo.log(" no label && no align");
-                cfg.cn = [
-                    
-                        inputblock
-                    
-                ];
-                
-                
-        };
-        
+        cfg.cn.push(lbl);
+        lbl.cn.push(inputblock);
         if(this.boxLabel){
             cfg.cn.push({
-                tag: 'label',
-                'for': id,
-                cls: 'box-label',
+                tag: 'span',
                 html: this.boxLabel
             })
         }
+         
         
         return cfg;
         
