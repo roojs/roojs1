@@ -4453,6 +4453,9 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @cfg {String} cursor (Optional)
      */
     /**
+     * @cfg {String} tooltip (Optional)
+     */
+    /**
      * Returns the id of the column at the specified index.
      * @param {Number} index The column index
      * @return {String} the id
@@ -5364,6 +5367,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 style : '',
                 html: cm.getColumnHeader(i)
             };
+            
+            if(typeof(config.tooltip != 'undefined')){
+                c.tooltip = config.tooltip;
+            }
             
             if(typeof(config.hidden) != 'undefined' && config.hidden){
                 c.style += ' display:none;';
@@ -16440,6 +16447,11 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         var cfg = {};
         
         cfg.cls = 'form-group radio' //input-group
+        
+        if (this.inline) {
+            cfg.cls  += " radio-inline";
+        }
+        
         
         var input =  {
             tag: 'input',
