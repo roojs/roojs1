@@ -119,6 +119,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             this.labelWidth = this.labelWidth  || 100;
             lbl.style =  'width: ' + (this.labelWidth *1) +'px';
             lbl.tag = 'span';
+            lbl['for'] = '';
+           
             
         }
         
