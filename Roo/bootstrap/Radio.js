@@ -110,7 +110,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         var lbl = {
                 tag: 'label' ,
                 'for' :  id,
-                cls : 'control-label',
+                cls : 'control-label radio-inline',
             
                 html : this.fieldLabel
                 
