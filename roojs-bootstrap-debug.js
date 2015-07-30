@@ -16515,19 +16515,29 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             
         };
         
+        var lbl = {
+                tag: 'label' ,
+                'for' :  id,
+                cls : 'control-label col-md-' + this.labelWidth,
+                html : this.fieldLabel
+                
+        };
+        if (this.boxLabel) {
+            lbl.tag = 'span';
+             
+        }
+        
+        
         if (align ==='left' && this.fieldLabel.length) {
                 Roo.log("left and has label");
+                
+                
+                
                 cfg.cn = [
                     
+                    lbl,
                     {
-                        tag: 'label',
-                        'for' :  id,
-                        cls : 'control-label col-md-' + this.labelWidth,
-                        html : this.fieldLabel
-                        
-                    },
-                    {
-                        cls : "col-md-" + (12 - this.labelWidth), 
+                        cls : "col-md-" + (12 - this.labelWidth),  // very focused on md ???
                         cn: [
                             inputblock
                         ]
@@ -16536,20 +16546,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                 ];
         } else if ( this.fieldLabel.length) {
                 Roo.log(" label");
-                 cfg.cn = [
-                   
-                    {
-                        tag: 'label',
-                        'for': id,
-                        cls: 'control-label box-input-label',
-                        //cls : 'input-group-addon',
-                        html : this.fieldLabel
-                        
-                    },
-                    
-                    inputblock
-                    
-                ];
+                lbl.cls = '';
+                 cfg.cn = [  lbl,    inputblock ];
 
         } else {
             

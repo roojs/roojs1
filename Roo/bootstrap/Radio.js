@@ -125,7 +125,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                     
                     lbl,
                     {
-                        cls : "col-md-" + (12 - this.labelWidth), 
+                        cls : "col-md-" + (12 - this.labelWidth),  // very focused on md ???
                         cn: [
                             inputblock
                         ]
