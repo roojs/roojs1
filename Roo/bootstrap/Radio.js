@@ -146,11 +146,19 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         if (this.fieldLabel && this.fieldLabel.length) {
             cfg.cn.push(fieldLabel);
         }
+        var lblwrap = {
+            tag: 'span',
+            cls: 'radio',
+            cn: [
+                lbl
+            ]
+        };
         
-        cfg.cn.push(lbl);
         lbl.cn.push(inputblock);
+        cfg.cn.push(lblwrap);
+        
         if(this.boxLabel){
-            cfg.cn.push({
+            lbl.cn.push({
                 tag: 'span',
                 html: this.boxLabel
             })
