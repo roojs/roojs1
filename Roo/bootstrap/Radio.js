@@ -134,7 +134,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                     
                     lbl,
                     {
-                        tag: 'span',  
+                        tag: 'span',
+                        cls : 'radio-inline',
                         cn: [
                             inputblock
                         ]
