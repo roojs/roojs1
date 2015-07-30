@@ -72,7 +72,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         var labelWidth = this.labelWidth ? this.labelWidth *1 : 100;
         
         var fieldLabel = {
-            tag: 'span' ,
+            tag: 'label' ,
             //cls : 'control-label' + inline,
             html : this.fieldLabel,
             style : 'width:' +  labelWidth  + 'px'
