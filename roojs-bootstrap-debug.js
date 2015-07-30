@@ -16486,7 +16486,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             tag: 'label' ,
             cls : 'control-label' + inline,
             html : this.fieldLabel,
-            style : 'cursor:pointer'
+            style : 'cursor:default'
         };
         
  
@@ -16590,8 +16590,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         this.inputEl().on('click', this.onClick,  this);
         if (this.boxLabel) {
             Roo.log('find label')
-            Roo.log(this.el.select('label.box-label',true).first());
-            this.el.select('label.box-label',true).first().on('click', this.onClick,  this);
+            this.el.select('span.radio',true).first().on('click', this.onClick,  this);
         }
         
     },
