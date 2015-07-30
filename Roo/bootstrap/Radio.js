@@ -59,7 +59,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                 cn : []
         };
         
-        var inline = this.inline ? 'radio-inline' : '';
+        var inline = this.inline ? ' radio-inline' : '';
         
         var lbl = {
                 tag: 'label' ,
