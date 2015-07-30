@@ -16526,7 +16526,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         };
         if (this.boxLabel) {
             lbl.tag = 'span';
-             
+            lbl.cls =  'col-md-' + this.labelWidth;
         }
         
         
