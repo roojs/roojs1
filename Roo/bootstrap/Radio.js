@@ -54,7 +54,9 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         
         var id = Roo.id();
         
-        var cfg = { tag : 'span' };
+        var cfg = {
+                tag : this.inline ? 'span' : 'div'
+        };
         
         var inline = this.inline ? 'radio-inline' : '';
         
@@ -71,11 +73,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             cls : 'control-label' + inline,
             html : this.fieldLabel
         }
-        cfg.cls = 'form-group radio' //input-group
         
-        if (this.inline) {
-            cfg.cls  += " radio-inline";
-        }
+ 
         
         
         var input =  {
@@ -85,7 +84,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             //value : (!this.checked) ? this.valueOff : this.inputValue,
             value : this.inputValue,
             cls : 'roo-radio',
-            placeholder : this.placeholder || ''
+            placeholder : this.placeholder || '' // ?? needed????
             
         };
           if (this.weight) { // Validity check?
