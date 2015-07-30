@@ -16481,12 +16481,13 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                 cls : 'control-label box-label' + inline,
                 cn : []
         };
+        var labelWidth = this.labelWidth ? this.labelWidth *1 : 100;
         
         var fieldLabel = {
             tag: 'span' ,
             //cls : 'control-label' + inline,
             html : this.fieldLabel,
-            style : 'width:' +  this.fieldWidth  + 'px'
+            style : 'width:' +  labelWidth  + 'px'
         };
         
  
