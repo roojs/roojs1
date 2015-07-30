@@ -108,13 +108,13 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
         var lbl = {
                 tag: 'label' ,
                 'for' :  id,
-                cls : 'control-label col-md-' + this.labelWidth,
+                cls : 'control-label',
                 html : this.fieldLabel
                 
         };
         if (this.boxLabel) {
             lbl.tag = 'span';
-            lbl.cls =  'col-md-' + this.labelWidth;
+            lbl.style =  'width: ' + this.labelWidth+'px';
         }
         
         
@@ -127,7 +127,7 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
                     
                     lbl,
                     {
-                        cls : "col-md-" + (12 - this.labelWidth),  // very focused on md ???
+                          
                         cn: [
                             inputblock
                         ]
