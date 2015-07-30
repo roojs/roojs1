@@ -150,6 +150,9 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
             cfg.cn.push(fieldLabel);
         }
        
+        // normal bootstrap puts the input inside the label.
+        // however with our styled version - it has to go after the input.
+       
         lbl.cn.push(inputblock);
         cfg.cn.push( {
             tag: 'span',
