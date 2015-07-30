@@ -176,7 +176,8 @@ Roo.extend(Roo.bootstrap.Radio, Roo.bootstrap.CheckBox,  {
 //        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
         
         this.inputEl().on('click', this.onClick,  this);
-        if (this.boxLabel) { 
+        if (this.boxLabel) {
+            Roo.log(this.el.select('label.box-label',true).first());
             this.el.select('label.box-label',true).first().on('click', this.onClick,  this);
         }
         
