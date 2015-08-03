@@ -621,7 +621,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     insertRow : function(dm, rowIndex, isUpdate){
         
-        Roo.log(rowIndex);
         if(!isUpdate){
             this.fireEvent("beforerowsinserted", this, rowIndex);
         }
