@@ -591,8 +591,6 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         //Roo.log('on Add called');
         // - note this does not handle multiple adding very well..
         var bt = this.mainBody.dom;
-        Roo.log('records!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-        Roo.log(records);
         for (var i =0 ; i < records.length;i++) {
             //Roo.log('call insert row Add called on ' + rowIndex + ':' + i);
             //Roo.log(records[i]);
@@ -661,10 +659,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         
         var d = ds.getAt(rowIndex);
-        Roo.log('render row!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(rowIndex);
-        Roo.log(ds);
-        Roo.log(d)
+        
         var row = {
             tag : 'tr',
             cn : []
