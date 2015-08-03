@@ -661,7 +661,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         
         var d = ds.getAt(rowIndex);
-        
+        Roo.log('render row!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(rowIndex);
+        Roo.log(ds);
+        Roo.log(d)
         var row = {
             tag : 'tr',
             cn : []
