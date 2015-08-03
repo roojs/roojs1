@@ -431,10 +431,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 html: cm.getColumnHeader(i)
             };
             
-            
-            if(typeof(config.tooltip != 'undefined')){
-                Roo.log('tooltip!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-                Roo.log(config.tooltip);
+            if(typeof(config.tooltip) != 'undefined'){
                 c.tooltip = config.tooltip;
             }
             
