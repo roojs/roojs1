@@ -430,7 +430,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 style : '',
                 html: cm.getColumnHeader(i)
             };
-            
+            Roo.log(config.tooltip);
             if(typeof(config.tooltip != 'undefined')){
                 c.tooltip = config.tooltip;
             }
