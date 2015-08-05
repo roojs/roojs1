@@ -270,6 +270,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     getGroupValue : function()
     {
+        if(typeof(this.el.up('form').child('input[name='+this.name+']:checked', true)) == 'undefined'){
+            return '';
+        }
+        
         return this.el.up('form').child('input[name='+this.name+']:checked', true).value;
     },
     
