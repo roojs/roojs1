@@ -351,6 +351,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         
         var row = cell.findParent('tr', false, true);
         
+        if(!row || typeof(row) == 'undefined'){
+            return;
+        }
         
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = this.getRowIndex(row);
