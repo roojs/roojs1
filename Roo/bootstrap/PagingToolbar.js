@@ -186,9 +186,9 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             tooltip: this.refreshText,
             icon: 'fa fa-refresh',
             
-            listeners : { click : this.onClick.createDelegate(this) }
+            listeners : { click : this.onClick.createDelegate(this, ["refresh", this]) }
         });
-        
+        Roo.log(this.onClick.createDelegate);
     },
 
     // private
@@ -286,8 +286,8 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     },
 
     // private
-    onClick : function(which, e){
-        Roo.log([which, e])
+    onClick : function(which){
+        
         var ds = this.ds;
         if (!ds) {
             return;
