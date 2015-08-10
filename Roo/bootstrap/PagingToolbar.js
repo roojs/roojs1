@@ -137,8 +137,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             cls: "prev",
             icon : 'fa fa-backward',
             disabled: true,
-            which: 'first',
-            listeners : { click : this.onClick.createDelegate(this) }
+            listeners : { click : this.onClick.createDelegate(this, ["first"]) }
         });
         
         this.prev =  this.navgroup.addItem({
@@ -146,8 +145,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             cls: "prev",
             icon : 'fa fa-step-backward',
             disabled: true,
-            which: 'prev',
-            listeners : { click :  this.onClick.createDelegate(this) }
+            listeners : { click :  this.onClick.createDelegate(this, ["prev"]) }
         });
     //this.addSeparator();
         
@@ -174,25 +172,23 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             cls: "next",
             html : ' <i class="fa fa-step-forward">',
             disabled: true,
-            which: 'next',
-            listeners : { click :  this.onClick.createDelegate(this) }
+            listeners : { click :  this.onClick.createDelegate(this, ["next"]) }
         });
         this.last = this.navgroup.addItem({
             tooltip: this.lastText,
             icon : 'fa fa-forward',
             cls: "next",
             disabled: true,
-            which: 'last',
-            listeners : { click :  this.onClick.createDelegate(this) }
+            listeners : { click :  this.onClick.createDelegate(this, ["last"]) }
         });
     //this.addSeparator();
         this.loading = this.navgroup.addItem({
             tooltip: this.refreshText,
             icon: 'fa fa-refresh',
-            which: 'refresh',
-            listeners : { click : this.onClick.createDelegate(this) }
+            
+            listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
-        
+
     },
 
     // private
@@ -290,15 +286,12 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     },
 
     // private
-    onClick : function(_self, e){
-        Roo.log(e);
-        e.preventDefault();
-        
+    onClick : function(which){
         var ds = this.ds;
         if (!ds) {
             return;
         }
-        switch(_self.which){
+        switch(which){
             case "first":
                 ds.load({params:{start: 0, limit: this.pageSize}});
             break;
