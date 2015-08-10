@@ -342,7 +342,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         Roo.log('cell');
         Roo.log(cell);
-        
+        Roo.log(e.getTarget().nodeName.toLowerCase());
         if(e.getTarget().nodeName.toLowerCase() != 'td'){
             cell = cell.findParent('td', false, true);
         }
