@@ -185,8 +185,8 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         this.loading = this.navgroup.addItem({
             tooltip: this.refreshText,
             icon: 'fa fa-refresh',
-            
-            listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
+            which: 'refresh',
+            listeners : { click : this.onClick.createDelegate(this) }
         });
         
     },
