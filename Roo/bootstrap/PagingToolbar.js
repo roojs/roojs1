@@ -137,7 +137,8 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             cls: "prev",
             icon : 'fa fa-backward',
             disabled: true,
-            listeners : { click : this.onClick.createDelegate(this, ["first"]) }
+            which: 'first',
+            listeners : { click : this.onClick.createDelegate(this) }
         });
         
         this.prev =  this.navgroup.addItem({
