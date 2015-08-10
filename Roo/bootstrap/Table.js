@@ -345,11 +345,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             cell = cell.findParent('td', false, true);
         }
         
-        if(!cell){
+        if(!cell || typeof(cell) == 'undefined'){
             return;
         }
         
         var row = cell.findParent('tr', false, true);
+        
+        
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = this.getRowIndex(row);
         
