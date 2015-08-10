@@ -145,7 +145,8 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             cls: "prev",
             icon : 'fa fa-step-backward',
             disabled: true,
-            listeners : { click :  this.onClick.createDelegate(this, ["prev"]) }
+            which: 'prev',
+            listeners : { click :  this.onClick.createDelegate(this) }
         });
     //this.addSeparator();
         
