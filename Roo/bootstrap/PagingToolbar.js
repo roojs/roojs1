@@ -179,7 +179,8 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             icon : 'fa fa-forward',
             cls: "next",
             disabled: true,
-            listeners : { click :  this.onClick.createDelegate(this, ["last"]) }
+            which: 'last',
+            listeners : { click :  this.onClick.createDelegate(this) }
         });
     //this.addSeparator();
         this.loading = this.navgroup.addItem({
