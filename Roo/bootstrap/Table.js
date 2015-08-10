@@ -340,13 +340,15 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(!cell || (!this.CellSelection && !this.RowSelection)){
             return;
         }
-        Roo.log('cell');
-        Roo.log(cell);
-        Roo.log(e.getTarget().nodeName.toLowerCase());
+        
         if(e.getTarget().nodeName.toLowerCase() != 'td'){
             cell = cell.findParent('td', false, true);
         }
-        Roo.log(cell);
+        
+        if(!cell){
+            return;
+        }
+        
         var row = cell.findParent('tr', false, true);
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = this.getRowIndex(row);
