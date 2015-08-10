@@ -340,7 +340,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         if(!cell || (!this.CellSelection && !this.RowSelection)){
             return;
         }
-        
+        Roo.log('cell');
+        Roo.log(cell);
         
         if(e.getTarget().nodeName.toLowerCase() != 'td'){
             cell = cell.findParent('td', false, true);
