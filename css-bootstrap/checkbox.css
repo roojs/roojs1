@@ -155,8 +155,11 @@
 .radio-danger input[type="radio"]:checked + label::after {
     background-color: #d9534f; }
 
+
+    
 .radio-info input[type="radio"] + label::after {
-    background-color: #5bc0de; }
+    background-color: #fff;
+}
 .radio-info input[type="radio"]:checked + label::before {
     border-color: #5bc0de; }
 .radio-info input[type="radio"]:checked + label::after {
