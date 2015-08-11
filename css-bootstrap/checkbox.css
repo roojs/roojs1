@@ -151,35 +151,35 @@
 
 
 .radio-primary input[type="radio"] + label::after {
-    background-color: #428bca;
+    background-color: #428bca  !important;
 }
 .radio-primary input[type="radio"]:checked + label::before {
-    border-color: #428bca !important;
+    border-color: #428bca;
 }
 .radio-primary input[type="radio"]:checked + label::after {
-    background-color: #428bca;
+    background-color: #428bca  !important;
 }
 
 .radio-danger input[type="radio"] + label::after {
-    background-color: #d9534f;
+    background-color: #d9534f  !important;
 }
 .radio-danger input[type="radio"]:checked + label::before {
-    border-color: #d9534f !important;
+    border-color: #d9534f;
 }
 .radio-danger input[type="radio"]:checked + label::after {
-    background-color: #d9534f !important;
+    background-color: #d9534f  !important;
 }
  
 .radio-info input[type="radio"] + label::after
 {
-    background-color: #5bc0de ;
+    background-color: #5bc0de  !important ;
 }
 
 .radio-info input[type="radio"]:checked + label::before {
     border-color: #5bc0de ;
     }
 .radio-info input[type="radio"]:checked + label::after {
-    background-color: #5bc0de;
+    background-color: #5bc0de  !important;
     }
     
     
@@ -187,23 +187,23 @@
     
 
 .radio-warning input[type="radio"] + label::after {
-    background-color: #f0ad4e;
+    background-color: #f0ad4e  !important;
     }
 .radio-warning input[type="radio"]:checked + label::before {
-    border-color: #f0ad4e;
+    border-color: #f0ad4e ;
     }
 .radio-warning input[type="radio"]:checked + label::after {
-    background-color: #f0ad4e;
+    background-color: #f0ad4e  !important;
     }
 
 .radio-success input[type="radio"] + label::after {
-    background-color: #5cb85c;
+    background-color: #5cb85c  !important;
     }
 .radio-success input[type="radio"]:checked + label::before {
     border-color: #5cb85c;
     }
 .radio-success input[type="radio"]:checked + label::after {
-    background-color: #5cb85c;
+    background-color: #5cb85c  !important;
 }
 
 .checkbox.checkbox-inline,
