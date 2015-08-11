@@ -138,6 +138,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             cls: "prev",
             icon : 'fa fa-backward',
             disabled: true,
+            preventDefault: true,
             listeners : { click : this.onClick.createDelegate(this, ["first"], true) }
         });
         
@@ -146,6 +147,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             cls: "prev",
             icon : 'fa fa-step-backward',
             disabled: true,
+            preventDefault: true,
             listeners : { click :  this.onClick.createDelegate(this, ["prev"], true) }
         });
     //this.addSeparator();
@@ -173,6 +175,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             cls: "next",
             html : ' <i class="fa fa-step-forward">',
             disabled: true,
+            preventDefault: true,
             listeners : { click :  this.onClick.createDelegate(this, ["next"], true) }
         });
         this.last = this.navgroup.addItem({
@@ -180,13 +183,14 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             icon : 'fa fa-forward',
             cls: "next",
             disabled: true,
+            preventDefault: true,
             listeners : { click :  this.onClick.createDelegate(this, ["last"], true) }
         });
     //this.addSeparator();
         this.loading = this.navgroup.addItem({
             tooltip: this.refreshText,
             icon: 'fa fa-refresh',
-            
+            preventDefault: true,
             listeners : { click : this.onClick.createDelegate(this, ["refresh"], true) }
         });
 
