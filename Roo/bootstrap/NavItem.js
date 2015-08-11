@@ -130,7 +130,6 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
-        Roo.log('navitem click!!!!!!!!!!11');
         if(this.preventDefault){
             e.preventDefault();
         }
