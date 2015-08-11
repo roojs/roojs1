@@ -1,4 +1,28 @@
 
+/* -- alert.css ---- */
+/* -- this makes the icons for the alert boxes a round box.. */
+
+.alert {
+  padding-left: 30px;
+  margin-top: 20px;
+  margin-left: 15px;
+  position: relative;
+}
+.alert > .fa,
+.alert > .glyphicon {
+  position: absolute;
+  left: -15px;
+  top: -15px;
+  width: 35px;
+  height: 35px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  line-height: 35px;
+  text-align: center;
+  background: inherit;
+  border: inherit;
+}
 /* -- calendar.css ---- */
 /*!
  * FullCalendar v1.6.4 Stylesheet
@@ -696,6 +720,11 @@ table.fc-border-separate {
 .checkbox-success input[type="checkbox"]:checked + label::after {
     color: #fff; }
 
+/* before is the outer cicle */    
+/* after is the inner circle.. */
+
+    
+
 .radio label {
     display: inline-block;
     position: relative;
@@ -724,7 +753,7 @@ table.fc-border-separate {
     top: 3px;
     margin-left: -20px;
     border-radius: 50%;
-    background-color: #555555;
+    background-color: #fff; 
     -webkit-transform: scale(0, 0);
     -ms-transform: scale(0, 0);
     -o-transform: scale(0, 0);
@@ -732,21 +761,25 @@ table.fc-border-separate {
     -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
     -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
     -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
-    transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33); }
+    transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    }
 .radio input[type="radio"] {
-    display: none; }
+    display: none;
+}
 .radio input[type="radio"]:checked + label::after {
     -webkit-transform: scale(1, 1);
     -ms-transform: scale(1, 1);
     -o-transform: scale(1, 1);
-    transform: scale(1, 1); }
+    transform: scale(1, 1);
+    background-color: #555555;
+}
 .radio input[type="radio"]:disabled + label {
     opacity: 0.65; }
 .radio input[type="radio"]:disabled + label::before {
     cursor: not-allowed; }
 
 .radio-primary input[type="radio"] + label::after {
-    background-color: #428bca; }
+    background-color: #fff; }
 .radio-primary input[type="radio"]:checked + label::before {
     border-color: #428bca; }
 .radio-primary input[type="radio"]:checked + label::after {
@@ -759,29 +792,40 @@ table.fc-border-separate {
 .radio-danger input[type="radio"]:checked + label::after {
     background-color: #d9534f; }
 
+
+    
 .radio-info input[type="radio"] + label::after {
-    background-color: #5bc0de; }
+    background-color: #fff;
+}
 .radio-info input[type="radio"]:checked + label::before {
     border-color: #5bc0de; }
 .radio-info input[type="radio"]:checked + label::after {
     background-color: #5bc0de; }
 
 .radio-warning input[type="radio"] + label::after {
-    background-color: #f0ad4e; }
+    background-color: #fff; }
 .radio-warning input[type="radio"]:checked + label::before {
     border-color: #f0ad4e; }
 .radio-warning input[type="radio"]:checked + label::after {
     background-color: #f0ad4e; }
 
 .radio-success input[type="radio"] + label::after {
-    background-color: #5cb85c; }
+    background-color: #fff; }
 .radio-success input[type="radio"]:checked + label::before {
     border-color: #5cb85c; }
 .radio-success input[type="radio"]:checked + label::after {
     background-color: #5cb85c; }
-/* -- combobox.css ---- */
-// from https://github.com/danielfarrell/bootstrap-combobox
 
+.checkbox.checkbox-inline,
+.radio.radio-inline {
+    margin-top: 0;
+}
+/* -- combobox.css ---- */
+/*
+ *
+ * From https://github.com/danielfarrell/bootstrap-combobox
+ *
+ */
 
 .combobox-container {
   margin-bottom: 5px;
@@ -951,6 +995,10 @@ table.fc-border-separate {
     color: #fff;
 }
 
+.dropdown-menu .active label{
+    color: #fff;
+}
+
 .dropdown-menu .select2-result {
     padding: 3px 7px 4px;
     margin: 0;
@@ -976,6 +1024,38 @@ table.fc-border-separate {
    cursor: not-allowed;
    background-color: #eee;
 
+}
+
+.roo-combobox-tickable .select2-choices {
+   border: none;
+   background-image: none;
+}
+
+.roo-combobox-tickable .select2-result label {
+    width: 100%;
+}
+
+.dropdown-menu {
+  z-index: 10002 !important;
+}
+
+.dropdown-menu .checkbox label {
+    width: 100%;
+}
+
+.select2-container-multi .dropdown-menu .select2-result .checkbox {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.dropdown-menu .select2-result .checkbox {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.select2-container .input-group-addon {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-left: 0px;
 }
 /* -- datepicker.css ---- */
 /*!
@@ -2103,12 +2183,10 @@ disabled look for disabled choices in the results dropdown
     height: 1%;
     margin: 0;
     padding: 0;
-    position: relative;
-
+    /*position: relative;*/
     border: 1px solid #aaa;
     cursor: text;
     overflow: hidden;
-
     background-color: #fff;
     background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(1%, #eee), color-stop(15%, #fff));
     background-image: -webkit-linear-gradient(top, #eee 1%, #fff 15%);
@@ -2307,6 +2385,11 @@ html[dir="rtl"] .select2-search-choice-close {
     }
 }
 
+.has-error .select2-choices {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
 /* -- sidebar-nav.css ---- */
 
 
@@ -2317,28 +2400,28 @@ html[dir="rtl"] .select2-search-choice-close {
 /*html, */
 
 
-body.bootstrap-sticky {
-    height: 100%;
-  /* The html and body elements cannot have any padding or margin. */
-}
-/* Wrapper for page content to push down footer */
-.bootstrap-sticky-wrap {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    /* Negative indent footer by it's height */
-    margin: 0 auto -60px;
-}
 
-/* Set the fixed height of the footer here */
-.bootstrap-sticky-push,
-.bootstrap-sticky-footer {
-    height: 60px;
+/* Sticky footer styles
+-------------------------------------------------- */
+html.bootstrap-sticky {
+  position: relative;
+  min-height: 100%;
+}
+html.bootstrap-sticky body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
 }
 .bootstrap-sticky-footer {
-    background-color: #eee;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
 }
 
+
+  
 /* Lastly, apply responsive CSS fixes as necessary */
 @media (max-width: 767px) {
     .bootstrap-sticky-footer {
@@ -2348,6 +2431,9 @@ body.bootstrap-sticky {
         padding-right: 20px;
     }
 }
+
+
+
 /* -- table.css ---- */
 /* paging toolbar */
 
