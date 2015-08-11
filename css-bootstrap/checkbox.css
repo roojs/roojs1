@@ -91,7 +91,7 @@
 }
 
 /* before is the fill circle? */
-/* after is the border circle */
+
 
 .radio label::before {
     content: "";
@@ -130,17 +130,15 @@
 }
 .radio input[type="radio"] {
     display: none;
-}
-
+    }
 .radio input[type="radio"]:checked + label::after {
     -webkit-transform: scale(1, 1);
     -ms-transform: scale(1, 1);
     -o-transform: scale(1, 1);
-    transform: scale(1, 1);
-    }
+    transform: scale(1, 1); }
 .radio input[type="radio"]:disabled + label {
     opacity: 0.65;
-}
+    }
 .radio input[type="radio"]:disabled + label::before {
     cursor: not-allowed;
 }
@@ -151,35 +149,35 @@
 
 
 .radio-primary input[type="radio"] + label::after {
-    background-color: #428bca  !important;
+    background-color: #428bca;
 }
 .radio-primary input[type="radio"]:checked + label::before {
     border-color: #428bca;
 }
 .radio-primary input[type="radio"]:checked + label::after {
-    background-color: #428bca  !important;
+    background-color: #428bca;
 }
 
 .radio-danger input[type="radio"] + label::after {
-    background-color: #d9534f  !important;
+    background-color: #d9534f;
 }
 .radio-danger input[type="radio"]:checked + label::before {
     border-color: #d9534f;
 }
 .radio-danger input[type="radio"]:checked + label::after {
-    background-color: #d9534f  !important;
+    background-color: #d9534f;
 }
  
 .radio-info input[type="radio"] + label::after
 {
-    background-color: #5bc0de  !important ;
+    background-color: #5bc0de ;
 }
 
 .radio-info input[type="radio"]:checked + label::before {
     border-color: #5bc0de ;
     }
 .radio-info input[type="radio"]:checked + label::after {
-    background-color: #5bc0de  !important;
+    background-color: #5bc0de;
     }
     
     
@@ -187,23 +185,23 @@
     
 
 .radio-warning input[type="radio"] + label::after {
-    background-color: #f0ad4e  !important;
+    background-color: #f0ad4e;
     }
 .radio-warning input[type="radio"]:checked + label::before {
-    border-color: #f0ad4e ;
+    border-color: #f0ad4e;
     }
 .radio-warning input[type="radio"]:checked + label::after {
-    background-color: #f0ad4e  !important;
+    background-color: #f0ad4e;
     }
 
 .radio-success input[type="radio"] + label::after {
-    background-color: #5cb85c  !important;
+    background-color: #5cb85c;
     }
 .radio-success input[type="radio"]:checked + label::before {
     border-color: #5cb85c;
     }
 .radio-success input[type="radio"]:checked + label::after {
-    background-color: #5cb85c  !important;
+    background-color: #5cb85c;
 }
 
 .checkbox.checkbox-inline,
