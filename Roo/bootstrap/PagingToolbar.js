@@ -286,13 +286,13 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     },
 
     // private
-    onClick : function(which){
-        
-//        if(typeof(e) == 'undefined'){
-//            o = which;
-//        } else {
-//            e.preventDefault();
-//        }
+    onClick : function(o, e, which){
+        Roo.log([o, e, which]);
+        if(typeof(e) == 'undefined'){
+            o = which;
+        } else {
+            e.preventDefault();
+        }
         
         var ds = this.ds;
         if (!ds) {
