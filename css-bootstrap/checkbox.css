@@ -116,7 +116,7 @@
     top: 3px;
     margin-left: -20px;
     border-radius: 50%;
-    background-color: #555555;
+    background-color: #fff;
     -webkit-transform: scale(0, 0);
     -ms-transform: scale(0, 0);
     -o-transform: scale(0, 0);
@@ -124,7 +124,8 @@
     -webkit-transition: -webkit-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
     -moz-transition: -moz-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
     -o-transition: -o-transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
-    transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33); }
+    transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    }
 .radio input[type="radio"] {
     display: none; }
 .radio input[type="radio"]:checked + label::after {
