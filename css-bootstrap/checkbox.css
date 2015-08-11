@@ -125,16 +125,24 @@
     transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
 }
 .radio input[type="radio"] {
-    display: none; }
+    display: none;
+    }
 .radio input[type="radio"]:checked + label::after {
     -webkit-transform: scale(1, 1);
     -ms-transform: scale(1, 1);
     -o-transform: scale(1, 1);
     transform: scale(1, 1); }
 .radio input[type="radio"]:disabled + label {
-    opacity: 0.65; }
+    opacity: 0.65;
+    }
 .radio input[type="radio"]:disabled + label::before {
-    cursor: not-allowed; }
+    cursor: not-allowed;
+}
+
+.radio input[type="radio"] + label::after {
+     background-color: #fff !important;
+}
+
 
 .radio-primary input[type="radio"] + label::after {
     background-color: #428bca; }
