@@ -133,6 +133,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if(this.preventDefault || this.href == '#'){
             e.preventDefault();
         }
+        
         if (this.disabled) {
             return;
         }
