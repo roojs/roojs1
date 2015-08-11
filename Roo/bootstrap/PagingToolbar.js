@@ -288,12 +288,15 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     // private
     onClick : function(o, e, which){
         
+        Roo.log('onclick!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        
         if(typeof(e) == 'undefined'){
             which = o;
         } else {
+            Roo.log(e);
             e.preventDefault();
         }
-        
+        Roo.log(which);
         var ds = this.ds;
         if (!ds) {
             return;
