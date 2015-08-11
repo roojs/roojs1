@@ -89,6 +89,10 @@
     position: relative;
     padding-left: 5px;
 }
+
+/* before is the fill circle? */
+/* after is the border circle */
+
 .radio label::before {
     content: "";
     display: inline-block;
@@ -169,12 +173,8 @@
     background-color: #5bc0de ;
 }
 
-.radio-info input[type="radio"] + label::before
-{
-    background-color: #fff;
-}
 .radio-info input[type="radio"]:checked + label::before {
-    border-color: #5bc0de;
+    border-color: #5bc0de ;
     }
 .radio-info input[type="radio"]:checked + label::after {
     background-color: #5bc0de;
