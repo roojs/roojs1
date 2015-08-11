@@ -64,15 +64,14 @@
     border-color: #d9534f; }
 .checkbox-danger input[type="checkbox"]:checked + label::after {
     color: #fff; }
-/*
+ 
 .checkbox-info input[type="checkbox"]:checked + label::before {
     background-color: #5bc0de;
     border-color: #5bc0de; }
 .checkbox-info input[type="checkbox"]:checked + label::after {
     color: #fff; }
 
-
-*/
+ 
 .checkbox-warning input[type="checkbox"]:checked + label::before {
     background-color: #f0ad4e;
     border-color: #f0ad4e; }
