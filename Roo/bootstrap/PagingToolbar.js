@@ -132,7 +132,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             _this.navgroup.addItem(e);
         });
         
-        Roo.log(this.navgroup);
+        
         this.first = this.navgroup.addItem({
             tooltip: this.firstText,
             cls: "prev",
