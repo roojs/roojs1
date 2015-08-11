@@ -3812,10 +3812,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
-         
-        if(this.preventDefault){
+        if(this.preventDefault || this.href == '#'){
             e.preventDefault();
         }
+        
         if (this.disabled) {
             return;
         }
@@ -19604,11 +19604,13 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             _this.navgroup.addItem(e);
         });
         
+        
         this.first = this.navgroup.addItem({
             tooltip: this.firstText,
             cls: "prev",
             icon : 'fa fa-backward',
             disabled: true,
+            preventDefault: true,
             listeners : { click : this.onClick.createDelegate(this, ["first"]) }
         });
         
@@ -19617,6 +19619,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             cls: "prev",
             icon : 'fa fa-step-backward',
             disabled: true,
+            preventDefault: true,
             listeners : { click :  this.onClick.createDelegate(this, ["prev"]) }
         });
     //this.addSeparator();
@@ -19644,6 +19647,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             cls: "next",
             html : ' <i class="fa fa-step-forward">',
             disabled: true,
+            preventDefault: true,
             listeners : { click :  this.onClick.createDelegate(this, ["next"]) }
         });
         this.last = this.navgroup.addItem({
@@ -19651,13 +19655,14 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             icon : 'fa fa-forward',
             cls: "next",
             disabled: true,
+            preventDefault: true,
             listeners : { click :  this.onClick.createDelegate(this, ["last"]) }
         });
     //this.addSeparator();
         this.loading = this.navgroup.addItem({
             tooltip: this.refreshText,
             icon: 'fa fa-refresh',
-            
+            preventDefault: true,
             listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
 
@@ -19666,7 +19671,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     // private
     updateInfo : function(){
         if(this.displayEl){
-            var count = this.ds.getCount();
+            var count = (typeof(this.getCount) == 'undefined') ? this.ds.getCount() : this.getCount();
             var msg = count == 0 ?
                 this.emptyMsg :
                 String.format(
@@ -19759,10 +19764,12 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
 
     // private
     onClick : function(which){
+        
         var ds = this.ds;
         if (!ds) {
             return;
         }
+        
         switch(which){
             case "first":
                 ds.load({params:{start: 0, limit: this.pageSize}});
