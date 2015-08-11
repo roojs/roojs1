@@ -140,7 +140,7 @@
 }
 
 .radio input[type="radio"] + label::after {
-     background-color: #fff !important;
+     background-color: #fff;
 }
 
 
