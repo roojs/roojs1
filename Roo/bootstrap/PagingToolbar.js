@@ -137,7 +137,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             cls: "prev",
             icon : 'fa fa-backward',
             disabled: true,
-            listeners : { click : this.onClick.createDelegate(this, ["first"]) }
+            listeners : { click : this.onClick.createDelegate(this, ["first"], true) }
         });
         
         this.prev =  this.navgroup.addItem({
@@ -145,7 +145,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             cls: "prev",
             icon : 'fa fa-step-backward',
             disabled: true,
-            listeners : { click :  this.onClick.createDelegate(this, ["prev"]) }
+            listeners : { click :  this.onClick.createDelegate(this, ["prev"], true) }
         });
     //this.addSeparator();
         
@@ -172,7 +172,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             cls: "next",
             html : ' <i class="fa fa-step-forward">',
             disabled: true,
-            listeners : { click :  this.onClick.createDelegate(this, ["next"]) }
+            listeners : { click :  this.onClick.createDelegate(this, ["next"], true) }
         });
         this.last = this.navgroup.addItem({
             tooltip: this.lastText,
