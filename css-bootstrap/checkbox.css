@@ -153,6 +153,7 @@
 }
 .radio-primary input[type="radio"]:checked + label::before {
     border-color: #428bca;
+     background-color: #428bca;
 }
 .radio-primary input[type="radio"]:checked + label::after {
     background-color: #428bca;
