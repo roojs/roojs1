@@ -193,6 +193,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
 
     // private
     updateInfo : function(){
+        Roo.log(this.displayEl);
         if(this.displayEl){
             var count = this.ds.getCount();
             var msg = count == 0 ?
