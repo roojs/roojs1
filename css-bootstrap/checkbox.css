@@ -176,7 +176,7 @@
 
 .radio-info input[type="radio"]:checked + label::before {
     border-color: #5bc0de ;
-    background-color: #5bc0de ;
+    background-color: #5bc0de !important ;
     }
 .radio-info input[type="radio"]:checked + label::after {
     background-color: #5bc0de;
