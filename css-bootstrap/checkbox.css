@@ -91,7 +91,7 @@
 }
 
 /* before is the fill circle? */
-
+/* after is the inner circle */
 
 .radio label::before {
     content: "";
