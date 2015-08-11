@@ -144,7 +144,7 @@
 }
 
 .radio input[type="radio"] + label::after {
-     background-color: #fff !important; /* as firefox ignores the one above.. */
+     background-color: #fff ; /* as firefox ignores the one above.. */
 }
 
 
