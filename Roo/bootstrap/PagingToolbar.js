@@ -291,7 +291,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         if (!ds) {
             return;
         }
-        return;
+        
         switch(which){
             case "first":
                 ds.load({params:{start: 0, limit: this.pageSize}});
