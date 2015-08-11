@@ -83,6 +83,11 @@
 .checkbox-success input[type="checkbox"]:checked + label::after {
     color: #fff; }
 
+/* before is the outer cicle */    
+/* after is the inner circle.. */
+
+    
+
 .radio label {
     display: inline-block;
     position: relative;
