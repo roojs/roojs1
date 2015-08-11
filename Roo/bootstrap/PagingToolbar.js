@@ -139,7 +139,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             icon : 'fa fa-backward',
             disabled: true,
             preventDefault: true,
-            listeners : { click : this.onClick.createDelegate(this, ["first"], true) }
+            listeners : { click : this.onClick.createDelegate(this, ["first"]) }
         });
         
         this.prev =  this.navgroup.addItem({
@@ -148,7 +148,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             icon : 'fa fa-step-backward',
             disabled: true,
             preventDefault: true,
-            listeners : { click :  this.onClick.createDelegate(this, ["prev"], true) }
+            listeners : { click :  this.onClick.createDelegate(this, ["prev"]) }
         });
     //this.addSeparator();
         
@@ -176,7 +176,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             html : ' <i class="fa fa-step-forward">',
             disabled: true,
             preventDefault: true,
-            listeners : { click :  this.onClick.createDelegate(this, ["next"], true) }
+            listeners : { click :  this.onClick.createDelegate(this, ["next"]) }
         });
         this.last = this.navgroup.addItem({
             tooltip: this.lastText,
@@ -184,14 +184,14 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             cls: "next",
             disabled: true,
             preventDefault: true,
-            listeners : { click :  this.onClick.createDelegate(this, ["last"], true) }
+            listeners : { click :  this.onClick.createDelegate(this, ["last"]) }
         });
     //this.addSeparator();
         this.loading = this.navgroup.addItem({
             tooltip: this.refreshText,
             icon: 'fa fa-refresh',
             preventDefault: true,
-            listeners : { click : this.onClick.createDelegate(this, ["refresh"], true) }
+            listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
 
     },
