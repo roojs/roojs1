@@ -195,9 +195,9 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     updateInfo : function(){
         Roo.log('updateInfo!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
         Roo.log(this.displayEl);
-        Roo.log(typeof(this.getCount1));
+        Roo.log(typeof(this.getCount));
         if(this.displayEl){
-            var count = this.ds.getCount();
+            var count = (typeof(this.getCount) == 'undefined') ? this.ds.getCount() : this.getCount();
             var msg = count == 0 ?
                 this.emptyMsg :
                 String.format(
