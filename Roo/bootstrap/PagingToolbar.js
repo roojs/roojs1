@@ -288,7 +288,8 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
     // private
     onClick : function(o, e, which){
         Roo.log(o, e, which);
-        e.preventDefault();
+        
+//        e.preventDefault();
         
         var ds = this.ds;
         if (!ds) {
