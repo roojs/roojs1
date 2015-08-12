@@ -1444,7 +1444,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // Implements the default empty TriggerField.onTriggerClick function
     onTriggerClick : function(e)
     {
-        Roo.log('trigger click');
+        Roo.log('trigger click ??');
         
         if(this.disabled || !this.triggerList){
             return;
@@ -1494,8 +1494,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.hasFocus || this.disabled || e.getTarget().nodeName.toLowerCase() == 'button'){
             return;
         }
-        Roo.log('onSearchFieldClick');
-        Roo.log(this);
         
         this.page = 0;
         this.loadNext = false;
