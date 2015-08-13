@@ -145,6 +145,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             Roo.log(cur.el.dom.style);
             
             for (var name in transEndEventNames) {
+                Roo.log(name);
                 if (cur.el.dom.style[name] != 'undefined') {
                     Roo.log(cur.el.dom.style[name])
                   Roo.log(transEndEventNames[name]);
