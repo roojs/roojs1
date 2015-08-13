@@ -139,7 +139,6 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         
         var tg = Roo.bootstrap.TabGroup.get(this.navId);
-        Roo.log(tg);
         if (tg && tg.transition) {
             Roo.log("waiting for the transitionend");
             return;
@@ -155,7 +154,6 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         
         var p = this.parent();
-        Roo.log(p);
         if (['tabs','pills'].indexOf(p.type)!==-1) {
             if (typeof(p.setActiveItem) !== 'undefined') {
                 p.setActiveItem(this);
