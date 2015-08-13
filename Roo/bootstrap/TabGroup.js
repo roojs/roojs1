@@ -126,7 +126,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         if (this.carousel) {
             this.transition = true;
-            cur.el.on('transitionstart', function() {
+            cur.el.on('transition-start', function() {
                 Roo.log("trans start?");
                 
                 
