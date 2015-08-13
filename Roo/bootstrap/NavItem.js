@@ -139,6 +139,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         
         var tg = Roo.bootstrap.TabGroup.get(this.navId);
+        Roo.log(tg);
         if (tg && tg.transition) {
             Roo.log("waiting for the transitionend");
             return;
