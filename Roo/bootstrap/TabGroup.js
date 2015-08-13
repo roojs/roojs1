@@ -144,7 +144,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             Roo.log('checking event');
             Roo.log(cur.el.dom.style);
             for (var name in transEndEventNames) {
-                if (cur.el.style[name] != 'undefined') {
+                if (cur.el.dom.style[name] != 'undefined') {
                   Roo.log(transEndEventNames[name]);
                 }
               }
