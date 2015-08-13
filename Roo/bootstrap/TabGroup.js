@@ -140,7 +140,14 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 MozTransition    : 'transitionend',
                 OTransition      : 'oTransitionEnd otransitionend',
                 transition       : 'transitionend'
+            }
+            
+            for (var name in transEndEventNames) {
+                if (el.style[name] !== undefined) {
+                  return transEndEventNames[name];
+                }
               }
+
             cur.el.on('transitionend', function() {
                 Roo.log("trans end?");
                 
