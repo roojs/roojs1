@@ -148,7 +148,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 if (cur.el.dom.style[name] != 'undefined') {
                   Roo.log(transEndEventNames[name]);
                 }
-              }
+            }
 
             cur.el.on('transitionend', function() {
                 Roo.log("trans end?");
