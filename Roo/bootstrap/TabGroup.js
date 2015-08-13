@@ -135,6 +135,12 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             
             var _this = this;
             Roo.log(cur.el);
+            var transEndEventNames = {
+                WebkitTransition : 'webkitTransitionEnd',
+                MozTransition    : 'transitionend',
+                OTransition      : 'oTransitionEnd otransitionend',
+                transition       : 'transitionend'
+              }
             cur.el.on('transitionend', function() {
                 Roo.log("trans end?");
                 
