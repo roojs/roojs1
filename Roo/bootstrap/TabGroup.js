@@ -150,7 +150,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 }
               }
 
-            cur.el.on('webkitTransitionEnd', function() {
+            cur.el.on('transitionend', function() {
                 Roo.log("trans end?");
                 
                 pan.el.removeClass([lr,dir]);
