@@ -134,6 +134,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             pan.el.addClass(lr);
             
             var _this = this;
+            Roo.log(cur.el);
             cur.el.on('transitionend', function() {
                 Roo.log("trans end?");
                 
