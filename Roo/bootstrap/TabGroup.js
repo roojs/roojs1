@@ -123,11 +123,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         if (false === cur.fireEvent('beforedeactivate')) {
             return false;
         }
-        Roo.log(Roo.get(document.body).dom.style.transition);
-        Roo.log(typeof(Roo.get(document.body).dom.style.transition));
         
         if (this.carousel && typeof(Roo.get(document.body).dom.style.transition) != 'undefined') {
-            Roo.log('in>?????????????????????????????');
+            
             this.transition = true;
             var dir = this.indexOfPanel(pan) > this.indexOfPanel(cur)  ? 'next' : 'prev';
             var lr = dir == 'next' ? 'left' : 'right';
