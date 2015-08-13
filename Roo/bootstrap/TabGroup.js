@@ -141,10 +141,10 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 OTransition      : 'oTransitionEnd otransitionend',
                 transition       : 'transitionend'
             }
-            
+            Roo.log('checking event');
             for (var name in transEndEventNames) {
-                if (el.style[name] !== undefined) {
-                  return transEndEventNames[name];
+                if (cur.el.style[name] != 'undefined') {
+                  Roo.log(transEndEventNames[name]);
                 }
               }
 
