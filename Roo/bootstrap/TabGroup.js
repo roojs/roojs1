@@ -126,12 +126,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         if (this.carousel) {
             this.transition = true;
-            cur.el.on('transition-start', function() {
-                Roo.log("trans start?");
-                
-                
-            }, this, { single:  true } );
-            
             var dir = this.indexOfPanel(pan) > this.indexOfPanel(cur)  ? 'next' : 'prev';
             var lr = dir == 'next' ? 'left' : 'right';
             pan.el.addClass(dir); // or prev
@@ -140,24 +134,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             pan.el.addClass(lr);
             
             var _this = this;
-            Roo.log(cur.el);
-            var transEndEventNames = {
-                WebkitTransition : 'webkitTransitionEnd',
-                MozTransition    : 'transitionend',
-                OTransition      : 'oTransitionEnd otransitionend',
-                transition       : 'transitionend'
-            }
-            Roo.log('checking event');
-            Roo.log(cur.el.dom.style);
-            
-            for (var name in transEndEventNames) {
-                
-                if (typeof(cur.el.dom.style[name]) != 'undefined') {
-                    Roo.log(cur.el.dom.style[name])
-                  Roo.log(transEndEventNames[name]);
-                }
-            }
-
             cur.el.on('transitionend', function() {
                 Roo.log("trans end?");
                 
