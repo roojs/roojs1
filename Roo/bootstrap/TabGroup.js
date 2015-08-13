@@ -143,13 +143,14 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             }
             Roo.log('checking event');
             Roo.log(cur.el.dom.style);
+            
             for (var name in transEndEventNames) {
                 if (cur.el.dom.style[name] != 'undefined') {
                   Roo.log(transEndEventNames[name]);
                 }
               }
 
-            cur.el.on('transitionend', function() {
+            cur.el.on('webkitTransitionEnd', function() {
                 Roo.log("trans end?");
                 
                 pan.el.removeClass([lr,dir]);
