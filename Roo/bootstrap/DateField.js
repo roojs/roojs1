@@ -552,7 +552,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         
         // v can be a string or a date..
         Roo.log('set value!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this);
+        Roo.log(this.name);
         
         var d = new Date(this.parseDate(v) ).clearTime();
         
