@@ -122,7 +122,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     setUTCDate: function(d) {
             this.date = d;
-            Roo.log('setUTCDATA!!!!!!!!!11');
             this.setValue(this.formatDate(this.date));
     },
         
@@ -552,9 +551,8 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         
         // v can be a string or a date..
-        Roo.log('set value!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.name);
-        Roo.log(v);
+        
+        
         var d = new Date(this.parseDate(v) ).clearTime();
         
         if(isNaN(d.getTime())){
