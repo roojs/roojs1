@@ -122,6 +122,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     setUTCDate: function(d) {
             this.date = d;
+            Roo.log('setUTCDATA!!!!!!!!!11');
             this.setValue(this.formatDate(this.date));
     },
         
