@@ -1493,8 +1493,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onSearchFieldClick : function(e)
     {
-        Roo.log(e.getTarget().nodeName.toLowerCase());
-        Roo.log(this.hasFocus);
+        if(this.hasFocus && !this.disabled && e.getTarget().nodeName.toLowerCase() != 'button'){
+            return;
+        }
         
         if(this.hasFocus || this.disabled || e.getTarget().nodeName.toLowerCase() == 'button'){
             return;
