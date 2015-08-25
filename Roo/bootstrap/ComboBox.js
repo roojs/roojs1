@@ -684,7 +684,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.choices = this.el.select('ul.select2-choices', true).first();
         this.searchField = this.el.select('ul li.select2-search-field', true).first();
-        
         if(this.triggerList){
             this.searchField.on("click", this.onSearchFieldClick, this, {preventDefault:true});
         }
@@ -1492,8 +1491,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onSearchFieldClick : function(e)
     {
-        Roo.log(e.getTarget().nodeName.toLowerCase());
-        
         if(this.hasFocus || this.disabled || e.getTarget().nodeName.toLowerCase() == 'button'){
             return;
         }
