@@ -797,8 +797,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.taTask = new Roo.util.DelayedTask(this.onTypeAhead, this);
         }
         
-        Roo.log(this.inputEl());
-//        this.inputEl().on('blur', this.doForce, this);
     },
 
     onDestroy : function(){
