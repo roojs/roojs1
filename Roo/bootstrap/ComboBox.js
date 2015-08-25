@@ -1495,6 +1495,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         if(this.hasFocus && !this.disabled && e.getTarget().nodeName.toLowerCase() != 'button'){
             this.onTickableFooterButtonClick(e, false, false);
+            return;
         }
         
         if(this.hasFocus || this.disabled || e.getTarget().nodeName.toLowerCase() == 'button'){
