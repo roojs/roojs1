@@ -11273,6 +11273,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.typeAhead){
             this.taTask = new Roo.util.DelayedTask(this.onTypeAhead, this);
         }
+        
     },
 
     onDestroy : function(){
@@ -11847,6 +11848,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.list.hide();
         
         if(this.tickable){
+            this.hasFocus = false;
             this.okBtn.hide();
             this.cancelBtn.hide();
             this.trigger.show();
@@ -11968,6 +11970,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onSearchFieldClick : function(e)
     {
+        if(this.hasFocus && !this.disabled && e.getTarget().nodeName.toLowerCase() != 'button'){
+            this.onTickableFooterButtonClick(e, false, false);
+            return;
+        }
+        
         if(this.hasFocus || this.disabled || e.getTarget().nodeName.toLowerCase() == 'button'){
             return;
         }
