@@ -368,4 +368,3 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     }
     
 });
-
