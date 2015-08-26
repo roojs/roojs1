@@ -66,7 +66,14 @@ Roo.bootstrap.LocationPicker = function(config){
              * Fires when the map hide.
              * @param {Roo.bootstrap.LocationPicker} this
              */
-            hide : true
+            hide : true,
+            /**
+             * @event mapClick
+             * Fires when click the map.
+             * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Google Location} location
+             */
+            mapClick : true,
         });
         
 };
