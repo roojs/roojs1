@@ -154,8 +154,28 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             _this.setPosition(_this.gMapContext.marker.position);
         });
         
-        this.OverlayView = new google.maps.OverlayView();
-        
+        google.maps.event.addListener(this.gMapContext.map, 'bounds_changed', function() {
+      var lat1 = 37.41463623043073;
+      var lat2 = 37.46915383933881;
+      var lng1 = -122.1848153442383;
+      var lng2 = -122.09898465576174;  
+
+      var rectangle = new google.maps.Polygon({
+         paths : [
+           new google.maps.LatLng(lat1, lng1),
+           new google.maps.LatLng(lat2, lng1),
+           new google.maps.LatLng(lat2, lng2),
+           new google.maps.LatLng(lat1, lng2)
+         ],
+        strokeOpacity: 0,
+        fillOpacity : 0,
+        map : _this.gMapContext.map
+      });
+      google.maps.event.addListener(rectangle, 'click', function(args) {  
+         console.log('latlng', args.latLng);
+    });
+  });
+  
         google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
             Roo.log('click');
             Roo.log(event);
