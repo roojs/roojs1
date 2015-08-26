@@ -148,8 +148,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     {
         this.gMapContext = this.GMapContext();
         
-        Roo.bootstrap.LocationPicker.register(this);
-        
         var _this = this;
         
         google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
@@ -373,9 +371,9 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
 
 Roo.apply(Roo.bootstrap.LocationPicker, {
     
-    groups: {},
+    views: {},
     
-    register : function(picker)
+    OverlayView : function(picker)
     {
         if(typeof(picker.el) == 'undefined'){
             return false;
