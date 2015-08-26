@@ -107,7 +107,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     longitude: 0,
     zoom: 15,
     mapTypeId: false,
-    mapTypeControl: true,
+    mapTypeControl: false,
     disableDoubleClickZoom: false,
     scrollwheel: true,
     streetViewControl: false,
