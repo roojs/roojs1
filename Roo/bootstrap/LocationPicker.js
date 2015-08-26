@@ -148,7 +148,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     {
         this.gMapContext = this.GMapContext();
         
-        Roo.bootstrap.LocationPicker.register(this);
+        this.register(this);
         
         var _this = this;
         
