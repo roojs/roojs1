@@ -34,8 +34,6 @@ Roo.bootstrap.LocationPicker = function(config){
     
     Roo.bootstrap.LocationPicker.superclass.constructor.call(this, config);
     
-    Roo.bootstrap.LocationPicker.register(this);
-    
     this.addEvents({
         /**
          * @event initial
