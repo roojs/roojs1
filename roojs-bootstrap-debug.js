@@ -21249,7 +21249,6 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
  * @cfg {Boolean} enableAutocomplete default false
  * @cfg {Boolean} enableReverseGeocode default true
  * @cfg {String} markerTitle
- * @cfg {Array} styles
  * 
  * @constructor
  * Create a new LocationPicker
@@ -21344,7 +21343,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     enableAutocomplete: false,
     enableReverseGeocode: true,
     markerTitle: '',
-    styles: [],
     
     getAutoCreate: function()
     {
@@ -21383,14 +21381,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         });
         
         google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
-            Roo.log('click');
-            Roo.log(event);
             _this.fireEvent('mapClick', this, event);
             
         });
 
         google.maps.event.addListener(this.gMapContext.map, 'rightclick', function(event){
-            Roo.log('right click');
             _this.fireEvent('mapRightClick', this, event);
             
         });
