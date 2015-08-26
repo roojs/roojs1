@@ -157,7 +157,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
             Roo.log('click');
             Roo.log(event);
-            
             _this.fireEvent('mapClick', this, event);
             
         });
