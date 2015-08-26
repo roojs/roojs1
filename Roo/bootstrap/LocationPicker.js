@@ -160,7 +160,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             
         });
 
-        google.maps.event.addListener(this.gMapContext.marker, 'rightclick', function(event){
+        google.maps.event.addListener(this.gMapContext.map, 'rightclick', function(event){
             Roo.log('rightclick on map');
             
             Roo.log(event);
