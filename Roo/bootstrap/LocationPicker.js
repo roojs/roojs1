@@ -148,9 +148,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     {
         this.styles = [
             {
-              "stylers": [
-                { "visibility": "off" }
-              ]
+                "stylers": [
+                    {
+                        "visibility": "off" 
+                    }
+                ]
             },{
               "featureType": "road",
               "stylers": [
