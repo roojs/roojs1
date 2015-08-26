@@ -196,8 +196,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.OverlayView.prototype.draw = function(){
             Roo.log('draw');
         };
-        
-        function MyOverlay(map) { this.setMap(map); }
     },
     
     isApplied: function() 
