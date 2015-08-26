@@ -154,14 +154,12 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
             Roo.log('click on map');
-            
             Roo.log(event);
             
         });
 
         google.maps.event.addListener(this.gMapContext.map, 'rightclick', function(event){
             Roo.log('rightclick on map');
-            
             Roo.log(event);
             
         });
