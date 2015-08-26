@@ -370,3 +370,24 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     }
     
 });
+
+Roo.apply(Roo.bootstrap.LocationPicker, {
+    
+    groups: {},
+    
+    register : function(picker)
+    {
+        Roo.log(picker);
+//        this.groups[navgrp.navId] = navgrp;
+	
+    },
+    get: function(navId) {
+        if (typeof(this.groups[navId]) == 'undefined') {
+            this.register(new Roo.bootstrap.TabGroup({ navId : navId }));
+        }
+        return this.groups[navId] ;
+    }
+    
+    
+    
+});
