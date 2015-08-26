@@ -188,17 +188,19 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             },
             {
                 "featureType": "poi",
-              "elementType": "geometry",
-              "stylers": [
-                { "visibility": "on" }
-              ]
+                "elementType": "geometry",
+                "stylers": [
+                    { 
+                        "visibility": "on" 
+                    }
+                ]
             },
             {
-              "featureType": "transit",
-              "elementType": "geometry",
-              "stylers": [
-                  { 
-                    "visibility": "on" 
+                "featureType": "transit",
+                "elementType": "geometry",
+                "stylers": [
+                    { 
+                        "visibility": "on" 
                     }
                 ]
             }
