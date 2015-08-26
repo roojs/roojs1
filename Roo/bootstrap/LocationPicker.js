@@ -148,7 +148,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     {
         this.gMapContext = this.GMapContext();
         
-        
+        this.getOverlayView();
         
         var _this = this;
                 
@@ -179,6 +179,25 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.setPosition(this.gMapContext.location);
         
         this.fireEvent('initial', this, this.gMapContext.location);
+    },
+    
+    getOverlayView: function()
+    {
+        this.OverlayView.prototype = new google.maps.OverlayView();
+        
+        this.OverlayView.prototype.onAdd = function(){
+            Roo.log('onAdd');
+        };
+        
+        this.OverlayView.prototype.onRemove = function(){
+            Roo.log('onRemove');
+        };
+        
+        this.OverlayView.prototype.draw = function(){
+            Roo.log('draw');
+        };
+        
+        function MyOverlay(map) { this.setMap(map); }
     },
     
     isApplied: function() 
