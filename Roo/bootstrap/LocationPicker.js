@@ -23,6 +23,7 @@
  * @cfg {Boolean} enableAutocomplete default false
  * @cfg {Boolean} enableReverseGeocode default true
  * @cfg {String} markerTitle
+ * @cfg {Array} styles
  * 
  * @constructor
  * Create a new LocationPicker
@@ -117,6 +118,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     enableAutocomplete: false,
     enableReverseGeocode: true,
     markerTitle: '',
+    styles: [],
     
     getAutoCreate: function()
     {
