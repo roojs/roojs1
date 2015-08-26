@@ -152,17 +152,19 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             ]
         });
         
-        google.maps.event.addListener(this.gMapContext.marker, 'click', function(event){
+        google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
             Roo.log('click on map');
-            var t = new google.maps.OverlayView().getProjection().fromLatLngToContainerPixel(event.latLng);
-            Roo.log(t);
+            
             
             Roo.log(event);
             
         });
 
-        google.maps.event.addListener(this.gMapContext.map, 'rightclick', function(event){
+        google.maps.event.addListener(this.gMapContext.marker, 'rightclick', function(event){
             Roo.log('rightclick on map');
+            
+            var t = new google.maps.OverlayView().getProjection().fromLatLngToContainerPixel(event.latLng);
+            Roo.log(t);
             Roo.log(event);
             
         });
