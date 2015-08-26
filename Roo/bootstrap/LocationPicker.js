@@ -129,7 +129,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         });
         
         google.maps.event.addListener(this.gMapContext.map, 'rightclick', function(e){
-            Roo.log([a,b,c]);
+            Roo.log(e);
         });
     
         this.fireEvent('initial', this, this.gMapContext.location);
