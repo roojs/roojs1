@@ -132,7 +132,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     initEvents: function(ct, position)
     {   
         if(!this.mapTypeId){
-            this.mapTypeId = google.maps.MapTypeId.ROADMAP;
+//            this.mapTypeId = google.maps.MapTypeId.ROADMAP;
         }
             
         if(!this.el.getWidth() || this.isApplied()){
