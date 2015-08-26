@@ -71,9 +71,30 @@ Roo.bootstrap.LocationPicker = function(config){
              * @event mapClick
              * Fires when click the map.
              * @param {Roo.bootstrap.LocationPicker} this
-             * @param {Google Location} location
+             * @param {Map event} e
              */
             mapClick : true,
+            /**
+             * @event mapRightClick
+             * Fires when click the map.
+             * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Map event} e
+             */
+            mapRightClick : true,
+            /**
+             * @event markerClick
+             * Fires when click the map.
+             * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Map event} e
+             */
+            markerClick : true,
+            /**
+             * @event markerRightClick
+             * Fires when click the map.
+             * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Map event} e
+             */
+            markerRightClick : true
         });
         
 };
