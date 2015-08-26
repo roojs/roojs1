@@ -368,21 +368,3 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     }
     
 });
-
-
-Roo.apply(Roo.bootstrap.LocationPicker, {
-    
-    OverlayView: {},
-     
-    register : function()
-    {
-        Roo.log(this);
-    },
-    
-    get: function(navId) {
-        
-    }
-    
-    
-    
-});
