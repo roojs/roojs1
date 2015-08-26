@@ -150,7 +150,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         var _this = this;
         
-        this.setPosition(this.gMapContext.location);
+        
         
         google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
             _this.setPosition(_this.gMapContext.marker.position);
@@ -176,6 +176,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             
         });
     
+        this.setPosition(this.gMapContext.location);
+        
         this.fireEvent('initial', this, this.gMapContext.location);
     },
     
