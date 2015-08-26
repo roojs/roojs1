@@ -24746,6 +24746,12 @@
      "memberOf": ""
     },
     {
+     "name": "styles",
+     "type": "Array",
+     "desc": "",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
