@@ -150,7 +150,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         var _this = this;
         
-        
+        this.OverlayView = new google.maps.OverlayView();
         
         google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
             _this.setPosition(_this.gMapContext.marker.position);
