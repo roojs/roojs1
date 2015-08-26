@@ -156,13 +156,13 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         this.OverlayView = new google.maps.OverlayView();
         
-//        google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
-//            Roo.log('click');
-//            Roo.log(event);
-//            
-//            _this.fireEvent('mapClick', this, event);
-//            
-//        });
+        google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
+            Roo.log('click');
+            Roo.log(event);
+            
+            _this.fireEvent('mapClick', this, event);
+            
+        });
 
         google.maps.event.addListener(this.gMapContext.map, 'rightclick', function(event){
             Roo.log('right click');
@@ -198,11 +198,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     GMapContext: function() 
     {
         var _map = new google.maps.Map(this.el.dom, this);
-        
-        _map.addListener('click', function(e) {
-    Roo.log('click click');
-  });
-  
         var _marker = new google.maps.Marker({
             position: new google.maps.LatLng(this.latitude, this.longitude),
             map: _map,
