@@ -135,7 +135,17 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                     tag: 'ul',
                     cls: 'dropdown-menu',
                     cn: [
-                    
+                        {
+                            tag: 'li',
+                            cls: 'dropdown-menu-item',
+                            cn: [
+                                {
+                                    tag : 'a',
+                                    href : '#',
+                                    html : 'Drop pin here'
+                                }
+                            ]
+                        }
                     ]
                 }
             ]
