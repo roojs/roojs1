@@ -153,28 +153,41 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
                         "visibility": "off" 
                     }
                 ]
-            },{
-              "featureType": "road",
-              "stylers": [
-                { "visibility": "on" }
-              ]
-            },{
-              "featureType": "water",
-              "stylers": [
-                { "visibility": "on" }
-              ]
-            },{
-              "featureType": "administrative",
-              "stylers": [
-                { "visibility": "on" }
-              ]
-            },{
-              "featureType": "landscape",
-              "stylers": [
-                { "visibility": "on" }
-              ]
-            },{
-              "featureType": "poi",
+            },
+            {
+                "featureType": "road",
+                "stylers": [
+                    { 
+                        "visibility": "on" 
+                    }
+                ]
+            },
+            {
+                "featureType": "water",
+                "stylers": [
+                    { 
+                        "visibility": "on" 
+                    }
+                ]
+            },
+            {
+                "featureType": "administrative",
+                "stylers": [
+                    { 
+                        "visibility": "on" 
+                    }
+                ]
+            },
+            {
+                "featureType": "landscape",
+                "stylers": [
+                    { 
+                        "visibility": "on" 
+                    }
+                ]
+            },
+            {
+                "featureType": "poi",
               "elementType": "geometry",
               "stylers": [
                 { "visibility": "on" }
