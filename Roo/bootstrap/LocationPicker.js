@@ -90,7 +90,7 @@ Roo.bootstrap.LocationPicker = function(config){
             markerClick : true,
             /**
              * @event markerRightClick
-             * Fires when click the map.
+             * Fires when right click the marker.
              * @param {Roo.bootstrap.LocationPicker} this
              * @param {Map event} e
              */
