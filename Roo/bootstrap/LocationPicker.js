@@ -148,67 +148,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initial: function()
     {
-        this.styles = [
-            {
-                "stylers": [
-                    {
-                        "visibility": "off" 
-                    }
-                ]
-            },
-            {
-                "featureType": "road",
-                "stylers": [
-                    { 
-                        "visibility": "on" 
-                    }
-                ]
-            },
-            {
-                "featureType": "water",
-                "stylers": [
-                    { 
-                        "visibility": "on" 
-                    }
-                ]
-            },
-            {
-                "featureType": "administrative",
-                "stylers": [
-                    { 
-                        "visibility": "on" 
-                    }
-                ]
-            },
-            {
-                "featureType": "landscape",
-                "stylers": [
-                    { 
-                        "visibility": "on" 
-                    }
-                ]
-            },
-            {
-                "featureType": "poi",
-                "elementType": "geometry",
-                "stylers": [
-                    { 
-                        "visibility": "on" 
-                    }
-                ]
-            },
-            {
-                "featureType": "transit",
-                "elementType": "geometry",
-                "stylers": [
-                    { 
-                        "visibility": "on" 
-                    }
-                ]
-            }
-        ];
-        
-
         this.gMapContext = this.GMapContext();
         
         var _this = this;
