@@ -66,7 +66,35 @@
              * Fires when the map hide.
              * @param {Roo.bootstrap.LocationPicker} this
              */
-            </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+            </span><span class="jsdoc-var">hide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event mapClick
+             * Fires when click the map.
+             * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Map event} e
+             */
+            </span><span class="jsdoc-var">mapClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event mapRightClick
+             * Fires when click the map.
+             * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Map event} e
+             */
+            </span><span class="jsdoc-var">mapRightClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event markerClick
+             * Fires when click the map.
+             * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Map event} e
+             */
+            </span><span class="jsdoc-var">markerClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-comment">/**
+             * @event markerRightClick
+             * Fires when click the map.
+             * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Map event} e
+             */
+            </span><span class="jsdoc-var">markerRightClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         </span><span class="jsdoc-syntax">});
         
 };
@@ -122,12 +150,56 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         
+        </span><span class="jsdoc-var">this.setPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.location</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">google.maps.event.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.marker</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;dragend&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">_this.setPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.gMapContext.marker.position</span><span class="jsdoc-syntax">);
         });
         
-        </span><span class="jsdoc-var">this.setPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.location</span><span class="jsdoc-syntax">);
+</span><span class="jsdoc-comment">//        this.menuItems = Roo.get(document.body).createChild({
+//            tag: 'div',
+//            cls: 'open',
+//            cn: [
+//                {
+//                    tag: 'ul',
+//                    cls: 'dropdown-menu',
+//                    cn: [
+//                        {
+//                            tag: 'li',
+//                            cls: 'dropdown-menu-item',
+//                            cn: [
+//                                {
+//                                    tag : 'a',
+//                                    href : '#',
+//                                    html : 'Drop pin here'
+//                                }
+//                            ]
+//                        }
+//                    ]
+//                }
+//            ]
+//        });
         
+        </span><span class="jsdoc-var">google.maps.event.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.map</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mapClick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">);
+            
+        });
+
+        </span><span class="jsdoc-var">google.maps.event.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.map</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'rightclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mapRightClick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">);
+            
+        });
+        
+        </span><span class="jsdoc-var">google.maps.event.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.marker</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'markerClick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">);
+            
+        });
+
+        </span><span class="jsdoc-var">google.maps.event.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.marker</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'rightclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'markerRightClick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">);
+            
+        });
+    
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'initial'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.gMapContext.location</span><span class="jsdoc-syntax">);
     },
     
