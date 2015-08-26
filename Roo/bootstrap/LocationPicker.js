@@ -161,6 +161,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
 //            _this.OverlayView.setMap(this);
 //            
 //            
+
             _this.fireEvent('mapClick', this, event);
             
         });
