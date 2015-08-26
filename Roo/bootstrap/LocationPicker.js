@@ -369,26 +369,9 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
 });
 
-Roo.apply(Roo.bootstrap.LocationPicker, {
-    
-    views: {},
-    
-    OverlayView : function(picker)
-    {
-        if(typeof(picker.el) == 'undefined'){
-            return false;
-        }
-        
-        this.groups[picker.el.id] = picker;
-        
-    },
-    
-    get: function(id) 
-    {
-        if (typeof(this.groups[id]) == 'undefined') {
-            return false;
-        }
-        
-        return this.groups[id] ;
+Roo.bootstrap.LocationPicker.OverlayView.prototype = Roo.apply( new google.maps.OverlayView(), {
+    onAdd: function() 
+    { 
+        Roo.log(onAdd);
     }
 });
