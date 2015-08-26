@@ -156,7 +156,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         this.OverlayView = new google.maps.OverlayView();
         
-        Roo.log(this.gMapContext.map);
+        Roo.log(this.gMapContext.map.getDiv());
         this.gMapContext.map.addListener('click', function(event){
             Roo.log('click');
             Roo.log(event);
