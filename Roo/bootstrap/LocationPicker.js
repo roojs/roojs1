@@ -34,68 +34,68 @@ Roo.bootstrap.LocationPicker = function(config){
     
     Roo.bootstrap.LocationPicker.superclass.constructor.call(this, config);
     
-     this.addEvents({
-            /**
-             * @event initial
-             * Fires when the picker initialized.
-             * @param {Roo.bootstrap.LocationPicker} this
-             * @param {Google Location} location
-             */
-            initial : true,
-            /**
-             * @event positionchanged
-             * Fires when the picker position changed.
-             * @param {Roo.bootstrap.LocationPicker} this
-             * @param {Google Location} location
-             */
-            positionchanged : true,
-            /**
-             * @event resize
-             * Fires when the map resize.
-             * @param {Roo.bootstrap.LocationPicker} this
-             */
-            resize : true,
-            /**
-             * @event show
-             * Fires when the map show.
-             * @param {Roo.bootstrap.LocationPicker} this
-             */
-            show : true,
-            /**
-             * @event hide
-             * Fires when the map hide.
-             * @param {Roo.bootstrap.LocationPicker} this
-             */
-            hide : true,
-            /**
-             * @event mapClick
-             * Fires when click the map.
-             * @param {Roo.bootstrap.LocationPicker} this
-             * @param {Map event} e
-             */
-            mapClick : true,
-            /**
-             * @event mapRightClick
-             * Fires when right click the map.
-             * @param {Roo.bootstrap.LocationPicker} this
-             * @param {Map event} e
-             */
-            mapRightClick : true,
-            /**
-             * @event markerClick
-             * Fires when click the marker.
-             * @param {Roo.bootstrap.LocationPicker} this
-             * @param {Map event} e
-             */
-            markerClick : true,
-            /**
-             * @event markerRightClick
-             * Fires when right click the marker.
-             * @param {Roo.bootstrap.LocationPicker} this
-             * @param {Map event} e
-             */
-            markerRightClick : true
-        });
+    this.addEvents({
+        /**
+         * @event initial
+         * Fires when the picker initialized.
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Google Location} location
+         */
+        initial : true,
+        /**
+         * @event positionchanged
+         * Fires when the picker position changed.
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Google Location} location
+         */
+        positionchanged : true,
+        /**
+         * @event resize
+         * Fires when the map resize.
+         * @param {Roo.bootstrap.LocationPicker} this
+         */
+        resize : true,
+        /**
+         * @event show
+         * Fires when the map show.
+         * @param {Roo.bootstrap.LocationPicker} this
+         */
+        show : true,
+        /**
+         * @event hide
+         * Fires when the map hide.
+         * @param {Roo.bootstrap.LocationPicker} this
+         */
+        hide : true,
+        /**
+         * @event mapClick
+         * Fires when click the map.
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Map event} e
+         */
+        mapClick : true,
+        /**
+         * @event mapRightClick
+         * Fires when right click the map.
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Map event} e
+         */
+        mapRightClick : true,
+        /**
+         * @event markerClick
+         * Fires when click the marker.
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Map event} e
+         */
+        markerClick : true,
+        /**
+         * @event markerRightClick
+         * Fires when right click the marker.
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Map event} e
+         */
+        markerRightClick : true
+    });
         
 };
 
