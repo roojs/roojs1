@@ -377,6 +377,7 @@ Roo.apply(Roo.bootstrap.LocationPicker, {
     
     register : function(picker)
     {
+        Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
         Roo.log(picker);
 //        this.groups[navgrp.navId] = navgrp;
 	
