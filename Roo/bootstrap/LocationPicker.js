@@ -377,11 +377,12 @@ Roo.apply(Roo.bootstrap.LocationPicker, {
     
     register : function(picker)
     {
-        Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+        if(typeof(picker.el) == 'undefined'){
+            return false;
+        }
         
-        Roo.log(picker);
-//        this.groups[navgrp.navId] = navgrp;
-	
+        this.groups[picker.el.id] = picker;
+        
     },
     get: function(navId) {
         if (typeof(this.groups[navId]) == 'undefined') {
