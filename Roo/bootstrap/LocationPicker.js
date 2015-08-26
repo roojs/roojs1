@@ -384,13 +384,13 @@ Roo.apply(Roo.bootstrap.LocationPicker, {
         this.groups[picker.el.id] = picker;
         
     },
-    get: function(navId) {
-        if (typeof(this.groups[navId]) == 'undefined') {
-            this.register(new Roo.bootstrap.TabGroup({ navId : navId }));
+    
+    get: function(id) 
+    {
+        if (typeof(this.groups[id]) == 'undefined') {
+            return false;
         }
-        return this.groups[navId] ;
+        
+        return this.groups[id] ;
     }
-    
-    
-    
 });
