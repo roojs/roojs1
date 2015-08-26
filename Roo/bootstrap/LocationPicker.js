@@ -130,6 +130,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         this.menuItems = Roo.get(document.body).createChild({
             tag: 'div',
+            cls: 'open',
             cn: [
                 {
                     tag: 'ul',
