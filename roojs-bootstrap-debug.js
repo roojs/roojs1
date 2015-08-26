@@ -21249,6 +21249,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
  * @cfg {Boolean} enableAutocomplete default false
  * @cfg {Boolean} enableReverseGeocode default true
  * @cfg {String} markerTitle
+ * @cfg {Array} styles
  * 
  * @constructor
  * Create a new LocationPicker
@@ -21260,68 +21261,68 @@ Roo.bootstrap.LocationPicker = function(config){
     
     Roo.bootstrap.LocationPicker.superclass.constructor.call(this, config);
     
-     this.addEvents({
-            /**
-             * @event initial
-             * Fires when the picker initialized.
-             * @param {Roo.bootstrap.LocationPicker} this
-             * @param {Google Location} location
-             */
-            initial : true,
-            /**
-             * @event positionchanged
-             * Fires when the picker position changed.
-             * @param {Roo.bootstrap.LocationPicker} this
-             * @param {Google Location} location
-             */
-            positionchanged : true,
-            /**
-             * @event resize
-             * Fires when the map resize.
-             * @param {Roo.bootstrap.LocationPicker} this
-             */
-            resize : true,
-            /**
-             * @event show
-             * Fires when the map show.
-             * @param {Roo.bootstrap.LocationPicker} this
-             */
-            show : true,
-            /**
-             * @event hide
-             * Fires when the map hide.
-             * @param {Roo.bootstrap.LocationPicker} this
-             */
-            hide : true,
-            /**
-             * @event mapClick
-             * Fires when click the map.
-             * @param {Roo.bootstrap.LocationPicker} this
-             * @param {Map event} e
-             */
-            mapClick : true,
-            /**
-             * @event mapRightClick
-             * Fires when click the map.
-             * @param {Roo.bootstrap.LocationPicker} this
-             * @param {Map event} e
-             */
-            mapRightClick : true,
-            /**
-             * @event markerClick
-             * Fires when click the map.
-             * @param {Roo.bootstrap.LocationPicker} this
-             * @param {Map event} e
-             */
-            markerClick : true,
-            /**
-             * @event markerRightClick
-             * Fires when click the map.
-             * @param {Roo.bootstrap.LocationPicker} this
-             * @param {Map event} e
-             */
-            markerRightClick : true
-        });
+    this.addEvents({
+        /**
+         * @event initial
+         * Fires when the picker initialized.
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Google Location} location
+         */
+        initial : true,
+        /**
+         * @event positionchanged
+         * Fires when the picker position changed.
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Google Location} location
+         */
+        positionchanged : true,
+        /**
+         * @event resize
+         * Fires when the map resize.
+         * @param {Roo.bootstrap.LocationPicker} this
+         */
+        resize : true,
+        /**
+         * @event show
+         * Fires when the map show.
+         * @param {Roo.bootstrap.LocationPicker} this
+         */
+        show : true,
+        /**
+         * @event hide
+         * Fires when the map hide.
+         * @param {Roo.bootstrap.LocationPicker} this
+         */
+        hide : true,
+        /**
+         * @event mapClick
+         * Fires when click the map.
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Map event} e
+         */
+        mapClick : true,
+        /**
+         * @event mapRightClick
+         * Fires when right click the map.
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Map event} e
+         */
+        mapRightClick : true,
+        /**
+         * @event markerClick
+         * Fires when click the marker.
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Map event} e
+         */
+        markerClick : true,
+        /**
+         * @event markerRightClick
+         * Fires when right click the marker.
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Map event} e
+         */
+        markerRightClick : true
+    });
         
 };
 
@@ -21343,6 +21344,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     enableAutocomplete: false,
     enableReverseGeocode: true,
     markerTitle: '',
+    styles: [],
     
     getAutoCreate: function()
     {
@@ -21375,43 +21377,20 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.gMapContext = this.GMapContext();
         
         var _this = this;
-        
-        this.setPosition(this.gMapContext.location);
-        
+                
         google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
             _this.setPosition(_this.gMapContext.marker.position);
         });
         
-//        this.menuItems = Roo.get(document.body).createChild({
-//            tag: 'div',
-//            cls: 'open',
-//            cn: [
-//                {
-//                    tag: 'ul',
-//                    cls: 'dropdown-menu',
-//                    cn: [
-//                        {
-//                            tag: 'li',
-//                            cls: 'dropdown-menu-item',
-//                            cn: [
-//                                {
-//                                    tag : 'a',
-//                                    href : '#',
-//                                    html : 'Drop pin here'
-//                                }
-//                            ]
-//                        }
-//                    ]
-//                }
-//            ]
-//        });
-        
         google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
+            Roo.log('click');
+            Roo.log(event);
             _this.fireEvent('mapClick', this, event);
             
         });
 
         google.maps.event.addListener(this.gMapContext.map, 'rightclick', function(event){
+            Roo.log('right click');
             _this.fireEvent('mapRightClick', this, event);
             
         });
@@ -21426,6 +21405,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             
         });
     
+        this.setPosition(this.gMapContext.location);
+        
         this.fireEvent('initial', this, this.gMapContext.location);
     },
     
@@ -21617,8 +21598,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.fireEvent('hide', this);
     }
     
-});
-/*
+});/*
  * - LGPL
  *
  * Alert
