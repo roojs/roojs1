@@ -368,10 +368,3 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     }
     
 });
-
-Roo.bootstrap.LocationPicker.OverlayView.prototype = Roo.apply( new google.maps.OverlayView(), {
-    onAdd: function() 
-    { 
-        Roo.log(onAdd);
-    }
-});
