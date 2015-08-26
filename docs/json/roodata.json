@@ -24893,19 +24893,19 @@
      "name": "mapRightClick",
      "sig": "function (_self, e)\n{\n\n}",
      "type": "function",
-     "desc": "Fires when click the map."
+     "desc": "Fires when right click the map."
     },
     {
      "name": "markerClick",
      "sig": "function (_self, e)\n{\n\n}",
      "type": "function",
-     "desc": "Fires when click the map."
+     "desc": "Fires when click the marker."
     },
     {
      "name": "markerRightClick",
      "sig": "function (_self, e)\n{\n\n}",
      "type": "function",
-     "desc": "Fires when click the map."
+     "desc": "Fires when right click the marker."
     },
     {
      "name": "positionchanged",
