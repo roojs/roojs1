@@ -128,6 +128,19 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             _this.setPosition(_this.gMapContext.marker.position);
         });
         
+        this.menuItems = Roo.get(document.body).createChild({
+            tag: 'div',
+            cn: [
+                {
+                    tag: 'ul',
+                    cls: 'dropdown-menu',
+                    cn: [
+                    
+                    ]
+                }
+            ]
+        });
+        
         google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
             Roo.log('click on map');
             Roo.log(event);
