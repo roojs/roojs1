@@ -117,7 +117,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     enableAutocomplete: false,
     enableReverseGeocode: true,
     markerTitle: '',
-    styles: [],
     
     getAutoCreate: function()
     {
