@@ -156,6 +156,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             Roo.log('click on map');
             var t = new google.maps.OverlayView().getProjection().fromLatLngToContainerPixel(event.latLng);
             Roo.log(t);
+            
             Roo.log(event);
             
         });
