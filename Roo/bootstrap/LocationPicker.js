@@ -160,14 +160,22 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
 //        });
         
         google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
-            Roo.log('click on map');
-            Roo.log(event);
+            _this.fireEvent('mapClick', this, event);
             
         });
 
         google.maps.event.addListener(this.gMapContext.map, 'rightclick', function(event){
-            Roo.log('rightclick on map');
-            Roo.log(event);
+            _this.fireEvent('mapRightClick', this, event);
+            
+        });
+        
+        google.maps.event.addListener(this.gMapContext.marker, 'click', function(event){
+            _this.fireEvent('markerClick', this, event);
+            
+        });
+
+        google.maps.event.addListener(this.gMapContext.marker, 'rightclick', function(event){
+            _this.fireEvent('markerRightClick', this, event);
             
         });
     
