@@ -135,29 +135,29 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             _this.setPosition(_this.gMapContext.marker.position);
         });
         
-        this.menuItems = Roo.get(document.body).createChild({
-            tag: 'div',
-            cls: 'open',
-            cn: [
-                {
-                    tag: 'ul',
-                    cls: 'dropdown-menu',
-                    cn: [
-                        {
-                            tag: 'li',
-                            cls: 'dropdown-menu-item',
-                            cn: [
-                                {
-                                    tag : 'a',
-                                    href : '#',
-                                    html : 'Drop pin here'
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        });
+//        this.menuItems = Roo.get(document.body).createChild({
+//            tag: 'div',
+//            cls: 'open',
+//            cn: [
+//                {
+//                    tag: 'ul',
+//                    cls: 'dropdown-menu',
+//                    cn: [
+//                        {
+//                            tag: 'li',
+//                            cls: 'dropdown-menu-item',
+//                            cn: [
+//                                {
+//                                    tag : 'a',
+//                                    href : '#',
+//                                    html : 'Drop pin here'
+//                                }
+//                            ]
+//                        }
+//                    ]
+//                }
+//            ]
+//        });
         
         google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
             Roo.log('click on map');
