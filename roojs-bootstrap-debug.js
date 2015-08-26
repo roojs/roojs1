@@ -21292,7 +21292,35 @@ Roo.bootstrap.LocationPicker = function(config){
              * Fires when the map hide.
              * @param {Roo.bootstrap.LocationPicker} this
              */
-            hide : true
+            hide : true,
+            /**
+             * @event mapClick
+             * Fires when click the map.
+             * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Map event} e
+             */
+            mapClick : true,
+            /**
+             * @event mapRightClick
+             * Fires when click the map.
+             * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Map event} e
+             */
+            mapRightClick : true,
+            /**
+             * @event markerClick
+             * Fires when click the map.
+             * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Map event} e
+             */
+            markerClick : true,
+            /**
+             * @event markerRightClick
+             * Fires when click the map.
+             * @param {Roo.bootstrap.LocationPicker} this
+             * @param {Map event} e
+             */
+            markerRightClick : true
         });
         
 };
@@ -21348,12 +21376,56 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         var _this = this;
         
+        this.setPosition(this.gMapContext.location);
+        
         google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
             _this.setPosition(_this.gMapContext.marker.position);
         });
         
-        this.setPosition(this.gMapContext.location);
+//        this.menuItems = Roo.get(document.body).createChild({
+//            tag: 'div',
+//            cls: 'open',
+//            cn: [
+//                {
+//                    tag: 'ul',
+//                    cls: 'dropdown-menu',
+//                    cn: [
+//                        {
+//                            tag: 'li',
+//                            cls: 'dropdown-menu-item',
+//                            cn: [
+//                                {
+//                                    tag : 'a',
+//                                    href : '#',
+//                                    html : 'Drop pin here'
+//                                }
+//                            ]
+//                        }
+//                    ]
+//                }
+//            ]
+//        });
         
+        google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
+            _this.fireEvent('mapClick', this, event);
+            
+        });
+
+        google.maps.event.addListener(this.gMapContext.map, 'rightclick', function(event){
+            _this.fireEvent('mapRightClick', this, event);
+            
+        });
+        
+        google.maps.event.addListener(this.gMapContext.marker, 'click', function(event){
+            _this.fireEvent('markerClick', this, event);
+            
+        });
+
+        google.maps.event.addListener(this.gMapContext.marker, 'rightclick', function(event){
+            _this.fireEvent('markerRightClick', this, event);
+            
+        });
+    
         this.fireEvent('initial', this, this.gMapContext.location);
     },
     
