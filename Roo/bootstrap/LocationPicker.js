@@ -125,11 +125,12 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.setPosition(this.gMapContext.location);
         
         google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
+            Roo.log(event);
             _this.setPosition(_this.gMapContext.marker.position);
         });
         
-        google.maps.event.addListener(this.gMapContext.map, 'rightclick', function(e){
-            Roo.log(e);
+        google.maps.event.addListener(this.gMapContext.map, 'rightclick', function(event){
+            Roo.log(event);
         });
     
         this.fireEvent('initial', this, this.gMapContext.location);
