@@ -181,23 +181,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.fireEvent('initial', this, this.gMapContext.location);
     },
     
-    getOverlayView: function()
-    {
-        this.OverlayView.prototype = new google.maps.OverlayView();
-        
-        this.OverlayView.prototype.onAdd = function(){
-            Roo.log('onAdd');
-        };
-        
-        this.OverlayView.prototype.onRemove = function(){
-            Roo.log('onRemove');
-        };
-        
-        this.OverlayView.prototype.draw = function(){
-            Roo.log('draw');
-        };
-    },
-    
     isApplied: function() 
     {
         return this.getGmapContext() == false ? false : true;
