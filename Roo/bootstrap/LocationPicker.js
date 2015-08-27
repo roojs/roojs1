@@ -121,6 +121,7 @@ Roo.bootstrap.LocationPicker = function(config){
          * Fires when OverlayView Draw
          * @param {Roo.bootstrap.LocationPicker} this
          * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
+         * @param {Pixel} cpx
          */
         OverlayViewShow : true,
         /**
@@ -128,7 +129,6 @@ Roo.bootstrap.LocationPicker = function(config){
          * Fires when OverlayView Draw
          * @param {Roo.bootstrap.LocationPicker} this
          * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
-         * @param {Pixel} cpx
          */
         OverlayViewHide : true
     });
