@@ -165,6 +165,12 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         _this.OverlayView.setMap(this.gMapContext.map);
         
+        var overlayProjection = _this.OverlayView.getProjection();
+        console.log('overlayProjection...');
+        console.log(overlayProjection);
+        var cpx = overlayProjection.fromLatLngToContainerPixel(mouseEvent.latLng);
+        console.log('cpx...');
+        console.log(cpx);
         
         google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
             _this.fireEvent('mapClick', this, event);
