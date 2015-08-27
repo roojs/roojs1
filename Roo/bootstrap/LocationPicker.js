@@ -156,7 +156,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             _this.setPosition(_this.gMapContext.marker.position);
         });
         
-        _this.OverlayView = new Roo.bootstrap.LocationPicker.OverlayView();
+        _this.OverlayView = new Roo.bootstrap.LocationPicker.OverlayView(this.gMapContext.map);
         
         Roo.log(_this.OverlayView);
         
