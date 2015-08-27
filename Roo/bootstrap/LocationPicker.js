@@ -156,26 +156,26 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             _this.setPosition(_this.gMapContext.marker.position);
         });
         
-        _this.OverlayView = Roo.apply(new google.maps.OverlayView(), {
-            draw: function()
-            {
-                Roo.log('overlayview draw');
-            }
-        });
-        
-        Roo.log(_this.OverlayView);
-        
-        _this.OverlayView.setMap(this.gMapContext.map);
+//        _this.OverlayView = Roo.apply(new google.maps.OverlayView(), {
+//            draw: function()
+//            {
+//                Roo.log('overlayview draw');
+//            }
+//        });
+//        
+//        Roo.log(_this.OverlayView);
+//        
+//        _this.OverlayView.setMap(this.gMapContext.map);
         
         
         google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
             
-            var overlayProjection = _this.OverlayView.getProjection();
-            Roo.log('overlayProjection...');
-            Roo.log(overlayProjection);
-            var cpx = overlayProjection.fromLatLngToContainerPixel(event.latLng);
-            Roo.log('cpx...');
-            Roo.log(cpx);
+//            var overlayProjection = _this.OverlayView.getProjection();
+//            Roo.log('overlayProjection...');
+//            Roo.log(overlayProjection);
+//            var cpx = overlayProjection.fromLatLngToContainerPixel(event.latLng);
+//            Roo.log('cpx...');
+//            Roo.log(cpx);
         
             _this.fireEvent('mapClick', this, event);
             
