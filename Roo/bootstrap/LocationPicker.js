@@ -232,31 +232,31 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             draw: function()
             {
                 Roo.log('OverlayView draw');
-                _this.fireEvent('OverlayViewDraw', _this, this);
+                _this.fireEvent('OverlayViewDraw', _this);
             },
             
             onAdd: function()
             {
                 Roo.log('OverlayView onAdd');
-                _this.fireEvent('OverlayViewOnAdd', _this, this);
+                _this.fireEvent('OverlayViewOnAdd', _this);
             },
             
             onRemove: function()
             {
                 Roo.log('OverlayView onRemove');
-                _this.fireEvent('OverlayViewOnRemove', _this, this);
+                _this.fireEvent('OverlayViewOnRemove', _this);
             },
             
             show: function(cpx)
             {
                 Roo.log('OverlayView show');
-                _this.fireEvent('OverlayViewShow', _this, this, cpx);
+                _this.fireEvent('OverlayViewShow', _this, cpx);
             },
             
             hide: function()
             {
                 Roo.log('OverlayView hide');
-                _this.fireEvent('OverlayViewHide', _this, this);
+                _this.fireEvent('OverlayViewHide', _this);
             }
             
         });
