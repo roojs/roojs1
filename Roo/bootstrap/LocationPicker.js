@@ -212,7 +212,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             _this.fireEvent('markerRightClick', this, event);
             
         });
-        Roo.log(this.gMapContext.location);
+        
         this.setPosition(this.gMapContext.location);
         
         this.fireEvent('initial', this, this.gMapContext.location);
