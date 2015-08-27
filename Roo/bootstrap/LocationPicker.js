@@ -203,6 +203,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         });
     },
     
+    fromLatLngToContainerPixel: function(event)
+    {
+        
+    },
+    
     isApplied: function() 
     {
         return this.getGmapContext() == false ? false : true;
@@ -397,6 +402,8 @@ Roo.apply(Roo.bootstrap.LocationPicker, {
     
     OverlayView : function(map, options)
     {
+        options = options || {};
+        
         this.setMap(map);
     }
     
