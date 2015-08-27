@@ -201,19 +201,14 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         this.fireEvent('initial', this, this.gMapContext.location);
     },
     
-    OverlayView: function(map)
-    {
-        Roo.log(this);
-    },
-    
     initOverlayView: function()
     {
-        OverlayView.prototype = Roo.apply(new google.maps.OverlayView(), {
-            draw: function()
-            {
-                Roo.log('overlayview draw');
-            }
-        });
+//        OverlayView.prototype = Roo.apply(new google.maps.OverlayView(), {
+//            draw: function()
+//            {
+//                Roo.log('overlayview draw');
+//            }
+//        });
     },
     
     isApplied: function() 
