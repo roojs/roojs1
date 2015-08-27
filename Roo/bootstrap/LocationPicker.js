@@ -198,7 +198,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     fromLatLngToContainerPixel: function(event)
     {
-        
+        return _this.OverlayView.getProjection().fromLatLngToContainerPixel(event.latLng);
     },
     
     isApplied: function() 
