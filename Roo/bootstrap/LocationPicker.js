@@ -249,7 +249,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             show: function(cpx)
             {
                 Roo.log('OverlayView show');
-                _this.fireEvent('OverlayViewShow', _this, this);
+                _this.fireEvent('OverlayViewShow', _this, this, cpx);
             },
             
             hide: function()
