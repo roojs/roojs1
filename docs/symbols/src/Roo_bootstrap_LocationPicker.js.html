@@ -121,6 +121,7 @@
          * Fires when OverlayView Draw
          * @param {Roo.bootstrap.LocationPicker} this
          * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
+         * @param {Pixel} cpx
          */
         </span><span class="jsdoc-var">OverlayViewShow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
@@ -194,21 +195,25 @@
         });
         
         </span><span class="jsdoc-var">google.maps.event.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.map</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mapClick'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mapClick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">);
             
         });
 
         </span><span class="jsdoc-var">google.maps.event.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.map</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'rightclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mapRightClick'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mapRightClick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">);
             
         });
         
         </span><span class="jsdoc-var">google.maps.event.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.marker</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'markerClick'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'markerClick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">);
             
         });
 
         </span><span class="jsdoc-var">google.maps.event.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.marker</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'rightclick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'markerRightClick'</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'markerRightClick'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">);
             
         });
@@ -245,7 +250,7 @@
             </span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cpx</span><span class="jsdoc-syntax">)
             {
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayView show'</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewShow'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewShow'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cpx</span><span class="jsdoc-syntax">);
             },
             
             </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()

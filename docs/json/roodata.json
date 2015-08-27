@@ -24855,7 +24855,7 @@
     },
     {
      "name": "OverlayViewShow",
-     "sig": "function (_self, overlayview)\n{\n\n}",
+     "sig": "function (_self, overlayview, cpx)\n{\n\n}",
      "type": "function",
      "desc": "Fires when OverlayView Draw"
     },
