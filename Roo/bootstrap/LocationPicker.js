@@ -203,7 +203,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initOverlayView: function()
     {
-//        OverlayView.prototype = Roo.apply(new google.maps.OverlayView(), {
+//        Roo.bootstrap.LocationPicker.prototype = Roo.apply(new google.maps.OverlayView(), {
 //            draw: function()
 //            {
 //                Roo.log('overlayview draw');
