@@ -198,12 +198,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initOverlayView: function()
     {
-        Roo.bootstrap.LocationPicker.prototype = Roo.apply(new google.maps.OverlayView(), {
-            draw: function()
-            {
-                Roo.log('overlayview draw');
-            }
-        });
+        Roo.bootstrap.LocationPicker.prototype = new google.maps.OverlayView();
+        
+        Roo.bootstrap.LocationPicker.prototype.draw = function() {
+            Roo.log('overlayview draw');
+        };
     },
     
     isApplied: function() 
