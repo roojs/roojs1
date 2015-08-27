@@ -192,8 +192,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             draw: function()
             {
                 Roo.log('OverlayView draw');
-                Roo.log(this);
-                Roo.log(_this);
             },
             
             onAdd: function()
