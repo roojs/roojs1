@@ -94,7 +94,42 @@ Roo.bootstrap.LocationPicker = function(config){
          * @param {Roo.bootstrap.LocationPicker} this
          * @param {Map event} e
          */
-        markerRightClick : true
+        markerRightClick : true,
+        /**
+         * @event OverlayViewDraw
+         * Fires when OverlayView Draw
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
+         */
+        OverlayViewDraw : true,
+        /**
+         * @event OverlayViewOnAdd
+         * Fires when OverlayView Draw
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
+         */
+        OverlayViewOnAdd : true,
+        /**
+         * @event OverlayViewOnRemove
+         * Fires when OverlayView Draw
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
+         */
+        OverlayViewOnRemove : true,
+        /**
+         * @event OverlayViewShow
+         * Fires when OverlayView Draw
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
+         */
+        OverlayViewShow : true,
+        /**
+         * @event OverlayViewHide
+         * Fires when OverlayView Draw
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
+         */
+        OverlayViewHide : true
     });
         
 };
