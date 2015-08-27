@@ -185,12 +185,15 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initOverlayView: function()
     {
+        var _this = this;
+        
         Roo.bootstrap.LocationPicker.OverlayView.prototype = Roo.apply(new google.maps.OverlayView(), {
             
             draw: function()
             {
                 Roo.log('OverlayView draw');
                 Roo.log(this);
+                Roo.log(_this);
             },
             
             onAdd: function()
