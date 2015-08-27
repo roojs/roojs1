@@ -156,11 +156,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             _this.setPosition(_this.gMapContext.marker.position);
         });
         
-        _this.OverlayView = new Roo.bootstrap.LocationPicker.OverlayView(this.gMapContext.map, {});
+        _this.OverlayView = new Roo.bootstrap.LocationPicker.OverlayView(this.gMapContext.map);
         
         Roo.log(_this.OverlayView);
         
-//        _this.OverlayView.setMap(this.gMapContext.map);
+        _this.OverlayView.setMap(this.gMapContext.map);
         
         
         google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
@@ -198,11 +198,12 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initOverlayView: function()
     {
-        Roo.bootstrap.LocationPicker.OverlayView.prototype = new google.maps.OverlayView();
-        
-        Roo.bootstrap.LocationPicker.OverlayView.prototype.draw = function() {
-            Roo.log('overlayview draw');
-        };
+        Roo.bootstrap.LocationPicker.OverlayView.prototype = Roo.apply(new google.maps.OverlayView(), {
+            draw: function()
+            {
+                Roo.log('overlayview draw');
+            }
+        });
     },
     
     isApplied: function() 
@@ -399,7 +400,6 @@ Roo.apply(Roo.bootstrap.LocationPicker, {
     
     OverlayView : function(map, options)
     {
-        Roo.log('this??');
         Roo.log(this);
         this.setMap(map);
     }
