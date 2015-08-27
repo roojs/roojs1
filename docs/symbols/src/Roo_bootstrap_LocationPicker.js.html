@@ -99,28 +99,24 @@
          * @event OverlayViewDraw
          * Fires when OverlayView Draw
          * @param {Roo.bootstrap.LocationPicker} this
-         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
          */
         </span><span class="jsdoc-var">OverlayViewDraw </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event OverlayViewOnAdd
          * Fires when OverlayView Draw
          * @param {Roo.bootstrap.LocationPicker} this
-         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
          */
         </span><span class="jsdoc-var">OverlayViewOnAdd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event OverlayViewOnRemove
          * Fires when OverlayView Draw
          * @param {Roo.bootstrap.LocationPicker} this
-         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
          */
         </span><span class="jsdoc-var">OverlayViewOnRemove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event OverlayViewShow
          * Fires when OverlayView Draw
          * @param {Roo.bootstrap.LocationPicker} this
-         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
          * @param {Pixel} cpx
          */
         </span><span class="jsdoc-var">OverlayViewShow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
@@ -128,7 +124,6 @@
          * @event OverlayViewHide
          * Fires when OverlayView Draw
          * @param {Roo.bootstrap.LocationPicker} this
-         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
          */
         </span><span class="jsdoc-var">OverlayViewHide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
@@ -232,31 +227,31 @@
             </span><span class="jsdoc-var">draw</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
             {
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayView draw'</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewDraw'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewDraw'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">);
             },
             
             </span><span class="jsdoc-var">onAdd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
             {
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayView onAdd'</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewOnAdd'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewOnAdd'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">);
             },
             
             </span><span class="jsdoc-var">onRemove</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
             {
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayView onRemove'</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewOnRemove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewOnRemove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">);
             },
             
             </span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cpx</span><span class="jsdoc-syntax">)
             {
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayView show'</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewShow'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cpx</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewShow'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cpx</span><span class="jsdoc-syntax">);
             },
             
             </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
             {
                 </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayView hide'</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewHide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewHide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">);
             }
             
         });
