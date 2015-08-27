@@ -154,11 +154,13 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             _this.setPosition(_this.gMapContext.marker.position);
         });
         
-        _this.view = new google.maps.OverlayView();
+        _this.OverlayView = Roo.apply(new google.maps.OverlayView(), {
+            
+        });
         
-        Roo.log(_this.view);
+        Roo.log(_this.OverlayView);
         
-        _this.view.setMap(this.gMapContext.map);
+        _this.OverlayView.setMap(this.gMapContext.map);
         
         
         google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
