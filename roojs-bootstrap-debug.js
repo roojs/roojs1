@@ -21347,6 +21347,7 @@ Roo.bootstrap.LocationPicker = function(config){
          * Fires when OverlayView Draw
          * @param {Roo.bootstrap.LocationPicker} this
          * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
+         * @param {Pixel} cpx
          */
         OverlayViewShow : true,
         /**
@@ -21420,21 +21421,25 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         });
         
         google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
+            Roo.log('mapClick');
             _this.fireEvent('mapClick', this, event);
             
         });
 
         google.maps.event.addListener(this.gMapContext.map, 'rightclick', function(event){
+            Roo.log('mapRightClick');
             _this.fireEvent('mapRightClick', this, event);
             
         });
         
         google.maps.event.addListener(this.gMapContext.marker, 'click', function(event){
+            Roo.log('markerClick');
             _this.fireEvent('markerClick', this, event);
             
         });
 
         google.maps.event.addListener(this.gMapContext.marker, 'rightclick', function(event){
+            Roo.log('markerRightClick');
             _this.fireEvent('markerRightClick', this, event);
             
         });
@@ -21471,7 +21476,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             show: function(cpx)
             {
                 Roo.log('OverlayView show');
-                _this.fireEvent('OverlayViewShow', _this, this);
+                _this.fireEvent('OverlayViewShow', _this, this, cpx);
             },
             
             hide: function()
