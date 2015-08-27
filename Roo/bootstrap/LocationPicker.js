@@ -405,3 +405,13 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     }
     
 });
+
+Roo.apply(Roo.bootstrap.LocationPicker, {
+    
+    OverlayView : function(map, options)
+    {
+        Roo.log(this);
+    }
+    
+    
+});
