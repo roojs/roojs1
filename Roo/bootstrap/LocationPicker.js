@@ -400,6 +400,7 @@ Roo.apply(Roo.bootstrap.LocationPicker, {
     
     OverlayView : function(map, options)
     {
+        Roo.log('this??');
         Roo.log(this);
         this.setMap(map);
     }
