@@ -24830,6 +24830,36 @@
    ],
    "events": [
     {
+     "name": "OverlayViewDraw",
+     "sig": "function (_self, overlayview)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when OverlayView Draw"
+    },
+    {
+     "name": "OverlayViewHide",
+     "sig": "function (_self, overlayview)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when OverlayView Draw"
+    },
+    {
+     "name": "OverlayViewOnAdd",
+     "sig": "function (_self, overlayview)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when OverlayView Draw"
+    },
+    {
+     "name": "OverlayViewOnRemove",
+     "sig": "function (_self, overlayview)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when OverlayView Draw"
+    },
+    {
+     "name": "OverlayViewShow",
+     "sig": "function (_self, overlayview)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when OverlayView Draw"
+    },
+    {
      "name": "beforedestroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",

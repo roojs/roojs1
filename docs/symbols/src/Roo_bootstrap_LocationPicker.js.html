@@ -94,7 +94,42 @@
          * @param {Roo.bootstrap.LocationPicker} this
          * @param {Map event} e
          */
-        </span><span class="jsdoc-var">markerRightClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-var">markerRightClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event OverlayViewDraw
+         * Fires when OverlayView Draw
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
+         */
+        </span><span class="jsdoc-var">OverlayViewDraw </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event OverlayViewOnAdd
+         * Fires when OverlayView Draw
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
+         */
+        </span><span class="jsdoc-var">OverlayViewOnAdd </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event OverlayViewOnRemove
+         * Fires when OverlayView Draw
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
+         */
+        </span><span class="jsdoc-var">OverlayViewOnRemove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event OverlayViewShow
+         * Fires when OverlayView Draw
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
+         */
+        </span><span class="jsdoc-var">OverlayViewShow </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event OverlayViewHide
+         * Fires when OverlayView Draw
+         * @param {Roo.bootstrap.LocationPicker} this
+         * @param {Roo.bootstrap.LocationPicker.OverlayView} overlayview
+         */
+        </span><span class="jsdoc-var">OverlayViewHide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
         
 };
@@ -148,6 +183,10 @@
     {
         </span><span class="jsdoc-var">this.gMapContext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.GMapContext</span><span class="jsdoc-syntax">();
         
+        </span><span class="jsdoc-var">this.initOverlayView</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.OverlayView </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.LocationPicker.OverlayView</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.map</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
                 
         </span><span class="jsdoc-var">google.maps.event.addListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.marker</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">&quot;dragend&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">) {
@@ -177,6 +216,50 @@
         </span><span class="jsdoc-var">this.setPosition</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.gMapContext.location</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'initial'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.gMapContext.location</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">initOverlayView</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.bootstrap.LocationPicker.OverlayView.prototype </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.OverlayView</span><span class="jsdoc-syntax">(), {
+            
+            </span><span class="jsdoc-var">draw</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+            {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayView draw'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewDraw'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            },
+            
+            </span><span class="jsdoc-var">onAdd</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+            {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayView onAdd'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewOnAdd'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            },
+            
+            </span><span class="jsdoc-var">onRemove</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+            {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayView onRemove'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewOnRemove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            },
+            
+            </span><span class="jsdoc-var">show</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cpx</span><span class="jsdoc-syntax">)
+            {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayView show'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewShow'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            },
+            
+            </span><span class="jsdoc-var">hide</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+            {
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayView hide'</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">_this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'OverlayViewHide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            }
+            
+        });
+    },
+    
+    </span><span class="jsdoc-var">fromLatLngToContainerPixel</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.OverlayView.getProjection</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.fromLatLngToContainerPixel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">event.latLng</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">isApplied</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
@@ -366,5 +449,17 @@
         
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'hide'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     }
+    
+});
+
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.LocationPicker</span><span class="jsdoc-syntax">, {
+    
+    </span><span class="jsdoc-var">OverlayView </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">map</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">options </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">options </span><span class="jsdoc-syntax">|| {};
+        
+        </span><span class="jsdoc-var">this.setMap</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">map</span><span class="jsdoc-syntax">);
+    }
+    
     
 });</span></code></body></html>
