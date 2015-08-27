@@ -197,7 +197,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             onAdd: function()
             {
                 Roo.log('OverlayView onAdd');
-                Roo.log(this.getPanes());
             },
             
             onRemove: function()
