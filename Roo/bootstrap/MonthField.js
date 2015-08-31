@@ -99,13 +99,13 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         
         if(isNaN(d.getTime())){
             this.date = this.viewDate = '';
-            Roo.bootstrap.DateField.superclass.setValue.call(this, '');
+            Roo.bootstrap.MonthField.superclass.setValue.call(this, '');
             return;
         }
         
         v = this.formatDate(d);
         
-        Roo.bootstrap.DateField.superclass.setValue.call(this, v);
+        Roo.bootstrap.MonthField.superclass.setValue.call(this, v);
         
         this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
      
@@ -139,7 +139,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
             return;
         }
         this.viewDate.setUTCDate(1);
-        this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
+        this.viewDate.setUTCMonth(Roo.bootstrap.MonthField.dates[this.language].monthsShort.indexOf(html));
         
         this.setValue(this.formatDate(this.viewDate));
         this.hide();
@@ -149,7 +149,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     picker : function()
     {
         return this.pickerEl;
-//        return this.el.select('.datepicker', true).first();
     },
     
     fillMonths: function()
