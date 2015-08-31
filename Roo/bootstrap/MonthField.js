@@ -265,14 +265,11 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                 dir = e.keyCode == 37 ? -1 : 1;
                 
                 newDate = new Date();
+                year = newDate.getFullYear();
+                day = d.getDate();
                 
-                
-                
-                newDate.setUTCDate(this.date.getUTCDate() + dir);
-                newViewDate = new Date(this.viewDate);
-                newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir);
-                
-                
+                Roo.log(year);
+                Roo.log(day);
                 
                 break;
             case 38: // up
