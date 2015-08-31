@@ -161,11 +161,7 @@
     </span><span class="jsdoc-syntax">},
     
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">)
-    {   
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.mapTypeId</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.mapTypeId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">google.maps.MapTypeId.ROADMAP</span><span class="jsdoc-syntax">;
-        }
-            
+    {       
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">this.isApplied</span><span class="jsdoc-syntax">()){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
@@ -177,6 +173,10 @@
     
     </span><span class="jsdoc-var">initial</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.mapTypeId</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.mapTypeId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">google.maps.MapTypeId.ROADMAP</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-var">this.gMapContext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.GMapContext</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">this.initOverlayView</span><span class="jsdoc-syntax">();

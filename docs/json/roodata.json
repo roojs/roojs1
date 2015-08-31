@@ -26884,88 +26884,10 @@
   "Roo.bootstrap.MonthField": {
    "props": [
     {
-     "name": "weekStart",
-     "type": "Number",
-     "desc": "default 0",
-     "memberOf": "Roo.bootstrap.DateField"
-    },
-    {
-     "name": "viewMode",
-     "type": "String",
-     "desc": "default empty, (months|years)",
-     "memberOf": "Roo.bootstrap.DateField"
-    },
-    {
-     "name": "minViewMode",
-     "type": "String",
-     "desc": "default empty, (months|years)",
-     "memberOf": "Roo.bootstrap.DateField"
-    },
-    {
-     "name": "startDate",
-     "type": "Number",
-     "desc": "default -Infinity",
-     "memberOf": "Roo.bootstrap.DateField"
-    },
-    {
-     "name": "endDate",
-     "type": "Number",
-     "desc": "default Infinity",
-     "memberOf": "Roo.bootstrap.DateField"
-    },
-    {
-     "name": "todayHighlight",
-     "type": "Boolean",
-     "desc": "default false",
-     "memberOf": "Roo.bootstrap.DateField"
-    },
-    {
-     "name": "todayBtn",
-     "type": "Boolean",
-     "desc": "default false",
-     "memberOf": "Roo.bootstrap.DateField"
-    },
-    {
-     "name": "calendarWeeks",
-     "type": "Boolean",
-     "desc": "default false",
-     "memberOf": "Roo.bootstrap.DateField"
-    },
-    {
-     "name": "daysOfWeekDisabled",
-     "type": "Object",
-     "desc": "default empty",
-     "memberOf": "Roo.bootstrap.DateField"
-    },
-    {
-     "name": "singleMode",
-     "type": "Boolean",
-     "desc": "default false (true | false)",
-     "memberOf": "Roo.bootstrap.DateField"
-    },
-    {
-     "name": "keyboardNavigation",
-     "type": "Boolean",
-     "desc": "default true",
-     "memberOf": "Roo.bootstrap.DateField"
-    },
-    {
      "name": "language",
      "type": "String",
      "desc": "default en",
-     "memberOf": "Roo.bootstrap.DateField"
-    },
-    {
-     "name": "format",
-     "type": "String",
-     "desc": "The default date format string which can be overriden for localization support.  The format must be\nvalid according to {@link Date#parseDate} (defaults to 'm/d/y').",
-     "memberOf": "Roo.bootstrap.DateField"
-    },
-    {
-     "name": "altFormats",
-     "type": "String",
-     "desc": "Multiple date formats separated by \"|\" to try when parsing a user input value and it doesn't match the defined\nformat (defaults to 'm/d/Y|m-d-y|m-d-Y|m/d|m-d|d').",
-     "memberOf": "Roo.bootstrap.DateField"
+     "memberOf": ""
     },
     {
      "name": "disabled",
