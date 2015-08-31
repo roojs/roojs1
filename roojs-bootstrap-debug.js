@@ -5352,7 +5352,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     
     sort : function(e,el)
     {
-        var col = Roo.get(el)
+        var col = Roo.get(el);
         
         if(!col.hasClass('sortable')){
             return;
