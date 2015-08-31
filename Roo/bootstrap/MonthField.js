@@ -491,32 +491,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         this.update();
     },
 
-    setValue: function(v)
-    {
-        
-        // v can be a string or a date..
-        
-        
-        var d = new Date(this.parseDate(v) ).clearTime();
-        
-        if(isNaN(d.getTime())){
-            this.date = this.viewDate = '';
-            Roo.bootstrap.DateField.superclass.setValue.call(this, '');
-            return;
-        }
-        
-        v = this.formatDate(d);
-        
-        Roo.bootstrap.DateField.superclass.setValue.call(this, v);
-        
-        this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
-     
-        this.update();
-
-        this.fireEvent('select', this, this.date);
-        
-    },
-    
     getValue: function()
     {
         return this.formatDate(this.date);
