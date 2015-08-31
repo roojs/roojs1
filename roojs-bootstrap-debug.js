@@ -15657,7 +15657,7 @@ Roo.bootstrap.TimeField = function(config){
             /**
              * @event show
              * Fires when this field show.
-             * @param {Roo.bootstrap.DateField} this
+             * @param {Roo.bootstrap.DateField} thisthis
              * @param {Mixed} date The date value
              */
             show : true,
@@ -15718,8 +15718,9 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
     
     fireKey: function(e){
         if (!this.picker().isVisible()){
-            if (e.keyCode == 27) // allow escape to hide and re-show picker
+            if (e.keyCode == 27) { // allow escape to hide and re-show picker
                 this.show();
+            }
             return;
         }
 
