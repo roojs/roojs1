@@ -10,6 +10,8 @@
  * @extends Roo.bootstrap.Input
  * Bootstrap MonthField class
  * 
+ * @cfg {String} language default en
+ * 
  * @constructor
  * Create a new MonthField
  * @param {Object} config The config object
