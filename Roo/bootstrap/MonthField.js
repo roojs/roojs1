@@ -285,10 +285,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                 
                 dir = e.keyCode == 38 ? -1 : 1;
                 
-                if(typeof(this.vIndex) == 'undefined'){
-                    this.vIndex = 0;
-                }
-                
                 this.vIndex = this.vIndex + dir * 4;
                 
                 if(this.vIndex < 0){
