@@ -170,7 +170,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 cfg.cn = [  inputblock ] ;
                 
                 
-        };
+        }
          if(this.boxLabel){
              var boxLabelCfg = {
                 tag: 'label',
