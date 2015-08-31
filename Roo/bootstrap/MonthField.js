@@ -115,6 +115,11 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         
     },
     
+    getValue: function()
+    {
+        return this.formatDate(this.date);
+    },
+    
     onClick: function(e) 
     {
         e.stopPropagation();
@@ -255,11 +260,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         this.update();
     },
 
-    getValue: function()
-    {
-        return this.formatDate(this.date);
-    },
-    
     fireKey: function(e)
     {
         if (!this.picker().isVisible()){
