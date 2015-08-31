@@ -84,6 +84,8 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
             v.setStyle('width', '189px');
         });
         
+        this.selected = false;
+        
         this.fillMonths();
         this.update();
         
