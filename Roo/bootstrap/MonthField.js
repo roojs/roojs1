@@ -85,7 +85,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         });
         
         this.fillMonths();
-        
         this.update();
         
         if(this.isInline) {
@@ -160,11 +159,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     update: function()
     {
         this.fill();
-    },
-    
-    fill: function() 
-    {
-        this.fillMonths();
     },
     
     place: function()
