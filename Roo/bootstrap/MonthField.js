@@ -24,21 +24,21 @@ Roo.bootstrap.MonthField = function(config){
         /**
          * @event show
          * Fires when this field show.
-         * @param {Roo.bootstrap.DateField} this
+         * @param {Roo.bootstrap.MonthField} this
          * @param {Mixed} date The date value
          */
         show : true,
         /**
          * @event show
          * Fires when this field hide.
-         * @param {Roo.bootstrap.DateField} this
+         * @param {Roo.bootstrap.MonthField} this
          * @param {Mixed} date The date value
          */
         hide : true,
         /**
          * @event select
          * Fires when select a date.
-         * @param {Roo.bootstrap.DateField} this
+         * @param {Roo.bootstrap.MonthField} this
          * @param {Mixed} date The date value
          */
         select : true
