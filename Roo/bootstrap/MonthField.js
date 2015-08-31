@@ -162,7 +162,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
             var month = {
                 tag: 'span',
                 cls: 'month',
-                html: Roo.bootstrap.DateField.dates[this.language].monthsShort[i++]
+                html: Roo.bootstrap.MonthField.dates[this.language].monthsShort[i++]
             }
             
             months.createChild(month);
@@ -215,13 +215,13 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     onFocus : function()
     {
-        Roo.bootstrap.DateField.superclass.onFocus.call(this);
+        Roo.bootstrap.MonthField.superclass.onFocus.call(this);
         this.show();
     },
     
     onBlur : function()
     {
-        Roo.bootstrap.DateField.superclass.onBlur.call(this);
+        Roo.bootstrap.MonthField.superclass.onBlur.call(this);
         
         var d = this.inputEl().getValue();
         
@@ -255,7 +255,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     keyup: function(e)
     {
-        Roo.bootstrap.DateField.superclass.keyup.call(this);
+        Roo.bootstrap.MonthField.superclass.keyup.call(this);
         this.update();
     },
 
@@ -353,34 +353,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
    
 });
 
-Roo.apply(Roo.bootstrap.DateField,  {
-    
-    head : {
-        tag: 'thead',
-        cn: [
-        {
-            tag: 'tr',
-            cn: [
-            {
-                tag: 'th',
-                cls: 'prev',
-                html: '<i class="fa fa-arrow-left"/>'
-            },
-            {
-                tag: 'th',
-                cls: 'switch',
-                colspan: '5'
-            },
-            {
-                tag: 'th',
-                cls: 'next',
-                html: '<i class="fa fa-arrow-right"/>'
-            }
-
-            ]
-        }
-        ]
-    },
+Roo.apply(Roo.bootstrap.MonthField,  {
     
     content : {
         tag: 'tbody',
@@ -397,31 +370,10 @@ Roo.apply(Roo.bootstrap.DateField,  {
         ]
     },
     
-    footer : {
-        tag: 'tfoot',
-        cn: [
-        {
-            tag: 'tr',
-            cn: [
-            {
-                tag: 'th',
-                colspan: '7',
-                cls: 'today'
-            }
-                    
-            ]
-        }
-        ]
-    },
-    
     dates:{
         en: {
-            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-            daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
             months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-            monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            today: "Today"
+            monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         }
     },
     
