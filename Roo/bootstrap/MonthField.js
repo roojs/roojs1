@@ -158,8 +158,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     update: function()
     {
-        Roo.log('update!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this.value);
         var _this = this;
         
         if(typeof(this.vIndex) == 'undefined' && this.value.length){
