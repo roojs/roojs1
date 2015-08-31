@@ -478,8 +478,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             return value;
         }
         var v = Date.parseDate(value, this.format);
-        Roo.log(this.format);
-        Roo.log(v);
         if (!v && (this.useIso || value.match(/^(\d{4})-0?(\d+)-0?(\d+)/))) {
             v = Date.parseDate(value, 'Y-m-d');
         }
@@ -553,11 +551,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         
         // v can be a string or a date..
-        Roo.log('set Value');
         
-        Roo.log(v);
-        
-        Roo.log(this.parseDate(v));
         
         var d = new Date(this.parseDate(v) ).clearTime();
         
@@ -730,9 +724,6 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     }
                     
                     if(this.singleMode){
-                        Roo.log('format!!!!');
-                        Roo.log(this.viewDate);
-                        Roo.log(this.formatDate(this.viewDate));
                         this.setValue(this.formatDate(this.viewDate));
                         this.hide();
                         return;
