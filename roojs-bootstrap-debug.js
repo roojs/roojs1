@@ -2975,7 +2975,7 @@ Roo.Msg.show({
 /**
  * Shorthand for {@link Roo.MessageBox}
  */
-Roo.MessageBox = Roo.MessageBox || Roo.bootstrap.MessageBox 
+Roo.MessageBox = Roo.MessageBox || Roo.bootstrap.MessageBox;
 Roo.Msg = Roo.Msg || Roo.MessageBox;
 /*
  * - LGPL
