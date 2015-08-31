@@ -145,9 +145,10 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         months.dom.innerHTML = '';
         
         while (i < 12) {
+            var cls = Roo.bootstrap.MonthField.dates[this.language].months[i].toLowerCase();
             var month = {
                 tag: 'span',
-                cls: 'month',
+                cls: 'month ' + cls,
                 html: Roo.bootstrap.MonthField.dates[this.language].monthsShort[i++]
             }
             
