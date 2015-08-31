@@ -211,6 +211,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     show : function()
     {
         this.picker().show();
+        this.picker().select('>.datepicker-months', true).first().show();
         this.update();
         this.place();
         
