@@ -84,7 +84,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
             this.show();
         }
         
-        this.el.select('input', true).first().attr('readOnly', true);
+        this.el.select('input', true).first().attr('disable', true);
         
     },
     
