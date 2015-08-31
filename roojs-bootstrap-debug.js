@@ -14007,7 +14007,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     leave : function() {
         clearTimeout(this.timeout);
     
-        this.hoverState = 'out'
+        this.hoverState = 'out';
     
         if (!this.delay || !this.delay.hide) {
             this.hide();
