@@ -553,9 +553,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         // v can be a string or a date..
         Roo.log('set value');
         Roo.log(v);
-        
+        Roo.log(this.parseDate(v));
         var d = new Date(this.parseDate(v) ).clearTime();
-        
+        Roo.log(d);
         if(isNaN(d.getTime())){
             this.date = this.viewDate = '';
             Roo.bootstrap.DateField.superclass.setValue.call(this, '');
