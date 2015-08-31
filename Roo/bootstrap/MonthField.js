@@ -378,59 +378,25 @@ Roo.apply(Roo.bootstrap.MonthField,  {
     }
 });
 
-Roo.apply(Roo.bootstrap.DateField,  {
+Roo.apply(Roo.bootstrap.MonthField,  {
   
     template : {
         tag: 'div',
         cls: 'datepicker dropdown-menu roo-dynamic',
         cn: [
-        {
-            tag: 'div',
-            cls: 'datepicker-days',
-            cn: [
             {
-                tag: 'table',
-                cls: 'table-condensed',
-                cn:[
-                Roo.bootstrap.DateField.head,
+                tag: 'div',
+                cls: 'datepicker-months',
+                cn: [
                 {
-                    tag: 'tbody'
-                },
-                Roo.bootstrap.DateField.footer
+                    tag: 'table',
+                    cls: 'table-condensed',
+                    cn:[
+                        Roo.bootstrap.DateField.content
+                    ]
+                }
                 ]
             }
-            ]
-        },
-        {
-            tag: 'div',
-            cls: 'datepicker-months',
-            cn: [
-            {
-                tag: 'table',
-                cls: 'table-condensed',
-                cn:[
-                Roo.bootstrap.DateField.head,
-                Roo.bootstrap.DateField.content,
-                Roo.bootstrap.DateField.footer
-                ]
-            }
-            ]
-        },
-        {
-            tag: 'div',
-            cls: 'datepicker-years',
-            cn: [
-            {
-                tag: 'table',
-                cls: 'table-condensed',
-                cn:[
-                Roo.bootstrap.DateField.head,
-                Roo.bootstrap.DateField.content,
-                Roo.bootstrap.DateField.footer
-                ]
-            }
-            ]
-        }
         ]
     }
 });
