@@ -160,16 +160,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     update: function()
     {
-        this.date = (typeof(this.date) === 'undefined' || ((typeof(this.date) === 'string') && !this.date.length)) ? this.UTCToday() : (typeof(this.date) === 'string') ? this.parseDate(this.date) : this.date;
-        
-        if (this.date < this.startDate) {
-            this.viewDate = new Date(this.startDate);
-        } else if (this.date > this.endDate) {
-            this.viewDate = new Date(this.endDate);
-        } else {
-            this.viewDate = new Date(this.date);
-        }
-        
         this.fill();
     },
     
