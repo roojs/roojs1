@@ -13995,7 +13995,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
         if (!this.delay || !this.delay.show) {
             this.show();
-            return 
+            return;
         }
         var _t = this;
         this.timeout = setTimeout(function () {
@@ -14011,7 +14011,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     
         if (!this.delay || !this.delay.hide) {
             this.hide();
-            return 
+            return;
         }
         var _t = this;
         this.timeout = setTimeout(function () {
@@ -14060,7 +14060,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         if (autoPlace) {
             // fixme..
         }
-        var align = Roo.bootstrap.Popover.alignment[placement]
+        var align = Roo.bootstrap.Popover.alignment[placement];
         this.el.alignTo(on_el, align[0],align[1]);
         //var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 
