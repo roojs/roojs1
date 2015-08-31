@@ -126,10 +126,9 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         if(nodeName.toLowerCase() != 'span' || className.indexOf('disabled') > -1 || className.indexOf('month') == -1){
             return;
         }
-        this.viewDate.setUTCDate(1);
-        this.viewDate.setUTCMonth(Roo.bootstrap.MonthField.dates[this.language].monthsShort.indexOf(html));
+        this.setValue()
+        this.viewDate.setUTCDate(Roo.bootstrap.MonthField.dates[this.language].monthsShort.indexOf(html));
         
-        this.setValue(this.formatDate(this.viewDate));
         this.hide();
                         
     },
