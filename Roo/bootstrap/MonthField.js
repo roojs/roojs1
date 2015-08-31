@@ -253,7 +253,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         
         var dateChanged = false,
         dir, day, month, year,
-        newDate;
+        d;
         
         switch(e.keyCode){
             case 27: // escape
@@ -264,8 +264,8 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
             case 39: // right
                 dir = e.keyCode == 37 ? -1 : 1;
                 
-                newDate = new Date();
-                year = newDate.getFullYear();
+                d = new Date();
+                year = d.getFullYear();
                 day = d.getDate();
                 
                 Roo.log(year);
