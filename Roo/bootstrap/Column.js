@@ -105,7 +105,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
             
         }
         if (this.icon) {
-            cfg.html = '<i class="glyphicon glyphicon-'+this.icon + '"></i>' + + (cfg.html || '');
+            cfg.html = '<i class="glyphicon glyphicon-'+this.icon + '"></i>' +  (cfg.html || '');
         }
         
         return cfg;
