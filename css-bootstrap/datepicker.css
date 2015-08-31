@@ -454,3 +454,6 @@
   font-size: 1.2em;
 }
 
+input.month-picker:read-only {
+    background: #fff;
+}
