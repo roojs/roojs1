@@ -263,10 +263,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
             case 39: // right
                 dir = e.keyCode == 37 ? -1 : 1;
                 
-                if(typeof(this.vIndex) == 'undefined'){
-                    this.vIndex = 0;
-                }
-                
                 this.vIndex = this.vIndex + dir;
                 
                 if(this.vIndex < 0){
@@ -276,6 +272,8 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                 if(this.vIndex > 11){
                     this.vIndex = 11;
                 }
+                
+                Roo.log(this.vIndex);
                 
                 this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
                 
@@ -294,7 +292,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                 if(this.vIndex > 11){
                     this.vIndex = 11;
                 }
-                
+                Roo.log(this.vIndex);
                 this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
                 break;
                 
