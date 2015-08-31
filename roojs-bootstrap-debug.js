@@ -14758,7 +14758,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             Roo.each(this.picker().select('thead > tr > th', true).elements, function(v){
                 v.setVisibilityMode(Roo.Element.DISPLAY)
                 v.hide();
-            })
+            });
             
             Roo.each(this.picker().select('tbody > tr > td', true).elements, function(v){
                 v.setStyle('width', '189px');
@@ -14769,9 +14769,9 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
             if(!this.calendarWeeks){
                 v.remove();
                 return;
-            };
+            }
             
-            v.dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today
+            v.dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today;
             v.attr('colspan', function(i, val){
                 return parseInt(val) + 1;
             });
