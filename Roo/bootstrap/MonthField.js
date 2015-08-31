@@ -158,7 +158,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     update: function()
     {
-        this.fill();
+//        this.fill();
     },
     
     place: function()
