@@ -201,6 +201,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     onBlur : function()
     {
+        Roo.log('blur');
         Roo.bootstrap.MonthField.superclass.onBlur.call(this);
         
         var d = this.inputEl().getValue();
