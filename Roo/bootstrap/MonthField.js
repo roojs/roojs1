@@ -303,12 +303,18 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                 break;
                 
             case 13: // enter
-                this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
+                
+                if(typeof(this.vIndex) != 'undefined' && !isNaN(this.vIndex)){
+                    this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
+                }
+                
                 this.hide();
                 e.preventDefault();
                 break;
             case 9: // tab
-                this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
+                if(typeof(this.vIndex) != 'undefined' && !isNaN(this.vIndex)){
+                    this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
+                }
                 this.hide();
                 break;
             case 16: // shift
