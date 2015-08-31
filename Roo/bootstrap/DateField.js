@@ -551,7 +551,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     {
         
         // v can be a string or a date..
-        
+        Roo.log(v);
         
         var d = new Date(this.parseDate(v) ).clearTime();
         
