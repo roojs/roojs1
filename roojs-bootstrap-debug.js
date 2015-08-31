@@ -11628,7 +11628,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     rm = true;
                     return;
                 }
-            })
+            });
             
             if(rm){
                 return;
