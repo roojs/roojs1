@@ -21,37 +21,6 @@ Roo.bootstrap.MonthField = function(config){
 
 Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.DateField,  {
     
-    singleMode : true,
-    
-    UTCDate: function()
-    {
-        return new Date(Date.UTC.apply(Date, arguments));
-    },
-    
-    UTCToday: function()
-    {
-        var today = new Date();
-        return this.UTCDate(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
-    },
-    
-    getDate: function() {
-            var d = this.getUTCDate();
-            return new Date(d.getTime() + (d.getTimezoneOffset()*60000));
-    },
-    
-    getUTCDate: function() {
-            return this.date;
-    },
-    
-    setDate: function(d) {
-            this.setUTCDate(new Date(d.getTime() - (d.getTimezoneOffset()*60000)));
-    },
-    
-    setUTCDate: function(d) {
-            this.date = d;
-            this.setValue(this.formatDate(this.date));
-    },
-        
     onRender: function(ct, position)
     {
         
