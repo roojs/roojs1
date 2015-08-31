@@ -120,8 +120,8 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             if (trigger == 'click') {
                 on_el.on('click', this.toggle, this);
             } else if (trigger != 'manual') {
-                var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
-                var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
+                var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin';
+                var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout';
       
                 on_el.on(eventIn  ,this.enter, this);
                 on_el.on(eventOut, this.leave, this);
