@@ -680,7 +680,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         var nodeName = target.nodeName;
         var className = target.className;
         var html = target.innerHTML;
-        Roo.log(nodeName);
+        //Roo.log(nodeName);
         
         switch(nodeName.toLowerCase()) {
             case 'th':
