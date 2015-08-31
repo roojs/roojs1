@@ -340,7 +340,8 @@ Roo.apply(Roo.bootstrap.MonthField,  {
             cn: [
             {
                 tag: 'td',
-                colspan: '7'
+                colspan: '7',
+                style: 'width: 189px;'
             }
             ]
         }
