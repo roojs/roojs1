@@ -83,8 +83,8 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         if(this.isInline) {
             this.show();
         }
-        Roo.log('el!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-        Roo.log(this.el);
+        
+        this.el.select('input', true).first().attr('readOnly', true);
         
     },
     
