@@ -7,7 +7,7 @@
 
 /**
  * @class Roo.bootstrap.MonthField
- * @extends Roo.bootstrap.DateField
+ * @extends Roo.bootstrap.Input
  * Bootstrap MonthField class
  * 
  * @constructor
