@@ -273,7 +273,9 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                     this.vIndex = 11;
                 }
                 
-                Roo.log(this.vIndex);
+                if(isNaN(this.vIndex)){
+                    this.vIndex = 0;
+                }
                 
                 this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
                 
@@ -292,7 +294,11 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                 if(this.vIndex > 11){
                     this.vIndex = 11;
                 }
-                Roo.log(this.vIndex);
+                
+                if(isNaN(this.vIndex)){
+                    this.vIndex = 0;
+                }
+                
                 this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
                 break;
                 
