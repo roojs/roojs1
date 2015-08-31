@@ -16168,15 +16168,15 @@ Roo.apply(Roo.bootstrap.TimeField,  {
 Roo.bootstrap.CheckBox = function(config){
     Roo.bootstrap.CheckBox.superclass.constructor.call(this, config);
    
-        this.addEvents({
-            /**
-            * @event check
-            * Fires when the element is checked or unchecked.
-            * @param {Roo.bootstrap.CheckBox} this This input
-            * @param {Boolean} checked The new checked value
-            */
-           check : true
-        });
+    this.addEvents({
+        /**
+        * @event check
+        * Fires when the element is checked or unchecked.
+        * @param {Roo.bootstrap.CheckBox} this This input
+        * @param {Boolean} checked The new checked value
+        */
+       check : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
@@ -16197,7 +16197,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         var cfg = {};
         
-        cfg.cls = 'form-group ' + this.inputType //input-group
+        cfg.cls = 'form-group ' + this.inputType; //input-group
         
         if(this.inline){
             cfg.cls += ' ' + this.inputType + '-inline';
@@ -16234,6 +16234,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
         
         var settings=this;
+        
         ['xs','sm','md','lg'].map(function(size){
             if (settings[size]) {
                 cfg.cls += ' col-' + size + '-' + settings[size];
@@ -16253,6 +16254,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 cls : 'input-group',
                 cn :  [] 
             };
+            
             if (this.before) {
                 inputblock.cn.push({
                     tag :'span',
@@ -16260,7 +16262,9 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                     html : this.before
                 });
             }
+            
             inputblock.cn.push(input);
+            
             if (this.after) {
                 inputblock.cn.push({
                     tag :'span',
@@ -16314,7 +16318,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 
                 
         }
-         if(this.boxLabel){
+        if(this.boxLabel){
              var boxLabelCfg = {
                 tag: 'label',
                 //'for': id, // box label is handled by onclick - so no for...
