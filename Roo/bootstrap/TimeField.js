@@ -62,7 +62,7 @@ Roo.extend(Roo.bootstrap.TimeField, Roo.bootstrap.Input,  {
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.pop = this.picker().select('>.datepicker-time',true).first();
-        this.pop.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block' 
+        this.pop.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.picker().on('mousedown', this.onMousedown, this);
         this.picker().on('click', this.onClick, this);
