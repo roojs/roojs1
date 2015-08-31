@@ -159,7 +159,9 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     update: function()
     {
-        Roo.log(this.picker());
+        Roo.each(this.pickerEl.select('> .datepicker-months tbody > tr > td > span', true).elements, function(e){
+            Roo.log(e);
+        })
     },
     
     place: function()
