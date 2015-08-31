@@ -6,25 +6,12 @@
  */
 
 /**
- * @class Roo.bootstrap.DateField
- * @extends Roo.bootstrap.Input
- * Bootstrap DateField class
- * @cfg {Number} weekStart default 0
- * @cfg {String} viewMode default empty, (months|years)
- * @cfg {String} minViewMode default empty, (months|years)
- * @cfg {Number} startDate default -Infinity
- * @cfg {Number} endDate default Infinity
- * @cfg {Boolean} todayHighlight default false
- * @cfg {Boolean} todayBtn default false
- * @cfg {Boolean} calendarWeeks default false
- * @cfg {Object} daysOfWeekDisabled default empty
- * @cfg {Boolean} singleMode default false (true | false)
- * 
- * @cfg {Boolean} keyboardNavigation default true
- * @cfg {String} language default en
+ * @class Roo.bootstrap.MonthField
+ * @extends Roo.bootstrap.DateField
+ * Bootstrap MonthField class
  * 
  * @constructor
- * Create a new DateField
+ * Create a new MonthField
  * @param {Object} config The config object
  */
 
