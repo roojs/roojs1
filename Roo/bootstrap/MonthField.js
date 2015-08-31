@@ -149,36 +149,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
 //        return this.el.select('.datepicker', true).first();
     },
     
-    fillDow: function()
-    {
-        var dowCnt = this.weekStart;
-        
-        var dow = {
-            tag: 'tr',
-            cn: [
-                
-            ]
-        };
-        
-        if(this.calendarWeeks){
-            dow.cn.push({
-                tag: 'th',
-                cls: 'cw',
-                html: '&nbsp;'
-            })
-        }
-        
-        while (dowCnt < this.weekStart + 7) {
-            dow.cn.push({
-                tag: 'th',
-                cls: 'dow',
-                html: Roo.bootstrap.DateField.dates[this.language].daysMin[(dowCnt++)%7]
-            });
-        }
-        
-        this.picker().select('>.datepicker-days thead', true).first().createChild(dow);
-    },
-    
     fillMonths: function()
     {    
         var i = 0
