@@ -358,7 +358,7 @@ Date.formatCodeToRegex = function(character, currentGroup) {
             s:"(?:\\d{2})"};
     case "F":
         return {g:1,
-            c:"m = parseInt(Date.monthNumbers[results[" + currentGroup + "].substring(0, 3)], 10); d = 1;\n",
+            c:"m = parseInt(Date.monthNumbers[results[" + currentGroup + "].substring(0, 3)], 10);\n",
             s:"(" + Date.monthNames.join("|") + ")"};
     case "M":
         return {g:1,
