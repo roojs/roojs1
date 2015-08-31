@@ -59,7 +59,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : "en";
         
         this.isRTL = Roo.bootstrap.DateField.dates[this.language].rtl || false;
-        this.format = this.format || 'm/d/y';
+        this.format = this.format || 'F';
         this.isInline = false;
         this.isInput = true;
         this.component = this.el.select('.add-on', true).first() || false;
