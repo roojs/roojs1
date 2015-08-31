@@ -156,7 +156,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
             clearTimeout(this.timeout);
         }
         
-        this.hoverState = 'in'
+        this.hoverState = 'in';
          //Roo.log("enter - show");
         if (!this.delay || !this.delay.show) {
             this.show();
@@ -173,7 +173,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
     {
         clearTimeout(this.timeout);
     
-        this.hoverState = 'out'
+        this.hoverState = 'out';
          if (!this.delay || !this.delay.hide) {
             this.hide();
             return 
