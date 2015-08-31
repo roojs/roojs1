@@ -159,8 +159,12 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     update: function()
     {
-        Roo.each(this.pickerEl.select('> .datepicker-months tbody > tr > td > span', true).elements, function(e){
-            Roo.log(e);
+        Roo.each(this.pickerEl.select('> .datepicker-months tbody > tr > td > span', true).elements, function(e, k){
+            e.removeClass('active');
+            
+            if(typeof(vIndex) != 'undefined' && k == this.vIndex){
+                e.addClass('active');
+            }
         })
     },
     
