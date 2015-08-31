@@ -266,7 +266,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                 
                 d = new Date();
                 year = d.getFullYear();
-                day = d.getDate();
+                day = 1;
                 
                 Roo.log(year);
                 Roo.log(day);
