@@ -165,7 +165,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         if(typeof(this.vIndex) != 'undefined' && this.value.length){
             this.vIndex = Roo.bootstrap.MonthField.dates[this.language].months.indexOf(this.value);
         }
-        
+        Roo.log(this.vIndex);
         Roo.each(this.pickerEl.select('> .datepicker-months tbody > tr > td > span', true).elements, function(e, k){
             e.removeClass('active');
             
