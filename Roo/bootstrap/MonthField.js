@@ -74,13 +74,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         this.picker().on('click', this.onClick, this);
         
         this.picker().addClass('datepicker-dropdown');
-        
-        this.startViewMode = this.viewMode;
 
-        Roo.each(this.picker().select('tbody > tr > td', true).elements, function(v){
-            v.setStyle('width', '189px');
-        });
-        
         this.fillMonths();
         this.update();
         
