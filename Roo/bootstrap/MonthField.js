@@ -251,9 +251,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
             return;
         }
         
-        var dateChanged = false,
-        dir, day, month, year,
-        d;
+        var dir;
         
         switch(e.keyCode){
             case 27: // escape
@@ -274,42 +272,34 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                     this.vIndex = 11;
                 }
                 
-                Roo.log(year);
-                Roo.log(day);
+                this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
                 
                 break;
             case 38: // up
             case 40: // down
-                if (!this.keyboardNavigation) break;
+                
                 dir = e.keyCode == 38 ? -1 : 1;
-                if (e.ctrlKey){
-                    newDate = this.moveYear(this.date, dir);
-                    newViewDate = this.moveYear(this.viewDate, dir);
-                } else if (e.shiftKey){
-                    newDate = this.moveMonth(this.date, dir);
-                    newViewDate = this.moveMonth(this.viewDate, dir);
-                } else {
-                    newDate = new Date(this.date);
-                    newDate.setUTCDate(this.date.getUTCDate() + dir * 7);
-                    newViewDate = new Date(this.viewDate);
-                    newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir * 7);
+                
+                this.vIndex = this.vIndex + dir * 4;
+                
+                if(this.vIndex < 0){
+                    this.vIndex = 0;
                 }
-                if (this.dateWithinRange(newDate)){
-                    this.date = newDate;
-                    this.viewDate = newViewDate;
-                    this.setValue(this.formatDate(this.date));
-//                    this.update();
-                    e.preventDefault();
-                    dateChanged = true;
+                
+                if(this.vIndex > 11){
+                    this.vIndex = 11;
                 }
+                
+                this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
                 break;
+                
             case 13: // enter
-                this.setValue(this.formatDate(this.date));
+                this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
                 this.hide();
                 e.preventDefault();
                 break;
             case 9: // tab
-                this.setValue(this.formatDate(this.date));
+                this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
                 this.hide();
                 break;
             case 16: // shift
