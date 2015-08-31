@@ -126,7 +126,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 });
             }
             
-        };
+        }
         
         if (align ==='left' && this.fieldLabel.length) {
                 Roo.log("left and has label");
