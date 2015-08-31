@@ -84,8 +84,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
             v.setStyle('width', '189px');
         });
         
-        this.selected = false;
-        
         this.fillMonths();
         this.update();
         
@@ -127,8 +125,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         if(nodeName.toLowerCase() != 'span' || className.indexOf('disabled') > -1 || className.indexOf('month') == -1){
             return;
         }
-        
-        this.selected = target;
         
         var v = Roo.bootstrap.MonthField.dates[this.language].months[Roo.bootstrap.MonthField.dates[this.language].monthsShort.indexOf(html)];
                 
