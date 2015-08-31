@@ -39,24 +39,9 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.DateField,  {
         this.hasInput = this.component && this.inputEL().length;
         
         this.minViewMode = 1;
-        
-        if (typeof(this.viewMode === 'string')) {
-            switch (this.viewMode) {
-                case 'months':
-                    this.viewMode = 1;
-                    break;
-                case 'years':
-                    this.viewMode = 2;
-                    break;
-                default:
-                    this.viewMode = 0;
-                    break;
-            }
-        }
+        this.viewMode = 1;
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.DateField.template);
-        
-//        this.el.select('>.input-group', true).first().createChild(Roo.bootstrap.DateField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
@@ -67,16 +52,14 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.DateField,  {
         
         this.startViewMode = this.viewMode;
         
-        if(this.singleMode){
-            Roo.each(this.picker().select('thead > tr > th', true).elements, function(v){
-                v.setVisibilityMode(Roo.Element.DISPLAY)
-                v.hide();
-            })
-            
-            Roo.each(this.picker().select('tbody > tr > td', true).elements, function(v){
-                v.setStyle('width', '189px');
-            });
-        }
+        Roo.each(this.picker().select('thead > tr > th', true).elements, function(v){
+            v.setVisibilityMode(Roo.Element.DISPLAY)
+            v.hide();
+        })
+
+        Roo.each(this.picker().select('tbody > tr > td', true).elements, function(v){
+            v.setStyle('width', '189px');
+        });
         
         Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
             if(!this.calendarWeeks){
