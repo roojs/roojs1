@@ -676,7 +676,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
         if(target.nodeName.toLowerCase() === 'i'){
             target = Roo.get(target).dom.parentNode;
         }
-        
+        Roo.log(target);
         var nodeName = target.nodeName;
         var className = target.className;
         var html = target.innerHTML;
