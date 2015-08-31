@@ -209,32 +209,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         this.picker().setTop(this.inputEl().getBottom()).setLeft(this.inputEl().getLeft());
     },
     
-    parseDate : function(value)
-    {
-        if(!value || value instanceof Date){
-            return value;
-        }
-        var v = Date.parseDate(value, this.format);
-        if (!v && (this.useIso || value.match(/^(\d{4})-0?(\d+)-0?(\d+)/))) {
-            v = Date.parseDate(value, 'Y-m-d');
-        }
-        if(!v && this.altFormats){
-            if(!this.altFormatsArray){
-                this.altFormatsArray = this.altFormats.split("|");
-            }
-            for(var i = 0, len = this.altFormatsArray.length; i < len && !v; i++){
-                v = Date.parseDate(value, this.altFormatsArray[i]);
-            }
-        }
-        return v;
-    },
-    
-    formatDate : function(date, fmt)
-    {   
-        return (!date || !(date instanceof Date)) ?
-        date : date.dateFormat(fmt || this.format);
-    },
-    
     onFocus : function()
     {
         Roo.bootstrap.DateField.superclass.onFocus.call(this);
@@ -265,9 +239,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     {
         if(this.isInline) return;
         this.picker().hide();
-        this.viewMode = this.startViewMode;
-        this.showMode();
-        
         this.fireEvent('hide', this, this.date);
         
     },
