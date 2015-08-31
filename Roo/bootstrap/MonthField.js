@@ -75,6 +75,10 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         
         this.picker().addClass('datepicker-dropdown');
         
+        Roo.each(this.picker().select('tbody > tr > td', true).elements, function(v){
+            v.setStyle('width', '189px');
+        });
+        
         this.fillMonths();
         this.update();
         
@@ -336,8 +340,7 @@ Roo.apply(Roo.bootstrap.MonthField,  {
             cn: [
             {
                 tag: 'td',
-                colspan: '7',
-                style: 'width: 189px;'
+                colspan: '7'
             }
             ]
         }
