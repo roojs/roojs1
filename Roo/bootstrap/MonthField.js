@@ -252,8 +252,8 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         }
         
         var dateChanged = false,
-        dir, day, month,
-        newDate, newViewDate;
+        dir, day, month, year,
+        newDate;
         
         switch(e.keyCode){
             case 27: // escape
@@ -262,29 +262,18 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                 break;
             case 37: // left
             case 39: // right
-                if (!this.keyboardNavigation) break;
                 dir = e.keyCode == 37 ? -1 : 1;
                 
-                if (e.ctrlKey){
-                    newDate = this.moveYear(this.date, dir);
-                    newViewDate = this.moveYear(this.viewDate, dir);
-                } else if (e.shiftKey){
-                    newDate = this.moveMonth(this.date, dir);
-                    newViewDate = this.moveMonth(this.viewDate, dir);
-                } else {
-                    newDate = new Date(this.date);
-                    newDate.setUTCDate(this.date.getUTCDate() + dir);
-                    newViewDate = new Date(this.viewDate);
-                    newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir);
-                }
-                if (this.dateWithinRange(newDate)){
-                    this.date = newDate;
-                    this.viewDate = newViewDate;
-                    this.setValue(this.formatDate(this.date));
-//                    this.update();
-                    e.preventDefault();
-                    dateChanged = true;
-                }
+                newDate = new Date();
+                
+                
+                
+                newDate.setUTCDate(this.date.getUTCDate() + dir);
+                newViewDate = new Date(this.viewDate);
+                newViewDate.setUTCDate(this.viewDate.getUTCDate() + dir);
+                
+                
+                
                 break;
             case 38: // up
             case 40: // down
