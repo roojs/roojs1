@@ -84,10 +84,8 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
             v.setStyle('width', '189px');
         });
         
-        this.fillDow();
         this.fillMonths();
         this.update();
-        this.showMode();
         
         if(this.isInline) {
             this.show();
