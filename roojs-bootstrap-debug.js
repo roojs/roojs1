@@ -13139,7 +13139,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
         };
         var cal_rows = function() {
             
-            var ret = []
+            var ret = [];
             for (var r = 0; r < 6; r++) {
                 var row= {
                     tag : 'tr',
