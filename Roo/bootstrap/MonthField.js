@@ -186,19 +186,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         this.fillMonths();
     },
     
-    showMode: function(dir) 
-    {
-        if (dir) {
-            this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
-        }
-        
-        Roo.each(this.picker().select('>div',true).elements, function(v){
-            v.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-            v.hide();
-        });
-        this.picker().select('>.datepicker-'+Roo.bootstrap.DateField.modes[this.viewMode].clsName, true).first().show();
-    },
-    
     place: function()
     {
         if(this.isInline) return;
