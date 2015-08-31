@@ -62,9 +62,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         this.component = this.el.select('.add-on', true).first() || false;
         this.component = (this.component && this.component.length === 0) ? false : this.component;
         this.hasInput = this.component && this.inputEL().length;
-        
-        this.minViewMode = 1;
-        this.viewMode = 1;
                 
         this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.MonthField.template);
         
@@ -80,6 +77,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         });
         
         this.fillMonths();
+        
         this.update();
         
         if(this.isInline) {
