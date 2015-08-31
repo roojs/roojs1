@@ -105,8 +105,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     getValue: function()
     {
-        return '';
-        return this.formatDate(this.date);
+        return this.value;
     },
     
     onClick: function(e) 
