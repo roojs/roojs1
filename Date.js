@@ -268,6 +268,7 @@ Date.createParser = function(format) {
     Date.parseFunctions[format] = funcName;
 
     var code = "Date." + funcName + " = function(input){\n"
+        + "Roo.log(input) \n"
         + "var y = -1, m = -1, d = -1, h = -1, i = -1, s = -1, o, z, v;\n"
         + "var d = new Date();\n"
         + "y = d.getFullYear();\n"
