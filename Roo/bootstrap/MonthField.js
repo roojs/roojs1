@@ -130,92 +130,16 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.DateField,  {
         var nodeName = target.nodeName;
         var className = target.className;
         var html = target.innerHTML;
-        //Roo.log(nodeName);
         
-        switch(nodeName.toLowerCase()) {
-            case 'th':
-                switch(className) {
-                    case 'switch':
-                        this.showMode(1);
-                        break;
-                    case 'prev':
-                    case 'next':
-                        var dir = Roo.bootstrap.DateField.modes[this.viewMode].navStep * (className == 'prev' ? -1 : 1);
-                        switch(this.viewMode){
-                                case 0:
-                                        this.viewDate = this.moveMonth(this.viewDate, dir);
-                                        break;
-                                case 1:
-                                case 2:
-                                        this.viewDate = this.moveYear(this.viewDate, dir);
-                                        break;
-                        }
-                        this.fill();
-                        break;
-                    case 'today':
-                        var date = new Date();
-                        this.date = this.UTCDate(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0);
-//                        this.fill()
-                        this.setValue(this.formatDate(this.date));
-                        
-                        this.hide();
-                        break;
-                }
-                break;
-            case 'span':
-                if (className.indexOf('disabled') < 0) {
-                    this.viewDate.setUTCDate(1);
-                    if (className.indexOf('month') > -1) {
-                        this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
-                    } else {
-                        var year = parseInt(html, 10) || 0;
-                        this.viewDate.setUTCFullYear(year);
-                        
-                    }
-                    
-                    if(this.singleMode){
-                        this.setValue(this.formatDate(this.viewDate));
-                        this.hide();
-                        return;
-                    }
-                    
-                    this.showMode(-1);
-                    this.fill();
-                }
-                break;
-                
-            case 'td':
-                //Roo.log(className);
-                if (className.indexOf('day') > -1 && className.indexOf('disabled') < 0 ){
-                    var day = parseInt(html, 10) || 1;
-                    var year = this.viewDate.getUTCFullYear(),
-                        month = this.viewDate.getUTCMonth();
-
-                    if (className.indexOf('old') > -1) {
-                        if(month === 0 ){
-                            month = 11;
-                            year -= 1;
-                        }else{
-                            month -= 1;
-                        }
-                    } else if (className.indexOf('new') > -1) {
-                        if (month == 11) {
-                            month = 0;
-                            year += 1;
-                        } else {
-                            month += 1;
-                        }
-                    }
-                    //Roo.log([year,month,day]);
-                    this.date = this.UTCDate(year, month, day,0,0,0,0);
-                    this.viewDate = this.UTCDate(year, month, Math.min(28, day),0,0,0,0);
-//                    this.fill();
-                    //Roo.log(this.formatDate(this.date));
-                    this.setValue(this.formatDate(this.date));
-                    this.hide();
-                }
-                break;
+        if(nodeName.toLowerCase() != 'span' || className.indexOf('disabled') > -1 || className.indexOf('month') == -1){
+            return;
         }
+        this.viewDate.setUTCDate(1);
+        this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
+        
+        this.setValue(this.formatDate(this.viewDate));
+        this.hide();
+                        
     },
     
     setStartDate: function(startDate)
