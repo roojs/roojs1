@@ -717,6 +717,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                     this.viewDate.setUTCDate(1);
                     if (className.indexOf('month') > -1) {
                         Roo.log(html);
+                        Roo.log(Roo.bootstrap.DateField.dates[this.language].monthsShort);
                         this.viewDate.setUTCMonth(Roo.bootstrap.DateField.dates[this.language].monthsShort.indexOf(html));
                     } else {
                         var year = parseInt(html, 10) || 0;
