@@ -14833,7 +14833,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
     
     fillMonths: function()
     {    
-        var i = 0
+        var i = 0;
         var months = this.picker().select('>.datepicker-months td', true).first();
         
         months.dom.innerHTML = '';
