@@ -94,6 +94,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
 
         this.fireEvent('select', this, this.date);
         
+        this.inputEl().blur();
     },
     
     getValue: function()
