@@ -85,6 +85,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         });
         
         this.fillMonths();
+        
         this.update();
         
         if(this.isInline) {
