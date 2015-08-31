@@ -24,7 +24,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.DateField,  {
     onRender: function(ct, position)
     {
         
-        Roo.bootstrap.DateField.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.MonthField.superclass.onRender.call(this, ct, position);
         
         this.language = this.language || 'en';
         this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : this.language.split('-')[0];
@@ -38,19 +38,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.DateField,  {
         this.component = (this.component && this.component.length === 0) ? false : this.component;
         this.hasInput = this.component && this.inputEL().length;
         
-        if (typeof(this.minViewMode === 'string')) {
-            switch (this.minViewMode) {
-                case 'months':
-                    this.minViewMode = 1;
-                    break;
-                case 'years':
-                    this.minViewMode = 2;
-                    break;
-                default:
-                    this.minViewMode = 0;
-                    break;
-            }
-        }
+        this.minViewMode = 1;
         
         if (typeof(this.viewMode === 'string')) {
             switch (this.viewMode) {
