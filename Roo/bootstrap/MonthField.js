@@ -55,10 +55,10 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         Roo.bootstrap.MonthField.superclass.onRender.call(this, ct, position);
         
         this.language = this.language || 'en';
-        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : this.language.split('-')[0];
-        this.language = this.language in Roo.bootstrap.DateField.dates ? this.language : "en";
+        this.language = this.language in Roo.bootstrap.MonthField.dates ? this.language : this.language.split('-')[0];
+        this.language = this.language in Roo.bootstrap.MonthField.dates ? this.language : "en";
         
-        this.isRTL = Roo.bootstrap.DateField.dates[this.language].rtl || false;
+        this.isRTL = Roo.bootstrap.MonthField.dates[this.language].rtl || false;
         this.format = this.format || 'F';
         this.isInline = false;
         this.isInput = true;
@@ -69,7 +69,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         this.minViewMode = 1;
         this.viewMode = 1;
                 
-        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.DateField.template);
+        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.MonthField.template);
         
         this.picker().setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
@@ -79,35 +79,10 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         this.picker().addClass('datepicker-dropdown');
         
         this.startViewMode = this.viewMode;
-        
-        Roo.each(this.picker().select('thead > tr > th', true).elements, function(v){
-            v.setVisibilityMode(Roo.Element.DISPLAY)
-            v.hide();
-        })
 
         Roo.each(this.picker().select('tbody > tr > td', true).elements, function(v){
             v.setStyle('width', '189px');
         });
-        
-        Roo.each(this.picker().select('tfoot th.today', true).elements, function(v){
-            if(!this.calendarWeeks){
-                v.remove();
-                return;
-            };
-            
-            v.dom.innerHTML = Roo.bootstrap.DateField.dates[this.language].today
-            v.attr('colspan', function(i, val){
-                return parseInt(val) + 1;
-            });
-        })
-			
-        
-        this.weekEnd = this.weekStart === 0 ? 6 : this.weekStart - 1;
-        
-        this.setStartDate(this.startDate);
-        this.setEndDate(this.endDate);
-        
-        this.setDaysOfWeekDisabled(this.daysOfWeekDisabled);
         
         this.fillDow();
         this.fillMonths();
