@@ -19,9 +19,7 @@ Roo.bootstrap.MonthField = function(config){
     Roo.bootstrap.MonthField.superclass.constructor.call(this, config);
 };
 
-Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.DateField,  {
-    
-    singleMode : true,
+Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     onRender: function(ct, position)
     {
