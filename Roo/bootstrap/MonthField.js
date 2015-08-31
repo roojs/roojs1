@@ -21,6 +21,8 @@ Roo.bootstrap.MonthField = function(config){
 
 Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.DateField,  {
     
+    singleMode : true,
+    
     onRender: function(ct, position)
     {
         
