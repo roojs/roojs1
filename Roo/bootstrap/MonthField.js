@@ -19,6 +19,30 @@
 
 Roo.bootstrap.MonthField = function(config){
     Roo.bootstrap.MonthField.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+        /**
+         * @event show
+         * Fires when this field show.
+         * @param {Roo.bootstrap.DateField} this
+         * @param {Mixed} date The date value
+         */
+        show : true,
+        /**
+         * @event show
+         * Fires when this field hide.
+         * @param {Roo.bootstrap.DateField} this
+         * @param {Mixed} date The date value
+         */
+        hide : true,
+        /**
+         * @event select
+         * Fires when select a date.
+         * @param {Roo.bootstrap.DateField} this
+         * @param {Mixed} date The date value
+         */
+        select : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
