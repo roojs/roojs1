@@ -47,8 +47,6 @@ Roo.bootstrap.MonthField = function(config){
 
 Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
-    format : "F",
-    
     onRender: function(ct, position)
     {
         
@@ -161,7 +159,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     {
         var _this = this;
         
-        if(typeof(this.vIndex) != 'undefined'){
+        if(typeof(this.vIndex) != 'undefined' && this.value.length){
             
         }
         
