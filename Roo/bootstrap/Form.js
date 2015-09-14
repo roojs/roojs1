@@ -500,6 +500,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             return o.id || (o.id = Roo.id());
         });
         var iter = function(el) {
+            Roo.log(el);
             if (el.inputEl) {
                 r.add(el);
             }
