@@ -512,6 +512,7 @@ clientValidation  Boolean          Applies to submit only.  Pass true to call fo
             
             
         };
+        Roo.log(this);
         iter(this);
         return r;
         
