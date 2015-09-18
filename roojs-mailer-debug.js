@@ -291,6 +291,7 @@ Roo.extend(Roo.mailer.BodyContainer, Roo.bootstrap.Component,  {
  * @cfg {String} html content of body
  * @cfg {String} src image url
  * @cfg {String} column  (left|right)
+ * @cfg {String width (100%|200|340|260)
  * 
  * @constructor
  * Create a new Element
@@ -308,6 +309,7 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
     html : '',
     src : '',
     column : 'left',
+    width : '100%',
      
     getAutoCreate : function(){
                                             
@@ -323,11 +325,21 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
             border : 0,
             cellpadding :20,
             cellspacing : 0,
-            width : '100%',
+            width : this.width,
             cn :  []
             
         };
         if (this.src != '') {
+            var img = {
+                tag : 'img',
+                src : this.src,
+                cls : 'roo-m-column-image',
+                
+                style : 'max-width: ' + (this.width== '100%' ?  '260' : this.width ) +'px;'
+            };
+            if (this.width != '100%' ) {
+                img.width = this.width;
+            }
            cfg.cn.push({
                 tag  : 'tr',
                 cn : [
@@ -336,14 +348,8 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
                         align : 'center',
                         valight : 'top',
                         cls : 'roo-m-column-'+ this.column + '-content',
-                        cn : [
-                            {
-                                tag : 'img',
-                                src : this.src,
-                                cls : 'roo-m-column-image',
-                                style : 'max-width: 260px;'
-                            }
-                        ]
+                        cn : [ img ]
+                            
                     }
                 ]
             });
