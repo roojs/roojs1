@@ -12124,6 +12124,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     onRemoveItem : function(e, _self, o)
     {
         e.preventDefault();
+        
+        this.lastItem = this.item;
+        
         var index = this.item.indexOf(o.data) * 1;
         
         if( index < 0){
@@ -12192,6 +12195,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     onTickableFooterButtonClick : function(e, btn, el)
     {
         e.preventDefault();
+        
+        this.lastItem = this.item;
         
         if(btn && btn.name == 'cancel'){
             this.tickItems = Roo.apply([], this.item);
