@@ -225,6 +225,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             this.el.select('label.box-label',true).first().on('click', this.onClick,  this);
         }
         
+        this.startValue = this.getValue();
     },
     
     onClick : function()
