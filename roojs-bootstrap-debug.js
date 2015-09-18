@@ -16557,7 +16557,6 @@ Roo.bootstrap.CheckBox = function(config){
         * Fires when the element is checked or unchecked.
         * @param {Roo.bootstrap.CheckBox} this This input
         * @param {Boolean} checked The new checked value
-        * @param {Boolean} before Is it checked before
         */
        check : true
     });
@@ -16747,9 +16746,12 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 //        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
         
         this.inputEl().on('click', this.onClick,  this);
+        
         if (this.boxLabel) { 
             this.el.select('label.box-label',true).first().on('click', this.onClick,  this);
         }
+        
+        this.startValue = this.getValue();
         
     },
     
@@ -16760,7 +16762,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     setChecked : function(state,suppressEvent)
     {
-        var before = this.inputEl().dom.checked;
+        this.startValue = this.getValue();
         
         if(this.inputType == 'radio'){
             
@@ -16773,7 +16775,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             this.inputEl().dom.value = this.inputValue;
             
             if(suppressEvent !== true){
-                this.fireEvent('check', this, true, before);
+                this.fireEvent('check', this, true);
             }
             
             return;
@@ -16786,7 +16788,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
         
         if(suppressEvent !== true){
-            this.fireEvent('check', this, state, before);
+            this.fireEvent('check', this, state);
         }
     },
     
@@ -16821,7 +16823,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     setGroupValue : function(v, suppressEvent)
     {
-        var before = this.inputEl().dom.checked;
+        this.startValue = this.getValue();
         
         Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
             e.dom.checked = false;
@@ -16832,7 +16834,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         });
         
         if(suppressEvent !== true){
-            this.fireEvent('check', this, true, before);
+            this.fireEvent('check', this, true);
         }
 
         return;
