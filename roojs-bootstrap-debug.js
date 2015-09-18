@@ -16557,7 +16557,7 @@ Roo.bootstrap.CheckBox = function(config){
         * Fires when the element is checked or unchecked.
         * @param {Roo.bootstrap.CheckBox} this This input
         * @param {Boolean} checked The new checked value
-        * @param {String} oldValue The old value
+        * @param {Boolean} before Is it checked before
         */
        check : true
     });
@@ -16760,7 +16760,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     setChecked : function(state,suppressEvent)
     {
-        var old = this.inputEl().dom.checked;
+        var before = this.inputEl().dom.checked;
         
         if(this.inputType == 'radio'){
             
@@ -16773,7 +16773,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             this.inputEl().dom.value = this.inputValue;
             
             if(suppressEvent !== true){
-                this.fireEvent('check', this, true, old);
+                this.fireEvent('check', this, true, before);
             }
             
             return;
@@ -16786,7 +16786,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
         
         if(suppressEvent !== true){
-            this.fireEvent('check', this, state, old);
+            this.fireEvent('check', this, state, before);
         }
     },
     
@@ -16821,7 +16821,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     setGroupValue : function(v, suppressEvent)
     {
-        var old = this.inputEl().dom.checked;
+        var before = this.inputEl().dom.checked;
         
         Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
             e.dom.checked = false;
@@ -16832,7 +16832,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         });
         
         if(suppressEvent !== true){
-            this.fireEvent('check', this, true, old);
+            this.fireEvent('check', this, true, before);
         }
 
         return;
