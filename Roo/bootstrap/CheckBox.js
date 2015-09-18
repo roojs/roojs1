@@ -220,6 +220,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 //        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
         
         this.inputEl().on('click', this.onClick,  this);
+        
         if (this.boxLabel) { 
             this.el.select('label.box-label',true).first().on('click', this.onClick,  this);
         }
