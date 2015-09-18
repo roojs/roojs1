@@ -16052,7 +16052,7 @@
     },
     {
      "name": "check",
-     "sig": "function (_self, checked, oldValue)\n{\n\n}",
+     "sig": "function (_self, checked, before)\n{\n\n}",
      "type": "function",
      "desc": "Fires when the element is checked or unchecked."
     },
@@ -32137,7 +32137,7 @@
     },
     {
      "name": "check",
-     "sig": "function (_self, checked, oldValue)\n{\n\n}",
+     "sig": "function (_self, checked, before)\n{\n\n}",
      "type": "function",
      "desc": "Fires when the element is checked or unchecked."
     },
