@@ -1649,6 +1649,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.lastItem = this.item;
         Roo.log(this.item);
+        return;
         var index = this.item.indexOf(o.data) * 1;
         
         if( index < 0){
