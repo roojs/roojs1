@@ -156,7 +156,7 @@
             </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout</span><span class="jsdoc-syntax">);
         }
         
-        </span><span class="jsdoc-var">this.hoverState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'in'
+        </span><span class="jsdoc-var">this.hoverState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">;
          </span><span class="jsdoc-comment">//Roo.log(&quot;enter - show&quot;);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.delay </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.delay.show</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.show</span><span class="jsdoc-syntax">();
@@ -173,7 +173,7 @@
     {
         </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout</span><span class="jsdoc-syntax">);
     
-        </span><span class="jsdoc-var">this.hoverState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'out'
+        </span><span class="jsdoc-var">this.hoverState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'out'</span><span class="jsdoc-syntax">;
          </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.delay </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.delay.hide</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return 
@@ -225,7 +225,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">autoPlace</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// fixme..
         </span><span class="jsdoc-syntax">}
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Tooltip.alignment</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">]
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Tooltip.alignment</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">];
         </span><span class="jsdoc-var">this.el.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bindEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[0],</span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[1]);
         </span><span class="jsdoc-comment">//var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 

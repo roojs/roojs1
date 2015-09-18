@@ -187,7 +187,7 @@
             </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'thead &gt; tr &gt; th'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">v.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)
                 </span><span class="jsdoc-var">v.hide</span><span class="jsdoc-syntax">();
-            })
+            });
             
             </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tbody &gt; tr &gt; td'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">v.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'189px'</span><span class="jsdoc-syntax">);
@@ -198,10 +198,10 @@
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.calendarWeeks</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">v.remove</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-            };
+            }
             
-            </span><span class="jsdoc-var">v.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.DateField.dates</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.today
-            v.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">v.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.DateField.dates</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.language</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.today</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">v.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'colspan'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">val</span><span class="jsdoc-syntax">) + 1;
             });
         })
@@ -262,7 +262,7 @@
     
     </span><span class="jsdoc-var">fillMonths</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {    
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">months </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.picker</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;.datepicker-months td'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">months.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;

@@ -120,8 +120,8 @@
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">trigger </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">on_el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.toggle</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             } </span><span class="jsdoc-keyword">else if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">trigger </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'manual'</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">eventIn  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">trigger </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'hover' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'mouseenter' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'focusin'
-                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">eventOut </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">trigger </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'hover' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'mouseleave' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'focusout'
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">eventIn  </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">trigger </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'hover' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'mouseenter' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'focusin'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">eventOut </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">trigger </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'hover' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'mouseleave' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'focusout'</span><span class="jsdoc-syntax">;
       
                 </span><span class="jsdoc-var">on_el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventIn  </span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this.enter</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-var">on_el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">eventOut</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.leave</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -144,12 +144,12 @@
     
         </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout</span><span class="jsdoc-syntax">);
     
-        </span><span class="jsdoc-var">this.hoverState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'in'
+        </span><span class="jsdoc-var">this.hoverState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">;
     
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.delay </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.delay.show</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.show</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">return 
-        </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.timeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_t.hoverState </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">) {
@@ -160,12 +160,12 @@
     </span><span class="jsdoc-var">leave </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
         </span><span class="jsdoc-var">clearTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timeout</span><span class="jsdoc-syntax">);
     
-        </span><span class="jsdoc-var">this.hoverState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'out'
+        </span><span class="jsdoc-var">this.hoverState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'out'</span><span class="jsdoc-syntax">;
     
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.delay </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.delay.hide</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">return 
-        </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.timeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_t.hoverState </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'out'</span><span class="jsdoc-syntax">) {
@@ -213,7 +213,7 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">autoPlace</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// fixme..
         </span><span class="jsdoc-syntax">}
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Popover.alignment</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">]
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Popover.alignment</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">];
         </span><span class="jsdoc-var">this.el.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">on_el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[0],</span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[1]);
         </span><span class="jsdoc-comment">//var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 
