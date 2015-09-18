@@ -12125,7 +12125,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         e.preventDefault();
         
-        this.lastItem = this.item;
+        this.lastItem = Roo.apply([], this.item);
         
         var index = this.item.indexOf(o.data) * 1;
         
@@ -12196,7 +12196,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         e.preventDefault();
         
-        this.lastItem = this.item;
+        this.lastItem = Roo.apply([], this.item);
         
         if(btn && btn.name == 'cancel'){
             this.tickItems = Roo.apply([], this.item);
