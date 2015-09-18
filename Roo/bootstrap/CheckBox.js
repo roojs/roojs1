@@ -220,12 +220,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 //        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
         
         this.inputEl().on('click', this.onClick,  this);
-        
         if (this.boxLabel) { 
             this.el.select('label.box-label',true).first().on('click', this.onClick,  this);
         }
         
-        this.startValue = this.getValue();
     },
     
     onClick : function()
@@ -234,18 +232,18 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     },
     
     setChecked : function(state,suppressEvent)
-    {   
+    {
         if(this.inputType == 'radio'){
             
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
                 e.dom.checked = false;
             });
             
+            this.inputEl().dom.checked = true;
+            
             if(suppressEvent !== true){
                 this.fireEvent('check', this, true);
             }
-            
-            this.inputEl().dom.checked = true;
             
             this.inputEl().dom.value = this.inputValue;
             
@@ -254,13 +252,13 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.checked = state;
         
-        this.inputEl().dom.checked = state;
-        
-        this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
-        
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
         }
+        
+        this.inputEl().dom.checked = state;
+        
+        this.inputEl().dom.value = state ? this.inputValue : this.valueOff;
         
     },
     
