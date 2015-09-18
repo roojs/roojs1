@@ -31,6 +31,7 @@ Roo.bootstrap.CheckBox = function(config){
         * Fires when the element is checked or unchecked.
         * @param {Roo.bootstrap.CheckBox} this This input
         * @param {Boolean} checked The new checked value
+        * @param {Boolean} before Is it checked before
         */
        check : true
     });
