@@ -16756,13 +16756,13 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     onClick : function()
     {   
+        this.startValue = this.getValue();
+        
         this.setChecked(!this.checked);
     },
     
     setChecked : function(state,suppressEvent)
     {
-        this.startValue = this.getValue();
-        
         if(this.inputType == 'radio'){
             
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
