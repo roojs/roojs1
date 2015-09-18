@@ -241,11 +241,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             
             this.inputEl().dom.checked = true;
             
+            this.inputEl().dom.value = this.inputValue;
+            
             if(suppressEvent !== true){
                 this.fireEvent('check', this, true);
             }
-            
-            this.inputEl().dom.value = this.inputValue;
             
             return;
         }
