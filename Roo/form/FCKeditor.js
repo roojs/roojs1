@@ -55,7 +55,7 @@ Roo.extend(Roo.form.FCKeditor, Roo.form.TextArea,
             this.defaultAutoCreate = {
                 tag: "textarea",
                 style:"width:300px;height:60px;",
-                autocomplete: "off"
+                autocomplete: "new-password"
             };
         }
         Roo.form.FCKeditor.superclass.onRender.call(this, ct, position);
