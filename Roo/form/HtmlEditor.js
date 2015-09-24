@@ -105,7 +105,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     defaultAutoCreate : { // modified by initCompnoent..
         tag: "textarea",
         style:"width:500px;height:300px;",
-        autocomplete: "off"
+        autocomplete: "new-password"
     },
 
     // private
@@ -196,7 +196,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.defaultAutoCreate =  {
             tag: "textarea",
             style:'width: ' + this.width + 'px;height: ' + this.height + 'px;',
-            autocomplete: "off"
+            autocomplete: "new-password"
         };
     },
 
