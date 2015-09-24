@@ -58,7 +58,7 @@ Roo.extend(Roo.form.Field, Roo.BoxComponent,  {
      * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
      * {tag: "input", type: "text", size: "20", autocomplete: "off"})
      */
-    defaultAutoCreate : {tag: "input", type: "text", size: "20", autocomplete: "false"},
+    defaultAutoCreate : {tag: "input", type: "text", size: "20", autocomplete: "new-password"},
     /**
      * @cfg {String} fieldClass The default CSS class for the field (defaults to "x-form-field")
      */
