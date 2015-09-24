@@ -235,7 +235,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             value : this.value,
             cls : 'form-control',
             placeholder : this.placeholder || ''
-            
+            autocomplete : this.autocomplete || 'new-password',
         };
         
         if(this.align){
