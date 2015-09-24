@@ -142,7 +142,7 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
      * {tag: "input", type: "text", size: "10", autocomplete: "off"})
      */ 
     // private
-    defaultAutoCreate : {tag: "input", type: "text", size: "10", autocomplete: "off"},
+    defaultAutoCreate : {tag: "input", type: "text", size: "10", autocomplete: "new-password"},
     
     // private
     hiddenField: false,
