@@ -37075,7 +37075,7 @@ Roo.extend(Roo.form.Field, Roo.BoxComponent,  {
      * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
      * {tag: "input", type: "text", size: "20", autocomplete: "off"})
      */
-    defaultAutoCreate : {tag: "input", type: "text", size: "20", autocomplete: "off"},
+    defaultAutoCreate : {tag: "input", type: "text", size: "20", autocomplete: "false"},
     /**
      * @cfg {String} fieldClass The default CSS class for the field (defaults to "x-form-field")
      */
@@ -55283,6 +55283,9 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      */
     /**
      * @cfg {String} cursor (Optional)
+     */
+    /**
+     * @cfg {String} tooltip (Optional)
      */
     /**
      * Returns the id of the column at the specified index.
