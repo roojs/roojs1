@@ -41,7 +41,7 @@ Roo.extend(Roo.form.GridField, Roo.form.Field,  {
      * {tag: "input", type: "checkbox", autocomplete: "off"})
      */
    // defaultAutoCreate : { tag: 'div' },
-    defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'off'},
+    defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'new-password'},
     /**
      * @cfg {String} addTitle Text to include for adding a title.
      */
