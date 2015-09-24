@@ -27,7 +27,10 @@
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
+ * @cfg {String} autocomplete - default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en
+
  * @cfg {String} align (left|center|right) Default left
+ * 
  * 
  * 
  * @constructor
@@ -182,6 +185,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     regexText : "",
     
+    autocomplete: false,
     
     
     fieldLabel : '',
