@@ -56,7 +56,7 @@ Roo.extend(Roo.form.TextArea, Roo.form.TextField,  {
             this.defaultAutoCreate = {
                 tag: "textarea",
                 style:"width:300px;height:60px;",
-                autocomplete: "off"
+                autocomplete: "new-password"
             };
         }
         Roo.form.TextArea.superclass.onRender.call(this, ct, position);
