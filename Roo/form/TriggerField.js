@@ -44,7 +44,7 @@ Roo.extend(Roo.form.TriggerField, Roo.form.TextField,  {
      * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
      * {tag: "input", type: "text", size: "16", autocomplete: "off"})
      */
-    defaultAutoCreate : {tag: "input", type: "text", size: "16", autocomplete: "off"},
+    defaultAutoCreate : {tag: "input", type: "text", size: "16", autocomplete: "new-password"},
     /**
      * @cfg {Boolean} hideTrigger True to hide the trigger element and display only the base text field (defaults to false)
      */

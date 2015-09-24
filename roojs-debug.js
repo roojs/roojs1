@@ -37987,7 +37987,7 @@ Roo.extend(Roo.form.TriggerField, Roo.form.TextField,  {
      * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
      * {tag: "input", type: "text", size: "16", autocomplete: "off"})
      */
-    defaultAutoCreate : {tag: "input", type: "text", size: "16", autocomplete: "off"},
+    defaultAutoCreate : {tag: "input", type: "text", size: "16", autocomplete: "new-password"},
     /**
      * @cfg {Boolean} hideTrigger True to hide the trigger element and display only the base text field (defaults to false)
      */
@@ -38267,7 +38267,7 @@ Roo.extend(Roo.form.TextArea, Roo.form.TextField,  {
             this.defaultAutoCreate = {
                 tag: "textarea",
                 style:"width:300px;height:60px;",
-                autocomplete: "off"
+                autocomplete: "new-password"
             };
         }
         Roo.form.TextArea.superclass.onRender.call(this, ct, position);
@@ -38985,7 +38985,7 @@ Roo.extend(Roo.form.MonthField, Roo.form.TriggerField,  {
      * {tag: "input", type: "text", size: "10", autocomplete: "off"})
      */ 
     // private
-    defaultAutoCreate : {tag: "input", type: "text", size: "10", autocomplete: "off"},
+    defaultAutoCreate : {tag: "input", type: "text", size: "10", autocomplete: "new-password"},
     
     // private
     hiddenField: false,
@@ -42792,7 +42792,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
     defaultAutoCreate : { // modified by initCompnoent..
         tag: "textarea",
         style:"width:500px;height:300px;",
-        autocomplete: "off"
+        autocomplete: "new-password"
     },
 
     // private
@@ -42883,7 +42883,7 @@ Roo.extend(Roo.form.HtmlEditor, Roo.form.Field, {
         this.defaultAutoCreate =  {
             tag: "textarea",
             style:'width: ' + this.width + 'px;height: ' + this.height + 'px;',
-            autocomplete: "off"
+            autocomplete: "new-password"
         };
     },
 
@@ -46711,7 +46711,7 @@ Roo.extend(Roo.form.FCKeditor, Roo.form.TextArea,
             this.defaultAutoCreate = {
                 tag: "textarea",
                 style:"width:300px;height:60px;",
-                autocomplete: "off"
+                autocomplete: "new-password"
             };
         }
         Roo.form.FCKeditor.superclass.onRender.call(this, ct, position);
@@ -47034,7 +47034,7 @@ Roo.extend(Roo.form.GridField, Roo.form.Field,  {
      * {tag: "input", type: "checkbox", autocomplete: "off"})
      */
    // defaultAutoCreate : { tag: 'div' },
-    defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'off'},
+    defaultAutoCreate : { tag: 'input', type: 'hidden', autocomplete: 'new-password'},
     /**
      * @cfg {String} addTitle Text to include for adding a title.
      */
@@ -47277,7 +47277,7 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
      * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
      * {tag: "input", type: "checkbox", autocomplete: "off"})
      */
-    defaultAutoCreate : { tag: "input", type: 'hidden', autocomplete: "off"},
+    defaultAutoCreate : { tag: "input", type: 'hidden', autocomplete: "new-password"},
     
    
     actionMode : 'viewEl', 
