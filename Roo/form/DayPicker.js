@@ -31,7 +31,7 @@ Roo.extend(Roo.form.DayPicker, Roo.form.Field,  {
      * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
      * {tag: "input", type: "checkbox", autocomplete: "off"})
      */
-    defaultAutoCreate : { tag: "input", type: 'hidden', autocomplete: "off"},
+    defaultAutoCreate : { tag: "input", type: 'hidden', autocomplete: "new-password"},
     
    
     actionMode : 'viewEl', 
