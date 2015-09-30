@@ -7049,7 +7049,10 @@ Roo.form.VTypes = function(){
  * @cfg {Number} labelWidth set the width of label (0-12)
  * @cfg {String} labelAlign (top|left)
  * @cfg {Boolean} readOnly Specifies that the field should be read-only
+ * @cfg {String} autocomplete - default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en
+
  * @cfg {String} align (left|center|right) Default left
+ * 
  * 
  * 
  * @constructor
@@ -7204,6 +7207,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     regexText : "",
     
+    autocomplete: false,
     
     
     fieldLabel : '',
@@ -7256,8 +7260,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             type : this.inputType,
             value : this.value,
             cls : 'form-control',
-            placeholder : this.placeholder || ''
-            
+            placeholder : this.placeholder || '',
+            autocomplete : this.autocomplete || 'new-password'
         };
         
         if(this.align){
@@ -8072,7 +8076,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             id : id,
             type : this.inputType,
             cls : 'form-control',
-            autocomplete: 'false',
+            autocomplete: 'new-password',
             placeholder : this.placeholder || '' 
             
         };
@@ -16548,6 +16552,7 @@ Roo.apply(Roo.bootstrap.MonthField,  {
  * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the checkbox
  * @cfg {Boolean} checked initnal the element
  * @cfg {Boolean} inline inline the element (default false)
+ * @cfg {String} groupId the checkbox group id // normal just use for checkbox
  * 
  * @constructor
  * Create a new CheckBox
@@ -16566,6 +16571,11 @@ Roo.bootstrap.CheckBox = function(config){
         */
        check : true
     });
+    
+    if(this.groupId){
+        Roo.bootstrap.CheckBox.register(this);
+    }
+    
 };
 
 Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
@@ -16844,11 +16854,51 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
 
         return;
+    },
+    
+    validate : function()
+    {
+        if(
+                this.disabled || 
+                (this.inputType == 'radio' && this.getValue().length) ||
+                (this.inputType == 'checkbox' && this.getValue() == this.inputValue)
+        ){
+            return true;
+        }
+        
+        return false;
     }
     
 });
 
- 
+Roo.apply(Roo.bootstrap.CheckBox, {
+    
+    groups: {},
+     /**
+    * register a CheckBox Group
+    * @param {Roo.bootstrap.CheckBox} the CheckBox to add
+    */
+    register : function(checkbox)
+    {
+        this.groups[checkbox.groupId] = checkbox;
+	
+    },
+    /**
+    * fetch a CheckBox Group based on the group ID
+    * if one does not exist , it will get created.
+    * @param {string} the group ID
+    * @returns {Roo.bootstrap.CheckBox} the CheckBox group
+    */
+    get: function(groupId) {
+        if (typeof(this.groups[groupId]) == 'undefined') {
+            this.register(new Roo.bootstrap.CheckBox({ groupId : groupId }));
+        }
+        
+        return this.groups[groupId] ;
+    }
+    
+    
+});
 /*
  * - LGPL
  *
