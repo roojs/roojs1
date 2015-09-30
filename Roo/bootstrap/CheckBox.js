@@ -329,4 +329,31 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
 });
 
- 
+Roo.apply(Roo.bootstrap.CheckBox, {
+    
+    groups: {},
+     /**
+    * register a CheckBox Group
+    * @param {Roo.bootstrap.CheckBox} the CheckBox to add
+    */
+    register : function(checkbox)
+    {
+        this.groups[checkbox.groupId] = checkbox;
+	
+    },
+    /**
+    * fetch a CheckBox Group based on the group ID
+    * if one does not exist , it will get created.
+    * @param {string} the group ID
+    * @returns {Roo.bootstrap.CheckBox} the CheckBox group
+    */
+    get: function(navId) {
+        if (typeof(this.groups[navId]) == 'undefined') {
+            this.register(new Roo.bootstrap.TabGroup({ navId : navId }));
+        }
+        return this.groups[navId] ;
+    }
+    
+    
+    
+});
