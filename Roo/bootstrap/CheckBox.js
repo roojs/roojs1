@@ -347,13 +347,13 @@ Roo.apply(Roo.bootstrap.CheckBox, {
     * @param {string} the group ID
     * @returns {Roo.bootstrap.CheckBox} the CheckBox group
     */
-    get: function(navId) {
-        if (typeof(this.groups[navId]) == 'undefined') {
-            this.register(new Roo.bootstrap.TabGroup({ navId : navId }));
+    get: function(groupId) {
+        if (typeof(this.groups[groupId]) == 'undefined') {
+            this.register(new Roo.bootstrap.CheckBox({ groupId : groupId }));
         }
-        return this.groups[navId] ;
+        
+        return this.groups[groupId] ;
     }
-    
     
     
 });
