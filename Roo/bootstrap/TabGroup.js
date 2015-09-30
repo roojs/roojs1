@@ -23,7 +23,6 @@ Roo.bootstrap.TabGroup = function(config){
         this.navId = Roo.id();
     }
     this.tabs = [];
-    Roo.log(this);
     Roo.bootstrap.TabGroup.register(this);
     
 };
