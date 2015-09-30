@@ -345,7 +345,7 @@ Roo.apply(Roo.bootstrap.CheckBox, {
     register : function(checkbox)
     {
         if(typeof(this.groups[checkbox.groupId]) == 'undefined'){
-            this.groups[checkbox.groupId] = array();
+            this.groups[checkbox.groupId] = [];
         }
         
         this.groups[checkbox.groupId].push(checkbox);
