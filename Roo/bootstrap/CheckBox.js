@@ -339,8 +339,6 @@ Roo.apply(Roo.bootstrap.CheckBox, {
     
     groups: {},
     
-    names: {},
-    
      /**
     * register a CheckBox Group
     * @param {Roo.bootstrap.CheckBox} the CheckBox to add
@@ -348,10 +346,14 @@ Roo.apply(Roo.bootstrap.CheckBox, {
     register : function(checkbox)
     {
         if(typeof(this.groups[checkbox.groupId]) == 'undefined'){
-            this.groups[checkbox.groupId] = [];
+            this.groups[checkbox.groupId] = {};
         }
         
-        this.groups[checkbox.groupId].push(checkbox);
+        if(this.groups[checkbox.groupId].hasOwnProperty(checkbox.name)){
+            return;
+        }
+        
+        this.groups[checkbox.groupId][checkbox.name] = checkbox;
 	
     },
     /**
