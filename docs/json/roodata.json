@@ -15718,6 +15718,12 @@
      "memberOf": ""
     },
     {
+     "name": "groupId",
+     "type": "String",
+     "desc": "the checkbox group id // normal just use for checkbox",
+     "memberOf": ""
+    },
+    {
      "name": "disabled",
      "type": "Boolean",
      "desc": "is it disabled",
@@ -15815,6 +15821,12 @@
      "name": "readOnly",
      "type": "Boolean",
      "desc": "Specifies that the field should be read-only",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "autocomplete",
+     "type": "String",
+     "desc": "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -16179,6 +16191,12 @@
      "desc": "Try to focus this component."
     },
     {
+     "name": "get",
+     "sig": "(string the)",
+     "type": "function",
+     "desc": "fetch a CheckBox Group based on the group ID\nif one does not exist , it will get created."
+    },
+    {
      "name": "getChildContainer",
      "sig": "()",
      "type": "function",
@@ -16261,6 +16279,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "register",
+     "sig": "(Roo.bootstrap.CheckBox the)",
+     "type": "function",
+     "desc": "register a CheckBox Group"
     },
     {
      "name": "releaseCapture",
@@ -17149,6 +17173,12 @@
      "name": "readOnly",
      "type": "Boolean",
      "desc": "Specifies that the field should be read-only",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "autocomplete",
+     "type": "String",
+     "desc": "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -18161,6 +18191,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "autocomplete",
+     "type": "String",
+     "desc": "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "align",
      "type": "String",
      "desc": "Default left",
@@ -19155,6 +19191,12 @@
      "name": "readOnly",
      "type": "Boolean",
      "desc": "Specifies that the field should be read-only",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "autocomplete",
+     "type": "String",
+     "desc": "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -20676,6 +20718,12 @@
      "name": "readOnly",
      "type": "Boolean",
      "desc": "Specifies that the field should be read-only",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "autocomplete",
+     "type": "String",
+     "desc": "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -22784,6 +22832,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "autocomplete",
+     "type": "String",
+     "desc": "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "align",
      "type": "String",
      "desc": "Default left",
@@ -23786,6 +23840,12 @@
      "name": "readOnly",
      "type": "Boolean",
      "desc": "Specifies that the field should be read-only",
+     "memberOf": ""
+    },
+    {
+     "name": "autocomplete",
+     "type": "String",
+     "desc": "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
      "memberOf": ""
     },
     {
@@ -26987,6 +27047,12 @@
      "name": "readOnly",
      "type": "Boolean",
      "desc": "Specifies that the field should be read-only",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "autocomplete",
+     "type": "String",
+     "desc": "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -31803,6 +31869,12 @@
      "memberOf": "Roo.bootstrap.CheckBox"
     },
     {
+     "name": "groupId",
+     "type": "String",
+     "desc": "the checkbox group id // normal just use for checkbox",
+     "memberOf": "Roo.bootstrap.CheckBox"
+    },
+    {
      "name": "disabled",
      "type": "Boolean",
      "desc": "is it disabled",
@@ -31900,6 +31972,12 @@
      "name": "readOnly",
      "type": "Boolean",
      "desc": "Specifies that the field should be read-only",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "autocomplete",
+     "type": "String",
+     "desc": "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -32264,6 +32342,12 @@
      "desc": "Try to focus this component."
     },
     {
+     "name": "get",
+     "sig": "(string the)",
+     "type": "function",
+     "desc": "fetch a CheckBox Group based on the group ID\nif one does not exist , it will get created."
+    },
+    {
      "name": "getChildContainer",
      "sig": "()",
      "type": "function",
@@ -32346,6 +32430,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "register",
+     "sig": "(Roo.bootstrap.CheckBox the)",
+     "type": "function",
+     "desc": "register a CheckBox Group"
     },
     {
      "name": "releaseCapture",
@@ -35835,6 +35925,12 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "autocomplete",
+     "type": "String",
+     "desc": "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "align",
      "type": "String",
      "desc": "Default left",
@@ -36459,6 +36555,12 @@
      "name": "readOnly",
      "type": "Boolean",
      "desc": "Specifies that the field should be read-only",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "autocomplete",
+     "type": "String",
+     "desc": "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -37120,6 +37222,12 @@
      "name": "readOnly",
      "type": "Boolean",
      "desc": "Specifies that the field should be read-only",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "autocomplete",
+     "type": "String",
+     "desc": "- default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en",
      "memberOf": "Roo.bootstrap.Input"
     },
     {

@@ -1000,6 +1000,7 @@
         </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.setRawValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.lastSelectionText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.lastData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         
     },
 
@@ -1645,6 +1646,9 @@
     </span><span class="jsdoc-var">onRemoveItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_self</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.lastItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">([], </span><span class="jsdoc-var">this.item</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.item.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o.data</span><span class="jsdoc-syntax">) * 1;
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">( </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">&lt; 0){
@@ -1713,6 +1717,8 @@
     </span><span class="jsdoc-var">onTickableFooterButtonClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.lastItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">([], </span><span class="jsdoc-var">this.item</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">btn </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">btn.name </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'cancel'</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.tickItems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">([], </span><span class="jsdoc-var">this.item</span><span class="jsdoc-syntax">);
