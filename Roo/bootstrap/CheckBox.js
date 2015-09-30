@@ -319,7 +319,13 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             return true;
         }
         
+        if(this.inputType == 'radio'){
+            
+        }
         
+        if(this.inputType == 'checkbox'){
+            
+        }
         
         return false;
     }
