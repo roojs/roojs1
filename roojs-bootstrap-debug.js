@@ -16572,10 +16572,6 @@ Roo.bootstrap.CheckBox = function(config){
        check : true
     });
     
-    if(this.groupId){
-        Roo.bootstrap.CheckBox.register(this);
-    }
-    
 };
 
 Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
@@ -16769,6 +16765,9 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.startValue = this.getValue();
         
+        if(this.groupId){
+            Roo.bootstrap.CheckBox.register(this);
+        }
     },
     
     onClick : function()
@@ -16874,24 +16873,32 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 Roo.apply(Roo.bootstrap.CheckBox, {
     
     groups: {},
+    
      /**
     * register a CheckBox Group
     * @param {Roo.bootstrap.CheckBox} the CheckBox to add
     */
     register : function(checkbox)
     {
-        this.groups[checkbox.groupId] = checkbox;
+        if(typeof(this.groups[checkbox.groupId]) == 'undefined'){
+            this.groups[checkbox.groupId] = {};
+        }
+        
+        if(this.groups[checkbox.groupId].hasOwnProperty(checkbox.name)){
+            return;
+        }
+        
+        this.groups[checkbox.groupId][checkbox.name] = checkbox;
 	
     },
     /**
     * fetch a CheckBox Group based on the group ID
-    * if one does not exist , it will get created.
     * @param {string} the group ID
     * @returns {Roo.bootstrap.CheckBox} the CheckBox group
     */
     get: function(groupId) {
         if (typeof(this.groups[groupId]) == 'undefined') {
-            this.register(new Roo.bootstrap.CheckBox({ groupId : groupId }));
+            return false;
         }
         
         return this.groups[groupId] ;
