@@ -35,7 +35,10 @@ Roo.bootstrap.CheckBox = function(config){
        check : true
     });
     
-    Roo.bootstrap.CheckBox.register(this);
+    if(this.groupId){
+        Roo.bootstrap.CheckBox.register(this);
+    }
+    
 };
 
 Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
