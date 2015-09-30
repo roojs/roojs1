@@ -338,6 +338,9 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
 Roo.apply(Roo.bootstrap.CheckBox, {
     
     groups: {},
+    
+    names: {},
+    
      /**
     * register a CheckBox Group
     * @param {Roo.bootstrap.CheckBox} the CheckBox to add
@@ -347,10 +350,6 @@ Roo.apply(Roo.bootstrap.CheckBox, {
         if(typeof(this.groups[checkbox.groupId]) == 'undefined'){
             this.groups[checkbox.groupId] = [];
         }
-        
-        Roo.log('add to group!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(checkbox);
-        Roo.log(checkbox.rendered);
         
         this.groups[checkbox.groupId].push(checkbox);
 	
