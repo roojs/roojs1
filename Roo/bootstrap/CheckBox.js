@@ -349,13 +349,12 @@ Roo.apply(Roo.bootstrap.CheckBox, {
     },
     /**
     * fetch a CheckBox Group based on the group ID
-    * if one does not exist , it will get created.
     * @param {string} the group ID
     * @returns {Roo.bootstrap.CheckBox} the CheckBox group
     */
     get: function(groupId) {
         if (typeof(this.groups[groupId]) == 'undefined') {
-            this.register(new Roo.bootstrap.CheckBox({ groupId : groupId }));
+            return false;
         }
         
         return this.groups[groupId] ;
