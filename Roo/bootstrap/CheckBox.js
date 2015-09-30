@@ -348,6 +348,10 @@ Roo.apply(Roo.bootstrap.CheckBox, {
             this.groups[checkbox.groupId] = [];
         }
         
+        Roo.log('add to group!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log(checkbox);
+        Roo.log(checkbox.rendered);
+        
         this.groups[checkbox.groupId].push(checkbox);
 	
     },
