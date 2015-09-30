@@ -36,10 +36,6 @@
        </span><span class="jsdoc-var">check </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
     
-    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.groupId</span><span class="jsdoc-syntax">){
-        </span><span class="jsdoc-var">Roo.bootstrap.CheckBox.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-    }
-    
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.CheckBox</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Input</span><span class="jsdoc-syntax">,  {
@@ -233,6 +229,9 @@
         
         </span><span class="jsdoc-var">this.startValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">();
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.groupId</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.bootstrap.CheckBox.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
     },
     
     </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -338,24 +337,32 @@
 </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.CheckBox</span><span class="jsdoc-syntax">, {
     
     </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">: {},
+    
      </span><span class="jsdoc-comment">/**
     * register a CheckBox Group
     * @param {Roo.bootstrap.CheckBox} the CheckBox to add
     */
     </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">checkbox</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">checkbox.groupId</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">checkbox</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">checkbox.groupId</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">checkbox.groupId</span><span class="jsdoc-syntax">] = {};
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">checkbox.groupId</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.hasOwnProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">checkbox.name</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">checkbox.groupId</span><span class="jsdoc-syntax">][</span><span class="jsdoc-var">checkbox.name</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">checkbox</span><span class="jsdoc-syntax">;
 	
     },
     </span><span class="jsdoc-comment">/**
     * fetch a CheckBox Group based on the group ID
-    * if one does not exist , it will get created.
     * @param {string} the group ID
     * @returns {Roo.bootstrap.CheckBox} the CheckBox group
     */
     </span><span class="jsdoc-var">get</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">groupId</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">groupId</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-var">this.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.CheckBox</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">groupId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">groupId </span><span class="jsdoc-syntax">}));
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">groupId</span><span class="jsdoc-syntax">] ;

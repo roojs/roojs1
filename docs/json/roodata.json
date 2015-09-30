@@ -16194,7 +16194,7 @@
      "name": "get",
      "sig": "(string the)",
      "type": "function",
-     "desc": "fetch a CheckBox Group based on the group ID\nif one does not exist , it will get created."
+     "desc": "fetch a CheckBox Group based on the group ID"
     },
     {
      "name": "getChildContainer",
@@ -32345,7 +32345,7 @@
      "name": "get",
      "sig": "(string the)",
      "type": "function",
-     "desc": "fetch a CheckBox Group based on the group ID\nif one does not exist , it will get created."
+     "desc": "fetch a CheckBox Group based on the group ID"
     },
     {
      "name": "getChildContainer",
