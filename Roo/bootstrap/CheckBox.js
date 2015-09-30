@@ -312,7 +312,15 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
 
         return;
-    }
+    },
+    
+    validate : function(){
+        if(this.disabled || this.validateValue(this.getValue())){
+            return true;
+        }
+        
+        return false;
+    },
     
 });
 
