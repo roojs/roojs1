@@ -221,10 +221,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     {
 //        Roo.bootstrap.CheckBox.superclass.initEvents.call(this);
         
-        if(this.groupId){
-            Roo.bootstrap.CheckBox.register(this);
-        }
-    
         this.inputEl().on('click', this.onClick,  this);
         
         if (this.boxLabel) { 
@@ -233,6 +229,9 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.startValue = this.getValue();
         
+        if(this.groupId){
+            Roo.bootstrap.CheckBox.register(this);
+        }
     },
     
     onClick : function()
