@@ -344,7 +344,7 @@ Roo.apply(Roo.bootstrap.CheckBox, {
     */
     register : function(checkbox)
     {
-        this.groups[checkbox.groupId] = checkbox;
+        this.groups[checkbox.groupId].push(checkbox);
 	
     },
     /**
