@@ -358,7 +358,7 @@ Roo.apply(Roo.bootstrap.CheckBox, {
     */
     get: function(groupId) {
         if (typeof(this.groups[groupId]) == 'undefined') {
-            return array();
+            return false;
         }
         
         return this.groups[groupId] ;
