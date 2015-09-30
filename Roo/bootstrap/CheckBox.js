@@ -16,6 +16,7 @@
  * @cfg {String} weight (primary|warning|info|danger|success) The text that appears beside the checkbox
  * @cfg {Boolean} checked initnal the element
  * @cfg {Boolean} inline inline the element (default false)
+ * @cfg {String} groupId the checkbox group id (for use with navbars) - will be auto generated if it does not exist..
  * 
  * @constructor
  * Create a new CheckBox
