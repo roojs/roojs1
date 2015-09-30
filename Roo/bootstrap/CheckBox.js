@@ -344,6 +344,10 @@ Roo.apply(Roo.bootstrap.CheckBox, {
     */
     register : function(checkbox)
     {
+        if(typeof(this.groups[checkbox.groupId]) == 'undefined'){
+            this.groups[checkbox.groupId] = array();
+        }
+        
         this.groups[checkbox.groupId].push(checkbox);
 	
     },
@@ -354,7 +358,7 @@ Roo.apply(Roo.bootstrap.CheckBox, {
     */
     get: function(groupId) {
         if (typeof(this.groups[groupId]) == 'undefined') {
-            return false;
+            return array();
         }
         
         return this.groups[groupId] ;
