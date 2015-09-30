@@ -318,7 +318,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     {
         if(
                 this.disabled || 
-                this.allowBlank ||
                 (this.inputType == 'radio' && this.getValue().length) ||
                 (this.inputType == 'checkbox' && this.getValue() == this.inputValue)
         ){
