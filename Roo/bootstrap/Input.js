@@ -257,6 +257,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             autocomplete : this.autocomplete || 'new-password'
         };
         
+        
         if(this.align){
             input.style = (typeof(input.style) == 'undefined') ? ('text-align:' + this.align) : (input.style + 'text-align:' + this.align);
         }
