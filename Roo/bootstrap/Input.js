@@ -294,8 +294,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         var inputblock = {
             cls : 'input-group',
             cn :  [
-                input
-//                feedback
+                input,
+                feedback
             ] 
         };
         
