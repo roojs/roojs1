@@ -723,7 +723,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.el.addClass(this.validClass);
         
         if(this.hasFeedback){
-            this.el.select('.form-control-feedback', true).first().removeClass([])
+            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+            this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
         }
         
         this.fireEvent('valid', this);
@@ -741,6 +742,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.el.removeClass([this.invalidClass, this.validClass]);
         
         this.el.addClass(this.invalidClass);
+        
+        if(this.hasFeedback){
+            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+            this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+        }
         
         this.fireEvent('invalid', this, msg);
     },
