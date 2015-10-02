@@ -298,6 +298,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 feedback
             ] 
         };
+        
             
 //        var inputblock = input;
         
