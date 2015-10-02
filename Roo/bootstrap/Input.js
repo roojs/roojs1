@@ -124,6 +124,16 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     validClass : "has-success",
     
     /**
+     * @cfg {String} invalidFeedbackIcon The CSS class to use when create feedback icon (defaults to "x-form-invalid")
+     */
+    invalidFeedbackIcon : "glyphicon-ok",
+    
+    /**
+     * @cfg {String} validFeedbackIcon The CSS class to use when create feedback icon (defaults to "x-form-invalid")
+     */
+    validFeedbackIcon : "glyphicon-warning-sign",
+    
+    /**
      * @cfg {Boolean} selectOnFocus True to automatically select any existing field text when the field receives input focus (defaults to false)
      */
     selectOnFocus : false,
