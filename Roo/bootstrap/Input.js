@@ -124,7 +124,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     validClass : "has-success",
     
     /**
-     * @cfg {String} hasFeedback default false
+     * @cfg {Boolean} (true | false) hasFeedback default false
      */
     hasFeedback : false,
     
