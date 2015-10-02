@@ -497,9 +497,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     validate : function(){
         //if(this.disabled || this.validateValue(this.processValue(this.getRawValue()))){
         if(this.disabled || this.validateValue(this.getRawValue())){
-            this.clearInvalid();
+            this.markValid();
             return true;
         }
+        
+        this.markInvalid();
         return false;
     },
     
