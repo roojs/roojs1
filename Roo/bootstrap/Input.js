@@ -728,9 +728,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             Roo.log('valid!!!!!!!!!!!!!!!');
             Roo.log(this);
             Roo.log(this.el.select('.form-control-feedback', true).first());
-            Roo.log(typeof(feedback));
-            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
-            this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
+            if(feedback){
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
+            }
+            
         }
         
         this.fireEvent('valid', this);
