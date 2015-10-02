@@ -286,8 +286,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
         });
         
-        
-        
         var inputblock = input;
         
         if (this.before || this.after) {
