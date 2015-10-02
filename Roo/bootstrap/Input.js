@@ -124,6 +124,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     validClass : "has-success",
     
     /**
+     * @cfg {String} hasFeedback default false
+     */
+    hasFeedback : false,
+    
+    /**
      * @cfg {String} invalidFeedbackIcon The CSS class to use when create feedback icon (defaults to "x-form-invalid")
      */
     invalidFeedbackIcon : "glyphicon-warning-sign",
