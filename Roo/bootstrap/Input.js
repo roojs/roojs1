@@ -600,7 +600,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     reset : function(){
         this.setValue(this.originalValue);
-        this.clearInvalid();
+        this.validate();
     },
      /**
      * Returns the name of the field
