@@ -342,6 +342,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             inputblock.cn.push(input);
             
             if(this.hasFeedback){
+                inputblock.cls += ' has-feedback';
                 inputblock.cn.push(feedback);
             }
             
