@@ -294,6 +294,23 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         var inputblock = input;
         
+        if(this.hasFeedback){
+            
+            input.cls += ' has-feedback';
+            
+            var feedback = {
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback glyphicon-ok input-group-addon'
+            };
+
+            inputblock = {
+                cls : 'input-group',
+                cn :  [
+                    input,
+                    feedback
+                ] 
+            };  
+        }
         
         
             
@@ -324,7 +341,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             
             inputblock.cn.push(input);
-            inputblock.cn.push(feedback);
+            
+            if(this.hasFeedback){
+                inputblock.cn.push(feedback);
+            }
             
             if (this.after && typeof(this.after) == 'string') {
                 inputblock.cn.push({
