@@ -15878,9 +15878,13 @@
     },
     {
      "name": "hasFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "default false",
-     "memberOf": "Roo.bootstrap.Input"
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "invalidFeedbackIcon",
@@ -17254,9 +17258,13 @@
     },
     {
      "name": "hasFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "default false",
-     "memberOf": "Roo.bootstrap.Input"
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "invalidFeedbackIcon",
@@ -18293,9 +18301,13 @@
     },
     {
      "name": "hasFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "default false",
-     "memberOf": "Roo.bootstrap.Input"
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "invalidFeedbackIcon",
@@ -19320,9 +19332,13 @@
     },
     {
      "name": "hasFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "default false",
-     "memberOf": "Roo.bootstrap.Input"
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "invalidFeedbackIcon",
@@ -20871,9 +20887,13 @@
     },
     {
      "name": "hasFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "default false",
-     "memberOf": "Roo.bootstrap.Input"
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "invalidFeedbackIcon",
@@ -22988,9 +23008,13 @@
     },
     {
      "name": "hasFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "default false",
-     "memberOf": "Roo.bootstrap.Input"
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "invalidFeedbackIcon",
@@ -24041,9 +24065,13 @@
     },
     {
      "name": "hasFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "default false",
-     "memberOf": ""
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "invalidFeedbackIcon",
@@ -27272,9 +27300,13 @@
     },
     {
      "name": "hasFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "default false",
-     "memberOf": "Roo.bootstrap.Input"
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "invalidFeedbackIcon",
@@ -32221,9 +32253,13 @@
     },
     {
      "name": "hasFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "default false",
-     "memberOf": "Roo.bootstrap.Input"
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "invalidFeedbackIcon",
@@ -36195,9 +36231,13 @@
     },
     {
      "name": "hasFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "default false",
-     "memberOf": "Roo.bootstrap.Input"
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "invalidFeedbackIcon",
@@ -36852,9 +36892,13 @@
     },
     {
      "name": "hasFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "default false",
-     "memberOf": "Roo.bootstrap.Input"
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "invalidFeedbackIcon",
@@ -37543,9 +37587,13 @@
     },
     {
      "name": "hasFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "default false",
-     "memberOf": "Roo.bootstrap.Input"
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "invalidFeedbackIcon",
