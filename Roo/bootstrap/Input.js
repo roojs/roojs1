@@ -759,6 +759,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(!this.el  || this.preventMark){ // not rendered
             return;
         }
+        
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        
         this.el.addClass(this.invalidClass);
         
         this.fireEvent('invalid', this, msg);
