@@ -339,10 +339,15 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
             inputblock.cn.push(input);
             
-            if(this.hasFeedback){
+            var feedback = {
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback glyphicon-ok'
+            };
+            
+//            if(this.hasFeedback){
                 inputblock.cls += ' has-feedback';
                 inputblock.cn.push(feedback);
-            }
+//            }
             
             if (this.after && typeof(this.after) == 'string') {
                 inputblock.cn.push({
