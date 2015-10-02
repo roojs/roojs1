@@ -15879,7 +15879,7 @@
     {
      "name": "hasFeedback",
      "type": "Boolean",
-     "desc": "default false",
+     "desc": "default true",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
       "true",
@@ -17265,7 +17265,7 @@
     {
      "name": "hasFeedback",
      "type": "Boolean",
-     "desc": "default false",
+     "desc": "default true",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
       "true",
@@ -18314,7 +18314,7 @@
     {
      "name": "hasFeedback",
      "type": "Boolean",
-     "desc": "default false",
+     "desc": "default true",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
       "true",
@@ -19351,7 +19351,7 @@
     {
      "name": "hasFeedback",
      "type": "Boolean",
-     "desc": "default false",
+     "desc": "default true",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
       "true",
@@ -20912,7 +20912,7 @@
     {
      "name": "hasFeedback",
      "type": "Boolean",
-     "desc": "default false",
+     "desc": "default true",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
       "true",
@@ -23039,7 +23039,7 @@
     {
      "name": "hasFeedback",
      "type": "Boolean",
-     "desc": "default false",
+     "desc": "default true",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
       "true",
@@ -24102,7 +24102,7 @@
     {
      "name": "hasFeedback",
      "type": "Boolean",
-     "desc": "default false",
+     "desc": "default true",
      "memberOf": "",
      "optvals": [
       "true",
@@ -27343,7 +27343,7 @@
     {
      "name": "hasFeedback",
      "type": "Boolean",
-     "desc": "default false",
+     "desc": "default true",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
       "true",
@@ -32302,7 +32302,7 @@
     {
      "name": "hasFeedback",
      "type": "Boolean",
-     "desc": "default false",
+     "desc": "default true",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
       "true",
@@ -36286,7 +36286,7 @@
     {
      "name": "hasFeedback",
      "type": "Boolean",
-     "desc": "default false",
+     "desc": "default true",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
       "true",
@@ -36953,7 +36953,7 @@
     {
      "name": "hasFeedback",
      "type": "Boolean",
-     "desc": "default false",
+     "desc": "default true",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
       "true",
@@ -37654,7 +37654,7 @@
     {
      "name": "hasFeedback",
      "type": "Boolean",
-     "desc": "default false",
+     "desc": "default true",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
       "true",
