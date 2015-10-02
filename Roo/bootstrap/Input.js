@@ -320,6 +320,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 cls : 'input-group',
                 cn :  [] 
             };
+            
             if (this.before && typeof(this.before) == 'string') {
                 
                 inputblock.cn.push({
