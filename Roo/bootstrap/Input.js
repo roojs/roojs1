@@ -295,6 +295,9 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         var inputblock = input;
         
         if(this.hasFeedback){
+            
+            input.cls += ' has-feedback';
+            
             var feedback = {
                 tag: 'span',
                 cls: 'glyphicon form-control-feedback glyphicon-ok input-group-addon'
