@@ -7138,7 +7138,27 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     /**
      * @cfg {String} invalidClass The CSS class to use when marking a field invalid (defaults to "x-form-invalid")
      */
-    invalidClass : "has-error",
+    invalidClass : "has-warning",
+    
+    /**
+     * @cfg {String} validClass The CSS class to use when marking a field valid (defaults to "x-form-invalid")
+     */
+    validClass : "has-success",
+    
+    /**
+     * @cfg {String} hasFeedback default false
+     */
+    hasFeedback : false,
+    
+    /**
+     * @cfg {String} invalidFeedbackIcon The CSS class to use when create feedback icon (defaults to "x-form-invalid")
+     */
+    invalidFeedbackIcon : "glyphicon-warning-sign",
+    
+    /**
+     * @cfg {String} validFeedbackIcon The CSS class to use when create feedback icon (defaults to "x-form-invalid")
+     */
+    validFeedbackIcon : "glyphicon-ok",
     
     /**
      * @cfg {Boolean} selectOnFocus True to automatically select any existing field text when the field receives input focus (defaults to false)
@@ -7264,6 +7284,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             autocomplete : this.autocomplete || 'new-password'
         };
         
+        
         if(this.align){
             input.style = (typeof(input.style) == 'undefined') ? ('text-align:' + this.align) : (input.style + 'text-align:' + this.align);
         }
@@ -7295,6 +7316,28 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         var inputblock = input;
         
+        if(this.hasFeedback){
+            
+            input.cls += ' has-feedback';
+            
+            var feedback = {
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback glyphicon-ok input-group-addon'
+            };
+
+            inputblock = {
+                cls : 'input-group',
+                cn :  [
+                    input,
+                    feedback
+                ] 
+            };  
+        }
+        
+        
+            
+//        var inputblock = input;
+        
         if (this.before || this.after) {
             
             inputblock = {
@@ -7320,6 +7363,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
             
             inputblock.cn.push(input);
+            
+            if(this.hasFeedback){
+                inputblock.cn.push(feedback);
+            }
             
             if (this.after && typeof(this.after) == 'string') {
                 inputblock.cn.push({
