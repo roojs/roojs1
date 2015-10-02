@@ -1,5 +1,4 @@
 
-.has-feedback > .form-control-feedback {
-/*    position: relative;
-    right: 30px;*/
+div.input-group.has-feedback > .form-control-feedback {
+    right: 30px;
 }
