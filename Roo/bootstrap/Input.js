@@ -722,7 +722,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         this.el.addClass(this.invalidClass);
         
-        this.fireEvent('invalid', this);
+        this.fireEvent('valid', this);
     },
     
      /**
