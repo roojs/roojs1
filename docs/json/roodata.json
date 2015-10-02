@@ -16297,6 +16297,12 @@
      "desc": "Mark this field as invalid"
     },
     {
+     "name": "markValid",
+     "sig": "()",
+     "type": "function",
+     "desc": "Mark this field as valid"
+    },
+    {
      "name": "on",
      "sig": "(String eventName, Function handler, Object scope, Object options)",
      "type": "function",
@@ -17737,6 +17743,12 @@
      "desc": "Mark this field as invalid"
     },
     {
+     "name": "markValid",
+     "sig": "()",
+     "type": "function",
+     "desc": "Mark this field as valid"
+    },
+    {
      "name": "on",
      "sig": "(String eventName, Function handler, Object scope, Object options)",
      "type": "function",
@@ -18780,6 +18792,12 @@
      "desc": "Mark this field as invalid"
     },
     {
+     "name": "markValid",
+     "sig": "()",
+     "type": "function",
+     "desc": "Mark this field as valid"
+    },
+    {
      "name": "on",
      "sig": "(String eventName, Function handler, Object scope, Object options)",
      "type": "function",
@@ -19809,6 +19827,12 @@
      "sig": "(String msg)",
      "type": "function",
      "desc": "Mark this field as invalid"
+    },
+    {
+     "name": "markValid",
+     "sig": "()",
+     "type": "function",
+     "desc": "Mark this field as valid"
     },
     {
      "name": "on",
@@ -21298,6 +21322,12 @@
      "sig": "(String msg)",
      "type": "function",
      "desc": "Mark this field as invalid"
+    },
+    {
+     "name": "markValid",
+     "sig": "()",
+     "type": "function",
+     "desc": "Mark this field as valid"
     },
     {
      "name": "on",
@@ -23463,6 +23493,12 @@
      "desc": "Mark this field as invalid"
     },
     {
+     "name": "markValid",
+     "sig": "()",
+     "type": "function",
+     "desc": "Mark this field as valid"
+    },
+    {
      "name": "on",
      "sig": "(String eventName, Function handler, Object scope, Object options)",
      "type": "function",
@@ -24470,6 +24506,12 @@
      "sig": "(String msg)",
      "type": "function",
      "desc": "Mark this field as invalid"
+    },
+    {
+     "name": "markValid",
+     "sig": "()",
+     "type": "function",
+     "desc": "Mark this field as valid"
     },
     {
      "name": "on",
@@ -27711,6 +27753,12 @@
      "sig": "(String msg)",
      "type": "function",
      "desc": "Mark this field as invalid"
+    },
+    {
+     "name": "markValid",
+     "sig": "()",
+     "type": "function",
+     "desc": "Mark this field as valid"
     },
     {
      "name": "on",
@@ -32672,6 +32720,12 @@
      "desc": "Mark this field as invalid"
     },
     {
+     "name": "markValid",
+     "sig": "()",
+     "type": "function",
+     "desc": "Mark this field as valid"
+    },
+    {
      "name": "on",
      "sig": "(String eventName, Function handler, Object scope, Object options)",
      "type": "function",
@@ -36638,6 +36692,12 @@
      "desc": "Mark this field as invalid"
     },
     {
+     "name": "markValid",
+     "sig": "()",
+     "type": "function",
+     "desc": "Mark this field as valid"
+    },
+    {
      "name": "on",
      "sig": "(String eventName, Function handler, Object scope, Object options)",
      "type": "function",
@@ -37303,6 +37363,12 @@
      "sig": "(String msg)",
      "type": "function",
      "desc": "Mark this field as invalid"
+    },
+    {
+     "name": "markValid",
+     "sig": "()",
+     "type": "function",
+     "desc": "Mark this field as valid"
     },
     {
      "name": "on",
@@ -37992,6 +38058,12 @@
      "sig": "(String msg)",
      "type": "function",
      "desc": "Mark this field as invalid"
+    },
+    {
+     "name": "markValid",
+     "sig": "()",
+     "type": "function",
+     "desc": "Mark this field as valid"
     },
     {
      "name": "on",

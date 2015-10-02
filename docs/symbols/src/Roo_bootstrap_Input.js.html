@@ -131,12 +131,12 @@
     </span><span class="jsdoc-comment">/**
      * @cfg {String} invalidFeedbackIcon The CSS class to use when create feedback icon (defaults to &quot;x-form-invalid&quot;)
      */
-    </span><span class="jsdoc-var">invalidFeedbackIcon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;glyphicon-warning-sign&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">invalidFeedbackClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;glyphicon-warning-sign&quot;</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">/**
      * @cfg {String} validFeedbackIcon The CSS class to use when create feedback icon (defaults to &quot;x-form-invalid&quot;)
      */
-    </span><span class="jsdoc-var">validFeedbackIcon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;glyphicon-ok&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">validFeedbackClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;glyphicon-ok&quot;</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">/**
      * @cfg {Boolean} selectOnFocus True to automatically select any existing field text when the field receives input focus (defaults to false)
@@ -296,24 +296,20 @@
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback</span><span class="jsdoc-syntax">){
             
-            </span><span class="jsdoc-var">input.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' has-feedback'</span><span class="jsdoc-syntax">;
-            
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">feedback </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'glyphicon form-control-feedback glyphicon-ok input-group-addon'
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'glyphicon form-control-feedback'
             </span><span class="jsdoc-syntax">};
 
             </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= {
-                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'has-feedback'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">:  [
                     </span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">feedback
                 </span><span class="jsdoc-syntax">] 
             };  
         }
-        
-        
-            
+         
 </span><span class="jsdoc-comment">//        var inputblock = input;
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">) {
@@ -322,6 +318,7 @@
                 </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">:  [] 
             };
+            
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
                 
                 </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">({
@@ -343,6 +340,7 @@
             </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">);
             
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">inputblock.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' has-feedback'</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">);
             }
             
@@ -499,9 +497,11 @@
     </span><span class="jsdoc-var">validate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-comment">//if(this.disabled || this.validateValue(this.processValue(this.getRawValue()))){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.validateValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">())){
-            </span><span class="jsdoc-var">this.clearInvalid</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.markValid</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         }
+        
+        </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
     },
     
@@ -514,40 +514,34 @@
      */
     </span><span class="jsdoc-var">validateValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">&lt; 1)  { </span><span class="jsdoc-comment">// if it's blank
-             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.clearInvalid</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
-             }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.blankText</span><span class="jsdoc-syntax">);
-                </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
-             }
+            }
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minLength</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minLengthText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.minLength</span><span class="jsdoc-syntax">));
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.maxLength</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">String.format</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.maxLengthText</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.maxLength</span><span class="jsdoc-syntax">));
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.vtype</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">vt </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.form.VTypes</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">vt</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.vtype</span><span class="jsdoc-syntax">](</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)){
-                </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.vtypeText </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">vt</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.vtype </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'Text'</span><span class="jsdoc-syntax">]);
                 </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
             }
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof </span><span class="jsdoc-var">this.validator </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;function&quot;</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.validator</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">);
                 </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
             }
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.regex </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.regex.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">)){
-            </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.regexText</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
+        
         </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
     },
 
@@ -606,7 +600,7 @@
      */
     </span><span class="jsdoc-var">reset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         </span><span class="jsdoc-var">this.setValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.originalValue</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.clearInvalid</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
     },
      </span><span class="jsdoc-comment">/**
      * Returns the name of the field
@@ -712,35 +706,30 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-comment">/*
-        switch(this.msgTarget){
-            case 'qtip':
-                this.el.dom.qtip = '';
-                break;
-            case 'title':
-                this.el.dom.title = '';
-                break;
-            case 'under':
-                if(this.errorEl){
-                    Roo.form.Field.msgFx[this.msgFx].hide(this.errorEl, this);
-                }
-                break;
-            case 'side':
-                if(this.errorIcon){
-                    this.errorIcon.dom.qtip = '';
-                    this.errorIcon.hide();
-                    this.un('resize', this.alignErrorIcon, this);
-                }
-                break;
-            default:
-                var t = Roo.getDom(this.msgTarget);
-                t.innerHTML = '';
-                t.style.display = 'none';
-                break;
-        }
-        */
+        
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'valid'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
+    
+     </span><span class="jsdoc-comment">/**
+     * Mark this field as valid
+     */
+    </span><span class="jsdoc-var">markValid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el  </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.preventMark</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// not rendered
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">]);
+        
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validFeedbackClass</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.validFeedbackClass</span><span class="jsdoc-syntax">]);
+        }
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'valid'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
      </span><span class="jsdoc-comment">/**
      * Mark this field as invalid
      * @param {String} msg The validation message
@@ -749,47 +738,16 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el  </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.preventMark</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// not rendered
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
+        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">]);
+        
         </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-comment">/*
-        msg = msg || this.invalidText;
-        switch(this.msgTarget){
-            case 'qtip':
-                this.el.dom.qtip = msg;
-                this.el.dom.qclass = 'x-form-invalid-tip';
-                if(Roo.QuickTips){ // fix for floating editors interacting with DND
-                    Roo.QuickTips.enable();
-                }
-                break;
-            case 'title':
-                this.el.dom.title = msg;
-                break;
-            case 'under':
-                if(!this.errorEl){
-                    var elp = this.el.findParent('.x-form-element', 5, true);
-                    this.errorEl = elp.createChild({cls:'x-form-invalid-msg'});
-                    this.errorEl.setWidth(elp.getWidth(true)-20);
-                }
-                this.errorEl.update(msg);
-                Roo.form.Field.msgFx[this.msgFx].show(this.errorEl, this);
-                break;
-            case 'side':
-                if(!this.errorIcon){
-                    var elp = this.el.findParent('.x-form-element', 5, true);
-                    this.errorIcon = elp.createChild({cls:'x-form-invalid-icon'});
-                }
-                this.alignErrorIcon();
-                this.errorIcon.dom.qtip = msg;
-                this.errorIcon.dom.qclass = 'x-form-invalid-tip';
-                this.errorIcon.show();
-                this.on('resize', this.alignErrorIcon, this);
-                break;
-            default:
-                var t = Roo.getDom(this.msgTarget);
-                t.innerHTML = msg;
-                t.style.display = this.msgDisplay;
-                break;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validFeedbackClass</span><span class="jsdoc-syntax">]);
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">]);
         }
-        */
+        
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invalid'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">);
     },
     </span><span class="jsdoc-comment">// private
