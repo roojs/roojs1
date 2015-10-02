@@ -286,6 +286,17 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
         });
         
+        var inputblock = {
+            cls : 'input-group',
+            cn :  [
+                input,
+                {
+                    tag: 'span',
+                    cls: 'glyphicon form-control-feedback'
+                }
+            ] 
+        };
+            
         var inputblock = input;
         
         if (this.before || this.after) {
