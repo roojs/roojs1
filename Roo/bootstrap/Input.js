@@ -292,18 +292,23 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             }
         });
         
-        var feedback = {
-            tag: 'span',
-            cls: 'glyphicon form-control-feedback glyphicon-ok input-group-addon'
-        };
+        var inputblock = input;
         
-        var inputblock = {
-            cls : 'input-group',
-            cn :  [
-                input,
-                feedback
-            ] 
-        };
+        if(this.hasFeedback){
+            var feedback = {
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback glyphicon-ok input-group-addon'
+            };
+
+            inputblock = {
+                cls : 'input-group',
+                cn :  [
+                    input,
+                    feedback
+                ] 
+            };  
+        }
+        
         
             
 //        var inputblock = input;
