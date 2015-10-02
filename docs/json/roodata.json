@@ -15871,6 +15871,30 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "validClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "hasFeedback",
+     "type": "String",
+     "desc": "default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "invalidFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "selectOnFocus",
      "type": "Boolean",
      "desc": "True to automatically select any existing field text when the field receives input focus (defaults to false)",
@@ -17223,6 +17247,30 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "validClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "hasFeedback",
+     "type": "String",
+     "desc": "default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "invalidFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "maskRe",
      "type": "String",
      "desc": "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
@@ -18238,6 +18286,30 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "validClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "hasFeedback",
+     "type": "String",
+     "desc": "default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "invalidFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "maskRe",
      "type": "String",
      "desc": "An input mask regular expression that will be used to filter keystrokes that don't match (defaults to null)",
@@ -19238,6 +19310,30 @@
      "name": "invalidClass",
      "type": "String",
      "desc": "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "hasFeedback",
+     "type": "String",
+     "desc": "default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "invalidFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -20765,6 +20861,30 @@
      "name": "invalidClass",
      "type": "String",
      "desc": "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "hasFeedback",
+     "type": "String",
+     "desc": "default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "invalidFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -22861,6 +22981,30 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "validClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "hasFeedback",
+     "type": "String",
+     "desc": "default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "invalidFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "selectOnFocus",
      "type": "Boolean",
      "desc": "True to automatically select any existing field text when the field receives input focus (defaults to false)",
@@ -23887,6 +24031,30 @@
      "name": "invalidClass",
      "type": "String",
      "desc": "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
+     "memberOf": ""
+    },
+    {
+     "name": "validClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
+     "memberOf": ""
+    },
+    {
+     "name": "hasFeedback",
+     "type": "String",
+     "desc": "default false",
+     "memberOf": ""
+    },
+    {
+     "name": "invalidFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": ""
+    },
+    {
+     "name": "validFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
      "memberOf": ""
     },
     {
@@ -27094,6 +27262,30 @@
      "name": "invalidClass",
      "type": "String",
      "desc": "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "hasFeedback",
+     "type": "String",
+     "desc": "default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "invalidFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -32022,6 +32214,30 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "validClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "hasFeedback",
+     "type": "String",
+     "desc": "default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "invalidFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "selectOnFocus",
      "type": "Boolean",
      "desc": "True to automatically select any existing field text when the field receives input focus (defaults to false)",
@@ -35972,6 +36188,30 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
+     "name": "validClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "hasFeedback",
+     "type": "String",
+     "desc": "default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "invalidFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
      "name": "selectOnFocus",
      "type": "Boolean",
      "desc": "True to automatically select any existing field text when the field receives input focus (defaults to false)",
@@ -36602,6 +36842,30 @@
      "name": "invalidClass",
      "type": "String",
      "desc": "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "hasFeedback",
+     "type": "String",
+     "desc": "default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "invalidFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -37269,6 +37533,30 @@
      "name": "invalidClass",
      "type": "String",
      "desc": "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "hasFeedback",
+     "type": "String",
+     "desc": "default false",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "invalidFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "validFeedbackIcon",
+     "type": "String",
+     "desc": "The CSS class to use when create feedback icon (defaults to \"x-form-invalid\")",
      "memberOf": "Roo.bootstrap.Input"
     },
     {

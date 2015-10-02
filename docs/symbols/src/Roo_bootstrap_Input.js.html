@@ -116,7 +116,27 @@
     /**
      * @cfg {String} invalidClass The CSS class to use when marking a field invalid (defaults to &quot;x-form-invalid&quot;)
      */
-    </span><span class="jsdoc-var">invalidClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;has-error&quot;</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">invalidClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;has-warning&quot;</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} validClass The CSS class to use when marking a field valid (defaults to &quot;x-form-invalid&quot;)
+     */
+    </span><span class="jsdoc-var">validClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;has-success&quot;</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} hasFeedback default false
+     */
+    </span><span class="jsdoc-var">hasFeedback </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} invalidFeedbackIcon The CSS class to use when create feedback icon (defaults to &quot;x-form-invalid&quot;)
+     */
+    </span><span class="jsdoc-var">invalidFeedbackIcon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;glyphicon-warning-sign&quot;</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} validFeedbackIcon The CSS class to use when create feedback icon (defaults to &quot;x-form-invalid&quot;)
+     */
+    </span><span class="jsdoc-var">validFeedbackIcon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;glyphicon-ok&quot;</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">/**
      * @cfg {Boolean} selectOnFocus True to automatically select any existing field text when the field receives input focus (defaults to false)
@@ -242,6 +262,7 @@
             </span><span class="jsdoc-var">autocomplete </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.autocomplete </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-string">'new-password'
         </span><span class="jsdoc-syntax">};
         
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">input.style </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input.style</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? (</span><span class="jsdoc-string">'text-align:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">) : (</span><span class="jsdoc-var">input.style </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'text-align:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.align</span><span class="jsdoc-syntax">);
         }
@@ -273,6 +294,28 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">;
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-var">input.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' has-feedback'</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">feedback </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'glyphicon form-control-feedback glyphicon-ok input-group-addon'
+            </span><span class="jsdoc-syntax">};
+
+            </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input-group'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">:  [
+                    </span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">feedback
+                </span><span class="jsdoc-syntax">] 
+            };  
+        }
+        
+        
+            
+</span><span class="jsdoc-comment">//        var inputblock = input;
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">) {
             
             </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= {
@@ -298,6 +341,10 @@
             }
             
             </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">);
+            }
             
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.after </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">({
