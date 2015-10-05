@@ -384,7 +384,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         this.el.addClass(this.invalidClass);
         
         this.fireEvent('invalid', this, msg);
-    },
+    }
     
 });
 
