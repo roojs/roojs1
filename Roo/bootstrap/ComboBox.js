@@ -347,11 +347,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }
         });
         
-        var feedback = {
-            tag: 'span',
-            cls: 'glyphicon form-control-feedback'
-        };
-            
         var box = {
             tag: 'div',
             cn: [
@@ -360,7 +355,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     type : 'hidden',
                     cls: 'form-hidden-field'
                 },
-                feedback,
                 {
                     tag: 'ul',
                     cls: 'select2-choices',
@@ -389,6 +383,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 //                }
             ]
         };
+        
+        if(this.hasFeedback){
+            
+            var feedback = {
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback'
+            };
+
+            combobox.cn.push(feedback);
+        }
         
         if (align ==='left' && this.fieldLabel.length) {
             
