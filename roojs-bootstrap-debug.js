@@ -16655,9 +16655,7 @@ Roo.bootstrap.CheckBox = function(config){
 };
 
 Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
-    
-    invalidClass : "has-warning",
-    validClass : "has-success",
+  
     inputType: 'checkbox',
     inputValue: 1,
     valueOff: 0,
