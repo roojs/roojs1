@@ -363,7 +363,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     {
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                
+                e.removeClass([this.invalidClass, this.validClass]);
+                e.addClass(this.validClass);
             });
             
         }
