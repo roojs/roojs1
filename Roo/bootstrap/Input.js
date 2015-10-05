@@ -442,11 +442,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     initEvents : function()
     {
           
-        this.inputEl().on("keydown" , this.fireKey,  this);
-        this.inputEl().on("focus", this.onFocus,  this);
-        this.inputEl().on("blur", this.onBlur,  this);
-        
-        this.inputEl().relayEvent('keyup', this);
+//        this.inputEl().on("keydown" , this.fireKey,  this);
+//        this.inputEl().on("focus", this.onFocus,  this);
+//        this.inputEl().on("blur", this.onBlur,  this);
+//        
+//        this.inputEl().relayEvent('keyup', this);
 
         // reference to original value for reset
         this.originalValue = this.getValue();
@@ -494,6 +494,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @return {Boolean} True if the value is valid, else false
      */
     validate : function(){
+        Roo.log('run1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11');
+        Roo.log(this);
         //if(this.disabled || this.validateValue(this.processValue(this.getRawValue()))){
         if(this.disabled || this.validateValue(this.getRawValue())){
             this.markValid();
