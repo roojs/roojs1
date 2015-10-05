@@ -359,7 +359,14 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     /**
      * Mark this field as valid
      */
-    markValid : function(){
+    markValid : function()
+    {
+        if(this.inputType == 'radio'){
+            Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
+                
+            });
+            
+        }
         if(!this.el  || this.preventMark){ // not rendered
             return;
         }
@@ -375,7 +382,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      * Mark this field as invalid
      * @param {String} msg The validation message
      */
-    markInvalid : function(msg){
+    markInvalid : function(msg)
+    {
         if(!this.el  || this.preventMark){ // not rendered
             return;
         }
