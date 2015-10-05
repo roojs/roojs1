@@ -1675,6 +1675,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.fireEvent('remove', this, e);
         
+        this.validate();
     },
     
     syncValue : function()
