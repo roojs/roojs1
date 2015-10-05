@@ -7238,7 +7238,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     before : false,
     after : false,
     size : false,
-    // private
     hasFocus : false,
     preventMark: false,
     isFormField : true,
@@ -7560,6 +7559,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 return false;
             }
         }
+        
         if(this.regex && !this.regex.test(value)){
             return false;
         }
@@ -7747,9 +7747,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(this.hasFeedback && this.inputType != 'hidden'){
             var feedback = this.el.select('.form-control-feedback', true).first();
             
-            Roo.log('valid!!!!!!!!!!!!!!!');
-            Roo.log(this);
-            Roo.log(this.el.select('.form-control-feedback', true).first());
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
@@ -7776,10 +7773,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
-            
-            Roo.log('invalid!!!!!!!!!!!!!!!');
-            Roo.log(this);
-            Roo.log(this.el.select('.form-control-feedback', true).first());
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
@@ -7931,6 +7924,23 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         
         var inputblock = input;
         
+        if(this.hasFeedback){
+            
+            var feedback = {
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback'
+            };
+
+            inputblock = {
+                cls : 'has-feedback',
+                cn :  [
+                    input,
+                    feedback
+                ] 
+            };  
+        }
+        
+        
         if (this.before || this.after) {
             
             inputblock = {
@@ -7944,7 +7954,14 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
                     html : this.before
                 });
             }
+            
             inputblock.cn.push(input);
+            
+            if(this.hasFeedback){
+                inputblock.cls += ' has-feedback';
+                inputblock.cn.push(feedback);
+            }
+            
             if (this.after) {
                 inputblock.cn.push({
                     tag :'span',
@@ -16659,13 +16676,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             }
         });
         
-       
-        
         var inputblock = input;
-        
-        
-        
-        
+         
         if (this.before || this.after) {
             
             inputblock = {
@@ -16883,12 +16895,71 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         if(
                 this.disabled || 
                 (this.inputType == 'radio' && this.getValue().length) ||
-                (this.inputType == 'checkbox' && this.getValue() == this.inputValue)
+                (this.inputType == 'checkbox' && this.validateGroup())
         ){
+            this.markValid();
             return true;
         }
         
+        this.markInvalid();
         return false;
+    },
+    
+    validateGroup : function()
+    {
+        if(!this.groupId){
+            return (this.getValue() == this.inputValue) ? true : false;
+        }
+        
+        var group = Roo.bootstrap.CheckBox.get(this.groupId);
+        
+        if(!group){
+            return false;
+        }
+        
+        var r = false;
+        
+        for(var i in group){
+            if(r){
+                break;
+            }
+            
+            r = (group[i].getValue() == group[i].inputValue) ? true : false;
+        }
+        
+        return r;
+    },
+    
+    /**
+     * Mark this field as valid
+     */
+    markValid : function(){
+        Roo.log('run marValid on checkbox');
+        if(!this.el  || this.preventMark){ // not rendered
+            return;
+        }
+        
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        
+        this.el.addClass(this.validClass);
+        
+        this.fireEvent('valid', this);
+    },
+    
+     /**
+     * Mark this field as invalid
+     * @param {String} msg The validation message
+     */
+    markInvalid : function(){
+        if(!this.el  || this.preventMark){ // not rendered
+            return;
+        }
+        
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        
+        this.el.addClass(this.invalidClass);
+        
+        this.fireEvent('invalid', this, msg);
     }
     
 });
