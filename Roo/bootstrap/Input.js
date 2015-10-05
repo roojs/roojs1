@@ -725,10 +725,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(this.hasFeedback && this.inputType != 'hidden'){
             var feedback = this.el.select('.form-control-feedback', true).first();
             
-            Roo.log('valid!!!!!!!!!!!!!!!');
-            Roo.log(this);
-            Roo.log(this.el.select('.form-control-feedback', true).first());
-            
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
@@ -755,10 +751,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         if(this.hasFeedback && this.inputType != 'hidden'){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
-            
-            Roo.log('invalid!!!!!!!!!!!!!!!');
-            Roo.log(this);
-            Roo.log(this.el.select('.form-control-feedback', true).first());
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
