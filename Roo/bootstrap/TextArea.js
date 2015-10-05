@@ -121,6 +121,11 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             
             inputblock.cn.push(input);
             
+            if(this.hasFeedback){
+                inputblock.cls += ' has-feedback';
+                inputblock.cn.push(feedback);
+            }
+            
             if (this.after) {
                 inputblock.cn.push({
                     tag :'span',
