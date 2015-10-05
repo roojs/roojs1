@@ -371,17 +371,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }
             ]
         }
-         
-            var feedback = {
-                tag: 'span',
-                cls: 'glyphicon form-control-feedback'
-            };
         
         var combobox = {
             cls: 'select2-container input-group select2-container-multi',
             cn: [
-                box,
-                feedback
+                box
 //                {
 //                    tag: 'ul',
 //                    cls: 'typeahead typeahead-long dropdown-menu',
