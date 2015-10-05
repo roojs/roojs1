@@ -10783,6 +10783,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     multiple : false,
     
+    /**
+     * @cfg {String} invalidClass The CSS class to use when marking a field invalid (defaults to "x-form-invalid")
+     */
+    invalidClass : "has-warning",
+    
+    /**
+     * @cfg {String} validClass The CSS class to use when marking a field valid (defaults to "x-form-invalid")
+     */
+    validClass : "has-success",
+    
     //private
     addicon : false,
     editicon: false,
@@ -12262,6 +12272,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     validate : function()
     {
+        Roo.log('validate1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11');
+        
         var v = this.getRawValue();
         
         if(this.multiple){
@@ -16830,6 +16842,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 this.fireEvent('check', this, true);
             }
             
+            this.validate();
+            
             return;
         }
         
@@ -16842,6 +16856,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
         }
+        
+        this.validate();
     },
     
     getValue : function()
@@ -16867,11 +16883,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     {
         if(this.inputType == 'radio'){
             this.setGroupValue(v, suppressEvent);
-            this.validate();
             return;
         }
         
         this.setChecked(((typeof(v) == 'undefined') ? this.checked : (String(v) === String(this.inputValue))), suppressEvent);
+        
         this.validate();
     },
     
@@ -16891,6 +16907,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
             this.fireEvent('check', this, true);
         }
 
+        this.validate();
+        
         return;
     },
     
