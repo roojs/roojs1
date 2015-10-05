@@ -8133,6 +8133,22 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         var inputblock = input;
         
+        if(this.hasFeedback){
+            
+            var feedback = {
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback'
+            };
+
+            inputblock = {
+                cls : 'has-feedback',
+                cn :  [
+                    input,
+                    feedback
+                ] 
+            };  
+        }
+        
         if (this.before || this.after) {
             
             inputblock = {
@@ -8146,7 +8162,14 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     html : this.before
                 });
             }
+            
             inputblock.cn.push(input);
+            
+            if(this.hasFeedback){
+                inputblock.cls += ' has-feedback';
+                inputblock.cn.push(feedback);
+            }
+            
             if (this.after) {
                 inputblock.cn.push({
                     tag :'span',
@@ -12173,6 +12196,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.inputEl().dom.value = '';
         
+        this.validate();
     },
     
     onRemoveItem : function(e, _self, o)
@@ -12194,6 +12218,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.syncValue();
         
         this.fireEvent('remove', this, e);
+        
+        this.validate();
         
     },
     
@@ -12235,6 +12261,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         });
         
         this.syncValue();
+        
+        this.validate();
     },
     
     inputEl: function ()
@@ -12272,18 +12300,18 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     validate : function()
     {
-        Roo.log('validate1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11');
-        
         var v = this.getRawValue();
         
         if(this.multiple){
             v = this.getValue();
         }
         
-        if(this.disabled || this.validateValue(v)){
-            this.clearInvalid();
+        if(this.disabled || this.allowBlank || v.length){
+            this.markValid();
             return true;
         }
+        
+        this.markInvalid();
         return false;
     }
     
