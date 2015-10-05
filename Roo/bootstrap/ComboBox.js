@@ -1651,6 +1651,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.inputEl().dom.value = '';
         
+        this.validate();
     },
     
     onRemoveItem : function(e, _self, o)
