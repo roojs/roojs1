@@ -356,7 +356,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 break;
             }
             
-            r = (group[i].getValue() == group[i].inputValue || this.allowBlank) ? true : false;
+            r = (group[i].getValue() == group[i].inputValue) ? true : false;
         }
         
         return r;
