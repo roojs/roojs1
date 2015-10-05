@@ -16896,7 +16896,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     validate : function()
     {
-        Roo.log('validate!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         if(
                 this.disabled || 
                 (this.inputType == 'radio' && this.getValue().length) ||
@@ -16940,14 +16939,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     markValid : function()
     {
-        Roo.log('markValid!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this);
         this.fireEvent('valid', this);
         
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                Roo.log(e);
-                Roo.log(this.validClass);
                 e.removeClass([this.invalidClass, this.validClass]);
                 e.addClass(this.validClass);
             });
