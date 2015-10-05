@@ -376,7 +376,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      * Mark this field as invalid
      * @param {String} msg The validation message
      */
-    markInvalid : function(){
+    markInvalid : function(msg){
         if(!this.el  || this.preventMark){ // not rendered
             return;
         }
