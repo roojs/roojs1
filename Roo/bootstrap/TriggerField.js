@@ -95,6 +95,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         }
         
         var inputblock = input;
+        Roo.log('has feedback!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11');
         Roo.log(this.hasFeedback);
         if(this.hasFeedback){
             
