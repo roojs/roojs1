@@ -1651,7 +1651,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.inputEl().dom.value = '';
         
-        Roo.log('add Item!!!!!!!!!!!!!!!!!!!!!!!!!11');
         this.validate();
     },
     
@@ -1675,7 +1674,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.fireEvent('remove', this, e);
         
-        Roo.log('remove Item!!!!!!!!!!!!!!!!!!!!!!!!!11');
         this.validate();
         
     },
@@ -1719,7 +1717,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.syncValue();
         
-        Roo.log('clear Item!!!!!!!!!!!!!!!!!!!!!!!!!11');
         this.validate();
     },
     
