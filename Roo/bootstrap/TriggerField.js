@@ -125,7 +125,14 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     html : this.before
                 });
             }
+            
             inputblock.cn.push(input);
+            
+            if(this.hasFeedback){
+                inputblock.cls += ' has-feedback';
+                inputblock.cn.push(feedback);
+            }
+            
             if (this.after) {
                 inputblock.cn.push({
                     tag :'span',
