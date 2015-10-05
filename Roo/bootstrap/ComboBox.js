@@ -1394,7 +1394,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.get(document).un('keydown', this.listKeyPress, this);
         }
         this.fireEvent('collapse', this);
-        
+        Roo.log('collapse!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
     },
 
     // private
