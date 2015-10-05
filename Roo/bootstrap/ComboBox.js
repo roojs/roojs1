@@ -1761,7 +1761,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             v = this.getValue();
         }
         
-        if(this.disabled || this.validateValue(v)){
+        if(this.disabled || this.allowBlank || this.validateValue(v)){
             this.clearInvalid();
             return true;
         }
