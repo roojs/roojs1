@@ -16939,20 +16939,22 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     markValid : function()
     {
+        var _this = this;
+        
         this.fireEvent('valid', this);
         
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                e.removeClass([this.invalidClass, this.validClass]);
-                e.addClass(this.validClass);
+                e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
+                e.findParent('.form-group', false, true).addClass(_this.validClass);
             });
             
             return;
         }
         
         if(!this.groupId){
-            this.el.removeClass([this.invalidClass, this.validClass]);
-            this.el.addClass(this.validClass);
+            this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
+            this.el.findParent('.form-group', false, true).addClass(this.validClass);
             return;
         }
         
@@ -16963,8 +16965,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
         
         for(var i in group){
-            group[i].el.removeClass([this.invalidClass, this.validClass]);
-            group[i].el.addClass(this.validClass);
+            group[i].el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
+            group[i].el.findParent('.form-group', false, true).addClass(this.validClass);
         }
     },
     
@@ -16974,20 +16976,22 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     markInvalid : function(msg)
     {
+        var _this = this;
+        
         this.fireEvent('invalid', this, msg);
         
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                e.removeClass([this.invalidClass, this.validClass]);
-                e.addClass(this.invalidClass);
+                e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
+                e.findParent('.form-group', false, true).addClass(_this.invalidClass);
             });
             
             return;
         }
         
         if(!this.groupId){
-            this.el.removeClass([this.invalidClass, this.validClass]);
-            this.el.addClass(this.invalidClass);
+            this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
+            this.el.findParent('.form-group', false, true).addClass(this.invalidClass);
             return;
         }
         
@@ -16998,8 +17002,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
         
         for(var i in group){
-            group[i].el.removeClass([this.invalidClass, this.validClass]);
-            group[i].el.addClass(this.invalidClass);
+            group[i].el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
+            group[i].el.findParent('.form-group', false, true).addClass(this.invalidClass);
         }
         
     }
