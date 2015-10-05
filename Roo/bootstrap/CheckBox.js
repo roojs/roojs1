@@ -400,12 +400,14 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     markInvalid : function(msg)
     {
+        var _this = this;
+        
         this.fireEvent('invalid', this, msg);
         
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                e.removeClass([this.invalidClass, this.validClass]);
-                e.addClass(this.invalidClass);
+                e.removeClass([_this.invalidClass, _this.validClass]);
+                e.addClass(_this.invalidClass);
             });
             
             return;
