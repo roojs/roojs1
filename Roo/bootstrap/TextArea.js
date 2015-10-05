@@ -88,6 +88,23 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         
         var inputblock = input;
         
+        if(this.hasFeedback){
+            
+            var feedback = {
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback'
+            };
+
+            inputblock = {
+                cls : 'has-feedback',
+                cn :  [
+                    input,
+                    feedback
+                ] 
+            };  
+        }
+        
+        
         if (this.before || this.after) {
             
             inputblock = {
@@ -101,7 +118,9 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
                     html : this.before
                 });
             }
+            
             inputblock.cn.push(input);
+            
             if (this.after) {
                 inputblock.cn.push({
                     tag :'span',
