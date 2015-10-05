@@ -451,13 +451,13 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         // reference to original value for reset
         this.originalValue = this.getValue();
         //Roo.form.TextField.superclass.initEvents.call(this);
-        if(this.validationEvent == 'keyup'){
-            this.validationTask = new Roo.util.DelayedTask(this.validate, this);
-            this.inputEl().on('keyup', this.filterValidation, this);
-        }
-        else if(this.validationEvent !== false){
-            this.inputEl().on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
-        }
+//        if(this.validationEvent == 'keyup'){
+//            this.validationTask = new Roo.util.DelayedTask(this.validate, this);
+//            this.inputEl().on('keyup', this.filterValidation, this);
+//        }
+//        else if(this.validationEvent !== false){
+//            this.inputEl().on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
+//        }
         
         if(this.selectOnFocus){
             this.on("focus", this.preFocus, this);
