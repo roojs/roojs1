@@ -1394,8 +1394,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.get(document).un('keydown', this.listKeyPress, this);
         }
         this.fireEvent('collapse', this);
-        
-        this.validate();
     },
 
     // private
@@ -1675,7 +1673,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.fireEvent('remove', this, e);
         
-        this.validate();
     },
     
     syncValue : function()
@@ -1716,8 +1713,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         });
         
         this.syncValue();
-        
-        this.validate();
     },
     
     inputEl: function ()
@@ -1767,7 +1762,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.clearInvalid();
             return true;
         }
-        
         return false;
     }
     
