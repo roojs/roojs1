@@ -385,6 +385,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         for(var i in group){
             group[i].el.removeClass([this.invalidClass, this.validClass]);
             group[i].el.addClass(this.validClass);
+            this.fireEvent('valid', this);
         }
         
         this.fireEvent('valid', this);
