@@ -96,6 +96,22 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         var inputblock = input;
         
+        if(this.hasFeedback){
+            
+            var feedback = {
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback'
+            };
+
+            inputblock = {
+                cls : 'has-feedback',
+                cn :  [
+                    input,
+                    feedback
+                ] 
+            };  
+        }
+        
         if (this.before || this.after) {
             
             inputblock = {
