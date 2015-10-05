@@ -1750,7 +1750,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     validate : function()
     {
-        Roo.log('validate1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11');
+        Roo.log('validate1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         
         var v = this.getRawValue();
         
