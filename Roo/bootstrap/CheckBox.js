@@ -352,7 +352,38 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
         
         return r;
-    }
+    },
+    
+    /**
+     * Mark this field as valid
+     */
+    markValid : function(){
+        if(!this.el  || this.preventMark){ // not rendered
+            return;
+        }
+        
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        
+        this.el.addClass(this.validClass);
+        
+        this.fireEvent('valid', this);
+    },
+    
+     /**
+     * Mark this field as invalid
+     * @param {String} msg The validation message
+     */
+    markInvalid : function(){
+        if(!this.el  || this.preventMark){ // not rendered
+            return;
+        }
+        
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        
+        this.el.addClass(this.invalidClass);
+        
+        this.fireEvent('invalid', this, msg);
+    },
     
 });
 
