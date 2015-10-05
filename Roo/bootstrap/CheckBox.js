@@ -331,7 +331,27 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     validateGroup : function()
     {
+        if(!this.groupId){
+            return (this.getValue() == this.inputValue) ? true : false;
+        }
         
+        var group = Roo.bootstrap.CheckBox.get(this.groupId);
+        
+        if(!group){
+            return false;
+        }
+        
+        var r = false;
+        
+        for(var i in group){
+            if(r){
+                break;
+            }
+            
+            r = (group[i].getValue() == group[i].inputValue) ? true : false;
+        }
+        
+        return r;
     }
     
 });
