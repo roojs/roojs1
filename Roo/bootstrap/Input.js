@@ -458,29 +458,29 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
 //        else if(this.validationEvent !== false){
 //            this.inputEl().on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
 //        }
-        
-        if(this.selectOnFocus){
-            this.on("focus", this.preFocus, this);
-            
-        }
-        if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
-            this.inputEl().on("keypress", this.filterKeys, this);
-        }
-       /* if(this.grow){
-            this.el.on("keyup", this.onKeyUp,  this, {buffer:50});
-            this.el.on("click", this.autoSize,  this);
-        }
-        */
-        if(this.inputEl().is('input[type=password]') && Roo.isSafari){
-            this.inputEl().on('keydown', this.SafariOnKeyDown, this);
-        }
-        
-        if (typeof(this.before) == 'object') {
-            this.before.render(this.el.select('.roo-input-before',true).first());
-        }
-        if (typeof(this.after) == 'object') {
-            this.after.render(this.el.select('.roo-input-after',true).first());
-        }
+//        
+//        if(this.selectOnFocus){
+//            this.on("focus", this.preFocus, this);
+//            
+//        }
+//        if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
+//            this.inputEl().on("keypress", this.filterKeys, this);
+//        }
+//       /* if(this.grow){
+//            this.el.on("keyup", this.onKeyUp,  this, {buffer:50});
+//            this.el.on("click", this.autoSize,  this);
+//        }
+//        */
+//        if(this.inputEl().is('input[type=password]') && Roo.isSafari){
+//            this.inputEl().on('keydown', this.SafariOnKeyDown, this);
+//        }
+//        
+//        if (typeof(this.before) == 'object') {
+//            this.before.render(this.el.select('.roo-input-before',true).first());
+//        }
+//        if (typeof(this.after) == 'object') {
+//            this.after.render(this.el.select('.roo-input-after',true).first());
+//        }
         
         
     },
