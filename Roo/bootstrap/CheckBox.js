@@ -369,16 +369,16 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
-                e.removeClass([_this.invalidClass, _this.validClass]);
-                e.addClass(_this.validClass);
+                e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
+                e.findParent('.form-group', false, true).addClass(_this.validClass);
             });
             
             return;
         }
         
         if(!this.groupId){
-            this.el.removeClass([this.invalidClass, this.validClass]);
-            this.el.addClass(this.validClass);
+            this.el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
+            this.el.findParent('.form-group', false, true).addClass(this.validClass);
             return;
         }
         
@@ -389,8 +389,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
         
         for(var i in group){
-            group[i].el.removeClass([this.invalidClass, this.validClass]);
-            group[i].el.addClass(this.validClass);
+            group[i].el.findParent('.form-group', false, true).removeClass([this.invalidClass, this.validClass]);
+            group[i].el.findParent('.form-group', false, true).addClass(this.validClass);
         }
     },
     
