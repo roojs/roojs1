@@ -7464,45 +7464,45 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     initEvents : function()
     {
           
-//        this.inputEl().on("keydown" , this.fireKey,  this);
-//        this.inputEl().on("focus", this.onFocus,  this);
-//        this.inputEl().on("blur", this.onBlur,  this);
-//        
-//        this.inputEl().relayEvent('keyup', this);
+        this.inputEl().on("keydown" , this.fireKey,  this);
+        this.inputEl().on("focus", this.onFocus,  this);
+        this.inputEl().on("blur", this.onBlur,  this);
+        
+        this.inputEl().relayEvent('keyup', this);
 
         // reference to original value for reset
         this.originalValue = this.getValue();
         //Roo.form.TextField.superclass.initEvents.call(this);
-//        if(this.validationEvent == 'keyup'){
-//            this.validationTask = new Roo.util.DelayedTask(this.validate, this);
-//            this.inputEl().on('keyup', this.filterValidation, this);
-//        }
-//        else if(this.validationEvent !== false){
-//            this.inputEl().on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
-//        }
-//        
-//        if(this.selectOnFocus){
-//            this.on("focus", this.preFocus, this);
-//            
-//        }
-//        if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
-//            this.inputEl().on("keypress", this.filterKeys, this);
-//        }
-//       /* if(this.grow){
-//            this.el.on("keyup", this.onKeyUp,  this, {buffer:50});
-//            this.el.on("click", this.autoSize,  this);
-//        }
-//        */
-//        if(this.inputEl().is('input[type=password]') && Roo.isSafari){
-//            this.inputEl().on('keydown', this.SafariOnKeyDown, this);
-//        }
-//        
-//        if (typeof(this.before) == 'object') {
-//            this.before.render(this.el.select('.roo-input-before',true).first());
-//        }
-//        if (typeof(this.after) == 'object') {
-//            this.after.render(this.el.select('.roo-input-after',true).first());
-//        }
+        if(this.validationEvent == 'keyup'){
+            this.validationTask = new Roo.util.DelayedTask(this.validate, this);
+            this.inputEl().on('keyup', this.filterValidation, this);
+        }
+        else if(this.validationEvent !== false){
+            this.inputEl().on(this.validationEvent, this.validate, this, {buffer: this.validationDelay});
+        }
+        
+        if(this.selectOnFocus){
+            this.on("focus", this.preFocus, this);
+            
+        }
+        if(this.maskRe || (this.vtype && this.disableKeyFilter !== true && (this.maskRe = Roo.form.VTypes[this.vtype+'Mask']))){
+            this.inputEl().on("keypress", this.filterKeys, this);
+        }
+       /* if(this.grow){
+            this.el.on("keyup", this.onKeyUp,  this, {buffer:50});
+            this.el.on("click", this.autoSize,  this);
+        }
+        */
+        if(this.inputEl().is('input[type=password]') && Roo.isSafari){
+            this.inputEl().on('keydown', this.SafariOnKeyDown, this);
+        }
+        
+        if (typeof(this.before) == 'object') {
+            this.before.render(this.el.select('.roo-input-before',true).first());
+        }
+        if (typeof(this.after) == 'object') {
+            this.after.render(this.el.select('.roo-input-after',true).first());
+        }
         
         
     },
@@ -7516,8 +7516,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * @return {Boolean} True if the value is valid, else false
      */
     validate : function(){
-        Roo.log('run1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11');
-        Roo.log(this);
         //if(this.disabled || this.validateValue(this.processValue(this.getRawValue()))){
         if(this.disabled || this.validateValue(this.getRawValue())){
             this.markValid();
@@ -16867,10 +16865,12 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     {
         if(this.inputType == 'radio'){
             this.setGroupValue(v, suppressEvent);
+            this.validate();
             return;
         }
         
         this.setChecked(((typeof(v) == 'undefined') ? this.checked : (String(v) === String(this.inputValue))), suppressEvent);
+        this.validate();
     },
     
     setGroupValue : function(v, suppressEvent)
@@ -16935,33 +16935,71 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     /**
      * Mark this field as valid
      */
-    markValid : function(){
-        Roo.log('run marValid on checkbox !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        if(!this.el  || this.preventMark){ // not rendered
+    markValid : function()
+    {
+        this.fireEvent('valid', this);
+        
+        if(this.inputType == 'radio'){
+            Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
+                e.removeClass([this.invalidClass, this.validClass]);
+                e.addClass(this.validClass);
+            });
+            
             return;
         }
         
-        this.el.removeClass([this.invalidClass, this.validClass]);
+        if(!this.groupId){
+            this.el.removeClass([this.invalidClass, this.validClass]);
+            this.el.addClass(this.validClass);
+            return;
+        }
         
-        this.el.addClass(this.validClass);
+        var group = Roo.bootstrap.CheckBox.get(this.groupId);
+            
+        if(!group){
+            return;
+        }
         
-        this.fireEvent('valid', this);
+        for(var i in group){
+            group[i].el.removeClass([this.invalidClass, this.validClass]);
+            group[i].el.addClass(this.validClass);
+        }
     },
     
      /**
      * Mark this field as invalid
      * @param {String} msg The validation message
      */
-    markInvalid : function(){
-        if(!this.el  || this.preventMark){ // not rendered
+    markInvalid : function(msg)
+    {
+        this.fireEvent('invalid', this, msg);
+        
+        if(this.inputType == 'radio'){
+            Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
+                e.removeClass([this.invalidClass, this.validClass]);
+                e.addClass(this.invalidClass);
+            });
+            
             return;
         }
         
-        this.el.removeClass([this.invalidClass, this.validClass]);
+        if(!this.groupId){
+            this.el.removeClass([this.invalidClass, this.validClass]);
+            this.el.addClass(this.invalidClass);
+            return;
+        }
         
-        this.el.addClass(this.invalidClass);
+        var group = Roo.bootstrap.CheckBox.get(this.groupId);
+            
+        if(!group){
+            return;
+        }
         
-        this.fireEvent('invalid', this, msg);
+        for(var i in group){
+            group[i].el.removeClass([this.invalidClass, this.validClass]);
+            group[i].el.addClass(this.invalidClass);
+        }
+        
     }
     
 });
