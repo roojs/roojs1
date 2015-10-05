@@ -361,6 +361,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     markValid : function()
     {
+        this.fireEvent('valid', this);
+        
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
                 e.removeClass([this.invalidClass, this.validClass]);
@@ -385,10 +387,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         for(var i in group){
             group[i].el.removeClass([this.invalidClass, this.validClass]);
             group[i].el.addClass(this.validClass);
-            this.fireEvent('valid', this);
         }
-        
-        this.fireEvent('valid', this);
     },
     
      /**
@@ -397,6 +396,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     markInvalid : function(msg)
     {
+        this.fireEvent('invalid', this, msg);
+        
         if(!this.el  || this.preventMark){ // not rendered
             return;
         }
@@ -405,7 +406,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.el.addClass(this.invalidClass);
         
-        this.fireEvent('invalid', this, msg);
+        
     }
     
 });
