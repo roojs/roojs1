@@ -1651,6 +1651,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.inputEl().dom.value = '';
         
+        Roo.lg('add Item!!!!!!!!!!!!!!!!!!!!!!!!!11');
         this.validate();
     },
     
