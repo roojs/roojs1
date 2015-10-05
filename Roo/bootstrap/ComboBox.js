@@ -1718,6 +1718,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         });
         
         this.syncValue();
+        
+        Roo.log('clear Item!!!!!!!!!!!!!!!!!!!!!!!!!11');
+        this.validate();
     },
     
     inputEl: function ()
