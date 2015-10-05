@@ -10929,6 +10929,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             ]
         };
         
+        if(this.hasFeedback){
+            
+            var feedback = {
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback'
+            };
+
+            combobox.cn.push(feedback);
+        }
+        
         if (align ==='left' && this.fieldLabel.length) {
             
                 Roo.log("left and has label");
