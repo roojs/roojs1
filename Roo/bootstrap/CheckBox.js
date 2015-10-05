@@ -319,7 +319,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         if(
                 this.disabled || 
                 (this.inputType == 'radio' && this.getValue().length) ||
-                (this.inputType == 'checkbox' && this.getValue() == this.inputValue)
+                (this.inputType == 'checkbox' && this.validateGroup())
         ){
             this.markValid();
             return true;
@@ -327,6 +327,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.markInvalid();
         return false;
+    },
+    
+    validateGroup : function()
+    {
+        
     }
     
 });
