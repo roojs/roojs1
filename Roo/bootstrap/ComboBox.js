@@ -1395,7 +1395,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         this.fireEvent('collapse', this);
         
-        this.validate();
     },
 
     // private
