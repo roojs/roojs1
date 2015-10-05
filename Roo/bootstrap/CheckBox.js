@@ -254,6 +254,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 this.fireEvent('check', this, true);
             }
             
+            this.validate();
+            
             return;
         }
         
@@ -266,6 +268,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         if(suppressEvent !== true){
             this.fireEvent('check', this, state);
         }
+        
+        this.validate();
     },
     
     getValue : function()
@@ -289,7 +293,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     setValue : function(v,suppressEvent)
     {
-        Roo.log('set value!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         if(this.inputType == 'radio'){
             this.setGroupValue(v, suppressEvent);
             return;
