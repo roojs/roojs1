@@ -1394,7 +1394,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.get(document).un('keydown', this.listKeyPress, this);
         }
         this.fireEvent('collapse', this);
-        Roo.log('collapse!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
     },
 
     // private
@@ -1652,8 +1651,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.inputEl().dom.value = '';
         
-        this.validate();
-        
     },
     
     onRemoveItem : function(e, _self, o)
@@ -1675,8 +1672,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.syncValue();
         
         this.fireEvent('remove', this, e);
-        
-        this.validate();
         
     },
     
@@ -1718,8 +1713,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         });
         
         this.syncValue();
-        
-        this.validate();
     },
     
     inputEl: function ()
@@ -1758,7 +1751,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     validate : function()
     {
         Roo.log('validate1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        
         var v = this.getRawValue();
         
         if(this.multiple){
