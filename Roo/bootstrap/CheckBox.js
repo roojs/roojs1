@@ -360,7 +360,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      * Mark this field as valid
      */
     markValid : function(){
-        Roo.log('run marValid on checkbox !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         if(!this.el  || this.preventMark){ // not rendered
             return;
         }
