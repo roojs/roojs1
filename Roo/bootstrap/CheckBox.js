@@ -101,10 +101,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         });
         
        
-        
         var inputblock = input;
-        
-        
         
         
         if (this.before || this.after) {
