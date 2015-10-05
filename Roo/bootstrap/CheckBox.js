@@ -322,6 +322,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     
     validate : function()
     {
+        Roo.log('validate!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
         if(
                 this.disabled || 
                 (this.inputType == 'radio' && this.getValue().length) ||
