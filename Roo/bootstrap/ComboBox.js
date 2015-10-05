@@ -1762,9 +1762,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         if(this.disabled || this.allowBlank || v.length){
-            this.clearInvalid();
+            this.markValid();
             return true;
         }
+        
+        this.markInvalid();
         return false;
     }
     
