@@ -537,6 +537,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 return false;
             }
         }
+        
         if(this.regex && !this.regex.test(value)){
             return false;
         }
