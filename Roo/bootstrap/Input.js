@@ -720,6 +720,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         this.el.removeClass([this.invalidClass, this.validClass]);
         
+        if(this.allowBlank){
+            return;
+        }
+        
         this.el.addClass(this.validClass);
         
         if(this.hasFeedback && this.inputType != 'hidden'){
