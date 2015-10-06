@@ -7742,6 +7742,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         this.el.removeClass([this.invalidClass, this.validClass]);
         
+        if(this.disabled || this.allowBlank){
+            return;
+        }
+        
         this.el.addClass(this.validClass);
         
         if(this.hasFeedback && this.inputType != 'hidden'){
@@ -7767,6 +7771,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         this.el.removeClass([this.invalidClass, this.validClass]);
+        
+        if(this.disabled || this.allowBlank){
+            return;
+        }
         
         this.el.addClass(this.invalidClass);
         
@@ -16966,7 +16974,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     validateGroup : function()
     {
         if(!this.groupId){
-            return (this.getValue() == this.inputValue) ? true : false;
+            return (this.getValue() == this.inputValue || this.allowBlank) ? true : false;
         }
         
         var group = Roo.bootstrap.CheckBox.get(this.groupId);
