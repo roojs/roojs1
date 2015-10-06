@@ -17088,6 +17088,18 @@
      ]
     },
     {
+     "name": "invalidClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
+     "memberOf": ""
+    },
+    {
+     "name": "validClass",
+     "type": "String",
+     "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
+     "memberOf": ""
+    },
+    {
      "name": "triggerClass",
      "type": "String",
      "desc": "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.",
@@ -17248,18 +17260,6 @@
      "name": "focusClass",
      "type": "String",
      "desc": "The CSS class to use when the field receives focus (defaults to \"x-form-focus\")",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "invalidClass",
-     "type": "String",
-     "desc": "The CSS class to use when marking a field invalid (defaults to \"x-form-invalid\")",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
-     "name": "validClass",
-     "type": "String",
-     "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
      "memberOf": "Roo.bootstrap.Input"
     },
     {

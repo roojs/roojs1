@@ -96,6 +96,22 @@ trigger.applyTo('my-field');
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">;
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">feedback </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'glyphicon form-control-feedback'
+            </span><span class="jsdoc-syntax">};
+
+            </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= {
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'has-feedback'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">:  [
+                    </span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">feedback
+                </span><span class="jsdoc-syntax">] 
+            };  
+        }
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">) {
             
             </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= {
@@ -109,7 +125,14 @@ trigger.applyTo('my-field');
                     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.before
                 </span><span class="jsdoc-syntax">});
             }
+            
             </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">inputblock.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' has-feedback'</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">);
+            }
+            
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">({
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">:</span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
