@@ -719,10 +719,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         this.el.removeClass([this.invalidClass, this.validClass]);
-        
-        if(this.disabled || this.allowBlank){
-            return;
-        }
+         
         
         this.el.addClass(this.validClass);
         
@@ -749,10 +746,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         }
         
         this.el.removeClass([this.invalidClass, this.validClass]);
-        
-        if(this.disabled || this.allowBlank){
-            return;
-        }
+         
         
         this.el.addClass(this.invalidClass);
         
