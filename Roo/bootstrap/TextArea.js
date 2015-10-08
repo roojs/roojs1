@@ -88,7 +88,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         
         var inputblock = input;
         
-        if(this.hasFeedback){
+        if(this.hasFeedback && !this.allowBlank){
             
             var feedback = {
                 tag: 'span',
@@ -121,7 +121,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             
             inputblock.cn.push(input);
             
-            if(this.hasFeedback){
+            if(this.hasFeedback && !this.allowBlank){
                 inputblock.cls += ' has-feedback';
                 inputblock.cn.push(feedback);
             }
