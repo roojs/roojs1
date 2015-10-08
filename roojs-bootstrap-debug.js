@@ -7315,7 +7315,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         var inputblock = input;
         
-        if(this.hasFeedback && this.inputType != 'hidden'){
+        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
             var feedback = {
                 tag: 'span',
@@ -7360,7 +7360,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
             inputblock.cn.push(input);
             
-            if(this.hasFeedback && this.inputType != 'hidden'){
+            if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
                 inputblock.cls += ' has-feedback';
                 inputblock.cn.push(feedback);
             }
@@ -7748,7 +7748,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         this.el.addClass(this.validClass);
         
-        if(this.hasFeedback && this.inputType != 'hidden'){
+        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             var feedback = this.el.select('.form-control-feedback', true).first();
             
             if(feedback){
@@ -7778,7 +7778,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         this.el.addClass(this.invalidClass);
         
-        if(this.hasFeedback && this.inputType != 'hidden'){
+        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
@@ -7932,7 +7932,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
         
         var inputblock = input;
         
-        if(this.hasFeedback){
+        if(this.hasFeedback && !this.allowBlank){
             
             var feedback = {
                 tag: 'span',
@@ -7965,7 +7965,7 @@ Roo.extend(Roo.bootstrap.TextArea, Roo.bootstrap.Input,  {
             
             inputblock.cn.push(input);
             
-            if(this.hasFeedback){
+            if(this.hasFeedback && !this.allowBlank){
                 inputblock.cls += ' has-feedback';
                 inputblock.cn.push(feedback);
             }
@@ -8141,7 +8141,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         var inputblock = input;
         
-        if(this.hasFeedback){
+        if(this.hasFeedback && !this.allowBlank){
             
             var feedback = {
                 tag: 'span',
@@ -8173,7 +8173,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             
             inputblock.cn.push(input);
             
-            if(this.hasFeedback){
+            if(this.hasFeedback && !this.allowBlank){
                 inputblock.cls += ' has-feedback';
                 inputblock.cn.push(feedback);
             }
@@ -10937,7 +10937,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             ]
         };
         
-        if(this.hasFeedback){
+        if(this.hasFeedback && !this.allowBlank){
             
             var feedback = {
                 tag: 'span',
