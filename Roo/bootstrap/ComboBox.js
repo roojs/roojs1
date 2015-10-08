@@ -384,7 +384,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             ]
         };
         
-        if(this.hasFeedback){
+        if(this.hasFeedback && this.hasFeedback){
             
             var feedback = {
                 tag: 'span',
