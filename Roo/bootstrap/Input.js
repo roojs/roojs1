@@ -338,7 +338,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
             inputblock.cn.push(input);
             
-            if(this.hasFeedback && this.inputType != 'hidden'){
+            if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
                 inputblock.cls += ' has-feedback';
                 inputblock.cn.push(feedback);
             }
