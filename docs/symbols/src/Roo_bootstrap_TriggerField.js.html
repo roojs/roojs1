@@ -96,7 +96,7 @@ trigger.applyTo('my-field');
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
             
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">feedback </span><span class="jsdoc-syntax">= {
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
@@ -128,7 +128,7 @@ trigger.applyTo('my-field');
             
             </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">);
             
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">inputblock.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' has-feedback'</span><span class="jsdoc-syntax">;
                 </span><span class="jsdoc-var">inputblock.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">);
             }
