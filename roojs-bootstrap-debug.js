@@ -16349,7 +16349,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         
         this.update();
 
-//        this.fireEvent('select', this, this.date);
+        this.fireEvent('select', this, this.date);
         
     },
     
@@ -16382,8 +16382,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
         
         this.hide();
-        
-        this.fireEvent("select", this, e);
                         
     },
     
@@ -16455,8 +16453,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.MonthField.superclass.onFocus.call(this);
         this.show();
-        
-        this.fireEvent("focus", this);
     },
     
     onBlur : function()
@@ -16468,8 +16464,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         this.setValue(d);
                 
         this.hide();
-        
-        this.fireEvent("blur", this);
     },
     
     show : function()
@@ -16500,8 +16494,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.MonthField.superclass.keyup.call(this);
         this.update();
-        
-        this.fireEvent("keyup", this, e);
     },
 
     fireKey: function(e)
@@ -16585,8 +16577,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                 this.hide();
                 
         }
-        
-        this.fireEvent("specialkey", this, e);
     },
     
     remove: function() 
