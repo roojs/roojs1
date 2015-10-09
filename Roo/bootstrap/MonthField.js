@@ -237,6 +237,8 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.MonthField.superclass.keyup.call(this);
         this.update();
+        
+        this.fireEvent("keyup", this, e);
     },
 
     fireKey: function(e)
