@@ -196,6 +196,8 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     {
         Roo.bootstrap.MonthField.superclass.onFocus.call(this);
         this.show();
+        
+        this.fireEvent("focus", this, e);
     },
     
     onBlur : function()
