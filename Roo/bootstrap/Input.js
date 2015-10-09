@@ -763,7 +763,11 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
-                this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+                
+                if(this.getValue().length){
+                    this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+                }
+                
             }
             
         }
