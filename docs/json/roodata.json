@@ -27604,9 +27604,9 @@
     },
     {
      "name": "select",
-     "sig": "function (_self, month)\n{\n\n}",
+     "sig": "function (_self, oldvalue, newvalue)\n{\n\n}",
      "type": "function",
-     "desc": "Fires when select a month."
+     "desc": "Fires when select a date."
     },
     {
      "name": "show",
