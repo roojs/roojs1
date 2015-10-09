@@ -16345,8 +16345,6 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     setValue: function(v)
     {   
-        this.startValue = this.getValue();
-        
         Roo.bootstrap.MonthField.superclass.setValue.call(this, v);
         
         this.update();
