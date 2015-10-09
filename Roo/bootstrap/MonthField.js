@@ -89,11 +89,13 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
     
     setValue: function(v)
     {   
+        var o = this.getValue();
+        
         Roo.bootstrap.MonthField.superclass.setValue.call(this, v);
         
         this.update();
 
-        this.fireEvent('select', this, this.date);
+        this.fireEvent('select', this, o, v);
         
     },
     
