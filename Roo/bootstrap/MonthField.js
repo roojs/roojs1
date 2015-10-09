@@ -37,9 +37,10 @@ Roo.bootstrap.MonthField = function(config){
         hide : true,
         /**
          * @event select
-         * Fires when select a month.
+         * Fires when select a date.
          * @param {Roo.bootstrap.MonthField} this
-         * @param {String} month The selected month
+         * @param {String} oldvalue The old value
+         * @param {String} newvalue The new value
          */
         select : true
     });
@@ -86,15 +87,15 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         
     },
     
-    setValue: function(v, suppressEvent)
+    setValue: function(v)
     {   
+        var o = this.getValue();
+        
         Roo.bootstrap.MonthField.superclass.setValue.call(this, v);
         
         this.update();
 
-        if(suppressEvent !== true){
-            this.fireEvent('select', this, v);
-        }
+        this.fireEvent('select', this, o, v);
         
     },
     
