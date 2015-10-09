@@ -125,6 +125,8 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         this.setValue(Roo.bootstrap.MonthField.dates[this.language].months[this.vIndex]);
         
         this.hide();
+        
+        this.fireEvent("select", this, e);
                         
     },
     
