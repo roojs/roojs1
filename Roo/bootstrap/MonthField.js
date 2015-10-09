@@ -87,7 +87,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         
     },
     
-    setValue: function(v)
+    setValue: function(v, suppressEvent)
     {   
         var o = this.getValue();
         
@@ -95,7 +95,9 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         
         this.update();
 
-        this.fireEvent('select', this, o, v);
+        if(suppressEvent !== true){
+            this.fireEvent('select', this, o, v);
+        }
         
     },
     
