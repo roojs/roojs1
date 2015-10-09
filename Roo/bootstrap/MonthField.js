@@ -93,7 +93,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         this.update();
 
         if(suppressEvent !== true){
-            this.fireEvent('select', this, o, v);
+            this.fireEvent('select', this, v);
         }
         
     },
