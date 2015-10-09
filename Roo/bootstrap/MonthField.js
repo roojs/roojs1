@@ -39,7 +39,7 @@ Roo.bootstrap.MonthField = function(config){
          * @event select
          * Fires when select a month.
          * @param {Roo.bootstrap.MonthField} this
-         * @param {String} value The value of field
+         * @param {String} month The value of field
          */
         select : true
     });
