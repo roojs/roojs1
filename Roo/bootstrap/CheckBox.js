@@ -327,7 +327,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         if(
                 this.disabled || 
                 (this.inputType == 'radio' && this.getValue().length) ||
-                (this.inputType == 'checkbox' && this.validateGroup())
+                (this.inputType == 'checkbox' && this.validateCheckbox())
         ){
             this.markValid();
             return true;
@@ -337,7 +337,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         return false;
     },
     
-    validateGroup : function()
+    validateCheckbox : function()
     {
         if(!this.groupId){
             return (this.getValue() == this.inputValue || this.allowBlank) ? true : false;
