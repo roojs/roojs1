@@ -207,6 +207,8 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
         this.setValue(d);
                 
         this.hide();
+        
+        this.fireEvent("blur", this, e);
     },
     
     show : function()
