@@ -320,6 +320,8 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                 this.hide();
                 
         }
+        
+        this.fireEvent("specialkey", this, e);
     },
     
     remove: function() 
