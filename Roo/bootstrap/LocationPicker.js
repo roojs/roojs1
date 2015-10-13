@@ -266,18 +266,18 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     GMapContext: function() 
     {
         var _map = new google.maps.Map(this.el.dom, this);
-        var _marker = new google.maps.Marker({
-            position: new google.maps.LatLng(this.latitude, this.longitude),
-            map: _map,
-            title: this.markerTitle,
-            draggable: this.draggable
-        });
+//        var _marker = new google.maps.Marker({
+//            position: new google.maps.LatLng(this.latitude, this.longitude),
+//            map: _map,
+//            title: this.markerTitle,
+//            draggable: this.draggable
+//        });
         
         return {
             map: _map,
-            marker: _marker,
+//            marker: _marker,
             circle: null,
-            location: _marker.position,
+            location: new google.maps.LatLng(this.latitude, this.longitude),
             radius: this.radius,
             locationName: this.locationName,
             addressComponents: {
