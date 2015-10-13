@@ -178,37 +178,37 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         }
         
         this.gMapContext = this.GMapContext();
-        
-        this.initOverlayView();
-        
-        this.OverlayView = new Roo.bootstrap.LocationPicker.OverlayView(this.gMapContext.map);
-        
-        var _this = this;
-                
-        google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
-            _this.setPosition(_this.gMapContext.marker.position);
-        });
-        
-        google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
-            _this.fireEvent('mapClick', this, event);
-            
-        });
-
-        google.maps.event.addListener(this.gMapContext.map, 'rightclick', function(event){
-            _this.fireEvent('mapRightClick', this, event);
-            
-        });
-        
-        google.maps.event.addListener(this.gMapContext.marker, 'click', function(event){
-            _this.fireEvent('markerClick', this, event);
-            
-        });
-
-        google.maps.event.addListener(this.gMapContext.marker, 'rightclick', function(event){
-            _this.fireEvent('markerRightClick', this, event);
-            
-        });
-        
+//        
+//        this.initOverlayView();
+//        
+//        this.OverlayView = new Roo.bootstrap.LocationPicker.OverlayView(this.gMapContext.map);
+//        
+//        var _this = this;
+//                
+//        google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
+//            _this.setPosition(_this.gMapContext.marker.position);
+//        });
+//        
+//        google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
+//            _this.fireEvent('mapClick', this, event);
+//            
+//        });
+//
+//        google.maps.event.addListener(this.gMapContext.map, 'rightclick', function(event){
+//            _this.fireEvent('mapRightClick', this, event);
+//            
+//        });
+//        
+//        google.maps.event.addListener(this.gMapContext.marker, 'click', function(event){
+//            _this.fireEvent('markerClick', this, event);
+//            
+//        });
+//
+//        google.maps.event.addListener(this.gMapContext.marker, 'rightclick', function(event){
+//            _this.fireEvent('markerRightClick', this, event);
+//            
+//        });
+//        
         this.setPosition(this.gMapContext.location);
         
         this.fireEvent('initial', this, this.gMapContext.location);
@@ -265,7 +265,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     GMapContext: function() 
     {
-        return;
         var position = new google.maps.LatLng(this.latitude, this.longitude);
         
         var _map = new google.maps.Map(this.el.dom, this);
