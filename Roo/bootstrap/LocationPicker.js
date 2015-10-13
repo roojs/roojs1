@@ -271,8 +271,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         var _marker = new google.maps.Marker({
             position: position,
             map: _map,
-            title: this.markerTitle
-//            draggable: this.draggable
+            title: this.markerTitle,
+            draggable: this.draggable
         });
         
         return {
