@@ -2106,6 +2106,11 @@ Roo.bootstrap.Modal = function(config){
         "btnclick" : true
     });
     this.buttons = this.buttons || [];
+    Roo.log("init");
+    if (this.tmpl) {
+        this.tmpl = Roo.factory(this.tmpl);
+    }
+    
 };
 
 Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
@@ -2301,9 +2306,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.el.addClass('in');
         }
         
-        if (this.tmpl) {
-            this.tmpl.apply(this.getChildContainer(), this);
-        }
+        // not sure how we can show data in here.. 
+        //if (this.tmpl) {
+        //    this.getChildContainer().dom.innerHTML = this.tmpl.applyTemplate(this);
+        //}
         
         Roo.get(document.body).addClass("x-body-masked");
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
@@ -22188,9 +22194,14 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     GMapContext: function() 
     {
-        var _map = new google.maps.Map(this.el.dom, this);
+        var position = new google.maps.LatLng(this.latitude, this.longitude);
+        
+        var _map = new google.maps.Map(this.el.dom, {
+            
+        });
+        
         var _marker = new google.maps.Marker({
-            position: new google.maps.LatLng(this.latitude, this.longitude),
+            position: position,
             map: _map,
             title: this.markerTitle,
             draggable: this.draggable
@@ -22200,7 +22211,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             map: _map,
             marker: _marker,
             circle: null,
-            location: _marker.position,
+            location: position,
             radius: this.radius,
             locationName: this.locationName,
             addressComponents: {
