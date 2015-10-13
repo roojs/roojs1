@@ -272,7 +272,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             title: this.markerTitle,
             draggable: this.draggable
         });
-        
+        Roo.log(_marker);
         return {
             map: _map,
             marker: _marker,
