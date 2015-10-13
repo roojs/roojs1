@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
-    <title>Simple markers</title>
+    <title>Marker Animations</title>
     <style>
       html, body {
         height: 100%;
@@ -19,15 +18,19 @@
     <div id="map"></div>
     <script>
 
-function initMap() {
-  var myLatLng = {lat: -25.363, lng: 131.044};
+// The following example creates a marker in Stockholm, Sweden using a DROP
+// animation. Clicking on the marker will toggle the animation between a BOUNCE
+// animation and no animation.
 
+var marker;
+
+function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 4,
-    center: myLatLng
+    zoom: 13,
+    center: {lat: 59.325, lng: 18.070}
   });
 
-  var marker = new google.maps.Marker({
+  marker = new google.maps.Marker({
     map: map,
     draggable: true,
     animation: google.maps.Animation.DROP,
@@ -46,6 +49,6 @@ function toggleBounce() {
 
     </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&signed_in=true&callback=initMap"></script>
   </body>
 </html>
