@@ -255,9 +255,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.el.addClass('in');
         }
         
-        if (this.tmpl) {
-            this.getChildContainer().dom.innerHTML = this.tmpl.applyTemplate(this);
-        }
+        // not sure how we can show data in here.. 
+        //if (this.tmpl) {
+        //    this.getChildContainer().dom.innerHTML = this.tmpl.applyTemplate(this);
+        //}
         
         Roo.get(document.body).addClass("x-body-masked");
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
