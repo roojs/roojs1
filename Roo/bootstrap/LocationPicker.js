@@ -274,11 +274,9 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             disableDoubleClickZoom: this.disableDoubleClickZoom,
             scrollwheel: this.scrollwheel,
             streetViewControl: this.streetViewControl,
-            radius: this.radius,
-            draggable: true,
-            enableAutocomplete: false,
-            enableReverseGeocode: true,
-            markerTitle: '',
+            draggable: this.draggable,
+            enableAutocomplete: this.enableAutocomplete,
+            enableReverseGeocode: this.enableReverseGeocode,
         });
         
         var _marker = new google.maps.Marker({
