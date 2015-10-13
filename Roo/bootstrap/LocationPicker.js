@@ -275,7 +275,6 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             disableDoubleClickZoom: this.disableDoubleClickZoom,
             scrollwheel: this.scrollwheel,
             streetViewControl: this.streetViewControl,
-//            radius: this.radius,
             locationName: this.locationName,
             draggable: this.draggable,
             enableAutocomplete: this.enableAutocomplete,
