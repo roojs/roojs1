@@ -2106,6 +2106,11 @@ Roo.bootstrap.Modal = function(config){
         "btnclick" : true
     });
     this.buttons = this.buttons || [];
+    Roo.log("init");
+    if (this.tmpl) {
+        this.tmpl = Roo.factory(this.tmpl);
+    }
+    
 };
 
 Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
@@ -2301,9 +2306,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.el.addClass('in');
         }
         
-        if (this.tmpl) {
-            this.tmpl.apply(this.getChildContainer(), this);
-        }
+        // not sure how we can show data in here.. 
+        //if (this.tmpl) {
+        //    this.getChildContainer().dom.innerHTML = this.tmpl.applyTemplate(this);
+        //}
         
         Roo.get(document.body).addClass("x-body-masked");
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
@@ -22188,9 +22194,24 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     GMapContext: function() 
     {
-        var _map = new google.maps.Map(this.el.dom, this);
+        var position = new google.maps.LatLng(this.latitude, this.longitude);
+        
+        var _map = new google.maps.Map(this.el.dom, {
+            center: position,
+            zoom: this.zoom,
+            mapTypeId: this.mapTypeId,
+            mapTypeControl: this.mapTypeControl,
+            disableDoubleClickZoom: this.disableDoubleClickZoom,
+            scrollwheel: this.scrollwheel,
+            streetViewControl: this.streetViewControl,
+            locationName: this.locationName,
+            draggable: this.draggable,
+            enableAutocomplete: this.enableAutocomplete,
+            enableReverseGeocode: this.enableReverseGeocode,
+        });
+        
         var _marker = new google.maps.Marker({
-            position: new google.maps.LatLng(this.latitude, this.longitude),
+            position: position,
             map: _map,
             title: this.markerTitle,
             draggable: this.draggable
@@ -22200,7 +22221,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             map: _map,
             marker: _marker,
             circle: null,
-            location: _marker.position,
+            location: position,
             radius: this.radius,
             locationName: this.locationName,
             addressComponents: {
@@ -22376,123 +22397,4 @@ Roo.apply(Roo.bootstrap.LocationPicker, {
     }
     
     
-});/*
- * - LGPL
- *
- * Alert
- * 
- */
-
-/**
- * @class Roo.bootstrap.Alert
- * @extends Roo.bootstrap.Component
- * Bootstrap Alert class
- * @cfg {String} title The title of alert
- * @cfg {String} html The content of alert
- * @cfg {String} weight (  success | info | warning | danger )
- * @cfg {String} faicon font-awesomeicon
- * 
- * @constructor
- * Create a new alert
- * @param {Object} config The config object
- */
-
-
-Roo.bootstrap.Alert = function(config){
-    Roo.bootstrap.Alert.superclass.constructor.call(this, config);
-    
-};
-
-Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
-    
-    title: '',
-    html: '',
-    weight: false,
-    faicon: false,
-    
-    getAutoCreate : function()
-    {
-        
-        var cfg = {
-            tag : 'div',
-            cls : 'alert',
-            cn : [
-                {
-                    tag : 'i',
-                    cls : 'roo-alert-icon'
-                    
-                },
-                {
-                    tag : 'b',
-                    cls : 'roo-alert-title',
-                    html : this.title
-                },
-                {
-                    tag : 'span',
-                    cls : 'roo-alert-text',
-                    html : this.html
-                }
-            ]
-        };
-        
-        if(this.faicon){
-            cfg.cn[0].cls += ' fa ' + this.faicon;
-        }
-        
-        if(this.weight){
-            cfg.cls += ' alert-' + this.weight;
-        }
-        
-        return cfg;
-    },
-    
-    initEvents: function() 
-    {
-        this.el.setVisibilityMode(Roo.Element.DISPLAY);
-    },
-    
-    setTitle : function(str)
-    {
-        this.el.select('.roo-alert-title',true).first().dom.innerHTML = str;
-    },
-    
-    setText : function(str)
-    {
-        this.el.select('.roo-alert-text',true).first().dom.innerHTML = str;
-    },
-    
-    setWeight : function(weight)
-    {
-        if(this.weight){
-            this.el.select('.alert',true).first().removeClass('alert-' + this.weight);
-        }
-        
-        this.weight = weight;
-        
-        this.el.select('.alert',true).first().addClass('alert-' + this.weight);
-    },
-    
-    setIcon : function(icon)
-    {
-        if(this.faicon){
-            this.el.select('.roo-alert-icon',true).first().removeClass(['fa', 'fa-' + this.faicon]);
-        }
-        
-        this.faicon = icon
-        
-        this.el.select('.roo-alert-icon',true).first().addClass(['fa', 'fa-' + this.faicon]);
-    },
-    
-    hide: function() 
-    {
-        this.el.hide();   
-    },
-    
-    show: function() 
-    {  
-        this.el.show();   
-    }
-    
 });
-
- 
