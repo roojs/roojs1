@@ -256,7 +256,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         
         if (this.tmpl) {
-            this.getChildContainer().dom.innerHTML = this.tmpl.applyTemplate(this.data);
+            this.getChildContainer().dom.innerHTML = this.tmpl.applyTemplate(this);
         }
         
         Roo.get(document.body).addClass("x-body-masked");
