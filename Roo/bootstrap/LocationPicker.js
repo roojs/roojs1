@@ -178,11 +178,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         }
         
         this.gMapContext = this.GMapContext();
-        
-        this.initOverlayView();
-        
-        this.OverlayView = new Roo.bootstrap.LocationPicker.OverlayView(this.gMapContext.map);
-        
+//        
+//        this.initOverlayView();
+//        
+//        this.OverlayView = new Roo.bootstrap.LocationPicker.OverlayView(this.gMapContext.map);
+//        
         var _this = this;
 //                
 //        google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
