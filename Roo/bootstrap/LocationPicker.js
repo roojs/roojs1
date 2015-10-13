@@ -275,7 +275,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         return {
             map: _map,
-            marker: _marker,
+//            marker: _marker,
             circle: null,
             location: _marker.position,
             radius: this.radius,
