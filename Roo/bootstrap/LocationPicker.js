@@ -275,7 +275,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
           });
         var _marker = new google.maps.Marker({
             
-             map: map,
+             map: _map,
             draggable: true,
             animation: google.maps.Animation.DROP,
             position: {lat: 59.327, lng: 18.067}
