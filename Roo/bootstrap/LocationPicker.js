@@ -326,7 +326,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     {
         Roo.log('set position');
         this.gMapContext.location = location;
-//        this.gMapContext.marker.setPosition(location);
+        this.gMapContext.marker.setPosition(location);
         this.gMapContext.map.panTo(location);
         this.drawCircle(location, this.gMapContext.radius, {});
         
