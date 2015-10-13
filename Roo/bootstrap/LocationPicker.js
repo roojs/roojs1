@@ -161,8 +161,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     },
     
     initEvents: function(ct, position)
-    {      
-//        return;
+    {       
         if(!this.el.getWidth() || this.isApplied()){
             return;
         }
@@ -267,20 +266,13 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     GMapContext: function() 
     {
         var position = new google.maps.LatLng(this.latitude, this.longitude);
-         
-        //var _map = new google.maps.Map(this.el.dom, this);
-         var _map = new google.maps.Map(this.el.dom, {
-             zoom: 13,
-             center: position
-           });
+        
+        var _map = new google.maps.Map(this.el.dom, this);
         var _marker = new google.maps.Marker({
-            
-             map: _map,
-            draggable: true,
-            animation: google.maps.Animation.DROP,
             position: position,
-            title: this.markerTitle
-            
+            map: _map,
+            title: this.markerTitle,
+            draggable: this.draggable
         });
         
         return {
