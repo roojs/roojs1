@@ -268,7 +268,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     {
         var position = new google.maps.LatLng(this.latitude, this.longitude);
         
-        var _map = new google.maps.Map(this.el.dom, this);
+        //var _map = new google.maps.Map(this.el.dom, this);
+        var _map = new google.maps.Map(this.el.dom, {
+            zoom: 13,
+            center: {lat: 59.325, lng: 18.070}
+          });
         var _marker = new google.maps.Marker({
             
              map: map,
