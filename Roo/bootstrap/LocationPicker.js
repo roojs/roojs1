@@ -185,9 +185,9 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         
         var _this = this;
                 
-//        google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
-//            _this.setPosition(_this.gMapContext.marker.position);
-//        });
+        google.maps.event.addListener(this.gMapContext.marker, "dragend", function(event) {
+            _this.setPosition(_this.gMapContext.marker.position);
+        });
         
         google.maps.event.addListener(this.gMapContext.map, 'click', function(event){
             _this.fireEvent('mapClick', this, event);
@@ -199,15 +199,15 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             
         });
         
-//        google.maps.event.addListener(this.gMapContext.marker, 'click', function(event){
-//            _this.fireEvent('markerClick', this, event);
-//            
-//        });
-//
-//        google.maps.event.addListener(this.gMapContext.marker, 'rightclick', function(event){
-//            _this.fireEvent('markerRightClick', this, event);
-//            
-//        });
+        google.maps.event.addListener(this.gMapContext.marker, 'click', function(event){
+            _this.fireEvent('markerClick', this, event);
+            
+        });
+
+        google.maps.event.addListener(this.gMapContext.marker, 'rightclick', function(event){
+            _this.fireEvent('markerRightClick', this, event);
+            
+        });
         
         this.setPosition(this.gMapContext.location);
         
@@ -266,18 +266,18 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     GMapContext: function() 
     {
         var _map = new google.maps.Map(this.el.dom, this);
-//        var _marker = new google.maps.Marker({
-//            position: new google.maps.LatLng(this.latitude, this.longitude),
-//            map: _map,
-//            title: this.markerTitle,
-//            draggable: this.draggable
-//        });
+        var _marker = new google.maps.Marker({
+            position: new google.maps.LatLng(this.latitude, this.longitude),
+            map: _map,
+            title: this.markerTitle,
+            draggable: this.draggable
+        });
         
         return {
             map: _map,
-//            marker: _marker,
+            marker: _marker,
             circle: null,
-//            location: _marker.position,
+            location: _marker.position,
             radius: this.radius,
             locationName: this.locationName,
             addressComponents: {
@@ -325,7 +325,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     setPosition: function(location) 
     {
         this.gMapContext.location = location;
-//        this.gMapContext.marker.setPosition(location);
+        this.gMapContext.marker.setPosition(location);
         this.gMapContext.map.panTo(location);
         this.drawCircle(location, this.gMapContext.radius, {});
         
@@ -354,7 +354,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     {
         google.maps.event.trigger(this.gMapContext.map, "resize");
         
-//        this.gMapContext.map.setCenter(this.gMapContext.marker.position);
+        this.gMapContext.map.setCenter(this.gMapContext.marker.position);
         
         this.fireEvent('resize', this);
     },
