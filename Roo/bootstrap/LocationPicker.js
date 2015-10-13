@@ -265,10 +265,9 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     GMapContext: function() 
     {
-//        {lat : this.latitude, lng: this.longitude}
         var _map = new google.maps.Map(this.el.dom, this);
         var _marker = new google.maps.Marker({
-            position: {lat : this.latitude, lng: this.longitude},
+            position: new google.maps.LatLng(this.latitude, this.longitude),
             map: _map,
             title: this.markerTitle,
             draggable: this.draggable
@@ -278,7 +277,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             map: _map,
             marker: _marker,
             circle: null,
-            location: new google.maps.LatLng(this.latitude, this.longitude),
+            location: _marker.position,
             radius: this.radius,
             locationName: this.locationName,
             addressComponents: {
