@@ -268,8 +268,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         var position = new google.maps.LatLng(this.latitude, this.longitude);
         
         var _map = new google.maps.Map(this.el.dom, {
-            latitude: this.latitude,
-            longitude: this.longitude,
+            center: position,
             zoom: this.zoom,
             mapTypeId: this.mapTypeId,
             mapTypeControl: this.mapTypeControl,
