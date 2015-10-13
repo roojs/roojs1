@@ -64,6 +64,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     // set on load...
     body:  false,
     
+    html: false,
+    
     specificTitle: false,
     
     buttonPosition: 'right',
