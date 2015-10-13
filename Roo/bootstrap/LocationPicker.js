@@ -278,7 +278,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             locationName: this.locationName,
             draggable: this.draggable,
             enableAutocomplete: this.enableAutocomplete,
-            enableReverseGeocode: this.enableReverseGeocode,
+            enableReverseGeocode: this.enableReverseGeocode
         });
         
         var _marker = new google.maps.Marker({
