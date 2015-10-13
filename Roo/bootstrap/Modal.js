@@ -68,6 +68,8 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     html: false,
     
+    tmp: false,
+    
     specificTitle: false,
     
     buttonPosition: 'right',
