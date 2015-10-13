@@ -55,6 +55,7 @@ Roo.bootstrap.Modal = function(config){
         "btnclick" : true
     });
     this.buttons = this.buttons || [];
+    Roo.log("init");
     if (this.tmpl) {
         this.tmpl = Roo.factory(this.tmpl);
     }
