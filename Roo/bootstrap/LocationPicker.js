@@ -266,19 +266,18 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     GMapContext: function() 
     {
         var position = new google.maps.LatLng(this.latitude, this.longitude);
-        Roo.log(this.latitude);
-        Roo.log(this.longitude);
+        
         var _map = new google.maps.Map(this.el.dom, this);
-        var _marker = new google.maps.Marker({
-            position: position,
-            map: _map,
-            title: this.markerTitle,
-            draggable: this.draggable
-        });
+//        var _marker = new google.maps.Marker({
+//            position: position,
+//            map: _map,
+//            title: this.markerTitle,
+//            draggable: this.draggable
+//        });
         
         return {
             map: _map,
-            marker: _marker,
+//            marker: _marker,
             circle: null,
             location: position,
             radius: this.radius,
