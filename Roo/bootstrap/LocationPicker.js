@@ -209,9 +209,9 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
 //            
 //        });
 //        
-        this.setPosition(this.gMapContext.location);
+//        this.setPosition(this.gMapContext.location);
         
-        this.fireEvent('initial', this, this.gMapContext.location);
+//        this.fireEvent('initial', this, this.gMapContext.location);
     },
     
     initOverlayView: function()
