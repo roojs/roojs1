@@ -60,33 +60,33 @@ Roo.example.locationpicker = new Roo.XComponent({
                             xtype : 'LocationPicker',
                             xns: Roo.bootstrap,
                             style : 'width:500px; height: 400px; border: 1px solid #000;margin:50px auto;',
-                            latitude : 22.27,
-                            longitude : 114.17,
+                            latitude : 22.276022,
+                            longitude : 114.1751471,
                             markerTitle : 'Drag Me',
                             listeners : {
                                 render : function (_self) {
                                     _this.picker = _self;
-//                                    
-//                                    this.gMapContext.autocomplete = new google.maps.places.Autocomplete(_this.location.inputEl().dom);
-//                                    
-//                                    google.maps.event.addListener(this.gMapContext.autocomplete, "place_changed", function() {
-//                                        var place = _this.picker.gMapContext.autocomplete.getPlace();
-//                                        if (!place.geometry) {
-//                                            Roo.log('location not found');
-//                                            return;
-//                                        }
-//                                        _this.picker.setPosition(place.geometry.location);
-//                                    });
+                                    
+                                    this.gMapContext.autocomplete = new google.maps.places.Autocomplete(_this.location.inputEl().dom);
+                                    
+                                    google.maps.event.addListener(this.gMapContext.autocomplete, "place_changed", function() {
+                                        var place = _this.picker.gMapContext.autocomplete.getPlace();
+                                        if (!place.geometry) {
+                                            Roo.log('location not found');
+                                            return;
+                                        }
+                                        _this.picker.setPosition(place.geometry.location);
+                                    });
                                     
                                 },
                                 positionchanged : function (_self, location) {
-//                                    if(_this.latitude){
-//                                        _this.latitude.setValue(location.lat());
-//                                    }
-//                                    
-//                                    if(_this.longitude){
-//                                        _this.longitude.setValue(location.lng());
-//                                    }
+                                    if(_this.latitude){
+                                        _this.latitude.setValue(location.lat());
+                                    }
+                                    
+                                    if(_this.longitude){
+                                        _this.longitude.setValue(location.lng());
+                                    }
                                 }
                             }
                         }
