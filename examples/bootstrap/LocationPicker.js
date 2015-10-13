@@ -60,8 +60,8 @@ Roo.example.locationpicker = new Roo.XComponent({
                             xtype : 'LocationPicker',
                             xns: Roo.bootstrap,
                             style : 'width:500px; height: 400px; border: 1px solid #000;margin:50px auto;',
-                            latitude : 22.276022,
-                            longitude : 114.1751471,
+                            latitude : 22.27,
+                            longitude : 114.17,
                             markerTitle : 'Drag Me',
                             listeners : {
                                 render : function (_self) {
