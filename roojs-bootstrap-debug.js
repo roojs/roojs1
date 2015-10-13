@@ -2081,6 +2081,8 @@ Roo.extend(Roo.bootstrap.MenuSeparator, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
+ * @cfg {String} html - the body of the dialog (for simple ones) - you can also use template..
+ * @cfg {Roo.Template} tmpl - a template with variables.
  * @cfg {Boolean} specificTitle default false
  * @cfg {Array} buttons Array of buttons or standard button set..
  * @cfg {String} buttonPosition (left|right|center) default right
@@ -2114,6 +2116,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
     // set on load...
     body:  false,
+    
+    html: false,
+    
+    tmp: false,
     
     specificTitle: false,
     
@@ -2295,6 +2301,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             this.el.addClass('in');
         }
         
+        if (this.tmpl) {
+            this.tmpl.apply(this.getChildContainer(), this);
+        }
+        
         Roo.get(document.body).addClass("x-body-masked");
         this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         this.maskEl.show();
@@ -2424,6 +2434,7 @@ Roo.apply(Roo.bootstrap.Modal,  {
             }
         ]
 });
+ 
  /*
  * - LGPL
  *
