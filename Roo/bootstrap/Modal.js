@@ -31,7 +31,7 @@
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
  * @cfg {String} html - the body of the dialog (for simple ones) - you can also use template..
- * @cfg {Roo.Template} tmp - a template with variables.
+ * @cfg {Roo.Template} tmpl - a template with variables.
  * @cfg {Boolean} specificTitle default false
  * @cfg {Array} buttons Array of buttons or standard button set..
  * @cfg {String} buttonPosition (left|right|center) default right
@@ -246,6 +246,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             (function(){ _this.el.addClass('in'); }).defer(50);
         }else{
             this.el.addClass('in');
+        }
+        
+        if (this.tmpl) {
+            //code
         }
         
         Roo.get(document.body).addClass("x-body-masked");
