@@ -165,7 +165,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         if(!this.el.getWidth() || this.isApplied()){
             return;
         }
-        
+        return;
         this.el.setVisibilityMode(Roo.Element.DISPLAY);
         
         this.initial();
