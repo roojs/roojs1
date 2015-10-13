@@ -272,7 +272,8 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
             position: position,
             map: _map,
             title: this.markerTitle,
-            draggable: false
+            draggable: false,
+            animation: google.maps.Animation.DROP,
         });
         
         return {
