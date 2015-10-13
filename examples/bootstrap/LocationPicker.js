@@ -67,26 +67,26 @@ Roo.example.locationpicker = new Roo.XComponent({
                                 render : function (_self) {
                                     _this.picker = _self;
                                     
-//                                    this.gMapContext.autocomplete = new google.maps.places.Autocomplete(_this.location.inputEl().dom);
-//                                    
-//                                    google.maps.event.addListener(this.gMapContext.autocomplete, "place_changed", function() {
-//                                        var place = _this.picker.gMapContext.autocomplete.getPlace();
-//                                        if (!place.geometry) {
-//                                            Roo.log('location not found');
-//                                            return;
-//                                        }
-//                                        _this.picker.setPosition(place.geometry.location);
-//                                    });
+                                    this.gMapContext.autocomplete = new google.maps.places.Autocomplete(_this.location.inputEl().dom);
+                                    
+                                    google.maps.event.addListener(this.gMapContext.autocomplete, "place_changed", function() {
+                                        var place = _this.picker.gMapContext.autocomplete.getPlace();
+                                        if (!place.geometry) {
+                                            Roo.log('location not found');
+                                            return;
+                                        }
+                                        _this.picker.setPosition(place.geometry.location);
+                                    });
                                     
                                 },
                                 positionchanged : function (_self, location) {
-//                                    if(_this.latitude){
-//                                        _this.latitude.setValue(location.lat());
-//                                    }
-//                                    
-//                                    if(_this.longitude){
-//                                        _this.longitude.setValue(location.lng());
-//                                    }
+                                    if(_this.latitude){
+                                        _this.latitude.setValue(location.lat());
+                                    }
+                                    
+                                    if(_this.longitude){
+                                        _this.longitude.setValue(location.lng());
+                                    }
                                 }
                             }
                         }
