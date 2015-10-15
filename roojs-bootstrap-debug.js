@@ -2142,9 +2142,16 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         }
         //var type = this.el.dom.type;
         
+        
+        
+        
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
+        this.bodyEl = this.el.select('.modal-body',true).first();
+        this.closeEl = this.el.select('.modal-header .close', true).first();
+        this.footerEl = this.el.select('.modal-footer',true).first();
+        this.titleEl = this.el.select('.modal-title',true).first();
         
         
         
@@ -2184,11 +2191,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         // where are these used - they used to be body/close/footer
         
-        this.bodyEl = this.el.select('.modal-body',true).first();
-        this.closeEl = this.el.select('.modal-header .close', true).first();
-        this.footerEl = this.el.select('.modal-footer',true).first();
-        this.titleEl = this.el.select('.modal-title',true).first();
-        
+       
         this.initEvents();
         //this.el.addClass([this.fieldClass, this.cls]);
         
