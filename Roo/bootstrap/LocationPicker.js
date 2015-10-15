@@ -268,7 +268,17 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
         var position = new google.maps.LatLng(this.latitude, this.longitude);
         
         var _map = new google.maps.Map(this.el.dom, {
-            
+            center: position,
+            zoom: this.zoom,
+            mapTypeId: this.mapTypeId,
+            mapTypeControl: this.mapTypeControl,
+            disableDoubleClickZoom: this.disableDoubleClickZoom,
+            scrollwheel: this.scrollwheel,
+            streetViewControl: this.streetViewControl,
+            locationName: this.locationName,
+            draggable: this.draggable,
+            enableAutocomplete: this.enableAutocomplete,
+            enableReverseGeocode: this.enableReverseGeocode
         });
         
         var _marker = new google.maps.Marker({

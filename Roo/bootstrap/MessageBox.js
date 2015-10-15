@@ -64,7 +64,7 @@ Roo.bootstrap.MessageBox = function(){
             //dlg.footer.dom.style.display = 'none';
             return width;
         }
-        dlg.footer.dom.style.display = '';
+        dlg.footerEl.dom.style.display = '';
         for(var k in buttons){
             if(typeof buttons[k] != "function"){
                 if(b[k]){
@@ -127,7 +127,7 @@ Roo.bootstrap.MessageBox = function(){
                 buttons["no"] = dlg.addButton(bt["no"], handleButton.createCallback("no"));
                 buttons["cancel"] = dlg.addButton(bt["cancel"], handleButton.createCallback("cancel"));
                 Roo.log(buttons)
-                bodyEl = dlg.body.createChild({
+                bodyEl = dlg.bodyEl.createChild({
 
                     html:'<span class="roo-mb-text"></span><br /><input type="text" class="roo-mb-input" />' +
                         '<textarea class="roo-mb-textarea"></textarea>' +
@@ -316,7 +316,7 @@ Roo.Msg.show({
             var d = this.getDialog();
             opt = options;
             d.setTitle(opt.title || "&#160;");
-            d.close.setDisplayed(opt.closable !== false);
+            d.closeEl.setDisplayed(opt.closable !== false);
             activeTextEl = textboxEl;
             opt.prompt = opt.prompt || (opt.multiline ? true : false);
             if(opt.prompt){

@@ -1,29 +1,7 @@
 
 /*
-<div class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+* Licence: LGPL
 */
-/*
- * - LGPL
- *
- * page contgainer.
- * 
- */
 
 /**
  * @class Roo.bootstrap.Modal
@@ -31,7 +9,7 @@
  * Bootstrap Modal class
  * @cfg {String} title Title of dialog
  * @cfg {String} html - the body of the dialog (for simple ones) - you can also use template..
- * @cfg {Roo.Template} tmpl - a template with variables.
+ * @cfg {Roo.Template} tmpl - a template with variables. to use it, add a handler in show:method  adn 
  * @cfg {Boolean} specificTitle default false
  * @cfg {Array} buttons Array of buttons or standard button set..
  * @cfg {String} buttonPosition (left|right|center) default right
@@ -55,7 +33,7 @@ Roo.bootstrap.Modal = function(config){
         "btnclick" : true
     });
     this.buttons = this.buttons || [];
-    Roo.log("init");
+     
     if (this.tmpl) {
         this.tmpl = Roo.factory(this.tmpl);
     }
@@ -69,8 +47,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     buttons : false,
     
     // set on load...
-    body:  false,
-    
+     
     html: false,
     
     tmp: false,
@@ -82,6 +59,14 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     allow_close : true,
     
     animate : true,
+    
+    
+     // private
+    bodyEl:  false,
+    footerEl:  false,
+    titleEl:  false,
+    closeEl:  false,
+    
     
     onRender : function(ct, position)
     {
@@ -146,9 +131,13 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         this.items = nitems;
         
-        this.body = this.el.select('.modal-body',true).first();
-        this.close = this.el.select('.modal-header .close', true).first();
-        this.footer = this.el.select('.modal-footer',true).first();
+        // where are these used - they used to be body/close/footer
+        
+        this.bodyEl = this.el.select('.modal-body',true).first();
+        this.closeEl = this.el.select('.modal-header .close', true).first();
+        this.footerEl = this.el.select('.modal-footer',true).first();
+        this.titleEl = this.el.select('.modal-title',true).first();
+        
         this.initEvents();
         //this.el.addClass([this.fieldClass, this.cls]);
         
@@ -227,7 +216,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     getChildContainer : function() {
          
-         return this.el.select('.modal-body',true).first();
+         return this.bodyEl;
         
     },
     getButtonContainer : function() {
@@ -236,9 +225,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     initEvents : function()
     {
-        this.el.select('.modal-header .close').on('click', this.hide, this);
-//        
-//        this.addxtype(this);
+        if (this.allow_close) {
+            this.closeEl.on('click', this.hide, this);
+        }
+
     },
     show : function() {
         
@@ -321,10 +311,33 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         //Roo.log([a,b,c]);
         this.fireEvent('btnclick', btn.name, e);
     },
+     /**
+     * Set the title of the Dialog
+     * @param {String} str new Title
+     */
     setTitle: function(str) {
-        this.el.select('.modal-title',true).first().dom.innerHTML = str;
-        
+        this.titleEl.dom.innerHTML = str;    
+    },
+    /**
+     * Set the body of the Dialog
+     * @param {String} str new Title
+     */
+    setBody: function(str) {
+        this.bodyEl.dom.innerHTML = str;    
+    },
+    /**
+     * Set the body of the Dialog using the template
+     * @param {Obj} data - apply this data to the template and replace the body contents.
+     */
+    applyBody: function(obj)
+    {
+        if (!this.tmpl) {
+            Roo.log("Error - using apply Body without a template");
+            //code
+        }
+        this.tmpl.overwrite(this.bodyEl, obj);
     }
+    
 });
 
 
