@@ -36,7 +36,7 @@ Roo.extend(Roo.bootstrap.Header, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag: 'h' + (1 *this.level),
-            html: this.html || (this.cn ? '' : 'fill in html')
+            html: this.html || '';
         } ;
         
         return cfg;
