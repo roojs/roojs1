@@ -1369,9 +1369,11 @@ Roo.extend(Roo.bootstrap.Header, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         
+        
+        
         var cfg = {
             tag: 'h' + (1 *this.level),
-            html: this.html || 'fill in html'
+            html: this.html || (this.cn ? '' : 'fill in html')
         } ;
         
         return cfg;
@@ -2148,13 +2150,15 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
         }
+        
+        
         this.bodyEl = this.el.select('.modal-body',true).first();
         this.closeEl = this.el.select('.modal-header .close', true).first();
         this.footerEl = this.el.select('.modal-footer',true).first();
         this.titleEl = this.el.select('.modal-title',true).first();
         
         
-        
+         
         this.maskEl = Roo.DomHelper.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
         this.maskEl.enableDisplayMode("block");
         this.maskEl.hide();
