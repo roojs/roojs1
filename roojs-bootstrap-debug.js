@@ -5436,6 +5436,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.tooltip = config.tooltip;
             }
             
+            if(typeof(config.colspan) != 'undefined'){
+                c.colspan = config.colspan;
+            }
+            
             if(typeof(config.hidden) != 'undefined' && config.hidden){
                 c.style += ' display:none;';
             }
@@ -5707,6 +5711,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             if (id) {
                 td.id = id;
+            }
+            
+            if(typeof(config.colspan) != 'undefined'){
+                td.colspan = config.colspan;
             }
             
             if(typeof(config.hidden) != 'undefined' && config.hidden){
@@ -21739,6 +21747,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
     enter : function(ev)
     {
         var dom = ev.getTarget();
+        
         //Roo.log(['enter',dom]);
         var el = Roo.fly(dom);
         if (this.currentEl) {
@@ -21759,12 +21768,21 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         if (this.currentTip.el) {
             this.currentTip.el.hide(); // force hiding...
         }    
-        //Roo.log(el);
-        if (!el.attr('tooltip')) { // parents who have tip?
-            return;
+        Roo.log(ev);
+        var bindEl = el;
+        
+        // you can not look for children, as if el is the body.. then everythign is the child..
+        if (!el.attr('tooltip')) { //
+            if (!el.select("[tooltip]").elements.length) {
+                return;
+            }
+            // is the mouse over this child...?
+            bindEl = el.select("[tooltip]").first();
+            
+            
         }
-        this.currentEl = el;
-        this.currentTip.bind(el);
+        this.currentEl = bindEl;
+        this.currentTip.bind(bindEl);
         this.currentRegion = Roo.lib.Region.getRegion(dom);
         this.currentTip.enter();
         
@@ -21891,7 +21909,10 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         }
         // set content.
         //Roo.log([this.bindEl, this.bindEl.attr('tooltip')]);
-        this.el.select('.tooltip-inner',true).first().dom.innerHTML = this.bindEl.attr('tooltip');
+        
+        var tip = this.bindEl.attr('tooltip') || this.bindEl.select("[tooltip]").first().attr('tooltip');
+        
+        this.el.select('.tooltip-inner',true).first().dom.innerHTML = tip
         
         this.el.removeClass(['fade','top','bottom', 'left', 'right','in']);
         
