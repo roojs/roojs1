@@ -729,6 +729,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 td.id = id;
             }
             
+            if(typeof(config.colspan) != 'undefined'){
+                td.colspan = config.colspan;
+            }
+            
             if(typeof(config.hidden) != 'undefined' && config.hidden){
                 td.style += ' display:none;';
             }
