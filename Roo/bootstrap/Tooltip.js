@@ -74,6 +74,8 @@ Roo.apply(Roo.bootstrap.Tooltip, {
             if (!el.select("[tooltip]").elements.length) {
                 return;
             }
+            // is the mouse over this child...?
+            
             bindEl = el;
         }
         this.currentEl = bindEl;
