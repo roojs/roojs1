@@ -81,7 +81,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
                 Roo.log("not in region.");
                 return;
             }
-            
+            Roo.log("child element over..");
             
         }
         this.currentEl = bindEl;
