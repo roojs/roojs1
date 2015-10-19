@@ -67,7 +67,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
             this.currentTip.el.hide(); // force hiding...
         }    
         Roo.log(el);
-        if (!el.attr('tooltip')) { // parents who have tip?
+        if (!el.attr('tooltip') && !el.select("[tooltip]").elements.length) { // parents who have tip?
             return;
         }
         this.currentEl = el;
