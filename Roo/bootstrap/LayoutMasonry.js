@@ -26,6 +26,11 @@ Roo.bootstrap.LayoutMasonry = function(config){
 
 Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
+    
+    isFitWidth : true,  // options..
+    isOriginLeft : true,
+    isOriginTop : false,
+    
     tag: 'div',
     cls: '',
    
@@ -68,7 +73,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             var firstItem = this.items[0];
             var firstItemElem = firstItem && firstItem.element;
             // columnWidth fall back to item of first element
-            this.columnWidth = firstItemElem && getSize( firstItemElem ).outerWidth ||
+            this.columnWidth = firstItemElem && getSize( firstItemElem ).outerWidth ||     // FIXME
               // if first elem has no width, default to size of container
             this.containerWidth;
         }
@@ -89,7 +94,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     getContainerWidth : function()
     {
         // container is parent if fit width
-        var container = this.options.isFitWidth ? this.element.parentNode : this.element;
+        var container = this.isFitWidth ? this.element.parentNode : this.element;
         // check that this.size and size are there
         // IE8 triggers resize on body size change, so they might not be
         
@@ -157,7 +162,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var stampSize = getSize( stamp );
         var offset = this._getElementOffset( stamp );
         // get the columns that this stamp affects
-        var firstX = this.options.isOriginLeft ? offset.left : offset.right;
+        var firstX = this.isOriginLeft ? offset.left : offset.right;
         var lastX = firstX + stampSize.outerWidth;
         var firstCol = Math.floor( firstX / this.columnWidth );
         firstCol = Math.max( 0, firstCol );
@@ -166,7 +171,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         lastCol -= lastX % this.columnWidth ? 0 : 1;
         lastCol = Math.min( this.cols - 1, lastCol );
         // set colYs to bottom of the stamp
-        var stampMaxY = ( this.options.isOriginTop ? offset.top : offset.bottom ) +
+        var stampMaxY = ( this.isOriginTop ? offset.top : offset.bottom ) +
           stampSize.outerHeight;
         for ( var i = firstCol; i <= lastCol; i++ ) {
           this.colYs[i] = Math.max( stampMaxY, this.colYs[i] );
@@ -179,7 +184,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
           height: this.maxY
         };
       
-        if ( this.options.isFitWidth ) {
+        if ( this.isFitWidth ) {
           size.width = this._getContainerFitWidth();
         }
       
