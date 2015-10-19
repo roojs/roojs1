@@ -45,7 +45,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
    
     _resetLayout : function()
     {
-        this.getSize();
+        this.getSize();  //FIXME....
         this._getMeasurement( 'columnWidth', 'outerWidth' );
         this._getMeasurement( 'gutter', 'outerWidth' );
         this.measureColumns();
