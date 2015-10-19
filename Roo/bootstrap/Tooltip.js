@@ -66,7 +66,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
         if (this.currentTip.el) {
             this.currentTip.el.hide(); // force hiding...
         }    
-        Roo.log(ev);
+        //Roo.log(ev);
         var bindEl = el;
         
         // you can not look for children, as if el is the body.. then everythign is the child..
