@@ -78,6 +78,7 @@ Roo.apply(Roo.bootstrap.Tooltip, {
             bindEl = el.select("[tooltip]").first();
             var xy = ev.getXY();
             if (!bindEl.getRegion().contains( { top : xy[1] ,right : xy[0] , bottom : xy[1], left : xy[0]})) {
+                Roo.log("not in region.");
                 return;
             }
             
