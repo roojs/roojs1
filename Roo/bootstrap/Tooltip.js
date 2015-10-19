@@ -198,7 +198,10 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         }
         // set content.
         //Roo.log([this.bindEl, this.bindEl.attr('tooltip')]);
-        this.el.select('.tooltip-inner',true).first().dom.innerHTML = this.bindEl.attr('tooltip');
+        
+        var tip = el.attr('tooltip') || el.select("[tooltip]").first().attr('tooltip');
+        
+        this.el.select('.tooltip-inner',true).first().dom.innerHTML = top
         
         this.el.removeClass(['fade','top','bottom', 'left', 'right','in']);
         
