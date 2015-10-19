@@ -46,7 +46,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     _resetLayout : function()
     {
         this.getSize();  //FIXME....
-        this._getMeasurement( 'columnWidth', 'outerWidth' );
+        this._getMeasurement( 'columnWidth', 'outerWidth' );   //FIXME....
         this._getMeasurement( 'gutter', 'outerWidth' );
         this.measureColumns();
 
@@ -70,7 +70,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             // columnWidth fall back to item of first element
             this.columnWidth = firstItemElem && getSize( firstItemElem ).outerWidth ||
               // if first elem has no width, default to size of container
-              this.containerWidth;
+            this.containerWidth;
         }
     
         var columnWidth = this.columnWidth += this.gutter;
@@ -92,8 +92,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var container = this.options.isFitWidth ? this.element.parentNode : this.element;
         // check that this.size and size are there
         // IE8 triggers resize on body size change, so they might not be
-        var size = getSize( container );
-        this.containerWidth = size && size.innerWidth;
+        
+        var size = getSize( container );  //FIXME
+        this.containerWidth = size && size.innerWidth; //FIXME
     },
     
     _getItemLayoutPosition : function( item )
