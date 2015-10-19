@@ -31,6 +31,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     isOriginLeft : true,
     isOriginTop : false,
     
+    gutter : 0,
+    columnWidth : 0,
+    
+    colYs : null, // array.
+    
+    
     tag: 'div',
     cls: '',
    
