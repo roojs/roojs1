@@ -452,6 +452,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.tooltip = config.tooltip;
             }
             
+            if(typeof(config.colspan) != 'undefined'){
+                c.colspan = config.colspan;
+            }
+            
             if(typeof(config.hidden) != 'undefined' && config.hidden){
                 c.style += ' display:none;';
             }
