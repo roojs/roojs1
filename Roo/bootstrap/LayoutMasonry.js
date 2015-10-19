@@ -25,17 +25,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     tag: 'div',
     cls: '',
-    html: '',
-     
+   
     
     getAutoCreate : function(){
         
         var cfg = {
             tag: this.tag,
-            cls: this.cls,
-            html: this.html
-        }
-        
+            cls: 'blog-masonary-wrapper ' + this.cls,
+            
+        };
         
 	
         return cfg;
