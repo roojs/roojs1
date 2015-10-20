@@ -103,6 +103,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     reloadItems: function()
     {
         this.items = this.el.select('.masonry-brick', true);
+        Roo.log('load items');
         Roo.log(this.items.elements.length);
     },
     
