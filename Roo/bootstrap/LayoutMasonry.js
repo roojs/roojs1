@@ -89,6 +89,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 	
         return cfg;
     },
+    function getChildContainer( ) {
+        if (this.boxesEl) {
+            return this.boxesEl;
+            //code
+        }
+        this.boxesEl = this.el.select('.mas-boxes').first();
+        return this.boxesEl;
+    }
+    
     
     initEvents : function()
     {
