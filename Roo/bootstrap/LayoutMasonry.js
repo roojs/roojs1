@@ -30,16 +30,23 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     isFitWidth : true,  // options..
     isOriginLeft : true,
     isOriginTop : false,
+    isLayoutInstant : false, // needed? 
     
     gutter : 0,
     columnWidth : 0,
+    containerWidth: 0,
+    currentSize : null,
     
     colYs : null, // array.
-    
+    maxY : 0,
     
     tag: 'div',
     cls: '',
-   
+    items: null, //CompositeElement
+    cols : 0, // array?
+    // element : null, // wrapped now this.el
+    _isLayoutInited : null, 
+    
     
     getAutoCreate : function(){
         
@@ -52,13 +59,86 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 	
         return cfg;
     },
+    
+    initEvents()
+    {
+        this.reloadItems();
+       // this.stamps = []; // wtf are stamps?
+       // this.initStamp(); //???
+        this.currentSize = this.el.size();
+        Roo.get('window').on('resize', this.resize, this);
+        this.layout();
+        
+    },
+    
+    reloadItems: function()
+    {
+        this.items = this.el.select('.masonry-brick', true);
+    },
+    
    
-   
+    resize : function()
+    {
+        if (this.currentSize.width == this.el.getWidth()) {
+            return;
+        }
+        this.layout();
+    },
+    layout : function()
+    {
+        this._resetLayout();
+        //this._manageStamps();
+      
+        // don't animate first layout
+        var isInstant = this.isLayoutInstant !== undefined ? this.isLayoutInstant : !this._isLayoutInited;
+        this.layoutItems( isInstant );
+      
+        // flag for initalized
+        this._isLayoutInited = true;
+    },
+    
+    layoutItems : function( isInstant )
+    {
+        //var items = this._getItemsForLayout( this.items );
+        // original code supports filtering layout items.. we just ignore it..
+        var items = this.items;
+        this._layoutItems( items, isInstant );
+      
+        this._postLayout();
+    },
+    _layoutItems : function ( items , isInstant)
+    {
+       //this.fireEvent( 'layout', this, items );
+    
+
+        if ( !items || !items.elements.length ) {
+          // no items, emit event with empty array
+            return;
+        }
+
+        var queue = [];
+        items.each(function(item) {
+            
+            // get x/y object from method
+            var position = this._getItemLayoutPosition( item );
+            // enqueue
+            position.item = item;
+            position.isInstant = isInstant || item.isLayoutInstant;
+            queue.push( position );
+        });
+      
+        this._processLayoutQueue( queue );
+    },
+      
+      
+      
+         
     _resetLayout : function()
     {
-        this.getSize();  //FIXME....
-        this._getMeasurement( 'columnWidth', 'outerWidth' );   //FIXME....
-        this._getMeasurement( 'gutter', 'outerWidth' );
+        //this.getSize();  // -- does not really do anything.. it probably applies left/right etc. to obuject but not used
+        this.colWidth = this.el.getWidth();
+        this.gutter = this.el.getWidth();
+        
         this.measureColumns();
 
         // reset column Y
@@ -76,12 +156,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.getContainerWidth();
       // if columnWidth is 0, default to outerWidth of first item
         if ( !this.columnWidth ) {
-            var firstItem = this.items[0];
-            var firstItemElem = firstItem && firstItem.element;
+            var firstItem = this.items.first();
+             
             // columnWidth fall back to item of first element
-            this.columnWidth = firstItemElem && getSize( firstItemElem ).outerWidth ||     // FIXME
+            this.columnWidth = firstItem && firstItem.getWidth() ||  this.containerWidth;
+            
               // if first elem has no width, default to size of container
-            this.containerWidth;
+            
         }
     
         var columnWidth = this.columnWidth += this.gutter;
@@ -99,23 +180,27 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     getContainerWidth : function()
     {
-        // container is parent if fit width
+       /* // container is parent if fit width
         var container = this.isFitWidth ? this.element.parentNode : this.element;
         // check that this.size and size are there
         // IE8 triggers resize on body size change, so they might not be
         
         var size = getSize( container );  //FIXME
         this.containerWidth = size && size.innerWidth; //FIXME
+        */
+        this.el.getSize();
+        this.containerWidth = this.el.getWidth();  //maybe use getComputedWidth
+        
     },
     
-    _getItemLayoutPosition : function( item )
+    _getItemLayoutPosition : function( item )  // what is item?
     {
-        item.getSize();
+        var sz = item.getSize();
         // how many columns does this brick span
-        var remainder = item.size.outerWidth % this.columnWidth;
+        var remainder = sz.width % this.columnWidth;
         var mathMethod = remainder && remainder < 1 ? 'round' : 'ceil';
         // round if off by 1 pixel, otherwise use ceil
-        var colSpan = Math[ mathMethod ]( item.size.outerWidth / this.columnWidth );
+        var colSpan = Math[ mathMethod ]( sz.width  / this.columnWidth );
         colSpan = Math.min( colSpan, this.cols );
       
         var colGroup = this._getColGroup( colSpan );
@@ -130,7 +215,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         };
       
         // apply setHeight to necessary columns
-        var setHeight = minimumY + item.size.outerHeight;
+        var setHeight = minimumY + sz.height;
         var setSpan = this.cols + 1 - colGroup.length;
         for ( var i = 0; i < setSpan; i++ ) {
           this.colYs[ shortColIndex + i ] = setHeight;
@@ -162,27 +247,32 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         }
         return colGroup;
     },
-    
+    /*
     _manageStamp : function( stamp )
     {
-        var stampSize = getSize( stamp );
-        var offset = this._getElementOffset( stamp );
+        var stampSize =  stamp.getSize();
+        var offset = stamp.getBox();
         // get the columns that this stamp affects
-        var firstX = this.isOriginLeft ? offset.left : offset.right;
-        var lastX = firstX + stampSize.outerWidth;
+        var firstX = this.isOriginLeft ? offset.x : offset.right;
+        var lastX = firstX + stampSize.width;
         var firstCol = Math.floor( firstX / this.columnWidth );
         firstCol = Math.max( 0, firstCol );
+        
         var lastCol = Math.floor( lastX / this.columnWidth );
         // lastCol should not go over if multiple of columnWidth #425
         lastCol -= lastX % this.columnWidth ? 0 : 1;
         lastCol = Math.min( this.cols - 1, lastCol );
+        
         // set colYs to bottom of the stamp
-        var stampMaxY = ( this.isOriginTop ? offset.top : offset.bottom ) +
-          stampSize.outerHeight;
+        var stampMaxY = ( this.isOriginTop ? offset.y : offset.bottom ) +
+            stampSize.height;
+            
         for ( var i = firstCol; i <= lastCol; i++ ) {
           this.colYs[i] = Math.max( stampMaxY, this.colYs[i] );
         }
     },
+    */
+    
     _getContainerSize : function()
     {
         this.maxY = Math.max.apply( Math, this.colYs );
