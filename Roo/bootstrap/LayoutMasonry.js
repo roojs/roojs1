@@ -287,8 +287,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       
         // position the brick
         var position = {
-            x: this.currentSize.width + (this.columnWidth * shortColIndex),
-            y: this.currentSize.width + minimumY
+            x: this.currentSize.x + (this.columnWidth * shortColIndex),
+            y: this.currentSize.y + minimumY
         };
         
         Roo.log(position);
