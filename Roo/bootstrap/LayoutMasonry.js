@@ -206,7 +206,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         //this.getSize();  // -- does not really do anything.. it probably applies left/right etc. to obuject but not used
         this.colWidth = this.el.getWidth();
-        //this.gutter = this.el.getWidth(); <
+        //this.gutter = this.el.getWidth(); 
         
         this.measureColumns();
 
@@ -265,6 +265,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     _getItemLayoutPosition : function( item )  // what is item?
     {
         var sz = item.getSize();
+        // we resize the item to our columnWidth..
+        item.setWidth(this.columnWidth);
+        
         // how many columns does this brick span
         var remainder = sz.width % this.columnWidth;
         var mathMethod = remainder && remainder < 1 ? 'round' : 'ceil';
@@ -281,8 +284,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       
         // position the brick
         var position = {
-          x: this.columnWidth * shortColIndex,
-          y: minimumY
+            x: this.columnWidth * shortColIndex,
+            y: minimumY
         };
       
         // apply setHeight to necessary columns
