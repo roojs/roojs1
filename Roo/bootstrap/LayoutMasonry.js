@@ -305,20 +305,20 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var colGroup = this._getColGroup( colSpan );
         // get the minimum Y value from the columns
         var minimumY = Math.min.apply( Math, colGroup );
-        
+        Roo.log([ 'setHeight',  minimumY, sz.height, setHeight ]);
         
         var shortColIndex = colGroup.indexOf(  minimumY ); // broken on ie8..?? probably...
          
         // position the brick
         var position = {
             x: this.currentSize.x + (this.padWidth /2) + ((this.columnWidth + this.padWidth )* shortColIndex),
-            y: this.currentSize.y + minimumY
+            y: this.currentSize.y + minimumY + this.padWidth
         };
         
         Roo.log(position);
         // apply setHeight to necessary columns
         var setHeight = minimumY + sz.height;
-        Roo.log([ 'setHeight',  minimumY, sz.height, setHeight ]);
+        //Roo.log([ 'setHeight',  minimumY, sz.height, setHeight ]);
         
         var setSpan = this.cols + 1 - colGroup.length;
         for ( var i = 0; i < setSpan; i++ ) {
