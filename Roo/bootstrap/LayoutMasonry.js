@@ -266,10 +266,13 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         // we resize the item to our columnWidth..
         item.setWidth(this.columnWidth);
+        
+        
         var sz = item.getSize();
  
         // how many columns does this brick span
         var remainder = this.containerWidth % this.columnWidth;
+        
         var mathMethod = remainder && remainder < 1 ? 'round' : 'ceil';
         // round if off by 1 pixel, otherwise use ceil
         var colSpan = Math[ mathMethod ]( sz.width  / this.columnWidth );
@@ -287,7 +290,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             x: this.columnWidth * shortColIndex,
             y: minimumY
         };
-      
+        Roo.log(position);
         // apply setHeight to necessary columns
         var setHeight = minimumY + sz.height;
         var setSpan = this.cols + 1 - colGroup.length;
