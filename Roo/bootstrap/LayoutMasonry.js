@@ -81,7 +81,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var cfg = {
             tag: this.tag,
             cls: 'blog-masonary-wrapper ' + this.cls,
-            
+            cn : {
+                cls : 'mas-boxes masonary'
+            }
         };
         
 	
@@ -90,6 +92,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
+        
+         
         
         
         this.on('childrenrendered', function() {
