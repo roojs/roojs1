@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        this.el.on('resize', this.resize, this); /// was window resize... - let's see if this works..
+        
         
         this.on('childrenrendered', function() {
             Roo.log("children rendered");
@@ -88,6 +88,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             // this.stamps = []; // wtf are stamps?
             // this.initStamp(); //???
             this.currentSize = this.el.size();
+            
+            /// was window resize... - let's see if this works..
+            this.el.on('resize', this.resize, this); 
+            
             
             this.layout();
             
