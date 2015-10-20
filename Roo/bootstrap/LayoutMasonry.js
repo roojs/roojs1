@@ -257,7 +257,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var size = getSize( container );  //FIXME
         this.containerWidth = size && size.innerWidth; //FIXME
         */
-        this.el.getSize();
+         
         this.containerWidth = this.el.getWidth();  //maybe use getComputedWidth
         
     },
