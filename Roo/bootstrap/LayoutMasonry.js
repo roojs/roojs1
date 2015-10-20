@@ -26,13 +26,29 @@ Roo.bootstrap.LayoutMasonry = function(config){
 
 Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
-    
+      /**
+     * @cfg {Boolean} isFitWidth  - fit the width
+     */   
     isFitWidth : true,  // options..
+    /**
+     * @cfg {Boolean} isOriginLeft = left align?
+     */   
     isOriginLeft : true,
+    /**
+     * @cfg {Boolean} isOriginTop = top align?
+     */   
     isOriginTop : false,
-    isLayoutInstant : false, // needed? 
+    /**
+     * @cfg {Boolean} isLayoutInstant = no animation?
+     */   
+    isLayoutInstant : false, // needed?
+    /**
+     * @cfg {Boolean} isResizingContainer = not sure if this is used..
+     */   
     isResizingContainer : true,
     
+    
+    // private?
     gutter : 0,
     columnWidth : 0,
     containerWidth: 0,
