@@ -322,7 +322,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var setSpan = this.cols + 1 - colGroup.length;
         for ( var i = 0; i < setSpan; i++ ) {
-          this.colYs[ shortColIndex + i ] = setHeight;
+          this.colYs[ shortColIndex + i ] = setHeight + this.padWidth;
         }
       
         return position;
