@@ -167,7 +167,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       this.resizeContainer();
     },
     
-    
+    Outlayer.prototype.resizeContainer = function() {
+        if ( !this.options.isResizingContainer ) {
+          return;
+        }
+        var size = this._getContainerSize();
+        if ( size ) {
+            this.el.setSize(size.width,size.height);
+        }
+    }
     
     
     
