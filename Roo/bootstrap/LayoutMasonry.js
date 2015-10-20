@@ -123,14 +123,20 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             var position = this._getItemLayoutPosition( item );
             // enqueue
             position.item = item;
-            position.isInstant = isInstant || item.isLayoutInstant;
+            position.isInstant = isInstant; // || item.isLayoutInstant; << not set yet...
             queue.push( position );
         });
       
         this._processLayoutQueue( queue );
     },
       
-      
+    ._processLayoutQueue : function( queue )
+    {
+        for ( var i=0, len = queue.length; i < len; i++ ) {
+            var obj = queue[i];
+            this._positionItem( obj.item, obj.x, obj.y, obj.isInstant );
+        }
+    },
       
          
     _resetLayout : function()
