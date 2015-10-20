@@ -94,7 +94,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             this.currentSize = this.el.getBox(true);
             
             /// was window resize... - let's see if this works..
-            Roo.EventManager.onWindowResize(this.resizeDefer, this); 
+            Roo.EventManager.onWindowResize(this.resize, this); 
             
             
             this.layout.defer(500,this);;
