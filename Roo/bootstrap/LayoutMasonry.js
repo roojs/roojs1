@@ -312,7 +312,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         // position the brick
         var position = {
             x: this.currentSize.x + (this.padWidth /2) + ((this.columnWidth + this.padWidth )* shortColIndex),
-            y: this.currentSize.y + minimumY + this.padWidth
+            y: this.currentSize.y + minimumY + this.padHeight
         };
         
         Roo.log(position);
@@ -322,7 +322,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         var setSpan = this.cols + 1 - colGroup.length;
         for ( var i = 0; i < setSpan; i++ ) {
-          this.colYs[ shortColIndex + i ] = setHeight + this.padWidth;
+          this.colYs[ shortColIndex + i ] = setHeight + this.padHeight;
         }
       
         return position;
