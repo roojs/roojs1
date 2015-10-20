@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        Roo.get('window').on('resize', this.resize, this);
+        Roo.get(window).on('resize', this.resize, this);
         
         this.on('childrenrendered', function() {
             Roo.log("children rendered");
