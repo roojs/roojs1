@@ -165,10 +165,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     */
     _postLayout : function()
     {
-      this.resizeContainer();
+        this.resizeContainer();
     },
     
-    resizeContainer = function() {
+    resizeContainer : function()
+    {
         if ( !this.isResizingContainer ) {
             return;
         }
@@ -176,7 +177,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         if ( size ) {
             this.el.setSize(size.width,size.height);
         }
-    }
+    },
     
     
     
