@@ -82,6 +82,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.get('window').on('resize', this.resize, this);
         
         this.on('childrenrendered', function() {
+            Roo.log("children rendered");
+            
             this.reloadItems();
             // this.stamps = []; // wtf are stamps?
             // this.initStamp(); //???
