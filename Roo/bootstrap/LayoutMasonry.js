@@ -240,7 +240,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
               // if first elem has no width, default to size of container
             
         }
-    
+            
+        // column width is fixed at the top - however if container width get's smaller we should
+        // reduce it...
+            
         var columnWidth = this.columnWidth += this.gutter;
       
         // calculate columns
