@@ -77,7 +77,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         return cfg;
     },
     
-    initEvents()
+    initEvents : function()
     {
         Roo.get('window').on('resize', this.resize, this);
         
