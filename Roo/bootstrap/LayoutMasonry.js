@@ -51,6 +51,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
      */   
     
     columnWidth : 0,
+    /**
+     * @cfg {Number} padHeight padding below box..
+     */   
+    
+    padHeight : 10, 
     
     // private?
     gutter : 0,
@@ -61,6 +66,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     colYs : null, // array.
     maxY : 0,
     padWidth: 0,
+    
     
     tag: 'div',
     cls: '',
