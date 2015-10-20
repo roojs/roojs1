@@ -140,28 +140,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         for ( var i=0, len = queue.length; i < len; i++ ) {
             var obj = queue[i];
-            this.positionItem( obj.item, obj.x, obj.y, obj.isInstant );
+            obj.item.setXY([obj.x,obj.y], obj.isInstant ? false : true);
         }
     },
       
-    /**
-     * Sets position of item in DOM
-     * @param {Element} item
-     * @param {Number} x - horizontal position
-     * @param {Number} y - vertical position
-     * @param {Boolean} isInstant - disables transitions
-     */
-    positionItem : function( item, x, y, isInstant ) {
-        if ( isInstant ) {
-          // if not transition, just set CSS
-          
-            item.setXY([x,y]);
-            
-            
-        } else {
-            item.moveTo( x, y );
-        }
-    },
+    
     /**
     * Any logic you want to do after each layout,
     * i.e. size the container
