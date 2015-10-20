@@ -295,6 +295,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         Roo.log(position);
         // apply setHeight to necessary columns
         var setHeight = minimumY + sz.height;
+        Roo.log([ 'setHeight',  minimumY, sz.height, setHeight ]);
+        
         var setSpan = this.cols + 1 - colGroup.length;
         for ( var i = 0; i < setSpan; i++ ) {
           this.colYs[ shortColIndex + i ] = setHeight;
