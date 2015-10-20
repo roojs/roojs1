@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     columnWidth : 0,
     
     // private?
-    gutter : 0,
+    gutter : 10,
     
     containerWidth: 0,
     currentSize : null,
