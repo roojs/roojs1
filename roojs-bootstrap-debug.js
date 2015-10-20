@@ -28,6 +28,20 @@ Roo.bootstrap = Roo.bootstrap || {};
 
 Roo.bootstrap.Component = function(config){
     Roo.bootstrap.Component.superclass.constructor.call(this, config);
+       
+    this.addEvents({
+        /**
+         * @event childrenrendered
+         * Fires when the children have been rendered..
+         * @param {Roo.bootstrap.Component} this
+         */
+        "childrenrendered" : true
+        
+        
+        
+    });
+    
+    
 };
 
 Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
@@ -316,11 +330,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         cn.items = nitems;
-	
+        
+        this.fireEvent('childrenrendered', this);
+        
         return cn;
-    }
-    
-    
+    } 
     
     
 });
@@ -17073,6 +17087,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     markValid : function()
     {
+        if(this.allowBlank){
+            return;
+        }
+        
         var _this = this;
         
         this.fireEvent('valid', this);
@@ -17110,6 +17128,10 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     markInvalid : function(msg)
     {
+        if(this.allowBlank){
+            return;
+        }
+        
         var _this = this;
         
         this.fireEvent('invalid', this, msg);
