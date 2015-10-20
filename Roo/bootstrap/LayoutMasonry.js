@@ -31,6 +31,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     isOriginLeft : true,
     isOriginTop : false,
     isLayoutInstant : false, // needed? 
+    isResizingContainer : true,
     
     gutter : 0,
     columnWidth : 0,
@@ -167,9 +168,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       this.resizeContainer();
     },
     
-    Outlayer.prototype.resizeContainer = function() {
-        if ( !this.options.isResizingContainer ) {
-          return;
+    resizeContainer = function() {
+        if ( !this.isResizingContainer ) {
+            return;
         }
         var size = this._getContainerSize();
         if ( size ) {
