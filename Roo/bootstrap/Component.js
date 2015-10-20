@@ -28,6 +28,20 @@ Roo.bootstrap = Roo.bootstrap || {};
 
 Roo.bootstrap.Component = function(config){
     Roo.bootstrap.Component.superclass.constructor.call(this, config);
+       
+    this.addEvents({
+        /**
+         * @event childrenrendered
+         * Fires when the children have been rendered..
+         * @param {Roo.bootstrap.Component} this
+         */
+        "childrenrendered" : true
+        
+        
+        
+    });
+    
+    
 };
 
 Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
@@ -316,7 +330,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         cn.items = nitems;
-	
+        
         return cn;
     }
     
