@@ -115,7 +115,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
    
     resize : function()
     {
-        if (this.currentSize.width == this.el.getWidth()) {
+        Roo.log('resize');
+        var cs = this.el.getBox(true);
+        if (this.currentSize.width == cs.width) {
             return;
         }
         this.layout();
