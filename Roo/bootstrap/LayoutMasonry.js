@@ -149,7 +149,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
 
         var queue = [];
         items.each(function(item) {
-            
+            Roo.log(item);
             // get x/y object from method
             var position = this._getItemLayoutPosition( item );
             // enqueue
