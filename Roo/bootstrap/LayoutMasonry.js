@@ -79,12 +79,18 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     initEvents()
     {
-        this.reloadItems();
-       // this.stamps = []; // wtf are stamps?
-       // this.initStamp(); //???
-        this.currentSize = this.el.size();
         Roo.get('window').on('resize', this.resize, this);
-        this.layout();
+        
+        this.on('childrenrendered', function() {
+            this.reloadItems();
+            // this.stamps = []; // wtf are stamps?
+            // this.initStamp(); //???
+            this.currentSize = this.el.size();
+            
+            this.layout();
+            
+        } ,this);
+        
         
     },
     
