@@ -308,10 +308,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         
         var shortColIndex = colGroup.indexOf(  minimumY ); // broken on ie8..?? probably...
-        
-       
-        
-        
+         
         // position the brick
         var position = {
             x: this.currentSize.x + this.padWidth + ((this.columnWidth + this.padWidth )* shortColIndex),
