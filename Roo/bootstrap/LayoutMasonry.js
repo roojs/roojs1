@@ -325,11 +325,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         this.maxY = Math.max.apply( Math, this.colYs );
         var size = {
-          height: this.maxY
+            height: this.maxY
         };
       
         if ( this.isFitWidth ) {
-          size.width = this._getContainerFitWidth();
+            size.width = this._getContainerFitWidth();
         }
       
         return size;
