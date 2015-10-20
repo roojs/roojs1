@@ -103,7 +103,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     reloadItems: function()
     {
         this.items = this.el.select('.masonry-brick', true);
-        Roo.log('load items');
+        
         Roo.log(this.items.elements.length);
     },
     
@@ -132,8 +132,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         //var items = this._getItemsForLayout( this.items );
         // original code supports filtering layout items.. we just ignore it..
-        var items = this.items;
-        this._layoutItems( items, isInstant );
+        
+        this._layoutItems( this.items , isInstant );
       
         this._postLayout();
     },
