@@ -46,11 +46,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
      * @cfg {Boolean} isResizingContainer = not sure if this is used..
      */   
     isResizingContainer : true,
+    /**
+     * @cfg {Number} columnWidth  width of the columns 
+     */   
     
+    columnWidth : 0,
     
     // private?
     gutter : 0,
-    columnWidth : 0,
+    
     containerWidth: 0,
     currentSize : null,
     
