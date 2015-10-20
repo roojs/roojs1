@@ -330,11 +330,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         cn.items = nitems;
+        
         this.fireEvent('childrenrendered', this);
+        
         return cn;
-    }
-    
-    
+    } 
     
     
 });
