@@ -129,16 +129,48 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       
         this._processLayoutQueue( queue );
     },
-      
-    ._processLayoutQueue : function( queue )
+    /** Sets position of item in DOM
+    * @param {Element} item
+    * @param {Number} x - horizontal position
+    * @param {Number} y - vertical position
+    * @param {Boolean} isInstant - disables transitions
+    */
+    _processLayoutQueue : function( queue )
     {
         for ( var i=0, len = queue.length; i < len; i++ ) {
             var obj = queue[i];
-            this._positionItem( obj.item, obj.x, obj.y, obj.isInstant );
+            this.positionItem( obj.item, obj.x, obj.y, obj.isInstant );
         }
     },
       
-         
+    /**
+     * Sets position of item in DOM
+     * @param {Element} item
+     * @param {Number} x - horizontal position
+     * @param {Number} y - vertical position
+     * @param {Boolean} isInstant - disables transitions
+     */
+    positionItem : function( item, x, y, isInstant ) {
+        if ( isInstant ) {
+          // if not transition, just set CSS
+            item.goTo( x, y );
+        } else {
+            item.moveTo( x, y );
+        }
+    },
+    /**
+    * Any logic you want to do after each layout,
+    * i.e. size the container
+    */
+    _postLayout : function()
+    {
+      this.resizeContainer();
+    },
+    
+    
+    
+    
+    
     _resetLayout : function()
     {
         //this.getSize();  // -- does not really do anything.. it probably applies left/right etc. to obuject but not used
