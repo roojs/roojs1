@@ -270,7 +270,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var minimumY = Math.min.apply( Math, colGroup );
         
         
-        var shortColIndex = colGroup.indexOf(  minimumY ); // broken on ie8...
+        var shortColIndex = colGroup.indexOf(  minimumY ); // broken on ie8..?? probably...
       
         // position the brick
         var position = {
