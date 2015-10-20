@@ -288,7 +288,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         // we resize the item to our columnWidth..
         item.setWidth(this.columnWidth);
-         
+        item.autoBoxAdjust  = false;
+        
         var sz = item.getSize();
  
         // how many columns does this brick span
