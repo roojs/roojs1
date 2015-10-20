@@ -289,7 +289,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         // round if off by 1 pixel, otherwise use ceil
         var colSpan = Math[ mathMethod ]( sz.width  / this.columnWidth );
         colSpan = Math.min( colSpan, this.cols );
-      
+        
+        // normally this should be '1' as we dont' currently allow multi width columns..
+        
         var colGroup = this._getColGroup( colSpan );
         // get the minimum Y value from the columns
         var minimumY = Math.min.apply( Math, colGroup );
