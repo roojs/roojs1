@@ -97,7 +97,8 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             this.el.on('resize', this.resize, this); 
             
             
-            this.layout();
+            this.layout.defer(500,this);;
+            
             
         } ,this);
         
