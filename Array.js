@@ -13,6 +13,7 @@
  */
 Roo.applyIf(Array.prototype, {
     /**
+     * 
      * Checks whether or not the specified object exists in the array.
      * @param {Object} o The object to check for
      * @return {Number} The index of o in the array (or -1 if it is not found)
