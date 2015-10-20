@@ -287,9 +287,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
       
         // position the brick
         var position = {
-            x: this.columnWidth * shortColIndex,
-            y: minimumY
+            x: this.currentSize.width + (this.columnWidth * shortColIndex),
+            y: this.currentSize.width + minimumY
         };
+        
         Roo.log(position);
         // apply setHeight to necessary columns
         var setHeight = minimumY + sz.height;
