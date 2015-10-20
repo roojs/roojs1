@@ -385,7 +385,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     markValid : function()
     {
         if(this.allowBlank){
-          //  return;
+            return;
         }
         
         var _this = this;
@@ -426,7 +426,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     markInvalid : function(msg)
     {
         if(this.allowBlank){
-         //   return;
+            return;
         }
         
         var _this = this;
