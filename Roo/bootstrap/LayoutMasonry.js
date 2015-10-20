@@ -117,9 +117,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         Roo.log('resize');
         var cs = this.el.getBox(true);
+        
+        
         if (this.currentSize.width == cs.width) {
             return;
         }
+        this.currentSize = cs;
         this.layout();
     },
     layout : function()
