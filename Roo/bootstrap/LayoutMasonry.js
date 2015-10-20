@@ -268,7 +268,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var colGroup = this._getColGroup( colSpan );
         // get the minimum Y value from the columns
         var minimumY = Math.min.apply( Math, colGroup );
-        var shortColIndex = utils.indexOf( colGroup, minimumY );
+        
+        
+        var shortColIndex = colGroup.indexOf(  minimumY ); // broken on ie8...
       
         // position the brick
         var position = {
