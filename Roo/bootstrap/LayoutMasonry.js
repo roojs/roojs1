@@ -154,7 +154,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     positionItem : function( item, x, y, isInstant ) {
         if ( isInstant ) {
           // if not transition, just set CSS
-            item.goTo( x, y );
+          
+            item.setXY([x,y]);
+            
+            
         } else {
             item.moveTo( x, y );
         }
@@ -193,7 +196,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var i = this.cols;
         this.colYs = [];
         while (i--) {
-          this.colYs.push( 0 );
+            this.colYs.push( 0 );
         }
     
         this.maxY = 0;
