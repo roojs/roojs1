@@ -63,7 +63,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     tag: 'div',
     cls: '',
-    items: null, //CompositeElement
+    bricks: null, //CompositeElement
     cols : 0, // array?
     // element : null, // wrapped now this.el
     _isLayoutInited : null, 
@@ -106,9 +106,9 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     reloadItems: function()
     {
-        this.items = this.el.select('.masonry-brick', true);
+        this.bricks = this.el.select('.masonry-brick', true);
         
-        Roo.log(this.items.elements.length);
+        Roo.log(this.bricks.elements.length);
     },
     
    
@@ -137,7 +137,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         //var items = this._getItemsForLayout( this.items );
         // original code supports filtering layout items.. we just ignore it..
         
-        this._layoutItems( this.items , isInstant );
+        this._layoutItems( this.bricks , isInstant );
       
         this._postLayout();
     },
@@ -226,7 +226,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         this.getContainerWidth();
       // if columnWidth is 0, default to outerWidth of first item
         if ( !this.columnWidth ) {
-            var firstItem = this.items.first();
+            var firstItem = this.bricks.first();
              
             // columnWidth fall back to item of first element
             this.columnWidth = firstItem && firstItem.getWidth() ||  this.containerWidth;
