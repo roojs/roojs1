@@ -87,7 +87,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             this.reloadItems();
             // this.stamps = []; // wtf are stamps?
             // this.initStamp(); //???
-            this.currentSize = this.el.size();
+            this.currentSize = this.el.getBox();
             
             /// was window resize... - let's see if this works..
             this.el.on('resize', this.resize, this); 
