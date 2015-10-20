@@ -154,7 +154,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             position.item = item;
             position.isInstant = isInstant; // || item.isLayoutInstant; << not set yet...
             queue.push( position );
-        });
+        }, this);
       
         this._processLayoutQueue( queue );
     },
