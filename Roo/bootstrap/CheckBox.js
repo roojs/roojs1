@@ -384,13 +384,13 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
      */
     markValid : function()
     {
-        var _this = this;
-        
-        this.fireEvent('valid', this);
-        
         if(this.allowBlank){
             return;
         }
+        
+        var _this = this;
+        
+        this.fireEvent('valid', this);
         
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
