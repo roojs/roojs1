@@ -60,6 +60,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     colYs : null, // array.
     maxY : 0,
+    padWidth: 0,
     
     tag: 'div',
     cls: '',
@@ -257,6 +258,15 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         var mathMethod = excess && excess < 1 ? 'round' : 'floor';
         cols = Math[ mathMethod ]( cols );
         this.cols = Math.max( cols, 1 );
+        
+        
+         // padding positioning..
+        var totalColWidth = this.cols * this.columnWidth;
+        var padavail = this.containerWidth - totalColWidth;
+        // so for 2 columns - we need 3 'pads'
+        this.padWidth = Math.floor(padavail ( this.cols + 1));
+        
+        
     },
     
     getContainerWidth : function()
@@ -298,7 +308,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
         
         var shortColIndex = colGroup.indexOf(  minimumY ); // broken on ie8..?? probably...
-      
+        
+       
+        
+        
         // position the brick
         var position = {
             x: this.currentSize.x + (this.columnWidth * shortColIndex),
