@@ -264,10 +264,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     _getItemLayoutPosition : function( item )  // what is item?
     {
-        var sz = item.getSize();
         // we resize the item to our columnWidth..
         item.setWidth(this.columnWidth);
-        
+        var sz = item.getSize();
+ 
         // how many columns does this brick span
         var remainder = sz.width % this.columnWidth;
         var mathMethod = remainder && remainder < 1 ? 'round' : 'ceil';
