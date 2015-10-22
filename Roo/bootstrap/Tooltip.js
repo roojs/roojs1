@@ -191,7 +191,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         this.hoverState = 'out';
          if (!this.delay || !this.delay.hide) {
             this.hide();
-            return 
+            return;
         }
        
         var _t = this;
@@ -202,7 +202,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
                 _t.hide();
                 Roo.bootstrap.Tooltip.currentEl = false;
             }
-        }, delay)
+        }, delay);
     },
     
     show : function ()
