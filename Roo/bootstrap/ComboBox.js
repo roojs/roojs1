@@ -1302,9 +1302,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     initQuery : function(){
         
-        if(this.tickable){
-            
-        }
+//        if(this.tickable){
+//            
+//        }
         
         this.doQuery(this.getRawValue());
     },
