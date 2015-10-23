@@ -343,6 +343,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         var _this = this;
+        
         Roo.each(buttons.cn, function(c){
             if (_this.size) {
                 c.cls += ' btn-' + _this.size;
