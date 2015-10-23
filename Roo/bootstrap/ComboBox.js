@@ -338,8 +338,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.editable){
             buttons.cn.unshift({
                 tag: 'input',
-                cls: 'select2-search-field-input',
-                style: 'width:50%'
+                cls: 'select2-search-field-input'
             });
         }
         
