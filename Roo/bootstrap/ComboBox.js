@@ -772,28 +772,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }
             },
 
-            "enter" : function(e){
-                this.onViewClick();
-                //return true;
-            },
-
-            "esc" : function(e){
-                this.collapse();
-            },
-
-            "tab" : function(e){
-                this.onViewClick(false);
-                this.fireEvent("specialkey", this, e);
-                return true;
-            },
-
             scope : this,
 
             doRelay : function(foo, bar, hname){
                 Roo.log([foo, bar, hname]);
-                if(hname == 'down' || this.scope.isExpanded()){
-                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
-                }
+//                if(hname == 'down' || this.scope.isExpanded()){
+//                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+//                }
                 return true;
             },
 
