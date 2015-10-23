@@ -788,17 +788,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 },
 
                 "esc" : function(e){
-    //                this.collapse();
+                    this.collapse();
                 },
 
                 "tab" : function(e){
-    //                this.collapse();
-    //                
-    //                if(this.fireEvent("specialkey", this, e)){
-    //                    this.onViewClick(false);
-    //                }
-    //                
-    //                return true;
+                    this.collapse();
+    
+                    if(this.fireEvent("specialkey", this, e)){
+                        this.onViewClick(false);
+                    }
+    
+                    return true;
                 },
 
                 scope : this,
