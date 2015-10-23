@@ -319,10 +319,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             cls : 'tickable-buttons',
             cn : [
                 {
-                    tag: 'input',
-                    cls: 'select2-search-field-input',
-                },
-                {
                     tag : 'button',
                     type : 'button',
                     cls : 'btn btn-link btn-edit pull-' + this.btnPosition,
