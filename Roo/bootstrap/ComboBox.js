@@ -1223,8 +1223,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     onEmptyResults : function(){
         
-        if(this.tickable){
-            this.onTickableFooterButtonClick(false, false, false);
+        if(this.tickable && this.editable){
+            return;
         }
         
         this.collapse();
