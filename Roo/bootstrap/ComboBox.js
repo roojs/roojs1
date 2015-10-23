@@ -776,8 +776,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         this.onViewClick(false);
                     }
                     
-                    this.onTickableFooterButtonClick(e, false, false);
-                    
                     return true;
                 },
 
