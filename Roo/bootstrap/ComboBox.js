@@ -1781,7 +1781,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onTickableFooterButtonClick : function(e, btn, el)
     {
-        e.preventDefault();
+        if(e != false){
+            e.preventDefault();
+        }
         
         this.lastItem = Roo.apply([], this.item);
         
