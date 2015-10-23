@@ -1413,7 +1413,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.okBtn.hide();
             this.cancelBtn.hide();
             this.trigger.show();
-            this.inputEl().select('.select2-search-field-input', true).first().reset();
+            this.inputEl().select('.select2-search-field-input', true).first().dom.value = '';
         }
         
         Roo.get(document).un('mousedown', this.collapseIf, this);
