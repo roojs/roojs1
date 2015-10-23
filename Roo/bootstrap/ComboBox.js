@@ -271,6 +271,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     validClass : "has-success",
     
+    /**
+     * @cfg {Boolean} searchable (true|false) default false
+     */
+    searchable:false,
+    
     //private
     addicon : false,
     editicon: false,
