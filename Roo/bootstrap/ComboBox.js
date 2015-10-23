@@ -772,7 +772,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 },
 
                 "enter" : function(e){
-                    this.collapse();
+//                    this.collapse();
                 
                     if(this.fireEvent("specialkey", this, e)){
                         this.onViewClick(false);
