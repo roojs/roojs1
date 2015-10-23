@@ -341,7 +341,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         };
         
         if(this.searchable){
-            
+            buttons.cn.unshift({
+                tag: 'input',
+                cls: 'select2-search-field-input',
+            });
         }
         
         var _this = this;
