@@ -786,9 +786,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 },
 
                 "tab" : function(e){
-                    this.collapse();
-    
                     this.fireEvent("specialkey", this, e);
+                    
+                    this.onTickableFooterButtonClick(e, false, false);
                     
                     return true;
                 },
