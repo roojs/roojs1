@@ -804,8 +804,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             scope : this,
 
             doRelay : function(e, fn, key){
-                Roo.log('doRelay');
-                Roo.log([e, fn, key]);
                 if(this.scope.isExpanded()){
                    return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
                 }
