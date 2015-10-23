@@ -1161,7 +1161,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var index = this.view.getSelectedIndexes()[0];
         
         var r = this.store.getAt(index);
-        Roo.log([view, doFocus, el, e]);
+        Roo.log([index, r]);
         if(this.tickable){
             
             if(e.getTarget().nodeName.toLowerCase() != 'input'){
