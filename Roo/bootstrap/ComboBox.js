@@ -824,7 +824,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         if(this.editable !== false){
-            this.inputEl().select('.select2-search-field-input', true).first().on("keyup", this.onKeyUp, this);
+            this.tickableInputEl().on("keyup", this.onKeyUp, this);
         }
         
     },
@@ -1813,7 +1813,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return this.inputEl();
         }
         
-        return this.inputEl().select('.select2-search-field-input', true).first()
+        return this.inputEl().select('.select2-search-field-input', true).first();
     }
     
     
