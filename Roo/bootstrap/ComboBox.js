@@ -761,51 +761,53 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.keyNav = new Roo.KeyNav(this.tickableInputEl(), {
             "up" : function(e){
-                this.inKeyMode = true;
-                this.selectPrev();
+//                this.inKeyMode = true;
+//                this.selectPrev();
             },
 
             "down" : function(e){
-                if(!this.isExpanded()){
-                    this.onTriggerClick();
-                }else{
-                    this.inKeyMode = true;
-                    this.selectNext();
-                }
+//                if(!this.isExpanded()){
+//                    this.onTriggerClick();
+//                }else{
+//                    this.inKeyMode = true;
+//                    this.selectNext();
+//                }
             },
 
             "enter" : function(e){
 //                this.onViewClick();
                 //return true;
-                this.collapse();
-                
-                if(this.fireEvent("specialkey", this, e)){
-                    this.onViewClick(false);
-                }
-                
-                return true;
+//                this.collapse();
+//                
+//                if(this.fireEvent("specialkey", this, e)){
+//                    this.onViewClick(false);
+//                }
+//                
+//                return true;
             },
 
             "esc" : function(e){
-                this.collapse();
+//                this.collapse();
             },
 
             "tab" : function(e){
-                this.collapse();
-                
-                if(this.fireEvent("specialkey", this, e)){
-                    this.onViewClick(false);
-                }
-                
-                return true;
+//                this.collapse();
+//                
+//                if(this.fireEvent("specialkey", this, e)){
+//                    this.onViewClick(false);
+//                }
+//                
+//                return true;
             },
 
             scope : this,
 
             doRelay : function(foo, bar, hname){
-                if(hname == 'down' || this.scope.isExpanded()){
-                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
-                }
+                Roo.log('doRelay');
+                Roo.log(foo, bar, hname);
+//                if(hname == 'down' || this.scope.isExpanded()){
+//                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+//                }
                 return true;
             },
 
