@@ -759,7 +759,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store.on('load', this.onLoad, this);
         this.store.on('loadexception', this.onLoadException, this);
         
-        this.keyNav = new Roo.KeyNav(this.inputEl(), {
+        this.keyNav = new Roo.KeyNav(this.tickableInputEl(), {
             "up" : function(e){
                 this.inKeyMode = true;
                 this.selectPrev();
