@@ -759,58 +759,58 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store.on('load', this.onLoad, this);
         this.store.on('loadexception', this.onLoadException, this);
         
-//        this.keyNav = new Roo.KeyNav(this.inputEl(), {
-//            "up" : function(e){
-//                this.inKeyMode = true;
-//                this.selectPrev();
-//            },
-//
-//            "down" : function(e){
-//                if(!this.isExpanded()){
-//                    this.onTriggerClick();
-//                }else{
-//                    this.inKeyMode = true;
-//                    this.selectNext();
-//                }
-//            },
-//
-//            "enter" : function(e){
-////                this.onViewClick();
-//                //return true;
-//                this.collapse();
-//                
-//                if(this.fireEvent("specialkey", this, e)){
-//                    this.onViewClick(false);
-//                }
-//                
-//                return true;
-//            },
-//
-//            "esc" : function(e){
-//                this.collapse();
-//            },
-//
-//            "tab" : function(e){
-//                this.collapse();
-//                
-//                if(this.fireEvent("specialkey", this, e)){
-//                    this.onViewClick(false);
-//                }
-//                
-//                return true;
-//            },
-//
-//            scope : this,
-//
-//            doRelay : function(foo, bar, hname){
-//                if(hname == 'down' || this.scope.isExpanded()){
-//                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
-//                }
-//                return true;
-//            },
-//
-//            forceKeyDown: true
-//        });
+        this.keyNav = new Roo.KeyNav(this.inputEl(), {
+            "up" : function(e){
+                this.inKeyMode = true;
+                this.selectPrev();
+            },
+
+            "down" : function(e){
+                if(!this.isExpanded()){
+                    this.onTriggerClick();
+                }else{
+                    this.inKeyMode = true;
+                    this.selectNext();
+                }
+            },
+
+            "enter" : function(e){
+//                this.onViewClick();
+                //return true;
+                this.collapse();
+                
+                if(this.fireEvent("specialkey", this, e)){
+                    this.onViewClick(false);
+                }
+                
+                return true;
+            },
+
+            "esc" : function(e){
+                this.collapse();
+            },
+
+            "tab" : function(e){
+                this.collapse();
+                
+                if(this.fireEvent("specialkey", this, e)){
+                    this.onViewClick(false);
+                }
+                
+                return true;
+            },
+
+            scope : this,
+
+            doRelay : function(foo, bar, hname){
+                if(hname == 'down' || this.scope.isExpanded()){
+                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+                }
+                return true;
+            },
+
+            forceKeyDown: true
+        });
         
         
         this.queryDelay = Math.max(this.queryDelay || 10,
@@ -1805,6 +1805,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.markInvalid();
         return false;
+    },
+    
+    tickableInputEl : function()
+    {
+        if(!this.tickable || !this.editable){
+            return this.inputEl();
+        }
+        
+        return this.inputEl().select('.select2-search-field-input', true).first()
     }
     
     
