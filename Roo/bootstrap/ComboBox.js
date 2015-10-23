@@ -1470,6 +1470,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.cancelBtn.show();
             this.trigger.hide();
             
+            v = this.inputEl().select('.select2-search-field-input', true).first().focus();
+            
         }
         
         Roo.get(document).on('mousedown', this.collapseIf, this);
