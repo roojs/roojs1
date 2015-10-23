@@ -1305,7 +1305,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var v = this.getRawValue();
         
         if(this.tickable){
-            Roo.log(this.inputEl().select('.select2-search-field-input', true).first().dom);
+            Roo.log(this.inputEl().select('.select2-search-field-input', true).first());
         }
         
         this.doQuery(v);
