@@ -1260,6 +1260,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.view.select(index);
         if(scrollIntoView !== false){
             var el = this.view.getNode(index);
+            Roo.log(el);
             if(el && !this.multiple && !this.tickable){
                 this.list.scrollChildIntoView(el, false);
             }
