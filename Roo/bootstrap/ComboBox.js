@@ -1301,6 +1301,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     initQuery : function(){
+        
+        
+        
         this.doQuery(this.getRawValue());
     },
 
