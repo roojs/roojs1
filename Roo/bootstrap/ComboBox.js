@@ -1415,8 +1415,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.trigger.show();
             
             if(this.editable){
-                this.inputEl().select('.select2-search-field-input', true).first().dom.value = '';
-                this.inputEl().select('.select2-search-field-input', true).first().blur();
+                this.tickableInputEl().dom.value = '';
+                this.tickableInputEl().blur();
             }
             
         }
