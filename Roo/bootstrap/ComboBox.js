@@ -315,7 +315,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             cn : [
                 {
                     tag: 'input',
-                    cls: 'roo-select2-search-field-input',
+                    cls: 'select2-search-field-input',
                 },
                 {
                     tag : 'button',
@@ -367,6 +367,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                             tag: 'li',
                             cls: 'select2-search-field',
                             cn: [
+
                                 buttons
                             ]
                         }
