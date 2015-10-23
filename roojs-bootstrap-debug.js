@@ -10955,8 +10955,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.editable){
             buttons.cn.unshift({
                 tag: 'input',
-                cls: 'select2-search-field-input',
-                style: 'width:50%'
+                cls: 'select2-search-field-input'
             });
         }
         
@@ -11577,8 +11576,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.loading.hide();
         }
         
-        if(this.tickable){
-            this.onTickableFooterButtonClick(false, false, false);
+        if(this.tickable && this.editable){
+            return;
         }
         
         this.collapse();
@@ -11841,8 +11840,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     onEmptyResults : function(){
         
-        if(this.tickable){
-            this.onTickableFooterButtonClick(false, false, false);
+        if(this.tickable && this.editable){
+            return;
         }
         
         this.collapse();
