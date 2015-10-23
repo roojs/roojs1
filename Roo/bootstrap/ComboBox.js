@@ -823,6 +823,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.taTask = new Roo.util.DelayedTask(this.onTypeAhead, this);
         }
         
+        if(this.editable !== false){
+            this.inputEl().select('.select2-search-field-input', true).first().on("keyup", this.onKeyUp, this);
+        }
+        
     },
 
     onDestroy : function(){
