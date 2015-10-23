@@ -776,8 +776,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         this.onViewClick(false);
                     }
                     
-//                    this.collapse();
-                    
                     return true;
                 },
 
@@ -787,10 +785,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
                 "tab" : function(e){
                     this.collapse();
-    
-//                    if(this.fireEvent("specialkey", this, e)){
-//                        this.onViewClick(false);
-//                    }
     
                     return true;
                 },
