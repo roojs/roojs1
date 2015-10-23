@@ -1475,7 +1475,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.cancelBtn.show();
             this.trigger.hide();
             
-            this.inputEl().select('.select2-search-field-input', true).first().focus();
+            if(this.editable){
+                this.inputEl().select('.select2-search-field-input', true).first().focus();
+            }
             
         }
         
