@@ -759,63 +759,60 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store.on('load', this.onLoad, this);
         this.store.on('loadexception', this.onLoadException, this);
         
-        this.keyNav = new Roo.KeyNav(this.tickableInputEl(), {
-            "up" : function(e){
-                Roo.log('up');
-//                this.inKeyMode = true;
-//                this.selectPrev();
-            },
+        if(this.editable){
+            this.keyNav = new Roo.KeyNav(this.tickableInputEl(), {
+                "up" : function(e){
+                    this.inKeyMode = true;
+                    this.selectPrev();
+                },
 
-            "down" : function(e){
-                Roo.log('down');
-//                if(!this.isExpanded()){
-//                    this.onTriggerClick();
-//                }else{
-//                    this.inKeyMode = true;
-//                    this.selectNext();
-//                }
-                this.inKeyMode = true;
-                this.selectNext();
-            },
+                "down" : function(e){
+                    if(!this.isExpanded()){
+                        this.onTickableTriggerClick();
+                    }else{
+                        this.inKeyMode = true;
+                        this.selectNext();
+                    }
+                },
 
-            "enter" : function(e){
-//                this.onViewClick();
-                //return true;
-//                this.collapse();
-//                
-//                if(this.fireEvent("specialkey", this, e)){
-//                    this.onViewClick(false);
-//                }
-//                
-//                return true;
-            },
+                "enter" : function(e){
+    //                this.onViewClick();
+                    //return true;
+    //                this.collapse();
+    //                
+    //                if(this.fireEvent("specialkey", this, e)){
+    //                    this.onViewClick(false);
+    //                }
+    //                
+    //                return true;
+                },
 
-            "esc" : function(e){
-//                this.collapse();
-            },
+                "esc" : function(e){
+    //                this.collapse();
+                },
 
-            "tab" : function(e){
-//                this.collapse();
-//                
-//                if(this.fireEvent("specialkey", this, e)){
-//                    this.onViewClick(false);
-//                }
-//                
-//                return true;
-            },
+                "tab" : function(e){
+    //                this.collapse();
+    //                
+    //                if(this.fireEvent("specialkey", this, e)){
+    //                    this.onViewClick(false);
+    //                }
+    //                
+    //                return true;
+                },
 
-            scope : this,
+                scope : this,
 
-            doRelay : function(e, fn, key){
-                if(this.scope.isExpanded()){
-                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
-                }
-                return true;
-            },
+                doRelay : function(e, fn, key){
+                    if(this.scope.isExpanded()){
+                       return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+                    }
+                    return true;
+                },
 
-            forceKeyDown: true
-        });
-        
+                forceKeyDown: true
+            });
+        }
         
         this.queryDelay = Math.max(this.queryDelay || 10,
                 this.mode == 'local' ? 10 : 250);
