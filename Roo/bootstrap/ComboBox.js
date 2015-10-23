@@ -1153,6 +1153,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     onViewClick : function(view, doFocus, el, e)
     {
+        Roo.log([view, doFocus, el, e]);
         var index = this.view.getSelectedIndexes()[0];
         
         var r = this.store.getAt(index);
