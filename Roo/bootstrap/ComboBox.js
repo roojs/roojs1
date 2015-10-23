@@ -1302,11 +1302,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     initQuery : function(){
         
+        var v = this.getRawValue();
+        
         if(this.tickable){
-            
+            Roo.log(this.inputEl().select('.select2-search-field-input', true).first());
         }
         
-        this.doQuery(this.getRawValue());
+        this.doQuery(v);
     },
 
     // private
