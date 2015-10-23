@@ -761,6 +761,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.keyNav = new Roo.KeyNav(this.tickableInputEl(), {
             "up" : function(e){
+                Roo.log('up');
 //                this.inKeyMode = true;
 //                this.selectPrev();
             },
