@@ -774,6 +774,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 //                    this.inKeyMode = true;
 //                    this.selectNext();
 //                }
+                this.inKeyMode = true;
+                this.selectNext();
             },
 
             "enter" : function(e){
