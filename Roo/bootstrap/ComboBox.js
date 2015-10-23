@@ -776,11 +776,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         this.onViewClick(false);
                     }
                     
+                    this.onTickableFooterButtonClick(e, false, false);
+                    
                     return true;
                 },
 
                 "esc" : function(e){
-                    this.collapse();
+                    this.onTickableFooterButtonClick(e, false, false);
                 },
 
                 "tab" : function(e){
