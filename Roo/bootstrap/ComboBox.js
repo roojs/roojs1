@@ -789,6 +789,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             scope : this,
 
             doRelay : function(foo, bar, hname){
+                Roo.log([foo, bar, hname]);
                 if(hname == 'down' || this.scope.isExpanded()){
                    return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
                 }
