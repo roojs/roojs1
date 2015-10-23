@@ -755,8 +755,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         Roo.log(this.view);
         
-        this.keyNav = new Roo.KeyNav(this.inputEl(), {
+        this.keyNav = new Roo.KeyNav(this.view.el, {
             "up" : function(e){
+                Roo.log('up!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
+                return;
                 this.inKeyMode = true;
                 this.selectPrev();
             },
