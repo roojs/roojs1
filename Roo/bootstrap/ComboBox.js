@@ -757,8 +757,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.keyNav = new Roo.KeyNav(this.view.el, {
             "up" : function(e){
-                Roo.log('up!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1');
-                return;
+                Roo.log('press up!!!!!!!!!!!!!!!!!!!!!!!');
                 this.inKeyMode = true;
                 this.selectPrev();
             },
@@ -773,15 +772,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             },
 
             "enter" : function(e){
-//                this.onViewClick();
+                this.onViewClick();
                 //return true;
-                this.collapse();
-                
-                if(this.fireEvent("specialkey", this, e)){
-                    this.onViewClick(false);
-                }
-                
-                return true;
             },
 
             "esc" : function(e){
@@ -789,13 +781,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             },
 
             "tab" : function(e){
-                Roo.log('run ??????????/ tab??????????');
-                this.collapse();
-                
-                if(this.fireEvent("specialkey", this, e)){
-                    this.onViewClick(false);
-                }
-                
+                this.onViewClick(false);
+                this.fireEvent("specialkey", this, e);
                 return true;
             },
 
