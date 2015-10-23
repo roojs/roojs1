@@ -753,6 +753,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store.on('load', this.onLoad, this);
         this.store.on('loadexception', this.onLoadException, this);
         
+        Roo.log('this.view!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         Roo.log(this.view);
         
         this.keyNav = new Roo.KeyNav(this.view.el, {
@@ -776,6 +777,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             forceKeyDown: true
         });
+        
         
         
         this.queryDelay = Math.max(this.queryDelay || 10,
