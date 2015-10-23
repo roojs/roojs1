@@ -959,11 +959,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.loading.hide();
         }
         
-        if(this.tickable){
-            this.onTickableFooterButtonClick(false, false, false);
+        if(!this.tickable){
+            this.collapse();
         }
-        
-        this.collapse();
         
         Roo.log(this.store.reader.jsonData);
         if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
