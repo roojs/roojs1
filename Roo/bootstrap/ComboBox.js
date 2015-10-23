@@ -772,12 +772,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 },
 
                 "enter" : function(e){
+//                    this.collapse();
+                
                     if(this.fireEvent("specialkey", this, e)){
                         this.onViewClick(false);
                     }
                     
-                    this.collapse();
-
                     return true;
                 },
 
@@ -786,12 +786,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 },
 
                 "tab" : function(e){
-    
-                    if(this.fireEvent("specialkey", this, e)){
-                        this.onViewClick(false);
-                    }
-                    
                     this.collapse();
+    
+//                    if(this.fireEvent("specialkey", this, e)){
+//                        this.onViewClick(false);
+//                    }
     
                     return true;
                 },
