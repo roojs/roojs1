@@ -785,6 +785,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             },
 
             "tab" : function(e){
+                Roo.log('run ??????????/ tab??????????');
                 this.collapse();
                 
                 if(this.fireEvent("specialkey", this, e)){
