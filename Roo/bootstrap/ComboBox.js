@@ -959,7 +959,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.loading.hide();
         }
         
-        if(this.tickable){
+        if(this.tickable && this.editable){
             return;
         }
         
