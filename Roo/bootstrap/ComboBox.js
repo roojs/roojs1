@@ -755,36 +755,36 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         Roo.log(this.view);
         
-        this.keyNav = new Roo.KeyNav(this.view.el, {
-            "up" : function(e){
-                Roo.log('press up!!!!!!!!!!!!!!!!!!!!!!!');
-                this.inKeyMode = true;
-                this.selectPrev();
-            },
-
-            "down" : function(e){
-                Roo.log('press down!!!!!!!!!!!!!!!!!!!!!!!');
-                if(!this.isExpanded()){
-                    this.onTriggerClick();
-                }else{
-                    this.inKeyMode = true;
-                    this.selectNext();
-                }
-            },
-
-            scope : this,
-
-            doRelay : function(foo, bar, hname){
-                Roo.log('doRelay!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-                Roo.log([foo, bar, hname]);
-//                if(hname == 'down' || this.scope.isExpanded()){
-//                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+//        this.keyNav = new Roo.KeyNav(this.view.el, {
+//            "up" : function(e){
+//                Roo.log('press up!!!!!!!!!!!!!!!!!!!!!!!');
+//                this.inKeyMode = true;
+//                this.selectPrev();
+//            },
+//
+//            "down" : function(e){
+//                Roo.log('press down!!!!!!!!!!!!!!!!!!!!!!!');
+//                if(!this.isExpanded()){
+//                    this.onTriggerClick();
+//                }else{
+//                    this.inKeyMode = true;
+//                    this.selectNext();
 //                }
-                return true;
-            },
-
-            forceKeyDown: true
-        });
+//            },
+//
+//            scope : this,
+//
+//            doRelay : function(foo, bar, hname){
+//                Roo.log('doRelay!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+//                Roo.log([foo, bar, hname]);
+////                if(hname == 'down' || this.scope.isExpanded()){
+////                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+////                }
+//                return true;
+//            },
+//
+//            forceKeyDown: true
+//        });
         
         
         this.queryDelay = Math.max(this.queryDelay || 10,
