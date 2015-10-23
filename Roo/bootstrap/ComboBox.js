@@ -340,7 +340,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 tag: 'input',
                 cls: 'select2-search-field-input',
             });
-        }
+        };
         
         var _this = this;
         

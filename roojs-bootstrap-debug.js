@@ -10957,9 +10957,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 tag: 'input',
                 cls: 'select2-search-field-input',
             });
-        }
+        };
         
         var _this = this;
+        
         Roo.each(buttons.cn, function(c){
             if (_this.size) {
                 c.cls += ' btn-' + _this.size;
@@ -11580,6 +11581,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         this.collapse();
+        
         Roo.log(this.store.reader.jsonData);
         if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
             // fixme
