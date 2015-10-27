@@ -1396,6 +1396,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }
                     Roo.log(q);
                     if(this.loadOnce && this.store.getCount() > 0){
+                        Roo.log('in');
                         this.selectedIndex = -1;
                         if(forceAll){
                             this.store.clearFilter();
