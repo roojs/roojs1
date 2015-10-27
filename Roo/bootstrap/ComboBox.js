@@ -1393,7 +1393,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         options.params.start = this.page * this.pageSize;
                     }
                     
-                    if(this.loadonce && this.store.getCount() == 0){
+                    if(this.loadonce && this.store.getCount() > 0){
                         this.selectedIndex = -1;
                         if(forceAll){
                             this.store.clearFilter();
