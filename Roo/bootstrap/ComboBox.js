@@ -1388,6 +1388,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         options.params.start = this.page * this.pageSize;
                     }
                     
+                    
                     this.store.load(options);
                     
                     /*
