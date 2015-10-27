@@ -925,7 +925,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(typeof(this.loading) !== 'undefined' && this.loading !== null){
             this.loading.hide();
         }
-        
+             
         if(this.store.getCount() > 0){
             this.expand();
             this.restrictHeight();
