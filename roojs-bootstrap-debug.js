@@ -11571,7 +11571,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }
             }
         }else{
-            this.restrictHeight();
             this.onEmptyResults();
         }
         
@@ -11851,6 +11850,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     onEmptyResults : function(){
         
         if(this.tickable && this.editable){
+            this.restrictHeight();
             return;
         }
         
