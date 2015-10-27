@@ -1326,7 +1326,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.tickable && this.editable){
             v = this.tickableInputEl().getValue();
         }
-        Roo.log(v);
+        
         this.doQuery(v);
     },
 
