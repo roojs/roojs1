@@ -928,12 +928,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 if(this.editable && !this.tickable){
                     this.inputEl().dom.select();
                 }
-                Roo.log(typeof(this.store.lastOptions));
+                
                 if(
                     !this.selectByValue(this.value, true) &&
                     this.autoFocus && 
                     (
-                        typeof(this.store.lastOptions) == 'undefined' ||
+                        !this.store.lastOptions ||
                         typeof(this.store.lastOptions.add) == 'undefined' || 
                         this.store.lastOptions.add != true
                     )
