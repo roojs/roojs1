@@ -265,9 +265,24 @@
     
     </span><span class="jsdoc-var">GMapContext</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_map </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.Map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">position </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.LatLng</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.latitude</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.longitude</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_map </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.Map</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">, {
+            </span><span class="jsdoc-var">center</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">zoom</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.zoom</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">mapTypeId</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.mapTypeId</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">mapTypeControl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.mapTypeControl</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">disableDoubleClickZoom</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.disableDoubleClickZoom</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">scrollwheel</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.scrollwheel</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">streetViewControl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.streetViewControl</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">locationName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.locationName</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">draggable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.draggable</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">enableAutocomplete</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.enableAutocomplete</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">enableReverseGeocode</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.enableReverseGeocode
+        </span><span class="jsdoc-syntax">});
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_marker </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.Marker</span><span class="jsdoc-syntax">({
-            </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">google.maps.LatLng</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.latitude</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.longitude</span><span class="jsdoc-syntax">),
+            </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">map</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_map</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.markerTitle</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">draggable</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.draggable
@@ -277,7 +292,7 @@
             </span><span class="jsdoc-var">map</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_map</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">marker</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_marker</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">circle</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">location</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">_marker.position</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">location</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">radius</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.radius</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">locationName</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.locationName</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">addressComponents</span><span class="jsdoc-syntax">: {

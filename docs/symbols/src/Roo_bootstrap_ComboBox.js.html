@@ -271,6 +271,11 @@
      */
     </span><span class="jsdoc-var">validClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;has-success&quot;</span><span class="jsdoc-syntax">,
     
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} loadonce  (true|false) load one time, then filter the records, default false
+     */
+    </span><span class="jsdoc-var">loadonce </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-comment">//private
     </span><span class="jsdoc-var">addicon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">editicon</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -308,7 +313,6 @@
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'form-group roo-combobox-tickable' </span><span class="jsdoc-comment">//input-group
         </span><span class="jsdoc-syntax">};
         
-        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">buttons </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tickable-buttons'</span><span class="jsdoc-syntax">,
@@ -336,7 +340,15 @@
             ]
         };
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">buttons.cn.unshift</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'select2-search-field-input'
+            </span><span class="jsdoc-syntax">});
+        }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">buttons.cn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.size</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">c.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' btn-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">_this.size</span><span class="jsdoc-syntax">;
@@ -753,59 +765,50 @@
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.store.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'loadexception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoadException</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
-</span><span class="jsdoc-comment">//        this.keyNav = new Roo.KeyNav(this.inputEl(), {
-//            &quot;up&quot; : function(e){
-//                this.inKeyMode = true;
-//                this.selectPrev();
-//            },
-//
-//            &quot;down&quot; : function(e){
-//                if(!this.isExpanded()){
-//                    this.onTriggerClick();
-//                }else{
-//                    this.inKeyMode = true;
-//                    this.selectNext();
-//                }
-//            },
-//
-//            &quot;enter&quot; : function(e){
-////                this.onViewClick();
-//                //return true;
-//                this.collapse();
-//                
-//                if(this.fireEvent(&quot;specialkey&quot;, this, e)){
-//                    this.onViewClick(false);
-//                }
-//                
-//                return true;
-//            },
-//
-//            &quot;esc&quot; : function(e){
-//                this.collapse();
-//            },
-//
-//            &quot;tab&quot; : function(e){
-//                this.collapse();
-//                
-//                if(this.fireEvent(&quot;specialkey&quot;, this, e)){
-//                    this.onViewClick(false);
-//                }
-//                
-//                return true;
-//            },
-//
-//            scope : this,
-//
-//            doRelay : function(foo, bar, hname){
-//                if(hname == 'down' || this.scope.isExpanded()){
-//                   return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
-//                }
-//                return true;
-//            },
-//
-//            forceKeyDown: true
-//        });
-        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.keyNav </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.KeyNav</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tickableInputEl</span><span class="jsdoc-syntax">(), {
+                </span><span class="jsdoc-string">&quot;up&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.inKeyMode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">this.selectPrev</span><span class="jsdoc-syntax">();
+                },
+
+                </span><span class="jsdoc-string">&quot;down&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.inKeyMode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+                    </span><span class="jsdoc-var">this.selectNext</span><span class="jsdoc-syntax">();
+                },
+
+                </span><span class="jsdoc-string">&quot;enter&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;specialkey&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)){
+                        </span><span class="jsdoc-var">this.onViewClick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                    }
+                    
+                    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                },
+
+                </span><span class="jsdoc-string">&quot;esc&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.onTickableFooterButtonClick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                },
+
+                </span><span class="jsdoc-string">&quot;tab&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;specialkey&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
+                    
+                    </span><span class="jsdoc-var">this.onTickableFooterButtonClick</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                    
+                    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                },
+
+                </span><span class="jsdoc-var">scope </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">,
+
+                </span><span class="jsdoc-var">doRelay </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">key</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.scope.isExpanded</span><span class="jsdoc-syntax">()){
+                       </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">Roo.KeyNav.prototype.doRelay.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">arguments</span><span class="jsdoc-syntax">);
+                    }
+                    </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
+                },
+
+                </span><span class="jsdoc-var">forceKeyDown</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+            </span><span class="jsdoc-syntax">});
+        }
         
         </span><span class="jsdoc-var">this.queryDelay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.queryDelay </span><span class="jsdoc-syntax">|| 10,
                 </span><span class="jsdoc-var">this.mode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'local' </span><span class="jsdoc-syntax">? 10 : 250);
@@ -815,6 +818,10 @@
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.typeAhead</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.taTask </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.DelayedTask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.onTypeAhead</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editable </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.tickableInputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;keyup&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onKeyUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
         
     },
@@ -921,7 +928,7 @@
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.getCount</span><span class="jsdoc-syntax">() &gt; 0){
             </span><span class="jsdoc-var">this.expand</span><span class="jsdoc-syntax">();
-</span><span class="jsdoc-comment">//            this.restrictHeight();
+            </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.lastQuery </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">this.allQuery</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editable </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.select</span><span class="jsdoc-syntax">();
@@ -929,8 +936,12 @@
                 
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
                     !</span><span class="jsdoc-var">this.selectByValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) &amp;&amp;
-                    </span><span class="jsdoc-var">this.autoFocus </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.lastOptions.add</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| 
-                    </span><span class="jsdoc-var">this.store.lastOptions.add </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)
+                    </span><span class="jsdoc-var">this.autoFocus </span><span class="jsdoc-syntax">&amp;&amp; 
+                    (
+                        !</span><span class="jsdoc-var">this.store.lastOptions </span><span class="jsdoc-syntax">||
+                        </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.lastOptions.add</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| 
+                        </span><span class="jsdoc-var">this.store.lastOptions.add </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-keyword">true
+                    </span><span class="jsdoc-syntax">)
                 ){
                     </span><span class="jsdoc-var">this.select</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
                 }
@@ -943,6 +954,7 @@
                 }
             }
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.onEmptyResults</span><span class="jsdoc-syntax">();
         }
         
@@ -957,7 +969,12 @@
             </span><span class="jsdoc-var">this.loading.hide</span><span class="jsdoc-syntax">();
         }
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tickable </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.reader.jsonData</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store.reader.jsonData.errorMsg</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// fixme
@@ -1158,7 +1175,7 @@
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
             
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.nodeName.toLowerCase</span><span class="jsdoc-syntax">() != </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">e.getTarget</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.nodeName.toLowerCase</span><span class="jsdoc-syntax">() != </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
             
@@ -1169,6 +1186,11 @@
                 
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">_this.valueField</span><span class="jsdoc-syntax">] == </span><span class="jsdoc-var">r.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">_this.valueField</span><span class="jsdoc-syntax">]){
                     </span><span class="jsdoc-var">_this.tickItems.splice</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">, 1);
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">view </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.view.getNodes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)[0])</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+                    }
+                    
                     </span><span class="jsdoc-var">rm </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
                     </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                 }
@@ -1179,6 +1201,11 @@
             }
             
             </span><span class="jsdoc-var">this.tickItems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.data</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">view </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.view.getNodes</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">)[0])</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.checked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            }
+                    
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
@@ -1205,6 +1232,11 @@
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">onEmptyResults </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tickable </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
     },
 
@@ -1246,7 +1278,10 @@
         </span><span class="jsdoc-var">this.view.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scrollIntoView </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.view.getNode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.multiple </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-comment">/*
+             * el &amp;&amp; !this.multiple &amp;&amp; !this.tickable // not sure why we disable multiple before..
+             */
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.list.scrollChildIntoView</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
             }
         }
@@ -1291,7 +1326,14 @@
 
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">initQuery </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-var">this.doQuery</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">());
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getRawValue</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tickable </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tickableInputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getValue</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-var">this.doQuery</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">);
     },
 
     </span><span class="jsdoc-comment">// private
@@ -1352,7 +1394,19 @@
                         </span><span class="jsdoc-var">options.params.start </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.page </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">;
                     }
                     
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadonce </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.store.getCount</span><span class="jsdoc-syntax">() &gt; 0){
+                        </span><span class="jsdoc-var">this.selectedIndex </span><span class="jsdoc-syntax">= -1;
+                        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">forceAll</span><span class="jsdoc-syntax">){
+                            </span><span class="jsdoc-var">this.store.clearFilter</span><span class="jsdoc-syntax">();
+                        }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                            </span><span class="jsdoc-var">this.store.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">);
+                        }
+                        </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">();
+                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    }
+                    
                     </span><span class="jsdoc-var">this.store.load</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">options</span><span class="jsdoc-syntax">);
+                    
                     </span><span class="jsdoc-comment">/*
                      *  this code will make the page width larger, at the beginning, the list not align correctly, 
                      *  we should expand the list on onLoad
@@ -1396,6 +1450,12 @@
             </span><span class="jsdoc-var">this.okBtn.hide</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.cancelBtn.hide</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.trigger.show</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.tickableInputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.tickableInputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.blur</span><span class="jsdoc-syntax">();
+            }
+            
         }
         
         </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.collapseIf</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -1451,6 +1511,10 @@
             </span><span class="jsdoc-var">this.okBtn.show</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.cancelBtn.show</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.trigger.hide</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">this.tickableInputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.focus</span><span class="jsdoc-syntax">();
+            }
             
         }
         
@@ -1778,6 +1842,15 @@
         
         </span><span class="jsdoc-var">this.markInvalid</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">tickableInputEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.tickable </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.select2-search-field-input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
     }
     
     

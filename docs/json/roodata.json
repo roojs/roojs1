@@ -13848,6 +13848,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -14146,6 +14152,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -14777,6 +14789,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "click",
      "sig": "function (e)\n{\n\n}",
      "type": "function",
@@ -15131,6 +15149,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -15451,6 +15475,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -16097,6 +16127,12 @@
      "desc": "Fires when the element is checked or unchecked."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -16620,6 +16656,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -17100,6 +17142,16 @@
      "memberOf": ""
     },
     {
+     "name": "loadonce",
+     "type": "Boolean",
+     "desc": "load one time, then filter the records, default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "triggerClass",
      "type": "String",
      "desc": "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.",
@@ -17487,6 +17539,12 @@
      "sig": "function (_self, newValue, oldValue)\n{\n\n}",
      "type": "function",
      "desc": "Fires just before the field blurs if the field value has changed."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "collapse",
@@ -18538,6 +18596,12 @@
      "desc": "Fires just before the field blurs if the field value has changed."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "collapse",
      "sig": "function (combo)\n{\n\n}",
      "type": "function",
@@ -19575,6 +19639,12 @@
      "desc": "Fires just before the field blurs if the field value has changed."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "collapse",
      "sig": "function (combo)\n{\n\n}",
      "type": "function",
@@ -20067,6 +20137,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -20479,6 +20555,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -21124,6 +21206,12 @@
      "desc": "Fires just before the field blurs if the field value has changed."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -21544,6 +21632,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -21908,6 +22002,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "clientvalidation",
@@ -22318,6 +22418,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "click",
      "sig": "function (e)\n{\n\n}",
      "type": "function",
@@ -22642,6 +22748,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -23263,6 +23375,12 @@
      "desc": "Fires before the textarea is updated with content from the editor iframe. Return false\nto cancel the sync."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -23747,6 +23865,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "click",
@@ -24314,6 +24438,12 @@
      "desc": "Fires just before the field blurs if the field value has changed."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -24605,6 +24735,354 @@
     }
    ]
   },
+  "Roo.bootstrap.LayoutMasonry": {
+   "props": [
+    {
+     "name": "isFitWidth",
+     "type": "Boolean",
+     "desc": "- resize the width..",
+     "memberOf": ""
+    },
+    {
+     "name": "isOriginLeft",
+     "type": "Boolean",
+     "desc": "= left align?",
+     "memberOf": ""
+    },
+    {
+     "name": "isOriginTop",
+     "type": "Boolean",
+     "desc": "= top align?",
+     "memberOf": ""
+    },
+    {
+     "name": "isLayoutInstant",
+     "type": "Boolean",
+     "desc": "= no animation?",
+     "memberOf": ""
+    },
+    {
+     "name": "isResizingContainer",
+     "type": "Boolean",
+     "desc": "= not sure if this is used..",
+     "memberOf": ""
+    },
+    {
+     "name": "columnWidth",
+     "type": "Number",
+     "desc": "width of the columns",
+     "memberOf": ""
+    },
+    {
+     "name": "padHeight",
+     "type": "Number",
+     "desc": "padding below box..",
+     "memberOf": ""
+    },
+    {
+     "name": "cls",
+     "type": "String",
+     "desc": "css class",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "style",
+     "type": "String",
+     "desc": "any extra css",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "xattr",
+     "type": "Object",
+     "desc": "extra attributes to add to 'element' (used by builder to store stuff.)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "can_build_overlaid",
+     "type": "Boolean",
+     "desc": "True if element can be rebuild from a HTML page",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "dataId",
+     "type": "string",
+     "desc": "cutomer id",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "name",
+     "type": "string",
+     "desc": "Specifies name attribute",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "tooltip",
+     "type": "string",
+     "desc": "Text for the tooltip",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "container_method",
+     "type": "string",
+     "desc": "method to fetch parents container element (used by NavHeaderbar -  getHeaderChildContainer)",
+     "memberOf": "Roo.bootstrap.Component"
+    },
+    {
+     "name": "disableClass",
+     "type": "String",
+     "desc": "CSS class added to the component when it is disabled (defaults to \"x-item-disabled\").",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "allowDomMove",
+     "type": "Boolean",
+     "desc": "Whether the component can move the Dom node when rendering (defaults to true).",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "hideMode",
+     "type": "String",
+     "desc": "How this component should hidden. Supported values are\n\"visibility\" (css visibility), \"offsets\" (negative offset position) and\n\"display\" (css display) - defaults to \"display\".",
+     "memberOf": "Roo.Component",
+     "optvals": [
+      "display",
+      "visibility"
+     ]
+    },
+    {
+     "name": "actionMode",
+     "type": "String",
+     "desc": "which property holds the element that used for  hide() / show() / disable() / enable()\ndefault is 'el'",
+     "memberOf": "Roo.Component"
+    },
+    {
+     "name": "listeners",
+     "type": "Object",
+     "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
+     "memberOf": "Roo.util.Observable"
+    }
+   ],
+   "events": [
+    {
+     "name": "beforedestroy",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is destroyed. Return false to stop the destroy."
+    },
+    {
+     "name": "beforehide",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is hidden. Return false to stop the hide."
+    },
+    {
+     "name": "beforerender",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is rendered. Return false to stop the render."
+    },
+    {
+     "name": "beforeshow",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
+     "name": "destroy",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is destroyed."
+    },
+    {
+     "name": "disable",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is disabled."
+    },
+    {
+     "name": "enable",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is enabled."
+    },
+    {
+     "name": "hide",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is hidden."
+    },
+    {
+     "name": "render",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is rendered."
+    },
+    {
+     "name": "show",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires after the component is shown."
+    }
+   ],
+   "methods": [
+    {
+     "name": "addEvents",
+     "sig": "(Object object)",
+     "type": "function",
+     "desc": "Used to define events on this Observable"
+    },
+    {
+     "name": "addListener",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this component"
+    },
+    {
+     "name": "capture",
+     "sig": "(Observable o, Function fn, Object scope)",
+     "type": "function",
+     "desc": "Starts capture on the specified Observable. All events will be passed\nto the supplied function with the event name + standard signature of the event\n<b>before</b> the event is fired. If the supplied function returns false,\nthe event will not fire."
+    },
+    {
+     "name": "destroy",
+     "sig": "()",
+     "type": "function",
+     "desc": "Destroys this component by purging any event listeners, removing the component's element from the DOM,\nremoving the component from its {@link Roo.Container} (if applicable) and unregistering it from {@link Roo.ComponentMgr}."
+    },
+    {
+     "name": "disable",
+     "sig": "()",
+     "type": "function",
+     "desc": "Disable this component."
+    },
+    {
+     "name": "enable",
+     "sig": "()",
+     "type": "function",
+     "desc": "Enable this component."
+    },
+    {
+     "name": "fireEvent",
+     "sig": "(String eventName, Object... args)",
+     "type": "function",
+     "desc": "Fires the specified event with the passed parameters (minus the event name)."
+    },
+    {
+     "name": "focus",
+     "sig": "(Boolean selectText)",
+     "type": "function",
+     "desc": "Try to focus this component."
+    },
+    {
+     "name": "getChildContainer",
+     "sig": "()",
+     "type": "function",
+     "desc": "Fetch the element to add children to"
+    },
+    {
+     "name": "getEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the underlying {@link Roo.Element}."
+    },
+    {
+     "name": "getId",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns the id of this component."
+    },
+    {
+     "name": "hasListener",
+     "sig": "(String eventName)",
+     "type": "function",
+     "desc": "Checks to see if this object has any listeners for a specified event"
+    },
+    {
+     "name": "hide",
+     "sig": "()",
+     "type": "function",
+     "desc": "Hide this component."
+    },
+    {
+     "name": "initEvents",
+     "sig": "()",
+     "type": "function",
+     "desc": "Initialize Events for the element"
+    },
+    {
+     "name": "isVisible",
+     "sig": "()",
+     "type": "function",
+     "desc": "Returns true if this component is visible."
+    },
+    {
+     "name": "on",
+     "sig": "(String eventName, Function handler, Object scope, Object options)",
+     "type": "function",
+     "desc": "Appends an event handler to this element (shorthand for addListener)"
+    },
+    {
+     "name": "purgeListeners",
+     "sig": "()",
+     "type": "function",
+     "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "releaseCapture",
+     "sig": "(Observable o)",
+     "type": "function",
+     "desc": "Removes <b>all</b> added captures from the Observable."
+    },
+    {
+     "name": "removeListener",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener"
+    },
+    {
+     "name": "render",
+     "sig": "(String/HTMLElement/Element container)",
+     "type": "function",
+     "desc": "If this is a lazy rendering component, render it to its container element."
+    },
+    {
+     "name": "setDisabled",
+     "sig": "(Boolean disabled)",
+     "type": "function",
+     "desc": "Convenience function for setting disabled/enabled by boolean."
+    },
+    {
+     "name": "setVisible",
+     "sig": "(Boolean visible)",
+     "type": "function",
+     "desc": "Convenience function to hide or show this component by boolean."
+    },
+    {
+     "name": "show",
+     "sig": "()",
+     "type": "function",
+     "desc": "Show this component."
+    },
+    {
+     "name": "tooltipEl",
+     "sig": "()",
+     "type": "function",
+     "desc": "Fetch the element to display the tooltip on."
+    },
+    {
+     "name": "un",
+     "sig": "(String eventName, Function handler, Object scope)",
+     "type": "function",
+     "desc": "Removes a listener (shorthand for removeListener)"
+    }
+   ]
+  },
   "Roo.bootstrap.Link": {
    "props": [
     {
@@ -24760,6 +25238,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "click",
@@ -25182,6 +25666,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -25539,6 +26029,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before this menu is displayed"
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "click",
@@ -25903,6 +26399,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "click",
      "sig": "function (e)\n{\n\n}",
      "type": "function",
@@ -26225,6 +26727,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -26571,6 +27079,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -26841,6 +27355,18 @@
      "memberOf": ""
     },
     {
+     "name": "html",
+     "type": "String",
+     "desc": "- the body of the dialog (for simple ones) - you can also use template..",
+     "memberOf": ""
+    },
+    {
+     "name": "tmpl",
+     "type": "Roo.Template",
+     "desc": "- a template with variables. to use it, add a handler in show:method  adn",
+     "memberOf": ""
+    },
+    {
      "name": "specificTitle",
      "type": "Boolean",
      "desc": "default false",
@@ -26990,6 +27516,12 @@
      "desc": "The raw btnclick event for the button"
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -27038,6 +27570,12 @@
      "sig": "(String eventName, Function handler, Object scope, Object options)",
      "type": "function",
      "desc": "Appends an event handler to this component"
+    },
+    {
+     "name": "applyBody",
+     "sig": "(Obj data)",
+     "type": "function",
+     "desc": "Set the body of the Dialog using the template"
     },
     {
      "name": "capture",
@@ -27148,10 +27686,22 @@
      "desc": "If this is a lazy rendering component, render it to its container element."
     },
     {
+     "name": "setBody",
+     "sig": "(String str)",
+     "type": "function",
+     "desc": "Set the body of the Dialog"
+    },
+    {
      "name": "setDisabled",
      "sig": "(Boolean disabled)",
      "type": "function",
      "desc": "Convenience function for setting disabled/enabled by boolean."
+    },
+    {
+     "name": "setTitle",
+     "sig": "(String str)",
+     "type": "function",
+     "desc": "Set the title of the Dialog"
     },
     {
      "name": "setVisible",
@@ -27553,6 +28103,12 @@
      "sig": "function (_self, newValue, oldValue)\n{\n\n}",
      "type": "function",
      "desc": "Fires just before the field blurs if the field value has changed."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -27996,6 +28552,12 @@
      "sig": "function (_self, selected, prev)\n{\n\n}",
      "type": "function",
      "desc": "Fires when the active item changes"
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -28452,6 +29014,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -28837,6 +29405,12 @@
      "desc": "Fires when the active item active state changes"
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "click",
      "sig": "function (e)\n{\n\n}",
      "type": "function",
@@ -29141,6 +29715,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -29528,6 +30108,12 @@
      "desc": "Fires when the active item active state changes"
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "click",
      "sig": "function (e)\n{\n\n}",
      "type": "function",
@@ -29899,6 +30485,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -30197,6 +30789,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -30509,6 +31107,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -30847,6 +31451,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "click",
@@ -31246,6 +31856,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -31556,6 +32172,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -31904,6 +32526,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -32520,6 +33148,12 @@
      "desc": "Fires when the element is checked or unchecked."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -32934,6 +33568,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -33232,6 +33872,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -33655,6 +34301,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -34013,6 +34665,12 @@
      "sig": "function (_self, state)\n{\n\n}",
      "type": "function",
      "desc": "Fires when the active status changes"
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -34482,6 +35140,12 @@
      "sig": "function (_self, el, rowIndex, columnIndex, e)\n{\n\n}",
      "type": "function",
      "desc": "Fires when a cell is double clicked"
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -35183,6 +35847,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -35573,6 +36243,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -35895,6 +36571,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -36496,6 +37178,12 @@
      "sig": "function (_self, newValue, oldValue)\n{\n\n}",
      "type": "function",
      "desc": "Fires just before the field blurs if the field value has changed."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -37163,6 +37851,12 @@
      "sig": "function (_self, newValue, oldValue)\n{\n\n}",
      "type": "function",
      "desc": "Fires just before the field blurs if the field value has changed."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -37866,6 +38560,12 @@
      "desc": "Fires just before the field blurs if the field value has changed."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -38309,6 +39009,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -38653,6 +39359,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -38979,6 +39691,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -39376,6 +40094,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "click",
      "sig": "function (e)\n{\n\n}",
      "type": "function",
@@ -39727,6 +40451,12 @@
      "desc": "Fires before this menu is displayed"
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "click",
      "sig": "function (_self, e)\n{\n\n}",
      "type": "function",
@@ -40031,6 +40761,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -64808,6 +65544,12 @@
      "desc": "Fires before the component is shown.  Return false to stop the show."
     },
     {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -65106,6 +65848,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -65434,6 +66182,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",
@@ -72227,6 +72981,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
+    },
+    {
+     "name": "childrenrendered",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the children have been rendered.."
     },
     {
      "name": "destroy",

@@ -28,6 +28,20 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.Component </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.Component.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+       
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event childrenrendered
+         * Fires when the children have been rendered..
+         * @param {Roo.bootstrap.Component} this
+         */
+        </span><span class="jsdoc-string">&quot;childrenrendered&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        
+        
+        
+    </span><span class="jsdoc-syntax">});
+    
+    
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.BoxComponent</span><span class="jsdoc-syntax">,  {
@@ -316,11 +330,11 @@
         }
         
         </span><span class="jsdoc-var">cn.items </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">nitems</span><span class="jsdoc-syntax">;
-	
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'childrenrendered'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">;
-    }
-    
-    
+    } 
     
     
 });

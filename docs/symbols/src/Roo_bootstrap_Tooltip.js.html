@@ -45,6 +45,7 @@
     </span><span class="jsdoc-var">enter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">dom </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.getTarget</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-comment">//Roo.log(['enter',dom]);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.fly</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentEl</span><span class="jsdoc-syntax">) {
@@ -65,12 +66,26 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentTip.el</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.currentTip.el.hide</span><span class="jsdoc-syntax">(); </span><span class="jsdoc-comment">// force hiding...
         </span><span class="jsdoc-syntax">}    
-        </span><span class="jsdoc-comment">//Roo.log(el);
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">)) { </span><span class="jsdoc-comment">// parents who have tip?
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        </span><span class="jsdoc-var">this.currentEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.currentTip.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-comment">//Roo.log(ev);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bindEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-comment">// you can not look for children, as if el is the body.. then everythign is the child..
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">)) { </span><span class="jsdoc-comment">//
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;[tooltip]&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements.length</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">// is the mouse over this child...?
+            </span><span class="jsdoc-var">bindEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;[tooltip]&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ev.getXY</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">bindEl.getRegion</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.contains</span><span class="jsdoc-syntax">( { </span><span class="jsdoc-var">top </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1] ,</span><span class="jsdoc-var">right </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] , </span><span class="jsdoc-var">bottom </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[1], </span><span class="jsdoc-var">left </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0]})) {
+                </span><span class="jsdoc-comment">//Roo.log(&quot;not in region.&quot;);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-comment">//Roo.log(&quot;child element over..&quot;);
+            
+        </span><span class="jsdoc-syntax">}
+        </span><span class="jsdoc-var">this.currentEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bindEl</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.currentTip.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bindEl</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.currentRegion </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Region.getRegion</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dom</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.currentTip.enter</span><span class="jsdoc-syntax">();
         
@@ -176,8 +191,8 @@
         </span><span class="jsdoc-var">this.hoverState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'out'</span><span class="jsdoc-syntax">;
          </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.delay </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.delay.hide</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.hide</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">return 
-        </span><span class="jsdoc-syntax">}
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.timeout </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">setTimeout</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
@@ -187,7 +202,7 @@
                 </span><span class="jsdoc-var">_t.hide</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">Roo.bootstrap.Tooltip.currentEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
             }
-        }, </span><span class="jsdoc-var">delay</span><span class="jsdoc-syntax">)
+        }, </span><span class="jsdoc-var">delay</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">show </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
@@ -197,7 +212,10 @@
         }
         </span><span class="jsdoc-comment">// set content.
         //Roo.log([this.bindEl, this.bindEl.attr('tooltip')]);
-        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.tooltip-inner'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bindEl.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tip </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.bindEl.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">this.bindEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;[tooltip]&quot;</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tooltip'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.tooltip-inner'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tip</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'fade'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'top'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">]);
         
