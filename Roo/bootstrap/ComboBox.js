@@ -1390,7 +1390,20 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         options.params.start = this.page * this.pageSize;
                     }
                     
-                    this.store.load(options);
+                    if(!this.tickable || !this.tickableFilter){
+                        this.store.load(options);
+                        return;
+                    }
+                    
+                    this.selectedIndex = -1;
+                    
+                    if(forceAll){
+                        this.store.clearFilter();
+                    }else{
+                        this.store.filter(this.displayField, q);
+                    }
+                    
+                    this.onLoad();
                     
                     /*
                      *  this code will make the page width larger, at the beginning, the list not align correctly, 
