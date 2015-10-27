@@ -1394,6 +1394,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }
                     
                     Roo.log('when load');
+                    
                     Roo.log(this.store.getCount());
                     
                     this.store.load(options);
