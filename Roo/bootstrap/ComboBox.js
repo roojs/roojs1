@@ -1405,12 +1405,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     
                     this.onLoad();
                     
-                    /*
-                     *  this code will make the page width larger, at the beginning, the list not align correctly, 
-                     *  we should expand the list on onLoad
-                     *  so command out it
-                     */
-//                    this.expand();
                 }
             }else{
                 this.selectedIndex = -1;
