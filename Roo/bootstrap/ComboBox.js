@@ -931,8 +931,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 
                 if(
                     !this.selectByValue(this.value, true) &&
-                    this.autoFocus && (typeof(this.store.lastOptions.add) == 'undefined' || 
-                    this.store.lastOptions.add != true)
+                    this.autoFocus && 
+                    (
+                        typeof(this.store.lastOptions) == 'undefined'
+                        typeof(this.store.lastOptions.add) == 'undefined' || 
+                        this.store.lastOptions.add != true
+                    )
                 ){
                     this.select(0, true);
                 }
