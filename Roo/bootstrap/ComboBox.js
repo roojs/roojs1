@@ -929,7 +929,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     this.inputEl().dom.select();
                 }
                 Roo.log(this.selectByValue(this.value, true));
-                Roo.log(autoFocus);
+                Roo.log(this.autoFocus);
                 Roo.log(this.store.lastOptions);
                 if(
                     !this.selectByValue(this.value, true) &&
