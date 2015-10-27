@@ -1388,7 +1388,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         options.params.start = this.page * this.pageSize;
                     }
                     
-                    
                     this.store.load(options);
                     /*
                      *  this code will make the page width larger, at the beginning, the list not align correctly, 
