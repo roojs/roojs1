@@ -284,8 +284,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     btnPosition : 'right',
     triggerList : true,
     showToggleBtn : true,
-    
-    tickableFilter : false,
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
@@ -1390,21 +1388,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         options.params.start = this.page * this.pageSize;
                     }
                     
-                    if(!this.tickable || !this.tickableFilter){
-                        this.store.load(options);
-                        return;
-                    }
-                    
-                    this.selectedIndex = -1;
-                    
-                    if(forceAll){
-                        this.store.clearFilter();
-                    }else{
-                        this.store.filter(this.displayField, q);
-                    }
-                    
-                    this.onLoad();
-                    
+                    this.store.load(options);
+                    /*
+                     *  this code will make the page width larger, at the beginning, the list not align correctly, 
+                     *  we should expand the list on onLoad
+                     *  so command out it
+                     */
+//                    this.expand();
                 }
             }else{
                 this.selectedIndex = -1;
