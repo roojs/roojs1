@@ -10888,6 +10888,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     validClass : "has-success",
     
+    /**
+     * @cfg {Boolean} loadonce  (true|false) load one time, then filter the records, default false
+     */
+    loadonce : false,
+    
     //private
     addicon : false,
     editicon: false,
@@ -11548,8 +11553,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 
                 if(
                     !this.selectByValue(this.value, true) &&
-                    this.autoFocus && (typeof(this.store.lastOptions.add) == 'undefined' || 
-                    this.store.lastOptions.add != true)
+                    this.autoFocus && 
+                    (
+                        !this.store.lastOptions ||
+                        typeof(this.store.lastOptions.add) == 'undefined' || 
+                        this.store.lastOptions.add != true
+                    )
                 ){
                     this.select(0, true);
                 }
@@ -11562,6 +11571,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }
             }
         }else{
+            this.restrictHeight();
             this.onEmptyResults();
         }
         
@@ -12001,7 +12011,19 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         options.params.start = this.page * this.pageSize;
                     }
                     
+                    if(this.loadonce && this.store.getCount() > 0){
+                        this.selectedIndex = -1;
+                        if(forceAll){
+                            this.store.clearFilter();
+                        }else{
+                            this.store.filter(this.displayField, q);
+                        }
+                        this.onLoad();
+                        return;
+                    }
+                    
                     this.store.load(options);
+                    
                     /*
                      *  this code will make the page width larger, at the beginning, the list not align correctly, 
                      *  we should expand the list on onLoad
