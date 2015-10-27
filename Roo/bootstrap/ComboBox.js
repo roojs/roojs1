@@ -1370,7 +1370,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         q = qe.query;
         
         forceAll = qe.forceAll;
-        if(forceAll === true || (q.length >= this.minChars) || (this.tickable && this.editable)){
+        if(forceAll === true || (q.length >= this.minChars)){
             
             this.hasQuery = true;
             
