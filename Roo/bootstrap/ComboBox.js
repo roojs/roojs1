@@ -271,6 +271,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     validClass : "has-success",
     
+    /**
+     * @cfg {Boolean} loadonce  (true|false) load one time, then filter the records, default false
+     */
+    loadonce : false,
+    
     //private
     addicon : false,
     editicon: false,
