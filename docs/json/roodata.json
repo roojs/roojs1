@@ -17142,7 +17142,7 @@
      "memberOf": ""
     },
     {
-     "name": "loadonce",
+     "name": "loadOnce",
      "type": "Boolean",
      "desc": "load one time, then filter the records, default false",
      "memberOf": "",

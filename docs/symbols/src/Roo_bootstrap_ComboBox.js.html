@@ -272,9 +272,9 @@
     </span><span class="jsdoc-var">validClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;has-success&quot;</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">/**
-     * @cfg {Boolean} loadonce  (true|false) load one time, then filter the records, default false
+     * @cfg {Boolean} loadOnce  (true|false) load one time, then filter the records, default false
      */
-    </span><span class="jsdoc-var">loadonce </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">loadOnce </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-comment">//private
     </span><span class="jsdoc-var">addicon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -954,7 +954,6 @@
                 }
             }
         }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-            </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.onEmptyResults</span><span class="jsdoc-syntax">();
         }
         
@@ -1234,6 +1233,7 @@
     </span><span class="jsdoc-var">onEmptyResults </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tickable </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.editable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.restrictHeight</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
@@ -1394,7 +1394,7 @@
                         </span><span class="jsdoc-var">options.params.start </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.page </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.pageSize</span><span class="jsdoc-syntax">;
                     }
                     
-                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadonce </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.store.getCount</span><span class="jsdoc-syntax">() &gt; 0){
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadOnce </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.store.getCount</span><span class="jsdoc-syntax">() &gt; 0){
                         </span><span class="jsdoc-var">this.selectedIndex </span><span class="jsdoc-syntax">= -1;
                         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">forceAll</span><span class="jsdoc-syntax">){
                             </span><span class="jsdoc-var">this.store.clearFilter</span><span class="jsdoc-syntax">();

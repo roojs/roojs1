@@ -10889,9 +10889,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     validClass : "has-success",
     
     /**
-     * @cfg {Boolean} loadonce  (true|false) load one time, then filter the records, default false
+     * @cfg {Boolean} loadOnce  (true|false) load one time, then filter the records, default false
      */
-    loadonce : false,
+    loadOnce : false,
     
     //private
     addicon : false,
@@ -12011,7 +12011,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         options.params.start = this.page * this.pageSize;
                     }
                     
-                    if(this.loadonce && this.store.getCount() > 0){
+                    if(this.loadOnce && this.store.getCount() > 0){
                         this.selectedIndex = -1;
                         if(forceAll){
                             this.store.clearFilter();
