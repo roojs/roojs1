@@ -2536,6 +2536,7 @@ if(opt.anim.isAnimated()){
                 this.dom[prop] = value;
             }else{
                 var to = prop == "scrollLeft" ? [value, this.dom.scrollTop] : [this.dom.scrollLeft, value];
+                Roo.log(to);
                 this.anim({scroll: {"to": to}}, this.preanim(arguments, 2), 'scroll');
             }
             return this;
