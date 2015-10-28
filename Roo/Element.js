@@ -320,6 +320,7 @@ if(opt.anim.isAnimated()){
             var cb = ct + ch;
             var cr = cl + c.clientWidth;
 
+
             if(t < ct){
                 c.scrollTop = t;
             }else if(b > cb){
