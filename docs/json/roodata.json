@@ -17142,16 +17142,6 @@
      "memberOf": ""
     },
     {
-     "name": "loadOnce",
-     "type": "Boolean",
-     "desc": "load one time, then filter the records, default false",
-     "memberOf": "",
-     "optvals": [
-      "true",
-      "false"
-     ]
-    },
-    {
      "name": "triggerClass",
      "type": "String",
      "desc": "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.",
