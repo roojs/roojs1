@@ -243,6 +243,8 @@ if(opt.anim.isAnimated()){
 
         // private legacy anim prep
         preanim : function(a, i){
+            Roo.log(a);
+            Roo.log(i);
             return !a[i] ? false : (typeof a[i] == "object" ? a[i]: {duration: a[i+1], callback: a[i+2], easing: a[i+3]});
         },
 
