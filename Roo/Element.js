@@ -326,7 +326,6 @@ if(opt.anim.isAnimated()){
             }else if(b > cb){
                 c.scrollTop = b-ch;
             }
-            
 
             if(hscroll !== false){
                 if(l < cl){
