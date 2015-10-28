@@ -243,8 +243,6 @@ if(opt.anim.isAnimated()){
 
         // private legacy anim prep
         preanim : function(a, i){
-            Roo.log(a);
-            Roo.log(i);
             return !a[i] ? false : (typeof a[i] == "object" ? a[i]: {duration: a[i+1], callback: a[i+2], easing: a[i+3]});
         },
 
@@ -2533,13 +2531,10 @@ if(opt.anim.isAnimated()){
 
         scrollTo : function(side, value, animate){
             var prop = side.toLowerCase() == "left" ? "scrollLeft" : "scrollTop";
-            Roo.log(prop);
             if(!animate || !A){
                 this.dom[prop] = value;
             }else{
                 var to = prop == "scrollLeft" ? [value, this.dom.scrollTop] : [this.dom.scrollLeft, value];
-                Roo.log(to);
-                Roo.log(this.preanim(arguments, 2));
                 this.anim({scroll: {"to": to}}, this.preanim(arguments, 2), 'scroll');
             }
             return this;
