@@ -2531,6 +2531,7 @@ if(opt.anim.isAnimated()){
 
         scrollTo : function(side, value, animate){
             var prop = side.toLowerCase() == "left" ? "scrollLeft" : "scrollTop";
+            Roo.log(prop);
             if(!animate || !A){
                 this.dom[prop] = value;
             }else{
