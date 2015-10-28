@@ -10888,11 +10888,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     validClass : "has-success",
     
-    /**
-     * @cfg {Boolean} loadOnce  (true|false) load one time, then filter the records, default false
-     */
-    loadOnce : false,
-    
     //private
     addicon : false,
     editicon: false,
@@ -11542,7 +11537,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(typeof(this.loading) !== 'undefined' && this.loading !== null){
             this.loading.hide();
         }
-        
+             
         if(this.store.getCount() > 0){
             this.expand();
             this.restrictHeight();
@@ -12002,6 +11997,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }
                     this.onLoad();
                 }else{
+                    
                     this.store.baseParams[this.queryParam] = q;
                     
                     var options = {params : this.getParams(q)};
@@ -12009,17 +12005,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     if(this.loadNext){
                         options.add = true;
                         options.params.start = this.page * this.pageSize;
-                    }
-                    
-                    if(this.loadOnce && this.store.getCount() > 0){
-                        this.selectedIndex = -1;
-                        if(forceAll){
-                            this.store.clearFilter();
-                        }else{
-                            this.store.filter(this.displayField, q);
-                        }
-                        this.onLoad();
-                        return;
                     }
                     
                     this.store.load(options);
