@@ -309,7 +309,7 @@ if(opt.anim.isAnimated()){
                 t = o[1],
                 b = t+el.offsetHeight,
                 r = l+el.offsetWidth;
-
+            Roo.log(o);
             var ch = c.clientHeight;
             var ct = parseInt(c.scrollTop, 10);
             var cl = parseInt(c.scrollLeft, 10);
