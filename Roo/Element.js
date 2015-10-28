@@ -301,7 +301,6 @@ if(opt.anim.isAnimated()){
          * @return {Roo.Element} this
          */
         scrollIntoView : function(container, hscroll){
-            Roo.log('scrollIntoView!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
             var c = Roo.getDom(container) || document.body;
             var el = this.dom;
 
@@ -310,16 +309,12 @@ if(opt.anim.isAnimated()){
                 t = o[1],
                 b = t+el.offsetHeight,
                 r = l+el.offsetWidth;
-            Roo.log(o);
-            Roo.log([el.offsetHeight, el.offsetWidth]);
+
             var ch = c.clientHeight;
-            Roo.log(ch);
             var ct = parseInt(c.scrollTop, 10);
             var cl = parseInt(c.scrollLeft, 10);
-            Roo.log([ct, cl]);
             var cb = ct + ch;
             var cr = cl + c.clientWidth;
-
 
             if(t < ct){
                 c.scrollTop = t;
