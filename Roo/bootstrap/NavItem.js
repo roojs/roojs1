@@ -279,9 +279,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             target : target,
             value : o[1]
         }
+        
         this.fireEvent('scrollto', this, options, e);
 
-        Roo.log(value);
+        Roo.log(options.value);
+        
         Roo.get(c).scrollTo('top', value, true);
         
         return;
