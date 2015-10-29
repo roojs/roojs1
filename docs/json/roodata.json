@@ -14796,7 +14796,7 @@
     },
     {
      "name": "click",
-     "sig": "function (e)\n{\n\n}",
+     "sig": "function (_self, e)\n{\n\n}",
      "type": "function",
      "desc": "When a butotn is pressed"
     },
