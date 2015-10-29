@@ -159,7 +159,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         
         if(this.animateRef && this.href.charAt(0) == '#'){
-            this.scrollToElement();
+            this.scrollToElement(e);
             return;
         }
         
@@ -251,7 +251,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         return this.el.select('' + this.tagtype + '', true).first();
     },
     
-    scrollToElement : function()
+    scrollToElement : function(e)
     {
         var c = document.body;
         
