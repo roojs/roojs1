@@ -144,18 +144,17 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         return prev;
     },
     
-    indexOfNav : function()
+    indexOfNav : function(item)
     {
-        
         var prev = false;
+        
         Roo.each(this.navItems, function(v,i){
-            
-            if (v.isActive()) {
+            if (v.tabId == item.tabId) {
                 prev = i;
-                
+                return false;
             }
-            
         });
+        
         return prev;
     },
     /**
