@@ -4002,10 +4002,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if(!target){
             return;
         }
-        
-        Roo.log('target...');
-        Roo.log(target);
-        
+
         var o = target.calcOffsetsTo(c);
         
         var options = {
@@ -4014,10 +4011,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         
         this.fireEvent('scrollto', this, options, e);
-
-        Roo.log(options.value);
         
-        Roo.get(c).scrollTo('top', value, true);
+        Roo.get(c).scrollTo('top', options.value, true);
         
         return;
     }
