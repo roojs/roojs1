@@ -29281,6 +29281,16 @@
      ]
     },
     {
+     "name": "animateRef",
+     "type": "Boolean",
+     "desc": "link to element default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -29981,6 +29991,16 @@
      "optvals": [
       "a",
       "span"
+     ]
+    },
+    {
+     "name": "animateRef",
+     "type": "Boolean",
+     "desc": "link to element default false",
+     "memberOf": "Roo.bootstrap.NavItem",
+     "optvals": [
+      "true",
+      "false"
      ]
     },
     {
