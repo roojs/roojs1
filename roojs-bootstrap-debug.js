@@ -3598,17 +3598,18 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         return prev;
     },
     
-    indexOfNav : function(item)
+    indexOfNav : function()
     {
+        
         var prev = false;
-        
         Roo.each(this.navItems, function(v,i){
-            if (v.tabId == item.tabId) {
+            
+            if (v.isActive()) {
                 prev = i;
-                return false;
+                
             }
+            
         });
-        
         return prev;
     },
     /**
