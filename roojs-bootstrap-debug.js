@@ -3777,7 +3777,16 @@ Roo.bootstrap.NavItem = function(config){
 	    * @param {boolean} state the new state
 	     
          */
-        'changed': true
+        'changed': true,
+        /**
+	    * @event scrollto
+	    * Fires when scroll to element
+	    * @param {Roo.bootstrap.NavItem} this
+	    * @param {Object} options
+            * @param {Roo.EventObject} e
+	     
+         */
+        'scrollto': true
     });
    
 };
@@ -3892,7 +3901,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         
         if(this.animateRef && this.href.charAt(0) == '#'){
-            this.scrollToElement();
+            this.scrollToElement(e);
             return;
         }
         
@@ -3984,16 +3993,33 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         return this.el.select('' + this.tagtype + '', true).first();
     },
     
-    scrollToElement : function()
+    scrollToElement : function(e)
     {
-        var target = Roo.get(document.body).select('a[name=' + this.href +']', true).first();
+        var c = document.body;
         
-        Roo.log('scrollToElement...');
-        Roo.log(target);
+        var target = Roo.get(c).select('a[name=' + this.href.replace('#', '') +']', true).first();
         
         if(!target){
-            
+            return;
         }
+        
+        Roo.log('target...');
+        Roo.log(target);
+        
+        var o = target.calcOffsetsTo(c);
+        
+        var options = {
+            target : target,
+            value : o[1]
+        }
+        
+        this.fireEvent('scrollto', this, options, e);
+
+        Roo.log(options.value);
+        
+        Roo.get(c).scrollTo('top', value, true);
+        
+        return;
     }
 });
  
