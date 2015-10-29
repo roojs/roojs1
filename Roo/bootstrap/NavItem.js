@@ -262,7 +262,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         Roo.log('target...');
         Roo.log(target);
-        var o = target.calcOffsetsTo(Roo.get(document.body)),
+        var o = target.calcOffsetsTo(c),
             l = o[0],
             t = o[1],
             b = t + target.dom.offsetHeight;
