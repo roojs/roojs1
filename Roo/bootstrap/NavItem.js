@@ -271,10 +271,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         
         var o = target.calcOffsetsTo(c);
+        
         Roo.log(o);
         var options = {
             target : target,
-            value : o[1]
+            value : o[1] + target.dom.offsetHeight
         }
         
         this.fireEvent('scrollto', this, options, e);
