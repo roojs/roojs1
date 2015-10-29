@@ -21,6 +21,7 @@
  * @cfg {Boolean} preventDefault (true | false) default false
  * @cfg {String} tabId the tab that this item activates.
  * @cfg {String} tagtype (a|span) render as a href or span?
+ * @cfg {String} animateRef  link to element
   
  * @constructor
  * Create a new Navbar Item
