@@ -279,14 +279,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         Roo.log([ch, ct, cb]);
         
-        var value = ct;
+        var value = t;
 
-        if(t < ct){
-            value = t;
-        }else if(b > cb){
-            value = b - ch;
-        }
-        
         Roo.log(value);
         Roo.get(c).scrollTo('top', value, true);
         
