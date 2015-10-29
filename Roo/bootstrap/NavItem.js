@@ -167,6 +167,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             return;
         }
         
+        if(this.animateRef && this.href.charAt(0) == '#'){
+            this.scrollToElement(e);
+            return;
+        }
+        
         var p = this.parent();
         if (['tabs','pills'].indexOf(p.type)!==-1) {
             if (typeof(p.setActiveItem) !== 'undefined') {
@@ -177,11 +182,6 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if (p.parentType == 'NavHeaderbar' && !this.menu) {
             // remove the collapsed menu expand...
             p.parent().el.select('.navbar-collapse',true).removeClass('in');  
-        }
-        
-        if(this.animateRef && this.href.charAt(0) == '#'){
-            this.scrollToElement(e);
-            return;
         }
         
     },
