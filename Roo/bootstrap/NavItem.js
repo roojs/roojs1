@@ -61,7 +61,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     tabId : false,
     tagtype : 'a',
     disabled : false,
-    
+    animateRef : false,
     was_active : false,
     
     getAutoCreate : function(){
