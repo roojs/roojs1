@@ -143,6 +143,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             return;
         }
         
+        if(this.animateRef && this.href.charAt(0) == '#'){
+            this.scrollToElement();
+            return;
+        }
+        
         var tg = Roo.bootstrap.TabGroup.get(this.navId);
         if (tg && tg.transition) {
             Roo.log("waiting for the transitionend");
@@ -155,11 +160,6 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         };
         
         if(this.tagtype == 'span'){
-            return;
-        }
-        
-        if(this.animateRef && this.href.charAt(0) == '#'){
-            this.scrollToElement();
             return;
         }
         
