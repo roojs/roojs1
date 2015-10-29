@@ -41,6 +41,7 @@ Roo.bootstrap.Button = function(config){
         /**
          * @event click
          * When a butotn is pressed
+         * @param {Roo.bootstrap.Button} this
          * @param {Roo.EventObject} e
          */
         "click" : true,
