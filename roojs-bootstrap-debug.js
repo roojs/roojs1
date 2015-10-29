@@ -3754,6 +3754,7 @@ Roo.apply(Roo.bootstrap.NavGroup, {
  * @cfg {Boolean} preventDefault (true | false) default false
  * @cfg {String} tabId the tab that this item activates.
  * @cfg {String} tagtype (a|span) render as a href or span?
+ * @cfg {Boolean} animateRef (true|false) link to element default false
   
  * @constructor
  * Create a new Navbar Item
@@ -3793,7 +3794,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     tabId : false,
     tagtype : 'a',
     disabled : false,
-    
+    animateRef : false,
     was_active : false,
     
     getAutoCreate : function(){
@@ -3863,7 +3864,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
-        if(this.preventDefault || this.href == '#'){
+        if(
+                this.preventDefault || 
+                this.href == '#' ||
+                (this.animateRef && this.href.charAt(0) == '#')
+        ){
             e.preventDefault();
         }
         
@@ -3883,6 +3888,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         };
         
         if(this.tagtype == 'span'){
+            return;
+        }
+        
+        if(this.animateRef && this.href.charAt(0) == '#'){
+            this.scrollToElement();
             return;
         }
         
@@ -3972,6 +3982,18 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     tooltipEl : function()
     {
         return this.el.select('' + this.tagtype + '', true).first();
+    },
+    
+    scrollToElement : function()
+    {
+        var target = Roo.get(document.body).select('a[name=' + this.href +']', true).first();
+        
+        Roo.log('scrollToElement...');
+        Roo.log(target);
+        
+        if(!target){
+            
+        }
     }
 });
  
