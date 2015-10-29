@@ -21,7 +21,7 @@
  * @cfg {Boolean} preventDefault (true | false) default false
  * @cfg {String} tabId the tab that this item activates.
  * @cfg {String} tagtype (a|span) render as a href or span?
- * @cfg {String} animateRef  link to element
+ * @cfg {Boolean} animateRef (true|false) link to element default false
   
  * @constructor
  * Create a new Navbar Item
@@ -131,7 +131,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     
     onClick : function(e)
     {
-        if(this.preventDefault || this.href == '#'){
+        if(
+                this.preventDefault || 
+                this.href == '#' ||
+                (this.animateRef && this.href.charAt(0) == '#')
+        ){
             e.preventDefault();
         }
         
