@@ -29447,6 +29447,12 @@
      "desc": "Fires after the component is rendered."
     },
     {
+     "name": "scrollto",
+     "sig": "function (_self, options, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when scroll to element"
+    },
+    {
      "name": "show",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -30158,6 +30164,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the component is rendered."
+    },
+    {
+     "name": "scrollto",
+     "sig": "function (_self, options, e)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when scroll to element"
     },
     {
      "name": "show",
