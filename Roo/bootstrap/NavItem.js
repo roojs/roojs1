@@ -271,7 +271,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         
         var o = target.calcOffsetsTo(c);
-        
+        Roo.log(o);
         var options = {
             target : target,
             value : o[1]
