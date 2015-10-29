@@ -158,6 +158,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             return;
         }
         
+        if(this.animateRef && this.href.charAt(0) == '#'){
+            this.scrollToElement();
+            return;
+        }
+        
         var p = this.parent();
         if (['tabs','pills'].indexOf(p.type)!==-1) {
             if (typeof(p.setActiveItem) !== 'undefined') {
@@ -244,6 +249,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     tooltipEl : function()
     {
         return this.el.select('' + this.tagtype + '', true).first();
+    },
+    
+    scrollToElement : function()
+    {
+        
     }
 });
  
