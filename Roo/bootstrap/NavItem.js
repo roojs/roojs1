@@ -261,12 +261,27 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             return;
         }
         
-        var o = target.calcOffsetsTo(c);
+        Roo.log('target...');
+        Roo.log(target);
         
-        var value = o[1];
+        var o = target.calcOffsetsTo(c),
+            l = o[0],
+            t = o[1],
+            b = t + target.dom.offsetHeight;
+    
+        Roo.log(o);
+        
+        var ch = c.clientHeight;
+        
+        var ct = parseInt(c.scrollTop, 10);
+        
+        var cb = ct + ch;
+        
+        Roo.log([ch, ct, cb]);
+        
+        var value = t;
 
         Roo.log(value);
-        
         Roo.get(c).scrollTo('top', value, true);
         
         return;
