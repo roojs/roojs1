@@ -44,7 +44,16 @@ Roo.bootstrap.NavItem = function(config){
 	    * @param {boolean} state the new state
 	     
          */
-        'changed': true
+        'changed': true,
+        /**
+	    * @event scrollto
+	    * Fires when scroll to element
+	    * @param {Roo.bootstrap.NavItem} this
+	    * @param {Object} options
+            * @param {Roo.EventObject} e
+	     
+         */
+        'scrollto': true
     });
    
 };
