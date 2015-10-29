@@ -265,9 +265,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         var value = o[1];
 
-        if(value = this.fireEvent('click', this, e) === false){
-            return;
-        };
+        value = this.fireEvent('click', this, e);
         
         Roo.get(c).scrollTo('top', value, true);
         
