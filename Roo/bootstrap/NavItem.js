@@ -262,10 +262,23 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         var o = this.calcOffsetsTo(Roo.get(document.body)),
             l = o[0],
             t = o[1],
-            b = t + target.dom.offsetHeight,
-            r = l + target.dom.offsetWidth;
+            b = t + target.dom.offsetHeight;
     
+        var ch = Roo.get(document.body).clientHeight;
+        var ct = parseInt(Roo.get(document.body).scrollTop, 10);
+        var cb = ct + ch;
+
+        var value = ct;
+
+        if(t < ct){
+            value = t;
+        }else if(b > cb){
+            value = b-ch;
+        }
+
+        Roo.get(document.body).scrollTo('top', value, true);
         
+        return;
     }
 });
  
