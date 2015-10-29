@@ -267,6 +267,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         var o = target.calcOffsetsTo(c);
         
         var value = o[1];
+        
+        this.fireEvent('scrollto', this, value);
 
         Roo.log(value);
         Roo.get(c).scrollTo('top', value, true);
