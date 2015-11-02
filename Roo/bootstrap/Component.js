@@ -252,11 +252,10 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             // that match this xtype..
             // note - when we render we create these as well..
             // so we should check to see if body has xtype set.
-            if (Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
+            if (build_from_html && Roo.get(document.body).attr('xtype') == 'Roo.bootstrap.Body') {
                
                 var self_cntr_el = Roo.get(this[cntr](false));
-                var echild =self_cntr_el && Roo.XComponent.build_from_html ? 
-                        self_cntr_el.child('>*[xtype]') : false;
+                var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
                 
                 
                 // there is a scenario where some of the child elements are flexy:if (and all of the same type)
