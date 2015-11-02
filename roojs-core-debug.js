@@ -925,6 +925,7 @@ Roo.applyIf(Number.prototype, {
  */
 Roo.applyIf(Array.prototype, {
     /**
+     * 
      * Checks whether or not the specified object exists in the array.
      * @param {Object} o The object to check for
      * @return {Number} The index of o in the array (or -1 if it is not found)
@@ -1233,6 +1234,7 @@ Date.parseDate = function(input, format) {
 /**
  * @private
  */
+
 Date.createParser = function(format) {
     var funcName = "parse" + Date.parseFunctions.count++;
     var regexNum = Date.parseRegexes.length;
