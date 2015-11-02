@@ -207,7 +207,12 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         }
         
         var ret = false;
+        if (!build_from_html) {
+            return false;
+        }
         
+        // this i think handles overlaying multiple children of the same type
+        // with the sam eelement.. - which might be buggy..
         while (true) {
             var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
             
