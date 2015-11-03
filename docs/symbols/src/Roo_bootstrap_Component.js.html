@@ -207,7 +207,12 @@
         }
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">build_from_html</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
         
+        </span><span class="jsdoc-comment">// this i think handles overlaying multiple children of the same type
+        // with the sam eelement.. - which might be buggy..
         </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">echild </span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">self_cntr_el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">self_cntr_el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;*[xtype]'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
             
@@ -252,12 +257,15 @@
             // that match this xtype..
             // note - when we render we create these as well..
             // so we should check to see if body has xtype set.
-            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'Roo.bootstrap.Body'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">build_from_html </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xtype'</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'Roo.bootstrap.Body'</span><span class="jsdoc-syntax">) {
                
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">self_cntr_el </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">cntr</span><span class="jsdoc-syntax">](</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">));
                 </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">echild </span><span class="jsdoc-syntax">=</span><span class="jsdoc-var">self_cntr_el </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">self_cntr_el.child</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'&gt;*[xtype]'</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
-                
-                
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">echild</span><span class="jsdoc-syntax">) { 
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.XComponent.build_from_html</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;got echild:&quot;</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">echild</span><span class="jsdoc-syntax">);
+                }
                 </span><span class="jsdoc-comment">// there is a scenario where some of the child elements are flexy:if (and all of the same type)
                 // and are not displayed -this causes this to use up the wrong element when matching.
                 // at present the only work around for this is to nest flexy:if elements in another element that is always rendered.
