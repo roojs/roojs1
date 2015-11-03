@@ -1114,7 +1114,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     reset : function(){
         // overridden so that last data is reset..
         
-        if(!this.multiple){
+        if(this.multiple){
             this.clearItem();
             return;
         }
