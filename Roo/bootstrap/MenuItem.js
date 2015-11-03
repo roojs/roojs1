@@ -29,6 +29,7 @@ Roo.bootstrap.MenuItem = function(config){
         /**
          * @event click
          * The raw click event for the entire grid.
+         * @param {Roo.bootstrap.MenuItem} this
          * @param {Roo.EventObject} e
          */
         "click" : true
