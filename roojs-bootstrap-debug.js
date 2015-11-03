@@ -11782,6 +11782,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     reset : function(){
         // overridden so that last data is reset..
+        
+        if(!this.multiple){
+            this.clearItem();
+            return;
+        }
+        
         this.setValue(this.originalValue);
         this.clearInvalid();
         this.lastData = false;
