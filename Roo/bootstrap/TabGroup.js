@@ -85,14 +85,15 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 if(!bullet){
                     continue;
                 }
+                
                 Roo.log(i);
                 Roo.log(bullet);
-                var a = clone(i);
+                
                 bullet.on('click', function(e){
                     Roo.log(this);
                     e.preventDefault();
-                    Roo.log(a);
-                    _this.showPanel(a);
+                    Roo.log(i);
+                    _this.showPanel(i);
                 });
                 
             }
