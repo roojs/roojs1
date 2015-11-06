@@ -48,8 +48,23 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             }];
         
             if(this.showPointer > 0){
-                Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11');
-                Roo.log(cfg.cn[0]);
+                
+                var bullets = {
+                    cls : 'carousel-bullets',
+                    cn : []
+                };
+                
+                for (var i = 0; i < this.showPointer; i++){
+                    bullets.cn.push({
+                        cls : 'bullet'
+                    });
+                }
+                
+                bullets.cn.push({
+                    cls : 'clear'
+                });
+                
+                cfg.cn[0].cn = bullets;
             }
         }
         
