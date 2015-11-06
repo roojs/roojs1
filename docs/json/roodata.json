@@ -34109,11 +34109,7 @@
      "name": "showPointer",
      "type": "Number",
      "desc": "show the panel pointer.. default 0",
-     "memberOf": "",
-     "optvals": [
-      "true",
-      "false"
-     ]
+     "memberOf": ""
     },
     {
      "name": "xs",
