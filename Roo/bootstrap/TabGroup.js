@@ -47,7 +47,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                cls : 'carousel-inner'
             }];
         
-            if(showPointer > 0){
+            if(this.showPointer > 0){
                 Roo.log('run!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11');
                 Roo.log(cfg.cn[0]);
             }
