@@ -78,8 +78,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         var _this = this;
         
         if(this.showPointer > 0){
-            var i = 0
-            for (i = 0; i < this.showPointer; i++){
+            
+            for (var i = 0; i < this.showPointer; i++){
                 var bullet = this.el.select('> .carousel-inner > .carousel-bullets > .bullet-' + i, true).first();
                 
                 if(!bullet){
