@@ -75,11 +75,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         Roo.log('-------- init events on tab group ---------');
         
-        Roo.log(this.el);
-        
         if(this.showPointer > 0){
             for (var i = 0; i < this.showPointer; i++){
-                
+                Roo.log(this.el.select('>.carousel-inner > .bullet-' + i, true).first());
             }
         }
     },
