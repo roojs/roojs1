@@ -75,7 +75,10 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         Roo.log('-------- init events on tab group ---------');
         
+        var _this = this;
+        
         if(this.showPointer > 0){
+            
             for (var i = 0; i < this.showPointer; i++){
                 var bullet = this.el.select('> .carousel-inner > .carousel-bullets > .bullet-' + i, true).first();
                 
@@ -85,6 +88,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 
                 bullet.on('click', function(e){
                     e.preventDefault();
+                    
+                    
                 });
                 
             }
