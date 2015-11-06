@@ -34106,6 +34106,16 @@
      "memberOf": ""
     },
     {
+     "name": "showPointer",
+     "type": "Number",
+     "desc": "show the panel pointer.. default 0",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "xs",
      "type": "Number",
      "desc": "colspan out of 12 for mobile-sized screens or 0 for hidden",
