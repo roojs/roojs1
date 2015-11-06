@@ -90,10 +90,12 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 Roo.log(bullet);
                 
                 bullet.on('click', function(e){
-                    Roo.log(this);
+                    
                     e.preventDefault();
+                    
                     Roo.log(i);
-                    _this.showPanel(2);
+                    
+                    _this.showPanel(i);
                     
                     Roo.each(_this.el.select('.bullet', true).elements, function(el){
                         el.removeClass('selected');
