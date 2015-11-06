@@ -1,0 +1,15 @@
+
+.carousel-bullets {
+    height: 17px;
+    z-index: 1000; 
+    position: absolute;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+    -webkit-transition: opacity 0.2s ease-out; 
+    -moz-transition: opacity 0.2s ease-out; 
+    -o-transition: opacity 0.2s ease-out; 
+    -ms-transition: opacity 0.2s ease-out;
+    -webkit-transform: translateZ(5px);
+}
