@@ -1,6 +1,9 @@
 
 .carousel-bullets {
     height: 17px;
+    bottom: 20px;
+    left: 50%;
+    
     z-index: 1000; 
     position: absolute;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
