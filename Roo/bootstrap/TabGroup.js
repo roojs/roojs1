@@ -75,6 +75,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         Roo.log('-------- init events on tab group ---------');
         
+        if(this.showPointer > 0){
+            
+        }
     },
     
     getChildContainer : function()
