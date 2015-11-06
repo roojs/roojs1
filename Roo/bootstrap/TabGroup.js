@@ -42,14 +42,19 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         if (this.carousel) {
             cfg.cls += ' carousel slide';
+            
             cfg.cn = [{
                cls : 'carousel-inner'
-            }]
+            }];
+        
+            if(showPointer > 0){
+                cfg.cn.push({
+
+                });
+            }
         }
         
-        if(showPointer > 0){
-            cfg.cn.push();
-        }
+        
         
         
         return cfg;
