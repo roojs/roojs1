@@ -87,7 +87,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 }
                 Roo.log(i);
                 Roo.log(bullet);
-                var a = i * 1;
+                var a = clone(i);
                 bullet.on('click', function(e){
                     Roo.log(this);
                     e.preventDefault();
