@@ -88,7 +88,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 
                 bullet.on('click', function(e){
                     e.preventDefault();
-                    
+                    Roo.log(i);
+                    Roo.log(_this.tabs);
                     _this.showPanel(i);
                     
                 });
@@ -161,7 +162,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         if (typeof(pan) == 'number') {
             pan = this.tabs[pan];
         }
-        
         if (typeof(pan) == 'string') {
             pan = this.getPanelByName(pan);
         }
