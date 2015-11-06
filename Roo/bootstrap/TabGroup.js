@@ -94,6 +94,12 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                     e.preventDefault();
                     Roo.log(i);
                     _this.showPanel(2);
+                    
+                    Roo.each(_this.el.select('.bullet', true).elements, function(el){
+                        el.removeClass('selected');
+                    })
+                    
+                    this.addClass('selected')
                 });
                 
             }
