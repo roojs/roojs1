@@ -14549,6 +14549,7 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
  * Bootstrap Column class
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
+ * @cfg {Number} showPointer (true|false) show the panel pointer.. default 0
  * 
  * @constructor
  * Create a new TabGroup
@@ -14569,6 +14570,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     carousel : false,
     transition : false,
+    showPointer : 0,
      
     getAutoCreate : function()
     {
