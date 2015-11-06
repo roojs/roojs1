@@ -39,3 +39,14 @@
     -moz-box-sizing:content-box;
     -webkit-box-sizing:content-box;
 }
+
+.carousel-bullets > .bullet:hover,
+.carousel-bullets > .bullet.selected {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 1) !important;
+    width: 6px !important;
+    height: 6px !important;
+    border: 5px solid rgba(0, 0, 0, 1) !important;
+}
