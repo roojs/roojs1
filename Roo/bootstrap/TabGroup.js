@@ -56,7 +56,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 
                 for (var i = 0; i < this.showPointer; i++){
                     bullets.cn.push({
-                        cls : 'bullet selected'
+                        cls : 'bullet'
                     });
                 }
                 
