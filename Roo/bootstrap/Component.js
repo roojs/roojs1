@@ -75,7 +75,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     parent: function() {
         // returns the parent component..
-        Roo.log(this.parentId);
         return Roo.ComponentMgr.get(this.parentId)
         
         
