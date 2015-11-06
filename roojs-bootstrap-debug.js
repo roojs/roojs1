@@ -4204,6 +4204,16 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
         
 	
         return cfg;
+    },
+    
+    getValue : function()
+    {
+        return this.el.dom.innerHTML;
+    },
+    
+    setValue : function(value)
+    {
+        this.el.dom.innerHTML = value;
     }
    
 });
