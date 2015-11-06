@@ -77,7 +77,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         if(this.showPointer > 0){
             for (var i = 0; i < this.showPointer; i++){
-                Roo.log(this.el.select('.carousel-inner > .carousel-bullets > .bullet-' + i, true).first());
+                Roo.log(this.el.select('> .carousel-inner > .carousel-bullets > .bullet-' + i, true).first());
             }
         }
     },
