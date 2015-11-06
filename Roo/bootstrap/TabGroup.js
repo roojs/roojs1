@@ -87,11 +87,12 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 }
                 Roo.log(i);
                 Roo.log(bullet);
+                var a = i;
                 bullet.on('click', function(e){
                     Roo.log(this);
                     e.preventDefault();
-                    Roo.log(i);
-                    _this.showPanel(i);
+                    Roo.log(a);
+                    _this.showPanel(a);
                 });
                 
             }
