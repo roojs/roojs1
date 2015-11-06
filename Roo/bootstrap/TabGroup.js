@@ -89,6 +89,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 bullet.on('click', function(e){
                     e.preventDefault();
                     
+                    _this.showPanel(_this.tabs[i]);
                     
                 });
                 
