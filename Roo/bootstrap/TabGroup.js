@@ -161,6 +161,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         if (typeof(pan) == 'number') {
             pan = this.tabs[pan];
         }
+        Roo.log(pan);
         if (typeof(pan) == 'string') {
             pan = this.getPanelByName(pan);
         }
