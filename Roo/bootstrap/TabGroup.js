@@ -48,7 +48,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         }
         
         if(showPointer > 0){
-            
+            cfg.cn.push();
         }
         
         
