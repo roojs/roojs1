@@ -84,7 +84,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 }
                 
                 bullet.on('click', function(e){
-                    Roo.log(e);
+                    e.preventDefault();
                 });
                 
             }
