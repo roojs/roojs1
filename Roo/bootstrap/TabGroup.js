@@ -115,6 +115,11 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         }
     },
     
+    onMouseOver : function(a,b,c)
+    {
+        Roo.log([a,b,c]);
+    }
+    
     getChildContainer : function()
     {
         return this.carousel ? this.el.select('.carousel-inner', true).first() : this.el;
