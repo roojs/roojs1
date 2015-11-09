@@ -17158,6 +17158,26 @@
      "memberOf": ""
     },
     {
+     "name": "filterSort",
+     "type": "Boolean",
+     "desc": "sort the filter result default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
+     "name": "filterSortDir",
+     "type": "String",
+     "desc": "dir of sort the filter result default ASC",
+     "memberOf": "",
+     "optvals": [
+      "ASC",
+      "DESC"
+     ]
+    },
+    {
      "name": "triggerClass",
      "type": "String",
      "desc": "An additional CSS class used to style the trigger button.  The trigger will always get the\nclass 'x-form-trigger' by default and triggerClass will be <b>appended</b> if specified.",

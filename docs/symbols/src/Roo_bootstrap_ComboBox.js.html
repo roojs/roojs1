@@ -278,6 +278,16 @@
      */
     </span><span class="jsdoc-var">validClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;has-success&quot;</span><span class="jsdoc-syntax">,
     
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} filterSort (true|false) sort the filter result default false
+     */
+    </span><span class="jsdoc-var">filterSort </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {String} filterSortDir (ASC|DESC) dir of sort the filter result default ASC
+     */
+    </span><span class="jsdoc-var">filterSortDir </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ASC'</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-comment">//private
     </span><span class="jsdoc-var">addicon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">editicon</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -1391,6 +1401,11 @@
                         </span><span class="jsdoc-var">this.store.clearFilter</span><span class="jsdoc-syntax">();
                     }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                         </span><span class="jsdoc-var">this.store.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.filterField </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.anyMatch</span><span class="jsdoc-syntax">);
+                        
+                        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.filterSort</span><span class="jsdoc-syntax">){
+                            </span><span class="jsdoc-var">this.store.data.sort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.filterSortDir</span><span class="jsdoc-syntax">);
+                        }
+                        
                     }
                     </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">();
                 }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
