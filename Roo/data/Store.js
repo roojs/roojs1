@@ -584,9 +584,18 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      * @param {Boolean} anyMatch True to match any part not just the beginning
      */
     filter : function(property, value, anyMatch){
-        Roo.log(typeof(property));
+        
+        if(typeof(property) == 'string'){
+            var fn = this.createFilterFn(property, value, anyMatch);
+            return fn ? this.filterBy(fn) : this.clearFilter();
+        }
+        Roo.each(property, function(p){
+            
+            
+        });
         var fn = this.createFilterFn(property, value, anyMatch);
         return fn ? this.filterBy(fn) : this.clearFilter();
+        
     },
 
     /**
