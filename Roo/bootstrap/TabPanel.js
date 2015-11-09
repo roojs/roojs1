@@ -85,7 +85,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             Roo.log(['register', tg, this]);
             tg.register(this);
             
-            Roo.log(tg.tabs);
+            Roo.log(tg.tabs.length);
         }
         
     },
