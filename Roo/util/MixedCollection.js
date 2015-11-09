@@ -406,6 +406,8 @@ mc.add(otherEl);
             items[i] = c[i].value;
             k[i] = c[i].key;
         }
+        Roo.log(k);
+        Roo.log(items);
         this.fireEvent("sort", this);
     },
     
