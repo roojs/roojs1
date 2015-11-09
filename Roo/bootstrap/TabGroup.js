@@ -269,6 +269,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         pan.setActive(true);
         
         if(this.bullets > 0){
+            Roo.log('run?????????????????');
             this.setActiveBullet(this.indexOfPanel(pan));
         }
         
