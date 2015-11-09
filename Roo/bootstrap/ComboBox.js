@@ -1477,7 +1477,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             filterData.push(_this.store.queryBy(f, _this.store));
         });
         
-        var data = this.snapshot || this.data;
+        var data = this.store.snapshot || this.store.data;
         
         var r = new Roo.util.MixedCollection();
         r.getKey = data.getKey;
@@ -1492,6 +1492,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }
             }
         });
+        
+        
 
     },
 
