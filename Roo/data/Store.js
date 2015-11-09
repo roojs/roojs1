@@ -597,6 +597,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     filterBy : function(fn, scope){
         this.snapshot = this.snapshot || this.data;
         this.data = this.queryBy(fn, scope||this);
+        Roo.log(this.data);
         this.fireEvent("datachanged", this);
     },
 
