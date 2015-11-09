@@ -89,11 +89,11 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 Roo.log(i);
                 Roo.log(bullet);
                 
-                bullet.on('click', (function(e, t, ii){
+                bullet.on('click', (function(e, t, a, b, c){
                     
                     e.preventDefault();
                     
-                    Roo.log(ii);
+                    Roo.log([t, a, b, c]);
                     
                     _this.showPanel(ii);
                     
