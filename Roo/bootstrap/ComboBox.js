@@ -79,6 +79,12 @@ Roo.bootstrap.ComboBox = function(config){
 	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
         'remove' : true
+        /**
+         * @event specialfilter
+         * Fires when specialfilter
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        'specialfilter' : true
         
     });
     
@@ -1433,71 +1439,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.loadNext = false;
     },
     
-    specialFilterFn : function(q)
-    {
-        if(!this.filterField.length){
-            this.store.filter(this.displayField, q);
-        }
-        
-        var fn = [];
-        var afn = [];
-        
-        var _this = this;
-        
-        Roo.each(this.filterField, function(p){
-            
-            if(_this.anyMatch == 'NO'){
-                fn.push(_this.store.createFilterFn(p, q, false));
-                return;
-            }
-            
-            if(_this.anyMatch == 'YES'){
-                fn.push(_this.store.createFilterFn(p, q, true));
-                return;
-            }
-            
-            fn.push(_this.store.createFilterFn(p, q, false));
-            afn.push(_this.store.store.createFilterFn(p, q, true));
-            
-        });
-        
-        if(!fn.length && !afn.length){
-            this.store.clearFilter();
-        }
-        
-        this.store.snapshot = this.store.snapshot || this.store.data;
-        
-        var filterData = [];
-        
-        Roo.each(fn, function(f){
-            filterData.push(_this.store.queryBy(f, _this.store));
-        });
-        
-        Roo.each(afn, function(f){
-            filterData.push(_this.store.queryBy(f, _this.store));
-        });
-        
-        var data = this.store.snapshot || this.store.data;
-        
-        var r = new Roo.util.MixedCollection();
-        r.getKey = data.getKey;
-        
-        var keys =[];
-        
-        Roo.each(filterData, function(d){
-            var k = d.keys, it = d.items;
-            for(var i = 0, len = it.length; i < len; i++){
-                if(keys.indexOf(k[i]) == -1){
-                    r.add(k[i], it[i]);
-                }
-            }
-        });
-        
-        this.store.data = r;
-        this.store.fireEvent("datachanged", this.store);
-
-    },
-
     // private
     getParams : function(q){
         var p = {};
