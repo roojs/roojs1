@@ -633,8 +633,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             }
         });
         
-        Roo.log(r);
-        Roo.log(filterData);
+        return r;
     },
 
     /**
