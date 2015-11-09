@@ -278,6 +278,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     validClass : "has-success",
     
+    /**
+     * @cfg {Boolean} specialFilter (true|false) special filter default false
+     */
+    specialFilter : false,
+    
     //private
     addicon : false,
     editicon: false,
