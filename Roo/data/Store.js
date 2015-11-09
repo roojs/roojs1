@@ -590,8 +590,14 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             return fn ? this.filterBy(fn) : this.clearFilter();
         }
         
+        var fn = [];
+        
         Roo.each(property, function(p){
+            if(anyMatch == true){
+                fn.push(this.createFilterFn(p, value, true));
+            }
             
+            fn.push(this.createFilterFn(p, value, false));
         });
     },
 
