@@ -11,7 +11,7 @@
  * Bootstrap Column class
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
- * @cfg {Number} showPointer show the panel pointer.. default 0
+ * @cfg {Number} bullets show the panel pointer.. default 0
  * 
  * @constructor
  * Create a new TabGroup
@@ -77,9 +77,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         var _this = this;
         
-        if(this.showPointer > 0){
+        if(this.bullets > 0){
             
-            for (var i = 0; i < this.showPointer; i++){
+            for (var i = 0; i < this.bullets; i++){
                 var bullet = this.el.select('.bullet-' + i, true).first();
                 
                 if(!bullet){
