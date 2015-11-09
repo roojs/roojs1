@@ -232,9 +232,10 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         Roo.each(this.el.select('.bullet', true).elements, function(el){
             el.removeClass('selected');
-        })
+        });
 
         var bullet = this.el.select('.bullet-' + i, true).first();
+        
         if(!bullet){
             return;
         }
