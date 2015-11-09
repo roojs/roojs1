@@ -1403,7 +1403,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         this.store.filter(this.filterField || this.displayField, q, this.anyMatch);
                         
                         if(this.filterSort){
-                            this.store.data.sort(this.displayField, this.filterSortDir, false);
+                            this.store.data._sort(this.displayField, this.filterSortDir);
                         }
                         
                     }
