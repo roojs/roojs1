@@ -589,7 +589,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             var fn = this.createFilterFn(property, value, anyMatch);
             return fn ? this.filterBy(fn) : this.clearFilter();
         }
-        
+        Roo.log(value);
         var fn = [];
         var afn = [];
         
