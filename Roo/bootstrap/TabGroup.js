@@ -280,11 +280,17 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         var i = this.indexOfPanel(this.getActivePanel());
         
-        if (i >= this.tabs.length - 1) {
+        if (i >= this.tabs.length - 1 && !this.autoslide) {
             return;
         }
+        
+        if (i >= this.tabs.length - 1 && !this.autoslide) {
+            i = -1;
+        }
+        
         this.showPanel(this.tabs[i+1]);
     },
+    
     showPanelPrev : function()
     {
         var i = this.indexOfPanel(this.getActivePanel());
