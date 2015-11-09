@@ -546,6 +546,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     // private
     createFilterFn : function(property, value, anyMatch){
         if(!value.exec){ // not a regex
+            Roo.log('got here????');
             value = String(value);
             if(value.length == 0){
                 return false;
