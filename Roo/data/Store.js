@@ -552,7 +552,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             }
             value = new RegExp((anyMatch === true ? '' : '^') + Roo.escapeRe(value), "i");
         }
-        
+        Roo.log(value);
         return function(r){
             return value.test(r.data[property]);
         };
