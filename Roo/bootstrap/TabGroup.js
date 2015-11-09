@@ -12,7 +12,7 @@
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
  * @cfg {Number} bullets show the panel pointer.. default 0
- * @cfg {Number} timer auto slide timer .. default 0
+ * @cfg {Number} timer auto slide timer .. default 0 second
  * 
  * @constructor
  * Create a new TabGroup
@@ -107,7 +107,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         }
         
         if(this.timer > 0){
-            
+            window.setInterval(function() {
+                _this.showPanelNext();
+            }, this.timer * 1000);
         }
     },
     
