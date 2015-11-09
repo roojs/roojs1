@@ -95,7 +95,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 }).createDelegate(this, [i, bullet], true));
                 
             }
-        }
+        };
     },
     
     onMouseOver : function(e, el)
