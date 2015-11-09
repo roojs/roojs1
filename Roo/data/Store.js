@@ -617,10 +617,23 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             filterData.push(_this.queryBy(f, _this));
         });
         
+        var data = this.snapshot || this.data;
+        
+        var r = new Roo.util.MixedCollection();
+        r.getKey = data.getKey;
+        
+        var keys =[];
+        
         Roo.each(filterData, function(d){
-            
-            
+            var k = d.keys, it = d.items;
+            for(var i = 0, len = it.length; i < len; i++){
+                if(keys.indexOf(k[i]) == -1){
+                    r.add(k[i], it[i]);
+                }
+            }
         });
+        
+        Roo.log(r);
         Roo.log(filterData);
     },
 
