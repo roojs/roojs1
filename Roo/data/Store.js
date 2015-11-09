@@ -584,6 +584,8 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      */
     filter : function(property, value, anyMatch){
         var fn = this.createFilterFn(property, value, anyMatch);
+        Roo.log('fn is ..................................................');
+        Roo.log(fn);
         return fn ? this.filterBy(fn) : this.clearFilter();
     },
 
