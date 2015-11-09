@@ -607,6 +607,8 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             return this.clearFilter();
         }
         
+        this.snapshot = this.snapshot || this.data;
+        
         var filterData = [];
         
         Roo.each(fn, function(f){
