@@ -35,7 +35,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     transition : false,
     bullets : 0,
     timer : 0,
-     
+    slide : false,
+    
     getAutoCreate : function()
     {
         var cfg = Roo.apply({}, Roo.bootstrap.TabGroup.superclass.getAutoCreate.call(this));
@@ -105,7 +106,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         }
         
         if(this.timer > 0){
-            window.setInterval(function() {
+            this.slide = window.setInterval(function() {
                 _this.showPanelNext();
             }, this.timer * 1000);
         }
