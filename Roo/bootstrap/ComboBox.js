@@ -1493,7 +1493,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }
         });
         
-        
+        this.store.data = r;
+        this.store.fireEvent("datachanged", this.store);
 
     },
 
