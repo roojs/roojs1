@@ -1427,7 +1427,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.loadNext = false;
     },
-
+     
     // private
     getParams : function(q){
         var p = {};
