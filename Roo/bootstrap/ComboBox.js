@@ -1470,7 +1470,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var filterData = [];
         
         Roo.each(fn, function(f){
-            filterData.push(_this.queryBy(f, _this));
+            filterData.push(_this.store.queryBy(f, _this.store));
         });
         
         Roo.each(afn, function(f){
