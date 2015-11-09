@@ -105,6 +105,10 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 
             }
         }
+        
+        if(this.timer > 0){
+            
+        }
     },
     
     getChildContainer : function()
