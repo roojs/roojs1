@@ -12,6 +12,7 @@
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
  * @cfg {Number} bullets show the panel pointer.. default 0
+ * @cfg {Number} timer auto slide timer .. default 0 second
  * 
  * @constructor
  * Create a new TabGroup
@@ -33,6 +34,7 @@
     </span><span class="jsdoc-var">carousel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">transition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">bullets </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">timer </span><span class="jsdoc-syntax">: 0,
      
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -90,17 +92,24 @@
                     
                     </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
                     
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.transition</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;waiting for the transitionend&quot;</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                    }
+        
                     </span><span class="jsdoc-var">_this.showPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ii</span><span class="jsdoc-syntax">);
                     
-                    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.bullet'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
-                        </span><span class="jsdoc-var">el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'selected'</span><span class="jsdoc-syntax">);
-                    })
-                    
-                    </span><span class="jsdoc-var">t.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'selected'</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-var">_this.setActiveBullet</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ii</span><span class="jsdoc-syntax">);
                     
                 })</span><span class="jsdoc-var">.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bullet</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
                 
             }
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timer </span><span class="jsdoc-syntax">&gt; 0){
+            </span><span class="jsdoc-var">window.setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-var">_this.showPanelNext</span><span class="jsdoc-syntax">();
+            }, </span><span class="jsdoc-var">this.timer </span><span class="jsdoc-syntax">* 1000);
         }
     },
     
@@ -164,7 +173,6 @@
      */
     </span><span class="jsdoc-var">showPanel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">)
     {
-        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'number'</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">pan </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">];
         }
@@ -226,6 +234,21 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         </span><span class="jsdoc-var">this.showPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tabs</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">-1]);
+    },
+    
+    </span><span class="jsdoc-var">setActiveBullet </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.bullet'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'selected'</span><span class="jsdoc-syntax">);
+        });
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bullet </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.bullet-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">bullet</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">bullet.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'selected'</span><span class="jsdoc-syntax">);
     }
     
     

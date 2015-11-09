@@ -34112,6 +34112,12 @@
      "memberOf": ""
     },
     {
+     "name": "timer",
+     "type": "Number",
+     "desc": "auto slide timer .. default 0 second",
+     "memberOf": ""
+    },
+    {
      "name": "xs",
      "type": "Number",
      "desc": "colspan out of 12 for mobile-sized screens or 0 for hidden",
