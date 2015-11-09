@@ -623,6 +623,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      **/
     queryBy : function(fn, scope){
         var data = this.snapshot || this.data;
+        Roo.log(data);
         return data.filterBy(fn, scope||this);
     },
 
