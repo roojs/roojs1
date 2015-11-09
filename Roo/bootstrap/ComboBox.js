@@ -1456,13 +1456,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-            
-            
-            if(_this.anyMatch == ''){
-                afn.push(_this.store.createFilterFn(p, value, true));
-            }
-            
+            afn.push(_this.store.createFilterFn(p, value, true));
             fn.push(_this.createFilterFn(p, value, false));
+            
         });
         
         if(!fn.length && !afn.length){
