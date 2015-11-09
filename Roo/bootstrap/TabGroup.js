@@ -180,7 +180,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return false;
         }
         
-        if (this.carousel && typeof(Roo.get(document.body).dom.style.transition) != 'undefined' && !this.transition) {
+        if (this.carousel && typeof(Roo.get(document.body).dom.style.transition) != 'undefined') {
             
             this.transition = true;
             var dir = this.indexOfPanel(pan) > this.indexOfPanel(cur)  ? 'next' : 'prev';
