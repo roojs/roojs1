@@ -635,7 +635,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             }
         });
 
-        r._sort('value', 'ASC');
+        r.sort('ASC');
         
         this.data = r;
         this.fireEvent("datachanged", this);
