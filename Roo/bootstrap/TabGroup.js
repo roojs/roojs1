@@ -300,7 +300,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         }
         
         if (i < 1 && this.autoslide) {
-            return;
+            i = this.tabs.length;
         }
         
         this.showPanel(this.tabs[i-1]);
