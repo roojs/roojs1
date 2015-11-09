@@ -12,7 +12,8 @@
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
  * @cfg {Number} bullets show the panel pointer.. default 0
- * @cfg {Number} timer auto slide timer .. default 0 second
+ * @cfg {Boolena} autoslide (true|false) auto slide .. default false
+ * @cfg {Number} timer auto slide timer .. default 0 millisecond
  * 
  * @constructor
  * Create a new TabGroup
@@ -27,6 +28,31 @@
     </span><span class="jsdoc-var">this.tabs </span><span class="jsdoc-syntax">= [];
     </span><span class="jsdoc-var">Roo.bootstrap.TabGroup.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+        * @event mouseover
+        * Fires when the mouse hovers over the button
+        * @param {Roo.bootstrap.TabGroup} this
+        * @param {Event} e The event object
+        * @param {Roo.Element} el The element
+        */
+        </span><span class="jsdoc-var">mouseover </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+        * @event mouseout
+        * Fires when the mouse exits the button
+        * @param {Roo.bootstrap.TabGroup} this
+        * @param {Event} e The event object
+        * @param {Roo.Element} el The element
+        */
+        </span><span class="jsdoc-var">mouseout</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+         </span><span class="jsdoc-comment">/**
+        * @event render
+        * Fires when the button is rendered
+        * @param {Roo.bootstrap.TabGroup} this
+        */
+        </span><span class="jsdoc-var">render</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+    
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.TabGroup</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Column</span><span class="jsdoc-syntax">,  {
@@ -35,7 +61,9 @@
     </span><span class="jsdoc-var">transition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">bullets </span><span class="jsdoc-syntax">: 0,
     </span><span class="jsdoc-var">timer </span><span class="jsdoc-syntax">: 0,
-     
+    </span><span class="jsdoc-var">autoslide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">slideFn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">Roo.bootstrap.TabGroup.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
@@ -99,18 +127,41 @@
         
                     </span><span class="jsdoc-var">_this.showPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ii</span><span class="jsdoc-syntax">);
                     
-                    </span><span class="jsdoc-var">_this.setActiveBullet</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ii</span><span class="jsdoc-syntax">);
-                    
                 })</span><span class="jsdoc-var">.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bullet</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
                 
             }
         }
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.timer </span><span class="jsdoc-syntax">&gt; 0){
-            </span><span class="jsdoc-var">window.setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoslide</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.slideFn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">window.setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
                 </span><span class="jsdoc-var">_this.showPanelNext</span><span class="jsdoc-syntax">();
-            }, </span><span class="jsdoc-var">this.timer </span><span class="jsdoc-syntax">* 1000);
+            }, </span><span class="jsdoc-var">this.timer</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseover&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseOver</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.el.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mouseout&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseOut</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
+    },
+    
+    </span><span class="jsdoc-var">onMouseOver </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoslide </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.slideFn</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">clearInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.slide</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseover'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">onMouseOut </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoslide</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.slide </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">window.setInterval</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-var">_this.showPanelNext</span><span class="jsdoc-syntax">();
+            }, </span><span class="jsdoc-var">this.timer</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseout'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -216,6 +267,11 @@
         
         </span><span class="jsdoc-var">cur.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">pan.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bullets </span><span class="jsdoc-syntax">&gt; 0){
+            </span><span class="jsdoc-var">_this.setActiveBullet</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.indexOfPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pan</span><span class="jsdoc-syntax">));
+        }
+        
         </span><span class="jsdoc-keyword">return true</span><span class="jsdoc-syntax">;
         
     },

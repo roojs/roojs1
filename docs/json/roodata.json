@@ -34112,9 +34112,19 @@
      "memberOf": ""
     },
     {
+     "name": "autoslide",
+     "type": "Boolena",
+     "desc": "auto slide .. default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "timer",
      "type": "Number",
-     "desc": "auto slide timer .. default 0 second",
+     "desc": "auto slide timer .. default 0 millisecond",
      "memberOf": ""
     },
     {
@@ -34365,10 +34375,22 @@
      "desc": "Fires after the component is hidden."
     },
     {
+     "name": "mouseout",
+     "sig": "function (_self, e, el)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the mouse exits the button"
+    },
+    {
+     "name": "mouseover",
+     "sig": "function (_self, e, el)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the mouse hovers over the button"
+    },
+    {
      "name": "render",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
-     "desc": "Fires after the component is rendered."
+     "desc": "Fires when the button is rendered"
     },
     {
      "name": "show",

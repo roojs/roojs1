@@ -14550,7 +14550,8 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
  * @cfg {Number} bullets show the panel pointer.. default 0
- * @cfg {Number} timer auto slide timer .. default 0 second
+ * @cfg {Boolena} autoslide (true|false) auto slide .. default false
+ * @cfg {Number} timer auto slide timer .. default 0 millisecond
  * 
  * @constructor
  * Create a new TabGroup
@@ -14565,6 +14566,31 @@ Roo.bootstrap.TabGroup = function(config){
     this.tabs = [];
     Roo.bootstrap.TabGroup.register(this);
     
+    this.addEvents({
+        /**
+        * @event mouseover
+        * Fires when the mouse hovers over the button
+        * @param {Roo.bootstrap.TabGroup} this
+        * @param {Event} e The event object
+        * @param {Roo.Element} el The element
+        */
+        mouseover : true,
+        /**
+        * @event mouseout
+        * Fires when the mouse exits the button
+        * @param {Roo.bootstrap.TabGroup} this
+        * @param {Event} e The event object
+        * @param {Roo.Element} el The element
+        */
+        mouseout: true,
+         /**
+        * @event render
+        * Fires when the button is rendered
+        * @param {Roo.bootstrap.TabGroup} this
+        */
+        render: true
+    });
+    
 };
 
 Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
@@ -14573,7 +14599,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     transition : false,
     bullets : 0,
     timer : 0,
-     
+    autoslide : false,
+    slideFn : false,
+    
     getAutoCreate : function()
     {
         var cfg = Roo.apply({}, Roo.bootstrap.TabGroup.superclass.getAutoCreate.call(this));
@@ -14637,18 +14665,41 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
                     _this.showPanel(ii);
                     
-                    _this.setActiveBullet(ii);
-                    
                 }).createDelegate(this, [i, bullet], true));
                 
             }
         }
         
-        if(this.timer > 0){
-            window.setInterval(function() {
+        if(this.autoslide){
+            this.slideFn = window.setInterval(function() {
                 _this.showPanelNext();
-            }, this.timer * 1000);
+            }, this.timer);
+            
+            this.el.on("mouseover", this.onMouseOver, this);
+            this.el.on("mouseout", this.onMouseOut, this);
         }
+    },
+    
+    onMouseOver : function(e, el)
+    {
+        if(this.autoslide && this.slideFn){
+            clearInterval(this.slide);
+        }
+        
+        this.fireEvent('mouseover', this, e, el);
+    },
+    
+    onMouseOut : function(e, el)
+    {
+        var _this = this;
+        
+        if(this.autoslide){
+            this.slide = window.setInterval(function() {
+                _this.showPanelNext();
+            }, this.timer);
+        }
+        
+        this.fireEvent('mouseout', this, e, el);
     },
     
     getChildContainer : function()
@@ -14754,6 +14805,11 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         cur.setActive(false);
         pan.setActive(true);
+        
+        if(this.bullets > 0){
+            _this.setActiveBullet(this.indexOfPanel(pan));
+        }
+        
         return true;
         
     },
