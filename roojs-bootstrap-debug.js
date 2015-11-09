@@ -9527,7 +9527,6 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             }
             value = new RegExp((anyMatch === true ? '' : '^') + Roo.escapeRe(value), "i");
         }
-        
         return function(r){
             return value.test(r.data[property]);
         };
@@ -9559,59 +9558,8 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      * @param {Boolean} anyMatch True to match any part not just the beginning
      */
     filter : function(property, value, anyMatch){
-        
-        if(typeof(property) == 'string'){
-            var fn = this.createFilterFn(property, value, anyMatch);
-            return fn ? this.filterBy(fn) : this.clearFilter();
-        }
-        
-        var fn = [];
-        var afn = [];
-        
-        var _this = this;
-        
-        Roo.each(property, function(p){
-            if(anyMatch == true){
-                afn.push(_this.createFilterFn(p, value, true));
-            }
-            
-            fn.push(_this.createFilterFn(p, value, false));
-        });
-        
-        if(!fn.length && !afn.length){
-            return this.clearFilter();
-        }
-        
-        this.snapshot = this.snapshot || this.data;
-        
-        var filterData = [];
-        
-        Roo.each(fn, function(f){
-            filterData.push(_this.queryBy(f, _this));
-        });
-        
-        Roo.each(afn, function(f){
-            filterData.push(_this.queryBy(f, _this));
-        });
-        
-        var data = this.snapshot || this.data;
-        
-        var r = new Roo.util.MixedCollection();
-        r.getKey = data.getKey;
-        
-        var keys =[];
-        
-        Roo.each(filterData, function(d){
-            var k = d.keys, it = d.items;
-            for(var i = 0, len = it.length; i < len; i++){
-                if(keys.indexOf(k[i]) == -1){
-                    r.add(k[i], it[i]);
-                }
-            }
-        });
-        
-        this.data = r;
-        this.fireEvent("datachanged", this);
+        var fn = this.createFilterFn(property, value, anyMatch);
+        return fn ? this.filterBy(fn) : this.clearFilter();
     },
 
     /**
@@ -10745,7 +10693,6 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
  * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
  * @cfg {Boolean} showToggleBtn show toggle button or not (true|false) default true
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
- * @cfg {Boolean} anyMatch (true|false) any match when filter default false
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -10810,7 +10757,13 @@ Roo.bootstrap.ComboBox = function(config){
          * Fires when the remove value from the combobox array
 	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
-        'remove' : true
+        'remove' : true,
+        /**
+         * @event specialfilter
+         * Fires when specialfilter
+            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            */
+        'specialfilter' : true
         
     });
     
@@ -10859,11 +10812,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * mode = 'remote' or 'text' if mode = 'local')
      */
     displayField: undefined,
-    
-    /**
-     * @cfg {Array} filterField The filter field name to bind to this CombBox (defaults to undefined if
-     */
-    filterField: undefined,
     
     /**
      * @cfg {String} valueField The underlying data value name to bind to this CombBox (defaults to undefined if
@@ -11011,14 +10959,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     validClass : "has-success",
     
     /**
-     * @cfg {Boolean} filterSort (true|false) sort the filter result default false
+     * @cfg {Boolean} specialFilter (true|false) special filter default false
      */
-    filterSort : false,
-    
-    /**
-     * @cfg {String} filterSortDir (ASC|DESC) dir of sort the filter result default ASC
-     */
-    filterSortDir : 'ASC',
+    specialFilter : false,
     
     //private
     addicon : false,
@@ -11033,7 +10976,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     btnPosition : 'right',
     triggerList : true,
     showToggleBtn : true,
-    anyMatch : false,
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
@@ -12132,12 +12074,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     if(forceAll){
                         this.store.clearFilter();
                     }else{
-                        this.store.filter(this.filterField || this.displayField, q, this.anyMatch);
                         
-                        if(this.filterSort){
-                            this.store.data.sort(this.displayField, this.filterSortDir);
+                        if(this.specialFilter){
+                            this.fireEvent('specialfilter', this);
+                            this.onLoad();
+                            return;
                         }
                         
+                        this.store.filter(this.displayField, q);
                     }
                     this.onLoad();
                 }else{
@@ -12168,7 +12112,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.loadNext = false;
     },
-
+    
     // private
     getParams : function(q){
         var p = {};
