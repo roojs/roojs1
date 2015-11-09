@@ -95,13 +95,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                         return;
                     }
         
-                    _this.showPanel(ii);
-                    
-                    Roo.each(_this.el.select('.bullet', true).elements, function(el){
-                        el.removeClass('selected');
-                    })
-                    
-                    t.addClass('selected');
+                    _this.setActiveBullet(ii);
                     
                 }).createDelegate(this, [i, bullet], true));
                 
