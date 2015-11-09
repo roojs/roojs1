@@ -617,6 +617,10 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             filterData.push(_this.queryBy(f, _this));
         });
         
+        Roo.each(filterData, function(d){
+            
+            
+        });
         Roo.log(filterData);
     },
 
