@@ -11,7 +11,7 @@
  * Bootstrap Column class
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
- * @cfg {Number} showPointer show the panel pointer.. default 0
+ * @cfg {Number} bullets show the panel pointer.. default 0
  * 
  * @constructor
  * Create a new TabGroup
@@ -32,7 +32,7 @@
     
     </span><span class="jsdoc-var">carousel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">transition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">showPointer </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">bullets </span><span class="jsdoc-syntax">: 0,
      
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -42,18 +42,68 @@
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.carousel</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' carousel slide'</span><span class="jsdoc-syntax">;
+            
             </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [{
                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'carousel-inner'
-            </span><span class="jsdoc-syntax">}]
-        }
+            </span><span class="jsdoc-syntax">}];
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">showPointer </span><span class="jsdoc-syntax">&gt; 0){
-            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bullets </span><span class="jsdoc-syntax">&gt; 0){
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bullets </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'carousel-bullets'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
+                };
+                
+                </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.bullets</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                    </span><span class="jsdoc-var">bullets.cn.push</span><span class="jsdoc-syntax">({
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'bullet bullet-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i
+                    </span><span class="jsdoc-syntax">});
+                }
+                
+                </span><span class="jsdoc-var">bullets.cn.push</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'clear'
+                </span><span class="jsdoc-syntax">});
+                
+                </span><span class="jsdoc-var">cfg.cn</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.cn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bullets</span><span class="jsdoc-syntax">;
+            }
         }
-        
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
+    
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">:  </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'-------- init events on tab group ---------'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bullets </span><span class="jsdoc-syntax">&gt; 0){
+            
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.bullets</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bullet </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.bullet-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">bullet</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-var">bullet.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ii</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
+                    
+                    </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+                    
+                    </span><span class="jsdoc-var">_this.showPanel</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ii</span><span class="jsdoc-syntax">);
+                    
+                    </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.bullet'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'selected'</span><span class="jsdoc-syntax">);
+                    })
+                    
+                    </span><span class="jsdoc-var">t.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'selected'</span><span class="jsdoc-syntax">);
+                    
+                })</span><span class="jsdoc-var">.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bullet</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+                
+            }
+        }
+    },
+    
     </span><span class="jsdoc-var">getChildContainer </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.carousel </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.carousel-inner'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;

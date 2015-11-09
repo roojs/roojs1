@@ -14549,7 +14549,7 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
  * Bootstrap Column class
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
- * @cfg {Number} showPointer show the panel pointer.. default 0
+ * @cfg {Number} bullets show the panel pointer.. default 0
  * 
  * @constructor
  * Create a new TabGroup
@@ -14570,7 +14570,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     carousel : false,
     transition : false,
-    showPointer : 0,
+    bullets : 0,
      
     getAutoCreate : function()
     {
@@ -14580,18 +14580,68 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         if (this.carousel) {
             cfg.cls += ' carousel slide';
+            
             cfg.cn = [{
                cls : 'carousel-inner'
-            }]
-        }
+            }];
         
-        if(showPointer > 0){
-            
+            if(this.bullets > 0){
+                
+                var bullets = {
+                    cls : 'carousel-bullets',
+                    cn : []
+                };
+                
+                for (var i = 0; i < this.bullets; i++){
+                    bullets.cn.push({
+                        cls : 'bullet bullet-' + i
+                    });
+                }
+                
+                bullets.cn.push({
+                    cls : 'clear'
+                });
+                
+                cfg.cn[0].cn = bullets;
+            }
         }
-        
         
         return cfg;
     },
+    
+    initEvents:  function()
+    {
+        Roo.log('-------- init events on tab group ---------');
+        
+        var _this = this;
+        
+        if(this.bullets > 0){
+            
+            for (var i = 0; i < this.bullets; i++){
+                var bullet = this.el.select('.bullet-' + i, true).first();
+                
+                if(!bullet){
+                    continue;
+                }
+                
+                bullet.on('click', (function(e, el, o, ii, t){
+                    
+                    e.preventDefault();
+                    
+                    _this.showPanel(ii);
+                    
+                    Roo.each(_this.el.select('.bullet', true).elements, function(el){
+                        el.removeClass('selected');
+                    })
+                    
+                    t.addClass('selected');
+                    
+                }).createDelegate(this, [i, bullet], true));
+                
+            }
+        }
+    },
+    
     getChildContainer : function()
     {
         return this.carousel ? this.el.select('.carousel-inner', true).first() : this.el;
