@@ -14566,31 +14566,6 @@ Roo.bootstrap.TabGroup = function(config){
     this.tabs = [];
     Roo.bootstrap.TabGroup.register(this);
     
-    this.addEvents({
-        /**
-        * @event mouseover
-        * Fires when the mouse hovers over the button
-        * @param {Roo.bootstrap.TabGroup} this
-        * @param {Event} e The event object
-        * @param {Roo.Element} el The element
-        */
-        mouseover : true,
-        /**
-        * @event mouseout
-        * Fires when the mouse exits the button
-        * @param {Roo.bootstrap.TabGroup} this
-        * @param {Event} e The event object
-        * @param {Roo.Element} el The element
-        */
-        mouseout: true,
-         /**
-        * @event render
-        * Fires when the button is rendered
-        * @param {Roo.bootstrap.TabGroup} this
-        */
-        render: true
-    });
-    
 };
 
 Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
@@ -14658,11 +14633,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                     
                     e.preventDefault();
                     
-                    if(_this.transition){
-                        Roo.log("waiting for the transitionend");
-                        return;
-                    }
-        
                     _this.showPanel(ii);
                     
                 }).createDelegate(this, [i, bullet], true));
@@ -14674,32 +14644,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             this.slideFn = window.setInterval(function() {
                 _this.showPanelNext();
             }, this.timer);
-            
-            this.el.on("mouseover", this.onMouseOver, this);
-            this.el.on("mouseout", this.onMouseOut, this);
         }
-    },
-    
-    onMouseOver : function(e, el)
-    {
-        if(this.autoslide && this.slideFn){
-            clearInterval(this.slide);
-        }
-        
-        this.fireEvent('mouseover', this, e, el);
-    },
-    
-    onMouseOut : function(e, el)
-    {
-        var _this = this;
-        
-        if(this.autoslide){
-            this.slide = window.setInterval(function() {
-                _this.showPanelNext();
-            }, this.timer);
-        }
-        
-        this.fireEvent('mouseout', this, e, el);
     },
     
     getChildContainer : function()
@@ -14762,6 +14707,11 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
      */
     showPanel : function (pan)
     {
+        if(this.transition){
+            Roo.log("waiting for the transitionend");
+            return;
+        }
+        
         if (typeof(pan) == 'number') {
             pan = this.tabs[pan];
         }
@@ -14775,6 +14725,10 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         if (false === cur.fireEvent('beforedeactivate')) {
             return false;
+        }
+        
+        if(this.bullets > 0){
+            this.setActiveBullet(this.indexOfPanel(pan));
         }
         
         if (this.carousel && typeof(Roo.get(document.body).dom.style.transition) != 'undefined') {
@@ -14800,15 +14754,12 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 _this.transition = false;
                 
             }, this, { single:  true } );
+            
             return true;
         }
         
         cur.setActive(false);
         pan.setActive(true);
-        
-        if(this.bullets > 0){
-            _this.setActiveBullet(this.indexOfPanel(pan));
-        }
         
         return true;
         
@@ -14816,17 +14767,30 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     showPanelNext : function()
     {
         var i = this.indexOfPanel(this.getActivePanel());
-        if (i > this.tabs.length) {
+        
+        if (i >= this.tabs.length - 1 && !this.autoslide) {
             return;
         }
+        
+        if (i >= this.tabs.length - 1 && this.autoslide) {
+            i = -1;
+        }
+        
         this.showPanel(this.tabs[i+1]);
     },
+    
     showPanelPrev : function()
     {
         var i = this.indexOfPanel(this.getActivePanel());
-        if (i  < 1) {
+        
+        if (i  < 1 && !this.autoslide) {
             return;
         }
+        
+        if (i < 1 && this.autoslide) {
+            i = this.tabs.length;
+        }
+        
         this.showPanel(this.tabs[i-1]);
     },
     
