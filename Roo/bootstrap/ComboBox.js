@@ -1390,8 +1390,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     if(forceAll){
                         this.store.clearFilter();
                     }else{
-                        this.store.filter(this.filterField || this.displayField, q, this.anyMatch);
-                        this.store.data.sort(this.displayField, this.dir);
+                        this.store.filter(this.filterField || this.displayField, q, this.anyMatch, this);
                     }
                     this.onLoad();
                 }else{
