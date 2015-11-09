@@ -82,8 +82,8 @@ Roo.bootstrap.ComboBox = function(config){
         /**
          * @event specialfilter
          * Fires when specialfilter
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
+            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            */
         'specialfilter' : true
         
     });
