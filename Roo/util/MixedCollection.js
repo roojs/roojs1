@@ -397,6 +397,8 @@ mc.add(otherEl);
             c[c.length] = {key: k[i], value: v, index: i};
         }
         c.sort(function(a, b){
+            Roo.log(a);
+            Roo.log(b);
             var v = fn(a[property], b[property]) * dsc;
             if(v == 0){
                 v = (a.index < b.index ? -1 : 1);
