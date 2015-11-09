@@ -13,7 +13,7 @@
  * @cfg {Boolean} carousel true to make the group behave like a carousel
  * @cfg {Number} bullets show the panel pointer.. default 0
  * @cfg {Boolena} autoslide (true|false) auto slide .. default false
- * @cfg {Number} timer auto slide timer .. default 0 second
+ * @cfg {Number} timer auto slide timer .. default 0 millisecond
  * 
  * @constructor
  * Create a new TabGroup
@@ -135,7 +135,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         if(this.autoslide){
             this.slideFn = window.setInterval(function() {
                 _this.showPanelNext();
-            }, this.timer * 1000);
+            }, this.timer);
             
             this.el.on("mouseover", this.onMouseOver, this);
             this.el.on("mouseout", this.onMouseOut, this);
@@ -153,10 +153,14 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     onMouseOut : function(a,b,c)
     {
-        if(this.autoslide)
-        this.slide = window.setInterval(function() {
-            _this.showPanelNext();
-        }, this.timer * 1000);
+        var _this = this;
+        
+        if(this.autoslide){
+            this.slide = window.setInterval(function() {
+                _this.showPanelNext();
+            }, this.timer);
+        }
+        
     },
     
     getChildContainer : function()
