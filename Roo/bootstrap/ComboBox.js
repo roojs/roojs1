@@ -1462,7 +1462,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         });
         
         if(!fn.length && !afn.length){
-            return this.clearFilter();
+            this.store.clearFilter();
         }
         
         this.snapshot = this.snapshot || this.data;
