@@ -487,6 +487,7 @@ mc.add(otherEl);
      */
     filterBy : function(fn, scope){
         var r = new Roo.util.MixedCollection();
+        Roo.log(r);
         r.getKey = this.getKey;
         var k = this.keys, it = this.items;
         for(var i = 0, len = it.length; i < len; i++){
