@@ -239,6 +239,10 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return false;
         }
         
+        if(this.bullets > 0){
+            this.setActiveBullet(this.indexOfPanel(pan));
+        }
+        
         if (this.carousel && typeof(Roo.get(document.body).dom.style.transition) != 'undefined') {
             
             this.transition = true;
@@ -263,17 +267,11 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 
             }, this, { single:  true } );
             
-            Roo.log('here?????');
             return true;
         }
         
         cur.setActive(false);
         pan.setActive(true);
-        
-        if(this.bullets > 0){
-            Roo.log('run?????????????????');
-            this.setActiveBullet(this.indexOfPanel(pan));
-        }
         
         return true;
         
@@ -281,6 +279,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     showPanelNext : function()
     {
         var i = this.indexOfPanel(this.getActivePanel());
+        Roo.log(i);
         if (i > this.tabs.length) {
             return;
         }
