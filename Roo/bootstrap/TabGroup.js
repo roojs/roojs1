@@ -280,7 +280,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         var i = this.indexOfPanel(this.getActivePanel());
         
-        if (i > this.tabs.length - 1) {
+        if (i >= this.tabs.length - 1) {
             return;
         }
         this.showPanel(this.tabs[i+1]);
