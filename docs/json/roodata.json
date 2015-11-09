@@ -16898,17 +16898,6 @@
      "memberOf": ""
     },
     {
-     "name": "anyMatch",
-     "type": "String",
-     "desc": "any match when filter default NO",
-     "memberOf": "",
-     "optvals": [
-      "YES",
-      "NO",
-      "BOTH"
-     ]
-    },
-    {
      "name": "lazyRender",
      "type": "Boolean",
      "desc": "True to prevent the ComboBox from rendering until requested (should always be used when\nrendering into an Roo.Editor, defaults to false)",
@@ -16966,12 +16955,6 @@
      "name": "displayField",
      "type": "String",
      "desc": "The underlying data field name to bind to this CombBox (defaults to undefined if\nmode = 'remote' or 'text' if mode = 'local')",
-     "memberOf": ""
-    },
-    {
-     "name": "filterField",
-     "type": "Array",
-     "desc": "The filter field name to bind to this CombBox (defaults to undefined if",
      "memberOf": ""
     },
     {
@@ -17646,6 +17629,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the component is shown."
+    },
+    {
+     "name": "specialfilter",
+     "sig": "function (combo)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when specialfilter"
     },
     {
      "name": "specialkey",
