@@ -1401,6 +1401,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                             return;
                         }
                         
+                        var anyMatch = (this.anyMatch == 'YES') ? true : false;
+                        
                         this.store.filter(this.displayField, q, this.anyMatch);
                     }
                     this.onLoad();
@@ -1444,7 +1446,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var _this = this;
         
-        Roo.each(property, function(p){
+        Roo.each(this.filterField, function(p){
             if(_this.anyMatch == true){
                 afn.push(_this.store.createFilterFn(p, value, true));
             }
