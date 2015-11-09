@@ -591,10 +591,11 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         }
         
         var fn = [];
+        var afn = [];
         
         Roo.each(property, function(p){
             if(anyMatch == true){
-                fn.push(this.createFilterFn(p, value, true));
+                afn.push(this.createFilterFn(p, value, true));
             }
             
             fn.push(this.createFilterFn(p, value, false));
@@ -603,6 +604,13 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         if(!fn.length){
             return this.clearFilter();
         }
+        var filterData = [];
+        
+        var data = this.snapshot || this.data;
+        
+        
+        this.data = this.queryBy(fn, scope||this);
+        
     },
 
     /**
