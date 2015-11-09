@@ -608,11 +608,14 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         var filterData = [];
         
         Roo.each(fn, function(f){
-            filterData.push(this.queryBy(fn, scope || this));
+            filterData.push(this.queryBy(f, scope || this));
         });
         
-        this.data = this.queryBy(fn, scope || this);
+        Roo.each(afn, function(f){
+            filterData.push(this.queryBy(f, scope || this));
+        });
         
+        Roo.log(filterData);
     },
 
     /**
