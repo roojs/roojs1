@@ -13,7 +13,7 @@
  * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
  * @cfg {Boolean} showToggleBtn show toggle button or not (true|false) default true
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
- * @cfg {String} anyMatch (YES|NO|BOTH) any match when filter default false
+ * @cfg {String} anyMatch (YES|NO|BOTH) any match when filter default NO
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -296,7 +296,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     btnPosition : 'right',
     triggerList : true,
     showToggleBtn : true,
-    anyMatch : false,
+    anyMatch : 'NO',
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
@@ -1445,7 +1445,20 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var _this = this;
         
         Roo.each(this.filterField, function(p){
-            if(_this.anyMatch == true){
+            
+            if(_this.anyMatch == 'NO'){
+                fn.push(_this.createFilterFn(p, value, false));
+                return;
+            }
+            
+            if(_this.anyMatch == 'YES'){
+                fn.push(_this.createFilterFn(p, value, true));
+                return;
+            }
+            
+            
+            
+            if(_this.anyMatch == ''){
                 afn.push(_this.store.createFilterFn(p, value, true));
             }
             
