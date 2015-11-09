@@ -27,6 +27,29 @@ Roo.bootstrap.TabGroup = function(config){
     this.tabs = [];
     Roo.bootstrap.TabGroup.register(this);
     
+    this.addEvents({
+        /**
+        * @event mouseover
+        * Fires when the mouse hovers over the button
+        * @param {Roo.bootstrap.TabGroup} this
+        * @param {Event} e The event object
+        */
+        mouseover : true,
+        /**
+        * @event mouseout
+        * Fires when the mouse exits the button
+        * @param {Roo.bootstrap.TabGroup} this
+        * @param {Event} e The event object
+        */
+        mouseout: true,
+         /**
+        * @event render
+        * Fires when the button is rendered
+        * @param {Roo.bootstrap.TabGroup} this
+        */
+        render: true
+    });
+    
 };
 
 Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
@@ -117,7 +140,11 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     onMouseOver : function(a,b,c)
     {
-        Roo.log([a,b,c]);
+        if(this.slide){
+            clearInterval(this.slide);
+        }
+        
+        
     },
     
     onMouseOut : function(a,b,c)
