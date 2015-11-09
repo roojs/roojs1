@@ -110,10 +110,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 _this.showPanelNext();
             }, this.timer * 1000);
             
-            
+            this.el.on("mouseover", this.onMouseOver, this);
+            this.el.on("mouseout", this.onMouseOut, this);
         }
-        
-        
     },
     
     getChildContainer : function()
