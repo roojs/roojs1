@@ -1474,7 +1474,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         });
         
         Roo.each(afn, function(f){
-            filterData.push(_this.queryBy(f, _this));
+            filterData.push(_this.store.queryBy(f, _this.store));
         });
         
         var data = this.snapshot || this.data;
