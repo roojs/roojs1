@@ -1401,11 +1401,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         this.store.clearFilter();
                     }else{
                         this.store.filter(this.filterField || this.displayField, q, this.anyMatch);
-                        
-                        if(this.filterSort){
-                            this.store.data._sort('category_display_name', this.filterSortDir);
-                        }
-                        
                     }
                     this.onLoad();
                 }else{
