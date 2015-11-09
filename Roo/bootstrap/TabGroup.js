@@ -95,6 +95,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                         return;
                     }
         
+                    _this.showPanel(ii);
+                    
                     _this.setActiveBullet(ii);
                     
                 }).createDelegate(this, [i, bullet], true));
