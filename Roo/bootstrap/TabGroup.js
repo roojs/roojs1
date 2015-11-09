@@ -89,20 +89,20 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 Roo.log(i);
                 Roo.log(bullet);
                 
-                bullet.on('click', function(e){
+                bullet.on('click', (function(e, ii){
                     
                     e.preventDefault();
                     
-                    Roo.log(i);
+                    Roo.log(ii);
                     
-                    _this.showPanel(i);
+                    _this.showPanel(ii);
                     
                     Roo.each(_this.el.select('.bullet', true).elements, function(el){
                         el.removeClass('selected');
                     })
                     
                     this.addClass('selected')
-                });
+                }).createDelegate(this, [i], true));
                 
             }
         }
