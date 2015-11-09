@@ -387,22 +387,15 @@ mc.add(otherEl);
     },
     
     _sort : function(property, dir, fn){
-        Roo.log(property);
         var dsc = String(dir).toUpperCase() == "DESC" ? -1 : 1;
         fn = fn || function(a, b){
             return a-b;
         };
         var c = [], k = this.keys, items = this.items;
         for(var i = 0, len = items.length; i < len; i++){
-            Roo.log(items[i]);
-            var v = typeof(items[i]['data'][property]) == 'undefined' ? items[i] : items[i]['data'][property];
-            c[c.length] = {key: k[i], value: v, index: i};
+            c[c.length] = {key: k[i], value: items[i], index: i};
         }
         c.sort(function(a, b){
-            Roo.log(a);
-            Roo.log(b);
-            Roo.log(a[property]);
-            Roo.log(b[property]);
             var v = fn(a[property], b[property]) * dsc;
             if(v == 0){
                 v = (a.index < b.index ? -1 : 1);
