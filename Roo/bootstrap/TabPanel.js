@@ -114,10 +114,6 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         
         var tg = Roo.bootstrap.TabGroup.get(this.navId);
         
-        if(state && tg){
-            Roo.log(this);
-        }
-        
         this.fireEvent('changed', this, state);
     }
     
