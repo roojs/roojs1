@@ -16899,12 +16899,13 @@
     },
     {
      "name": "anyMatch",
-     "type": "Boolean",
-     "desc": "any match when filter default false",
+     "type": "String",
+     "desc": "any match when filter default NO",
      "memberOf": "",
      "optvals": [
-      "true",
-      "false"
+      "YES",
+      "NO",
+      "BOTH"
      ]
     },
     {
@@ -17156,6 +17157,16 @@
      "type": "String",
      "desc": "The CSS class to use when marking a field valid (defaults to \"x-form-invalid\")",
      "memberOf": ""
+    },
+    {
+     "name": "specialFilter",
+     "type": "Boolean",
+     "desc": "special filter default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "triggerClass",

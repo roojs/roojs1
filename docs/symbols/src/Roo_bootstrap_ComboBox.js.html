@@ -13,7 +13,7 @@
  * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
  * @cfg {Boolean} showToggleBtn show toggle button or not (true|false) default true
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
- * @cfg {Boolean} anyMatch (true|false) any match when filter default false
+ * @cfg {String} anyMatch (YES|NO|BOTH) any match when filter default NO
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -278,6 +278,11 @@
      */
     </span><span class="jsdoc-var">validClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;has-success&quot;</span><span class="jsdoc-syntax">,
     
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} specialFilter (true|false) special filter default false
+     */
+    </span><span class="jsdoc-var">specialFilter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-comment">//private
     </span><span class="jsdoc-var">addicon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">editicon</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
@@ -291,7 +296,7 @@
     </span><span class="jsdoc-var">btnPosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">triggerList </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">showToggleBtn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">anyMatch </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">anyMatch </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'NO'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-comment">// element that contains real text value.. (when hidden is used..)
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -1390,8 +1395,13 @@
                     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">forceAll</span><span class="jsdoc-syntax">){
                         </span><span class="jsdoc-var">this.store.clearFilter</span><span class="jsdoc-syntax">();
                     }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                        </span><span class="jsdoc-var">this.store.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.filterField </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.anyMatch</span><span class="jsdoc-syntax">);
-                        </span><span class="jsdoc-var">this.store.data.sort</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.dir</span><span class="jsdoc-syntax">);
+                        
+                        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.specialFilter</span><span class="jsdoc-syntax">){
+                            </span><span class="jsdoc-var">this.specialFilterFn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">);
+                            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                        }
+                        
+                        </span><span class="jsdoc-var">this.store.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">);
                     }
                     </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">();
                 }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
@@ -1421,6 +1431,71 @@
         }
         
         </span><span class="jsdoc-var">this.loadNext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">specialFilterFn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.filterField.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.store.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">afn </span><span class="jsdoc-syntax">= [];
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.filterField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.anyMatch </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'NO'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">fn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.store.createFilterFn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.anyMatch </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'YES'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">fn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.store.createFilterFn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">fn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.store.createFilterFn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-var">afn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.store.store.createFilterFn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+            
+        });
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">fn.length </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">afn.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.store.clearFilter</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-var">this.store.snapshot </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store.snapshot </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.store.data</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">filterData </span><span class="jsdoc-syntax">= [];
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">filterData.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.store.queryBy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this.store</span><span class="jsdoc-syntax">));
+        });
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">afn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">filterData.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.store.queryBy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this.store</span><span class="jsdoc-syntax">));
+        });
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store.snapshot </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.store.data</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">r.getKey </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.getKey</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">keys </span><span class="jsdoc-syntax">=[];
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">filterData</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.keys</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">it </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.items</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">it.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">keys.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]) == -1){
+                    </span><span class="jsdoc-var">r.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">it</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
+                }
+            }
+        });
+        
+        </span><span class="jsdoc-var">this.store.data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.store.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;datachanged&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">);
+
     },
 
     </span><span class="jsdoc-comment">// private

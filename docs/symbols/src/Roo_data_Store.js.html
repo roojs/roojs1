@@ -552,7 +552,6 @@
             }
             </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">anyMatch </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'^'</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">Roo.escapeRe</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">), </span><span class="jsdoc-string">&quot;i&quot;</span><span class="jsdoc-syntax">);
         }
-        
         </span><span class="jsdoc-keyword">return function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">property</span><span class="jsdoc-syntax">]);
         };
@@ -584,59 +583,8 @@
      * @param {Boolean} anyMatch True to match any part not just the beginning
      */
     </span><span class="jsdoc-var">filter </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">property</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">anyMatch</span><span class="jsdoc-syntax">){
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">property</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createFilterFn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">property</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">anyMatch</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.filterBy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.clearFilter</span><span class="jsdoc-syntax">();
-        }
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= [];
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">afn </span><span class="jsdoc-syntax">= [];
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">property</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">anyMatch </span><span class="jsdoc-syntax">== </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">afn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.createFilterFn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
-            }
-            
-            </span><span class="jsdoc-var">fn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.createFilterFn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">));
-        });
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">fn.length </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">afn.length</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.clearFilter</span><span class="jsdoc-syntax">();
-        }
-        
-        </span><span class="jsdoc-var">this.snapshot </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.snapshot </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.data</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">filterData </span><span class="jsdoc-syntax">= [];
-        
-        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">filterData.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.queryBy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">));
-        });
-        
-        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">afn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">filterData.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.queryBy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">f</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">));
-        });
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.snapshot </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.data</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">r </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.util.MixedCollection</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">r.getKey </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">data.getKey</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">keys </span><span class="jsdoc-syntax">=[];
-        
-        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">filterData</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">d</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">k </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.keys</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">it </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">d.items</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0, </span><span class="jsdoc-var">len </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">it.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">len</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">keys.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]) == -1){
-                    </span><span class="jsdoc-var">r.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">], </span><span class="jsdoc-var">it</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">]);
-                }
-            }
-        });
-        
-        </span><span class="jsdoc-var">this.data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;datachanged&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.createFilterFn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">property</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">anyMatch</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">fn </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.filterBy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.clearFilter</span><span class="jsdoc-syntax">();
     },
 
     </span><span class="jsdoc-comment">/**
