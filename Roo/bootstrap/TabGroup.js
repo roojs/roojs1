@@ -151,7 +151,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         this.fireEvent('mouseover', this, e, el);
     },
     
-    onMouseOut : function(a,b,c)
+    onMouseOut : function(e, el)
     {
         var _this = this;
         
@@ -161,6 +161,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             }, this.timer);
         }
         
+        this.fireEvent('mouseout', this, e, el);
     },
     
     getChildContainer : function()
