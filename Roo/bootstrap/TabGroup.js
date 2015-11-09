@@ -262,6 +262,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 _this.transition = false;
                 
             }, this, { single:  true } );
+            
+            Roo.log('here?????');
             return true;
         }
         
