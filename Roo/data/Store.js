@@ -607,13 +607,11 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         
         var filterData = [];
         
-        var data = this.snapshot || this.data;
-        
         Roo.each(fn, function(f){
             filterData.push(this.queryBy(fn, scope || this));
         });
         
-        this.data = this.queryBy(fn, scope||this);
+        this.data = this.queryBy(fn, scope || this);
         
     },
 
