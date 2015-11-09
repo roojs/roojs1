@@ -599,6 +599,10 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             
             fn.push(this.createFilterFn(p, value, false));
         });
+        
+        if(!fn.length){
+            return this.clearFilter();
+        }
     },
 
     /**
