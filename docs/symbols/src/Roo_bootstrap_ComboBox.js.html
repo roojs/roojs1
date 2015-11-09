@@ -127,6 +127,12 @@
      * mode = 'remote' or 'text' if mode = 'local')
      */
     </span><span class="jsdoc-var">displayField</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Array} filterField The filter field name to bind to this CombBox (defaults to undefined if
+     */
+    </span><span class="jsdoc-var">filterField</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">undefined</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-comment">/**
      * @cfg {String} valueField The underlying data value name to bind to this CombBox (defaults to undefined if
      * mode = 'remote' or 'value' if mode = 'local'). 
@@ -1384,7 +1390,7 @@
                     </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">forceAll</span><span class="jsdoc-syntax">){
                         </span><span class="jsdoc-var">this.store.clearFilter</span><span class="jsdoc-syntax">();
                     }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
-                        </span><span class="jsdoc-var">this.store.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.anyMatch</span><span class="jsdoc-syntax">);
+                        </span><span class="jsdoc-var">this.store.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.filterField </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.anyMatch</span><span class="jsdoc-syntax">);
                     }
                     </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">();
                 }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{

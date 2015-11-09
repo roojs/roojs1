@@ -16968,6 +16968,12 @@
      "memberOf": ""
     },
     {
+     "name": "filterField",
+     "type": "Array",
+     "desc": "The filter field name to bind to this CombBox (defaults to undefined if",
+     "memberOf": ""
+    },
+    {
      "name": "valueField",
      "type": "String",
      "desc": "The underlying data value name to bind to this CombBox (defaults to undefined if\nmode = 'remote' or 'value' if mode = 'local'). \nNote: use of a valueField requires the user make a selection\nin order for a value to be mapped.",

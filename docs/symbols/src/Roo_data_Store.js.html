@@ -552,6 +552,7 @@
             }
             </span><span class="jsdoc-var">value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">RegExp</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">anyMatch </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">true </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'^'</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">Roo.escapeRe</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">value</span><span class="jsdoc-syntax">), </span><span class="jsdoc-string">&quot;i&quot;</span><span class="jsdoc-syntax">);
         }
+        
         </span><span class="jsdoc-keyword">return function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">value.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">property</span><span class="jsdoc-syntax">]);
         };
@@ -597,6 +598,7 @@
     </span><span class="jsdoc-var">filterBy </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">){
         </span><span class="jsdoc-var">this.snapshot </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.snapshot </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.data</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.data </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.queryBy</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">fn</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scope</span><span class="jsdoc-syntax">||</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.data</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;datachanged&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
 
