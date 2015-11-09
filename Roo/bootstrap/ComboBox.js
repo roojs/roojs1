@@ -127,6 +127,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * mode = 'remote' or 'text' if mode = 'local')
      */
     displayField: undefined,
+    
+    /**
+     * @cfg {Array} filterField The filter field name to bind to this CombBox (defaults to undefined if
+     */
+    filterField: undefined,
+    
     /**
      * @cfg {String} valueField The underlying data value name to bind to this CombBox (defaults to undefined if
      * mode = 'remote' or 'value' if mode = 'local'). 
