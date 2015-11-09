@@ -601,13 +601,17 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             fn.push(this.createFilterFn(p, value, false));
         });
         
-        if(!fn.length){
+        if(!fn.length && !afn.length){
             return this.clearFilter();
         }
+        
         var filterData = [];
         
         var data = this.snapshot || this.data;
         
+        Roo.each(fn, function(f){
+            filterData.push(this.queryBy(fn, scope || this));
+        });
         
         this.data = this.queryBy(fn, scope||this);
         
@@ -623,7 +627,6 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
     filterBy : function(fn, scope){
         this.snapshot = this.snapshot || this.data;
         this.data = this.queryBy(fn, scope||this);
-        Roo.log(this.data);
         this.fireEvent("datachanged", this);
     },
 
