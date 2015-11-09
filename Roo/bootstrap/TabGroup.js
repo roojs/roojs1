@@ -32,7 +32,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     carousel : false,
     transition : false,
-    showPointer : 0,
+    bullets : 0,
      
     getAutoCreate : function()
     {
@@ -47,14 +47,14 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                cls : 'carousel-inner'
             }];
         
-            if(this.showPointer > 0){
+            if(this.bullets > 0){
                 
                 var bullets = {
                     cls : 'carousel-bullets',
                     cn : []
                 };
                 
-                for (var i = 0; i < this.showPointer; i++){
+                for (var i = 0; i < this.bullets; i++){
                     bullets.cn.push({
                         cls : 'bullet bullet-' + i
                     });
