@@ -278,16 +278,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     validClass : "has-success",
     
-    /**
-     * @cfg {Boolean} filterSort (true|false) sort the filter result default false
-     */
-    filterSort : false,
-    
-    /**
-     * @cfg {String} filterSortDir (ASC|DESC) dir of sort the filter result default ASC
-     */
-    filterSortDir : 'ASC',
-    
     //private
     addicon : false,
     editicon: false,
@@ -1401,6 +1391,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         this.store.clearFilter();
                     }else{
                         this.store.filter(this.filterField || this.displayField, q, this.anyMatch);
+                        this.store.data.sort(this.displayField, this.dir);
                     }
                     this.onLoad();
                 }else{
