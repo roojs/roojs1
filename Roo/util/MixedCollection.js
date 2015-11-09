@@ -391,6 +391,7 @@ mc.add(otherEl);
         fn = fn || function(a, b){
             return a-b;
         };
+        Roo.log(fn);
         var c = [], k = this.keys, items = this.items;
         for(var i = 0, len = items.length; i < len; i++){
             c[c.length] = {key: k[i], value: items[i], index: i};
