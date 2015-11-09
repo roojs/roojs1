@@ -1397,7 +1397,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }else{
                         
                         if(this.specialFilter){
-                            this.specialFilterFn();
+                            this.specialFilterFn(q);
                             return;
                         }
                         
@@ -1456,8 +1456,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-            afn.push(_this.store.createFilterFn(p, value, true));
             fn.push(_this.createFilterFn(p, value, false));
+            afn.push(_this.store.createFilterFn(p, value, true));
             
         });
         
