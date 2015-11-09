@@ -85,7 +85,11 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             Roo.log(['register', tg, this]);
             tg.register(this);
             
-            Roo.log(tg.tabs.length);
+            var b = tg.tabs.length - 1;
+            
+            if(tg.bullets > 0 && b < tg.bullets){
+                tg.setActiveBullet(b);
+            }
         }
         
     },
