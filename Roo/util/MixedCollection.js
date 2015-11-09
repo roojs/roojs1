@@ -491,6 +491,7 @@ mc.add(otherEl);
         r.getKey = this.getKey;
         Roo.log(r.getKey);
         var k = this.keys, it = this.items;
+        Roo.log([k, it]);
         for(var i = 0, len = it.length; i < len; i++){
             if(fn.call(scope||this, it[i], k[i])){
 				r.add(k[i], it[i]);
