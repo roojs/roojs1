@@ -77,6 +77,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         var _this = this;
         
+        Roo.log(Roo.bootstrap.TabGroup.groups);
+        
         if(this.bullets > 0){
             
             for (var i = 0; i < this.bullets; i++){
