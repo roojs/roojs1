@@ -28,31 +28,6 @@ Roo.bootstrap.TabGroup = function(config){
     this.tabs = [];
     Roo.bootstrap.TabGroup.register(this);
     
-    this.addEvents({
-        /**
-        * @event mouseover
-        * Fires when the mouse hovers over the button
-        * @param {Roo.bootstrap.TabGroup} this
-        * @param {Event} e The event object
-        * @param {Roo.Element} el The element
-        */
-        mouseover : true,
-        /**
-        * @event mouseout
-        * Fires when the mouse exits the button
-        * @param {Roo.bootstrap.TabGroup} this
-        * @param {Event} e The event object
-        * @param {Roo.Element} el The element
-        */
-        mouseout: true,
-         /**
-        * @event render
-        * Fires when the button is rendered
-        * @param {Roo.bootstrap.TabGroup} this
-        */
-        render: true
-    });
-    
 };
 
 Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
@@ -131,33 +106,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             this.slideFn = window.setInterval(function() {
                 _this.showPanelNext();
             }, this.timer);
-            
-            Roo.log(this.getChildContainer());
-            this.getChildContainer().on("mouseover", this.onMouseOver, this);
-            this.getChildContainer().on("mouseout", this.onMouseOut, this);
         }
-    },
-    
-    onMouseOver : function(e, el)
-    {
-        if(this.autoslide && this.slideFn){
-            clearInterval(this.slide);
-        }
-        
-        this.fireEvent('mouseover', this, e, el);
-    },
-    
-    onMouseOut : function(e, el)
-    {
-        var _this = this;
-        
-        if(this.autoslide){
-            this.slide = window.setInterval(function() {
-                _this.showPanelNext();
-            }, this.timer);
-        }
-        
-        this.fireEvent('mouseout', this, e, el);
     },
     
     getChildContainer : function()
