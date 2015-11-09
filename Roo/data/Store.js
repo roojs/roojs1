@@ -593,8 +593,6 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         Roo.each(property, function(p){
             
         });
-        
-        
     },
 
     /**
