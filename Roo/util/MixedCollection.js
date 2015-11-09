@@ -387,6 +387,7 @@ mc.add(otherEl);
     },
     
     _sort : function(property, dir, fn){
+        Roo.log(property);
         var dsc = String(dir).toUpperCase() == "DESC" ? -1 : 1;
         fn = fn || function(a, b){
             return a-b;
