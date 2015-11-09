@@ -98,28 +98,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         };
     },
     
-    onMouseOver : function(e, el)
-    {
-        if(this.autoslide && this.slideFn){
-            clearInterval(this.slide);
-        }
-        
-        this.fireEvent('mouseover', this, e, el);
-    },
-    
-    onMouseOut : function(e, el)
-    {
-        var _this = this;
-        
-        if(this.autoslide){
-            this.slide = window.setInterval(function() {
-                _this.showPanelNext();
-            }, this.timer);
-        }
-        
-        this.fireEvent('mouseout', this, e, el);
-    },
-    
     getChildContainer : function()
     {
         return this.carousel ? this.el.select('.carousel-inner', true).first() : this.el;
