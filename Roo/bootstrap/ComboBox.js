@@ -1433,10 +1433,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.loadNext = false;
     },
     
-    specialFilterFn : function()
+    specialFilterFn : function(q)
     {
         if(!this.filterField.length){
-            this.store.filter(this.displayField, q, this.anyMatch);
+            this.store.filter(this.displayField, q);
         }
         
         var fn = [];
