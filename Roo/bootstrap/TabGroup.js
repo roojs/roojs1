@@ -110,6 +110,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 _this.showPanelNext();
             }, this.timer * 1000);
         }
+        
+        
     },
     
     getChildContainer : function()
