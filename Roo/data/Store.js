@@ -583,7 +583,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      * should start with or a RegExp to test against the field
      * @param {Boolean} anyMatch True to match any part not just the beginning
      */
-    filter : function(property, value, anyMatch, parent){
+    filter : function(property, value, anyMatch){
         
         if(typeof(property) == 'string'){
             var fn = this.createFilterFn(property, value, anyMatch);
