@@ -90,6 +90,11 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                     
                     e.preventDefault();
                     
+                    if(_this.transition){
+                        Roo.log("waiting for the transitionend");
+                        return;
+                    }
+        
                     _this.showPanel(ii);
                     
                     Roo.each(_this.el.select('.bullet', true).elements, function(el){
