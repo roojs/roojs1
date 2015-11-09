@@ -151,7 +151,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     onMouseOut : function(a,b,c)
     {
-        Roo.log([a,b,c]);
+        this.slide = window.setInterval(function() {
+            _this.showPanelNext();
+        }, this.timer * 1000);
     },
     
     getChildContainer : function()
