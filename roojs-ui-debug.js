@@ -5259,6 +5259,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             }
             value = new RegExp((anyMatch === true ? '' : '^') + Roo.escapeRe(value), "i");
         }
+        
         return function(r){
             return value.test(r.data[property]);
         };
@@ -5290,8 +5291,59 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
      * @param {Boolean} anyMatch True to match any part not just the beginning
      */
     filter : function(property, value, anyMatch){
-        var fn = this.createFilterFn(property, value, anyMatch);
-        return fn ? this.filterBy(fn) : this.clearFilter();
+        
+        if(typeof(property) == 'string'){
+            var fn = this.createFilterFn(property, value, anyMatch);
+            return fn ? this.filterBy(fn) : this.clearFilter();
+        }
+        
+        var fn = [];
+        var afn = [];
+        
+        var _this = this;
+        
+        Roo.each(property, function(p){
+            if(anyMatch == true){
+                afn.push(_this.createFilterFn(p, value, true));
+            }
+            
+            fn.push(_this.createFilterFn(p, value, false));
+        });
+        
+        if(!fn.length && !afn.length){
+            return this.clearFilter();
+        }
+        
+        this.snapshot = this.snapshot || this.data;
+        
+        var filterData = [];
+        
+        Roo.each(fn, function(f){
+            filterData.push(_this.queryBy(f, _this));
+        });
+        
+        Roo.each(afn, function(f){
+            filterData.push(_this.queryBy(f, _this));
+        });
+        
+        var data = this.snapshot || this.data;
+        
+        var r = new Roo.util.MixedCollection();
+        r.getKey = data.getKey;
+        
+        var keys =[];
+        
+        Roo.each(filterData, function(d){
+            var k = d.keys, it = d.items;
+            for(var i = 0, len = it.length; i < len; i++){
+                if(keys.indexOf(k[i]) == -1){
+                    r.add(k[i], it[i]);
+                }
+            }
+        });
+        
+        this.data = r;
+        this.fireEvent("datachanged", this);
     },
 
     /**
