@@ -61,8 +61,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     transition : false,
     bullets : 0,
     timer : 0,
-    autoslide : false,
-    slideFn : false,
     
     getAutoCreate : function()
     {
