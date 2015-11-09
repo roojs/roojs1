@@ -279,8 +279,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     showPanelNext : function()
     {
         var i = this.indexOfPanel(this.getActivePanel());
-        Roo.log(i);
-        if (i > this.tabs.length) {
+        
+        if (i > this.tabs.length - 1) {
             return;
         }
         this.showPanel(this.tabs[i+1]);
