@@ -101,7 +101,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                         el.removeClass('selected');
                     })
                     
-                    this.addClass('selected')
+                    _this.addClass('selected')
                 }).createDelegate(this, [i], true));
                 
             }
