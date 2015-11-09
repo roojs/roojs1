@@ -1329,7 +1329,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     initQuery : function(){
         
         var v = this.getRawValue();
-        
+        Roo.log(v);
         if(this.tickable && this.editable){
             v = this.tickableInputEl().getValue();
         }
