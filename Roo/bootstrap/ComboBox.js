@@ -1427,7 +1427,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.loadNext = false;
     },
-     
+    
+    specialFilterFn : function()
+    {
+        if(!this.filterField.length){
+            this.store.filter(this.displayField, q, this.anyMatch);
+        }
+        
+        
+    },
+
     // private
     getParams : function(q){
         var p = {};
