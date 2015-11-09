@@ -14635,11 +14635,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
                     _this.showPanel(ii);
                     
-                    Roo.each(_this.el.select('.bullet', true).elements, function(el){
-                        el.removeClass('selected');
-                    })
-                    
-                    t.addClass('selected');
+                    _this.setActiveBullet(ii);
                     
                 }).createDelegate(this, [i, bullet], true));
                 
@@ -14768,6 +14764,20 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return;
         }
         this.showPanel(this.tabs[i-1]);
+    },
+    
+    setActiveBullet : function(i)
+    {
+        Roo.each(this.el.select('.bullet', true).elements, function(el){
+            el.removeClass('selected');
+        })
+
+        var bullet = this.el.select('.bullet-' + i, true).first();
+        if(!bullet){
+            return;
+        }
+        
+        bullet.addClass('selected');
     }
     
     
@@ -14893,7 +14903,14 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
             var tg = Roo.bootstrap.TabGroup.get(this.navId);
             Roo.log(['register', tg, this]);
             tg.register(this);
+            
+            var i = tg.tabs.length - 1;
+            
+            if(this.active && tg.bullets > 0 && i < tg.bullets){
+                tg.setActiveBullet(i);
+            }
         }
+        
     },
     
     
@@ -14920,6 +14937,7 @@ Roo.extend(Roo.bootstrap.TabPanel, Roo.bootstrap.Component,  {
         } else  if (!this.el.hasClass('active')) {
             this.el.addClass('active');
         }
+        
         this.fireEvent('changed', this, state);
     }
     
