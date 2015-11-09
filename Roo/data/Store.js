@@ -634,9 +634,8 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
                 }
             }
         });
-        
-        Roo.log(r);
-        r._sort('category_display_name', 'ASC');
+
+        r._sort(property[0], 'ASC');
         
         this.data = r;
         this.fireEvent("datachanged", this);
