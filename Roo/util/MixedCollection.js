@@ -486,9 +486,13 @@ mc.add(otherEl);
      * @return {MixedCollection} The new filtered collection
      */
     filterBy : function(fn, scope){
+        Roo.log(fn);
         var r = new Roo.util.MixedCollection();
+        Roo.log(r);
         r.getKey = this.getKey;
+        Roo.log(r.getKey);
         var k = this.keys, it = this.items;
+        Roo.log([k, it]);
         for(var i = 0, len = it.length; i < len; i++){
             if(fn.call(scope||this, it[i], k[i])){
 				r.add(k[i], it[i]);
