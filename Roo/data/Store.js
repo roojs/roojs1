@@ -591,8 +591,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         }
         
         Roo.each(property, function(p){
-            var fn = this.createFilterFn(p, value, anyMatch);
-            return fn ? this.filterBy(fn) : this.clearFilter();
+            
         });
         
         
