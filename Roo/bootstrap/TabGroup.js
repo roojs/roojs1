@@ -33,6 +33,7 @@ Roo.bootstrap.TabGroup = function(config){
         * Fires when the mouse hovers over the button
         * @param {Roo.bootstrap.TabGroup} this
         * @param {Event} e The event object
+        * @param {Roo.Element} el The element
         */
         mouseover : true,
         /**
@@ -40,6 +41,7 @@ Roo.bootstrap.TabGroup = function(config){
         * Fires when the mouse exits the button
         * @param {Roo.bootstrap.TabGroup} this
         * @param {Event} e The event object
+        * @param {Roo.Element} el The element
         */
         mouseout: true,
          /**
@@ -138,13 +140,13 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         }
     },
     
-    onMouseOver : function(a,b,c)
+    onMouseOver : function(e, el)
     {
         if(this.slide){
             clearInterval(this.slide);
         }
         
-        
+        this.fireEvent('mouseover', this, e, el);
     },
     
     onMouseOut : function(a,b,c)
