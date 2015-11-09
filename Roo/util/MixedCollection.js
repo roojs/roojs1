@@ -485,7 +485,7 @@ mc.add(otherEl);
      * @param {Object} scope (optional) The scope of the function (defaults to this) 
      * @return {MixedCollection} The new filtered collection
      */
-    filterBy : function(fn, scope){
+    filterBy : function(fn, scope, anyMatch){
         Roo.log(fn);
         Roo.log(scope);
         var r = new Roo.util.MixedCollection();
