@@ -1447,17 +1447,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.each(this.filterField, function(p){
             
             if(_this.anyMatch == 'NO'){
-                fn.push(_this.createFilterFn(p, q, false));
+                fn.push(_this.store.createFilterFn(p, q, false));
                 return;
             }
             
             if(_this.anyMatch == 'YES'){
-                fn.push(_this.createFilterFn(p, q, true));
+                fn.push(_this.store.createFilterFn(p, q, true));
                 return;
             }
             
-            fn.push(_this.createFilterFn(p, q, false));
-            afn.push(_this.store.createFilterFn(p, q, true));
+            fn.push(_this.store.createFilterFn(p, q, false));
+            afn.push(_this.store.store.createFilterFn(p, q, true));
             
         });
         
@@ -1465,7 +1465,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.store.clearFilter();
         }
         
-        this.snapshot = this.snapshot || this.data;
+        this.store.snapshot = this.store.snapshot || this.store.data;
         
         var filterData = [];
         
