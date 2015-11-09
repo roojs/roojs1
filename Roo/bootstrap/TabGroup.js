@@ -164,6 +164,11 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
      */
     showPanel : function (pan)
     {
+        if(this.transition){
+            Roo.log("waiting for the transitionend");
+            return;
+        }
+        
         if (typeof(pan) == 'number') {
             pan = this.tabs[pan];
         }

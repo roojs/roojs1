@@ -14702,7 +14702,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
      */
     showPanel : function (pan)
     {
-        if(!this.transition){
+        if(this.transition){
             Roo.log("waiting for the transitionend");
             return;
         }
