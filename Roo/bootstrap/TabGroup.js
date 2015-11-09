@@ -109,6 +109,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             this.slide = window.setInterval(function() {
                 _this.showPanelNext();
             }, this.timer * 1000);
+            
+            
         }
         
         
