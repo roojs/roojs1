@@ -13,7 +13,6 @@
  * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
  * @cfg {Boolean} showToggleBtn show toggle button or not (true|false) default true
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
- * @cfg {String} anyMatch (YES|NO|BOTH) any match when filter default NO
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
