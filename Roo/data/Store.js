@@ -635,7 +635,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             }
         });
         
-        Roo.log(this.parent());
+        Roo.log(this);
         
         this.data = r;
         this.fireEvent("datachanged", this);
