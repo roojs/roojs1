@@ -132,6 +132,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 _this.showPanelNext();
             }, this.timer);
             
+            Roo.log(this.getChildContainer());
             this.getChildContainer().on("mouseover", this.onMouseOver, this);
             this.getChildContainer().on("mouseout", this.onMouseOut, this);
         }
