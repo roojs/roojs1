@@ -589,12 +589,12 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             var fn = this.createFilterFn(property, value, anyMatch);
             return fn ? this.filterBy(fn) : this.clearFilter();
         }
+        
         Roo.each(property, function(p){
-            
-            
+            var fn = this.createFilterFn(p, value, anyMatch);
+            return fn ? this.filterBy(fn) : this.clearFilter();
         });
-        var fn = this.createFilterFn(property, value, anyMatch);
-        return fn ? this.filterBy(fn) : this.clearFilter();
+        
         
     },
 
