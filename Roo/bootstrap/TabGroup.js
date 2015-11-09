@@ -132,8 +132,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             }
         }
         
-        if(this.timer > 0){
-            this.slide = window.setInterval(function() {
+        if(this.autoslide){
+            this.slideFn = window.setInterval(function() {
                 _this.showPanelNext();
             }, this.timer * 1000);
             
@@ -144,7 +144,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     onMouseOver : function(e, el)
     {
-        if(this.slide){
+        if(this.autoslide && this.slideFn){
             clearInterval(this.slide);
         }
         
@@ -153,7 +153,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     onMouseOut : function(a,b,c)
     {
-        if()
+        if(this.autoslide)
         this.slide = window.setInterval(function() {
             _this.showPanelNext();
         }, this.timer * 1000);
