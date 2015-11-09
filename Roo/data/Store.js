@@ -616,7 +616,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         Roo.each(afn, function(f){
             filterData.push(_this.queryBy(f, _this));
         });
-        Roo.log(filterData);
+        
         var data = this.snapshot || this.data;
         
         var r = new Roo.util.MixedCollection();
@@ -633,7 +633,8 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             }
         });
         
-        return r;
+        this.data = r;
+        this.fireEvent("datachanged", this);
     },
 
     /**
