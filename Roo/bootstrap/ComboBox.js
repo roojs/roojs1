@@ -1447,17 +1447,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.each(this.filterField, function(p){
             
             if(_this.anyMatch == 'NO'){
-                fn.push(_this.createFilterFn(p, value, false));
+                fn.push(_this.createFilterFn(p, q, false));
                 return;
             }
             
             if(_this.anyMatch == 'YES'){
-                fn.push(_this.createFilterFn(p, value, true));
+                fn.push(_this.createFilterFn(p, q, true));
                 return;
             }
             
-            fn.push(_this.createFilterFn(p, value, false));
-            afn.push(_this.store.createFilterFn(p, value, true));
+            fn.push(_this.createFilterFn(p, q, false));
+            afn.push(_this.store.createFilterFn(p, q, true));
             
         });
         
