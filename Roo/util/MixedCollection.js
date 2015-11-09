@@ -387,7 +387,6 @@ mc.add(otherEl);
     },
     
     _sort : function(property, dir, fn){
-        Roo.log(property);
         var dsc = String(dir).toUpperCase() == "DESC" ? -1 : 1;
         fn = fn || function(a, b){
             return a-b;
@@ -397,12 +396,7 @@ mc.add(otherEl);
             c[c.length] = {key: k[i], value: items[i], index: i};
         }
         c.sort(function(a, b){
-            Roo.log(a);
-            Roo.log(b);
             var v = fn(a[property], b[property]) * dsc;
-            Roo.log(a[property]);
-            Roo.log(b[property]);
-            Roo.log(v);
             if(v == 0){
                 v = (a.index < b.index ? -1 : 1);
             }
@@ -412,8 +406,6 @@ mc.add(otherEl);
             items[i] = c[i].value;
             k[i] = c[i].key;
         }
-        Roo.log(k);
-        Roo.log(items);
         this.fireEvent("sort", this);
     },
     
