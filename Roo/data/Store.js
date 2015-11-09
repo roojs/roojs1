@@ -552,7 +552,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             }
             value = new RegExp((anyMatch === true ? '' : '^') + Roo.escapeRe(value), "i");
         }
-        Roo.log(value);
+        
         return function(r){
             return value.test(r.data[property]);
         };
@@ -606,8 +606,7 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
         if(!fn.length && !afn.length){
             return this.clearFilter();
         }
-        Roo.log(fn);
-        Roo.log(afn);
+        
         var filterData = [];
         
         Roo.each(fn, function(f){
