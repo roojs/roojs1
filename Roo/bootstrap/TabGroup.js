@@ -77,7 +77,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         var _this = this;
         
-        Roo.log(Roo.bootstrap.TabGroup.get(this.navId));
+        Roo.log(Roo.bootstrap.TabGroup.get(this.navId).tabs);
         
         if(this.bullets > 0){
             
