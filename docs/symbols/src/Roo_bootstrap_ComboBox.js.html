@@ -77,7 +77,7 @@
          * Fires when the remove value from the combobox array
 	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
-        </span><span class="jsdoc-string">'remove' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">'remove' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event specialfilter
          * Fires when specialfilter
@@ -1397,6 +1397,7 @@
                         
                         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.specialFilter</span><span class="jsdoc-syntax">){
                             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'specialfilter'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+                            </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">();
                             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
                         }
                         
