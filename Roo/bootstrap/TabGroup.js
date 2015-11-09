@@ -230,6 +230,20 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return;
         }
         this.showPanel(this.tabs[i-1]);
+    },
+    
+    setActiveBullet : function(i)
+    {
+        Roo.each(this.el.select('.bullet', true).elements, function(el){
+            el.removeClass('selected');
+        })
+
+        var bullet = this.el.select('.bullet-' + i, true).first();
+        if(!bullet){
+            return;
+        }
+        
+        bullet.addClass('selected');
     }
     
     
