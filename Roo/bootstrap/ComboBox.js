@@ -1392,7 +1392,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }else{
                         
                         if(this.specialFilter){
-                            
+//                            this.filterField
                             return;
                         }
                         
