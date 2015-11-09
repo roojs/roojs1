@@ -1396,7 +1396,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     }else{
                         
                         if(this.specialFilter){
-                            this.specialFilterFn(q);
+                            this.fireEvent('specialfilter', this);
                             return;
                         }
                         
