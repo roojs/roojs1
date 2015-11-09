@@ -398,6 +398,8 @@ mc.add(otherEl);
         }
         c.sort(function(a, b){
             var v = fn(a[property], b[property]) * dsc;
+            Roo.log(a[property]);
+            Roo.log(b[property]);
             Roo.log(v);
             if(v == 0){
                 v = (a.index < b.index ? -1 : 1);
