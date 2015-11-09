@@ -393,7 +393,8 @@ mc.add(otherEl);
         };
         var c = [], k = this.keys, items = this.items;
         for(var i = 0, len = items.length; i < len; i++){
-            c[c.length] = {key: k[i], value: items[i], index: i};
+            var v = typeof(items[i][property]) == 'undefined' ? items[i] : items[i][property];
+            c[c.length] = {key: k[i], value: v, index: i};
         }
         c.sort(function(a, b){
             var v = fn(a[property], b[property]) * dsc;
