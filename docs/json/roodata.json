@@ -16898,6 +16898,16 @@
      "memberOf": ""
     },
     {
+     "name": "anyMatch",
+     "type": "Boolean",
+     "desc": "any match when filter default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "lazyRender",
      "type": "Boolean",
      "desc": "True to prevent the ComboBox from rendering until requested (should always be used when\nrendering into an Roo.Editor, defaults to false)",
