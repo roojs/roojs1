@@ -336,11 +336,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
             inputblock.cn.push(input);
             
-            if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
-                inputblock.cls += ' has-feedback';
-                inputblock.cn.push(feedback);
-            }
-            
             if (this.after && typeof(this.after) == 'string') {
                 inputblock.cn.push({
                     tag :'span',
