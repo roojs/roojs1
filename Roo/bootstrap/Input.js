@@ -340,7 +340,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
             inputblock.cls += ' has-feedback';
-            inputblock.cn.push(feedback);
+            inputblock.cn.push({
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback'
+            });
         }
         
         if (align ==='left' && this.fieldLabel.length) {
