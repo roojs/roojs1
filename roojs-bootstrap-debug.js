@@ -7437,24 +7437,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         var inputblock = input;
         
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
-            
-            var feedback = {
-                tag: 'span',
-                cls: 'glyphicon form-control-feedback'
-            };
-
-            inputblock = {
-                cls : 'has-feedback',
-                cn :  [
-                    input,
-                    feedback
-                ] 
-            };  
-        }
-         
-//        var inputblock = input;
-        
         if (this.before || this.after) {
             
             inputblock = {
@@ -7482,11 +7464,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
             inputblock.cn.push(input);
             
-            if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
-                inputblock.cls += ' has-feedback';
-                inputblock.cn.push(feedback);
-            }
-            
             if (this.after && typeof(this.after) == 'string') {
                 inputblock.cn.push({
                     tag :'span',
@@ -7504,6 +7481,14 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 });
             }
         };
+        
+        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+            inputblock.cls += ' has-feedback';
+            inputblock.cn.push({
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback'
+            });
+        }
         
         if (align ==='left' && this.fieldLabel.length) {
                 Roo.log("left and has label");
