@@ -41,7 +41,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     getAutoCreate : function()
     {
-        Roo.log('getAutoCreate.............;');
         var cfg = Roo.apply({}, Roo.bootstrap.TabGroup.superclass.getAutoCreate.call(this));
         
         cfg.cls += ' tab-content';
