@@ -4177,6 +4177,7 @@ Roo.extend(Roo.bootstrap.Row, Roo.bootstrap.Component,  {
  * @cfg {String} tag tag of the element
  * @cfg {String} cls class of the element
  * @cfg {Boolean} preventDefault (true|false) default false
+ * @cfg {Boolean} clickable (true|false) default false
  * 
  * @constructor
  * Create a new Element
@@ -4204,6 +4205,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     cls: '',
     html: '',
     preventDefault: false, 
+    clickable: false,
     
     getAutoCreate : function(){
         
@@ -4218,10 +4220,11 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        
         Roo.bootstrap.Element.superclass.initEvents.call(this);
         
-        this.el.on('click', this.onClick, this);
+        if(this.clickable){
+            this.el.on('click', this.onClick, this);
+        }
         
     },
     
