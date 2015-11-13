@@ -14600,6 +14600,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         cfg.cls += ' tab-content';
         
+        Roo.log('get auto create...............');
+        
         if (this.carousel) {
             cfg.cls += ' carousel slide';
             
@@ -14652,8 +14654,14 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                     
                     _this.showPanel(ii);
                     
+                    if(_this.autoslide && _this.slideFn){
+                        clearInterval(_this.slideFn);
+                        _this.slideFn = window.setInterval(function() {
+                            _this.showPanelNext();
+                        }, _this.timer);
+                    }
+                    
                 }).createDelegate(this, [i, bullet], true));
-                
             }
         }
         
