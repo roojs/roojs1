@@ -21546,6 +21546,16 @@
      ]
     },
     {
+     "name": "clickable",
+     "type": "Boolean",
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "style",
      "type": "String",
      "desc": "any extra css",
