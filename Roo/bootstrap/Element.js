@@ -54,7 +54,6 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        
         Roo.bootstrap.Element.superclass.initEvents.call(this);
         
         this.el.on('click', this.onClick, this);
