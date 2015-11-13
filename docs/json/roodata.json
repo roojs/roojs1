@@ -21536,6 +21536,16 @@
      "memberOf": ""
     },
     {
+     "name": "preventDefault",
+     "type": "Boolean",
+     "desc": "default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "style",
      "type": "String",
      "desc": "any extra css",
@@ -21642,6 +21652,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires when the children have been rendered.."
+    },
+    {
+     "name": "click",
+     "sig": "function (_self, e)\n{\n\n}",
+     "type": "function",
+     "desc": "When a element is chick"
     },
     {
      "name": "destroy",
