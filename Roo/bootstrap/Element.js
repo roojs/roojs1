@@ -37,9 +37,29 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
             html: this.html
         }
         
-        
-	
         return cfg;
+    },
+    
+    initEvents: function() 
+    {
+        
+        Roo.bootstrap.Element.superclass.initEvents.call(this);
+        
+        this.el.on('click', this.onClick, this);
+        
+    },
+    
+    onClick : function(e)
+    {
+        if (this.disabled) {
+            return;
+        }
+        
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        
+        this.fireEvent('click', this, e);
     },
     
     getValue : function()
