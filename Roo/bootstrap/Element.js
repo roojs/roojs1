@@ -13,6 +13,7 @@
  * @cfg {String} tag tag of the element
  * @cfg {String} cls class of the element
  * @cfg {Boolean} preventDefault (true|false) default false
+ * @cfg {Boolean} clickable (true|false) default false
  * 
  * @constructor
  * Create a new Element
@@ -40,6 +41,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     cls: '',
     html: '',
     preventDefault: false, 
+    clickable: false,
     
     getAutoCreate : function(){
         
