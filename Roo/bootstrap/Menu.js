@@ -225,7 +225,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.render();
         }
         this.fireEvent("beforeshow", this);
-        Roo.log(this.el.getAlignToXY(el, pos || this.defaultAlign));
         this.showAt(this.el.getAlignToXY(el, pos || this.defaultAlign), parentMenu, false);
     },
      /**
@@ -252,7 +251,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if(this.el.getWidth() + xy[0] > Roo.lib.Dom.getViewWidth()){
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
-        Roo.log(xy);
+        
         this.el.setXY(xy);
         this.focus();
         this.fireEvent("show", this);
