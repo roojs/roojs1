@@ -239,7 +239,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
         if(_e !== false){
             this.fireEvent("beforeshow", this);
-            
             //xy = this.el.adjustForConstraints(xy);
         }
         
