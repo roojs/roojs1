@@ -243,11 +243,12 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             
             //xy = this.el.adjustForConstraints(xy);
         }
-        //this.el.setXY(xy);
+        
         //this.el.show();
         this.hideMenuItems();
         this.hidden = false;
         this.triggerEl.addClass('open');
+        this.el.setXY(xy);
         this.focus();
         this.fireEvent("show", this);
     },
