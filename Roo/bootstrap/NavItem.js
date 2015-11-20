@@ -169,11 +169,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         if(this.animateRef && this.href.charAt(0) == '#'){
             this.scrollToElement(e);
-//            return;
         }
         
         var p = this.parent();
-        Roo.log(p);
+        
         if (['tabs','pills'].indexOf(p.type)!==-1) {
             if (typeof(p.setActiveItem) !== 'undefined') {
                 p.setActiveItem(this);
