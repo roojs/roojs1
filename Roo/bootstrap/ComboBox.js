@@ -1403,6 +1403,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         
                         this.store.filter(this.displayField, q);
                     }
+                    this.store.fireEvent("datachanged", this);
                     this.onLoad();
                 }else{
                     
