@@ -158,7 +158,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log("fire event clicked??");
+        Roo.log("fire event clicked");
         if(this.fireEvent('click', this, e) === false){
             return;
         };
@@ -168,7 +168,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         
         var p = this.parent();
-        
+        Roo.log(p);
         // if parent is a navbarheader....- and link is probably a '#' page ref.. then remove the expanded menu.
         if (p.parentType == 'NavHeaderbar' && !this.menu) {
             // remove the collapsed menu expand...
