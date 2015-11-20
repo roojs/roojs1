@@ -1842,7 +1842,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
         if(_e !== false){
             this.fireEvent("beforeshow", this);
-            
             //xy = this.el.adjustForConstraints(xy);
         }
         
@@ -3916,23 +3915,23 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(this.animateRef && this.href.charAt(0) == '#'){
-            this.scrollToElement(e);
-            return;
-        }
-        
         var p = this.parent();
-        if (['tabs','pills'].indexOf(p.type)!==-1) {
-            if (typeof(p.setActiveItem) !== 'undefined') {
-                p.setActiveItem(this);
-            }
-        }
+        
         // if parent is a navbarheader....- and link is probably a '#' page ref.. then remove the expanded menu.
         if (p.parentType == 'NavHeaderbar' && !this.menu) {
             // remove the collapsed menu expand...
             p.parent().el.select('.navbar-collapse',true).removeClass('in');  
         }
         
+        if(this.animateRef && this.href.charAt(0) == '#'){
+            this.scrollToElement(e);
+        }
+        
+        if (['tabs','pills'].indexOf(p.type)!==-1) {
+            if (typeof(p.setActiveItem) !== 'undefined') {
+                p.setActiveItem(this);
+            }
+        }
     },
     
     isActive: function () {
