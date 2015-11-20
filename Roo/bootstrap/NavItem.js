@@ -169,7 +169,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         if(this.animateRef && this.href.charAt(0) == '#'){
             this.scrollToElement(e);
-            return;
+//            return;
         }
         
         var p = this.parent();
