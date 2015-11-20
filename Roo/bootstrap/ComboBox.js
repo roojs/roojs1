@@ -1404,9 +1404,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         this.store.filter(this.displayField, q);
                     }
                     
+                    this.onLoad();
+                    
                     this.store.fireEvent("datachanged", this.store);
                     
-                    this.onLoad();
                 }else{
                     
                     this.store.baseParams[this.queryParam] = q;
