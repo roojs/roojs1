@@ -170,7 +170,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         var dom = this.el.select('a',true).dom;
         if(this.animateRef && this.href.indexOf('#') > -1){
-            Roo.log(["test:",dom.href.split("#")[0] document.location.toString().split("#")[0]]);
+            Roo.log(["test:",dom.href.split("#")[0], document.location.toString().split("#")[0]]);
             if (dom.href.split("#")[0] != document.location.toString().split("#")[0]) {
                 return; // ignore... - it's a 'hash' to another page.
             }
