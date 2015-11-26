@@ -3764,7 +3764,7 @@ Roo.apply(Roo.bootstrap.NavGroup, {
  * @cfg {Boolean} preventDefault (true | false) default false
  * @cfg {String} tabId the tab that this item activates.
  * @cfg {String} tagtype (a|span) render as a href or span?
- * @cfg {Boolean} animateRef (true|false) link to element default false
+ * @cfg {Boolean} animateRef (true|false) link to element default false  
   
  * @constructor
  * Create a new Navbar Item
@@ -3885,9 +3885,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     {
         if(
                 this.preventDefault || 
-                this.href == '#' ||
-                (this.animateRef && this.href.charAt(0) == '#')
+                this.href == '#' 
         ){
+            
             e.preventDefault();
         }
         
@@ -3901,6 +3901,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             return;
         }
         
+        
+        
         Roo.log("fire event clicked");
         if(this.fireEvent('click', this, e) === false){
             return;
@@ -3909,8 +3911,13 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if(this.tagtype == 'span'){
             return;
         }
-        
-        if(this.animateRef && this.href.charAt(0) == '#'){
+        var dom = this.el.select('a',true).dom;
+        if(this.animateRef && this.href.indexOf('#') > -1){
+            if (dom.href.split("#")[0] != document.location.toString().split("#")[0]) {
+                return; // ignore... - it's a 'hash' to another page.
+            }
+            
+            e.preventDefault();
             this.scrollToElement(e);
             return;
         }
