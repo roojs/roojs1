@@ -157,7 +157,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             Roo.log("waiting for the transitionend");
             return;
         }
-        var dom = this.el.select('a',true).dom;
+        
+        
         
         Roo.log("fire event clicked");
         if(this.fireEvent('click', this, e) === false){
@@ -167,10 +168,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if(this.tagtype == 'span'){
             return;
         }
-        
+        var dom = this.el.select('a',true).dom;
         if(this.animateRef && this.href.indexOf('#') > -1){
-            if (this.href.indexOf('#') ==0 || this.href.split("#") {
-                //code
+            if (dom.href.split("#")[0] != document.location.toString().split("#")[0]) {
+                return; // ignore... - it's a 'hash' to another page.
             }
             
             e.preventDefault();
