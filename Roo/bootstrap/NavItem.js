@@ -173,9 +173,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         var ael = this.el.select('a',true).first();
         Roo.log(this.el);
         
-        if(aelthis.animateRef && this.href.indexOf('#') > -1){
+        if(ael & this.animateRef && this.href.indexOf('#') > -1){
             Roo.log(["test:",ael.dom.href.split("#")[0], document.location.toString().split("#")[0]]);
-            if (dom.href.split("#")[0] != document.location.toString().split("#")[0]) {
+            if (ael.dom.href.split("#")[0] != document.location.toString().split("#")[0]) {
                 return; // ignore... - it's a 'hash' to another page.
             }
             
