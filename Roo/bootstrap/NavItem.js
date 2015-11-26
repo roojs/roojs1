@@ -142,8 +142,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     {
         if(
                 this.preventDefault || 
-                this.href == '#' ||
-                (this.animateRef && this.href.indexOf('#') > -1)
+                this.href == '#' 
         ){
             
             e.preventDefault();
