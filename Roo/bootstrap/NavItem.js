@@ -143,7 +143,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if(
                 this.preventDefault || 
                 this.href == '#' ||
-                (this.animateRef && this.href.charAt(0) == '#')
+                (this.animateRef && this.href.indexOf('#') > -1)
         ){
             e.preventDefault();
         }
@@ -167,7 +167,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(this.animateRef && this.href.charAt(0) == '#'){
+        if(this.animateRef && this.href.indexOf('#') > -1){
             this.scrollToElement(e);
             return;
         }
