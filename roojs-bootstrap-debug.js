@@ -1842,14 +1842,19 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         }
         if(_e !== false){
             this.fireEvent("beforeshow", this);
-            
             //xy = this.el.adjustForConstraints(xy);
         }
-        //this.el.setXY(xy);
+        
         //this.el.show();
         this.hideMenuItems();
         this.hidden = false;
         this.triggerEl.addClass('open');
+        
+        if(this.el.getWidth() + xy[0] > Roo.lib.Dom.getViewWidth()){
+            xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
+        }
+        
+        this.el.setXY(xy);
         this.focus();
         this.fireEvent("show", this);
     },
@@ -3911,6 +3916,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if(this.tagtype == 'span'){
             return;
         }
+<<<<<<< HEAD
         Roo.log(this.href);
         var dom = this.el.select('a',true).dom;
         if(this.animateRef && this.href.indexOf('#') > -1){
@@ -3920,22 +3926,26 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             }
             
             e.preventDefault();
-            this.scrollToElement(e);
-            return;
-        }
+=======
         
         var p = this.parent();
-        if (['tabs','pills'].indexOf(p.type)!==-1) {
-            if (typeof(p.setActiveItem) !== 'undefined') {
-                p.setActiveItem(this);
-            }
-        }
+        
         // if parent is a navbarheader....- and link is probably a '#' page ref.. then remove the expanded menu.
         if (p.parentType == 'NavHeaderbar' && !this.menu) {
             // remove the collapsed menu expand...
             p.parent().el.select('.navbar-collapse',true).removeClass('in');  
         }
         
+        if(this.animateRef && this.href.charAt(0) == '#'){
+>>>>>>> 090586fe59dab343aa24087d7f4bc00ab354bb55
+            this.scrollToElement(e);
+        }
+        
+        if (['tabs','pills'].indexOf(p.type)!==-1) {
+            if (typeof(p.setActiveItem) !== 'undefined') {
+                p.setActiveItem(this);
+            }
+        }
     },
     
     isActive: function () {
@@ -12121,7 +12131,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         
                         this.store.filter(this.displayField, q);
                     }
+                    
+                    this.store.fireEvent("datachanged", this.store);
+                    
                     this.onLoad();
+                    
+                    
                 }else{
                     
                     this.store.baseParams[this.queryParam] = q;
@@ -12503,6 +12518,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.hiddenField){
             this.hiddenField.dom.value = this.value;
         }
+        
+        this.store.fireEvent("datachanged", this.store);
     },
     
     clearItem : function()
