@@ -183,7 +183,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             this.scrollToElement(e);
         }
         
-        if (['tabs','pills'].indexOf(p.type)!==-1) {
+        if (['tabs','pills'].indexOf(this.type)!==-1) {
             if (typeof(p.setActiveItem) !== 'undefined') {
                 p.setActiveItem(this);
             }
