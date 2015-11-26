@@ -3918,10 +3918,12 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
  
         Roo.log(this.href);
-        var dom = this.el.select('a',true).dom;
-        if(this.animateRef && this.href.indexOf('#') > -1){
-            Roo.log(["test:",dom.href.split("#")[0], document.location.toString().split("#")[0]]);
-            if (dom.href.split("#")[0] != document.location.toString().split("#")[0]) {
+        var ael = this.el.select('a',true).first();
+        Roo.log(this.el);
+        
+        if(ael & this.animateRef && this.href.indexOf('#') > -1){
+            Roo.log(["test:",ael.dom.href.split("#")[0], document.location.toString().split("#")[0]]);
+            if (ael.dom.href.split("#")[0] != document.location.toString().split("#")[0]) {
                 return; // ignore... - it's a 'hash' to another page.
             }
             
@@ -4014,7 +4016,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     {
         var c = document.body;
         
-        var target = Roo.get(c).select('a[name=' + this.href.replace('#', '') +']', true).first();
+        var target = Roo.get(c).select('a[name=' + this.href.split('#')[1] +']', true).first();
         
         if(!target){
             return;
