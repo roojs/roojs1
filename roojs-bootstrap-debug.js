@@ -3916,7 +3916,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if(this.tagtype == 'span'){
             return;
         }
-        var p =  o.parent();
+        var p =  this.parent();
  
         Roo.log(this.href);
         var ael = this.el.select('a',true).first();
