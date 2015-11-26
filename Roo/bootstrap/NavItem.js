@@ -145,6 +145,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                 this.href == '#' ||
                 (this.animateRef && this.href.indexOf('#') > -1)
         ){
+            
             e.preventDefault();
         }
         
@@ -168,6 +169,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         
         if(this.animateRef && this.href.indexOf('#') > -1){
+            e.preventDefault();
             this.scrollToElement(e);
             return;
         }
