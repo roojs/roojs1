@@ -168,6 +168,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if(this.tagtype == 'span'){
             return;
         }
+        Roo.log(this.href);
         var dom = this.el.select('a',true).dom;
         if(this.animateRef && this.href.indexOf('#') > -1){
             Roo.log(["test:",dom.href.split("#")[0], document.location.toString().split("#")[0]]);
