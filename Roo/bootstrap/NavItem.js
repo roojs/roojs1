@@ -172,7 +172,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
  
         Roo.log(this.href);
         var ael = this.el.select('a',true).first();
-        Roo.log(this.el);
+        Roo.log(ael);
         
         if(ael & this.animateRef && this.href.indexOf('#') > -1){
             Roo.log(["test:",ael.dom.href.split("#")[0], document.location.toString().split("#")[0]]);

@@ -3916,10 +3916,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if(this.tagtype == 'span'){
             return;
         }
+        var p =  o.parent();
  
         Roo.log(this.href);
         var ael = this.el.select('a',true).first();
-        Roo.log(this.el);
+        Roo.log(ael);
         
         if(ael & this.animateRef && this.href.indexOf('#') > -1){
             Roo.log(["test:",ael.dom.href.split("#")[0], document.location.toString().split("#")[0]]);
@@ -3931,7 +3932,12 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             this.scrollToElement(e);
         }
         
-        if (['tabs','pills'].indexOf(p.type)!==-1) {
+        
+        
+        
+        
+        
+        if (['tabs','pills'].indexOf(this.type)!==-1) {
             if (typeof(p.setActiveItem) !== 'undefined') {
                 p.setActiveItem(this);
             }
