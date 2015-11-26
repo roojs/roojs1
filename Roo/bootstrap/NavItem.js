@@ -168,6 +168,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if(this.tagtype == 'span'){
             return;
         }
+        var p =  o.parent();
  
         Roo.log(this.href);
         var ael = this.el.select('a',true).first();
@@ -182,6 +183,11 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             e.preventDefault();
             this.scrollToElement(e);
         }
+        
+        
+        
+        
+        
         
         if (['tabs','pills'].indexOf(this.type)!==-1) {
             if (typeof(p.setActiveItem) !== 'undefined') {
