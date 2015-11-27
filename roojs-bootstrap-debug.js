@@ -3908,7 +3908,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         
         
         
-        Roo.log("fire event clicked");
+        //Roo.log("fire event clicked");
         if(this.fireEvent('click', this, e) === false){
             return;
         };
@@ -3916,14 +3916,13 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         if(this.tagtype == 'span'){
             return;
         }
-        var p =  this.parent();
- 
-        Roo.log(this.href);
+        
+        //Roo.log(this.href);
         var ael = this.el.select('a',true).first();
-        Roo.log(ael);
+        //Roo.log(ael);
         
         if(ael && this.animateRef && this.href.indexOf('#') > -1){
-            Roo.log(["test:",ael.dom.href.split("#")[0], document.location.toString().split("#")[0]]);
+            //Roo.log(["test:",ael.dom.href.split("#")[0], document.location.toString().split("#")[0]]);
             if (ael.dom.href.split("#")[0] != document.location.toString().split("#")[0]) {
                 return; // ignore... - it's a 'hash' to another page.
             }
@@ -3933,11 +3932,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         
         
-        
-        
-        
-        
-        if (['tabs','pills'].indexOf(this.type)!==-1) {
+        var p =  this.parent();
+   
+        if (['tabs','pills'].indexOf(p.type)!==-1) {
             if (typeof(p.setActiveItem) !== 'undefined') {
                 p.setActiveItem(this);
             }
