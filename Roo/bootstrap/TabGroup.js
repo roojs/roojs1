@@ -91,6 +91,9 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         }
         
         if(this.autoslide){
+            
+            var _this = this;
+            
             this.slideFn = window.setInterval(function() {
                 _this.showPanelNext();
             }, this.timer);
