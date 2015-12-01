@@ -92,6 +92,10 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         Roo.log(this);
         
+        if(Roo.isTouch){
+            this.el.on("touchstart", this.onTouchStart, this);
+        }
+        
         if(this.autoslide){
             
             var _this = this;
@@ -101,6 +105,11 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             }, this.timer);
         }
         
+    },
+    
+    onTouchStart : function()
+    {
+        Roo.log('onTouchStart');
     },
     
     getChildContainer : function()
