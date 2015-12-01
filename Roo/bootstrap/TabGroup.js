@@ -249,6 +249,10 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     initBullet : function()
     {
+        if(Roo.isTouch){
+            return;
+        }
+        
         for (var i = 0; i < this.bullets; i++){
             var bullet = this.el.select('.bullet-' + i, true).first();
 
