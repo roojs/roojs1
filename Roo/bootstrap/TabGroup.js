@@ -89,7 +89,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         var _this = this;
         
         if(this.bullets > 0 && !Roo.isTouch){
-            
+            this.initBullets();
             for (var i = 0; i < this.bullets; i++){
                 var bullet = this.el.select('.bullet-' + i, true).first();
                 
@@ -267,6 +267,11 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         }
         
         this.showPanel(this.tabs[i-1]);
+    },
+    
+    initBullet : function()
+    {
+        
     },
     
     setActiveBullet : function(i)
