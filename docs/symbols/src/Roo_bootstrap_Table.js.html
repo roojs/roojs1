@@ -476,6 +476,10 @@
                 </span><span class="jsdoc-var">c.style </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' width:' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config.width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px;'</span><span class="jsdoc-syntax">;
             }
             
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.cls</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">c.cls </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c.cls</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">config.cls </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">c.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config.cls</span><span class="jsdoc-syntax">);
+            }
+            
             </span><span class="jsdoc-var">header.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)
         }
         
@@ -747,6 +751,10 @@
             
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.cursor</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">td.style </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' cursor:' </span><span class="jsdoc-syntax">+  </span><span class="jsdoc-var">config.cursor </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">';'</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.cls</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">td.cls </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td.cls</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">config.cls </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">td.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">config.cls</span><span class="jsdoc-syntax">);
             }
              
             </span><span class="jsdoc-var">row.cn.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">td</span><span class="jsdoc-syntax">);

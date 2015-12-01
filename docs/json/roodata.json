@@ -34154,6 +34154,12 @@
      "memberOf": ""
     },
     {
+     "name": "bullets_cls",
+     "type": "String",
+     "desc": "apply the cls to bullets.. default false",
+     "memberOf": ""
+    },
+    {
      "name": "autoslide",
      "type": "Boolena",
      "desc": "auto slide .. default false",

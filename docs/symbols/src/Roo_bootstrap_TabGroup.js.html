@@ -12,6 +12,7 @@
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
  * @cfg {Number} bullets show the panel pointer.. default 0
+ * @cfg {String} bullets_cls apply the cls to bullets.. default false
  * @cfg {Boolena} autoslide (true|false) auto slide .. default false
  * @cfg {Number} timer auto slide timer .. default 0 millisecond
  * 
@@ -38,6 +39,7 @@
     </span><span class="jsdoc-var">timer </span><span class="jsdoc-syntax">: 0,
     </span><span class="jsdoc-var">autoslide </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">slideFn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">bullets_cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -60,6 +62,10 @@
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'carousel-bullets'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
                 };
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bullets_cls</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-var">bullets.cls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bullets.cls </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.bullets.cls</span><span class="jsdoc-syntax">;
+                }
                 
                 </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.bullets</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++){
                     </span><span class="jsdoc-var">bullets.cn.push</span><span class="jsdoc-syntax">({

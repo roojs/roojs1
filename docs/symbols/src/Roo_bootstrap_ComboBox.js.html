@@ -1403,7 +1403,12 @@
                         
                         </span><span class="jsdoc-var">this.store.filter</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.displayField</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">);
                     }
+                    
+                    </span><span class="jsdoc-var">this.store.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;datachanged&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">);
+                    
                     </span><span class="jsdoc-var">this.onLoad</span><span class="jsdoc-syntax">();
+                    
+                    
                 }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                     
                     </span><span class="jsdoc-var">this.store.baseParams</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.queryParam</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">q</span><span class="jsdoc-syntax">;
@@ -1785,6 +1790,8 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenField</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.hiddenField.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.value</span><span class="jsdoc-syntax">;
         }
+        
+        </span><span class="jsdoc-var">this.store.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;datachanged&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">clearItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
