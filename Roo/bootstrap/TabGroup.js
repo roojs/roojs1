@@ -203,7 +203,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return false;
         }
         
-        if(this.bullets > 0){
+        if(this.bullets > 0 && !Roo.isTouch){
             this.setActiveBullet(this.indexOfPanel(pan));
         }
         
