@@ -249,7 +249,28 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     initBullet : function()
     {
-        
+        for (var i = 0; i < this.bullets; i++){
+            var bullet = this.el.select('.bullet-' + i, true).first();
+
+            if(!bullet){
+                continue;
+            }
+
+            bullet.on('click', (function(e, el, o, ii, t){
+
+                e.preventDefault();
+
+                _this.showPanel(ii);
+
+                if(_this.autoslide && _this.slideFn){
+                    clearInterval(_this.slideFn);
+                    _this.slideFn = window.setInterval(function() {
+                        _this.showPanelNext();
+                    }, _this.timer);
+                }
+
+            }).createDelegate(this, [i, bullet], true));
+        }
     },
     
     setActiveBullet : function(i)
