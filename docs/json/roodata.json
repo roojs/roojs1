@@ -34155,8 +34155,18 @@
     },
     {
      "name": "autoslide",
-     "type": "Boolena",
+     "type": "Boolean",
      "desc": "auto slide .. default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
+     "name": "slideOnTouch",
+     "type": "Boolean",
+     "desc": "slide on touch .. default false",
      "memberOf": "",
      "optvals": [
       "true",
