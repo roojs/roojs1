@@ -14701,8 +14701,13 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             this.initBullet();
         }
         
+        Roo.log(this);
+        
+        if(Roo.isTouch){
+            this.el.on("touchstart", this.onTouchStart, this);
+        }
+        
         if(this.autoslide){
-            
             var _this = this;
             
             this.slideFn = window.setInterval(function() {
@@ -14710,6 +14715,15 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             }, this.timer);
         }
         
+    },
+    
+    onTouchStart : function(e, el, o)
+    {
+        if(!Roo.isTouch || Roo.get(e.getTarget()).hasClass('roo-button-text')){
+            return;
+        }
+        
+        this.showPanelNext();
     },
     
     getChildContainer : function()
