@@ -126,7 +126,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             cfg.name = this.name;
         }
         
-       
+        Roo.log(this);
         
         this.el = ct.createChild(cfg, position);
         
