@@ -202,7 +202,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         if (false === cur.fireEvent('beforedeactivate')) {
             return false;
         }
-        Roo.log('run????');
+        
         if(this.bullets > 0 && !Roo.isTouch){
             this.setActiveBullet(this.indexOfPanel(pan));
         }
