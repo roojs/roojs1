@@ -47,7 +47,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         Roo.log('get auto create...............');
         
-        if (this.carousel) {
+        if (this.carousel && !Roo.isTouch) {
             cfg.cls += ' carousel slide';
             
             cfg.cn = [{
