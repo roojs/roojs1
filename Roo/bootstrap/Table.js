@@ -476,6 +476,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.style += ' width:' + config.width + 'px;';
             }
             
+            if(typeof(config.cls) != 'undefined'){
+                td.cls = (typeof(td.cls) == 'undefined') ? config.cls : (td.cls + ' ' + config.cls);
+            }
+            
             header.cn.push(c)
         }
         
