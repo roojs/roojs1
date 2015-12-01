@@ -90,6 +90,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             this.initBullet();
         }
         
+        Roo.log(this);
+        
         if(this.autoslide){
             
             var _this = this;
