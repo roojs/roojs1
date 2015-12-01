@@ -97,7 +97,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         }
         
         if(this.autoslide){
-            
             var _this = this;
             
             this.slideFn = window.setInterval(function() {
@@ -107,10 +106,11 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
     },
     
-    onTouchStart : function(a,b,c,d)
+    onTouchStart : function(e, el, o)
     {
         Roo.log('onTouchStart');
-        Roo.log([a,b,c,d]);
+        Roo.log(e);
+        Roo.log(e.getTarget());
     },
     
     getChildContainer : function()
