@@ -126,6 +126,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             cfg.name = this.name;
         }
         
+       
+        
         this.el = ct.createChild(cfg, position);
         
         if (this.tooltip) {
