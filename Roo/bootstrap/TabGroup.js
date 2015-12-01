@@ -57,7 +57,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             if(this.bullets > 0){
                 
                 var bullets = {
-                    cls : 'carousel-bullets hidden-xs',
+                    cls : 'carousel-bullets',
                     cn : []
                 };
                 
