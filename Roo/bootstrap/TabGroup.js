@@ -251,6 +251,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return;
         }
         
+        var _this = this;
+        
         for (var i = 0; i < this.bullets; i++){
             var bullet = this.el.select('.bullet-' + i, true).first();
 
@@ -280,8 +282,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         if(Roo.isTouch){
             return;
         }
-        
-        var _this = this;
         
         Roo.each(this.el.select('.bullet', true).elements, function(el){
             el.removeClass('selected');
