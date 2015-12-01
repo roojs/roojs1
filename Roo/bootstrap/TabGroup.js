@@ -94,7 +94,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         Roo.log(this);
         
-        if(Roo.isTouch){
+        if(Roo.isTouch && this.slideOnTouch){
             this.el.on("touchstart", this.onTouchStart, this);
         }
         
