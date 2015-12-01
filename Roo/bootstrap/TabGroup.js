@@ -12,7 +12,6 @@
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
  * @cfg {Number} bullets show the panel pointer.. default 0
- * @cfg {String} bullets_cls apply the cls to bullets.. default false
  * @cfg {Boolena} autoslide (true|false) auto slide .. default false
  * @cfg {Number} timer auto slide timer .. default 0 millisecond
  * 
@@ -59,7 +58,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             if(this.bullets > 0){
                 
                 var bullets = {
-                    cls : 'carousel-bullets',
+                    cls : 'carousel-bullets hidden-xs',
                     cn : []
                 };
                 
