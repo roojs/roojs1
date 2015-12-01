@@ -107,9 +107,10 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
     },
     
-    onTouchStart : function()
+    onTouchStart : function(a,b,c,d)
     {
         Roo.log('onTouchStart');
+        Roo.log([a,b,c,d]);
     },
     
     getChildContainer : function()
