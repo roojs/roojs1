@@ -14677,7 +14677,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                 };
                 
                 if(this.bullets_cls){
-                    bullets.cls = bullets.cls + ' ' + this.bullets.cls;
+                    bullets.cls = bullets.cls + ' ' + this.bullets_cls;
                 }
                 
                 for (var i = 0; i < this.bullets; i++){
