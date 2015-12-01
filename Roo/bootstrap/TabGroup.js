@@ -12,7 +12,8 @@
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
  * @cfg {Number} bullets show the panel pointer.. default 0
- * @cfg {Boolena} autoslide (true|false) auto slide .. default false
+ * @cfg {Boolean} autoslide (true|false) auto slide .. default false
+ * @cfg {Boolean} slideOnTouch (true|false) slide on touch .. default false
  * @cfg {Number} timer auto slide timer .. default 0 millisecond
  * 
  * @constructor
