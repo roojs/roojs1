@@ -126,9 +126,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             cfg.name = this.name;
         }
         
-        Roo.log(this);
-        Roo.log(ct);
-        
         this.el = ct.createChild(cfg, position);
         
         if (this.tooltip) {
@@ -14661,14 +14658,14 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         Roo.log('get auto create...............');
         
-        if (this.carousel && !Roo.isTouch) {
+        if (this.carousel) {
             cfg.cls += ' carousel slide';
             
             cfg.cn = [{
                cls : 'carousel-inner'
             }];
         
-            if(this.bullets > 0){
+            if(this.bullets > 0 && !Roo.isTouch){
                 
                 var bullets = {
                     cls : 'carousel-bullets',
