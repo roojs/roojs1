@@ -729,6 +729,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 td.id = id;
             }
             
+            Roo.log(config);
+            
             if(typeof(config.colspan) != 'undefined'){
                 td.colspan = config.colspan;
             }
