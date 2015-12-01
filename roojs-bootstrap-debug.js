@@ -126,7 +126,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             cfg.name = this.name;
         }
         
-       
+        Roo.log(this);
         
         this.el = ct.createChild(cfg, position);
         
@@ -14660,7 +14660,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         Roo.log('get auto create...............');
         
-        if (this.carousel) {
+        if (this.carousel && !Roo.isTouch) {
             cfg.cls += ' carousel slide';
             
             cfg.cn = [{
@@ -14670,7 +14670,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             if(this.bullets > 0){
                 
                 var bullets = {
-                    cls : 'carousel-bullets hidden-xs',
+                    cls : 'carousel-bullets',
                     cn : []
                 };
                 
@@ -14699,39 +14699,19 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         Roo.log('-------- init events on tab group ---------');
         
-        var _this = this;
-        
-        if(this.bullets > 0){
-            
-            for (var i = 0; i < this.bullets; i++){
-                var bullet = this.el.select('.bullet-' + i, true).first();
-                
-                if(!bullet){
-                    continue;
-                }
-                
-                bullet.on('click', (function(e, el, o, ii, t){
-                    
-                    e.preventDefault();
-                    
-                    _this.showPanel(ii);
-                    
-                    if(_this.autoslide && _this.slideFn){
-                        clearInterval(_this.slideFn);
-                        _this.slideFn = window.setInterval(function() {
-                            _this.showPanelNext();
-                        }, _this.timer);
-                    }
-                    
-                }).createDelegate(this, [i, bullet], true));
-            }
+        if(this.bullets > 0 && !Roo.isTouch){
+            this.initBullet();
         }
         
         if(this.autoslide){
+            
+            var _this = this;
+            
             this.slideFn = window.setInterval(function() {
                 _this.showPanelNext();
             }, this.timer);
         }
+        
     },
     
     getChildContainer : function()
@@ -14814,7 +14794,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return false;
         }
         
-        if(this.bullets > 0){
+        if(this.bullets > 0 && !Roo.isTouch){
             this.setActiveBullet(this.indexOfPanel(pan));
         }
         
@@ -14881,8 +14861,44 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         this.showPanel(this.tabs[i-1]);
     },
     
+    initBullet : function()
+    {
+        if(Roo.isTouch){
+            return;
+        }
+        
+        var _this = this;
+        
+        for (var i = 0; i < this.bullets; i++){
+            var bullet = this.el.select('.bullet-' + i, true).first();
+
+            if(!bullet){
+                continue;
+            }
+
+            bullet.on('click', (function(e, el, o, ii, t){
+
+                e.preventDefault();
+
+                _this.showPanel(ii);
+
+                if(_this.autoslide && _this.slideFn){
+                    clearInterval(_this.slideFn);
+                    _this.slideFn = window.setInterval(function() {
+                        _this.showPanelNext();
+                    }, _this.timer);
+                }
+
+            }).createDelegate(this, [i, bullet], true));
+        }
+    },
+    
     setActiveBullet : function(i)
     {
+        if(Roo.isTouch){
+            return;
+        }
+        
         Roo.each(this.el.select('.bullet', true).elements, function(el){
             el.removeClass('selected');
         });
