@@ -108,7 +108,11 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     onTouchStart : function(e, el, o)
     {
-        Roo.log(Roo.get(e.getTarget()));
+        if(!Roo.isTouch || Roo.get(e.getTarget()).el.hasClass('roo-button-text')){
+            return;
+        }
+        
+        
     },
     
     getChildContainer : function()
