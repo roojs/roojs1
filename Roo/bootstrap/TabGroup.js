@@ -86,8 +86,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         Roo.log('-------- init events on tab group ---------');
         
-        var _this = this;
-        
         if(this.bullets > 0 && !Roo.isTouch){
             this.initBullet();
         }
@@ -282,6 +280,8 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         if(Roo.isTouch){
             return;
         }
+        
+        var _this = this;
         
         Roo.each(this.el.select('.bullet', true).elements, function(el){
             el.removeClass('selected');
