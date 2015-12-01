@@ -89,7 +89,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         var _this = this;
         
         if(this.bullets > 0 && !Roo.isTouch){
-            this.initBullets();
+            this.initBullet();
         }
         
         if(this.autoslide){
