@@ -221,8 +221,6 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
      */
     show : function(el, pos, parentMenu){
         this.parentMenu = parentMenu;
-        Roo.log(this.parentMenu);
-        Roo.log(el);
         if(!this.el){
             this.render();
         }
@@ -253,7 +251,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             xy[0] = xy[0] - this.el.getWidth() + this.triggerEl.getWidth();
         }
         
-//        this.el.setXY(xy);
+        this.el.setXY(xy);
         this.focus();
         this.fireEvent("show", this);
     },
