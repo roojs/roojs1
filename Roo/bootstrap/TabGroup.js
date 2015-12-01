@@ -90,28 +90,6 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         if(this.bullets > 0 && !Roo.isTouch){
             this.initBullets();
-            for (var i = 0; i < this.bullets; i++){
-                var bullet = this.el.select('.bullet-' + i, true).first();
-                
-                if(!bullet){
-                    continue;
-                }
-                
-                bullet.on('click', (function(e, el, o, ii, t){
-                    
-                    e.preventDefault();
-                    
-                    _this.showPanel(ii);
-                    
-                    if(_this.autoslide && _this.slideFn){
-                        clearInterval(_this.slideFn);
-                        _this.slideFn = window.setInterval(function() {
-                            _this.showPanelNext();
-                        }, _this.timer);
-                    }
-                    
-                }).createDelegate(this, [i, bullet], true));
-            }
         }
         
         if(this.autoslide){
