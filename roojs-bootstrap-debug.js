@@ -5580,6 +5580,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.style += ' width:' + config.width + 'px;';
             }
             
+            if(typeof(config.cls) != 'undefined'){
+                c.cls = (typeof(c.cls) == 'undefined') ? config.cls : (c.cls + ' ' + config.cls);
+            }
+            
             header.cn.push(c)
         }
         
@@ -5851,6 +5855,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             if(typeof(config.cursor) != 'undefined'){
                 td.style += ' cursor:' +  config.cursor + ';';
+            }
+            
+            if(typeof(config.cls) != 'undefined'){
+                td.cls = (typeof(td.cls) == 'undefined') ? config.cls : (td.cls + ' ' + config.cls);
             }
              
             row.cn.push(td);
