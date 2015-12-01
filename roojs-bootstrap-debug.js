@@ -14620,7 +14620,8 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
  * @cfg {Number} bullets show the panel pointer.. default 0
- * @cfg {Boolena} autoslide (true|false) auto slide .. default false
+ * @cfg {Boolean} autoslide (true|false) auto slide .. default false
+ * @cfg {Boolean} slideOnTouch (true|false) slide on touch .. default false
  * @cfg {Number} timer auto slide timer .. default 0 millisecond
  * 
  * @constructor
@@ -14646,6 +14647,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     timer : 0,
     autoslide : false,
     slideFn : false,
+    slideOnTouch : false,
     
     getAutoCreate : function()
     {
@@ -14700,7 +14702,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         Roo.log(this);
         
-        if(Roo.isTouch){
+        if(Roo.isTouch && this.slideOnTouch){
             this.el.on("touchstart", this.onTouchStart, this);
         }
         
@@ -14716,7 +14718,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     
     onTouchStart : function(e, el, o)
     {
-        if(!Roo.isTouch || Roo.get(e.getTarget()).hasClass('roo-button-text')){
+        if(!this.slideOnTouch || !Roo.isTouch || Roo.get(e.getTarget()).hasClass('roo-button-text')){
             return;
         }
         
