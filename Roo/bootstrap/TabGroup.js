@@ -88,7 +88,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         
         var _this = this;
         
-        if(this.bullets > 0){
+        if(this.bullets > 0 && !Roo.isTouch){
             
             for (var i = 0; i < this.bullets; i++){
                 var bullet = this.el.select('.bullet-' + i, true).first();
