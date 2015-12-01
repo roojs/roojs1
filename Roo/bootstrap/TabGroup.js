@@ -112,7 +112,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return;
         }
         
-        
+        this.showPanelNext();
     },
     
     getChildContainer : function()
