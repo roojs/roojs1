@@ -750,6 +750,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(typeof(config.cursor) != 'undefined'){
                 td.style += ' cursor:' +  config.cursor + ';';
             }
+            
+            if(typeof(config.cls) != 'undefined'){
+                td.cls = (typeof(td.cls) == 'undefined') ? config.cls : (td.cls + ' ' + config.cls);
+            }
              
             row.cn.push(td);
            
