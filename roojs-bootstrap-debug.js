@@ -260,9 +260,9 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
                 var self_cntr_el = Roo.get(this[cntr](false));
                 var echild =self_cntr_el ? self_cntr_el.child('>*[xtype]') : false;
                 if (echild) { 
-                    Roo.log(Roo.XComponent.build_from_html);
-                    Roo.log("got echild:");
-                    Roo.log(echild);
+                    //Roo.log(Roo.XComponent.build_from_html);
+                    //Roo.log("got echild:");
+                    //Roo.log(echild);
                 }
                 // there is a scenario where some of the child elements are flexy:if (and all of the same type)
                 // and are not displayed -this causes this to use up the wrong element when matching.
