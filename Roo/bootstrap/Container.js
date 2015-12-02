@@ -197,10 +197,12 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         return titleEl.dom.innerHTML;
     },
     
-    show : function() {
+    show : function()
+    {
         this.el.removeClass('hidden');
     },
-    hide: function() {
+    hide: function()
+    {
         if (!this.el.hasClass('hidden')) {
             this.el.addClass('hidden');
         }
