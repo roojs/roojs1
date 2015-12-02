@@ -340,9 +340,24 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         this.fireEvent('childrenrendered', this);
         
         return cn;
-    } 
-    
-    
+    },
+    /**
+     * Show a component - removes 'hidden' class
+     */
+    show : function()
+    {
+        this.el.removeClass('hidden');
+    },
+    /**
+     * Hide a component - adds 'hidden' class
+     */
+    hide: function()
+    {
+        if (!this.el.hasClass('hidden')) {
+            this.el.addClass('hidden');
+        }
+        
+    }
 });
 
  /*
@@ -1144,17 +1159,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         return titleEl.dom.innerHTML;
-    },
-    
-    show : function() {
-        this.el.removeClass('hidden');
-    },
-    hide: function() {
-        if (!this.el.hasClass('hidden')) {
-            this.el.addClass('hidden');
-        }
-        
     }
+    
+    
    
 });
 
