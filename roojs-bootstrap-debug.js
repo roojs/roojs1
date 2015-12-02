@@ -126,8 +126,6 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
             cfg.name = this.name;
         }
         
-       
-        
         this.el = ct.createChild(cfg, position);
         
         if (this.tooltip) {
@@ -3411,9 +3409,6 @@ Roo.extend(Roo.bootstrap.NavHeaderbar, Roo.bootstrap.NavSimplebar,  {
           },this);
         }
     }    
-          
-      
-    
     
 });
 
@@ -14625,7 +14620,8 @@ Roo.extend(Roo.bootstrap.ProgressBar, Roo.bootstrap.Component,  {
  * @cfg {String} navId the navigation id (for use with navbars) - will be auto generated if it does not exist..
  * @cfg {Boolean} carousel true to make the group behave like a carousel
  * @cfg {Number} bullets show the panel pointer.. default 0
- * @cfg {Boolena} autoslide (true|false) auto slide .. default false
+ * @cfg {Boolean} autoslide (true|false) auto slide .. default false
+ * @cfg {Boolean} slideOnTouch (true|false) slide on touch .. default false
  * @cfg {Number} timer auto slide timer .. default 0 millisecond
  * 
  * @constructor
@@ -14651,6 +14647,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     timer : 0,
     autoslide : false,
     slideFn : false,
+    slideOnTouch : false,
     
     getAutoCreate : function()
     {
@@ -14667,12 +14664,16 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
                cls : 'carousel-inner'
             }];
         
-            if(this.bullets > 0){
+            if(this.bullets > 0 && !Roo.isTouch){
                 
                 var bullets = {
                     cls : 'carousel-bullets',
                     cn : []
                 };
+                
+                if(this.bullets_cls){
+                    bullets.cls = bullets.cls + ' ' + this.bullets_cls;
+                }
                 
                 for (var i = 0; i < this.bullets; i++){
                     bullets.cn.push({
@@ -14695,39 +14696,33 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
     {
         Roo.log('-------- init events on tab group ---------');
         
-        var _this = this;
+        if(this.bullets > 0 && !Roo.isTouch){
+            this.initBullet();
+        }
         
-        if(this.bullets > 0){
-            
-            for (var i = 0; i < this.bullets; i++){
-                var bullet = this.el.select('.bullet-' + i, true).first();
-                
-                if(!bullet){
-                    continue;
-                }
-                
-                bullet.on('click', (function(e, el, o, ii, t){
-                    
-                    e.preventDefault();
-                    
-                    _this.showPanel(ii);
-                    
-                    if(_this.autoslide && _this.slideFn){
-                        clearInterval(_this.slideFn);
-                        _this.slideFn = window.setInterval(function() {
-                            _this.showPanelNext();
-                        }, _this.timer);
-                    }
-                    
-                }).createDelegate(this, [i, bullet], true));
-            }
+        Roo.log(this);
+        
+        if(Roo.isTouch && this.slideOnTouch){
+            this.el.on("touchstart", this.onTouchStart, this);
         }
         
         if(this.autoslide){
+            var _this = this;
+            
             this.slideFn = window.setInterval(function() {
                 _this.showPanelNext();
             }, this.timer);
         }
+        
+    },
+    
+    onTouchStart : function(e, el, o)
+    {
+        if(!this.slideOnTouch || !Roo.isTouch || Roo.get(e.getTarget()).hasClass('roo-button-text')){
+            return;
+        }
+        
+        this.showPanelNext();
     },
     
     getChildContainer : function()
@@ -14810,7 +14805,7 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
             return false;
         }
         
-        if(this.bullets > 0){
+        if(this.bullets > 0 && !Roo.isTouch){
             this.setActiveBullet(this.indexOfPanel(pan));
         }
         
@@ -14877,8 +14872,44 @@ Roo.extend(Roo.bootstrap.TabGroup, Roo.bootstrap.Column,  {
         this.showPanel(this.tabs[i-1]);
     },
     
+    initBullet : function()
+    {
+        if(Roo.isTouch){
+            return;
+        }
+        
+        var _this = this;
+        
+        for (var i = 0; i < this.bullets; i++){
+            var bullet = this.el.select('.bullet-' + i, true).first();
+
+            if(!bullet){
+                continue;
+            }
+
+            bullet.on('click', (function(e, el, o, ii, t){
+
+                e.preventDefault();
+
+                _this.showPanel(ii);
+
+                if(_this.autoslide && _this.slideFn){
+                    clearInterval(_this.slideFn);
+                    _this.slideFn = window.setInterval(function() {
+                        _this.showPanelNext();
+                    }, _this.timer);
+                }
+
+            }).createDelegate(this, [i, bullet], true));
+        }
+    },
+    
     setActiveBullet : function(i)
     {
+        if(Roo.isTouch){
+            return;
+        }
+        
         Roo.each(this.el.select('.bullet', true).elements, function(el){
             el.removeClass('selected');
         });

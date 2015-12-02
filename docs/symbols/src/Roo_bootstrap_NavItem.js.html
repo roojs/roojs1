@@ -21,7 +21,7 @@
  * @cfg {Boolean} preventDefault (true | false) default false
  * @cfg {String} tabId the tab that this item activates.
  * @cfg {String} tagtype (a|span) render as a href or span?
- * @cfg {Boolean} animateRef (true|false) link to element default false
+ * @cfg {Boolean} animateRef (true|false) link to element default false  
   
  * @constructor
  * Create a new Navbar Item
@@ -142,9 +142,9 @@
     {
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
                 </span><span class="jsdoc-var">this.preventDefault </span><span class="jsdoc-syntax">|| 
-                </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'#' </span><span class="jsdoc-syntax">||
-                (</span><span class="jsdoc-var">this.animateRef </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.href.charAt</span><span class="jsdoc-syntax">(0) == </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">)
-        ){
+                </span><span class="jsdoc-var">this.href </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'#' 
+        </span><span class="jsdoc-syntax">){
+            
             </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
         }
         
@@ -158,7 +158,9 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;fire event clicked&quot;</span><span class="jsdoc-syntax">);
+        
+        
+        </span><span class="jsdoc-comment">//Roo.log(&quot;fire event clicked&quot;);
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         };
@@ -167,23 +169,28 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animateRef </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.href.charAt</span><span class="jsdoc-syntax">(0) == </span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-comment">//Roo.log(this.href);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ael </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'a'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-comment">//Roo.log(ael);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ael </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.animateRef </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.href.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">) &gt; -1){
+            </span><span class="jsdoc-comment">//Roo.log([&quot;test:&quot;,ael.dom.href.split(&quot;#&quot;)[0], document.location.toString().split(&quot;#&quot;)[0]]);
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ael.dom.href.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;#&quot;</span><span class="jsdoc-syntax">)[0] != </span><span class="jsdoc-var">document.location.toString</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;#&quot;</span><span class="jsdoc-syntax">)[0]) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">; </span><span class="jsdoc-comment">// ignore... - it's a 'hash' to another page.
+            </span><span class="jsdoc-syntax">}
+            
+            </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.scrollToElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">);
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">();
+   
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'tabs'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-string">'pills'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p.type</span><span class="jsdoc-syntax">)!==-1) {
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p.setActiveItem</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
                 </span><span class="jsdoc-var">p.setActiveItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             }
         }
-        </span><span class="jsdoc-comment">// if parent is a navbarheader....- and link is probably a '#' page ref.. then remove the expanded menu.
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">p.parentType </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'NavHeaderbar' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.menu</span><span class="jsdoc-syntax">) {
-            </span><span class="jsdoc-comment">// remove the collapsed menu expand...
-            </span><span class="jsdoc-var">p.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.navbar-collapse'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">);  
-        }
-        
     },
     
     </span><span class="jsdoc-var">isActive</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() {
@@ -264,7 +271,7 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'a[name=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.href.replace</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">) +</span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'a[name=' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.href.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'#'</span><span class="jsdoc-syntax">)[1] +</span><span class="jsdoc-string">']'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;

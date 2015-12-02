@@ -239,14 +239,19 @@
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_e </span><span class="jsdoc-syntax">!== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;beforeshow&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-            
             </span><span class="jsdoc-comment">//xy = this.el.adjustForConstraints(xy);
         </span><span class="jsdoc-syntax">}
-        </span><span class="jsdoc-comment">//this.el.setXY(xy);
-        //this.el.show();
+        
+        </span><span class="jsdoc-comment">//this.el.show();
         </span><span class="jsdoc-var">this.hideMenuItems</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.hidden </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.triggerEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'open'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] &gt; </span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">()){
+            </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] = </span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] - </span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.triggerEl.getWidth</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-var">this.el.setXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.focus</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;show&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
