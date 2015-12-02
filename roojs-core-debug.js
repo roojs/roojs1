@@ -15176,7 +15176,7 @@ Roo.Component = function(config){
         destroy : true
     });
     if(!this.id){
-        this.id = "ext-comp-" + (++Roo.Component.AUTO_ID);
+        this.id = "roo-comp-" + (++Roo.Component.AUTO_ID);
     }
     Roo.ComponentMgr.register(this);
     Roo.Component.superclass.constructor.call(this);
