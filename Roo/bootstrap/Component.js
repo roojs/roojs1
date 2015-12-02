@@ -340,9 +340,19 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         this.fireEvent('childrenrendered', this);
         
         return cn;
-    } 
+    },
     
-    
+    show : function()
+    {
+        this.el.removeClass('hidden');
+    },
+    hide: function()
+    {
+        if (!this.el.hasClass('hidden')) {
+            this.el.addClass('hidden');
+        }
+        
+    }
 });
 
  
