@@ -211,7 +211,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         toggleEl.on('click', this.onToggleClick, this);
     },
     
-    onToggleClick : function(e)
+    onToggleClick : function()
     {
         var toggleEl = this.toggleEl();
         
