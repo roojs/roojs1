@@ -218,12 +218,12 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     expand : function()
     {
-        
+        this.el.select('.panel-body .fa',true).first().setVisibilityMode(Roo.Element.DISPLAY).show();
     },
     
     collapse : function()
     {
-        
+        this.el.select('.panel-body .fa',true).first().setVisibilityMode(Roo.Element.DISPLAY).hide();
     },
     
     toggleEl : function()
