@@ -122,30 +122,33 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             cfg.cls += ' panel panel-' + this.panel;
             cfg.cn = [];
             if (this.header.length) {
-                cfg.cn.push({
-                    cls : 'panel-heading',
-                    cn : []
-                });
+                
+                var h = [];
                 
                 if(this.expandable){
-                    cfg.cn.cn.push({
+                    h.push({
                         tag: 'i',
                         cls: 'fa fa-minus'
                     });
                 }
                 
-                cfg.cn.cn.push({
+                h.push({
                     tag: 'h3',
                     cls : 'panel-title',
                     html : this.header
                 });
                 
                 if(this.rheader){
-                    cfg.cn.cn.push({
+                    h.push({
                         tag: 'span',
                         cls: 'panel-header-right'
                     });
                 }
+                
+                cfg.cn.push({
+                    cls : 'panel-heading',
+                    cn : h
+                });
                 
             }
             
