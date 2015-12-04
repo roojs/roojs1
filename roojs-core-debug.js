@@ -53,6 +53,7 @@ Roo.apply = function(o, c, defaults){
     var isStrict = document.compatMode == "CSS1Compat",
         isOpera = ua.indexOf("opera") > -1,
         isSafari = (/webkit|khtml/).test(ua),
+        isFirefox = ua.indexOf("firefox") > -1,
         isIE = ua.indexOf("msie") > -1,
         isIE7 = ua.indexOf("msie 7") > -1,
         isGecko = !isSafari && ua.indexOf("gecko") > -1,
@@ -609,6 +610,8 @@ Roo.factory(conf, Roo.data);
         isOpera : isOpera,
         /** @type Boolean */
         isSafari : isSafari,
+        /** @type Boolean */
+        isFirefox : isFirefox,
         /** @type Boolean */
         isIE : isIE,
         /** @type Boolean */
