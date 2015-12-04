@@ -133,7 +133,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                 }
                 
                 h.push({
-                    tag: 'span',
+                    tag: 'h3',
                     cls : 'panel-title',
                     html : this.header
                 });
