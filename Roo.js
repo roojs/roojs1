@@ -611,6 +611,8 @@ Roo.factory(conf, Roo.data);
         /** @type Boolean */
         isSafari : isSafari,
         /** @type Boolean */
+        isFirefox : isFirefox,
+        /** @type Boolean */
         isIE : isIE,
         /** @type Boolean */
         isIE7 : isIE7,
