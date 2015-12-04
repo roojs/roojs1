@@ -132,19 +132,18 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                     });
                 }
                 
-                h.push({
-                    tag: 'span',
-                    cls : 'panel-title',
-                    html : this.header
-                });
-                
-                if(this.rheader){
-                    h.push({
+                h.push(
+                    {
+                        tag: 'span',
+                        cls : 'panel-title',
+                        html : this.header
+                    },
+                    {
                         tag: 'span',
                         cls: 'panel-header-right',
                         html: this.rheader
-                    });
-                }
+                    }
+                );
                 
                 cfg.cn.push({
                     cls : 'panel-heading',
