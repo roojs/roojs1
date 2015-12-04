@@ -40,8 +40,7 @@ Roo.bootstrap.Container = function(config){
          * @event expand
          * After the panel has been expand
          * 
-         * @param {Roo.EventObject} e
-         * @param {boolean} pressed (also available as button.pressed)
+         * @param {Roo.bootstrap.Container} this
          */
         "expand" : true
     });
