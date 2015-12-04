@@ -42,7 +42,14 @@ Roo.bootstrap.Container = function(config){
          * 
          * @param {Roo.bootstrap.Container} this
          */
-        "expand" : true
+        "expand" : true,
+        /**
+         * @event collapse
+         * After the panel has been collapsed
+         * 
+         * @param {Roo.bootstrap.Container} this
+         */
+        "collapse" : true,
     });
 };
 
