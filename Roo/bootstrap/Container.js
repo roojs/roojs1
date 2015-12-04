@@ -216,6 +216,11 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         
     },
     
+    expand : function()
+    {
+        
+    }
+    
     toggleEl : function()
     {
         if(!this.el || !this.panel.length || !this.header.length || !this.expandable){
