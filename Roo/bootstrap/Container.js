@@ -33,6 +33,18 @@
 
 Roo.bootstrap.Container = function(config){
     Roo.bootstrap.Container.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+        // raw events
+         /**
+         * @event expand
+         * After the panel has been expand
+         * 
+         * @param {Roo.EventObject} e
+         * @param {boolean} pressed (also available as button.pressed)
+         */
+        "expand" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
