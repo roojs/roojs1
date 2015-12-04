@@ -141,7 +141,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                 if(this.rheader){
                     h.push({
                         tag: 'span',
-                        cls: 'panel-header-right'
+                        cls: 'panel-header-right',
                         html: this.rheader
                     });
                 }
