@@ -219,11 +219,28 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     expand : function()
     {
         this.el.select('.panel-body .fa',true).first().setVisibilityMode(Roo.Element.DISPLAY).show();
+        
+        var toggleEl = this.toggleEl();
+        
+        if(!toggleEl){
+            return;
+        }
+        
+        toggleEl.removeClass(['fa-minus', 'fa-plus']).addClass(['fa-minus']);
+        
     },
     
     collapse : function()
     {
         this.el.select('.panel-body .fa',true).first().setVisibilityMode(Roo.Element.DISPLAY).hide();
+        
+        var toggleEl = this.toggleEl();
+        
+        if(!toggleEl){
+            return;
+        }
+        
+        toggleEl.removeClass(['fa-minus', 'fa-plus']).addClass(['fa-plus']);
     },
     
     toggleEl : function()
