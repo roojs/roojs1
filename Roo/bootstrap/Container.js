@@ -190,9 +190,11 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        if(this.expandable){
-            
+        if(!this.el || !this.panel.length || !this.header.length || !this.expandable){
+            return;
         }
+        
+        this.el.select('.panel-heading .fa',true).first();
     },
     
     titleEl : function()
