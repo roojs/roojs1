@@ -236,17 +236,17 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     expand : function()
     {
-        this.fireEvent('expand', this);
+        if(this.fireEvent('expand', this) {
+            this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).show();
         
-        this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).show();
-        
-        var toggleEl = this.toggleEl();
-        
-        if(!toggleEl){
-            return;
+            var toggleEl = this.toggleEl();
+
+            if(!toggleEl){
+                return;
+            }
+
+            toggleEl.removeClass(['fa-minus', 'fa-plus']).addClass(['fa-minus']);
         }
-        
-        toggleEl.removeClass(['fa-minus', 'fa-plus']).addClass(['fa-minus']);
         
     },
     
