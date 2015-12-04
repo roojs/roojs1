@@ -272,6 +272,10 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         Roo.log('scroll to element...');
         var c = document.body;
         
+        if(Roo.isFirefox){
+            c = document.documentElement;
+        }
+        
         var target = Roo.get(c).select('a[name=' + this.href.split('#')[1] +']', true).first();
         
         if(!target){
@@ -286,7 +290,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         }
         
         this.fireEvent('scrollto', this, options, e);
-        
+        Roo.log(Roo.get(c));
+        Roo.log(options.value);
         Roo.get(c).scrollTo('top', options.value, true);
         
         return;
