@@ -141,6 +141,13 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                     html : this.header
                 });
                 
+                if(this.rheader){
+                    cfg.cn.cn.push({
+                        tag: 'span',
+                        cls: 'panel-header-right'
+                    });
+                }
+                
             }
             
             body = false;
