@@ -986,6 +986,8 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
  * @cfg {String} fa (ban|check|...) font awesome icon
  * @cfg {String} icon (info-sign|check|...) glyphicon name
  * @cfg {Boolean} hidden (true|false) hide the element
+ * @cfg {Boolean} expandable (true|false) default false
+ * @cfg {String} rheader contet on the right of header
 
  *     
  * @constructor
@@ -995,6 +997,24 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.Container = function(config){
     Roo.bootstrap.Container.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+        // raw events
+         /**
+         * @event expand
+         * After the panel has been expand
+         * 
+         * @param {Roo.bootstrap.Container} this
+         */
+        "expand" : true,
+        /**
+         * @event collapse
+         * After the panel has been collapsed
+         * 
+         * @param {Roo.bootstrap.Container} this
+         */
+        "collapse" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
@@ -1009,6 +1029,8 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     alert : false,
     fa: false,
     icon : false,
+    expandable : false,
+    rheader : '',
   
      
     getChildContainer : function() {
@@ -1082,17 +1104,36 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             cfg.cls += ' panel panel-' + this.panel;
             cfg.cn = [];
             if (this.header.length) {
-                cfg.cn.push({
-                    
-                    cls : 'panel-heading',
-                    cn : [{
-                        tag: 'h3',
+                
+                var h = [];
+                
+                if(this.expandable){
+                    h.push({
+                        tag: 'i',
+                        cls: 'fa fa-minus'
+                    });
+                }
+                
+                h.push(
+                    {
+                        tag: 'span',
                         cls : 'panel-title',
                         html : this.header
-                    }]
-                    
+                    },
+                    {
+                        tag: 'span',
+                        cls: 'panel-header-right',
+                        html: this.rheader
+                    }
+                );
+                
+                cfg.cn.push({
+                    cls : 'panel-heading',
+                    cn : h
                 });
+                
             }
+            
             body = false;
             cfg.cn.push({
                 cls : 'panel-body',
@@ -1129,6 +1170,74 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         return cfg;
     },
     
+    initEvents: function() 
+    {
+        var toggleEl = this.toggleEl();
+        
+        if(!toggleEl){
+            return;
+        }
+        
+        toggleEl.on('click', this.onToggleClick, this);
+    },
+    
+    onToggleClick : function()
+    {
+        var toggleEl = this.toggleEl();
+        
+        if(!toggleEl){
+            return;
+        }
+        
+        if(toggleEl.hasClass('fa-minus')){
+            this.collapse();
+            return;
+        }
+        
+        this.expand();
+        
+    },
+    
+    expand : function()
+    {
+        if(this.fireEvent('expand', this)) {
+            this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).show();
+        
+            var toggleEl = this.toggleEl();
+
+            if(!toggleEl){
+                return;
+            }
+
+            toggleEl.removeClass(['fa-minus', 'fa-plus']).addClass(['fa-minus']);
+        }
+        
+    },
+    
+    collapse : function()
+    {
+        if(this.fireEvent('collapse', this)) {
+            this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).hide();
+        
+            var toggleEl = this.toggleEl();
+
+            if(!toggleEl){
+                return;
+            }
+
+            toggleEl.removeClass(['fa-minus', 'fa-plus']).addClass(['fa-plus']);
+        }
+    },
+    
+    toggleEl : function()
+    {
+        if(!this.el || !this.panel.length || !this.header.length || !this.expandable){
+            return;
+        }
+        
+        return this.el.select('.panel-heading .fa',true).first();
+    },
+    
     titleEl : function()
     {
         if(!this.el || !this.panel.length || !this.header.length){
@@ -1159,9 +1268,18 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         return titleEl.dom.innerHTML;
+    },
+    
+    setRightTitle : function(v)
+    {
+        var t = this.el.select('.panel-header-right',true).first()
+        
+        if(!t){
+            return;
+        }
+        
+        t.dom.innerHTML = v;
     }
-    
-    
    
 });
 
