@@ -134,10 +134,13 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                 }
                 
                 cfg.cn.cn.push({
-                    tag: 'i',
-                    cls: 'fa fa-minus'
+                    tag: 'h3',
+                    cls : 'panel-title',
+                    html : this.header
                 });
+                
             }
+            
             body = false;
             cfg.cn.push({
                 cls : 'panel-body',
