@@ -188,6 +188,11 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         return cfg;
     },
     
+    initEvents: function() 
+    {
+        
+    },
+    
     titleEl : function()
     {
         if(!this.el || !this.panel.length || !this.header.length){
