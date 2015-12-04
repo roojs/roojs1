@@ -618,6 +618,8 @@ Roo.factory(conf, Roo.data);
         /** @type Boolean */
         isIE7 : isIE7,
         /** @type Boolean */
+        isIE11 : isIE11,
+        /** @type Boolean */
         isGecko : isGecko,
         /** @type Boolean */
         isBorderBox : isBorderBox,
