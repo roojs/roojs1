@@ -194,10 +194,17 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.el.select('.panel-heading .fa',true).first().on('click', this.onToggle, this);
+        this.el.select('.panel-heading .fa',true).first().on('click', this.onToggleClick, this);
     },
     
-    
+    function toggleEl : function()
+    {
+        if(!this.el || !this.panel.length || !this.header.length || !this.expandable){
+            return;
+        }
+        
+        return this.el.select('.panel-heading .fa',true).first();
+    }
     
     titleEl : function()
     {
