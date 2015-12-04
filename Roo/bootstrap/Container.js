@@ -219,7 +219,12 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     expand : function()
     {
         
-    }
+    },
+    
+    collapse : function()
+    {
+        
+    },
     
     toggleEl : function()
     {
