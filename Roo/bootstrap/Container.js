@@ -282,9 +282,18 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         return titleEl.dom.innerHTML;
+    },
+    
+    setRightTitle : function(v)
+    {
+        var t = this.el.select('.panel-header-right',true).first()
+        
+        if(!t){
+            return;
+        }
+        
+        t.dom.innerHTML = v;
     }
-    
-    
    
 });
 
