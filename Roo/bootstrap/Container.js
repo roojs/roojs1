@@ -236,7 +236,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     expand : function()
     {
-        if(this.fireEvent('expand', this) {
+        if(this.fireEvent('expand', this)) {
             this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).show();
         
             var toggleEl = this.toggleEl();
@@ -252,17 +252,17 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     collapse : function()
     {
-        this.fireEvent('collapse', this);
+        if(this.fireEvent('collapse', this)) {
+            this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).hide();
         
-        this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).hide();
-        
-        var toggleEl = this.toggleEl();
-        
-        if(!toggleEl){
-            return;
+            var toggleEl = this.toggleEl();
+
+            if(!toggleEl){
+                return;
+            }
+
+            toggleEl.removeClass(['fa-minus', 'fa-plus']).addClass(['fa-plus']);
         }
-        
-        toggleEl.removeClass(['fa-minus', 'fa-plus']).addClass(['fa-plus']);
     },
     
     toggleEl : function()
