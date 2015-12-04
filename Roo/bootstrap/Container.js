@@ -190,21 +190,28 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        if(!this.el || !this.panel.length || !this.header.length || !this.expandable){
+        var toggleEl = this.toggleEl();
+        
+        if(!toggleEl){
             return;
         }
         
-        this.el.select('.panel-heading .fa',true).first().on('click', this.onToggleClick, this);
+        toggleEl.on('click', this.onToggleClick, this);
     },
     
-    function toggleEl : function()
+    onToggleClick : function()
+    {
+        
+    },
+    
+    toggleEl : function()
     {
         if(!this.el || !this.panel.length || !this.header.length || !this.expandable){
             return;
         }
         
         return this.el.select('.panel-heading .fa',true).first();
-    }
+    },
     
     titleEl : function()
     {
