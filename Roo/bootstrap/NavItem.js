@@ -271,6 +271,9 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     {
         var c = document.body;
         
+        /*
+         * Firefox places the overflow at the html level, unless specifically styled to behave differently.
+         */
         if(Roo.isFirefox){
             c = document.documentElement;
         }
