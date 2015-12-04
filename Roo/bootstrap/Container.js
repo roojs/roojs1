@@ -48,6 +48,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     fa: false,
     icon : false,
     expandable : false,
+    rheader : '',
   
      
     getChildContainer : function() {
