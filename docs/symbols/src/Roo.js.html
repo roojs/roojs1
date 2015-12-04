@@ -53,8 +53,10 @@
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">isStrict </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.compatMode </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">&quot;CSS1Compat&quot;</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-var">isOpera </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;opera&quot;</span><span class="jsdoc-syntax">) &gt; -1,
         </span><span class="jsdoc-var">isSafari </span><span class="jsdoc-syntax">= (/webkit|khtml/)</span><span class="jsdoc-var">.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ua</span><span class="jsdoc-syntax">),
+        </span><span class="jsdoc-var">isFirefox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;firefox&quot;</span><span class="jsdoc-syntax">) &gt; -1,
         </span><span class="jsdoc-var">isIE </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;msie&quot;</span><span class="jsdoc-syntax">) &gt; -1,
         </span><span class="jsdoc-var">isIE7 </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;msie 7&quot;</span><span class="jsdoc-syntax">) &gt; -1,
+        </span><span class="jsdoc-var">isIE11 </span><span class="jsdoc-syntax">= /trident.*rv\:11\./</span><span class="jsdoc-var">.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ua</span><span class="jsdoc-syntax">),
         </span><span class="jsdoc-var">isGecko </span><span class="jsdoc-syntax">= !</span><span class="jsdoc-var">isSafari </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;gecko&quot;</span><span class="jsdoc-syntax">) &gt; -1,
         </span><span class="jsdoc-var">isBorderBox </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">isIE </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">isStrict</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-var">isWindows </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;windows&quot;</span><span class="jsdoc-syntax">) != -1 || </span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;win32&quot;</span><span class="jsdoc-syntax">) != -1),
@@ -610,9 +612,13 @@ Roo.factory(conf, Roo.data);
         </span><span class="jsdoc-comment">/** @type Boolean */
         </span><span class="jsdoc-var">isSafari </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isSafari</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/** @type Boolean */
+        </span><span class="jsdoc-var">isFirefox </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isFirefox</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/** @type Boolean */
         </span><span class="jsdoc-var">isIE </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isIE</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/** @type Boolean */
         </span><span class="jsdoc-var">isIE7 </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isIE7</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/** @type Boolean */
+        </span><span class="jsdoc-var">isIE11 </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isIE11</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/** @type Boolean */
         </span><span class="jsdoc-var">isGecko </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isGecko</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/** @type Boolean */
