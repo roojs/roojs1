@@ -4021,6 +4021,13 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     {
         var c = document.body;
         
+        /*
+         * Firefox / IE places the overflow at the html level, unless specifically styled to behave differently.
+         */
+        if(Roo.isFirefox || Roo.isIE || Roo.isIE11){
+            c = document.documentElement;
+        }
+        
         var target = Roo.get(c).select('a[name=' + this.href.split('#')[1] +']', true).first();
         
         if(!target){
