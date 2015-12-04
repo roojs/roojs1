@@ -121,15 +121,16 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             cfg.cn = [];
             if (this.header.length) {
                 cfg.cn.push({
-                    
                     cls : 'panel-heading',
-                    cn : [{
-                        tag: 'h3',
-                        cls : 'panel-title',
-                        html : this.header
-                    }]
-                    
+                    cn : [
+                        {
+                            tag: 'h3',
+                            cls : 'panel-title',
+                            html : this.header
+                        }
+                    ]
                 });
+                
             }
             body = false;
             cfg.cn.push({
