@@ -236,7 +236,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     expand : function()
     {
-        if(this.fireEvent('expand', this)) {
+//        if(this.fireEvent('expand', this)) {
             this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).show();
         
             var toggleEl = this.toggleEl();
@@ -246,7 +246,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             }
 
             toggleEl.removeClass(['fa-minus', 'fa-plus']).addClass(['fa-minus']);
-        }
+//        }
         
     },
     
