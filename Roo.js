@@ -56,7 +56,7 @@ Roo.apply = function(o, c, defaults){
         isFirefox = ua.indexOf("firefox") > -1,
         isIE = ua.indexOf("msie") > -1,
         isIE7 = ua.indexOf("msie 7") > -1,
-        isIE11 = /Trident.*rv\:11\./.test(ua),
+        isIE11 = /trident.*rv\:11\./.test(ua),
         isGecko = !isSafari && ua.indexOf("gecko") > -1,
         isBorderBox = isIE && !isStrict,
         isWindows = (ua.indexOf("windows") != -1 || ua.indexOf("win32") != -1),
