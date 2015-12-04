@@ -14,6 +14,7 @@ Roo.bootstrap.dash = Roo.bootstrap.dash || {};
  * @cfg {String} icon Icon of the TabBox
  * @cfg {Boolean} showtabs (true|false) show the tabs default true
  * @cfg {Boolean} tabScrollable (true|false) tab scrollable when mobile view default false
+ * @cfg {String} weight (primary|success|info|warning|danger) default false
  * 
  * @constructor
  * Create a new TabBox
