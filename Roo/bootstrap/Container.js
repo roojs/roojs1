@@ -23,7 +23,7 @@
  * @cfg {String} icon (info-sign|check|...) glyphicon name
  * @cfg {Boolean} hidden (true|false) hide the element
  * @cfg {Boolean} expandable (true|false) default false
- * @cfg {String} header-right contet on the right of header
+ * @cfg {String} rheader contet on the right of header
 
  *     
  * @constructor
