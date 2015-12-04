@@ -123,7 +123,6 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             cfg.cn = [];
             if (this.header.length) {
                 cfg.cn.push({
-                    
                     cls : 'panel-heading',
                     cn : []
                 });
