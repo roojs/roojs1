@@ -22,6 +22,7 @@
  * @cfg {String} fa (ban|check|...) font awesome icon
  * @cfg {String} icon (info-sign|check|...) glyphicon name
  * @cfg {Boolean} hidden (true|false) hide the element
+ * @cfg {Boolean} expandable (true|false) default false
 
  *     
  * @constructor
@@ -45,6 +46,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     alert : false,
     fa: false,
     icon : false,
+    expandable : false,
   
      
     getChildContainer : function() {
