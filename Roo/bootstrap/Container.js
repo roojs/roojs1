@@ -190,7 +190,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        
+        if(this.expandable){
+            
+        }
     },
     
     titleEl : function()
