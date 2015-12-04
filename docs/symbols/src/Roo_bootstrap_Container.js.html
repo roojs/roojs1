@@ -33,6 +33,24 @@
 
 </span><span class="jsdoc-var">Roo.bootstrap.Container </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
     </span><span class="jsdoc-var">Roo.bootstrap.Container.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">// raw events
+         /**
+         * @event expand
+         * After the panel has been expand
+         * 
+         * @param {Roo.bootstrap.Container} this
+         */
+        </span><span class="jsdoc-string">&quot;expand&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event collapse
+         * After the panel has been collapsed
+         * 
+         * @param {Roo.bootstrap.Container} this
+         */
+        </span><span class="jsdoc-string">&quot;collapse&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.Container</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
@@ -122,31 +140,33 @@
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' panel panel-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.panel</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-var">cfg.cn </span><span class="jsdoc-syntax">= [];
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.header.length</span><span class="jsdoc-syntax">) {
-                </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
-                    
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'panel-heading'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: []
-                });
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">= [];
                 
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.expandable</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-var">cfg.cn.cn.push</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">h.push</span><span class="jsdoc-syntax">({
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'fa fa-minus'
                     </span><span class="jsdoc-syntax">});
                 }
                 
-                </span><span class="jsdoc-var">cfg.cn.cn.push</span><span class="jsdoc-syntax">({
-                    </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'h3'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'panel-title'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.header
-                </span><span class="jsdoc-syntax">});
-                
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rheader</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-var">cfg.cn.cn.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">h.push</span><span class="jsdoc-syntax">(
+                    {
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'panel-header-right'
-                    </span><span class="jsdoc-syntax">});
-                }
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'panel-title'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.header
+                    </span><span class="jsdoc-syntax">},
+                    {
+                        </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'panel-header-right'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.rheader
+                    </span><span class="jsdoc-syntax">}
+                );
+                
+                </span><span class="jsdoc-var">cfg.cn.push</span><span class="jsdoc-syntax">({
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'panel-heading'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">h
+                </span><span class="jsdoc-syntax">});
                 
             }
             
@@ -186,6 +206,74 @@
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
     },
     
+    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">toggleEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toggleEl</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">toggleEl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">toggleEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onToggleClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">onToggleClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">toggleEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toggleEl</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">toggleEl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">toggleEl.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fa-minus'</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-var">this.collapse</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.expand</span><span class="jsdoc-syntax">();
+        
+    },
+    
+    </span><span class="jsdoc-var">expand </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'expand'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.panel-body'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.show</span><span class="jsdoc-syntax">();
+        
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">toggleEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toggleEl</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">toggleEl</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">toggleEl.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'fa-minus'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'fa-plus'</span><span class="jsdoc-syntax">])</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'fa-minus'</span><span class="jsdoc-syntax">]);
+        }
+        
+    },
+    
+    </span><span class="jsdoc-var">collapse </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'collapse'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)) {
+            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.panel-body'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
+        
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">toggleEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.toggleEl</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">toggleEl</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">toggleEl.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'fa-minus'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'fa-plus'</span><span class="jsdoc-syntax">])</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-string">'fa-plus'</span><span class="jsdoc-syntax">]);
+        }
+    },
+    
+    </span><span class="jsdoc-var">toggleEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.panel.length </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.header.length </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.expandable</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.panel-heading .fa'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+    },
+    
     </span><span class="jsdoc-var">titleEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.panel.length </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.header.length</span><span class="jsdoc-syntax">){
@@ -216,9 +304,18 @@
         }
         
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">titleEl.dom.innerHTML</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">setRightTitle </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">t </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.panel-header-right'</span><span class="jsdoc-syntax">,</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">t</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">t.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
     }
-    
-    
    
 });
 

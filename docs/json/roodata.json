@@ -20585,6 +20585,12 @@
      "desc": "Fires when the children have been rendered.."
     },
     {
+     "name": "collapse",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "After the panel has been collapsed"
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -20601,6 +20607,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the component is enabled."
+    },
+    {
+     "name": "expand",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "After the panel has been expand"
     },
     {
      "name": "hide",
