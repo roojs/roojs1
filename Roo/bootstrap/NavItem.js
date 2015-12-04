@@ -269,6 +269,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     
     scrollToElement : function(e)
     {
+        Roo.log('scroll to element...');
         var c = document.body;
         
         var target = Roo.get(c).select('a[name=' + this.href.split('#')[1] +']', true).first();
