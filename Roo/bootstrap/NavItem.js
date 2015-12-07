@@ -191,6 +191,12 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
                 p.setActiveItem(this);
             }
         }
+        
+        // if parent is a navbarheader....- and link is probably a '#' page ref.. then remove the expanded menu.
+        if (p.parentType == 'NavHeaderbar' && !this.menu) {
+            // remove the collapsed menu expand...
+            p.parent().el.select('.navbar-collapse',true).removeClass('in');  
+        }
     },
     
     isActive: function () {
