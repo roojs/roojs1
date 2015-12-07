@@ -2,3 +2,9 @@
 div.input-group.has-feedback > .form-control-feedback {
     right: 30px;
 }
+@media (max-width: 568px) {
+    .modal-footer .btn+.btn {
+            margin-left:0px;
+            margin-top:5px;
+    }
+}
