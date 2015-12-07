@@ -1272,7 +1272,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     setRightTitle : function(v)
     {
-        var t = this.el.select('.panel-header-right',true).first()
+        var t = this.el.select('.panel-header-right',true).first();
         
         if(!t){
             return;
