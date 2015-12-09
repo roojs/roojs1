@@ -1622,7 +1622,9 @@ Roo.bootstrap.MenuMgr = function(){
    function onMouseDown(e){
         Roo.log("on MouseDown");
         if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu") && !e.getTarget('.user-menu')){
-           hideAll();
+            Roo.log("hideAll");
+            hideAll();
+            e.stopEvent();
         }
         
         
@@ -1856,7 +1858,8 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
        // Roo.log("ADD event");
        // Roo.log(this.triggerEl.dom);
-        this.triggerEl.on('click', this.onTriggerPress, this);
+        this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
+        
         this.triggerEl.addClass('dropdown-toggle');
         this.el.on(Roo.isTouch ? 'touchstart' : 'click'   , this.onClick, this);
 
@@ -2026,10 +2029,12 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         if (Roo.get(e.getTarget()).findParent('.dropdown-menu')) {
             return;
         }
+        
         if (this.isVisible()) {
             Roo.log('hide');
             this.hide();
         } else {
+            Roo.log('show');
             this.show(this.triggerEl, false, false);
         }
         
