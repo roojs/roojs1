@@ -41609,7 +41609,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.execCmd('FontSize', v  );
     },
 
-    onEditorEvent : function(e){
+    onEditorEvent : function(e)
+    {
         this.owner.fireEvent('editorevent', this, e);
       //  this.updateToolbar();
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
@@ -44390,6 +44391,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
     /**
      * Protected method that will not generally be called directly. It triggers
      * a toolbar update by reading the markup state of the current selection in the editor.
+     *
+     * Note you can force an update by calling on('editorevent', scope, false)
      */
     updateToolbar: function(editor,ev,sel){
 
@@ -44400,6 +44403,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
              this.editor.onFirstFocus();
             return;
         }
+        
+        
         
         // http://developer.yahoo.com/yui/docs/simple-editor.js.html
         // selectNode - might want to handle IE?
@@ -44448,7 +44453,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         this.tb.selectedNode = sel;
         
         // if current menu does not match..
-        if ((this.tb.name != tn) || (lastSel != this.tb.selectedNode)) {
+        
+        if ((this.tb.name != tn) || (lastSel != this.tb.selectedNode) || ev === false) {
                 
             this.tb.el.hide();
             ///console.log("show: " + tn);
