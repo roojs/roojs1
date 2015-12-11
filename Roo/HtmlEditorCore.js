@@ -512,7 +512,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.execCmd('FontSize', v  );
     },
 
-    onEditorEvent : function(e){
+    onEditorEvent : function(e)
+    {
         this.owner.fireEvent('editorevent', this, e);
       //  this.updateToolbar();
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
