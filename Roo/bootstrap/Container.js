@@ -219,9 +219,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     onToggleClick : function()
     {
-        var toggleEl = this.toggleEl();
-        
-        if(!toggleEl){
+        if(!this.toggle){
             return;
         }
         
