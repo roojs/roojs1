@@ -271,7 +271,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             return;
         }
         
-        return this.el.select('.panel-heading .fa',true).first();
+        return this.el.select('.panel-heading',true).first();
     },
     
     titleEl : function()
