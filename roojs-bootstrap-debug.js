@@ -1031,6 +1031,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     icon : false,
     expandable : false,
     rheader : '',
+    expanded : true,
   
      
     getChildContainer : function() {
@@ -1172,35 +1173,42 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        var toggleEl = this.toggleEl();
-        
-        if(!toggleEl){
+        if(!this.expandable){
             return;
         }
         
-        toggleEl.on('click', this.onToggleClick, this);
+        var headerEl = this.headerEl();
+        
+        if(!headerEl){
+            return;
+        }
+        
+        headerEl.on('click', this.onToggleClick, this);
+        
     },
     
     onToggleClick : function()
     {
-        var toggleEl = this.toggleEl();
+        var headerEl = this.headerEl();
         
-        if(!toggleEl){
+        if(!headerEl){
             return;
         }
         
-        if(toggleEl.hasClass('fa-minus')){
+        if(this.expanded){
             this.collapse();
             return;
         }
         
         this.expand();
-        
     },
     
     expand : function()
     {
         if(this.fireEvent('expand', this)) {
+            
+            this.expanded = true;
+            
             this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).show();
         
             var toggleEl = this.toggleEl();
@@ -1217,6 +1225,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     collapse : function()
     {
         if(this.fireEvent('collapse', this)) {
+            
+            this.expanded = false;
+            
             this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).hide();
         
             var toggleEl = this.toggleEl();
@@ -1237,6 +1248,15 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         
         return this.el.select('.panel-heading .fa',true).first();
     },
+    
+    headerEl : function()
+    {
+        if(!this.el || !this.panel.length || !this.header.length){
+            return;
+        }
+        
+        return this.el.select('.panel-heading',true).first()
+    }
     
     titleEl : function()
     {
@@ -18452,7 +18472,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         this.execCmd('FontSize', v  );
     },
 
-    onEditorEvent : function(e){
+    onEditorEvent : function(e)
+    {
         this.owner.fireEvent('editorevent', this, e);
       //  this.updateToolbar();
         this.syncValue(); //we can not sync so often.. sync cleans, so this breaks stuff
