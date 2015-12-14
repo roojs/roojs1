@@ -67,7 +67,6 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     icon : false,
     expandable : false,
     rheader : '',
-    expanded : true,
   
      
     getChildContainer : function() {
@@ -209,22 +208,24 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        this.toggle = this.toggleEl();
+        var toggleEl = this.toggleEl();
         
-        if(!this.toggle){
+        if(!toggleEl){
             return;
         }
         
-        this.toggle.on('click', this.onToggleClick, this);
+        toggleEl.on('click', this.onToggleClick, this);
     },
     
     onToggleClick : function()
     {
-        if(!this.toggle){
+        var toggleEl = this.toggleEl();
+        
+        if(!toggleEl){
             return;
         }
         
-        if(this.expanded){
+        if(toggleEl.hasClass('fa-minus')){
             this.collapse();
             return;
         }
@@ -270,7 +271,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             return;
         }
         
-        return this.el.select('.panel-heading',true).first();
+        return this.el.select('.panel-heading .fa',true).first();
     },
     
     titleEl : function()
