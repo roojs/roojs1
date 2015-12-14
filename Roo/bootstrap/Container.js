@@ -237,7 +237,6 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         this.expand();
-        
     },
     
     expand : function()
