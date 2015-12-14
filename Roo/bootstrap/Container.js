@@ -225,13 +225,13 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     onToggleClick : function()
     {
-        var toggleEl = this.toggleEl();
+        var headerEl = this.headerEl();
         
-        if(!toggleEl){
+        if(!headerEl){
             return;
         }
         
-        if(toggleEl.hasClass('fa-minus')){
+        if(this.expanded){
             this.collapse();
             return;
         }
