@@ -145,6 +145,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                 var h = [];
                 
                 if(this.expandable){
+                    
+                    cfg.cls = cfg.cls + ' expandable';
+                    
                     h.push({
                         tag: 'i',
                         cls: 'fa fa-minus'
