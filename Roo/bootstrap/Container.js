@@ -212,15 +212,14 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.el
+        var headerEl = this.headerEl();
         
-        var toggleEl = this.toggleEl();
-        
-        if(!toggleEl){
+        if(!headerEl){
             return;
         }
         
-        toggleEl.on('click', this.onToggleClick, this);
+        headerEl.on('click', this.onToggleClick, this);
+        
     },
     
     onToggleClick : function()
