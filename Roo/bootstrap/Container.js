@@ -242,6 +242,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     expand : function()
     {
         if(this.fireEvent('expand', this)) {
+            
+            this.expanded = true;
+            
             this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).show();
         
             var toggleEl = this.toggleEl();
