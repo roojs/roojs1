@@ -224,8 +224,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             return;
         }
         
-        if()
-        if(toggleEl.hasClass('fa-minus')){
+        if(this.expanded){
             this.collapse();
             return;
         }
