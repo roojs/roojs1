@@ -208,7 +208,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        var toggleEl = this.toggleEl();
+        this.toggle = this.toggleEl();
         
         if(!toggleEl){
             return;
