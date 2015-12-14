@@ -208,6 +208,12 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
+        if(!this.expandable){
+            return;
+        }
+        
+        this.el
+        
         var toggleEl = this.toggleEl();
         
         if(!toggleEl){
@@ -273,6 +279,15 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         
         return this.el.select('.panel-heading .fa',true).first();
     },
+    
+    headerEl : function()
+    {
+        if(!this.el || !this.panel.length || !this.header.length){
+            return;
+        }
+        
+        return this.el.select('.panel-heading',true).first()
+    }
     
     titleEl : function()
     {
