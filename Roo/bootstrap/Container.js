@@ -67,6 +67,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     icon : false,
     expandable : false,
     rheader : '',
+    expanded : true,
   
      
     getChildContainer : function() {
@@ -223,6 +224,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             return;
         }
         
+        if()
         if(toggleEl.hasClass('fa-minus')){
             this.collapse();
             return;
