@@ -261,6 +261,9 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
     collapse : function()
     {
         if(this.fireEvent('collapse', this)) {
+            
+            this.expanded = false;
+            
             this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).hide();
         
             var toggleEl = this.toggleEl();
