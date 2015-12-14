@@ -292,7 +292,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
         }
         
         return this.el.select('.panel-heading',true).first()
-    }
+    },
     
     titleEl : function()
     {
