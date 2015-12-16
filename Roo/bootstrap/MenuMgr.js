@@ -89,7 +89,7 @@ Roo.bootstrap.MenuMgr = function(){
 
    // private this should really trigger on mouseup..
    function onMouseDown(e){
-        Roo.log("on MouseDown");
+        Roo.log("on Mouse Up");
         Roo.log(lastShow.getElapsed());
         Roo.log(active.length);
         Roo.log(!e.getTarget(".x-menu"));
