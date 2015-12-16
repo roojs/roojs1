@@ -94,7 +94,7 @@ Roo.bootstrap.MenuMgr = function(){
         Roo.log(active.length);
         Roo.log(!e.getTarget(".x-menu"));
         Roo.log(!e.getTarget('.user-menu'));
-        if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu") && !e.getTarget('.user-menu')){
+        if(!Roo.isTouch && lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu") && !e.getTarget('.user-menu')){
             Roo.log("hideAll");
             hideAll();
             e.stopEvent();
