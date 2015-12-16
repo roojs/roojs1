@@ -1643,10 +1643,10 @@ Roo.bootstrap.MenuMgr = function(){
        }
    }
 
-   // private
+   // private this should really trigger on mouseup..
    function onMouseDown(e){
-        Roo.log("on MouseDown");
-        if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu") && !e.getTarget('.user-menu')){
+        Roo.log("on Mouse Up");
+        if(!Roo.isTouch && lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu") && !e.getTarget('.user-menu')){
             Roo.log("hideAll");
             hideAll();
             e.stopEvent();
@@ -1886,7 +1886,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
         
         this.triggerEl.addClass('dropdown-toggle');
-        this.el.on(Roo.isTouch ? 'touchstart' : 'click'   , this.onClick, this);
+        this.el.on(Roo.isTouch ? 'touchstart' : 'click' , this.onClick, this);
 
         this.el.on("mouseover", this.onMouseOver, this);
         this.el.on("mouseout", this.onMouseOut, this);
