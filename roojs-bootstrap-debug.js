@@ -1646,7 +1646,7 @@ Roo.bootstrap.MenuMgr = function(){
    // private this should really trigger on mouseup..
    function onMouseDown(e){
         Roo.log("on Mouse Up");
-        if(!Roo.isTouch && lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu") && !e.getTarget('.user-menu')){
+        if(lastShow.getElapsed() > 50 && active.length > 0 && !e.getTarget(".x-menu") && !e.getTarget('.user-menu')){
             Roo.log("hideAll");
             hideAll();
             e.stopEvent();
@@ -2063,7 +2063,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             this.show(this.triggerEl, false, false);
         }
         
-        
+        e.stopEvent();
     },
     
          
