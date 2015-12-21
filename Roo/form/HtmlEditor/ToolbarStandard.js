@@ -394,7 +394,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 });
             }
              cmenu.menu.items.push({
-                actiontype : 'word',
+                actiontype : 'tablewidths',
                 html: 'Remove Table Widths',
                 handler: function(a,b) {
                     editorcore.cleanTableWidths();
@@ -426,7 +426,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 tabIndex:-1
             });
              cmenu.menu.items.push({
-                actiontype : 'word',
+                actiontype : 'tidy',
                 html: 'Tidy HTML Source',
                 handler: function(a,b) {
                     editorcore.doc.body.innerHTML = editorcore.domToHTML();
