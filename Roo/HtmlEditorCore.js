@@ -1236,14 +1236,17 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
     },
-    
+    /**
+     * iterateChildren of a Node, calling fn each time, using this as the scole..
+     *
+     */
     iterateChildren : function(node, fn)
     {
         if (!node.childNodes.length) {
                 return;
         }
         for (var i = node.childNodes.length-1; i > -1 ; i--) {
-           fn.call(this.node.childNodes[i])
+           fn.call(this, node.childNodes[i])
         }
     },
     
