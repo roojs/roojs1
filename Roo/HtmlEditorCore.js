@@ -1260,17 +1260,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     cleanTableWidths : function(node)
     {
-        
-        var _t = this;
-        var cleanTableWidthsChildren = function()
-        {
-            if (!node.childNodes.length) {
-                return;
-            }
-            for (var i = node.childNodes.length-1; i > -1 ; i--) {
-               _t.cleanTableWidths(node.childNodes[i]);
-            }
-        }
+         
         
         
         
