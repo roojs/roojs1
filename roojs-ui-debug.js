@@ -25803,21 +25803,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
     },
+    
     /**
      * Clean up MS wordisms...
      */
     cleanWord : function(node)
     {
-        var _t = this;
-        var cleanWordChildren = function()
-        {
-            if (!node.childNodes.length) {
-                return;
-            }
-            for (var i = node.childNodes.length-1; i > -1 ; i--) {
-               _t.cleanWord(node.childNodes[i]);
-            }
-        }
         
         
         if (!node) {
@@ -25847,7 +25838,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.parentNode.insertBefore(cn, node);
             }
             node.parentNode.removeChild(node);
-            cleanWordChildren();
+            this.iterateChildren(node, this.cleanWord);
             return;
         }
         // clean styles
@@ -25891,11 +25882,87 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.removeAttribute('style');
             }
         }
+        this.iterateChildren(node, this.cleanWord);
         
-        cleanWordChildren();
         
         
     },
+    /**
+     * iterateChildren of a Node, calling fn each time, using this as the scole..
+     * @param {DomNode} node node to iterate children of.
+     * @param {Function} fn method of this class to call on each item.
+     */
+    iterateChildren : function(node, fn)
+    {
+        if (!node.childNodes.length) {
+                return;
+        }
+        for (var i = node.childNodes.length-1; i > -1 ; i--) {
+           fn.call(this, node.childNodes[i])
+        }
+    },
+    
+    
+    /**
+     * cleanTableWidths.
+     *
+     * Quite often pasting from word etc.. results in tables with column and widths.
+     * This does not work well on fluid HTML layouts - like emails. - so this code should hunt an destroy them..
+     *
+     */
+    cleanTableWidths : function(node)
+    {
+         
+         
+        if (!node) {
+            this.cleanTableWidths(this.doc.body);
+            return;
+        }
+        
+        // ignore list...
+        if (node.nodeName == "#text" || node.nodeName == "#comment") {
+            return; 
+        }
+        Roo.log(node.tagName);
+        if (!node.tagName.toLowerCase().match(/^(table|td|tr)$/)) {
+            this.iterateChildren(node, this.cleanTableWidths);
+            return;
+        }
+        if (node.hasAttribute('width')) {
+            node.removeAttribute('width');
+        }
+        
+         
+        if (node.hasAttribute("style")) {
+            // pretty basic...
+            
+            var styles = node.getAttribute("style").split(";");
+            var nstyle = [];
+            Roo.each(styles, function(s) {
+                if (!s.match(/:/)) {
+                    return;
+                }
+                var kv = s.split(":");
+                if (kv[0].match(/^\s*(width|min-width)\s*$/)) {
+                    return;
+                }
+                // what ever is left... we allow.
+                nstyle.push(s);
+            });
+            node.setAttribute("style", nstyle.length ? nstyle.join(';') : '');
+            if (!nstyle.length) {
+                node.removeAttribute('style');
+            }
+        }
+        
+        this.iterateChildren(node, this.cleanTableWidths);
+        
+        
+    },
+    
+    
+    
+    
     domToHTML : function(currentElement, depth, nopadtext) {
         
         depth = depth || 0;
@@ -27261,6 +27328,15 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     tabIndex:-1
                 });
             }
+             cmenu.menu.items.push({
+                actiontype : 'tablewidths',
+                html: 'Remove Table Widths',
+                handler: function(a,b) {
+                    editorcore.cleanTableWidths();
+                    editorcore.syncValue();
+                },
+                tabIndex:-1
+            });
             cmenu.menu.items.push({
                 actiontype : 'word',
                 html: 'Remove MS Word Formating',
@@ -27285,7 +27361,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 tabIndex:-1
             });
              cmenu.menu.items.push({
-                actiontype : 'word',
+                actiontype : 'tidy',
                 html: 'Tidy HTML Source',
                 handler: function(a,b) {
                     editorcore.doc.body.innerHTML = editorcore.domToHTML();
