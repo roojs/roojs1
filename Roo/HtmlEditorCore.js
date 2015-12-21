@@ -1272,7 +1272,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         if (node.nodeName == "#text" || node.nodeName == "#comment") {
             return; 
         }
-        
+        Roo.log(node.tagName);
         if (!node.tagName.toLowerCase().match(/^(table|td|tr)$/)) {
             return;
         }
