@@ -1241,7 +1241,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.removeAttribute('style');
             }
         }
-        
+        this.iterateChildren(node, this.cleanWord)
         cleanWordChildren();
         
         
@@ -1267,6 +1267,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     cleanTableWidths : function(node)
     {
+        
         var _t = this;
         var cleanTableWidthsChildren = function()
         {
