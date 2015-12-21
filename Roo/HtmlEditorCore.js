@@ -1158,16 +1158,6 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
      */
     cleanWord : function(node)
     {
-        var _t = this;
-        var cleanWordChildren = function()
-        {
-            if (!node.childNodes.length) {
-                return;
-            }
-            for (var i = node.childNodes.length-1; i > -1 ; i--) {
-               _t.cleanWord(node.childNodes[i]);
-            }
-        }
         
         
         if (!node) {
@@ -1197,7 +1187,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.parentNode.insertBefore(cn, node);
             }
             node.parentNode.removeChild(node);
-            cleanWordChildren();
+            this.iterateChildren(node, this.cleanWord);
             return;
         }
         // clean styles
@@ -1241,8 +1231,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.removeAttribute('style');
             }
         }
-        this.iterateChildren(node, this.cleanWord)
-        cleanWordChildren();
+        this.iterateChildren(node, this.cleanWord);
+        
         
         
     },
