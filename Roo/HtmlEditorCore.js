@@ -1272,44 +1272,16 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             return; 
         }
         
-        if (node.tagName.toLowerCase().match(/^(style|script|applet|embed|noframes|noscript)$/)) {
-            node.parentNode.removeChild(node);
+        if (!node.tagName.toLowerCase().match(/^(table|td|tr)$/)) {
             return;
         }
-        
-        // remove - but keep children..
-        if (node.tagName.toLowerCase().match(/^(meta|link|\\?xml:|st1:|o:|font)/)) {
-            while (node.childNodes.length) {
-                var cn = node.childNodes[0];
-                node.removeChild(cn);
-                node.parentNode.insertBefore(cn, node);
-            }
-            node.parentNode.removeChild(node);
-            cleanWordChildren();
-            return;
-        }
-        // clean styles
-        if (node.className.length) {
-            
-            var cn = node.className.split(/\W+/);
-            var cna = [];
-            Roo.each(cn, function(cls) {
-                if (cls.match(/Mso[a-zA-Z]+/)) {
-                    return;
-                }
-                cna.push(cls);
-            });
-            node.className = cna.length ? cna.join(' ') : '';
-            if (!cna.length) {
-                node.removeAttribute("class");
-            }
+        if (node.hasAttribute('width')) {
+            node.removeAttribute('width');
         }
         
-        if (node.hasAttribute("lang")) {
-            node.removeAttribute("lang");
-        }
-        
+         
         if (node.hasAttribute("style")) {
+            // pretty basic...
             
             var styles = node.getAttribute("style").split(";");
             var nstyle = [];
@@ -1318,7 +1290,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     return;
                 }
                 var kv = s.split(":");
-                if (kv[0].match(/^(mso-|line|font|background|margin|padding|color)/)) {
+                if (kv[0].match(/^(width)/)) {
                     return;
                 }
                 // what ever is left... we allow.
