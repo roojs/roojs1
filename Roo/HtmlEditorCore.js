@@ -1261,21 +1261,14 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     cleanTableWidths : function(node)
     {
          
-        
-        
-        
-        
+         
         if (!node) {
-            this.cleanWord(this.doc.body);
+            this.cleanTableWidths(this.doc.body);
             return;
         }
-        if (node.nodeName == "#text") {
-            // clean up silly Windows -- stuff?
-            return; 
-        }
-        if (node.nodeName == "#comment") {
-            node.parentNode.removeChild(node);
-            // clean up silly Windows -- stuff?
+        
+        // ignore list...
+        if (node.nodeName == "#text" || node.nodeName == "#comment") {
             return; 
         }
         
