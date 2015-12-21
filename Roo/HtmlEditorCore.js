@@ -1290,7 +1290,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                     return;
                 }
                 var kv = s.split(":");
-                if (kv[0].match(/^(width)/)) {
+                if (kv[0].match(/^width|min-width/)) {
                     return;
                 }
                 // what ever is left... we allow.
