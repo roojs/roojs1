@@ -1238,7 +1238,8 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
     },
     /**
      * iterateChildren of a Node, calling fn each time, using this as the scole..
-     *
+     * @param {DomNode} node node to iterate children of.
+     * @param {Function} fn method of this class to call on each item.
      */
     iterateChildren : function(node, fn)
     {
