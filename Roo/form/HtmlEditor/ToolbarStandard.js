@@ -393,6 +393,15 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                     tabIndex:-1
                 });
             }
+             cmenu.menu.items.push({
+                actiontype : 'word',
+                html: 'Remove Table Widths',
+                handler: function(a,b) {
+                    editorcore.cleanTableWidths();
+                    editorcore.syncValue();
+                },
+                tabIndex:-1
+            });
             cmenu.menu.items.push({
                 actiontype : 'word',
                 html: 'Remove MS Word Formating',
