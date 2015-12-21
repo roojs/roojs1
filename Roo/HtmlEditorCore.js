@@ -1302,7 +1302,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
         }
         
-        cleanWordChildren();
+        this.iterateChild(node, this.cleanTableWidths);
         
         
     },
