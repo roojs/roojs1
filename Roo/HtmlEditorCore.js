@@ -1274,7 +1274,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         }
         Roo.log(node.tagName);
         if (!node.tagName.toLowerCase().match(/^(table|td|tr)$/)) {
-            this.iterateChild(node, this.cleanTableWidths);
+            this.iterateChildren(node, this.cleanTableWidths);
             return;
         }
         if (node.hasAttribute('width')) {
@@ -1304,7 +1304,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
             }
         }
         
-        this.iterateChild(node, this.cleanTableWidths);
+        this.iterateChildren(node, this.cleanTableWidths);
         
         
     },
