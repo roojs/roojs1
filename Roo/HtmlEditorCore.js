@@ -1152,6 +1152,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
     },
+    
     /**
      * Clean up MS wordisms...
      */
@@ -1245,6 +1246,121 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
     },
+    
+    iterateChildren : function(node, fn)
+    {
+        if (!node.childNodes.length) {
+                return;
+        }
+        for (var i = node.childNodes.length-1; i > -1 ; i--) {
+           fn.call(this.node.childNodes[i])
+        }
+    },
+    
+    
+    /**
+     * cleanTableWidths.
+     *
+     * Quite often pasting from word etc.. results in tables with column and widths.
+     * This does not work well on fluid HTML layouts - like emails. - so this code should hunt an destroy them..
+     *
+     */
+    cleanTableWidths : function(node)
+    {
+        var _t = this;
+        var cleanTableWidthsChildren = function()
+        {
+            if (!node.childNodes.length) {
+                return;
+            }
+            for (var i = node.childNodes.length-1; i > -1 ; i--) {
+               _t.cleanTableWidths(node.childNodes[i]);
+            }
+        }
+        
+        
+        
+        
+        if (!node) {
+            this.cleanWord(this.doc.body);
+            return;
+        }
+        if (node.nodeName == "#text") {
+            // clean up silly Windows -- stuff?
+            return; 
+        }
+        if (node.nodeName == "#comment") {
+            node.parentNode.removeChild(node);
+            // clean up silly Windows -- stuff?
+            return; 
+        }
+        
+        if (node.tagName.toLowerCase().match(/^(style|script|applet|embed|noframes|noscript)$/)) {
+            node.parentNode.removeChild(node);
+            return;
+        }
+        
+        // remove - but keep children..
+        if (node.tagName.toLowerCase().match(/^(meta|link|\\?xml:|st1:|o:|font)/)) {
+            while (node.childNodes.length) {
+                var cn = node.childNodes[0];
+                node.removeChild(cn);
+                node.parentNode.insertBefore(cn, node);
+            }
+            node.parentNode.removeChild(node);
+            cleanWordChildren();
+            return;
+        }
+        // clean styles
+        if (node.className.length) {
+            
+            var cn = node.className.split(/\W+/);
+            var cna = [];
+            Roo.each(cn, function(cls) {
+                if (cls.match(/Mso[a-zA-Z]+/)) {
+                    return;
+                }
+                cna.push(cls);
+            });
+            node.className = cna.length ? cna.join(' ') : '';
+            if (!cna.length) {
+                node.removeAttribute("class");
+            }
+        }
+        
+        if (node.hasAttribute("lang")) {
+            node.removeAttribute("lang");
+        }
+        
+        if (node.hasAttribute("style")) {
+            
+            var styles = node.getAttribute("style").split(";");
+            var nstyle = [];
+            Roo.each(styles, function(s) {
+                if (!s.match(/:/)) {
+                    return;
+                }
+                var kv = s.split(":");
+                if (kv[0].match(/^(mso-|line|font|background|margin|padding|color)/)) {
+                    return;
+                }
+                // what ever is left... we allow.
+                nstyle.push(s);
+            });
+            node.setAttribute("style", nstyle.length ? nstyle.join(';') : '');
+            if (!nstyle.length) {
+                node.removeAttribute('style');
+            }
+        }
+        
+        cleanWordChildren();
+        
+        
+    },
+    
+    
+    
+    
     domToHTML : function(currentElement, depth, nopadtext) {
         
         depth = depth || 0;
