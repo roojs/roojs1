@@ -100,12 +100,12 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         }
         
         var inputblock = input;
-        // this.removable
+        
         Roo.log(this.editable);
         Roo.log(this.tickable);
         Roo.log(this.hasFeedback);
         
-        
+        // this.removable
         if(!this.editable && !this.tickable && !this.hasFeedback){
             inputblock = {
                 cls : 'roo-removable',
