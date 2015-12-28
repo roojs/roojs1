@@ -335,6 +335,8 @@ Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.f
     </span><span class="jsdoc-comment">/**
      * Protected method that will not generally be called directly. It triggers
      * a toolbar update by reading the markup state of the current selection in the editor.
+     *
+     * Note you can force an update by calling on('editorevent', scope, false)
      */
     </span><span class="jsdoc-var">updateToolbar</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">editor</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">ev</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">){
 
@@ -345,6 +347,8 @@ Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.f
              </span><span class="jsdoc-var">this.editor.onFirstFocus</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
+        
         
         </span><span class="jsdoc-comment">// http://developer.yahoo.com/yui/docs/simple-editor.js.html
         // selectNode - might want to handle IE?
@@ -393,7 +397,8 @@ Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.f
         this.tb.selectedNode </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sel</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-comment">// if current menu does not match..
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.tb.name </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">) || (</span><span class="jsdoc-var">lastSel </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.tb.selectedNode</span><span class="jsdoc-syntax">)) {
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.tb.name </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">tn</span><span class="jsdoc-syntax">) || (</span><span class="jsdoc-var">lastSel </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">this.tb.selectedNode</span><span class="jsdoc-syntax">) || </span><span class="jsdoc-var">ev </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) {
                 
             </span><span class="jsdoc-var">this.tb.el.hide</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-comment">///console.log(&quot;show: &quot; + tn);

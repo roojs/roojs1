@@ -9,8 +9,8 @@
  * @class Roo.bootstrap.NavGroup
  * @extends Roo.bootstrap.Component
  * Bootstrap NavGroup class
- * @cfg {String} align left | right
- * @cfg {Boolean} inverse false | true
+ * @cfg {String} align (left|right)
+ * @cfg {Boolean} inverse
  * @cfg {String} type (nav|pills|tab) default nav
  * @cfg {String} navId - reference Id for navbar.
 

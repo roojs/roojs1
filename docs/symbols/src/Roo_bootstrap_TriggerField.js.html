@@ -43,6 +43,11 @@ trigger.applyTo('my-field');
      */
     </span><span class="jsdoc-var">hideTrigger</span><span class="jsdoc-syntax">:</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
 
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} removable (true|false) special filter default false
+     */
+    </span><span class="jsdoc-var">removable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-comment">/** @cfg {Boolean} grow @hide */
     /** @cfg {Number} growMin @hide */
     /** @cfg {Number} growMax @hide */
@@ -102,14 +107,44 @@ trigger.applyTo('my-field');
                 </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'glyphicon form-control-feedback'
             </span><span class="jsdoc-syntax">};
-
-            </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= {
-                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'has-feedback'</span><span class="jsdoc-syntax">,
-                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">:  [
-                    </span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">feedback
-                </span><span class="jsdoc-syntax">] 
-            };  
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.removable </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.editable </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'has-feedback'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">:  [
+                        </span><span class="jsdoc-var">inputblock</span><span class="jsdoc-syntax">,
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-combo-removable-btn close'
+                        </span><span class="jsdoc-syntax">},
+                        </span><span class="jsdoc-var">feedback
+                    </span><span class="jsdoc-syntax">] 
+                };
+            } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'has-feedback'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">:  [
+                        </span><span class="jsdoc-var">inputblock</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">feedback
+                    </span><span class="jsdoc-syntax">] 
+                };
+            }
+              
+        } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.removable </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.editable </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= {
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-removable'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">:  [
+                        </span><span class="jsdoc-var">inputblock</span><span class="jsdoc-syntax">,
+                        {
+                            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-combo-removable-btn close'
+                        </span><span class="jsdoc-syntax">}
+                    ] 
+                };
+            }
         }
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.before </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.after</span><span class="jsdoc-syntax">) {

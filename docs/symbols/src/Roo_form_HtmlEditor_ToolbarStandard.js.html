@@ -393,6 +393,15 @@
                     </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
                 });
             }
+             </span><span class="jsdoc-var">cmenu.menu.items.push</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">actiontype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tablewidths'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Remove Table Widths'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">editorcore.cleanTableWidths</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">editorcore.syncValue</span><span class="jsdoc-syntax">();
+                },
+                </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
+            });
             </span><span class="jsdoc-var">cmenu.menu.items.push</span><span class="jsdoc-syntax">({
                 </span><span class="jsdoc-var">actiontype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'word'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Remove MS Word Formating'</span><span class="jsdoc-syntax">,
@@ -417,7 +426,7 @@
                 </span><span class="jsdoc-var">tabIndex</span><span class="jsdoc-syntax">:-1
             });
              </span><span class="jsdoc-var">cmenu.menu.items.push</span><span class="jsdoc-syntax">({
-                </span><span class="jsdoc-var">actiontype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'word'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">actiontype </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'tidy'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Tidy HTML Source'</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">handler</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">) {
                     </span><span class="jsdoc-var">editorcore.doc.body.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">editorcore.domToHTML</span><span class="jsdoc-syntax">();

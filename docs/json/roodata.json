@@ -5911,6 +5911,12 @@
      "desc": "Protected method that will not generally be called directly. If you need/want\ncustom HTML cleanup, this is the method you should override."
     },
     {
+     "name": "cleanTableWidths",
+     "sig": "()",
+     "type": "function",
+     "desc": "cleanTableWidths.\n\nQuite often pasting from word etc.. results in tables with column and widths.\nThis does not work well on fluid HTML layouts - like emails. - so this code should hunt an destroy them.."
+    },
+    {
      "name": "cleanWord",
      "sig": "()",
      "type": "function",
@@ -5993,6 +5999,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Returns true if this component is visible."
+    },
+    {
+     "name": "iterateChildren",
+     "sig": "(DomNode node, Function fn)",
+     "type": "function",
+     "desc": "iterateChildren of a Node, calling fn each time, using this as the scole.."
     },
     {
      "name": "on",
@@ -17174,6 +17186,16 @@
      "memberOf": "Roo.bootstrap.TriggerField"
     },
     {
+     "name": "removable",
+     "type": "Boolean",
+     "desc": "special filter default false",
+     "memberOf": "Roo.bootstrap.TriggerField",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "disabled",
      "type": "Boolean",
      "desc": "is it disabled",
@@ -18223,6 +18245,16 @@
      "memberOf": "Roo.bootstrap.TriggerField"
     },
     {
+     "name": "removable",
+     "type": "Boolean",
+     "desc": "special filter default false",
+     "memberOf": "Roo.bootstrap.TriggerField",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "disabled",
      "type": "Boolean",
      "desc": "is it disabled",
@@ -19264,6 +19296,16 @@
      "type": "Boolean",
      "desc": "True to hide the trigger element and display only the base text field (defaults to false)",
      "memberOf": "Roo.bootstrap.TriggerField"
+    },
+    {
+     "name": "removable",
+     "type": "Boolean",
+     "desc": "special filter default false",
+     "memberOf": "Roo.bootstrap.TriggerField",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "disabled",
@@ -28473,13 +28515,17 @@
     {
      "name": "align",
      "type": "String",
-     "desc": "left | right",
-     "memberOf": ""
+     "desc": "",
+     "memberOf": "",
+     "optvals": [
+      "left",
+      "right"
+     ]
     },
     {
      "name": "inverse",
      "type": "Boolean",
-     "desc": "false | true",
+     "desc": "",
      "memberOf": ""
     },
     {
@@ -38317,6 +38363,16 @@
      "memberOf": ""
     },
     {
+     "name": "removable",
+     "type": "Boolean",
+     "desc": "special filter default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "disabled",
      "type": "Boolean",
      "desc": "is it disabled",
@@ -41404,6 +41460,12 @@
      "name": "id",
      "type": "String",
      "desc": "Name of the property within a row object that contains a record identifier value.",
+     "memberOf": ""
+    },
+    {
+     "name": "fields",
+     "type": "Array",
+     "desc": "Array of field definition objects",
      "memberOf": ""
     }
    ],
@@ -56234,7 +56296,7 @@
      "name": "updateToolbar",
      "sig": "()",
      "type": "function",
-     "desc": "Protected method that will not generally be called directly. It triggers\na toolbar update by reading the markup state of the current selection in the editor."
+     "desc": "Protected method that will not generally be called directly. It triggers\na toolbar update by reading the markup state of the current selection in the editor.\n\nNote you can force an update by calling on('editorevent', scope, false)"
     }
    ]
   },
