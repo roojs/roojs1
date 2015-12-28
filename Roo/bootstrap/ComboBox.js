@@ -1075,6 +1075,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         Roo.bootstrap.ComboBox.superclass.setValue.call(this, text);
         this.value = v;
+        
+        var close = this.closeTriggerEl();
+        if(close){
+            v.length ? close.show() : close.hide();
+        }
     },
     /**
      * @property {Object} the last set data for the element
