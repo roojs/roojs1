@@ -1077,8 +1077,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.value = v;
         
         var close = this.closeTriggerEl();
-        Roo.log('setValue!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(close);
+        
         if(close){
             v.length ? close.show() : close.hide();
         }
