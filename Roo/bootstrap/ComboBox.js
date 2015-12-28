@@ -1112,6 +1112,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             vv = !o || typeof(o[this.valueField]) == 'undefined' ? dv : o[this.valueField];
         }
         
+        var close = this.closeTriggerEl();
+        
+        if(close){
+            vv.length ? close.show() : close.hide();
+        }
+        
         if(this.hiddenField){
             this.hiddenField.dom.value = vv;
             
@@ -1125,6 +1131,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.lastSelectionText = dv;
         Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
         this.value = vv;
+        
         
         
     },
