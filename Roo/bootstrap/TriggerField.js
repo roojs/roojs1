@@ -107,11 +107,12 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                         cls : 'roo-combo-removable-btn close'
                     }
                 ] 
-            };  
-            
+            };
         }
+        
         Roo.log('inputblock!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         Roo.log(inputblock);
+        
         if(this.hasFeedback && !this.allowBlank){
             
             var feedback = {
