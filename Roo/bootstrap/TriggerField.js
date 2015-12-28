@@ -96,19 +96,20 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         var inputblock = input;
         
-//        if(this.removable && !this.editable && !this.tickable){
-//            inputblock = {
-//                cls : 'roo-removable',
-//                cn :  [
-//                    inputblock,
-//                    {
-//                        tag: 'span',
-//                        html : 'x',
-//                        cls : 'roo-combo-removable-btn'
-//                    }
-//                ] 
-//            };  
-//        }
+        if(this.removable && !this.editable && !this.tickable && !this.hasFeedback){
+            inputblock = {
+                cls : 'roo-removable',
+                cn :  [
+                    inputblock,
+                    {
+                        tag: 'button',
+                        html : 'x',
+                        cls : 'roo-combo-removable-btn close'
+                    }
+                ] 
+            };  
+            
+        }
         Roo.log('inputblock!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         Roo.log(inputblock);
         if(this.hasFeedback && !this.allowBlank){
