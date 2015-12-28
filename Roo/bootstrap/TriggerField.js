@@ -393,7 +393,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     
     removeBtnClick : function(e, el, o)
     {
-        Roo.log([a,b,c,d]);
+        
     },
     
     createList : function()
