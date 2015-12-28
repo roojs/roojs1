@@ -391,7 +391,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         //}
     },
     
-    function removeBtnClick(a,b,c,d)
+    removeBtnClick : function(a,b,c,d)
     {
         Roo.log([a,b,c,d]);
     },
