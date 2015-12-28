@@ -109,13 +109,13 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 ] 
             };  
 //        }
-Roo.log('inputblock!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        Roo.log('inputblock!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         Roo.log(inputblock);
         if(this.hasFeedback && !this.allowBlank){
             
             var feedback = {
                 tag: 'span',
-                cls: 'glyphicon form-control-feedback??'
+                cls: 'glyphicon form-control-feedback'
             };
 
             inputblock = {
