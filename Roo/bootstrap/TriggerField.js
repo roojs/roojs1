@@ -115,8 +115,8 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 tag: 'span',
                 cls: 'glyphicon form-control-feedback'
             };
-            // this.removable
-            if(!this.editable && !this.tickable){
+            
+            if(this.removable && !this.editable && !this.tickable){
                 inputblock = {
                     cls : 'has-feedback',
                     cn :  [
