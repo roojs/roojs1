@@ -43,6 +43,11 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
      */
     hideTrigger:false,
 
+    /**
+     * @cfg {Boolean} removable (true|false) special filter default false
+     */
+    removable : false,
+    
     /** @cfg {Boolean} grow @hide */
     /** @cfg {Number} growMin @hide */
     /** @cfg {Number} growMax @hide */
