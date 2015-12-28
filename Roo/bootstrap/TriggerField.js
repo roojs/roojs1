@@ -378,7 +378,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             
             if(close){
                 close.setVisibilityMode(Roo.Element.DISPALY).hide();
-                close.on('click', this.removeBtnClick, close);
+                close.on('click', this.removeBtnClick, this, close);
             }
         }
         
