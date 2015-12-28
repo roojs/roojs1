@@ -247,3 +247,7 @@
     text-align: center;
     pointer-events: none;
 }
+
+.has-feedback .roo-removable .form-control {
+  padding-right: 60px;
+}
