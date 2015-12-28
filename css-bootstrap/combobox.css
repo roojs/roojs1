@@ -249,6 +249,6 @@
     padding-right: 35px;
 }
 
-.has-feedback .roo-removable .form-control {
-  /*padding-right: 60px;*/
+.select2-container .has-feedback > .roo-removable > .roo-combo-removable-btn {
+  padding-right: 60px;
 }
