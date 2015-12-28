@@ -235,6 +235,10 @@
     border-left: 0px;
 }
 
+.select2-container .roo-removable {
+    position: relative;
+}
+
 /*.select2-container .roo-combo-removable-btn {
     position: absolute;
     top: 0;
