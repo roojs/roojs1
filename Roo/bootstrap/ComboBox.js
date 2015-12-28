@@ -1045,6 +1045,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.lastSelectionText = '';
         this.lastData = false;
         
+        var close = this.closeTriggerEl();
+        
+        if(close){
+            close.hide();
+        }
+        
     },
 
     /**
