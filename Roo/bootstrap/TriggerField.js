@@ -104,6 +104,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         Roo.log(this.editable);
         Roo.log(this.tickable);
         Roo.log(this.hasFeedback);
+        Roo.log(this.allowBlank);
         
         // this.removable
         if(
