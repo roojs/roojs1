@@ -109,7 +109,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 ] 
             };  
 //        }
-        
+        Roo.log(inputblock);
         if(this.hasFeedback && !this.allowBlank){
             
             var feedback = {
