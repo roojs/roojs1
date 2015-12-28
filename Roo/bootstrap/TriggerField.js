@@ -374,7 +374,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         }
         
         if(this.removable && !this.editable && !this.tickable){
-            
+            Roo.log(this.el);
         }
         
         //this.trigger.addClassOnOver('x-form-trigger-over');
