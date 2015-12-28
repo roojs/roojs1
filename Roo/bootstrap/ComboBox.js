@@ -1079,7 +1079,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var close = this.closeTriggerEl();
         
         if(close){
-            v.length ? close.show() : close.hide();
+            (v.length || v * 1 > 0) ? close.show() : close.hide();
         }
     },
     /**
