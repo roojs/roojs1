@@ -106,30 +106,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         Roo.log(this.hasFeedback);
         Roo.log(this.allowBlank);
         
-        
-        
-        // this.removable
-        
-        if(
-                !this.editable && 
-                !this.tickable && 
-                (!this.hasFeedback || this.allowBlank)
-        ){
-    
-            inputblock = {
-                cls : 'roo-removable',
-                cn :  [
-                    inputblock,
-                    {
-                        tag: 'button',
-                        html : 'x',
-                        cls : 'roo-combo-removable-btn close'
-                    }
-                ] 
-            };
-        }
-        
-        
         Roo.log('inputblock!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
         Roo.log(inputblock);
         
@@ -148,8 +124,19 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 ] 
             };  
         } else {
+            // this.removable
             if(!this.editable && !this.tickable){
-                
+                inputblock = {
+                    cls : 'roo-removable',
+                    cn :  [
+                        inputblock,
+                        {
+                            tag: 'button',
+                            html : 'x',
+                            cls : 'roo-combo-removable-btn close'
+                        }
+                    ] 
+                };
             }
         }
         
