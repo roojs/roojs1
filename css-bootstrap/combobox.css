@@ -238,7 +238,7 @@
 .select2-container .roo-combo-removable-btn {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 40px;
     z-index: 2;
     display: block;
     width: 34px;
