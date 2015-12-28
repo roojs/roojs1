@@ -283,11 +283,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     specialFilter : false,
     
-    /**
-     * @cfg {Boolean} removable (true|false) special filter default false
-     */
-    removable : false,
-    
     //private
     addicon : false,
     editicon: false,
