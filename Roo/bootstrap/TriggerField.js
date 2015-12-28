@@ -107,6 +107,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         Roo.log(this.allowBlank);
         
         
+        
         // this.removable
         
         if(
