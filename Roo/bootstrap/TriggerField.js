@@ -391,6 +391,13 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         //}
     },
     
+    closeTriggerEl : function()
+    {
+        var close = this.el.select('.roo-combo-removable-btn', true).first();
+        
+        return close ? close : false;
+    },
+    
     removeBtnClick : function(e, el, o)
     {
         e.preventDefault();
