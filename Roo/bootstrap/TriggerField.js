@@ -125,19 +125,19 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             };  
         } else {
             // this.removable
-//            if(!this.editable && !this.tickable){
-//                inputblock = {
-//                    cls : 'has-feedback',
-//                    cn :  [
-//                        inputblock,
-//                        {
-//                            tag: 'button',
-//                            html : 'x',
-//                            cls : 'roo-combo-removable-btn close'
-//                        }
-//                    ] 
-//                };
-//            }
+            if(!this.editable && !this.tickable){
+                inputblock = {
+                    cls : 'has-feedback',
+                    cn :  [
+                        inputblock,
+                        {
+                            tag: 'button',
+                            html : 'x',
+                            cls : 'roo-combo-removable-btn close'
+                        }
+                    ] 
+                };
+            }
         }
         
         if (this.before || this.after) {
