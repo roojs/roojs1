@@ -347,6 +347,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             ]
         };
         
+        
         if(this.editable){
             buttons.cn.unshift({
                 tag: 'input',
