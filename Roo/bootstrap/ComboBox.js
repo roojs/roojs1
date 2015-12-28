@@ -350,6 +350,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.removable){
             
             
+            
         }
         
         if(this.editable){
