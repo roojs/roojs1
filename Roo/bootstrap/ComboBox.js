@@ -347,10 +347,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             ]
         };
         
-        if(this.removable && !this.tickable){
-            
-        }
-        
         if(this.editable){
             buttons.cn.unshift({
                 tag: 'input',
