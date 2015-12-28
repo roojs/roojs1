@@ -246,6 +246,7 @@
     line-height: 34px;
     text-align: center;
     pointer-events: none;
+    padding-right: 35px;
 }
 
 .has-feedback .roo-removable .form-control {
