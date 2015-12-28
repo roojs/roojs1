@@ -1075,6 +1075,12 @@
         }
         </span><span class="jsdoc-var">Roo.bootstrap.ComboBox.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">close </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.closeTriggerEl</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">close</span><span class="jsdoc-syntax">){
+            (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">* 1 &gt; 0) ? </span><span class="jsdoc-var">close.show</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">close.hide</span><span class="jsdoc-syntax">();
+        }
     },
     </span><span class="jsdoc-comment">/**
      * @property {Object} the last set data for the element
@@ -1106,6 +1112,12 @@
             </span><span class="jsdoc-var">vv </span><span class="jsdoc-syntax">= !</span><span class="jsdoc-var">o </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">dv </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">this.valueField</span><span class="jsdoc-syntax">];
         }
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">close </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.closeTriggerEl</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">close</span><span class="jsdoc-syntax">){
+            (</span><span class="jsdoc-var">vv.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">vv </span><span class="jsdoc-syntax">* 1 &gt; 0) ? </span><span class="jsdoc-var">close.show</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">close.hide</span><span class="jsdoc-syntax">();
+        }
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hiddenField</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.hiddenField.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">vv</span><span class="jsdoc-syntax">;
             
@@ -1119,6 +1131,7 @@
         </span><span class="jsdoc-var">this.lastSelectionText </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dv</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">Roo.bootstrap.ComboBox.superclass.setValue.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dv</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">vv</span><span class="jsdoc-syntax">;
+        
         
         
     },

@@ -8757,12 +8757,34 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             this.inputEl().on("click", this.onTriggerClick, this, {preventDefault:true});
         }
         
+        if(this.removable && !this.editable && !this.tickable){
+            var close = this.closeTriggerEl();
+            
+            if(close){
+                close.setVisibilityMode(Roo.Element.DISPALY).hide();
+                close.on('click', this.removeBtnClick, this, close);
+            }
+        }
+        
         //this.trigger.addClassOnOver('x-form-trigger-over');
         //this.trigger.addClassOnClick('x-form-trigger-click');
         
         //if(!this.width){
         //    this.wrap.setWidth(this.el.getWidth()+this.trigger.getWidth());
         //}
+    },
+    
+    closeTriggerEl : function()
+    {
+        var close = this.el.select('.roo-combo-removable-btn', true).first();
+        return close ? close : false;
+    },
+    
+    removeBtnClick : function(e, h, el)
+    {
+        e.preventDefault();
+        
+        this.fireEvent("remove", this);
     },
     
     createList : function()
@@ -12003,6 +12025,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         Roo.bootstrap.ComboBox.superclass.setValue.call(this, text);
         this.value = v;
+        
+        var close = this.closeTriggerEl();
+        
+        if(close){
+            (v.length || v * 1 > 0) ? close.show() : close.hide();
+        }
     },
     /**
      * @property {Object} the last set data for the element
@@ -12034,6 +12062,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             vv = !o || typeof(o[this.valueField]) == 'undefined' ? dv : o[this.valueField];
         }
         
+        var close = this.closeTriggerEl();
+        
+        if(close){
+            (vv.length || vv * 1 > 0) ? close.show() : close.hide();
+        }
+        
         if(this.hiddenField){
             this.hiddenField.dom.value = vv;
             
@@ -12047,6 +12081,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.lastSelectionText = dv;
         Roo.bootstrap.ComboBox.superclass.setValue.call(this, dv);
         this.value = vv;
+        
         
         
     },
