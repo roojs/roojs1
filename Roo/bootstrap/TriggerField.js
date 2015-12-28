@@ -377,7 +377,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             var close = this.el.select('.roo-combo-removable-btn', true).first();
             
             if(close){
-                Roo.log(close);
+                close.hide();
                 close.on('click', this.removeBtnClick, close);
             }
             
