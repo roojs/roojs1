@@ -1370,14 +1370,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
              
         }
     },
-    
-    
-    removeBtnClick : function(e, el, o)
-    {
-        e.preventDefault();
-        
-        this.fireEvent("remove", this);
-    },
 
     /**
      * Execute a query to filter the dropdown list.  Fires the beforequery event prior to performing the
