@@ -106,7 +106,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             inputblock = {
                 cls : 'has-feedback',
                 cn :  [
-                    input,
+                    inputblock,
                     feedback
                 ] 
             };  
