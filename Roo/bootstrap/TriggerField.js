@@ -393,6 +393,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     
     removeBtnClick : function(e, el, o)
     {
+        e.preventDefault();
         
     },
     
