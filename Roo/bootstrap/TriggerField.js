@@ -395,7 +395,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     {
         e.preventDefault();
         
-        
+        this.fireEvent("delete", this, e);
     },
     
     createList : function()
