@@ -104,7 +104,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     {
                         tag: 'span',
                         html : 'x',
-                        cls : 'form-control-feedback'
+                        cls : 'roo-combo-removable-btn'
                     }
                 ] 
             };  
