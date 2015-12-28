@@ -110,8 +110,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         if(
                 !this.editable && 
                 !this.tickable && 
-                !this.hasFeedback && 
-                this.allowBlank
+                (!this.hasFeedback && this.allowBlank)
         ){
     
             inputblock = {
