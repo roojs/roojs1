@@ -115,7 +115,7 @@ Roo.log('inputblock!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
             
             var feedback = {
                 tag: 'span',
-                cls: 'glyphicon form-control-feedback'
+                cls: 'glyphicon form-control-feedback??'
             };
 
             inputblock = {
