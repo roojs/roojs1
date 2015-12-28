@@ -375,8 +375,10 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         
         if(this.removable && !this.editable && !this.tickable){
             var close = this.el.select('.roo-combo-removable-btn', true).first();
-            Roo.log(this.el);
-            Roo.log(close);
+            
+            if(close){
+                close.on('click', this.removeBtnClick, close);
+            }
             
         }
         
