@@ -3627,8 +3627,8 @@ Roo.extend(Roo.bootstrap.NavSidebar, Roo.bootstrap.Navbar,  {
  * @class Roo.bootstrap.NavGroup
  * @extends Roo.bootstrap.Component
  * Bootstrap NavGroup class
- * @cfg {String} align left | right
- * @cfg {Boolean} inverse false | true
+ * @cfg {String} align (left|right)
+ * @cfg {Boolean} inverse
  * @cfg {String} type (nav|pills|tab) default nav
  * @cfg {String} navId - reference Id for navbar.
 
@@ -8427,6 +8427,11 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
      */
     hideTrigger:false,
 
+    /**
+     * @cfg {Boolean} removable (true|false) special filter default false
+     */
+    removable : false,
+    
     /** @cfg {Boolean} grow @hide */
     /** @cfg {Number} growMin @hide */
     /** @cfg {Number} growMax @hide */
@@ -8486,14 +8491,44 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 tag: 'span',
                 cls: 'glyphicon form-control-feedback'
             };
-
-            inputblock = {
-                cls : 'has-feedback',
-                cn :  [
-                    input,
-                    feedback
-                ] 
-            };  
+            
+            if(this.removable && !this.editable && !this.tickable){
+                inputblock = {
+                    cls : 'has-feedback',
+                    cn :  [
+                        inputblock,
+                        {
+                            tag: 'button',
+                            html : 'x',
+                            cls : 'roo-combo-removable-btn close'
+                        },
+                        feedback
+                    ] 
+                };
+            } else {
+                inputblock = {
+                    cls : 'has-feedback',
+                    cn :  [
+                        inputblock,
+                        feedback
+                    ] 
+                };
+            }
+              
+        } else {
+            if(this.removable && !this.editable && !this.tickable){
+                inputblock = {
+                    cls : 'roo-removable',
+                    cn :  [
+                        inputblock,
+                        {
+                            tag: 'button',
+                            html : 'x',
+                            cls : 'roo-combo-removable-btn close'
+                        }
+                    ] 
+                };
+            }
         }
         
         if (this.before || this.after) {
@@ -10648,6 +10683,7 @@ var myReader = new Roo.data.JsonReader({
  * @cfg {String} successProperty Name of the property from which to retrieve the success attribute used by forms.
  * @cfg {String} root name of the property which contains the Array of row objects.
  * @cfg {String} id Name of the property within a row object that contains a record identifier value.
+ * @cfg {Array} fields Array of field definition objects
  * @constructor
  * Create a new JsonReader
  * @param {Object} meta Metadata configuration options
@@ -19117,21 +19153,12 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
         
         
     },
+    
     /**
      * Clean up MS wordisms...
      */
     cleanWord : function(node)
     {
-        var _t = this;
-        var cleanWordChildren = function()
-        {
-            if (!node.childNodes.length) {
-                return;
-            }
-            for (var i = node.childNodes.length-1; i > -1 ; i--) {
-               _t.cleanWord(node.childNodes[i]);
-            }
-        }
         
         
         if (!node) {
@@ -19161,7 +19188,7 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.parentNode.insertBefore(cn, node);
             }
             node.parentNode.removeChild(node);
-            cleanWordChildren();
+            this.iterateChildren(node, this.cleanWord);
             return;
         }
         // clean styles
@@ -19205,11 +19232,87 @@ Roo.extend(Roo.HtmlEditorCore, Roo.Component,  {
                 node.removeAttribute('style');
             }
         }
+        this.iterateChildren(node, this.cleanWord);
         
-        cleanWordChildren();
         
         
     },
+    /**
+     * iterateChildren of a Node, calling fn each time, using this as the scole..
+     * @param {DomNode} node node to iterate children of.
+     * @param {Function} fn method of this class to call on each item.
+     */
+    iterateChildren : function(node, fn)
+    {
+        if (!node.childNodes.length) {
+                return;
+        }
+        for (var i = node.childNodes.length-1; i > -1 ; i--) {
+           fn.call(this, node.childNodes[i])
+        }
+    },
+    
+    
+    /**
+     * cleanTableWidths.
+     *
+     * Quite often pasting from word etc.. results in tables with column and widths.
+     * This does not work well on fluid HTML layouts - like emails. - so this code should hunt an destroy them..
+     *
+     */
+    cleanTableWidths : function(node)
+    {
+         
+         
+        if (!node) {
+            this.cleanTableWidths(this.doc.body);
+            return;
+        }
+        
+        // ignore list...
+        if (node.nodeName == "#text" || node.nodeName == "#comment") {
+            return; 
+        }
+        Roo.log(node.tagName);
+        if (!node.tagName.toLowerCase().match(/^(table|td|tr)$/)) {
+            this.iterateChildren(node, this.cleanTableWidths);
+            return;
+        }
+        if (node.hasAttribute('width')) {
+            node.removeAttribute('width');
+        }
+        
+         
+        if (node.hasAttribute("style")) {
+            // pretty basic...
+            
+            var styles = node.getAttribute("style").split(";");
+            var nstyle = [];
+            Roo.each(styles, function(s) {
+                if (!s.match(/:/)) {
+                    return;
+                }
+                var kv = s.split(":");
+                if (kv[0].match(/^\s*(width|min-width)\s*$/)) {
+                    return;
+                }
+                // what ever is left... we allow.
+                nstyle.push(s);
+            });
+            node.setAttribute("style", nstyle.length ? nstyle.join(';') : '');
+            if (!nstyle.length) {
+                node.removeAttribute('style');
+            }
+        }
+        
+        this.iterateChildren(node, this.cleanTableWidths);
+        
+        
+    },
+    
+    
+    
+    
     domToHTML : function(currentElement, depth, nopadtext) {
         
         depth = depth || 0;
