@@ -147,6 +147,10 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     feedback
                 ] 
             };  
+        } else {
+            if(!this.editable && !this.tickable){
+                
+            }
         }
         
         if (this.before || this.after) {
