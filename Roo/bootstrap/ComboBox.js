@@ -1113,7 +1113,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         var close = this.closeTriggerEl();
-        Roo.log('run????');
+        Roo.log('run????'); 
+        Roo.log(vv);
+        Roo.log(close);
         if(close){
             vv.length ? close.show() : close.hide();
         }
