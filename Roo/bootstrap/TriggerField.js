@@ -115,14 +115,30 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 tag: 'span',
                 cls: 'glyphicon form-control-feedback'
             };
-
-            inputblock = {
-                cls : 'has-feedback',
-                cn :  [
-                    inputblock,
-                    feedback
-                ] 
-            };  
+            // this.removable
+            if(!this.editable && !this.tickable){
+                inputblock = {
+                    cls : 'has-feedback',
+                    cn :  [
+                        inputblock,
+                        {
+                            tag: 'button',
+                            html : 'x',
+                            cls : 'roo-combo-removable-btn close'
+                        },
+                        feedback
+                    ] 
+                };
+            } else {
+                inputblock = {
+                    cls : 'has-feedback',
+                    cn :  [
+                        inputblock,
+                        feedback
+                    ] 
+                };
+            }
+              
         } else {
             // this.removable
             if(!this.editable && !this.tickable){
