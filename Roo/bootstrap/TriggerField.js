@@ -102,14 +102,14 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                 cn :  [
                     inputblock,
                     {
-                        tag: 'span'
+                        tag: 'span',
                         html : 'x',
                         cls : 'form-control-feedback'
                     }
                 ] 
             };  
 //        }
-        Roo.log(inputblock);
+        
         if(this.hasFeedback && !this.allowBlank){
             
             var feedback = {
