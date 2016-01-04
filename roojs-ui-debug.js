@@ -3634,6 +3634,8 @@ Roo.extend(Roo.dd.DragSource, Roo.dd.DDProxy, {
         if(this.beforeDragOver(target, e, id) !== false){
             if(target.isNotifyTarget){
                 var status = target.notifyOver(this, e, this.dragData);
+                Roo.log('run here??????????????');
+                Roo.log(status);
                 this.proxy.setStatus(status);
             }
 
@@ -38721,7 +38723,7 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
                 sm.handleMouseDown(e, t); // non modifier buttons are handled by row select.
             }
             
-            Roo.log("getDragData ????");
+            Roo.log("getDragData");
             
             return {
                 grid: this.grid,
