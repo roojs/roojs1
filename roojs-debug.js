@@ -20080,8 +20080,6 @@ Roo.extend(Roo.dd.DragSource, Roo.dd.DDProxy, {
         if(this.beforeDragOver(target, e, id) !== false){
             if(target.isNotifyTarget){
                 var status = target.notifyOver(this, e, this.dragData);
-                Roo.log('run here??????????????');
-                Roo.log(status);
                 this.proxy.setStatus(status);
             }
 
@@ -20505,7 +20503,6 @@ Roo.extend(Roo.dd.DropTarget, Roo.dd.DDTarget, {
      */
     notifyOver : function(dd, e, data)
     {
-        Roo.log('in?????????????????????????????????');
         this.valid = true;
         this.fireEvent('over', dd, e, data);
         return typeof(this.valid) == 'string' ? 'x-dd-drop-' + this.valid : (
