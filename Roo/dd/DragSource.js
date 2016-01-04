@@ -103,8 +103,6 @@ Roo.extend(Roo.dd.DragSource, Roo.dd.DDProxy, {
         if(this.beforeDragOver(target, e, id) !== false){
             if(target.isNotifyTarget){
                 var status = target.notifyOver(this, e, this.dragData);
-                Roo.log('run here??????????????');
-                Roo.log(status);
                 this.proxy.setStatus(status);
             }
 
