@@ -59,7 +59,7 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
                 sm.handleMouseDown(e, t); // non modifier buttons are handled by row select.
             }
             
-            Roo.log("getDragData ????");
+            Roo.log("getDragData");
             
             return {
                 grid: this.grid,
