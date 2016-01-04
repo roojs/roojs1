@@ -22614,6 +22614,7 @@ var myReader = new Roo.data.JsonReader({
  * @cfg {String} successProperty Name of the property from which to retrieve the success attribute used by forms.
  * @cfg {String} root name of the property which contains the Array of row objects.
  * @cfg {String} id Name of the property within a row object that contains a record identifier value.
+ * @cfg {Array} fields Array of field definition objects
  * @constructor
  * Create a new JsonReader
  * @param {Object} meta Metadata configuration options
@@ -55166,7 +55167,7 @@ Roo.extend(Roo.grid.GridDragZone, Roo.dd.DragZone, {
                 sm.handleMouseDown(e, t); // non modifier buttons are handled by row select.
             }
             
-            Roo.log("getDragData");
+            Roo.log("getDragData ????");
             
             return {
                 grid: this.grid,
