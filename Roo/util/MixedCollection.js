@@ -90,6 +90,7 @@ Roo.extend(Roo.util.MixedCollection, Roo.util.Observable, {
         }else{
             Roo.log(this);
             var old = this.map[key * 1];
+            Roo.log(this.map);
             Roo.log('old.........................');
             Roo.log(old);
             if(old){
