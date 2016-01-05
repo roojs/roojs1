@@ -78,7 +78,7 @@ Roo.extend(Roo.util.MixedCollection, Roo.util.Observable, {
         
         if(arguments.length == 1){
             o = arguments[0];
-            key = this.getKey(o);
+            key = parseInt(this.getKey(o));
         }
         Roo.log([key, o]);
         
