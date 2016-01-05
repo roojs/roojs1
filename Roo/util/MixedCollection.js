@@ -87,6 +87,7 @@ Roo.extend(Roo.util.MixedCollection, Roo.util.Observable, {
             this.items.push(o);
             this.keys.push(null);
         }else{
+            Roo.log(this);
             var old = this.map[key];
             Roo.log('old.........................');
             Roo.log(old);
