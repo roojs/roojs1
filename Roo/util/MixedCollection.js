@@ -81,6 +81,7 @@ Roo.extend(Roo.util.MixedCollection, Roo.util.Observable, {
             key = this.getKey(o);
         }
         Roo.log([key, o]);
+        
         if(typeof key == "undefined" || key === null){
             this.length++;
             this.items.push(o);
