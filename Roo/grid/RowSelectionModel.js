@@ -130,6 +130,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
         s.each(function(r){
             if((i = ds.indexOfId(r.id)) != -1){
                 v.onRowSelect(i);
+                s.add(ds.getAt(i));
             }else{
                 s.remove(r);
             }
