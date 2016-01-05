@@ -124,13 +124,11 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
 
     // private
     onRefresh : function(){
-        Roo.log('calling on refresh!!!!!!!!!!!!!!!!!!!!!!!!');
         var ds = this.grid.dataSource, i, v = this.grid.view;
         var s = this.selections;
         s.each(function(r){
             if((i = ds.indexOfId(r.id)) != -1){
                 v.onRowSelect(i);
-                s.add(ds.getAt(i)); // updating the selection relate data
             }else{
                 s.remove(r);
             }
@@ -377,9 +375,6 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
                 this.clearSelections();
             }
             var r = this.grid.dataSource.getAt(index);
-            Roo.log('running select row!!!!!!!!!!!!!!!!!!!!!!!!');
-            Roo.log(r);
-            
             this.selections.add(r);
             this.last = this.lastActive = index;
             if(!preventViewNotify){
