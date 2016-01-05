@@ -124,6 +124,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
 
     // private
     onRefresh : function(){
+        Roo.log('calling on refresh!!!!!!!!!!!!!!!!!!!!!!!!');
         var ds = this.grid.dataSource, i, v = this.grid.view;
         var s = this.selections;
         s.each(function(r){
