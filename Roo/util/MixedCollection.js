@@ -76,7 +76,7 @@ Roo.extend(Roo.util.MixedCollection, Roo.util.Observable, {
  */
     add : function(key, o){
         if(arguments.length == 1){
-            o = key; //arguments[0];
+            o = arguments[0];
             key = this.getKey(o);
         }
         if(typeof key == "undefined" || key === null){
