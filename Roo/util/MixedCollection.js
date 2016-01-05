@@ -75,11 +75,12 @@ Roo.extend(Roo.util.MixedCollection, Roo.util.Observable, {
  * @return {Object} The item added.
  */
     add : function(key, o){
-        Roo.log([key, o]);
+        
         if(arguments.length == 1){
             o = arguments[0];
             key = this.getKey(o);
         }
+        Roo.log([key, o]);
         if(typeof key == "undefined" || key === null){
             this.length++;
             this.items.push(o);
