@@ -377,6 +377,7 @@ Roo.extend(Roo.grid.RowSelectionModel, Roo.grid.AbstractSelectionModel,  {
             var r = this.grid.dataSource.getAt(index);
             Roo.log('running select row!!!!!!!!!!!!!!!!!!!!!!!!');
             Roo.log(r);
+            
             this.selections.add(r);
             this.last = this.lastActive = index;
             if(!preventViewNotify){
