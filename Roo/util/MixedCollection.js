@@ -75,24 +75,16 @@ Roo.extend(Roo.util.MixedCollection, Roo.util.Observable, {
  * @return {Object} The item added.
  */
     add : function(key, o){
-        
         if(arguments.length == 1){
             o = arguments[0];
             key = this.getKey(o);
         }
-        
-        Roo.log([key, o]);
-        
         if(typeof key == "undefined" || key === null){
             this.length++;
             this.items.push(o);
             this.keys.push(null);
         }else{
-            Roo.log(this);
-            var old = this.map[key * 1];
-            Roo.log(this.map);
-            Roo.log('old.........................');
-            Roo.log(old);
+            var old = this.map[key];
             if(old){
                 return this.replace(key, o);
             }
@@ -147,15 +139,11 @@ mc.add(otherEl);
             o = arguments[0];
             key = this.getKey(o);
         }
-        Roo.log('replace.........................');
-            Roo.log([o, key]);
         var old = this.item(key);
         if(typeof key == "undefined" || key === null || typeof old == "undefined"){
              return this.add(key, o);
         }
         var index = this.indexOfKey(key);
-        Roo.log(index);
-        
         this.items[index] = o;
         this.map[key] = o;
         this.fireEvent("replace", key, old, o);
