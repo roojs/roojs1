@@ -108,7 +108,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        if(!this.isFromDom){
+//        if(!this.isFromDom){
             this.on('childrenrendered', function() {
                 Roo.log("children rendered");
 
@@ -124,7 +124,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 this.layout.defer(500,this);
 
             } ,this);
-        }
+//        }
         
     },
     
