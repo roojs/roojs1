@@ -58,10 +58,10 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     padHeight : 10, 
     
     /**
-     * @cfg {Boolean} isFromDom defalut false
+     * @cfg {Boolean} autoInitial defalut true
      */   
     
-    isFromDom : false, 
+    autoInitial : true, 
     
     // private?
     gutter : 0,
@@ -110,7 +110,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         var _this = this;
         
-        if(!this.isFromDom){
+        if(this.autoInitial){
             this.on('childrenrendered', function() {
                 _this.initial();
             } ,this);
@@ -127,7 +127,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         /// was window resize... - let's see if this works..
         Roo.EventManager.onWindowResize(this.resize, this); 
 
-        if(this.isFromDom){
+        if(!this.autoInitial){
             this.layout();
             return;
         }
