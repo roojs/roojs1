@@ -126,6 +126,18 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
         
     },
     
+    initial : function()
+    {
+        this.reloadItems();
+
+        this.currentSize = this.el.getBox(true);
+
+        /// was window resize... - let's see if this works..
+        Roo.EventManager.onWindowResize(this.resize, this); 
+
+        this.layout.defer(500,this);
+    },
+    
     reloadItems: function()
     {
         this.bricks = this.el.select('.masonry-brick', true);
