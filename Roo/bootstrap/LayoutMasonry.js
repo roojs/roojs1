@@ -231,7 +231,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         //this.getSize();  // -- does not really do anything.. it probably applies left/right etc. to obuject but not used
         this.colWidth = this.el.getWidth();
-        Roo.log(this.colWidth);
         //this.gutter = this.el.getWidth(); 
         
         this.measureColumns();
