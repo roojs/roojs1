@@ -110,17 +110,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     {
         if(!this.isFromDom){
             this.on('childrenrendered', function() {
-                Roo.log("children rendered");
-
-                this.reloadItems();
-
-                this.currentSize = this.el.getBox(true);
-
-                /// was window resize... - let's see if this works..
-                Roo.EventManager.onWindowResize(this.resize, this); 
-
-                this.layout.defer(500,this);
-
+                _this.initial()
             } ,this);
         }
         
