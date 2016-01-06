@@ -24882,7 +24882,7 @@
      "memberOf": ""
     },
     {
-     "name": "autoInitial",
+     "name": "isAutoInitial",
      "type": "Boolean",
      "desc": "defalut true",
      "memberOf": ""
