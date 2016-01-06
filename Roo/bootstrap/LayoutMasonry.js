@@ -113,8 +113,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
                 Roo.log("children rendered");
 
                 this.reloadItems();
-                // this.stamps = []; // wtf are stamps?
-                // this.initStamp(); //???
 
                 this.currentSize = this.el.getBox(true);
 
