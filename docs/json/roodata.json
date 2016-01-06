@@ -24882,9 +24882,9 @@
      "memberOf": ""
     },
     {
-     "name": "isFromDom",
+     "name": "autoInitial",
      "type": "Boolean",
-     "desc": "defalut false",
+     "desc": "defalut true",
      "memberOf": ""
     },
     {

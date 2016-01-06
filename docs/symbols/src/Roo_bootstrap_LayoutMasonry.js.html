@@ -58,10 +58,10 @@
     </span><span class="jsdoc-var">padHeight </span><span class="jsdoc-syntax">: 10, 
     
     </span><span class="jsdoc-comment">/**
-     * @cfg {Boolean} isFromDom defalut false
+     * @cfg {Boolean} autoInitial defalut true
      */   
     
-    </span><span class="jsdoc-var">isFromDom </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, 
+    </span><span class="jsdoc-var">autoInitial </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">, 
     
     </span><span class="jsdoc-comment">// private?
     </span><span class="jsdoc-var">gutter </span><span class="jsdoc-syntax">: 0,
@@ -110,7 +110,7 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isFromDom</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.autoInitial</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'childrenrendered'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
                 </span><span class="jsdoc-var">_this.initial</span><span class="jsdoc-syntax">();
             } ,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -127,7 +127,7 @@
         </span><span class="jsdoc-comment">/// was window resize... - let's see if this works..
         </span><span class="jsdoc-var">Roo.EventManager.onWindowResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">); 
 
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isFromDom</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.autoInitial</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
