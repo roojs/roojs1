@@ -103,9 +103,6 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         
-         
-        
-        
         this.on('childrenrendered', function() {
             Roo.log("children rendered");
             
