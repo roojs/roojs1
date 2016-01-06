@@ -115,7 +115,7 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
             Roo.EventManager.onWindowResize(this.resize, this); 
             
             
-            this.layout.defer(500,this);;
+            this.layout();
             
             
         } ,this);
