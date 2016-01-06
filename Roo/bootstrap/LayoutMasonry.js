@@ -57,6 +57,12 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     padHeight : 10, 
     
+    /**
+     * @cfg {Boolean} isFromDom defalut false
+     */   
+    
+    isFromDom : false, 
+    
     // private?
     gutter : 0,
     
@@ -102,22 +108,23 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        this.on('childrenrendered', function() {
-            Roo.log("children rendered");
-            
-            this.reloadItems();
-            // this.stamps = []; // wtf are stamps?
-            // this.initStamp(); //???
-            
-            this.currentSize = this.el.getBox(true);
-            
-            /// was window resize... - let's see if this works..
-            Roo.EventManager.onWindowResize(this.resize, this); 
-            
-            this.layout.defer(500,this);
-            
-        } ,this);
-        
+        if(!this.isFromDom){
+            this.on('childrenrendered', function() {
+                Roo.log("children rendered");
+
+                this.reloadItems();
+                // this.stamps = []; // wtf are stamps?
+                // this.initStamp(); //???
+
+                this.currentSize = this.el.getBox(true);
+
+                /// was window resize... - let's see if this works..
+                Roo.EventManager.onWindowResize(this.resize, this); 
+
+                this.layout.defer(500,this);
+
+            } ,this);
+        }
         
     },
     
