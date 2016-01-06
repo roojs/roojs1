@@ -108,9 +108,11 @@ Roo.extend(Roo.bootstrap.LayoutMasonry, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
+        var _this = this;
+        
         if(!this.isFromDom){
             this.on('childrenrendered', function() {
-                _this.initial()
+                _this.initial();
             } ,this);
         }
         
