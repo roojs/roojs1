@@ -24882,6 +24882,12 @@
      "memberOf": ""
     },
     {
+     "name": "isFromDom",
+     "type": "Boolean",
+     "desc": "defalut false",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",

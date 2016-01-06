@@ -129,7 +129,8 @@
         </span><span class="jsdoc-var">s.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">ds.indexOfId</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.id</span><span class="jsdoc-syntax">)) != -1){
                 </span><span class="jsdoc-var">v.onRowSelect</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">);
-            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">s.add</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds.getAt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)); </span><span class="jsdoc-comment">// updating the selection relate data
+            </span><span class="jsdoc-syntax">}</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
                 </span><span class="jsdoc-var">s.remove</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">);
             }
         });

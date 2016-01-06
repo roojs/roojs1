@@ -57,6 +57,12 @@
     
     </span><span class="jsdoc-var">padHeight </span><span class="jsdoc-syntax">: 10, 
     
+    </span><span class="jsdoc-comment">/**
+     * @cfg {Boolean} isFromDom defalut false
+     */   
+    
+    </span><span class="jsdoc-var">isFromDom </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, 
+    
     </span><span class="jsdoc-comment">// private?
     </span><span class="jsdoc-var">gutter </span><span class="jsdoc-syntax">: 0,
     
@@ -93,37 +99,40 @@
     {
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boxesEl</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.boxesEl</span><span class="jsdoc-syntax">;
-            </span><span class="jsdoc-comment">//code
-        </span><span class="jsdoc-syntax">}
+        }
         </span><span class="jsdoc-var">this.boxesEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.mas-boxes'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.boxesEl</span><span class="jsdoc-syntax">;
     },
     
     
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         
-         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isFromDom</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'childrenrendered'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
+                </span><span class="jsdoc-var">_this.initial</span><span class="jsdoc-syntax">();
+            } ,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
         
+    },
+    
+    </span><span class="jsdoc-var">initial </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.reloadItems</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">this.currentSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-comment">/// was window resize... - let's see if this works..
+        </span><span class="jsdoc-var">Roo.EventManager.onWindowResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">); 
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isFromDom</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.layout</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         
-        </span><span class="jsdoc-var">this.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'childrenrendered'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;children rendered&quot;</span><span class="jsdoc-syntax">);
-            
-            </span><span class="jsdoc-var">this.reloadItems</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-comment">// this.stamps = []; // wtf are stamps?
-            // this.initStamp(); //???
-            </span><span class="jsdoc-var">this.currentSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-            
-            </span><span class="jsdoc-comment">/// was window resize... - let's see if this works..
-            </span><span class="jsdoc-var">Roo.EventManager.onWindowResize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">); 
-            
-            
-            </span><span class="jsdoc-var">this.layout.defer</span><span class="jsdoc-syntax">(500,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);;
-            
-            
-        } ,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        
-        
+        </span><span class="jsdoc-var">this.layout.defer</span><span class="jsdoc-syntax">(500,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">reloadItems</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -138,7 +147,6 @@
     {
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize'</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cs </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getBox</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-        
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.currentSize.width </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cs.width </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.currentSize.x </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">cs.x </span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
