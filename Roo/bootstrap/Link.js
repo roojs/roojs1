@@ -54,7 +54,7 @@ Roo.extend(Roo.bootstrap.Link, Roo.bootstrap.Component,  {
         };
         // anchor's do not require html/href...
         if (this.anchor === false) {
-            cfg.html = this.html || 'html-missing';
+            cfg.html = this.html || '';
             cfg.href = this.href || '#';
         } else {
             cfg.name = this.anchor;
