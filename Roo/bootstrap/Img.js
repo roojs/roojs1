@@ -54,7 +54,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
 
     getAutoCreate : function()
     {   
-        if(this.src || (!xsUrl && !smUrl && !mdUrl && !lgUrl)){
+        if(this.src || (!this.xsUrl && !this.smUrl && !this.mdUrl && !this.lgUrl)){
             return this.createSingleImg();
         }
         
@@ -64,7 +64,20 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             cn: []
         }
         
+        var img = {};
         
+        if(this.xsUrl){
+            img = {
+                tag: 'img',
+                cls: (this.imgResponsive) ? 'img-responsive' : '',
+                html: this.html || cfg.html,
+                src: this.xsUrl
+            }
+            
+            cfg.html = this.html || cfg.html;
+        
+            cfg.src = this.src || cfg.src;
+        }
         
     },
     
