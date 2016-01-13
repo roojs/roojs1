@@ -2077,7 +2077,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     initTouchDevice : function()
     {
-        this.createTouchList();
+        this.createPicker();
         
         if(this.hiddenName){
             
