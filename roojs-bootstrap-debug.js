@@ -1365,8 +1365,6 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {   
         if(this.src || (!this.xsUrl && !this.smUrl && !this.mdUrl && !this.lgUrl)){
-            Roo.log('run?????????????????????');
-            Roo.log(this.src);
             return this.createSingleImg();
         }
         
@@ -1377,6 +1375,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         }
         Roo.log('run?????????????????????');
         Roo.each(['xsUrl', 'smUrl', 'mdUrl', 'lgUrl'], function(size){
+            Roo.log(size);
             Roo.log(this[size]);
             if(!this[size]){
                 return;
