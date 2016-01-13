@@ -2237,7 +2237,8 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
   
     touchView : {
         tag: 'div',
-        cls: 'datepicker dropdown-menu roo-dynamic',
+        cls: 'modal fade roo-combobox-touch-view',
+        style
         cn: [
         {
             tag: 'div',
