@@ -1365,6 +1365,8 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {   
         if(this.src || (!this.xsUrl && !this.smUrl && !this.mdUrl && !this.lgUrl)){
+            Roo.log('run?????????????????????');
+            Roo.log(this.src);
             return this.createSingleImg();
         }
         
@@ -1373,9 +1375,10 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             cls: 'roo-image-responsive-group',
             cn: []
         }
-        
-        Roo.each([this.xsUrl, this.smUrl, this.mdUrl, this.lgUrl], function(url){
-            if(!url){
+        Roo.log('run?????????????????????');
+        Roo.each(['xsUrl', 'smUrl', 'mdUrl', 'lgUrl'], function(size){
+            Roo.log(this[size]);
+            if(!this[size]){
                 return;
             }
             
@@ -1383,8 +1386,10 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
                 tag: 'img',
                 cls: (this.imgResponsive) ? 'img-responsive' : '',
                 html: this.html || cfg.html,
-                src: this.xsUrl
+                src: this[size]
             }
+            
+            img.cls += ' roo-image-responsive-' + size;
             
             if (['rounded','circle','thumbnail'].indexOf(this.border)>-1) {
                 cfg.cls += ' img-' + this.border;
