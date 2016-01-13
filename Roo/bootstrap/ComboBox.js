@@ -1936,7 +1936,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             input.disabled = true;
         }
         
-        var inputblock = input;
+        var inputblock = {
+            cn: [input]
+        };
         
         if(this.removable){
             inputblock = {
