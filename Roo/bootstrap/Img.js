@@ -47,6 +47,10 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     src: '',
     href: false,
     target: false,
+    xsUrl: '',
+    smUrl: '',
+    mdUrl: '',
+    lgUrl: '',
 
     getAutoCreate : function()
     {   
