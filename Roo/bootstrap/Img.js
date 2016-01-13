@@ -64,8 +64,8 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             cn: []
         }
         
-        Roo.each([this.xsUrl, this.smUrl, this.mdUrl, this.lgUrl], function(url){
-            if(!url){
+        Roo.each(['xsUrl', 'smUrl', 'mdUrl', 'lgUrl'], function(size){
+            if(!this[size]){
                 return;
             }
             
@@ -73,7 +73,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
                 tag: 'img',
                 cls: (this.imgResponsive) ? 'img-responsive' : '',
                 html: this.html || cfg.html,
-                src: this.xsUrl
+                src: this[size]
             }
             
             if (['rounded','circle','thumbnail'].indexOf(this.border)>-1) {
