@@ -54,9 +54,17 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
 
     getAutoCreate : function()
     {   
-        if(this.src){
-            this.createSingleImg();
+        if(this.src || (!xsUrl && !smUrl && !mdUrl && !lgUrl)){
+            return this.createSingleImg();
         }
+        
+        var cfg = {
+            tag: 'div',
+            cls: 'roo-image-responsive-group',
+            cn: []
+        }
+        
+        
         
     },
     
