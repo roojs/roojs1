@@ -1921,7 +1921,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             tag: 'input',
             id : id,
             type : this.inputType,
-            cls : 'form-control',
+            cls : 'form-control x-combo-noedit',
             autocomplete: 'new-password',
             placeholder : this.placeholder || '',
             readonly : true
