@@ -23861,6 +23861,30 @@
      ]
     },
     {
+     "name": "xsUrl",
+     "type": "String",
+     "desc": "xs image source",
+     "memberOf": ""
+    },
+    {
+     "name": "smUrl",
+     "type": "String",
+     "desc": "sm image source",
+     "memberOf": ""
+    },
+    {
+     "name": "mdUrl",
+     "type": "String",
+     "desc": "md image source",
+     "memberOf": ""
+    },
+    {
+     "name": "lgUrl",
+     "type": "String",
+     "desc": "lg image source",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
