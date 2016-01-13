@@ -1938,6 +1938,20 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var inputblock = input;
         
+        if(this.removable){
+            inputblock = {
+                cls : 'roo-removable',
+                cn :  [
+                    input,
+                    {
+                        tag: 'button',
+                        html : 'x',
+                        cls : 'roo-combo-removable-btn close'
+                    }
+                ] 
+            };
+        }
+
         if(this.hasFeedback && !this.allowBlank){
             
             var feedback = {
@@ -1945,6 +1959,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 cls: 'glyphicon form-control-feedback'
             };
             
+            inputblock = {
+                cls : 'has-feedback',
+                cn :  [
+                    input,
+                    feedback
+                ] 
+            };
+                
             if(this.removable){
                 inputblock = {
                     cls : 'has-feedback',
@@ -1958,30 +1980,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                         feedback
                     ] 
                 };
-            } else {
-                inputblock = {
-                    cls : 'has-feedback',
-                    cn :  [
-                        inputblock,
-                        feedback
-                    ] 
-                };
             }
               
         } else {
-            if(this.removable && !this.editable && !this.tickable){
-                inputblock = {
-                    cls : 'roo-removable',
-                    cn :  [
-                        inputblock,
-                        {
-                            tag: 'button',
-                            html : 'x',
-                            cls : 'roo-combo-removable-btn close'
-                        }
-                    ] 
-                };
-            }
+            
         }
         
         if (this.before || this.after) {
