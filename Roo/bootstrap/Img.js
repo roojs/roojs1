@@ -85,7 +85,6 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             s.splice(s.indexOf(size), 1);
             
             Roo.each(s, function(ss){
-                Roo.log(ss);
                 img.cls += ' hidden-' + ss;
             });
             
