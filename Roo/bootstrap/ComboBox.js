@@ -2283,7 +2283,10 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
             }
         ]
         
-    },
+    }
+});
+
+Roo.apply(Roo.bootstrap.ComboBox,  {
     
     touchViewTemplate : {
         tag: 'div',
