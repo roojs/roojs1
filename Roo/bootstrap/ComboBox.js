@@ -2208,6 +2208,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.editable !== false){
             this.tickableInputEl().on("keyup", this.onKeyUp, this);
         }
+    },
+    
+    function createPicker()
+    {
+        
     }
 
     /** 
