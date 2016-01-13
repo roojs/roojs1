@@ -1943,51 +1943,34 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             ]
         };
         
+        if(this.before){
+            inputblock.cls += ' input-group';
+            
+            inputblock.cn.unshift({
+                tag :'span',
+                cls : 'input-group-addon',
+                html : this.before
+            });
+        }
+        
         if(this.removable){
-            inputblock = {
-                cls : 'roo-removable',
-                cn :  [
-                    input,
-                    {
-                        tag: 'button',
-                        html : 'x',
-                        cls : 'roo-combo-removable-btn close'
-                    }
-                ] 
-            };
+            inputblock.cls += ' roo-removable';
+            
+            inputblock.cn.push({
+                tag: 'button',
+                html : 'x',
+                cls : 'roo-combo-removable-btn close'
+            });
         }
 
         if(this.hasFeedback && !this.allowBlank){
             
-            var feedback = {
+            inputblock.cls += ' has-feedback';
+            
+            inputblock.cn.push({
                 tag: 'span',
                 cls: 'glyphicon form-control-feedback'
-            };
-            
-            inputblock = {
-                cls : 'has-feedback',
-                cn :  [
-                    input,
-                    feedback
-                ] 
-            };
-                
-            if(this.removable){
-                inputblock = {
-                    cls : 'has-feedback',
-                    cn :  [
-                        input,
-                        {
-                            tag: 'button',
-                            html : 'x',
-                            cls : 'roo-combo-removable-btn close'
-                        },
-                        feedback
-                    ] 
-                };
-            }
-              
-        } else {
+            });
             
         }
         
