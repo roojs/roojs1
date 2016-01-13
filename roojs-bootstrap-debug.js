@@ -1326,6 +1326,10 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
  * @cfg {String} alt image alternative text
  * @cfg {String} href a tag href
  * @cfg {String} target (_self|_blank|_parent|_top)target for a href.
+ * @cfg {String} xsUrl xs image source
+ * @cfg {String} smUrl sm image source
+ * @cfg {String} mdUrl md image source
+ * @cfg {String} lgUrl lg image source
  * 
  * @constructor
  * Create a new Input
@@ -1353,9 +1357,66 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     src: '',
     href: false,
     target: false,
+    xsUrl: '',
+    smUrl: '',
+    mdUrl: '',
+    lgUrl: '',
 
-    getAutoCreate : function(){
+    getAutoCreate : function()
+    {   
+        if(this.src || (!this.xsUrl && !this.smUrl && !this.mdUrl && !this.lgUrl)){
+            return this.createSingleImg();
+        }
         
+        var cfg = {
+            tag: 'div',
+            cls: 'roo-image-responsive-group',
+            cn: []
+        }
+        
+        Roo.each([this.xsUrl, this.smUrl, this.mdUrl, this.lgUrl], function(url){
+            if(!url){
+                return;
+            }
+            
+            var img = {
+                tag: 'img',
+                cls: (this.imgResponsive) ? 'img-responsive' : '',
+                html: this.html || cfg.html,
+                src: this.xsUrl
+            }
+            
+            if (['rounded','circle','thumbnail'].indexOf(this.border)>-1) {
+                cfg.cls += ' img-' + this.border;
+            }
+            
+            if(this.alt){
+                cfg.alt = this.alt;
+            }
+            
+            if(this.href){
+                var a = {
+                    tag: 'a',
+                    href: this.href,
+                    cn: [
+                        img
+                    ]
+                }
+
+                if(this.target){
+                    a.target = this.target;
+                }
+            }
+            
+            cfg.cn.push((this.href) ? a : img);
+            
+        });
+        
+        return cfg;
+    },
+    
+    createSingleImg : function()
+    {
         var cfg = {
             tag: 'img',
             cls: (this.imgResponsive) ? 'img-responsive' : '',
@@ -1388,7 +1449,6 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             }
             
         }
-        
         
         return (this.href) ? a : cfg;
     },
