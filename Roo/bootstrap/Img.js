@@ -148,10 +148,11 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        
         if(!this.href){
             this.el.on('click', this.onClick, this);
         }
+        
+        Roo.log(this.el);
     },
     
     onClick : function(e)
