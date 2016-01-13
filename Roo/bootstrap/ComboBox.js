@@ -2235,11 +2235,29 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
 Roo.apply(Roo.bootstrap.ComboBox,  {
     
-    head : {
-        
+    header : {
+        tag: 'div',
+        cls: 'modal-header',
+        cn: [
+            {
+                tag: 'h4',
+                cls: 'modal-title'
+            }
+        ]
     },
     
-    touchView : {
+    body : {
+        tag: 'div',
+        cls: 'modal-body'
+    },
+    
+    footer : {
+        tag: 'div',
+        cls: 'modal-footer',
+        
+    }
+    
+    touchViewTemplate : {
         tag: 'div',
         cls: 'modal fade roo-combobox-touch-view',
         cn: [
@@ -2251,7 +2269,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                         tag: 'div',
                         cls: 'modal-content',
                         cn:[
-                            Roo.bootstrap.ComboBox.head,
+                            Roo.bootstrap.ComboBox.header,
                             Roo.bootstrap.ComboBox.body,
                             Roo.bootstrap.ComboBox.footer
                         ]
