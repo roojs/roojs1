@@ -1974,37 +1974,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
         }
         
-        if (this.before || this.after) {
+        if (this.after) {
             
-            inputblock = {
-                cls : 'input-group',
-                cn :  [] 
-            };
-            if (this.before) {
-                inputblock.cn.push({
-                    tag :'span',
-                    cls : 'input-group-addon',
-                    html : this.before
-                });
-            }
+            inputblock.cls += (this.before) ? '' : ' input-group';
             
-            inputblock.cn.push(input);
-            
-            if(this.hasFeedback && !this.allowBlank){
-                inputblock.cls += ' has-feedback';
-                inputblock.cn.push(feedback);
-            }
-            
-            if (this.after) {
-                inputblock.cn.push({
-                    tag :'span',
-                    cls : 'input-group-addon',
-                    html : this.after
-                });
-            }
-            
-        };
-        
+            inputblock.cn.push({
+                tag :'span',
+                cls : 'input-group-addon',
+                html : this.after
+            });
+        }
+
         var box = {
             tag: 'div',
             cn: [
