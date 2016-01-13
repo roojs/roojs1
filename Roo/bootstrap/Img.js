@@ -74,9 +74,30 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
                 src: this.xsUrl
             }
             
-            cfg.html = this.html || cfg.html;
-        
-            cfg.src = this.src || cfg.src;
+            if (['rounded','circle','thumbnail'].indexOf(this.border)>-1) {
+                cfg.cls += ' img-' + this.border;
+            }
+            
+            if(this.alt){
+                cfg.alt = this.alt;
+            }
+            
+            if(this.href){
+                var a = {
+                    tag: 'a',
+                    href: this.href,
+                    cn: [
+                        img
+                    ]
+                }
+
+                if(this.target){
+                    a.target = this.target;
+                }
+            }
+            
+            cfg.cn.push((this.href) ? a : img);
+
         }
         
     },
