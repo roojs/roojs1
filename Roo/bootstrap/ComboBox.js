@@ -2235,6 +2235,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
 Roo.apply(Roo.bootstrap.ComboBox,  {
     
+    head : {
+        
+    },
     
     touchView : {
         tag: 'div',
