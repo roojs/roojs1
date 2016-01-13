@@ -2080,6 +2080,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.createTouchView();
         
         
+        
         return;
         
         if(this.hiddenName){
