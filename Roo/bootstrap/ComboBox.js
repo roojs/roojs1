@@ -2072,8 +2072,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         });
         
         return cfg;
-    }
+    },
     
+    initTouchDevice : function()
+    {
+        return;
+    }
 
     /** 
     * @cfg {Boolean} grow 
