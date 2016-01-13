@@ -66,7 +66,8 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         var _this = this;
         
         Roo.each(['xs', 'sm', 'md', 'lg'], function(size){
-            if(!_this[size . 'Url']){
+            var target = size . 'Url';
+            if(!_this[target]){
                 return;
             }
             
