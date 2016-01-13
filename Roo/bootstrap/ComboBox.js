@@ -310,6 +310,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(Roo.isTouch){
             Roo.log('is a touch devices');
+            
+            return;
         }
         
         /*
