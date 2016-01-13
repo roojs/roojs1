@@ -2212,7 +2212,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     createTouchView : function()
     {
-        this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.ComboBox.template);
+        this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.ComboBox.touchViewTemplate);
         
         Roo.log(this.touchViewEl);
     }
