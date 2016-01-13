@@ -1956,7 +1956,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             });
         }
         
-        if(this.removable){
+        if(this.removable && !this.multiple){
             inputblock.cls += ' roo-removable';
             
             inputblock.cn.push({
