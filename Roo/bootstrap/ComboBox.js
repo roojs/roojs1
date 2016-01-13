@@ -2212,7 +2212,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     function createTouchView()
     {
-        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.DateField.template);
+        this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.DateField.template);
     }
 
     /** 
