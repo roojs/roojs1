@@ -55,6 +55,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {   
         if(this.src || (!this.xsUrl && !this.smUrl && !this.mdUrl && !this.lgUrl)){
+            Roo.log(this.src);
             return this.createSingleImg();
         }
         
