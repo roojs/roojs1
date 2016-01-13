@@ -2231,6 +2231,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         this.touchViewEl.show();
         
+        var _this = this;
+        
         (function(){ _this.el.addClass('in'); }).defer(50);
     }
 
