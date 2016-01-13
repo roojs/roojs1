@@ -306,10 +306,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          * Touch Devices
          */
         
-       // if(Roo.isTouch){
+        if(Roo.isTouch || true){
             cfg = this.createTouchInterface();
             return cfg;;
-      //  }
+        }
         
         /*
          *  Normal ComboBox
@@ -490,10 +490,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          * Touch Devices
          */
         
-       // if(Roo.isTouch){
+        if(Roo.isTouch){
             this.initTouchDevice();
             return;
-      //  }
+        }
         
         if(this.tickable){
             this.initTickableEvents();
