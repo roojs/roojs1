@@ -63,7 +63,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             cls: 'roo-image-responsive-group',
             cn: []
         }
-        
+        Roo.log('run?????????????????????');
         Roo.each(['xsUrl', 'smUrl', 'mdUrl', 'lgUrl'], function(size){
             if(!this[size]){
                 return;
