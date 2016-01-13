@@ -1945,11 +1945,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 cls: 'glyphicon form-control-feedback'
             };
             
-            if(this.removable && !this.editable && !this.tickable){
+            if(this.removable){
                 inputblock = {
                     cls : 'has-feedback',
                     cn :  [
-                        inputblock,
+                        input,
                         {
                             tag: 'button',
                             html : 'x',
