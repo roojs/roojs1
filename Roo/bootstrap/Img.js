@@ -64,6 +64,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             cn: []
         }
         Roo.log('run?????????????????????');
+        this.lgUrl;
         Roo.each(['xsUrl', 'smUrl', 'mdUrl', 'lgUrl'], function(size){
             Roo.log(size);
             Roo.log(this[size]);
