@@ -2077,7 +2077,134 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     initTouchDevice : function()
     {
-        return;
+        this.createTouchList();
+        
+        if(this.hiddenName){
+            
+            this.hiddenField = this.el.select('input.form-hidden-field',true).first();
+            
+            this.hiddenField.dom.value =
+                this.hiddenValue !== undefined ? this.hiddenValue :
+                this.value !== undefined ? this.value : '';
+
+            // prevent input submission
+            this.el.dom.removeAttribute('name');
+            this.hiddenField.dom.setAttribute('name', this.hiddenName);
+             
+             
+        }
+        
+//        this.list = this.el.select('ul.dropdown-menu',true).first();
+        
+        this.choices = this.el.select('ul.select2-choices', true).first();
+        this.searchField = this.el.select('ul li.select2-search-field', true).first();
+        if(this.triggerList){
+            this.searchField.on("click", this.onSearchFieldClick, this, {preventDefault:true});
+        }
+         
+        this.trigger = this.el.select('.tickable-buttons > .btn-edit', true).first();
+        this.trigger.on("click", this.onTickableTriggerClick, this, {preventDefault:true});
+        
+        this.okBtn = this.el.select('.tickable-buttons > .btn-ok', true).first();
+        this.cancelBtn = this.el.select('.tickable-buttons > .btn-cancel', true).first();
+        
+        this.okBtn.on('click', this.onTickableFooterButtonClick, this, this.okBtn);
+        this.cancelBtn.on('click', this.onTickableFooterButtonClick, this, this.cancelBtn);
+        
+        this.trigger.setVisibilityMode(Roo.Element.DISPLAY);
+        this.okBtn.setVisibilityMode(Roo.Element.DISPLAY);
+        this.cancelBtn.setVisibilityMode(Roo.Element.DISPLAY);
+        
+        this.okBtn.hide();
+        this.cancelBtn.hide();
+        
+        var _this = this;
+        
+        (function(){
+            var lw = _this.listWidth || Math.max(_this.inputEl().getWidth(), _this.minListWidth);
+            _this.list.setWidth(lw);
+        }).defer(100);
+        
+        this.list.on('mouseover', this.onViewOver, this);
+        this.list.on('mousemove', this.onViewMove, this);
+        
+        this.list.on('scroll', this.onViewScroll, this);
+        
+        if(!this.tpl){
+            this.tpl = '<li class="select2-result"><div class="checkbox"><input id="{roo-id}" type="checkbox" {roo-data-checked}><label for="{roo-id}"><b>{' + this.displayField + '}</b></label></li>';
+        }
+
+        this.view = new Roo.View(this.list, this.tpl, {
+            singleSelect:true, tickable:true, parent:this, store: this.store, selectedClass: this.selectedClass
+        });
+        
+        //this.view.wrapEl.setDisplayed(false);
+        this.view.on('click', this.onViewClick, this);
+        
+        
+        
+        this.store.on('beforeload', this.onBeforeLoad, this);
+        this.store.on('load', this.onLoad, this);
+        this.store.on('loadexception', this.onLoadException, this);
+        
+        if(this.editable){
+            this.keyNav = new Roo.KeyNav(this.tickableInputEl(), {
+                "up" : function(e){
+                    this.inKeyMode = true;
+                    this.selectPrev();
+                },
+
+                "down" : function(e){
+                    this.inKeyMode = true;
+                    this.selectNext();
+                },
+
+                "enter" : function(e){
+                    if(this.fireEvent("specialkey", this, e)){
+                        this.onViewClick(false);
+                    }
+                    
+                    return true;
+                },
+
+                "esc" : function(e){
+                    this.onTickableFooterButtonClick(e, false, false);
+                },
+
+                "tab" : function(e){
+                    this.fireEvent("specialkey", this, e);
+                    
+                    this.onTickableFooterButtonClick(e, false, false);
+                    
+                    return true;
+                },
+
+                scope : this,
+
+                doRelay : function(e, fn, key){
+                    if(this.scope.isExpanded()){
+                       return Roo.KeyNav.prototype.doRelay.apply(this, arguments);
+                    }
+                    return true;
+                },
+
+                forceKeyDown: true
+            });
+        }
+        
+        this.queryDelay = Math.max(this.queryDelay || 10,
+                this.mode == 'local' ? 10 : 250);
+        
+        
+        this.dqTask = new Roo.util.DelayedTask(this.initQuery, this);
+        
+        if(this.typeAhead){
+            this.taTask = new Roo.util.DelayedTask(this.onTypeAhead, this);
+        }
+        
+        if(this.editable !== false){
+            this.tickableInputEl().on("keyup", this.onKeyUp, this);
+        }
     }
 
     /** 
