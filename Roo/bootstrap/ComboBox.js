@@ -2212,7 +2212,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     function createPicker()
     {
-        
+        this.picker
     }
 
     /** 
