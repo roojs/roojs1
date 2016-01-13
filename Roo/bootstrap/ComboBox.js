@@ -303,6 +303,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var cfg = false;
         
         /*
+         * Touch Devices
+         */
+        
+        if(Roo.isTouch){
+            
+        }
+        
+        /*
          *  Normal ComboBox
          */
         if(!this.tickable){
