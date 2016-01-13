@@ -48,8 +48,8 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
     href: false,
     target: false,
 
-    getAutoCreate : function(){
-        
+    getAutoCreate : function()
+    {   
         var cfg = {
             tag: 'img',
             cls: (this.imgResponsive) ? 'img-responsive' : '',
