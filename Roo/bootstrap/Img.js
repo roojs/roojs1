@@ -54,6 +54,14 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
 
     getAutoCreate : function()
     {   
+        if(this.src){
+            this.createSingleImg();
+        }
+        
+    },
+    
+    createSingleImg : function()
+    {
         var cfg = {
             tag: 'img',
             cls: (this.imgResponsive) ? 'img-responsive' : '',
@@ -86,7 +94,6 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             }
             
         }
-        
         
         return (this.href) ? a : cfg;
     },
