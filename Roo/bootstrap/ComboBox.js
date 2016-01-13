@@ -2279,7 +2279,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
             ]
         ]
         
-    }
+    },
     
     touchViewTemplate : {
         tag: 'div',
