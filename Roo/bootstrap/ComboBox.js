@@ -2238,7 +2238,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
     touchView : {
         tag: 'div',
         cls: 'modal fade roo-combobox-touch-view',
-        style
+        style: 'z-index: 10002'
         cn: [
         {
             tag: 'div',
