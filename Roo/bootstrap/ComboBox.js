@@ -2077,7 +2077,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     initTouchDevice : function()
     {
-        this.createPicker();
+        this.createTouchView();
         
         
         return;
@@ -2210,9 +2210,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
     },
     
-    function createPicker()
+    function createTouchView()
     {
-        this.picker = 
+        this.pickerEl = Roo.get(document.body).createChild(Roo.bootstrap.DateField.template);
     }
 
     /** 
