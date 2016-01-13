@@ -2244,14 +2244,14 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
             cls: 'datepicker-days',
             cn: [
             {
-                tag: 'table',
-                cls: 'table-condensed',
+                tag: 'div',
+                cls: 'modal-dialog',
                 cn:[
-                Roo.bootstrap.DateField.head,
+                    Roo.bootstrap.DateField.head,
                 {
                     tag: 'tbody'
                 },
-                Roo.bootstrap.DateField.footer
+                    Roo.bootstrap.DateField.footer
                 ]
             }
             ]
