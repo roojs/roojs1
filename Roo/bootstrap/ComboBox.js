@@ -1902,8 +1902,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         return this.inputEl().select('.select2-search-field-input', true).first();
-    }
+    },
     
+    
+    createTouchInterface : function()
+    {
+        
+    }
     
 
     /** 
