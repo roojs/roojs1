@@ -2225,6 +2225,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     onTouchDeviceClick : function(e, el)
     {
         e.preventDefault();
+        
+        this.touchViewEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+        this.touchViewEl.show();
     }
 
     /** 
