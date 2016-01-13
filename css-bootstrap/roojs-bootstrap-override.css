@@ -9,7 +9,7 @@ div.input-group.has-feedback > .form-control-feedback {
     }
 }
 
-.roo-combobox-touch-view > .modal-dialog > .modal-content {
+.roo-combobox-touch-view > .modal-dialog {
     width: 100%;
     height:100%;
 }
