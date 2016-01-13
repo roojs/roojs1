@@ -1914,7 +1914,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var cfg = {
             cls: 'form-group' //input-group
         };
-        Roo.log(this.inputType);
+        
         var input =  {
             tag: 'input',
             id : id,
@@ -1924,6 +1924,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             placeholder : this.placeholder || '' 
             
         };
+        
         if (this.name) {
             input.name = this.name;
         }
