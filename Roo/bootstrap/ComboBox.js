@@ -2223,6 +2223,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         
         
+    },
+    
+    function onTouchDeviceClick(a,b,c)
+    {
+        Roo.log([a,b,c]);
     }
 
     /** 
