@@ -2255,5 +2255,6 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                     }
                 ]
             }
+        ]
     }
 });
