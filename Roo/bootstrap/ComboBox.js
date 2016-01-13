@@ -2260,15 +2260,20 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
             cn: [
                 {
                     tag: 'div',
-                    cls: 'col-xs-6 pull-left'
+                    cls: 'col-xs-6 text-left'
                     cn: {
-                        
+                        tag: 'button',
+                        cls: 'btn btn-danger roo-touch-view-cancel',
+                        html: ''
                     }
                 },
                 {
                     tag: 'div',
-                    cls: 'col-xs-6 pull-right roo-touch-view-ok'
-                    html: 'OK'
+                    cls: 'col-xs-6 text-right roo-touch-view-ok'
+                    cn: {
+                        tag: 'button',
+                        cls: 'btn btn-danger roo-touch-view-cancel'
+                    }
                 }
             ]
         ]
