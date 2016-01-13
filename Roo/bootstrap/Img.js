@@ -146,7 +146,8 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         return (this.href) ? a : cfg;
     },
     
-    initEvents: function() {
+    initEvents: function() 
+    {
         
         if(!this.href){
             this.el.on('click', this.onClick, this);
