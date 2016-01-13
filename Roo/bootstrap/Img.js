@@ -16,6 +16,10 @@
  * @cfg {String} alt image alternative text
  * @cfg {String} href a tag href
  * @cfg {String} target (_self|_blank|_parent|_top)target for a href.
+ * @cfg {String} xsUrl xs image source
+ * @cfg {String} smUrl sm image source
+ * @cfg {String} mdUrl md image source
+ * @cfg {String} lgUrl lg image source
  * 
  * @constructor
  * Create a new Input
