@@ -76,6 +76,8 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
                 src: this[size]
             }
             
+            img.cls += ' roo-image-responsive-' + size;
+            
             if (['rounded','circle','thumbnail'].indexOf(this.border)>-1) {
                 cfg.cls += ' img-' + this.border;
             }
