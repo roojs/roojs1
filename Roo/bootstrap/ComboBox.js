@@ -1923,7 +1923,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             type : this.inputType,
             cls : 'form-control',
             autocomplete: 'new-password',
-            placeholder : this.placeholder || '' 
+            placeholder : this.placeholder || '',
+            readonly : true
         };
         
         if (this.name) {
