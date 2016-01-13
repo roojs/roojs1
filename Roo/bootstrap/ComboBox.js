@@ -2233,7 +2233,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var _this = this;
         
-        (function(){ _this.touchViewEl.el.addClass('in'); }).defer(50);
+        (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
     }
 
     /** 
