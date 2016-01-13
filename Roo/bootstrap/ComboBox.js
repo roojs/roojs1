@@ -2210,7 +2210,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
     },
     
-    function createTouchView()
+    createTouchView : function()
     {
         this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.DateField.template);
     }
@@ -2231,4 +2231,61 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @hide
      * @method autoSize
      */
+});
+
+Roo.apply(Roo.bootstrap.ComboBox,  {
+  
+    touchView : {
+        tag: 'div',
+        cls: 'datepicker dropdown-menu roo-dynamic',
+        cn: [
+        {
+            tag: 'div',
+            cls: 'datepicker-days',
+            cn: [
+            {
+                tag: 'table',
+                cls: 'table-condensed',
+                cn:[
+                Roo.bootstrap.DateField.head,
+                {
+                    tag: 'tbody'
+                },
+                Roo.bootstrap.DateField.footer
+                ]
+            }
+            ]
+        },
+        {
+            tag: 'div',
+            cls: 'datepicker-months',
+            cn: [
+            {
+                tag: 'table',
+                cls: 'table-condensed',
+                cn:[
+                Roo.bootstrap.DateField.head,
+                Roo.bootstrap.DateField.content,
+                Roo.bootstrap.DateField.footer
+                ]
+            }
+            ]
+        },
+        {
+            tag: 'div',
+            cls: 'datepicker-years',
+            cn: [
+            {
+                tag: 'table',
+                cls: 'table-condensed',
+                cn:[
+                Roo.bootstrap.DateField.head,
+                Roo.bootstrap.DateField.content,
+                Roo.bootstrap.DateField.footer
+                ]
+            }
+            ]
+        }
+        ]
+    }
 });
