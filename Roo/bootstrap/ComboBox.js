@@ -491,7 +491,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          */
         
         if(Roo.isTouch){
-            cfg = this.initTouchDevices();
+            cfg = this.initTouchDevice();
             return cfg;;
         }
         
