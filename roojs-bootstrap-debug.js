@@ -1373,48 +1373,45 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             cls: 'roo-image-responsive-group',
             cn: []
         }
-        Roo.log('run?????????????????????');
-        Roo.log(this.lgUrl);
+        var _this = this;
         
         Roo.each(['xsUrl', 'smUrl', 'mdUrl', 'lgUrl'], function(size){
-            Roo.log(size);
-            Roo.log(this[size]);
-            if(!this[size]){
+            if(!_this[size]){
                 return;
             }
             
             var img = {
                 tag: 'img',
-                cls: (this.imgResponsive) ? 'img-responsive' : '',
-                html: this.html || cfg.html,
-                src: this[size]
+                cls: (_this.imgResponsive) ? 'img-responsive' : '',
+                html: _this.html || cfg.html,
+                src: _this[size]
             }
             
             img.cls += ' roo-image-responsive-' + size;
             
-            if (['rounded','circle','thumbnail'].indexOf(this.border)>-1) {
-                cfg.cls += ' img-' + this.border;
+            if (['rounded','circle','thumbnail'].indexOf(_this.border)>-1) {
+                cfg.cls += ' img-' + _this.border;
             }
             
-            if(this.alt){
-                cfg.alt = this.alt;
+            if(_this.alt){
+                cfg.alt = _this.alt;
             }
             
-            if(this.href){
+            if(_this.href){
                 var a = {
                     tag: 'a',
-                    href: this.href,
+                    href: _this.href,
                     cn: [
                         img
                     ]
                 }
 
                 if(this.target){
-                    a.target = this.target;
+                    a.target = _this.target;
                 }
             }
             
-            cfg.cn.push((this.href) ? a : img);
+            cfg.cn.push((_this.href) ? a : img);
             
         });
         
