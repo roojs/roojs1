@@ -102,7 +102,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             
         });
         
-        
+        return cfg;
     },
     
     createSingleImg : function()
