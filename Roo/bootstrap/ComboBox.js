@@ -2296,7 +2296,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                     {
                         tag: 'div',
                         cls: 'modal-content',
-                        cn:[
+                        cn: [
                             Roo.bootstrap.ComboBox.header,
                             Roo.bootstrap.ComboBox.body,
                             Roo.bootstrap.ComboBox.footer
