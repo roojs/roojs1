@@ -1999,7 +1999,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         };
         
         if(this.multiple){
-            Roo.log('multiple');
             
             box = {
                 tag: 'div',
