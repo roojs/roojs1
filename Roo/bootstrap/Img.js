@@ -64,10 +64,12 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             cn: []
         }
         
-        var img = {};
-        
-        if(this.xsUrl){
-            img = {
+        Roo.each([this.xsUrl, this.smUrl, this.mdUrl, this.lgUrl], function(url){
+            if(!url){
+                return;
+            }
+            
+            var img = {
                 tag: 'img',
                 cls: (this.imgResponsive) ? 'img-responsive' : '',
                 html: this.html || cfg.html,
@@ -97,8 +99,9 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             }
             
             cfg.cn.push((this.href) ? a : img);
-
-        }
+            
+        });
+        
         
     },
     
