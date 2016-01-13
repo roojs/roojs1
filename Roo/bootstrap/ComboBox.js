@@ -484,8 +484,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             throw "can not find store for combo";
         }
         
-        this.store = Roo.factory(this.store, Roo.data);
-        
         /*
          * Touch Devices
          */
@@ -494,6 +492,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.initTouchDevice();
             return;
         }
+        
+        this.store = Roo.factory(this.store, Roo.data);
         
         if(this.tickable){
             this.initTickableEvents();
