@@ -1937,7 +1937,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         var inputblock = {
-            cn: [input]
+            cls : '',
+            cn : [
+                input
+            ]
         };
         
         if(this.removable){
