@@ -152,7 +152,6 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             this.el.on('click', this.onClick, this);
         }
         
-        Roo.log(this.el);
     },
     
     onClick : function(e)
