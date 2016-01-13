@@ -1907,8 +1907,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     createTouchInterface : function()
     {
-        var align = this.labelAlign || this.parentLabelAlign();
-        
         var id = Roo.id();
         
         var cfg = {
@@ -2036,11 +2034,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             combobox.cls += ' select2-container-multi';
         }
         
-        if (align ==='left' && this.fieldLabel.length) {
+        var align = this.labelAlign || this.parentLabelAlign();
+        
+        if (align === 'left' && this.fieldLabel.length) {
             
                 Roo.log("left and has label");
                 cfg.cn = [
-                    
                     {
                         tag: 'label',
                         'for' :  id,
@@ -2059,7 +2058,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         } else if ( this.fieldLabel.length) {
                 Roo.log(" label");
                  cfg.cn = [
-                   
                     {
                         tag: 'label',
                         //cls : 'input-group-addon',
