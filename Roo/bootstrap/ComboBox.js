@@ -474,6 +474,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if (!this.store) {
             throw "can not find store for combo";
         }
+        
         this.store = Roo.factory(this.store, Roo.data);
         
         if(this.tickable){
