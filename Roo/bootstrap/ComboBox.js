@@ -2079,6 +2079,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         this.createPicker();
         
+        
+        return;
+        
         if(this.hiddenName){
             
             this.hiddenField = this.el.select('input.form-hidden-field',true).first();
