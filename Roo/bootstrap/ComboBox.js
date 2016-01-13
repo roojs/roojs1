@@ -2079,6 +2079,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         this.createTouchView();
         
+//        this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
+        
         Roo.log(this.inputEl());
         
         return;
