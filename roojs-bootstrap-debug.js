@@ -1375,8 +1375,8 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         }
         var _this = this;
         
-        Roo.each(['xsUrl', 'smUrl', 'mdUrl', 'lgUrl'], function(size){
-            if(!_this[size]){
+        Roo.each(['xs', 'sm', 'md', 'lg'], function(size){
+            if(!_this[size . 'Url']){
                 return;
             }
             
@@ -1456,11 +1456,12 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
         return (this.href) ? a : cfg;
     },
     
-    initEvents: function() {
-        
+    initEvents: function() 
+    {
         if(!this.href){
             this.el.on('click', this.onClick, this);
         }
+        
     },
     
     onClick : function(e)
