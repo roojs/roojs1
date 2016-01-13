@@ -2255,28 +2255,30 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
         tag: 'div',
         cls: 'modal-footer',
         cn: [
-            tag: 'div',
-            cls: 'row',
-            cn: [
-                {
-                    tag: 'div',
-                    cls: 'col-xs-6 text-left'
-                    cn: {
-                        tag: 'button',
-                        cls: 'btn btn-danger roo-touch-view-cancel',
-                        html: 'Cancel'
+            {
+                tag: 'div',
+                cls: 'row',
+                cn: [
+                    {
+                        tag: 'div',
+                        cls: 'col-xs-6 text-left'
+                        cn: {
+                            tag: 'button',
+                            cls: 'btn btn-danger roo-touch-view-cancel',
+                            html: 'Cancel'
+                        }
+                    },
+                    {
+                        tag: 'div',
+                        cls: 'col-xs-6 text-right roo-touch-view-ok'
+                        cn: {
+                            tag: 'button',
+                            cls: 'btn btn-success roo-touch-view-cancel',
+                            html: 'OK'
+                        }
                     }
-                },
-                {
-                    tag: 'div',
-                    cls: 'col-xs-6 text-right roo-touch-view-ok'
-                    cn: {
-                        tag: 'button',
-                        cls: 'btn btn-success roo-touch-view-cancel',
-                        html: 'OK'
-                    }
-                }
-            ]
+                ]
+            }
         ]
         
     },
