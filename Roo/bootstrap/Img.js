@@ -80,6 +80,12 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             
             img.cls += ' roo-image-responsive-' + size;
             
+            var s = ['xs', 'sm', 'md', 'lg'];
+            
+            Roo.eac(ss.splice(ss.indexOf(size), 1), function(ss){
+                img.cls += ' hidden-' + ss;
+            });
+            
             if (['rounded','circle','thumbnail'].indexOf(_this.border)>-1) {
                 cfg.cls += ' img-' + _this.border;
             }
