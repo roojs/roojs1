@@ -2036,7 +2036,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var align = this.labelAlign || this.parentLabelAlign();
         
-        cfg = combobox;
+        cfg.cn = combobox;
         
         if(this.fieldLabel.length){
             
