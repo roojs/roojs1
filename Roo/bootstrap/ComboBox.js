@@ -486,6 +486,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.store = Roo.factory(this.store, Roo.data);
         
+        /*
+         * Touch Devices
+         */
+        
+        if(Roo.isTouch){
+            cfg = this.initTouchDevices();
+            return cfg;;
+        }
+        
         if(this.tickable){
             this.initTickableEvents();
             return;
