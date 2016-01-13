@@ -2264,7 +2264,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                     cn: {
                         tag: 'button',
                         cls: 'btn btn-danger roo-touch-view-cancel',
-                        html: ''
+                        html: 'Cancel'
                     }
                 },
                 {
@@ -2272,7 +2272,8 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                     cls: 'col-xs-6 text-right roo-touch-view-ok'
                     cn: {
                         tag: 'button',
-                        cls: 'btn btn-danger roo-touch-view-cancel'
+                        cls: 'btn btn-danger roo-touch-view-cancel',
+                        html: 'OK'
                     }
                 }
             ]
