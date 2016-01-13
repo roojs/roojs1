@@ -2079,7 +2079,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         this.createTouchView();
         
-        Roo.log(this.el);
+        Roo.log(this.inputEl());
         
         return;
         
