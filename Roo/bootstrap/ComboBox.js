@@ -2059,48 +2059,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             ];
         }
         
-        if (align === 'left' && this.fieldLabel.length) {
-            
-                Roo.log("left and has label");
-                cfg.cn = [
-                    {
-                        tag: 'label',
-                        'for' :  id,
-                        cls : 'control-label col-sm-' + this.labelWidth,
-                        html : this.fieldLabel
-                        
-                    },
-                    {
-                        cls : "col-sm-" + (12 - this.labelWidth), 
-                        cn: [
-                            combobox
-                        ]
-                    }
-                    
-                ];
-        } else if ( this.fieldLabel.length) {
-                Roo.log(" label");
-                 cfg.cn = [
-                    {
-                        tag: 'label',
-                        //cls : 'input-group-addon',
-                        html : this.fieldLabel
-                        
-                    },
-                    
-                    combobox
-                    
-                ];
-
-        } else {
-            
-                Roo.log(" no label && no align");
-                cfg = combobox
-                     
-                
-        }
-         
-        var settings=this;
+        var settings = this;
+        
         ['xs','sm','md','lg'].map(function(size){
             if (settings[size]) {
                 cfg.cls += ' col-' + size + '-' + settings[size];
