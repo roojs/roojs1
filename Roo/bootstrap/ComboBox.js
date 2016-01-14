@@ -2274,9 +2274,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.animate){
             var _this = this;
-            (function(){ _this.el.setStyle('display', 'none'); }).defer(150);
+            (function(){ _this.touchViewEl.setStyle('display', 'none'); }).defer(150);
         }else{
-            this.el.setStyle('display', 'none');
+            this.touchViewEl.setStyle('display', 'none');
         }
         
     }
