@@ -2080,7 +2080,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     initTouchDevice : function()
     {
         this.createTouchView();
-        Roo.log(this.inputEl());
+        
         this.inputEl().on("click", this.onTouchDeviceClick, this);
         
         
