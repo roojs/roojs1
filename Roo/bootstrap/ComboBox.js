@@ -2228,6 +2228,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewFooterEl = this.touchViewEl.select('.modal-footer', true).first();
         this.touchViewFooterEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
+        this.touchViewFooterEl.hide();
+        
+        if(this.multiple){
+            this.touchViewFooterEl.show();
+        }
         
         
     },
