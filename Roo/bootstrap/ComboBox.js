@@ -2231,7 +2231,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
     },
     
-    onTouchDeviceClick : function(e, el)
+    onTouchDeviceClick : function(e)
     {
         e.preventDefault();
         
@@ -2261,7 +2261,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
     },
     
-    hideTouchView : function(a,b,c)
+    hideTouchView : function(e)
     {
         Roo.log([a,b,c])
     }
