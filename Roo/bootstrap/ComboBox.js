@@ -2297,6 +2297,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         
+    },
+    
+    onTouchDeviceSetValue : function(e)
+    {
+        e.preventDefault();
+        
+        
     }
     
 
