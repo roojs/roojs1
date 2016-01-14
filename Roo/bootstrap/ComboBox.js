@@ -2079,7 +2079,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     initTouchDevice : function()
     {
-        this.createTouchView();
+        this.initTouchView();
         
         this.inputEl().on("click", this.onTouchDeviceClick, this);
         
@@ -2214,7 +2214,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
     },
     
-    createTouchView : function()
+    initTouchView : function()
     {
         this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.ComboBox.touchViewTemplate);
         this.touchViewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
