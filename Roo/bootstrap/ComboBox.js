@@ -2240,22 +2240,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewFooterEl = this.touchViewEl.select('.modal-footer', true).first();
         this.touchViewFooterEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.onHideTouchView, this);
-        this.touchViewFooterEl.select('.roo-touch-view-ok', true).first().on('click', this.onTouchDeviceSetValue, this);
-    },
-    
-    onTouchDeviceClick : function(e)
-    {
-        e.preventDefault();
-        
-        this.showTouchView();
-    },
-    
-    onHideTouchView : function(e)
-    {
-        e.preventDefault();
-        
-        this.hideTouchView();
+        this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
+        this.touchViewFooterEl.select('.roo-touch-view-ok', true).first().on('click', this.setTouchDeviceValue, this);
     },
     
     showTouchView : function()
@@ -2299,11 +2285,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
     },
     
-    onTouchDeviceSetValue : function(e)
+    setTouchDeviceValue : function()
     {
-        e.preventDefault();
         
-        this.setTouchDeviceValue();
     }
     
 
