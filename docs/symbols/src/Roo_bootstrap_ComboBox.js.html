@@ -84,7 +84,19 @@
          * Fires when specialfilter
             * @param {Roo.bootstrap.ComboBox} combo This combo box
             */
-        </span><span class="jsdoc-string">'specialfilter' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">'specialfilter' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event showTouchView
+         * Fires when the show the touch view
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        </span><span class="jsdoc-string">'showTouchView' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event hideTouchView
+         * Fires when the hide the touch view
+	     * @param {Roo.bootstrap.ComboBox} combo This combo box
+	     */
+        </span><span class="jsdoc-string">'hideTouchView' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
     </span><span class="jsdoc-syntax">});
     
@@ -2081,7 +2093,7 @@
     {
         </span><span class="jsdoc-var">this.createTouchView</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTouchDeviceClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.showTouchView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         
         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
@@ -2217,27 +2229,68 @@
     </span><span class="jsdoc-var">createTouchView </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-var">this.touchViewEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document.body</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.createChild</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.ComboBox.touchViewTemplate</span><span class="jsdoc-syntax">);
-        
         </span><span class="jsdoc-var">this.touchViewEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.touchViewHeaderEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.touchViewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-header'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.touchViewHeaderEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.touchViewBodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.touchViewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-body'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.touchViewBodyEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.touchViewFooterEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.touchViewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-footer'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.touchViewFooterEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.touchViewFooterEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-touch-view-cancel'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.hideTouchView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.touchViewFooterEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-touch-view-ok'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.setTouchDeviceValue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">showTouchView </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;showTouchView&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.touchViewHeaderEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.fieldLabel.length </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.fieldLabel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        
+            </span><span class="jsdoc-var">this.touchViewEl.show</span><span class="jsdoc-syntax">();
+
+            </span><span class="jsdoc-var">this.touchViewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'margin'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'0px'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.touchViewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog &gt; .modal-content'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bodyHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.touchViewHeaderEl.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.touchViewFooterEl.getHeight</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.touchViewBodyEl.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-var">this.touchViewBodyEl.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bodyHeight</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+                (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-var">_this.touchViewEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(50);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.touchViewEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">);
+            }
+        }
+        
+    },
+    
+    </span><span class="jsdoc-var">hideTouchView </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;hideTouchView&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-var">this.touchViewEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">);
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+                (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-var">_this.touchViewEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(150);
+            }</span><span class="jsdoc-keyword">else</span><span class="jsdoc-syntax">{
+                </span><span class="jsdoc-var">this.touchViewEl.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'display'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'none'</span><span class="jsdoc-syntax">);
+            }
+        }
         
         
     },
     
-    </span><span class="jsdoc-var">onTouchDeviceClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">setTouchDeviceValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.touchViewEl</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-var">this.touchViewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'margin'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'0px'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.touchViewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.modal-dialog &gt; .modal-content'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setSize</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
-        
-        </span><span class="jsdoc-var">this.touchViewEl.show</span><span class="jsdoc-syntax">();
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
-        
-        (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){ </span><span class="jsdoc-var">_this.touchViewEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in'</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(50);
+        </span><span class="jsdoc-var">this.hideTouchView</span><span class="jsdoc-syntax">();
     }
+    
 
     </span><span class="jsdoc-comment">/** 
     * @cfg {Boolean} grow 
@@ -2294,10 +2347,10 @@
                     },
                     {
                         </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                        </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'col-xs-6 text-right roo-touch-view-ok'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'col-xs-6 text-right'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">cn</span><span class="jsdoc-syntax">: {
                             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-success roo-touch-view-cancel'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-success roo-touch-view-ok'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'OK'
                         </span><span class="jsdoc-syntax">}
                     }

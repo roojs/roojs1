@@ -17623,6 +17623,12 @@
      "desc": "Fires after the component is hidden."
     },
     {
+     "name": "hideTouchView",
+     "sig": "function (combo)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the hide the touch view"
+    },
+    {
      "name": "invalid",
      "sig": "function (_self, msg)\n{\n\n}",
      "type": "function",
@@ -17657,6 +17663,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the component is shown."
+    },
+    {
+     "name": "showTouchView",
+     "sig": "function (combo)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when the show the touch view"
     },
     {
      "name": "specialfilter",
