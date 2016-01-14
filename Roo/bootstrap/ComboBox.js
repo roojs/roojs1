@@ -2249,9 +2249,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         this.touchViewHeaderEl.dom.innerHTML = this.fieldLabel.length ? this.fieldLabel : '';
         
-        this.touchViewEl.show();
-        
-        
+        this.touchViewEl.show(true);
         
         this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
         this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
@@ -2259,18 +2257,27 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewHeaderEl.getHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
         
         this.touchViewBodyEl.setHeight(bodyHeight);
-        
-        if(this.animate){
-            var _this = this;
-            (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
-        }else{
-            this.touchViewEl.addClass('in');
-        }
+//        
+//        if(this.animate){
+//            var _this = this;
+//            (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
+//        }else{
+//            this.touchViewEl.addClass('in');
+//        }
     },
     
     hideTouchView : function()
     {
+        this.touchViewEl.show();
         
+        this.touchViewEl.removeClass('in');
+        
+        if(this.animate){
+            var _this = this;
+            (function(){ _this.el.setStyle('display', 'none'); }).defer(150);
+        }else{
+            this.el.setStyle('display', 'none');
+        }
         
     }
     
