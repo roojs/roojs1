@@ -2233,12 +2233,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         e.preventDefault();
         
-        Roo.log(this.touchViewHeaderEl.getHeight());;
+        this.touchViewEl.show();
         
         this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
         this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         
-        this.touchViewEl.show();
+        Roo.log(this.touchViewHeaderEl.getHeight());
         
         if(this.animate){
             var _this = this;
