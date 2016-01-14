@@ -2233,6 +2233,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         e.preventDefault();
         
+        this.sHowTouchView();
+    },
+    
+    function showTouchView()
+    {
         this.touchViewEl.show();
         
         this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
@@ -2252,8 +2257,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }else{
             this.touchViewEl.addClass('in');
         }
-        
     }
+    
 
     /** 
     * @cfg {Boolean} grow 
