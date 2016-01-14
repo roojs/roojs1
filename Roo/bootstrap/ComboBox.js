@@ -2227,16 +2227,18 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         e.preventDefault();
         
-        Roo.log(this.touchViewEl);
-        
         this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
         this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         
         this.touchViewEl.show();
         
-        var _this = this;
+        if(this.animate){
+            var _this = this;
+            (function(){ _this.el.addClass('in'); }).defer(50);
+        }else{
+            this.el.addClass('in');
+        }
         
-        (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
     }
 
     /** 
