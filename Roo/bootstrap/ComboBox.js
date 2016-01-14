@@ -2220,11 +2220,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.touchViewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.touchViewHeaderEl = this.touchViewEl.select('.modal-header', true).first();
-        
-        this.touchViewBodyEl = this.touchViewEl.select('.modal-body', true).first();
-        
-        this.touchViewFooterEl = this.touchViewEl.select('.modal-footer', true).first();
+//        this.touchViewHeaderEl = this.touchViewEl.select('.modal-header', true).first();
+//        
+//        this.touchViewBodyEl = this.touchViewEl.select('.modal-body', true).first();
+//        
+//        this.touchViewFooterEl = this.touchViewEl.select('.modal-footer', true).first();
         
     },
     
