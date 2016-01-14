@@ -2355,10 +2355,10 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                     },
                     {
                         tag: 'div',
-                        cls: 'col-xs-6 text-right roo-touch-view-ok',
+                        cls: 'col-xs-6 text-right',
                         cn: {
                             tag: 'button',
-                            cls: 'btn btn-success roo-touch-view-cancel',
+                            cls: 'btn btn-success roo-touch-view-ok',
                             html: 'OK'
                         }
                     }
