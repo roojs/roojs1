@@ -13,7 +13,7 @@
  * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
  * @cfg {Boolean} showToggleBtn show toggle button or not (true|false) default true
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
- * @cfg {Boolean} animate default true
+ 
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -297,7 +297,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     btnPosition : 'right',
     triggerList : true,
     showToggleBtn : true,
-    animate : true,
+    
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
