@@ -2103,7 +2103,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store.on('beforeload', this.onTouchViewBeforeLoad, this);
         
         
-        
         return;
         
         if(this.hiddenName){
