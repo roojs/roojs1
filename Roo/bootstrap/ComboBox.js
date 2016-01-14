@@ -2228,7 +2228,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewFooterEl = this.touchViewEl.select('.modal-footer', true).first();
         this.touchViewFooterEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
+        this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.onHideTouchView, this);
     },
     
     onTouchDeviceClick : function(e)
