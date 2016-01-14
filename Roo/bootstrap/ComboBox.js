@@ -2241,6 +2241,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewFooterEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.onHideTouchView, this);
+        this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.onHideTouchView, this);
     },
     
     onTouchDeviceClick : function(e)
