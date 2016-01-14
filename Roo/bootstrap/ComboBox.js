@@ -2241,6 +2241,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         Roo.log([Roo.lib.Dom.getViewHeight(true), this.touchViewHeaderEl.getHeight(), this.touchViewFooterEl.getHeight()])
         
+        Roo.log(Roo.lib.Dom.getViewHeight(true) - this.touchViewHeaderEl.getHeight() - this.touchViewFooterEl.getHeight());
+        
         if(this.animate){
             var _this = this;
             (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
