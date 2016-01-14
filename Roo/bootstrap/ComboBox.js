@@ -2261,6 +2261,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
     }
     
+    hideTouchView : function()
+    {
+        
+    }
+    
 
     /** 
     * @cfg {Boolean} grow 
