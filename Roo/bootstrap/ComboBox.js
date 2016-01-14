@@ -2226,12 +2226,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.touchViewFooterEl = this.touchViewEl.select('.modal-footer', true).first();
         
-        Roo.log(this.touchViewEl);
-        Roo.log(this.touchViewHeaderEl);
-        Roo.log(this.touchViewBodyEl);
-        Roo.log(this.touchViewFooterEl);
-        
-        Roo.log(this.touchViewHeaderEl.getHeight());
     },
     
     onTouchDeviceClick : function(e, el)
@@ -2242,6 +2236,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         
         this.touchViewEl.show();
+        
+        Roo.log(this.touchViewHeaderEl.getHeight());
         
         if(this.animate){
             var _this = this;
