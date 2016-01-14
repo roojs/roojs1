@@ -2097,7 +2097,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
         this.touchViewFooterEl.select('.roo-touch-view-ok', true).first().on('click', this.setTouchDeviceValue, this);
         
-        this.maskEl = new Roo.LoadMask(this.touchViewEl, { store : this.ds, msgCls: 'roo-el-mask-msg' });
+        this.maskEl = new Roo.LoadMask(this.touchViewEl, { store : this.stroe, msgCls: 'roo-el-mask-msg' });
         
         this.store.on('load', this.onLoad, this);
         this.store.on('beforeload', this.onBeforeLoad, this);
