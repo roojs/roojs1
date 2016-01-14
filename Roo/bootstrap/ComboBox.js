@@ -2249,9 +2249,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 //        
 //        this.touchViewBodyEl.setHeight(height);
 //        
-//        Roo.log([Roo.lib.Dom.getViewHeight(), this.touchViewHeaderEl.getHeight(true), this.touchViewFooterEl.getHeight(true)])
+        Roo.log([Roo.lib.Dom.getViewHeight(), this.touchViewHeaderEl.getHeight(true), this.touchViewFooterEl.getHeight(true)])
 //        
-//        Roo.log(Roo.lib.Dom.getViewHeight() - this.touchViewHeaderEl.getHeight(true) - this.touchViewFooterEl.getHeight(true));
+        Roo.log(Roo.lib.Dom.getViewHeight() - this.touchViewHeaderEl.getHeight(true) - this.touchViewFooterEl.getHeight(true));
         
         if(this.animate){
             var _this = this;
