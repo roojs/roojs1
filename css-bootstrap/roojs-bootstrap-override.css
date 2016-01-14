@@ -10,8 +10,7 @@ div.input-group.has-feedback > .form-control-feedback {
 }
 
 @media (max-width: 640px) {
-    .modal-footer .btn+.btn {
-            margin-left:0px;
-            margin-top:5px;
+    .roo-combobox-touch-view {
+        margin-top: 57px;
     }
 }
