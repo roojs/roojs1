@@ -2220,24 +2220,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.touchViewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-//        this.touchViewHeaderEl = this.touchViewEl.select('.modal-header', true).first();
-//        
-//        this.touchViewBodyEl = this.touchViewEl.select('.modal-body', true).first();
-//        
-//        this.touchViewFooterEl = this.touchViewEl.select('.modal-footer', true).first();
         
     },
     
     onTouchDeviceClick : function(e, el)
     {
-        //e.preventDefault();
+        e.preventDefault();
         
         this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
         this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         
         this.touchViewEl.show();
-        
-        Roo.log('run???');
         
         if(this.animate){
             var _this = this;
