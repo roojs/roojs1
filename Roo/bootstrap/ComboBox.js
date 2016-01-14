@@ -2371,6 +2371,86 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.loadNext = false;
     },
     
+    onBeforeLoad : function(combo,opts){
+        if(!this.hasFocus){
+            return;
+        }
+         if (!opts.add) {
+            this.list.dom.innerHTML = '<li class="loading-indicator">'+(this.loadingText||'loading')+'</li>' ;
+         }
+        this.restrictHeight();
+        this.selectedIndex = -1;
+    },
+
+    // private
+    onLoad : function(){
+        
+        this.hasQuery = false;
+        
+        if(!this.hasFocus){
+            return;
+        }
+        
+        if(typeof(this.loading) !== 'undefined' && this.loading !== null){
+            this.loading.hide();
+        }
+             
+        if(this.store.getCount() > 0){
+            this.expand();
+            this.restrictHeight();
+            if(this.lastQuery == this.allQuery){
+                if(this.editable && !this.tickable){
+                    this.inputEl().dom.select();
+                }
+                
+                if(
+                    !this.selectByValue(this.value, true) &&
+                    this.autoFocus && 
+                    (
+                        !this.store.lastOptions ||
+                        typeof(this.store.lastOptions.add) == 'undefined' || 
+                        this.store.lastOptions.add != true
+                    )
+                ){
+                    this.select(0, true);
+                }
+            }else{
+                if(this.autoFocus){
+                    this.selectNext();
+                }
+                if(this.typeAhead && this.lastKey != Roo.EventObject.BACKSPACE && this.lastKey != Roo.EventObject.DELETE){
+                    this.taTask.delay(this.typeAheadDelay);
+                }
+            }
+        }else{
+            this.onEmptyResults();
+        }
+        
+    },
+    
+    onTouchViewLoadException : function()
+    {
+        this.hasQuery = false;
+        
+        if(typeof(this.loading) !== 'undefined' && this.loading !== null){
+            this.loading.hide();
+        }
+        
+        if(this.tickable && this.editable){
+            return;
+        }
+        
+        this.collapse();
+        
+        Roo.log(this.store.reader.jsonData);
+        if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
+            // fixme
+            //Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
+        }
+        
+        
+    }
+    
 
     /** 
     * @cfg {Boolean} grow 
