@@ -8,7 +8,3 @@ div.input-group.has-feedback > .form-control-feedback {
             margin-top:5px;
     }
 }
-
-.roo-combobox-touch-view .modal-body {
-    padding: 0px;
-}
