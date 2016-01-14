@@ -2247,24 +2247,26 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     showTouchView : function()
     {
+        if(this.fireEvent("showTouchView", this) !== false){
+            this.touchViewHeaderEl.dom.innerHTML = this.fieldLabel.length ? this.fieldLabel : '';
         
-        this.touchViewHeaderEl.dom.innerHTML = this.fieldLabel.length ? this.fieldLabel : '';
-        
-        this.touchViewEl.show();
-        
-        this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
-        this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
-          
-        var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewHeaderEl.getHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
-        
-        this.touchViewBodyEl.setHeight(bodyHeight);
-        
-        if(this.animate){
-            var _this = this;
-            (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
-        }else{
-            this.touchViewEl.addClass('in');
+            this.touchViewEl.show();
+
+            this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
+            this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+
+            var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewHeaderEl.getHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
+
+            this.touchViewBodyEl.setHeight(bodyHeight);
+
+            if(this.animate){
+                var _this = this;
+                (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
+            }else{
+                this.touchViewEl.addClass('in');
+            }
         }
+        
     },
     
     hideTouchView : function()
