@@ -13,6 +13,7 @@
  * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
  * @cfg {Boolean} showToggleBtn show toggle button or not (true|false) default true
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
+ * @cfg {Boolean} animate default true
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -296,6 +297,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     btnPosition : 'right',
     triggerList : true,
     showToggleBtn : true,
+    animate : true,
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
@@ -2218,7 +2220,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.touchViewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
+        this.touchViewHeaderEl = this.touchViewEl.select('.modal-header', true).first();
         
+        this.touchViewBodyEl = this.touchViewEl.select('.modal-body', true).first();
+        
+        this.touchViewFooterEl = this.touchViewEl.select('.modal-footer', true).first();
         
     },
     
@@ -2226,16 +2232,20 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         e.preventDefault();
         
-        Roo.log(this.touchViewEl);
-        
         this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
         this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
         
         this.touchViewEl.show();
         
-        var _this = this;
+        Roo.log(this.touchViewEl);
         
-        (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
+        if(this.animate){
+            var _this = this;
+            (function(){ _this.el.addClass('in'); }).defer(50);
+        }else{
+            this.el.addClass('in');
+        }
+        
     }
 
     /** 
