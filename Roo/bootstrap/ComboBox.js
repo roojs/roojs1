@@ -90,13 +90,13 @@ Roo.bootstrap.ComboBox = function(config){
          * Fires when the show the touch view
 	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
-        'showTouchView' : true,,
+        'showTouchView' : true,
         /**
          * @event hideTouchView
          * Fires when the hide the touch view
 	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
-        'hideTouchView' : true,
+        'hideTouchView' : true
         
     });
     
