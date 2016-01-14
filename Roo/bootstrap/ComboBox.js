@@ -2233,13 +2233,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onTouchDeviceClick : function(e)
     {
-        e.preventDefault();
+        
         
         this.showTouchView();
     },
     
-    showTouchView : function()
+    showTouchView : function(e)
     {
+        e.preventDefault();
+        
         this.touchViewHeaderEl.dom.innerHTML = this.fieldLabel.length ? this.fieldLabel : '';
         
         this.touchViewEl.show();
