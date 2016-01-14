@@ -2247,6 +2247,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     showTouchView : function()
     {
+        
         this.touchViewHeaderEl.dom.innerHTML = this.fieldLabel.length ? this.fieldLabel : '';
         
         this.touchViewEl.show();
