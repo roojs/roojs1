@@ -2233,7 +2233,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         e.preventDefault();
         
-        this.sHowTouchView();
+        this.showTouchView();
     },
     
     showTouchView : function()
