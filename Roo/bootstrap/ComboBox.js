@@ -2230,6 +2230,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log(this.touchViewHeaderEl);
         Roo.log(this.touchViewBodyEl);
         Roo.log(this.touchViewFooterEl);
+        
+        Roo.log(this.touchViewHeaderEl.getHeight());
     },
     
     onTouchDeviceClick : function(e, el)
