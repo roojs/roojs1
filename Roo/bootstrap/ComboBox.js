@@ -2383,20 +2383,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
     // private
     onTouchViewLoad : function(){
-        
-        this.hasQuery = false;
-        
-        if(!this.hasFocus){
-            return;
-        }
-        
-        if(typeof(this.loading) !== 'undefined' && this.loading !== null){
-            this.loading.hide();
-        }
-             
+        Roo.log('onTouchViewLoad');
         if(this.store.getCount() > 0){
-            this.expand();
-            this.restrictHeight();
             if(this.lastQuery == this.allQuery){
                 if(this.editable && !this.tickable){
                     this.inputEl().dom.select();
