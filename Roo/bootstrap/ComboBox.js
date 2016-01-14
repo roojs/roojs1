@@ -2245,7 +2245,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
         this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
           
-        var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewHeaderEl.getHeight() - this.touchViewFooterEl.getHeight() - this.touchViewBodyEl.getPadding('tb');
+        var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewHeaderEl.getHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
         
         this.touchViewBodyEl.setHeight(bodyHeight);
         
