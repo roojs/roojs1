@@ -2240,9 +2240,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.touchViewEl.show();
         
-        var _this = this;
+        if(this.animate){
+            var _this = this;
+            (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
+        }else{
+            this.touchViewEl.addClass('in');
+        }
         
-        (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
     }
 
     /** 
