@@ -2217,14 +2217,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     createTouchView : function()
     {
         this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.ComboBox.touchViewTemplate);
-        
         this.touchViewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.touchViewHeaderEl = this.touchViewEl.select('.modal-header', true).first();
+        this.touchViewHeaderEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.touchViewBodyEl = this.touchViewEl.select('.modal-body', true).first();
+        this.touchViewBodyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.touchViewFooterEl = this.touchViewEl.select('.modal-footer', true).first();
+        this.touchViewFooterEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
         
         
     },
@@ -2241,6 +2244,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewHeaderEl.dom.innerHTML = this.fieldLabel.length ? this.fieldLabel : '';
         
         this.touchViewEl.show();
+        
+        
         
         this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
         this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
