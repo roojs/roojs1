@@ -2371,7 +2371,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.loadNext = false;
     },
     
-    onBeforeLoad : function(combo,opts){
+    onTouchViewBeforeLoad : function(combo,opts){
         if(!this.hasFocus){
             return;
         }
@@ -2383,7 +2383,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     },
 
     // private
-    onLoad : function(){
+    onTouchViewLoad : function(){
         
         this.hasQuery = false;
         
