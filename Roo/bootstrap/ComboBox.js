@@ -2238,6 +2238,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     showTouchView : function()
     {
+        this.touchViewHeaderEl.dom.innerHTML = this.fieldLabel.length ? this.fieldLabel : '';
+        
         this.touchViewEl.show();
         
         this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
