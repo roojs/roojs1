@@ -2081,7 +2081,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         this.createTouchView();
         
-        this.inputEl().on("click", this.onTouchDeviceClick, this);
+        this.inputEl().on("click", this.showTouchView, this);
         
         
         return;
@@ -2263,6 +2263,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     hideTouchView : function(e)
     {
+        e.preventDefault();
+        
         Roo.log([a,b,c])
     }
     
