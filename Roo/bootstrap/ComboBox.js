@@ -2079,7 +2079,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     initTouchDevice : function()
     {
-        this.initTouchView();
+        this.createTouchView();
         
         this.inputEl().on("click", this.onTouchDeviceClick, this);
         
@@ -2214,7 +2214,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
     },
     
-    initTouchView : function()
+    createTouchView : function()
     {
         this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.ComboBox.touchViewTemplate);
         this.touchViewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -2227,6 +2227,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.touchViewFooterEl = this.touchViewEl.select('.modal-footer', true).first();
         this.touchViewFooterEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
         
     },
     
