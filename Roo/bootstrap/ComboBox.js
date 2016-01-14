@@ -2225,6 +2225,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewBodyEl = this.touchViewEl.select('.modal-body', true).first();
         
         this.touchViewFooterEl = this.touchViewEl.select('.modal-footer', true).first();
+        
+        Roo.log(this.touchViewEl);
+        Roo.log(this.touchViewHeaderEl);
+        Roo.log(this.touchViewBodyEl);
+        Roo.log(this.touchViewFooterEl);
     },
     
     onTouchDeviceClick : function(e, el)
