@@ -10,7 +10,7 @@ div.input-group.has-feedback > .form-control-feedback {
 }
 
 @media (max-width: 640px) {
-    .roo-combobox-touch-view {
+    .roo-combobox-touch-view { // live chat...
         margin-top: 57px;
     }
 }
