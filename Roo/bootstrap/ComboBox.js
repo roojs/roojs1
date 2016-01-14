@@ -2236,7 +2236,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.sHowTouchView();
     },
     
-    function showTouchView()
+    showTouchView : function()
     {
         this.touchViewEl.show();
         
