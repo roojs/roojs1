@@ -2270,6 +2270,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 this.touchViewEl.addClass('in');
             }
             
+            Roo.log(this.store);
             this.store.load();
         }
         
