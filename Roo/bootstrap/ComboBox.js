@@ -2255,12 +2255,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         Roo.log('onTouchViewLoadException');
         
-        this.clearTouchView();
-        
-        this.touchViewListGroup.createChild(Roo.bootstrap.ComboBox.emptyResult);
-        
-        this.touchViewListGroup.select('.roo-combobox-touch-view-empty-result', true).first().dom.innerHTML = this.store.reader.o.errorMsg || '';
-        
+        this.hideTouchView();
     },
     
     onTouchViewEmptyResults : function(msg)
