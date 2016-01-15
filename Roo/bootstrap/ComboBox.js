@@ -2105,6 +2105,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.hiddenField.dom.setAttribute('name', this.hiddenName);
         }
         
+        if(this.multiple){
+            this.choices = this.el.select('ul.select2-choices', true).first();
+        }
+        
         return;
         
         
