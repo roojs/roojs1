@@ -2506,7 +2506,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
         
     },
     
-    list-item-single : {
+    list-item-multiple : {
         tag: 'li',
         cls: 'list-group-item'
         
