@@ -2115,6 +2115,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.hiddenField.dom.setAttribute('name', this.hiddenName);
         }
         
+        var _this = this;
+        
+        (function(){
+            var lw = _this.listWidth || Math.max(_this.inputEl().getWidth(), _this.minListWidth);
+            _this.list.setWidth(lw);
+        }).defer(100);
+        
         return;
         
         
@@ -2143,12 +2150,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.okBtn.hide();
         this.cancelBtn.hide();
         
-        var _this = this;
         
-        (function(){
-            var lw = _this.listWidth || Math.max(_this.inputEl().getWidth(), _this.minListWidth);
-            _this.list.setWidth(lw);
-        }).defer(100);
         
         this.list.on('mouseover', this.onViewOver, this);
         this.list.on('mousemove', this.onViewMove, this);
