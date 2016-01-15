@@ -2221,7 +2221,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.onTouchViewEmptyResults();
             return;
         }
-        
+        Roo.log(this.getValue());
         this.clearTouchView();
         
         var _this = this;
