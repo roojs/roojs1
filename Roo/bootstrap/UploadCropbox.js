@@ -60,24 +60,16 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if(!this.el){
             var cfg = Roo.apply({},  this.getAutoCreate());
             cfg.id = Roo.id();
-            //if(!cfg.name){
-            //    cfg.name = typeof(this.name) == 'undefined' ? this.id : this.name;
-            //}
-            //if (!cfg.name.length) {
-            //    delete cfg.name;
-           // }
+            
             if (this.cls) {
                 cfg.cls += ' ' + this.cls;
             }
             if (this.style) {
                 cfg.style = this.style;
             }
+            
             this.el = Roo.get(document.body).createChild(cfg, position);
         }
-        //var type = this.el.dom.type;
-        
-        
-        
         
         if(this.tabIndex !== undefined){
             this.el.dom.setAttribute('tabIndex', this.tabIndex);
