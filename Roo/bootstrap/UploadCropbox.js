@@ -126,9 +126,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    getAutoCreate : function(){
+    getAutoCreate : function()
+    {
         
-        
+        Roo.log('run??????????????????????????????');
         var bdy = {
                 cls : 'modal-body',
                 html : this.html || ''
