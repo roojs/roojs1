@@ -2246,6 +2246,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             if(this.multiple && this.valueField && typeof(d.data[this.valueField]) != 'undefined' && this.getValue().indexOf(d.data[this.valueField]) != -1){
                 row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+                this.tickItems.push(d.data);
             }
             
             row.on('click', this.onTouchViewClick, this, {row : row, rowIndex : rowIndex});
