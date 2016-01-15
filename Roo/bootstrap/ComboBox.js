@@ -2286,15 +2286,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.each(this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).elements, function(c){
                 c.dom.removeAttribute('checked');
             }, this);
+            
+            row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+        
+            var r = this.store.getAt(rowIndex);
+
+            this.setFromData(r.data);
+
+            this.hideTouchView();
         }
         
-        row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
         
-        var r = this.store.getAt(rowIndex);
-        
-        this.setFromData(r.data);
-        
-        this.hideTouchView();
         
     }
     
