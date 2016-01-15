@@ -400,7 +400,9 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     {
         e.preventDefault();
         
-        this.fireEvent("remove", this);
+        if(this.fireEvent("remove", this) !== false){
+            this.reset();
+        }
     },
     
     createList : function()
