@@ -2225,6 +2225,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     onTouchViewBeforeLoad : function(combo,opts)
     {
         Roo.log('onTouchViewBeforeLoad');
+        
         if(!this.hasFocus){
             return;
         }
