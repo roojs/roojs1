@@ -311,7 +311,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          */
         
         if(Roo.isTouch){
-            cfg = this.getAutoCreateTouchInterface();
+            cfg = this.getAutoCreateTouchView();
             return cfg;;
         }
         
@@ -1913,7 +1913,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     },
     
     
-    getAutoCreateTouchInterface : function()
+    getAutoCreateTouchView : function()
     {
         var id = Roo.id();
         
