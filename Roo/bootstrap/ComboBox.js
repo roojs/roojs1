@@ -2191,7 +2191,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.each(this.tickItems, function(o){
                 this.addItem(o);
             }, this);
-            
         }
         
         this.hideTouchView();
