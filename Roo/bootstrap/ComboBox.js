@@ -2505,11 +2505,17 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
     list-item-radio : {
         tag: 'li',
         cls: 'list-group-item',
-        cn: {
-            tag: 'span',
-            cls: 'roo-combobox-list-group-item-value'
-        }
-        
+        cn: [
+            {
+                tag: 'span',
+                cls: 'roo-combobox-list-group-item-value'
+            },
+            {
+                tag: 'span',
+                cls: 'roo-combobox-list-group-item-value'
+            },
+            
+        ]
     },
     
     list-item-checkbox : {
