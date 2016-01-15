@@ -2500,6 +2500,10 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
         }
     },
     
+    list-item : {
+        
+    },
+    
     footer : {
         tag: 'div',
         cls: 'modal-footer',
