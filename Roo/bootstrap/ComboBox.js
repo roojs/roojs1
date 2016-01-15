@@ -2255,7 +2255,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         Roo.log('onTouchViewLoadException');
         
-        Roo.log(this.store.reader.jsonData);
+        Roo.log(this.store);
         
         if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
             // fixme
