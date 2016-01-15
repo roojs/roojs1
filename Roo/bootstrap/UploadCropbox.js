@@ -31,10 +31,6 @@ Roo.bootstrap.UploadCropbox = function(config){
     });
     this.buttons = this.buttons || [];
      
-    if (this.tmpl) {
-        this.tmpl = Roo.factory(this.tmpl);
-    }
-    
 };
 
 Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
