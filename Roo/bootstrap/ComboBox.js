@@ -2512,9 +2512,8 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
             },
             {
                 tag: 'div',
-                cls: 'roo-combobox-list-group-item-box'
-            },
-            
+                cls: 'roo-combobox-list-group-item-box pull-xs-right radio-inline radio radio-info'
+            }
         ]
     },
     
