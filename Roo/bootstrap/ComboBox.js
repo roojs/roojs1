@@ -2219,8 +2219,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 this.onTouchViewLoad();
             }else{
                 
-                this.store.baseParams[this.queryParam] = q;
-
+                this.store.baseParams[this.queryParam] = '';
+                
                 var options = {params : this.getParams(q)};
                 
                 this.store.load(options);
