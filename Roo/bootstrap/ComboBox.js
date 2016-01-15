@@ -2110,6 +2110,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.searchField = this.el.select('ul li.select2-search-field', true).first();
         }
         
+        if(this.removable && !this.multiple){
+            var close = this.closeTriggerEl();
+            
+            if(close){
+                close.setVisibilityMode(Roo.Element.DISPALY).hide();
+                close.on('click', this.removeBtnClick, this, close);
+            }
+        }
+        
         return;
         
         
