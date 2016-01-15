@@ -147,6 +147,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         //this.el.addClass([this.fieldClass, this.cls]);
         
     },
+    
     getAutoCreate : function(){
         
         
