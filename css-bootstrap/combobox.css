@@ -258,14 +258,14 @@
     right: 40px;
     z-index: 2;
     top: 5px;
-}/*
+}
 
-.select2-container .has-feedback .roo-combo-removable-btn {
+.select2-container .roo-removable.has-feedback.has-feedback .roo-combo-removable-btn {
     position: absolute;
     right: 70px;
     z-index: 2;
     top: 5px;
-}*/
+}
 
 /*.select2-container .roo-combo-removable-btn {
     position: absolute;
