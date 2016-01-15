@@ -2318,7 +2318,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var r = this.store.getAt(rowIndex);
         
-        
+        this.setFromData(r.data);
         
     }
     
