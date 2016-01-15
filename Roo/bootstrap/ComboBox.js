@@ -2303,7 +2303,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onTouchViewClick : function(e, el, rowIndex)
     {
-        Roo.log([a,b,c,d])
+        e.preventDefault();
+        
     }
     
 
