@@ -2180,18 +2180,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     hideTouchView : function()
     {
-        if(this.fireEvent("hideTouchView", this) !== false){
-            
-            this.touchViewEl.removeClass('in');
+        this.touchViewEl.removeClass('in');
 
-            if(this.animate){
-                var _this = this;
-                (function(){ _this.touchViewEl.setStyle('display', 'none'); }).defer(150);
-            }else{
-                this.touchViewEl.setStyle('display', 'none');
-            }
+        if(this.animate){
+            var _this = this;
+            (function(){ _this.touchViewEl.setStyle('display', 'none'); }).defer(150);
+        }else{
+            this.touchViewEl.setStyle('display', 'none');
         }
-        
         
     },
     
