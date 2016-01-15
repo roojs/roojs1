@@ -2244,9 +2244,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.clearTouchView();
         
         var _this = this;
-        
+        var template = (this.multiple) ? Roo.bootstrap.ComboBox.listItemCheckbox : Roo.bootstrap.ComboBox.listItemRadio;
         this.store.data.each(function(d,rowIndex){
             
+            _this.touchViewListGroup.createChild(Roo.bootstrap.ComboBox.listItemCheckbox);
         }, this);
         
     },
