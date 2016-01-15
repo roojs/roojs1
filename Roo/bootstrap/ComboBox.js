@@ -2233,8 +2233,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         Roo.log('onTouchViewLoad');
         
-        if(this.store.getCount() > 0){
-            if(this.lastQuery == this.allQuery){
+        if(this.store.getCount() < 1){
+            this.onTouchViewEmptyResults();
+            return;
+        }
+        
+        if(this.lastQuery == this.allQuery){
                 if(this.editable && !this.tickable){
                     this.inputEl().dom.select();
                 }
@@ -2258,9 +2262,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     this.taTask.delay(this.typeAheadDelay);
                 }
             }
-        }else{
-            this.onTouchViewEmptyResults();
-        }
         
     },
     
