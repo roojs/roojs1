@@ -2387,7 +2387,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                 cn: [
                     {
                         tag: 'input',
-                        type: 'radio'
+                        type: 'checkbox'
                     },
                     {
                         tag: 'label'
