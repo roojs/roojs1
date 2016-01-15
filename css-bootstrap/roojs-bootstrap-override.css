@@ -11,9 +11,19 @@ div.input-group.has-feedback > .form-control-feedback {
 
 /*
     Bootstrap v4-alpha add this css
+    We may delete this after update the bootstrap version...
 */
+
 a.list-group-item, button.list-group-item {
     width: 100%;
     color: #555;
     text-align: inherit;
 }
+
+.pull-xs-right {
+    float: right!important;
+}
+
+/*
+    End Bootstrap v4-alpha
+*/
