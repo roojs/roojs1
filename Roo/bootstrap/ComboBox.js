@@ -2215,53 +2215,23 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         if(this.alwaysQuery){
-            this.lastQuery = q;
             if(this.mode == 'local'){
-                this.selectedIndex = -1;
-                if(forceAll){
-                    this.store.clearFilter();
-                }else{
-
-                    if(this.specialFilter){
-                        this.fireEvent('specialfilter', this);
-                        this.onLoad();
-                        return;
-                    }
-
-                    this.store.filter(this.displayField, q);
-                }
-
-                this.store.fireEvent("datachanged", this.store);
-
-                this.onLoad();
-
-
+                this.onTouchViewLoad();
             }else{
-
+                
                 this.store.baseParams[this.queryParam] = q;
 
                 var options = {params : this.getParams(q)};
-
-                if(this.loadNext){
-                    options.add = true;
-                    options.params.start = this.page * this.pageSize;
-                }
-
+                
                 this.store.load(options);
-
-                /*
-                 *  this code will make the page width larger, at the beginning, the list not align correctly, 
-                 *  we should expand the list on onLoad
-                 *  so command out it
-                 */
-//                    this.expand();
             }
         }else{
-            this.onLoad();   
+            this.onTouchViewLoad();   
         }
     },
     
-    onTouchViewBeforeLoad : function(combo,opts){
+    onTouchViewBeforeLoad : function(combo,opts)
+    {
         Roo.log('onTouchViewBeforeLoad');
         if(!this.hasFocus){
             return;
