@@ -141,6 +141,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         };
         
         var header = [];
+        
         if (this.allow_close) {
             header.push({
                 tag: 'button',
