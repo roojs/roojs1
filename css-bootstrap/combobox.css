@@ -246,6 +246,13 @@
     top: 5px;
 }
 
+.select2-container.input-group .roo-removable .roo-combo-removable-btn {
+    position: absolute;
+    right: 30px;
+    z-index: 2;
+    top: 5px;
+}
+
 .select2-container .has-feedback .roo-combo-removable-btn {
     position: absolute;
     right: 40px;
