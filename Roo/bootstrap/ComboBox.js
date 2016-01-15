@@ -2500,13 +2500,13 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
         }
     },
     
-    list-item-single : {
+    list-item-radio : {
         tag: 'li',
         cls: 'list-group-item'
         
     },
     
-    list-item-multiple : {
+    list-item-checkbox : {
         tag: 'li',
         cls: 'list-group-item'
         
