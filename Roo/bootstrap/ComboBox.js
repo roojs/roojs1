@@ -2214,15 +2214,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return false;
         }
         
-        if(this.alwaysQuery){
-            if(this.mode == 'local'){
-                this.onTouchViewLoad();
-            }else{
-                this.store.load();
-            }
-        }else{
-            this.onTouchViewLoad();   
+        if(!this.alwaysQuery || this.mode == 'local'){
+            this.onTouchViewLoad();
+            return;
         }
+        
+        this.store.load();
     },
     
     onTouchViewBeforeLoad : function(combo,opts)
