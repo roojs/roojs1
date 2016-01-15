@@ -2294,7 +2294,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.setFromData(r.data);
 
             this.hideTouchView();
+            
+            return;
         }
+        
         
         
         
