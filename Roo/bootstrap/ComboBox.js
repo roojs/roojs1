@@ -2258,7 +2258,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.hideTouchView();
     },
     
-    onTouchViewEmptyResults : function(msg)
+    onTouchViewEmptyResults : function()
     {
         Roo.log('onTouchViewEmptyResults');
         
