@@ -2243,6 +2243,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
         }, this);
         
+        var firstChecked = this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).first();
+        
+        if(firstChecked){
+            firstChecked.findParent('li').scrollIntoView(this.touchViewListGroup.dom);
+        }
         
     },
     
