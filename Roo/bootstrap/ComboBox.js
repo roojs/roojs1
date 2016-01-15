@@ -2321,6 +2321,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
         this.addItem(r.data);
+        this.tickItems.push(r.data);
         
         
         
