@@ -2081,7 +2081,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     initTouchView : function()
     {
-        this.renderTouchViewPanel();
+        this.renderTouchView();
         
         this.inputEl().on("click", this.showTouchView, this);
         this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
@@ -2110,7 +2110,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
     },
     
-    renderTouchViewPanel : function()
+    renderTouchView : function()
     {
         this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.ComboBox.touchViewTemplate);
         this.touchViewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
