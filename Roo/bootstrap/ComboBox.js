@@ -2253,6 +2253,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = d.data[this.displayField];
             }
             
+            row.on('click', _this.onTouchViewClick, row);
+            
         }, this);
         
     },
