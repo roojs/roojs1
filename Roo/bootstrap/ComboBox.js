@@ -2243,7 +2243,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.clearTouchView();
         
-        this.touchViewBodyEl.createChild(Roo.bootstrap.ComboBox.emptyResult);
+        var _this = this;
         
         this.store.data.each(function(d,rowIndex){
             
