@@ -2112,7 +2112,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.removable && !this.multiple){
             var close = this.closeTriggerEl();
-            Roo.log(close);
             if(close){
                 close.setVisibilityMode(Roo.Element.DISPLAY).hide();
                 close.on('click', this.removeBtnClick, this, close);
