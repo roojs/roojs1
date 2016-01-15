@@ -2301,11 +2301,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewListGroup.dom.innerHTML = '';
     },
     
-    onTouchViewClick : function(e, el, rowIndex)
+    onTouchViewClick : function(a,b,c,d)
     {
-        e.preventDefault();
+        //e.preventDefault();
         
-        
+        Roo.log([a,b,c,d]);
         
     }
     
