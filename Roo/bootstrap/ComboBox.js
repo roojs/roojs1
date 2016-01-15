@@ -2237,6 +2237,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = d.data[this.displayField];
             }
             
+            if(this.valueField && typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == value){
+                row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+            }
+            
             row.on('click', _this.onTouchViewClick, _this, {row : row, rowIndex : rowIndex});
             
         }, this);
