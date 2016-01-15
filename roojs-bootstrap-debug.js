@@ -8857,7 +8857,9 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     {
         e.preventDefault();
         
-        this.fireEvent("remove", this);
+        if(this.fireEvent("remove", this) !== false){
+            this.reset();
+        }
     },
     
     createList : function()
@@ -11036,6 +11038,8 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
  * @cfg {Boolean} triggerList trigger show the list or not (true|false) default true
  * @cfg {Boolean} showToggleBtn show toggle button or not (true|false) default true
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
+ * @cfg {Boolean} animate default true
+ * @cfg {Boolean} emptyResultText only for touch device
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -11319,11 +11323,22 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     btnPosition : 'right',
     triggerList : true,
     showToggleBtn : true,
+    animate : true,
+    emptyResultText: 'Empty',
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
     {
         var cfg = false;
+        
+        /*
+         * Touch Devices
+         */
+        
+        if(Roo.isTouch){
+            cfg = this.getAutoCreateTouchView();
+            return cfg;;
+        }
         
         /*
          *  Normal ComboBox
@@ -11497,7 +11512,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if (!this.store) {
             throw "can not find store for combo";
         }
+        
         this.store = Roo.factory(this.store, Roo.data);
+        
+        /*
+         * Touch Devices
+         */
+        
+        if(Roo.isTouch){
+            this.initTouchView();
+            return;
+        }
         
         if(this.tickable){
             this.initTickableEvents();
@@ -12855,7 +12880,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     inputEl: function ()
     {
-        if(this.tickable){
+        if(this.tickable && !Roo.isTouch){
             return this.searchField;
         }
         return this.el.select('input.form-control',true).first();
@@ -12910,8 +12935,443 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         return this.inputEl().select('.select2-search-field-input', true).first();
-    }
+    },
     
+    
+    getAutoCreateTouchView : function()
+    {
+        var id = Roo.id();
+        
+        var cfg = {
+            cls: 'form-group' //input-group
+        };
+        
+        var input =  {
+            tag: 'input',
+            id : id,
+            type : this.inputType,
+            cls : 'form-control x-combo-noedit',
+            autocomplete: 'new-password',
+            placeholder : this.placeholder || '',
+            readonly : true
+        };
+        
+        if (this.name) {
+            input.name = this.name;
+        }
+        
+        if (this.size) {
+            input.cls += ' input-' + this.size;
+        }
+        
+        if (this.disabled) {
+            input.disabled = true;
+        }
+        
+        var inputblock = {
+            cls : '',
+            cn : [
+                input
+            ]
+        };
+        
+        if(this.before){
+            inputblock.cls += ' input-group';
+            
+            inputblock.cn.unshift({
+                tag :'span',
+                cls : 'input-group-addon',
+                html : this.before
+            });
+        }
+        
+        if(this.removable && !this.multiple){
+            inputblock.cls += ' roo-removable';
+            
+            inputblock.cn.push({
+                tag: 'button',
+                html : 'x',
+                cls : 'roo-combo-removable-btn close'
+            });
+        }
+
+        if(this.hasFeedback && !this.allowBlank){
+            
+            inputblock.cls += ' has-feedback';
+            
+            inputblock.cn.push({
+                tag: 'span',
+                cls: 'glyphicon form-control-feedback'
+            });
+            
+        }
+        
+        if (this.after) {
+            
+            inputblock.cls += (this.before) ? '' : ' input-group';
+            
+            inputblock.cn.push({
+                tag :'span',
+                cls : 'input-group-addon',
+                html : this.after
+            });
+        }
+
+        var box = {
+            tag: 'div',
+            cn: [
+                {
+                    tag: 'input',
+                    type : 'hidden',
+                    cls: 'form-hidden-field'
+                },
+                inputblock
+            ]
+            
+        };
+        
+        if(this.multiple){
+            box = {
+                tag: 'div',
+                cn: [
+                    {
+                        tag: 'input',
+                        type : 'hidden',
+                        cls: 'form-hidden-field'
+                    },
+                    {
+                        tag: 'ul',
+                        cls: 'select2-choices',
+                        cn:[
+                            {
+                                tag: 'li',
+                                cls: 'select2-search-field',
+                                cn: [
+
+                                    inputblock
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+        
+        var combobox = {
+            cls: 'select2-container input-group',
+            cn: [
+                box
+            ]
+        };
+        
+        if(this.multiple){
+            combobox.cls += ' select2-container-multi';
+        }
+        
+        var align = this.labelAlign || this.parentLabelAlign();
+        
+        cfg.cn = combobox;
+        
+        if(this.fieldLabel.length){
+            
+            var lw = align === 'left' ? ('col-sm' + this.labelWidth) : '';
+            var cw = align === 'left' ? ('col-sm' + (12 - this.labelWidth)) : '';
+            
+            cfg.cn = [
+                {
+                    tag: 'label',
+                    cls : 'control-label ' + lw,
+                    html : this.fieldLabel
+
+                },
+                {
+                    cls : cw, 
+                    cn: [
+                        combobox
+                    ]
+                }
+            ];
+        }
+        
+        var settings = this;
+        
+        ['xs','sm','md','lg'].map(function(size){
+            if (settings[size]) {
+                cfg.cls += ' col-' + size + '-' + settings[size];
+            }
+        });
+        
+        return cfg;
+    },
+    
+    initTouchView : function()
+    {
+        this.renderTouchView();
+        
+        this.inputEl().on("click", this.showTouchView, this);
+        this.touchViewFooterEl.select('.roo-touch-view-cancel', true).first().on('click', this.hideTouchView, this);
+        this.touchViewFooterEl.select('.roo-touch-view-ok', true).first().on('click', this.setTouchViewValue, this);
+        
+        this.maskEl = new Roo.LoadMask(this.touchViewEl, { store : this.store, msgCls: 'roo-el-mask-msg' });
+        
+        this.store.on('beforeload', this.onTouchViewBeforeLoad, this);
+        this.store.on('load', this.onTouchViewLoad, this);
+        this.store.on('loadexception', this.onTouchViewLoadException, this);
+        
+        if(this.hiddenName){
+            
+            this.hiddenField = this.el.select('input.form-hidden-field',true).first();
+            
+            this.hiddenField.dom.value =
+                this.hiddenValue !== undefined ? this.hiddenValue :
+                this.value !== undefined ? this.value : '';
+        
+            this.el.dom.removeAttribute('name');
+            this.hiddenField.dom.setAttribute('name', this.hiddenName);
+        }
+        
+        if(this.multiple){
+            this.choices = this.el.select('ul.select2-choices', true).first();
+            this.searchField = this.el.select('ul li.select2-search-field', true).first();
+        }
+        
+        if(this.removable && !this.multiple){
+            var close = this.closeTriggerEl();
+            
+            if(close){
+                close.setVisibilityMode(Roo.Element.DISPALY).hide();
+                close.on('click', this.removeBtnClick, this, close);
+            }
+        }
+        
+        return;
+        
+        
+    },
+    
+    renderTouchView : function()
+    {
+        this.touchViewEl = Roo.get(document.body).createChild(Roo.bootstrap.ComboBox.touchViewTemplate);
+        this.touchViewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.touchViewHeaderEl = this.touchViewEl.select('.modal-header', true).first();
+        this.touchViewHeaderEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.touchViewBodyEl = this.touchViewEl.select('.modal-body', true).first();
+        this.touchViewBodyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.touchViewBodyEl.setStyle('overflow', 'auto');
+        
+        this.touchViewListGroup = this.touchViewBodyEl.select('.list-group', true).first();
+        this.touchViewListGroup.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.touchViewFooterEl = this.touchViewEl.select('.modal-footer', true).first();
+        this.touchViewFooterEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+    },
+    
+    showTouchView : function()
+    {
+        this.touchViewHeaderEl.hide();
+
+        if(this.fieldLabel.length){
+            this.touchViewHeaderEl.dom.innerHTML = this.fieldLabel;
+            this.touchViewHeaderEl.show();
+        }
+
+        this.touchViewEl.show();
+
+        this.touchViewEl.select('.modal-dialog', true).first().setStyle('margin', '0px');
+        this.touchViewEl.select('.modal-dialog > .modal-content', true).first().setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+
+        var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
+
+        if(this.fieldLabel.length){
+            bodyHeight = bodyHeight - this.touchViewHeaderEl.getHeight();
+        }
+
+        this.touchViewBodyEl.setHeight(bodyHeight);
+
+        if(this.animate){
+            var _this = this;
+            (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
+        }else{
+            this.touchViewEl.addClass('in');
+        }
+
+        this.doTouchViewQuery();
+        
+    },
+    
+    hideTouchView : function()
+    {
+        this.touchViewEl.removeClass('in');
+
+        if(this.animate){
+            var _this = this;
+            (function(){ _this.touchViewEl.setStyle('display', 'none'); }).defer(150);
+        }else{
+            this.touchViewEl.setStyle('display', 'none');
+        }
+        
+    },
+    
+    setTouchViewValue : function()
+    {
+        if(this.multiple){
+            this.clearItem();
+        
+            var _this = this;
+
+            Roo.each(this.tickItems, function(o){
+                this.addItem(o);
+            }, this);
+        }
+        
+        this.hideTouchView();
+    },
+    
+    doTouchViewQuery : function()
+    {
+        Roo.log('doTouchViewQuery');
+        
+        var qe = {
+            query: '',
+            forceAll: true,
+            combo: this,
+            cancel:false
+        };
+        
+        if(this.fireEvent('beforequery', qe) ===false || qe.cancel){
+            return false;
+        }
+        
+        if(!this.alwaysQuery || this.mode == 'local'){
+            this.onTouchViewLoad();
+            return;
+        }
+        
+        this.store.load();
+    },
+    
+    onTouchViewBeforeLoad : function(combo,opts)
+    {
+        Roo.log('onTouchViewBeforeLoad');
+        
+        return;
+    },
+
+    // private
+    onTouchViewLoad : function()
+    {
+        Roo.log('onTouchViewLoad');
+        
+        if(this.store.getCount() < 1){
+            this.onTouchViewEmptyResults();
+            return;
+        }
+        
+        this.clearTouchView();
+        
+        var rawValue = this.getRawValue();
+        
+        var template = (this.multiple) ? Roo.bootstrap.ComboBox.listItemCheckbox : Roo.bootstrap.ComboBox.listItemRadio;
+        
+        this.tickItems = [];
+        
+        this.store.data.each(function(d, rowIndex){
+            var row = this.touchViewListGroup.createChild(template);
+            
+            if(this.displayField && typeof(d.data[this.displayField]) != 'undefined'){
+                row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = d.data[this.displayField];
+            }
+            
+            if(!this.multiple && this.valueField && typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == this.getValue()){
+                row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+            }
+            
+            if(this.multiple && this.valueField && typeof(d.data[this.valueField]) != 'undefined' && this.getValue().indexOf(d.data[this.valueField]) != -1){
+                row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+                this.tickItems.push(d.data);
+            }
+            
+            row.on('click', this.onTouchViewClick, this, {row : row, rowIndex : rowIndex});
+            
+        }, this);
+        
+        var firstChecked = this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).first();
+        
+        if(firstChecked){
+            firstChecked.findParent('li').scrollIntoView(this.touchViewListGroup.dom);
+        }
+        
+    },
+    
+    onTouchViewLoadException : function()
+    {
+        Roo.log('onTouchViewLoadException');
+        
+        this.hideTouchView();
+    },
+    
+    onTouchViewEmptyResults : function()
+    {
+        Roo.log('onTouchViewEmptyResults');
+        
+        this.clearTouchView();
+        
+        this.touchViewListGroup.createChild(Roo.bootstrap.ComboBox.emptyResult);
+        
+        this.touchViewListGroup.select('.roo-combobox-touch-view-empty-result', true).first().dom.innerHTML = this.emptyResultText;
+        
+    },
+    
+    clearTouchView : function()
+    {
+        this.touchViewListGroup.dom.innerHTML = '';
+    },
+    
+    onTouchViewClick : function(e, el, o)
+    {
+        e.preventDefault();
+        
+        var row = o.row;
+        var rowIndex = o.rowIndex;
+        
+        var r = this.store.getAt(rowIndex);
+        
+        if(!this.multiple){
+            Roo.each(this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).elements, function(c){
+                c.dom.removeAttribute('checked');
+            }, this);
+            
+            row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+        
+            this.setFromData(r.data);
+            
+            var close = this.closeTriggerEl();
+        
+            if(close){
+                close.show();
+            }
+
+            this.hideTouchView();
+            
+            return;
+        }
+        
+        if(this.valueField && typeof(r.data[this.valueField]) != 'undefined' && this.getValue().indexOf(r.data[this.valueField]) != -1){
+            row.select('.roo-combobox-list-group-item-box > input', true).first().dom.removeAttribute('checked');
+            this.tickItems.splice(this.tickItems.indexOf(r.data), 1);
+            return;
+        }
+        
+        row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
+        this.addItem(r.data);
+        this.tickItems.push(r.data);
+        
+        
+        
+    }
     
 
     /** 
@@ -12931,7 +13391,141 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      * @method autoSize
      */
 });
-/*
+
+Roo.apply(Roo.bootstrap.ComboBox,  {
+    
+    header : {
+        tag: 'div',
+        cls: 'modal-header',
+        cn: [
+            {
+                tag: 'h4',
+                cls: 'modal-title'
+            }
+        ]
+    },
+    
+    body : {
+        tag: 'div',
+        cls: 'modal-body',
+        cn: [
+            {
+                tag: 'ul',
+                cls: 'list-group'
+            }
+        ]
+    },
+    
+    listItemRadio : {
+        tag: 'li',
+        cls: 'list-group-item',
+        cn: [
+            {
+                tag: 'span',
+                cls: 'roo-combobox-list-group-item-value'
+            },
+            {
+                tag: 'div',
+                cls: 'roo-combobox-list-group-item-box pull-xs-right radio-inline radio radio-info',
+                cn: [
+                    {
+                        tag: 'input',
+                        type: 'radio'
+                    },
+                    {
+                        tag: 'label'
+                    }
+                ]
+            }
+        ]
+    },
+    
+    listItemCheckbox : {
+        tag: 'li',
+        cls: 'list-group-item',
+        cn: [
+            {
+                tag: 'span',
+                cls: 'roo-combobox-list-group-item-value'
+            },
+            {
+                tag: 'div',
+                cls: 'roo-combobox-list-group-item-box pull-xs-right checkbox-inline checkbox checkbox-info',
+                cn: [
+                    {
+                        tag: 'input',
+                        type: 'checkbox'
+                    },
+                    {
+                        tag: 'label'
+                    }
+                ]
+            }
+        ]
+    },
+    
+    emptyResult : {
+        tag: 'div',
+        cls: 'alert alert-danger roo-combobox-touch-view-empty-result'
+    },
+    
+    footer : {
+        tag: 'div',
+        cls: 'modal-footer',
+        cn: [
+            {
+                tag: 'div',
+                cls: 'row',
+                cn: [
+                    {
+                        tag: 'div',
+                        cls: 'col-xs-6 text-left',
+                        cn: {
+                            tag: 'button',
+                            cls: 'btn btn-danger roo-touch-view-cancel',
+                            html: 'Cancel'
+                        }
+                    },
+                    {
+                        tag: 'div',
+                        cls: 'col-xs-6 text-right',
+                        cn: {
+                            tag: 'button',
+                            cls: 'btn btn-success roo-touch-view-ok',
+                            html: 'OK'
+                        }
+                    }
+                ]
+            }
+        ]
+        
+    }
+});
+
+Roo.apply(Roo.bootstrap.ComboBox,  {
+    
+    touchViewTemplate : {
+        tag: 'div',
+        cls: 'modal fade roo-combobox-touch-view',
+        cn: [
+            {
+                tag: 'div',
+                cls: 'modal-dialog',
+                cn: [
+                    {
+                        tag: 'div',
+                        cls: 'modal-content',
+                        cn: [
+                            Roo.bootstrap.ComboBox.header,
+                            Roo.bootstrap.ComboBox.body,
+                            Roo.bootstrap.ComboBox.footer
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+});/*
  * Based on:
  * Ext JS Library 1.1.1
  * Copyright(c) 2006-2007, Ext JS, LLC.
