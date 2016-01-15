@@ -2239,18 +2239,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         this.store.data.each(function(d,rowIndex){
-            var row =  this.renderRow(cm, ds, rowIndex);
-
-            tbody.createChild(row);
-
-            var _this = this;
-
-            if(row.cellObjects.length){
-                Roo.each(row.cellObjects, function(r){
-                    _this.renderCellObject(r);
-                })
-            }
-
+            
         }, this);
         
     },
