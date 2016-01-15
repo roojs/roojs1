@@ -2170,7 +2170,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 this.touchViewEl.addClass('in');
             }
             
-            this.doTouchViewQuery(this.getRawValue(), true);
+            this.doTouchViewQuery();
             
         }
         
@@ -2199,7 +2199,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.hideTouchView();
     },
     
-    doTouchViewQuery : function(q, forceAll)
+    doTouchViewQuery : function()
     {
         Roo.log('doTouchViewQuery');
         
@@ -2222,7 +2222,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         forceAll = qe.forceAll;
         
-        if(forceAll === true || (q.length >= this.minChars)){
+        if(forceAll === true){
             
             this.hasQuery = true;
             
