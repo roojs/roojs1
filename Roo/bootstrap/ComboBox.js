@@ -2536,7 +2536,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
             },
             {
                 tag: 'div',
-                cls: 'roo-combobox-list-group-item-box pull-xs-right radio-inline radio radio-info',
+                cls: 'roo-combobox-list-group-item-box pull-xs-right checkbox-inline checkbox checkbox-info',
                 cn: [
                     {
                         tag: 'input',
