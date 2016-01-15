@@ -8858,7 +8858,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
         e.preventDefault();
         
         if(this.fireEvent("remove", this) !== false){
-            Roo.log('run remove?????');
             this.reset();
         }
     },
@@ -12134,7 +12133,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var close = this.closeTriggerEl();
         
         if(close){
-            (v.length || v * 1 > 0) ? close.show() : close.hide();
+            (v && (v.length || v * 1 > 0)) ? close.show() : close.hide();
         }
     },
     /**
