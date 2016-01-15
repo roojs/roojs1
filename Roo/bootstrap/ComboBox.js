@@ -2396,7 +2396,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
     
     emptyResult : {
         tag: 'div',
-        cls: 'alert alert-warning'
+        cls: 'alert alert-warning roo-combobox-touch-view-empty-result'
     },
     
     footer : {
