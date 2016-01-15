@@ -246,7 +246,7 @@
     top: 5px;
 }
 
-.select2-container.input-group .roo-removable .roo-combo-removable-btn {
+.select2-container .roo-removable.input-group .roo-combo-removable-btn {
     position: absolute;
     right: 45px;
     z-index: 2;
@@ -260,7 +260,7 @@
     top: 5px;
 }
 
-.select2-container.input-group .has-feedback .roo-combo-removable-btn {
+.select2-container .has-feedback .roo-combo-removable-btn {
     position: absolute;
     right: 70px;
     z-index: 2;
