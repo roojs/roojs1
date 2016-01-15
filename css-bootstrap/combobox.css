@@ -273,7 +273,7 @@
 
 .select2-container.input-group .has-feedback .roo-combo-removable-btn {
     position: absolute;
-    right: 70px;
+    right: 35px;
     z-index: 2;
     top: 5px;
 }
