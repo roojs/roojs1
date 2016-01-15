@@ -2309,9 +2309,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var rowIndex = o.rowIndex;
         
         var _this = this;
-        
+        Roo.log(this.touchViewListGroup);
         if(!this.multiple){
-            Roo.each(_this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).elements, function(c){
+            Roo.each(this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).elements, function(c){
                 c.dom.removeAttribute('checked');
             })
         }
