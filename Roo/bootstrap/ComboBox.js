@@ -2310,14 +2310,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.valueField && typeof(r.data[this.valueField]) != 'undefined' && this.getValue().indexOf(r.data[this.valueField]) != -1){
             row.select('.roo-combobox-list-group-item-box > input', true).first().dom.removeAttribute('checked');
-            
-//            this.clearItem();
-//            this.syncValue();
-//
-//            this.fireEvent('remove', this, e);
-//
-//            this.validate();
-
+            this.tickItems.splice(this.tickItems.indexOf(r.data)), 1);
+            return;
         }
         
         row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
