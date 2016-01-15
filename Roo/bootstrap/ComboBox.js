@@ -2503,6 +2503,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
     list-item : {
         tag: 'li',
         cls: 'list-group-item'
+        
     },
     
     footer : {
