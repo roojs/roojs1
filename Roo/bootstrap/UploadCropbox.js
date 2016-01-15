@@ -134,11 +134,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
             html : this.title
         };
         
-        if(this.specificTitle){
-            title = this.title;
-            
-        };
-        
         var header = [];
         if (this.allow_close) {
             header.push({
