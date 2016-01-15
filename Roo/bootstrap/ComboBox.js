@@ -2494,15 +2494,21 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
     body : {
         tag: 'div',
         cls: 'modal-body',
-        cn: {
-            tag: 'ul',
-            cls: 'list-group'
-        }
+        cn: [
+            {
+                tag: 'ul',
+                cls: 'list-group'
+            }
+        ]
     },
     
     list-item-radio : {
         tag: 'li',
-        cls: 'list-group-item'
+        cls: 'list-group-item',
+        cn: {
+            tag: 'span',
+            cls: 'roo-combobox-list-group-item-value'
+        }
         
     },
     
