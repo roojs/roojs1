@@ -130,7 +130,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
                     ] 
                 };
             }
-              Roo.log('in?????????????????');
+
         } else {
             if(this.removable && !this.editable && !this.tickable){
                 inputblock = {
