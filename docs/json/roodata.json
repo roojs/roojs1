@@ -39094,6 +39094,18 @@
      "memberOf": ""
     },
     {
+     "name": "html",
+     "type": "String",
+     "desc": "- the body of the dialog (for simple ones) - you can also use template..",
+     "memberOf": ""
+    },
+    {
+     "name": "tmpl",
+     "type": "Roo.Template",
+     "desc": "- a template with variables. to use it, add a handler in show:method  adn",
+     "memberOf": ""
+    },
+    {
      "name": "buttons",
      "type": "Array",
      "desc": "Array of buttons or standard button set..",
@@ -39293,6 +39305,12 @@
      "desc": "Appends an event handler to this component"
     },
     {
+     "name": "applyBody",
+     "sig": "(Obj data)",
+     "type": "function",
+     "desc": "Set the body of the Dialog using the template"
+    },
+    {
      "name": "capture",
      "sig": "(Observable o, Function fn, Object scope)",
      "type": "function",
@@ -39401,10 +39419,22 @@
      "desc": "If this is a lazy rendering component, render it to its container element."
     },
     {
+     "name": "setBody",
+     "sig": "(String str)",
+     "type": "function",
+     "desc": "Set the body of the Dialog"
+    },
+    {
      "name": "setDisabled",
      "sig": "(Boolean disabled)",
      "type": "function",
      "desc": "Convenience function for setting disabled/enabled by boolean."
+    },
+    {
+     "name": "setTitle",
+     "sig": "(String str)",
+     "type": "function",
+     "desc": "Set the title of the Dialog"
     },
     {
      "name": "setVisible",
