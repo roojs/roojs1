@@ -2316,7 +2316,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         Roo.log('doTouchViewQuery');
         
-        
         if(q === undefined || q === null){
             q = '';
         }
@@ -2502,7 +2501,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
         ]
     },
     
-    list-item-radio : {
+    listItemRadio : {
         tag: 'li',
         cls: 'list-group-item',
         cn: [
@@ -2526,7 +2525,7 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
         ]
     },
     
-    list-item-checkbox : {
+    listItemCheckbox : {
         tag: 'li',
         cls: 'list-group-item',
         cn: [
