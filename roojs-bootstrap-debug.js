@@ -8834,7 +8834,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             var close = this.closeTriggerEl();
             
             if(close){
-                close.setVisibilityMode(Roo.Element.DISPALY).hide();
+                close.setVisibilityMode(Roo.Element.DISPLAY).hide();
                 close.on('click', this.removeBtnClick, this, close);
             }
         }
@@ -13137,7 +13137,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.removable && !this.multiple){
             var close = this.closeTriggerEl();
-            
             if(close){
                 close.setVisibilityMode(Roo.Element.DISPLAY).hide();
                 close.on('click', this.removeBtnClick, this, close);
