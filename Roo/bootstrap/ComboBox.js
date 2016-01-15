@@ -2103,8 +2103,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store.on('load', this.onTouchViewLoad, this);
         this.store.on('loadexception', this.onTouchViewLoadException, this);
         
-        return;
-        
         if(this.hiddenName){
             
             this.hiddenField = this.el.select('input.form-hidden-field',true).first();
@@ -2112,13 +2110,16 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.hiddenField.dom.value =
                 this.hiddenValue !== undefined ? this.hiddenValue :
                 this.value !== undefined ? this.value : '';
-
-            // prevent input submission
+        
             this.el.dom.removeAttribute('name');
             this.hiddenField.dom.setAttribute('name', this.hiddenName);
              
              
         }
+        
+        return;
+        
+        
         
 //        this.list = this.el.select('ul.dropdown-menu',true).first();
         
@@ -2281,6 +2282,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 (function(){ _this.touchViewEl.addClass('in'); }).defer(50);
             }else{
                 this.touchViewEl.addClass('in');
+            }
+            
+            if(this.triggerAction == 'all') {
+                this.doTouchViewQuery(this.allQuery, true);
+            } else {
+                this.doTouchViewQuery(this.getRawValue());
             }
             
             this.store.load();
