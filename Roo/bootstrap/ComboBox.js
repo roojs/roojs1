@@ -2203,78 +2203,62 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         Roo.log('doTouchViewQuery');
         
-        if(q === undefined || q === null){
-            q = '';
-        }
-        
         var qe = {
-            query: q,
+            query: '',
             forceAll: forceAll,
             combo: this,
             cancel:false
         };
         
-        if(this.fireEvent('beforequery', qe)===false || qe.cancel){
+        if(this.fireEvent('beforequery', qe) ===false || qe.cancel){
             return false;
         }
         
-        q = qe.query;
-        
-        forceAll = qe.forceAll;
-        
-        if(forceAll === true){
-            
-            this.hasQuery = true;
-            
-            if(this.lastQuery != q || this.alwaysQuery){
-                this.lastQuery = q;
-                if(this.mode == 'local'){
-                    this.selectedIndex = -1;
-                    if(forceAll){
-                        this.store.clearFilter();
-                    }else{
-                        
-                        if(this.specialFilter){
-                            this.fireEvent('specialfilter', this);
-                            this.onLoad();
-                            return;
-                        }
-                        
-                        this.store.filter(this.displayField, q);
-                    }
-                    
-                    this.store.fireEvent("datachanged", this.store);
-                    
-                    this.onLoad();
-                    
-                    
-                }else{
-                    
-                    this.store.baseParams[this.queryParam] = q;
-                    
-                    var options = {params : this.getParams(q)};
-                    
-                    if(this.loadNext){
-                        options.add = true;
-                        options.params.start = this.page * this.pageSize;
-                    }
-                    
-                    this.store.load(options);
-                    
-                    /*
-                     *  this code will make the page width larger, at the beginning, the list not align correctly, 
-                     *  we should expand the list on onLoad
-                     *  so command out it
-                     */
-//                    this.expand();
-                }
-            }else{
+        if(this.alwaysQuery){
+            this.lastQuery = q;
+            if(this.mode == 'local'){
                 this.selectedIndex = -1;
-                this.onLoad();   
+                if(forceAll){
+                    this.store.clearFilter();
+                }else{
+
+                    if(this.specialFilter){
+                        this.fireEvent('specialfilter', this);
+                        this.onLoad();
+                        return;
+                    }
+
+                    this.store.filter(this.displayField, q);
+                }
+
+                this.store.fireEvent("datachanged", this.store);
+
+                this.onLoad();
+
+
+            }else{
+
+                this.store.baseParams[this.queryParam] = q;
+
+                var options = {params : this.getParams(q)};
+
+                if(this.loadNext){
+                    options.add = true;
+                    options.params.start = this.page * this.pageSize;
+                }
+
+                this.store.load(options);
+
+                /*
+                 *  this code will make the page width larger, at the beginning, the list not align correctly, 
+                 *  we should expand the list on onLoad
+                 *  so command out it
+                 */
+//                    this.expand();
             }
+        }else{
+            this.onLoad();   
         }
-        
-        this.loadNext = false;
     },
     
     onTouchViewBeforeLoad : function(combo,opts){
