@@ -130,7 +130,7 @@ trigger.applyTo('my-field');
                     </span><span class="jsdoc-syntax">] 
                 };
             }
-              
+
         } </span><span class="jsdoc-keyword">else </span><span class="jsdoc-syntax">{
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.removable </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.editable </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.tickable</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">inputblock </span><span class="jsdoc-syntax">= {
@@ -319,7 +319,7 @@ trigger.applyTo('my-field');
                 </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' col-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">size </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">settings</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">];
             }
         });
-        
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
         
     },
@@ -377,7 +377,7 @@ trigger.applyTo('my-field');
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">close </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.closeTriggerEl</span><span class="jsdoc-syntax">();
             
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">close</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">close.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPALY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">close.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
                 </span><span class="jsdoc-var">close.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.removeBtnClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">close</span><span class="jsdoc-syntax">);
             }
         }
