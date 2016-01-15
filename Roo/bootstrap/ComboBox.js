@@ -2099,9 +2099,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.maskEl = new Roo.LoadMask(this.touchViewEl, { store : this.stroe, msgCls: 'roo-el-mask-msg' });
         
-        this.store.on('load', this.onTouchViewLoad, this);
         this.store.on('beforeload', this.onTouchViewBeforeLoad, this);
-        
+        this.store.on('load', this.onTouchViewLoad, this);
         
         return;
         
