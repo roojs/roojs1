@@ -2233,6 +2233,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     onTouchViewLoad : function()
     {
         Roo.log('onTouchViewLoad');
+        
         if(this.store.getCount() > 0){
             if(this.lastQuery == this.allQuery){
                 if(this.editable && !this.tickable){
@@ -2259,7 +2260,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }
             }
         }else{
-            this.onEmptyResults();
+            this.onTouchViewEmptyResults();
         }
         
     },
