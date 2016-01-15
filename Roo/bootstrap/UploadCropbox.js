@@ -21,7 +21,7 @@
  */
 
 Roo.bootstrap.UploadCropbox = function(config){
-    Roo.bootstrap.Modal.superclass.constructor.call(this, config);
+    Roo.bootstrap.UploadCropbox.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
         /**
