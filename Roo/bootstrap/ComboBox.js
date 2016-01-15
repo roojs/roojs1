@@ -2213,12 +2213,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             combo: this,
             cancel:false
         };
+        
         if(this.fireEvent('beforequery', qe)===false || qe.cancel){
             return false;
         }
+        
         q = qe.query;
         
         forceAll = qe.forceAll;
+        
         if(forceAll === true || (q.length >= this.minChars)){
             
             this.hasQuery = true;
