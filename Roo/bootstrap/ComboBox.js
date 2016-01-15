@@ -1970,7 +1970,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             });
         }
 
-        if(this.hasFeedback && !this.allowBlank && !this.multiple){
+        if(this.hasFeedback && !this.allowBlank){
             
             inputblock.cls += ' has-feedback';
             
