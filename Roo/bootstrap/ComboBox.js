@@ -14,6 +14,7 @@
  * @cfg {Boolean} showToggleBtn show toggle button or not (true|false) default true
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
  * @cfg {Boolean} animate default true
+ * @cfg {Boolean} emptyResultText only for touch device
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
