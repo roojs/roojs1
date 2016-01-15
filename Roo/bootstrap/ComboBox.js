@@ -2115,13 +2115,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.hiddenField.dom.setAttribute('name', this.hiddenName);
         }
         
-        var _this = this;
-        
-        (function(){
-            var lw = _this.listWidth || Math.max(_this.inputEl().getWidth(), _this.minListWidth);
-            _this.list.setWidth(lw);
-        }).defer(100);
-        
         return;
         
         
