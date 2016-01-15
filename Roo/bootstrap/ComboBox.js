@@ -2170,11 +2170,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 this.touchViewEl.addClass('in');
             }
             
-            if(this.triggerAction == 'all') {
-                this.doTouchViewQuery(this.allQuery, true);
-            } else {
-                this.doTouchViewQuery(this.getRawValue());
-            }
+            this.doTouchViewQuery(this.getRawValue(), true);
             
         }
         
