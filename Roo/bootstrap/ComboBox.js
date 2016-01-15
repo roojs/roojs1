@@ -2221,9 +2221,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.onTouchViewEmptyResults();
             return;
         }
-        Roo.log(this.getValue());
-        Roo.log(this.getRawValue());
+        
         this.clearTouchView();
+        
+        var value = this.getValue();
+        var rawValue = this.getRawValue();
         
         var _this = this;
         var template = (this.multiple) ? Roo.bootstrap.ComboBox.listItemCheckbox : Roo.bootstrap.ComboBox.listItemRadio;
