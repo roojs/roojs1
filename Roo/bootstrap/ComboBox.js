@@ -14,6 +14,7 @@
  * @cfg {Boolean} showToggleBtn show toggle button or not (true|false) default true
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
  * @cfg {Boolean} animate default true
+ * @cfg {Boolean} emptyResultText only for touch device
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -87,22 +88,16 @@ Roo.bootstrap.ComboBox = function(config){
         'specialfilter' : true,
         /**
          * @event showTouchView
-         * Fires when show the touch view
+         * Fires when the show the touch view
 	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
         'showTouchView' : true,
         /**
          * @event hideTouchView
-         * Fires when hide the touch view
+         * Fires when the hide the touch view
 	     * @param {Roo.bootstrap.ComboBox} combo This combo box
 	     */
-        'hideTouchView' : true,
-        /**
-         * @event emptyResult
-         * Fires when empty result
-	     * @param {Roo.bootstrap.ComboBox} combo This combo box
-	     */
-        'emptyResult' : true
+        'hideTouchView' : true
         
     });
     
@@ -2332,13 +2327,12 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
     
     body : {
         tag: 'div',
-        cls: 'modal-body',
-        cn: [
-            {
-                tag: 'ul',
-                cls: 'list-group'
-            }
-        ]
+        cls: 'modal-body'
+    },
+    
+    listGroup : {
+        tag: 'ul',
+        cls: 'list-group'
     },
     
     listItemRadio : {
@@ -2387,6 +2381,11 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                 ]
             }
         ]
+    },
+    
+    emptyResult : {
+        tag: 'div',
+        cls: 'alert alert-warning roo-combobox-touch-view-empty-result'
     },
     
     footer : {
