@@ -2322,6 +2322,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
         
             this.setFromData(r.data);
+            
+            var close = this.closeTriggerEl();
+        
+            if(close){
+                (v.length || v * 1 > 0) ? close.show() : close.hide();
+            }
 
             this.hideTouchView();
             
