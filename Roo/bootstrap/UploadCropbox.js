@@ -9,7 +9,7 @@
  * Bootstrap UploadCropbox class
  * 
  * @constructor
- * Create a new Modal Dialog
+ * Create a new UploadCropbox
  * @param {Object} config The config object
  */
 
