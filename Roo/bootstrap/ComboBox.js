@@ -2299,6 +2299,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.touchViewBodyEl.createChild(Roo.bootstrap.ComboBox.emptyResult);
         
+        this.touchViewBodyEl.select('.roo-combobox-touch-view-empty-result', true).first().dom.innerHTML = this.emptyResultText;
+        
     },
     
     clearTouchView : function()
