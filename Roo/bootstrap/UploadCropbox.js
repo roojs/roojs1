@@ -8,7 +8,6 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap UploadCropbox class
  * @cfg {String} title Title of dialog
- * @cfg {Boolean} specificTitle default false
  * @cfg {Array} buttons Array of buttons or standard button set..
  * @cfg {String} buttonPosition (left|right|center) default right
  * @cfg {Boolean} animate default true
