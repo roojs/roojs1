@@ -20,6 +20,12 @@ a.list-group-item, button.list-group-item {
     text-align: inherit;
 }
 
+.label-pill {
+    padding-right: .6em;
+    padding-left: .6em;
+    border-radius: 10rem;
+}
+
 .pull-xs-right {
     float: right!important;
 }
