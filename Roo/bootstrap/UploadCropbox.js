@@ -39,14 +39,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
    
     buttons : false,
     
-    // set on load...
-     
-    html: false,
-    
-    tmp: false,
-    
-    specificTitle: false,
-    
     buttonPosition: 'right',
     
     allow_close : true,
