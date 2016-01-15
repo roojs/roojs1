@@ -2307,6 +2307,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(q === undefined || q === null){
             q = '';
         }
+        
         var qe = {
             query: q,
             forceAll: forceAll,
