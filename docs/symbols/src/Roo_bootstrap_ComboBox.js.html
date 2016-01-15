@@ -1108,7 +1108,7 @@
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">close </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.closeTriggerEl</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">close</span><span class="jsdoc-syntax">){
-            (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">* 1 &gt; 0) ? </span><span class="jsdoc-var">close.show</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">close.hide</span><span class="jsdoc-syntax">();
+            (</span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">v.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">v </span><span class="jsdoc-syntax">* 1 &gt; 0)) ? </span><span class="jsdoc-var">close.show</span><span class="jsdoc-syntax">() : </span><span class="jsdoc-var">close.hide</span><span class="jsdoc-syntax">();
         }
     },
     </span><span class="jsdoc-comment">/**
@@ -2110,6 +2110,15 @@
             </span><span class="jsdoc-var">this.searchField </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ul li.select2-search-field'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         }
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.removable </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">close </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.closeTriggerEl</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">close</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">close.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPALY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">close.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.removeBtnClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">close</span><span class="jsdoc-syntax">);
+            }
+        }
+        
         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         
         
@@ -2313,6 +2322,12 @@
             </span><span class="jsdoc-var">row.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-combobox-list-group-item-box &gt; input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'checked'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         
             </span><span class="jsdoc-var">this.setFromData</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.data</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">close </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.closeTriggerEl</span><span class="jsdoc-syntax">();
+        
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">close</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">close.show</span><span class="jsdoc-syntax">();
+            }
 
             </span><span class="jsdoc-var">this.hideTouchView</span><span class="jsdoc-syntax">();
             
