@@ -8527,7 +8527,6 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
     
     getAutoCreate : function(){
        
-       Roo.log('run????????????????????');
         var align = this.labelAlign || this.parentLabelAlign();
         
         var id = Roo.id();
@@ -13140,7 +13139,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             var close = this.closeTriggerEl();
             
             if(close){
-                close.setVisibilityMode(Roo.Element.DISPALY).hide();
+                close.setVisibilityMode(Roo.Element.DISPLAY).hide();
                 close.on('click', this.removeBtnClick, this, close);
             }
         }
