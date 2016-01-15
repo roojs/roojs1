@@ -9,6 +9,9 @@ div.input-group.has-feedback > .form-control-feedback {
     }
 }
 
+/*
+    Bootstrap v4-alpha add this css
+*/
 a.list-group-item, button.list-group-item {
     width: 100%;
     color: #555;
