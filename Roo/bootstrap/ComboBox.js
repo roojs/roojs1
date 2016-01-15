@@ -1950,6 +1950,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             ]
         };
         
+        
         if(this.before){
             inputblock.cls += ' input-group';
             
