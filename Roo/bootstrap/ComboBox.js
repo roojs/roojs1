@@ -2183,6 +2183,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     setTouchViewValue : function()
     {
+        if(this.multiple){
+            
+        }
         
         this.hideTouchView();
     },
