@@ -2248,9 +2248,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.store.data.each(function(d, rowIndex){
             var row =_this.touchViewListGroup.createChild(template);
-            Roo.log(d);
-            return;
             
+            if(this.displayField && typeof(d.data[this.displayField]) != 'undefined'){
+                row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = d.data[this.displayField];
+            }
             
         }, this);
         
