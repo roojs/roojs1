@@ -2295,6 +2295,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.clearTouchView();
         
+        
+        
     },
     
     clearTouchView : function()
@@ -2390,6 +2392,11 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                 ]
             }
         ]
+    },
+    
+    emptyResult : {
+        tag: 'div',
+        cls: 'alert alert-warning'
     },
     
     footer : {
