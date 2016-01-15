@@ -9,9 +9,6 @@ div.input-group.has-feedback > .form-control-feedback {
     }
 }
 
-.roo-combobox-touch-view {
-    overflow: auto;
-}
 /*
     Bootstrap v4-alpha add this css
     We may delete this after update the bootstrap version...
