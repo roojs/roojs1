@@ -2224,7 +2224,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.clearTouchView();
         
-        var value = this.getValue();
         var rawValue = this.getRawValue();
         
         var _this = this;
@@ -2237,7 +2236,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = d.data[this.displayField];
             }
             
-            if(this.valueField && typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == value){
+            if(this.valueField && typeof(d.data[this.valueField]) != 'undefined' && d.data[this.valueField] == this.getValue()){
                 row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
             }
             
