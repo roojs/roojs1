@@ -2309,7 +2309,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.valueField && typeof(r.data[this.valueField]) != 'undefined' && this.getValue().indexOf(r.data[this.valueField]) != -1){
             row.select('.roo-combobox-list-group-item-box > input', true).first().dom.removeAttribute();
-            
         }
         
         row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
