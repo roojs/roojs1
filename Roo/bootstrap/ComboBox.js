@@ -1913,7 +1913,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     },
     
     
-    createTouchInterface : function()
+    getAutoCreateTouchInterface : function()
     {
         var id = Roo.id();
         
