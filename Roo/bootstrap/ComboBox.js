@@ -2511,8 +2511,8 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
                 cls: 'roo-combobox-list-group-item-value'
             },
             {
-                tag: 'span',
-                cls: 'roo-combobox-list-group-item-value'
+                tag: 'div',
+                cls: 'roo-combobox-list-group-item-box'
             },
             
         ]
