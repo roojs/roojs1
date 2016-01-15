@@ -2282,6 +2282,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var row = o.row;
         var rowIndex = o.rowIndex;
         
+        var r = this.store.getAt(rowIndex);
+        
         if(!this.multiple){
             Roo.each(this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).elements, function(c){
                 c.dom.removeAttribute('checked');
@@ -2289,8 +2291,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
         
-            var r = this.store.getAt(rowIndex);
-
             this.setFromData(r.data);
 
             this.hideTouchView();
@@ -2298,7 +2298,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
+        row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
         
+        addItem
         
         
     }
