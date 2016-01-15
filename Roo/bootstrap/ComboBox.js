@@ -2293,7 +2293,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     clearTouchView : function()
     {
-        this.touchViewBodyEl.dom.innerHTML = '';
+        this.touchViewListGroup.dom.innerHTML = '';
     }
     
 
