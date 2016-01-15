@@ -2301,7 +2301,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.touchViewListGroup.dom.innerHTML = '';
     },
     
-    onTouchViewClick : function(a,b,c,d)
+    onTouchViewClick : function(e, el, rowIndex)
     {
         Roo.log([a,b,c,d])
     }
