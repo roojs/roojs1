@@ -2420,6 +2420,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onTouchViewLoadException : function()
     {
+        Roo.log('onTouchViewLoadException');
+        
         this.hasQuery = false;
         
         if(typeof(this.loading) !== 'undefined' && this.loading !== null){
