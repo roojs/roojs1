@@ -2205,7 +2205,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var qe = {
             query: '',
-            forceAll: forceAll,
+            forceAll: true,
             combo: this,
             cancel:false
         };
