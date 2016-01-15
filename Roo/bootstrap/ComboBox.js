@@ -2327,12 +2327,13 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
     
     body : {
         tag: 'div',
-        cls: 'modal-body'
-    },
-    
-    listGroup : {
-        tag: 'ul',
-        cls: 'list-group'
+        cls: 'modal-body',
+        cn: [
+            {
+                tag: 'ul',
+                cls: 'list-group'
+            }
+        ]
     },
     
     listItemRadio : {
