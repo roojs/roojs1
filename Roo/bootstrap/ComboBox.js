@@ -2238,31 +2238,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
-        if(this.lastQuery == this.allQuery){
-                if(this.editable && !this.tickable){
-                    this.inputEl().dom.select();
-                }
-                
-                if(
-                    !this.selectByValue(this.value, true) &&
-                    this.autoFocus && 
-                    (
-                        !this.store.lastOptions ||
-                        typeof(this.store.lastOptions.add) == 'undefined' || 
-                        this.store.lastOptions.add != true
-                    )
-                ){
-                    this.select(0, true);
-                }
-            }else{
-                if(this.autoFocus){
-                    this.selectNext();
-                }
-                if(this.typeAhead && this.lastKey != Roo.EventObject.BACKSPACE && this.lastKey != Roo.EventObject.DELETE){
-                    this.taTask.delay(this.typeAheadDelay);
-                }
-            }
-        
     },
     
     onTouchViewLoadException : function()
