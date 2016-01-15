@@ -18,7 +18,7 @@
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Modal = function(config){
+Roo.bootstrap.UploadCropbox = function(config){
     Roo.bootstrap.Modal.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
