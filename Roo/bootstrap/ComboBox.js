@@ -2247,7 +2247,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var template = (this.multiple) ? Roo.bootstrap.ComboBox.listItemCheckbox : Roo.bootstrap.ComboBox.listItemRadio;
         
         this.store.data.each(function(d,rowIndex){
-            _this.touchViewListGroup.createChild(template);
+            var row =_this.touchViewListGroup.createChild(template);
+            
+            row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = 
             
         }, this);
         
