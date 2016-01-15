@@ -177,7 +177,7 @@ Roo.extend(Roo.bootstrap.TriggerField, Roo.bootstrap.Input,  {
             }
             
         };
-        Roo.log(inputblock);
+        
         var box = {
             tag: 'div',
             cn: [
