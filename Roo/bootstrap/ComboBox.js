@@ -2303,6 +2303,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         Roo.log('doTouchViewQuery');
         
+        
         if(q === undefined || q === null){
             q = '';
         }
