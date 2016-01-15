@@ -35,7 +35,7 @@ Roo.bootstrap.UploadCropbox = function(config){
      
 };
 
-Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     title : 'test dialog',
    
