@@ -2233,6 +2233,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         Roo.log('onTouchViewLoad');
         
+        this.onTouchViewEmptyResults();
+            return;
+            
         if(this.store.getCount() < 1){
             this.onTouchViewEmptyResults();
             return;
@@ -2240,8 +2243,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.clearTouchView();
         
+        this.touchViewBodyEl.createChild(Roo.bootstrap.ComboBox.emptyResult);
+        
         this.store.data.each(function(d,rowIndex){
-            Roo.log([rowIndex, d]);
             
         }, this);
         
