@@ -2244,6 +2244,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
         }, this);
         
+        
     },
     
     onTouchViewLoadException : function()
