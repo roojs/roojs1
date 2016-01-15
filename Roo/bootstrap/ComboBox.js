@@ -2305,6 +2305,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         e.preventDefault();
         
+        var row = o.row;
+        var rowIndex = o.rowIndex;
+        
         
         
     }
