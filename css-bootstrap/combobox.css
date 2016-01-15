@@ -239,30 +239,10 @@
     position: relative;
 }*/
 
-.select2-container .roo-removable .roo-combo-removable-btn {
-    position: absolute;
-    right: 15px;
-    z-index: 2;
-    top: 5px;
-}
-
-.select2-container .roo-removable.input-group .roo-combo-removable-btn {
-    position: absolute;
-    right: 45px;
-    z-index: 2;
-    top: 5px;
-}
-
-.select2-container .roo-removable.has-feedback .roo-combo-removable-btn {
+.select2-container .roo-removable .roo-combo-removable-btn,
+.select2-container .has-feedback .roo-combo-removable-btn {
     position: absolute;
     right: 40px;
-    z-index: 2;
-    top: 5px;
-}
-
-.select2-container .roo-removable.has-feedback.input-group .roo-combo-removable-btn {
-    position: absolute;
-    right: 70px;
     z-index: 2;
     top: 5px;
 }
