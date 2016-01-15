@@ -2218,12 +2218,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             if(this.mode == 'local'){
                 this.onTouchViewLoad();
             }else{
-                
-                this.store.baseParams[this.queryParam] = '';
-                
-                var options = {params : this.getParams(q)};
-                
-                this.store.load(options);
+                this.store.load();
             }
         }else{
             this.onTouchViewLoad();   
