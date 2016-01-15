@@ -2255,13 +2255,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     {
         Roo.log('onTouchViewLoadException');
         
-        Roo.log(this.store);
+        this.clearTouchView();
         
-        if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
-            // fixme
-            //Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
-        }
+        this.touchViewListGroup.createChild(Roo.bootstrap.ComboBox.emptyResult);
         
+        this.touchViewListGroup.select('.roo-combobox-touch-view-empty-result', true).first().dom.innerHTML = this.store.reader.o.errorMsg || '';
         
     },
     
