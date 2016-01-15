@@ -2103,19 +2103,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.store.on('load', this.onTouchViewLoad, this);
         this.store.on('loadexception', this.onTouchViewLoadException, this);
         
-//        if(this.hiddenName){
-//            
-//            this.hiddenField = this.el.select('input.form-hidden-field',true).first();
-//            
-//            this.hiddenField.dom.value =
-//                this.hiddenValue !== undefined ? this.hiddenValue :
-//                this.value !== undefined ? this.value : '';
-//        
-//            this.el.dom.removeAttribute('name');
-//            this.hiddenField.dom.setAttribute('name', this.hiddenName);
-//             
-//             
-//        }
+        if(this.hiddenName){
+            
+            this.hiddenField = this.el.select('input.form-hidden-field',true).first();
+            
+            this.hiddenField.dom.value =
+                this.hiddenValue !== undefined ? this.hiddenValue :
+                this.value !== undefined ? this.value : '';
+        
+            this.el.dom.removeAttribute('name');
+            this.hiddenField.dom.setAttribute('name', this.hiddenName);
+        }
         
         return;
         
