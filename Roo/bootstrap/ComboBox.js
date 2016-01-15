@@ -2226,11 +2226,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var rawValue = this.getRawValue();
         
-        var _this = this;
         var template = (this.multiple) ? Roo.bootstrap.ComboBox.listItemCheckbox : Roo.bootstrap.ComboBox.listItemRadio;
         
         this.store.data.each(function(d, rowIndex){
-            var row =_this.touchViewListGroup.createChild(template);
+            var row = this.touchViewListGroup.createChild(template);
             
             if(this.displayField && typeof(d.data[this.displayField]) != 'undefined'){
                 row.select('.roo-combobox-list-group-item-value', true).first().dom.innerHTML = d.data[this.displayField];
@@ -2240,7 +2239,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 row.select('.roo-combobox-list-group-item-box > input', true).first().attr('checked', true);
             }
             
-            row.on('click', _this.onTouchViewClick, _this, {row : row, rowIndex : rowIndex});
+            row.on('click', this.onTouchViewClick, this, {row : row, rowIndex : rowIndex});
             
         }, this);
         
