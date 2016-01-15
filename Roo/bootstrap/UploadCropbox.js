@@ -86,7 +86,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         this.maskEl = Roo.DomHelper.append(document.body, {tag: "div", cls:"x-dlg-mask"}, true);
         this.maskEl.enableDisplayMode("block");
         this.maskEl.hide();
-        //this.el.addClass("x-dlg-modal");
     
         if (this.buttons.length) {
             Roo.each(this.buttons, function(bb) {
@@ -117,13 +116,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         this.items = nitems;
         
-        // where are these used - they used to be body/close/footer
-        
-       
         this.initEvents();
-        //this.el.addClass([this.fieldClass, this.cls]);
         
     },
+    
     getAutoCreate : function(){
         
         
