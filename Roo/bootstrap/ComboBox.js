@@ -2480,7 +2480,11 @@ Roo.apply(Roo.bootstrap.ComboBox,  {
     
     body : {
         tag: 'div',
-        cls: 'modal-body'
+        cls: 'modal-body',
+        cn: {
+            tag: 'ul',
+            cls: 'list-group'
+        }
     },
     
     footer : {
