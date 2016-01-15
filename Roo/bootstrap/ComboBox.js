@@ -2273,7 +2273,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.touchViewListGroup.createChild(Roo.bootstrap.ComboBox.emptyResult);
         
-        this.touchViewListGroup.select('.roo-combobox-touch-view-empty-result', true).first().dom.innerHTML = msg || this.emptyResultText;
+        this.touchViewListGroup.select('.roo-combobox-touch-view-empty-result', true).first().dom.innerHTML = this.emptyResultText;
         
     },
     
