@@ -25,15 +25,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         return {
             tag : 'div',
-            cls : 'row roo-upload-cropbox',
+            cls : 'roo-upload-cropbox',
             cn : [
                 {
                     tag : 'div',
-                    cls : 'col-xs-12 roo-upload-cropbox-image-section'
+                    cls : 'roo-upload-cropbox-image-section'
                 },
                 {
                     tag : 'div',
-                    cls : 'col-xs-12 roo-upload-cropbox-footer-section',
+                    cls : 'roo-upload-cropbox-footer-section',
                     cn : {
                         tag : 'div',
                         cls : 'btn-group btn-group-justified roo-upload-cropbox-btn-group',
