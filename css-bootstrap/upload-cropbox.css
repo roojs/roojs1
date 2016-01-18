@@ -5,3 +5,7 @@
     width: 100%;
     min-height: 450px;
 }
+
+.roo-upload-cropbox-footer-section {
+    background-color: black;
+}
