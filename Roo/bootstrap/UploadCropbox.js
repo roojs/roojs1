@@ -23,7 +23,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        return {
+        var cfg = {
             tag : 'div',
             cls : 'roo-upload-cropbox',
             cn : [
@@ -75,8 +75,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     }
                 }
             ]
-        }
+        };
         
-          
+        return cfg;
     }
 });
