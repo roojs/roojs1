@@ -31,6 +31,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'input',
+                    cls : 'roo-upload-cropbox-file-input',
                     type : 'file',
                     name : 'uploadinputName'
                 },
