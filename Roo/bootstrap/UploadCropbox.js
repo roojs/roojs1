@@ -126,6 +126,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.inputEl.hide();
         
+        this.image.on('load', this.onImageLoad, this);
+        
 //
 //        this.pictureBtn.on('click', this.beforeSelectFile, this);
 //        
@@ -145,9 +147,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    updateImage : function(src)
+    loadImage : function(src)
     {
         this.image.src = src;
-    }
+    },
+    
+    
     
 });
