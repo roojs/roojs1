@@ -2206,8 +2206,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     doTouchViewQuery : function()
     {
-        Roo.log('doTouchViewQuery');
-        
         var qe = {
             query: '',
             forceAll: true,
