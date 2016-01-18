@@ -143,6 +143,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.fireEvent('beforeSelectFile', this);
         
+    },
+    
+    update : function(src)
+    {
+        
     }
     
 });
