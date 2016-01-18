@@ -243,7 +243,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         e.stopEvent();
         
         
-        Roo.log(e.getWheelDelta());exit;
+        Roo.log(e.getWheelDelta());
     }
     
 });
