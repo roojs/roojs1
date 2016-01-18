@@ -171,25 +171,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         Roo.log('on Image load');
         
-        var transform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
-        
-        var forceX = this.thumb.dom.offsetLeft + transform.m41;
-        var forceY = this.thumb.dom.offsetLeft + transform.m42;
-        
         var w =  parseInt(this.image.dom.width) * this.ratio;
         var h =  parseInt(this.image.dom.height)* this.ratio;
 
         var pw = (this.imageSection.dom.clientWidth - w) / 2;
         var ph = (this.imageSection.dom.clientHeight - h) / 2;
         
-        if(forceX < pw){
-            pw = forceX;
-        }
-        
-        if(forceY < ph){
-            ph = forceY;
-        }
-
         this.imageSection.setStyle('background-image', 'url(' + this.image.attr('src') + ')');
         this.imageSection.setStyle('background-size', w +'px ' + h + 'px' );
         this.imageSection.setStyle('background-position', pw + 'px ' + ph + 'px');
