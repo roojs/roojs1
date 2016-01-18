@@ -118,6 +118,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        this.inputEl.click();
+        this.inputEl.blur();
     }
 });
