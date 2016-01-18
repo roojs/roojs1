@@ -32,7 +32,7 @@ Roo.bootstrap.UploadCropbox = function(config){
 Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     emptyText : 'Click to upload image',
-    inputName : 'imageUpload'
+    inputName : 'imageUpload',
     
     getAutoCreate : function()
     {
@@ -44,6 +44,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     tag : 'div',
                     cls : 'roo-upload-cropbox-image-section',
                     cn : [
+                        {
+                            tag : 'input',
+                            cls : 'roo-upload-cropbox-input-file',
+                            name : this.inputName
+                        },
                         {
                             tag : 'div',
                             cls : 'roo-upload-cropbox-thumb'
