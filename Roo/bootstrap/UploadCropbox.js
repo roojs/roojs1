@@ -243,7 +243,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             bgY = thumbEndY - this.image.dom.height;
         }
 
-        Roo.log()
+        Roo.log([bgX, bgY]);
         this.imageSection.setStyle('background-position', bgX +'px ' + bgY + 'px');
 
         this.mouseX = e.getPageX();
