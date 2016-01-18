@@ -7,6 +7,7 @@
  * @class Roo.bootstrap.UploadCropbox
  * @extends Roo.bootstrap.Component
  * Bootstrap UploadCropbox class
+ * @cfg {String} emptyText 
  * 
  * @constructor
  * Create a new UploadCropbox
