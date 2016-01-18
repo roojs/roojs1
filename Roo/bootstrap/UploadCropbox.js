@@ -219,14 +219,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var forceX = this.thumb.dom.offsetLeft + transform.m41;
         var forceY = this.thumb.dom.offsetTop + transform.m42;
         
-        Roo.log('force');
-        
-        Roo.log([forceX, forceY]);
-        
-        Roo.log('mouse');
-        
-        Roo.log([bgX, bgY]);
-        
         if(forceX < bgX){
             bgX = forceX;
         }
