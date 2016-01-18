@@ -140,6 +140,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.fireEvent('beforeSelectFile', this);
         
+    },
+    
+    destoryImageSectionHandler : function()
+    {
+        this.imageSection.un('click', this.beforeSelectFile, this);
     }
     
     
