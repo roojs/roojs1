@@ -231,19 +231,18 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onMouseWheel : function(e)
     {
-        Roo.log('onMouseWheel');
-        
-        e.stopEvent();
-    },
-    
-    onMouseWheel : function(e)
-    {
         Roo.log('on mouse wheel');
         
         e.stopEvent();
         
+        if(e.getWheelDelta() == 1){
+            this.ratio = this.ratio * 1.1;
+            return;
+        }
         
-        Roo.log(e.getWheelDelta());
+        this.ratio = this.ratio * 0.9;
+        
+        return;
     }
     
 });
