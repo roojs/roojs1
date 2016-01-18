@@ -141,7 +141,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         this.fireEvent('beforeSelectFile', this);
-        
     }
     
 });
