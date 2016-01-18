@@ -240,7 +240,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         if(thumbEndY > bgY + this.image.dom.height){
-            bgY = this.image.dom.height + this.thumb.getHeight();
+            bgY = this.image.dom.height - this.thumb.getHeight();
         }
 
         this.imageSection.setStyle('background-position', bgX +'px ' + bgY + 'px');
