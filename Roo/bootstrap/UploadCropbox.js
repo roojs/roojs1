@@ -166,6 +166,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 'background-size: ' + w +'px ' + h + 'px; ' +
                 'background-position: ' + pw + 'px ' + ph + 'px; ' +
                 'background-repeat: no-repeat');
+        
+        this.imageSection.un('click', this.beforeSelectFile, this);
     }
     
 });
