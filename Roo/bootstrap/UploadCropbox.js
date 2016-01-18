@@ -240,7 +240,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         if(thumbEndY > bgY + this.image.dom.height){
-            bgY = thumbEndY;
+            bgY = thumbEndY - this.image.dom.height;
         }
 
         Roo.log()
