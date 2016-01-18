@@ -103,7 +103,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        this.image = Roo.get(new Image());
+        this.image = new Image();
         
         this.imageSection = this.el.select('.roo-upload-cropbox-image-section', true).first();
         this.imageSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
