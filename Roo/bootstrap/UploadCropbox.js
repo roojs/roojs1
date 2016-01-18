@@ -111,16 +111,21 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.inputEl.hide();
         this.footerSection.hide();
         
-        this.imageSection.on('click', this.startUpload, this);
+        this.imageSection.on('click', this.selectFile, this);
         
-        _this.fileSel.el.dom.onchange = function () {
-            _this.fileSel.fireEvent('change', _this.fileSel);
-        };
+        this.inputEl.on('change', this.beforeUpload, this);
     },
     
-    startUpload : function(e)
+    selectFile : function(e)
     {
         e.preventDefault();
         this.inputEl.dom.click();
+    },
+    
+    beforeUpload : function(e)
+    {
+        e.preventDefault();
     }
+    
+    
 });
