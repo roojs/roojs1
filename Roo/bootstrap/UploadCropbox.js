@@ -238,6 +238,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onMouseWheel : function(e)
     {
+        Roo.log('on mouse wheel');
+        
+        e.stopEvent();
+        
+        
         Roo.log(e.getWheelDelta());exit;
     }
     
