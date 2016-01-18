@@ -42,6 +42,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     cls : 'roo-upload-cropbox-image-section',
                     cn : [
                         {
+                            tag : 'h3',
+                            cls : 'roo-upload-cropbox-notification',
+                            src : ''
+                        },
+                        {
                             tag : 'img',
                             cls : 'roo-upload-cropbox-image-view',
                             src : ''
