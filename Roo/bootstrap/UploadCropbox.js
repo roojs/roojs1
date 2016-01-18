@@ -124,6 +124,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     beforeUpload : function(e)
     {
+        Roo.log('beforeUpload');
         e.preventDefault();
     }
     
