@@ -25,7 +25,7 @@
 }
 
 .roo-upload-cropbox-image-section .roo-upload-cropbox-thumb {
-    position: absolute;
+    position: relative;
     top: 50%;
     left: 50%;
     width: 200px;
