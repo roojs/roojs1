@@ -46,7 +46,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                             {
                                 tag : 'button',
                                 cls : 'btn col-xs-4',
-                                html : 'test2'
+                                html : '<i class="fa fa-picture-o"></i>'
                             },
                             {
                                 tag : 'button',
