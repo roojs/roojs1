@@ -35,6 +35,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     emptyText : 'Click to upload image',
     imageSrc : false,
     ratio : 1,
+    dragable : false,
+    mouseX : 0,
+    mouseY : 0,
     
     getAutoCreate : function()
     {
@@ -184,25 +187,33 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     onMouseDown : function(e)
     {
         Roo.log('onMouseDown');
+        
         e.stopEvent();
+        
+        obj.state.dragable = true;
+        obj.state.mouseX = e.clientX;
+        obj.state.mouseY = e.clientY;
         
     },
     
     onMouseMove : function(e)
     {
         Roo.log('onMouseMove');
+        
         e.stopEvent();
     },
     
     onMouseUp : function(e)
     {
         Roo.log('onMouseUp');
+        
         e.stopEvent();
     },
     
     onMouseWheel : function(e)
     {
         Roo.log('onMouseWheel');
+        
         e.stopEvent();
     }
     
