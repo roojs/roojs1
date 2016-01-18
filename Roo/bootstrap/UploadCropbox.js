@@ -184,7 +184,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     onMouseDown : function(e)
     {
         Roo.log('onMouseDown');
-        Roo.log(e.stopEvent)
         e.stopEvent();
         
     },
