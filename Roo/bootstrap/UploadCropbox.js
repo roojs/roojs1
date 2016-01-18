@@ -226,6 +226,19 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
         var bgX = x + parseInt(bg[0]);
         var bgY = y + parseInt(bg[1]);
+        
+        var transform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
+        
+        var forceX = this.thumb.dom.offsetLeft + transform.m41;
+        var forceY = this.thumb.dom.offsetLeft + transform.m42;
+        
+        if(forceX < bgX){
+            bgX = forceX;
+        }
+        
+        if(forceY < bgY){
+            bgY = forceY;
+        }
 
         this.imageSection.setStyle('background-position', bgX +'px ' + bgY + 'px');
 
