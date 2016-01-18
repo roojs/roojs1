@@ -235,14 +235,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         e.stopEvent();
         
-        if(e.getWheelDelta() == 1){
-            this.ratio = this.ratio * 1.1;
-            return;
-        }
+        this.ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
         
-        this.ratio = this.ratio * 0.9;
-        
-        return;
+        this.setBackground();
     }
     
 });
