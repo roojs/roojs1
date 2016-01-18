@@ -148,12 +148,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.image.attr('src', src);
         
-        this.onImageLoad();
+        this.setBackground();
         
         this.imageSection.un('click', this.beforeSelectFile, this);
     },
     
-    onImageLoad : function()
+    setBackground : function()
     {
         Roo.log('on Image load');
         
