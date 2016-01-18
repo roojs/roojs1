@@ -156,6 +156,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageSection.on('mousemove', this.onMouseMove, this);
         
         
+        
     },
     
     setBackground : function()
@@ -173,6 +174,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 'background-size: ' + w +'px ' + h + 'px; ' +
                 'background-position: ' + pw + 'px ' + ph + 'px; ' +
                 'background-repeat: no-repeat');
+    },
+    
+    onMouseDown : function()
+    {
+        
+    },
+    
+    onMouseMove : function()
+    {
+        
     }
     
 });
