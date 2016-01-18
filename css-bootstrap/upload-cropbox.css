@@ -2,5 +2,6 @@
 .roo-upload-cropbox {
     background-color: #7f7f7f;
     border: 1px solid #e3e3e3;
+    width: 100%;
     min-height: 450px;
 }
