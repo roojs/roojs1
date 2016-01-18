@@ -125,7 +125,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        this.imageView.hide();
 //        this.footerSection.hide();
 //        
-//        this.imageSection.on('click', this.beforeSelectFile, this);
+        this.imageSection.on('click', this.beforeSelectFile, this);
         
     },
     
