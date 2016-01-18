@@ -91,11 +91,25 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         this.inputEl = this.el.select('.roo-upload-cropbox-file-input', true).first();
+        this.inputEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        
         this.imageSection = this.el.select('.roo-upload-cropbox-image-section', true).first();
+        this.imageSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
         this.footerSection = this.el.select('.roo-upload-cropbox-footer-section', true).first();
+        this.footerSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
         this.rotateLeft = this.el.select('.roo-upload-cropbox-rotate-left', true).first();
+        this.rotateLeft.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
         this.pictureBtn = this.el.select('.roo-upload-cropbox-picture', true).first();
+        this.pictureBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
         this.rotateRight = this.el.select('.roo-upload-cropbox-rotate-right', true).first();
+        this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
 
+        this.inputEl.hide();
+        this.footerSection.hide();
     }
 });
