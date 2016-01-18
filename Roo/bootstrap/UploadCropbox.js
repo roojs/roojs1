@@ -232,7 +232,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         if(thumbEndX > bgX + this.image.dom.width){
-            bgX = this.image.dom.width - this.thumb.getWidth();
+            bgX = thumbEndX - this.image.dom.width;
         }
         
         if(thumbStartY < bgY){
@@ -240,9 +240,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         if(thumbEndY > bgY + this.image.dom.height){
-            bgY = this.image.dom.height - this.thumb.getHeight();
+            bgY = thumbEndY;
         }
 
+        Roo.log()
         this.imageSection.setStyle('background-position', bgX +'px ' + bgY + 'px');
 
         this.mouseX = e.getPageX();
