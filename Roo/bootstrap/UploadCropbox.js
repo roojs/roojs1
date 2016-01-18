@@ -171,7 +171,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         Roo.log('on Image load');
         
-        Roo.log(this.thumb.getBoundingClientRect());
+        Roo.log(this.thumb.dom.getBoundingClientRect());
         Roo.log(this.thumb.getTop());
         
         var w =  parseInt(this.image.dom.width) * this.ratio;
