@@ -183,22 +183,22 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onMouseDown : function()
     {
-        
+        Roo.log('onMouseDown');
     },
     
     onMouseMove : function()
     {
-        
+        Roo.log('onMouseMove');
     },
     
     onMouseUp : function()
     {
-        
+        Roo.log('onMouseUp');
     },
     
     onMouseWheel : function()
     {
-        
+        Roo.log('onMouseWheel');
     }
     
 });
