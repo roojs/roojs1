@@ -152,6 +152,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.image.src = src;
     },
     
-    
+    onImageLoad : function()
+    {
+        
+    }
     
 });
