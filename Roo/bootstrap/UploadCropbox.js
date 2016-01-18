@@ -170,7 +170,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var pw = (this.imageSection.dom.clientWidth - w) / 2;
         var ph = (this.imageSection.dom.clientHeight - h) / 2;
 
-        el.setAttribute('style',
+        this.imageSection.attr('style',
                 'background-image: url(' + this.image.attr('src') + '); ' +
                 'background-size: ' + w +'px ' + h + 'px; ' +
                 'background-position: ' + pw + 'px ' + ph + 'px; ' +
