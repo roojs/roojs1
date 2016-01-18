@@ -123,6 +123,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         Roo.log(this.image);
 
+        Roo.log(Roo.get(this.image));
         this.image.on('load', this.onImageLoad, this);
         
 //        this.image.onload = function(){
