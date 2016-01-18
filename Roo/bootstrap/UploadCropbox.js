@@ -171,7 +171,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         Roo.log('on Image load');
         
-        var curTransform = new   WebKitCSSMatrix(window.getComputedStyle(node).webkitTransform);
+        var curTransform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         
         Roo.log(curTransform);
         
