@@ -160,7 +160,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
         
-        
+        this.imageSection.on(mousewheel, this.onMouseWheel, this);
         
     },
     
