@@ -30,11 +30,11 @@
 
 @media (min-width: 768px) {
     .roo-upload-cropbox-empty-notification {
-        margin-top: 200px;
+        margin-top: 50px;
     }
     
     .roo-upload-cropbox-image-section {
-        height: 500px;
+        height: 200px;
     }
 }
 
