@@ -44,7 +44,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default',
+                                        cls : 'btn btn-default roo-upload-cropbox-undo-btn',
                                         html : '<i class="fa fa-undo"></i>'
                                     }
                                 ]
@@ -55,7 +55,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default',
+                                        cls : 'btn btn-default roo-upload-cropbox-picture-btn',
                                         html : '<i class="fa fa-picture-o"></i>'
                                     }
                                 ]
@@ -66,7 +66,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default',
+                                        cls : 'btn btn-default roo-upload-cropbox-repeat-btn',
                                         html : '<i class="fa fa-repeat"></i>'
                                     }
                                 ]
