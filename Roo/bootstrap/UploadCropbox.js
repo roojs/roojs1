@@ -117,6 +117,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageSection = this.el.select('.roo-upload-cropbox-image-section', true).first();
         this.imageSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
+        this.imageView = this.el.select('.roo-upload-cropbox-image-view', true).first();
+        this.imageView.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
         this.footerSection = this.el.select('.roo-upload-cropbox-footer-section', true).first();
         this.footerSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
