@@ -162,21 +162,17 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     setBackground : function()
     {
-        Roo.log(this.image);
-        
-        Roo.log(this.image.getWidth());
-        Roo.log(this.image.dom.width);
-//        var w =  parseInt(obj.image.width)*obj.ratio;
-//        var h =  parseInt(obj.image.height)*obj.ratio;
-//
-//        var pw = (el.clientWidth - w) / 2;
-//        var ph = (el.clientHeight - h) / 2;
-//
-//        el.setAttribute('style',
-//                'background-image: url(' + obj.image.src + '); ' +
-//                'background-size: ' + w +'px ' + h + 'px; ' +
-//                'background-position: ' + pw + 'px ' + ph + 'px; ' +
-//                'background-repeat: no-repeat');
+        var w =  parseInt(this.image.dom.width) * this.ratio;
+        var h =  parseInt(this.image.dom.height)* this.ratio;
+
+        var pw = (el.clientWidth - w) / 2;
+        var ph = (el.clientHeight - h) / 2;
+
+        el.setAttribute('style',
+                'background-image: url(' + obj.image.src + '); ' +
+                'background-size: ' + w +'px ' + h + 'px; ' +
+                'background-position: ' + pw + 'px ' + ph + 'px; ' +
+                'background-repeat: no-repeat');
     }
     
 });
