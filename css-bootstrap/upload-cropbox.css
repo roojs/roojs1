@@ -6,6 +6,8 @@
 
 .roo-upload-cropbox-empty-text {
     margin: 200px auto;
+    font-weight: bold;
+    font-style: italic;
 }
 
 .roo-upload-cropbox-image-section {
