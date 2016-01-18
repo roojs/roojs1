@@ -118,6 +118,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         
+        
 //
 //        this.pictureBtn.on('click', this.beforeSelectFile, this);
 //        
