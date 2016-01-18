@@ -112,5 +112,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.footerSection.hide();
         
         this.imageSection.on('click', this.startUpload, this);
+    },
+    
+    startUpload : function()
+    {
+        this.inputEl.click();
     }
 });
