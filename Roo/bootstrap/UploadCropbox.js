@@ -149,6 +149,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     loadImage : function(src)
     {
         Roo.log('load image');
+        
         this.image.src = src;
     },
     
