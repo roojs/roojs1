@@ -215,10 +215,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var bgX = x + parseInt(bg[0]);
         var bgY = y + parseInt(bg[1]);
 
-        el.style.backgroundPosition = bgX +'px ' + bgY + 'px';
+        this.imageSection.setStyle('background-position', bgX +'px ' + bgY + 'px');
 
-        obj.state.mouseX = e.clientX;
-        obj.state.mouseY = e.clientY;
+        this.mouseX = e.getPageX();
+        this.mouseY = e.getPageY();
     },
     
     onMouseUp : function(e)
