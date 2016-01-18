@@ -43,8 +43,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     cls : 'roo-upload-cropbox-image-section',
                     cn : [
                         {
-                            tag : 'div',
-                            cls : 'roo-upload-cropbox-notification text-center',
+                            tag : 'h3',
+                            cls : 'roo-upload-cropbox-empty-text text-center',
                             html : this.emptyText
                         },
                         {
