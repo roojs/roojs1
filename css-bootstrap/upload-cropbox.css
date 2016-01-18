@@ -5,6 +5,7 @@
 }
 
 .roo-upload-cropbox-empty-notification {
+    margin-top: 50px;
     font-weight: bold;
     font-style: italic;
     color: white;
@@ -29,16 +30,6 @@
 }
 
 @media (min-width: 768px) {
-    .roo-upload-cropbox-empty-notification {
-        margin-top: 50px;
-    }
-    
-    .roo-upload-cropbox-image-section {
-        height: 300px;
-    }
-}
-
-@media (min-width: 992px) {
     .roo-upload-cropbox-empty-notification {
         margin-top: 200px;
     }
