@@ -125,18 +125,22 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.inputEl.hide();
         this.footerSection.hide();
         
-        this.imageSection.on('click', this.onSelectFile, this);
+        this.imageSection.on('click', this.beforeSelectFile, this);
         
-        this.inputEl.on('change', this.beforeUpload, this);
+        this.inputEl.on('change', this.onSelectFile, this);
+    },
+    
+    beforeSelectFile : function(e)
+    {
+        e.preventDefault();
+        
+        if(this.fireEvent('beforeSelectFile') !== false){
+            this.inputEl.dom.click();
+        }
+        
     },
     
     onSelectFile : function(e)
-    {
-        e.preventDefault();
-        this.inputEl.dom.click();
-    },
-    
-    beforeUpload : function(e)
     {
         Roo.log('beforeUpload');
         e.preventDefault();
