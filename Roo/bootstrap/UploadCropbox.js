@@ -7,7 +7,6 @@
  * @class Roo.bootstrap.UploadCropbox
  * @extends Roo.bootstrap.Component
  * Bootstrap UploadCropbox class
- * @cfg {String} uploadinputName default 'imageUpload'
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -46,8 +45,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 {
                     tag : 'input',
                     cls : 'roo-upload-cropbox-file-input',
-                    type : 'file',
-                    name : 'uploadinputName'
+                    type : 'file'
                 },
                 {
                     tag : 'div',
