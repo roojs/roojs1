@@ -4,6 +4,10 @@
     visibility: hidden;
 }
 
+.roo-upload-cropbox-empty_text {
+    margin: 200px auto;
+}
+
 .roo-upload-cropbox-image-section {
     background-color: #7f7f7f;
     border: 1px solid #e3e3e3;
