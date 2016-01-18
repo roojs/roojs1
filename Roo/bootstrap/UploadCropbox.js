@@ -172,7 +172,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         Roo.log('on Image load');
         
         Roo.log(this.thumb.dom.offsetLeft);
-        Roo.log(this.thumb.getTop());
+        Roo.log(this.thumb.getMargins());
         
         var w =  parseInt(this.image.dom.width) * this.ratio;
         var h =  parseInt(this.image.dom.height)* this.ratio;
