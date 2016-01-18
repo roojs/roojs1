@@ -142,8 +142,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    destoryImageSectionHandler : function()
+    onSelectFile : function()
     {
+        this.emptyNotification.hide();
+        this.imageView.show();
+        this.footerSection.show();
+        
         this.imageSection.un('click', this.beforeSelectFile, this);
     }
     
