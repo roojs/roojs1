@@ -122,7 +122,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         Roo.log(this.image);
-        this.image.on('load', this.onImageLoad, this);
+        this.image.onload = function(){
+            Roo.log('test');
+        }
         
 //
 //        this.pictureBtn.on('click', this.beforeSelectFile, this);
