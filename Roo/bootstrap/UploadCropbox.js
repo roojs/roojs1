@@ -222,11 +222,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var thumbEndX = thumbStartX + this.thumb.getWidth();
         var thumbEndY = thumbStartY + this.thumb.getHeight();
         
-        
-        Roo.log([thumbStartX, thumbStartY, thumbEndX, thumbEndY]);
-        
-        Roo.log([bgX, bgY]);
-        
         if(thumbStartX < bgX){
             bgX = thumbStartX;
         }
@@ -242,8 +237,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if(thumbEndY > bgY + this.image.dom.height){
             bgY = thumbEndY - this.image.dom.height;
         }
-
-        Roo.log([bgX, bgY]);
+        
         this.imageSection.setStyle('background-position', bgX +'px ' + bgY + 'px');
 
         this.mouseX = e.getPageX();
