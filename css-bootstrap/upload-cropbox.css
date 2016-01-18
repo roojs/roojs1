@@ -41,13 +41,3 @@
         height: 500px;
     }
 }
-
-@media (min-width: 1200px) {
-    .roo-upload-cropbox-empty-notification {
-        margin-top: 200px;
-    }
-    
-    .roo-upload-cropbox-image-section {
-        height: 500px;
-    }
-}
