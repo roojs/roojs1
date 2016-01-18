@@ -199,7 +199,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     onMouseMove : function(e)
     {
         Roo.log('onMouseMove');
-        Roo.log(this.imageSection.getStyle('background-position'));
+        
         e.stopEvent();
         
         if (!this.dragable){
@@ -210,7 +210,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var y = e.getPageY() - this.mouseY;
 
         
-        var bg = this.imageSection.style.backgroundPosition.split(' ');
+        var bg = this.imageSection.getStyle('background-position').split(' ');
 
         var bgX = x + parseInt(bg[0]);
         var bgY = y + parseInt(bg[1]);
