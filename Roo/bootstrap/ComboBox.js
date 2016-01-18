@@ -2229,16 +2229,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onTouchViewBeforeLoad : function(combo,opts)
     {
-        Roo.log('onTouchViewBeforeLoad');
-        
         return;
     },
 
     // private
     onTouchViewLoad : function()
     {
-        Roo.log('onTouchViewLoad');
-        
         if(this.store.getCount() < 1){
             this.onTouchViewEmptyResults();
             return;
@@ -2282,15 +2278,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onTouchViewLoadException : function()
     {
-        Roo.log('onTouchViewLoadException');
-        
         this.hideTouchView();
     },
     
     onTouchViewEmptyResults : function()
     {
-        Roo.log('onTouchViewEmptyResults');
-        
         this.clearTouchView();
         
         this.touchViewListGroup.createChild(Roo.bootstrap.ComboBox.emptyResult);
