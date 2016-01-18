@@ -104,9 +104,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        this.inputEl = this.el.select('.roo-upload-cropbox-file-input', true).first();
-        this.inputEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        
         this.imageSection = this.el.select('.roo-upload-cropbox-image-section', true).first();
         this.imageSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
