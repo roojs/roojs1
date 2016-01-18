@@ -156,6 +156,23 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     onImageLoad : function()
     {
         Roo.log('on image load');
+        
+        this.setBackground();
+    },
+    
+    setBackground : function()
+    {
+//        var w =  parseInt(obj.image.width)*obj.ratio;
+//        var h =  parseInt(obj.image.height)*obj.ratio;
+//
+//        var pw = (el.clientWidth - w) / 2;
+//        var ph = (el.clientHeight - h) / 2;
+//
+//        el.setAttribute('style',
+//                'background-image: url(' + obj.image.src + '); ' +
+//                'background-size: ' + w +'px ' + h + 'px; ' +
+//                'background-position: ' + pw + 'px ' + ph + 'px; ' +
+//                'background-repeat: no-repeat');
     }
     
 });
