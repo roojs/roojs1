@@ -222,6 +222,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var thumbEndX = thumbStartX + this.thumb.getWidth();
         var thumbEndY = thumbStartY + this.thumb.getHeight();
         
+        
+        Roo.log([thumbStartX, thumbStartY, thumbEndX, thumbEndY]);
+        
         if(thumbStartX < bgX){
             bgX = thumbStartX;
         }
