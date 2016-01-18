@@ -44,7 +44,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-undo-btn',
+                                        cls : 'btn btn-default roo-upload-cropbox-rotate-left',
                                         html : '<i class="fa fa-undo"></i>'
                                     }
                                 ]
@@ -55,7 +55,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-picture-btn',
+                                        cls : 'btn btn-default roo-upload-cropbox-picture',
                                         html : '<i class="fa fa-picture-o"></i>'
                                     }
                                 ]
@@ -66,7 +66,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-repeat-btn',
+                                        cls : 'btn btn-default roo-upload-cropbox-rotate-right',
                                         html : '<i class="fa fa-repeat"></i>'
                                     }
                                 ]
@@ -82,9 +82,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        this.imageSection = this.el.select('roo-upload-cropbox-image-section', true).first();
-        
-        Roo.log(this.imageSection);
+        this.imageSection = this.el.select('.roo-upload-cropbox-image-section', true).first();
+        this.rotateLeft = this.el.select
 
     }
 });
