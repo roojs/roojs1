@@ -134,7 +134,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        if(this.fireEvent('beforeSelectFile') !== false){
+        if(this.fireEvent('beforeSelectFile', this) !== false){
             this.inputEl.dom.click();
         }
         
@@ -144,7 +144,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        this.fireEvent('onSelectFile')
+        this.fireEvent('onSelectFile', this);
     }
     
     
