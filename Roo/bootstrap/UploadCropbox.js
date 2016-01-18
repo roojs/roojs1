@@ -43,11 +43,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             cls : 'roo-upload-cropbox',
             cn : [
                 {
-                    tag : 'input',
-                    cls : 'roo-upload-cropbox-file-input',
-                    type : 'file'
-                },
-                {
                     tag : 'div',
                     cls : 'roo-upload-cropbox-image-section',
                     cn : [
@@ -136,24 +131,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.imageSection.on('click', this.beforeSelectFile, this);
         
-        this.inputEl.on('change', this.onSelectFile, this);
     },
     
     beforeSelectFile : function(e)
     {
         e.preventDefault();
         
-        if(this.fireEvent('beforeSelectFile', this) !== false){
-            this.inputEl.dom.click();
-        }
+        this.fireEvent('beforeSelectFile', this);
         
-    },
-    
-    onSelectFile : function(e)
-    {
-        e.preventDefault();
-        
-        this.fireEvent('onSelectFile', this);
     }
     
     
