@@ -39,9 +39,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         cls : 'btn-group btn-group-justified roo-upload-cropbox-btn-group',
                         cn : [
                             {
-                                tag : 'button',
-                                cls : 'btn btn-default',
-                                html : '<i class="fa fa-undo"></i>'
+                                tag : 'div',
+                                cls : 'btn-group',
+                                cn : [
+                                    {
+                                        tag : 'button',
+                                        cls : 'btn btn-default',
+                                        html : '<i class="fa fa-undo"></i>'
+                                    }
+                                ]
                             },
                             {
                                 tag : 'button',
