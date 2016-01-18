@@ -142,7 +142,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    initial : function()
+    onStartCropBox : function()
     {
         this.emptyNotification.show();
         this.imageView.hide();
@@ -151,7 +151,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageSection.on('click', this.beforeSelectFile, this);
     },
     
-    onSelectFile : function()
+    processing : function()
     {
         this.emptyNotification.hide();
         this.imageView.show();
