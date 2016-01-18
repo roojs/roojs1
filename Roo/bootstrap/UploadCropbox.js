@@ -152,10 +152,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         this.image.attr('src', src);
         
-        this.setBackground();
+        this.onImageLoad();
     },
     
-    setBackground : function()
+    onImageLoad : function()
     {
         var w =  parseInt(this.image.dom.width) * this.ratio;
         var h =  parseInt(this.image.dom.height)* this.ratio;
