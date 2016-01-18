@@ -4,7 +4,7 @@
     visibility: hidden;
 }
 
-.roo-upload-cropbox-empty-text {
+.roo-upload-cropbox-empty-notification {
     margin: 200px auto;
     font-weight: bold;
     font-style: italic;
