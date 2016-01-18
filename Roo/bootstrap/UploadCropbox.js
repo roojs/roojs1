@@ -103,7 +103,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        this.image = new Image();
+        this.image = Roo.get(new Image());
         
         this.imageSection = this.el.select('.roo-upload-cropbox-image-section', true).first();
         this.imageSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -151,11 +151,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     loadImage : function(src)
     {
         this.image.attr('src', src);
-        
-        this.onImageLoad();
     },
     
     onImageLoad : function()
+    {
+        Roo.log('on image load');
+        
+        this.setBackground();
+    },
+    
+    setBackground : function()
     {
         var w =  parseInt(this.image.dom.width) * this.ratio;
         var h =  parseInt(this.image.dom.height)* this.ratio;
