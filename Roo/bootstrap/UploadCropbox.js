@@ -33,28 +33,24 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 },
                 {
                     tag : 'div',
-                    cls : 'col-xs-12 roo-upload-cropbox-footer-section',
-                    cn : {
-                        tag : 'div',
-                        cls : 'row btn-group roo-upload-cropbox-btn-group',
-                        cn : [
-                            {
-                                tag : 'button',
-                                cls : 'btn btn-default',
-                                html : '<i class="fa fa-undo"></i>'
-                            },
-                            {
-                                tag : 'button',
-                                cls : 'btn btn-default',
-                                html : '<i class="fa fa-picture-o"></i>'
-                            },
-                            {
-                                tag : 'button',
-                                cls : 'btn btn-default',
-                                html : '<i class="fa fa-repeat"></i>'
-                            }
-                        ]
-                    }
+                    cls : 'row btn-group roo-upload-cropbox-btn-group',
+                    cn : [
+                        {
+                            tag : 'button',
+                            cls : 'btn btn-default',
+                            html : '<i class="fa fa-undo"></i>'
+                        },
+                        {
+                            tag : 'button',
+                            cls : 'btn btn-default',
+                            html : '<i class="fa fa-picture-o"></i>'
+                        },
+                        {
+                            tag : 'button',
+                            cls : 'btn btn-default',
+                            html : '<i class="fa fa-repeat"></i>'
+                        }
+                    ]
                 }
             ]
         }
