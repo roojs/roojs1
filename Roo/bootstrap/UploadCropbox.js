@@ -36,7 +36,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     cls : 'col-xs-12 roo-upload-cropbox-footer-section',
                     cn : {
                         tag : 'div',
-                        cls : 'row btn-group btn-group-justified roo-upload-cropbox-btn-group',
+                        cls : 'btn-group btn-group-justified roo-upload-cropbox-btn-group',
                         cn : [
                             {
                                 tag : 'button',
