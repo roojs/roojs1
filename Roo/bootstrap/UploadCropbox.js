@@ -37,7 +37,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var cfg = {
             tag : 'div',
             cls : 'roo-upload-cropbox',
-            
             cn : [
                 {
                     tag : 'div',
