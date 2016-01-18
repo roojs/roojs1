@@ -114,7 +114,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageSection.on('click', this.startUpload, this);
     },
     
-    startUpload : function(a,b,c)
+    startUpload : function(e)
     {
         e.preventDefault();
         
