@@ -190,9 +190,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         e.stopEvent();
         
-        obj.state.dragable = true;
-        obj.state.mouseX = e.clientX;
-        obj.state.mouseY = e.clientY;
+        this.dragable = true;
+        this.mouseX = e.clientX;
+        this.mouseY = e.clientY;
         
     },
     
