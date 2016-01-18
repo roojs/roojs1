@@ -45,13 +45,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     cn : [
                         {
                             tag : 'div',
-                            cls : 'roo-upload-cropbox-empty-notification text-center',
+                            cls : 'roo-upload-cropbox-thumb',
                             html : this.emptyText
-                        },
-                        {
-                            tag : 'img',
-                            cls : 'roo-upload-cropbox-image-view',
-                            src : ''
                         }
                     ]
                 },
@@ -109,11 +104,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageSection = this.el.select('.roo-upload-cropbox-image-section', true).first();
         this.imageSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.imageView = this.el.select('.roo-upload-cropbox-image-view', true).first();
-        this.imageView.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        
-        this.emptyNotification = this.el.select('.roo-upload-cropbox-empty-notification', true).first();
-        this.emptyNotification.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.thumb = this.el.select('.roo-upload-cropbox-thumb', true).first();
+        this.thumb.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.footerSection = this.el.select('.roo-upload-cropbox-footer-section', true).first();
         this.footerSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -126,14 +118,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.rotateRight = this.el.select('.roo-upload-cropbox-rotate-right', true).first();
         this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-
-        this.pictureBtn.on('click', this.beforeSelectFile, this);
-        
-        this.emptyNotification.show();
-        this.imageView.hide();
-        this.footerSection.hide();
-        
-        this.imageSection.on('click', this.beforeSelectFile, this);
+//
+//        this.pictureBtn.on('click', this.beforeSelectFile, this);
+//        
+//        this.emptyNotification.show();
+//        this.imageView.hide();
+//        this.footerSection.hide();
+//        
+//        this.imageSection.on('click', this.beforeSelectFile, this);
         
     },
     
