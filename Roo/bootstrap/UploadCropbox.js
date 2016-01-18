@@ -41,6 +41,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                             {
                                 tag : 'button',
                                 html : 'test1'
+                            },
+                            {
+                                tag : 'button',
+                                html : 'test2'
+                            },
+                            {
+                                tag : 'button',
+                                html : 'test3'
                             }
                         ]
                     }
