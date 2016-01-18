@@ -34,6 +34,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     emptyText : 'Click to upload image',
     inputName : 'imageUpload',
+    imageSrc : false,
     
     getAutoCreate : function()
     {
