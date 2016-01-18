@@ -7,11 +7,6 @@
     font-size: 1.8em;
 }*/
 
-.roo-upload-cropbox-input-file {
-    display: none;
-    visibility: hidden;
-}
-
 .roo-upload-cropbox-btn-group button {
     background-color: black;
     color: white;
