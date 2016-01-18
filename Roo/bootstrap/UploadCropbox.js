@@ -78,5 +78,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         };
         
         return cfg;
+    },
+    
+    initEvents : function()
+    {
+        
+
     }
 });
