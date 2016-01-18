@@ -133,8 +133,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.inputEl.hide();
         
-        this.inputEl.dom
-        
 //
 //        this.pictureBtn.on('click', this.beforeSelectFile, this);
 //        
