@@ -9,6 +9,7 @@
  * Bootstrap UploadCropbox class
  * @cfg {String} emptyText 
  * @cfg {String} inputName default 'imageUpload'
+ * @cfg {String} imageSrc 
  * 
  * @constructor
  * Create a new UploadCropbox
