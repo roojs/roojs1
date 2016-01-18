@@ -201,6 +201,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         Roo.log('onMouseMove');
         
         e.stopEvent();
+        
+        
     },
     
     onMouseUp : function(e)
