@@ -33,6 +33,7 @@
 @media (min-width: 768px) {
     .roo-upload-cropbox-empty-notification {
         margin-top: 200px;
+        font-size: 2.5em;
     }
     
     .roo-upload-cropbox-image-section {
