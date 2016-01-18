@@ -82,7 +82,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        this.imageSection = this.el.select('.roo-upload-cropbox-image-section', true).first();
+        this.imageSection = this.el.select('roo-upload-cropbox-image-section', true).first();
         
         Roo.log(this.imageSection);
 
