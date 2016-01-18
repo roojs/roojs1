@@ -23,13 +23,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        
-        Roo.log('run??????????????????????????????');
-        
         return {
             tag : 'div',
             cls : 'roo-upload-cropbox',
-            html : 'test'
+            cn: [
+                {
+                    
+                }
+            ]
         }
         
           
