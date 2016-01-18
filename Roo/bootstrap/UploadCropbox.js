@@ -128,6 +128,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        this.footerSection.hide();
 //        
         this.imageSection.on('click', this.beforeSelectFile, this);
+        this.imageSection.on('')
         
         this.pictureBtn.on('click', this.beforeSelectFile, this);
         
@@ -148,6 +149,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.image.attr('src', src);
         
         this.onImageLoad();
+        
+        this.imageSection.un('click', this.beforeSelectFile, this);
     },
     
     onImageLoad : function()
@@ -165,8 +168,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 'background-size: ' + w +'px ' + h + 'px; ' +
                 'background-position: ' + pw + 'px ' + ph + 'px; ' +
                 'background-repeat: no-repeat');
-        
-        this.imageSection.un('click', this.beforeSelectFile, this);
     }
     
 });
