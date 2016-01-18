@@ -28,7 +28,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         return {
             tag : 'div',
-            cls : 'well well-md roo-upload-cropbox',
+            cls : 'roo-upload-cropbox',
             html : 'test'
         }
         
