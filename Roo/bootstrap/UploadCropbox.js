@@ -171,9 +171,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         Roo.log('on Image load');
         
-        var curTransform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
+        var transform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         
-        Roo.log(curTransform);
+        var forceX = this.thumb.dom.offsetLeft + transform.m41;
+        var forceY = this.thumb.dom.offsetLeft + transform.m42;
         
         var w =  parseInt(this.image.dom.width) * this.ratio;
         var h =  parseInt(this.image.dom.height)* this.ratio;
