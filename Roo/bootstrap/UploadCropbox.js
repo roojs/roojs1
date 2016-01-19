@@ -240,9 +240,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var x = e.getPageX() - this.mouseX;
         var y = e.getPageY() - this.mouseY;
 
-        
-        var bg = this.imageSection.getStyle('background-position').split(' ');
-
         var bgX = x + this.imageCanvas.getLeft(true);
         var bgY = y + this.imageCanvas.getTop(true);
         
