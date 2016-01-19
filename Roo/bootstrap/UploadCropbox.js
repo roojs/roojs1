@@ -146,9 +146,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     loadImage : function(src)
     {   
-        if(this.imageSection.hasEvent){
+        if(this.imageSection.hasOnClickEvent){
             this.imageSection.un('click', this.beforeSelectFile, this);
-            this.imageSection.hasEvent = false;
+            this.imageSection.hasOnClickEvent = false;
         }
         
         this.image.attr('src', src);
