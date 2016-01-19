@@ -72,8 +72,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
 //        this.image = Roo.get(new Image());
 //        
-//        this.imageSection = this.el.select('.roo-upload-cropbox-image-section', true).first();
-//        this.imageSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.imageSection = this.el.select('.roo-upload-cropbox-image-section', true).first();
+        this.imageSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
 //        
 //        this.thumb = this.el.select('.roo-upload-cropbox-thumb', true).first();
 //        this.thumb.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
