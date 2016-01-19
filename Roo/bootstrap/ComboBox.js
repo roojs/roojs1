@@ -2286,10 +2286,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
         var listHeight = this.touchViewListGroup.getHeight();
         
-        
-        Roo.log([bodyHeight, listHeight]);
-        
-        if(firstChecked){
+        if(firstChecked && listHeight > bodyHeight){
             firstChecked.findParent('li').scrollIntoView(this.touchViewListGroup.dom);
         }
         
