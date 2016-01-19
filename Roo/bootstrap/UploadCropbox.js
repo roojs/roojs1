@@ -248,13 +248,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var transform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         
-        var thumbStartX = this.thumb.getLeft(true) + transform.m41;
-        var thumbStartY = this.thumb.getTop(true) + transform.m42;
+        var minX = this.thumb.getLeft(true) + transform.m41;
+        var minY = this.thumb.getTop(true) + transform.m42;
         
         var thumbEndX = thumbStartX + this.thumb.getWidth();
         var thumbEndY = thumbStartY + this.thumb.getHeight();
         
-        if(thumbStartX < bgX){
+        if(minX < bgX){
             bgX = thumbStartX;
         }
         
@@ -262,7 +262,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             bgX = thumbEndX - parseInt(this.image.dom.width) * this.ratio;
         }
         
-        if(thumbStartY < bgY){
+        if(minY < bgY){
             bgY = thumbStartY;
         }
         
