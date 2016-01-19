@@ -94,13 +94,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
 //  
 //        this.bind();
-    }
+    },
 //    
-//    bind : function()
-//    {
-//        this.image.on('load', this.setBackground, this);
-//        
-//        this.imageSection.on('click', this.beforeSelectFile, this);
+    bind : function()
+    {
+        this.image.on('load', this.setBackground, this);
+        
+        this.imageSection.on('click', this.beforeSelectFile, this);
 //        
 //        this.imageSection.on('mousedown', this.onMouseDown, this);
 //        
@@ -117,8 +117,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        this.rotateLeft.on('click', this.onRotateLeft, this);
 //        
 //        this.rotateRight.on('click', this.onRotateRight, this);
-//        
-//    },
+        
+    },
 //    
 //    destory : function()
 //    {
