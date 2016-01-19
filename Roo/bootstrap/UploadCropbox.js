@@ -146,7 +146,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //    
     bind : function()
     {
-//        this.image.on('load', this.setBackground, this);
+        this.image.on('load', this.setBackground, this);
         
         this.imageSection.on('click', this.beforeSelectFile, this);
 //        
@@ -199,19 +199,19 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.image.attr('src', src);
     },
 //    
-//    setBackground : function()
-//    {
-//        var w =  parseInt(this.image.dom.width) * this.ratio;
-//        var h =  parseInt(this.image.dom.height) * this.ratio;
-//
-//        var pw = (this.imageSection.dom.clientWidth - w) / 2;
-//        var ph = (this.imageSection.dom.clientHeight - h) / 2;
-//        
-//        this.imageSection.setStyle('background-image', 'url(' + this.image.attr('src') + ')');
-//        this.imageSection.setStyle('background-size', w +'px ' + h + 'px' );
-//        this.imageSection.setStyle('background-position', pw + 'px ' + ph + 'px');
-//        this.imageSection.setStyle('background-repeat', 'no-repeat');
-//    },
+    setBackground : function()
+    {
+        var w =  parseInt(this.image.dom.width) * this.ratio;
+        var h =  parseInt(this.image.dom.height) * this.ratio;
+
+        var pw = (this.imageSection.dom.clientWidth - w) / 2;
+        var ph = (this.imageSection.dom.clientHeight - h) / 2;
+        
+        this.imageSection.setStyle('background-image', 'url(' + this.image.attr('src') + ')');
+        this.imageSection.setStyle('background-size', w +'px ' + h + 'px' );
+        this.imageSection.setStyle('background-position', pw + 'px ' + ph + 'px');
+        this.imageSection.setStyle('background-repeat', 'no-repeat');
+    },
 //    
 //    onMouseDown : function(e)
 //    {   
