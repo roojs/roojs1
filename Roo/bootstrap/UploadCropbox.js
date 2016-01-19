@@ -148,9 +148,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.imageSection.on('click', this.beforeSelectFile, this);
         
-        this.imageCanvas.on('mousedown', this.onMouseDown, this);
+        this.imageSection.on('mousedown', this.onMouseDown, this);
         
-        this.imageCanvas.on('mousemove', this.onMouseMove, this);
+        this.imageSection.on('mousemove', this.onMouseMove, this);
         
         Roo.get(document).on('mouseup', this.onMouseUp, this);
 //        
