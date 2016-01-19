@@ -236,7 +236,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         Roo.log('on mouse move');
-        return;
         
         var x = e.getPageX() - this.mouseX;
         var y = e.getPageY() - this.mouseY;
@@ -270,6 +269,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        if(thumbEndY > bgY + parseInt(this.image.dom.height) * this.ratio){
 //            bgY = thumbEndY - parseInt(this.image.dom.height) * this.ratio;
 //        }
+        
         
         this.imageCanvas.setLeft(bgX);
         this.imageCanvas.setTop(bgY);
