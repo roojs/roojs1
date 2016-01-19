@@ -48,10 +48,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     cn : [
                         {
                             tag : 'div',
-                            cls : 'roo-upload-cropbox-canvas'
-                        },
-                        {
-                            tag : 'div',
                             cls : 'roo-upload-cropbox-thumb'
                         }
                     ]
@@ -108,7 +104,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     initEvents : function()
     {
         this.image = Roo.get(new Image());
-        
         
         this.imageSection = this.el.select('.roo-upload-cropbox-image-section', true).first();
         this.imageSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
