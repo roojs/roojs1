@@ -138,16 +138,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         this.fireEvent('beforeSelectFile', this);
-    }
-//    
-//    loadImage : function(src)
-//    {   
-//        this.imageSection.un('click', this.beforeSelectFile, this);
-//        
+    },
+    
+    loadImage : function(src)
+    {   
+        this.imageSection.un('click', this.beforeSelectFile, this);
+        
 //        this.reset();
-//        
-//        this.image.attr('src', src);
-//    },
+        
+        this.image.attr('src', src);
+    }
 //    
 //    setBackground : function()
 //    {
