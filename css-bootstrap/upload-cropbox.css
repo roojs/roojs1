@@ -1,27 +1,13 @@
 
-.roo-upload-cropbox-image-section {
-    background-color: #fff;
-    border: 1px solid #e3e3e3;
-    width: 100%;
-    height: 300px;
-    position: relative;
-    overflow: hidden;
-    cursor:move;
-}
+/*.roo-upload-cropbox-empty-notification {
+    margin-top: 100px;
+    font-weight: bold;
+    font-style: italic;
+    color: white;
+    font-size: 1.8em;
+}*/
 
-.roo-upload-cropbox-canvas {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    text-align: center;
-    margin: 0px;
-    padding: 0px;
-    border: none;
-    width: 100%;
-    height: auto;
-}
-
-/*.roo-upload-cropbox-btn-group button {
+.roo-upload-cropbox-btn-group button {
     background-color: black;
     color: white;
     border-color: #333;
@@ -52,20 +38,13 @@
 }
 
 @media (min-width: 768px) {
-    .roo-upload-cropbox-empty-notification {
+/*    .roo-upload-cropbox-empty-notification {
         margin-top: 200px;
         font-size: 2.5em;
-    }
+    }*/
     
     .roo-upload-cropbox-image-section {
         height: 500px;
-    }
-    
-}*/
-
-@media (min-width: 768px) {
-    .roo-upload-cropbox-image-section {
-        height: 450px;
     }
     
 }
