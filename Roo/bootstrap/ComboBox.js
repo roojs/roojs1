@@ -285,6 +285,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     specialFilter : false,
     
+    /**
+     * @cfg {Boolean} mobileTouchView (true|false) show mobile touch view when using a mobile default true
+     */
+    specialFilter : false,
+    
     //private
     addicon : false,
     editicon: false,
