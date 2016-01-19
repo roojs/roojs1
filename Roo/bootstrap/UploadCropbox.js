@@ -128,12 +128,28 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        this.footerSection.hide();
 //        
         this.imageSection.on('click', this.beforeSelectFile, this);
-        this.imageSection.hasOnClickEvent = true;
         
         this.image.on('load', this.onLoadImage, this);
         
         this.pictureBtn.on('click', this.beforeSelectFile, this);
         
+        this.imageSection.hasMouseDownEvent = false;
+        this.imageSection.hasMouseMoveEvent = false;
+        
+        this.imageSection.hasOnClickEvent = true;
+        this.imageSection.hasOnClickEvent = true;
+        this.imageSection.hasOnClickEvent = true;
+        
+        
+        this.imageSection.on('mousedown', this.onMouseDown, this);
+        
+        this.imageSection.on('mousemove', this.onMouseMove, this);
+        
+        Roo.get(document).on('mouseup', this.onMouseUp, this);
+        
+        var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
+        
+        this.imageSection.on(mousewheel, this.onMouseWheel, this);
     },
     
     beforeSelectFile : function(e)
