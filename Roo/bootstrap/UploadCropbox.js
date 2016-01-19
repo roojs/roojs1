@@ -294,6 +294,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         Roo.log('on mouse wheel');
         
         var ratio = (e.getWheelDelta() == 1) ? 1.1 : 0.9;
+        
+        this.image.setWidth(this.image.getWidth() * ratio);
+        this.image.setHeight(this.image.getHeight() * ratio);
 //        
 //        Roo.log(ratio);
 //        
@@ -308,7 +311,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        
 //        this.ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
         
-        this.setBackground();
+//        this.setBackground();
     },
 //    
 //    onRotateLeft : function(e)
