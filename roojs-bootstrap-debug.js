@@ -13313,7 +13313,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var listHeight = this.touchViewListGroup.getHeight();
         
         if(firstChecked && listHeight > bodyHeight){
-            firstChecked.findParent('li').scrollIntoView(this.touchViewListGroup.dom);
+            (function() { firstChecked.findParent('li').scrollIntoView(this.touchViewListGroup.dom); }).defer(500);
         }
         
     },
