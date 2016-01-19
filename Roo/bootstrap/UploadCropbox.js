@@ -179,7 +179,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         Roo.log('set back ground');
         
         var w =  parseInt(this.image.dom.width) * this.ratio;
-        var h =  parseInt(this.image.dom.height)* this.ratio;
+        var h =  parseInt(this.image.dom.height) * this.ratio;
 
         var pw = (this.imageSection.dom.clientWidth - w) / 2;
         var ph = (this.imageSection.dom.clientHeight - h) / 2;
@@ -268,6 +268,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
         
+        var w =  parseInt(this.image.dom.width) * this.ratio;
+        var h =  parseInt(this.image.dom.height) * this.ratio;
+
+        var pw = (this.imageSection.dom.clientWidth - w) / 2;
+        var ph = (this.imageSection.dom.clientHeight - h) / 2;
         
         
         this.ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
