@@ -146,6 +146,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
+    destory : function()
+    {
+        
+    },
+    
     beforeSelectFile : function(e)
     {
         e.preventDefault();
