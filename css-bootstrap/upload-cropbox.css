@@ -7,7 +7,6 @@
     position: relative;
     overflow: hidden;
     cursor:move;
-    min-height: 500px;
 }
 
 .roo-upload-cropbox-canvas {
@@ -19,7 +18,6 @@
     padding: 0px;
     border: none;
     width: 100%;
-    min-height: 300px;
 }
 
 /*.roo-upload-cropbox-btn-group button {
@@ -63,10 +61,3 @@
     }
     
 }*/
-
-@media (min-width: 768px) {
-    .roo-upload-cropbox-image-section {
-        min-height: 500px;
-    }
-    
-}
