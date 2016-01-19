@@ -243,14 +243,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         e.stopEvent();
         
-        var ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
-        
-        if(
-                parseInt(this.image.dom.width) * ratio < this.thumb.getWidth() ||
-                parseInt(this.image.dom.height) * ratio < this.thumb.getHeight()
-        ){
-            return;
-        }
+//        var ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
+//        
+//        if(
+//                parseInt(this.image.dom.width) * ratio < this.thumb.getWidth() ||
+//                parseInt(this.image.dom.height) * ratio < this.thumb.getHeight()
+//        ){
+//            return;
+//        }
         
         this.ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
         
