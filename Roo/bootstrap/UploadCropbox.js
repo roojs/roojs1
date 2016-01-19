@@ -210,16 +210,20 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageCanvas.setTop(ph);
         
     },
-//    
-//    onMouseDown : function(e)
-//    {   
-//        e.stopEvent();
-//        
-//        this.dragable = true;
-//        this.mouseX = e.getPageX();
-//        this.mouseY = e.getPageY();
-//        
-//    },
+    
+    onMouseDown : function(e)
+    {   
+        Roo.log('on mouse down');
+        
+        return;
+        
+        e.stopEvent();
+        
+        this.dragable = true;
+        this.mouseX = e.getPageX();
+        this.mouseY = e.getPageY();
+        
+    },
 //    
 //    onMouseMove : function(e)
 //    {   
