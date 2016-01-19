@@ -61,6 +61,49 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                             cls : 'roo-upload-cropbox-thumb'
                         }
                     ]
+                },
+                {
+                    tag : 'div',
+                    cls : 'roo-upload-cropbox-footer-section',
+                    cn : {
+                        tag : 'div',
+                        cls : 'btn-group btn-group-justified roo-upload-cropbox-btn-group',
+                        cn : [
+                            {
+                                tag : 'div',
+                                cls : 'btn-group',
+                                cn : [
+                                    {
+                                        tag : 'button',
+                                        cls : 'btn btn-default roo-upload-cropbox-rotate-left',
+                                        html : '<i class="fa fa-undo"></i>'
+                                    }
+                                ]
+                            },
+                            {
+                                tag : 'div',
+                                cls : 'btn-group',
+                                cn : [
+                                    {
+                                        tag : 'button',
+                                        cls : 'btn btn-default roo-upload-cropbox-picture',
+                                        html : '<i class="fa fa-picture-o"></i>'
+                                    }
+                                ]
+                            },
+                            {
+                                tag : 'div',
+                                cls : 'btn-group',
+                                cn : [
+                                    {
+                                        tag : 'button',
+                                        cls : 'btn btn-default roo-upload-cropbox-rotate-right',
+                                        html : '<i class="fa fa-repeat"></i>'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
                 }
             ]
         };
