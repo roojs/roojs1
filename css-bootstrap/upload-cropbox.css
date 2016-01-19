@@ -9,6 +9,16 @@
     cursor:move;
 }
 
+.roo-upload-cropbox-canvas {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
 /*.roo-upload-cropbox-btn-group button {
     background-color: black;
     color: white;
