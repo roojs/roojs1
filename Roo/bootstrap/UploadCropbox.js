@@ -255,7 +255,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var thumbEndY = thumbStartY + this.thumb.getHeight();
         
         if(minX < bgX){
-            bgX = thumbStartX;
+            bgX = minX;
         }
         
         if(thumbEndX > bgX + parseInt(this.image.dom.width) * this.ratio){
@@ -263,7 +263,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         if(minY < bgY){
-            bgY = thumbStartY;
+            bgY = minY;
         }
         
         if(thumbEndY > bgY + parseInt(this.image.dom.height) * this.ratio){
