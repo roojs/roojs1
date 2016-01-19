@@ -188,7 +188,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.fireEvent('beforeSelectFile', this);
     },
     
-    loadImage : function(src)
+    setCanvasImage : function(src)
     {   
         this.imageSection.un('click', this.beforeSelectFile, this);
         
