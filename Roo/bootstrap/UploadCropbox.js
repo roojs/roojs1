@@ -172,7 +172,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.reset();
         
-        this.image.attr('src', '');
+        this.image.attr('src', src);
     },
     
     setBackground : function()
