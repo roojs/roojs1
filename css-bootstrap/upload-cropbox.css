@@ -64,7 +64,7 @@
 }*/
 
 @media (min-width: 768px) {
-    .roo-upload-cropbox-canvas {
+    .roo-upload-cropbox-image-section {
         min-height: 500px;
     }
     
