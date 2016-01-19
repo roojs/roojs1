@@ -149,6 +149,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageSection.on('click', this.beforeSelectFile, this);
         
         this.imageCanvas.on('mousedown', this.onMouseDown, this);
+        
+        this.imageCanvas.on('mousemove', this.onMouseMove, this);
 //        
 //        this.imageSection.on('mousedown', this.onMouseDown, this);
 //        
@@ -220,53 +222,53 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.mouseY = e.getPageY();
         
     },
-//    
-//    onMouseMove : function(e)
-//    {   
-//        e.stopEvent();
-//        
-//        if (!this.dragable){
-//            return;
-//        }
-//        
-//        var x = e.getPageX() - this.mouseX;
-//        var y = e.getPageY() - this.mouseY;
-//
-//        
-//        var bg = this.imageSection.getStyle('background-position').split(' ');
-//
-//        var bgX = x + parseInt(bg[0]);
-//        var bgY = y + parseInt(bg[1]);
-//        
-//        var transform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
-//        
-//        var thumbStartX = this.thumb.dom.offsetLeft + transform.m41;
-//        var thumbStartY = this.thumb.dom.offsetTop + transform.m42;
-//        
-//        var thumbEndX = thumbStartX + this.thumb.getWidth();
-//        var thumbEndY = thumbStartY + this.thumb.getHeight();
-//        
-//        if(thumbStartX < bgX){
-//            bgX = thumbStartX;
-//        }
-//        
-//        if(thumbEndX > bgX + parseInt(this.image.dom.width) * this.ratio){
-//            bgX = thumbEndX - parseInt(this.image.dom.width) * this.ratio;
-//        }
-//        
-//        if(thumbStartY < bgY){
-//            bgY = thumbStartY;
-//        }
-//        
-//        if(thumbEndY > bgY + parseInt(this.image.dom.height) * this.ratio){
-//            bgY = thumbEndY - parseInt(this.image.dom.height) * this.ratio;
-//        }
-//        
-//        this.imageSection.setStyle('background-position', bgX +'px ' + bgY + 'px');
-//
-//        this.mouseX = e.getPageX();
-//        this.mouseY = e.getPageY();
-//    },
+    
+    onMouseMove : function(e)
+    {   
+        e.stopEvent();
+        
+        if (!this.dragable){
+            return;
+        }
+        
+        var x = e.getPageX() - this.mouseX;
+        var y = e.getPageY() - this.mouseY;
+
+        
+        var bg = this.imageSection.getStyle('background-position').split(' ');
+
+        var bgX = x + parseInt(bg[0]);
+        var bgY = y + parseInt(bg[1]);
+        
+        var transform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
+        
+        var thumbStartX = this.thumb.dom.offsetLeft + transform.m41;
+        var thumbStartY = this.thumb.dom.offsetTop + transform.m42;
+        
+        var thumbEndX = thumbStartX + this.thumb.getWidth();
+        var thumbEndY = thumbStartY + this.thumb.getHeight();
+        
+        if(thumbStartX < bgX){
+            bgX = thumbStartX;
+        }
+        
+        if(thumbEndX > bgX + parseInt(this.image.dom.width) * this.ratio){
+            bgX = thumbEndX - parseInt(this.image.dom.width) * this.ratio;
+        }
+        
+        if(thumbStartY < bgY){
+            bgY = thumbStartY;
+        }
+        
+        if(thumbEndY > bgY + parseInt(this.image.dom.height) * this.ratio){
+            bgY = thumbEndY - parseInt(this.image.dom.height) * this.ratio;
+        }
+        
+        this.imageSection.setStyle('background-position', bgX +'px ' + bgY + 'px');
+
+        this.mouseX = e.getPageX();
+        this.mouseY = e.getPageY();
+    },
 //    
 //    onMouseUp : function(e)
 //    {   
