@@ -204,8 +204,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     setCanvasPosition : function()
     {
-        var w =  parseInt(this.image.getWidth()) * this.ratio;
-        var h =  parseInt(this.image.getHeight()) * this.ratio;
+        var w =  this.image.getWidth() * this.ratio;
+        var h =  this.image.getHeight() * this.ratio;
 
         var pw = (this.imageSection.getWidth(true) - w) / 2;
         var ph = (this.imageSection.getHeight(true) - h) / 2;
@@ -251,14 +251,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var minX = this.thumb.getLeft(true) + transform.m41;
         var minY = this.thumb.getTop(true) + transform.m42;
         
-        var thumbEndX = thumbStartX + this.thumb.getWidth();
-        var thumbEndY = thumbStartY + this.thumb.getHeight();
+        var maxX = minX + this.thumb.getWidth() - parseInt(this.image.dom.width) * this.ratio;
+        var maxY = thumbStartY + this.thumb.getHeight();
         
         if(minX < bgX){
             bgX = minX;
         }
         
-        if(thumbEndX > bgX + parseInt(this.image.dom.width) * this.ratio){
+        if(thumbEndX > bgX + ){
             bgX = thumbEndX - parseInt(this.image.dom.width) * this.ratio;
         }
         
