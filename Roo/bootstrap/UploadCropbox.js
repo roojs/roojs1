@@ -248,8 +248,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var transform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         
-        var thumbStartX = this.thumb.dom.offsetLeft + transform.m41;
-        var thumbStartY = this.thumb.dom.offsetTop + transform.m42;
+        var thumbStartX = this.thumb.getLeft(true) + transform.m41;
+        var thumbStartY = this.thumb.getTop(true) + transform.m42;
         
         var thumbEndX = thumbStartX + this.thumb.getWidth();
         var thumbEndY = thumbStartY + this.thumb.getHeight();
