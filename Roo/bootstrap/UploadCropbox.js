@@ -221,7 +221,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var bgX = x + parseInt(bg[0]);
         var bgY = y + parseInt(bg[1]);
         
-        
+        var xy = 
         
         this.imageSection.setStyle('background-position', bgX +'px ' + bgY + 'px');
 
@@ -283,6 +283,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if(thumbEndY > y + parseInt(this.image.dom.height) * this.ratio){
             y = thumbEndY - parseInt(this.image.dom.height) * this.ratio;
         }
+        
+        return [x, y];
     }
     
 });
