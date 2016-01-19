@@ -2455,6 +2455,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         //this.el.addClass([this.fieldClass, this.cls]);
         
     },
+    
     getAutoCreate : function(){
         
         
@@ -11310,6 +11311,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
      */
     specialFilter : false,
     
+    /**
+     * @cfg {Boolean} mobileTouchView (true|false) show mobile touch view when using a mobile default true
+     */
+    specialFilter : false,
+    
     //private
     addicon : false,
     editicon: false,
@@ -11325,6 +11331,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     showToggleBtn : true,
     animate : true,
     emptyResultText: 'Empty',
+    mobileTouchView : true,
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
@@ -11335,7 +11342,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          * Touch Devices
          */
         
-        if(Roo.isTouch){
+        if(Roo.isTouch && this.mobileTouchView){
             cfg = this.getAutoCreateTouchView();
             return cfg;;
         }
@@ -11519,7 +11526,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
          * Touch Devices
          */
         
-        if(Roo.isTouch){
+        if(Roo.isTouch && this.mobileTouchView){
             this.initTouchView();
             return;
         }
@@ -12880,9 +12887,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     inputEl: function ()
     {
-        if(this.tickable && !Roo.isTouch){
+        if(Roo.isTouch && this.mobileTouchView){
+            return this.el.select('input.form-control',true).first();
+        }
+        
+        if(this.tickable){
             return this.searchField;
         }
+        
         return this.el.select('input.form-control',true).first();
     },
     
@@ -13231,8 +13243,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     doTouchViewQuery : function()
     {
-        Roo.log('doTouchViewQuery');
-        
         var qe = {
             query: '',
             forceAll: true,
@@ -13254,16 +13264,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onTouchViewBeforeLoad : function(combo,opts)
     {
-        Roo.log('onTouchViewBeforeLoad');
-        
         return;
     },
 
     // private
     onTouchViewLoad : function()
     {
-        Roo.log('onTouchViewLoad');
-        
         if(this.store.getCount() < 1){
             this.onTouchViewEmptyResults();
             return;
@@ -13307,15 +13313,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     onTouchViewLoadException : function()
     {
-        Roo.log('onTouchViewLoadException');
-        
         this.hideTouchView();
     },
     
     onTouchViewEmptyResults : function()
     {
-        Roo.log('onTouchViewEmptyResults');
-        
         this.clearTouchView();
         
         this.touchViewListGroup.createChild(Roo.bootstrap.ComboBox.emptyResult);
