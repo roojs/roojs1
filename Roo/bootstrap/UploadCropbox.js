@@ -165,7 +165,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         this.fireEvent('beforeSelectFile', this);
-        
     },
     
     loadImage : function(src)
@@ -173,7 +172,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageSection.un('click', this.beforeSelectFile, this);
         
         this.image.attr('src', src);
-        
     },
     
     setBackground : function()
