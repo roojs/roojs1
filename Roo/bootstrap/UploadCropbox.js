@@ -244,8 +244,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var bg = this.imageSection.getStyle('background-position').split(' ');
 
-        var bgX = x + parseInt(bg[0]);
-        var bgY = y + parseInt(bg[1]);
+        var bgX = x + this.imageCanvas.getLeft(true);
+        var bgY = y + this.imageCanvas.getTop(true);
         
         var transform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         
