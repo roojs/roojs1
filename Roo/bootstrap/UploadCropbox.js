@@ -268,8 +268,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
         
-        var w =  parseInt(this.image.dom.width) * this.ratio;
-        var h =  parseInt(this.image.dom.height) * this.ratio;
+        var w =  parseInt(this.image.dom.width) * ratio;
+        var h =  parseInt(this.image.dom.height) * ratio;
 
         var pw = (this.imageSection.dom.clientWidth - w) / 2;
         var ph = (this.imageSection.dom.clientHeight - h) / 2;
