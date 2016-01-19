@@ -205,7 +205,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onMouseMove : function(e)
     {   
-        e.preventDefault();
+        e.stopEvent();
         
         if (!this.dragable){
             return;
@@ -252,14 +252,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onMouseUp : function(e)
     {   
-        e.preventDefault();
+        e.stopEvent();
         
         this.dragable = false;
     },
     
     onMouseWheel : function(e)
     {   
-        e.preventDefault();
+        e.stopEvent();
         
         var ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
         
@@ -277,12 +277,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onRotateLeft : function(e)
     {
+        e.stopEvent();
+        
         Roo.log('on rotate left');
     },
     
     onRotateRight : function(e)
     {
-        e.preventDefault();
+        e.stopEvent();
         
         Roo.log('on rotate right');
     }
