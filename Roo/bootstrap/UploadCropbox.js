@@ -144,7 +144,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //    
     bind : function()
     {
-        this.image.on('load', this.setCanvas, this);
+        this.image.on('load', this.setCanvasPosition, this);
         
         this.imageSection.on('click', this.beforeSelectFile, this);
         
@@ -198,7 +198,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    setCanvas : function()
+    setCanvasPosition : function()
     {
         var w =  parseInt(this.image.getWidth()) * this.ratio;
         var h =  parseInt(this.image.getHeight()) * this.ratio;
