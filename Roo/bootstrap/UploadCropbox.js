@@ -233,16 +233,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             bgX = thumbStartX;
         }
         
-        if(thumbEndX > bgX + this.image.dom.width){
-            bgX = thumbEndX - this.image.dom.width;
+        if(thumbEndX > bgX + parseInt(this.image.dom.width) * this.ratio){
+            bgX = thumbEndX - parseInt(this.image.dom.width) * this.ratio;
         }
         
         if(thumbStartY < bgY){
             bgY = thumbStartY;
         }
         
-        if(thumbEndY > bgY + this.image.dom.height){
-            bgY = thumbEndY - this.image.dom.height;
+        if(thumbEndY > bgY + parseInt(this.image.dom.height) * this.ratio){
+            bgY = thumbEndY - parseInt(this.image.dom.height) * this.ratio;
         }
         
         this.imageSection.setStyle('background-position', bgX +'px ' + bgY + 'px');
