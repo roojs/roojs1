@@ -160,7 +160,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         Roo.log('on load image');
         
-        this.setBackground(true);
+        this.setBackground();
         
         this.imageSection.on('mousedown', this.onMouseDown, this);
         
@@ -174,24 +174,19 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    setBackground : function(center)
+    setBackground : function()
     {
         Roo.log('set back ground');
         
         var w =  parseInt(this.image.dom.width) * this.ratio;
         var h =  parseInt(this.image.dom.height) * this.ratio;
 
-        
-        
-        if(center){
-            var pw = (this.imageSection.dom.clientWidth - w) / 2;
-            var ph = (this.imageSection.dom.clientHeight - h) / 2;
-            this.imageSection.setStyle('background-position', pw + 'px ' + ph + 'px');
-        }
+        var pw = (this.imageSection.dom.clientWidth - w) / 2;
+        var ph = (this.imageSection.dom.clientHeight - h) / 2;
         
         this.imageSection.setStyle('background-image', 'url(' + this.image.attr('src') + ')');
         this.imageSection.setStyle('background-size', w +'px ' + h + 'px' );
-        
+        this.imageSection.setStyle('background-position', pw + 'px ' + ph + 'px');
         this.imageSection.setStyle('background-repeat', 'no-repeat');
     },
     
@@ -219,15 +214,38 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var x = e.getPageX() - this.mouseX;
         var y = e.getPageY() - this.mouseY;
+
         
         var bg = this.imageSection.getStyle('background-position').split(' ');
 
         var bgX = x + parseInt(bg[0]);
         var bgY = y + parseInt(bg[1]);
         
-        var xy = this.verifyBackgroundPosition(bgX, bgY);
+        var transform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         
-        this.imageSection.setStyle('background-position', xy[0] +'px ' + xy[1] + 'px');
+        var thumbStartX = this.thumb.dom.offsetLeft + transform.m41;
+        var thumbStartY = this.thumb.dom.offsetTop + transform.m42;
+        
+        var thumbEndX = thumbStartX + this.thumb.getWidth();
+        var thumbEndY = thumbStartY + this.thumb.getHeight();
+        
+        if(thumbStartX < bgX){
+            bgX = thumbStartX;
+        }
+        
+        if(thumbEndX > bgX + parseInt(this.image.dom.width) * this.ratio){
+            bgX = thumbEndX - parseInt(this.image.dom.width) * this.ratio;
+        }
+        
+        if(thumbStartY < bgY){
+            bgY = thumbStartY;
+        }
+        
+        if(thumbEndY > bgY + parseInt(this.image.dom.height) * this.ratio){
+            bgY = thumbEndY - parseInt(this.image.dom.height) * this.ratio;
+        }
+        
+        this.imageSection.setStyle('background-position', bgX +'px ' + bgY + 'px');
 
         this.mouseX = e.getPageX();
         this.mouseY = e.getPageY();
@@ -260,35 +278,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
         
         this.setBackground();
-    },
-    
-    verifyBackgroundPosition : function(x, y)
-    {
-        var transform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
-        
-        var thumbStartX = this.thumb.dom.offsetLeft + transform.m41;
-        var thumbStartY = this.thumb.dom.offsetTop + transform.m42;
-        
-        var thumbEndX = thumbStartX + this.thumb.getWidth();
-        var thumbEndY = thumbStartY + this.thumb.getHeight();
-        
-        if(thumbStartX < x){
-            x = thumbStartX;
-        }
-        
-        if(thumbEndX > x + parseInt(this.image.dom.width) * this.ratio){
-            x = thumbEndX - parseInt(this.image.dom.width) * this.ratio;
-        }
-        
-        if(thumbStartY < y){
-            y = thumbStartY;
-        }
-        
-        if(thumbEndY > y + parseInt(this.image.dom.height) * this.ratio){
-            y = thumbEndY - parseInt(this.image.dom.height) * this.ratio;
-        }
-        
-        return [x, y];
     }
     
 });
