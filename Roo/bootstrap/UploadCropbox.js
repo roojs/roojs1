@@ -133,12 +133,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        this.mouseY = 0;
 //    },
 //    
-//    beforeSelectFile : function(e)
-//    {
-//        e.preventDefault();
-//        
-//        this.fireEvent('beforeSelectFile', this);
-//    },
+    beforeSelectFile : function(e)
+    {
+        e.preventDefault();
+        
+        this.fireEvent('beforeSelectFile', this);
+    }
 //    
 //    loadImage : function(src)
 //    {   
