@@ -144,6 +144,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.pictureBtn.on('click', this.beforeSelectFile, this);
         
+        this.pictureBtn.on('click', this.beforeSelectFile, this);
+        
     },
     
     destory : function()
