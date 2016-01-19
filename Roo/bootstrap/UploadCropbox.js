@@ -274,13 +274,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.mouseX = e.getPageX();
         this.mouseY = e.getPageY();
     },
-//    
-//    onMouseUp : function(e)
-//    {   
-//        e.stopEvent();
-//        
-//        this.dragable = false;
-//    },
+    
+    onMouseUp : function(e)
+    {   
+        e.stopEvent();
+        
+        this.dragable = false;
+    },
 //    
 //    onMouseWheel : function(e)
 //    {   
