@@ -62,3 +62,10 @@
     }
     
 }*/
+
+@media (min-width: 768px) {
+    .roo-upload-cropbox-canvas {
+        min-height: 500px;
+    }
+    
+}
