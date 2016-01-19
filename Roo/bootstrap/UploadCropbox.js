@@ -195,7 +195,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.image.attr('src', src);
     },
     
-    setBackground : function()
+    setCanvas : function()
     {
         var w =  parseInt(this.image.getWidth()) * this.ratio;
         var h =  parseInt(this.image.getHeight()) * this.ratio;
@@ -203,10 +203,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var pw = (this.imageSection.getWidth(true) - w) / 2;
         var ph = (this.imageSection.getHeight(true) - h) / 2;
         
-        this.imageSection.setStyle('background-image', 'url(' + this.image.attr('src') + ')');
-        this.imageSection.setStyle('background-size', w +'px ' + h + 'px' );
-        this.imageSection.setStyle('background-position', pw + 'px ' + ph + 'px');
-        this.imageSection.setStyle('background-repeat', 'no-repeat');
+        
     },
 //    
 //    onMouseDown : function(e)
