@@ -2173,8 +2173,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             bodyHeight = bodyHeight - this.touchViewHeaderEl.getHeight();
         }
         
-        
-
         this.touchViewBodyEl.setHeight(bodyHeight);
 
         if(this.animate){
