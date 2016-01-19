@@ -197,7 +197,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        this.reset();
         
         this.image.attr('src', src);
-    }
+    },
 //    
 //    setBackground : function()
 //    {
@@ -302,12 +302,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        Roo.log('on rotate left');
 //    },
 //    
-//    onRotateRight : function(e)
-//    {
-//        e.stopEvent();
-//        
-//        Roo.log('on rotate right');
-//        
-//    }
+    onRotateRight : function(e)
+    {
+        e.stopEvent();
+        
+        Roo.log('on rotate right');
+        
+    }
     
 });
