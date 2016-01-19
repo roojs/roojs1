@@ -207,9 +207,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var w =  this.image.getWidth();
         var h =  this.image.getHeight();
 
-        this.image.setWidth(w);
-        this.image.setHeight(h);
-        
         var pw = (this.imageSection.getWidth(true) - w) / 2;
         var ph = (this.imageSection.getHeight(true) - h) / 2;
         
