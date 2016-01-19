@@ -8,7 +8,6 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap UploadCropbox class
  * @cfg {String} emptyText 
- * @cfg {Number} ratio default 1
  * 
  * @constructor
  * Create a new UploadCropbox
