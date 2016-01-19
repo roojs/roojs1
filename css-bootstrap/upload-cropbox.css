@@ -34,11 +34,13 @@
     background: none repeat scroll 0% 0% transparent;
 }
 
-/*.roo-upload-cropbox-btn-group button {
+.roo-upload-cropbox-btn-group button {
     background-color: black;
     color: white;
     border-color: #333;
 }
+
+/*
 
 .roo-upload-cropbox-image-section {
     background-color: #fff;
