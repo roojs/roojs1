@@ -293,9 +293,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         Roo.log('on mouse wheel');
         
-        return;
-        
         var ratio = (e.getWheelDelta() == 1) ? 1.1 : 0.9;
+        
+        Roo.log(ratio);
+        
+        return;
         
         if(
                 parseInt(this.image.dom.width) * ratio < this.thumb.getWidth() ||
