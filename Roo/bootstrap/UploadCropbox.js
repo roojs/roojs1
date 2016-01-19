@@ -208,24 +208,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onLoadCanvasImage : function(src)
     {   
-        var w =  this.image.getWidth();
-        var h =  this.image.getHeight();
-
-        this.imageOriginWidth = w;
-        this.imageOriginHeight = w;
+        this.imageOriginWidth = this.image.getWidth();
+        this.imageOriginHeight = this.image.getHeight();
         
         this.setCanvasPosition();
-        
     },
     
     setCanvasPosition : function()
     {
-        var w =  this.image.getWidth();
-        var h =  this.image.getHeight();
-
-        this.imageOriginWidth = w;
-        this.imageOriginHeight = w;
-        
         var pw = (this.imageSection.getWidth(true) - this.image.getWidth()) / 2;
         var ph = (this.imageSection.getHeight(true) - this.image.getHeight()) / 2;
         
