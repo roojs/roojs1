@@ -246,29 +246,29 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var bgX = x + this.imageCanvas.getLeft(true);
         var bgY = y + this.imageCanvas.getTop(true);
         
-//        var transform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
-//        
-//        var thumbStartX = this.thumb.dom.offsetLeft + transform.m41;
-//        var thumbStartY = this.thumb.dom.offsetTop + transform.m42;
-//        
-//        var thumbEndX = thumbStartX + this.thumb.getWidth();
-//        var thumbEndY = thumbStartY + this.thumb.getHeight();
-//        
-//        if(thumbStartX < bgX){
-//            bgX = thumbStartX;
-//        }
-//        
-//        if(thumbEndX > bgX + parseInt(this.image.dom.width) * this.ratio){
-//            bgX = thumbEndX - parseInt(this.image.dom.width) * this.ratio;
-//        }
-//        
-//        if(thumbStartY < bgY){
-//            bgY = thumbStartY;
-//        }
-//        
-//        if(thumbEndY > bgY + parseInt(this.image.dom.height) * this.ratio){
-//            bgY = thumbEndY - parseInt(this.image.dom.height) * this.ratio;
-//        }
+        var transform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
+        
+        var thumbStartX = this.thumb.dom.offsetLeft + transform.m41;
+        var thumbStartY = this.thumb.dom.offsetTop + transform.m42;
+        
+        var thumbEndX = thumbStartX + this.thumb.getWidth();
+        var thumbEndY = thumbStartY + this.thumb.getHeight();
+        
+        if(thumbStartX < bgX){
+            bgX = thumbStartX;
+        }
+        
+        if(thumbEndX > bgX + parseInt(this.image.dom.width) * this.ratio){
+            bgX = thumbEndX - parseInt(this.image.dom.width) * this.ratio;
+        }
+        
+        if(thumbStartY < bgY){
+            bgY = thumbStartY;
+        }
+        
+        if(thumbEndY > bgY + parseInt(this.image.dom.height) * this.ratio){
+            bgY = thumbEndY - parseInt(this.image.dom.height) * this.ratio;
+        }
         
         
         this.imageCanvas.setLeft(bgX);
