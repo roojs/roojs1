@@ -37,6 +37,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     mouseY : 0,
     loaded : false,
     
+    
     getAutoCreate : function()
     {
         var cfg = {
