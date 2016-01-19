@@ -11314,7 +11314,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     /**
      * @cfg {Boolean} mobileTouchView (true|false) show mobile touch view when using a mobile default true
      */
-    specialFilter : false,
+    mobileTouchView : true,
     
     //private
     addicon : false,
@@ -11331,7 +11331,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     showToggleBtn : true,
     animate : true,
     emptyResultText: 'Empty',
-    mobileTouchView : true,
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
