@@ -1,4 +1,15 @@
 
+.roo-upload-cropbox-image-section {
+    background-color: #fff;
+    border: 1px solid #e3e3e3;
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    cursor:move;
+}
+
 /*.roo-upload-cropbox-btn-group button {
     background-color: black;
     color: white;
