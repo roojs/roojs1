@@ -181,8 +181,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //    
     beforeSelectFile : function(e)
     {
-        Roo.log('run??');
-        
         e.preventDefault();
         
         this.fireEvent('beforeSelectFile', this);
