@@ -13198,7 +13198,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(this.fieldLabel.length){
             bodyHeight = bodyHeight - this.touchViewHeaderEl.getHeight();
         }
-
+        
         this.touchViewBodyEl.setHeight(bodyHeight);
 
         if(this.animate){
@@ -13304,7 +13304,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var firstChecked = this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).first();
         
-        if(firstChecked){
+        var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
+
+        if(this.fieldLabel.length){
+            bodyHeight = bodyHeight - this.touchViewHeaderEl.getHeight();
+        }
+
+        var listHeight = this.touchViewListGroup.getHeight();
+        
+        if(firstChecked && listHeight > bodyHeight){
             firstChecked.findParent('li').scrollIntoView(this.touchViewListGroup.dom);
         }
         
