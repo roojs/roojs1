@@ -1861,7 +1861,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     inputEl: function ()
     {
-        if(this.tickable && !Roo.isTouch){
+        if(this.tickable){
             return this.searchField;
         }
         return this.el.select('input.form-control',true).first();
