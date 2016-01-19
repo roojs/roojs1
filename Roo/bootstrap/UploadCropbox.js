@@ -83,6 +83,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.thumb = this.el.select('.roo-upload-cropbox-thumb', true).first();
         this.thumb.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
 //        
 //        this.footerSection = this.el.select('.roo-upload-cropbox-footer-section', true).first();
 //        this.footerSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
