@@ -7,6 +7,7 @@
     position: relative;
     overflow: hidden;
     cursor:move;
+    min-height: 500px;
 }
 
 .roo-upload-cropbox-canvas {
