@@ -123,10 +123,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.rotateRight = this.el.select('.roo-upload-cropbox-rotate-right', true).first();
         this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
   
-//        this.emptyNotification.show();
-//        this.imageView.hide();
-//        this.footerSection.hide();
-//        
         this.imageSection.on('click', this.beforeSelectFile, this);
         
         this.image.on('load', this.setBackground, this);
@@ -144,10 +140,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageSection.on(mousewheel, this.onMouseWheel, this);
         
         this.imageSectionHasOnClickEvent = true;
-//        this.imageSectionHasMouseDownEvent = false;
-//        this.imageSectionHasMouseMoveEvent = false;
-//        this.imageSectionHasMouseWheelEvent = false;
-//        this.bodyHasMouseUpEvent = false;
         
     },
     
@@ -161,10 +153,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     loadImage : function(src)
     {   
-        if(this.imageSectionHasOnClickEvent){
-            this.imageSection.un('click', this.beforeSelectFile, this);
-            this.imageSectionHasOnClickEvent = false;
-        }
+        this.imageSection.un('click', this.beforeSelectFile, this);
         
         this.image.attr('src', src);
         
