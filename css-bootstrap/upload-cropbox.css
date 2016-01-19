@@ -17,6 +17,8 @@
     margin: 0px;
     padding: 0px;
     border: none;
+    width: 100%;
+    min-height: 300px;
 }
 
 /*.roo-upload-cropbox-btn-group button {
