@@ -1861,9 +1861,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     inputEl: function ()
     {
+        if(Roo.isTouch && this.mobileTouchView){
+            return this.el.select('input.form-control',true).first();
+        }
+        
         if(this.tickable){
             return this.searchField;
         }
+        
         return this.el.select('input.form-control',true).first();
     },
     
