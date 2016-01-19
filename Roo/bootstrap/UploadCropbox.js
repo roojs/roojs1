@@ -133,11 +133,21 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.pictureBtn.on('click', this.beforeSelectFile, this);
         
+        this.imageSection.on('mousedown', this.onMouseDown, this);
+        
+        this.imageSection.on('mousemove', this.onMouseMove, this);
+        
+        Roo.get(document).on('mouseup', this.onMouseUp, this);
+        
+        var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
+        
+        this.imageSection.on(mousewheel, this.onMouseWheel, this);
+        
         this.imageSectionHasOnClickEvent = true;
-        this.imageSectionHasMouseDownEvent = false;
-        this.imageSectionHasMouseMoveEvent = false;
-        this.imageSectionHasMouseWheelEvent = false;
-        this.bodyHasMouseUpEvent = false;
+//        this.imageSectionHasMouseDownEvent = false;
+//        this.imageSectionHasMouseMoveEvent = false;
+//        this.imageSectionHasMouseWheelEvent = false;
+//        this.bodyHasMouseUpEvent = false;
         
     },
     
@@ -169,15 +179,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         this.setBackground();
         
-        this.imageSection.on('mousedown', this.onMouseDown, this);
+//        this.imageSectionHasMouseDownEvent = false;
+//        this.imageSectionHasMouseMoveEvent = false;
+//        this.imageSectionHasMouseWheelEvent = false;
+//        this.bodyHasMouseUpEvent = false;
         
-        this.imageSection.on('mousemove', this.onMouseMove, this);
         
-        Roo.get(document).on('mouseup', this.onMouseUp, this);
-        
-        var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
-        
-        this.imageSection.on(mousewheel, this.onMouseWheel, this);
         
     },
     
