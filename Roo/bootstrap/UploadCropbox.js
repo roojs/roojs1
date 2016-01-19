@@ -294,19 +294,19 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         Roo.log('on mouse wheel');
         
         var ratio = (e.getWheelDelta() == 1) ? 1.1 : 0.9;
-        
-        Roo.log(ratio);
-        
-        return;
-        
-        if(
-                parseInt(this.image.dom.width) * ratio < this.thumb.getWidth() ||
-                parseInt(this.image.dom.height) * ratio < this.thumb.getHeight()
-        ){
-            return;
-        }
-        
-        this.ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
+//        
+//        Roo.log(ratio);
+//        
+//        return;
+//        
+//        if(
+//                parseInt(this.image.dom.width) * ratio < this.thumb.getWidth() ||
+//                parseInt(this.image.dom.height) * ratio < this.thumb.getHeight()
+//        ){
+//            return;
+//        }
+//        
+//        this.ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
         
         this.setBackground();
     },
