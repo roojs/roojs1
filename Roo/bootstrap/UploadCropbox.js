@@ -175,19 +175,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    onLoadImage : function()
-    {   
-        this.setBackground();
-        
-//        this.imageSectionHasMouseDownEvent = false;
-//        this.imageSectionHasMouseMoveEvent = false;
-//        this.imageSectionHasMouseWheelEvent = false;
-//        this.bodyHasMouseUpEvent = false;
-        
-        
-        
-    },
-    
     setBackground : function()
     {
         var w =  parseInt(this.image.dom.width) * this.ratio;
