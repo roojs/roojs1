@@ -156,7 +156,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    onImageLoad : function()
+    onLoadImage : function()
     {
         this.setBackground();
         
