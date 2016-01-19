@@ -174,7 +174,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    setBackground : function(init)
+    setBackground : function(center)
     {
         Roo.log('set back ground');
         
