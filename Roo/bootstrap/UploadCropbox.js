@@ -259,15 +259,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         if(maxX > bgX){
-            bgX = thumbEndX - parseInt(this.image.dom.width) * this.ratio;
+            bgX = maxX;
         }
         
         if(minY < bgY){
             bgY = minY;
         }
         
-        if(thumbEndY > bgY + parseInt(this.image.dom.height) * this.ratio){
-            bgY = thumbEndY - parseInt(this.image.dom.height) * this.ratio;
+        if(maxY > bgY){
+            bgY = maxY;
         }
         
         
