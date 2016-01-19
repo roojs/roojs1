@@ -2278,12 +2278,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         var firstChecked = this.touchViewListGroup.select('.list-group-item > .roo-combobox-list-group-item-box > input:checked', true).first();
         
-        var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
-
-        if(this.fieldLabel.length){
-            bodyHeight = bodyHeight - this.touchViewHeaderEl.getHeight();
-        }
-        
+//        var bodyHeight = Roo.lib.Dom.getViewHeight() - this.touchViewFooterEl.getHeight() + this.touchViewBodyEl.getPadding('tb');
+//
+//        if(this.fieldLabel.length){
+//            bodyHeight = bodyHeight - this.touchViewHeaderEl.getHeight();
+//        }
+//        
         if(firstChecked){
             firstChecked.findParent('li').scrollIntoView(this.touchViewListGroup.dom);
         }
