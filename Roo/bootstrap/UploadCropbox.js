@@ -271,8 +271,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //            bgY = thumbEndY - parseInt(this.image.dom.height) * this.ratio;
 //        }
         
-        this.imageSection.setStyle('background-position', bgX +'px ' + bgY + 'px');
-
+        this.imageCanvas.setLeft(bgX);
+        this.imageCanvas.setTop(bgY);
+        
         this.mouseX = e.getPageX();
         this.mouseY = e.getPageY();
     },
