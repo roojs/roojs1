@@ -160,7 +160,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         Roo.log('on load image');
         
-        this.setBackground();
+        this.setBackground(true);
         
         this.imageSection.on('mousedown', this.onMouseDown, this);
         
@@ -174,7 +174,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    setBackground : function()
+    setBackground : function(init)
     {
         Roo.log('set back ground');
         
