@@ -205,6 +205,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.imageCanvas.setLeft(pw);
         this.imageCanvas.setTop(ph);
+        
     },
 //    
 //    onMouseDown : function(e)
