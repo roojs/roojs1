@@ -534,7 +534,7 @@ Roo.onReady(function(){
     if(Roo.isLinux){
         cls.push("roo-linux");
     }
-     if(Roo.isIOS){
+    if(Roo.isIOS){
         cls.push("roo-ios");
     }
     if(Roo.isBorderBox){
