@@ -250,13 +250,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
         Roo.log(x);
         
-//        var bgX = x + this.imageCanvas.getLeft(true) + Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2;
-//        var bgY = y + this.imageCanvas.getTop(true);
-//        
-//        Roo.log(Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
-//        
-//        Roo.log([bgX, bgY]);
-//        
+        var bgX = x + this.imageCanvas.getLeft(true);
+        var bgY = y + this.imageCanvas.getTop(true);
+        
+        Roo.log(Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
+        
+        Roo.log([bgX, bgY]);
+        
 //        var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
 //        
 //        var minX = this.thumb.getLeft(true) + transform.m41;
@@ -285,9 +285,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        if(maxY > bgY){
 //            bgY = maxY;
 //        }
-//        
-//        this.imageCanvas.setLeft(bgX);
-//        this.imageCanvas.setTop(bgY);
+        
+        this.imageCanvas.setLeft(bgX);
+        this.imageCanvas.setTop(bgY);
         
         this.mouseX = e.getPageX();
         this.mouseY = e.getPageY();
