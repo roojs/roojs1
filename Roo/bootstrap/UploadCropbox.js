@@ -286,8 +286,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             bgY = maxY;
         }
         
-//        this.imageCanvas.setLeft(bgX);
-//        this.imageCanvas.setTop(bgY);
+        this.imageCanvas.setLeft(bgX);
+        this.imageCanvas.setTop(bgY);
         
         this.mouseX = e.getPageX();
         this.mouseY = e.getPageY();
