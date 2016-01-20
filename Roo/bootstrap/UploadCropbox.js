@@ -215,6 +215,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onLoadCanvasImage : function(src)
     {   
+        Roo.log('onload??');
         this.image.OriginWidth = this.image.getWidth();
         this.image.OriginHeight = this.image.getHeight();
         
