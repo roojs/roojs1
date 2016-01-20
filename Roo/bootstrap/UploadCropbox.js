@@ -293,8 +293,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.stopEvent();
         
-        Roo.log('on rotate left');
-        
         this.rotate = (this.rotate < 90) ? 270 : this.rotate - 90;
         
         this.imageCanvas.setStyle({
@@ -309,8 +307,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     onRotateRight : function(e)
     {
         e.stopEvent();
-        
-        Roo.log('on rotate right');
         
         this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
         
