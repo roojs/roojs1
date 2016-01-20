@@ -167,7 +167,25 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     destory : function()
     {
+        this.image.un('load', this.onLoadCanvasImage, this);
         
+        this.imageSection.un('click', this.beforeSelectFile, this);
+        
+        this.imageSection.un('mousedown', this.onMouseDown, this);
+        
+        this.imageSection.un('mousemove', this.onMouseMove, this);
+        
+        var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
+        
+        this.imageSection.un(mousewheel, this.onMouseWheel, this);
+
+        Roo.get(document).un('mouseup', this.onMouseUp, this);
+        
+        this.pictureBtn.un('click', this.beforeSelectFile, this);
+        
+        this.rotateLeft.un('click', this.onRotateLeft, this);
+        
+        this.rotateRight.un('click', this.onRotateRight, this);
     },
     
     reset : function()
