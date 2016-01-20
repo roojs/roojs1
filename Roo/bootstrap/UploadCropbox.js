@@ -292,6 +292,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             height = this.image.getHeight() / 1.1;
         }
         
+        
+        
         this.image.setWidth(this.imageOriginWidth * this.ratio);
         this.image.setHeight(this.imageOriginHeight * this.ratio);
         
