@@ -216,12 +216,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     setCanvasPosition : function()
     {
-        var pw = (this.imageSection.getWidth(true) - this.image.getWidth()) / 2;
+        var pw = (this.imageSection.getWidth(true) - this.image.getWidth() - Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth()))) / 2;
         var ph = (this.imageSection.getHeight(true) - this.image.getHeight()) / 2;
-        
-        if(this.imageCanvas.getWidth() > this.image.getWidth()){
-            pw = pw - (this.imageCanvas.getWidth() - this.image.getWidth()) / 2
-        }
         
         this.imageCanvas.setLeft(pw);
         this.imageCanvas.setTop(ph);
@@ -254,11 +250,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
         var bgX = x + this.imageCanvas.getLeft(true);
         var bgY = y + this.imageCanvas.getTop(true);
-//        
-//        if(this.imageCanvas.getWidth() > this.image.getWidth()){
-//            bgX = bgX + (this.imageCanvas.getWidth() - this.image.getWidth()) / 2
-//        }
-//        
+        
+        if(this.imageCanvas.getWidth() > this.image.getWidth()){
+            bgX = bgX + (this.imageCanvas.getWidth() - this.image.getWidth()) / 2
+        }
+        
         Roo.log([bgX, bgY]);
         
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
