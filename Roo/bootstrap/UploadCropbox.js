@@ -7,7 +7,7 @@
  * @class Roo.bootstrap.UploadCropbox
  * @extends Roo.bootstrap.Component
  * Bootstrap UploadCropbox class
- * @cfg {String} emptyText 
+ * @cfg {String} emptyText show when image has been loaded
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -31,6 +31,7 @@ Roo.bootstrap.UploadCropbox = function(config){
 Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     emptyText : 'Click to upload image',
+    rotate : 0,
     dragable : false,
     mouseX : 0,
     mouseY : 0,
