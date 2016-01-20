@@ -296,6 +296,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         Roo.log('on rotate left');
         
         this.rotate = (this.rotate < 90) ? 270 : this.rotate - 90;
+        
+        this.imageCanvas.setStyle({
+            '-ms-transform' : 'rotate(' + this.rotate + 'deg)',
+            '-webkit-transform' : 'rotate(' + this.rotate + 'deg)',
+            'transform' : 'rotate(' + this.rotate + 'deg)',
+        });
     },
     
     onRotateRight : function(e)
@@ -305,6 +311,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         Roo.log('on rotate right');
         
         this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
+        
+        this.imageCanvas.setStyle({
+            '-ms-transform' : 'rotate(' + this.rotate + 'deg)',
+            '-webkit-transform' : 'rotate(' + this.rotate + 'deg)',
+            'transform' : 'rotate(' + this.rotate + 'deg)',
+        });
     }
     
 });
