@@ -172,6 +172,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     reset : function()
     {
+        this.scale = 0;
+        this.rotate = 0;
         this.dragable = false;
         this.mouseX = 0;
         this.mouseY = 0;
@@ -180,7 +182,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     beforeSelectFile : function(e)
     {
         e.preventDefault();
-        
         this.fireEvent('beforeSelectFile', this);
     },
     
