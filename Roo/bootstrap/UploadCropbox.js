@@ -195,8 +195,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.dragable = false;
         this.mouseX = 0;
         this.mouseY = 0;
-        this.image.setStyle('width', 0);
-        this.image.setStyle('height', 0);
     },
     
     beforeSelectFile : function(e)
@@ -231,6 +229,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     setCanvasPosition : function()
     {
+        
         var pw = (this.imageSection.getWidth(true) - this.image.getWidth()) / 2;
         var ph = (this.imageSection.getHeight(true) - this.image.getHeight()) / 2;
         
