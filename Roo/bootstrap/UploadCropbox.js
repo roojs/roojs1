@@ -223,8 +223,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onMouseDown : function(e)
     {   
-        Roo.log('on mouse Down');
-        
         e.stopEvent();
         
         this.dragable = true;
@@ -247,8 +245,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var bgX = x + this.imageCanvas.getLeft(true);
         var bgY = y + this.imageCanvas.getTop(true);
         
-        Roo.log([bgX, bgY]);
-        
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         
         var minX = this.thumb.getLeft(true) + transform.m41 - (Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
@@ -269,8 +265,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onMouseUp : function(e)
     {   
-        Roo.log('on mouse up');
-        
         e.stopEvent();
         
         this.dragable = false;
@@ -279,8 +273,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     onMouseWheel : function(e)
     {   
         e.stopEvent();
-        
-        Roo.log('on mouse wheel');
         
         var m = (e.getWheelDelta() == 1) ? 1 : -1;
         
