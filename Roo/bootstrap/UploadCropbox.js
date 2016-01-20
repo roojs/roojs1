@@ -243,14 +243,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log('on mouse move');
-        
         var x = e.getPageX() - this.mouseX;
         var y = e.getPageY() - this.mouseY;
-        var padding = Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2;
-        
-        Roo.log(x);
-        Roo.log(padding);
         
         var bgX = x + this.imageCanvas.getLeft(true);
         var bgY = y + this.imageCanvas.getTop(true);
@@ -259,7 +253,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         
-        var minX = this.thumb.getLeft(true) + transform.m41 - padding;
+        var minX = this.thumb.getLeft(true) + transform.m41 - (Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
         var minY = this.thumb.getTop(true) + transform.m42;
         
         var maxX = minX + this.thumb.getWidth() - this.image.getWidth();
