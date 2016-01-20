@@ -432,8 +432,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 handler: function(a,b) {
                     
                     var c = Roo.get(editorcore.doc.body);
-                    c.select('[style]').each(function(s) {
-                        s.dom.removeAttribute('style');
+                    c.select('[class]').each(function(s) {
+                        s.dom.className = '';
                     });
                     editorcore.syncValue();
                 },
