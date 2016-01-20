@@ -163,19 +163,19 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.rotateRight.on('click', this.onRotateRight, this);
         
     },
-//    
-//    destory : function()
-//    {
-//        
-//    },
-//    
-//    reset : function()
-//    {
-//        this.dragable = false;
-//        this.mouseX = 0;
-//        this.mouseY = 0;
-//    },
-//    
+    
+    destory : function()
+    {
+        
+    },
+    
+    reset : function()
+    {
+        this.dragable = false;
+        this.mouseX = 0;
+        this.mouseY = 0;
+    },
+    
     beforeSelectFile : function(e)
     {
         e.preventDefault();
