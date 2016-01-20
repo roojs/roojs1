@@ -205,6 +205,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     setCanvasPosition : function()
     {
+        Roo.log(this.rotate);
+        
         var pw = (this.imageSection.getWidth(true) - this.image.getWidth() - Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth()))) / 2;
         var ph = (this.imageSection.getHeight(true) - this.image.getHeight()) / 2;
         
