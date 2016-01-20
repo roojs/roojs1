@@ -249,6 +249,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //            bgX = bgX - this.image.getWidth() + this.image.getHeight();
 //            bgY = bgY - this.image.getHeight() + this.image.getWidth();
         }
+        Roo.log([maxX, maxY]);
         
         bgX = (minX < bgX) ? minX : ((maxX > bgX) ? maxX : bgX);
         bgY = (minY < bgY) ? minY : ((maxY > bgY) ? maxY : bgY);
