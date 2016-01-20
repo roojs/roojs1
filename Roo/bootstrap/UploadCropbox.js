@@ -292,27 +292,18 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             height = this.image.getHeight() / 1.1;
         }
         
+        if(
+                width < this.thumb.getWidth() ||
+                height < this.thumb.getHeight()
+        ){
+            return;
+        }
         
-        
-        this.image.setWidth(this.imageOriginWidth * this.ratio);
-        this.image.setHeight(this.imageOriginHeight * this.ratio);
+        this.image.setWidth(width);
+        this.image.setHeight(height);
         
         this.setCanvasPosition();
-//        
-//        Roo.log(ratio);
-//        
-//        return;
-//        
-//        if(
-//                parseInt(this.image.dom.width) * ratio < this.thumb.getWidth() ||
-//                parseInt(this.image.dom.height) * ratio < this.thumb.getHeight()
-//        ){
-//            return;
-//        }
-//        
-//        this.ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
         
-//        this.setBackground();
     },
 //    
 //    onRotateLeft : function(e)
