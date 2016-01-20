@@ -295,7 +295,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         Roo.log('on rotate left');
         
-        this.rotate = Math.max(0, this.rotate - 90);
+        this.rotate = (this.rotate < 90) ? 270 : this.rotate - 90;
     },
     
     onRotateRight : function(e)
@@ -304,6 +304,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         Roo.log('on rotate right');
         
+        this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
     }
     
 });
