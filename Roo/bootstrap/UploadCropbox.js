@@ -222,7 +222,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
             Roo.log([this.image.getWidth(), this.image.getHeight()]);
 
-            Roo.log([this.imageCanvas.getWidth()]);
+            Roo.log([this.imageCanvas.getWidth(), this.imageCanvas.getHeight()]);
 
             Roo.log(Math.max(0, (this.imageCanvas.getWidth() - this.image.getHeight())) / 2);
 
