@@ -255,6 +255,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var bgX = x + this.imageCanvas.getLeft(true);
         var bgY = y + this.imageCanvas.getTop(true);
         
+        if(this.imageCanvas.getWidth(true) > this.image.getWidth(true)){
+            bgX = bgX + (this.imageCanvas.getWidth(true) - this.image.getWidth(true)) / 2
+        }
+        
         var transform = new   WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         
         var minX = this.thumb.getLeft(true) + transform.m41;
