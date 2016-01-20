@@ -248,7 +248,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var x = e.getPageX() - this.mouseX;
         var y = e.getPageY() - this.mouseY;
 
-        var bgX = x + this.imageCanvas.getLeft(true);
+        var bgX = x + this.imageCanvas.getLeft(true) + (Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
         var bgY = y + this.imageCanvas.getTop(true);
         
         if(this.imageCanvas.getWidth() > this.image.getWidth()){
