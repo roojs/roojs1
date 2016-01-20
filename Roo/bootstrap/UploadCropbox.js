@@ -272,7 +272,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         e.stopEvent();
         
-        var ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio / 1.1);
+        var scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
         
         var width = this.image.OriginWidth * ratio
         var height = this.image.OriginHeight * ratio
