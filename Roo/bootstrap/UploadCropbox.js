@@ -272,24 +272,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         e.stopEvent();
         
-        this.ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
+        var ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
         
-        this.image.setWidth(this.image.OriginWidth * this.ratio);
-        this.image.setHeight(this.image.OriginHeight * this.ratio);
-        
-        this.setCanvasPosition();
-        return;
-        
-        
-        var m = (e.getWheelDelta() == 1) ? 1 : -1;
-        
-        var width = this.image.getWidth() * 1.1;
-        var height = this.image.getHeight() * 1.1;
-        
-        if(e.getWheelDelta() != 1){
-            width = this.image.getWidth() / 1.1;
-            height = this.image.getHeight() / 1.1;
-        }
+        var width = this.image.OriginWidth * ratio
+        var height = this.image.OriginHeight * ratio
         
         if(
                 width < this.thumb.getWidth() ||
