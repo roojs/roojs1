@@ -63,7 +63,7 @@ Roo.apply = function(o, c, defaults){
         isMac = (ua.indexOf("macintosh") != -1 || ua.indexOf("mac os x") != -1),
         isLinux = (ua.indexOf("linux") != -1),
         isSecure = window.location.href.toLowerCase().indexOf("https") === 0,
-        isIOS = /iPhone|iPad\./.test(ua),
+        isIOS = /iphone|ipad\./.test(ua),
         isTouch =  (function() {
             try {  
                 document.createEvent("TouchEvent");  
