@@ -261,6 +261,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var maxX = minX + this.thumb.getWidth() - this.image.getWidth();
         var maxY = minY + this.thumb.getHeight() - this.image.getHeight();
         
+        Roo.log([minX, minY]);
+        Roo.log([maxX, maxY]);
+        
         if(minX < bgX){
             bgX = minX - (Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
         }
