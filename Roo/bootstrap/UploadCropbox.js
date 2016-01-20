@@ -257,34 +257,34 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         Roo.log([bgX, bgY]);
         
-//        var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
-//        
-//        var minX = this.thumb.getLeft(true) + transform.m41;
-//        var minY = this.thumb.getTop(true) + transform.m42;
-//        
-//        var maxX = minX + this.thumb.getWidth() - this.image.getWidth();
-//        var maxY = minY + this.thumb.getHeight() - this.image.getHeight();
-//        
-//        Roo.log([minX, minY]);
-//        Roo.log([maxX, maxY]);
-//        
-//        if(minX < bgX){
-//            Roo.log('minX < bgX');
-//            bgX = minX - (Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
-//        }
-//        
-//        if(maxX > bgX){
-//            Roo.log('maxX > bgX');
-//            bgX = maxX - (Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
-//        }
-//        
-//        if(minY < bgY){
-//            bgY = minY;
-//        }
-//        
-//        if(maxY > bgY){
-//            bgY = maxY;
-//        }
+        var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
+        
+        var minX = this.thumb.getLeft(true) + transform.m41;
+        var minY = this.thumb.getTop(true) + transform.m42;
+        
+        var maxX = minX + this.thumb.getWidth() - this.image.getWidth();
+        var maxY = minY + this.thumb.getHeight() - this.image.getHeight();
+        
+        Roo.log([minX, minY]);
+        Roo.log([maxX, maxY]);
+        
+        if(minX < bgX){
+            Roo.log('minX < bgX');
+            bgX = minX - (Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
+        }
+        
+        if(maxX > bgX){
+            Roo.log('maxX > bgX');
+            bgX = maxX - (Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
+        }
+        
+        if(minY < bgY){
+            bgY = minY;
+        }
+        
+        if(maxY > bgY){
+            bgY = maxY;
+        }
         
         this.imageCanvas.setLeft(bgX);
         this.imageCanvas.setTop(bgY);
