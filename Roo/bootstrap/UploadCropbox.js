@@ -165,7 +165,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    destory : function()
+    unbind : function()
     {
         this.image.un('load', this.onLoadCanvasImage, this);
         
