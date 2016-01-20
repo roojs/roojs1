@@ -252,7 +252,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         Roo.log(x);
         Roo.log(padding);
         
-        var bgX = x + this.imageCanvas.getLeft(true);
+        var bgX = x + this.imageCanvas.getLeft(true) + padding;
         var bgY = y + this.imageCanvas.getTop(true);
 //        
 //        Roo.log(Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
