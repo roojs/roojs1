@@ -227,22 +227,22 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
         Roo.log(new WebKitCSSMatrix(window.getComputedStyle(this.imageCanvas.dom).webkitTransform));
         
-//        if(this.rotate == 90){
-//            
-//            pw = (this.imageSection.getWidth(true) - this.image.getHeight()) / 2;
-//            ph = (this.imageSection.getHeight(true) - this.image.getWidth()) / 2;
-//            
-//            Roo.log(this.rotate);
-//        
-//            Roo.log([this.image.getWidth(), this.image.getHeight()]);
-//
-//            Roo.log([this.imageCanvas.getWidth(), this.imageCanvas.getHeight()]);
-//
-//            Roo.log(Math.max(0, (this.imageCanvas.getWidth() - this.image.getHeight())) / 2);
-//
-//            Roo.log([pw, ph]);
-//            
-//        }
+        if(this.rotate == 90){
+            
+            pw = (this.imageSection.getWidth(true) - this.image.getHeight()) / 2;
+            ph = (this.imageSection.getHeight(true) - this.image.getWidth()) / 2;
+            
+            Roo.log(this.rotate);
+        
+            Roo.log([this.image.getWidth(), this.image.getHeight()]);
+
+            Roo.log([this.imageCanvas.getWidth(), this.imageCanvas.getHeight()]);
+
+            Roo.log(Math.max(0, (this.imageCanvas.getWidth() - this.image.getHeight())) / 2);
+
+            Roo.log([pw, ph]);
+            
+        }
 
         
         this.imageCanvas.setLeft(pw);
