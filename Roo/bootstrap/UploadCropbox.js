@@ -208,16 +208,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onLoadCanvasImage : function(src)
     {   
-        this.imageOriginWidth = this.image.getWidth();
-        this.imageOriginHeight = this.image.getHeight();
+        this.imageOriginWidth = this.image.getWidth(true);
+        this.imageOriginHeight = this.image.getHeight(true);
         
         this.setCanvasPosition();
     },
     
     setCanvasPosition : function()
     {
-        var pw = (this.imageSection.getWidth(true) - this.image.getWidth()) / 2;
-        var ph = (this.imageSection.getHeight(true) - this.image.getHeight()) / 2;
+        var pw = (this.imageSection.getWidth(true) - this.image.getWidth(true)) / 2;
+        var ph = (this.imageSection.getHeight(true) - this.image.getHeight(true)) / 2;
         
         Roo.log([this.imageSection.getWidth(true), this.imageSection.getHeight(true)]);
         Roo.log([this.image.getWidth(), this.image.getHeight()]);
@@ -263,8 +263,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var minX = this.thumb.getLeft(true) + transform.m41;
         var minY = this.thumb.getTop(true) + transform.m42;
         
-        var maxX = minX + this.thumb.getWidth() - this.image.getWidth();
-        var maxY = minY + this.thumb.getHeight() - this.image.getHeight();
+        var maxX = minX + this.thumb.getWidth(true) - this.image.getWidth(true);
+        var maxY = minY + this.thumb.getHeight(true) - this.image.getHeight(true);
         
         if(minX < bgX){
             bgX = minX;
