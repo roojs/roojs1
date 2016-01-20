@@ -32,6 +32,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     emptyText : 'Click to upload image',
     rotate : 0,
+    rotateStep : 90,
     dragable : false,
     mouseX : 0,
     mouseY : 0,
@@ -288,14 +289,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.setCanvasPosition();
         
     },
-//    
-//    onRotateLeft : function(e)
-//    {
-//        e.stopEvent();
-//        
-//        Roo.log('on rotate left');
-//    },
-//    
+    
+    onRotateLeft : function(e)
+    {
+        e.stopEvent();
+        
+        Roo.log('on rotate left');
+        
+        this.rotate = this.rotate
+    },
+    
     onRotateRight : function(e)
     {
         e.stopEvent();
