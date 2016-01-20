@@ -251,6 +251,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var bgX = x + this.imageCanvas.getLeft(true) + (Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
         var bgY = y + this.imageCanvas.getTop(true);
         
+        Roo.log([bgX, bgY]);
+        
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         
         var minX = this.thumb.getLeft(true) + transform.m41;
@@ -274,8 +276,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if(maxY > bgY){
             bgY = maxY;
         }
-        
-        Roo.log([bgX, bgY]);
         
         this.imageCanvas.setLeft(bgX);
         this.imageCanvas.setTop(bgY);
