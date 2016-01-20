@@ -31,7 +31,6 @@ Roo.bootstrap.UploadCropbox = function(config){
 Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     emptyText : 'Click to upload image',
-    ratio : 1,
     dragable : false,
     mouseX : 0,
     mouseY : 0,
@@ -283,6 +282,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         e.stopEvent();
         
         Roo.log('on mouse wheel');
+        
+        var ratio
         
         this.ratio = (e.getWheelDelta() == 1) ? (this.ratio * 1.1) : (this.ratio * 0.9);
         
