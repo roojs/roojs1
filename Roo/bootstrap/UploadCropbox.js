@@ -302,6 +302,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             '-webkit-transform' : 'rotate(' + this.rotate + 'deg)',
             'transform' : 'rotate(' + this.rotate + 'deg)',
         });
+        
+        this.setCanvasPosition();
     },
     
     onRotateRight : function(e)
@@ -317,6 +319,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             '-webkit-transform' : 'rotate(' + this.rotate + 'deg)',
             'transform' : 'rotate(' + this.rotate + 'deg)',
         });
+        
+        this.setCanvasPosition();
     }
     
 });
