@@ -218,9 +218,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.image.OriginWidth = this.image.getWidth();
         this.image.OriginHeight = this.image.getHeight();
         
-        this.image.setWidth(this.image.OriginWidth);
-        this.image.setHeight(this.image.OriginHeight);
-        
         this.setCanvasPosition();
     },
     
