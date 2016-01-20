@@ -244,7 +244,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         if(this.rotate == 90 || this.rotate == 270){
             minX = this.thumb.getLeft(true) + transform.m41 - (this.thumb.getWidth() - this.image.getWidth()) / 2;
-            minY = this.thumb.getTop(true) + transform.m42;
+            minY = this.thumb.getTop(true) + transform.m42 + (this.thumb.getWidth() - this.image.getWidth()) / 2;
             
             maxX = minX + this.thumb.getWidth() - this.image.getHeight();
             maxY = minY + this.thumb.getHeight() - this.image.getWidth();
