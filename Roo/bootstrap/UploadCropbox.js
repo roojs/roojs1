@@ -211,7 +211,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if(this.rotate == 90){
             
             pw = (this.imageSection.getWidth(true) - this.image.getHeight()) / 2;
-            ph = (this.imageSection.getHeight(true) - this.image.getWeight()) / 2;
+            ph = (this.imageSection.getHeight(true) - this.image.getWidth()) / 2;
             
             
         }
