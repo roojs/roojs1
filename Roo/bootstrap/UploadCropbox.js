@@ -250,7 +250,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
         Roo.log(x);
         
-        var bgX = x + this.imageCanvas.getLeft(true) + (Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
+        var bgX = x + this.imageCanvas.getLeft(true);
         var bgY = y + this.imageCanvas.getTop(true);
         
         Roo.log(Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
@@ -270,12 +270,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         if(minX < bgX){
             Roo.log('minX < bgX');
-            bgX = minX - (Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
+            bgX = minX;
         }
         
         if(maxX > bgX){
             Roo.log('maxX > bgX');
-            bgX = maxX - (Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
+            bgX = maxX;
         }
         
         if(minY < bgY){
