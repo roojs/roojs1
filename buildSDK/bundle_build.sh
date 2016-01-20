@@ -6,7 +6,8 @@ seed ../gnome.introspection-doc-generator/pack.js \
 
 seed ../gnome.introspection-doc-generator/pack.js \
      -f buildSDK/dependancy_ui.txt -o roojs-ui.js -O roojs-ui-debug.js
-
+# bug with editorcore...
+#roojspacker -t roojs-ui.js -T roojs-ui-debug.js -i buildSDK/dependancy_ui.txt
 
 
 cat      roojs-core.js  roojs-ui.js >  roojs-all.js
