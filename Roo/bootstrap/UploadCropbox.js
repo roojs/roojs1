@@ -195,8 +195,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.dragable = false;
         this.mouseX = 0;
         this.mouseY = 0;
-        this.image.OriginWidth = 0;
-        this.image.OriginHeight = 0;
     },
     
     beforeSelectFile : function(e)
