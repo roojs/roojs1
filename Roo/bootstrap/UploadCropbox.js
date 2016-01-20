@@ -297,8 +297,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var height = this.image.OriginHeight * Math.pow(1.1, scale)
         
         if(
-                width < this.thumb.getWidth() ||
-                height < this.thumb.getHeight()
+                e.getWheelDelta() == -1 &&
+                (
+                    width < this.thumb.getWidth() ||
+                    height < this.thumb.getHeight()
+                )
         ){
             return;
         }
