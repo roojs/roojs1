@@ -63,6 +63,7 @@ Roo.apply = function(o, c, defaults){
         isMac = (ua.indexOf("macintosh") != -1 || ua.indexOf("mac os x") != -1),
         isLinux = (ua.indexOf("linux") != -1),
         isSecure = window.location.href.toLowerCase().indexOf("https") === 0,
+        isIOS = /iPhone|iPad\./.test(ua),
         isTouch =  (function() {
             try {  
                 document.createEvent("TouchEvent");  
@@ -6575,6 +6576,9 @@ Roo.onReady(function(){
     }
     if(Roo.isLinux){
         cls.push("roo-linux");
+    }
+    if(Roo.isIOS){
+        cls.push("roo-ios");
     }
     if(Roo.isBorderBox){
         cls.push('roo-border-box');
