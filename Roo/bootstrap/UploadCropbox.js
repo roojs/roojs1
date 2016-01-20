@@ -215,7 +215,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         Roo.log([minX, minY]);
         
-        Roo.log(new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform));
+        Roo.log(new WebKitCSSMatrix(window.getComputedStyle(this.imageCanvas.dom).webkitTransform));
         
         if(this.rotate == 90){
             
