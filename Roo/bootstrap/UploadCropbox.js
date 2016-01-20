@@ -243,6 +243,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //            Roo.log([pw, ph]);
 //            
 //        }
+
         
         this.imageCanvas.setLeft(pw);
         this.imageCanvas.setTop(ph);
