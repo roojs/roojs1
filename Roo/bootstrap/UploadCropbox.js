@@ -31,7 +31,7 @@ Roo.bootstrap.UploadCropbox = function(config){
 Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     emptyText : 'Click to upload image',
-    ratio : 1,
+    scale : 0,
     rotate : 0,
     dragable : false,
     mouseX : 0,
