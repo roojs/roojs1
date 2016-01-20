@@ -295,7 +295,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         Roo.log('on rotate left');
         
-        this.rotate = this.rotate
+        this.rotate = Math.max(0, this.rotate - 90);
     },
     
     onRotateRight : function(e)
