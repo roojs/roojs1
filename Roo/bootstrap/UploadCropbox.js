@@ -219,6 +219,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         Roo.log('on load');
         
+        Roo.log(this.image.attr('src'));
+        
         this.image.OriginWidth = this.image.getWidth();
         this.image.OriginHeight = this.image.getHeight();
         
