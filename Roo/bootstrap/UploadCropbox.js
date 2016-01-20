@@ -247,16 +247,18 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var x = e.getPageX() - this.mouseX;
         var y = e.getPageY() - this.mouseY;
-
+        var padding = Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2;
+        
         Roo.log(x);
+        Roo.log(padding);
         
         var bgX = x + this.imageCanvas.getLeft(true);
         var bgY = y + this.imageCanvas.getTop(true);
-        
-        Roo.log(Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
-        
-        Roo.log([bgX, bgY]);
-        
+//        
+//        Roo.log(Math.max(0, (this.imageCanvas.getWidth() - this.image.getWidth())) / 2);
+//        
+//        Roo.log([bgX, bgY]);
+//        
 //        var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
 //        
 //        var minX = this.thumb.getLeft(true) + transform.m41;
