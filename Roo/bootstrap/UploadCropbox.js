@@ -402,7 +402,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.cropImageData = canvas.toDataURL('image/png');
         
-        this.fireEvent('crop', this);
+        this.fireEvent('crop', this, this.cropImageData);
     }
     
 });
