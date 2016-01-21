@@ -376,8 +376,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var x = thumbX - this.imageCanvas.getLeft(true);
         var y = thumbY - this.imageCanvas.getTop(true);
         
-        canvas.width = width;
-        canvas.height = height;
+        canvas.width = width * Math.pow(1.1, this.scale);
+        canvas.height = height * Math.pow(1.1, this.scale);
         
         var context = canvas.getContext("2d");
         
