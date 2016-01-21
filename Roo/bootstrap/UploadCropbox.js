@@ -465,30 +465,28 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 }
                 
                 this.scale = (width < base) ? (i + 1) : i;
+                
+                this.image.setWidth(this.image.OriginWidth * Math.pow(1.1, this.scale));
+                this.image.setHeight(this.image.OriginHeight * Math.pow(1.1, this.scale));
+                
+                return;
             }
             
-            
-            
-            
-            
+            while (width < base){
+                i = i + 1;
+                width = this.image.OriginWidth * Math.pow(1.1, i);
+            }
+
+            this.scale = (width > base) ? (i - 1) : i;
+
             this.image.setWidth(this.image.OriginWidth * Math.pow(1.1, this.scale));
             this.image.setHeight(this.image.OriginHeight * Math.pow(1.1, this.scale));
             
             return;
         }
         
-        var base = this.thumb.getWidth();
-            var width = this.image.OriginWidth;
-            var i = 0;
-            while (width > base){
-                i = i + 1;
-                width = this.image.OriginWidth * Math.pow(1.1, i);
-            }
-            
-            this.scale = (width < base) ? (i - 1) : i;
-            
-            this.image.setWidth(this.image.OriginWidth * Math.pow(1.1, this.scale));
-            this.image.setHeight(this.image.OriginHeight * Math.pow(1.1, this.scale));
+        
+        
     }
     
 });
