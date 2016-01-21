@@ -424,10 +424,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
         context.rotate(this.rotate * Math.PI / 180);
         
-//        if(this.rotate == 90 || this.rotate == 270){
-//            cropWidth = thumbHeight * Math.pow(1.1, this.scale * -1);
-//            cropHeight = thumbWidth * Math.pow(1.1, this.scale * -1);
-//        }
+        if(this.rotate == 90 || this.rotate == 270){
+            cropWidth = thumbHeight * Math.pow(1.1, this.scale * -1);
+            cropHeight = thumbWidth * Math.pow(1.1, this.scale * -1);
+            
+            centerX = this.minHeight / 2;
+            centerY = this.minWidth / 2;
+        }
         
         Roo.log([x,y]);
         Roo.log([cropWidth, cropHeight]);
