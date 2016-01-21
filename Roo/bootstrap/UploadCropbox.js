@@ -451,8 +451,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     fitThumbBox : function()
     {
-        Roo.log('fit it');
-        
         var i = 0;
         var width = this.image.OriginWidth;
         var height = this.image.OriginHeight;
@@ -467,9 +465,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 
                 this.scale = (width < this.thumb.getWidth()) ? (i + 1) : i;
                 
-                this.image.setWidth(this.image.OriginWidth * Math.pow(1.1, this.scale));
-                this.image.setHeight(this.image.OriginHeight * Math.pow(1.1, this.scale));
-                
                 return;
             }
             
@@ -480,9 +475,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
             this.scale = (width > this.thumb.getWidth()) ? (i - 1) : i;
 
-            this.image.setWidth(this.image.OriginWidth * Math.pow(1.1, this.scale));
-            this.image.setHeight(this.image.OriginHeight * Math.pow(1.1, this.scale));
-            
             return;
         }
         
@@ -495,9 +487,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
             this.scale = (height < this.thumb.getHeight()) ? (i + 1) : i;
 
-            this.image.setWidth(this.image.OriginWidth * Math.pow(1.1, this.scale));
-            this.image.setHeight(this.image.OriginHeight * Math.pow(1.1, this.scale));
-
             return;
         }
 
@@ -508,12 +497,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
         this.scale = (height > this.thumb.getHeight()) ? (i - 1) : i;
 
-        this.image.setWidth(this.image.OriginWidth * Math.pow(1.1, this.scale));
-        this.image.setHeight(this.image.OriginHeight * Math.pow(1.1, this.scale));
-
         return;
-        
-        
         
     }
     
