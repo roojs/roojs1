@@ -363,6 +363,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     crop : function()
     {
         Roo.log('crop');
+        
     }
     
 });
