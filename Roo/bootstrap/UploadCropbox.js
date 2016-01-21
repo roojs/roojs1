@@ -23,7 +23,13 @@ Roo.bootstrap.UploadCropbox = function(config){
          * Fire before select file
          * @param {Roo.EventObject} e
          */
-        "beforeSelectFile" : true
+        "beforeSelectFile" : true,
+        /**
+         * @event initial
+         * Fire after initEvent
+         * @param {Roo.EventObject} e
+         */
+        "initial" : true
         
     });
 };
