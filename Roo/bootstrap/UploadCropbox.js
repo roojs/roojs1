@@ -8,6 +8,8 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap UploadCropbox class
  * @cfg {String} emptyText show when image has been loaded
+ * @cfg {Number} minWidth default 200
+ * @cfg {Number} minHeight default 200
  * 
  * @constructor
  * Create a new UploadCropbox
