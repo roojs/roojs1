@@ -438,7 +438,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 width : width + 'px',
                 height : height + 'px',
             });
+            
+            return;
         }
+        
+        height = 300;
+        width = this.minWidth * height / this.minHeight;
         
     }
     
