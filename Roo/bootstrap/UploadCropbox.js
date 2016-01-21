@@ -366,8 +366,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var canvas = document.createElement("canvas");
         
-        var width = this.thumb.getWidth();
-        var height = this.thumb.getHeight();
+        var thumbWidth = this.thumb.getWidth();
+        var thumbHeight = this.thumb.getHeight();
         
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         var thumbX = this.thumb.getLeft(true) + transform.m41;
