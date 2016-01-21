@@ -213,24 +213,22 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     beforeSelectFile : function(e)
     {
         e.preventDefault();
-        
         this.fireEvent('beforeSelectFile', this);
     },
     
     loadCanvasImage : function(src)
     {   
         this.imageSection.un('click', this.beforeSelectFile, this);
-        
         this.reset();
-        
         this.image.attr('src', src);
-        
     },
     
     onLoadCanvasImage : function(src)
     {   
         this.image.OriginWidth = this.image.getWidth();
         this.image.OriginHeight = this.image.getHeight();
+        
+        this.footerSection.show();
         
         this.setCanvasPosition();
     },
