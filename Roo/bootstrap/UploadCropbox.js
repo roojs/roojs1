@@ -428,8 +428,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     calcThumbBoxSize : function()
     {
-        var width, height;
-        
         
         
     }
