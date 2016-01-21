@@ -225,6 +225,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.image.dom.removeAttribute('style');
         this.image.attr('src', '');
         
+        if(!this.imageSectionHasOnClickEvent){
+            this.imageSection.on('click', this.beforeSelectFile, this);
+            this.imageSectionHasOnClickEvent = true;
+        }
+        
     },
     
     beforeSelectFile : function(e)
