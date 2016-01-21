@@ -204,6 +204,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.dragable = false;
         this.mouseX = 0;
         this.mouseY = 0;
+        
         this.imageCanvas.dom.removeAttribute('style');
         this.image.dom.removeAttribute('style');
         this.image.attr('src', '');
@@ -219,7 +220,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     loadCanvasImage : function(src)
     {   
         this.imageSection.un('click', this.beforeSelectFile, this);
+        
         this.reset();
+        
         this.image.attr('src', src);
     },
     
