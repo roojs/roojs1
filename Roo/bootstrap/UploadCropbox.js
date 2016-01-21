@@ -348,7 +348,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageCanvas.setStyle({
             '-ms-transform' : 'rotate(' + this.rotate + 'deg)',
             '-webkit-transform' : 'rotate(' + this.rotate + 'deg)',
-            'transform' : 'rotate(' + this.rotate + 'deg)',
+            'transform' : 'rotate(' + this.rotate + 'deg)'
         });
         
         this.setCanvasPosition();
