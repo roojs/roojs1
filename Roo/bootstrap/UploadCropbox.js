@@ -54,7 +54,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     cropImageData : false,
     cropType : 'image/png',
     minWidth : 300,
-    minHeight : 600,
+    minHeight : 300,
     
     getAutoCreate : function()
     {
