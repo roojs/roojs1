@@ -29,7 +29,13 @@ Roo.bootstrap.UploadCropbox = function(config){
          * Fire after initEvent
          * @param {Roo.EventObject} e
          */
-        "initial" : true
+        "initial" : true,
+        /**
+         * @event crop
+         * Fire after initEvent
+         * @param {Roo.EventObject} e
+         */
+        "crop" : true
         
     });
 };
