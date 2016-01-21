@@ -39106,13 +39106,13 @@
     {
      "name": "minWidth",
      "type": "Number",
-     "desc": "default 200",
+     "desc": "default 300",
      "memberOf": ""
     },
     {
      "name": "minHeight",
      "type": "Number",
-     "desc": "default 200",
+     "desc": "default 300",
      "memberOf": ""
     },
     {
