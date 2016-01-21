@@ -109,4 +109,4 @@ Roo.bootstrap.LocationPicker
 
 Roo.bootstrap.Alert
 
-
+Roo.bootstrap.UploadCropbox
