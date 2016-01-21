@@ -402,8 +402,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var thumbWidth = this.thumb.getWidth();
         var thumbHeight = this.thumb.getHeight();
         
-        var centerX = thumbWidth / 2;
-        var centerY = thumbHeight / 2;
+        var centerX = this.minWidth / 2;
+        var centerY = this.minHeight / 2;
         
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         var thumbX = this.thumb.getLeft(true) + transform.m41;
