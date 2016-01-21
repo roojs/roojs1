@@ -261,7 +261,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.image.OriginWidth = this.image.getWidth();
         this.image.OriginHeight = this.image.getHeight();
         
-        
+        this.fitThumbBox();
         
         this.footerSection.show();
         
