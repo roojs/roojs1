@@ -240,8 +240,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     loadCanvasImage : function(src)
     {   
-        this.imageSection.un('click', this.beforeSelectFile, this);
-        
         this.reset();
         
         this.image.attr('src', src);
