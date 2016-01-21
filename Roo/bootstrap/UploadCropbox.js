@@ -373,18 +373,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var thumbX = this.thumb.getLeft(true) + transform.m41;
         var thumbY = this.thumb.getTop(true) + transform.m42;
         
-        var x = thumbX - this.imageCanvas.getLeft(true);
-        var y = thumbY - this.imageCanvas.getTop(true);
+        var x = (thumbX - this.imageCanvas.getLeft(true)) * Math.pow(1.1, this.scale * -1);
+        var y = thumbY - this.imageCanvas.getTop(true) * Math.pow(1.1, this.scale * -1);
         
-        var cropWidth = thumbWidth;
-        var cropHeight = thumbHeight;
-        
-        if(this.scale < 0){
-            x = x * Math.pow(1.1, this.scale) * -1;
-            y = y * Math.pow(1.1, this.scale) * -1;
-            
-            cropWidth = cropWidth * Math.pow(1.1, this.scale) * -1
-        }
+        var cropWidth = thumbWidth * Math.pow(1.1, this.scale * -1);
+        var cropHeight = thumbHeight * Math.pow(1.1, this.scale * -1);
         
         canvas.width = thumbWidth;
         canvas.height = thumbHeight;
