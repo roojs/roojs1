@@ -440,7 +440,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.thumb.setStyle({
             width : width + 'px',
-            height : height + 'px',
+            height : height + 'px'
         });
 
         return;
