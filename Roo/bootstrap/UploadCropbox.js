@@ -460,45 +460,44 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         if(this.image.OriginWidth > this.image.OriginHeight){
             
-            if(this.image.OriginWidth > this.thumb.getWidth()){
-                while (width > this.thumb.getWidth()){
+            if(this.image.OriginHeight > this.thumb.getHeight()){
+                while (height > this.thumb.getHeight()){
                     i = i - 1;
-                    width = this.image.OriginWidth * Math.pow(1.1, i);
+                    height = this.image.OriginHeight * Math.pow(1.1, i);
                 }
-                
-                this.scale = (width < this.thumb.getWidth()) ? (i + 1) : i;
-                
+
+                this.scale = (height < this.thumb.getHeight()) ? (i + 1) : i;
+
                 return;
             }
-            
-            while (width < this.thumb.getWidth()){
+
+            while (height < this.thumb.getHeight()){
                 i = i + 1;
-                width = this.image.OriginWidth * Math.pow(1.1, i);
+                height = this.image.OriginWidth * Math.pow(1.1, i);
             }
 
-            this.scale = (width > this.thumb.getWidth()) ? (i - 1) : i;
-
+            this.scale = (height > this.thumb.getHeight()) ? (i - 1) : i;
+            
             return;
         }
         
-
-        if(this.image.OriginHeight > this.thumb.getHeight()){
-            while (height > this.thumb.getHeight()){
+        if(this.image.OriginWidth > this.thumb.getWidth()){
+            while (width > this.thumb.getWidth()){
                 i = i - 1;
-                height = this.image.OriginHeight * Math.pow(1.1, i);
+                width = this.image.OriginWidth * Math.pow(1.1, i);
             }
 
-            this.scale = (height < this.thumb.getHeight()) ? (i + 1) : i;
+            this.scale = (width < this.thumb.getWidth()) ? (i + 1) : i;
 
             return;
         }
 
-        while (height < this.thumb.getHeight()){
+        while (width < this.thumb.getWidth()){
             i = i + 1;
-            height = this.image.OriginWidth * Math.pow(1.1, i);
+            width = this.image.OriginWidth * Math.pow(1.1, i);
         }
 
-        this.scale = (height > this.thumb.getHeight()) ? (i - 1) : i;
+        this.scale = (width > this.thumb.getWidth()) ? (i - 1) : i;
 
         return;
         
