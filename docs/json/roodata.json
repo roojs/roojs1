@@ -39104,6 +39104,18 @@
      "memberOf": ""
     },
     {
+     "name": "minWidth",
+     "type": "Number",
+     "desc": "default 200",
+     "memberOf": ""
+    },
+    {
+     "name": "minHeight",
+     "type": "Number",
+     "desc": "default 200",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
