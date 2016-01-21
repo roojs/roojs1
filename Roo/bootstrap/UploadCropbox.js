@@ -207,9 +207,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     },
     
     reset : function()
-    {
-        this.imageSection.on('click', this.beforeSelectFile, this);
-        
+    {    
         this.scale = 0;
         this.rotate = 0;
         this.dragable = false;
