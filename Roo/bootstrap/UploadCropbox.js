@@ -223,13 +223,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         this.imageSection.un('click', this.beforeSelectFile, this);
         
-        this.reset();
-        
         this.image.attr('src', src);
     },
     
     onLoadCanvasImage : function(src)
     {   
+        this.reset();
+        
         this.image.OriginWidth = this.image.getWidth();
         this.image.OriginHeight = this.image.getHeight();
         
