@@ -381,8 +381,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             y = y * Math.pow(1.1, this.scale) * -1;
         }
         
-        canvas.width = width * Math.pow(1.1, this.scale);
-        canvas.height = height * Math.pow(1.1, this.scale);
+        canvas.width = thumbWidth;
+        canvas.height = thumbHeight;
         
         var context = canvas.getContext("2d");
         
