@@ -430,21 +430,21 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var width, height;
         
-        if(this.minWidth > this.minHeight){
-            width = 300;
-            height = this.minHeight * width / this.minWidth;
-            
-            this.thumb.setStyle({
-                width : width + 'px',
-                height : height + 'px',
-            });
-            
-            return;
-        }
-        
         height = 300;
         width = this.minWidth * height / this.minHeight;
         
+        if(this.minWidth > this.minHeight){
+            width = 300;
+            height = this.minHeight * width / this.minWidth;
+        }
+        
+        this.thumb.setStyle({
+            width : width + 'px',
+            height : height + 'px',
+        });
+
+        return;
+            
     }
     
 });
