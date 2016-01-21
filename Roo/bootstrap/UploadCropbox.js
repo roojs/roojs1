@@ -394,6 +394,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.cropImageData = canvas.toDataURL('image/png');
         
         Roo.log(this.scale);
+        Roo.log([x, y]);
+        Roo.log([cropWidth, cropHeight]);
+        Roo.log([thumbWidth, thumbHeight]);
         Roo.log(this.cropImageData);
         
         
