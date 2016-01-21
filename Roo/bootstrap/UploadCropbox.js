@@ -369,6 +369,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var thumbWidth = this.thumb.getWidth();
         var thumbHeight = this.thumb.getHeight();
         
+        var centerX = thumbWidth / 2;
+        var centerY = thumbHeight / 2
+        
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         var thumbX = this.thumb.getLeft(true) + transform.m41;
         var thumbY = this.thumb.getTop(true) + transform.m42;
@@ -383,6 +386,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         canvas.height = thumbHeight;
         
         var context = canvas.getContext("2d");
+        
+        
         
         context.translate(thumbWidth / 2, thumbHeight / 2);
 //        
