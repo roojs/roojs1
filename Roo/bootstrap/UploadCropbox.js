@@ -382,6 +382,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var context = canvas.getContext("2d");
         
+        context.rotate(10 * Math.PI / 180);
+        
         context.drawImage(this.image.dom, x, y, width, height, 0, 0, width, height);
         
         var imageData = canvas.toDataURL('image/png');
