@@ -451,6 +451,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     fitThumbBox : function()
     {
+        Roo.log('fit it');
         
     }
     
