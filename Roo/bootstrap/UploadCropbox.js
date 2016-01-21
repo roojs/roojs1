@@ -379,9 +379,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var context = canvas.getContext("2d");
         
-        context.translate(x, y);
-        
-        context.translate(width / 2, height / 2); 
+        /*
+         * Move acroos and down half the width and height of the image
+         * Use for rotate..
+         */
+        context.translate(width / 2, height / 2);
         
         context.rotate(30 * Math.PI / 180);
         
