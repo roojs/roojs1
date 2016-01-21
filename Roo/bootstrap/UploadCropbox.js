@@ -501,12 +501,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
 
-        while (width < this.thumb.getWidth()){
+        while (height < this.thumb.getHeight()){
             i = i + 1;
-            width = this.image.OriginWidth * Math.pow(1.1, i);
+            height = this.image.OriginWidth * Math.pow(1.1, i);
         }
 
-        this.scale = (width > this.thumb.getWidth()) ? (i - 1) : i;
+        this.scale = (height > this.thumb.getHeight()) ? (i - 1) : i;
 
         this.image.setWidth(this.image.OriginWidth * Math.pow(1.1, this.scale));
         this.image.setHeight(this.image.OriginHeight * Math.pow(1.1, this.scale));
