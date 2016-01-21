@@ -453,9 +453,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         Roo.log('fit it');
         
+        var i = 0;
+        var width = this.image.OriginWidth;
+        var height = this.image.OriginHeight;
+        
         if(this.image.OriginWidth > this.image.OriginHeight){
-            var width = this.image.OriginWidth;
-            var i = 0;
             
             if(this.image.OriginWidth > this.thumb.getWidth()){
                 while (width > this.thumb.getWidth()){
@@ -484,17 +486,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        var base = this.thumb.getHeight();
-        var height = this.image.OriginHeight;
+        
         var i = 0;
 
-        if(this.image.OriginHeight > this.thumb.getHeight()){
-            while (height > base){
+        if(this.image.OriginWidth > this.thumb.getWidth()){
+            while (width > this.thumb.getWidth()){
                 i = i - 1;
                 width = this.image.OriginWidth * Math.pow(1.1, i);
             }
 
-            this.scale = (width < base) ? (i + 1) : i;
+            this.scale = (width < this.thumb.getWidth()) ? (i + 1) : i;
 
             this.image.setWidth(this.image.OriginWidth * Math.pow(1.1, this.scale));
             this.image.setHeight(this.image.OriginHeight * Math.pow(1.1, this.scale));
@@ -502,12 +503,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
 
-        while (width < base){
+        while (width < this.thumb.getWidth()){
             i = i + 1;
             width = this.image.OriginWidth * Math.pow(1.1, i);
         }
 
-        this.scale = (width > base) ? (i - 1) : i;
+        this.scale = (width > this.thumb.getWidth()) ? (i - 1) : i;
 
         this.image.setWidth(this.image.OriginWidth * Math.pow(1.1, this.scale));
         this.image.setHeight(this.image.OriginHeight * Math.pow(1.1, this.scale));
