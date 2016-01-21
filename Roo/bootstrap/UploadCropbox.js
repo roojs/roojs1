@@ -42,6 +42,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     dragable : false,
     mouseX : 0,
     mouseY : 0,
+    cropImageData : false,
     
     getAutoCreate : function()
     {
