@@ -208,7 +208,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     reset : function()
     {
-        this.image.un('load', this.onLoadCanvasImage, this);
+        this.image.on('load', this.onLoadCanvasImage, this);
         
         this.scale = 0;
         this.rotate = 0;
