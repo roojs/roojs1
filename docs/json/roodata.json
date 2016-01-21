@@ -39100,7 +39100,7 @@
     {
      "name": "emptyText",
      "type": "String",
-     "desc": "",
+     "desc": "show when image has been loaded",
      "memberOf": ""
     },
     {
@@ -39189,7 +39189,7 @@
    "events": [
     {
      "name": "beforeSelectFile",
-     "sig": "function (e)\n{\n\n}",
+     "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fire before select file"
     },
@@ -39224,6 +39224,12 @@
      "desc": "Fires when the children have been rendered.."
     },
     {
+     "name": "crop",
+     "sig": "function (_self, imageData)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire after initEvent"
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -39246,6 +39252,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the component is hidden."
+    },
+    {
+     "name": "initial",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire after initEvent"
     },
     {
      "name": "render",

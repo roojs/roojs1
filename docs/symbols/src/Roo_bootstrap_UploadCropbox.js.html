@@ -7,7 +7,7 @@
  * @class Roo.bootstrap.UploadCropbox
  * @extends Roo.bootstrap.Component
  * Bootstrap UploadCropbox class
- * @cfg {String} emptyText 
+ * @cfg {String} emptyText show when image has been loaded
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -21,9 +21,22 @@
         </span><span class="jsdoc-comment">/**
          * @event beforeSelectFile
          * Fire before select file
-         * @param {Roo.EventObject} e
+         * @param {Roo.bootstrap.UploadCropbox} this
          */
-        </span><span class="jsdoc-string">&quot;beforeSelectFile&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;beforeSelectFile&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event initial
+         * Fire after initEvent
+         * @param {Roo.bootstrap.UploadCropbox} this
+         */
+        </span><span class="jsdoc-string">&quot;initial&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event crop
+         * Fire after initEvent
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {String} imageData
+         */
+        </span><span class="jsdoc-string">&quot;crop&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
     </span><span class="jsdoc-syntax">});
 };
@@ -31,10 +44,12 @@
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.UploadCropbox</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
     </span><span class="jsdoc-var">emptyText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Click to upload image'</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">ratio </span><span class="jsdoc-syntax">: 1,
+    </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">rotate </span><span class="jsdoc-syntax">: 0,
     </span><span class="jsdoc-var">dragable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">mouseX </span><span class="jsdoc-syntax">: 0,
     </span><span class="jsdoc-var">mouseY </span><span class="jsdoc-syntax">: 0,
+    </span><span class="jsdoc-var">cropImageData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -48,8 +63,14 @@
                     </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                         {
                             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-upload-cropbox-canvas'
-                        </span><span class="jsdoc-syntax">},
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-upload-cropbox-canvas'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                                {
+                                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-upload-cropbox-image'
+                                </span><span class="jsdoc-syntax">}
+                            ]
+                        },
                         {
                             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-upload-cropbox-thumb'
@@ -107,16 +128,21 @@
     
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">this.image </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Image</span><span class="jsdoc-syntax">());
-        
         </span><span class="jsdoc-var">this.imageSection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-upload-cropbox-image-section'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.imageSection.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.imageCanvas </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-upload-cropbox-canvas'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.imageCanvas.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.image </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-upload-cropbox-image'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.image.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">this.thumb </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-upload-cropbox-thumb'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.thumb.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">this.footerSection </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-upload-cropbox-footer-section'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.footerSection.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.footerSection.hide</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">this.rotateLeft </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-upload-cropbox-rotate-left'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.rotateLeft.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
@@ -126,13 +152,15 @@
         
         </span><span class="jsdoc-var">this.rotateRight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-upload-cropbox-rotate-right'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.rotateRight.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
-  
+        
         </span><span class="jsdoc-var">this.bind</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'initial'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
-    
+
     </span><span class="jsdoc-var">bind </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">this.image.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.setBackground</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.image.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoadCanvasImage</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.imageSection.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.beforeSelectFile</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
@@ -140,11 +168,11 @@
         
         </span><span class="jsdoc-var">this.imageSection.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousemove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mousewheel </span><span class="jsdoc-syntax">= (/Firefox/i</span><span class="jsdoc-var">.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">navigator.userAgent</span><span class="jsdoc-syntax">))? </span><span class="jsdoc-string">'DOMMouseScroll' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'mousewheel'</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">this.imageSection.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mousewheel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseWheel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.pictureBtn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.beforeSelectFile</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
@@ -154,27 +182,51 @@
         
     },
     
-    </span><span class="jsdoc-var">destory </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    </span><span class="jsdoc-var">unbind </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-var">this.image.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'load'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onLoadCanvasImage</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
+        </span><span class="jsdoc-var">this.imageSection.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.beforeSelectFile</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.imageSection.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousedown'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseDown</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.imageSection.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mousemove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseMove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">mousewheel </span><span class="jsdoc-syntax">= (/Firefox/i</span><span class="jsdoc-var">.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">navigator.userAgent</span><span class="jsdoc-syntax">))? </span><span class="jsdoc-string">'DOMMouseScroll' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'mousewheel'</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.imageSection.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mousewheel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseWheel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.pictureBtn.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.beforeSelectFile</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.rotateLeft.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRotateLeft</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.rotateRight.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRotateRight</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">reset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">this.ratio </span><span class="jsdoc-syntax">= 1;
+        </span><span class="jsdoc-var">this.scale </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">= 0;
         </span><span class="jsdoc-var">this.dragable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.mouseX </span><span class="jsdoc-syntax">= 0;
         </span><span class="jsdoc-var">this.mouseY </span><span class="jsdoc-syntax">= 0;
+        </span><span class="jsdoc-var">this.cropImageData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.imageCanvas.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.image.dom.removeAttribute</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'style'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.image.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">);
+        
     },
     
     </span><span class="jsdoc-var">beforeSelectFile </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
-        
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeSelectFile'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
     
-    </span><span class="jsdoc-var">loadImage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">)
+    </span><span class="jsdoc-var">loadCanvasImage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">)
     {   
         </span><span class="jsdoc-var">this.imageSection.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.beforeSelectFile</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
@@ -183,18 +235,23 @@
         </span><span class="jsdoc-var">this.image.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">);
     },
     
-    </span><span class="jsdoc-var">setBackground </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
-    {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.image.dom.width</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">this.ratio</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.image.dom.height</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">this.ratio</span><span class="jsdoc-syntax">;
-
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pw </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.imageSection.dom.clientWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">w</span><span class="jsdoc-syntax">) / 2;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ph </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.imageSection.dom.clientHeight </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">h</span><span class="jsdoc-syntax">) / 2;
+    </span><span class="jsdoc-var">onLoadCanvasImage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">)
+    {   
+        </span><span class="jsdoc-var">this.image.OriginWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.image.getWidth</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.image.OriginHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.image.getHeight</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-var">this.imageSection.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'background-image'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'url(' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.image.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-string">')'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.imageSection.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'background-size'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">w </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'px ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">h </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px' </span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.imageSection.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'background-position'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">pw </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">ph </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">this.imageSection.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'background-repeat'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'no-repeat'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.footerSection.show</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.setCanvasPosition</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">setCanvasPosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {   
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pw </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.imageSection.getWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.image.getWidth</span><span class="jsdoc-syntax">()) / 2;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ph </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.imageSection.getHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.image.getHeight</span><span class="jsdoc-syntax">()) / 2;
+        
+        </span><span class="jsdoc-var">this.imageCanvas.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">pw</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.imageCanvas.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ph</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">onMouseDown </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
@@ -215,41 +272,34 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">transform </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">WebKitCSSMatrix</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window.getComputedStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.thumb.dom</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.webkitTransform</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumb.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">transform.m41</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumb.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">transform.m42</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">minX </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.thumb.getWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.image.getWidth</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">maxY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.thumb.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.image.getHeight</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">== 90 || </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">== 270){
+            </span><span class="jsdoc-var">minX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumb.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">transform.m41 </span><span class="jsdoc-syntax">- (</span><span class="jsdoc-var">this.image.getWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.image.getHeight</span><span class="jsdoc-syntax">()) / 2;
+            </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumb.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">transform.m42 </span><span class="jsdoc-syntax">+ (</span><span class="jsdoc-var">this.image.getWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.image.getHeight</span><span class="jsdoc-syntax">()) / 2;
+            
+            </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">minX </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.thumb.getWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.image.getHeight</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">maxY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.thumb.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.image.getWidth</span><span class="jsdoc-syntax">();
+        }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getPageX</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.mouseX</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getPageY</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.mouseY</span><span class="jsdoc-syntax">;
-
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.imageSection.getStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'background-position'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.split</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">' '</span><span class="jsdoc-syntax">);
-
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bgX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bg</span><span class="jsdoc-syntax">[0]);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bgY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bg</span><span class="jsdoc-syntax">[1]);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bgX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.imageCanvas.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bgY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.imageCanvas.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">transform </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new   </span><span class="jsdoc-var">WebKitCSSMatrix</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window.getComputedStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.thumb.dom</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.webkitTransform</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">bgX </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">minX </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">bgX</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">minX </span><span class="jsdoc-syntax">: ((</span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">bgX</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">maxX </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">bgX</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">bgY </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">bgY</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">minY </span><span class="jsdoc-syntax">: ((</span><span class="jsdoc-var">maxY </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">bgY</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">maxY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">bgY</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">thumbStartX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumb.dom.offsetLeft </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">transform.m41</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">thumbStartY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumb.dom.offsetTop </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">transform.m42</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.imageCanvas.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bgX</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.imageCanvas.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bgY</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">thumbEndX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">thumbStartX </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.thumb.getWidth</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">thumbEndY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">thumbStartY </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.thumb.getHeight</span><span class="jsdoc-syntax">();
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">thumbStartX </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">bgX</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">bgX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">thumbStartX</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">thumbEndX </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">bgX </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.image.dom.width</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">this.ratio</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">bgX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">thumbEndX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.image.dom.width</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">this.ratio</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">thumbStartY </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">bgY</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">bgY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">thumbStartY</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">thumbEndY </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">bgY </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.image.dom.height</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">this.ratio</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">bgY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">thumbEndY </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.image.dom.height</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">this.ratio</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-var">this.imageSection.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'background-position'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">bgX </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'px ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">bgY </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px'</span><span class="jsdoc-syntax">);
-
         </span><span class="jsdoc-var">this.mouseX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getPageX</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.mouseY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.getPageY</span><span class="jsdoc-syntax">();
     },
@@ -265,33 +315,94 @@
     {   
         </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ratio </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">e.getWheelDelta</span><span class="jsdoc-syntax">() == 1) ? (</span><span class="jsdoc-var">this.ratio </span><span class="jsdoc-syntax">* 1.1) : (</span><span class="jsdoc-var">this.ratio </span><span class="jsdoc-syntax">* 0.9);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">e.getWheelDelta</span><span class="jsdoc-syntax">() == 1) ? (</span><span class="jsdoc-var">this.scale </span><span class="jsdoc-syntax">+ 1) : (</span><span class="jsdoc-var">this.scale </span><span class="jsdoc-syntax">- 1);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.image.OriginWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">Math.pow</span><span class="jsdoc-syntax">(1.1, </span><span class="jsdoc-var">scale</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.image.OriginHeight </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">Math.pow</span><span class="jsdoc-syntax">(1.1, </span><span class="jsdoc-var">scale</span><span class="jsdoc-syntax">)
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
-                </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.image.dom.width</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">ratio </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumb.getWidth</span><span class="jsdoc-syntax">() ||
-                </span><span class="jsdoc-var">parseInt</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.image.dom.height</span><span class="jsdoc-syntax">) * </span><span class="jsdoc-var">ratio </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumb.getHeight</span><span class="jsdoc-syntax">()
+                </span><span class="jsdoc-var">e.getWheelDelta</span><span class="jsdoc-syntax">() == -1 &amp;&amp;
+                (
+                    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumb.getWidth</span><span class="jsdoc-syntax">() ||
+                    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumb.getHeight</span><span class="jsdoc-syntax">()
+                )
         ){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-var">this.ratio </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">e.getWheelDelta</span><span class="jsdoc-syntax">() == 1) ? (</span><span class="jsdoc-var">this.ratio </span><span class="jsdoc-syntax">* 1.1) : (</span><span class="jsdoc-var">this.ratio </span><span class="jsdoc-syntax">* 0.9);
+        </span><span class="jsdoc-var">this.scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">scale</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-var">this.setBackground</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.image.setWidth</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.image.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.setCanvasPosition</span><span class="jsdoc-syntax">();
+        
     },
     
     </span><span class="jsdoc-var">onRotateLeft </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'on rotate left'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">&lt; 90) ? 270 : </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">- 90;
+        
+        </span><span class="jsdoc-var">this.imageCanvas.setStyle</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-string">'-ms-transform' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'rotate(' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'deg)'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'-webkit-transform' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'rotate(' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'deg)'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'transform' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'rotate(' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'deg)'
+        </span><span class="jsdoc-syntax">});
+        
+        </span><span class="jsdoc-var">this.setCanvasPosition</span><span class="jsdoc-syntax">();
     },
     
     </span><span class="jsdoc-var">onRotateRight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">e.stopEvent</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'on rotate right'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">&gt; 180) ? 0 : </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">+ 90;
         
+        </span><span class="jsdoc-var">this.imageCanvas.setStyle</span><span class="jsdoc-syntax">({
+            </span><span class="jsdoc-string">'-ms-transform' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'rotate(' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'deg)'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'-webkit-transform' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'rotate(' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'deg)'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">'transform' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'rotate(' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'deg)'
+        </span><span class="jsdoc-syntax">});
+        
+        </span><span class="jsdoc-var">this.setCanvasPosition</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">crop </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">canvas </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;canvas&quot;</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">thumbWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumb.getWidth</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">thumbHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumb.getHeight</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">centerX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">thumbWidth </span><span class="jsdoc-syntax">/ 2;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">centerY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">thumbHeight </span><span class="jsdoc-syntax">/ 2
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">transform </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">WebKitCSSMatrix</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">window.getComputedStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.thumb.dom</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.webkitTransform</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">thumbX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumb.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">transform.m41</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">thumbY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumb.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) + </span><span class="jsdoc-var">transform.m42</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">thumbX </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.imageCanvas.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) * </span><span class="jsdoc-var">Math.pow</span><span class="jsdoc-syntax">(1.1, </span><span class="jsdoc-var">this.scale </span><span class="jsdoc-syntax">* -1);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">thumbY </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.imageCanvas.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) * </span><span class="jsdoc-var">Math.pow</span><span class="jsdoc-syntax">(1.1, </span><span class="jsdoc-var">this.scale </span><span class="jsdoc-syntax">* -1);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cropWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">thumbWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">Math.pow</span><span class="jsdoc-syntax">(1.1, </span><span class="jsdoc-var">this.scale </span><span class="jsdoc-syntax">* -1);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cropHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">thumbHeight </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">Math.pow</span><span class="jsdoc-syntax">(1.1, </span><span class="jsdoc-var">this.scale </span><span class="jsdoc-syntax">* -1);
+        
+        </span><span class="jsdoc-var">canvas.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">thumbWidth</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">canvas.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">thumbHeight</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">context </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">canvas.getContext</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;2d&quot;</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">context.translate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">centerX</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">centerY</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-var">context.rotate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">Math.PI </span><span class="jsdoc-syntax">/ 180);
+        
+        </span><span class="jsdoc-var">context.drawImage</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.image.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cropWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cropHeight</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">centerX </span><span class="jsdoc-syntax">* -1, </span><span class="jsdoc-var">centerY </span><span class="jsdoc-syntax">* -1, </span><span class="jsdoc-var">thumbWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">thumbHeight</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.cropImageData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">canvas.toDataURL</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'image/png'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'crop'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cropImageData</span><span class="jsdoc-syntax">);
     }
     
 });

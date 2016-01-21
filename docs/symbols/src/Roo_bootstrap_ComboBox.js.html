@@ -2093,6 +2093,10 @@
     {
         </span><span class="jsdoc-var">this.renderTouchView</span><span class="jsdoc-syntax">();
         
+        </span><span class="jsdoc-var">this.touchViewEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'scroll'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+            </span><span class="jsdoc-var">this.el.dom.scrollTop </span><span class="jsdoc-syntax">= 0;
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">this.inputEl</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;click&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.showTouchView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.touchViewFooterEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-touch-view-cancel'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.hideTouchView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.touchViewFooterEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-touch-view-ok'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.setTouchViewValue</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
@@ -2172,7 +2176,7 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">bodyHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bodyHeight </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.touchViewHeaderEl.getHeight</span><span class="jsdoc-syntax">();
         }
-
+        
         </span><span class="jsdoc-var">this.touchViewBodyEl.setHeight</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bodyHeight</span><span class="jsdoc-syntax">);
 
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.animate</span><span class="jsdoc-syntax">){
@@ -2278,8 +2282,16 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">firstChecked </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.touchViewListGroup.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.list-group-item &gt; .roo-combobox-list-group-item-box &gt; input:checked'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">firstChecked</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">firstChecked.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.scrollIntoView</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.touchViewListGroup.dom</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bodyHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.lib.Dom.getViewHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.touchViewFooterEl.getHeight</span><span class="jsdoc-syntax">() + </span><span class="jsdoc-var">this.touchViewBodyEl.getPadding</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'tb'</span><span class="jsdoc-syntax">);
+
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fieldLabel.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">bodyHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">bodyHeight </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.touchViewHeaderEl.getHeight</span><span class="jsdoc-syntax">();
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.touchViewListGroup.getHeight</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">firstChecked </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">listHeight </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">bodyHeight</span><span class="jsdoc-syntax">){
+            (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">firstChecked.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.scrollIntoView</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.touchViewListGroup.dom</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(500);
         }
         
     },

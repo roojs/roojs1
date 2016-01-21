@@ -63,6 +63,7 @@
         </span><span class="jsdoc-var">isMac </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;macintosh&quot;</span><span class="jsdoc-syntax">) != -1 || </span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;mac os x&quot;</span><span class="jsdoc-syntax">) != -1),
         </span><span class="jsdoc-var">isLinux </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">ua.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;linux&quot;</span><span class="jsdoc-syntax">) != -1),
         </span><span class="jsdoc-var">isSecure </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">window.location.href.toLowerCase</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;https&quot;</span><span class="jsdoc-syntax">) === 0,
+        </span><span class="jsdoc-var">isIOS </span><span class="jsdoc-syntax">= /iphone|ipad/</span><span class="jsdoc-var">.test</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ua</span><span class="jsdoc-syntax">),
         </span><span class="jsdoc-var">isTouch </span><span class="jsdoc-syntax">=  (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
             </span><span class="jsdoc-keyword">try </span><span class="jsdoc-syntax">{  
                 </span><span class="jsdoc-var">document.createEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;TouchEvent&quot;</span><span class="jsdoc-syntax">);  
@@ -629,6 +630,8 @@ Roo.factory(conf, Roo.data);
         </span><span class="jsdoc-var">isLinux </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isLinux</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/** @type Boolean */
         </span><span class="jsdoc-var">isMac </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isMac</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/** @type Boolean */
+        </span><span class="jsdoc-var">isIOS </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isIOS</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/** @type Boolean */
         </span><span class="jsdoc-var">isTouch </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">isTouch</span><span class="jsdoc-syntax">,
 
