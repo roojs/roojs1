@@ -453,6 +453,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         Roo.log('fit it');
         
+        
     }
     
 });
