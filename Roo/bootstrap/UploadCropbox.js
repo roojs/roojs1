@@ -261,6 +261,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.image.OriginWidth = this.image.getWidth();
         this.image.OriginHeight = this.image.getHeight();
         
+        
+        
         this.footerSection.show();
         
         this.setCanvasPosition();
