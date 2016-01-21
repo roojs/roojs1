@@ -415,8 +415,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var cropWidth = thumbWidth * Math.pow(1.1, this.scale * -1);
         var cropHeight = thumbHeight * Math.pow(1.1, this.scale * -1);
         
-        canvas.width = thumbWidth;
-        canvas.height = thumbHeight;
+        canvas.width = this.minWidth;
+        canvas.height = this.minHeight;
         
         var context = canvas.getContext("2d");
         
