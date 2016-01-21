@@ -382,6 +382,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if(this.scale < 0){
             x = x * Math.pow(1.1, this.scale) * -1;
             y = y * Math.pow(1.1, this.scale) * -1;
+            
+            cropWidth = cropWidth * Math.pow(1.1, this.scale) * -1
         }
         
         canvas.width = thumbWidth;
