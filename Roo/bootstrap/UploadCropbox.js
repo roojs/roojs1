@@ -399,8 +399,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var canvas = document.createElement("canvas");
         
-        var thumbWidth = this.thumb.getWidth();
-        var thumbHeight = this.thumb.getHeight();
+        var thumbWidth = this.minWidth; //this.thumb.getWidth();
+        var thumbHeight = this.minHeight;// this.thumb.getHeight();
         
         var centerX = thumbWidth / 2;
         var centerY = thumbHeight / 2;
