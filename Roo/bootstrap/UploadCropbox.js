@@ -420,7 +420,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var context = canvas.getContext("2d");
         
-        context.translate(centerX, centerY);
+        context.translate(centerY, centerX);
 
         context.rotate(this.rotate * Math.PI / 180);
         
