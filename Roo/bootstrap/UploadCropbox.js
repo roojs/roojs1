@@ -362,14 +362,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     crop : function()
     {
-        var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
-        
-        var thumbX = this.thumb.getLeft(true) + transform.m41;
-        var thumbY = this.thumb.getTop(true) + transform.m42;
-        
         var canvas = document.createElement("canvas");
+        
         var width = this.thumb.getWidth();
         var height = this.thumb.getHeight();
+        
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         var thumbX = this.thumb.getLeft(true) + transform.m41;
         var thumbY = this.thumb.getTop(true) + transform.m42;
@@ -381,6 +378,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         canvas.height = height;
         
         var context = canvas.getContext("2d");
+        
+        context.translate(x, x);
         
         context.rotate(30 * Math.PI / 180);
         
