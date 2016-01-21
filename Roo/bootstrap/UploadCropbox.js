@@ -139,6 +139,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.bind();
+        
+        this.fireEvent('initial', this);
     },
 
     bind : function()
