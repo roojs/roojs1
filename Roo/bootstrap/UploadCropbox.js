@@ -247,6 +247,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onLoadCanvasImage : function(src)
     {   
+        if(this.imageSectionHasOnClickEvent){
+            this.imageSection.un('click', this.beforeSelectFile, this);
+            this.imageSectionHasOnClickEvent = false;
+        }
+        
         this.image.OriginWidth = this.image.getWidth();
         this.image.OriginHeight = this.image.getHeight();
         
