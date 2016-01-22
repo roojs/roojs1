@@ -541,6 +541,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     fitThumbBox : function()
     {
+        return;
         var i = 0;
         var width = this.image.OriginWidth;
         var height = this.image.OriginHeight;
