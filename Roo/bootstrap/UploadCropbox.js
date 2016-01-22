@@ -458,9 +458,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         if(this.rotate == 180){
-            
-            
-            
+            x = this.image.OriginWidth - x;
+            y = this.image.OriginHeight - y;
         }
         
         context.translate(centerX, centerY);
