@@ -370,6 +370,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.stopEvent();
         
+        Roo.log([this.image.getWidth(), this.image.getHeight()]);
+        Roo.log([this.thumb.getWidth(), this.thumb.getHeight()]);
+        
         if(
                 (
                     this.rotate == 0 || 
