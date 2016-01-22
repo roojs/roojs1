@@ -561,7 +561,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     getScaleLevel : function(reverse)
     {
         if(reverse){
-            return this.baseScale * Math.pow(1.1, this.scale * -1);
+            return Math.pow(1.1, this.scale * -1) / this.baseScale;
         }
         
         return this.baseScale * Math.pow(1.1, this.scale);
