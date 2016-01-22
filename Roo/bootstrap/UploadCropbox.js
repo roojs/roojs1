@@ -467,7 +467,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         Roo.log(this.cropImageData);
         
-//        this.fireEvent('crop', this, this.cropImageData);
+        this.fireEvent('crop', this, this.cropImageData);
     },
     
     calcThumbBoxSize : function()
