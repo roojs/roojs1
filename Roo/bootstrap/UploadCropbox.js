@@ -425,7 +425,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             x = x * Math.pow(1.1, this.scale * -1);
             y = y * Math.pow(1.1, this.scale * -1);
             
-            
             x = x < 0 ? 0 : x;
             y = y < 0 ? 0 : y;
             
@@ -464,11 +463,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if(this.rotate == 270){
             
             x = thumbY + (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getTop(true);
-            y = this.image.getHeight() - this.thumb.getWidth() - (thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true));
+            y = thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true);
             
             x = (this.image.getWidth() - this.thumb.getHeight() - x) * Math.pow(1.1, this.scale * -1);
             y = y * Math.pow(1.1, this.scale * -1);
-            
             
             x = x < 0 ? 0 : x;
             y = y < 0 ? 0 : y;
