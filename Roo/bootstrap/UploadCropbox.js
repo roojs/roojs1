@@ -466,6 +466,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             y = this.image.OriginHeight - this.thumb.getHeight() * Math.pow(1.1, this.scale * -1) - y;
         }
         
+        x = x < 0 ? 0 : x;
+        y = y < 0 ? 0 : y;
+            
         context.translate(centerX, centerY);
 
         context.rotate(this.rotate * Math.PI / 180);
