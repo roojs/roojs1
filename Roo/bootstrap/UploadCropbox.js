@@ -398,10 +398,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     crop : function()
     {
         var canvas = document.createElement("canvas");
-//        
-//        canvas.width = this.minWidth;
-//        canvas.height = this.minHeight;
-//        
+        
+        canvas.width = this.minWidth;
+        canvas.height = this.minHeight;
+        
         var centerX = this.minWidth / 2;
         var centerY = this.minHeight / 2;
         
@@ -441,9 +441,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         context.translate(centerX, centerY);
 
-//        context.rotate(this.rotate * Math.PI / 180);
+        context.rotate(this.rotate * Math.PI / 180);
         
-        context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, this.minWidth, this.minHeight);
+//        context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, this.minWidth, this.minHeight);
         
         this.cropImageData = canvas.toDataURL(this.cropType);
         
