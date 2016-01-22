@@ -425,6 +425,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
         }
         
+        Roo.log([x,y]);
         var context = canvas.getContext("2d");
         
         context.translate(centerX, centerY);
