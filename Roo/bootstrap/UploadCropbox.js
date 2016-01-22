@@ -425,6 +425,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             x = x * Math.pow(1.1, this.scale * -1);
             y = y * Math.pow(1.1, this.scale * -1);
             
+            
+            x = x < 0 ? 0 : x;
+            y = y < 0 ? 0 : y;
+            
             cropWidth = this.thumb.getHeight() * Math.pow(1.1, this.scale * -1);
             cropHeight = this.thumb.getWidth() * Math.pow(1.1, this.scale * -1);
             
