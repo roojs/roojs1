@@ -370,9 +370,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.stopEvent();
         
-        Roo.log([this.image.getWidth(), this.image.getHeight()]);
-        Roo.log([this.thumb.getWidth(), this.thumb.getHeight()]);
-        
         if(
                 (
                     this.rotate == 0 || 
@@ -415,6 +412,34 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     onRotateRight : function(e)
     {
         e.stopEvent();
+        
+        if(
+                (
+                    this.rotate == 0 || 
+                    this.rotate == 180
+                ) 
+                &&
+                (
+                    this.image.getHeight() < this.thumb.getWidth() ||
+                    this.image.getWidth() < this.thumb.getHeight()
+                )
+        ){
+            return;
+        }
+        
+        if(
+                (
+                    this.rotate == 90 || 
+                    this.rotate == 270
+                ) 
+                &&
+                (
+                    this.image.getWidth() < this.thumb.getWidth() ||
+                    this.image.getHeight() < this.thumb.getHeight()
+                )
+        ){
+            return;
+        }
         
         this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
         
