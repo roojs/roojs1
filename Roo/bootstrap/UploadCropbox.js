@@ -359,8 +359,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.scale = scale;
-        
         this.image.setWidth(width);
         this.image.setHeight(height);
         
