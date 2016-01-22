@@ -343,8 +343,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
         
-        var width = this.image.OriginWidth * Math.pow(1.1, scale);
-        var height = this.image.OriginHeight * Math.pow(1.1, scale);
+        var scale = (e.getWheelDelta() == 1) ? this.scale * 1.1 : this.scale / 1.1;
+        
+        var width = this.image.OriginWidth * scale ; //Math.pow(1.1, scale);
+        var height = this.image.OriginHeight * scale ; //* Math.pow(1.1, scale);
         
         if(
                 e.getWheelDelta() == -1 &&
