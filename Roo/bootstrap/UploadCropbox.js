@@ -457,6 +457,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
         }
         
+        if(this.rotate == 180){
+            
+            
+            
+        }
+        
         context.translate(centerX, centerY);
 
         context.rotate(this.rotate * Math.PI / 180);
