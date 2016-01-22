@@ -47,6 +47,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     emptyText : 'Click to upload image',
     scale : 0,
+    baseScale : 1,
     rotate : 0,
     dragable : false,
     mouseX : 0,
@@ -221,6 +222,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     reset : function()
     {    
         this.scale = 0;
+        this.baseScale = 1;
         this.rotate = 0;
         this.dragable = false;
         this.mouseX = 0;
