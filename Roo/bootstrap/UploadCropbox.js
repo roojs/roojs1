@@ -415,6 +415,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if(this.rotate == 90 || this.rotate == 270){
             x = this.thumb.getLeft(true) + transform.m41 - (this.image.getWidth() - this.image.getHeight()) / 2;
             y = this.thumb.getTop(true) + transform.m42 + (this.image.getWidth() - this.image.getHeight()) / 2;
+            
         }
         
         var cropWidth = thumbWidth * Math.pow(1.1, this.scale * -1);
