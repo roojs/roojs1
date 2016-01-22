@@ -439,17 +439,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
         //context.rotate(this.rotate * Math.PI / 180);
         
-//        if(this.rotate == 90 || this.rotate == 270){
-//            cropWidth = thumbWidth * Math.pow(1.1, this.scale * -1);
-//            cropHeight = thumbHeight * Math.pow(1.1, this.scale * -1);
-//        }
-
-//        if(this.rotate == 90 || this.rotate == 270){
-//            x = x - (this.image.OriginWidth - this.image.OriginHeight) / 2;
-//            y = y + (this.image.OriginWidth - this.image.OriginHeight) / 2;
-//            
-//        }
-        
         context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, canvas.width, canvas.height);
         
         this.cropImageData = canvas.toDataURL(this.cropType);
