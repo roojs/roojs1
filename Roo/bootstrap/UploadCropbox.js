@@ -465,7 +465,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         if(this.rotate == 180){
             x = this.image.OriginWidth - x;
-            y = this.image.OriginHeight - y;
+            y = this.image.OriginHeight - this.thumb.getHeight() * Math.pow(1.1, this.scale * -1) - y;
         }
         
         Roo.log([x,y]);
