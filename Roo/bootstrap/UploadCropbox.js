@@ -220,7 +220,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     reset : function()
     {    
-        this.scale = 0;
+        this.scale = 1;
         this.rotate = 0;
         this.dragable = false;
         this.mouseX = 0;
