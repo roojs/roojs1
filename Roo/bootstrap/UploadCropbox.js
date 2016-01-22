@@ -620,6 +620,39 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         return this.baseScale * Math.pow(1.1, this.scale);
+    },
+    
+    rotatable : function()
+    {
+        if(
+                (
+                    this.rotate == 0 || 
+                    this.rotate == 180
+                ) 
+                &&
+                (
+                    this.image.getHeight() < this.thumb.getWidth() ||
+                    this.image.getWidth() < this.thumb.getHeight()
+                )
+        ){
+            return false;
+        }
+        
+        if(
+                (
+                    this.rotate == 90 || 
+                    this.rotate == 270
+                ) 
+                &&
+                (
+                    this.image.getWidth() < this.thumb.getWidth() ||
+                    this.image.getHeight() < this.thumb.getHeight()
+                )
+        ){
+            return false;
+        }
+        
+        return true;
     }
     
 });
