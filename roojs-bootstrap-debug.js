@@ -24187,6 +24187,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.image.OriginWidth = this.image.getWidth();
         this.image.OriginHeight = this.image.getHeight();
         
+        this.fitThumbBox();
+        
+        this.image.setWidth(this.image.OriginWidth * Math.pow(1.1, this.scale));
+        this.image.setHeight(this.image.OriginHeight * Math.pow(1.1, this.scale));
+                
         this.footerSection.show();
         
         this.setCanvasPosition();
@@ -24320,11 +24325,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var canvas = document.createElement("canvas");
         
-        var thumbWidth = this.thumb.getWidth();
-        var thumbHeight = this.thumb.getHeight();
+        var context = canvas.getContext("2d");
         
-        var centerX = thumbWidth / 2;
-        var centerY = thumbHeight / 2;
+        canvas.width = this.minWidth;
+        canvas.height = this.minHeight;
+        
+        var centerX = this.minWidth / 2;
+        var centerY = this.minHeight / 2;
+        
+        var cropWidth = this.thumb.getWidth() * Math.pow(1.1, this.scale * -1);
+        var cropHeight = this.thumb.getHeight() * Math.pow(1.1, this.scale * -1);
         
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         var thumbX = this.thumb.getLeft(true) + transform.m41;
@@ -24333,19 +24343,101 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var x = (thumbX - this.imageCanvas.getLeft(true)) * Math.pow(1.1, this.scale * -1);
         var y = (thumbY - this.imageCanvas.getTop(true)) * Math.pow(1.1, this.scale * -1);
         
-        var cropWidth = thumbWidth * Math.pow(1.1, this.scale * -1);
-        var cropHeight = thumbHeight * Math.pow(1.1, this.scale * -1);
+        if(this.rotate == 90){
+            
+            x = thumbY + (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getTop(true);
+            y = this.image.getHeight() - this.thumb.getWidth() - (thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true));
+            
+            x = x * Math.pow(1.1, this.scale * -1);
+            y = y * Math.pow(1.1, this.scale * -1);
+            
+            x = x < 0 ? 0 : x;
+            y = y < 0 ? 0 : y;
+            
+            cropWidth = this.thumb.getHeight() * Math.pow(1.1, this.scale * -1);
+            cropHeight = this.thumb.getWidth() * Math.pow(1.1, this.scale * -1);
+            
+            canvas.width = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+            canvas.height = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+
+            centerX = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+            centerY = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+            
+            context.translate(centerX, centerY);
+            context.rotate(this.rotate * Math.PI / 180);
+            
+            context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, this.minHeight, this.minWidth);
         
-        canvas.width = thumbWidth;
-        canvas.height = thumbHeight;
+            var canvas2 = document.createElement("canvas");
+            var context2 = canvas2.getContext("2d");
+            
+            canvas2.width = this.minWidth;
+            canvas2.height = this.minHeight;
+            
+            context2.drawImage(canvas, Math.abs(this.minWidth - this.minHeight), 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
+    
+            this.cropImageData = canvas2.toDataURL(this.cropType);
+
+            this.fireEvent('crop', this, this.cropImageData);
+            
+            return;
+            
+        }
         
-        var context = canvas.getContext("2d");
+        if(this.rotate == 270){
+            
+            x = thumbY + (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getTop(true);
+            y = thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true);
+            
+            x = (this.image.getWidth() - this.thumb.getHeight() - x) * Math.pow(1.1, this.scale * -1);
+            y = y * Math.pow(1.1, this.scale * -1);
+            
+            x = x < 0 ? 0 : x;
+            y = y < 0 ? 0 : y;
+            
+            cropWidth = this.thumb.getHeight() * Math.pow(1.1, this.scale * -1);
+            cropHeight = this.thumb.getWidth() * Math.pow(1.1, this.scale * -1);
+            
+            canvas.width = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+            canvas.height = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+
+            centerX = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+            centerY = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+            
+            context.translate(centerX, centerY);
+            context.rotate(this.rotate * Math.PI / 180);
+            
+            context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, this.minHeight, this.minWidth);
         
+            var canvas2 = document.createElement("canvas");
+            var context2 = canvas2.getContext("2d");
+            
+            canvas2.width = this.minWidth;
+            canvas2.height = this.minHeight;
+            
+            context2.drawImage(canvas, 0, 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
+    
+            this.cropImageData = canvas2.toDataURL(this.cropType);
+            
+            this.fireEvent('crop', this, this.cropImageData);
+            
+            return;
+            
+        }
+        
+        if(this.rotate == 180){
+            x = this.image.OriginWidth - this.thumb.getWidth() * Math.pow(1.1, this.scale * -1) - x;
+            y = this.image.OriginHeight - this.thumb.getHeight() * Math.pow(1.1, this.scale * -1) - y;
+        }
+        
+        x = x < 0 ? 0 : x;
+        y = y < 0 ? 0 : y;
+            
         context.translate(centerX, centerY);
 
         context.rotate(this.rotate * Math.PI / 180);
         
-        context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, thumbWidth, thumbHeight);
+        context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, canvas.width, canvas.height);
         
         this.cropImageData = canvas.toDataURL(this.cropType);
         
@@ -24371,6 +24463,56 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
         return;
             
+    },
+    
+    fitThumbBox : function()
+    {
+        var i = 0;
+        var width = this.image.OriginWidth;
+        var height = this.image.OriginHeight;
+        
+        if(this.image.OriginWidth > this.image.OriginHeight){
+            
+            if(this.image.OriginHeight > this.thumb.getHeight()){
+                while (height > this.thumb.getHeight()){
+                    i = i - 1;
+                    height = this.image.OriginHeight * Math.pow(1.1, i);
+                }
+
+                this.scale = (height < this.thumb.getHeight()) ? (i + 1) : i;
+
+                return;
+            }
+
+            while (height < this.thumb.getHeight()){
+                i = i + 1;
+                height = this.image.OriginWidth * Math.pow(1.1, i);
+            }
+
+            this.scale = (height > this.thumb.getHeight()) ? (i - 1) : i;
+            
+            return;
+        }
+        
+        if(this.image.OriginWidth > this.thumb.getWidth()){
+            while (width > this.thumb.getWidth()){
+                i = i - 1;
+                width = this.image.OriginWidth * Math.pow(1.1, i);
+            }
+
+            this.scale = (width < this.thumb.getWidth()) ? (i + 1) : i;
+
+            return;
+        }
+
+        while (width < this.thumb.getWidth()){
+            i = i + 1;
+            width = this.image.OriginWidth * Math.pow(1.1, i);
+        }
+
+        this.scale = (width > this.thumb.getWidth()) ? (i - 1) : i;
+
+        return;
     }
     
 });
