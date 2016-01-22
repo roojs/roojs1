@@ -420,12 +420,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         if(this.rotate == 90){
             x = x - (this.image.OriginWidth - this.image.OriginHeight) / 2;
-            
             y = y + (this.image.OriginWidth - this.image.OriginHeight) / 2;
             
         }
         
         Roo.log([x,y]);
+        
         var context = canvas.getContext("2d");
         
         context.translate(centerX, centerY);
