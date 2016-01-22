@@ -415,17 +415,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var x = (thumbX - this.imageCanvas.getLeft(true)) * Math.pow(1.1, this.scale * -1);
         var y = (thumbY - this.imageCanvas.getTop(true)) * Math.pow(1.1, this.scale * -1);
         
-        Roo.log([x,y]);
-        
         if(this.rotate == 90){
             
-            Roo.log(this.image.getHeight() - this.thumb.getWidth());
-            
-            Roo.log(thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true));
-            
-            Roo.log(this.image.getHeight() - this.thumb.getWidth() - (thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true)));
-            
-            var d = this.image.getHeight() - this.thumb.getWidth() - thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true);
+            var y = this.image.getHeight() - this.thumb.getWidth() - (thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true));
             
             
             x = x - (this.image.OriginWidth - this.image.OriginHeight) / 2;
@@ -443,7 +435,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             
         }
-        Roo.log(d);
+        
         Roo.log([x,y]);
         
         var context = canvas.getContext("2d");
