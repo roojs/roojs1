@@ -265,8 +265,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.fitThumbBox();
         
-        this.image.setWidth(this.image.OriginWidth * this.getScaleLevel());
-        this.image.setHeight(this.image.OriginHeight * this.getScaleLevel());
+        this.image.setWidth(this.image.OriginWidth * this.getScaleLevel(false));
+        this.image.setHeight(this.image.OriginHeight * this.getScaleLevel(false));
                 
         this.footerSection.show();
         
@@ -343,10 +343,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         e.stopEvent();
         
-        this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
+        var scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
         
-        var width = this.image.OriginWidth * this.getScaleLevel();
-        var height = this.image.OriginHeight * this.getScaleLevel();
+        var width = this.image.OriginWidth * Math.pow(1.1, scale);
+        var height = this.image.OriginHeight * Math.pow(1.1, scale);
         
         if(
                 e.getWheelDelta() == -1 &&
@@ -355,9 +355,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     height < this.thumb.getHeight()
                 )
         ){
-            this.scale = (e.getWheelDelta() == 1) ? (this.scale - 1) : (this.scale + 1);
             return;
         }
+        
+        this.scale = scale;
         
         this.image.setWidth(width);
         this.image.setHeight(height);
