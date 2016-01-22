@@ -541,7 +541,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     fitThumbBox : function()
     {
-        var i = 0;
         var width = 300;
         var height = this.image.OriginHeight * 300 / this.image.OriginWidth;
         
@@ -555,6 +554,54 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         return;
         
+        /*
+        var i = 0;
+        var width = this.image.OriginWidth;
+        var height = this.image.OriginHeight;
+        
+        if(this.image.OriginWidth > this.image.OriginHeight){
+            
+            if(this.image.OriginHeight > this.thumb.getHeight()){
+                while (height > this.thumb.getHeight()){
+                    i = i - 1;
+                    height = this.image.OriginHeight * Math.pow(1.1, i);
+                }
+
+                this.scale = (height < this.thumb.getHeight()) ? (i + 1) : i;
+
+                return;
+            }
+
+            while (height < this.thumb.getHeight()){
+                i = i + 1;
+                height = this.image.OriginWidth * Math.pow(1.1, i);
+            }
+
+            this.scale = (height > this.thumb.getHeight()) ? (i - 1) : i;
+            
+            return;
+        }
+        
+        if(this.image.OriginWidth > this.thumb.getWidth()){
+            while (width > this.thumb.getWidth()){
+                i = i - 1;
+                width = this.image.OriginWidth * Math.pow(1.1, i);
+            }
+
+            this.scale = (width < this.thumb.getWidth()) ? (i + 1) : i;
+
+            return;
+        }
+
+        while (width < this.thumb.getWidth()){
+            i = i + 1;
+            width = this.image.OriginWidth * Math.pow(1.1, i);
+        }
+
+        this.scale = (width > this.thumb.getWidth()) ? (i - 1) : i;
+
+        return;
+        */
     }
     
 });
