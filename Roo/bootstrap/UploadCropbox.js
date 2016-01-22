@@ -405,11 +405,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var centerX = this.minWidth / 2;
         var centerY = this.minHeight / 2;
         
-        var thumbWidth = this.thumb.getWidth();
-        var thumbHeight = this.thumb.getHeight();
-        
-        var cropWidth = thumbWidth * Math.pow(1.1, this.scale * -1);
-        var cropHeight = thumbHeight * Math.pow(1.1, this.scale * -1);
+        var cropWidth = this.thumb.getWidth() * Math.pow(1.1, this.scale * -1);
+        var cropHeight = this.thumb.getHeight() * Math.pow(1.1, this.scale * -1);
         
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         var thumbX = this.thumb.getLeft(true) + transform.m41;
@@ -418,21 +415,21 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var x = (thumbX - this.imageCanvas.getLeft(true)) * Math.pow(1.1, this.scale * -1);
         var y = (thumbY - this.imageCanvas.getTop(true)) * Math.pow(1.1, this.scale * -1);
         
-        if(this.rotate == 90){
-            x = x - (this.image.OriginWidth - this.image.OriginHeight) / 2;
-            y = y + (this.image.OriginWidth - this.image.OriginHeight) / 2;
-            
-            cropWidth = thumbHeight * Math.pow(1.1, this.scale * -1);
-            cropHeight = thumbWidth * Math.pow(1.1, this.scale * -1);
-            
-            canvas.width = this.minHeight;
-            canvas.height = this.minWidth;
-        
-            centerX = this.minHeight / 2;
-            centerY = this.minWidth / 2;
-            
-            
-        }
+//        if(this.rotate == 90){
+//            x = x - (this.image.OriginWidth - this.image.OriginHeight) / 2;
+//            y = y + (this.image.OriginWidth - this.image.OriginHeight) / 2;
+//            
+//            cropWidth = thumbHeight * Math.pow(1.1, this.scale * -1);
+//            cropHeight = thumbWidth * Math.pow(1.1, this.scale * -1);
+//            
+//            canvas.width = this.minHeight;
+//            canvas.height = this.minWidth;
+//        
+//            centerX = this.minHeight / 2;
+//            centerY = this.minWidth / 2;
+//            
+//            
+//        }
         
         Roo.log([x,y]);
         
