@@ -263,7 +263,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.fitThumbBox();
         
-        this.image.setWidth(this.image.OriginWidth * Math.pow(1.1, this.scale));
+        this.image.setWidth(this.image.OriginWidth * this.basescale * Math.pow(1.1, this.scale));
         this.image.setHeight(this.image.OriginHeight * Math.pow(1.1, this.scale));
                 
         this.footerSection.show();
