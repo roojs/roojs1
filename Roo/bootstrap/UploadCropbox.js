@@ -351,8 +351,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if(
                 e.getWheelDelta() == -1 &&
                 (
-                    width < this.thumb.getWidth() ||
-                    height < this.thumb.getHeight()
+                    (
+                        (this.rotate == 0 || this.rotate == 180) && (width < this.thumb.getWidth() || height < this.thumb.getHeight())
+                    )
+                    ||
+                    (
+                        (this.rotate == 90 || this.rotate == 270) && (height < this.thumb.getWidth() || width < this.thumb.getHeight())
+                    )
                 )
         ){
             this.scale = (e.getWheelDelta() == 1) ? (this.scale - 1) : (this.scale + 1);
