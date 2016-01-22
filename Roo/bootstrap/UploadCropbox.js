@@ -428,7 +428,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             centerX = this.minHeight / 2;
             centerY = this.minWidth / 2;
             
-            
         }
         
         Roo.log([x,y]);
