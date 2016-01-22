@@ -541,20 +541,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     fitThumbBox : function()
     {
-        var width = 300;
-        var height = this.image.OriginHeight * 300 / this.image.OriginWidth;
-        
-        if(this.image.OriginWidth > this.image.OriginHeight){
-            height = 300;
-            width = this.image.OriginWidth * 300 / this.image.OriginHeight;
-        }
-        
-        this.image.OriginWidth = width;
-        this.image.OriginHeight = height;
-        
-        return;
-        
-        /*
         var i = 0;
         var width = this.image.OriginWidth;
         var height = this.image.OriginHeight;
@@ -601,7 +587,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.scale = (width > this.thumb.getWidth()) ? (i - 1) : i;
 
         return;
-        */
     }
     
 });
