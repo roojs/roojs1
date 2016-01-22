@@ -556,6 +556,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         return;
+    },
+    
+    getScaleLevel : function()
+    {
+        return this.baseScale * Math.pow(1.1, this.scale * 1);
     }
     
 });
