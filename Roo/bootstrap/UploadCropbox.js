@@ -370,6 +370,20 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.stopEvent();
         
+        if(
+                (
+                    this.rotate == 0 || 
+                    this.rotate == 180
+                ) 
+                &&
+                (
+                    this.image.getHeight() < this.thumb.getWidth() ||
+                    this.image.getWidth() < this.thumb.getHeight()
+                )
+        ){
+            return;
+        }
+        
         this.rotate = (this.rotate < 90) ? 270 : this.rotate - 90;
         
         this.imageCanvas.setStyle({
