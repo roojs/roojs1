@@ -23973,6 +23973,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     emptyText : 'Click to upload image',
     scale : 0,
+    baseScale : 1,
     rotate : 0,
     dragable : false,
     mouseX : 0,
@@ -24147,6 +24148,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     reset : function()
     {    
         this.scale = 0;
+        this.baseScale = 1;
         this.rotate = 0;
         this.dragable = false;
         this.mouseX = 0;
@@ -24189,8 +24191,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.fitThumbBox();
         
-        this.image.setWidth(this.image.OriginWidth * Math.pow(1.1, this.scale));
-        this.image.setHeight(this.image.OriginHeight * Math.pow(1.1, this.scale));
+        this.image.setWidth(this.image.OriginWidth * this.getScaleLevel(false));
+        this.image.setHeight(this.image.OriginHeight * this.getScaleLevel(false));
                 
         this.footerSection.show();
         
@@ -24267,22 +24269,26 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         e.stopEvent();
         
-        var scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
+        this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
         
-        var width = this.image.OriginWidth * Math.pow(1.1, scale);
-        var height = this.image.OriginHeight * Math.pow(1.1, scale);
+        var width = this.image.OriginWidth * this.getScaleLevel(false);
+        var height = this.image.OriginHeight * this.getScaleLevel(false);
         
         if(
                 e.getWheelDelta() == -1 &&
                 (
-                    width < this.thumb.getWidth() ||
-                    height < this.thumb.getHeight()
+                    (
+                        (this.rotate == 0 || this.rotate == 180) && (width < this.thumb.getWidth() || height < this.thumb.getHeight())
+                    )
+                    ||
+                    (
+                        (this.rotate == 90 || this.rotate == 270) && (height < this.thumb.getWidth() || width < this.thumb.getHeight())
+                    )
                 )
         ){
+            this.scale = (e.getWheelDelta() == 1) ? (this.scale - 1) : (this.scale + 1);
             return;
         }
-        
-        this.scale = scale;
         
         this.image.setWidth(width);
         this.image.setHeight(height);
@@ -24295,30 +24301,67 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.stopEvent();
         
-        this.rotate = (this.rotate < 90) ? 270 : this.rotate - 90;
+        if(
+                (
+                    (this.rotate == 0 || this.rotate == 180) 
+                    &&
+                    (this.image.getHeight() < this.thumb.getWidth() || this.image.getWidth() < this.thumb.getHeight())
+                )
+                ||
+                (
+                    (this.rotate == 90 || this.rotate == 270) 
+                    &&
+                    (this.image.getWidth() < this.thumb.getWidth() || this.image.getHeight() < this.thumb.getHeight())
+                )
+                
+        ){
+            return;
+        }
         
+        this.rotate = (this.rotate < 90) ? 270 : this.rotate - 90;
+
         this.imageCanvas.setStyle({
             '-ms-transform' : 'rotate(' + this.rotate + 'deg)',
             '-webkit-transform' : 'rotate(' + this.rotate + 'deg)',
             'transform' : 'rotate(' + this.rotate + 'deg)'
         });
-        
+
         this.setCanvasPosition();
+        
     },
     
     onRotateRight : function(e)
     {
         e.stopEvent();
         
-        this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
+        if(
+                (
+                    (this.rotate == 0 || this.rotate == 180) 
+                    &&
+                    (this.image.getHeight() < this.thumb.getWidth() || this.image.getWidth() < this.thumb.getHeight())
+                )
+                ||
+                (
+                    (this.rotate == 90 || this.rotate == 270) 
+                    &&
+                    (this.image.getWidth() < this.thumb.getWidth() || this.image.getHeight() < this.thumb.getHeight())
+                )
+                
+        ){
+            return false;
+        }
         
+        this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
+
         this.imageCanvas.setStyle({
             '-ms-transform' : 'rotate(' + this.rotate + 'deg)',
             '-webkit-transform' : 'rotate(' + this.rotate + 'deg)',
             'transform' : 'rotate(' + this.rotate + 'deg)'
         });
-        
+
         this.setCanvasPosition();
+        
+        
     },
     
     crop : function()
@@ -24333,29 +24376,29 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var centerX = this.minWidth / 2;
         var centerY = this.minHeight / 2;
         
-        var cropWidth = this.thumb.getWidth() * Math.pow(1.1, this.scale * -1);
-        var cropHeight = this.thumb.getHeight() * Math.pow(1.1, this.scale * -1);
+        var cropWidth = this.thumb.getWidth() * this.getScaleLevel(true);
+        var cropHeight = this.thumb.getHeight() * this.getScaleLevel(true);
         
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         var thumbX = this.thumb.getLeft(true) + transform.m41;
         var thumbY = this.thumb.getTop(true) + transform.m42;
         
-        var x = (thumbX - this.imageCanvas.getLeft(true)) * Math.pow(1.1, this.scale * -1);
-        var y = (thumbY - this.imageCanvas.getTop(true)) * Math.pow(1.1, this.scale * -1);
+        var x = (thumbX - this.imageCanvas.getLeft(true)) * this.getScaleLevel(true);
+        var y = (thumbY - this.imageCanvas.getTop(true)) * this.getScaleLevel(true);
         
         if(this.rotate == 90){
             
             x = thumbY + (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getTop(true);
             y = this.image.getHeight() - this.thumb.getWidth() - (thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true));
             
-            x = x * Math.pow(1.1, this.scale * -1);
-            y = y * Math.pow(1.1, this.scale * -1);
+            x = x * this.getScaleLevel(true);
+            y = y * this.getScaleLevel(true);
             
             x = x < 0 ? 0 : x;
             y = y < 0 ? 0 : y;
             
-            cropWidth = this.thumb.getHeight() * Math.pow(1.1, this.scale * -1);
-            cropHeight = this.thumb.getWidth() * Math.pow(1.1, this.scale * -1);
+            cropWidth = this.thumb.getHeight() * this.getScaleLevel(true);
+            cropHeight = this.thumb.getWidth() * this.getScaleLevel(true);
             
             canvas.width = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
             canvas.height = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
@@ -24389,14 +24432,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             x = thumbY + (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getTop(true);
             y = thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true);
             
-            x = (this.image.getWidth() - this.thumb.getHeight() - x) * Math.pow(1.1, this.scale * -1);
-            y = y * Math.pow(1.1, this.scale * -1);
+            x = (this.image.getWidth() - this.thumb.getHeight() - x) * this.getScaleLevel(true);
+            y = y * this.getScaleLevel(true);
             
             x = x < 0 ? 0 : x;
             y = y < 0 ? 0 : y;
             
-            cropWidth = this.thumb.getHeight() * Math.pow(1.1, this.scale * -1);
-            cropHeight = this.thumb.getWidth() * Math.pow(1.1, this.scale * -1);
+            cropWidth = this.thumb.getHeight() * this.getScaleLevel(true);
+            cropHeight = this.thumb.getWidth() * this.getScaleLevel(true);
             
             canvas.width = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
             canvas.height = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
@@ -24426,8 +24469,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         if(this.rotate == 180){
-            x = this.image.OriginWidth - this.thumb.getWidth() * Math.pow(1.1, this.scale * -1) - x;
-            y = this.image.OriginHeight - this.thumb.getHeight() * Math.pow(1.1, this.scale * -1) - y;
+            x = this.image.OriginWidth - this.thumb.getWidth() * this.getScaleLevel(true) - x;
+            y = this.image.OriginHeight - this.thumb.getHeight() * this.getScaleLevel(true) - y;
         }
         
         x = x < 0 ? 0 : x;
@@ -24467,52 +24510,28 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     fitThumbBox : function()
     {
-        var i = 0;
-        var width = this.image.OriginWidth;
-        var height = this.image.OriginHeight;
+        var width = this.thumb.getWidth();
+        var height = this.image.OriginHeight * width / this.image.OriginWidth;
+        
+        this.baseScale = width / this.image.OriginWidth;
         
         if(this.image.OriginWidth > this.image.OriginHeight){
+            height = this.thumb.getHeight();
+            width = this.image.OriginWidth * height / this.image.OriginHeight;
             
-            if(this.image.OriginHeight > this.thumb.getHeight()){
-                while (height > this.thumb.getHeight()){
-                    i = i - 1;
-                    height = this.image.OriginHeight * Math.pow(1.1, i);
-                }
-
-                this.scale = (height < this.thumb.getHeight()) ? (i + 1) : i;
-
-                return;
-            }
-
-            while (height < this.thumb.getHeight()){
-                i = i + 1;
-                height = this.image.OriginWidth * Math.pow(1.1, i);
-            }
-
-            this.scale = (height > this.thumb.getHeight()) ? (i - 1) : i;
-            
-            return;
+            this.baseScale = height / this.image.OriginHeight;
         }
         
-        if(this.image.OriginWidth > this.thumb.getWidth()){
-            while (width > this.thumb.getWidth()){
-                i = i - 1;
-                width = this.image.OriginWidth * Math.pow(1.1, i);
-            }
-
-            this.scale = (width < this.thumb.getWidth()) ? (i + 1) : i;
-
-            return;
-        }
-
-        while (width < this.thumb.getWidth()){
-            i = i + 1;
-            width = this.image.OriginWidth * Math.pow(1.1, i);
-        }
-
-        this.scale = (width > this.thumb.getWidth()) ? (i - 1) : i;
-
         return;
+    },
+    
+    getScaleLevel : function(reverse)
+    {
+        if(reverse){
+            return Math.pow(1.1, this.scale * -1) / this.baseScale;
+        }
+        
+        return this.baseScale * Math.pow(1.1, this.scale);
     }
     
 });
