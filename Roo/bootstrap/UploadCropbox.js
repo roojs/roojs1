@@ -343,10 +343,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         e.stopEvent();
         
-        var scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
+        this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
         
-        var width = this.image.OriginWidth * Math.pow(1.1, scale);
-        var height = this.image.OriginHeight * Math.pow(1.1, scale);
+        var width = this.image.OriginWidth * this.getScaleLevel(false);
+        var height = this.image.OriginHeight * this.getScaleLevel(false);
         
         if(
                 e.getWheelDelta() == -1 &&
@@ -355,10 +355,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     height < this.thumb.getHeight()
                 )
         ){
+            this.scale = (e.getWheelDelta() == 1) ? (this.scale - 1) : (this.scale + 1);
             return;
         }
-        
-        this.scale = scale;
         
         this.image.setWidth(width);
         this.image.setHeight(height);
