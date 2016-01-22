@@ -403,17 +403,32 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.stopEvent();
         
-        if(this.canRotate()){
-            this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
-        
-            this.imageCanvas.setStyle({
-                '-ms-transform' : 'rotate(' + this.rotate + 'deg)',
-                '-webkit-transform' : 'rotate(' + this.rotate + 'deg)',
-                'transform' : 'rotate(' + this.rotate + 'deg)'
-            });
-
-            this.setCanvasPosition();
+        if(
+                (
+                    (this.rotate == 0 || this.rotate == 180) 
+                    &&
+                    (this.image.getHeight() < this.thumb.getWidth() || this.image.getWidth() < this.thumb.getHeight())
+                )
+                ||
+                (
+                    (this.rotate == 90 || this.rotate == 270) 
+                    &&
+                    (this.image.getWidth() < this.thumb.getWidth() || this.image.getHeight() < this.thumb.getHeight())
+                )
+                
+        ){
+            return false;
         }
+        
+        this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
+
+        this.imageCanvas.setStyle({
+            '-ms-transform' : 'rotate(' + this.rotate + 'deg)',
+            '-webkit-transform' : 'rotate(' + this.rotate + 'deg)',
+            'transform' : 'rotate(' + this.rotate + 'deg)'
+        });
+
+        this.setCanvasPosition();
         
         
     },
