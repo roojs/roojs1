@@ -63,6 +63,7 @@ Roo.apply = function(o, c, defaults){
         isMac = (ua.indexOf("macintosh") != -1 || ua.indexOf("mac os x") != -1),
         isLinux = (ua.indexOf("linux") != -1),
         isSecure = window.location.href.toLowerCase().indexOf("https") === 0,
+        isIOS = /iphone|ipad/.test(ua),
         isTouch =  (function() {
             try {  
                 document.createEvent("TouchEvent");  
@@ -629,6 +630,8 @@ Roo.factory(conf, Roo.data);
         isLinux : isLinux,
         /** @type Boolean */
         isMac : isMac,
+        /** @type Boolean */
+        isIOS : isIOS,
         /** @type Boolean */
         isTouch : isTouch,
 
@@ -4236,8 +4239,10 @@ Roo.DomHelper = function(){
             if(attr=="cls" && Roo.isIE){
                 el.className = o["cls"];
             }else{
-                if(useSet) el.setAttribute(attr=="cls" ? 'class' : attr, o[attr]);
-                else el[attr] = o[attr];
+                if(useSet) { el.setAttribute(attr=="cls" ? 'class' : attr, o[attr]);}
+                else { 
+                    el[attr] = o[attr];
+                }
             }
         }
         Roo.DomHelper.applyStyles(el, o.style);
@@ -6575,6 +6580,9 @@ Roo.onReady(function(){
     }
     if(Roo.isLinux){
         cls.push("roo-linux");
+    }
+    if(Roo.isIOS){
+        cls.push("roo-ios");
     }
     if(Roo.isBorderBox){
         cls.push('roo-border-box');
