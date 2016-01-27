@@ -136,8 +136,10 @@ Roo.DomHelper = function(){
             if(attr=="cls" && Roo.isIE){
                 el.className = o["cls"];
             }else{
-                if(useSet) el.setAttribute(attr=="cls" ? 'class' : attr, o[attr]);
-                else el[attr] = o[attr];
+                if(useSet) { el.setAttribute(attr=="cls" ? 'class' : attr, o[attr]);}
+                else { 
+                    el[attr] = o[attr];
+                }
             }
         }
         Roo.DomHelper.applyStyles(el, o.style);
