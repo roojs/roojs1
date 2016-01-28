@@ -303,6 +303,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         Roo.log(this.thumb.dom.getBoundingClientRect());
         Roo.log(Roo.lib.AnimBase.fly(document).getScroll());
+        
 //        alert(this.thumb.getLeft(true));
 //        alert(this.thumb.dom.offsetLeft);
         
