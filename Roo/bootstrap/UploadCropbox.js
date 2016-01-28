@@ -305,6 +305,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         e.stopEvent();
         
         this.dragable = true;
+        
         this.mouseX = e.getPageX();
         this.mouseY = e.getPageY();
         
@@ -637,11 +638,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         if(touches.length == 1){
-            this.dragable = true;
-        
-            this.panX = e.browserEvent.touches[0].pageX;
-            this.panY = e.browserEvent.touches[0].pageY;
-            
+            this.onMouseDown(e);
             return;
         }
         
@@ -681,7 +678,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         if(this.dragable){
-            this.onPanMove(e);
+            this.onDragging(e);
             return;
         }
         
@@ -736,7 +733,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     },
     
     
-    onPanMove : function(e)
+    onDragging : function(e)
     {
         e.stopEvent();
         
