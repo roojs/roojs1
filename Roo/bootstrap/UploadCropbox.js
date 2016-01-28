@@ -760,7 +760,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onIOSTouchStart : function(e)
     {
-        alert('touch start');
+        
     },
     
     onIOSTouchMove : function(e)
