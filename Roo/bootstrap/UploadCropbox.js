@@ -713,6 +713,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.moved =  Math.sqrt(x + y) - this.startDistance;
         
+        
+        
     },
     
     onTouchEnd : function(e)
