@@ -301,6 +301,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var minX = this.thumb.dom.offsetLeft + transform.m41;
         var minY = this.thumb.dom.offsetTop + transform.m42;
         
+//        alert(this.thumb.getLeft(true));
+//        alert(this.thumb.dom.offsetLeft);
+        
+        Roo.log(this.thumb.getStyle("left"));
+//        Roo.log(this.thumb.dom.offsetLeft);
+
+        
         var maxX = minX + this.thumb.getWidth() - this.image.getWidth();
         var maxY = minY + this.thumb.getHeight() - this.image.getHeight();
         
