@@ -737,5 +737,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     onPanMove : function(e)
     {
         
+    },
+    
+    onPanEnd : function(e)
+    {
+        e.stopEvent();
+        
+        this.dragable = false;
     }
 });
