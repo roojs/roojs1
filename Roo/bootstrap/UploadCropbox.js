@@ -626,42 +626,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         return this.baseScale * Math.pow(1.1, this.scale);
     },
     
-    onGestureStart : function(e)
-    {
-        this.startScale = this.scale;
-    },
-    
-    onGestureChange : function(e)
-    {
-        var scale = this.startScale + Math.floor(Math.log(e.browserEvent.scale) / Math.log(1.1));
-        
-        var width = this.image.OriginWidth * this.baseScale * Math.pow(1.1, scale);
-        var height = this.image.OriginHeight * this.baseScale * Math.pow(1.1, scale);
-        
-        if(
-                e.browserEvent.scale < 1 &&
-                (
-                    (
-                        (this.rotate == 0 || this.rotate == 180) && (width < this.thumb.getWidth() || height < this.thumb.getHeight())
-                    )
-                    ||
-                    (
-                        (this.rotate == 90 || this.rotate == 270) && (height < this.thumb.getWidth() || width < this.thumb.getHeight())
-                    )
-                )
-        ){
-            return;
-        }
-        
-        this.scale = scale;
-        
-        this.image.setWidth(width);
-        this.image.setHeight(height);
-        
-        this.setCanvasPosition();
-        
-    },
-    
     onTouchStart : function(e)
     {
         var touches = e.browserEvent.touches;
