@@ -114,9 +114,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             return;
         }
         var on_el = (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
-        
         var triggers = this.trigger ? this.trigger.split(' ') : [];
-        
         Roo.each(triggers, function(trigger) {
         
             if (trigger == 'click') {
@@ -138,8 +136,6 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     hoverState : null,
     
     toggle : function () {
-        Roo.log(this);
-        Roo.log(this.hoverState);
         this.hoverState == 'in' ? this.leave() : this.enter();
     },
     
@@ -147,9 +143,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
        
     
         clearTimeout(this.timeout);
-        Roo.log(this);
+    
         this.hoverState = 'in';
-        Roo.log(this.hoverState);
+    
         if (!this.delay || !this.delay.show) {
             this.show();
             return;
