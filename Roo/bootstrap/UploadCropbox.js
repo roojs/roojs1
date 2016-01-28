@@ -286,8 +286,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.mouseX = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
         this.mouseY = Roo.isTouch ? e.browserEvent.touches[0].pageY : e.getPageY();
         
-        alert(e.browserEvent.touches[0].pageX);
-        
     },
     
     onMouseMove : function(e)
@@ -319,6 +317,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         x = x - this.mouseX;
         y = y - this.mouseY;
+        
+        alert(x);
         
         var bgX = x + this.imageCanvas.getLeft(true);
         var bgY = y + this.imageCanvas.getTop(true);
