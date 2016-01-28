@@ -184,18 +184,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.imageSectionHasOnClickEvent = true;
         }
         
-        if(Roo.isTouch && Roo.isIOS){
-//            this.imageSection.on('gesturestart', this.onGestureStart, this);
-//            this.imageSection.on('gesturechange', this.onGestureChange, this);
-            this.imageSection.on('touchstart', this.onTouchStart, this);
-            this.imageSection.on('touchmove', this.onTouchMove, this);
-            
-//            this.imageSection.on('touchstart', this.onIOSTouchStart, this);
-//            this.imageSection.on('touchmove', this.onIOSTouchMove, this);
-//            this.imageSection.on('touchend', this.onIOSTouchEnd, this);
-        }
-        
-        if(Roo.isTouch && !Roo.isIOS){
+        if(Roo.isTouch){
             this.imageSection.on('touchstart', this.onTouchStart, this);
             this.imageSection.on('touchmove', this.onTouchMove, this);
             this.imageSection.on('touchend', this.onTouchEnd, this);
