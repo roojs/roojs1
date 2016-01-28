@@ -32,6 +32,16 @@
     background: none repeat scroll 0% 0% transparent;
 }
 
+.roo-upload-cropbox-image-section .roo-upload-cropbox-empty-notify {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    padding-top: 35%;
+}
+
 .roo-upload-cropbox-btn-group button {
     background-color: black;
     color: white;

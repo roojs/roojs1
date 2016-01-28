@@ -50,6 +50,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     baseScale : 1,
     rotate : 0,
     dragable : false,
+    pinching : false,
     mouseX : 0,
     mouseY : 0,
     cropImageData : false,
@@ -80,6 +81,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         {
                             tag : 'div',
                             cls : 'roo-upload-cropbox-thumb'
+                        },
+                        {
+                            tag : 'div',
+                            cls : 'roo-upload-cropbox-empty-notify',
+                            html : this.emptyText
                         }
                     ]
                 },
@@ -145,6 +151,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.thumb = this.el.select('.roo-upload-cropbox-thumb', true).first();
         this.thumb.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.thumb.hide();
+        
+        this.emptyNotify = this.el.select('.roo-upload-cropbox-empty-notify', true).first();
+        this.emptyNotify.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.footerSection = this.el.select('.roo-upload-cropbox-footer-section', true).first();
         this.footerSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -175,15 +185,23 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.imageSectionHasOnClickEvent = true;
         }
         
-        this.imageSection.on('mousedown', this.onMouseDown, this);
+        if(Roo.isTouch){
+            this.imageSection.on('touchstart', this.onTouchStart, this);
+            this.imageSection.on('touchmove', this.onTouchMove, this);
+            this.imageSection.on('touchend', this.onTouchEnd, this);
+        }
         
-        this.imageSection.on('mousemove', this.onMouseMove, this);
+        if(!Roo.isTouch){
+            this.imageSection.on('mousedown', this.onMouseDown, this);
         
-        var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
-        
-        this.imageSection.on(mousewheel, this.onMouseWheel, this);
+            this.imageSection.on('mousemove', this.onMouseMove, this);
 
-        Roo.get(document).on('mouseup', this.onMouseUp, this);
+            var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
+
+            this.imageSection.on(mousewheel, this.onMouseWheel, this);
+
+            Roo.get(document).on('mouseup', this.onMouseUp, this);
+        }
         
         this.pictureBtn.on('click', this.beforeSelectFile, this);
         
@@ -193,38 +211,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    unbind : function()
-    {
-        this.image.un('load', this.onLoadCanvasImage, this);
-        
-        if(this.imageSectionHasOnClickEvent){
-            this.imageSection.un('click', this.beforeSelectFile, this);
-            this.imageSectionHasOnClickEvent = false;
-        }
-        
-        this.imageSection.un('mousedown', this.onMouseDown, this);
-        
-        this.imageSection.un('mousemove', this.onMouseMove, this);
-        
-        var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
-        
-        this.imageSection.un(mousewheel, this.onMouseWheel, this);
-
-        Roo.get(document).un('mouseup', this.onMouseUp, this);
-        
-        this.pictureBtn.un('click', this.beforeSelectFile, this);
-        
-        this.rotateLeft.un('click', this.onRotateLeft, this);
-        
-        this.rotateRight.un('click', this.onRotateRight, this);
-    },
-    
     reset : function()
     {    
         this.scale = 0;
         this.baseScale = 1;
         this.rotate = 0;
         this.dragable = false;
+        this.pinching = false;
         this.mouseX = 0;
         this.mouseY = 0;
         this.cropImageData = false;
@@ -249,12 +242,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     loadCanvasImage : function(src)
     {   
         this.reset();
-        
         this.image.attr('src', src);
     },
     
     onLoadCanvasImage : function(src)
     {   
+        this.emptyNotify.hide();
+        this.thumb.show();
+        this.footerSection.show();
+        
         if(this.imageSectionHasOnClickEvent){
             this.imageSection.un('click', this.beforeSelectFile, this);
             this.imageSectionHasOnClickEvent = false;
@@ -267,8 +263,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.image.setWidth(this.image.OriginWidth * this.getScaleLevel(false));
         this.image.setHeight(this.image.OriginHeight * this.getScaleLevel(false));
-                
-        this.footerSection.show();
         
         this.setCanvasPosition();
     },
@@ -287,8 +281,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         e.stopEvent();
         
         this.dragable = true;
-        this.mouseX = e.getPageX();
-        this.mouseY = e.getPageY();
+        this.pinching = false;
+        
+        this.mouseX = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
+        this.mouseY = Roo.isTouch ? e.browserEvent.touches[0].pageY : e.getPageY();
         
     },
     
@@ -305,6 +301,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var minX = this.thumb.getLeft(true) + transform.m41;
         var minY = this.thumb.getTop(true) + transform.m42;
         
+//        alert(this.thumb.getLeft(true));
+//        alert(this.thumb.dom.offsetLeft);
+        
+//        Roo.log(this.thumb.dom.offsetParent);
+//        Roo.log(this.thumb.dom.offsetLeft);
+
+        
         var maxX = minX + this.thumb.getWidth() - this.image.getWidth();
         var maxY = minY + this.thumb.getHeight() - this.image.getHeight();
         
@@ -316,8 +319,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             maxY = minY + this.thumb.getHeight() - this.image.getWidth();
         }
         
-        var x = e.getPageX() - this.mouseX;
-        var y = e.getPageY() - this.mouseY;
+        var x = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
+        var y = Roo.isTouch ? e.browserEvent.touches[0].pageY : e.getPageY();
+        
+        x = x - this.mouseX;
+        y = y - this.mouseY;
         
         var bgX = x + this.imageCanvas.getLeft(true);
         var bgY = y + this.imageCanvas.getTop(true);
@@ -328,8 +334,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageCanvas.setLeft(bgX);
         this.imageCanvas.setTop(bgY);
         
-        this.mouseX = e.getPageX();
-        this.mouseY = e.getPageY();
+        this.mouseX = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
+        this.mouseY = Roo.isTouch ? e.browserEvent.touches[0].pageY : e.getPageY();
     },
     
     onMouseUp : function(e)
@@ -606,6 +612,111 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         return this.baseScale * Math.pow(1.1, this.scale);
-    }
+    },
     
+    onTouchStart : function(e)
+    {
+        e.stopEvent();
+        
+        var touches = e.browserEvent.touches;
+        
+        if(!touches){
+            return;
+        }
+        
+        if(touches.length == 1){
+            this.onMouseDown(e);
+            return;
+        }
+        
+        if(touches.length != 2){
+            return;
+        }
+        
+        var coords = [];
+        
+        for(var i = 0, finger; finger = touches[i]; i++){
+            coords.push(finger.pageX, finger.pageY);
+        }
+        
+        var x = Math.pow(coords[0] - coords[2], 2);
+        var y = Math.pow(coords[1] - coords[3], 2);
+        
+        this.startDistance =  Math.sqrt(x + y);
+        
+        this.startScale = this.scale;
+        
+        this.dragable = false;
+        this.pinching = true;
+        
+    },
+    
+    onTouchMove : function(e)
+    {
+        e.stopEvent();
+        
+        if(!this.pinching && !this.dragable){
+            return;
+        }
+        
+        var touches = e.browserEvent.touches;
+        
+        if(!touches){
+            return;
+        }
+        
+        if(this.dragable){
+            this.onMouseMove(e);
+            return;
+        }
+        
+        var coords = [];
+        
+        for(var i = 0, finger; finger = touches[i]; i++){
+            coords.push(finger.pageX, finger.pageY);
+        }
+        
+        var x = Math.pow(coords[0] - coords[2], 2);
+        var y = Math.pow(coords[1] - coords[3], 2);
+        
+        this.endDistance =  Math.sqrt(x + y);
+        
+        var scale = this.startScale + Math.floor(Math.log(this.endDistance / this.startDistance) / Math.log(1.1));
+        
+        var width = this.image.OriginWidth * this.baseScale * Math.pow(1.1, scale);
+        var height = this.image.OriginHeight * this.baseScale * Math.pow(1.1, scale);
+        
+        if(
+                this.endDistance / this.startDistance < 1 &&
+                (
+                    (
+                        (this.rotate == 0 || this.rotate == 180) && (width < this.thumb.getWidth() || height < this.thumb.getHeight())
+                    )
+                    ||
+                    (
+                        (this.rotate == 90 || this.rotate == 270) && (height < this.thumb.getWidth() || width < this.thumb.getHeight())
+                    )
+                )
+        ){
+            return;
+        }
+        
+        this.scale = scale;
+        
+        this.image.setWidth(width);
+        this.image.setHeight(height);
+        
+        this.setCanvasPosition();
+        
+        
+    },
+    
+    onTouchEnd : function(e)
+    {
+        e.stopEvent();
+        
+        this.pinching = false;
+        this.dragable = false;
+        
+    }
 });
