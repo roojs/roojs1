@@ -295,7 +295,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if (!this.dragable){
             return;
         }
-        alert(this.imageCanvas.getLeft(true));
         
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         
@@ -711,6 +710,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.pinching = false;
         this.dragable = false;
+        
+        alert(this.imageCanvas.getLeft(true));
         
     }
 });
