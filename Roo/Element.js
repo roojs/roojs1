@@ -124,6 +124,8 @@ if(opt.anim.isAnimated()){
          * @type String
          */
         defaultUnit : "px",
+        
+        pxReg : '/^\d+(?:\.\d*)?px$/i',
         /**
          * Sets the element's visibility mode. When setVisible() is called it
          * will use this to determine whether to set the visibility or the display property.
