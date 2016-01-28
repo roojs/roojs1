@@ -50,6 +50,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     baseScale : 1,
     rotate : 0,
     dragable : false,
+    pinching : false,
     mouseX : 0,
     mouseY : 0,
     cropImageData : false,
@@ -210,38 +211,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    unbind : function()
-    {
-        this.image.un('load', this.onLoadCanvasImage, this);
-        
-        if(this.imageSectionHasOnClickEvent){
-            this.imageSection.un('click', this.beforeSelectFile, this);
-            this.imageSectionHasOnClickEvent = false;
-        }
-        
-        this.imageSection.un('mousedown', this.onMouseDown, this);
-        
-        this.imageSection.un('mousemove', this.onMouseMove, this);
-        
-        var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
-        
-        this.imageSection.un(mousewheel, this.onMouseWheel, this);
-
-        Roo.get(document).un('mouseup', this.onMouseUp, this);
-        
-        this.pictureBtn.un('click', this.beforeSelectFile, this);
-        
-        this.rotateLeft.un('click', this.onRotateLeft, this);
-        
-        this.rotateRight.un('click', this.onRotateRight, this);
-    },
-    
     reset : function()
     {    
         this.scale = 0;
         this.baseScale = 1;
         this.rotate = 0;
         this.dragable = false;
+        this.pinching = false;
         this.mouseX = 0;
         this.mouseY = 0;
         this.cropImageData = false;
