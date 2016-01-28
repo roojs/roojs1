@@ -83,7 +83,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         },
                         {
                             tag : 'div',
-                            cls : 'roo-upload-cropbox-empty-text',
+                            cls : 'roo-upload-cropbox-empty-notify',
                             html : this.emptyText
                         }
                     ]
@@ -149,6 +149,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.image.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.thumb = this.el.select('.roo-upload-cropbox-thumb', true).first();
+        this.thumb.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.thumb.hide();
+        
+        this.emptyNotify = this.el.select('.roo-upload-cropbox-thumb', true).first();
         this.thumb.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         this.thumb.hide();
         

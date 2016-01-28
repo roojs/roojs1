@@ -32,7 +32,7 @@
     background: none repeat scroll 0% 0% transparent;
 }
 
-.roo-upload-cropbox-image-section .roo-upload-cropbox-empty-text {
+.roo-upload-cropbox-image-section .roo-upload-cropbox-empty-notify {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
