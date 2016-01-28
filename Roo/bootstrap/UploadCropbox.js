@@ -620,6 +620,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         return this.baseScale * Math.pow(1.1, this.scale);
+    },
+    
+    onTouchStart : function(e)
+    {
+        Roo.log(e);
+        Roo.log(e.touches);
     }
     
 });
