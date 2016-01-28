@@ -724,5 +724,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.stopEvent();
         
+    },
+    
+    onPanStart : function(e)
+    {
+        
     }
 });
