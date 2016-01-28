@@ -633,7 +633,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onGestureStart : function(e)
     {
-        alert('run');
         this.startScale = this.scale;
     },
     
