@@ -278,6 +278,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.image.setHeight(this.image.OriginHeight * this.getScaleLevel(false));
                 
         this.thumb.show();
+        this.emptyNotify.hide();
         this.footerSection.show();
         
         this.setCanvasPosition();
