@@ -15360,7 +15360,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         //arrow.set(align[2], 
         
         this.el.addClass('in');
-        this.hoverState = null;
+        
         
         if (this.el.hasClass('fade')) {
             // fade it?
@@ -15372,6 +15372,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.el.setXY([0,0]);
         this.el.removeClass('in');
         this.el.hide();
+        this.hoverState = null;
         
     }
     
