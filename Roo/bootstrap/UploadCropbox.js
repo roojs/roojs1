@@ -726,7 +726,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.stopEvent();
         
-//        this.dragable = false;
+        this.pinching = false;
+        this.dragable = false;
         
     },
     
