@@ -217,7 +217,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
         
-        if(Roo.isTouch()){
+        if(Roo.isTouch){
             
         }
         
