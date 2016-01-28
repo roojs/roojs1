@@ -1217,7 +1217,7 @@ if(opt.anim.isAnimated()){
                     x -= par.getX();
                 }
 
-                return parseFloat(x);
+                return x;
             }
         },
 
