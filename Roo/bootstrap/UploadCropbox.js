@@ -666,7 +666,21 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.setCanvasPosition();
         
-    }
+    },
     
+    onTouchStart : function(e)
+    {
+        
+    },
+    
+    onTouchMove : function(e)
+    {
+        
+    },
+    
+    onTouchEnd : function(e)
+    {
+        
+    }
     
 });
