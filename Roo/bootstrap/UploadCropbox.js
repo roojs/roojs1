@@ -185,7 +185,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         if(Roo.isTouch && Roo.isIOS){
-            this.imageSection.on('gesturechange', this.onGestureChange, this);
+            this.imageSection.on('gestureend', this.onGestureChange, this);
         }
         
         if(!Roo.isTouch){
