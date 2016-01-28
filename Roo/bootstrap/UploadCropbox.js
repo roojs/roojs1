@@ -629,6 +629,36 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        alert(e.browserEvent.touches.length);
         alert(e.browserEvent.scale);
         
+        
+        
+        return;
+        
+        this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
+        
+        var width = this.image.OriginWidth * this.getScaleLevel(false);
+        var height = this.image.OriginHeight * this.getScaleLevel(false);
+        
+        if(
+                e.getWheelDelta() == -1 &&
+                (
+                    (
+                        (this.rotate == 0 || this.rotate == 180) && (width < this.thumb.getWidth() || height < this.thumb.getHeight())
+                    )
+                    ||
+                    (
+                        (this.rotate == 90 || this.rotate == 270) && (height < this.thumb.getWidth() || width < this.thumb.getHeight())
+                    )
+                )
+        ){
+            this.scale = (e.getWheelDelta() == 1) ? (this.scale - 1) : (this.scale + 1);
+            return;
+        }
+        
+        this.image.setWidth(width);
+        this.image.setHeight(height);
+        
+        this.setCanvasPosition();
+        
     }
     
 });
