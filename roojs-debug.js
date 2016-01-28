@@ -8120,25 +8120,28 @@ if(opt.anim.isAnimated()){
             if(!local){
                 return this.getX();
             }else{
-                var x = this.getStyle("left");
                 
-                if(!x || x === 'AUTO'){
-                    return 0;
-                }
+                return parseInt(this.getStyle("left"), 10) || 0;
                 
-                if(this.pxReg.test(x)){
-                    return parseFloat(x);
-                }
-                
-                x = this.getX();
-                
-                var  par = this.dom.offsetParent ? Roo.fly(this.dom.offsetParent) : false;
-                
-                 if (par !== false) {
-                    x -= par.getX();
-                }
-
-                return x;
+//                var x = this.getStyle("left");
+//                
+//                if(!x || x === 'AUTO'){
+//                    return 0;
+//                }
+//                
+//                if(this.pxReg.test(x)){
+//                    return parseFloat(x);
+//                }
+//                
+//                x = this.getX();
+//                
+//                var  par = this.dom.offsetParent ? Roo.fly(this.dom.offsetParent) : false;
+//                
+//                 if (par !== false) {
+//                    x -= par.getX();
+//                }
+//
+//                return x;
             }
         },
 
