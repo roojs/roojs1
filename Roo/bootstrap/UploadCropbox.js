@@ -188,15 +188,17 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.imageSection.on('gesturechange', this.onGestureChange, this);
         }
         
-        this.imageSection.on('mousedown', this.onMouseDown, this);
+        if(!Roo.isTouch){
+            this.imageSection.on('mousedown', this.onMouseDown, this);
         
-        this.imageSection.on('mousemove', this.onMouseMove, this);
-        
-        var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
-        
-        this.imageSection.on(mousewheel, this.onMouseWheel, this);
+            this.imageSection.on('mousemove', this.onMouseMove, this);
 
-        Roo.get(document).on('mouseup', this.onMouseUp, this);
+            var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
+
+            this.imageSection.on(mousewheel, this.onMouseWheel, this);
+
+            Roo.get(document).on('mouseup', this.onMouseUp, this);
+        }
         
         this.pictureBtn.on('click', this.beforeSelectFile, this);
         
