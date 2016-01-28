@@ -645,14 +645,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        
         var coords = [];
         
         for(var i = 0, finger; finger = touches[i]; i++){
             coords.push(finger.pageX, finger.pageY);
         }
-        
-        this.pinching = true;
         
         var x = Math.pow(coords[0] - coords[2], 2);
         var y = Math.pow(coords[1] - coords[3], 2);
@@ -682,15 +679,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var x = Math.pow(coords[0] - coords[2], 2);
         var y = Math.pow(coords[1] - coords[3], 2);
         
-        this.distance =  Math.sqrt(x + y);
+        this.endDistance =  Math.sqrt(x + y);
         
-        var scale = this.startScale + Math.floor(Math.log(this.distance / this.startDistance) / Math.log(1.1));
+        var scale = this.startScale + Math.floor(Math.log(this.endDistance / this.startDistance) / Math.log(1.1));
         
         var width = this.image.OriginWidth * this.baseScale * Math.pow(1.1, scale);
         var height = this.image.OriginHeight * this.baseScale * Math.pow(1.1, scale);
         
         if(
-                this.distance / this.startDistance < 1 &&
+                this.endDistance / this.startDistance < 1 &&
                 (
                     (
                         (this.rotate == 0 || this.rotate == 180) && (width < this.thumb.getWidth() || height < this.thumb.getHeight())
