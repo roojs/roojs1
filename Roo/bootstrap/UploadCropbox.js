@@ -732,12 +732,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         this.dragable = true;
         
-        this.panX = e.browserEvent.touches[0].pageX;
-        this.panY = e.browserEvent.touches[0].pageY;
-    },
-    
-    onPanMove : function(e)
-    {
-        
+        this.mouseX = e.browserEvent.touches[0].pageX;
+        this.mouseY = e.browserEvent.touches[0].pageY;
     }
 });
