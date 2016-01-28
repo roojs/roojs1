@@ -711,7 +711,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var x = Math.pow(coords[0] - coords[2], 2);
         var y = Math.pow(coords[1] - coords[3], 2);
         
-        this.distance =  Math.sqrt(x + y);
+        this.moved =  Math.sqrt(x + y) - this.startDistance;
         
     },
     
