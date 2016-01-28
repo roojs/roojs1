@@ -696,7 +696,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onTouchMove : function(e)
     {
+        var touches = e.browserEvent.touches;
         
+        if(!touches || touches.length != 2){
+            return;
+        }
     },
     
     onTouchEnd : function(e)
