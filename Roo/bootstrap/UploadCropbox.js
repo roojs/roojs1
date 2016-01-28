@@ -678,7 +678,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         if(this.dragable){
-            this.onDragging(e);
+            this.onMouseMove(e);
             return;
         }
         
