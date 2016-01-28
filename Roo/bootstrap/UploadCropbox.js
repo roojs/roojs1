@@ -633,10 +633,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onGestureChange : function(e)
     {
-        this.scale = this.startScale + Math.floor(Math.log(e.browserEvent.scale) / Math.log(1.1));
+        var scale = this.startScale + Math.floor(Math.log(e.browserEvent.scale) / Math.log(1.1));
         
-        var width = this.image.OriginWidth * this.getScaleLevel(false);
-        var height = this.image.OriginHeight * this.getScaleLevel(false);
+        var width = this.image.OriginWidth * this.baseScale * Math.pow(1.1, scale);
+        var height = this.image.OriginHeight * this.baseScale * Math.pow(1.1, scale);
         
         if(
                 e.browserEvent.scale < 1 &&
