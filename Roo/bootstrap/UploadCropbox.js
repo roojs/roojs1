@@ -304,8 +304,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        alert(this.thumb.getLeft(true));
 //        alert(this.thumb.dom.offsetLeft);
         
-        Roo.log(this.thumb.getBoundingClientRect());
-        
         Roo.log(this.thumb.getLeft(true));
         Roo.log(this.thumb.dom.offsetLeft);
 
