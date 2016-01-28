@@ -628,13 +628,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onTouchStart : function(e)
     {
+        e.preventDefault();
+        
         var touches = e.browserEvent.touches;
         
-        if(!touches || touches.length != 2){
+        if(!touches){
             return;
         }
         
-        e.preventDefault();
+        
+        
         
         var coords = [];
         
@@ -655,6 +658,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onTouchMove : function(e)
     {
+        e.preventDefault();
+        
         var touches = e.browserEvent.touches;
         
         if(!touches || touches.length != 2){
@@ -704,6 +709,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onTouchEnd : function(e)
     {
-        
+        e.preventDefault();
     }
 });
