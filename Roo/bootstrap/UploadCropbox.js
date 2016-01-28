@@ -658,6 +658,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.startScale = this.scale;
         
+        this.pinching = true;
+        
     },
     
     onTouchMove : function(e)
