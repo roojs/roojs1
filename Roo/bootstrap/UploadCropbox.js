@@ -670,6 +670,27 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onTouchStart : function(e)
     {
+        var touches = e.browserEvent.touches;
+        
+        if(!touches || touches.length != 2){
+            return;
+        }
+        
+        e.preventDefault();
+        
+        var coords = [];
+        
+        for(var i = 0, finger; finger = touches[i]; i++){
+            coords.push(finger.pageX, finger.pageY);
+        }
+        
+        this.pinching = true;
+        
+        var x = Math.pow(coords[0] - coords[2], 2);
+        var y = Math.pow(coords[1] - coords[3], 2);
+        
+        this.distance =  Math.sqrt(x + y);
+        
         
     },
     
