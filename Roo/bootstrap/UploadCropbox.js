@@ -711,7 +711,5 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.pinching = false;
         this.dragable = false;
         
-        alert(this.imageCanvas.getLeft(true));
-        
     }
 });
