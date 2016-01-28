@@ -666,18 +666,18 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.stopEvent();
         
+        if(!this.pinching && !this.dragable){
+            return;
+        }
+        
         var touches = e.browserEvent.touches;
         
         if(!touches){
             return;
         }
         
-        if(touches.length == 1){
+        if(this.dragable){
             this.onPanMove(e);
-            return;
-        }
-        
-        if(touches.length != 2){
             return;
         }
         
