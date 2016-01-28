@@ -622,7 +622,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         return this.baseScale * Math.pow(1.1, this.scale);
     },
     
-    onTouchStart : function(e)
+    onGestureChange : function(e)
     {
 //        alert(e.browserEvent.touches.length);
         alert(e.browserEvent.scale);
