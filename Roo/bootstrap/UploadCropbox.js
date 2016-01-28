@@ -298,8 +298,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         
-        var minX = this.thumb.getLeft(true) + transform.m41;
-        var minY = this.thumb.getTop(true) + transform.m42;
+        var minX = this.thumb.getLeft(true);
+        var minY = this.thumb.getTop(true);
         
         if(!Roo.isTouch){
             minX = minX + transform.m41;
