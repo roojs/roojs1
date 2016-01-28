@@ -741,6 +741,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.setCanvasPosition();
         
         
+    },
+    
+    onTouchEnd : function()
+    {
+        
     }
     
 });
