@@ -747,7 +747,22 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    onTouchEnd : function()
+    onTouchEnd : function(e)
+    {
+        
+    },
+    
+    onIOSTouchStart : function(e)
+    {
+        
+    },
+    
+    onIOSTouchMove : function(e)
+    {
+        
+    },
+    
+    onIOSTouchEnd : function(e)
     {
         
     }
