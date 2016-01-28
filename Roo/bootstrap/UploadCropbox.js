@@ -637,11 +637,17 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onGestureStart : function(e)
     {
+        e.stopEvent();
+        
+        alert('gesture start');
+        
         this.startScale = this.scale;
     },
     
     onGestureChange : function(e)
     {
+        e.stopEvent();
+        
         var scale = this.startScale + Math.floor(Math.log(e.browserEvent.scale) / Math.log(1.1));
         
         var width = this.image.OriginWidth * this.baseScale * Math.pow(1.1, scale);
@@ -754,6 +760,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onIOSTouchStart : function(e)
     {
+        e.stopEvent();
+        
         alert('touch start');
     },
     
