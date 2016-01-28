@@ -1,13 +1,14 @@
 #!/bin/sh
 # run at top leve!!!!
  
-seed ../gnome.introspection-doc-generator/pack.js \
-     -f buildSDK/dependancy_core.txt -o roojs-core.js -O roojs-core-debug.js
+#seed ../gnome.introspection-doc-generator/pack.js \
+#     -f buildSDK/dependancy_core.txt -o roojs-core.js -O roojs-core-debug.js
+roojspacker -t roojs-core.js -T roojs-core-debug.js -i buildSDK/dependancy_core.txt
 
-seed ../gnome.introspection-doc-generator/pack.js \
-     -f buildSDK/dependancy_ui.txt -o roojs-ui.js -O roojs-ui-debug.js
-# bug with editorcore...
-#roojspacker -t roojs-ui.js -T roojs-ui-debug.js -i buildSDK/dependancy_ui.txt
+#seed ../gnome.introspection-doc-generator/pack.js \
+#     -f buildSDK/dependancy_ui.txt -o roojs-ui.js -O roojs-ui-debug.js
+
+roojspacker -t roojs-ui.js -T roojs-ui-debug.js -i buildSDK/dependancy_ui.txt
 
 
 cat      roojs-core.js  roojs-ui.js >  roojs-all.js
@@ -15,8 +16,10 @@ cat roojs-core-debug.js  roojs-ui-debug.js > roojs-debug.js
 
 
 #build bootstrap library
-seed ../gnome.introspection-doc-generator/pack.js \
-     -f buildSDK/dependancy_bootstrap.txt -o roojs-bootstrap.js -O roojs-bootstrap-debug.js
+#seed ../gnome.introspection-doc-generator/pack.js \
+#     -f buildSDK/debootstrappendancy_bootstrap.txt -o roojs-bootstrap.js -O roojs-bootstrap-debug.js
+
+roojspacker -t roojs-bootstrap.js -T roojs-bootstrap-debug.js -i buildSDK/dependancy_bootstrap.txt
 
 #build calendar library
 seed ../gnome.introspection-doc-generator/pack.js \

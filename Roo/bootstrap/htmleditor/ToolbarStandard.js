@@ -88,10 +88,10 @@ Roo.extend(Roo.bootstrap.htmleditor.ToolbarStandard, Roo.bootstrap.NavSimplebar,
                 //html : 'submit'
                 pressed : toggle ? false : null,
                 listeners : {}
-            }
+            };
             a.listeners[toggle ? 'toggle' : 'click'] = function() {
                 handler ? handler.call(_this,this) :_this.onBtnClick.call(_this, cmd ||  id);
-            }
+            };
             children.push(a);
             return a;
        }
