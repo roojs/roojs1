@@ -147,7 +147,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
        
     
         clearTimeout(this.timeout);
-    
+        Roo.log(this);
         this.hoverState = 'in';
     
         if (!this.delay || !this.delay.show) {
