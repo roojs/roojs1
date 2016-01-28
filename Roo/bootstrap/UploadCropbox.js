@@ -80,6 +80,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         {
                             tag : 'div',
                             cls : 'roo-upload-cropbox-thumb'
+                        },
+                        {
+                            tag : 'div',
+                            cls : 'roo-upload-cropbox-empty-text'
                         }
                     ]
                 },
