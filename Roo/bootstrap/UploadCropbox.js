@@ -650,7 +650,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     )
                 )
         ){
-            this.scale = this.startScale - Math.floor(Math.log(e.browserEvent.scale) / Math.log(1.1));
+            //this.scale = this.startScale - Math.floor(Math.log(e.browserEvent.scale) / Math.log(1.1));
             return;
         }
         
