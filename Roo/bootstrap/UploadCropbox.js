@@ -184,6 +184,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.imageSectionHasOnClickEvent = true;
         }
         
+        if(Roo.isTouch){
+            this.imageSection.on(touchstart, this.onTouchStart, this);
+        }
+        
         this.imageSection.on('mousedown', this.onMouseDown, this);
         
         this.imageSection.on('mousemove', this.onMouseMove, this);
