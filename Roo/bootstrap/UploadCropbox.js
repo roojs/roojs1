@@ -624,8 +624,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onTouchStart : function(e)
     {
-        Roo.log(e);
-        Roo.log(e.touches);
+        alert(e.touches);
     }
     
 });
