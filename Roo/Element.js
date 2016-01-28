@@ -1199,6 +1199,9 @@ if(opt.anim.isAnimated()){
             if(!local){
                 return this.getX();
             }else{
+                
+//                return parseInt(this.getStyle("left"), 10) || 0;
+                
                 var x = this.getStyle("left");
                 
                 if(!x || x === 'AUTO'){
