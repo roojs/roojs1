@@ -125,7 +125,7 @@ if(opt.anim.isAnimated()){
          */
         defaultUnit : "px",
         
-        pxReg : '/^\d+(?:\.\d*)?px$/i',
+        pxReg : /^\d+(?:\.\d*)?px$/i,
         /**
          * Sets the element's visibility mode. When setVisible() is called it
          * will use this to determine whether to set the visibility or the display property.
@@ -1205,7 +1205,7 @@ if(opt.anim.isAnimated()){
                     return 0;
                 }
                 
-                if(new RegExp(this.pxReg).test(x)){
+                if(this.pxReg.test(x)){
                     return parseFloat(x);
                 }
                 
