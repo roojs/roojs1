@@ -666,7 +666,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var touches = e.browserEvent.touches;
         
-        if(!touches || touches.length != 2){
+        if(!touches){
+            return;
+        }
+        
+        if(touches.length == 1){
+            this.onPanMove(e);
+            return;
+        }
+        
+        if(touches.length != 2){
             return;
         }
         
@@ -714,5 +723,20 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     onTouchEnd : function(e)
     {
         e.stopEvent();
+        
+        var touches = e.browserEvent.touches;
+        
+        if(!touches){
+            return;
+        }
+        
+        if(touches.length == 1){
+            this.onPanMove(e);
+            return;
+        }
+        
+        if(touches.length != 2){
+            return;
+        }
     }
 });
