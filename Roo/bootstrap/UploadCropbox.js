@@ -305,7 +305,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         alert(this.thumb.getX());
         
         var  par = this.thumb.dom.offsetParent ? Roo.fly(this.thumb.dom.offsetParent) : false;
-                
+        alert(par.getX());
                  if (par !== false) {
                     x -= par.getX();
                 }
