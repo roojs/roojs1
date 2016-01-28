@@ -301,8 +301,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var minX = this.thumb.getLeft(true) + transform.m41;
         var minY = this.thumb.getTop(true) + transform.m42;
         
-        alert(this.thumb.getLeft(true));
-        alert(this.thumb.dom.offsetLeft);
+//        alert(this.thumb.getLeft(true));
+//        alert(this.thumb.dom.offsetLeft);
         
         Roo.log(this.thumb.getLeft(true));
         Roo.log(this.thumb.dom.offsetLeft);
@@ -328,8 +328,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var bgX = x + this.imageCanvas.getLeft(true);
         var bgY = y + this.imageCanvas.getTop(true);
         
-//        bgX = (minX < bgX) ? minX : ((maxX > bgX) ? maxX : bgX);
-//        bgY = (minY < bgY) ? minY : ((maxY > bgY) ? maxY : bgY);
+        bgX = (minX < bgX) ? minX : ((maxX > bgX) ? maxX : bgX);
+        bgY = (minY < bgY) ? minY : ((maxY > bgY) ? maxY : bgY);
         
         this.imageCanvas.setLeft(bgX);
         this.imageCanvas.setTop(bgY);
