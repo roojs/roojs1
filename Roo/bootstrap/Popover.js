@@ -136,20 +136,16 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
     hoverState : null,
     
     toggle : function () {
-        Roo.log(this);
-        Roo.log(this.hoverState);
         this.hoverState == 'in' ? this.leave() : this.enter();
     },
     
     enter : function () {
        
+    
         clearTimeout(this.timeout);
-        
-        Roo.log(this);
-        Roo.log(this.hoverState);
+    
         this.hoverState = 'in';
-        
-        Roo.log(this.hoverState);
+    
         if (!this.delay || !this.delay.show) {
             this.show();
             return;
@@ -162,7 +158,6 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         }, this.delay.show)
     },
     leave : function() {
-        Roo.log('run????');
         clearTimeout(this.timeout);
     
         this.hoverState = 'out';
@@ -224,7 +219,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         //arrow.set(align[2], 
         
         this.el.addClass('in');
-        this.hoverState = null;
+        
         
         if (this.el.hasClass('fade')) {
             // fade it?
@@ -236,6 +231,7 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
         this.el.setXY([0,0]);
         this.el.removeClass('in');
         this.el.hide();
+        this.hoverState = null;
         
     }
     
