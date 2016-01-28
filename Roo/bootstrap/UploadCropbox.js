@@ -303,6 +303,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
 //        Roo.log(this.thumb.getStyle("left"));
         alert(this.thumb.getX());
+        
+        var  par = this.thumb.dom.offsetParent ? Roo.fly(this.thumb.dom.offsetParent) : false;
+                
+                 if (par !== false) {
+                    x -= par.getX();
+                }
 //        alert(this.thumb.dom.offsetLeft);
         
 //        Roo.log(this.thumb.dom.offsetParent);
