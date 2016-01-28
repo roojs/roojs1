@@ -327,8 +327,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         alert(bgX);
         
-        bgX = (minX < bgX) ? minX : ((maxX > bgX) ? maxX : bgX);
-        bgY = (minY < bgY) ? minY : ((maxY > bgY) ? maxY : bgY);
+//        bgX = (minX < bgX) ? minX : ((maxX > bgX) ? maxX : bgX);
+//        bgY = (minY < bgY) ? minY : ((maxY > bgY) ? maxY : bgY);
         
         alert(bgX);
         
