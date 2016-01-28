@@ -281,6 +281,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         e.stopEvent();
         
         this.dragable = true;
+        this.pinching = false;
         
         this.mouseX = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
         this.mouseY = Roo.isTouch ? e.browserEvent.touches[0].pageY : e.getPageY();
