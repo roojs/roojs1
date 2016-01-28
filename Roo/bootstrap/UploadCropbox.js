@@ -355,6 +355,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onMouseWheel : function(e)
     {   
+        Roo.log(e);
         e.stopEvent();
         
         this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
