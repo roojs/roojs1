@@ -1199,7 +1199,25 @@ if(opt.anim.isAnimated()){
             if(!local){
                 return this.getX();
             }else{
-                return parseInt(this.getStyle("left"), 10) || 0;
+                var x = this.getStyle("left");
+                
+                if(!x || x === 'AUTO'){
+                    return 0;
+                }
+                
+                if(x.test(this.pxReg)){
+                    return parseFloat(x);
+                }
+                
+                x = this.getX();
+                
+                var  par = this.dom.offsetParent ? Roo.fly(this.dom.offsetParent) : false;
+                
+                 if (par !== false) {
+                    x -= par.getX();
+                }
+
+                return parseFloat(x);
             }
         },
 
