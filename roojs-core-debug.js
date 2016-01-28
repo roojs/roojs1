@@ -8126,7 +8126,7 @@ if(opt.anim.isAnimated()){
                     return 0;
                 }
                 
-                if(this.pxReg.test(x)){
+                if(new RegExp(this.pxReg).test(x)){
                     return parseFloat(x);
                 }
                 
