@@ -302,13 +302,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var minY = this.thumb.getTop(true) + transform.m42;
         
 //        Roo.log(this.thumb.getStyle("left"));
-        alert(this.thumb.getX());
+//        alert(this.thumb.getX());
         
-        var  par = this.thumb.dom.offsetParent ? Roo.fly(this.thumb.dom.offsetParent) : false;
-        alert(par.getX());
-                 if (par !== false) {
-                    x -= par.getX();
-                }
+//        var  par = this.thumb.dom.offsetParent ? Roo.fly(this.thumb.dom.offsetParent) : false;
+//        alert(par.getX());
+//                 if (par !== false) {
+//                    x -= par.getX();
+//                }
 //        alert(this.thumb.dom.offsetLeft);
         
 //        Roo.log(this.thumb.dom.offsetParent);
