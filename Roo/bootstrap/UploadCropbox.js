@@ -629,10 +629,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        alert(e.browserEvent.touches.length);
         //alert(e.browserEvent.scale);
         
-        this.scale = this.scale + Math.floor(Math.log(e.browserEvent.scale) / Math.log(1.1));
+        var s = this.scale + Math.floor(Math.log(e.browserEvent.scale) / Math.log(1.1));
         
-        var width = this.image.OriginWidth * this.getScaleLevel(false);
-        var height = this.image.OriginHeight * this.getScaleLevel(false);
+        var width = this.image.OriginWidth * this.baseScale * Math.pow(1.1, s);
+        var height = this.image.OriginHeight * this.baseScale * Math.pow(1.1, s);
         
         this.image.setWidth(width);
         this.image.setHeight(height);
