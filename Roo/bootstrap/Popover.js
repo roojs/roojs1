@@ -114,11 +114,9 @@ Roo.extend(Roo.bootstrap.Popover, Roo.bootstrap.Component,  {
             return;
         }
         var on_el = (this.over == 'parent') ? this.parent().el : Roo.get(this.over);
-        Roo.log('Popover init!!!!');
-        Roo.log(on_el);
+        
         var triggers = this.trigger ? this.trigger.split(' ') : [];
         
-        Roo.log(triggers);
         Roo.each(triggers, function(trigger) {
         
             if (trigger == 'click') {
