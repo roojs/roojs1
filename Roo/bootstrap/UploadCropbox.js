@@ -724,19 +724,5 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.stopEvent();
         
-        var touches = e.browserEvent.touches;
-        
-        if(!touches){
-            return;
-        }
-        
-        if(touches.length == 1){
-            this.onPanMove(e);
-            return;
-        }
-        
-        if(touches.length != 2){
-            return;
-        }
     }
 });
