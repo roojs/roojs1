@@ -724,7 +724,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.stopEvent();
         
-        this.dragable = false;
+//        this.dragable = false;
         
     },
     
@@ -739,12 +739,5 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     onPanMove : function(e)
     {
         
-    },
-    
-    onPanEnd : function(e)
-    {
-        e.stopEvent();
-        
-        this.dragable = false;
     }
 });
