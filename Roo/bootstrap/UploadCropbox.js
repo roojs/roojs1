@@ -318,6 +318,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         x = x - this.mouseX;
         y = y - this.mouseY;
         
+        alert(x);
+        
         alert(this.imageCanvas.getLeft(true));
         
         var bgX = x + this.imageCanvas.getLeft(true);
