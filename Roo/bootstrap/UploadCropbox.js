@@ -83,7 +83,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         },
                         {
                             tag : 'div',
-                            cls : 'roo-upload-cropbox-empty-text'
+                            cls : 'roo-upload-cropbox-empty-text',
+                            html : this.emptyText
                         }
                     ]
                 },
