@@ -238,6 +238,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     loadCanvasImage : function(src)
     {   
         this.reset();
+        
+        this.placeThumbBox();
+        
         this.image.attr('src', src);
     },
     
