@@ -545,8 +545,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         x = x < 0 ? 0 : x;
         y = y < 0 ? 0 : y;
         
-        Roo.log(x);
-        Roo.log(y);
+//        Roo.log(x);
+//        Roo.log(y);
 //        Roo.log(cropWidth);
 //        Roo.log(cropHeight);
 //        Roo.log(centerX);
