@@ -268,8 +268,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var pw = (this.imageSection.getWidth() - this.image.getWidth()) / 2;
         var ph = (this.imageSection.getHeight() - this.image.getHeight()) / 2;
         
-        this.imageCanvas.setLeft(pw);
-        this.imageCanvas.setTop(ph);
+        this.imageCanvas.setLeft(parseInt(pw));
+        this.imageCanvas.setTop(parseInt(ph));
     },
     
     onMouseDown : function(e)
