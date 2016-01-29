@@ -271,7 +271,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         var thumbX = Math.ceil(this.thumb.dom.offsetLeft + transform.m41);
         
-        alert(JSON.stringify({pw : pw, ph : ph, thumbX : thumbX}));
+        alert(JSON.stringify({
+            pw : pw, 
+            ph : ph, 
+            thumbX : thumbX,
+            imageSectionGetWidth : this.imageSection.getWidth(true),
+            imageGetWidth : this.image.getWidth()
+        }));
         
         this.imageCanvas.setLeft(pw);
         this.imageCanvas.setTop(ph);
