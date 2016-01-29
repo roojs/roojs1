@@ -126,6 +126,9 @@ if(opt.anim.isAnimated()){
         defaultUnit : "px",
         
         pxReg : /^\d+(?:\.\d*)?px$/i,
+        
+        percentReg : /^\d+(?:\.\d*)?\%$/i,
+        
         /**
          * Sets the element's visibility mode. When setVisible() is called it
          * will use this to determine whether to set the visibility or the display property.
