@@ -469,7 +469,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         
         Roo.log(JSON.stringify(test));
-        alert(JSON.stringify(test));
+//        alert(JSON.stringify(test));
         
         if(this.rotate == 90){
             
