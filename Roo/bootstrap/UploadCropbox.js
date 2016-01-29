@@ -545,14 +545,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         x = x < 0 ? 0 : x;
         y = y < 0 ? 0 : y;
         
-        Roo.log(x);
-        Roo.log(y);
-        Roo.log(cropWidth);
-        Roo.log(cropHeight);
-        Roo.log(centerX);
-        Roo.log(centerY);
-        Roo.log(canvas.width);
-        Roo.log(canvas.height);
+//        Roo.log(x);
+//        Roo.log(y);
+//        Roo.log(cropWidth);
+//        Roo.log(cropHeight);
+//        Roo.log(centerX);
+//        Roo.log(centerY);
+//        Roo.log(canvas.width);
+//        Roo.log(canvas.height);
         
 //        alert(x);
 //        alert(y);
@@ -562,6 +562,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        alert(centerY);
 //        alert(canvas.width);
 //        alert(canvas.height);
+        
+        alert(context.getBoundingClientRect().toString());
         
         context.translate(centerX, centerY);
 
