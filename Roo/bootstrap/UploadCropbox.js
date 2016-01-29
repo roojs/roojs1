@@ -556,7 +556,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var test = {
             x : x,
             cropWidth : cropWidth,
-            imageWidth : this.image.getWidth()
+            imageWidth : this.image.OriginWidth
         }
         
         alert(JSON.stringify(test));
