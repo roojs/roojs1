@@ -265,8 +265,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     setCanvasPosition : function()
     {   
-        var pw = Math.ceil((this.imageSection.getWidth(true) - this.image.getWidth()) / 2);
-        var ph = Math.ceil((this.imageSection.getHeight(true) - this.image.getHeight()) / 2);
+        var pw = Math.ceil((this.imageSection.getWidth() - this.image.getWidth()) / 2);
+        var ph = Math.ceil((this.imageSection.getHeight() - this.image.getHeight()) / 2);
         
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         var thumbX = Math.ceil(this.thumb.dom.offsetLeft + transform.m41);
