@@ -1202,15 +1202,15 @@ if(opt.anim.isAnimated()){
                 
                 return parseInt(this.getStyle("left"), 10) || 0;
                 
-//                var x = this.getStyle("left");
-//                
-//                if(!x || x === 'AUTO'){
-//                    return 0;
-//                }
-//                
-//                if(this.pxReg.test(x)){
-//                    return parseFloat(x);
-//                }
+                var x = this.getStyle("left");
+                
+                if(!x || x === 'AUTO'){
+                    return 0;
+                }
+                
+                if(this.pxReg.test(x)){
+                    return parseFloat(x);
+                }
 //                
 //                x = this.getX();
 //                
