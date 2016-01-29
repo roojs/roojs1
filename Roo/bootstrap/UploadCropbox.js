@@ -455,14 +455,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var x = (thumbX - this.imageCanvas.getLeft(true)) * this.getScaleLevel(true);
         var y = (thumbY - this.imageCanvas.getTop(true)) * this.getScaleLevel(true);
         
-        var test = {
-            thumbOffsetLeft : this.thumb.getLeft(true),
-            thumbX : thumbX,
-            getLeft : this.imageCanvas.getLeft(true),
-            offsetLeft : this.imageCanvas.dom.offsetLeft,
-            levle : this.getScaleLevel(true)
-        }
-        
         if(this.rotate == 90){
             
             x = thumbY + (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getTop(true);
@@ -560,16 +552,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         x = x < 0 ? 0 : x;
         y = y < 0 ? 0 : y;
-        
-        
-        
-        var test = {
-            x : x,
-            cropWidth : cropWidth,
-            imageWidth : this.image.OriginWidth
-        }
-        
-        alert(JSON.stringify(test));
         
         context.translate(centerX, centerY);
 
