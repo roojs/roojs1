@@ -553,12 +553,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         x = x < 0 ? 0 : x;
         y = y < 0 ? 0 : y;
         
-        var test = {
-            x : x,
-            cropWidth : cropWidth,
-            imageWidth : this.image.OriginWidth
-        }
-        
         alert(JSON.stringify(test));
         
         context.translate(centerX, centerY);
