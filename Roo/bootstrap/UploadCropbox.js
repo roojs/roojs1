@@ -314,8 +314,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         x = x - this.mouseX;
         y = y - this.mouseY;
         
-        var bgX = x + this.imageCanvas.dom.offsetLeft;
-        var bgY = y + this.imageCanvas.dom.offsetTop;
+        var bgX = x + this.imageCanvas.getLeft(true);
+        var bgY = y + this.imageCanvas.getTop(true);
         
         bgX = (minX < bgX) ? minX : ((maxX > bgX) ? maxX : bgX);
         bgY = (minY < bgY) ? minY : ((maxY > bgY) ? maxY : bgY);
