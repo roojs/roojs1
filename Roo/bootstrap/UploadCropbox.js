@@ -257,8 +257,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.fitThumbBox();
         
-        this.image.setWidth(parseInt(this.image.OriginWidth * this.getScaleLevel(false)));
-        this.image.setHeight(parseInt(this.image.OriginHeight * this.getScaleLevel(false)));
+        this.image.setWidth(Math.ceil(this.image.OriginWidth * this.getScaleLevel(false)));
+        this.image.setHeight(Math.ceil(this.image.OriginHeight * this.getScaleLevel(false)));
         
         this.setCanvasPosition();
     },
@@ -268,8 +268,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var pw = (this.imageSection.getWidth() - this.image.getWidth()) / 2;
         var ph = (this.imageSection.getHeight() - this.image.getHeight()) / 2;
         
-        this.imageCanvas.setLeft(parseInt(pw));
-        this.imageCanvas.setTop(parseInt(ph));
+        this.imageCanvas.setLeft(Math.ceil(pw));
+        this.imageCanvas.setTop(Math.ceil(ph));
     },
     
     onMouseDown : function(e)
