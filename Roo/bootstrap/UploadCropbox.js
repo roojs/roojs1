@@ -501,7 +501,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.fireEvent('crop', this, this.cropImageData);
             
             return;
-            
         }
         
         if(this.rotate == 270){
@@ -550,7 +549,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.fireEvent('crop', this, this.cropImageData);
             
             return;
-            
         }
         
         if(this.rotate == 180){
