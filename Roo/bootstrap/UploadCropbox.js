@@ -274,7 +274,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         alert(JSON.stringify({
             pw : pw, 
             ph : ph, 
-            thumbX : thumbX
+            thumbX : thumbX,
+            thumbOffsetLeft : this.thumb.dom.offsetLeft,
+            transform : transform.m41
         }));
         
         this.imageCanvas.setLeft(pw);
