@@ -297,6 +297,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var minX = this.thumb.getLeft(true) + transform.m41;
         var minY = this.thumb.getTop(true) + transform.m42;
         
+        Roo.log(this.thumb.getLeft());
+        
         Roo.log(this.thumb.getStyle("left"));
         Roo.log(this.thumb.getX());
         
