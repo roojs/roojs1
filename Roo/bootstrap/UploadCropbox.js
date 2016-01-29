@@ -458,6 +458,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var test = {
             thumbX : thumbX,
             getLeft : this.imageCanvas.getLeft(true),
+            offsetLeft : this.imageCanvas.dom.offsetLeft,
             levle : this.getScaleLevel(true)
         }
         Roo.log(JSON.stringify(test));
