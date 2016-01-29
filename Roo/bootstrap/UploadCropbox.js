@@ -294,18 +294,18 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         
-        var minX = parseInt(this.thumb.dom.offsetLeft + transform.m41);
-        var minY = parseInt(this.thumb.dom.offsetTop + transform.m42);
+        var minX = Math.ceil(this.thumb.dom.offsetLeft + transform.m41);
+        var minY = Math.ceil(this.thumb.dom.offsetTop + transform.m42);
         
-        var maxX = parseInt(minX + this.thumb.getWidth() - this.image.getWidth());
-        var maxY = parseInt(minY + this.thumb.getHeight() - this.image.getHeight());
+        var maxX = Math.ceil(minX + this.thumb.getWidth() - this.image.getWidth());
+        var maxY = Math.ceil(minY + this.thumb.getHeight() - this.image.getHeight());
         
         if(this.rotate == 90 || this.rotate == 270){
-            minX = parseInt(this.thumb.dom.offsetLeft + transform.m41 - (this.image.getWidth() - this.image.getHeight()) / 2);
-            minY = parseInt(this.thumb.dom.offsetTop + transform.m42 + (this.image.getWidth() - this.image.getHeight()) / 2);
+            minX = Math.ceil(this.thumb.dom.offsetLeft + transform.m41 - (this.image.getWidth() - this.image.getHeight()) / 2);
+            minY = Math.ceil(this.thumb.dom.offsetTop + transform.m42 + (this.image.getWidth() - this.image.getHeight()) / 2);
             
-            maxX = parseInt(minX + this.thumb.getWidth() - this.image.getHeight());
-            maxY = parseInt(minY + this.thumb.getHeight() - this.image.getWidth());
+            maxX = Math.ceil(minX + this.thumb.getWidth() - this.image.getHeight());
+            maxY = Math.ceil(minY + this.thumb.getHeight() - this.image.getWidth());
         }
         
         var x = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
@@ -314,8 +314,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         x = x - this.mouseX;
         y = y - this.mouseY;
         
-        var bgX = parseInt(x + this.imageCanvas.getLeft(true));
-        var bgY = parseInt(y + this.imageCanvas.getTop(true));
+        var bgX = Math.ceil(x + this.imageCanvas.getLeft(true));
+        var bgY = Math.ceil(y + this.imageCanvas.getTop(true));
         
         bgX = (minX < bgX) ? minX : ((maxX > bgX) ? maxX : bgX);
         bgY = (minY < bgY) ? minY : ((maxY > bgY) ? maxY : bgY);
@@ -340,8 +340,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
         
-        var width = parseInt(this.image.OriginWidth * this.getScaleLevel(false));
-        var height = parseInt(this.image.OriginHeight * this.getScaleLevel(false));
+        var width = Math.ceil(this.image.OriginWidth * this.getScaleLevel(false));
+        var height = Math.ceil(this.image.OriginHeight * this.getScaleLevel(false));
         
         if(
                 e.getWheelDelta() == -1 &&
@@ -579,11 +579,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var width, height;
         
         height = 300;
-        width = parseInt(this.minWidth * height / this.minHeight);
+        width = Math.ceil(this.minWidth * height / this.minHeight);
         
         if(this.minWidth > this.minHeight){
             width = 300;
-            height = parseInt(this.minHeight * width / this.minWidth);
+            height = Math.ceil(this.minHeight * width / this.minWidth);
         }
         
         this.thumb.setStyle({
@@ -690,8 +690,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var scale = this.startScale + Math.floor(Math.log(this.endDistance / this.startDistance) / Math.log(1.1));
         
-        var width = parseInt(this.image.OriginWidth * this.baseScale * Math.pow(1.1, scale));
-        var height = parseInt(this.image.OriginHeight * this.baseScale * Math.pow(1.1, scale));
+        var width = Math.ceil(this.image.OriginWidth * this.baseScale * Math.pow(1.1, scale));
+        var height = Math.ceil(this.image.OriginHeight * this.baseScale * Math.pow(1.1, scale));
         
         if(
                 this.endDistance / this.startDistance < 1 &&
