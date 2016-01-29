@@ -579,11 +579,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var width, height;
         
         height = 300;
-        width = this.minWidth * height / this.minHeight;
+        width = parseInt(this.minWidth * height / this.minHeight);
         
         if(this.minWidth > this.minHeight){
             width = 300;
-            height = this.minHeight * width / this.minWidth;
+            height = parseInt(this.minHeight * width / this.minWidth);
         }
         
         this.thumb.setStyle({
