@@ -542,7 +542,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             y = this.image.OriginHeight - this.thumb.getHeight() * this.getScaleLevel(true) - y;
         }
         
-        x = x < 0 ? 0 : x;
+        x = 0;
         y = y < 0 ? 0 : y;
         
 //        Roo.log(x);
@@ -554,7 +554,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        Roo.log(canvas.width);
 //        Roo.log(canvas.height);
         
-        alert(x);
+//        alert(x);
 //        alert(y);
 //        alert(cropWidth);
 //        alert(cropHeight);
