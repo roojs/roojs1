@@ -627,10 +627,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
     },
     
-    placeThumbBox : fucntion()
-    {
-        
-    },
+    
     
     fitThumbBox : function()
     {
