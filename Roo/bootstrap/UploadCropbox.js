@@ -171,8 +171,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.calcThumbBoxSize();
         
-        this.placeThumbBox();
-        
         this.bind();
         
         this.fireEvent('initial', this);
@@ -619,8 +617,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var x = Math.ceil((this.imageSection.getWidth() - this.thumb.getWidth()) / 2);
         var y = Math.ceil((this.imageSection.getHeight() - this.thumb.getHeight()) / 2);
-        
-        Roo.log(this.imageSection.getWidth());
         
         this.thumb.setLeft(x);
         this.thumb.setTop(y);
