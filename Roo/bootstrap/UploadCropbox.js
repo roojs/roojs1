@@ -463,10 +463,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             levle : this.getScaleLevel(true)
         }
         
-        
-//        Roo.log(JSON.stringify(test));
-        alert(JSON.stringify(test));
-        
         if(this.rotate == 90){
             
             x = thumbY + (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getTop(true);
