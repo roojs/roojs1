@@ -294,21 +294,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var restriction = this.getImageRestriction();
         
-//        var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
-//        
-//        var minX = this.thumb.getLeft(true) + transform.m41;
-//        var minY = this.thumb.getTop(true) + transform.m42;
-//        
-//        var maxX = minX + this.thumb.getWidth() - this.image.getWidth();
-//        var maxY = minY + this.thumb.getHeight() - this.image.getHeight();
-//        
-//        if(this.rotate == 90 || this.rotate == 270){
-//            minX = this.thumb.getLeft(true) + transform.m41 - (this.image.getWidth() - this.image.getHeight()) / 2;
-//            minY = this.thumb.getTop(true) + transform.m42 + (this.image.getWidth() - this.image.getHeight()) / 2;
-//            
-//            maxX = minX + this.thumb.getWidth() - this.image.getHeight();
-//            maxY = minY + this.thumb.getHeight() - this.image.getWidth();
-//        }
+        Roo.log(restriction);return;
         
         var x = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
         var y = Roo.isTouch ? e.browserEvent.touches[0].pageY : e.getPageY();
