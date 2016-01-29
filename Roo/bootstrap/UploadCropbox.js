@@ -558,9 +558,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             y = this.image.OriginHeight - this.thumb.getHeight() * this.getScaleLevel(true) - y;
         }
         
-//        if(this.image.OriginWidth - cropWidth < x){
-//            x = this.image.OriginWidth - cropWidth;
-//        }
+        if(this.image.OriginWidth - cropWidth < x){
+            x = this.image.OriginWidth - cropWidth;
+        }
         
 //        var test = {
 //            y : y,
@@ -571,9 +571,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        
 //        alert(JSON.stringify(test));
         
-//        if(this.image.OriginHeight - cropHeight < y){
-//            y = this.image.OriginHeight - cropHeight;
-//        }
+        if(this.image.OriginHeight - cropHeight < y){
+            y = this.image.OriginHeight - cropHeight;
+        }
         
         x = x < 0 ? 0 : x;
         y = y < 0 ? 0 : y;
