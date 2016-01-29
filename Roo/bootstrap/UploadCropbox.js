@@ -25,7 +25,7 @@ Roo.bootstrap.UploadCropbox = function(config){
          * Fire before select file
          * @param {Roo.bootstrap.UploadCropbox} this
          */
-        "beforeSelectFile" : true,
+        "beforeselectfile" : true,
         /**
          * @event initial
          * Fire after initEvent
@@ -232,7 +232,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     beforeSelectFile : function(e)
     {
         e.preventDefault();
-        this.fireEvent('beforeSelectFile', this);
+        this.fireEvent('beforeselectfile', this);
     },
     
     loadCanvasImage : function(src)
