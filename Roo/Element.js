@@ -1203,8 +1203,6 @@ if(opt.anim.isAnimated()){
                 return this.getX();
             }else{
                 
-                return parseInt(this.getStyle("left"), 10) || 0;
-                
                 var x = this.getStyle("left");
                 
                 if(!x || x === 'AUTO'){
@@ -1214,16 +1212,14 @@ if(opt.anim.isAnimated()){
                 if(this.pxReg.test(x)){
                     return parseFloat(x);
                 }
-//                
-//                x = this.getX();
-//                
-//                var  par = this.dom.offsetParent ? Roo.fly(this.dom.offsetParent) : false;
-//                
-//                 if (par !== false) {
-//                    x -= par.getX();
-//                }
-//
-//                return x;
+                
+                var  parent = this.dom.offsetParent ? Roo.fly(this.dom.offsetParent) : false;
+                
+                if(this.percentReg.test(x) && parent !== false){
+                    return parent.getWidth() * parseFloat(x) / 100;
+                }
+                
+                return parseFloat(this.getStyle("left"), 10) || 0;
             }
         },
 
