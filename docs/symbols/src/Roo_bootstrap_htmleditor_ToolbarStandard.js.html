@@ -88,10 +88,10 @@
                 </span><span class="jsdoc-comment">//html : 'submit'
                 </span><span class="jsdoc-var">pressed </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">? </span><span class="jsdoc-keyword">false </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">,
                 </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: {}
-            }
+            };
             </span><span class="jsdoc-var">a.listeners</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">toggle </span><span class="jsdoc-syntax">? </span><span class="jsdoc-string">'toggle' </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() {
                 </span><span class="jsdoc-var">handler </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">handler.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">,</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">) :</span><span class="jsdoc-var">_this.onBtnClick.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cmd </span><span class="jsdoc-syntax">||  </span><span class="jsdoc-var">id</span><span class="jsdoc-syntax">);
-            }
+            };
             </span><span class="jsdoc-var">children.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">a</span><span class="jsdoc-syntax">;
        }
