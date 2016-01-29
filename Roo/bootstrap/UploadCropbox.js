@@ -301,11 +301,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var maxY = parseInt(minY + this.thumb.getHeight() - this.image.getHeight());
         
         if(this.rotate == 90 || this.rotate == 270){
-            minX = this.thumb.dom.offsetLeft + transform.m41 - (this.image.getWidth() - this.image.getHeight()) / 2;
-            minY = this.thumb.dom.offsetTop + transform.m42 + (this.image.getWidth() - this.image.getHeight()) / 2;
+            minX = parseInt(this.thumb.dom.offsetLeft + transform.m41 - (this.image.getWidth() - this.image.getHeight()) / 2);
+            minY = parseInt(this.thumb.dom.offsetTop + transform.m42 + (this.image.getWidth() - this.image.getHeight()) / 2);
             
-            maxX = minX + this.thumb.getWidth() - this.image.getHeight();
-            maxY = minY + this.thumb.getHeight() - this.image.getWidth();
+            maxX = parseInt(minX + this.thumb.getWidth() - this.image.getHeight());
+            maxY = parseInt(minY + this.thumb.getHeight() - this.image.getWidth());
         }
         
         var x = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
