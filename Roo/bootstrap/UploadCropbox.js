@@ -563,8 +563,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        alert(canvas.width);
 //        alert(canvas.height);
         
-        alert(canvas.getBoundingClientRect().toString());
-//        Roo.log(canvas.getBoundingClientRect());
+//        alert(canvas.getBoundingClientRect().toString());
+        Roo.log(canvas.getBoundingClientRect().toString());
         
         context.translate(centerX, centerY);
 
