@@ -567,7 +567,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
         context.rotate(this.rotate * Math.PI / 180);
         
-        context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, canvas.width, canvas.height);
+        context.drawImage(this.image.dom, centerX * -1, centerY * -1);
         
         this.cropImageData = canvas.toDataURL(this.cropType);
         
