@@ -464,6 +464,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             levle : this.getScaleLevel(true)
         }
         
+        
         Roo.log(JSON.stringify(test));
         alert(JSON.stringify(test));
         
