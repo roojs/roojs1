@@ -294,7 +294,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var restriction = this.getImageRestriction();
         
-        Roo.log(restriction);
+        Roo.log(restriction.minX);
         
         var x = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
         var y = Roo.isTouch ? e.browserEvent.touches[0].pageY : e.getPageY();
