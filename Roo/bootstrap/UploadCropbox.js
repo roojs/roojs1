@@ -295,8 +295,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
-        
         var minX = Math.ceil(this.thumb.getLeft(true));
         var minY = Math.ceil(this.thumb.getTop(true));
         
