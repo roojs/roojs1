@@ -307,8 +307,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             minX = this.thumb.dom.offsetLeft + transform.m41 - (this.image.getWidth() - this.image.getHeight()) / 2;
             minY = this.thumb.dom.offsetTop + transform.m42 + (this.image.getWidth() - this.image.getHeight()) / 2;
             
-            maxX = minX + this.thumb.getWidth() - this.image.getHeight();
-            maxY = minY + this.thumb.getHeight() - this.image.getWidth();
+            maxX = minX + this.thumb.getWidth(true) - this.image.getHeight();
+            maxY = minY + this.thumb.getHeight(true) - this.image.getWidth();
         }
         
         var x = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
