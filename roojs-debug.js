@@ -7046,7 +7046,6 @@ if(opt.anim.isAnimated()){
          */
         defaultUnit : "px",
         
-        pxReg : /^\d+(?:\.\d*)?px$/i,
         /**
          * Sets the element's visibility mode. When setVisible() is called it
          * will use this to determine whether to set the visibility or the display property.
@@ -8120,28 +8119,7 @@ if(opt.anim.isAnimated()){
             if(!local){
                 return this.getX();
             }else{
-                
                 return parseInt(this.getStyle("left"), 10) || 0;
-                
-//                var x = this.getStyle("left");
-//                
-//                if(!x || x === 'AUTO'){
-//                    return 0;
-//                }
-//                
-//                if(this.pxReg.test(x)){
-//                    return parseFloat(x);
-//                }
-//                
-//                x = this.getX();
-//                
-//                var  par = this.dom.offsetParent ? Roo.fly(this.dom.offsetParent) : false;
-//                
-//                 if (par !== false) {
-//                    x -= par.getX();
-//                }
-//
-//                return x;
             }
         },
 
