@@ -300,15 +300,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         Roo.log(this.thumb.dom.offsetLeft);
         Roo.log(this.thumb.dom.offsetTop);
         
-        var maxX = minX + this.thumb.getWidth(true) - this.image.getWidth();
-        var maxY = minY + this.thumb.getHeight(true) - this.image.getHeight();
+        var maxX = minX + this.thumb.getWidth(true) - this.image.getWidth(true);
+        var maxY = minY + this.thumb.getHeight(true) - this.image.getHeight(true);
         
         if(this.rotate == 90 || this.rotate == 270){
-            minX = this.thumb.dom.offsetLeft + transform.m41 - (this.image.getWidth() - this.image.getHeight()) / 2;
-            minY = this.thumb.dom.offsetTop + transform.m42 + (this.image.getWidth() - this.image.getHeight()) / 2;
+            minX = this.thumb.dom.offsetLeft + transform.m41 - (this.image.getWidth(true) - this.image.getHeight(true)) / 2;
+            minY = this.thumb.dom.offsetTop + transform.m42 + (this.image.getWidth(true) - this.image.getHeight(true)) / 2;
             
-            maxX = minX + this.thumb.getWidth(true) - this.image.getHeight();
-            maxY = minY + this.thumb.getHeight(true) - this.image.getWidth();
+            maxX = minX + this.thumb.getWidth(true) - this.image.getHeight(true);
+            maxY = minY + this.thumb.getHeight(true) - this.image.getWidth(true);
         }
         
         var x = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
