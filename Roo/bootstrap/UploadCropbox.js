@@ -252,8 +252,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.imageSectionHasOnClickEvent = false;
         }
         
-        this.image.OriginWidth = this.image.getWidth(true);
-        this.image.OriginHeight = this.image.getHeight(true);
+        this.image.OriginWidth = this.image.getWidth();
+        this.image.OriginHeight = this.image.getHeight();
         
         this.fitThumbBox();
         
@@ -265,8 +265,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     setCanvasPosition : function()
     {   
-        var pw = (this.imageSection.getWidth(true) - this.image.getWidth(true)) / 2;
-        var ph = (this.imageSection.getHeight(true) - this.image.getHeight(true)) / 2;
+        var pw = (this.imageSection.getWidth(true) - this.image.getWidth()) / 2;
+        var ph = (this.imageSection.getHeight(true) - this.image.getHeight()) / 2;
         
         this.imageCanvas.setLeft(pw);
         this.imageCanvas.setTop(ph);
@@ -300,15 +300,18 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         Roo.log(this.thumb.dom.offsetLeft);
         Roo.log(this.thumb.dom.offsetTop);
         
-        var maxX = minX + this.thumb.getWidth(true) - this.image.getWidth(true);
-        var maxY = minY + this.thumb.getHeight(true) - this.image.getHeight(true);
+        Roo.log(this.thumb.getWidth());
+        Roo.log(this.thumb.getWidth(true));
+        
+        var maxX = minX + this.thumb.getWidth() - this.image.getWidth();
+        var maxY = minY + this.thumb.getHeight() - this.image.getHeight();
         
         if(this.rotate == 90 || this.rotate == 270){
-            minX = this.thumb.dom.offsetLeft + transform.m41 - (this.image.getWidth(true) - this.image.getHeight(true)) / 2;
-            minY = this.thumb.dom.offsetTop + transform.m42 + (this.image.getWidth(true) - this.image.getHeight(true)) / 2;
+            minX = this.thumb.dom.offsetLeft + transform.m41 - (this.image.getWidth() - this.image.getHeight()) / 2;
+            minY = this.thumb.dom.offsetTop + transform.m42 + (this.image.getWidth() - this.image.getHeight()) / 2;
             
-            maxX = minX + this.thumb.getWidth(true) - this.image.getHeight(true);
-            maxY = minY + this.thumb.getHeight(true) - this.image.getWidth(true);
+            maxX = minX + this.thumb.getWidth() - this.image.getHeight();
+            maxY = minY + this.thumb.getHeight() - this.image.getWidth();
         }
         
         var x = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
@@ -350,11 +353,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 e.getWheelDelta() == -1 &&
                 (
                     (
-                        (this.rotate == 0 || this.rotate == 180) && (width < this.thumb.getWidth(true) || height < this.thumb.getHeight(true))
+                        (this.rotate == 0 || this.rotate == 180) && (width < this.thumb.getWidth() || height < this.thumb.getHeight())
                     )
                     ||
                     (
-                        (this.rotate == 90 || this.rotate == 270) && (height < this.thumb.getWidth(true) || width < this.thumb.getHeight(true))
+                        (this.rotate == 90 || this.rotate == 270) && (height < this.thumb.getWidth() || width < this.thumb.getHeight())
                     )
                 )
         ){
@@ -377,13 +380,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 (
                     (this.rotate == 0 || this.rotate == 180) 
                     &&
-                    (this.image.getHeight(true) < this.thumb.getWidth(true) || this.image.getWidth(true) < this.thumb.getHeight(true))
+                    (this.image.getHeight() < this.thumb.getWidth() || this.image.getWidth() < this.thumb.getHeight())
                 )
                 ||
                 (
                     (this.rotate == 90 || this.rotate == 270) 
                     &&
-                    (this.image.getWidth(true) < this.thumb.getWidth(true) || this.image.getHeight(true) < this.thumb.getHeight(true))
+                    (this.image.getWidth() < this.thumb.getWidth() || this.image.getHeight() < this.thumb.getHeight())
                 )
                 
         ){
@@ -410,13 +413,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 (
                     (this.rotate == 0 || this.rotate == 180) 
                     &&
-                    (this.image.getHeight(true) < this.thumb.getWidth(true) || this.image.getWidth(true) < this.thumb.getHeight(true))
+                    (this.image.getHeight() < this.thumb.getWidth() || this.image.getWidth() < this.thumb.getHeight())
                 )
                 ||
                 (
                     (this.rotate == 90 || this.rotate == 270) 
                     &&
-                    (this.image.getWidth(true) < this.thumb.getWidth(true) || this.image.getHeight(true) < this.thumb.getHeight(true))
+                    (this.image.getWidth() < this.thumb.getWidth() || this.image.getHeight() < this.thumb.getHeight())
                 )
                 
         ){
