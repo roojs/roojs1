@@ -294,11 +294,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
         
-        var minX = this.thumb.dom.offsetLeft + transform.m41;
-        var minY = this.thumb.dom.offsetTop + transform.m42;
+        var minX = parseInt(this.thumb.dom.offsetLeft + transform.m41);
+        var minY = parseInt(this.thumb.dom.offsetTop + transform.m42);
         
-        var maxX = minX + this.thumb.getWidth() - this.image.getWidth();
-        var maxY = minY + this.thumb.getHeight() - this.image.getHeight();
+        var maxX = parseInt(minX + this.thumb.getWidth() - this.image.getWidth());
+        var maxY = parseInt(minY + this.thumb.getHeight() - this.image.getHeight());
         
         if(this.rotate == 90 || this.rotate == 270){
             minX = this.thumb.dom.offsetLeft + transform.m41 - (this.image.getWidth() - this.image.getHeight()) / 2;
