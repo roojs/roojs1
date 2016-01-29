@@ -449,8 +449,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var cropHeight = this.thumb.getHeight() * this.getScaleLevel(true);
         
         var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
-        var thumbX = Math.ceil(this.thumb.dom.offsetLeft + transform.m41);
-        var thumbY = Math.ceil(this.thumb.dom.offsetTop + transform.m42);
+        var thumbX = this.thumb.dom.offsetLeft + transform.m41;
+        var thumbY = this.thumb.dom.offsetTop + transform.m42;
         
         var x = (thumbX - this.imageCanvas.getLeft(true)) * this.getScaleLevel(true);
         var y = (thumbY - this.imageCanvas.getTop(true)) * this.getScaleLevel(true);
