@@ -410,13 +410,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 (
                     (this.rotate == 0 || this.rotate == 180) 
                     &&
-                    (this.image.getHeight() < this.thumb.getWidth() || this.image.getWidth() < this.thumb.getHeight())
+                    (this.image.getHeight(true) < this.thumb.getWidth(true) || this.image.getWidth(true) < this.thumb.getHeight(true))
                 )
                 ||
                 (
                     (this.rotate == 90 || this.rotate == 270) 
                     &&
-                    (this.image.getWidth() < this.thumb.getWidth() || this.image.getHeight() < this.thumb.getHeight())
+                    (this.image.getWidth(true) < this.thumb.getWidth(true) || this.image.getHeight(true) < this.thumb.getHeight(true))
                 )
                 
         ){
