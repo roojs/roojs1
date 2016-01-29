@@ -1202,24 +1202,7 @@ if(opt.anim.isAnimated()){
             if(!local){
                 return this.getX();
             }else{
-                
-                var x = this.getStyle("left");
-                
-                if(!x || x === 'AUTO'){
-                    return 0;
-                }
-                
-                if(this.pxReg.test(x)){
-                    return parseFloat(x);
-                }
-                
-                var  parent = this.dom.offsetParent ? Roo.fly(this.dom.offsetParent) : false;
-                
-                if(this.percentReg.test(x) && parent !== false){
-                    return parent.getWidth() * parseFloat(x) / 100;
-                }
-                
-                return parseFloat(this.getStyle("left"), 10) || 0;
+                return parseInt(this.getStyle("left"), 10) || 0;
             }
         },
 
