@@ -292,7 +292,21 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        var restriction = this.getImageRestriction();
+        var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
+        
+        var minX = this.thumb.dom.offsetLeft + transform.m41;
+        var minY = this.thumb.dom.offsetTop + transform.m42;
+        
+        var maxX = minX + this.thumb.getWidth() - this.image.getWidth();
+        var maxY = minY + this.thumb.getHeight() - this.image.getHeight();
+        
+        if(this.rotate == 90 || this.rotate == 270){
+            minX = this.thumb.dom.offsetLeft + transform.m41 - (this.image.getWidth() - this.image.getHeight()) / 2;
+            minY = this.thumb.dom.offsetTop + transform.m42 + (this.image.getWidth() - this.image.getHeight()) / 2;
+            
+            maxX = minX + this.thumb.getWidth() - this.image.getHeight();
+            maxY = minY + this.thumb.getHeight() - this.image.getWidth();
+        }
         
         var x = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
         var y = Roo.isTouch ? e.browserEvent.touches[0].pageY : e.getPageY();
@@ -300,11 +314,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         x = x - this.mouseX;
         y = y - this.mouseY;
         
-        var bgX = x + this.imageCanvas.getLeft(true);
-        var bgY = y + this.imageCanvas.getTop(true);
+        var bgX = x + this.imageCanvas.dom.offsetLeft;
+        var bgY = y + this.imageCanvas.dom.offsetTop;
         
-        bgX = (restriction.minX < bgX) ? restriction.minX : ((restriction.maxX > bgX) ? restriction.maxX : bgX);
-        bgY = (restriction.minY < bgY) ? restriction.minY : ((restriction.maxY > bgY) ? restriction.maxY : bgY);
+        bgX = (minX < bgX) ? minX : ((maxX > bgX) ? maxX : bgX);
+        bgY = (minY < bgY) ? minY : ((maxY > bgY) ? maxY : bgY);
         
         this.imageCanvas.setLeft(bgX);
         this.imageCanvas.setTop(bgY);
