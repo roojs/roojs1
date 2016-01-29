@@ -728,5 +728,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             maxX = minX + this.thumb.getWidth() - this.image.getHeight();
             maxY = minY + this.thumb.getHeight() - this.image.getWidth();
         }
+        
+        return {
+            minX : minX,
+            minY : minY,
+            maxX : maxX,
+            maxY : maxY
+        };
     }
 });
