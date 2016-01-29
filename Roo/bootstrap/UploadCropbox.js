@@ -463,12 +463,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             x = x * this.getScaleLevel(true);
             y = y * this.getScaleLevel(true);
             
-            if(this.image.OriginWidth - cropWidth < x){
-                x = this.image.OriginWidth - cropWidth;
+            if(this.image.OriginWidth - cropHeight < x){
+                x = this.image.OriginWidth - cropHeight;
             }
 
-            if(this.image.OriginHeight - cropHeight < y){
-                y = this.image.OriginHeight - cropHeight;
+            if(this.image.OriginHeight - cropWidth < y){
+                y = this.image.OriginHeight - cropWidth;
             }
             
             x = x < 0 ? 0 : x;
