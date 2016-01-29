@@ -171,6 +171,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.calcThumbBoxSize();
         
+        this.placeThumbBox();
+        
         this.bind();
         
         this.fireEvent('initial', this);
