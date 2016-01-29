@@ -714,10 +714,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         return {
-            minX : parseInt(minX),
-            minY : parseInt(minY),
-            maxX : parseInt(maxX),
-            maxY : parseInt(maxY)
+            minX : minX,
+            minY : minY,
+            maxX : maxX,
+            maxY : maxY
         };
     }
 });
