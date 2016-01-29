@@ -302,7 +302,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var  par = this.thumb.dom.offsetParent ? Roo.fly(this.thumb.dom.offsetParent) : false;
         Roo.log(this.thumb.dom.offsetParent);
         
-        Roo.log(Roo.get(this.thumb.dom.offsetParent));
+        Roo.log(Roo.get(this.thumb.dom.offsetParent.getX()));
         
         var maxX = minX + this.thumb.getWidth() - this.image.getWidth();
         var maxY = minY + this.thumb.getHeight() - this.image.getHeight();
