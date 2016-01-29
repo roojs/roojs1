@@ -494,7 +494,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             canvas2.width = this.minWidth;
             canvas2.height = this.minHeight;
             
-            context2.drawImage(canvas, Math.abs(this.minWidth - this.minHeight), 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
+            context2.drawImage(canvas, Math.abs(this.minWidth - this.minHeight), 0, this.minWidth, this.minHeight, Math.abs(this.minWidth - this.minHeight), 0, this.minWidth, this.minHeight);
     
             this.cropImageData = canvas2.toDataURL(this.cropType);
 
