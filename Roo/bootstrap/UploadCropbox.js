@@ -270,18 +270,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var pw = Math.ceil((this.imageSection.getWidth(true) - this.image.getWidth()) / 2);
         var ph = Math.ceil((this.imageSection.getHeight(true) - this.image.getHeight()) / 2);
         
-        var transform = new WebKitCSSMatrix(window.getComputedStyle(this.thumb.dom).webkitTransform);
-        var thumbX = Math.ceil(this.thumb.dom.offsetLeft + transform.m41);
-        
-        alert(JSON.stringify({
-            pw : pw, 
-            ph : ph, 
-            thumbX : thumbX,
-            thumbOffsetLeft : this.thumb.dom.offsetLeft,
-            transform : transform.m41,
-            imageSectionWidth : this.imageSection.getWidth(true)
-        }));
-        
         this.imageCanvas.setLeft(pw);
         this.imageCanvas.setTop(ph);
     },
