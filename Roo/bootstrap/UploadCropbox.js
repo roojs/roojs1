@@ -239,8 +239,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         this.reset();
         
-        this.placeThumbBox();
-        
         this.image.attr('src', src);
     },
     
@@ -249,6 +247,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.emptyNotify.hide();
         this.thumb.show();
         this.footerSection.show();
+        
+        this.placeThumbBox();
         
         if(this.imageSectionHasOnClickEvent){
             this.imageSection.un('click', this.beforeSelectFile, this);
