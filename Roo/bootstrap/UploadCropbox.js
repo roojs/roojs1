@@ -294,8 +294,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var restriction = this.getImageRestriction();
         
-        Roo.log(restriction.minX);
-        
         var x = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
         var y = Roo.isTouch ? e.browserEvent.touches[0].pageY : e.getPageY();
         
@@ -305,8 +303,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var bgX = x + this.imageCanvas.getLeft(true);
         var bgY = y + this.imageCanvas.getTop(true);
         
-        bgX = (minX < bgX) ? minX : ((maxX > bgX) ? maxX : bgX);
-        bgY = (minY < bgY) ? minY : ((maxY > bgY) ? maxY : bgY);
+        bgX = (restriction.minX < bgX) ? restriction.minX : ((restriction.maxX > bgX) ? restriction.maxX : bgX);
+        bgY = (restriction.minY < bgY) ? restriction.minY : ((restriction.maxY > bgY) ? restriction.maxY : bgY);
         
         this.imageCanvas.setLeft(bgX);
         this.imageCanvas.setTop(bgY);
