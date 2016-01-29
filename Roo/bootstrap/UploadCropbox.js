@@ -658,8 +658,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var scale = this.startScale + Math.floor(Math.log(this.endDistance / this.startDistance) / Math.log(1.1));
         
-        var width = this.image.OriginWidth * this.baseScale * Math.pow(1.1, scale);
-        var height = this.image.OriginHeight * this.baseScale * Math.pow(1.1, scale);
+        var width = parseInt(this.image.OriginWidth * this.baseScale * Math.pow(1.1, scale));
+        var height = parseInt(this.image.OriginHeight * this.baseScale * Math.pow(1.1, scale));
         
         if(
                 this.endDistance / this.startDistance < 1 &&
