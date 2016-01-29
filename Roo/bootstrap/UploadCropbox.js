@@ -627,6 +627,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
     },
     
+    placeThumbBox : fucntion()
+    {
+        
+    },
+    
     fitThumbBox : function()
     {
         var width = this.thumb.getWidth();
