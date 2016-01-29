@@ -488,9 +488,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, this.minHeight, this.minWidth);
         
-            window.open(canvas.toDataURL(this.cropType));
-            return;
-            
             var canvas2 = document.createElement("canvas");
             var context2 = canvas2.getContext("2d");
             
@@ -503,8 +500,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             context2.drawImage(canvas, Math.abs(this.minWidth - this.minHeight), 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
     
             this.cropImageData = canvas2.toDataURL(this.cropType);
-            
-            window.open(this.cropImageData);
             
             this.fireEvent('crop', this, this.cropImageData);
             
