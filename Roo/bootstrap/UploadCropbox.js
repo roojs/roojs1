@@ -276,6 +276,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             ph : ph, 
             thumbX : thumbX,
             imageSectionGetWidth : this.imageSection.getWidth(true),
+            imageSectionGetWidthF : this.imageSection.getWidth(),
             imageGetWidth : this.image.getWidth()
         }));
         
