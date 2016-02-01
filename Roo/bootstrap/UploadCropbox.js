@@ -895,6 +895,29 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     parseExifTags : function(dataView, tiffOffset, dirOffset, littleEndian, exif)
     {
-        
+        var tagsNumber,
+            dirEndOffset,
+            i;
+        if (dirOffset + 6 > dataView.byteLength) {
+            console.log('Invalid Exif data: Invalid directory offset.');
+            return;
+        }
+        tagsNumber = dataView.getUint16(dirOffset, littleEndian);
+        dirEndOffset = dirOffset + 2 + 12 * tagsNumber;
+        if (dirEndOffset + 4 > dataView.byteLength) {
+            console.log('Invalid Exif data: Invalid directory size.');
+            return;
+        }
+        for (i = 0; i < tagsNumber; i += 1) {
+            this.parseExifTag(
+                dataView,
+                tiffOffset,
+                dirOffset + 2 + 12 * i, // tag offset
+                littleEndian,
+                exif
+            );
+        }
+        // Return the offset to the next directory:
+        return dataView.getUint32(dirEndOffset, littleEndian);
     }
 });
