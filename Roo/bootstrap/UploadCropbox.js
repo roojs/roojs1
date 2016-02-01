@@ -827,7 +827,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     }
                     
                     Roo.log('exif');
-                    Roo.log(_this.exif[0x0112]);
+                    Roo.log(_this.exif);
                     
                     return;
                 }
