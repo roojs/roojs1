@@ -665,7 +665,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.baseRotate = Roo.bootstrap.UploadCropbox['Orientation'][this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]]
         
-        if([1, 3, 6, 8].indexOf(this.baseRotate) === false){
+        if([1, 3, 6, 8].indexOf(this.baseRotate) == -1){
             this.baseRotate = 1
         }
     },
