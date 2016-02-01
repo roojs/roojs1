@@ -57,6 +57,7 @@
          * @event beforeloadimage
          * Fire before load the image
          * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {String} src
          */
         </span><span class="jsdoc-string">&quot;beforeloadimage&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
@@ -260,7 +261,7 @@
     
     </span><span class="jsdoc-var">loadCanvasImage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">)
     {   
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeloadimage'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeloadimage'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.reset</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.image.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">);
         }

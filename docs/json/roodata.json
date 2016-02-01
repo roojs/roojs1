@@ -39219,7 +39219,7 @@
     },
     {
      "name": "beforeloadimage",
-     "sig": "function (_self)\n{\n\n}",
+     "sig": "function (_self, src)\n{\n\n}",
      "type": "function",
      "desc": "Fire before load the image"
     },
