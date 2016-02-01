@@ -79,6 +79,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     minHeight : 300,
     file : false,
     exif : {},
+    baseRotate : 0,
     
     getAutoCreate : function()
     {
