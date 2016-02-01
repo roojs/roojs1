@@ -919,5 +919,17 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         // Return the offset to the next directory:
         return dataView.getUint32(dirEndOffset, littleEndian);
+    },
+    
+    parseExifTag : function (dataView, tiffOffset, offset, littleEndian, exif) {
+        var tag = dataView.getUint16(offset, littleEndian);
+        exif[tag] = loadImage.getExifValue(
+            dataView,
+            tiffOffset,
+            offset,
+            dataView.getUint16(offset + 2, littleEndian), // tag type
+            dataView.getUint32(offset + 4, littleEndian), // tag length
+            littleEndian
+        );
     }
 });
