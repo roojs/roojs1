@@ -820,6 +820,23 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     
                 }
                 
+                var urlAPI = (window.createObjectURL && window) || (window.URL && URL.revokeObjectURL && URL) || (window.webkitURL && webkitURL);
+                
+                Roo.log(urlAPI);
+                return;
+                
+                if (loadImage.isInstanceOf('Blob', file) || loadImage.isInstanceOf('File', file)) {
+                    url = oUrl = loadImage.createObjectURL(file);
+                    // Store the file type for resize processing:
+                    img._type = file.type;
+                } else if (typeof file === 'string') {
+                    url = file;
+                    if (options && options.crossOrigin) {
+                        img.crossOrigin = options.crossOrigin;
+                    }
+                } else {
+                    return false;
+                }
                 
                 return;
             }
