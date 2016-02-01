@@ -23967,7 +23967,14 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {String} imageData
          */
-        "crop" : true
+        "crop" : true,
+        /**
+         * @event prepare
+         * Fire when preparing the file data
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {Object} file
+         */
+        "prepare" : true
         
     });
 };
@@ -23986,6 +23993,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     cropType : 'image/png',
     minWidth : 300,
     minHeight : 300,
+    file : false,
     
     getAutoCreate : function()
     {
@@ -24161,6 +24169,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     beforeSelectFile : function(e)
     {
         e.preventDefault();
+        
         this.fireEvent('beforeselectfile', this);
     },
     
@@ -24668,5 +24677,18 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.pinching = false;
         this.dragable = false;
         
+    },
+    
+    prepare : function(input)
+    {
+        if(!input.files || !input.files[0]){
+            return;
+        }
+        
+        this.file = input.files[0];
+        
+        if(this.fireEvent('prepare', this, this.file) != false){
+            Roo.log(this.file);
+        }
     }
 });
