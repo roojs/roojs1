@@ -965,6 +965,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         for (i = 0; i < length; i += 1) {
             values[i] = tagType.getValue(dataView, dataOffset + i * tagType.size, littleEndian);
         }
+        
         if (tagType.ascii) {
             str = '';
             // Concatenate the chars:
