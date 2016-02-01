@@ -655,7 +655,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     Orientation : function()
     {
-        this.baseRotate = 1;
+        this.baseRotate = Roo.bootstrap.UploadCropbox['Orientation'][1];
         
         if(typeof(this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]) == 'undefined'){
             return;
