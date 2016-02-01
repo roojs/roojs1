@@ -858,7 +858,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
     },
     
-    parseExifData : function()
+    parseExifData : function(dataView, offset, length, exif)
     {
         
     }
