@@ -993,6 +993,17 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
         'Orientation': 0x0112
     },
     
+    Orientation: {
+        1: 'top-left',
+        2: 'top-right',
+        3: 'bottom-right',
+        4: 'bottom-left',
+        5: 'left-top',
+        6: 'right-top',
+        7: 'right-bottom',
+        8: 'left-bottom'
+    },
+    
     exifTagTypes : {
         // byte, 8-bit unsigned int:
         1: {
