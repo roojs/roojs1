@@ -838,7 +838,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
     },
     
-    parseExifData : function(dataView, offset, length, exif)
+    parseExifData : function(dataView, offset, length)
     {
         var tiffOffset = offset + 10,
             littleEndian,
@@ -887,12 +887,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             dataView,
             tiffOffset,
             tiffOffset + dirOffset,
-            littleEndian,
-            exif
+            littleEndian
         );
     },
     
-    parseExifTags : function(dataView, tiffOffset, dirOffset, littleEndian, exif)
+    parseExifTags : function(dataView, tiffOffset, dirOffset, littleEndian)
     {
         var tagsNumber,
             dirEndOffset,
@@ -912,18 +911,17 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 dataView,
                 tiffOffset,
                 dirOffset + 2 + 12 * i, // tag offset
-                littleEndian,
-                exif
+                littleEndian
             );
         }
         // Return the offset to the next directory:
         return dataView.getUint32(dirEndOffset, littleEndian);
     },
     
-    parseExifTag : function (dataView, tiffOffset, offset, littleEndian, exif) 
+    parseExifTag : function (dataView, tiffOffset, offset, littleEndian) 
     {
         var tag = dataView.getUint16(offset, littleEndian);
-        exif[tag] = this.getExifValue(
+        this.exif[tag] = this.getExifValue(
             dataView,
             tiffOffset,
             offset,
