@@ -244,8 +244,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onLoadCanvasImage : function(src)
     {   
-        this.getOrientation();
-        
         this.emptyNotify.hide();
         this.thumb.show();
         this.footerSection.show();
@@ -743,8 +741,5 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    getOrientation : function(e)
-    {
-        Roo.log(this.image);
-    }
+    
 });
