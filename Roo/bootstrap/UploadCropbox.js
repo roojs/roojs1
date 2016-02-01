@@ -834,7 +834,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     return;
                 }
                 
-                Roo.log(_this.exif[Roo.apply(Roo.bootstrap.UploadCropbox['Orientation'][Roo.bootstrap.UploadCropbox['tags']['Orientation']]]);
+                Roo.log(Roo.bootstrap.UploadCropbox['Orientation'][_this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]]);
                 
                 var url = urlAPI.createObjectURL(_this.file);
                 
