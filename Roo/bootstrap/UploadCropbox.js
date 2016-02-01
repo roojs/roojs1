@@ -978,3 +978,61 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     }
     
 });
+
+Roo.apply(Roo.bootstrap.UploadCropbox,  {
+  
+    exifTagTypes : {
+        // byte, 8-bit unsigned int:
+        1: {
+            getValue: function (dataView, dataOffset) {
+                return dataView.getUint8(dataOffset);
+            },
+            size: 1
+        },
+        // ascii, 8-bit byte:
+        2: {
+            getValue: function (dataView, dataOffset) {
+                return String.fromCharCode(dataView.getUint8(dataOffset));
+            },
+            size: 1,
+            ascii: true
+        },
+        // short, 16 bit int:
+        3: {
+            getValue: function (dataView, dataOffset, littleEndian) {
+                return dataView.getUint16(dataOffset, littleEndian);
+            },
+            size: 2
+        },
+        // long, 32 bit int:
+        4: {
+            getValue: function (dataView, dataOffset, littleEndian) {
+                return dataView.getUint32(dataOffset, littleEndian);
+            },
+            size: 4
+        },
+        // rational = two long values, first is numerator, second is denominator:
+        5: {
+            getValue: function (dataView, dataOffset, littleEndian) {
+                return dataView.getUint32(dataOffset, littleEndian) /
+                    dataView.getUint32(dataOffset + 4, littleEndian);
+            },
+            size: 8
+        },
+        // slong, 32 bit signed int:
+        9: {
+            getValue: function (dataView, dataOffset, littleEndian) {
+                return dataView.getInt32(dataOffset, littleEndian);
+            },
+            size: 4
+        },
+        // srational, two slongs, first is numerator, second is denominator:
+        10: {
+            getValue: function (dataView, dataOffset, littleEndian) {
+                return dataView.getInt32(dataOffset, littleEndian) /
+                    dataView.getInt32(dataOffset + 4, littleEndian);
+            },
+            size: 8
+        }
+    };
+});
