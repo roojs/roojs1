@@ -749,6 +749,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log(input.files);
+        _this.file = input.files[0];
     }
 });
