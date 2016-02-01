@@ -759,8 +759,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var context = canvas.getContext("2d");
         
-        var canvas.width = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
-        var canvas.height = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+        canvas.width = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+        canvas.height = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
         
         var centerX = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
         var centerY = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
