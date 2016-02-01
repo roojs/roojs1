@@ -809,17 +809,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                                 break;
                             }
                             
-                            if(markerBytes != 0xffe1){
-                                offset += markerLength;
-                                headLength = offset;  
-                                continue;
+                            if(markerBytes == 0xffe1){
+                                _this.parseExifData(
+                                    dataView,
+                                    offset,
+                                    markerLength
+                                );
                             }
                             
-                            _this.parseExifData(
-                                dataView,
-                                offset,
-                                markerLength
-                            );
+                            offset += markerLength;
+                            headLength = offset;
                             
                             continue;
                         }
