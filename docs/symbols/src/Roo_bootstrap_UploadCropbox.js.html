@@ -45,7 +45,20 @@
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {Object} file
          */
-        </span><span class="jsdoc-string">&quot;prepare&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;prepare&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event exception
+         * Fire when get exception
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {Object} options
+         */
+        </span><span class="jsdoc-string">&quot;exception&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event beforeloadimage
+         * Fire before load the image
+         * @param {Roo.bootstrap.UploadCropbox} this
+         */
+        </span><span class="jsdoc-string">&quot;beforeloadimage&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
     </span><span class="jsdoc-syntax">});
 };
@@ -65,6 +78,7 @@
     </span><span class="jsdoc-var">minWidth </span><span class="jsdoc-syntax">: 300,
     </span><span class="jsdoc-var">minHeight </span><span class="jsdoc-syntax">: 300,
     </span><span class="jsdoc-var">file </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">exif </span><span class="jsdoc-syntax">: {},
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -246,9 +260,10 @@
     
     </span><span class="jsdoc-var">loadCanvasImage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">)
     {   
-        </span><span class="jsdoc-var">this.reset</span><span class="jsdoc-syntax">();
-        
-        </span><span class="jsdoc-var">this.image.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeloadimage'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.reset</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.image.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'src'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">);
+        }
     },
     
     </span><span class="jsdoc-var">onLoadCanvasImage </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">src</span><span class="jsdoc-syntax">)
@@ -758,8 +773,295 @@
         
         </span><span class="jsdoc-var">this.file </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">input.files</span><span class="jsdoc-syntax">[0];
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">noMetaData </span><span class="jsdoc-syntax">= !(</span><span class="jsdoc-var">window.DataView  </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.file </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.file.size </span><span class="jsdoc-syntax">&gt;= 12 &amp;&amp; </span><span class="jsdoc-var">this.file.type </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'image/jpeg'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">noMetaData</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// ??? only for jpeg ???
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'noMetaData'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'prepare'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.file</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.file</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">reader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FileReader</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-var">reader.onload </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.target.error</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.target.error</span><span class="jsdoc-syntax">);
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">buffer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.target.result</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">dataView </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">DataView</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">buffer</span><span class="jsdoc-syntax">),
+                    </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">= 2,
+                    </span><span class="jsdoc-var">maxOffset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dataView.byteLength </span><span class="jsdoc-syntax">- 4,
+                    </span><span class="jsdoc-var">markerBytes</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">markerLength</span><span class="jsdoc-syntax">;
+                
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView.getUint16</span><span class="jsdoc-syntax">(0) === 0xffd8) {
+                    </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">maxOffset</span><span class="jsdoc-syntax">) {
+                        </span><span class="jsdoc-var">markerBytes </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dataView.getUint16</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">);
+                        
+                        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">markerBytes </span><span class="jsdoc-syntax">&gt;= 0xffe0 &amp;&amp; </span><span class="jsdoc-var">markerBytes </span><span class="jsdoc-syntax">&lt;= 0xffef) || </span><span class="jsdoc-var">markerBytes </span><span class="jsdoc-syntax">=== 0xfffe) {
+                            </span><span class="jsdoc-var">markerLength </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dataView.getUint16</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">+ 2) + 2;
+                            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">markerLength </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">dataView.byteLength</span><span class="jsdoc-syntax">) {
+                                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Invalid meta data: Invalid segment size.'</span><span class="jsdoc-syntax">);
+                                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                            }
+                            
+                            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">markerBytes </span><span class="jsdoc-syntax">== 0xffe1){
+                                </span><span class="jsdoc-var">_this.parseExifData</span><span class="jsdoc-syntax">(
+                                    </span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">,
+                                    </span><span class="jsdoc-var">markerLength
+                                </span><span class="jsdoc-syntax">);
+                            }
+                            
+                            </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">markerLength</span><span class="jsdoc-syntax">;
+                            
+                            </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
+                        }
+                        
+                        </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                    }
+                    
+                }
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">urlAPI </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">window.createObjectURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">window</span><span class="jsdoc-syntax">) || (</span><span class="jsdoc-var">window.URL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">URL.revokeObjectURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">URL</span><span class="jsdoc-syntax">) || (</span><span class="jsdoc-var">window.webkitURL </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">webkitURL</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">urlAPI</span><span class="jsdoc-syntax">){
+                    </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.exif</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">urlAPI.createObjectURL</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.file</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-var">_this.loadCanvasImage</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">url</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">reader.readAsArrayBuffer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.file</span><span class="jsdoc-syntax">);
+            
+        }
+        
+        
+    },
+    
+    </span><span class="jsdoc-var">parseExifData </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">length</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tiffOffset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">+ 10,
+            </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">dirOffset</span><span class="jsdoc-syntax">;
+    
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView.getUint32</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">+ 4) !== 0x45786966) {
+            </span><span class="jsdoc-comment">// No Exif data, might be XMP data instead
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-comment">// Check for the ASCII code for &quot;Exif&quot; (0x45786966):
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView.getUint32</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">+ 4) !== 0x45786966) {
+            </span><span class="jsdoc-comment">// No Exif data, might be XMP data instead
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tiffOffset </span><span class="jsdoc-syntax">+ 8 &gt; </span><span class="jsdoc-var">dataView.byteLength</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Invalid Exif data: Invalid segment size.'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// Check for the two null bytes:
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView.getUint16</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">+ 8) !== 0x0000) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Invalid Exif data: Missing byte alignment offset.'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// Check the byte alignment:
+        </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView.getUint16</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tiffOffset</span><span class="jsdoc-syntax">)) {
+        </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">0x4949:
+            </span><span class="jsdoc-var">littleEndian </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">0x4D4D:
+            </span><span class="jsdoc-var">littleEndian </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">default</span><span class="jsdoc-syntax">:
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Invalid Exif data: Invalid byte alignment marker.'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// Check for the TIFF tag marker (0x002A):
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView.getUint16</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tiffOffset </span><span class="jsdoc-syntax">+ 2, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">) !== 0x002A) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Invalid Exif data: Missing TIFF marker.'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-comment">// Retrieve the directory offset bytes, usually 0x00000008 or 8 decimal:
+        </span><span class="jsdoc-var">dirOffset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dataView.getUint32</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tiffOffset </span><span class="jsdoc-syntax">+ 4, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.parseExifTags</span><span class="jsdoc-syntax">(
+            </span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">tiffOffset</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">tiffOffset </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">dirOffset</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">littleEndian
+        </span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">parseExifTags </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tiffOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dirOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tagsNumber</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">dirEndOffset</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dirOffset </span><span class="jsdoc-syntax">+ 6 &gt; </span><span class="jsdoc-var">dataView.byteLength</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">console.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Invalid Exif data: Invalid directory offset.'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">tagsNumber </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dataView.getUint16</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dirOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">dirEndOffset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dirOffset </span><span class="jsdoc-syntax">+ 2 + 12 * </span><span class="jsdoc-var">tagsNumber</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dirEndOffset </span><span class="jsdoc-syntax">+ 4 &gt; </span><span class="jsdoc-var">dataView.byteLength</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">console.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Invalid Exif data: Invalid directory size.'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">tagsNumber</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+            </span><span class="jsdoc-var">this.parseExifTag</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">tiffOffset</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">dirOffset </span><span class="jsdoc-syntax">+ 2 + 12 * </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">, </span><span class="jsdoc-comment">// tag offset
+                </span><span class="jsdoc-var">littleEndian
+            </span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-comment">// Return the offset to the next directory:
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dataView.getUint32</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dirEndOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">parseExifTag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tiffOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">) 
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">dataView.getUint16</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.exif</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">this.getExifValue</span><span class="jsdoc-syntax">(
+            </span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">tiffOffset</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">dataView.getUint16</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">+ 2, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">), </span><span class="jsdoc-comment">// tag type
+            </span><span class="jsdoc-var">dataView.getUint32</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">+ 4, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">), </span><span class="jsdoc-comment">// tag length
+            </span><span class="jsdoc-var">littleEndian
+        </span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">getExifValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">tiffOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">offset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">length</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">tagType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.UploadCropbox.exifTagTypes</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">],
+            </span><span class="jsdoc-var">tagSize</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+    
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">tagType</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Invalid Exif data: Invalid tag type.'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">tagSize </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tagType.size </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">length</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-comment">// Determine if the value is contained in the dataOffset bytes,
+        // or if the value at the dataOffset is a pointer to the actual data:
+        </span><span class="jsdoc-var">dataOffset </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">tagSize </span><span class="jsdoc-syntax">&gt; 4 ?
+                </span><span class="jsdoc-var">tiffOffset </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">dataView.getUint32</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">+ 8, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">) : (</span><span class="jsdoc-var">offset </span><span class="jsdoc-syntax">+ 8);
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataOffset </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">tagSize </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">dataView.byteLength</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'Invalid Exif data: Invalid data offset.'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">length </span><span class="jsdoc-syntax">=== 1) {
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">tagType.getValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">);
+        }
+        </span><span class="jsdoc-var">values </span><span class="jsdoc-syntax">= [];
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+            </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">tagType.getValue</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dataOffset </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">tagType.size</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">tagType.ascii</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">str </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-comment">// Concatenate the chars:
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">values.length</span><span class="jsdoc-syntax">; </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">+= 1) {
+                </span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+                </span><span class="jsdoc-comment">// Ignore the terminating NULL byte(s):
+                </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">c </span><span class="jsdoc-syntax">=== </span><span class="jsdoc-string">'\u0000'</span><span class="jsdoc-syntax">) {
+                    </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+                }
+                </span><span class="jsdoc-var">str </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-var">c</span><span class="jsdoc-syntax">;
+            }
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">str</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">values</span><span class="jsdoc-syntax">;
+    }
+    
+});
+
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.UploadCropbox</span><span class="jsdoc-syntax">, {
+    </span><span class="jsdoc-var">tags </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-string">'Orientation'</span><span class="jsdoc-syntax">: 0x0112
+    },
+    
+    </span><span class="jsdoc-var">Orientation</span><span class="jsdoc-syntax">: {
+        1: </span><span class="jsdoc-string">'top-left'</span><span class="jsdoc-syntax">,
+        2: </span><span class="jsdoc-string">'top-right'</span><span class="jsdoc-syntax">,
+        3: </span><span class="jsdoc-string">'bottom-right'</span><span class="jsdoc-syntax">,
+        4: </span><span class="jsdoc-string">'bottom-left'</span><span class="jsdoc-syntax">,
+        5: </span><span class="jsdoc-string">'left-top'</span><span class="jsdoc-syntax">,
+        6: </span><span class="jsdoc-string">'right-top'</span><span class="jsdoc-syntax">,
+        7: </span><span class="jsdoc-string">'right-bottom'</span><span class="jsdoc-syntax">,
+        8: </span><span class="jsdoc-string">'left-bottom'
+    </span><span class="jsdoc-syntax">},
+    
+    </span><span class="jsdoc-var">exifTagTypes </span><span class="jsdoc-syntax">: {
+        </span><span class="jsdoc-comment">// byte, 8-bit unsigned int:
+        </span><span class="jsdoc-syntax">1: {
+            </span><span class="jsdoc-var">getValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dataView.getUint8</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">: 1
+        },
+        </span><span class="jsdoc-comment">// ascii, 8-bit byte:
+        </span><span class="jsdoc-syntax">2: {
+            </span><span class="jsdoc-var">getValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">String.fromCharCode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView.getUint8</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">));
+            },
+            </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">: 1,
+            </span><span class="jsdoc-var">ascii</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-comment">// short, 16 bit int:
+        </span><span class="jsdoc-syntax">3: {
+            </span><span class="jsdoc-var">getValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dataView.getUint16</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">: 2
+        },
+        </span><span class="jsdoc-comment">// long, 32 bit int:
+        </span><span class="jsdoc-syntax">4: {
+            </span><span class="jsdoc-var">getValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dataView.getUint32</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">: 4
+        },
+        </span><span class="jsdoc-comment">// rational = two long values, first is numerator, second is denominator:
+        </span><span class="jsdoc-syntax">5: {
+            </span><span class="jsdoc-var">getValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dataView.getUint32</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">) /
+                    </span><span class="jsdoc-var">dataView.getUint32</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataOffset </span><span class="jsdoc-syntax">+ 4, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">: 8
+        },
+        </span><span class="jsdoc-comment">// slong, 32 bit signed int:
+        </span><span class="jsdoc-syntax">9: {
+            </span><span class="jsdoc-var">getValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dataView.getInt32</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">: 4
+        },
+        </span><span class="jsdoc-comment">// srational, two slongs, first is numerator, second is denominator:
+        </span><span class="jsdoc-syntax">10: {
+            </span><span class="jsdoc-var">getValue</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataView</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">dataView.getInt32</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataOffset</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">) /
+                    </span><span class="jsdoc-var">dataView.getInt32</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">dataOffset </span><span class="jsdoc-syntax">+ 4, </span><span class="jsdoc-var">littleEndian</span><span class="jsdoc-syntax">);
+            },
+            </span><span class="jsdoc-var">size</span><span class="jsdoc-syntax">: 8
         }
     }
 });

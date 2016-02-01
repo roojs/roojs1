@@ -39218,6 +39218,12 @@
      "desc": "Fires before the component is hidden. Return false to stop the hide."
     },
     {
+     "name": "beforeloadimage",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire before load the image"
+    },
+    {
      "name": "beforerender",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -39258,6 +39264,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the component is enabled."
+    },
+    {
+     "name": "exception",
+     "sig": "function (_self, options)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire when get exception"
     },
     {
      "name": "hide",
