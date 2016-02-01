@@ -880,8 +880,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             y = this.image.OriginWidth - cropWidth;
         }
         
-        if(this.image.OriginHeight - cropHeight < y){
-            y = this.image.OriginHeight - cropHeight;
+        if(this.image.OriginHeight - cropHeight < x){
+            x = this.image.OriginHeight - cropHeight;
         }
         
         x = x < 0 ? 0 : x;
@@ -891,11 +891,21 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
         context.rotate(this.rotate * Math.PI / 180);
         
-        context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, canvas.width, canvas.height);
+        context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, this.minHeight, this.minWidth);
         
-        this.cropImageData = canvas.toDataURL(this.file.type);
-        
+        var canvas2 = document.createElement("canvas");
+        var context2 = canvas2.getContext("2d");
+
+        canvas2.width = this.minWidth;
+        canvas2.height = this.minHeight;
+
+        context2.drawImage(canvas, 0, 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
+
+        this.cropImageData = canvas2.toDataURL(this.file.type);
+
         this.fireEvent('crop', this, this.cropImageData);
+        
+        return;
     },
     
     calcThumbBoxSize : function()
