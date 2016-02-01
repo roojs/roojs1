@@ -742,10 +742,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    prepare : function(file)
+    prepare : function(input)
     {
-        this.imageFile = file
         
-        Roo.log(file);
+        
+        if(file.files && file.files[0]){
+            return;
+        }
     }
 });
