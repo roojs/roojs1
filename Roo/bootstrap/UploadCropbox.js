@@ -860,6 +860,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     parseExifData : function(dataView, offset, length, exif)
     {
+        var tiffOffset = offset + 10,
+            littleEndian,
+            dirOffset;
+    
         
     }
 });
