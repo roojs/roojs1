@@ -989,7 +989,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 });
 
 Roo.apply(Roo.bootstrap.UploadCropbox, {
-  
+    tags : {
+        
+    },
+    
     exifTagTypes : {
         // byte, 8-bit unsigned int:
         1: {
