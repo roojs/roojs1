@@ -65,7 +65,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     minWidth : 300,
     minHeight : 300,
     file : false,
-    fileReader : new FileReader(),
     
     getAutoCreate : function()
     {
@@ -213,8 +212,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.rotateLeft.on('click', this.onRotateLeft, this);
         
         this.rotateRight.on('click', this.onRotateRight, this);
-        
-        this.fileReader.onload = this.onFileReaderLoad;
         
     },
     
@@ -773,12 +770,17 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         if(this.fireEvent('prepare', this, this.file) != false){
             
-            this.fileReader.readAsArrayBuffer(this.file);
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                
+                Roo.log(e);
+                
+                return;
+            }
+            
+            reader.readAsArrayBuffer(this.file);
+            
         }
-    },
-    
-    onFileReaderLoad : function(e)
-    {
-        Roo.log(e);
     }
 });
