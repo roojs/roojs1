@@ -178,6 +178,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.rotateRight = this.el.select('.roo-upload-cropbox-rotate-right', true).first();
         this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
+        
+        Roo.log(this.fileReader);
+        
         this.calcThumbBoxSize();
         
         this.bind();
@@ -771,14 +774,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         if(this.fireEvent('prepare', this, this.file) != false){
             
-            this.fileReader = new FileReader();
             
-            this.fileReader.onload = function (e) {
-                
-                Roo.log(e);
-                
-                return;
-            }
             
             this.fileReader.readAsArrayBuffer(this.file);
             
