@@ -72,7 +72,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     minWidth : 300,
     minHeight : 300,
     file : false,
-    data : {},
+    exif : {},
     
     getAutoCreate : function()
     {
@@ -825,8 +825,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                                 dataView,
                                 offset,
                                 markerLength,
-                                data,
-                                options
+                                exif
                             );
                             
                         } else {
