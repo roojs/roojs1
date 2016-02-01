@@ -923,7 +923,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     parseExifTag : function (dataView, tiffOffset, offset, littleEndian, exif) {
         var tag = dataView.getUint16(offset, littleEndian);
-        exif[tag] = loadImage.getExifValue(
+        exif[tag] = this.getExifValue(
             dataView,
             tiffOffset,
             offset,
@@ -931,5 +931,50 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             dataView.getUint32(offset + 4, littleEndian), // tag length
             littleEndian
         );
+    },
+    
+    getExifValue : function (dataView, tiffOffset, offset, type, length, littleEndian) {
+        var tagType = loadImage.exifTagTypes[type],
+            tagSize,
+            dataOffset,
+            values,
+            i,
+            str,
+            c;
+        if (!tagType) {
+            console.log('Invalid Exif data: Invalid tag type.');
+            return;
+        }
+        tagSize = tagType.size * length;
+        // Determine if the value is contained in the dataOffset bytes,
+        // or if the value at the dataOffset is a pointer to the actual data:
+        dataOffset = tagSize > 4 ?
+                tiffOffset + dataView.getUint32(offset + 8, littleEndian) : (offset + 8);
+        if (dataOffset + tagSize > dataView.byteLength) {
+            console.log('Invalid Exif data: Invalid data offset.');
+            return;
+        }
+        if (length === 1) {
+            return tagType.getValue(dataView, dataOffset, littleEndian);
+        }
+        values = [];
+        for (i = 0; i < length; i += 1) {
+            values[i] = tagType.getValue(dataView, dataOffset + i * tagType.size, littleEndian);
+        }
+        if (tagType.ascii) {
+            str = '';
+            // Concatenate the chars:
+            for (i = 0; i < values.length; i += 1) {
+                c = values[i];
+                // Ignore the terminating NULL byte(s):
+                if (c === '\u0000') {
+                    break;
+                }
+                str += c;
+            }
+            return str;
+        }
+        return values;
     }
+    
 });
