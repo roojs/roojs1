@@ -272,9 +272,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.thumb.show();
         this.footerSection.show();
         
-        this.baseRotate();
-        
         this.placeThumbBox();
+        
+        this.Orientation();
         
         if(this.imageSectionHasOnClickEvent){
             this.imageSection.un('click', this.beforeSelectFile, this);
@@ -650,6 +650,17 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         return;
+    },
+    
+    Orientation : function()
+    {
+        this.baseRotate = 0;
+        
+        if(typeof(this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]) == 'undefined'){
+            return;
+        }
+        
+        Roo.bootstrap.UploadCropbox['Orientation'][_this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]]
     },
     
     getScaleLevel : function(reverse)
