@@ -813,6 +813,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                                 Roo.log('Invalid meta data: Invalid segment size.');
                                 break;
                             }
+                            
+                            if(markerBytes != 0xffe1){
+                                offset += markerLength;
+                                headLength = offset;  
+                                continue;
+                            }
+                            
                             parsers = loadImage.metaDataParsers.jpeg[markerBytes];
                             if (parsers) {
                                 for (i = 0; i < parsers.length; i += 1) {
@@ -826,8 +833,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                                     );
                                 }
                             }
-                            offset += markerLength;
-                            headLength = offset;
+                            
                         } else {
                             // Not an APPn or COM marker, probably safe to
                             // assume that this is the end of the meta data
@@ -856,5 +862,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             reader.readAsArrayBuffer(this.file);
             
         }
+    },
+    
+    parseExifData : function()
+    {
+        
     }
 });
