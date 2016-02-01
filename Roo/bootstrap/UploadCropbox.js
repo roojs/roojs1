@@ -934,7 +934,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     },
     
     getExifValue : function (dataView, tiffOffset, offset, type, length, littleEndian) {
-        var tagType = loadImage.exifTagTypes[type],
+        var tagType = Roo.bootstrap.UploadCropbox.exifTagTypes[type],
             tagSize,
             dataOffset,
             values,
