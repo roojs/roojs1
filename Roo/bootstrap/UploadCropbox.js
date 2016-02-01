@@ -1018,14 +1018,14 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
     
     Orientation: {
         iOS : {
-            1: 'top-left',
+            1: 0, //'top-left',
 //            2: 'top-right',
             3: 'bottom-right',
 //            4: 'bottom-left',
 //            5: 'left-top',
-            6: 'left-bottom',
+            6: 'right-top',
 //            7: 'right-bottom',
-            8: 'right-top'
+            8: 'left-bottom'
         },
         Andriod : {
             1: 'top-left',
