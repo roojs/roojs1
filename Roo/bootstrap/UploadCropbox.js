@@ -827,6 +827,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     return;
                 }
                 
+                Roo.log(_this.exif);
+                
                 var url = urlAPI.createObjectURL(_this.file);
                 
                 _this.loadCanvasImage(url);
