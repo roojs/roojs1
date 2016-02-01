@@ -818,8 +818,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                             _this.parseExifData(
                                 dataView,
                                 offset,
-                                markerLength,
-                                exif
+                                markerLength
                             );
                             
                             continue;
