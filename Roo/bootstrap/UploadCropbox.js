@@ -861,7 +861,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         // Check for the two null bytes:
         if (dataView.getUint16(offset + 8) !== 0x0000) {
-            console.log('Invalid Exif data: Missing byte alignment offset.');
+            Roo.log('Invalid Exif data: Missing byte alignment offset.');
             return;
         }
         // Check the byte alignment:
@@ -873,12 +873,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             littleEndian = false;
             break;
         default:
-            console.log('Invalid Exif data: Invalid byte alignment marker.');
+            Roo.log('Invalid Exif data: Invalid byte alignment marker.');
             return;
         }
         // Check for the TIFF tag marker (0x002A):
         if (dataView.getUint16(tiffOffset + 2, littleEndian) !== 0x002A) {
-            console.log('Invalid Exif data: Missing TIFF marker.');
+            Roo.log('Invalid Exif data: Missing TIFF marker.');
             return;
         }
         // Retrieve the directory offset bytes, usually 0x00000008 or 8 decimal:
