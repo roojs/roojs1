@@ -778,5 +778,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.fileReader.readAsArrayBuffer(this.file);
             
         }
+    },
+    
+    onFileReaderLoad : function(e)
+    {
+        Roo.log(e);
     }
 });
