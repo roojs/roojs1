@@ -57,6 +57,7 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @event beforeloadimage
          * Fire before load the image
          * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {String} src
          */
         "beforeloadimage" : true
         
