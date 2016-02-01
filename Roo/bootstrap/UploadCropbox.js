@@ -745,8 +745,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     prepare : function(input)
     {
-        Roo.log(input.files);
-        if(input.files && input.files[0]){
+        if(!input.files || !input.files[0]){
             return;
         }
         
