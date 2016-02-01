@@ -670,15 +670,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     getRotateLevel : function()
     {
-        var base = (Roo.isIOS) ? Roo.bootstrap.UploadCropbox['Orientation']['iOS'][this.baseRotate] : Roo.bootstrap.UploadCropbox['Orientation']['Android'][this.baseRotate];
+        return (Roo.isIOS) ? Roo.bootstrap.UploadCropbox['Orientation']['iOS'][this.baseRotate] : Roo.bootstrap.UploadCropbox['Orientation']['Android'][this.baseRotate];
         
-        var rotate = this.rotate + base;
-        
-        while (rotate < 0){
-            rotate = rotate + 360;
-        }
-        
-        return rotate % 360;
     },
     
     getScaleLevel : function(reverse)
