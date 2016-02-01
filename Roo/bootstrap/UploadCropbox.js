@@ -822,27 +822,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                                 exif
                             );
                             
-                        } else {
-                            // Not an APPn or COM marker, probably safe to
-                            // assume that this is the end of the meta data
-                            break;
+                            continue;
                         }
+                        
+                        break;
                     }
-                    // Meta length must be longer than JPEG marker (2)
-                    // plus APPn marker (2), followed by length bytes (2):
-                    if (!options.disableImageHead && headLength > 6) {
-                        if (buffer.slice) {
-                            data.imageHead = buffer.slice(0, headLength);
-                        } else {
-                            // Workaround for IE10, which does not yet
-                            // support ArrayBuffer.slice:
-                            data.imageHead = new Uint8Array(buffer)
-                                .subarray(0, headLength);
-                        }
-                    }
-                } else {
-                    console.log('Invalid JPEG file: Missing JPEG marker.');
                 }
+                
+                Roo.log('Invalid JPEG file: Missing JPEG marker.');
                 
                 return;
             }
