@@ -769,6 +769,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var noMetaData = !(window.DataView  && this.file && this.file.size >= 12 && this.file.type === 'image/jpeg');
         
         if(noMetaData){ // ??? only for jpeg ???
+            Roo.log('noMetaData');
             return;
         }
         
