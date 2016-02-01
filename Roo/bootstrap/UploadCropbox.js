@@ -759,7 +759,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.file = input.files[0];
         
         if(this.fireEvent('prepare', this, this.file) != false){
-            
+            Roo.log(file);
         }
     }
 });
