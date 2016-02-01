@@ -674,9 +674,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var rotate = this.rotate + base;
         
+        while (rotate < 0){
+            rotate = rotate + 360;
+        }
         
-        
-        return 
+        return rotate % 360;
     },
     
     getScaleLevel : function(reverse)
