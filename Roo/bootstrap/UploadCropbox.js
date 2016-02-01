@@ -482,7 +482,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var x = (thumbX - this.imageCanvas.getLeft(true)) * this.getScaleLevel(true);
         var y = (thumbY - this.imageCanvas.getTop(true)) * this.getScaleLevel(true);
         
-//        if(this.rotate == 90){
+        if(this.rotate == 90){
             
             x = thumbY + (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getTop(true);
             y = this.image.getHeight() - this.thumb.getWidth() - (thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true));
@@ -511,7 +511,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             centerY = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
             
             context.translate(centerX, centerY);
-            context.rotate(90 * Math.PI / 180);
+            context.rotate(this.rotate * Math.PI / 180);
             
             context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, this.minHeight, this.minWidth);
         
@@ -528,7 +528,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.fireEvent('crop', this, this.cropImageData);
             
             return;
-//        }
+        }
         
         if(this.rotate == 270){
             
