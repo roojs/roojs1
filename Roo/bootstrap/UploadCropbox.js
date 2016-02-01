@@ -826,6 +826,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         
                         break;
                     }
+                    
+                    Roo.log(_this.exif);
+                    
+                    return;
                 }
                 
                 Roo.log('Invalid JPEG file: Missing JPEG marker.');
@@ -836,6 +840,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             reader.readAsArrayBuffer(this.file);
             
         }
+        
+        
     },
     
     parseExifData : function(dataView, offset, length)
