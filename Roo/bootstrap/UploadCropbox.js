@@ -990,7 +990,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
 Roo.apply(Roo.bootstrap.UploadCropbox, {
     tags : {
-        
+        'Orientation': 0x0112
     },
     
     exifTagTypes : {
