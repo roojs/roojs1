@@ -23974,7 +23974,20 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {Object} file
          */
-        "prepare" : true
+        "prepare" : true,
+        /**
+         * @event exception
+         * Fire when get exception
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {Object} options
+         */
+        "exception" : true,
+        /**
+         * @event beforeloadimage
+         * Fire before load the image
+         * @param {Roo.bootstrap.UploadCropbox} this
+         */
+        "beforeloadimage" : true
         
     });
 };
@@ -23994,6 +24007,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     minWidth : 300,
     minHeight : 300,
     file : false,
+    exif : {},
     
     getAutoCreate : function()
     {
@@ -24175,9 +24189,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     loadCanvasImage : function(src)
     {   
-        this.reset();
-        
-        this.image.attr('src', src);
+        if(this.fireEvent('beforeloadimage', this) != false){
+            this.reset();
+            this.image.attr('src', src);
+        }
     },
     
     onLoadCanvasImage : function(src)
@@ -24687,8 +24702,295 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.file = input.files[0];
         
+        var noMetaData = !(window.DataView  && this.file && this.file.size >= 12 && this.file.type === 'image/jpeg');
+        
+        if(noMetaData){ // ??? only for jpeg ???
+            Roo.log('noMetaData');
+            return;
+        }
+        
+        var _this = this;
+        
         if(this.fireEvent('prepare', this, this.file) != false){
-            Roo.log(this.file);
+            
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                if (e.target.error) {
+                    Roo.log(e.target.error);
+                    return;
+                }
+                
+                var buffer = e.target.result,
+                    dataView = new DataView(buffer),
+                    offset = 2,
+                    maxOffset = dataView.byteLength - 4,
+                    markerBytes,
+                    markerLength;
+                
+                if (dataView.getUint16(0) === 0xffd8) {
+                    while (offset < maxOffset) {
+                        markerBytes = dataView.getUint16(offset);
+                        
+                        if ((markerBytes >= 0xffe0 && markerBytes <= 0xffef) || markerBytes === 0xfffe) {
+                            markerLength = dataView.getUint16(offset + 2) + 2;
+                            if (offset + markerLength > dataView.byteLength) {
+                                Roo.log('Invalid meta data: Invalid segment size.');
+                                break;
+                            }
+                            
+                            if(markerBytes == 0xffe1){
+                                _this.parseExifData(
+                                    dataView,
+                                    offset,
+                                    markerLength
+                                );
+                            }
+                            
+                            offset += markerLength;
+                            
+                            continue;
+                        }
+                        
+                        break;
+                    }
+                    
+                }
+                
+                var urlAPI = (window.createObjectURL && window) || (window.URL && URL.revokeObjectURL && URL) || (window.webkitURL && webkitURL);
+                
+                if(!urlAPI){
+                    return;
+                }
+                
+                Roo.log(_this.exif);
+                
+                var url = urlAPI.createObjectURL(_this.file);
+                
+                _this.loadCanvasImage(url);
+                
+                return;
+            }
+            
+            reader.readAsArrayBuffer(this.file);
+            
+        }
+        
+        
+    },
+    
+    parseExifData : function(dataView, offset, length)
+    {
+        var tiffOffset = offset + 10,
+            littleEndian,
+            dirOffset;
+    
+        if (dataView.getUint32(offset + 4) !== 0x45786966) {
+            // No Exif data, might be XMP data instead
+            return;
+        }
+        
+        // Check for the ASCII code for "Exif" (0x45786966):
+        if (dataView.getUint32(offset + 4) !== 0x45786966) {
+            // No Exif data, might be XMP data instead
+            return;
+        }
+        if (tiffOffset + 8 > dataView.byteLength) {
+            Roo.log('Invalid Exif data: Invalid segment size.');
+            return;
+        }
+        // Check for the two null bytes:
+        if (dataView.getUint16(offset + 8) !== 0x0000) {
+            Roo.log('Invalid Exif data: Missing byte alignment offset.');
+            return;
+        }
+        // Check the byte alignment:
+        switch (dataView.getUint16(tiffOffset)) {
+        case 0x4949:
+            littleEndian = true;
+            break;
+        case 0x4D4D:
+            littleEndian = false;
+            break;
+        default:
+            Roo.log('Invalid Exif data: Invalid byte alignment marker.');
+            return;
+        }
+        // Check for the TIFF tag marker (0x002A):
+        if (dataView.getUint16(tiffOffset + 2, littleEndian) !== 0x002A) {
+            Roo.log('Invalid Exif data: Missing TIFF marker.');
+            return;
+        }
+        // Retrieve the directory offset bytes, usually 0x00000008 or 8 decimal:
+        dirOffset = dataView.getUint32(tiffOffset + 4, littleEndian);
+        
+        this.parseExifTags(
+            dataView,
+            tiffOffset,
+            tiffOffset + dirOffset,
+            littleEndian
+        );
+    },
+    
+    parseExifTags : function(dataView, tiffOffset, dirOffset, littleEndian)
+    {
+        var tagsNumber,
+            dirEndOffset,
+            i;
+        if (dirOffset + 6 > dataView.byteLength) {
+            console.log('Invalid Exif data: Invalid directory offset.');
+            return;
+        }
+        tagsNumber = dataView.getUint16(dirOffset, littleEndian);
+        dirEndOffset = dirOffset + 2 + 12 * tagsNumber;
+        if (dirEndOffset + 4 > dataView.byteLength) {
+            console.log('Invalid Exif data: Invalid directory size.');
+            return;
+        }
+        for (i = 0; i < tagsNumber; i += 1) {
+            this.parseExifTag(
+                dataView,
+                tiffOffset,
+                dirOffset + 2 + 12 * i, // tag offset
+                littleEndian
+            );
+        }
+        // Return the offset to the next directory:
+        return dataView.getUint32(dirEndOffset, littleEndian);
+    },
+    
+    parseExifTag : function (dataView, tiffOffset, offset, littleEndian) 
+    {
+        var tag = dataView.getUint16(offset, littleEndian);
+        
+        this.exif[tag] = this.getExifValue(
+            dataView,
+            tiffOffset,
+            offset,
+            dataView.getUint16(offset + 2, littleEndian), // tag type
+            dataView.getUint32(offset + 4, littleEndian), // tag length
+            littleEndian
+        );
+    },
+    
+    getExifValue : function (dataView, tiffOffset, offset, type, length, littleEndian)
+    {
+        var tagType = Roo.bootstrap.UploadCropbox.exifTagTypes[type],
+            tagSize,
+            dataOffset,
+            values,
+            i,
+            str,
+            c;
+    
+        if (!tagType) {
+            Roo.log('Invalid Exif data: Invalid tag type.');
+            return;
+        }
+        
+        tagSize = tagType.size * length;
+        // Determine if the value is contained in the dataOffset bytes,
+        // or if the value at the dataOffset is a pointer to the actual data:
+        dataOffset = tagSize > 4 ?
+                tiffOffset + dataView.getUint32(offset + 8, littleEndian) : (offset + 8);
+        if (dataOffset + tagSize > dataView.byteLength) {
+            Roo.log('Invalid Exif data: Invalid data offset.');
+            return;
+        }
+        if (length === 1) {
+            return tagType.getValue(dataView, dataOffset, littleEndian);
+        }
+        values = [];
+        for (i = 0; i < length; i += 1) {
+            values[i] = tagType.getValue(dataView, dataOffset + i * tagType.size, littleEndian);
+        }
+        
+        if (tagType.ascii) {
+            str = '';
+            // Concatenate the chars:
+            for (i = 0; i < values.length; i += 1) {
+                c = values[i];
+                // Ignore the terminating NULL byte(s):
+                if (c === '\u0000') {
+                    break;
+                }
+                str += c;
+            }
+            return str;
+        }
+        return values;
+    }
+    
+});
+
+Roo.apply(Roo.bootstrap.UploadCropbox, {
+    tags : {
+        'Orientation': 0x0112
+    },
+    
+    Orientation: {
+        1: 'top-left',
+        2: 'top-right',
+        3: 'bottom-right',
+        4: 'bottom-left',
+        5: 'left-top',
+        6: 'right-top',
+        7: 'right-bottom',
+        8: 'left-bottom'
+    },
+    
+    exifTagTypes : {
+        // byte, 8-bit unsigned int:
+        1: {
+            getValue: function (dataView, dataOffset) {
+                return dataView.getUint8(dataOffset);
+            },
+            size: 1
+        },
+        // ascii, 8-bit byte:
+        2: {
+            getValue: function (dataView, dataOffset) {
+                return String.fromCharCode(dataView.getUint8(dataOffset));
+            },
+            size: 1,
+            ascii: true
+        },
+        // short, 16 bit int:
+        3: {
+            getValue: function (dataView, dataOffset, littleEndian) {
+                return dataView.getUint16(dataOffset, littleEndian);
+            },
+            size: 2
+        },
+        // long, 32 bit int:
+        4: {
+            getValue: function (dataView, dataOffset, littleEndian) {
+                return dataView.getUint32(dataOffset, littleEndian);
+            },
+            size: 4
+        },
+        // rational = two long values, first is numerator, second is denominator:
+        5: {
+            getValue: function (dataView, dataOffset, littleEndian) {
+                return dataView.getUint32(dataOffset, littleEndian) /
+                    dataView.getUint32(dataOffset + 4, littleEndian);
+            },
+            size: 8
+        },
+        // slong, 32 bit signed int:
+        9: {
+            getValue: function (dataView, dataOffset, littleEndian) {
+                return dataView.getInt32(dataOffset, littleEndian);
+            },
+            size: 4
+        },
+        // srational, two slongs, first is numerator, second is denominator:
+        10: {
+            getValue: function (dataView, dataOffset, littleEndian) {
+                return dataView.getInt32(dataOffset, littleEndian) /
+                    dataView.getInt32(dataOffset + 4, littleEndian);
+            },
+            size: 8
         }
     }
 });
