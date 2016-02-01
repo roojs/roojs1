@@ -75,7 +75,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     mouseX : 0,
     mouseY : 0,
     cropImageData : false,
-    cropType : 'image/png',
     minWidth : 300,
     minHeight : 300,
     file : false,
@@ -521,7 +520,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             context2.drawImage(canvas, Math.abs(this.minWidth - this.minHeight), 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
     
-            this.cropImageData = canvas2.toDataURL(this.cropType);
+            this.cropImageData = canvas2.toDataURL(this.file.type);
             
             this.fireEvent('crop', this, this.cropImageData);
             
@@ -569,7 +568,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             context2.drawImage(canvas, 0, 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
     
-            this.cropImageData = canvas2.toDataURL(this.cropType);
+            this.cropImageData = canvas2.toDataURL(this.file.type);
             
             this.fireEvent('crop', this, this.cropImageData);
             
@@ -598,7 +597,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, canvas.width, canvas.height);
         
-        this.cropImageData = canvas.toDataURL(this.cropType);
+        this.cropImageData = canvas.toDataURL(this.file.type);
         
         this.fireEvent('crop', this, this.cropImageData);
     },
