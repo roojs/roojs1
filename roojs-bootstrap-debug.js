@@ -23986,6 +23986,7 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @event beforeloadimage
          * Fire before load the image
          * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {String} src
          */
         "beforeloadimage" : true
         
@@ -24189,7 +24190,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     loadCanvasImage : function(src)
     {   
-        if(this.fireEvent('beforeloadimage', this) != false){
+        if(this.fireEvent('beforeloadimage', this, src) != false){
             this.reset();
             this.image.attr('src', src);
         }
