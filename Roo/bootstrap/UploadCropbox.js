@@ -773,9 +773,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             var reader = new FileReader();
             
             reader.onload = function (e) {
-                
-                Roo.log(e);
-                
+                if (e.target.error) {
+                    Roo.log(e.target.error);
+                    return;
+                }
                 return;
             }
             
