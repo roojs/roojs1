@@ -72,6 +72,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     minWidth : 300,
     minHeight : 300,
     file : false,
+    data : {},
     
     getAutoCreate : function()
     {
@@ -820,19 +821,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                                 continue;
                             }
                             
-                            parsers = loadImage.metaDataParsers.jpeg[markerBytes];
-                            if (parsers) {
-                                for (i = 0; i < parsers.length; i += 1) {
-                                    parsers[i].call(
-                                        that,
-                                        dataView,
-                                        offset,
-                                        markerLength,
-                                        data,
-                                        options
-                                    );
-                                }
-                            }
+                            _this.parseExifData(
+                                dataView,
+                                offset,
+                                markerLength,
+                                data,
+                                options
+                            );
                             
                         } else {
                             // Not an APPn or COM marker, probably safe to
