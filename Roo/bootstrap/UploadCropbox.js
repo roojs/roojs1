@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     minHeight : 300,
     file : false,
     exif : {},
-    baseRotate : 0,
+    baseRotate : 1,
     
     getAutoCreate : function()
     {
@@ -655,7 +655,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     Orientation : function()
     {
-        this.baseRotate = 0;
+        this.baseRotate = 1;
         
         if(typeof(this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]) == 'undefined'){
             return;
