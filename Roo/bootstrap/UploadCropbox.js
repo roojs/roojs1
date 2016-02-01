@@ -657,17 +657,17 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     Orientation : function()
     {
-        this.baseRotate = Roo.bootstrap.UploadCropbox['Orientation'][1];
+        this.baseRotate = 1;
         
-        if(typeof(this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]) == 'undefined'){
+        if(
+                typeof(this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]) == 'undefined' || 
+                [1, 3, 6, 8].indexOf(this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]) == -1
+        ){
             return;
         }
         
-        this.baseRotate = Roo.bootstrap.UploadCropbox['Orientation'][this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]]
+        this.baseRotate = this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']];
         
-        if([1, 3, 6, 8].indexOf(this.baseRotate) == -1){
-            this.baseRotate = 1
-        }
     },
     
     getScaleLevel : function(reverse)
