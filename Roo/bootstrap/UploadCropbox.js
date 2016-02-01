@@ -465,6 +465,152 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var baseRotateLevel = this.getBaseRotateLevel();
         
+        this['crop' + baseRotateLevel]();
+        
+        var canvas = document.createElement("canvas");
+        
+        var context = canvas.getContext("2d");
+        
+        canvas.width = this.minWidth;
+        canvas.height = this.minHeight;
+        
+        var centerX = this.minWidth / 2;
+        var centerY = this.minHeight / 2;
+        
+        var cropWidth = this.thumb.getWidth() * this.getScaleLevel(true);
+        var cropHeight = this.thumb.getHeight() * this.getScaleLevel(true);
+        
+        var thumbX = Math.ceil(this.thumb.getLeft(true));
+        var thumbY = Math.ceil(this.thumb.getTop(true));
+        
+        var x = (thumbX - this.imageCanvas.getLeft(true)) * this.getScaleLevel(true);
+        var y = (thumbY - this.imageCanvas.getTop(true)) * this.getScaleLevel(true);
+        
+        if(this.rotate == 90){
+            
+            x = thumbY + (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getTop(true);
+            y = this.image.getHeight() - this.thumb.getWidth() - (thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true));
+            
+            x = x * this.getScaleLevel(true);
+            y = y * this.getScaleLevel(true);
+            
+            if(this.image.OriginWidth - cropHeight < x){
+                x = this.image.OriginWidth - cropHeight;
+            }
+
+            if(this.image.OriginHeight - cropWidth < y){
+                y = this.image.OriginHeight - cropWidth;
+            }
+            
+            x = x < 0 ? 0 : x;
+            y = y < 0 ? 0 : y;
+            
+            cropWidth = this.thumb.getHeight() * this.getScaleLevel(true);
+            cropHeight = this.thumb.getWidth() * this.getScaleLevel(true);
+            
+            canvas.width = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+            canvas.height = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+
+            centerX = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+            centerY = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+            
+            context.translate(centerX, centerY);
+            context.rotate(this.rotate * Math.PI / 180);
+            
+            context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, this.minHeight, this.minWidth);
+        
+            var canvas2 = document.createElement("canvas");
+            var context2 = canvas2.getContext("2d");
+            
+            canvas2.width = this.minWidth;
+            canvas2.height = this.minHeight;
+            
+            context2.drawImage(canvas, Math.abs(this.minWidth - this.minHeight), 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
+    
+            this.cropImageData = canvas2.toDataURL(this.file.type);
+            
+            this.fireEvent('crop', this, this.cropImageData);
+            
+            return;
+        }
+        
+        if(this.rotate == 270){
+            
+            x = thumbY + (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getTop(true);
+            y = thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true);
+            
+            x = (this.image.getWidth() - this.thumb.getHeight() - x) * this.getScaleLevel(true);
+            y = y * this.getScaleLevel(true);
+            
+            if(this.image.OriginWidth - cropHeight < x){
+                x = this.image.OriginWidth - cropHeight;
+            }
+
+            if(this.image.OriginHeight - cropWidth < y){
+                y = this.image.OriginHeight - cropWidth;
+            }
+
+            x = x < 0 ? 0 : x;
+            y = y < 0 ? 0 : y;
+            
+            cropWidth = this.thumb.getHeight() * this.getScaleLevel(true);
+            cropHeight = this.thumb.getWidth() * this.getScaleLevel(true);
+            
+            canvas.width = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+            canvas.height = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+
+            centerX = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+            centerY = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+            
+            context.translate(centerX, centerY);
+            context.rotate(this.rotate * Math.PI / 180);
+            
+            context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, this.minHeight, this.minWidth);
+        
+            var canvas2 = document.createElement("canvas");
+            var context2 = canvas2.getContext("2d");
+            
+            canvas2.width = this.minWidth;
+            canvas2.height = this.minHeight;
+            
+            context2.drawImage(canvas, 0, 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
+    
+            this.cropImageData = canvas2.toDataURL(this.file.type);
+            
+            this.fireEvent('crop', this, this.cropImageData);
+            
+            return;
+        }
+        
+        if(this.rotate == 180){
+            x = this.image.OriginWidth - this.thumb.getWidth() * this.getScaleLevel(true) - x;
+            y = this.image.OriginHeight - this.thumb.getHeight() * this.getScaleLevel(true) - y;
+        }
+        
+        if(this.image.OriginWidth - cropWidth < x){
+            x = this.image.OriginWidth - cropWidth;
+        }
+        
+        if(this.image.OriginHeight - cropHeight < y){
+            y = this.image.OriginHeight - cropHeight;
+        }
+        
+        x = x < 0 ? 0 : x;
+        y = y < 0 ? 0 : y;
+        
+        context.translate(centerX, centerY);
+
+        context.rotate(this.rotate * Math.PI / 180);
+        
+        context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, canvas.width, canvas.height);
+        
+        this.cropImageData = canvas.toDataURL(this.file.type);
+        
+        this.fireEvent('crop', this, this.cropImageData);
+    },
+    
+    crop0 : function()
+    {
         var canvas = document.createElement("canvas");
         
         var context = canvas.getContext("2d");
