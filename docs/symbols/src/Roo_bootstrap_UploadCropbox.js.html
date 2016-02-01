@@ -38,7 +38,14 @@
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {String} imageData
          */
-        </span><span class="jsdoc-string">&quot;crop&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;crop&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event prepare
+         * Fire when preparing the file data
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {Object} file
+         */
+        </span><span class="jsdoc-string">&quot;prepare&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
     </span><span class="jsdoc-syntax">});
 };
@@ -57,6 +64,7 @@
     </span><span class="jsdoc-var">cropType </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'image/png'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">minWidth </span><span class="jsdoc-syntax">: 300,
     </span><span class="jsdoc-var">minHeight </span><span class="jsdoc-syntax">: 300,
+    </span><span class="jsdoc-var">file </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -232,6 +240,7 @@
     </span><span class="jsdoc-var">beforeSelectFile </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeselectfile'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
     
@@ -739,6 +748,19 @@
         </span><span class="jsdoc-var">this.pinching </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.dragable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         
+    },
+    
+    </span><span class="jsdoc-var">prepare </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">input.files </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">input.files</span><span class="jsdoc-syntax">[0]){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.file </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">input.files</span><span class="jsdoc-syntax">[0];
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'prepare'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.file</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.file</span><span class="jsdoc-syntax">);
+        }
     }
 });
 </span></code></body></html>
