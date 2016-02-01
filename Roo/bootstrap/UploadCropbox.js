@@ -758,6 +758,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.file = input.files[0];
         
+        Roo.log(this.file);
+        
         var noMetaData = !(window.DataView  && this.file && this.file.size >= 12 && this.file.type === 'image/jpeg');
         
         Roo.log(noMetaData);
