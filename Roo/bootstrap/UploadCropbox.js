@@ -864,6 +864,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             littleEndian,
             dirOffset;
     
+        if (dataView.getUint32(offset + 4) !== 0x45786966) {
+            return;
+        }
+        
         
     }
 });
