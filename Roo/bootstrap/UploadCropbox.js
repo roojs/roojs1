@@ -38,7 +38,14 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {String} imageData
          */
-        "crop" : true
+        "crop" : true,
+        /**
+         * @event prepare
+         * Fire when preparing the file data
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {Object} file
+         */
+        "prepare" : true
         
     });
 };
