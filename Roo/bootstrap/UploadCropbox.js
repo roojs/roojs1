@@ -660,7 +660,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.bootstrap.UploadCropbox['Orientation'][_this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]]
+        this.baseRotate = Roo.bootstrap.UploadCropbox['Orientation'][this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]]
     },
     
     getScaleLevel : function(reverse)
