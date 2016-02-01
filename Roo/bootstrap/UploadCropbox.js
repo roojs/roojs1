@@ -1020,22 +1020,22 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
         iOS : {
             1: 0, //'top-left',
 //            2: 'top-right',
-            3: 'bottom-right',
+            3: 180, //'bottom-right',
 //            4: 'bottom-left',
 //            5: 'left-top',
-            6: 'right-top',
+            6: 90, //'right-top',
 //            7: 'right-bottom',
-            8: 'left-bottom'
+            8: 270, //'left-bottom'
         },
         Andriod : {
-            1: 'top-left',
+            1: 0, //'top-left',
 //            2: 'top-right',
-            3: 'bottom-right',
+            3: 180, //'bottom-right',
 //            4: 'bottom-left',
 //            5: 'left-top',
-            6: 'right-top',
+            6: 270, //'right-top',
 //            7: 'right-bottom',
-            8: 'left-bottom'
+            8: 90, //'left-bottom'
         }
     },
     
