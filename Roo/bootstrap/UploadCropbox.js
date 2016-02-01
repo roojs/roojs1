@@ -828,6 +828,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 
                 var url = urlAPI.createObjectURL(_this.file);
                 
+                _this.loadCanvasImage(url);
+                
                 return;
             }
             
