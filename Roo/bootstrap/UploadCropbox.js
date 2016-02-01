@@ -758,6 +758,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.file = input.files[0];
         
+        Roo.log(this.file);
+        
         if(this.fireEvent('prepare', this, this.file) != false){
             
             var reader = new FileReader();
