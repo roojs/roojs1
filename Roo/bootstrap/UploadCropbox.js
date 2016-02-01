@@ -1017,14 +1017,26 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
     },
     
     Orientation: {
-        1: 'top-left',
-        2: 'top-right',
-        3: 'bottom-right',
-        4: 'bottom-left',
-        5: 'left-top',
-        6: 'right-top',
-        7: 'right-bottom',
-        8: 'left-bottom'
+        iOS : {
+            1: 'top-left',
+//            2: 'top-right',
+            3: 'bottom-right',
+//            4: 'bottom-left',
+//            5: 'left-top',
+            6: 'right-top',
+//            7: 'right-bottom',
+            8: 'left-bottom'
+        },
+        andriod : {
+            1: 'top-left',
+//            2: 'top-right',
+            3: 'bottom-right',
+//            4: 'bottom-left',
+//            5: 'left-top',
+            6: 'right-top',
+//            7: 'right-bottom',
+            8: 'left-bottom'
+        }
     },
     
     exifTagTypes : {
