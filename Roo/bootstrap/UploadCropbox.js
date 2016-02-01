@@ -52,13 +52,7 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {Object} options
          */
-        "exception" : true,
-        /**
-         * @event beforeloadimage
-         * Fire before load the image
-         * @param {Roo.bootstrap.UploadCropbox} this
-         */
-        "beforeloadimage" : true
+        "exception" : true
         
     });
 };
