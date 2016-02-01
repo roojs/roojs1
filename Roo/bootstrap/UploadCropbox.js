@@ -928,10 +928,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var tag = dataView.getUint16(offset, littleEndian);
         
-        if(tag != 0x0112){ // we only need Orientation...
-            return;
-        }
-        
         this.exif[tag] = this.getExifValue(
             dataView,
             tiffOffset,
