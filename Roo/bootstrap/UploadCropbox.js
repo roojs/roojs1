@@ -784,13 +784,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             reader.onload = function (e) {
                 if (e.target.error) {
-                    var options = {
-                        type : 'reader',
-                        errorMsg : e.target.error
-                    }
-                    
-                    _this.fireEvent("exception", _this, options);
-                    
+                    Roo.log(e.target.error);
                     return;
                 }
                 
@@ -865,9 +859,43 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             dirOffset;
     
         if (dataView.getUint32(offset + 4) !== 0x45786966) {
+            // No Exif data, might be XMP data instead
             return;
         }
         
+        // Check for the ASCII code for "Exif" (0x45786966):
+        if (dataView.getUint32(offset + 4) !== 0x45786966) {
+            // No Exif data, might be XMP data instead
+            return;
+        }
+        if (tiffOffset + 8 > dataView.byteLength) {
+            Roo.log('Invalid Exif data: Invalid segment size.');
+            return;
+        }
+        // Check for the two null bytes:
+        if (dataView.getUint16(offset + 8) !== 0x0000) {
+            console.log('Invalid Exif data: Missing byte alignment offset.');
+            return;
+        }
+        // Check the byte alignment:
+        switch (dataView.getUint16(tiffOffset)) {
+        case 0x4949:
+            littleEndian = true;
+            break;
+        case 0x4D4D:
+            littleEndian = false;
+            break;
+        default:
+            console.log('Invalid Exif data: Invalid byte alignment marker.');
+            return;
+        }
+        // Check for the TIFF tag marker (0x002A):
+        if (dataView.getUint16(tiffOffset + 2, littleEndian) !== 0x002A) {
+            console.log('Invalid Exif data: Missing TIFF marker.');
+            return;
+        }
+        // Retrieve the directory offset bytes, usually 0x00000008 or 8 decimal:
+        dirOffset = dataView.getUint32(tiffOffset + 4, littleEndian);
         
     }
 });
