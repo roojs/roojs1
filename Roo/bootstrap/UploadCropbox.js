@@ -764,6 +764,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         Roo.log(noMetaData);
         
+        if(noMetaData){ // ??? only for jpeg ???
+            return;
+        }
+        
         if(this.fireEvent('prepare', this, this.file) != false){
             
             var reader = new FileReader();
