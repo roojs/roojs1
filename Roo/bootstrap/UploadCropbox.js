@@ -214,6 +214,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.rotateRight.on('click', this.onRotateRight, this);
         
+        this.fileReader.on('load', this.onFileReaderLoad, this);
+        
     },
     
     reset : function()
