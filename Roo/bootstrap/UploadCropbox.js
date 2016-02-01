@@ -921,7 +921,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         return dataView.getUint32(dirEndOffset, littleEndian);
     },
     
-    parseExifTag : function (dataView, tiffOffset, offset, littleEndian, exif) {
+    parseExifTag : function (dataView, tiffOffset, offset, littleEndian, exif) 
+    {
         var tag = dataView.getUint16(offset, littleEndian);
         exif[tag] = this.getExifValue(
             dataView,
@@ -933,7 +934,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         );
     },
     
-    getExifValue : function (dataView, tiffOffset, offset, type, length, littleEndian) {
+    getExifValue : function (dataView, tiffOffset, offset, type, length, littleEndian)
+    {
         var tagType = Roo.bootstrap.UploadCropbox.exifTagTypes[type],
             tagSize,
             dataOffset,
@@ -941,17 +943,19 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             i,
             str,
             c;
+    
         if (!tagType) {
-            console.log('Invalid Exif data: Invalid tag type.');
+            Roo.log('Invalid Exif data: Invalid tag type.');
             return;
         }
+        
         tagSize = tagType.size * length;
         // Determine if the value is contained in the dataOffset bytes,
         // or if the value at the dataOffset is a pointer to the actual data:
         dataOffset = tagSize > 4 ?
                 tiffOffset + dataView.getUint32(offset + 8, littleEndian) : (offset + 8);
         if (dataOffset + tagSize > dataView.byteLength) {
-            console.log('Invalid Exif data: Invalid data offset.');
+            Roo.log('Invalid Exif data: Invalid data offset.');
             return;
         }
         if (length === 1) {
@@ -979,7 +983,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
 });
 
-Roo.apply(Roo.bootstrap.UploadCropbox,  {
+Roo.apply(Roo.bootstrap.UploadCropbox, {
   
     exifTagTypes : {
         // byte, 8-bit unsigned int:
