@@ -818,10 +818,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         break;
                     }
                     
-                    return;
                 }
                 
-                Roo.log('Invalid JPEG file: Missing JPEG marker.');
                 
                 return;
             }
