@@ -57,6 +57,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     cropType : 'image/png',
     minWidth : 300,
     minHeight : 300,
+    file : false,
     
     getAutoCreate : function()
     {
@@ -744,10 +745,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     prepare : function(input)
     {
-        
-        
-        if(file.files && file.files[0]){
+        if(input.files && input.files[0]){
             return;
         }
+        
+        Roo.log(input.files);
     }
 });
