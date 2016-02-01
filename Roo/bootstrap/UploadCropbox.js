@@ -742,8 +742,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    prepareImageData : function()
+    prepare : function(image)
     {
-        
+        Roo.log(image);
     }
 });
