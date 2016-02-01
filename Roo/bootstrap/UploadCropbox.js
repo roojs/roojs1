@@ -741,5 +741,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.pinching = false;
         this.dragable = false;
         
+    },
+    
+    getOrientation : function(e)
+    {
+        
     }
 });
