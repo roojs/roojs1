@@ -272,6 +272,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.thumb.show();
         this.footerSection.show();
         
+        this.baseRotate();
+        
         this.placeThumbBox();
         
         if(this.imageSectionHasOnClickEvent){
