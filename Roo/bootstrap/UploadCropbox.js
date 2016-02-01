@@ -746,5 +746,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     getOrientation : function(e)
     {
         
+        
     }
 });
