@@ -806,18 +806,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 if (dataView.getUint16(0) === 0xffd8) {
                     while (offset < maxOffset) {
                         markerBytes = dataView.getUint16(offset);
-                        // Search for APPn (0xffeN) and COM (0xfffe) markers,
-                        // which contain application-specific meta-data like
-                        // Exif, ICC and IPTC data and text comments:
-                        if ((markerBytes >= 0xffe0 && markerBytes <= 0xffef) ||
-                                markerBytes === 0xfffe) {
-                            // The marker bytes (2) are always followed by
-                            // the length bytes (2), indicating the length of the
-                            // marker segment, which includes the length bytes,
-                            // but not the marker bytes, so we add 2:
+                        
+                        if ((markerBytes >= 0xffe0 && markerBytes <= 0xffef) || markerBytes === 0xfffe) {
                             markerLength = dataView.getUint16(offset + 2) + 2;
                             if (offset + markerLength > dataView.byteLength) {
-                                console.log('Invalid meta data: Invalid segment size.');
+                                Roo.log('Invalid meta data: Invalid segment size.');
                                 break;
                             }
                             parsers = loadImage.metaDataParsers.jpeg[markerBytes];
