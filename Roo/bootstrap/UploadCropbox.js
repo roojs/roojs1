@@ -793,6 +793,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     return;
                 }
                 
+                var buffer = e.target.result,
+                        dataView = new DataView(buffer),
+                        offset = 2,
+                        maxOffset = dataView.byteLength - 4,
+                        headLength = offset,
+                        markerBytes,
+                        markerLength,
+                        parsers,
+                        i;
+                
                 return;
             }
             
