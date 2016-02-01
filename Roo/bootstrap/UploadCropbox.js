@@ -794,14 +794,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 }
                 
                 var buffer = e.target.result,
-                        dataView = new DataView(buffer),
-                        offset = 2,
-                        maxOffset = dataView.byteLength - 4,
-                        headLength = offset,
-                        markerBytes,
-                        markerLength,
-                        parsers,
-                        i;
+                    dataView = new DataView(buffer),
+                    offset = 2,
+                    maxOffset = dataView.byteLength - 4,
+                    headLength = offset,
+                    markerBytes,
+                    markerLength,
+                    parsers,
+                    i;
                 
                 if (dataView.getUint16(0) === 0xffd8) {
                     while (offset < maxOffset) {
