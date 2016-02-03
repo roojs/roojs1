@@ -267,8 +267,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.imgtmp.src = src;
             this.image.attr('src', src);
             this.imgtmp.onload = function () {
-                _this.onLoadCanvasImage();
-            });
+                 alert(this.naturalWidth);
+            };
         
         }
     },
@@ -279,7 +279,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //            height = this.image.dom.naturalHeight || this.image.dom.height;
 //    
 //        alert(this.image.dom)
-       alert(this.imgtmp.naturalWidth);
+      
 //        alert(height);
         alert(width);
         return;
