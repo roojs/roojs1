@@ -24004,11 +24004,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     mouseX : 0,
     mouseY : 0,
     cropImageData : false,
-    cropType : 'image/png',
     minWidth : 300,
     minHeight : 300,
     file : false,
     exif : {},
+    baseRotate : 1,
     
     getAutoCreate : function()
     {
@@ -24204,6 +24204,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.placeThumbBox();
         
+        this.Orientation();
+        
         if(this.imageSectionHasOnClickEvent){
             this.imageSection.un('click', this.beforeSelectFile, this);
             this.imageSectionHasOnClickEvent = false;
@@ -24390,6 +24392,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     crop : function()
     {
+        var baseRotateLevel = this.getBaseRotateLevel();
+        
+//        this['crop' + baseRotateLevel]();
+        Roo.log(baseRotateLevel);
+        
         var canvas = document.createElement("canvas");
         
         var context = canvas.getContext("2d");
@@ -24450,7 +24457,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             context2.drawImage(canvas, Math.abs(this.minWidth - this.minHeight), 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
     
-            this.cropImageData = canvas2.toDataURL(this.cropType);
+            this.cropImageData = canvas2.toDataURL(this.file.type);
             
             this.fireEvent('crop', this, this.cropImageData);
             
@@ -24498,7 +24505,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             context2.drawImage(canvas, 0, 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
     
-            this.cropImageData = canvas2.toDataURL(this.cropType);
+            this.cropImageData = canvas2.toDataURL(this.file.type);
             
             this.fireEvent('crop', this, this.cropImageData);
             
@@ -24527,9 +24534,315 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, canvas.width, canvas.height);
         
-        this.cropImageData = canvas.toDataURL(this.cropType);
+        this.cropImageData = canvas.toDataURL(this.file.type);
         
         this.fireEvent('crop', this, this.cropImageData);
+    },
+    
+    crop0 : function()
+    {
+        var canvas = document.createElement("canvas");
+        
+        var context = canvas.getContext("2d");
+        
+        canvas.width = this.minWidth;
+        canvas.height = this.minHeight;
+        
+        var centerX = this.minWidth / 2;
+        var centerY = this.minHeight / 2;
+        
+        var cropWidth = this.thumb.getWidth() * this.getScaleLevel(true);
+        var cropHeight = this.thumb.getHeight() * this.getScaleLevel(true);
+        
+        var thumbX = Math.ceil(this.thumb.getLeft(true));
+        var thumbY = Math.ceil(this.thumb.getTop(true));
+        
+        var x = (thumbX - this.imageCanvas.getLeft(true)) * this.getScaleLevel(true);
+        var y = (thumbY - this.imageCanvas.getTop(true)) * this.getScaleLevel(true);
+        
+        if(this.rotate == 90){
+            
+            x = thumbY + (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getTop(true);
+            y = this.image.getHeight() - this.thumb.getWidth() - (thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true));
+            
+            x = x * this.getScaleLevel(true);
+            y = y * this.getScaleLevel(true);
+            
+            if(this.image.OriginWidth - cropHeight < x){
+                x = this.image.OriginWidth - cropHeight;
+            }
+
+            if(this.image.OriginHeight - cropWidth < y){
+                y = this.image.OriginHeight - cropWidth;
+            }
+            
+            x = x < 0 ? 0 : x;
+            y = y < 0 ? 0 : y;
+            
+            cropWidth = this.thumb.getHeight() * this.getScaleLevel(true);
+            cropHeight = this.thumb.getWidth() * this.getScaleLevel(true);
+            
+            canvas.width = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+            canvas.height = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+
+            centerX = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+            centerY = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+            
+            context.translate(centerX, centerY);
+            context.rotate(this.rotate * Math.PI / 180);
+            
+            context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, this.minHeight, this.minWidth);
+        
+            var canvas2 = document.createElement("canvas");
+            var context2 = canvas2.getContext("2d");
+            
+            canvas2.width = this.minWidth;
+            canvas2.height = this.minHeight;
+            
+            context2.drawImage(canvas, Math.abs(this.minWidth - this.minHeight), 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
+    
+            this.cropImageData = canvas2.toDataURL(this.file.type);
+            
+            this.fireEvent('crop', this, this.cropImageData);
+            
+            return;
+        }
+        
+        if(this.rotate == 270){
+            
+            x = thumbY + (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getTop(true);
+            y = thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true);
+            
+            x = (this.image.getWidth() - this.thumb.getHeight() - x) * this.getScaleLevel(true);
+            y = y * this.getScaleLevel(true);
+            
+            if(this.image.OriginWidth - cropHeight < x){
+                x = this.image.OriginWidth - cropHeight;
+            }
+
+            if(this.image.OriginHeight - cropWidth < y){
+                y = this.image.OriginHeight - cropWidth;
+            }
+
+            x = x < 0 ? 0 : x;
+            y = y < 0 ? 0 : y;
+            
+            cropWidth = this.thumb.getHeight() * this.getScaleLevel(true);
+            cropHeight = this.thumb.getWidth() * this.getScaleLevel(true);
+            
+            canvas.width = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+            canvas.height = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+
+            centerX = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+            centerY = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+            
+            context.translate(centerX, centerY);
+            context.rotate(this.rotate * Math.PI / 180);
+            
+            context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, this.minHeight, this.minWidth);
+        
+            var canvas2 = document.createElement("canvas");
+            var context2 = canvas2.getContext("2d");
+            
+            canvas2.width = this.minWidth;
+            canvas2.height = this.minHeight;
+            
+            context2.drawImage(canvas, 0, 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
+    
+            this.cropImageData = canvas2.toDataURL(this.file.type);
+            
+            this.fireEvent('crop', this, this.cropImageData);
+            
+            return;
+        }
+        
+        if(this.rotate == 180){
+            x = this.image.OriginWidth - this.thumb.getWidth() * this.getScaleLevel(true) - x;
+            y = this.image.OriginHeight - this.thumb.getHeight() * this.getScaleLevel(true) - y;
+        }
+        
+        if(this.image.OriginWidth - cropWidth < x){
+            x = this.image.OriginWidth - cropWidth;
+        }
+        
+        if(this.image.OriginHeight - cropHeight < y){
+            y = this.image.OriginHeight - cropHeight;
+        }
+        
+        x = x < 0 ? 0 : x;
+        y = y < 0 ? 0 : y;
+        
+        context.translate(centerX, centerY);
+
+        context.rotate(this.rotate * Math.PI / 180);
+        
+        context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, canvas.width, canvas.height);
+        
+        this.cropImageData = canvas.toDataURL(this.file.type);
+        
+        this.fireEvent('crop', this, this.cropImageData);
+    },
+    
+    crop90 : function()
+    {
+        var canvas = document.createElement("canvas");
+        
+        var context = canvas.getContext("2d");
+        
+        canvas.width = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+        canvas.height = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+        
+        var centerX = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+        var centerY = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+        
+        var cropWidth = this.thumb.getWidth() * this.getScaleLevel(true);
+        var cropHeight = this.thumb.getHeight() * this.getScaleLevel(true);
+        
+        var thumbX = Math.ceil(this.thumb.getLeft(true) + this.thumb.getWidth());
+        var thumbY = Math.ceil(this.thumb.getTop(true));
+        
+        var x = (thumbY - this.imageCanvas.getTop(true)) * this.getScaleLevel(true);
+        var y = (thumbX - this.imageCanvas.getLeft(true)) * this.getScaleLevel(true);
+        
+        
+//        if(this.rotate == 90){
+//            
+//            x = thumbY + (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getTop(true);
+//            y = this.image.getHeight() - this.thumb.getWidth() - (thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true));
+//            
+//            x = x * this.getScaleLevel(true);
+//            y = y * this.getScaleLevel(true);
+//            
+//            if(this.image.OriginWidth - cropHeight < x){
+//                x = this.image.OriginWidth - cropHeight;
+//            }
+//
+//            if(this.image.OriginHeight - cropWidth < y){
+//                y = this.image.OriginHeight - cropWidth;
+//            }
+//            
+//            x = x < 0 ? 0 : x;
+//            y = y < 0 ? 0 : y;
+//            
+//            cropWidth = this.thumb.getHeight() * this.getScaleLevel(true);
+//            cropHeight = this.thumb.getWidth() * this.getScaleLevel(true);
+//            
+//            canvas.width = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+//            canvas.height = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+//
+//            centerX = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+//            centerY = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+//            
+//            context.translate(centerX, centerY);
+//            context.rotate(this.rotate * Math.PI / 180);
+//            
+//            context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, this.minHeight, this.minWidth);
+//        
+//            var canvas2 = document.createElement("canvas");
+//            var context2 = canvas2.getContext("2d");
+//            
+//            canvas2.width = this.minWidth;
+//            canvas2.height = this.minHeight;
+//            
+//            context2.drawImage(canvas, Math.abs(this.minWidth - this.minHeight), 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
+//    
+//            this.cropImageData = canvas2.toDataURL(this.file.type);
+//            
+//            this.fireEvent('crop', this, this.cropImageData);
+//            
+//            return;
+//        }
+//        
+//        if(this.rotate == 270){
+//            
+//            x = thumbY + (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getTop(true);
+//            y = thumbX - (this.image.getWidth() - this.image.getHeight()) / 2 - this.imageCanvas.getLeft(true);
+//            
+//            x = (this.image.getWidth() - this.thumb.getHeight() - x) * this.getScaleLevel(true);
+//            y = y * this.getScaleLevel(true);
+//            
+//            if(this.image.OriginWidth - cropHeight < x){
+//                x = this.image.OriginWidth - cropHeight;
+//            }
+//
+//            if(this.image.OriginHeight - cropWidth < y){
+//                y = this.image.OriginHeight - cropWidth;
+//            }
+//
+//            x = x < 0 ? 0 : x;
+//            y = y < 0 ? 0 : y;
+//            
+//            cropWidth = this.thumb.getHeight() * this.getScaleLevel(true);
+//            cropHeight = this.thumb.getWidth() * this.getScaleLevel(true);
+//            
+//            canvas.width = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+//            canvas.height = this.minWidth > this.minHeight ? this.minWidth : this.minHeight;
+//
+//            centerX = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+//            centerY = this.minWidth > this.minHeight ? (this.minWidth / 2) : (this.minHeight / 2);
+//            
+//            context.translate(centerX, centerY);
+//            context.rotate(this.rotate * Math.PI / 180);
+//            
+//            context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, this.minHeight, this.minWidth);
+//        
+//            var canvas2 = document.createElement("canvas");
+//            var context2 = canvas2.getContext("2d");
+//            
+//            canvas2.width = this.minWidth;
+//            canvas2.height = this.minHeight;
+//            
+//            context2.drawImage(canvas, 0, 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
+//    
+//            this.cropImageData = canvas2.toDataURL(this.file.type);
+//            
+//            this.fireEvent('crop', this, this.cropImageData);
+//            
+//            return;
+//        }
+//        
+//        if(this.rotate == 180){
+//            x = this.image.OriginWidth - this.thumb.getWidth() * this.getScaleLevel(true) - x;
+//            y = this.image.OriginHeight - this.thumb.getHeight() * this.getScaleLevel(true) - y;
+//        }
+        
+        if(this.image.OriginWidth - cropWidth < y){
+            y = this.image.OriginWidth - cropWidth;
+        }
+        
+        if(this.image.OriginHeight - cropHeight < x){
+            x = this.image.OriginHeight - cropHeight;
+        }
+        
+        x = x < 0 ? 0 : x;
+        y = y < 0 ? 0 : y;
+        
+        context.translate(centerX, centerY);
+
+        context.rotate(this.rotate * Math.PI / 180);
+        
+        alert(x);
+        alert(y);
+        alert(cropWidth);
+        alert(cropHeight);
+        context.drawImage(this.image.dom, x, y, cropWidth, cropHeight, centerX * -1, centerY * -1, this.minHeight, this.minWidth);
+        
+        window.open(canvas.toDataURL(this.file.type));
+        return;
+        
+        var canvas2 = document.createElement("canvas");
+        var context2 = canvas2.getContext("2d");
+
+        canvas2.width = this.minWidth;
+        canvas2.height = this.minHeight;
+
+        context2.drawImage(canvas, 0, 0, this.minWidth, this.minHeight, 0, 0, this.minWidth, this.minHeight);
+
+        this.cropImageData = canvas2.toDataURL(this.file.type);
+
+        this.fireEvent('crop', this, this.cropImageData);
+        
+        return;
     },
     
     calcThumbBoxSize : function()
@@ -24578,6 +24891,27 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         return;
+    },
+    
+    Orientation : function()
+    {
+        this.baseRotate = 1;
+        
+        if(
+                typeof(this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]) == 'undefined' || 
+                [1, 3, 6, 8].indexOf(this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]) == -1
+        ){
+            return;
+        }
+        
+        this.baseRotate = this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']];
+        
+    },
+    
+    getBaseRotateLevel : function()
+    {
+        return (Roo.isIOS) ? Roo.bootstrap.UploadCropbox['Orientation']['iOS'][this.baseRotate] : Roo.bootstrap.UploadCropbox['Orientation']['Android'][this.baseRotate];
+        
     },
     
     getScaleLevel : function(reverse)
@@ -24764,8 +25098,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     return;
                 }
                 
-                Roo.log(_this.exif);
-                
                 var url = urlAPI.createObjectURL(_this.file);
                 
                 _this.loadCanvasImage(url);
@@ -24776,7 +25108,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             reader.readAsArrayBuffer(this.file);
             
         }
-        
         
     },
     
@@ -24839,13 +25170,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             dirEndOffset,
             i;
         if (dirOffset + 6 > dataView.byteLength) {
-            console.log('Invalid Exif data: Invalid directory offset.');
+            Roo.log('Invalid Exif data: Invalid directory offset.');
             return;
         }
         tagsNumber = dataView.getUint16(dirOffset, littleEndian);
         dirEndOffset = dirOffset + 2 + 12 * tagsNumber;
         if (dirEndOffset + 4 > dataView.byteLength) {
-            console.log('Invalid Exif data: Invalid directory size.');
+            Roo.log('Invalid Exif data: Invalid directory size.');
             return;
         }
         for (i = 0; i < tagsNumber; i += 1) {
@@ -24930,14 +25261,26 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
     },
     
     Orientation: {
-        1: 'top-left',
-        2: 'top-right',
-        3: 'bottom-right',
-        4: 'bottom-left',
-        5: 'left-top',
-        6: 'right-top',
-        7: 'right-bottom',
-        8: 'left-bottom'
+        iOS : {
+            1: 0, //'top-left',
+//            2: 'top-right',
+            3: 180, //'bottom-right',
+//            4: 'bottom-left',
+//            5: 'left-top',
+            6: 90, //'right-top',
+//            7: 'right-bottom',
+            8: 270 //'left-bottom'
+        },
+        Android : {
+            1: 0, //'top-left',
+//            2: 'top-right',
+            3: 180, //'bottom-right',
+//            4: 'bottom-left',
+//            5: 'left-top',
+            6: 270, //'right-top',
+//            7: 'right-bottom',
+            8: 90 //'left-bottom'
+        }
     },
     
     exifTagTypes : {
