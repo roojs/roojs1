@@ -253,13 +253,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if(this.fireEvent('beforeloadimage', this, src) != false){
             this.reset();
             
-            var img = document.createElement('img');
+            this.image = document.createElement('img');
             
             var _this = this;
             
-            img.addEventListener("load", function(){ _this.onLoadCanvasImage(); });
+            this.image.addEventListener("load", function(){ _this.onLoadCanvasImage(); });
             
-            img.src = src;
+            this.image.src = src;
         }
     },
     
@@ -278,8 +278,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.imageSectionHasOnClickEvent = false;
         }
         
-        this.image.OriginWidth = this.image.getWidth();
-        this.image.OriginHeight = this.image.getHeight();
+        this.image.OriginWidth = this.image.naturalWidth || this.image.width,
+        this.image.OriginHeight = this.image.naturalHeight || this.image.height,
         
         this.fitThumbBox();
         
