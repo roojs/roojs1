@@ -472,8 +472,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var context = canvas.getContext("2d");
         
-        alert(this.image.OriginWidth); // 2448
-        alert(this.image.OriginHeight); // 3264
+//        alert(this.image.OriginWidth); // 2448
+//        alert(this.image.OriginHeight); // 3264
         
 //        canvas.width = this.image.OriginWidth > this.image.OriginHeight ? this.image.OriginWidth : this.image.OriginHeight;
 //        canvas.height = this.image.OriginWidth > this.image.OriginHeight ? this.image.OriginWidth : this.image.OriginHeight;
@@ -487,7 +487,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        context.translate(centerX, centerY);
 //        context.rotate(90 * Math.PI / 180);
             
-        context.drawImage(this.image.dom, 0, 0, 2448, 3264, 0, 0, 2448, 3264);
+        context.drawImage(this.image.dom, 0, 0, 3264, 2448, 0, 0, 2448, 3264);
         
         window.open(canvas.toDataURL(this.file.type));
         
