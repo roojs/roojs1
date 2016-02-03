@@ -263,6 +263,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         if(this.fireEvent('beforeloadimage', this, src) != false){
             this.reset();
+            this.imgtmp = document.createElement('img');
             this.image.attr('src', src);
         }
     },
