@@ -487,7 +487,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        context.translate(centerX, centerY);
 //        context.rotate(90 * Math.PI / 180);
             
-        context.drawImage(this.image.dom, 0, 0, 3264, 2448, 0, 0, 2448, 3264);
+        context.drawImage(this.image.dom, 0, 0, 1000, 1000, 0, 0, 2448, 3264);
         
         window.open(canvas.toDataURL(this.file.type));
         
