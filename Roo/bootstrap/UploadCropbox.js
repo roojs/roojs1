@@ -181,7 +181,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.footerSection = this.el.select('.roo-upload-cropbox-footer-section', true).first();
         this.footerSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-       // this.footerSection.hide();
+        this.footerSection.hide();
         
         this.rotateLeft = this.el.select('.roo-upload-cropbox-rotate-left', true).first();
         this.rotateLeft.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -201,7 +201,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
     bind : function()
     {
-        //this.image.on('load', this.onLoadCanvasImage, this);
+        this.image.on('load', this.onLoadCanvasImage, this);
         
         if(!this.imageSectionHasOnClickEvent){
             this.imageSection.on('click', this.beforeSelectFile, this);
@@ -263,49 +263,41 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         if(this.fireEvent('beforeloadimage', this, src) != false){
             this.reset();
-            this.imgtmp = document.createElement('img');
-            this.imgtmp.src = src;
             this.image.attr('src', src);
-            this.imgtmp.onload = function () {
-                 alert("imgtmp:"+ this.naturalWidth);
-            };
-        
         }
     },
     
     onLoadCanvasImage : function(src)
     {   
-//        var width = this.image.dom.naturalWidth || this.image.dom.width,
-//            height = this.image.dom.naturalHeight || this.image.dom.height;
-//    
-//        alert(this.image.dom)
-      
-//        alert(height);
+        var width = this.image.dom.naturalWidth || this.image.dom.width,
+            height = this.image.dom.naturalHeight || this.image.dom.height;
+    
+        alert(this.image.dom);
         alert(width);
-        return;
+        alert(height);
         
-        this.emptyNotify.hide();
-        this.thumb.show();
+//        this.emptyNotify.hide();
+//        this.thumb.show();
         this.footerSection.show();
-        
-        this.placeThumbBox();
-        
-        this.Orientation();
-        
-        if(this.imageSectionHasOnClickEvent){
-            this.imageSection.un('click', this.beforeSelectFile, this);
-            this.imageSectionHasOnClickEvent = false;
-        }
-        
-        this.image.OriginWidth = this.image.getWidth();
-        this.image.OriginHeight = this.image.getHeight();
-        
-        this.fitThumbBox();
-        
-        this.image.setWidth(Math.ceil(this.image.OriginWidth * this.getScaleLevel(false)));
-        this.image.setHeight(Math.ceil(this.image.OriginHeight * this.getScaleLevel(false)));
-        
-        this.setCanvasPosition();
+//        
+//        this.placeThumbBox();
+//        
+//        this.Orientation();
+//        
+//        if(this.imageSectionHasOnClickEvent){
+//            this.imageSection.un('click', this.beforeSelectFile, this);
+//            this.imageSectionHasOnClickEvent = false;
+//        }
+//        
+//        this.image.OriginWidth = this.image.getWidth();
+//        this.image.OriginHeight = this.image.getHeight();
+//        
+//        this.fitThumbBox();
+//        
+//        this.image.setWidth(Math.ceil(this.image.OriginWidth * this.getScaleLevel(false)));
+//        this.image.setHeight(Math.ceil(this.image.OriginHeight * this.getScaleLevel(false)));
+//        
+//        this.setCanvasPosition();
     },
     
     setCanvasPosition : function()
@@ -502,7 +494,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        context.translate(centerX, centerY);
 //        context.rotate(90 * Math.PI / 180);
             
-        context.drawImage(this.image.dom, 0, 0, 2448, 3264, 0, 0, 2448, 3264);
+        context.drawImage(this.image.dom, 0, 0, 1000, 1000, 0, 0, 1000, 1000);
         
         window.open(canvas.toDataURL(this.file.type));
         
@@ -902,6 +894,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 }
                 
                 var url = urlAPI.createObjectURL(_this.file);
+                
+                alert(url);
                 
                 _this.loadCanvasImage(url);
                 
