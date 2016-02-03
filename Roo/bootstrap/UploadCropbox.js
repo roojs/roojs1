@@ -273,28 +273,28 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         alert(this.image.dom.naturalWidth);
         alert(this.image.dom.width);
         
-        this.emptyNotify.hide();
-        this.thumb.show();
+//        this.emptyNotify.hide();
+//        this.thumb.show();
         this.footerSection.show();
-        
-        this.placeThumbBox();
-        
-        this.Orientation();
-        
-        if(this.imageSectionHasOnClickEvent){
-            this.imageSection.un('click', this.beforeSelectFile, this);
-            this.imageSectionHasOnClickEvent = false;
-        }
-        
-        this.image.OriginWidth = this.image.getWidth();
-        this.image.OriginHeight = this.image.getHeight();
-        
-        this.fitThumbBox();
-        
-        this.image.setWidth(Math.ceil(this.image.OriginWidth * this.getScaleLevel(false)));
-        this.image.setHeight(Math.ceil(this.image.OriginHeight * this.getScaleLevel(false)));
-        
-        this.setCanvasPosition();
+//        
+//        this.placeThumbBox();
+//        
+//        this.Orientation();
+//        
+//        if(this.imageSectionHasOnClickEvent){
+//            this.imageSection.un('click', this.beforeSelectFile, this);
+//            this.imageSectionHasOnClickEvent = false;
+//        }
+//        
+//        this.image.OriginWidth = this.image.getWidth();
+//        this.image.OriginHeight = this.image.getHeight();
+//        
+//        this.fitThumbBox();
+//        
+//        this.image.setWidth(Math.ceil(this.image.OriginWidth * this.getScaleLevel(false)));
+//        this.image.setHeight(Math.ceil(this.image.OriginHeight * this.getScaleLevel(false)));
+//        
+//        this.setCanvasPosition();
     },
     
     setCanvasPosition : function()
