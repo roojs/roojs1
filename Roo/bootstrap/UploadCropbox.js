@@ -94,7 +94,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         {
                             tag : 'div',
                             cls : 'roo-upload-cropbox-canvas',
-                            
+                            cn : [
+                                {
+                                    tag : 'img',
+                                    cls : 'roo-upload-cropbox-image'
+                                }
+                            ]
                         },
                         {
                             tag : 'div',
@@ -164,8 +169,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageCanvas = this.el.select('.roo-upload-cropbox-canvas', true).first();
         this.imageCanvas.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.image = document.createElement('img')
-//        this.image.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.image = this.el.select('.roo-upload-cropbox-image', true).first();
+        this.image.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.thumb = this.el.select('.roo-upload-cropbox-thumb', true).first();
         this.thumb.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -196,7 +201,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
     bind : function()
     {
-//        this.image.on('load', this.onLoadCanvasImage, this);
+        this.image.on('load', this.onLoadCanvasImage, this);
         
         if(!this.imageSectionHasOnClickEvent){
             this.imageSection.on('click', this.beforeSelectFile, this);
@@ -237,8 +242,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.cropImageData = false;
         
         this.imageCanvas.dom.removeAttribute('style');
-//        this.image.dom.removeAttribute('style');
-//        this.image.attr('src', '');
+        this.image.dom.removeAttribute('style');
+        this.image.attr('src', '');
         
         if(!this.imageSectionHasOnClickEvent){
             this.imageSection.on('click', this.beforeSelectFile, this);
@@ -258,40 +263,38 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         if(this.fireEvent('beforeloadimage', this, src) != false){
             this.reset();
-            Roo.log(this.image);
-            this.image.src = src;
+            this.image.attr('src', src);
         }
     },
     
     onLoadCanvasImage : function(src)
     {   
-        Roo.log('run???');
-        alert(this.image);
-        alert(this.image.naturalWidth);
-        alert(this.image.width);
+        alert(this.image.dom);
+        alert(this.image.dom.naturalWidth);
+        alert(this.image.dom.width);
         
-//        this.emptyNotify.hide();
-//        this.thumb.show();
+        this.emptyNotify.hide();
+        this.thumb.show();
         this.footerSection.show();
-//        
-//        this.placeThumbBox();
-//        
-//        this.Orientation();
-//        
-//        if(this.imageSectionHasOnClickEvent){
-//            this.imageSection.un('click', this.beforeSelectFile, this);
-//            this.imageSectionHasOnClickEvent = false;
-//        }
-//        
-//        this.image.OriginWidth = this.image.getWidth();
-//        this.image.OriginHeight = this.image.getHeight();
-//        
-//        this.fitThumbBox();
-//        
-//        this.image.setWidth(Math.ceil(this.image.OriginWidth * this.getScaleLevel(false)));
-//        this.image.setHeight(Math.ceil(this.image.OriginHeight * this.getScaleLevel(false)));
-//        
-//        this.setCanvasPosition();
+        
+        this.placeThumbBox();
+        
+        this.Orientation();
+        
+        if(this.imageSectionHasOnClickEvent){
+            this.imageSection.un('click', this.beforeSelectFile, this);
+            this.imageSectionHasOnClickEvent = false;
+        }
+        
+        this.image.OriginWidth = this.image.getWidth();
+        this.image.OriginHeight = this.image.getHeight();
+        
+        this.fitThumbBox();
+        
+        this.image.setWidth(Math.ceil(this.image.OriginWidth * this.getScaleLevel(false)));
+        this.image.setHeight(Math.ceil(this.image.OriginHeight * this.getScaleLevel(false)));
+        
+        this.setCanvasPosition();
     },
     
     setCanvasPosition : function()
