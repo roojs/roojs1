@@ -294,7 +294,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
              
         this.canvasContext.drawImage(this.image, 0, 0);
         
-        window.open(this.canvas.toDataURL(this.file.type));
+        alert(this.canvas.toDataURL(this.file.type));
         
         return;
         
