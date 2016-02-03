@@ -197,19 +197,19 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.imageSectionHasOnClickEvent = true;
         }
         
-        if(Roo.isTouch){
-            this.imageSection.on('touchstart', this.onTouchStart, this);
-            this.imageSection.on('touchmove', this.onTouchMove, this);
-            this.imageSection.on('touchend', this.onTouchEnd, this);
-        }
-        
-        if(!Roo.isTouch){
-            this.imageSection.on('mousedown', this.onMouseDown, this);
-            this.imageSection.on('mousemove', this.onMouseMove, this);
-            var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
-            this.imageSection.on(mousewheel, this.onMouseWheel, this);
-            Roo.get(document).on('mouseup', this.onMouseUp, this);
-        }
+//        if(Roo.isTouch){
+//            this.imageSection.on('touchstart', this.onTouchStart, this);
+//            this.imageSection.on('touchmove', this.onTouchMove, this);
+//            this.imageSection.on('touchend', this.onTouchEnd, this);
+//        }
+//        
+//        if(!Roo.isTouch){
+//            this.imageSection.on('mousedown', this.onMouseDown, this);
+//            this.imageSection.on('mousemove', this.onMouseMove, this);
+//            var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
+//            this.imageSection.on(mousewheel, this.onMouseWheel, this);
+//            Roo.get(document).on('mouseup', this.onMouseUp, this);
+//        }
         
         this.pictureBtn.on('click', this.beforeSelectFile, this);
         
