@@ -1172,6 +1172,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     return;
                 }
                 
+                alert(_this.exif);
+                
                 var url = urlAPI.createObjectURL(_this.file);
                 
                 _this.loadCanvasImage(url);
