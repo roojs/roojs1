@@ -275,7 +275,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
 //        this.emptyNotify.hide();
 //        this.thumb.show();
-//        this.footerSection.show();
+        this.footerSection.show();
 //        
 //        this.placeThumbBox();
 //        
