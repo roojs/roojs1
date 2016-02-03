@@ -163,9 +163,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageCanvas = this.el.select('.roo-upload-cropbox-canvas', true).first();
         this.imageCanvas.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.image = this.el.select('.roo-upload-cropbox-image', true).first();
-        this.image.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        
         this.thumb = this.el.select('.roo-upload-cropbox-thumb', true).first();
         this.thumb.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         this.thumb.hide();
@@ -195,8 +192,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
     bind : function()
     {
-        this.image.on('load', this.onLoadCanvasImage, this);
-        
         if(!this.imageSectionHasOnClickEvent){
             this.imageSection.on('click', this.beforeSelectFile, this);
             this.imageSectionHasOnClickEvent = true;
