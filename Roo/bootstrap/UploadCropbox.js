@@ -272,6 +272,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         alert(this.image);
         alert(this.image.naturalWidth);
         alert(this.image.width);
+        
         this.emptyNotify.hide();
         this.thumb.show();
         this.footerSection.show();
