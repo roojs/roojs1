@@ -267,7 +267,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.imgtmp.src = src;
             this.image.attr('src', src);
             this.imgtmp.onload = function () {
-                 alert(this.naturalWidth);
+                 alert("imgtmp:"+ this.naturalWidth);
             };
         
         }
