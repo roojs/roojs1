@@ -292,8 +292,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
              
         this.canvasContext.drawImage(this.image, 0, 0);
         
-        alert(this.image.OriginWidth);
-        
         return;
         
         
