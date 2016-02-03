@@ -1133,7 +1133,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     maxOffset = dataView.byteLength - 4,
                     markerBytes,
                     markerLength;
-                
+                Roo.log(dataView.getUint16(0));
                 if (dataView.getUint16(0) === 0xffd8) {
                     while (offset < maxOffset) {
                         markerBytes = dataView.getUint16(offset);
