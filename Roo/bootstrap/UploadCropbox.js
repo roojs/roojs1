@@ -255,7 +255,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             var img = document.createElement('img');
             
-            img.on
+            Roo.log(img);
             
             img.src = src
         }
@@ -263,6 +263,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onLoadCanvasImage : function(src)
     {   
+        Roo.log(this);
+        return;
         this.emptyNotify.hide();
         this.thumb.show();
         this.footerSection.show();
