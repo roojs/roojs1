@@ -1266,6 +1266,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var tag = dataView.getUint16(offset, littleEndian);
         
+        Roo.log(tag);
         this.exif[tag] = this.getExifValue(
             dataView,
             tiffOffset,
