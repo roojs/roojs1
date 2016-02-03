@@ -269,9 +269,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onLoadCanvasImage : function(src)
     {   
-        Roo.log(this.image);
-        Roo.log(this.image.naturalWidth);
-        Roo.log(this.image.width);
+        alert(this.image);
+        alert(this.image.naturalWidth);
+        alert(this.image.width);
         this.emptyNotify.hide();
         this.thumb.show();
         this.footerSection.show();
