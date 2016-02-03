@@ -466,7 +466,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var baseRotateLevel = this.getBaseRotateLevel();
         
 //        this['crop' + baseRotateLevel]();
-        alert(baseRotateLevel);
+        Roo.log(baseRotateLevel);
         
         var canvas = document.createElement("canvas");
         
@@ -966,8 +966,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     Orientation : function()
     {
-        alert(this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]);
-        
         this.baseRotate = 1;
         
         if(
@@ -983,7 +981,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     getBaseRotateLevel : function()
     {
-        alert(this.baseRotate);
         return (Roo.isIOS) ? Roo.bootstrap.UploadCropbox['Orientation']['iOS'][this.baseRotate] : Roo.bootstrap.UploadCropbox['Orientation']['Android'][this.baseRotate];
         
     },
@@ -1171,8 +1168,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 if(!urlAPI){
                     return;
                 }
-                
-                alert(_this.exif);
                 
                 var url = urlAPI.createObjectURL(_this.file);
                 
