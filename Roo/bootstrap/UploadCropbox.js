@@ -1227,6 +1227,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         // Retrieve the directory offset bytes, usually 0x00000008 or 8 decimal:
         dirOffset = dataView.getUint32(tiffOffset + 4, littleEndian);
         
+        Roo.log('run???');
+        
         this.parseExifTags(
             dataView,
             tiffOffset,
