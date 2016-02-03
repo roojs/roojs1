@@ -292,6 +292,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
              
         context.drawImage(this.image, 0, 0);
         
+        Roo.log(canvas);
+        
         this.imageCanvas.dom.innerHTML = canvas;
         
         return;
