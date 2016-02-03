@@ -261,6 +261,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     loadCanvasImage : function(src)
     {   
+        window.open(src);
+        return;
         if(this.fireEvent('beforeloadimage', this, src) != false){
             this.reset();
             this.image.attr('src', src);
