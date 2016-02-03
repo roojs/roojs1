@@ -269,9 +269,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onLoadCanvasImage : function(src)
     {   
-        alert(this.image);
-        alert(this.image.naturalWidth);
-        alert(this.image.width);
+        alert(this.image.dom);
+        alert(this.image.dom.naturalWidth);
+        alert(this.image.dom.width);
         
         this.emptyNotify.hide();
         this.thumb.show();
