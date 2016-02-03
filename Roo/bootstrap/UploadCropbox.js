@@ -255,7 +255,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             var img = document.createElement('img');
             
-            Roo.log(img);
+            img.addEventListener("load", this.onLoadCanvasImage);
             
             img.src = src
         }
