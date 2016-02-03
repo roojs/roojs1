@@ -283,14 +283,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.fitThumbBox();
         
-        this.canvas = document.createElement("canvas");
+        var canvas = document.createElement("canvas");
         
-        this.canvasContext = this.canvas.getContext("2d");
+        var context = this.canvas.getContext("2d");
         
-        this.canvas.width = this.image.OriginWidth;
-        this.canvas.height = this.image.OriginHeight;
+        canvas.width = this.image.OriginWidth;
+        canvas.height = this.image.OriginHeight;
              
-        this.canvasContext.drawImage(this.image, 0, 0);
+        context.drawImage(this.image, 0, 0);
+        
         
         
 //        this.image.setWidth(Math.ceil(this.image.OriginWidth * this.getScaleLevel(false)));
