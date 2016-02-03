@@ -274,10 +274,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        var width = this.image.dom.naturalWidth || this.image.dom.width,
 //            height = this.image.dom.naturalHeight || this.image.dom.height;
 //    
-//        alert(this.image.dom);
-//        alert(width);
+//        alert(this.image.dom)
+       alert(this.imgtmp.naturalWidth);
 //        alert(height);
-        
+        alert(width);
         return;
         
         this.emptyNotify.hide();
