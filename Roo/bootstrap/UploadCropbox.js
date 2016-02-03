@@ -237,8 +237,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.cropImageData = false;
         
         this.imageCanvas.dom.removeAttribute('style');
-        this.image.dom.removeAttribute('style');
-        this.image.attr('src', '');
+//        this.image.dom.removeAttribute('style');
+//        this.image.attr('src', '');
         
         if(!this.imageSectionHasOnClickEvent){
             this.imageSection.on('click', this.beforeSelectFile, this);
