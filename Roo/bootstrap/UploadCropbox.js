@@ -475,7 +475,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        canvas.width = this.image.OriginWidth > this.image.OriginHeight ? this.image.OriginWidth : this.image.OriginHeight;
 //        canvas.height = this.image.OriginWidth > this.image.OriginHeight ? this.image.OriginWidth : this.image.OriginHeight;
         
-        context.drawImage(this.image.dom, 0, 0);
+        context.drawImage(this.image.dom, 0, 0, this.image.OriginWidth, this.image.OriginWidth, 0, 0, this.image.OriginWidth, this.image.OriginWidth);
         
         window.open(canvas.toDataURL(this.file.type));
         
