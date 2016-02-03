@@ -254,17 +254,17 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.reset();
             
             var img = document.createElement('img');
-            var _t = this;
-            img.addEventListener("load", function(){ _t.onLoadCanvasImage() });
             
-            img.src = src
+            var _this = this;
+            
+            img.addEventListener("load", function(){ _this.onLoadCanvasImage(); });
+            
+            img.src = src;
         }
     },
     
     onLoadCanvasImage : function()
     {   
-        Roo.log(this);
-        return;
         this.emptyNotify.hide();
         this.thumb.show();
         this.footerSection.show();
