@@ -287,8 +287,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.canvasContext = this.canvas.getContext("2d");
         
-        this.canvas.width = 3264;
-        this.canvas.height = 3264;
+        this.canvas.width = this.image.OriginWidth;
+        this.canvas.height = this.image.OriginHeight;
                 
 //        centerX = canvas.width / 2;
 //        centerY = canvas.height / 2;
