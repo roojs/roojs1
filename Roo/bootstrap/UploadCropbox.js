@@ -1340,7 +1340,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
 //            5: 'left-top',
             6: 90, //'right-top',
 //            7: 'right-bottom',
-            8: 270, //'left-bottom'
+            8: 270 //'left-bottom'
         },
         Android : {
             1: 0, //'top-left',
@@ -1350,7 +1350,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
 //            5: 'left-top',
             6: 270, //'right-top',
 //            7: 'right-bottom',
-            8: 90, //'left-bottom'
+            8: 90 //'left-bottom'
         }
     },
     
