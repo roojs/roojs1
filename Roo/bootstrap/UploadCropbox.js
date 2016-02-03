@@ -478,8 +478,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        canvas.width = this.image.OriginWidth > this.image.OriginHeight ? this.image.OriginWidth : this.image.OriginHeight;
 //        canvas.height = this.image.OriginWidth > this.image.OriginHeight ? this.image.OriginWidth : this.image.OriginHeight;
         
-        canvas.width = this.image.OriginWidth > this.image.OriginHeight ? this.image.OriginWidth : this.image.OriginHeight;
-        canvas.height = this.image.OriginWidth > this.image.OriginHeight ? this.image.OriginWidth : this.image.OriginHeight;
+        canvas.width = 3264;
+        canvas.height = 3264;
                 
 //        centerX = canvas.width / 2;
 //        centerY = canvas.height / 2;
@@ -487,7 +487,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        context.translate(centerX, centerY);
 //        context.rotate(90 * Math.PI / 180);
             
-        context.drawImage(this.image.dom, 0, 0, 100, 100, 0, 0, this.image.OriginHeight, this.image.OriginHeight);;
+        context.drawImage(this.image.dom, 0, 0, 2448, 3264, 0, 0, 2448, 3264);
         
         window.open(canvas.toDataURL(this.file.type));
         
