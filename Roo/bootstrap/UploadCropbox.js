@@ -494,6 +494,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         return;
         
         
+        
         canvas.width = this.minWidth;
         canvas.height = this.minHeight;
         
