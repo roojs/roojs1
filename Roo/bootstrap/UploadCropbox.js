@@ -266,6 +266,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.imgtmp = document.createElement('img');
             this.imgtmp.src = src;
             this.image.attr('src', src);
+            this.imgtmp.onload = function () {
+                _this.onLoadCanvasImage();
+            });
+        
         }
     },
     
