@@ -94,12 +94,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         {
                             tag : 'div',
                             cls : 'roo-upload-cropbox-canvas',
-                            cn : [
-                                {
-                                    tag : 'img',
-                                    cls : 'roo-upload-cropbox-image'
-                                }
-                            ]
+                            
                         },
                         {
                             tag : 'div',
