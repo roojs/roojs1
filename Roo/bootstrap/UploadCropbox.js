@@ -471,7 +471,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var canvas = document.createElement("canvas");
         
         var context = canvas.getContext("2d");
-        
+        Roo.log(this.image.dom);
         context.drawImage(this.image.dom, 0, 0);
         
         window.open(canvas.toDataURL(this.file.type));
