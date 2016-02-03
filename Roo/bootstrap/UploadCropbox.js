@@ -466,7 +466,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var baseRotateLevel = this.getBaseRotateLevel();
         
 //        this['crop' + baseRotateLevel]();
-        alert(baseRotateLevel);
+//        alert(baseRotateLevel);
         
         var canvas = document.createElement("canvas");
         
