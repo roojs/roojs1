@@ -161,19 +161,19 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         this.bodyHasOnClickEvent = false;
         
-        this.preview = this.el.select('.roo-upload-cropbox-preview', true).first();
-        this.preview.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.previewEl = this.el.select('.roo-upload-cropbox-preview', true).first();
+        this.previewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.thumb = this.el.select('.roo-upload-cropbox-thumb', true).first();
-        this.thumb.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.thumb.hide();
+        this.thumbEl = this.el.select('.roo-upload-cropbox-thumb', true).first();
+        this.thumbEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.thumbEl.hide();
         
         this.emptyNotify = this.el.select('.roo-upload-cropbox-empty-notify', true).first();
         this.emptyNotify.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.footer = this.el.select('.roo-upload-cropbox-footer', true).first();
-        this.footer.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.footer.hide();
+        this.footerEl = this.el.select('.roo-upload-cropbox-footer', true).first();
+        this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.footerEl.hide();
         
         this.rotateLeft = this.el.select('.roo-upload-cropbox-rotate-left', true).first();
         this.rotateLeft.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
