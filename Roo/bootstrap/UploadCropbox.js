@@ -97,7 +97,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         },
                         {
                             tag : 'div',
-                            cls : 'roo-upload-cropbox-thumb'
+                            cls : 'roo-upload-cropbox-crop'
                         },
                         {
                             tag : 'div',
