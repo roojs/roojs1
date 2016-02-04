@@ -280,7 +280,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.Orientation();
         
         if(this.bodyHasOnClickEvent){
-            this.body.un('click', this.beforeSelectFile, this);
+            this.bodyEl.un('click', this.beforeSelectFile, this);
             this.bodyHasOnClickEvent = false;
         }
         
