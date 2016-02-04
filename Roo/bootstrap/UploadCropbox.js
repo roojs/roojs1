@@ -36,7 +36,7 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @event crop
          * Fire after initEvent
          * @param {Roo.bootstrap.UploadCropbox} this
-         * @param {String} imageData
+         * @param {String} data
          */
         "crop" : true,
         /**
