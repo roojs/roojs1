@@ -236,9 +236,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        this.image.dom.removeAttribute('style');
 //        this.image.attr('src', '');
         
-        if(!this.imageSectionHasOnClickEvent){
-            this.imageSection.on('click', this.beforeSelectFile, this);
-            this.imageSectionHasOnClickEvent = true;
+        if(!this.bodyHasOnClickEvent){
+            this.body.on('click', this.beforeSelectFile, this);
+            this.bodyHasOnClickEvent = true;
         }
         
     },
@@ -276,9 +276,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.Orientation();
         
-        if(this.imageSectionHasOnClickEvent){
-            this.imageSection.un('click', this.beforeSelectFile, this);
-            this.imageSectionHasOnClickEvent = false;
+        if(this.bodyHasOnClickEvent){
+            this.body.un('click', this.beforeSelectFile, this);
+            this.bodyHasOnClickEvent = false;
         }
         
         this.image.OriginWidth = this.image.naturalWidth || this.image.width,
