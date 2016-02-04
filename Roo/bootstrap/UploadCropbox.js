@@ -275,7 +275,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.thumbEl.show();
         this.footerEl.show();
         
-        this.placeThumbBox();
+        this.setThumbBoxPosition();
         
         this.Orientation();
         
@@ -667,7 +667,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
     },
     
-    placeThumbBox : function()
+    setThumbBoxPosition : function()
     {
         var x = Math.ceil((this.imageSection.getWidth() - this.thumb.getWidth()) / 2 );
         var y = Math.ceil((this.imageSection.getHeight() - this.thumb.getHeight()) / 2);
