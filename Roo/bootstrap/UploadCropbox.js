@@ -298,7 +298,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
              
         this.contextEl.drawImage(this.image, 0, 0);
         
-        this.imageCanvas.appendChild(canvas);
+        this.previewEl.appendChild(this.canvasEl);
         
         return;
         
