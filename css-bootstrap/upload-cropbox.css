@@ -1,5 +1,5 @@
 
-.roo-upload-cropbox-canvas-section {
+.roo-upload-cropbox-body {
     background-color: #fff;
     border: 1px solid #e3e3e3;
     width: 100%;
@@ -19,7 +19,7 @@
     border: none;
 }
 
-.roo-upload-cropbox-canvas-section .roo-upload-cropbox-thumb {
+.roo-upload-cropbox-body .roo-upload-cropbox-thumb {
     position: absolute;
 /*    top: 50%;
     left: 50%;
@@ -30,7 +30,7 @@
     background: none repeat scroll 0% 0% transparent;
 }
 
-.roo-upload-cropbox-canvas-section .roo-upload-cropbox-empty-notify {
+.roo-upload-cropbox-body .roo-upload-cropbox-empty-notify {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
