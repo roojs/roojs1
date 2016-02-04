@@ -194,7 +194,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     bind : function()
     {
         if(!this.bodyHasOnClickEvent){
-            this.body.on('click', this.beforeSelectFile, this);
+            this.bodyEl.on('click', this.beforeSelectFile, this);
             this.bodyHasOnClickEvent = true;
         }
         
@@ -656,7 +656,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             height = Math.ceil(this.minHeight * width / this.minWidth);
         }
         
-        this.thumb.setStyle({
+        this.thumbEl.setStyle({
             width : width + 'px',
             height : height + 'px'
         });
