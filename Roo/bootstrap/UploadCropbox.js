@@ -891,15 +891,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     
                 }
                 
-                var urlAPI = (window.createObjectURL && window) || 
+                _this.urlAPI = (window.createObjectURL && window) || 
                                 (window.URL && URL.revokeObjectURL && URL) || 
                                 (window.webkitURL && webkitURL);
                 
-                if(!urlAPI){
+                if(!_this.urlAPI){
                     return;
                 }
                 
-                var url = urlAPI.createObjectURL(_this.file);
+                var url = _this.urlAPI.createObjectURL(_this.file);
                 
                 _this.loadCanvasImage(url);
                 
