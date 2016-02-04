@@ -222,25 +222,25 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     reset : function()
     {    
-        this.scale = 0;
-        this.baseScale = 1;
-        this.rotate = 0;
-        this.dragable = false;
-        this.pinching = false;
-        this.mouseX = 0;
-        this.mouseY = 0;
-        this.cropImageData = false;
-        
-        this.imageCanvas.dom.innerHTML = '';
-        
-//        this.imageCanvas.dom.removeAttribute('style');
-//        this.image.dom.removeAttribute('style');
-//        this.image.attr('src', '');
-        
-        if(!this.bodyHasOnClickEvent){
-            this.body.on('click', this.beforeSelectFile, this);
-            this.bodyHasOnClickEvent = true;
-        }
+//        this.scale = 0;
+//        this.baseScale = 1;
+//        this.rotate = 0;
+//        this.dragable = false;
+//        this.pinching = false;
+//        this.mouseX = 0;
+//        this.mouseY = 0;
+//        this.cropImageData = false;
+//        
+//        this.imageCanvas.dom.innerHTML = '';
+//        
+////        this.imageCanvas.dom.removeAttribute('style');
+////        this.image.dom.removeAttribute('style');
+////        this.image.attr('src', '');
+//        
+//        if(!this.bodyHasOnClickEvent){
+//            this.body.on('click', this.beforeSelectFile, this);
+//            this.bodyHasOnClickEvent = true;
+//        }
         
     },
     
