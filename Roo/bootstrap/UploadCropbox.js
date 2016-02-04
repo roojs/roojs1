@@ -89,7 +89,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'div',
-                    cls : 'roo-upload-cropbox-canvas-section',
+                    cls : 'roo-upload-cropbox-body',
                     cn : [
                         {
                             tag : 'div',
@@ -108,7 +108,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 },
                 {
                     tag : 'div',
-                    cls : 'roo-upload-cropbox-footer-section',
+                    cls : 'roo-upload-cropbox-footer',
                     cn : {
                         tag : 'div',
                         cls : 'btn-group btn-group-justified roo-upload-cropbox-btn-group',
@@ -157,11 +157,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        this.imageSection = this.el.select('.roo-upload-cropbox-image-section', true).first();
-        this.imageSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.canvasSection = this.el.select('.roo-upload-cropbox-canvas-section', true).first();
+        this.canvasSection.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.imageCanvas = this.el.select('.roo-upload-cropbox-canvas', true).first();
-        this.imageCanvas.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.canvas = this.el.select('.roo-upload-cropbox-canvas', true).first();
+        this.canvas.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.thumb = this.el.select('.roo-upload-cropbox-thumb', true).first();
         this.thumb.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
