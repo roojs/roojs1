@@ -645,7 +645,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.fireEvent('crop', this, this.cropImageData);
     },
     
-    calcThumbBoxSize : function()
+    setThumbBoxSize : function()
     {
         var height = 300;
         var width = Math.ceil(this.minWidth * height / this.minHeight);
