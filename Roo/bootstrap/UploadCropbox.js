@@ -222,15 +222,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     reset : function()
     {    
-        this.scale = 0;
-        this.baseScale = 1;
-        this.rotate = 0;
-        this.baseRotate = 1;
-        this.dragable = false;
-        this.pinching = false;
-        this.mouseX = 0;
-        this.mouseY = 0;
-        this.cropData = false;
+//        this.scale = 0;
+//        this.baseScale = 1;
+//        this.rotate = 0;
+//        this.baseRotate = 1;
+//        this.dragable = false;
+//        this.pinching = false;
+//        this.mouseX = 0;
+//        this.mouseY = 0;
+//        this.cropData = false;
         
         
 //        this.imageCanvas.dom.innerHTML = '';
