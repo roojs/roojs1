@@ -192,9 +192,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
     bind : function()
     {
-        if(!this.imageSectionHasOnClickEvent){
-            this.imageSection.on('click', this.beforeSelectFile, this);
-            this.imageSectionHasOnClickEvent = true;
+        if(!this.bodyHasOnClickEvent){
+            this.body.on('click', this.beforeSelectFile, this);
+            this.bodyHasOnClickEvent = true;
         }
         
 //        if(Roo.isTouch){
