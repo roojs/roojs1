@@ -298,7 +298,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.previewEl.appendChild(this.canvasEl);
         
-        this.fitThumbBox();
+        this.canvasFitToThumbBox();
         
         return;
         
@@ -677,7 +677,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    fitThumbBox : function()
+    canvasFitToThumbBox : function()
     {
         var width = this.thumb.getWidth();
         var height = this.image.OriginHeight * width / this.image.OriginWidth;
