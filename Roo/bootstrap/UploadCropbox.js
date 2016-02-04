@@ -669,11 +669,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     setThumbBoxPosition : function()
     {
-        var x = Math.ceil((this.imageSection.getWidth() - this.thumb.getWidth()) / 2 );
-        var y = Math.ceil((this.imageSection.getHeight() - this.thumb.getHeight()) / 2);
+        var x = Math.ceil((this.bodyEl.getWidth() - this.thumbEl.getWidth()) / 2 );
+        var y = Math.ceil((this.bodyEl.getHeight() - this.thumbEl.getHeight()) / 2);
         
-        this.thumb.setLeft(x);
-        this.thumb.setTop(y);
+        this.thumbEl.setLeft(x);
+        this.thumbEl.setTop(y);
         
     },
     
