@@ -230,7 +230,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.pinching = false;
         this.mouseX = 0;
         this.mouseY = 0;
-        this.cropImageData = false;
+        this.cropData = false;
         
         
 //        this.imageCanvas.dom.innerHTML = '';
