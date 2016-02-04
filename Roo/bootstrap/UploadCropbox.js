@@ -297,7 +297,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.imageCanvas.appendChild(canvas);
         
-        canvas.width = 600;
+//        canvas.width = 600;
         
         return;
         
