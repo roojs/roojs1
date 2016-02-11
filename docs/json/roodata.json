@@ -39200,12 +39200,6 @@
    ],
    "events": [
     {
-     "name": "beforeSelectFile",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fire before select file"
-    },
-    {
      "name": "beforedestroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -39218,16 +39212,22 @@
      "desc": "Fires before the component is hidden. Return false to stop the hide."
     },
     {
-     "name": "beforeloadimage",
+     "name": "beforeloadcanvas",
      "sig": "function (_self, src)\n{\n\n}",
      "type": "function",
-     "desc": "Fire before load the image"
+     "desc": "Fire before load the canvas"
     },
     {
      "name": "beforerender",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is rendered. Return false to stop the render."
+    },
+    {
+     "name": "beforeselectfile",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire before select file"
     },
     {
      "name": "beforeshow",
@@ -39243,7 +39243,7 @@
     },
     {
      "name": "crop",
-     "sig": "function (_self, imageData)\n{\n\n}",
+     "sig": "function (_self, data)\n{\n\n}",
      "type": "function",
      "desc": "Fire after initEvent"
     },
