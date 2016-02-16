@@ -128,6 +128,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         Roo.each(this.files, function(file){
             
+            if(file.status == 'PROCESSED'){
+                return;
+            }
+            
             file.status = 'PROCESSED';
             
             this.el.createChild({
