@@ -115,6 +115,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         
         Roo.each(this.files, function(file){
+            Roo.log(this.el);
             this.el.createChild({
                 tag : 'div',
                 cls : 'roo-document-manager-upload-btn',
