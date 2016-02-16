@@ -242,7 +242,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
             
-            elements[index].dom.innerHTML = '<img src="' + baseURL +'/Images/Thumb/50/' + d.id + '/' + d.filename + '" alt="' + d.filename + '">'; 
+            elements[index].dom.innerHTML = '<img src="' + baseURL +'/Images/Thumb/50/' + file.id + '/' + file.filename + '" alt="' + file.filename + '">'; 
             
         }, this);
     },
