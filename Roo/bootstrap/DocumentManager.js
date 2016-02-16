@@ -8,6 +8,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentManager class
  * @cfg {String} method default POST
+ * @cfg {String} url action url
  * @cfg {Number} boxes number of boxes to show default 12
  * @cfg {Boolean} multiple multiple upload default true
  * @cfg {Number} minWidth default 300
@@ -41,6 +42,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     multiple : true,
     files : [],
     method : 'POST',
+    url : '',
     
     getAutoCreate : function()
     {
