@@ -234,12 +234,16 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     refresh : function()
     {
         Roo.each(this.files, function(file, index){
+            if(typeof(file.id) == 'undefined' || file.id * 1 < 1){
+                this.files.splice(index, 1);
+                return;
+            }
             
            var target = this.el.select('.roo-document-manager-thumb-' + i, true).first()
             
             target.dom.innerHTML = '<img src="' + baseURL +'/Images/Thumb/50/' + d.id + '/' + d.filename + '" alt="' + d.filename + '">'; 
             
-        });
+        }, this);
     },
     
     xhrOnLoad : function(xhr)
