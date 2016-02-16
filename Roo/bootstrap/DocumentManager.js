@@ -211,18 +211,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         
         return "" + this.paramName + "[" + i + "]";
-    },
-    
-    xhrOnLoad : function()
-    {
-        Roo.log('xhr on load');
-    },
-    
-    xhrOnError : function()
-    {
-        Roo.log('xhr on error');
     }
-    
     
     
 });
