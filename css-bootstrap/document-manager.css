@@ -20,7 +20,9 @@
 @media (min-width: 992px) { 
     .roo-document-manager-upload {
         width: 8.33333333%;
+        min-height: 100px; 
     }
+    
 }
 
 
