@@ -37,7 +37,14 @@ Roo.bootstrap.DocumentManager = function(config){
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {Object} response
          */
-        "exception" : true
+        "exception" : true,
+        /**
+         * @event prepare
+         * prepare the form data
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} formData
+         */
+        "prepare" : true
         
     });
 };
