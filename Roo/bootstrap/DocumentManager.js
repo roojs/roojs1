@@ -65,15 +65,15 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        this.selector = this.el.select('.roo-document-manager-selector', true).first();
-        this.selector.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.selector.hide();
+        this.selectorEl = this.el.select('.roo-document-manager-selector', true).first();
+        this.selectorEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.selectorEl.hide();
         
         if(this.multiple){
-            this.selector.attr('multiple', 'multiple');
+            this.selectorEl.attr('multiple', 'multiple');
         }
         
-        this.selector.on('change', this.onSelect, this);
+        this.selectorEl.on('change', this.onSelect, this);
         
         this.uploadBtn = this.el.select('.roo-document-manager-upload-btn', true).first();
         this.uploadBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -89,7 +89,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        this.selector.dom.click();
+        this.selectorEl.dom.click();
         
     },
     
@@ -97,11 +97,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        if(typeof(this.selector.dom.files) == 'undefined' || !this.selector.dom.files.length){
+        if(typeof(this.selectorEl.dom.files) == 'undefined' || !this.selectorEl.dom.files.length){
             return;
         }
         
-        Roo.each(this.selector.dom.files, function(file){
+        Roo.each(this.selectorEl.dom.files, function(file){
             if(this.fireEvent('inspect', this, file) != false){
                 this.files.push(file);
             }
