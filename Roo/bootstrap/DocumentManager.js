@@ -153,8 +153,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.uploader.hide();
         }
         
+        xhr = new XMLHttpRequest();
+        
         Roo.each(this.files, function(file, index){
-            
+            file.xhr = xhr;
         }, this);
         
     }
