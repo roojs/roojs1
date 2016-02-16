@@ -211,9 +211,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         return "" + this.paramName + "[" + i + "]";
     },
     
-    onUpload : function(e)
+    xhrOnLoad : function(e)
     {
         Roo.log('onUpload/...');
+    },
+    
+    xhrOnError : function(e)
+    {
+        
     }
     
     
