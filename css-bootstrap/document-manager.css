@@ -1,7 +1,7 @@
 
 .roo-document-manager div.roo-document-manager-upload-btn + div.roo-document-manager-thumb,
 .roo-document-manager div.roo-document-manager-thumb + div.roo-document-manager-thumb {
-    padding-left: 5px;
+    padding-left: 10px;
 }
 
 .roo-document-manager-thumb,
