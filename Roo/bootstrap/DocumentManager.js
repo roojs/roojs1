@@ -8,7 +8,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentManager class
  * @cfg {Number} boxes number of boxes to show default 12
- * @cfg {Number} inputName name of the input
+ * @cfg {Boolean} multiple multiple upload default true
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
  * 
@@ -36,6 +36,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     inputName : '',
     minWidth : 300,
     minHeight : 300,
+    multiple : true,
     
     getAutoCreate : function()
     {
