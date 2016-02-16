@@ -22,11 +22,11 @@ Roo.bootstrap.DocumentManager = function(config){
     
     this.addEvents({
         /**
-         * @event beforeselectfile
+         * @event onselect
          * Fire after select file
          * @param {Roo.bootstrap.DocumentManager} this
          */
-        "onselectfile" : true
+        "onselect" : true
     });
 };
 
@@ -47,7 +47,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'input',
-                    cls : 'roo-document-manager-file',
+                    cls : 'roo-document-manager-selector',
                     type : 'file'
                 },
                 {
@@ -64,15 +64,15 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        this.fileEl = this.el.select('.roo-document-manager-file', true).first();
-        this.fileEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.fileEl.hide();
+        this.selector = this.el.select('.roo-document-manager-selector', true).first();
+        this.selector.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.selector.hide();
         
         if(this.multiple){
-            this.fileEl.attr('multiple', 'multiple');
+            this.selector.attr('multiple', 'multiple');
         }
         
-        this.fileEl.on('change', this.onSelectFile, this);
+        this.selector.on('change', this.onSelect, this);
         
         this.uploadBtn = this.el.select('.roo-document-manager-upload-btn', true).first();
         this.uploadBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -89,11 +89,15 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
     },
     
-    onSelectFile : function(e)
+    onSelect : function(e)
     {
         e.preventDefault();
         
-        Roo.log(this.fileEl.dom.files);
+        if(typeof(this.selector.dom.files) == 'undefined' || !this.selector.dom.files.length){
+            return;
+        }
+        
+        
         
         
     }
