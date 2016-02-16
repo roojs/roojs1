@@ -151,6 +151,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
         }, this);
         
+        Roo.log(baseURL);return;
+        
         if(this.files.length > 11){
             this.uploader.hide();
         }
