@@ -26,7 +26,14 @@ Roo.bootstrap.DocumentManager = function(config){
          * Fire after select file
          * @param {Roo.bootstrap.DocumentManager} this
          */
-        "onselect" : true
+        "onselect" : true,
+        /**
+         * @event inspect
+         * inspect selected file
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {File} file
+         */
+        "inspect" : true
     });
 };
 
