@@ -110,8 +110,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
             
         }, this);
-        
-        
     }
     
     
