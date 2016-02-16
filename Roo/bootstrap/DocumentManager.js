@@ -52,6 +52,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     onUpload : function(e)
     {
-        Roo.log(e);
+        e.preventDefault();
     }
 });
