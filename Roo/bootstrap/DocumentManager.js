@@ -155,8 +155,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.uploader.hide();
         }
         
-        Roo.log(this.url);return;
-        
         var xhr = new XMLHttpRequest();
         
         Roo.each(this.files, function(file, index){
