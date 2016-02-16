@@ -30,8 +30,7 @@
 */
 
 @media (min-width: 992px) { 
-    .roo-document-manager-thumb,
-    .roo-document-manager-upload-btn {
+    ..roo-document-manager-block {
         width: 8.33333333%;
         height: 100px;
     }
