@@ -212,7 +212,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return this.paramName;
         }
         
-        return "" + this.paramName + "_" + i + "";
+        return this.paramName + "_" + i;
     },
     
     xhrOnLoad : function(xhr)
