@@ -69,5 +69,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         this.fileEl.dom.click();
+    },
+    
+    onSelectFile : function(e)
+    {
+        Roo.log(e);
     }
 });
