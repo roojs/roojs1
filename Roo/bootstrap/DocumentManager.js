@@ -98,8 +98,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         
         Roo.each(this.selector.dom.files, function(file){
-            Roo.log(file);
-        });
+            if(this.fireEvent('inspect', this, file) == false){
+                return;
+            }
+        }, this);
         
         
     }
