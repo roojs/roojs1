@@ -235,11 +235,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         var elements = this.el.select('.roo-document-manager-thumb', true).elements;
         
-        var files = this.files;
+        var _this = this;
         
-        Roo.each(files, function(file, index){
+        Roo.each(_this.files, function(file, index){
             if(typeof(file.id) == 'undefined' || file.id * 1 < 1){
-                this.files.splice(index, 1);
+                _this.files.splice(index, 1);
                 elements[index].remove();
                 return;
             }
