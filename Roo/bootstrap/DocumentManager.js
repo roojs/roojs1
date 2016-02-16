@@ -7,6 +7,7 @@
  * @class Roo.bootstrap.DocumentManager
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentManager class
+ * @cfg {String} boxSize box size default md-1
  * 
  * @constructor
  * Create a new DocumentManager
@@ -21,6 +22,8 @@ Roo.bootstrap.DocumentManager = function(config){
 
 Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
+    boxSize : 'md-1',
+    
     getAutoCreate : function()
     {
         var cfg = {
@@ -29,7 +32,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'div',
-                    cls : 'roo-document-manager-upload'
+                    cls : 'roo-document-manager-upload col-' + this.boxSize
                 }
             ]
         };
