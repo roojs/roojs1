@@ -2342,6 +2342,8 @@
 
             </span><span class="jsdoc-var">this.hideTouchView</span><span class="jsdoc-syntax">();
             
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'select'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">r</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">rowIndex</span><span class="jsdoc-syntax">);
+            
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
@@ -2354,8 +2356,6 @@
         </span><span class="jsdoc-var">row.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-combobox-list-group-item-box &gt; input'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'checked'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.data</span><span class="jsdoc-syntax">);
         </span><span class="jsdoc-var">this.tickItems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">r.data</span><span class="jsdoc-syntax">);
-        
-        
         
     }
     
