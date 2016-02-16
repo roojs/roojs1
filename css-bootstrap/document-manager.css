@@ -1,5 +1,5 @@
 
-.roo-document-manager-upload {
+.roo-document-manager-upload-btn {
     border: 1px solid #ccc;
     width: 25%;
     -webkit-box-shadow: 1px 0px 5px 0px rgba(128,128,128,0.75);
@@ -21,12 +21,12 @@
 */
 
 @media (min-width: 992px) { 
-    .roo-document-manager-upload {
+    .roo-document-manager-upload-btn {
         width: 8.33333333%;
         height: 100px;
     }
     
-    .roo-document-manager-upload > i.fa {
+    .roo-document-manager-upload-btn > i.fa {
         width: 100%;
         line-height: 100px;
         text-align: center;
