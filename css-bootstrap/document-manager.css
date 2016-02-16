@@ -11,7 +11,7 @@
 
 @media (min-width: 992px) { // md
     .roo-document-manager-upload {
-        width: 8.33333333% !important;
+        width: 8.33333333%;
         /*float: left;*/
     }
 }
