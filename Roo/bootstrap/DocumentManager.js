@@ -162,6 +162,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         
         var headers = {
+            "Accept": "application/json",
             "Cache-Control": "no-cache",
             "X-Requested-With": "XMLHttpRequest"
         };
