@@ -115,6 +115,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     process : function()
     {
+        if(!this.files.length){
+            return;
+        }
+        
         
     }
     
