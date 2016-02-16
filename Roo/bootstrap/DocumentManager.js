@@ -269,11 +269,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.each(response.data, function(d, i){
-            this.files[] = d;
+        Roo.each(response.data, function(d){
+            this.files.push(d);
         }, this);
         
-        Roo.log(this.files);
         return;
         
         this.refresh();
