@@ -80,10 +80,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.uploadBtn.on('click', this.onUpload, this);
         
-        this.managerEl = this.el.select('.roo-document-manager', true).first();
-        Roo.log(this.el);
-        this.managerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        
     },
     
     onUpload : function(e)
