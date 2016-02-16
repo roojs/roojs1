@@ -119,7 +119,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.el.createChild({
                 tag : 'div',
                 cls : 'roo-document-manager-thumb',
-                html : '<i class="fa fa-plus"></i>'
+//                html : '<i class="fa fa-plus"></i>'
             });
             
         }, this);
