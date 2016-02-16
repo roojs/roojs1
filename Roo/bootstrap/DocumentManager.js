@@ -247,7 +247,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
-        
+        Roo.each(response.data, function(d, i){
+            
+        }, this);
         
         
     },
