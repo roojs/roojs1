@@ -9,6 +9,8 @@
  * Bootstrap DocumentManager class
  * @cfg {Number} boxes number of boxes to show default 12
  * @cfg {Number} inputName name of the input
+ * @cfg {Number} minWidth default 300
+ * @cfg {Number} minHeight default 300
  * 
  * @constructor
  * Create a new DocumentManager
@@ -25,6 +27,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     boxes : 12,
     inputName : '',
+    minWidth : 300,
+    minHeight : 300,
     
     getAutoCreate : function()
     {
