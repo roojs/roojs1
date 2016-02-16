@@ -140,9 +140,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 cn : [
                     {
                         tag : 'div',
-                        tooltip : file.name,
                         cls : 'roo-document-manager-thumb',
-                        html : '<i class="fa fa-spinner fa-pulse"></i>'
+                        html : '<i class="fa fa-spinner fa-pulse" tooltip : file.name></i>'
                     }
                 ]
 
