@@ -114,7 +114,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log(this.files);
+        Roo.each(this.files, function(file){
+            this.el.appendChild();
+            
+        }, this);
         
     }
     
