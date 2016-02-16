@@ -217,11 +217,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
         }, this);
         
-        if(this.fireEvent('prepare', this, formData)){
+        if(this.fireEvent('prepare', this, formData) != false){
             xhr.send(formData);
         };
-        
-        
         
     },
     
