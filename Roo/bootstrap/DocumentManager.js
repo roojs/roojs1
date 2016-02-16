@@ -175,7 +175,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
       
         var formData = new FormData();
-              
+             
+        formData.append('test', 'yes');
+        
         Roo.each(this.files, function(file, index){
             
             if(file.status == 'PROCESSED'){
