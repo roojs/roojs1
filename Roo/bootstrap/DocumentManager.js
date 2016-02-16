@@ -122,11 +122,18 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         
         Roo.each(this.files, function(file){
-            Roo.log(this.el);
+            
             this.el.createChild({
                 tag : 'div',
-                cls : 'roo-document-manager-thumb',
-//                html : '<i class="fa fa-plus"></i>'
+                cls : 'roo-document-manager-block',
+                cn : [
+                    {
+                        tag : 'div',
+                        cls : 'roo-document-manager-upload-btn',
+                        html : '<i class="fa fa-plus"></i>'
+                    }
+                ]
+
             });
             
         }, this);
