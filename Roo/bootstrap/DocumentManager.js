@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 },
                 {
                     tag : 'div',
-                    cls : 'roo-document-manager-upload-btn',
+                    cls : 'roo-document-manager-upload-btn col-md-1 col-sm-3',
                     html : '<i class="fa fa-plus"></i>'
                 }
             ]
