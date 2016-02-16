@@ -223,7 +223,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var response = Roo.decode(xhr.responseText);
         
         if(!response.success){
-            this.fireEvent('onloadexception', this, response);
+            this.fireEvent('exception', this, response);
             return;
         }
         
