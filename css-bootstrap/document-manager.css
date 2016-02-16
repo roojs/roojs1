@@ -1,6 +1,7 @@
 
 .roo-document-manager-upload {
     border: 1px solid #ccc;
+    /*float: left;*/
 }
 
 @media (min-width: 768px) { // sm
