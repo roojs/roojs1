@@ -184,7 +184,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             file.xhr = xhr;
             
-            formData.append(this.getUploadName(index), files[i], this._renameFilename(files[i].name));
+            formData.append(this.getParamName(index), files[i], this._renameFilename(files[i].name));
             
             
             
@@ -192,13 +192,13 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
     },
     
-    getUploadName : function(i)
+    getParamName : function(i)
     {
         if(!this.multiple){
-            return this.uploadName;
+            return this.paramName;
         }
         
-        return "" + this.uploadName + "[" + i + "]";
+        return "" + this.paramName + "[" + i + "]";
     }
     
     
