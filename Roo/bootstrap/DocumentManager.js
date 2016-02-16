@@ -108,8 +108,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             if(this.fireEvent('inspect', this, file) != false){
                 this.files.push(file);
             }
-            
         }, this);
+        
+        this.process();
+    },
+    
+    process : function()
+    {
+        
     }
     
     
