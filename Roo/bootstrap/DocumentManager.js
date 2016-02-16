@@ -78,5 +78,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     onSelectFile : function(e)
     {
         e.preventDefault();
+        
+        Roo.log(this.fileEl.dom);
     }
 });
