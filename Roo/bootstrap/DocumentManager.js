@@ -126,6 +126,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.files = this.files.slice(0, 12);
         }
         
+        var xhr = new XMLHttpRequest();
+        
         Roo.each(this.files, function(file, index){
             if(file.status == 'PROCESSED'){
                 return;
@@ -153,7 +155,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.uploader.hide();
         }
         
-        xhr = new XMLHttpRequest();
+        
         
         Roo.each(this.files, function(file, index){
             file.xhr = xhr;
