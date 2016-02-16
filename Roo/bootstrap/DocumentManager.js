@@ -23,8 +23,8 @@ Roo.bootstrap.DocumentManager = function(config){
     this.addEvents({
         /**
          * @event beforeselectfile
-         * Fire before select file
-         * @param {Roo.bootstrap.UploadCropbox} this
+         * Fire after select file
+         * @param {Roo.bootstrap.DocumentManager} this
          */
         "onselectfile" : true
     });
