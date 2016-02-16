@@ -194,7 +194,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
             
-            formData.append(this.getParamName(index), file, file.name);
+//            formData.append(this.getParamName(index), file, file.name);
             
         }, this);
         
