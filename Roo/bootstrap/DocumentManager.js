@@ -239,7 +239,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
             
-           var target = this.el.select('.roo-document-manager-thumb-' + i, true).first()
+           var target = this.el.select('.roo-document-manager-thumb', true).elements;
             
             target.dom.innerHTML = '<img src="' + baseURL +'/Images/Thumb/50/' + d.id + '/' + d.filename + '" alt="' + d.filename + '">'; 
             
