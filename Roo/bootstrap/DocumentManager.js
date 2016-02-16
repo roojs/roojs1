@@ -220,7 +220,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         var response = xhr.responseText;
         
-//        var res = Roo.decode(xhr.responseText);
+        var res = Roo.decode(xhr.responseText);
         
         Roo.log(xhr.getResponseHeader("content-type"));
         
@@ -233,7 +233,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
           }
           
-        Roo.log(res);
+        Roo.log(response);
         
     },
     
