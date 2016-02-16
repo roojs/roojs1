@@ -208,7 +208,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         Roo.each(this.files, function(file, index){
             
-            if(file.status == 'PROCESSED'){
+            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
                 return;
             }
             
