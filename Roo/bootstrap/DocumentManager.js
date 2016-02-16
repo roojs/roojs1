@@ -137,7 +137,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.el.createChild({
                 tag : 'div',
                 cls : 'roo-document-manager-block',
-                tooltip : file.name,
                 cn : [
                     {
                         tag : 'div',
