@@ -1,4 +1,9 @@
 
+.roo-document-manager div.roo-document-manager-upload-btn + div.roo-document-manager-thumb,
+.roo-document-manager div.roo-document-manager-thumb + div.roo-document-manager-thumb {
+    margin-left: 20px;
+}
+
 .roo-document-manager-thumb,
 .roo-document-manager-upload-btn {
     float: left;
