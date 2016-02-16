@@ -9,7 +9,7 @@
     
 }
 
-@media (min-width: 992px) { // md
+@media (min-width: 992px) { 
     .roo-document-manager-upload {
         width: 8.33333333%;
         /*float: left;*/
