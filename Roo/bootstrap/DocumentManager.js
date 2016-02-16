@@ -110,9 +110,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
         }, this);
         
-        if(!this.files.length){
-            return;
-        }
+        this.process();
         
     },
     
@@ -121,6 +119,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         if(!this.files.length){
             return;
         }
+        
         
         
     }
