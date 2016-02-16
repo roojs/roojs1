@@ -173,6 +173,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 "X-Requested-With": "XMLHttpRequest"
             };
             
+            for (var headerName in headers) {
+                var headerValue = headers[headerName];
+                if (headerValue) {
+                  xhr.setRequestHeader(headerName, headerValue);
+                }
+              }
+              var formData = new FormData();
+            
         }, this);
         
     }
