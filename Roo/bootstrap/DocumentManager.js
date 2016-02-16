@@ -40,7 +40,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     inputName : '',
     minWidth : 300,
     minHeight : 300,
-    multiple : true,
+    multiple : false,
     files : [],
     method : 'POST',
     url : '',
