@@ -48,5 +48,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.uploadEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.uploadEl.on('click', this.onUpload, this);
+    },
+    
+    onUpload : function(e)
+    {
+        Roo.log(e);
     }
 });
