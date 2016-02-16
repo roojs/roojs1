@@ -130,7 +130,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                     {
                         tag : 'div',
                         cls : 'roo-document-manager-thumb',
-                        html : '<i class="fa fa-refresh fa-spin"></i>'
+                        html : '<i class="fa fa-spinner fa-pulse"></i>'
                     }
                 ]
 
