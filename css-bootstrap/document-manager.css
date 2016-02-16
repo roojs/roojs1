@@ -31,7 +31,7 @@
 */
 
 @media (min-width: 992px) { 
-    ..roo-document-manager-block {
+    .roo-document-manager-block {
         width: 8.33333333%;
         height: 100px;
     }
