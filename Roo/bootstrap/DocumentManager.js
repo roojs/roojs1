@@ -122,7 +122,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         
         if(this.files.length > 12){
-            this.files.slice(0, 12);
+            this.files = this.files.slice(0, 12);
         }
         
         Roo.each(this.files, function(file){
