@@ -97,7 +97,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
-        
+        Roo.each(this.selector.dom.files, function(file){
+            Roo.log(file);
+        });
         
         
     }
