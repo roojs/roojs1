@@ -273,6 +273,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.files[i] = d;
         }, this);
         
+        Roo.log(this.files);
+        return;
+        
         this.refresh();
         
     },
