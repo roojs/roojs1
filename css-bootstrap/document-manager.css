@@ -10,7 +10,10 @@
 }
 
 @media (min-width: 992px) { // md
-    width: 8.33333333%
+    .roo-document-manager-upload {
+        width: 8.33333333%;
+        /*float: left;*/
+    }
 }
 
 @media (min-width: 1200px) { // lg
