@@ -43,6 +43,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     files : [],
     method : 'POST',
     url : '',
+    uploadName : 'imageUpload',
     
     getAutoCreate : function()
     {
