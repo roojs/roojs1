@@ -20,7 +20,14 @@
 Roo.bootstrap.DocumentManager = function(config){
     Roo.bootstrap.DocumentManager.superclass.constructor.call(this, config);
     
-    
+    this.addEvents({
+        /**
+         * @event beforeselectfile
+         * Fire before select file
+         * @param {Roo.bootstrap.UploadCropbox} this
+         */
+        "onselectfile" : true
+    });
 };
 
 Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
