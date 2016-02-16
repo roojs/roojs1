@@ -182,12 +182,21 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             file.xhr = xhr;
             
-            
+            formData.append(this.getUploadName(index), files[i], this._renameFilename(files[i].name));
             
             
             
         }, this);
         
+    },
+    
+    getUploadName : function(i)
+    {
+        if(!this.multiple){
+            return this.uploadName;
+        }
+        
+        return "" + this.uploadName + "[" + i + "]";
     }
     
     
