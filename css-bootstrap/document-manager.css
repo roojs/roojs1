@@ -33,6 +33,12 @@
     font-size: 3.5em;
 }
 
+.roo-document-manager-upload-btn,
+.roo-document-manager-thumb {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 /*
 * sm
 */
