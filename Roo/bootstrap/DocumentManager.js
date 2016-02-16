@@ -178,7 +178,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         xhr.onerror = function()
         {
-            Roo.log('onerror???');
+            this.onUpload();
         }
         
         for (var headerName in headers) {
@@ -213,9 +213,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         return "" + this.paramName + "[" + i + "]";
     },
     
-    onXhrLoad : function(e)
+    onUpload : function(e)
     {
-        Roo.log('load/...');
+        Roo.log('onUpload/...');
     }
     
     
