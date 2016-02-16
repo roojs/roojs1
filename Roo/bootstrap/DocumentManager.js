@@ -7,7 +7,7 @@
  * @class Roo.bootstrap.DocumentManager
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentManager class
- * @cfg {String} boxSize box size default md-1
+ * @cfg {Number} boxes number of boxes to show default 12
  * 
  * @constructor
  * Create a new DocumentManager
@@ -21,6 +21,8 @@ Roo.bootstrap.DocumentManager = function(config){
 };
 
 Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
+    
+    boxes : 12,
     
     getAutoCreate : function()
     {
