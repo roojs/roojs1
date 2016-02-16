@@ -47,44 +47,6 @@
     border-color: #333;
 }
 
-/*
-
-.roo-upload-cropbox-image-section {
-    background-color: #fff;
-    border: 1px solid #e3e3e3;
-    width: 100%;
-    height: 300px;
-    position: relative;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    cursor:move;
-}
-
-.roo-upload-cropbox-image-section .roo-upload-cropbox-thumb {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 200px;
-    height: 200px;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    border: 1px solid rgb(102, 102, 102);
-    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
-    background: none repeat scroll 0% 0% transparent;
-}
-
-@media (min-width: 768px) {
-    .roo-upload-cropbox-empty-notification {
-        margin-top: 200px;
-        font-size: 2.5em;
-    }
-    
-    .roo-upload-cropbox-image-section {
-        height: 500px;
-    }
-    
-}*/
-
 @media (min-width: 768px) {
     
 }
