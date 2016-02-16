@@ -126,8 +126,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.files = this.files.slice(0, 12);
         }
         
-        Roo.each(this.files, function(file){
-            
+        Roo.each(this.files, function(file,index){
+            Roo.log(index);
             if(file.status == 'PROCESSED'){
                 return;
             }
