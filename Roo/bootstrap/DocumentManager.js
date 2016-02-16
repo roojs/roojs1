@@ -128,6 +128,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         Roo.each(this.files, function(file){
             
+            file.status = 'PROCESSED';
+            
             this.el.createChild({
                 tag : 'div',
                 cls : 'roo-document-manager-block',
