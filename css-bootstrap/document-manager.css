@@ -1,7 +1,7 @@
 
 .roo-document-manager-upload {
     border: 1px solid #ccc;
-    width: 8.33333333%;
+    width: 25%;
     /*float: left;*/
 }
 
@@ -10,7 +10,7 @@
 }
 
 @media (min-width: 992px) { // md
-    
+    width: 8.33333333%
 }
 
 @media (min-width: 1200px) { // lg
