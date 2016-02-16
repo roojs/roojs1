@@ -132,10 +132,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.files = this.files.slice(0, 12);
         }
         
+        var xhr = new XMLHttpRequest();
+        
         Roo.each(this.files, function(file, index){
             if(file.status == 'PROCESSED'){
                 return;
             }
+            
+            file.xhr = xhr;
             
             this.el.createChild({
                 tag : 'div',
@@ -156,8 +160,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         if(this.files.length > 11){
             this.uploader.hide();
         }
-        
-        var xhr = new XMLHttpRequest();
         
         var headers = {
             "Accept": "application/json",
@@ -191,8 +193,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             if(file.status == 'PROCESSED'){
                 return;
             }
-            
-            file.xhr = xhr;
             
             formData.append(this.getParamName(index), file, file.name);
             
