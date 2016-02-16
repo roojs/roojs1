@@ -225,7 +225,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     xhrOnLoad : function(xhr)
     {
+        Roo.log('xhr on load');
+        Roo.log(xhr.readyState);
+        
         var response = Roo.decode(xhr.responseText);
+        
+        Roo.log(response);
         
         if(!response.success){
             this.fireEvent('exception', this, response);
