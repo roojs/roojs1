@@ -237,10 +237,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         var files = this.files;
         
-        Roo.each(this.files, function(file, index){
-            
+        Roo.each(files, function(file, index){
             if(typeof(file.id) == 'undefined' || file.id * 1 < 1){
-                Roo.log(this.files);
                 this.files = this.files.splice(index, 1);
                 elements[index].remove();
                 return;
