@@ -239,7 +239,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             if(typeof(file.id) == 'undefined' || file.id * 1 < 1){
                 Roo.log(this.files);
-                this.files.splice(index, 1);
+                this.files = this.files.splice(index, 1);
                 elements[index].remove();
                 return;
             }
