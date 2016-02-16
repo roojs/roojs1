@@ -173,12 +173,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         xhr.onload = function()
         {
-            _this.xhrOnLoad();
+            _this.xhrOnLoad(xhr);
         }
         
         xhr.onerror = function()
         {
-            _this.xhrOnError();
+            _this.xhrOnError(xhr);
         }
         
         for (var headerName in headers) {
@@ -211,7 +211,18 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         
         return "" + this.paramName + "[" + i + "]";
+    },
+    
+    xhrOnLoad : function()
+    {
+        Roo.log('xhr on load');
+    },
+    
+    xhrOnError : function()
+    {
+        Roo.log('xhr on error');
     }
+    
     
     
 });
