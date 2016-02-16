@@ -46,5 +46,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         this.uploadEl = this.el.select('.roo-document-manager-upload', true).first();
         this.uploadEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.uploadEl.on('click', this.onUpload, this);
     }
 });
