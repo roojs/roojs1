@@ -167,6 +167,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             xhr.open(this.method, this.url, true);
             
+            var headers = {
+                "Accept": "application/json",
+                "Cache-Control": "no-cache",
+                "X-Requested-With": "XMLHttpRequest"
+            };
+            
         }, this);
         
     }
