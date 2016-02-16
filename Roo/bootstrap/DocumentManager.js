@@ -72,7 +72,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.uploadBtn = this.el.select('.roo-document-manager-upload-btn', true).first();
         this.uploadBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        
         this.uploadBtn.on('click', this.onUpload, this);
         
     },
