@@ -220,6 +220,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         var response = xhr.responseText;
         
+        Roo.log(response);
+        
     },
     
     xhrOnError : function()
