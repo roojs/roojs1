@@ -5,17 +5,29 @@
     /*float: left;*/
 }
 
-@media (min-width: 768px) { // sm
+/*
+* sm
+*/
+
+@media (min-width: 768px) { 
     
 }
+
+/*
+* md
+*/
 
 @media (min-width: 992px) { 
     .roo-document-manager-upload {
         width: 8.33333333%;
-        /*float: left;*/
     }
 }
 
-@media (min-width: 1200px) { // lg
+
+/*
+* lg
+*/
+
+@media (min-width: 1200px) {
     
 }
