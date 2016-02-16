@@ -34,6 +34,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'input',
+                    cls : 'roo-document-manager-file',
                     type : 'file',
                     name : this.inputName
                 },
@@ -51,13 +52,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        this.uploadEl = this.el.select('.roo-document-manager-upload', true).first();
-        this.uploadEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.fileEl = this.el.select('.roo-document-manager-file', true).first();
+        this.fileEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.fileEl.hide();
         
         this.uploadBtn = this.el.select('.roo-document-manager-upload', true).first();
         this.uploadBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.uploadEl.on('click', this.onUpload, this);
+        this.uploadBtn.on('click', this.onUpload, this);
     },
     
     onUpload : function(e)
