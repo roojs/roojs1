@@ -231,6 +231,17 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         return this.paramName + "_" + i;
     },
     
+    refresh : function()
+    {
+        Roo.each(this.files, function(file, index){
+            
+           var target = this.el.select('.roo-document-manager-thumb-' + i, true).first()
+            
+            target.dom.innerHTML = '<img src="' + baseURL +'/Images/Thumb/50/' + d.id + '/' + d.filename + '" alt="' + d.filename + '">'; 
+            
+        });
+    },
+    
     xhrOnLoad : function(xhr)
     {
         if (xhr.readyState !== 4) {
@@ -242,6 +253,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         Roo.log(response);
         
         if(!response.success){
+            this.refresh();
             this.fireEvent('exception', this, response);
             return;
         }
