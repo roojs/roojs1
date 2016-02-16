@@ -235,9 +235,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         var elements = this.el.select('.roo-document-manager-thumb', true).elements;
         
-        Roo.log(this.files);
-        return;
-        
         Roo.each(this.files, function(file, index){
             Roo.log('file : ' + file);
             Roo.log('index : ' + index);
