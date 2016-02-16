@@ -47,7 +47,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                     tag : 'input',
                     cls : 'roo-document-manager-file',
                     type : 'file',
-                    multiple : true,
                     name : this.inputName
                 },
                 {
