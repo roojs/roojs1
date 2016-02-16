@@ -270,7 +270,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         
         Roo.each(response.data, function(d, i){
-            this.files[i] = d;
+            this.files[] = d;
         }, this);
         
         Roo.log(this.files);
