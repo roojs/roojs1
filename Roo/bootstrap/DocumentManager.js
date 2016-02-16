@@ -8,6 +8,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentManager class
  * @cfg {Number} boxes number of boxes to show default 12
+ * @cfg {Number} inputName name of the input
  * 
  * @constructor
  * Create a new DocumentManager
@@ -23,6 +24,7 @@ Roo.bootstrap.DocumentManager = function(config){
 Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     boxes : 12,
+    inputName : '',
     
     getAutoCreate : function()
     {
@@ -33,7 +35,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 {
                     tag : 'input',
                     type : 'file',
-                    name : this.name
+                    name : this.inputName
                 },
                 {
                     tag : 'div',
