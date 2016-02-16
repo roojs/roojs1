@@ -93,7 +93,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        Roo.log(this.fileEl.files);
+        Roo.log(this.fileEl.dom.files);
         
         
     }
