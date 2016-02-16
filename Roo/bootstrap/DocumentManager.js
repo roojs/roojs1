@@ -176,7 +176,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         xhr.onerror = function()
         {
-            this.onUpload();
+            this.onError();
         }
         
         for (var headerName in headers) {
