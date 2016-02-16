@@ -167,6 +167,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         xhr.open(this.method, this.url, true);
         
+        xhr.onload = function()
+        {
+            Roo.log('onload???');
+        }
+        
         for (var headerName in headers) {
             var headerValue = headers[headerName];
             if (headerValue) {
