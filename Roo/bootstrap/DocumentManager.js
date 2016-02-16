@@ -220,6 +220,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         var response = xhr.responseText;
         
+        Roo.log(xhr.getResponseHeader("content-type"));
+        
         if (xhr.getResponseHeader("content-type") && ~xhr.getResponseHeader("content-type").indexOf("application/json")) {
             try {
               response = JSON.parse(response);
