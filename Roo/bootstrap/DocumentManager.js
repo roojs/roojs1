@@ -213,12 +213,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     xhrOnLoad : function(e)
     {
-        Roo.log('onUpload/...');
+        Roo.log(e);
+        Roo.log('xhr on load');
     },
     
     xhrOnError : function(e)
     {
-        
+        Roo.log(e);
+        Roo.log('xhr on error');
     }
     
     
