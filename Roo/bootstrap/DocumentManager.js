@@ -32,7 +32,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'div',
-                    cls : 'roo-document-manager-upload col-' + this.boxSize
+                    cls : 'roo-document-manager-upload col-' + this.boxSize,
+                    html : '<i class="fa fa-plus"></i>'
                 }
             ]
         };
