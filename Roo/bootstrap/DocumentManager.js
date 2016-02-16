@@ -169,14 +169,16 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         xhr.open(this.method, this.url, true);
           
+        var _this = this;
+        
         xhr.onload = function()
         {
-            this.xhrOnLoad();
+            _this.xhrOnLoad();
         }
         
         xhr.onerror = function()
         {
-            this.xhrOnError();
+            _this.xhrOnError();
         }
         
         for (var headerName in headers) {
