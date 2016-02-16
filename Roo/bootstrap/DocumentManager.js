@@ -173,8 +173,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             xhr.open(this.method, this.url, true);
             
-            
-            
             for (var headerName in headers) {
                 var headerValue = headers[headerName];
                 if (headerValue) {
