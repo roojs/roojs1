@@ -1,11 +1,12 @@
 
+.roo-document-manager-thumb,
 .roo-document-manager-upload-btn {
+    float: left;
     border: 1px solid #ccc;
     width: 25%;
     -webkit-box-shadow: 1px 0px 5px 0px rgba(128,128,128,0.75);
     -moz-box-shadow: 1px 0px 5px 0px rgba(128,128,128,0.75);
     box-shadow: 1px 0px 5px 0px rgba(128,128,128,0.75);
-    /*float: left;*/
 }
 
 /*
@@ -21,6 +22,7 @@
 */
 
 @media (min-width: 992px) { 
+    .roo-document-manager-thumb,
     .roo-document-manager-upload-btn {
         width: 8.33333333%;
         height: 100px;
