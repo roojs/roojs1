@@ -168,13 +168,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         };
         
         xhr.open(this.method, this.url, true);
-        
-        xhr.on('load', this.onXhrLoad, this);
-//        
-//        xhr.onload = function()
-//        {
-//            Roo.log('onload???');
-//        }
+          
+        xhr.onload = function()
+        {
+            this.onUpload();
+        }
         
         xhr.onerror = function()
         {
