@@ -53,7 +53,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 },
                 {
                     tag : 'div',
-                    cls : 'roo-document-manager-block',
+                    cls : 'roo-document-manager-block roo-document-manager-uploader',
                     cn : [
                         {
                             tag : 'div',
@@ -82,7 +82,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.selectorEl.on('change', this.onSelect, this);
         
-        this.uploadBtn = this.el.select('.roo-document-manager-upload-btn', true).first();
+        this.uploadBtn = this.el.select('.roo-document-manager-uploader', true).first();
         this.uploadBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.uploadBtn.on('click', this.onUpload, this);
