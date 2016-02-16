@@ -157,6 +157,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         var xhr = new XMLHttpRequest();
         
+        var headers = {
+            "Accept": "application/json",
+            "Cache-Control": "no-cache",
+            "X-Requested-With": "XMLHttpRequest"
+        };
+        
         Roo.each(this.files, function(file, index){
             
             if(file.status == 'PROCESSED'){
@@ -167,11 +173,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             xhr.open(this.method, this.url, true);
             
-            var headers = {
-                "Accept": "application/json",
-                "Cache-Control": "no-cache",
-                "X-Requested-With": "XMLHttpRequest"
-            };
+            
             
             for (var headerName in headers) {
                 var headerValue = headers[headerName];
