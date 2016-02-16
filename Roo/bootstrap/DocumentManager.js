@@ -22,12 +22,6 @@ Roo.bootstrap.DocumentManager = function(config){
     
     this.addEvents({
         /**
-         * @event onselect
-         * Fire after select file
-         * @param {Roo.bootstrap.DocumentManager} this
-         */
-        "onselect" : true,
-        /**
          * @event inspect
          * inspect selected file
          * @param {Roo.bootstrap.DocumentManager} this
