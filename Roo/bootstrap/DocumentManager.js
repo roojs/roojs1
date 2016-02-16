@@ -236,9 +236,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var elements = this.el.select('.roo-document-manager-thumb', true).elements;
         
         Roo.each(this.files, function(file, index){
-            Roo.log('test');
-            Roo.log(file);
-            Roo.log(index);
+            
             if(typeof(file.id) == 'undefined' || file.id * 1 < 1){
                 this.files.splice(index, 1);
                 elements[index].remove();
