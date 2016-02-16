@@ -172,6 +172,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             Roo.log('onload???');
         }
         
+        xhr.onerror = function()
+        {
+            Roo.log('onerror???');
+        }
+        
         for (var headerName in headers) {
             var headerValue = headers[headerName];
             if (headerValue) {
