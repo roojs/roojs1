@@ -247,7 +247,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         
         Roo.each(response.data, function(d, i){
-            this.files[i].status = 'PROCESSED';
+            this.files[i] = d;
             
             var target = this.el.select('.roo-document-manager-thumb-' + i, true).first()
             
