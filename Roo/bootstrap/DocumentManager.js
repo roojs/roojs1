@@ -30,7 +30,15 @@ Roo.bootstrap.DocumentManager = function(config){
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {File} file
          */
-        "inspect" : true
+        "inspect" : true,
+        /**
+         * @event exception
+         * Fire when xhr load exception
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} response
+         */
+        "exception" : true
+        
     });
 };
 
