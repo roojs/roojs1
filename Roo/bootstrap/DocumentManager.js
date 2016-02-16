@@ -250,8 +250,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
 
         var response = Roo.decode(xhr.responseText);
         
-        Roo.log(response);
-        
         if(!response.success){
             this.refresh();
             this.fireEvent('exception', this, response);
