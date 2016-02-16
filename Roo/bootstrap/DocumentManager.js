@@ -44,6 +44,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     minWidth : 300,
     minHeight : 300,
     multiple : true,
+    files : [],
     
     getAutoCreate : function()
     {
@@ -109,9 +110,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
         }, this);
         
-        Roo.each(this.files)
+        if(!this.files.length){
+            return;
+        }
         
-        this.process();
     },
     
     process : function()
