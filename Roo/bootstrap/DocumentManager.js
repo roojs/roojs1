@@ -154,6 +154,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.uploader.hide();
         }
         
+        Roo.each(this.files, function(file){
+            
+        }, this);
+        
     }
     
     
