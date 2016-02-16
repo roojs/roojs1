@@ -1,6 +1,5 @@
 
-.roo-document-manager div.roo-document-manager-upload-btn + div.roo-document-manager-thumb,
-.roo-document-manager div.roo-document-manager-thumb + div.roo-document-manager-thumb {
+.roo-document-manager div..roo-document-manager-block + div..roo-document-manager-block {
     margin-left: 5px;
 }
 
