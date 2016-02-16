@@ -1,8 +1,4 @@
 
-/*.roo-document-manager div.roo-document-manager-block + div.roo-document-manager-block {
-    margin-left: 5px;
-}*/
-
 .roo-document-manager-block {
     float: left;
     width: 25%;
@@ -33,10 +29,8 @@
     font-size: 3.5em;
 }
 
-.roo-document-manager-upload-btn,
 .roo-document-manager-thumb {
-    padding-left: 5px;
-    padding-right: 5px;
+    margin-left: 5px;
 }
 
 /*
