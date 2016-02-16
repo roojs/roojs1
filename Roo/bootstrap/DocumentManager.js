@@ -163,7 +163,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             file.xhr = xhr;
             
-            xhr.open(this.method, url, true);
+            xhr.open(this.method, this.url, true);
             
         }, this);
         
