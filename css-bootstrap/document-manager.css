@@ -2,3 +2,11 @@
 .roo-document-manager-upload {
     border: 1px solid #ccc;
 }
+
+@media (min-width: 768px) { // sm
+    
+}
+
+@media (min-width: 992px) { // md
+    
+}
