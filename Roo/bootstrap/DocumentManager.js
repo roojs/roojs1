@@ -85,7 +85,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        this.fileEl.dom.click();
+        this.selector.dom.click();
         
     },
     
