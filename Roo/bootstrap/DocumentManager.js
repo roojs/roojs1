@@ -67,6 +67,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.fileEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         this.fileEl.hide();
         
+        if(this.multiple){
+            this.fileEl.attr('multiple', 'multiple');
+        }
+        
         this.fileEl.on('change', this.onSelectFile, this);
         
         this.uploadBtn = this.el.select('.roo-document-manager-upload-btn', true).first();
