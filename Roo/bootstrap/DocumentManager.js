@@ -31,6 +31,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             cls : 'roo-document-manager',
             cn : [
                 {
+                    tag : 'input',
+                    type : 'file',
+                    name : this.name
+                }
+                {
                     tag : 'div',
                     cls : 'roo-document-manager-upload',
                     html : '<i class="fa fa-plus"></i>'
