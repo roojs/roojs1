@@ -7,7 +7,7 @@
  * @class Roo.bootstrap.DocumentManager
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentManager class
- * @cfg {String} postName default 'imageUpload'
+ * @cfg {String} paramName default 'imageUpload'
  * @cfg {String} method default POST
  * @cfg {String} url action url
  * @cfg {Number} boxes number of boxes to show default 12
@@ -44,7 +44,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     files : [],
     method : 'POST',
     url : '',
-    postName : 'imageUpload',
+    paramName : 'imageUpload',
     
     getAutoCreate : function()
     {
