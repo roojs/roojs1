@@ -126,7 +126,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.files = this.files.slice(0, 12);
         }
         
-        Roo.each(this.files, function(file,index){
+        Roo.each(this.files, function(file, index){
             if(file.status == 'PROCESSED'){
                 return;
             }
@@ -153,7 +153,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.uploader.hide();
         }
         
-        Roo.each(this.files, function(file,index){
+        Roo.each(this.files, function(file, index){
             
         }, this);
         
