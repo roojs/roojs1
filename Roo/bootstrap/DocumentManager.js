@@ -127,7 +127,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         
         Roo.each(this.files, function(file,index){
-            Roo.log(index);
             if(file.status == 'PROCESSED'){
                 return;
             }
@@ -141,7 +140,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                     {
                         tag : 'div',
                         tooltip : file.name,
-                        cls : 'roo-document-manager-thumb',
+                        cls : 'roo-document-manager-thumb roo-document-manager-thumb-' + index,
                         html : '<i class="fa fa-spinner fa-pulse"></i>'
                     }
                 ]
@@ -154,7 +153,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.uploader.hide();
         }
         
-        Roo.each(this.files, function(file){
+        Roo.each(this.files, function(file,index){
             
         }, this);
         
