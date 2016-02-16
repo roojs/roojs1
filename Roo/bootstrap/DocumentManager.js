@@ -151,7 +151,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         Roo.log(this.files);
         
-        Roo.log(this.file.length);
+        Roo.log(this.files.length);
         
         if(this.files.length > 11){
             this.selectorEl.hide();
