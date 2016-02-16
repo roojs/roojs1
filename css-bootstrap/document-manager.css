@@ -20,7 +20,15 @@
 @media (min-width: 992px) { 
     .roo-document-manager-upload {
         width: 8.33333333%;
-        min-height: 100px;
+        height: 100px;
+    }
+    
+    .roo-document-manager-upload > i.fa {
+        width: 100%;
+        line-height: 100px;
+        text-align: center;
+        vertical-align: middle;
+        color: #808080;
     }
 }
 
