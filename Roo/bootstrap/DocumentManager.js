@@ -163,6 +163,17 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             "X-Requested-With": "XMLHttpRequest"
         };
         
+        xhr.open(this.method, this.url, true);
+        
+        for (var headerName in headers) {
+            var headerValue = headers[headerName];
+            if (headerValue) {
+                xhr.setRequestHeader(headerName, headerValue);
+            }
+        }
+      
+        var formData = new FormData();
+              
         Roo.each(this.files, function(file, index){
             
             if(file.status == 'PROCESSED'){
@@ -171,15 +182,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             file.xhr = xhr;
             
-            xhr.open(this.method, this.url, true);
             
-            for (var headerName in headers) {
-                var headerValue = headers[headerName];
-                if (headerValue) {
-                  xhr.setRequestHeader(headerName, headerValue);
-                }
-              }
-              var formData = new FormData();
+            
+            
             
         }, this);
         
