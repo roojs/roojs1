@@ -234,9 +234,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     xhrOnLoad : function(xhr)
     {
-        Roo.log('xhr on load');
-        Roo.log(xhr.readyState);
-        
+        if (xhr.readyState !== 4) {
+            return;
+        }
+
         var response = Roo.decode(xhr.responseText);
         
         Roo.log(response);
@@ -245,6 +246,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.fireEvent('exception', this, response);
             return;
         }
+        
         
         
         
