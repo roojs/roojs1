@@ -82,10 +82,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.selectorEl.on('change', this.onSelect, this);
         
-        this.uploadBtn = this.el.select('.roo-document-manager-uploader', true).first();
-        this.uploadBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.uploader = this.el.select('.roo-document-manager-uploader', true).first();
+        this.uploader.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.uploadBtn.on('click', this.onUpload, this);
+        this.uploader.on('click', this.onUpload, this);
         
     },
     
@@ -154,7 +154,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         Roo.log(this.files.length);
         
         if(this.files.length > 11){
-            this.uploadBtn.hide();
+            this.uploader.hide();
         }
         
     }
