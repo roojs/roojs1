@@ -171,12 +171,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
           
         xhr.onload = function()
         {
-            this.onUpload();
+            this.xhrOnLoad();
         }
         
         xhr.onerror = function()
         {
-            this.onError();
+            this.xhrOnError();
         }
         
         for (var headerName in headers) {
