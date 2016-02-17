@@ -116,6 +116,7 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
     
     setThumbBoxPosition : function()
     {
+        Roo.log(this.bodyEl.getWidth());
         var x = Math.ceil((this.bodyEl.getWidth() - this.thumbEl.getWidth()) / 2 );
         var y = Math.ceil((this.bodyEl.getHeight() - this.thumbEl.getHeight()) / 2);
         
