@@ -241,27 +241,26 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         Roo.each(this.files, function(file, index){
             
-            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-                
-                this.el.createChild({
-                    tag : 'div',
-                    cls : 'roo-document-manager-preview',
-                    cn : [
-                        {
-                            tag : 'div',
-                            tooltip : file.name,
-                            cls : 'roo-document-manager-thumb',
-                            html : '<img src="' + baseURL +'/Images/Thumb/50/' + file.id + '/' + file.filename + '" alt="' + file.filename + '">'
-                        }
-                    ]
-
-                });
-            
-                files.push(file);
+            if(typeof(file.id) == 'undefined' && file.id * 1 < 1){
                 return;
             }
             
-            elements[index].remove();
+            files.push(file);
+            
+            this.el.createChild({
+                tag : 'div',
+                cls : 'roo-document-manager-preview',
+                cn : [
+                    {
+                        tag : 'div',
+                        tooltip : file.name,
+                        cls : 'roo-document-manager-thumb',
+                        html : '<img src="' + baseURL +'/Images/Thumb/50/' + file.id + '/' + file.filename + '" alt="' + file.filename + '">'
+                    }
+                ]
+
+            });
+            
             return;
             
         }, this);
