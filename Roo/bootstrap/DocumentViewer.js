@@ -99,26 +99,7 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         
         this.trashBtn.on('click', this.onTrash, this);
         
-        var _this = this;
-        
-        window.addEventListener("resize", function() { _this.resize(); } );
-        
         this.fireEvent('initial', this);
-    },
-    
-    resize : function()
-    {
-        this.setThumbBoxPosition();
-    },
-    
-    setThumbBoxPosition : function()
-    {
-        var x = Math.ceil((this.bodyEl.getWidth() - this.thumbEl.getWidth()) / 2 );
-        var y = Math.ceil((this.bodyEl.getHeight() - this.thumbEl.getHeight()) / 2);
-        
-        this.thumbEl.setLeft(x);
-        this.thumbEl.setTop(y);
-        
     },
     
     onClick : function()
