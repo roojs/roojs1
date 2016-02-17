@@ -328,11 +328,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     onRemove : function(e, el, o)
     {
-        Roo.log(o);
-        
         e.preventDefault();
-        
-        Roo.log(this.files);
         
         if(this.fireEvent('beforeremove', this, o) != false){
             
@@ -367,8 +363,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }, this);
         
         this.files = files;
-        
-        Roo.log(this.files);
         
         this.refresh();
     },
