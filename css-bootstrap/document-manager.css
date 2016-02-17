@@ -61,6 +61,7 @@
 
 @media (min-width: 992px) { 
     .roo-document-manager-uploader,
+    .roo-document-manager-loading,
     .roo-document-manager-preview {
         width: 8.33333333%;
         height: 100px;
