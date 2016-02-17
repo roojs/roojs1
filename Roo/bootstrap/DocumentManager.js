@@ -266,7 +266,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
             
-            if(file.target && file.status == 'ACTIVE'){
+            if(file.target){
                 files.push(file);
                 return;
             }
