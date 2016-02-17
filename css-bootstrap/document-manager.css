@@ -80,12 +80,7 @@
 
     .roo-document-manager-thumb > i.fa,
     .roo-document-manager-upload-btn > i.fa {
-        width: 100%;
         line-height: 80px;
-        text-align: center;
-        vertical-align: middle;
-        color: #808080;
-        font-size: 4.5em;
     }
     
 }
@@ -102,5 +97,15 @@
         width: 8.33333333%;
         height: 100px;
         max-height: 100px;
+    }
+    
+    .roo-document-manager-thumb,
+    .roo-document-manager-upload-btn {
+        line-height: 100px;
+    }
+
+    .roo-document-manager-thumb > i.fa,
+    .roo-document-manager-upload-btn > i.fa {
+        line-height: 100px;
     }
 }
