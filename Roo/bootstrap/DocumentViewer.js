@@ -42,20 +42,15 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'div',
-                    cls : 'roo-upload-cropbox-body',
+                    cls : 'roo-document-viewer-body',
                     cn : [
                         {
                             tag : 'div',
-                            cls : 'roo-upload-cropbox-preview'
+                            cls : 'roo-document-viewer-preview'
                         },
                         {
                             tag : 'div',
-                            cls : 'roo-upload-cropbox-thumb'
-                        },
-                        {
-                            tag : 'div',
-                            cls : 'roo-upload-cropbox-empty-notify',
-                            html : this.emptyText
+                            cls : 'roo-document-viewer-thumb'
                         }
                     ]
                 },
