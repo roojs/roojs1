@@ -55,7 +55,29 @@
 */
 
 @media (min-width: 768px) { 
+    .roo-document-manager-uploader,
+    .roo-document-manager-loading,
+    .roo-document-manager-preview {
+        height: 200px;
+        max-height: 200px;
+    }
     
+    .roo-document-manager-thumb,
+    .roo-document-manager-upload-btn {
+        line-height: 200px;
+        height: 200px;
+        max-height: 200px;
+    }
+
+    .roo-document-manager-thumb > i.fa,
+    .roo-document-manager-upload-btn > i.fa {
+        line-height: 198px;
+        font-size: 3.5em;
+    }
+    
+    .roo-document-manager-thumb > i.fa {
+        font-size: 2.5em;
+    }
 }
 
 /*
