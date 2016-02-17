@@ -33,6 +33,7 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
     
     thumbWidth : 300,
     thumbHeight : 300,
+    file : false,
     
     getAutoCreate : function()
     {
@@ -98,6 +99,13 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         this.trashBtn.on('click', this.onTrash, this);
         
         this.fireEvent('initial', this);
+    },
+    
+    set : function(file)
+    {
+        this.file = file;
+        
+        this.thumbEl.setStyle('background-image', 'url("' + baseURL + '")');
     },
     
     onClick : function()
