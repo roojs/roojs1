@@ -166,7 +166,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
 //        this.selectorEl.inputEl().reset();
         
-        Roo.log(this.selectorEl.inputEl());
+        Roo.log(this.selectorEl);
         
         if(!this.files.length){
             return;
