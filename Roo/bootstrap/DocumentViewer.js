@@ -83,36 +83,18 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
     
     initEvents : function()
     {
-        this.urlAPI = (window.createObjectURL && window) || 
-                                (window.URL && URL.revokeObjectURL && URL) || 
-                                (window.webkitURL && webkitURL);
-                        
-        this.bodyEl = this.el.select('.roo-upload-cropbox-body', true).first();
-        this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.bodyHasOnClickEvent = false;
         
-        this.previewEl = this.el.select('.roo-upload-cropbox-preview', true).first();
+        this.bodyEl = this.el.select('.roo-document-viewer-body', true).first();
+        this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.previewEl = this.el.select('.roo-document-viewer-preview', true).first();
         this.previewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.thumbEl = this.el.select('.roo-upload-cropbox-thumb', true).first();
+        this.thumbEl = this.el.select('.roo-document-viewer-thumb', true).first();
         this.thumbEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.thumbEl.hide();
         
-        this.notifyEl = this.el.select('.roo-upload-cropbox-empty-notify', true).first();
-        this.notifyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        
-        this.footerEl = this.el.select('.roo-upload-cropbox-footer', true).first();
+        this.footerEl = this.el.select('.roo-document-viewer-footer', true).first();
         this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.footerEl.hide();
-        
-        this.rotateLeft = this.el.select('.roo-upload-cropbox-rotate-left', true).first();
-        this.rotateLeft.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        
-        this.pictureBtn = this.el.select('.roo-upload-cropbox-picture', true).first();
-        this.pictureBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        
-        this.rotateRight = this.el.select('.roo-upload-cropbox-rotate-right', true).first();
-        this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.setThumbBoxSize();
         
