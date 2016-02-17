@@ -50,7 +50,8 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
                             style : 'width: ' + this.thumbWidth + 'px; height: ' + this.thumbHeight + 'px;',
                             cn : [
                                 {
-                                    tag : 'img'
+                                    tag : 'img',
+                                    src : 'http://localhost/web.Jobsonboats/index.local.php/Images/Thumb/600/1674/1655-400x1000.png'
                                 }
                             ]
                         }
