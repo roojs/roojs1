@@ -14,6 +14,7 @@
  * @cfg {Boolean} multiple multiple upload default true
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
+ * @cfg {Number} thumbSize default 300
  * 
  * @constructor
  * Create a new DocumentManager
