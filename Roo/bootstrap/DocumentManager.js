@@ -328,6 +328,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     onRemove : function(e, el, o)
     {
+        Roo.log(o);
+        return;
         e.preventDefault();
         
         if(this.fireEvent('beforeremove', this, o) != false){
