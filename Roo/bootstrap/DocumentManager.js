@@ -293,8 +293,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             var close = previewEl.select('button.close', true).first();
             
-            close.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-            
             close.on('click', this.onRemove, this, file);
             
             file.target = previewEl;
