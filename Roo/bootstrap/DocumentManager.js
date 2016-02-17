@@ -332,6 +332,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 }
                 Roo.log(file.id);
                 Roo.log(o.id);
+                
                 files.push(file);
 
             }, this);
