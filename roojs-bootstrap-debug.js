@@ -989,6 +989,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
  * @cfg {String} icon (info-sign|check|...) glyphicon name
  * @cfg {Boolean} hidden (true|false) hide the element
  * @cfg {Boolean} expandable (true|false) default false
+ * @cfg {Boolean} expanded (true|false) default true
  * @cfg {String} rheader contet on the right of header
 
  *     
@@ -1142,7 +1143,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             
             body = false;
             cfg.cn.push({
-                cls : 'panel-body',
+                cls : 'panel-body' + (this.expanded ? '' : ' hide'),
                 html : this.html
             });
             
@@ -1214,8 +1215,10 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             
             this.expanded = true;
             
-            this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).show();
-        
+            //this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).show();
+            
+            this.el.select('.panel-body',true).first().removeClass('hide');
+            
             var toggleEl = this.toggleEl();
 
             if(!toggleEl){
@@ -1233,7 +1236,8 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             
             this.expanded = false;
             
-            this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).hide();
+            //this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).hide();
+            this.el.select('.panel-body',true).first().addClass('hide');
         
             var toggleEl = this.toggleEl();
 
@@ -7877,8 +7881,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.inputEl().on("blur", this.onBlur,  this);
         
         this.inputEl().relayEvent('keyup', this);
-        this.inputEl().relayEvent('change', this);
-
+ 
         // reference to original value for reset
         this.originalValue = this.getValue();
         //Roo.form.TextField.superclass.initEvents.call(this);
@@ -25020,7 +25023,7 @@ Roo.bootstrap.DocumentManager = function(config){
          * @event exception
          * Fire when xhr load exception
          * @param {Roo.bootstrap.DocumentManager} this
-         * @param {Object} response
+         * @param {XMLHttpRequest} xhr
          */
         "exception" : true,
         /**
@@ -25059,7 +25062,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 },
                 {
                     tag : 'div',
-                    cls : 'roo-document-manager-block roo-document-manager-uploader',
+                    cls : 'roo-document-manager-uploader',
                     cn : [
                         {
                             tag : 'div',
@@ -25142,7 +25145,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             this.el.createChild({
                 tag : 'div',
-                cls : 'roo-document-manager-block',
+                cls : 'roo-document-manager-preview',
                 cn : [
                     {
                         tag : 'div',
@@ -25167,7 +25170,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         };
         
         xhr.open(this.method, this.url, true);
-          
+        
+        for (var headerName in headers) {
+            var headerValue = headers[headerName];
+            if (headerValue) {
+                xhr.setRequestHeader(headerName, headerValue);
+            }
+        }
+        
         var _this = this;
         
         xhr.onload = function()
@@ -25180,13 +25190,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             _this.xhrOnError(xhr);
         }
         
-        for (var headerName in headers) {
-            var headerValue = headers[headerName];
-            if (headerValue) {
-                xhr.setRequestHeader(headerName, headerValue);
-            }
-        }
-      
         var formData = new FormData();
 
         formData.append('returnHTML', 'NO');
@@ -25218,31 +25221,57 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     refresh : function()
     {
-        var elements = this.el.select('.roo-document-manager-thumb', true).elements;
+        Roo.each(this.el.select('.roo-document-manager-preview', true).elements, function(el){
+            el.remove();
+        }, this);
         
         var files = [];
         
-        Roo.log(this.files);
-        
-        Roo.each(this.files, function(file, index){
+        Roo.each(this.files, function(file){
             
-            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-                elements[index].dom.innerHTML = '<img src="' + baseURL +'/Images/Thumb/50/' + file.id + '/' + file.filename + '" alt="' + file.filename + '">'; 
-                files.push(file);
+            if(typeof(file.id) == 'undefined' && file.id * 1 < 1){
                 return;
             }
             
-            elements[index].remove();
+            files.push(file);
+            
+            this.el.createChild({
+                tag : 'div',
+                cls : 'roo-document-manager-preview',
+                cn : [
+                    {
+                        tag : 'div',
+                        tooltip : file.filename,
+                        cls : 'roo-document-manager-thumb',
+                        html : '<img src="' + baseURL +'/Images/Thumb/50/' + file.id + '/' + file.filename + '">'
+                    },
+                    {
+                        tag : 'button',
+                        cls : 'close',
+                        html : 'x'
+                    }
+                ]
+
+            });
+            
             return;
             
         }, this);
         
         this.files = files;
+        
+        this.uploader.show();
+        
+        if(this.files.length > 11){
+            this.uploader.hide();
+        }
     },
     
     xhrOnLoad : function(xhr)
     {
         if (xhr.readyState !== 4) {
+            this.refresh();
+            this.fireEvent('exception', this, xhr);
             return;
         }
 
@@ -25250,7 +25279,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         if(!response.success){
             this.refresh();
-            this.fireEvent('exception', this, response);
+            this.fireEvent('exception', this, xhr);
             return;
         }
         
