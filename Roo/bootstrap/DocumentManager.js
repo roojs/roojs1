@@ -35,7 +35,7 @@ Roo.bootstrap.DocumentManager = function(config){
          * @event exception
          * Fire when xhr load exception
          * @param {Roo.bootstrap.DocumentManager} this
-         * @param {Object} response
+         * @param {XMLHttpRequest} xhr
          */
         "exception" : true,
         /**
