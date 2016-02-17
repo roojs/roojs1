@@ -233,6 +233,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     refresh : function()
     {
+//        Roo.each(this.el.select('.roo-document-manager-thumb', true).elements, function(el){
+//            el.remove();
+//        }, this);
+        
         var elements = this.el.select('.roo-document-manager-thumb', true).elements;
         
         var files = [];
