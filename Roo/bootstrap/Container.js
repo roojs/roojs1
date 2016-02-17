@@ -177,7 +177,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             
             body = false;
             cfg.cn.push({
-                cls : 'panel-body',
+                cls : 'panel-body' + (this.expanded ? '' : ' hide'),
                 html : this.html
             });
             
