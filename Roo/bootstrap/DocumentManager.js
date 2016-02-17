@@ -301,7 +301,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             var image = previewEl.select('img', true).first();
             
-            image.on('click', this.onClick, image, file);
+            image.on('click', this.onClick, this, file);
             
             files.push(file);
             
