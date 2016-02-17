@@ -101,6 +101,7 @@
     .roo-document-manager-thumb,
     .roo-document-manager-upload-btn {
         line-height: 100px;
+        height: 100px;
     }
 
     .roo-document-manager-thumb > i.fa,
