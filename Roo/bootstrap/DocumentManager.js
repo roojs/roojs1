@@ -347,7 +347,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                     return;
                 }
                 
-                file.status = 'DELETED';
                 o.target.mask();
 
             }, this);
