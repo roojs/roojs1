@@ -355,6 +355,15 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
     },
     
+    closable : function(closable)
+    {
+        Roo.each(this.el.select('.roo-document-manager-preview > button.close', true).elements, function(el){
+            
+            (closable) ? el.show() : el.hide();
+            
+        }, this);
+    },
+    
     xhrOnLoad : function(xhr)
     {
         if (xhr.readyState !== 4) {
