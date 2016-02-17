@@ -182,7 +182,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         };
         
         xhr.open(this.method, this.url, true);
-          
+        
+        for (var headerName in headers) {
+            var headerValue = headers[headerName];
+            if (headerValue) {
+                xhr.setRequestHeader(headerName, headerValue);
+            }
+        }
+        
         var _this = this;
         
         xhr.onload = function()
@@ -195,13 +202,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             _this.xhrOnError(xhr);
         }
         
-        for (var headerName in headers) {
-            var headerValue = headers[headerName];
-            if (headerValue) {
-                xhr.setRequestHeader(headerName, headerValue);
-            }
-        }
-      
         var formData = new FormData();
 
         formData.append('returnHTML', 'NO');
