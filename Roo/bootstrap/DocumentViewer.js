@@ -31,8 +31,8 @@ Roo.bootstrap.DocumentViewer = function(config){
 
 Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
     
-    width : 300,
-    height : 300,
+    thumbWidth : 300,
+    thumbHeight : 300,
     
     getAutoCreate : function()
     {
