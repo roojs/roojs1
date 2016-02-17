@@ -13,6 +13,7 @@
 .roo-document-manager-thumb,
 .roo-document-manager-upload-btn {
     width : 100%;
+    height: 200px;
     line-height: 200px;
     max-height: 200px;
     border: 1px solid #ccc;
