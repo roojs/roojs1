@@ -294,6 +294,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 ]
             }, false, true);
             
+            Roo.log(previewEl);
+            
             var close = previewEl.select('button.close', true).first();
             
             close.on('click', this.onRemove, this, file);
