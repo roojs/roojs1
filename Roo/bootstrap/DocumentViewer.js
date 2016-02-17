@@ -102,6 +102,8 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         this.trashBtn.on('click', this.onTrash, this);
         
         this.fireEvent('initial', this);
+        
+        this.setThumbBoxPosition();
     },
     
     resize : function()
