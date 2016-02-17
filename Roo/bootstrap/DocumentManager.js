@@ -300,6 +300,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
     },
     
+    onRemove : function()
+    {
+        
+    },
+    
     xhrOnLoad : function(xhr)
     {
         if (xhr.readyState !== 4) {
