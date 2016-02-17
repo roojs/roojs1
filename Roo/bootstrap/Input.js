@@ -445,8 +445,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         this.inputEl().on("blur", this.onBlur,  this);
         
         this.inputEl().relayEvent('keyup', this);
-        this.inputEl().relayEvent('change', this);
-
+ 
         // reference to original value for reset
         this.originalValue = this.getValue();
         //Roo.form.TextField.superclass.initEvents.call(this);
