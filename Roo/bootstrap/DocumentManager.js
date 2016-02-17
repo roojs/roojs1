@@ -164,7 +164,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     process : function()
     {
-        this.selectorEl.reset();
+//        this.selectorEl.reset();
         
         Roo.log(this.selectorEl);
         
