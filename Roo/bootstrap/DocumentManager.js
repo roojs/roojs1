@@ -76,6 +76,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     inputName : '',
     minWidth : 300,
     minHeight : 300,
+    thumbSize : 300,
     multiple : true,
     files : [],
     method : 'POST',
