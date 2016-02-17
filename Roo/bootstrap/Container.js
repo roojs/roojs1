@@ -268,7 +268,8 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
             
             this.expanded = false;
             
-            this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).hide();
+            //this.el.select('.panel-body',true).first().setVisibilityMode(Roo.Element.DISPLAY).hide();
+            this.el.select('.panel-body',true).first().addClass('hide');
         
             var toggleEl = this.toggleEl();
 
