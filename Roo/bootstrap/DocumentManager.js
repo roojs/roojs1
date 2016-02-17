@@ -317,8 +317,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        o.target.mask();
-        
         this.fireEvent('remove', this, o);
         
     },
