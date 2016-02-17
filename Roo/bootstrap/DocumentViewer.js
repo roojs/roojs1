@@ -38,7 +38,7 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
     {
         var cfg = {
             tag : 'div',
-            cls : 'roo-upload-cropbox',
+            cls : 'roo-document-viewer',
             cn : [
                 {
                     tag : 'div',
