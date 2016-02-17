@@ -330,14 +330,19 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     remove : function(o)
     {
+        var files = [];
+        
         Roo.each(this.files, function(file){
             if(typeof(file.id) == 'undefined' || file.id * 1 < 1 || file.id != o.id){
+                files.push(file);
                 return;
             }
 
             o.target.remove();
 
         }, this);
+        
+        this.files = files;
         
         this.refresh();
     },
