@@ -260,8 +260,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
             
-            files.push(file);
-            
             var preview = new Roo.Element({
                 tag : 'div',
                 cls : 'roo-document-manager-preview',
@@ -301,6 +299,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             var close = previewEl.select('button.close', true).first();
             
             close.on('click', this.onRemove, this, file);
+            
+            file.target = preview;
+            
+            files.push(file);
             
             return;
             
