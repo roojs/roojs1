@@ -1,5 +1,6 @@
 
 .roo-document-manager-uploader,
+.roo-document-manager-loading,
 .roo-document-manager-preview {
     position: relative;
     float: left;
