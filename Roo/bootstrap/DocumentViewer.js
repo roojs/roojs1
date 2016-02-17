@@ -56,10 +56,10 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
                 },
                 {
                     tag : 'div',
-                    cls : 'roo-upload-cropbox-footer',
+                    cls : 'roo-document-viewer-footer',
                     cn : {
                         tag : 'div',
-                        cls : 'btn-group btn-group-justified roo-upload-cropbox-btn-group',
+                        cls : 'btn-group btn-group-justified roo-document-viewer-btn-group',
                         cn : [
                             {
                                 tag : 'div',
@@ -67,30 +67,8 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-rotate-left',
-                                        html : '<i class="fa fa-undo"></i>'
-                                    }
-                                ]
-                            },
-                            {
-                                tag : 'div',
-                                cls : 'btn-group',
-                                cn : [
-                                    {
-                                        tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-picture',
-                                        html : '<i class="fa fa-picture-o"></i>'
-                                    }
-                                ]
-                            },
-                            {
-                                tag : 'div',
-                                cls : 'btn-group',
-                                cn : [
-                                    {
-                                        tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-rotate-right',
-                                        html : '<i class="fa fa-repeat"></i>'
+                                        cls : 'btn btn-default roo-document-viewer-delete',
+                                        html : '<i class="fa fa-trash"></i>'
                                     }
                                 ]
                             }
