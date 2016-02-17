@@ -192,7 +192,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             });
             
         }, this);
-        return;
+        
         if(this.files.length > 11){
             this.uploader.hide();
         }
