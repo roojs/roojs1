@@ -334,6 +334,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
 
             }, this);
 
+            this.files = files;
+            
             this.refresh();
             
             this.fireEvent('onremove', this, o);
