@@ -10,13 +10,6 @@
     max-height: 200px;
 }
 
-.roo-document-manager-preview > .close {
-    position: absolute;
-    top: 0px;
-    right: 3px;
-    font-size: 15px;
-}
-
 .roo-document-manager-thumb,
 .roo-document-manager-upload-btn {
     width : 100%;
@@ -44,6 +37,13 @@
     width: 100%;
     text-align: center;
     vertical-align: middle;
+}
+
+.roo-document-manager-preview > .close {
+    position: absolute;
+    top: 0px;
+    right: 3px;
+    font-size: 15px;
 }
 
 /*
