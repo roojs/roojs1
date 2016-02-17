@@ -283,6 +283,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 ]
             });
             
+            var close = preview.select('button.close', true).first();
             
             
             return;
