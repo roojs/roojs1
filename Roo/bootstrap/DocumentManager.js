@@ -286,7 +286,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         if(!response.success){
             this.refresh();
-            this.fireEvent('exception', this, response);
+            this.fireEvent('exception', this, xhr);
             return;
         }
         
