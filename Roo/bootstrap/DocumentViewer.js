@@ -68,7 +68,7 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-document-viewer-delete',
+                                        cls : 'btn btn-default roo-document-viewer-trash',
                                         html : '<i class="fa fa-trash"></i>'
                                     }
                                 ]
@@ -96,6 +96,9 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         
         this.footerEl = this.el.select('.roo-document-viewer-footer', true).first();
         this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.trashBtn = this.el.select('.roo-upload-cropbox-picture', true).first();
+        this.pictureBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.bind();
         
