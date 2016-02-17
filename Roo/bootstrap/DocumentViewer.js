@@ -7,8 +7,8 @@
  * @class Roo.bootstrap.DocumentViewer
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentViewer class
- * @cfg {Number} width default 300
- * @cfg {Number} height default 300
+ * @cfg {Number} thumbWidth default 300
+ * @cfg {Number} thumbHeight default 300
  * 
  * @constructor
  * Create a new DocumentViewer
@@ -47,7 +47,7 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
                         {
                             tag : 'div',
                             cls : 'roo-document-viewer-thumb',
-                            style : 'width: ' + this.width + 'px; height: ' + this.height + 'px;'
+                            style : 'width: ' + this.thumbWidth + 'px; height: ' + this.thumbHeight + 'px;'
                         }
                     ]
                 },
