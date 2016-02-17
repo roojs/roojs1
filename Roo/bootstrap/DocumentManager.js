@@ -46,12 +46,19 @@ Roo.bootstrap.DocumentManager = function(config){
          */
         "prepare" : true,
         /**
-         * @event remove
-         * Fire when remove the file
+         * @event beforeremove
+         * Fire before remove the file
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {Object} file
          */
-        "remove" : true
+        "beforeremove" : true,
+        /**
+         * @event onremove
+         * Fire after remove the file
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} file
+         */
+        "onremove" : true
         
     });
 };
