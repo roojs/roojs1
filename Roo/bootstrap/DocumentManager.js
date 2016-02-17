@@ -267,7 +267,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.files = files;
         
-        this.uploader.hide();
+        this.uploader.show();
         
         if(this.files.length > 11){
             this.uploader.hide();
