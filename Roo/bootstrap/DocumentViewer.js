@@ -50,7 +50,8 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
                         },
                         {
                             tag : 'div',
-                            cls : 'roo-document-viewer-thumb'
+                            cls : 'roo-document-viewer-thumb',
+                            style : 'width: ' + this.thumbWidth + 'px; height: ' + this.thumbHeight + 'px;'
                         }
                     ]
                 },
@@ -95,8 +96,6 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         
         this.footerEl = this.el.select('.roo-document-viewer-footer', true).first();
         this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        
-        this.setThumbBoxSize();
         
         this.bind();
         
