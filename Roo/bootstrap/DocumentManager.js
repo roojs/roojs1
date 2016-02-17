@@ -285,7 +285,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             var close = preview.select('button.close', true).first();
             
-            close.on('click', this.onRemoveFile, this, { item : choice, data : o} );
+            close.on('click', this.onRemove, this, { item : preview, data : file} );
             
             return;
             
