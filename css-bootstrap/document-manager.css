@@ -73,12 +73,8 @@
     .roo-document-manager-thumb > i.fa,
     .roo-document-manager-upload-btn > i.fa {
         line-height: 198px;
-        font-size: 4.5em;
     }
     
-    .roo-document-manager-thumb > i.fa {
-        font-size: 3.5em;
-    }
 }
 
 /*
