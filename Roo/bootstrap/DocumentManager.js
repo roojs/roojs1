@@ -233,9 +233,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     refresh : function()
     {
-//        Roo.each(this.el.select('.roo-document-manager-thumb', true).elements, function(el){
-//            el.remove();
-//        }, this);
+        Roo.each(this.el.select('.roo-document-manager-preivew', true).elements, function(el){
+            el.remove();
+        }, this);
         
         var elements = this.el.select('.roo-document-manager-thumb', true).elements;
         
@@ -255,6 +255,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }, this);
         
         this.files = files;
+        
+        this.uploader.hide();
+        
+        if(this.files.length > 11){
+            this.uploader.hide();
+        }
     },
     
     xhrOnLoad : function(xhr)
