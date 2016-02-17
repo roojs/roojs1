@@ -97,8 +97,8 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         this.footerEl = this.el.select('.roo-document-viewer-footer', true).first();
         this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.trashBtn = this.el.select('.roo-upload-cropbox-picture', true).first();
-        this.pictureBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.trashBtn = this.el.select('.roo-document-viewer-trash', true).first();
+        this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.bind();
         
