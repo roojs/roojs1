@@ -233,10 +233,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     refresh : function()
     {
-        Roo.log(this.el);
-        Roo.log(this.el.select('.roo-document-manager-preivew', true).elements);
-        Roo.each(this.el.select('.roo-document-manager-preivew', true).elements, function(el){
-            Roo.log(el);
+        Roo.each(this.el.select('.roo-document-manager-preview', true).elements, function(el){
             el.remove();
         }, this);
         
