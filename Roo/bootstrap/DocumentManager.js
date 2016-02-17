@@ -324,23 +324,16 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         if(this.fireEvent('beforeremove', this, o) != false){
             
-            var files = [];
-            
             Roo.each(this.files, function(file){
-                if(typeof(file.id) != 'undefined' && file.id * 1 > 0 && file.id == o.id){
-                    file.status == 'DELETING';
-                    o.target.mask();
+                if(typeof(file.id) == 'undefined' || file.id * 1 < 1 || file.id != o.id){
                     return;
                 }
                 
-                files.push(file);
+                file.status == 'DELETING';
+                o.target.mask();
 
             }, this);
 
-            this.files = files;
-            
-            this.refresh();
-            
             this.fireEvent('onremove', this, o);
         }
         
