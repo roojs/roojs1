@@ -7,6 +7,12 @@
     padding-left: 5px;
 }
 
+.roo-document-manager-preview > .close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
 .roo-document-manager-thumb,
 .roo-document-manager-upload-btn {
     width : 100%;
