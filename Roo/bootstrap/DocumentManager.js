@@ -266,6 +266,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
             
+            if(file.target){
+                
+            }
+            
             var preview = new Roo.Element({
                 tag : 'div',
                 cls : 'roo-document-manager-preview',
