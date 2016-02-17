@@ -329,6 +329,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         o.target.mask();
         
+        o.status = 'DELETE';
+        
         this.fireEvent('remove', this, o);
         
 //        if(this.fireEvent('beforeremove', this, o) != false){
