@@ -100,13 +100,6 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         this.trashBtn = this.el.select('.roo-document-viewer-trash', true).first();
         this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.bind();
-        
-        this.fireEvent('initial', this);
-    },
-
-    bind : function()
-    {
         var _this = this;
         
         window.addEventListener("resize", function() { _this.resize(); } );
@@ -114,32 +107,14 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         
         this.bodyEl.on('click', this.onClick, this);
         
-        this.pictureBtn.on('click', this.beforeSelectFile, this);
+        this.trashBtn.on('click', this.onTrash, this);
         
-        this.rotateLeft.on('click', this.onRotateLeft, this);
-        
-        this.rotateRight.on('click', this.onRotateRight, this);
-        
-    },
-    
-    reset : function()
-    {    
-        this.scale = 0;
-        this.baseScale = 1;
-        this.rotate = 0;
-        this.baseRotate = 1;
-        this.dragable = false;
-        this.pinching = false;
-        this.mouseX = 0;
-        this.mouseY = 0;
-        this.cropData = false;
-        
+        this.fireEvent('initial', this);
     },
     
     resize : function()
     {
         this.setThumbBoxPosition();
-        this.setCanvasPosition();
     },
     
     beforeSelectFile : function(e)
