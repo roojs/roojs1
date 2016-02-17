@@ -343,6 +343,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     onClick : function(e, el, o)
     {
         Roo.log([e, el, o]);
+        Roo.log(this);
         return;
         e.preventDefault();
         
