@@ -117,4 +117,14 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         this.setThumbBoxPosition();
     },
     
+    onClick : function()
+    {
+        
+    },
+    
+    onTrash : function()
+    {
+        
+    }
+    
 });
