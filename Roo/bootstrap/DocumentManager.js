@@ -271,11 +271,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
             
-            if(file.target && file.status == 'DELETED'){
-                file.target.remove();
-                return;
-            }
-            
             var preview = new Roo.Element({
                 tag : 'div',
                 cls : 'roo-document-manager-preview',
@@ -347,6 +342,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                     return;
                 }
                 
+                file.status = 'DELETED';
                 o.target.mask();
 
             }, this);
