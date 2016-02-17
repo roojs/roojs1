@@ -255,14 +255,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                         tag : 'div',
                         tooltip : file.filename,
                         cls : 'roo-document-manager-thumb',
-                        html : '<img src="' + baseURL +'/Images/Thumb/50/' + file.id + '/' + file.filename + '" alt="' + file.filename + '">',
-                        cn : [
-                            {
-                                tag : 'button',
-                                cls : 'close',
-                                html : 'x'
-                            }
-                        ]
+                        html : '<img src="' + baseURL +'/Images/Thumb/50/' + file.id + '/' + file.filename + '" alt="' + file.filename + '">'
+                    },
+                    {
+                        tag : 'button',
+                        cls : 'close',
+                        html : 'x'
                     }
                 ]
 
