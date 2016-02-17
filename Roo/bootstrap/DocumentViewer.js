@@ -7,8 +7,6 @@
  * @class Roo.bootstrap.DocumentViewer
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentViewer class
- * @cfg {Number} minWidth default 300
- * @cfg {Number} minHeight default 300
  * 
  * @constructor
  * Create a new DocumentViewer
@@ -30,9 +28,6 @@ Roo.bootstrap.DocumentViewer = function(config){
 };
 
 Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
-    
-    minWidth : 300,
-    minHeight : 300,
     
     getAutoCreate : function()
     {
