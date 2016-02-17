@@ -309,7 +309,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
             
-            
+            this.files.splice(index, 1);
             
         }, this);
         
