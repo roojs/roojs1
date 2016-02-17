@@ -7,10 +7,14 @@
  * @class Roo.bootstrap.DocumentManager
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentManager class
+ * @cfg {String} paramName default 'imageUpload'
+ * @cfg {String} method default POST
+ * @cfg {String} url action url
  * @cfg {Number} boxes number of boxes to show default 12
  * @cfg {Boolean} multiple multiple upload default true
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
+ * @cfg {Number} thumbSize default 300
  * 
  * @constructor
  * Create a new DocumentManager
@@ -22,18 +26,47 @@
     
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">/**
-         * @event onselect
-         * Fire after select file
-         * @param {Roo.bootstrap.DocumentManager} this
-         */
-        </span><span class="jsdoc-string">&quot;onselect&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-        </span><span class="jsdoc-comment">/**
          * @event inspect
          * inspect selected file
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {File} file
          */
-        </span><span class="jsdoc-string">&quot;inspect&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;inspect&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event exception
+         * Fire when xhr load exception
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {XMLHttpRequest} xhr
+         */
+        </span><span class="jsdoc-string">&quot;exception&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event prepare
+         * prepare the form data
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} formData
+         */
+        </span><span class="jsdoc-string">&quot;prepare&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event remove
+         * Fire when remove the file
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} file
+         */
+        </span><span class="jsdoc-string">&quot;remove&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event refresh
+         * Fire after refresh the file
+         * @param {Roo.bootstrap.DocumentManager} this
+         */
+        </span><span class="jsdoc-string">&quot;refresh&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event click
+         * Fire after click the image
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} file
+         */
+        </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        
     </span><span class="jsdoc-syntax">});
 };
 
@@ -43,8 +76,12 @@
     </span><span class="jsdoc-var">inputName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">minWidth </span><span class="jsdoc-syntax">: 300,
     </span><span class="jsdoc-var">minHeight </span><span class="jsdoc-syntax">: 300,
+    </span><span class="jsdoc-var">thumbSize </span><span class="jsdoc-syntax">: 300,
     </span><span class="jsdoc-var">multiple </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">files </span><span class="jsdoc-syntax">: [],
+    </span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'POST'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">url </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">paramName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'imageUpload'</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -59,9 +96,16 @@
                 </span><span class="jsdoc-syntax">},
                 {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-document-manager-upload-btn'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;i class=&quot;fa fa-plus&quot;&gt;&lt;/i&gt;'
-                </span><span class="jsdoc-syntax">}
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-document-manager-uploader'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-document-manager-upload-btn'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;i class=&quot;fa fa-plus&quot;&gt;&lt;/i&gt;'
+                        </span><span class="jsdoc-syntax">}
+                    ]
+                    
+                }
             ]
         };
         
@@ -71,20 +115,24 @@
     
     </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">this.selector </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-document-manager-selector'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.selector.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.selector.hide</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.selectorEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-document-manager-selector'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.selectorEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.selectorEl.hide</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.selector.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'multiple'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'multiple'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">this.selectorEl.attr</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'multiple'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'multiple'</span><span class="jsdoc-syntax">);
         }
         
-        </span><span class="jsdoc-var">this.selector.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onSelect</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.selectorEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onSelect</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-var">this.uploadBtn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-document-manager-upload-btn'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.uploadBtn.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.uploader </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-document-manager-uploader'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.uploader.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-var">this.uploadBtn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onUpload</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.uploader.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onUpload</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">window.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">_this.refresh</span><span class="jsdoc-syntax">(); } );
         
     },
     
@@ -92,7 +140,7 @@
     {
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-var">this.selector.dom.click</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.selectorEl.dom.click</span><span class="jsdoc-syntax">();
         
     },
     
@@ -100,18 +148,275 @@
     {
         </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selector.dom.files</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.selector.dom.files.length</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectorEl.dom.files</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.selectorEl.dom.files.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selector.dom.files</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectorEl.dom.files</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'inspect'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">this.files.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
             }
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.process</span><span class="jsdoc-syntax">();
+        
+    },
+    
+    </span><span class="jsdoc-var">process </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.files.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; 12){
+            </span><span class="jsdoc-var">this.files </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.files.slice</span><span class="jsdoc-syntax">(0, 12);
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xhr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">XMLHttpRequest</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file.id</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">file.id </span><span class="jsdoc-syntax">* 1 &gt; 0){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">file.xhr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">xhr</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-document-manager-loading'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                    {
+                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">file.name</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-document-manager-thumb'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;i class=&quot;fa fa-spinner fa-pulse&quot;&gt;&lt;/i&gt;'
+                    </span><span class="jsdoc-syntax">}
+                ]
+
+            });
             
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; 11){
+            </span><span class="jsdoc-var">this.uploader.hide</span><span class="jsdoc-syntax">();
+        }
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headers </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-string">&quot;Accept&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;application/json&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">&quot;Cache-Control&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;no-cache&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">&quot;X-Requested-With&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;XMLHttpRequest&quot;
+        </span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-var">xhr.open</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.method</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.url</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headerName </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">headers</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headerValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">headers</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">headerName</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">headerValue</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">xhr.setRequestHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">headerName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">headerValue</span><span class="jsdoc-syntax">);
+            }
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">xhr.onload </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-var">_this.xhrOnLoad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-var">xhr.onerror </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-var">_this.xhrOnError</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">formData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FormData</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">formData.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'returnHTML'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'NO'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file.id</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">file.id </span><span class="jsdoc-syntax">* 1 &gt; 0){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">formData.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getParamName</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file.name</span><span class="jsdoc-syntax">);
+            
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'prepare'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">formData</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">xhr.send</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">formData</span><span class="jsdoc-syntax">);
+        };
+        
+    },
+    
+    </span><span class="jsdoc-var">getParamName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.multiple</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.paramName</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.paramName </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">&quot;_&quot; </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">refresh </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-document-manager-loading'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">el.remove</span><span class="jsdoc-syntax">();
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">files </span><span class="jsdoc-syntax">= [];
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file.id</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">file.id </span><span class="jsdoc-syntax">* 1 &lt; 1){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file.target</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">files.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">previewEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.createChild</span><span class="jsdoc-syntax">({
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-document-manager-preview'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                    {
+                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">file.filename</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-document-manager-thumb'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;img src=&quot;' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">baseURL </span><span class="jsdoc-syntax">+</span><span class="jsdoc-string">'/Images/Thumb/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.thumbSize </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">file.id </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'/' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">file.filename </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'&quot;&gt;'
+                    </span><span class="jsdoc-syntax">},
+                    {
+                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'close'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x'
+                    </span><span class="jsdoc-syntax">}
+                ]
+            });
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">close </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">previewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'button.close'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-var">close.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onRemove</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">file.target </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">previewEl</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">image </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">previewEl.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'img'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-var">image.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">files.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.files </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">files</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.uploader.show</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; 11){
+            </span><span class="jsdoc-var">this.uploader.hide</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">this.closable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">this.closable</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'refresh'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">onRemove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'remove'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-var">remove </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">files </span><span class="jsdoc-syntax">= [];
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file.id</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">file.id </span><span class="jsdoc-syntax">* 1 &lt; 1 || </span><span class="jsdoc-var">file.id </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">o.id</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">files.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">o.target.remove</span><span class="jsdoc-syntax">();
+
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.files </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">files</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-var">closable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-document-manager-preview &gt; button.close'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.elements</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-var">el.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">closable</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-var">el.show</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">el.hide</span><span class="jsdoc-syntax">();
+            
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">xhrOnLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr.readyState </span><span class="jsdoc-syntax">!== 4) {
+            </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'exception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">xhr</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">response </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr.responseText</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">response.success</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'exception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">xhr</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= 0;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file.id</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">file.id </span><span class="jsdoc-syntax">* 1 &gt; 0){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">this.files</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">response.data</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">++;
+            
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">();
+        
+    },
+    
+    </span><span class="jsdoc-var">xhrOnError </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xhr on error'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">response </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr.responseText</span><span class="jsdoc-syntax">);
+          
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
     }
     
     

@@ -1,0 +1,135 @@
+<html><head><title>../roojs1/Roo/bootstrap/DocumentViewer.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty">
+<span class="jsdoc-comment">/*
+* Licence: LGPL
+*/
+
+/**
+ * @class Roo.bootstrap.DocumentViewer
+ * @extends Roo.bootstrap.Component
+ * Bootstrap DocumentViewer class
+ * @cfg {Number} thumbWidth default 300
+ * @cfg {Number} thumbHeight default 300
+ * 
+ * @constructor
+ * Create a new DocumentViewer
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.DocumentViewer </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.DocumentViewer.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+         * @event initial
+         * Fire after initEvent
+         * @param {Roo.bootstrap.DocumentViewer} this
+         */
+        </span><span class="jsdoc-string">&quot;initial&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        
+    </span><span class="jsdoc-syntax">});
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.DocumentViewer</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    </span><span class="jsdoc-var">thumbWidth </span><span class="jsdoc-syntax">: 300,
+    </span><span class="jsdoc-var">thumbHeight </span><span class="jsdoc-syntax">: 300,
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-document-viewer'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-document-viewer-body'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-document-viewer-thumb'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'width: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.thumbWidth </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px; height: ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.thumbHeight </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'px;'
+                        </span><span class="jsdoc-syntax">}
+                    ]
+                },
+                {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-document-viewer-footer'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: {
+                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn-group btn-group-justified roo-document-viewer-btn-group'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                            {
+                                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn-group'</span><span class="jsdoc-syntax">,
+                                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                                    {
+                                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
+                                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-default roo-document-viewer-trash'</span><span class="jsdoc-syntax">,
+                                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;i class=&quot;fa fa-trash&quot;&gt;&lt;/i&gt;'
+                                    </span><span class="jsdoc-syntax">}
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        };
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">initEvents </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        
+        </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-document-viewer-body'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.bodyEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.thumbEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-document-viewer-thumb'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.thumbEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.footerEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-document-viewer-footer'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.footerEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.trashBtn </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-document-viewer-trash'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.trashBtn.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">window.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">_this.resize</span><span class="jsdoc-syntax">(); } );
+        
+        </span><span class="jsdoc-var">this.bodyEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.trashBtn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onTrash</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'initial'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        
+    },
+    
+    </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.setThumbBoxPosition</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">setThumbBoxPosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.bodyEl.getWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">()) / 2 );
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.bodyEl.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">()) / 2);
+        
+        </span><span class="jsdoc-var">this.thumbEl.setLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.thumbEl.setTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        
+    },
+    
+    </span><span class="jsdoc-var">onTrash </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        
+    }
+    
+});
+</span></code></body></html>
