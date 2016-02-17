@@ -349,6 +349,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     clear : function()
     {
+        return;
         var files = [];
         
         Roo.each(this.files, function(file){
