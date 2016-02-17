@@ -338,6 +338,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             o.target.remove();
 
         }, this);
+        
+        this.refresh();
     },
     
     onClick : function(e, el, o)
