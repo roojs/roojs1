@@ -334,26 +334,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
     },
     
-    clear : function()
-    {
-        var files = [];
-        
-        Roo.each(this.files, function(file){
-            
-            if(typeof(file.status) != 'undefined' && file.status == 'DELETED'){
-                file.target.remove();
-                return;
-            }
-            
-            files.push(file);
-            
-        }, this);
-        
-        this.files = files;
-        
-        this.refresh();
-    },
-    
     xhrOnLoad : function(xhr)
     {
         if (xhr.readyState !== 4) {
