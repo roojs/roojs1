@@ -335,7 +335,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     onPreviewClick : function(e, a, b)
     {
-        Roo.log(e, a, b);
+        Roo.log([e, a, b]);
         
     },
     
