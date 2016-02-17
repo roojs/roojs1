@@ -130,6 +130,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.uploader.on('click', this.onUpload, this);
         
+        var _this = this;
+        
+        window.addEventListener("resize", function() { _this.refresh(); } );
+        
     },
     
     onUpload : function(e)
