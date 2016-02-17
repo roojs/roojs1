@@ -330,8 +330,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 if(typeof(file.id) != 'undefined' && file.id * 1 > 0 && file.id == o.id){
                     return;
                 }
-                Roo.log(file.id);
-                Roo.log(o.id);
                 
                 files.push(file);
 
