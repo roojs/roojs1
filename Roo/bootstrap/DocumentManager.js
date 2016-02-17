@@ -157,7 +157,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             this.el.createChild({
                 tag : 'div',
-                cls : 'roo-document-manager-block',
+                cls : 'roo-document-manager-preview',
                 cn : [
                     {
                         tag : 'div',
