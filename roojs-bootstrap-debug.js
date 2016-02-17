@@ -1137,6 +1137,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                 
                 cfg.cn.push({
                     cls : 'panel-heading',
+                    style : this.expandable ? 'cursor: pointer' : '',
                     cn : h
                 });
                 
