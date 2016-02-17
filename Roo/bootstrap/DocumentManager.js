@@ -324,10 +324,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         if(this.fireEvent('beforeremove', this, o) != false){
             
             var files = [];
-            Roo.log('run??');
             
             Roo.each(this.files, function(file){
                 if(typeof(file.id) != 'undefined' && file.id * 1 > 0 && file.id == o.id){
+                    o.target.remove();
                     return;
                 }
                 
