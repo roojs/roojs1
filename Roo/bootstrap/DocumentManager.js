@@ -333,6 +333,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }, this);
     },
     
+    onPreviewClick : function(e, a, b)
+    {
+        Roo.log(e, a, b);
+        
+    },
+    
     xhrOnLoad : function(xhr)
     {
         if (xhr.readyState !== 4) {
