@@ -241,7 +241,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         Roo.each(this.files, function(file){
             
-            if(typeof(file.id) == 'undefined' && file.id * 1 < 1){
+            if(typeof(file.id) == 'undefined' || file.id * 1 < 1){
                 return;
             }
             
@@ -300,12 +300,18 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
     },
     
-    onRemove : function(e, a,b,c)
+    onRemove : function(e, el, o)
     {
         e.preventDefault();
         
-        Roo.log([e,a,b,c]);
-        return;
+        Roo.each(this.files, function(file, index){
+            if(typeof(file.id) == 'undefined' || file.id * 1 < 1 || file.id != o.id){
+                return;
+            }
+            
+            
+            
+        }, this);
         
         this.fireEvent('remove', this, e);
         
