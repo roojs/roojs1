@@ -22,30 +22,17 @@ Roo.bootstrap.DocumentViewer = function(config){
         /**
          * @event initial
          * Fire after initEvent
-         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {Roo.bootstrap.DocumentViewer} this
          */
         "initial" : true
         
     });
 };
 
-Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
     
-    emptyText : 'Click to upload image',
-    scale : 0,
-    baseScale : 1,
-    rotate : 0,
-    dragable : false,
-    pinching : false,
-    mouseX : 0,
-    mouseY : 0,
-    cropData : false,
     minWidth : 300,
     minHeight : 300,
-    file : false,
-    exif : {},
-    baseRotate : 1,
-    cropType : 'image/jpeg',
     
     getAutoCreate : function()
     {
