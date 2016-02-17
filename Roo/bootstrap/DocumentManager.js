@@ -58,7 +58,14 @@ Roo.bootstrap.DocumentManager = function(config){
          * Fire after refresh the file
          * @param {Roo.bootstrap.DocumentManager} this
          */
-        "refresh" : true
+        "refresh" : true,
+        /**
+         * @event click
+         * Fire after click the image
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} file
+         */
+        "click" : true
         
     });
 };
