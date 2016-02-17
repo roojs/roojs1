@@ -65,12 +65,13 @@
     .roo-document-manager-preview {
         width: 8.33333333%;
         height: 80px;
-        max-height: 80px;
+        /*max-height: 80px;*/
     }
     
     .roo-document-manager-thumb,
     .roo-document-manager-upload-btn {
         line-height: 80px;
+        height: 80px;
     }
 
     .roo-document-manager-thumb > i.fa,
