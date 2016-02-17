@@ -1126,7 +1126,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                     {
                         tag: 'span',
                         cls : 'panel-title',
-                        html : (this.expandable ? ' ' : '') + this.header
+                        html : (this.expandable ? '&nbps;' : '') + this.header
                     },
                     {
                         tag: 'span',
