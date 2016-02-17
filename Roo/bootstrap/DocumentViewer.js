@@ -46,11 +46,7 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
                     cn : [
                         {
                             tag : 'div',
-                            cls : 'roo-document-viewer-preview'
-                        },
-                        {
-                            tag : 'div',
-                            cls : 'roo-document-viewer-thumb',
+                            cls : 'roo-document-viewer-preview',
                             style : 'width: ' + this.thumbWidth + 'px; height: ' + this.thumbHeight + 'px;'
                         }
                     ]
