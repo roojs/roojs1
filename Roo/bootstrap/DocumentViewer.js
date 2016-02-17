@@ -90,6 +90,9 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         this.bodyEl = this.el.select('.roo-document-viewer-body', true).first();
         this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
+        this.previewEl = this.el.select('.roo-document-viewer-preview', true).first();
+        this.previewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
         this.thumbEl = this.el.select('.roo-document-viewer-thumb', true).first();
         this.thumbEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
