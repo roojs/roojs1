@@ -6,6 +6,8 @@
     float: left;
     width: 25%;
     padding-left: 5px;
+    height: 200px;
+    max-height: 200px;
 }
 
 .roo-document-manager-preview > .close {
