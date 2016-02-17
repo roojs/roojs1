@@ -285,7 +285,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             var close = preview.select('button.close', true).first();
             
-            close.on('click', this.onRemove, this, file );
+            close.on('click', this.onRemove, this, file);
             
             return;
             
@@ -313,7 +313,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
         }, this);
         
-        this.fireEvent('remove', this, e);
+        this.fireEvent('remove', this, o);
         
     },
     
