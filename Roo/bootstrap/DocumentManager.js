@@ -353,8 +353,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
 
-            file.status = 'DELETE';
-            o.target.mask();
+            o.target.remove();
 
         }, this);
     },
