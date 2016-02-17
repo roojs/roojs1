@@ -329,7 +329,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                     return;
                 }
                 
-                file.status == 'DELETING';
+                file.status == 'DELETED';
                 o.target.mask();
 
             }, this);
@@ -337,7 +337,22 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.fireEvent('onremove', this, o);
         }
         
+    },
+    
+    clear : function()
+    {
+        var files = [];
         
+        Roo.each(this.files, function(file){
+            if(typeof(file.status) != 'undefined' && file.status == 'DELETED'){
+                return;
+            }
+            
+            files.push(file);
+            
+        }, this);
+        
+        this.files = files;
     },
     
     xhrOnLoad : function(xhr)
