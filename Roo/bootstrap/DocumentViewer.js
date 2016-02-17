@@ -102,7 +102,7 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         
         var _this = this;
         
-        window.addEventListener("resize", function() { _this.resize(); } );
+//        window.addEventListener("resize", function() { _this.resize(); } );
         
         this.bodyEl.on('click', this.onClick, this);
         
