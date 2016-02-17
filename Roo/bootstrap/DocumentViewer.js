@@ -93,13 +93,15 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         this.trashBtn = this.el.select('.roo-document-viewer-trash', true).first();
         this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        var _this = this;
-        
-        window.addEventListener("resize", function() { _this.resize(); } );
+        this.setThumbBoxPosition();
         
         this.bodyEl.on('click', this.onClick, this);
         
         this.trashBtn.on('click', this.onTrash, this);
+        
+        var _this = this;
+        
+        window.addEventListener("resize", function() { _this.resize(); } );
         
         this.fireEvent('initial', this);
         
