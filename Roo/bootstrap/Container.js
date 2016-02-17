@@ -153,13 +153,14 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                         tag: 'i',
                         cls: (this.expanded ? 'fa fa-minus' : 'fa fa-plus') 
                     });
+                    
                 }
                 
                 h.push(
                     {
                         tag: 'span',
                         cls : 'panel-title',
-                        html : this.header
+                        html : (this.expandable ? ' ' : '') + this.header
                     },
                     {
                         tag: 'span',

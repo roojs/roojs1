@@ -1119,13 +1119,14 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                         tag: 'i',
                         cls: (this.expanded ? 'fa fa-minus' : 'fa fa-plus') 
                     });
+                    
                 }
                 
                 h.push(
                     {
                         tag: 'span',
                         cls : 'panel-title',
-                        html : this.header
+                        html : (this.expandable ? ' ' : '') + this.header
                     },
                     {
                         tag: 'span',
@@ -25235,7 +25236,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             files.push(file);
             
-            this.el.createChild({
+            var preview = new Roo.Element({
                 tag : 'div',
                 cls : 'roo-document-manager-preview',
                 cn : [
@@ -25243,7 +25244,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                         tag : 'div',
                         tooltip : file.filename,
                         cls : 'roo-document-manager-thumb',
-                        html : '<img src="' + baseURL +'/Images/Thumb/50/' + file.id + '/' + file.filename + '">'
+                        html : '<img src="' + baseURL +'/Images/Thumb/50x80/' + file.id + '/' + file.filename + '">'
                     },
                     {
                         tag : 'button',
@@ -25251,8 +25252,29 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                         html : 'x'
                     }
                 ]
-
+            }, true);
+            
+            var preview = this.el.createChild({
+                tag : 'div',
+                cls : 'roo-document-manager-preview',
+                cn : [
+                    {
+                        tag : 'div',
+                        tooltip : file.filename,
+                        cls : 'roo-document-manager-thumb',
+                        html : '<img src="' + baseURL +'/Images/Thumb/50x80/' + file.id + '/' + file.filename + '">'
+                    },
+                    {
+                        tag : 'button',
+                        cls : 'close',
+                        html : 'x'
+                    }
+                ]
             });
+            
+            var close = preview.select('button.close', true).first();
+            
+            close.on('click', this.onRemove, this, { item : preview, data : file} );
             
             return;
             
