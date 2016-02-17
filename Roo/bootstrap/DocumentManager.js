@@ -51,7 +51,7 @@ Roo.bootstrap.DocumentManager = function(config){
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {Object} file
          */
-        "prepare" : true
+        "remove" : true
         
     });
 };
