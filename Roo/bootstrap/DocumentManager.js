@@ -272,7 +272,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
             
             if(file.target && file.status == 'DELETE'){
-                files.push(file);
+                files.target.remove();
                 return;
             }
             
