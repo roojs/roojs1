@@ -327,6 +327,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             Roo.each(this.files, function(file){
                 if(typeof(file.id) != 'undefined' && file.id * 1 > 0 && file.id == o.id){
+                    Roo.log('run???');
                     o.target.remove();
                     return;
                 }
