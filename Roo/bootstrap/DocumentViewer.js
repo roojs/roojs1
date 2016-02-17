@@ -7,8 +7,6 @@
  * @class Roo.bootstrap.DocumentViewer
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentViewer class
- * @cfg {Number} thumbWidth default 300
- * @cfg {Number} thumbHeight default 300
  * 
  * @constructor
  * Create a new DocumentViewer
@@ -24,16 +22,24 @@ Roo.bootstrap.DocumentViewer = function(config){
          * Fire after initEvent
          * @param {Roo.bootstrap.DocumentViewer} this
          */
-        "initial" : true
+        "initial" : true,
+        /**
+         * @event click
+         * Fire after click
+         * @param {Roo.bootstrap.DocumentViewer} this
+         */
+        "click" : true,
+        /**
+         * @event trash
+         * Fire after trash button
+         * @param {Roo.bootstrap.DocumentViewer} this
+         */
+        "trash" : true
         
     });
 };
 
 Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
-    
-    thumbWidth : 300,
-    thumbHeight : 300,
-    file : false,
     
     getAutoCreate : function()
     {
@@ -48,7 +54,12 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
                         {
                             tag : 'div',
                             cls : 'roo-document-viewer-thumb',
-                            style : 'width: ' + this.thumbWidth + 'px; height: ' + this.thumbHeight + 'px;',
+                            cn : [
+                                {
+                                    tag : 'img',
+                                    cls : 'roo-document-viewer-image'
+                                }
+                            ]
                         }
                     ]
                 },
@@ -88,6 +99,9 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         this.thumbEl = this.el.select('.roo-document-viewer-thumb', true).first();
         this.thumbEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
+        this.imageEl = this.el.select('.roo-document-viewer-image', true).first();
+        this.imageEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
         this.footerEl = this.el.select('.roo-document-viewer-footer', true).first();
         this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
@@ -98,25 +112,28 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         
         this.trashBtn.on('click', this.onTrash, this);
         
+    },
+    
+    initial : function()
+    {
+        this.thumbEl.setStyle('line-height', this.thumbEl.getHeight(true) + 'px');
+        
         this.fireEvent('initial', this);
-    },
-    
-    set : function(file)
-    {
-        this.file = file;
-        
-        this.thumbEl.setStyle('background-image', 'url("' + baseURL +'/Images/Thumb/' + this.thumbWidth + '/' + file.id + '/' + file.filename + '")');
         
     },
     
-    onClick : function()
+    onClick : function(e)
     {
+        e.preventDefault();
         
+        this.fireEvent('click', this);
     },
     
-    onTrash : function()
+    onTrash : function(e)
     {
+        e.preventDefault();
         
+        this.fireEvent('trash', this);
     }
     
 });
