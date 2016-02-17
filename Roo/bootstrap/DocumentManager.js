@@ -58,7 +58,13 @@ Roo.bootstrap.DocumentManager = function(config){
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {Object} file
          */
-        "onremove" : true
+        "onremove" : true,
+        /**
+         * @event refresh
+         * Fire after refresh the file
+         * @param {Roo.bootstrap.DocumentManager} this
+         */
+        "refresh" : true
         
     });
 };
