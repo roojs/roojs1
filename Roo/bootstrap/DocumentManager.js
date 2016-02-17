@@ -44,6 +44,13 @@ Roo.bootstrap.DocumentManager = function(config){
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {Object} formData
          */
+        "prepare" : true,
+        /**
+         * @event remove
+         * Fire when remove the file
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} file
+         */
         "prepare" : true
         
     });
