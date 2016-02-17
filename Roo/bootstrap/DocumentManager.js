@@ -297,8 +297,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             file.target = previewEl;
             
-            file.status = 'ACTIVE';
-            
             files.push(file);
             
             return;
