@@ -357,7 +357,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         Roo.each(this.el.select('.roo-document-manager-preview > button.close', true).elements, function(el){
             
-            (closable) ? el.show() : el.hide();
+            el.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+            
+            if(closable){
+                el.show();
+                return;
+            }
+            
+            el.hide();
             
         }, this);
     },
