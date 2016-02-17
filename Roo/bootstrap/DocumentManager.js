@@ -319,6 +319,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.uploader.hide();
         }
         
+        Roo.isTouch ? this.closable(false) : this.closable(true);
+        
         this.fireEvent('refresh', this);
     },
     
