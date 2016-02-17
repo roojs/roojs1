@@ -272,12 +272,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var i = 0;
         
         Roo.each(this.files, function(file, index){
+            
             if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
                 return;
             }
             
             this.files[index] = response.data[i];
             i++;
+            
             return;
             
         }, this);
