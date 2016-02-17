@@ -1117,7 +1117,7 @@ Roo.extend(Roo.bootstrap.Container, Roo.bootstrap.Component,  {
                     
                     h.push({
                         tag: 'i',
-                        cls: 'fa fa-minus'
+                        cls: (this.expanded ? 'fa fa-minus' : 'fa fa-plus') 
                     });
                 }
                 
