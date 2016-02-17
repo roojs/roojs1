@@ -337,15 +337,13 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                     return;
                 }
                 
-                file.status == 'DELETED';
+                file.status = 'DELETED';
                 o.target.mask();
-                Roo.log(file);
 
             }, this);
 
             this.fireEvent('onremove', this, o);
         }
-        Roo.log(this.files);
     },
     
     clear : function()
@@ -354,9 +352,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var files = [];
         
         Roo.each(this.files, function(file){
-            Roo.log(file.status);
+            
             if(typeof(file.status) != 'undefined' && file.status == 'DELETED'){
-                Roo.log(file.target);
                 file.target.remove();
                 return;
             }
