@@ -166,6 +166,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         this.selectorEl.reset();
         
+        Roo.log(this.selectorEl);
+        
         if(!this.files.length){
             return;
         }
