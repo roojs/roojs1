@@ -353,6 +353,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }, this);
         
         this.files = files;
+        
+        this.refresh();
     },
     
     xhrOnLoad : function(xhr)
