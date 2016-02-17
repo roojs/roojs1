@@ -25004,6 +25004,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
  * @cfg {Boolean} multiple multiple upload default true
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
+ * @cfg {Number} thumbSize default 300
  * 
  * @constructor
  * Create a new DocumentManager
@@ -25034,7 +25035,27 @@ Roo.bootstrap.DocumentManager = function(config){
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {Object} formData
          */
-        "prepare" : true
+        "prepare" : true,
+        /**
+         * @event remove
+         * Fire when remove the file
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} file
+         */
+        "remove" : true,
+        /**
+         * @event refresh
+         * Fire after refresh the file
+         * @param {Roo.bootstrap.DocumentManager} this
+         */
+        "refresh" : true,
+        /**
+         * @event click
+         * Fire after click the image
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} file
+         */
+        "click" : true
         
     });
 };
@@ -25045,6 +25066,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     inputName : '',
     minWidth : 300,
     minHeight : 300,
+    thumbSize : 300,
     multiple : true,
     files : [],
     method : 'POST',
@@ -25098,6 +25120,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.uploader.on('click', this.onUpload, this);
         
+        var _this = this;
+        
+        window.addEventListener("resize", function() { _this.refresh(); } );
+        
     },
     
     onUpload : function(e)
@@ -25147,7 +25173,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             this.el.createChild({
                 tag : 'div',
-                cls : 'roo-document-manager-preview',
+                cls : 'roo-document-manager-loading',
                 cn : [
                     {
                         tag : 'div',
@@ -25223,21 +25249,25 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     refresh : function()
     {
-        Roo.each(this.el.select('.roo-document-manager-preview', true).elements, function(el){
+        Roo.each(this.el.select('.roo-document-manager-loading', true).elements, function(el){
             el.remove();
         }, this);
+        
         
         var files = [];
         
         Roo.each(this.files, function(file){
             
-            if(typeof(file.id) == 'undefined' && file.id * 1 < 1){
+            if(typeof(file.id) == 'undefined' || file.id * 1 < 1){
                 return;
             }
             
-            files.push(file);
+            if(file.target){
+                files.push(file);
+                return;
+            }
             
-            var preview = new Roo.Element({
+            var previewEl = this.el.createChild({
                 tag : 'div',
                 cls : 'roo-document-manager-preview',
                 cn : [
@@ -25245,25 +25275,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                         tag : 'div',
                         tooltip : file.filename,
                         cls : 'roo-document-manager-thumb',
-                        html : '<img src="' + baseURL +'/Images/Thumb/50x80/' + file.id + '/' + file.filename + '">'
-                    },
-                    {
-                        tag : 'button',
-                        cls : 'close',
-                        html : 'x'
-                    }
-                ]
-            }, true);
-            
-            var preview = this.el.createChild({
-                tag : 'div',
-                cls : 'roo-document-manager-preview',
-                cn : [
-                    {
-                        tag : 'div',
-                        tooltip : file.filename,
-                        cls : 'roo-document-manager-thumb',
-                        html : '<img src="' + baseURL +'/Images/Thumb/50x80/' + file.id + '/' + file.filename + '">'
+                        html : '<img src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
                     },
                     {
                         tag : 'button',
@@ -25273,9 +25285,17 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 ]
             });
             
-            var close = preview.select('button.close', true).first();
+            var close = previewEl.select('button.close', true).first();
             
-            close.on('click', this.onRemove, this, { item : preview, data : file} );
+            close.on('click', this.onRemove, this, file);
+            
+            file.target = previewEl;
+            
+            var image = previewEl.select('img', true).first();
+            
+            image.on('click', this.onClick, this, file);
+            
+            files.push(file);
             
             return;
             
@@ -25288,6 +25308,61 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         if(this.files.length > 11){
             this.uploader.hide();
         }
+        
+        Roo.isTouch ? this.closable(false) : this.closable(true);
+        
+        this.fireEvent('refresh', this);
+    },
+    
+    onRemove : function(e, el, o)
+    {
+        e.preventDefault();
+        
+        this.fireEvent('remove', this, o);
+        
+    },
+    
+    remove : function(o)
+    {
+        var files = [];
+        
+        Roo.each(this.files, function(file){
+            if(typeof(file.id) == 'undefined' || file.id * 1 < 1 || file.id != o.id){
+                files.push(file);
+                return;
+            }
+
+            o.target.remove();
+
+        }, this);
+        
+        this.files = files;
+        
+        this.refresh();
+    },
+    
+    onClick : function(e, el, o)
+    {
+        e.preventDefault();
+        
+        this.fireEvent('click', this, o);
+        
+    },
+    
+    closable : function(closable)
+    {
+        Roo.each(this.el.select('.roo-document-manager-preview > button.close', true).elements, function(el){
+            
+            el.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+            
+            if(closable){
+                el.show();
+                return;
+            }
+            
+            el.hide();
+            
+        }, this);
     },
     
     xhrOnLoad : function(xhr)
@@ -25335,5 +25410,138 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     }
     
     
+    
+});
+/*
+* Licence: LGPL
+*/
+
+/**
+ * @class Roo.bootstrap.DocumentViewer
+ * @extends Roo.bootstrap.Component
+ * Bootstrap DocumentViewer class
+ * @cfg {Number} thumbWidth default 300
+ * @cfg {Number} thumbHeight default 300
+ * 
+ * @constructor
+ * Create a new DocumentViewer
+ * @param {Object} config The config object
+ */
+
+Roo.bootstrap.DocumentViewer = function(config){
+    Roo.bootstrap.DocumentViewer.superclass.constructor.call(this, config);
+    
+    this.addEvents({
+        /**
+         * @event initial
+         * Fire after initEvent
+         * @param {Roo.bootstrap.DocumentViewer} this
+         */
+        "initial" : true
+        
+    });
+};
+
+Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
+    
+    thumbWidth : 300,
+    thumbHeight : 300,
+    
+    getAutoCreate : function()
+    {
+        var cfg = {
+            tag : 'div',
+            cls : 'roo-document-viewer',
+            cn : [
+                {
+                    tag : 'div',
+                    cls : 'roo-document-viewer-body',
+                    cn : [
+                        {
+                            tag : 'div',
+                            cls : 'roo-document-viewer-thumb',
+                            style : 'width: ' + this.thumbWidth + 'px; height: ' + this.thumbHeight + 'px;'
+                        }
+                    ]
+                },
+                {
+                    tag : 'div',
+                    cls : 'roo-document-viewer-footer',
+                    cn : {
+                        tag : 'div',
+                        cls : 'btn-group btn-group-justified roo-document-viewer-btn-group',
+                        cn : [
+                            {
+                                tag : 'div',
+                                cls : 'btn-group',
+                                cn : [
+                                    {
+                                        tag : 'button',
+                                        cls : 'btn btn-default roo-document-viewer-trash',
+                                        html : '<i class="fa fa-trash"></i>'
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        };
+        
+        return cfg;
+    },
+    
+    initEvents : function()
+    {
+        
+        this.bodyEl = this.el.select('.roo-document-viewer-body', true).first();
+        this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.thumbEl = this.el.select('.roo-document-viewer-thumb', true).first();
+        this.thumbEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.footerEl = this.el.select('.roo-document-viewer-footer', true).first();
+        this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.trashBtn = this.el.select('.roo-document-viewer-trash', true).first();
+        this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        var _this = this;
+        
+        window.addEventListener("resize", function() { _this.resize(); } );
+        
+        this.bodyEl.on('click', this.onClick, this);
+        
+        this.trashBtn.on('click', this.onTrash, this);
+        
+        this.fireEvent('initial', this);
+        
+        
+    },
+    
+    resize : function()
+    {
+        this.setThumbBoxPosition();
+    },
+    
+    setThumbBoxPosition : function()
+    {
+        var x = Math.ceil((this.bodyEl.getWidth() - this.thumbEl.getWidth()) / 2 );
+        var y = Math.ceil((this.bodyEl.getHeight() - this.thumbEl.getHeight()) / 2);
+        
+        this.thumbEl.setLeft(x);
+        this.thumbEl.setTop(y);
+        
+    },
+    
+    onClick : function()
+    {
+        
+    },
+    
+    onTrash : function()
+    {
+        
+    }
     
 });
