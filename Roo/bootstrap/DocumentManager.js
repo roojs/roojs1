@@ -329,7 +329,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         o.target.mask();
         
-        o.status = 'DELETE';
+//        file.status = 'DELETE';
         
         this.fireEvent('remove', this, o);
         
