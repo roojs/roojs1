@@ -108,24 +108,8 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         
         window.addEventListener("resize", function() { _this.resize(); } );
         
-        if(!this.bodyHasOnClickEvent){
-            this.bodyEl.on('click', this.beforeSelectFile, this);
-            this.bodyHasOnClickEvent = true;
-        }
         
-        if(Roo.isTouch){
-            this.bodyEl.on('touchstart', this.onTouchStart, this);
-            this.bodyEl.on('touchmove', this.onTouchMove, this);
-            this.bodyEl.on('touchend', this.onTouchEnd, this);
-        }
-        
-        if(!Roo.isTouch){
-            this.bodyEl.on('mousedown', this.onMouseDown, this);
-            this.bodyEl.on('mousemove', this.onMouseMove, this);
-            var mousewheel = (/Firefox/i.test(navigator.userAgent))? 'DOMMouseScroll' : 'mousewheel';
-            this.bodyEl.on(mousewheel, this.onMouseWheel, this);
-            Roo.get(document).on('mouseup', this.onMouseUp, this);
-        }
+        this.bodyEl.on('click', this.onClick, this);
         
         this.pictureBtn.on('click', this.beforeSelectFile, this);
         
