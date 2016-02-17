@@ -294,7 +294,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             var image = previewEl.select('img', true).first();
             
-            image.on('click', this.onPreviewClick, image, file);
+            image.on('click', this.onClick, image, file);
             
             files.push(file);
             
@@ -333,9 +333,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }, this);
     },
     
-    onPreviewClick : function(e, a, b)
+    onClick : function(e, el, o)
     {
-        Roo.log([e, a, b]);
+        e.preventDefault();
+        
+        this.fireEvent('click')
         
     },
     
