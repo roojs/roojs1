@@ -352,6 +352,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var files = [];
         
         Roo.each(this.files, function(file){
+            Roo.log(file.status);
             if(typeof(file.status) != 'undefined' && file.status == 'DELETED'){
                 Roo.log(file.target);
                 file.target.remove();
