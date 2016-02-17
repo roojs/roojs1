@@ -311,16 +311,19 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        Roo.each(this.files, function(file, index){
-            if(typeof(file.id) == 'undefined' || file.id * 1 < 1 || file.id != o.id){
-                return;
-            }
-            
-            this.files.splice(index, 1);
-            
-        }, this);
+        if(this.fireEvent('beforeremove', this, o) != false){
+            Roo.each(this.files, function(file, index){
+                if(typeof(file.id) == 'undefined' || file.id * 1 < 1 || file.id != o.id){
+                    return;
+                }
+
+                this.files.splice(index, 1);
+
+            }, this);
+
+            this.fireEvent('onremove', this, o);
+        }
         
-        this.fireEvent('remove', this, o);
         
     },
     
