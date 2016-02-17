@@ -146,11 +146,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     onSelect : function(e)
     {
-        Roo.log('onsleect');
         e.preventDefault();
         
         if(typeof(this.selectorEl.dom.files) == 'undefined' || !this.selectorEl.dom.files.length){
-            Roo.log('nothing');
             return;
         }
         
