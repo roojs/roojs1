@@ -1,5 +1,6 @@
 
-.roo-document-manager-block {
+.roo-document-manager-uploader,
+.roo-document-manager-preview {
     float: left;
     width: 25%;
 }
