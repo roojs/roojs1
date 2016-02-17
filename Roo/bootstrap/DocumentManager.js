@@ -324,26 +324,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.fireEvent('remove', this, o);
         
-        return;
-//        file.status = 'DELETE';
-        
-        this.fireEvent('remove', this, o);
-        
-//        if(this.fireEvent('beforeremove', this, o) != false){
-//            
-//            Roo.each(this.files, function(file){
-//                if(typeof(file.id) == 'undefined' || file.id * 1 < 1 || file.id != o.id){
-//                    return;
-//                }
-//                
-//                file.status = 'DELETE';
-//                o.target.mask();
-//
-//            }, this);
-//
-//            this.fireEvent('onremove', this, o);
-//        }
-        
     },
     
     remove : function(o)
