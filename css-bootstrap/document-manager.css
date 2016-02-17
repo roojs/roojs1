@@ -62,8 +62,8 @@
     .roo-document-manager-loading,
     .roo-document-manager-preview {
         width: 8.33333333%;
-        height: 100px;
-        max-height: 100px;
+        height: 80px;
+        max-height: 80px;
     }
     
 }
