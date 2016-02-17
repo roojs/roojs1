@@ -266,25 +266,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }, true);
             
             Roo.log(preview);
-            return;
             
-            this.el.createChild({
-                tag : 'div',
-                cls : 'roo-document-manager-preview',
-                cn : [
-                    {
-                        tag : 'div',
-                        tooltip : file.filename,
-                        cls : 'roo-document-manager-thumb',
-                        html : '<img src="' + baseURL +'/Images/Thumb/50x80/' + file.id + '/' + file.filename + '">'
-                    },
-                    {
-                        tag : 'button',
-                        cls : 'close',
-                        html : 'x'
-                    }
-                ]
-            });
+            
+            this.el.createChild(preview);
             
             
             
