@@ -277,6 +277,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     xhrOnLoad : function(xhr)
     {
         if (xhr.readyState !== 4) {
+            this.refresh();
+            this.fireEvent('exception', this, xhr);
             return;
         }
 
