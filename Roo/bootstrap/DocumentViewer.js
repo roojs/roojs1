@@ -106,6 +106,7 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         this.file = file;
         
         this.thumbEl.setStyle('background-image', 'url("' + baseURL +'/Images/Thumb/' + this.thumbWidth + '/' + file.id + '/' + file.filename + '")');
+        
     },
     
     onClick : function()
