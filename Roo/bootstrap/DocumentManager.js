@@ -239,10 +239,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         var files = [];
         
-        Roo.log('run??');
-        
-        return;
-        
         Roo.each(this.files, function(file){
             
             if(typeof(file.id) == 'undefined' && file.id * 1 < 1){
