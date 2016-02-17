@@ -9,7 +9,7 @@
     cursor:move;
 }
 
-.roo-document-viewer-body .roo-document-viewer-preview {
+.roo-document-viewer-body .roo-document-viewer-thumb {
     position: absolute;
     top: 50%;
     left: 50%;
