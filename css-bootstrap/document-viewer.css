@@ -11,6 +11,9 @@
 
 .roo-document-viewer-body .roo-document-viewer-thumb {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     box-sizing: border-box;
     border: 1px solid rgb(102, 102, 102);
     box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.5);
