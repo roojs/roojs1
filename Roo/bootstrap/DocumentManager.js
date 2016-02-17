@@ -279,7 +279,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 ]
             }, true);
             
-            var preview = this.el.createChild({
+            var previewEl = this.el.createChild({
                 tag : 'div',
                 cls : 'roo-document-manager-preview',
                 cn : [
@@ -297,7 +297,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 ]
             });
             
-            var close = preview.select('button.close', true).first();
+            var close = previewEl.select('button.close', true).first();
             
             close.on('click', this.onRemove, this, file);
             
