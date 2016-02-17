@@ -332,6 +332,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         e.preventDefault();
         
+        Roo.log(this.files);
+        
         if(this.fireEvent('beforeremove', this, o) != false){
             
             Roo.each(this.files, function(file){
