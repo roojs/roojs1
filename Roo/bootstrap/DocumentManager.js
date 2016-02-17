@@ -266,8 +266,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
             
-            if(file.target){
-                
+            if(file.target && file.status == 'ACTIVE'){
+                files.push(file);
+                return;
+            }
+            
+            if(file.target && file.status == 'DELETED'){
+                file.target.remove();
+                return;
             }
             
             var preview = new Roo.Element({
