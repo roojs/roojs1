@@ -10,7 +10,8 @@
 .roo-document-manager-preview > .close {
     position: absolute;
     top: 0px;
-    right: 0px;
+    right: 3px;
+    font-size: 15px;
 }
 
 .roo-document-manager-thumb,
