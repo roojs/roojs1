@@ -105,6 +105,7 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         
     },
     
+    
     resize : function()
     {
         this.setThumbBoxPosition();
