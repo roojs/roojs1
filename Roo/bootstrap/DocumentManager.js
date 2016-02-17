@@ -47,19 +47,12 @@ Roo.bootstrap.DocumentManager = function(config){
          */
         "prepare" : true,
         /**
-         * @event beforeremove
-         * Fire before remove the file
+         * @event remove
+         * Fire when remove the file
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {Object} file
          */
-        "beforeremove" : true,
-        /**
-         * @event onremove
-         * Fire after remove the file
-         * @param {Roo.bootstrap.DocumentManager} this
-         * @param {Object} file
-         */
-        "onremove" : true,
+        "remove" : true,
         /**
          * @event refresh
          * Fire after refresh the file
