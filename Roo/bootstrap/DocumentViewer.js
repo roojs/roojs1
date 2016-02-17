@@ -104,8 +104,6 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         window.addEventListener("resize", function() { _this.resize(); } );
         
         this.fireEvent('initial', this);
-        
-        
     },
     
     resize : function()
