@@ -266,7 +266,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
             
-            if(file.target){
+            if(file.target && file.status == 'ACTIVE'){
+                files.push(file);
+                return;
+            }
+            
+            if(file.target && file.status == 'DELETE'){
                 files.push(file);
                 return;
             }
@@ -324,7 +329,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                     return;
                 }
                 
-                file.status = 'DELETED';
+                file.status = 'DELETE';
                 o.target.mask();
 
             }, this);
