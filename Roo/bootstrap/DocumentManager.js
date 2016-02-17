@@ -329,6 +329,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }, this);
 
             this.refresh();
+            
             this.fireEvent('onremove', this, o);
         }
         
