@@ -74,7 +74,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 },
                 {
                     tag : 'div',
-                    cls : 'roo-document-manager-block roo-document-manager-uploader',
+                    cls : 'roo-document-manager-uploader',
                     cn : [
                         {
                             tag : 'div',
