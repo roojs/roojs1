@@ -322,12 +322,15 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         if(this.fireEvent('beforeremove', this, o) != false){
+            
+            var files = [];
+            
             Roo.each(this.files, function(file, index){
-                if(typeof(file.id) == 'undefined' || file.id * 1 < 1 || file.id != o.id){
+                if(typeof(file.id) != 'undefined' && file.id * 1 > 0 && file.id == o.id){
                     return;
                 }
 
-                this.files.splice(index, 1);
+                files.push(file);
 
             }, this);
 
