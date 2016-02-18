@@ -128,33 +128,33 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         cn : [
                             {
                                 tag : 'div',
-                                cls : 'btn-group',
+                                cls : 'btn-group roo-upload-cropbox-rotate-left',
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-rotate-left',
+                                        cls : 'btn btn-default',
                                         html : '<i class="fa fa-undo"></i>'
                                     }
                                 ]
                             },
                             {
                                 tag : 'div',
-                                cls : 'btn-group',
+                                cls : 'btn-group roo-upload-cropbox-picture',
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-picture',
+                                        cls : 'btn btn-default',
                                         html : '<i class="fa fa-picture-o"></i>'
                                     }
                                 ]
                             },
                             {
                                 tag : 'div',
-                                cls : 'btn-group',
+                                cls : 'btn-group roo-upload-cropbox-trash',
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-trash',
+                                        cls : 'btn btn-default',
                                         html : '<i class="fa fa-trash"></i>'
                                     }
                                 ]
