@@ -76,7 +76,7 @@ Roo.bootstrap.UploadCropbox = function(config){
         
     });
     
-    this.buttons = this.buttons || [];
+    this.buttons = this.buttons || Roo.bootstrap.UploadCropbox.footer.STANDARD;
 };
 
 Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
@@ -96,7 +96,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     exif : {},
     baseRotate : 1,
     cropType : 'image/jpeg',
-    buttons : false,
+    buttons : Roo.bootstrap.UploadCropbox.footer.STANDARD,
     
     getAutoCreate : function()
     {
