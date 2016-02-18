@@ -184,30 +184,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         this.footerEl.hide();
         
-//        this.rotateLeft = this.el.select('.roo-upload-cropbox-rotate-left', true).first();
-//        this.rotateLeft.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
-//        this.rotateLeft.hide();
-//        
-//        this.pictureBtn = this.el.select('.roo-upload-cropbox-picture', true).first();
-//        this.pictureBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
-//        this.pictureBtn.hide();
-//        
-//        this.trashBtn = this.el.select('.roo-upload-cropbox-trash', true).first();
-//        this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
-//        this.trashBtn.hide();
-//        
-//        this.saveBtn = this.el.select('.roo-upload-cropbox-save', true).first();
-//        this.saveBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
-//        this.saveBtn.hide();
-//        
-//        this.rotateRight = this.el.select('.roo-upload-cropbox-rotate-right', true).first();
-//        this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
-//        this.rotateRight.hide();
-//        
-//        Roo.each(this.buttons, function(btn){
-//            this[btn].show();
-//        }, this);
-        
         this.setThumbBoxSize();
         
         this.bind();
@@ -239,17 +215,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.bodyEl.on(mousewheel, this.onMouseWheel, this);
             Roo.get(document).on('mouseup', this.onMouseUp, this);
         }
-        
-//        this.pictureBtn.on('click', this.beforeSelectFile, this);
-//        
-//        this.trashBtn.on('click', this.onTrash, this);
-//        
-//        this.saveBtn.on('click', this.onSave, this);
-//        
-//        this.rotateLeft.on('click', this.onRotateLeft, this);
-//        
-//        this.rotateRight.on('click', this.onRotateRight, this);
-        
     },
     
     reset : function()
