@@ -278,9 +278,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.setCanvasPosition();
     },
     
-    onFooterButtonClick : function(btn, e)
+    onFooterButtonClick : function(a,b,c,d)
     {
-        Roo.log([btn, e]);
+        Roo.log([a,b,c,d]);
     },
     
     beforeSelectFile : function(e)
