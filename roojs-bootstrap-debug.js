@@ -23945,6 +23945,7 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
  * @cfg {String} emptyText show when image has been loaded
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
+ * @cfg {Array} footer default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -23994,7 +23995,19 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {String} src
          */
-        "beforeloadcanvas" : true
+        "beforeloadcanvas" : true,
+        /**
+         * @event trash
+         * Fire when trash image
+         * @param {Roo.bootstrap.UploadCropbox} this
+         */
+        "trash" : true,
+        /**
+         * @event save
+         * Fire when save the image
+         * @param {Roo.bootstrap.UploadCropbox} this
+         */
+        "save" : true
         
     });
 };
@@ -24016,6 +24029,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     exif : {},
     baseRotate : 1,
     cropType : 'image/jpeg',
+    buttons : ['rotateLeft', 'pictureBtn', 'rotateRight'],
     
     getAutoCreate : function()
     {
@@ -24051,33 +24065,55 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         cn : [
                             {
                                 tag : 'div',
-                                cls : 'btn-group',
+                                cls : 'btn-group roo-upload-cropbox-rotate-left',
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-rotate-left',
+                                        cls : 'btn btn-default',
                                         html : '<i class="fa fa-undo"></i>'
                                     }
                                 ]
                             },
                             {
                                 tag : 'div',
-                                cls : 'btn-group',
+                                cls : 'btn-group roo-upload-cropbox-picture',
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-picture',
+                                        cls : 'btn btn-default',
                                         html : '<i class="fa fa-picture-o"></i>'
                                     }
                                 ]
                             },
                             {
                                 tag : 'div',
-                                cls : 'btn-group',
+                                cls : 'btn-group roo-upload-cropbox-trash',
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-rotate-right',
+                                        cls : 'btn btn-default',
+                                        html : '<i class="fa fa-trash"></i>'
+                                    }
+                                ]
+                            },
+                            {
+                                tag : 'div',
+                                cls : 'btn-group roo-upload-cropbox-save',
+                                cn : [
+                                    {
+                                        tag : 'button',
+                                        cls : 'btn btn-default',
+                                        html : '<i class="fa fa-floppy-o"></i>'
+                                    }
+                                ]
+                            },
+                            {
+                                tag : 'div',
+                                cls : 'btn-group roo-upload-cropbox-rotate-right',
+                                cn : [
+                                    {
+                                        tag : 'button',
+                                        cls : 'btn btn-default',
                                         html : '<i class="fa fa-repeat"></i>'
                                     }
                                 ]
@@ -24116,13 +24152,28 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.footerEl.hide();
         
         this.rotateLeft = this.el.select('.roo-upload-cropbox-rotate-left', true).first();
-        this.rotateLeft.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.rotateLeft.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
+        this.rotateLeft.hide();
         
         this.pictureBtn = this.el.select('.roo-upload-cropbox-picture', true).first();
-        this.pictureBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.pictureBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
+        this.pictureBtn.hide();
+        
+        this.trashBtn = this.el.select('.roo-upload-cropbox-trash', true).first();
+        this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
+        this.trashBtn.hide();
+        
+        this.saveBtn = this.el.select('.roo-upload-cropbox-save', true).first();
+        this.saveBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
+        this.saveBtn.hide();
         
         this.rotateRight = this.el.select('.roo-upload-cropbox-rotate-right', true).first();
-        this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
+        this.rotateRight.hide();
+        
+        Roo.each(this.buttons, function(btn){
+            this[btn].show();
+        }, this);
         
         this.setThumbBoxSize();
         
@@ -24158,6 +24209,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.pictureBtn.on('click', this.beforeSelectFile, this);
         
+        this.trashBtn.on('click', this.onTrash, this);
+        
+        this.saveBtn.on('click', this.onSave, this);
+        
         this.rotateLeft.on('click', this.onRotateLeft, this);
         
         this.rotateRight.on('click', this.onRotateRight, this);
@@ -24189,6 +24244,20 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         e.preventDefault();
         
         this.fireEvent('beforeselectfile', this);
+    },
+    
+    onTrash : function(e)
+    {
+        e.preventDefault();
+        
+        this.fireEvent('trash', this);
+    },
+    
+    onSave : function(e)
+    {
+        e.preventDefault();
+        
+        this.fireEvent('save', this);
     },
     
     loadCanvas : function(src)
@@ -25154,6 +25223,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     process : function()
     {
+        this.selectorEl.dom.value = ''
+        
         if(!this.files.length){
             return;
         }
@@ -25420,8 +25491,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.DocumentViewer
  * @extends Roo.bootstrap.Component
  * Bootstrap DocumentViewer class
- * @cfg {Number} thumbWidth default 300
- * @cfg {Number} thumbHeight default 300
  * 
  * @constructor
  * Create a new DocumentViewer
@@ -25437,15 +25506,24 @@ Roo.bootstrap.DocumentViewer = function(config){
          * Fire after initEvent
          * @param {Roo.bootstrap.DocumentViewer} this
          */
-        "initial" : true
+        "initial" : true,
+        /**
+         * @event click
+         * Fire after click
+         * @param {Roo.bootstrap.DocumentViewer} this
+         */
+        "click" : true,
+        /**
+         * @event trash
+         * Fire after trash button
+         * @param {Roo.bootstrap.DocumentViewer} this
+         */
+        "trash" : true
         
     });
 };
 
 Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
-    
-    thumbWidth : 300,
-    thumbHeight : 300,
     
     getAutoCreate : function()
     {
@@ -25460,7 +25538,12 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
                         {
                             tag : 'div',
                             cls : 'roo-document-viewer-thumb',
-                            style : 'width: ' + this.thumbWidth + 'px; height: ' + this.thumbHeight + 'px;'
+                            cn : [
+                                {
+                                    tag : 'img',
+                                    cls : 'roo-document-viewer-image'
+                                }
+                            ]
                         }
                     ]
                 },
@@ -25500,48 +25583,42 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
         this.thumbEl = this.el.select('.roo-document-viewer-thumb', true).first();
         this.thumbEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
+        this.imageEl = this.el.select('.roo-document-viewer-image', true).first();
+        this.imageEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
         this.footerEl = this.el.select('.roo-document-viewer-footer', true).first();
         this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.trashBtn = this.el.select('.roo-document-viewer-trash', true).first();
         this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        var _this = this;
-        
-        window.addEventListener("resize", function() { _this.resize(); } );
-        
         this.bodyEl.on('click', this.onClick, this);
         
         this.trashBtn.on('click', this.onTrash, this);
         
+    },
+    
+    initial : function()
+    {
+//        this.thumbEl.setStyle('line-height', this.thumbEl.getHeight(true) + 'px');
+        
+        
         this.fireEvent('initial', this);
         
-        
     },
     
-    resize : function()
+    onClick : function(e)
     {
-        this.setThumbBoxPosition();
+        e.preventDefault();
+        
+        this.fireEvent('click', this);
     },
     
-    setThumbBoxPosition : function()
+    onTrash : function(e)
     {
-        var x = Math.ceil((this.bodyEl.getWidth() - this.thumbEl.getWidth()) / 2 );
-        var y = Math.ceil((this.bodyEl.getHeight() - this.thumbEl.getHeight()) / 2);
+        e.preventDefault();
         
-        this.thumbEl.setLeft(x);
-        this.thumbEl.setTop(y);
-        
-    },
-    
-    onClick : function()
-    {
-        
-    },
-    
-    onTrash : function()
-    {
-        
+        this.fireEvent('trash', this);
     }
     
 });
