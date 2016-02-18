@@ -75,6 +75,8 @@ Roo.bootstrap.UploadCropbox = function(config){
         "save" : true
         
     });
+    
+    this.buttons = this.buttons || [];
 };
 
 Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
