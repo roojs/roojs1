@@ -10,7 +10,6 @@
  * @cfg {String} emptyText show when image has been loaded
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
- * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -94,7 +93,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     exif : {},
     baseRotate : 1,
     cropType : 'image/jpeg',
-    buttons : ['rotateLeft', 'pictureBtn', 'rotateRight'],
     
     getAutoCreate : function()
     {
@@ -218,27 +216,18 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.rotateLeft = this.el.select('.roo-upload-cropbox-rotate-left', true).first();
         this.rotateLeft.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.rotateLeft.hide();
         
         this.pictureBtn = this.el.select('.roo-upload-cropbox-picture', true).first();
         this.pictureBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.pictureBtn.hide();
         
         this.trashBtn = this.el.select('.roo-upload-cropbox-trash', true).first();
         this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.trashBtn.hide();
         
         this.saveBtn = this.el.select('.roo-upload-cropbox-save', true).first();
         this.saveBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.saveBtn.hide();
         
         this.rotateRight = this.el.select('.roo-upload-cropbox-rotate-right', true).first();
         this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.rotateRight.hide();
-        
-        Roo.each(this.buttons, function(btn){
-            this[btn].show();
-        }, this);
         
         this.setThumbBoxSize();
         
