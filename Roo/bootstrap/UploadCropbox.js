@@ -1094,6 +1094,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
             {
                 tag : 'div',
                 cls : 'btn-group roo-upload-cropbox-rotate-left',
+                action : 'rotate-left',
                 cn : [
                     {
                         tag : 'button',
@@ -1105,6 +1106,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
             {
                 tag : 'div',
                 cls : 'btn-group roo-upload-cropbox-picture',
+                action : 'picture',
                 cn : [
                     {
                         tag : 'button',
@@ -1116,6 +1118,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
             {
                 tag : 'div',
                 cls : 'btn-group roo-upload-cropbox-rotate-right',
+                action : 'rotate-right',
                 cn : [
                     {
                         tag : 'button',
@@ -1129,6 +1132,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
             {
                 tag : 'div',
                 cls : 'btn-group roo-upload-cropbox-rotate-left',
+                action : 'rotate-left',
                 cn : [
                     {
                         tag : 'button',
@@ -1140,6 +1144,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
             {
                 tag : 'div',
                 cls : 'btn-group roo-upload-cropbox-trash',
+                action : 'trash',
                 cn : [
                     {
                         tag : 'button',
@@ -1151,6 +1156,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
             {
                 tag : 'div',
                 cls : 'btn-group roo-upload-cropbox-save',
+                action : 'save',
                 cn : [
                     {
                         tag : 'button',
