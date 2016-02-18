@@ -334,7 +334,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
             
-            var previewEl = this.el.createChild({
+            var previewEl = this.managerEl.createChild({
                 tag : 'div',
                 cls : 'roo-document-manager-preview',
                 cn : [
@@ -418,7 +418,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     closable : function(closable)
     {
-        Roo.each(this.el.select('.roo-document-manager-preview > button.close', true).elements, function(el){
+        Roo.each(this.managerEl.select('.roo-document-manager-preview > button.close', true).elements, function(el){
             
             el.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
             
