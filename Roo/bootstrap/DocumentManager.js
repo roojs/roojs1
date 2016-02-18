@@ -15,6 +15,9 @@
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
  * @cfg {Number} thumbSize default 300
+ * @cfg {String} fieldLabel 
+ * @cfg {labelWidth} labelWidth default 4
+ * @cfg {labelAlign} labelAlign default left
  * 
  * @constructor
  * Create a new DocumentManager
