@@ -22010,18 +22010,6 @@
   "Roo.bootstrap.DocumentViewer": {
    "props": [
     {
-     "name": "thumbWidth",
-     "type": "Number",
-     "desc": "default 300",
-     "memberOf": ""
-    },
-    {
-     "name": "thumbHeight",
-     "type": "Number",
-     "desc": "default 300",
-     "memberOf": ""
-    },
-    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -22136,6 +22124,12 @@
      "desc": "Fires when the children have been rendered.."
     },
     {
+     "name": "click",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire after click"
+    },
+    {
      "name": "destroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -22176,6 +22170,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the component is shown."
+    },
+    {
+     "name": "trash",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire after trash button"
     }
    ],
    "methods": [
@@ -39840,6 +39840,12 @@
      "memberOf": ""
     },
     {
+     "name": "footer",
+     "type": "Array",
+     "desc": "default ['rotateLeft', 'pictureBtn', 'rotateRight']",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -40020,10 +40026,22 @@
      "desc": "Fires after the component is rendered."
     },
     {
+     "name": "save",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire when save the image"
+    },
+    {
      "name": "show",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the component is shown."
+    },
+    {
+     "name": "trash",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire when trash image"
     }
    ],
    "methods": [
