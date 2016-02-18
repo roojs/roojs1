@@ -1157,6 +1157,18 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
             },
             {
                 tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-download',
+                action : 'download',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-floppy-o"></i>'
+                    }
+                ]
+            },
+            {
+                tag : 'div',
                 cls : 'btn-group roo-upload-cropbox-trash',
                 action : 'trash',
                 cn : [
