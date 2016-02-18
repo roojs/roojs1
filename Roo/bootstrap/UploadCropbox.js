@@ -241,19 +241,19 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         switch (type) {
             case 'rotate-left' :
-                this.onRotateLeft();
+                this.onRotateLeft(e);
                 break;
             case 'rotate-right' :
-                this.onRotateRight();
+                this.onRotateRight(e);
                 break;
             case 'picture' :
-                this.beforeSelectFile();
+                this.beforeSelectFile(e);
                 break;
             case 'trash' :
-                this.trash();
+                this.trash(e);
                 break;
             case 'save' :
-                this.save();
+                this.save(e);
                 break;
             default :
                 break;
