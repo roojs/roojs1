@@ -1087,5 +1087,9 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
             },
             size: 8
         }
+    },
+    
+    footer : {
+        
     }
 });
