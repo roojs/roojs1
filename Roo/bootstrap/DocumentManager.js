@@ -85,7 +85,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     method : 'POST',
     url : '',
     paramName : 'imageUpload',
-    fieldLabel : '',
+    fieldLabel : 'tee',
     labelWidth : 4,
     labelAlign : 'left',
     
