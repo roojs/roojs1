@@ -238,7 +238,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             file.xhr = xhr;
             
-            this.el.createChild({
+            this.managerEl.createChild({
                 tag : 'div',
                 cls : 'roo-document-manager-loading',
                 cn : [
@@ -316,7 +316,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     refresh : function()
     {
-        Roo.each(this.el.select('.roo-document-manager-loading', true).elements, function(el){
+        Roo.each(this.managerEl.select('.roo-document-manager-loading', true).elements, function(el){
             el.remove();
         }, this);
         
