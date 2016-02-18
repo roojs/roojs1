@@ -268,7 +268,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     onFooterButtonClick : function(a,b,c,d)
     {
         Roo.log([a,b,c,d]);
-        
+        return;
         switch (action) {
             case 'rotate-left' :
                 this.onRotateLeft();
