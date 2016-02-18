@@ -74,6 +74,12 @@ Roo.bootstrap.UploadCropbox = function(config){
          */
         "save" : true,
         /**
+         * @event download
+         * Fire when download the image
+         * @param {Roo.bootstrap.UploadCropbox} this
+         */
+        "download" : true,
+        /**
          * @event footerbuttonclick
          * Fire when footerbuttonclick
          * @param {Roo.bootstrap.UploadCropbox} this
