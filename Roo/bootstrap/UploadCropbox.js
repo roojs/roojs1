@@ -157,7 +157,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 
                 btn.on('click', this.onFooterButtonClick.createDelegate(this, [bb.action], true));
                 
-            },this);
+            }, this);
         }
     },
     
