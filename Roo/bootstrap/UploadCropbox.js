@@ -234,6 +234,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     resize : function()
     {
+        Roo.log('resize??');
         this.setThumbBoxPosition();
         this.setCanvasPosition();
     },
