@@ -29,6 +29,12 @@ Roo.bootstrap.DocumentManager = function(config){
     
     this.addEvents({
         /**
+         * @event initial
+         * Fire when initial the DocumentManager
+         * @param {Roo.bootstrap.DocumentManager} this
+         */
+        "initial" : true,
+        /**
          * @event inspect
          * inspect selected file
          * @param {Roo.bootstrap.DocumentManager} this
