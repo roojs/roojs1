@@ -137,11 +137,18 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 );
                 
             }else{
-                cfg.cn.push({
-                    tag : 'div',
-                    cls : 'column col-md-12',
-                    html : this.fieldLabel
-                });
+                cfg.cn.push(
+                    {
+                        tag : 'div',
+                        cls : 'column col-md-12',
+                        html : this.fieldLabel
+                    },
+                    {
+                        tag : 'div',
+                        cls : 'column col-md-12',
+                        cn : managerWidget
+                    }
+                );
             }
         }
         
