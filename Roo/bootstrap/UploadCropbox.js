@@ -1124,6 +1124,52 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
                     }
                 ]
             }
+        ],
+        DOCUMENT : [
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-rotate-left',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-undo"></i>'
+                    }
+                ]
+            },
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-trash',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-trash"></i>'
+                    }
+                ]
+            },
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-save',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-floppy-o"></i>'
+                    }
+                ]
+            },
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-rotate-right',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-repeat"></i>'
+                    }
+                ]
+            }
         ]
     }
 });
