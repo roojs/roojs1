@@ -16,8 +16,8 @@
  * @cfg {Number} minHeight default 300
  * @cfg {Number} thumbSize default 300
  * @cfg {String} fieldLabel
- * @cfg {labelWidth} labelWidth default 4
- * @cfg {labelAlign} labelAlign default left
+ * @cfg {String} labelWidth default 4
+ * @cfg {String} labelAlign default left
  * 
  * @constructor
  * Create a new DocumentManager
@@ -85,6 +85,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     method : 'POST',
     url : '',
     paramName : 'imageUpload',
+    fieldLabel : '',
+    labelWidth : 4,
+    labelAlign : 'left',
     
     getAutoCreate : function()
     {
