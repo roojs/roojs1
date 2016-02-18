@@ -10,6 +10,7 @@
  * @cfg {String} emptyText show when image has been loaded
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
+ * @cfg {Array} footer default ['left', 'picture', 'right']
  * 
  * @constructor
  * Create a new UploadCropbox
