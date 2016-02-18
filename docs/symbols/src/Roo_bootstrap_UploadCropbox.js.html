@@ -333,6 +333,10 @@
     
     </span><span class="jsdoc-var">setCanvasPosition </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {   
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.canvasEl</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">pw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.bodyEl.getWidth</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.canvasEl.width</span><span class="jsdoc-syntax">) / 2);
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ph </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.bodyEl.getHeight</span><span class="jsdoc-syntax">() - </span><span class="jsdoc-var">this.canvasEl.height</span><span class="jsdoc-syntax">) / 2);
         
