@@ -1145,18 +1145,6 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
             },
             {
                 tag : 'div',
-                cls : 'btn-group roo-upload-cropbox-trash',
-                action : 'trash',
-                cn : [
-                    {
-                        tag : 'button',
-                        cls : 'btn btn-default',
-                        html : '<i class="fa fa-trash"></i>'
-                    }
-                ]
-            },
-            {
-                tag : 'div',
                 cls : 'btn-group roo-upload-cropbox-save',
                 action : 'save',
                 cn : [
@@ -1164,6 +1152,18 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
                         tag : 'button',
                         cls : 'btn btn-default',
                         html : '<i class="fa fa-floppy-o"></i>'
+                    }
+                ]
+            },
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-trash',
+                action : 'trash',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-trash"></i>'
                     }
                 ]
             },
