@@ -1168,6 +1168,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
             {
                 tag : 'div',
                 cls : 'btn-group roo-upload-cropbox-rotate-right',
+                action : 'rotate-right',
                 cn : [
                     {
                         tag : 'button',
