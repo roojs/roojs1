@@ -116,7 +116,8 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
     
     initial : function()
     {
-        this.thumbEl.setStyle('line-height', this.thumbEl.getHeight(true) + 'px');
+//        this.thumbEl.setStyle('line-height', this.thumbEl.getHeight(true) + 'px');
+        
         
         this.fireEvent('initial', this);
         
