@@ -1163,7 +1163,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
                     {
                         tag : 'button',
                         cls : 'btn btn-default',
-                        html : '<i class="fa fa-floppy-o"></i>'
+                        html : '<i class="fa fa-download"></i>'
                     }
                 ]
             },
