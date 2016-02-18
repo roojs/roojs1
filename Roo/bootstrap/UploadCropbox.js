@@ -129,63 +129,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     cn : {
                         tag : 'div',
                         cls : 'btn-group btn-group-justified roo-upload-cropbox-btn-group',
-                        cn : [
-                            {
-                                tag : 'div',
-                                cls : 'btn-group roo-upload-cropbox-rotate-left',
-                                cn : [
-                                    {
-                                        tag : 'button',
-                                        cls : 'btn btn-default',
-                                        html : '<i class="fa fa-undo"></i>'
-                                    }
-                                ]
-                            },
-                            {
-                                tag : 'div',
-                                cls : 'btn-group roo-upload-cropbox-picture',
-                                cn : [
-                                    {
-                                        tag : 'button',
-                                        cls : 'btn btn-default',
-                                        html : '<i class="fa fa-picture-o"></i>'
-                                    }
-                                ]
-                            },
-                            {
-                                tag : 'div',
-                                cls : 'btn-group roo-upload-cropbox-trash',
-                                cn : [
-                                    {
-                                        tag : 'button',
-                                        cls : 'btn btn-default',
-                                        html : '<i class="fa fa-trash"></i>'
-                                    }
-                                ]
-                            },
-                            {
-                                tag : 'div',
-                                cls : 'btn-group roo-upload-cropbox-save',
-                                cn : [
-                                    {
-                                        tag : 'button',
-                                        cls : 'btn btn-default',
-                                        html : '<i class="fa fa-floppy-o"></i>'
-                                    }
-                                ]
-                            },
-                            {
-                                tag : 'div',
-                                cls : 'btn-group roo-upload-cropbox-rotate-right',
-                                cn : [
-                                    {
-                                        tag : 'button',
-                                        cls : 'btn btn-default',
-                                        html : '<i class="fa fa-repeat"></i>'
-                                    }
-                                ]
-                            }
-                        ]
+                        cn : []
                     }
                 }
             ]
