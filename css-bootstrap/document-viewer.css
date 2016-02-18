@@ -16,7 +16,7 @@
 .roo-document-viewer-body {
     background-color: #fff;
     width: 100%;
-    height: 100%;
+    height: 450px;
     position: relative;
     overflow: hidden;
     cursor:move;
@@ -46,3 +46,4 @@
     color: white;
     border-color: #333;
 }
+
