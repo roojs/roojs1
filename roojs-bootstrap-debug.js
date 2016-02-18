@@ -25153,6 +25153,9 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
  * @cfg {Number} thumbSize default 300
+ * @cfg {String} fieldLabel
+ * @cfg {Number} labelWidth default 4
+ * @cfg {String} labelAlign (left|top) default left
  * 
  * @constructor
  * Create a new DocumentManager
@@ -25220,10 +25223,13 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     method : 'POST',
     url : '',
     paramName : 'imageUpload',
+    fieldLabel : '',
+    labelWidth : 4,
+    labelAlign : 'left',
     
     getAutoCreate : function()
-    {
-        var cfg = {
+    {   
+        var managerWidget = {
             tag : 'div',
             cls : 'roo-document-manager',
             cn : [
@@ -25247,12 +25253,61 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             ]
         };
         
+        var content = [
+            {
+                tag : 'div',
+                cls : 'column col-md-12',
+                cn : managerWidget
+            }
+        ];
+        
+        if(this.fieldLabel.length){
+            
+            content = [
+                {
+                    tag : 'div',
+                    cls : 'column col-md-12',
+                    html : this.fieldLabel
+                },
+                {
+                    tag : 'div',
+                    cls : 'column col-md-12',
+                    cn : managerWidget
+                }
+            ];
+
+            if(this.labelAlign == 'left'){
+                content = [
+                    {
+                        tag : 'div',
+                        cls : 'column col-md-' + this.labelWidth,
+                        html : this.fieldLabel
+                    },
+                    {
+                        tag : 'div',
+                        cls : 'column col-md-' + (12 - this.labelWidth),
+                        cn : managerWidget
+                    }
+                ];
+                
+            }
+        }
+        
+        var cfg = {
+            tag : 'div',
+            cls : 'row clearfix',
+            cn : content
+        };
+        
         return cfg;
         
     },
     
     initEvents : function()
     {
+        this.managerEl = this.el.select('.roo-document-manager', true).first();
+        this.managerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
         this.selectorEl = this.el.select('.roo-document-manager-selector', true).first();
         this.selectorEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         this.selectorEl.hide();
@@ -25321,7 +25376,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             file.xhr = xhr;
             
-            this.el.createChild({
+            this.managerEl.createChild({
                 tag : 'div',
                 cls : 'roo-document-manager-loading',
                 cn : [
@@ -25399,7 +25454,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     refresh : function()
     {
-        Roo.each(this.el.select('.roo-document-manager-loading', true).elements, function(el){
+        Roo.each(this.managerEl.select('.roo-document-manager-loading', true).elements, function(el){
             el.remove();
         }, this);
         
@@ -25417,7 +25472,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
             
-            var previewEl = this.el.createChild({
+            var previewEl = this.managerEl.createChild({
                 tag : 'div',
                 cls : 'roo-document-manager-preview',
                 cn : [
@@ -25501,7 +25556,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     closable : function(closable)
     {
-        Roo.each(this.el.select('.roo-document-manager-preview > button.close', true).elements, function(el){
+        Roo.each(this.managerEl.select('.roo-document-manager-preview > button.close', true).elements, function(el){
             
             el.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
             

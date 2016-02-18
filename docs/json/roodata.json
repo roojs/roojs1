@@ -21668,6 +21668,28 @@
      "memberOf": ""
     },
     {
+     "name": "fieldLabel",
+     "type": "String",
+     "desc": "",
+     "memberOf": ""
+    },
+    {
+     "name": "labelWidth",
+     "type": "Number",
+     "desc": "default 4",
+     "memberOf": ""
+    },
+    {
+     "name": "labelAlign",
+     "type": "String",
+     "desc": "default left",
+     "memberOf": "",
+     "optvals": [
+      "left",
+      "top"
+     ]
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
