@@ -147,7 +147,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 
                 var btn = this.el.select('.roo-upload-cropbox-footer div.roo-upload-cropbox-btn-group').first().createChild(bb);
                 
-                btn.on('click', this.onFooterButtonClick.createDelegate(this, [btn, bb.action]));
+                btn.on('click', this.onFooterButtonClick.createDelegate(this));
                 
             },this);
         }
@@ -265,8 +265,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.setCanvasPosition();
     },
     
-    onFooterButtonClick : function(el, action)
+    onFooterButtonClick : function(a,b,c,d)
     {
+        Roo.log([a,b,c,d]);
+        
         switch (action) {
             case 'rotate-left' :
                 this.onRotateLeft();
