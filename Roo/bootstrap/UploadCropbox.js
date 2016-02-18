@@ -295,11 +295,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.fireEvent('trash', this);
     },
     
-    onDownload : function(e)
+    onSave : function(e)
     {
         e.preventDefault();
         
-        this.fireEvent('download', this);
+        this.fireEvent('save', this);
     },
     
     loadCanvas : function(src)
