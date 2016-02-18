@@ -1149,7 +1149,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
             {
                 tag : 'div',
                 cls : 'btn-group roo-upload-cropbox-crop',
-                action : 'save',
+                action : 'crop',
                 cn : [
                     {
                         tag : 'button',
