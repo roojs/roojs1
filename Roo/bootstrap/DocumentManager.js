@@ -115,7 +115,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             ]
         };
         
-        var layout = [
+        var content = [
             {
                 tag : 'div',
                 cls : 'column col-md-12',
@@ -125,7 +125,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         if(this.fieldLabel.length){
             
-            layout = [
+            content = [
                 {
                     tag : 'div',
                     cls : 'column col-md-12',
@@ -139,7 +139,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             ];
 
             if(this.labelAlign == 'left'){
-                layout = [
+                content = [
                     {
                         tag : 'div',
                         cls : 'column col-md-' + this.labelWidth,
@@ -155,7 +155,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
         }
         
-        cfg
+        var cfg = {
+            tag : 'div',
+            cls : 'row clearfix',
+            cn : content
+        };
         
         return cfg;
         
