@@ -153,7 +153,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-download',
+                                        cls : 'btn btn-default roo-upload-cropbox-save',
                                         html : '<i class="fa fa-floppy-o"></i>'
                                     }
                                 ]
@@ -207,6 +207,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.pictureBtn = this.el.select('.roo-upload-cropbox-picture', true).first();
         this.pictureBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.trashBtn = this.el.select('.roo-upload-cropbox-trash', true).first();
+        this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.saveBtn = this.el.select('.roo-upload-cropbox-save', true).first();
+        this.saveBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.rotateRight = this.el.select('.roo-upload-cropbox-rotate-right', true).first();
         this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
