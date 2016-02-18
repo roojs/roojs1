@@ -280,6 +280,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onFooterButtonClick : function(a,b,c,d)
     {
+        Roo.log(this);
         Roo.log([a,b,c,d]);
     },
     
