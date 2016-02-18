@@ -161,22 +161,22 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                             },
                             {
                                 tag : 'div',
-                                cls : 'btn-group',
+                                cls : 'btn-group roo-upload-cropbox-save',
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-save',
+                                        cls : 'btn btn-default',
                                         html : '<i class="fa fa-floppy-o"></i>'
                                     }
                                 ]
                             },
                             {
                                 tag : 'div',
-                                cls : 'btn-group',
+                                cls : 'btn-group roo-upload-cropbox-rotate-right',
                                 cn : [
                                     {
                                         tag : 'button',
-                                        cls : 'btn btn-default roo-upload-cropbox-rotate-right',
+                                        cls : 'btn btn-default',
                                         html : '<i class="fa fa-repeat"></i>'
                                     }
                                 ]
