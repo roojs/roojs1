@@ -145,7 +145,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if (this.buttons.length) {
             Roo.each(this.buttons, function(bb) {
                 
-                this.el.select('.roo-upload-cropbox-footer div.roo-upload-cropbox-btn-group').first().createChild(bb);
+                var btn = this.el.select('.roo-upload-cropbox-footer div.roo-upload-cropbox-btn-group').first().createChild(bb);
+                
+                btn.on('click', this.onFooterButtonClick, this, bb.action);
                 
                 return;
                 
