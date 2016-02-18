@@ -153,6 +153,17 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                                 cn : [
                                     {
                                         tag : 'button',
+                                        cls : 'btn btn-default roo-upload-cropbox-download',
+                                        html : '<i class="fa fa-floppy-o"></i>'
+                                    }
+                                ]
+                            },
+                            {
+                                tag : 'div',
+                                cls : 'btn-group',
+                                cn : [
+                                    {
+                                        tag : 'button',
                                         cls : 'btn btn-default roo-upload-cropbox-rotate-right',
                                         html : '<i class="fa fa-repeat"></i>'
                                     }
