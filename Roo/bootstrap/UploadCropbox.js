@@ -265,16 +265,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.setCanvasPosition();
     },
     
-    onFooterButtonClick : function(a,b,c,d)
+    onFooterButtonClick : function(e, el, o, type)
     {
-        Roo.log([a,b,c,d]);
-        return;
-        switch (action) {
+        switch (type) {
             case 'rotate-left' :
                 this.onRotateLeft();
                 break;
             case 'rotate-right' :
-                this.onRotateRight()
+                this.onRotateRight();
+                break;
+            case ''
         }
     },
     
