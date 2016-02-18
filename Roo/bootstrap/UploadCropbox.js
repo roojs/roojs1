@@ -144,14 +144,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         if (this.buttons.length) {
             Roo.each(this.buttons, function(bb) {
-                var b = Roo.apply({}, bb);
-                b.xns = b.xns || Roo.bootstrap;
-                b.xtype = b.xtype || 'Button';
+                var btn = Roo.factory(bb);
+                
                 if (typeof(b.listeners) == 'undefined') {
                     b.listeners = { click : this.onFooterButtonClick.createDelegate(this)  };
                 }
                 
-                var btn = Roo.factory(b);
+                
                 
                 btn.onRender(this.el.select('.roo-upload-cropbox-footer div.roo-upload-cropbox-btn-group').first());
                 
