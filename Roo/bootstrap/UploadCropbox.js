@@ -480,6 +480,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     draw : function()
     {
+        Roo.log('draw');
+        
         this.previewEl.dom.innerHTML = '';
         
         var canvasEl = document.createElement("canvas");
