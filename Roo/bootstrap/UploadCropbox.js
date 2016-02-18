@@ -10,6 +10,7 @@
  * @cfg {String} emptyText show when image has been loaded
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
+ * @cfg {Array} footer default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -93,6 +94,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     exif : {},
     baseRotate : 1,
     cropType : 'image/jpeg',
+    buttons : ['rotateLeft', 'pictureBtn', 'rotateRight'],
     
     getAutoCreate : function()
     {
