@@ -273,7 +273,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onFooterButtonClick : function(btn, e)
     {
-        
+        Roo.log([btn, e]);
     },
     
     beforeSelectFile : function(e)
