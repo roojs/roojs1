@@ -288,6 +288,20 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.fireEvent('beforeselectfile', this);
     },
     
+    onTrash : function(e)
+    {
+        e.preventDefault();
+        
+        this.fireEvent('trash', this);
+    },
+    
+    onDownload : function(e)
+    {
+        e.preventDefault();
+        
+        this.fireEvent('download', this);
+    },
+    
     loadCanvas : function(src)
     {   
         if(this.fireEvent('beforeloadcanvas', this, src) != false){
