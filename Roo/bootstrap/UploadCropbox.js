@@ -200,7 +200,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         if (this.buttons.length) {
             Roo.each(this.buttons, function(bb) {
-                b = Roo.apply({}, bb);
+                var b = Roo.apply({}, bb);
                 b.xns = b.xns || Roo.bootstrap;
                 b.xtype = b.xtype || 'Button';
                 if (typeof(b.listeners) == 'undefined') {
@@ -209,7 +209,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 
                 var btn = Roo.factory(b);
                 
-                btn.onRender(this.el.select('.modal-footer div').first());
+                btn.onRender(this.el.select('.roo-upload-cropbox-footer div.roo-upload-cropbox-btn-group').first());
                 
             },this);
         }
