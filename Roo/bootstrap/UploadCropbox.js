@@ -149,19 +149,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 
                 btn.on('click', this.onFooterButtonClick.createDelegate(this, [btn, bb.action]));
                 
-                return;
-                
-                var b = Roo.apply({}, bb);
-                b.xns = b.xns || Roo.bootstrap;
-                b.xtype = b.xtype || 'Button';
-                if (typeof(b.listeners) == 'undefined') {
-                    b.listeners = { click : this.onFooterButtonClick.createDelegate(this)  };
-                }
-                
-                var btn = Roo.factory(b);
-                
-                btn.onRender(this.el.select('.roo-upload-cropbox-footer div.roo-upload-cropbox-btn-group').first());
-                
             },this);
         }
     },
@@ -278,10 +265,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.setCanvasPosition();
     },
     
-    onFooterButtonClick : function(a,b,c,d)
+    onFooterButtonClick : function(el, action)
     {
-        Roo.log(this);
-        Roo.log([a,b,c,d]);
+        switch (action) {
+            case 'rotate-left' :
+                this.onRotateLeft();
+                break;
+            case 'rotate-right' :
+                this.onRotateRight()
+        }
     },
     
     beforeSelectFile : function(e)
