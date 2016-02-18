@@ -274,8 +274,20 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             case 'rotate-right' :
                 this.onRotateRight();
                 break;
-            case ''
+            case 'picture' :
+                this.beforeSelectFile();
+                break;
+            case 'trash' :
+                this.trash();
+                break;
+            case 'save' :
+                this.save();
+                break;
+            default :
+                break;
         }
+        
+        
     },
     
     beforeSelectFile : function(e)
@@ -285,14 +297,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.fireEvent('beforeselectfile', this);
     },
     
-    onTrash : function(e)
+    trash : function(e)
     {
         e.preventDefault();
         
         this.fireEvent('trash', this);
     },
     
-    onSave : function(e)
+    save : function(e)
     {
         e.preventDefault();
         
