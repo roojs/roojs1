@@ -259,8 +259,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             case 'trash' :
                 this.trash(e);
                 break;
-            case 'save' :
-                this.save(e);
+            case 'crop' :
+                this.crop(e);
                 break;
             case 'download' :
                 this.download(e);
@@ -288,15 +288,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         this.fireEvent('trash', this);
-    },
-    
-    save : function(e)
-    {
-        if(e){
-            e.preventDefault();
-        }
-        
-        this.fireEvent('save', this);
     },
     
     download : function(e)
