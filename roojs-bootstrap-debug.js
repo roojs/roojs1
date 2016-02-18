@@ -2427,7 +2427,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     
         if (this.buttons.length) {
             Roo.each(this.buttons, function(bb) {
-                b = Roo.apply({}, bb);
+                var b = Roo.apply({}, bb);
                 b.xns = b.xns || Roo.bootstrap;
                 b.xtype = b.xtype || 'Button';
                 if (typeof(b.listeners) == 'undefined') {
@@ -24031,7 +24031,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     exif : {},
     baseRotate : 1,
     cropType : 'image/jpeg',
-    buttons : Roo.bootstrap.UploadCropbox.footer.STANDARD,
+    buttons : false,
     
     getAutoCreate : function()
     {
@@ -24075,20 +24075,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onRender : function(ct, position)
     {
-        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        Roo.bootstrap.UploadCropbox.superclass.onRender.call(this, ct, position);
         
         if (this.buttons.length) {
             Roo.each(this.buttons, function(bb) {
-                var b = Roo.apply({}, bb);
-                b.xns = b.xns || Roo.bootstrap;
-                b.xtype = b.xtype || 'Button';
-                if (typeof(b.listeners) == 'undefined') {
-                    b.listeners = { click : this.onFooterButtonClick.createDelegate(this)  };
-                }
                 
-                var btn = Roo.factory(b);
+                var btn = this.el.select('.roo-upload-cropbox-footer div.roo-upload-cropbox-btn-group').first().createChild(bb);
                 
-                btn.onRender(this.el.select('.roo-upload-cropbox-footer div.roo-upload-cropbox-btn-group').first());
+                btn.on('click', this.onFooterButtonClick.createDelegate(this, [btn, bb.action], true));
                 
             },this);
         }
@@ -24206,9 +24200,17 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.setCanvasPosition();
     },
     
-    onFooterButtonClick : function(btn, e)
+    onFooterButtonClick : function(a,b,c,d)
     {
-        Roo.log([btn, e]);
+        Roo.log([a,b,c,d]);
+        return;
+        switch (action) {
+            case 'rotate-left' :
+                this.onRotateLeft();
+                break;
+            case 'rotate-right' :
+                this.onRotateRight()
+        }
     },
     
     beforeSelectFile : function(e)
