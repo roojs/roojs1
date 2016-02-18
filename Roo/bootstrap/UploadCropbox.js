@@ -217,19 +217,19 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.footerEl.hide();
         
         this.rotateLeft = this.el.select('.roo-upload-cropbox-rotate-left', true).first();
-        this.rotateLeft.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.rotateLeft.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
         
         this.pictureBtn = this.el.select('.roo-upload-cropbox-picture', true).first();
-        this.pictureBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.pictureBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
         
         this.trashBtn = this.el.select('.roo-upload-cropbox-trash', true).first();
-        this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
         
         this.saveBtn = this.el.select('.roo-upload-cropbox-save', true).first();
-        this.saveBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.saveBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
         
         this.rotateRight = this.el.select('.roo-upload-cropbox-rotate-right', true).first();
-        this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
         
         this.setThumbBoxSize();
         
