@@ -29,6 +29,12 @@
     
     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
         </span><span class="jsdoc-comment">/**
+         * @event initial
+         * Fire when initial the DocumentManager
+         * @param {Roo.bootstrap.DocumentManager} this
+         */
+        </span><span class="jsdoc-string">&quot;initial&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
          * @event inspect
          * inspect selected file
          * @param {Roo.bootstrap.DocumentManager} this
@@ -189,6 +195,7 @@
         
         </span><span class="jsdoc-var">window.addEventListener</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;resize&quot;</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">_this.refresh</span><span class="jsdoc-syntax">(); } );
         
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'initial'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">onUpload </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
