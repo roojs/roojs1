@@ -251,6 +251,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.pictureBtn.on('click', this.beforeSelectFile, this);
         
+        this.trashBtn.on('click', this.onTrash, this);
+        
+        this.saveBtn.on('click', this.onSave, this);
+        
         this.rotateLeft.on('click', this.onRotateLeft, this);
         
         this.rotateRight.on('click', this.onRotateRight, this);
