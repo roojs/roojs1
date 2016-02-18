@@ -237,7 +237,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.rotateRight.hide();
         
         Roo.each(this.buttons, function(btn){
-            
+            this[btn].show();
         }, this);
         
         this.setThumbBoxSize();
