@@ -92,6 +92,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     getAutoCreate : function()
     {
         
+        
         var cfg = {
             tag : 'div',
             cls : 'roo-document-manager',
