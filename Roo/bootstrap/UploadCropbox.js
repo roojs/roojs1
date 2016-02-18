@@ -333,6 +333,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     setCanvasPosition : function()
     {   
+        if(!this.canvasEl){
+            return;
+        }
+        
         var pw = Math.ceil((this.bodyEl.getWidth() - this.canvasEl.width) / 2);
         var ph = Math.ceil((this.bodyEl.getHeight() - this.canvasEl.height) / 2);
         
