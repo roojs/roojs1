@@ -256,6 +256,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             case 'save' :
                 this.save(e);
                 break;
+            case 'download' :
+                this.download(e);
+                break;
             default :
                 break;
         }
