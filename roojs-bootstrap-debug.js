@@ -23945,7 +23945,7 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
  * @cfg {String} emptyText show when image has been loaded
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
- * @cfg {Array} footer default ['rotateLeft', 'pictureBtn', 'rotateRight']
+ * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -24010,6 +24010,8 @@ Roo.bootstrap.UploadCropbox = function(config){
         "save" : true
         
     });
+    
+    this.buttons = this.buttons || Roo.bootstrap.UploadCropbox.footer.STANDARD;
 };
 
 Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
@@ -24029,7 +24031,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     exif : {},
     baseRotate : 1,
     cropType : 'image/jpeg',
-    buttons : ['rotateLeft', 'pictureBtn', 'rotateRight'],
+    buttons : Roo.bootstrap.UploadCropbox.footer.STANDARD,
     
     getAutoCreate : function()
     {
@@ -24062,69 +24064,34 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     cn : {
                         tag : 'div',
                         cls : 'btn-group btn-group-justified roo-upload-cropbox-btn-group',
-                        cn : [
-                            {
-                                tag : 'div',
-                                cls : 'btn-group roo-upload-cropbox-rotate-left',
-                                cn : [
-                                    {
-                                        tag : 'button',
-                                        cls : 'btn btn-default',
-                                        html : '<i class="fa fa-undo"></i>'
-                                    }
-                                ]
-                            },
-                            {
-                                tag : 'div',
-                                cls : 'btn-group roo-upload-cropbox-picture',
-                                cn : [
-                                    {
-                                        tag : 'button',
-                                        cls : 'btn btn-default',
-                                        html : '<i class="fa fa-picture-o"></i>'
-                                    }
-                                ]
-                            },
-                            {
-                                tag : 'div',
-                                cls : 'btn-group roo-upload-cropbox-trash',
-                                cn : [
-                                    {
-                                        tag : 'button',
-                                        cls : 'btn btn-default',
-                                        html : '<i class="fa fa-trash"></i>'
-                                    }
-                                ]
-                            },
-                            {
-                                tag : 'div',
-                                cls : 'btn-group roo-upload-cropbox-save',
-                                cn : [
-                                    {
-                                        tag : 'button',
-                                        cls : 'btn btn-default',
-                                        html : '<i class="fa fa-floppy-o"></i>'
-                                    }
-                                ]
-                            },
-                            {
-                                tag : 'div',
-                                cls : 'btn-group roo-upload-cropbox-rotate-right',
-                                cn : [
-                                    {
-                                        tag : 'button',
-                                        cls : 'btn btn-default',
-                                        html : '<i class="fa fa-repeat"></i>'
-                                    }
-                                ]
-                            }
-                        ]
+                        cn : []
                     }
                 }
             ]
         };
         
         return cfg;
+    },
+    
+    onRender : function(ct, position)
+    {
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        
+        if (this.buttons.length) {
+            Roo.each(this.buttons, function(bb) {
+                var b = Roo.apply({}, bb);
+                b.xns = b.xns || Roo.bootstrap;
+                b.xtype = b.xtype || 'Button';
+                if (typeof(b.listeners) == 'undefined') {
+                    b.listeners = { click : this.onFooterButtonClick.createDelegate(this)  };
+                }
+                
+                var btn = Roo.factory(b);
+                
+                btn.onRender(this.el.select('.roo-upload-cropbox-footer div.roo-upload-cropbox-btn-group').first());
+                
+            },this);
+        }
     },
     
     initEvents : function()
@@ -24151,29 +24118,29 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         this.footerEl.hide();
         
-        this.rotateLeft = this.el.select('.roo-upload-cropbox-rotate-left', true).first();
-        this.rotateLeft.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
-        this.rotateLeft.hide();
-        
-        this.pictureBtn = this.el.select('.roo-upload-cropbox-picture', true).first();
-        this.pictureBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
-        this.pictureBtn.hide();
-        
-        this.trashBtn = this.el.select('.roo-upload-cropbox-trash', true).first();
-        this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
-        this.trashBtn.hide();
-        
-        this.saveBtn = this.el.select('.roo-upload-cropbox-save', true).first();
-        this.saveBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
-        this.saveBtn.hide();
-        
-        this.rotateRight = this.el.select('.roo-upload-cropbox-rotate-right', true).first();
-        this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
-        this.rotateRight.hide();
-        
-        Roo.each(this.buttons, function(btn){
-            this[btn].show();
-        }, this);
+//        this.rotateLeft = this.el.select('.roo-upload-cropbox-rotate-left', true).first();
+//        this.rotateLeft.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
+//        this.rotateLeft.hide();
+//        
+//        this.pictureBtn = this.el.select('.roo-upload-cropbox-picture', true).first();
+//        this.pictureBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
+//        this.pictureBtn.hide();
+//        
+//        this.trashBtn = this.el.select('.roo-upload-cropbox-trash', true).first();
+//        this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
+//        this.trashBtn.hide();
+//        
+//        this.saveBtn = this.el.select('.roo-upload-cropbox-save', true).first();
+//        this.saveBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
+//        this.saveBtn.hide();
+//        
+//        this.rotateRight = this.el.select('.roo-upload-cropbox-rotate-right', true).first();
+//        this.rotateRight.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'table-cell';
+//        this.rotateRight.hide();
+//        
+//        Roo.each(this.buttons, function(btn){
+//            this[btn].show();
+//        }, this);
         
         this.setThumbBoxSize();
         
@@ -24207,15 +24174,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             Roo.get(document).on('mouseup', this.onMouseUp, this);
         }
         
-        this.pictureBtn.on('click', this.beforeSelectFile, this);
-        
-        this.trashBtn.on('click', this.onTrash, this);
-        
-        this.saveBtn.on('click', this.onSave, this);
-        
-        this.rotateLeft.on('click', this.onRotateLeft, this);
-        
-        this.rotateRight.on('click', this.onRotateRight, this);
+//        this.pictureBtn.on('click', this.beforeSelectFile, this);
+//        
+//        this.trashBtn.on('click', this.onTrash, this);
+//        
+//        this.saveBtn.on('click', this.onSave, this);
+//        
+//        this.rotateLeft.on('click', this.onRotateLeft, this);
+//        
+//        this.rotateRight.on('click', this.onRotateRight, this);
         
     },
     
@@ -24237,6 +24204,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         this.setThumbBoxPosition();
         this.setCanvasPosition();
+    },
+    
+    onFooterButtonClick : function(btn, e)
+    {
+        Roo.log([btn, e]);
     },
     
     beforeSelectFile : function(e)
@@ -25055,6 +25027,97 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
             },
             size: 8
         }
+    },
+    
+    footer : {
+        STANDARD : [
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-rotate-left',
+                action : 'rotate-left',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-undo"></i>'
+                    }
+                ]
+            },
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-picture',
+                action : 'picture',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-picture-o"></i>'
+                    }
+                ]
+            },
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-rotate-right',
+                action : 'rotate-right',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-repeat"></i>'
+                    }
+                ]
+            }
+        ],
+        DOCUMENT : [
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-rotate-left',
+                action : 'rotate-left',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-undo"></i>'
+                    }
+                ]
+            },
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-trash',
+                action : 'trash',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-trash"></i>'
+                    }
+                ]
+            },
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-save',
+                action : 'save',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-floppy-o"></i>'
+                    }
+                ]
+            },
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-rotate-right',
+                action : 'rotate-right',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-repeat"></i>'
+                    }
+                ]
+            }
+        ]
     }
 });
 
@@ -25223,7 +25286,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     process : function()
     {
-        this.selectorEl.dom.value = ''
+        this.selectorEl.dom.value = '';
         
         if(!this.files.length){
             return;
