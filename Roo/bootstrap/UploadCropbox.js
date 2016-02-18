@@ -59,7 +59,19 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {String} src
          */
-        "beforeloadcanvas" : true
+        "beforeloadcanvas" : true,
+        /**
+         * @event trash
+         * Fire when trash image
+         * @param {Roo.bootstrap.UploadCropbox} this
+         */
+        "trash" : true,
+        /**
+         * @event save
+         * Fire when save the image
+         * @param {Roo.bootstrap.UploadCropbox} this
+         */
+        "save" : true
         
     });
 };
