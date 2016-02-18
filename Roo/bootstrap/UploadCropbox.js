@@ -418,7 +418,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onRotateLeft : function(e)
     {
-        e.stopEvent();
+        if(e){
+            e.preventDefault();
+        }
         
         if(
                 (
@@ -445,7 +447,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onRotateRight : function(e)
     {
-        e.stopEvent();
+        if(e){
+            e.preventDefault();
+        }
         
         if(
                 (
