@@ -68,12 +68,6 @@ Roo.bootstrap.UploadCropbox = function(config){
          */
         "trash" : true,
         /**
-         * @event save
-         * Fire when save the image
-         * @param {Roo.bootstrap.UploadCropbox} this
-         */
-        "save" : true,
-        /**
          * @event download
          * Fire when download the image
          * @param {Roo.bootstrap.UploadCropbox} this
