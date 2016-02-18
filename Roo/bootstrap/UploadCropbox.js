@@ -234,7 +234,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     resize : function()
     {
-        Roo.log('resize??');
         this.setThumbBoxPosition();
         this.setCanvasPosition();
     },
@@ -481,8 +480,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     draw : function()
     {
-        Roo.log('draw');
-        
         this.previewEl.dom.innerHTML = '';
         
         var canvasEl = document.createElement("canvas");
