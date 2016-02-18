@@ -293,6 +293,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.fireEvent('save', this);
     },
     
+    download : function(e)
+    {
+        if(e){
+            e.preventDefault();
+        }
+        
+        this.fireEvent('download', this);
+    },
+    
     loadCanvas : function(src)
     {   
         if(this.fireEvent('beforeloadcanvas', this, src) != false){
