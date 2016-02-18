@@ -85,7 +85,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     method : 'POST',
     url : '',
     paramName : 'imageUpload',
-    fieldLabel : 'tee',
+    fieldLabel : '<h3 class="hydra-document-type-name">Passport Pages</h3><p class="hydra-document-type-description help-block">Upload relivant pages from your passport, including the main page</p>',
     labelWidth : 4,
     labelAlign : 'left',
     
