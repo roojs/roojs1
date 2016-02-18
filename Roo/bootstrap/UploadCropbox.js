@@ -194,6 +194,27 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         return cfg;
     },
     
+    onRender : function(ct, position)
+    {
+        Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
+        
+        if (this.buttons.length) {
+            Roo.each(this.buttons, function(bb) {
+                b = Roo.apply({}, bb);
+                b.xns = b.xns || Roo.bootstrap;
+                b.xtype = b.xtype || 'Button';
+                if (typeof(b.listeners) == 'undefined') {
+                    b.listeners = { click : this.onButtonClick.createDelegate(this)  };
+                }
+                
+                var btn = Roo.factory(b);
+                
+                btn.onRender(this.el.select('.modal-footer div').first());
+                
+            },this);
+        }
+    },
+    
     initEvents : function()
     {
         this.urlAPI = (window.createObjectURL && window) || 
