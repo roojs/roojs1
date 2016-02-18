@@ -39840,7 +39840,7 @@
      "memberOf": ""
     },
     {
-     "name": "footer",
+     "name": "buttons",
      "type": "Array",
      "desc": "default ['rotateLeft', 'pictureBtn', 'rotateRight']",
      "memberOf": ""
@@ -39990,6 +39990,12 @@
      "desc": "Fires after the component is disabled."
     },
     {
+     "name": "download",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire when download the image"
+    },
+    {
      "name": "enable",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
@@ -40000,6 +40006,12 @@
      "sig": "function (_self, options)\n{\n\n}",
      "type": "function",
      "desc": "Fire when get exception"
+    },
+    {
+     "name": "footerbuttonclick",
+     "sig": "function (_self, type)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire when footerbuttonclick"
     },
     {
      "name": "hide",
@@ -40024,12 +40036,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires after the component is rendered."
-    },
-    {
-     "name": "save",
-     "sig": "function (_self)\n{\n\n}",
-     "type": "function",
-     "desc": "Fire when save the image"
     },
     {
      "name": "show",
