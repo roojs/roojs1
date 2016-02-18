@@ -90,13 +90,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     labelAlign : 'left',
     
     getAutoCreate : function()
-    {
-        var cfg = {
-            tag : 'div',
-            cls : 'row clearfix',
-            cn : []
-        };
-        
+    {   
         var managerWidget = {
             tag : 'div',
             cls : 'roo-document-manager',
@@ -121,9 +115,31 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             ]
         };
         
+        var layout = [
+            {
+                tag : 'div',
+                cls : 'column col-md-12',
+                cn : managerWidget
+            }
+        ];
+        
         if(this.fieldLabel.length){
+            
+            layout = [
+                {
+                    tag : 'div',
+                    cls : 'column col-md-12',
+                    html : this.fieldLabel
+                },
+                {
+                    tag : 'div',
+                    cls : 'column col-md-12',
+                    cn : managerWidget
+                }
+            ];
+
             if(this.labelAlign == 'left'){
-                cfg.cn.push(
+                layout = [
                     {
                         tag : 'div',
                         cls : 'column col-md-' + this.labelWidth,
@@ -134,23 +150,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                         cls : 'column col-md-' + (12 - this.labelWidth),
                         cn : managerWidget
                     }
-                );
+                ];
                 
-            }else{
-                cfg.cn.push(
-                    {
-                        tag : 'div',
-                        cls : 'column col-md-12',
-                        html : this.fieldLabel
-                    },
-                    {
-                        tag : 'div',
-                        cls : 'column col-md-12',
-                        cn : managerWidget
-                    }
-                );
             }
         }
+        
+        cfg
         
         return cfg;
         
