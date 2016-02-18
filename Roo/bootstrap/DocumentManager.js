@@ -91,9 +91,13 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        
-        
         var cfg = {
+            tag : 'div',
+            cls : 'row clearfix',
+            cn : []
+        };
+        
+        var managerWidget = {
             tag : 'div',
             cls : 'roo-document-manager',
             cn : [
@@ -116,6 +120,30 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 }
             ]
         };
+        
+        if(this.fieldLabel.length){
+            if(this.labelAlign == 'left'){
+                cfg.cn.push(
+                    {
+                        tag : 'div',
+                        cls : 'column col-md-' + this.labelWidth,
+                        html : this.fieldLabel
+                    },
+                    {
+                        tag : 'div',
+                        cls : 'column col-md-' + (12 - this.labelWidth),
+                        cn : managerWidget
+                    }
+                );
+                
+            }else{
+                cfg.cn.push({
+                    tag : 'div',
+                    cls : 'column col-md-12',
+                    html : this.fieldLabel
+                });
+            }
+        }
         
         return cfg;
         
