@@ -253,7 +253,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         Roo.log(this.bodyEl.getHeight());
         Roo.log(this.thumbEl.getHeight());
         var _this = this;
-        (function(){Roo.log(_this.thumbEl.getHeight());}).defer(500);
+        (function(){Roo.log(_this.thumbEl.getHeight());}).defer(100);
         if(this.bodyEl.getHeight() < this.thumbEl.getHeight()){
             Roo.log('too small');
         }
