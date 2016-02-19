@@ -1,4 +1,8 @@
 
+.roo-upload-cropbox-dialog .modal-dialog {
+    margin: 0px auto;
+}
+
 .roo-upload-cropbox-body {
     background-color: #fff;
     border: 1px solid #e3e3e3;
