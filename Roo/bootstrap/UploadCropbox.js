@@ -340,7 +340,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.draw();
         
-//        this.resize();
+        this.resize();
         
     },
     
