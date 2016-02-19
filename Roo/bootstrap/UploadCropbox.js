@@ -133,6 +133,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         {
                             tag : 'div',
                             cls : 'roo-upload-cropbox-empty-notify',
+                            style : 'cursor:pointer',
                             html : this.emptyText
                         }
                     ]
