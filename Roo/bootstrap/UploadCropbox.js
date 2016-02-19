@@ -343,6 +343,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.resize();
         
+        this.canvasLoaded = true;
+        
     },
     
     setCanvasPosition : function()
