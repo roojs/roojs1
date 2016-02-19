@@ -725,8 +725,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onTouchStart : function(e)
     {
-        e.stopEvent();
-        
         var touches = e.browserEvent.touches;
         
         if(!touches){
@@ -762,8 +760,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onTouchMove : function(e)
     {
-        e.stopEvent();
-        
         if(!this.pinching && !this.dragable){
             return;
         }
@@ -818,8 +814,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onTouchEnd : function(e)
     {
-        e.stopEvent();
-        
         this.pinching = false;
         this.dragable = false;
         
