@@ -249,14 +249,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     validateSize : function()
     {
-        Roo.log('validateSize');
-        Roo.log(this.bodyEl.getHeight());
-        Roo.log(this.thumbEl.getHeight());
         var _this = this;
-        (function(){Roo.log(_this.thumbEl.getHeight());}).defer(100);
-        if(this.bodyEl.getHeight() < this.thumbEl.getHeight()){
-            Roo.log('too small');
-        }
+        
+        (function(){
+            if(this.bodyEl.getHeight() < this.thumbEl.getHeight()){
+                
+            }
+        }).defer(100);
+        
     },
     
     onFooterButtonClick : function(e, el, o, type)
