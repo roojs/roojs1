@@ -1,6 +1,6 @@
 
-.document-viewer-dialog .modal-header,
-.document-viewer-dialog .modal-footer {
+.roo-upload-cropbox-dialog .modal-header,
+.roo-upload-cropbox-dialog .modal-footer {
     padding-top: 5px;
     padding-bottom: 5px;
 }
