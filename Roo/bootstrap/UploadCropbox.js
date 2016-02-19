@@ -96,7 +96,7 @@ Roo.bootstrap.UploadCropbox = function(config){
 Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     emptyText : 'Click to upload image',
-    phoneLandScaple : 'Click to upload image',
+    phoneLandScaple : 'Display is too small, please rotate your phone',
     scale : 0,
     baseScale : 1,
     rotate : 0,
