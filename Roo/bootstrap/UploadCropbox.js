@@ -283,19 +283,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     trash : function(e)
     {
-        if(e){
-            e.preventDefault();
-        }
-        
         this.fireEvent('trash', this);
     },
     
     download : function(e)
     {
-        if(e){
-            e.preventDefault();
-        }
-        
         this.fireEvent('download', this);
     },
     
