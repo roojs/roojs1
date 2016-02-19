@@ -376,7 +376,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         e.stopEvent();
         
-        if(typeof(this.canvasEl) == 'undefined'){
+        if(!this.canvasLoaded){
             return;
         }
         
@@ -590,7 +590,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     crop : function()
     {
-        if(typeof(this.canvasEl) == 'undefined'){
+        if(!this.canvasLoaded){
             return;
         }
         var canvas = document.createElement("canvas");
