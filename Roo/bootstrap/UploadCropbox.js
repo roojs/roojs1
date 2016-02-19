@@ -395,6 +395,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         e.stopEvent();
         
+        if(typeof(this.canvasEl) == 'undefined'){
+            return;
+        }
+        
         if (!this.dragable){
             return;
         }
