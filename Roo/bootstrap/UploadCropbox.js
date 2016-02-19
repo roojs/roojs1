@@ -248,7 +248,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if(this.fireEvent('resize', this) != false){
             this.setThumbBoxPosition();
             this.setCanvasPosition();
-            this.validateSize();
         }
     },
     
