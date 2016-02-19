@@ -319,11 +319,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onLoadCanvas : function()
     {   
-        if(this.bodyHasOnClickEvent){
-            this.bodyEl.un('click', this.beforeSelectFile, this);
-            this.bodyHasOnClickEvent = false;
-        }
-        
         this.notifyEl.hide();
         this.thumbEl.show();
         this.footerEl.show();
