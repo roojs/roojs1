@@ -21640,7 +21640,7 @@
     {
      "name": "boxes",
      "type": "Number",
-     "desc": "number of boxes to show default 12",
+     "desc": "number of boxes default 12",
      "memberOf": ""
     },
     {

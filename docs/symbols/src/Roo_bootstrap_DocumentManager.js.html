@@ -10,7 +10,7 @@
  * @cfg {String} paramName default 'imageUpload'
  * @cfg {String} method default POST
  * @cfg {String} url action url
- * @cfg {Number} boxes number of boxes to show default 12
+ * @cfg {Number} boxes number of boxes default 12
  * @cfg {Boolean} multiple multiple upload default true
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
@@ -232,8 +232,8 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; 12){
-            </span><span class="jsdoc-var">this.files </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.files.slice</span><span class="jsdoc-syntax">(0, 12);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.boxes</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.files </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.files.slice</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">this.boxes</span><span class="jsdoc-syntax">);
         }
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xhr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">XMLHttpRequest</span><span class="jsdoc-syntax">();
@@ -261,7 +261,7 @@
             
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; 11){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.boxes </span><span class="jsdoc-syntax">- 1 ){
             </span><span class="jsdoc-var">this.uploader.hide</span><span class="jsdoc-syntax">();
         }
         
@@ -379,7 +379,7 @@
         
         </span><span class="jsdoc-var">this.uploader.show</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; 11){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.boxes </span><span class="jsdoc-syntax">- 1){
             </span><span class="jsdoc-var">this.uploader.hide</span><span class="jsdoc-syntax">();
         }
         
