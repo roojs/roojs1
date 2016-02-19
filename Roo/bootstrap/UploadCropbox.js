@@ -251,27 +251,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
     },
     
-    validateSize : function()
-    {
-        if(typeof(this.canvasEl) == 'undefined'){
-            return;
-        }
-        
-        (function(){
-            this.previewEl.show();
-            this.thumbEl.show();
-            this.notifyEl.hide();
-            
-            if(this.bodyEl.getHeight() < this.thumbEl.getHeight()){
-                this.previewEl.hide();
-                this.thumbEl.hide();
-                this.notifyEl.dom.innerHTML = this.phoneLandScaple;
-                this.notifyEl.show();
-            }
-        }).defer(100, this);
-        
-    },
-    
     onFooterButtonClick : function(e, el, o, type)
     {
         switch (type) {
