@@ -176,7 +176,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         
         this.bodyEl = this.el.select('.roo-upload-cropbox-body', true).first();
         this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
-        this.bodyHasOnClickEvent = false;
         
         this.previewEl = this.el.select('.roo-upload-cropbox-preview', true).first();
         this.previewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -207,10 +206,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         window.addEventListener("resize", function() { _this.resize(); } );
         
-        if(!this.bodyHasOnClickEvent){
-            this.bodyEl.on('click', this.beforeSelectFile, this);
-            this.bodyHasOnClickEvent = true;
-        }
+        this.bodyEl.on('click', this.beforeSelectFile, this);
         
         if(Roo.isTouch){
             this.bodyEl.on('touchstart', this.onTouchStart, this);
