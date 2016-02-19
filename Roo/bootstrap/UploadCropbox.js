@@ -121,6 +121,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 {
                     tag : 'div',
                     cls : 'roo-upload-cropbox-body',
+                    style : 'cursor:pointer',
                     cn : [
                         {
                             tag : 'div',
