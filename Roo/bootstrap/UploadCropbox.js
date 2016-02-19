@@ -238,7 +238,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.setThumbBoxPosition();
             this.setCanvasPosition();
         }
-        
     },
     
     onFooterButtonClick : function(e, el, o, type)
