@@ -232,8 +232,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(this.files.length > 12){
-            this.files = this.files.slice(0, 12);
+        if(this.files.length > this.boxes){
+            this.files = this.files.slice(0, this.boxes);
         }
         
         var xhr = new XMLHttpRequest();
