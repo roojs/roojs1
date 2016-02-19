@@ -54,7 +54,7 @@
     border-color: #333;
 }
 
-@media (max-height: 600px) {
+@media (max-height: 613px) {
     .roo-upload-cropbox-dialog .modal-dialog {
         margin: 0px auto;
     }
