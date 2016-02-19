@@ -10,7 +10,7 @@
  * @cfg {String} paramName default 'imageUpload'
  * @cfg {String} method default POST
  * @cfg {String} url action url
- * @cfg {Number} boxes number of boxes to show default 12
+ * @cfg {Number} boxes number of boxes default 12
  * @cfg {Boolean} multiple multiple upload default true
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
