@@ -79,7 +79,13 @@
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {String} type
          */
-        </span><span class="jsdoc-string">&quot;footerbuttonclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;footerbuttonclick&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event resize
+         * Fire when resize
+         * @param {Roo.bootstrap.UploadCropbox} this
+         */
+        </span><span class="jsdoc-string">&quot;resize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
         
     </span><span class="jsdoc-syntax">});
     
@@ -234,8 +240,10 @@
     
     </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">this.setThumbBoxPosition</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.setCanvasPosition</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'resize'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setThumbBoxPosition</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.setCanvasPosition</span><span class="jsdoc-syntax">();
+        }
     },
     
     </span><span class="jsdoc-var">onFooterButtonClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">o</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">type</span><span class="jsdoc-syntax">)
