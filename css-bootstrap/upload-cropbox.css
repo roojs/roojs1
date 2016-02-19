@@ -1,4 +1,10 @@
 
+.document-viewer-dialog .modal-header,
+.document-viewer-dialog .modal-footer {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .roo-upload-cropbox-body {
     background-color: #fff;
     border: 1px solid #e3e3e3;
