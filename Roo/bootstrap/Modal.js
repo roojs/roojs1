@@ -234,6 +234,10 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         if (this.allow_close) {
             this.closeEl.on('click', this.hide, this);
         }
+        
+        var _this = this;
+        
+        window.addEventListener("resize", function() { _this.resize(); } );
 
     },
     show : function() {
