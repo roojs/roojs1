@@ -79,7 +79,13 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {String} type
          */
-        "footerbuttonclick" : true
+        "footerbuttonclick" : true,
+        /**
+         * @event resize
+         * Fire when resize
+         * @param {Roo.bootstrap.UploadCropbox} this
+         */
+        "resize" : true
         
     });
     
