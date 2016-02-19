@@ -721,7 +721,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onTouchStart : function(e)
     {
-//        e.stopEvent();
+        e.stopEvent();
+        
+        if(!this.canvasLoaded){
+            this.beforeSelectFile(e);
+            return;
+        }
         
         var touches = e.browserEvent.touches;
         
@@ -758,7 +763,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onTouchMove : function(e)
     {
-//        e.stopEvent();
+        e.stopEvent();
         
         if(!this.pinching && !this.dragable){
             return;
@@ -814,7 +819,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onTouchEnd : function(e)
     {
-//        e.stopEvent();
+        e.stopEvent();
         
         this.pinching = false;
         this.dragable = false;
