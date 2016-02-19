@@ -25148,7 +25148,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
  * @cfg {String} paramName default 'imageUpload'
  * @cfg {String} method default POST
  * @cfg {String} url action url
- * @cfg {Number} boxes number of boxes to show default 12
+ * @cfg {Number} boxes number of boxes default 12
  * @cfg {Boolean} multiple multiple upload default true
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
@@ -25370,8 +25370,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(this.files.length > 12){
-            this.files = this.files.slice(0, 12);
+        if(this.files.length > this.boxes){
+            this.files = this.files.slice(0, this.boxes);
         }
         
         var xhr = new XMLHttpRequest();
@@ -25399,7 +25399,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
         }, this);
         
-        if(this.files.length > 11){
+        if(this.files.length > this.boxes - 1 ){
             this.uploader.hide();
         }
         
@@ -25517,7 +25517,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.uploader.show();
         
-        if(this.files.length > 11){
+        if(this.files.length > this.boxes - 1){
             this.uploader.hide();
         }
         
