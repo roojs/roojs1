@@ -256,9 +256,9 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         //    this.getChildContainer().dom.innerHTML = this.tmpl.applyTemplate(this);
         //}
         
-//        Roo.get(document.body).addClass("x-body-masked");
-//        this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
-//        this.maskEl.show();
+        Roo.get(document.body).addClass("x-body-masked");
+        this.maskEl.setSize(Roo.lib.Dom.getViewWidth(true), Roo.lib.Dom.getViewHeight(true));
+        this.maskEl.show();
         this.el.setStyle('zIndex', '10001');
        
         this.fireEvent('show', this);
@@ -267,7 +267,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
     },
     hide : function()
     {
-//        this.maskEl.hide();
+        this.maskEl.hide();
         Roo.get(document.body).removeClass("x-body-masked");
         this.el.removeClass('in');
         
