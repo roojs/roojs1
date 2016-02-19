@@ -207,12 +207,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         window.addEventListener("resize", function() { _this.resize(); } );
         
         if(!this.bodyHasOnClickEvent){
-            alert(this.bodyEl.getHeight());
             this.bodyEl.on('click', this.beforeSelectFile, this);
             this.bodyHasOnClickEvent = true;
         }
         
         if(Roo.isTouch){
+            alert(this.bodyEl.getHeight());
             this.bodyEl.on('touchstart', this.onTouchStart, this);
             this.bodyEl.on('touchmove', this.onTouchMove, this);
             this.bodyEl.on('touchend', this.onTouchEnd, this);
