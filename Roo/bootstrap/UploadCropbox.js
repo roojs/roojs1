@@ -725,6 +725,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onTouchStart : function(e)
     {
+        Roo.log('touch????');
         e.stopEvent();
         
         var touches = e.browserEvent.touches;
