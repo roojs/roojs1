@@ -197,6 +197,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.bind();
         
+        this.resize();
+        
         this.fireEvent('initial', this);
     },
 
