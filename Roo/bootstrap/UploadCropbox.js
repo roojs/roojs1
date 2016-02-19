@@ -257,13 +257,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     validateSize : function()
     {
-        var _this = this;
-        
         (function(){
             if(this.bodyEl.getHeight() < this.thumbEl.getHeight()){
-                
+                this.previewEl.hide();
+                this.thumbEl.hide();
+                this.notifyEl.dom.innerHTML = this.phoneLandScaple;
+                this.notifyEl.show();
             }
-        }).defer(100);
+        }).defer(100, this);
         
     },
     
