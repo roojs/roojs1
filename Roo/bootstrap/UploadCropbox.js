@@ -240,7 +240,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     resize : function()
     {
-        this.fireEvent('resize', this).defer(500);
+        this.fireEvent('resize', this).defer(500, this);
     },
     
     onFooterButtonClick : function(e, el, o, type)
