@@ -240,10 +240,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     resize : function()
     {
-        if(this.fireEvent('resize', this) != false){
-            this.setThumbBoxPosition();
-            this.setCanvasPosition();
-        }
+        this.fireEvent('resize', this).defer(500);
     },
     
     onFooterButtonClick : function(e, el, o, type)
