@@ -721,7 +721,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onTouchStart : function(e)
     {
+        alert('test');
+        
         e.stopEvent();
+        
+        alert('test1');
         
         if(!this.canvasLoaded){
             this.beforeSelectFile(e);
