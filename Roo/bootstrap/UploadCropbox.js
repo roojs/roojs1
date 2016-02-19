@@ -727,7 +727,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         alert('test1');
         
+        
+        
         if(!this.canvasLoaded){
+            alert('can');
             this.beforeSelectFile(e);
             return;
         }
