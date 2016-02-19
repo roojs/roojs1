@@ -204,7 +204,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var _this = this;
         
-        
         window.addEventListener("resize", function() { _this.resize(); } );
         
         if(!this.bodyHasOnClickEvent){
