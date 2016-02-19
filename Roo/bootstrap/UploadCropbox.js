@@ -8,7 +8,6 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap UploadCropbox class
  * @cfg {String} emptyText show when image has been loaded
- * @cfg {String} phoneLandScaple show when height not enough
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
@@ -96,7 +95,6 @@ Roo.bootstrap.UploadCropbox = function(config){
 Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     emptyText : 'Click to upload image',
-    phoneLandScaple : 'Display is too small, please rotate your phone',
     scale : 0,
     baseScale : 1,
     rotate : 0,
