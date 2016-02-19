@@ -670,6 +670,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.thumbEl.setLeft(x);
         this.thumbEl.setTop(y);
         
+        this.validateSize();
+        
     },
     
     baseRotateLevel : function()
