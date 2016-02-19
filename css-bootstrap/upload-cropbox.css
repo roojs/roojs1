@@ -54,6 +54,6 @@
     border-color: #333;
 }
 
-@media (min-width: 768px) {
+@media (max-height: 600px) {
     
 }
