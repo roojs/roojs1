@@ -601,6 +601,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     crop : function()
     {
+        if(typeof(this.canvasEl) == 'undefined'){
+            return;
+        }
         var canvas = document.createElement("canvas");
         
         var context = canvas.getContext("2d");
