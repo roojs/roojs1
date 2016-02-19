@@ -247,6 +247,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
     },
     
+    validateSize : function()
+    {
+        if(this.bodyEl.getHeight() < this.thumbEl.getHeight()){
+            Roo.log('too small');
+        }
+    },
+    
     onFooterButtonClick : function(e, el, o, type)
     {
         switch (type) {
