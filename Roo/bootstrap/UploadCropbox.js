@@ -242,6 +242,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.mouseX = 0;
         this.mouseY = 0;
         this.cropData = false;
+        this.notifyEl.dom.innerHTML = this.emptyText;
         
     },
     
