@@ -418,6 +418,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         Roo.log(this.thumbEl.getWidth() / this.minWidth);
         
+        
         if(
                 e.getWheelDelta() == -1 &&
                 (
