@@ -441,13 +441,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     zoomable : function($zoom)
     {
-        if(typeof($zoom) == 'undefined' || ['out', 'in'].indexOf($zoom) == -1){
+        if(typeof($zoom) == 'undefined'){
             return;
         }
         
-        if($zoom == 'out'){
-            
-        }
+        
         
     },
     
