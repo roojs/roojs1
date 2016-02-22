@@ -555,7 +555,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onRotateFail : function()
     {
+        this.errorEl.show(true);
         
+        var _this = this;
+        
+        (function() { _this.errorEl.hide(true); }).defer(1000);
     },
     
     draw : function()
