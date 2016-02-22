@@ -30,6 +30,7 @@
  * @cfg {String} autocomplete - default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en
 
  * @cfg {String} align (left|center|right) Default left
+ * @cfg {String} forceFeedback (true|false) Default false
  * 
  * 
  * 
