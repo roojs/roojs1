@@ -39856,6 +39856,18 @@
      "memberOf": ""
     },
     {
+     "name": "rotateNotify",
+     "type": "String",
+     "desc": "show when image too small to rotate",
+     "memberOf": ""
+    },
+    {
+     "name": "errorTimeout",
+     "type": "Number",
+     "desc": "default 3000",
+     "memberOf": ""
+    },
+    {
      "name": "minWidth",
      "type": "Number",
      "desc": "default 300",
