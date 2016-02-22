@@ -445,7 +445,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        
+        if($zoom < 1){ // zoom in
+            
+        }
         
     },
     
