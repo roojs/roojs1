@@ -439,11 +439,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.draw();
     },
     
-    scalable : function($zoom)
+    zoomable : function($zoom)
     {
-        if(typeof($zoom) == 'undefined' || ){
+        if(typeof($zoom) == 'undefined' || ['out', 'in'].indexOf($zoom) == -1){
+            return;
+        }
+        
+        if($zoom == 'out'){
             
         }
+        
     },
     
     onRotateLeft : function(e)
