@@ -487,8 +487,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onRotateRight : function(e)
     {
-        
         var minScale = this.thumbEl.getWidth() / this.minWidth;
+        
+        Roo.log(minScale);
+        
+        
+        
         
         if(
                 (this.rotate == 0 || this.rotate == 180) && 
