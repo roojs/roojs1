@@ -727,7 +727,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         
         this.el.addClass(this.validClass);
         
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && this.getValue().length){
+        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
             
             var feedback = this.el.select('.form-control-feedback', true).first();
             
