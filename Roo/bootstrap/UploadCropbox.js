@@ -437,16 +437,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.draw();
     },
     
-    zoomable : function(zoom)
+    zoomable : function()
     {
-        if(typeof(zoom) == 'undefined'){
-            return;
-        }
-        
-        var scale = (zoom < 1) ? (this.scale - 1) : (this.scale + 1);
         var minScale = this.thumbEl.getWidth() / this.minWidth;
-        var width = Math.ceil(this.imageEl.OriginWidth * this.baseScale * Math.pow(1.1, scale));
-        var height = Math.ceil(this.imageEl.OriginHeight * this.baseScale * Math.pow(1.1, scale));
+        
+        var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel());
+        var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel());
         
         Roo.log([width, height, minScale]);
         Roo.log(width / minScale);
