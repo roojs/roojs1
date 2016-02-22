@@ -462,21 +462,40 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onRotateLeft : function(e)
     {   
-        if(
-                (
-                    (this.rotate == 0 || this.rotate == 180) 
-                    &&
-                    (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())
-                )
-                ||
-                (
-                    (this.rotate == 90 || this.rotate == 270) 
-                    &&
-                    (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())
-                )
+        var minScale = this.thumbEl.getWidth() / this.minWidth;
+        
+        if(this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight()){
+            
+            var bw = this.canvasEl.width / this.getScaleLevel();
+            var bh = this.canvasEl.height / this.getScaleLevel();
+            
+            this.startScale = this.scale;
+            
+            while (this.getScaleLevel() < minScale){
+            
+                this.scale = this.scale + 1;
                 
-        ){
-            return;
+                if(!this.zoomable()){
+                    break;
+                }
+                
+                if(
+                        bw * this.getScaleLevel() < this.thumbEl.getHeight() ||
+                        bh * this.getScaleLevel() < this.thumbEl.getWidth()
+                ){
+                    continue;
+                }
+                
+                this.rotate = (this.rotate < 90) ? 270 : this.rotate - 90;
+
+                this.draw();
+                
+                return;
+            }
+            
+            this.scale = this.startScale;
+            
+            return false;
         }
         
         this.rotate = (this.rotate < 90) ? 270 : this.rotate - 90;
