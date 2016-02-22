@@ -451,6 +451,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         Roo.log(width);
         Roo.log(minScale);
+        Roo.log(width / minScale);
         
         if($zoom < 1){ // zoom in
         }
