@@ -559,7 +559,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var _this = this;
         
-        (function() { _this.errorEl.hide(true); }).defer(1000);
+        (function() { _this.errorEl.hide(true); }).defer(3000);
     },
     
     draw : function()
