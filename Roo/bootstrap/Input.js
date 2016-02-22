@@ -226,6 +226,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     readOnly : false,
     align : false,
     formatedValue : false,
+    forceFeedback : false,
     
     parentLabelAlign : function()
     {
