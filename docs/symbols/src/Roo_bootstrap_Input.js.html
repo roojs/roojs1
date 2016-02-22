@@ -30,6 +30,7 @@
  * @cfg {String} autocomplete - default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en
 
  * @cfg {String} align (left|center|right) Default left
+ * @cfg {String} forceFeedback (true|false) Default false
  * 
  * 
  * 
@@ -225,6 +226,7 @@
     </span><span class="jsdoc-var">readOnly </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">formatedValue </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">forceFeedback </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">parentLabelAlign </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -762,7 +764,7 @@
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">){
                 </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validFeedbackClass</span><span class="jsdoc-syntax">]);
                 
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.forceFeedback</span><span class="jsdoc-syntax">){
                     </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">]);
                 }
                 

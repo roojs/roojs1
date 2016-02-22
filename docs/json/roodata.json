@@ -15883,6 +15883,16 @@
      ]
     },
     {
+     "name": "forceFeedback",
+     "type": "String",
+     "desc": "Default false",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -17335,6 +17345,16 @@
      ]
     },
     {
+     "name": "forceFeedback",
+     "type": "String",
+     "desc": "Default false",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -18394,6 +18414,16 @@
      ]
     },
     {
+     "name": "forceFeedback",
+     "type": "String",
+     "desc": "Default false",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -19444,6 +19474,16 @@
       "left",
       "center",
       "right"
+     ]
+    },
+    {
+     "name": "forceFeedback",
+     "type": "String",
+     "desc": "Default false",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
      ]
     },
     {
@@ -21061,6 +21101,16 @@
       "left",
       "center",
       "right"
+     ]
+    },
+    {
+     "name": "forceFeedback",
+     "type": "String",
+     "desc": "Default false",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
      ]
     },
     {
@@ -24007,6 +24057,16 @@
      ]
     },
     {
+     "name": "forceFeedback",
+     "type": "String",
+     "desc": "Default false",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -25085,6 +25145,16 @@
       "left",
       "center",
       "right"
+     ]
+    },
+    {
+     "name": "forceFeedback",
+     "type": "String",
+     "desc": "Default false",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
      ]
     },
     {
@@ -28758,6 +28828,16 @@
       "left",
       "center",
       "right"
+     ]
+    },
+    {
+     "name": "forceFeedback",
+     "type": "String",
+     "desc": "Default false",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
      ]
     },
     {
@@ -33834,6 +33914,16 @@
      ]
     },
     {
+     "name": "forceFeedback",
+     "type": "String",
+     "desc": "Default false",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -37904,6 +37994,16 @@
      ]
     },
     {
+     "name": "forceFeedback",
+     "type": "String",
+     "desc": "Default false",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
      "name": "validationEvent",
      "type": "String/Boolean",
      "desc": "The event that should initiate field validation. Set to false to disable\n      automatic validation (defaults to \"keyup\").",
@@ -38574,6 +38674,16 @@
       "left",
       "center",
       "right"
+     ]
+    },
+    {
+     "name": "forceFeedback",
+     "type": "String",
+     "desc": "Default false",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
      ]
     },
     {
@@ -39291,6 +39401,16 @@
       "left",
       "center",
       "right"
+     ]
+    },
+    {
+     "name": "forceFeedback",
+     "type": "String",
+     "desc": "Default false",
+     "memberOf": "Roo.bootstrap.Input",
+     "optvals": [
+      "true",
+      "false"
      ]
     },
     {
