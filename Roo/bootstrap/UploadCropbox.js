@@ -494,41 +494,26 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             var bw = this.canvasEl.width / this.getScaleLevel();
             var bh = this.canvasEl.height / this.getScaleLevel();
             
-            Roo.log(this.getScaleLevel());
-            Roo.log(minScale);
-            
             this.startScale = this.scale;
-            
-            Roo.log(this.scale);
             
             while (this.getScaleLevel() < minScale){
             
                 this.scale = this.scale + 1;
                 
-                Roo.log(this.getScaleLevel());
-                Roo.log(this.zoomable());
-                
                 if(!this.zoomable()){
                     break;
                 }
-                
-                Roo.log(bw * this.getScaleLevel());
-                Roo.log(bh * this.getScaleLevel());
                 
                 if(
                         bw * this.getScaleLevel() < this.thumbEl.getHeight() ||
                         bh * this.getScaleLevel() < this.thumbEl.getWidth()
                 ){
-                    Roo.log(this.scale);
-                    Roo.log('keep going');
                     continue;
                 }
                 
-                Roo.log('done');
-                Roo.log(this.scale);
-//                this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
-//
-//                this.draw();
+                this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
+
+                this.draw();
                 
                 return;
             }
