@@ -403,16 +403,16 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         e.stopEvent();
         
-        this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
-        
-        var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel());
-        var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel());
-        
         Roo.log(this.imageEl.OriginWidth);
         
         Roo.log(this.getScaleLevel());
         
-        Roo.log(width);
+        Roo.log(Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel()));
+        
+        this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
+        
+        var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel());
+        var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel());
         
         if(
                 e.getWheelDelta() == -1 &&
