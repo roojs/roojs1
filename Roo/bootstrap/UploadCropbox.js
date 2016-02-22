@@ -491,6 +491,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         if(this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight()){
             
+            var bw = this.canvasEl.width / this.getScaleLevel();
+            var bh = this.canvasEl.height / this.getScaleLevel();
+            
             Roo.log(this.getScaleLevel());
             Roo.log(minScale);
             
