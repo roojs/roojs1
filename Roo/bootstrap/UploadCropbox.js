@@ -404,7 +404,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         e.stopEvent();
         
         this.zoomable(e.getWheelDelta());
-        return;
         
         this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
         
@@ -419,21 +418,21 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         Roo.log(this.thumbEl.getWidth() / this.minWidth);
         
-        if(
-                e.getWheelDelta() == -1 &&
-                (
-                    (
-                        (this.rotate == 0 || this.rotate == 180) && (width < this.thumbEl.getWidth() || height < this.thumbEl.getHeight())
-                    )
-                    ||
-                    (
-                        (this.rotate == 90 || this.rotate == 270) && (height < this.thumbEl.getWidth() || width < this.thumbEl.getHeight())
-                    )
-                )
-        ){
-            this.scale = (e.getWheelDelta() == 1) ? (this.scale - 1) : (this.scale + 1);
-            return;
-        }
+//        if(
+//                e.getWheelDelta() == -1 &&
+//                (
+//                    (
+//                        (this.rotate == 0 || this.rotate == 180) && (width < this.thumbEl.getWidth() || height < this.thumbEl.getHeight())
+//                    )
+//                    ||
+//                    (
+//                        (this.rotate == 90 || this.rotate == 270) && (height < this.thumbEl.getWidth() || width < this.thumbEl.getHeight())
+//                    )
+//                )
+//        ){
+//            this.scale = (e.getWheelDelta() == 1) ? (this.scale - 1) : (this.scale + 1);
+//            return;
+//        }
         
         this.draw();
     },
