@@ -125,7 +125,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     cn : [
                         {
                             tag : 'div',
-                            cls : 'roo-upload-cropbox-error-notify',
+                            cls : 'roo-upload-cropbox-error-notify alert alert-danger',
                             html : 'test'
                         },
                         {
