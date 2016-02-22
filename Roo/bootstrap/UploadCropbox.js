@@ -451,7 +451,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         Roo.log([width, height, minScale]);
         Roo.log(width / minScale);
         
-        if(scale < 1 && (this.rotate == 0 || this.rotate == 180)){ // zoom in
+        if(scale < 1 && (this.rotate == 0 || this.rotate == 180) && width / minScale){ // zoom in
             
         }
         
