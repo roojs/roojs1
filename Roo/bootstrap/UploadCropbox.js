@@ -523,6 +523,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return false;
         }
         
+        Roo.log('get here');
+        
         this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
 
         this.draw();
