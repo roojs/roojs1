@@ -503,6 +503,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
                 this.scale = this.scale + 1;
                 
+                if(!this.zoomable()){
+                    
+                }
+                
                 
             }
             
