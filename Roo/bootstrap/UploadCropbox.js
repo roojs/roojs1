@@ -9,6 +9,7 @@
  * Bootstrap UploadCropbox class
  * @cfg {String} emptyText show when image has been loaded
  * @cfg {String} rotateNotify show when image too small to rotate
+ * @cfg {Number} errorTimeout default 3000
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
