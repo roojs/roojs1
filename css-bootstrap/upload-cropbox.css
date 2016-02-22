@@ -55,6 +55,7 @@
 }
 
 .roo-upload-cropbox-error-notify {
+    border-radius: 0px;
     text-align: center;
     padding: 0px !important;
     margin: 0px !important;
