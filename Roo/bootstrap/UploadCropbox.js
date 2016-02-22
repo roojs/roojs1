@@ -353,6 +353,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.previewEl.setLeft(pw);
         this.previewEl.setTop(ph);
+        
     },
     
     onMouseDown : function(e)
