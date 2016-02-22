@@ -98,7 +98,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     emptyText : 'Click to upload image',
     rotateNotify : 'Image is too small to rotate',
-    errorTimeout : 1000,
+    errorTimeout : 3000,
     scale : 0,
     baseScale : 1,
     rotate : 0,
