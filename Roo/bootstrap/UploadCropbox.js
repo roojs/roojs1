@@ -139,7 +139,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         {
                             tag : 'div',
                             cls : 'roo-upload-cropbox-error-notify alert alert-danger',
-                            html : ''
+                            html : 'test'
                         }
                     ]
                 },
@@ -192,6 +192,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.notifyEl = this.el.select('.roo-upload-cropbox-empty-notify', true).first();
         this.notifyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.errorEl = this.el.select('.roo-upload-cropbox-error-notify', true).first();
+        this.errorEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.errorEl.hide();
         
         this.footerEl = this.el.select('.roo-upload-cropbox-footer', true).first();
         this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -483,6 +487,25 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onRotateRight : function(e)
     {
+        
+        var minScale = this.thumbEl.getWidth() / this.minWidth;
+        
+        if(
+                (this.rotate == 0 || this.rotate == 180) && 
+                (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())
+        ){
+            
+            return false;
+        }
+        
+        if(
+                (this.rotate == 90 || this.rotate == 270)  && 
+                (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())
+        ){
+    
+            return false;
+        }
+        
         if(
                 (
                     (this.rotate == 0 || this.rotate == 180) 
