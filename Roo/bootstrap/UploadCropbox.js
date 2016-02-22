@@ -423,9 +423,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel());
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel());
         
-        Roo.log([width, height, minScale]);
-        Roo.log(width / minScale);
-        
         if(
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
