@@ -403,9 +403,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         e.stopEvent();
         
-        this.zoomable(e.getWheelDelta());
-        
         this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
+        
+        this.zoomable();
         
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel());
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel());
