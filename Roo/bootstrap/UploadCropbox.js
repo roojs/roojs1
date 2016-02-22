@@ -455,6 +455,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
         }
         
+        
+        
     },
     
     onRotateLeft : function(e)
