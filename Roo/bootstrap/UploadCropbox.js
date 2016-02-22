@@ -403,7 +403,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         e.stopEvent();
         
-        this.scalable(e.getWheelDelta());
+        this.zoomable(e.getWheelDelta());
         return;
         
         this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
