@@ -445,12 +445,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        $scale = ($zoom < 1) ? (this.scale - 1) : (this.scale + 1);
+        var $scale = ($zoom < 1) ? (this.scale - 1) : (this.scale + 1);
+        var width = 0;
+        var height = 0;
         
         if($zoom < 1){ // zoom in
-            
-            var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel());
-            var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel());
+            var width = Math.ceil(this.imageEl.OriginWidth * this.baseScale * Math.pow(1.1, $scale));
+            var height = Math.ceil(this.imageEl.OriginHeight * this.baseScale * Math.pow(1.1, $scale));
         }
         
     },
