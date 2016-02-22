@@ -499,6 +499,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             this.startScale = this.scale;
             
+            Roo.log(this.getScaleLevel());
+            Roo.log(minScale);
+            
             while (this.getScaleLevel() < minScale){
                 Roo.log(this);
                 break;
