@@ -450,7 +450,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var minScale = this.thumbEl.getWidth() / this.minWidth;
         
         Roo.log(minScale);
-        Roo.log(this.thumbEl.getHeight() / this.minHeight;);
+        Roo.log(this.thumbEl.getHeight() / this.minHeight);
         
         if($zoom < 1){ // zoom in
         }
