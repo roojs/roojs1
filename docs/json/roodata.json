@@ -15884,7 +15884,7 @@
     },
     {
      "name": "forceFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "Default false",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
@@ -17346,7 +17346,7 @@
     },
     {
      "name": "forceFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "Default false",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
@@ -18415,7 +18415,7 @@
     },
     {
      "name": "forceFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "Default false",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
@@ -19478,7 +19478,7 @@
     },
     {
      "name": "forceFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "Default false",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
@@ -21105,7 +21105,7 @@
     },
     {
      "name": "forceFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "Default false",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
@@ -24058,7 +24058,7 @@
     },
     {
      "name": "forceFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "Default false",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
@@ -25149,7 +25149,7 @@
     },
     {
      "name": "forceFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "Default false",
      "memberOf": "",
      "optvals": [
@@ -28832,7 +28832,7 @@
     },
     {
      "name": "forceFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "Default false",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
@@ -33915,7 +33915,7 @@
     },
     {
      "name": "forceFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "Default false",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
@@ -37995,7 +37995,7 @@
     },
     {
      "name": "forceFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "Default false",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
@@ -38678,7 +38678,7 @@
     },
     {
      "name": "forceFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "Default false",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
@@ -39405,7 +39405,7 @@
     },
     {
      "name": "forceFeedback",
-     "type": "String",
+     "type": "Boolean",
      "desc": "Default false",
      "memberOf": "Roo.bootstrap.Input",
      "optvals": [
