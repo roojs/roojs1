@@ -489,10 +489,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var minScale = this.thumbEl.getWidth() / this.minWidth;
         
-        if(
-                (this.rotate == 0 || this.rotate == 180) && 
-                (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())
-        ){
+        if(this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight()){
             
             this.startScale = this.scale;
             
@@ -517,54 +514,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             this.scale = this.startScale;
             
-            return false;
-        }
-        
-        if(
-                (this.rotate == 90 || this.rotate == 270)  && 
-                (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())
-        ){
-    
-            this.startScale = this.scale;
-            
-            while (this.getScaleLevel() < minScale){
-            
-                this.scale = this.scale + 1;
-                
-                if(!this.zoomable()){
-                    break;
-                }
-                
-                if(
-                        this.imageEl.OriginWidth * this.getScaleLevel() < this.thumbEl.getHeight() ||
-                        this.imageEl.OriginHeight * this.getScaleLevel() < this.thumbEl.getWidth()
-                ){
-                    continue;
-                }
-                
-                return true;
-                
-            }
-            
-            this.scale = this.startScale;
-            
-            return false;
-        }
-        
-        if(
-                (
-                    (this.rotate == 0 || this.rotate == 180) 
-                    &&
-                    (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())
-                )
-                ||
-                (
-                    (this.rotate == 90 || this.rotate == 270) 
-                    &&
-                    (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())
-                )
-                
-        ){
             return false;
         }
         
