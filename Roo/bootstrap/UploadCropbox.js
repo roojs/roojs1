@@ -496,6 +496,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             this.startScale = this.scale;
             
+            Roo.log(this.scale);
+            
             while (this.getScaleLevel() < minScale){
             
                 this.scale = this.scale + 1;
@@ -511,6 +513,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         this.imageEl.OriginWidth * this.getScaleLevel() < this.thumbEl.getHeight() ||
                         this.imageEl.OriginHeight * this.getScaleLevel() < this.thumbEl.getWidth()
                 ){
+                
                     continue;
                 }
                 
