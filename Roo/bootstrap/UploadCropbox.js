@@ -403,6 +403,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         e.stopEvent();
         
+        
+        
         this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
         
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel());
@@ -433,6 +435,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         this.draw();
+    },
+    
+    scalable : function($in)
+    {
+        
     },
     
     onRotateLeft : function(e)
