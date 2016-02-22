@@ -796,25 +796,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.scale = this.startScale + Math.floor(Math.log(this.endDistance / this.startDistance) / Math.log(1.1));
         
-        var width = Math.ceil(this.imageEl.OriginWidth * this.baseScale * Math.pow(1.1, scale));
-        var height = Math.ceil(this.imageEl.OriginHeight * this.baseScale * Math.pow(1.1, scale));
-        
-        if(
-                this.endDistance / this.startDistance < 1 &&
-                (
-                    (
-                        (this.rotate == 0 || this.rotate == 180) && (width < this.thumbEl.getWidth() || height < this.thumbEl.getHeight())
-                    )
-                    ||
-                    (
-                        (this.rotate == 90 || this.rotate == 270) && (height < this.thumbEl.getWidth() || width < this.thumbEl.getHeight())
-                    )
-                )
-        ){
+        if(!this.zoomable()){
+            this.scale = this.startScale;
             return;
         }
-        
-        this.scale = scale;
         
         this.draw();
         
