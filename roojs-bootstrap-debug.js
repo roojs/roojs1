@@ -7478,6 +7478,7 @@ Roo.form.VTypes = function(){
  * @cfg {String} autocomplete - default is new-password see: https://developers.google.com/web/fundamentals/input/form/label-and-name-inputs?hl=en
 
  * @cfg {String} align (left|center|right) Default left
+ * @cfg {String} forceFeedback (true|false) Default false
  * 
  * 
  * 
@@ -7673,6 +7674,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     readOnly : false,
     align : false,
     formatedValue : false,
+    forceFeedback : false,
     
     parentLabelAlign : function()
     {
@@ -8210,7 +8212,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             if(feedback){
                 this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
                 
-                if(this.getValue().length){
+                if(this.getValue().length || this.forceFeedback){
                     this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
                 }
                 
