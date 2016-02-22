@@ -447,11 +447,31 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         Roo.log([width, height, minScale]);
         Roo.log(width / minScale);
         
-        if(scale < 1 && (this.rotate == 0 || this.rotate == 180) && width / minScale){ // zoom in
-            
+        if(
+                (this.rotate == 0 || this.rotate == 180) && 
+                (
+                    width / minScale < this.minWidth || 
+                    width / minScale > this.imageEl.OriginWidth || 
+                    height / minScale < this.minHeight || 
+                    height / minScale > this.imageEl.OriginHeight
+                )
+        ){
+            return false;
         }
         
+        if(
+                (this.rotate == 90 || this.rotate == 270) && 
+                (
+                    height / minScale < this.minWidth || 
+                    height / minScale > this.imageEl.OriginWidth || 
+                    width / minScale < this.minHeight || 
+                    width / minScale > this.imageEl.OriginHeight
+                )
+        ){
+            return false;
+        }
         
+        return true;
         
     },
     
