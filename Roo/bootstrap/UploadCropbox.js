@@ -495,6 +495,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             this.scale = this.startScale;
             
+            this.onRotateFail();
+            
             return false;
         }
         
@@ -538,6 +540,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             }
             
             this.scale = this.startScale;
+            
+            this.onRotateFail();
             
             return false;
         }
