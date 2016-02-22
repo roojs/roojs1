@@ -23953,6 +23953,8 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
  * @extends Roo.bootstrap.Component
  * Bootstrap UploadCropbox class
  * @cfg {String} emptyText show when image has been loaded
+ * @cfg {String} rotateNotify show when image too small to rotate
+ * @cfg {Number} errorTimeout default 3000
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
@@ -24040,6 +24042,8 @@ Roo.bootstrap.UploadCropbox = function(config){
 Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     emptyText : 'Click to upload image',
+    rotateNotify : 'Image is too small to rotate',
+    errorTimeout : 3000,
     scale : 0,
     baseScale : 1,
     rotate : 0,
@@ -24079,8 +24083,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                         {
                             tag : 'div',
                             cls : 'roo-upload-cropbox-empty-notify',
-                            style : 'cursor:pointer',
                             html : this.emptyText
+                        },
+                        {
+                            tag : 'div',
+                            cls : 'roo-upload-cropbox-error-notify alert alert-danger',
+                            html : this.rotateNotify
                         }
                     ]
                 },
@@ -24133,6 +24141,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.notifyEl = this.el.select('.roo-upload-cropbox-empty-notify', true).first();
         this.notifyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        
+        this.errorEl = this.el.select('.roo-upload-cropbox-error-notify', true).first();
+        this.errorEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.errorEl.hide();
         
         this.footerEl = this.el.select('.roo-upload-cropbox-footer', true).first();
         this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -24286,6 +24298,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.previewEl.setLeft(pw);
         this.previewEl.setTop(ph);
+        
     },
     
     onMouseDown : function(e)
@@ -24348,47 +24361,93 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {   
         e.stopEvent();
         
+        this.startScale = this.scale;
+        
         this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
+        
+        if(!this.zoomable()){
+            this.scale = this.startScale;
+            return;
+        }
+        
+        this.draw();
+        
+        return;
+    },
+    
+    zoomable : function()
+    {
+        var minScale = this.thumbEl.getWidth() / this.minWidth;
         
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel());
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel());
         
         if(
-                e.getWheelDelta() == -1 &&
+                (this.rotate == 0 || this.rotate == 180) && 
                 (
-                    (
-                        (this.rotate == 0 || this.rotate == 180) && (width < this.thumbEl.getWidth() || height < this.thumbEl.getHeight())
-                    )
-                    ||
-                    (
-                        (this.rotate == 90 || this.rotate == 270) && (height < this.thumbEl.getWidth() || width < this.thumbEl.getHeight())
-                    )
+                    width / minScale < this.minWidth || 
+                    width / minScale > this.imageEl.OriginWidth || 
+                    height / minScale < this.minHeight || 
+                    height / minScale > this.imageEl.OriginHeight
                 )
         ){
-            this.scale = (e.getWheelDelta() == 1) ? (this.scale - 1) : (this.scale + 1);
-            return;
+            return false;
         }
         
-        this.draw();
+        if(
+                (this.rotate == 90 || this.rotate == 270) && 
+                (
+                    width / minScale < this.minHeight || 
+                    width / minScale > this.imageEl.OriginWidth || 
+                    height / minScale < this.minWidth || 
+                    height / minScale > this.imageEl.OriginHeight
+                )
+        ){
+            return false;
+        }
+        
+        return true;
+        
     },
     
     onRotateLeft : function(e)
     {   
-        if(
-                (
-                    (this.rotate == 0 || this.rotate == 180) 
-                    &&
-                    (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())
-                )
-                ||
-                (
-                    (this.rotate == 90 || this.rotate == 270) 
-                    &&
-                    (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())
-                )
+        var minScale = this.thumbEl.getWidth() / this.minWidth;
+        
+        if(this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight()){
+            
+            var bw = this.canvasEl.width / this.getScaleLevel();
+            var bh = this.canvasEl.height / this.getScaleLevel();
+            
+            this.startScale = this.scale;
+            
+            while (this.getScaleLevel() < minScale){
+            
+                this.scale = this.scale + 1;
                 
-        ){
-            return;
+                if(!this.zoomable()){
+                    break;
+                }
+                
+                if(
+                        bw * this.getScaleLevel() < this.thumbEl.getHeight() ||
+                        bh * this.getScaleLevel() < this.thumbEl.getWidth()
+                ){
+                    continue;
+                }
+                
+                this.rotate = (this.rotate < 90) ? 270 : this.rotate - 90;
+
+                this.draw();
+                
+                return;
+            }
+            
+            this.scale = this.startScale;
+            
+            this.onRotateFail();
+            
+            return false;
         }
         
         this.rotate = (this.rotate < 90) ? 270 : this.rotate - 90;
@@ -24399,27 +24458,56 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onRotateRight : function(e)
     {
-        if(
-                (
-                    (this.rotate == 0 || this.rotate == 180) 
-                    &&
-                    (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())
-                )
-                ||
-                (
-                    (this.rotate == 90 || this.rotate == 270) 
-                    &&
-                    (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())
-                )
+        var minScale = this.thumbEl.getWidth() / this.minWidth;
+        
+        if(this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight()){
+            
+            var bw = this.canvasEl.width / this.getScaleLevel();
+            var bh = this.canvasEl.height / this.getScaleLevel();
+            
+            this.startScale = this.scale;
+            
+            while (this.getScaleLevel() < minScale){
+            
+                this.scale = this.scale + 1;
                 
-        ){
+                if(!this.zoomable()){
+                    break;
+                }
+                
+                if(
+                        bw * this.getScaleLevel() < this.thumbEl.getHeight() ||
+                        bh * this.getScaleLevel() < this.thumbEl.getWidth()
+                ){
+                    continue;
+                }
+                
+                this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
+
+                this.draw();
+                
+                return;
+            }
+            
+            this.scale = this.startScale;
+            
+            this.onRotateFail();
+            
             return false;
         }
         
         this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
 
         this.draw();
+    },
+    
+    onRotateFail : function()
+    {
+        this.errorEl.show(true);
         
+        var _this = this;
+        
+        (function() { _this.errorEl.hide(true); }).defer(this.errorTimeout);
     },
     
     draw : function()
@@ -24714,27 +24802,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.endDistance = Math.sqrt(x + y);
         
-        var scale = this.startScale + Math.floor(Math.log(this.endDistance / this.startDistance) / Math.log(1.1));
+        this.scale = this.startScale + Math.floor(Math.log(this.endDistance / this.startDistance) / Math.log(1.1));
         
-        var width = Math.ceil(this.imageEl.OriginWidth * this.baseScale * Math.pow(1.1, scale));
-        var height = Math.ceil(this.imageEl.OriginHeight * this.baseScale * Math.pow(1.1, scale));
-        
-        if(
-                this.endDistance / this.startDistance < 1 &&
-                (
-                    (
-                        (this.rotate == 0 || this.rotate == 180) && (width < this.thumbEl.getWidth() || height < this.thumbEl.getHeight())
-                    )
-                    ||
-                    (
-                        (this.rotate == 90 || this.rotate == 270) && (height < this.thumbEl.getWidth() || width < this.thumbEl.getHeight())
-                    )
-                )
-        ){
+        if(!this.zoomable()){
+            this.scale = this.startScale;
             return;
         }
-        
-        this.scale = scale;
         
         this.draw();
         
