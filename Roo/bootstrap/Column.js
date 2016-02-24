@@ -57,13 +57,10 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
-        Roo.log('column html');
         
-        Roo.log(this.html);
         cfg = {
             tag: 'div',
-            cls: 'column',
-            html : this.html
+            cls: 'column'
         };
         
         var settings=this;
@@ -95,10 +92,9 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         }
         
         
-//        if (this.html.length) {
-//            cfg.html = this.html;
-//        }
-        
+        if (this.html.length) {
+            cfg.html = this.html;
+        }
         if (this.fa) {
             var fasize = '';
             if (this.fasize > 1) {
