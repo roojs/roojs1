@@ -57,7 +57,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
     
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.Column.superclass.getAutoCreate.call(this));
-        
+        Roo.log(this.html);
         cfg = {
             tag: 'div',
             cls: 'column'
