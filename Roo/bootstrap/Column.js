@@ -62,7 +62,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         Roo.log(this.html);
         cfg = {
             tag: 'div',
-            cls: 'column'
+            cls: 'column',
             html : this.html || ''
         };
         
