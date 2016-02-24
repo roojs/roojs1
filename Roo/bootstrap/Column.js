@@ -61,6 +61,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         cfg = {
             tag: 'div',
             cls: 'column'
+            html : this.html ? this.html : ''
         };
         
         var settings=this;
@@ -92,9 +93,10 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
         }
         
         
-        if (this.html.length) {
-            cfg.html = this.html;
-        }
+//        if (this.html.length) {
+//            cfg.html = this.html;
+//        }
+        
         if (this.fa) {
             var fasize = '';
             if (this.fasize > 1) {
