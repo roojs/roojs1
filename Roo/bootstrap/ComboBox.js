@@ -1850,7 +1850,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         Roo.log('run??');
         
         this.item = [];
-        this.tickItems = [];
         
         Roo.each(this.choices.select('>li.select2-search-choice', true).elements, function(c){
            c.remove();
