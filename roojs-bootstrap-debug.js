@@ -23337,7 +23337,6 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         //this.el.setXY([0,0]);
         this.el.show();
         //this.el.dom.style.display='block';
-        this.el.addClass(placement);
         
         //this.el.appendTo(on_el);
         
@@ -23347,12 +23346,31 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         if (autoPlace) {
             // fixme..
         }
+        
         var align = Roo.bootstrap.Tooltip.alignment[placement];
+        
+        var xy = this.el.getAlignToXY(this.bindEl, align[0], align[1]);
+        
+        if(placement == 'top' || placement == 'bottom'){
+            if(xy[0] < 0){
+                placement = 'right';
+            }
+            
+            if(xy[0] + this.el.getWidth() > Roo.lib.Dom.getViewWidth()){
+                placement = 'left';
+            }
+        }
+        
+        align = Roo.bootstrap.Tooltip.alignment[placement];
+        
         this.el.alignTo(this.bindEl, align[0],align[1]);
         //var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 
         
+        this.el.addClass(placement);
+        
         this.el.addClass('in fade');
+        
         this.hoverState = null;
         
         if (this.el.hasClass('fade')) {
