@@ -12914,7 +12914,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.validate();
         
-        if(this.tickable){
+        if(this.tickable && !Roo.isTouch){
             this.view.refresh();
         }
     },
