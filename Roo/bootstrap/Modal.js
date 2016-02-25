@@ -254,7 +254,7 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         
         this.el.setStyle('display', 'block');
         
-        if(this.animate){
+        if(this.animate ){
             var _this = this;
             (function(){ _this.el.addClass('in'); }).defer(50);
         }else{
