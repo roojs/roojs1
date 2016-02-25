@@ -232,7 +232,6 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         //this.el.detach()
         //this.el.setXY([0,0]);
         this.el.show();
-        Roo.log(this.el);
         //this.el.dom.style.display='block';
         this.el.addClass(placement);
         
