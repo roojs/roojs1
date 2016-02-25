@@ -1572,6 +1572,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             this.tickItems = Roo.apply([], this.item);
             
+            Roo.log(this.tickItems);
+            
             this.okBtn.show();
             this.cancelBtn.show();
             this.trigger.hide();
