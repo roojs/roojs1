@@ -2294,8 +2294,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
 
         var listHeight = this.touchViewListGroup.getHeight();
         
+        var _this = this;
+        
         if(firstChecked && listHeight > bodyHeight){
-            (function() { firstChecked.findParent('li').scrollIntoView(this.touchViewListGroup.dom); }).defer(500);
+            (function() { firstChecked.findParent('li').scrollIntoView(_this.touchViewListGroup.dom); }).defer(500);
         }
         
     },
