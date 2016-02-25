@@ -1847,6 +1847,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return;
         }
         
+        Roo.log('run??');
+        
         this.item = [];
         this.tickItems = [];
         
