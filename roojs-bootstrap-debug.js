@@ -12913,6 +12913,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         this.syncValue();
         
         this.validate();
+        
+        if(this.tickable){
+            this.view.refresh();
+        }
     },
     
     inputEl: function ()
