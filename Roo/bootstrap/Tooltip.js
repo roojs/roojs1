@@ -246,7 +246,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         
         var align = Roo.bootstrap.Tooltip.alignment[placement];
         
-        var xy = this.getAlignToXY(this.bindEl, align[0], align[1]);
+        var xy = this.el.getAlignToXY(this.bindEl, align[0], align[1]);
         
         Roo.log(xy);
         
