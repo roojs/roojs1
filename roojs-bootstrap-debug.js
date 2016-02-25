@@ -4192,7 +4192,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
     },
     setActive : function(state, fire, is_was_active)
     {
-        if (this.active && !state & this.navId) {
+        if (this.active && !state && this.navId) {
             this.was_active = true;
             var nv = Roo.bootstrap.NavGroup.get(this.navId);
             if (nv) {
