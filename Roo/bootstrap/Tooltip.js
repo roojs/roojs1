@@ -234,7 +234,6 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         this.el.show();
         //this.el.dom.style.display='block';
         
-        
         //this.el.appendTo(on_el);
         
         var p = this.getPosition();
@@ -256,13 +255,16 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         
         align = Roo.bootstrap.Tooltip.alignment[placement];
         
-        this.el.addClass(placement);
+        Roo.log(this.el);
         
         this.el.alignTo(this.bindEl, align[0],align[1]);
         //var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 
         
+        this.el.addClass(placement);
+        
         this.el.addClass('in fade');
+        
         this.hoverState = null;
         
         if (this.el.hasClass('fade')) {
