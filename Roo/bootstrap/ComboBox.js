@@ -951,7 +951,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     onLoad : function(){
         
-        Roo.log('onLOad!!!!!!!!!!11');
         this.hasQuery = false;
         
         if(!this.hasFocus){
@@ -1847,8 +1846,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if(!this.multiple){
             return;
         }
-        
-        Roo.log('run??');
         
         this.item = [];
         
