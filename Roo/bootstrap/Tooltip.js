@@ -254,9 +254,9 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
                 placement = 'right';
             }
             
-//            if(xy[1] < 0){
-//                placement = 'right';
-//            }
+            if(xy[0] < 0){
+                placement = 'right';
+            }
         }
         
         align = Roo.bootstrap.Tooltip.alignment[placement];
