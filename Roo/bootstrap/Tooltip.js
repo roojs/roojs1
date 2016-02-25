@@ -244,7 +244,7 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         if (autoPlace) {
             // fixme..
         }
-        Roo.log(placement);
+        
         var align = Roo.bootstrap.Tooltip.alignment[placement];
         Roo.log(align);
         this.el.alignTo(this.bindEl, align[0],align[1]);
