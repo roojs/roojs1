@@ -221,12 +221,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
         }, this);
         
-        this.process();
-        
-    },
-    
-    process : function()
-    {
         this.selectorEl.dom.value = '';
         
         if(!this.files.length){
@@ -243,18 +237,29 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         Roo.each(this.files, function(file){
             if(file.type.indexOf('image') == -1){
-                documents.push('d');
+                documents.push(
+                    (function(){
+                        _this.uploadFile(file);
+                    }).createDelegate(this)
+                );
                 return;
             }
             
-            images.push('i');
+            images.push(
+                (function(){
+                    _this.uploadFile(file);
+                }).createDelegate(this)
+            );
         }, this);
         
         this.delegates = images.concat(documents);
         
-        Roo.log(this.delegates);
+        this.process();
         
-        return;
+    },
+    
+    process : function()
+    {
         
         var xhr = new XMLHttpRequest();
         
