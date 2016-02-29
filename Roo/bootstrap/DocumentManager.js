@@ -221,6 +221,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
         }, this);
         
+        this.process();
+        
+    },
+    
+    process : function()
+    {
         this.selectorEl.dom.value = '';
         
         if(!this.files.length){
@@ -254,12 +260,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.delegates = images.concat(documents);
         
-        this.process();
-        
-    },
-    
-    process : function()
-    {
         if(!this.delegates.length){
             return;
         }
@@ -269,6 +269,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         delegate();
         
         return;
+        
+        
         
         var xhr = new XMLHttpRequest();
         
