@@ -5808,19 +5808,19 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             var hh = '';
             
             if(typeof(config.lgHeader) != 'undefined'){
-                hh += '<span class="hidden-xs hidden-sm hidden-md">' . config.lgHeader .'</span>';
+                hh += '<span class="hidden-xs hidden-sm hidden-md">' + config.lgHeader + '</span>';
             }
             
             if(typeof(config.mdHeader) != 'undefined'){
-                hh += '<span class="hidden-xs hidden-sm hidden-lg">' . config.mdHeader .'</span>';
+                hh += '<span class="hidden-xs hidden-sm hidden-lg">' + config.mdHeader + '</span>';
             }
             
             if(typeof(config.smHeader) != 'undefined'){
-                hh += '<span class="hidden-xs hidden-md hidden-lg">' . config.smHeader .'</span>';
+                hh += '<span class="hidden-xs hidden-md hidden-lg">' + config.smHeader + '</span>';
             }
             
             if(typeof(config.xsHeader) != 'undefined'){
-                hh += '<span class="hidden-sm hidden-md hidden-lg">' . config.xsHeader .'</span>';
+                hh += '<span class="hidden-sm hidden-md hidden-lg">' + config.xsHeader + '</span>';
             }
             
             if(hh.length){
