@@ -18,6 +18,7 @@
  * @cfg {String} fieldLabel
  * @cfg {Number} labelWidth default 4
  * @cfg {String} labelAlign (left|top) default left
+ * @cfg {Boolean} editImage (true|false) allow edit when upload a image default true
  * 
  * @constructor
  * Create a new DocumentManager
