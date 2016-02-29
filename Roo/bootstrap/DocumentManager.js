@@ -258,7 +258,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             );
         }, this);
         
-        this.delegates = 
+        this.delegates = images.concat(documents);
+        
+        Roo.log(this.delegates);
         
         return;
         
