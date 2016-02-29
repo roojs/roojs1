@@ -221,6 +221,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
         }, this);
         
+        if(this.files.length > this.boxes){
+            this.files = this.files.slice(0, this.boxes);
+        }
+        
         this.process();
         
     },
@@ -231,10 +235,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         if(!this.files.length){
             return;
-        }
-        
-        if(this.files.length > this.boxes){
-            this.files = this.files.slice(0, this.boxes);
         }
         
         Roo.each(this.files, function(file){
