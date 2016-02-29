@@ -243,7 +243,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             var _this = this;
             this.delegates.push(
                 (function(){
-                    
+                    _this.uploadFile(file);
                 }).createDelegate(this)
             );
         }, this);
