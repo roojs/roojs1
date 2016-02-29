@@ -243,16 +243,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         Roo.each(this.files, function(file){
             if(file.type.indexOf('image') == -1){
-                documents.push('d')
-                );
+                documents.push('d');
                 return;
             }
             
-            images.push(
-                (function(){
-                    _this.uploadFile(file);
-                }).createDelegate(this)
-            );
+            images.push('i');
         }, this);
         
         this.delegates = images.concat(documents);
