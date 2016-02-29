@@ -245,7 +245,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             if(file.type.indexOf('image') == -1){
                 documents.push(
                     (function(){
-                        _this.uploadFile(file);
+                        _this.uploadDocument(file);
                     }).createDelegate(this)
                 );
                 return;
@@ -253,7 +253,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             images.push(
                 (function(){
-                    _this.uploadFile(file);
+                    _this.uploadImage(file);
                 }).createDelegate(this)
             );
         }, this);
