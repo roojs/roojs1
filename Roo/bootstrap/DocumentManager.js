@@ -260,7 +260,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     process : function()
     {
-        
+        if(!this.delegates.length){
+            return;
+        }
         
         return;
         
