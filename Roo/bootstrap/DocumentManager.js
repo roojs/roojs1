@@ -216,8 +216,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
-        
-        
         Roo.each(this.selectorEl.dom.files, function(file){
             if(this.fireEvent('inspect', this, file) != false){
                 this.files.push(file);
