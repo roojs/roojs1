@@ -441,7 +441,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
             
             var config = cm.config[i];
-                    
+            
+            Roo.log(config);
+            
             var c = {
                 tag: 'th',
                 style : '',
