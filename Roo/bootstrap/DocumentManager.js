@@ -233,8 +233,17 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
+        if(this.files.length > this.boxes){
+            this.files = this.files.slice(0, this.boxes);
+        }
+        
         Roo.each(this.files, function(file){
+            if(file.type.indexOf('image') == -1){
+                return;
+            }
+            
             var _this = this;
+            
             this.delegates.push(
                 (function(){
                     _this.uploadFile(file);
