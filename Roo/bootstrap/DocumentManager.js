@@ -203,9 +203,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     onUpload : function(e)
     {
         e.preventDefault();
-        
         this.selectorEl.dom.click();
-        
     },
     
     onSelect : function(e)
