@@ -240,8 +240,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         
         Roo.each(this.files, function(file){
-            
-            
+            this.delegates.push(
+                (function(){
+                    
+                }).createDelegate(this)
+            );
         }, this);
         
         var xhr = new XMLHttpRequest();
