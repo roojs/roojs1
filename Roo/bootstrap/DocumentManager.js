@@ -240,6 +240,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         
         Roo.each(this.files, function(file){
+            var _this = this;
             this.delegates.push(
                 (function(){
                     
