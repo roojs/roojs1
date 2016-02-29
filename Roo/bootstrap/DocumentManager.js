@@ -204,7 +204,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.selectorEl.dom.click();
         
-        
     },
     
     onSelect : function(e)
