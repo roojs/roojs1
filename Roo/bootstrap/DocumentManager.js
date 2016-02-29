@@ -96,8 +96,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     labelWidth : 4,
     labelAlign : 'left',
     editable : true,
-    images : [],
-    documents : [],
     delegates : [],
     
     getAutoCreate : function()
