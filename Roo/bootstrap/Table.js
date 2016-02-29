@@ -442,7 +442,9 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             
             var config = cm.config[i];
             
+            Roo.log('render header!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
             Roo.log(config);
+            Roo.log(cm.getColumnHeader(i));
             
             var c = {
                 tag: 'th',
