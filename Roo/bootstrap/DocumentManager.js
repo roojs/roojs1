@@ -238,6 +238,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.files = this.files.slice(0, this.boxes);
         }
         
+        Roo.each(this.files, function(file){
+            
+            
+        }, this);
+        
         var xhr = new XMLHttpRequest();
         
         Roo.each(this.files, function(file, index){
