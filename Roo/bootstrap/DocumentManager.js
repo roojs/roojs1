@@ -521,6 +521,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     uploadImage : function(file)
     {
+        Roo.log('upload image');
         Roo.log(file);
         Roo.log(this);
         return;
@@ -528,6 +529,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     uploadDocument : function(file)
     {
+        Roo.log('upload document');
         Roo.log(file);
         Roo.log(this);
         return;
