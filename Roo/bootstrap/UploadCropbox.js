@@ -875,22 +875,22 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    prepare : function(input)
+    prepare : function(file)
     {        
         this.file = false;
         this.exif = {};
         
-        if(typeof(input) === 'string'){
-            this.loadCanvas(input);
+        if(typeof(file) === 'string'){
+            this.loadCanvas(file);
             return;
         }
         
-        if(!input.files || !input.files[0] || !this.urlAPI){
+        if(!file || !this.urlAPI){
             return;
         }
         
-        this.file = input.files[0];
-        this.cropType = this.file.type;
+        this.file = file;
+        this.cropType = file.type;
         
         var _this = this;
         
