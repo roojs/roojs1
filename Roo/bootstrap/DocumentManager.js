@@ -269,8 +269,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
 //            );
         }, this);
         
-        this.delegates = images.concat(documents);
-        
         if(!this.delegates.length){
             return;
         }
