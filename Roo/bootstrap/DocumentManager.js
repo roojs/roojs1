@@ -194,22 +194,22 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.uploader.on('click', this.onUploaderClick, this);
         
-        this.progressBarEl = new Roo.bootstrap.ProgressBar({
+        this.progressBar = new Roo.bootstrap.ProgressBar({
             aria_valuenow : 0,
             aria_valuemin : 0,
             aria_valuemax : 0,
             panel : 'success'
         });
         
-        this.progressEl = new Roo.bootstrap.Progress({
+        this.progress = new Roo.bootstrap.Progress({
             active : true,
             striped : true,
             cn : [
-                this.progressBarEl
+                this.progressBar
             ]
         });
         
-        this.progress = new Roo.bootstrap.Modal({ 
+        this.progressDialog = new Roo.bootstrap.Modal({ 
             html : '', 
             title: 'Progress', 
             buttons : Roo.bootstrap.Modal.OK, 
@@ -220,9 +220,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
          });
          
-         this.progress.render(Roo.get(document.body));
+         this.progressDialog.render(Roo.get(document.body));
          
-         this.progressEl.render(this.progress.getChildContainer());
+         this.progress.render(this.progressDialog.getChildContainer());
         
         
 //        var _this = this;
