@@ -220,7 +220,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
          });
          
-         this.progress.addxtype(this.progressEl);
+         this.progressEl.render(this.progress.getChildContainer());
         
         
 //        var _this = this;
