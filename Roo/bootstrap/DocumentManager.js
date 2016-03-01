@@ -238,8 +238,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         
         var _this = this;
-        var images = [];
-        var documents = [];
         
         Roo.each(this.files, function(file){
             
