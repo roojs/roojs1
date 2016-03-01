@@ -242,6 +242,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var documents = [];
         
         Roo.each(this.files, function(file){
+            if(typeof(file) != 'object'){
+                
+            }
+            
             if(file.type.indexOf('image') == -1){
                 documents.push(
                     (function(){
