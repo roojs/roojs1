@@ -717,6 +717,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         Roo.log([cropWidth, cropHeight]);
+        Roo.log([this.canvasEl.width, this.canvasEl.height]);
         Roo.log([canvas.width, canvas.height]);
         
         
