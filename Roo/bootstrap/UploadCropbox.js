@@ -941,7 +941,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.baseScale = this.thumbEl.getWidth() / this.minWidth;
+//        this.baseScale = this.thumbEl.getWidth() / this.minWidth;
         
 //        Roo.log(this.imageEl.OriginWidth * this.getScaleLevel());
 //        
@@ -953,7 +953,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //        
 //        Roo.log([this.baseScale, this.scale]);
 //        
-        return;
+//        return;
         
         if(this.imageEl.OriginHeight * this.baseScale < this.thumbEl.getHeight()){
             height = this.thumbEl.getHeight();
