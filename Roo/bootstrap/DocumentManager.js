@@ -227,8 +227,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             aria_valuenow : 0,
             aria_valuemin : 0,
             aria_valuemax : 12,
-            panel : 'success',
-            label : 'test'
+            panel : 'success'
         });
         
         this.progressBar.render(this.progress.getChildContainer());
