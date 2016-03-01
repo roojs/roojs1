@@ -310,7 +310,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
-        
+        this.progressBar.aria_valuemax = this.delegates.length;
         
         var delegate = this.delegates.shift();
         
