@@ -220,7 +220,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
          });
          
-         this.progress.show();
+         this.progress.render(Roo.get(document.body));
          
          this.progressEl.render(this.progress.getChildContainer());
         
