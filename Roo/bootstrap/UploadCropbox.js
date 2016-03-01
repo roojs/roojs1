@@ -759,6 +759,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.minHeight = height;
         }
         
+        Roo.log([this.minWidth, this.minHeight]);
+        
         height = 300;
         width = Math.ceil(this.minWidth * height / this.minHeight);
         
