@@ -435,7 +435,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.startScale = this.scale;
         
-//        this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
+        this.scale = (e.getWheelDelta() == 1) ? (this.scale + 1) : (this.scale - 1);
         
         if(!this.zoomable()){
             this.scale = this.startScale;
@@ -451,8 +451,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var minScale = this.thumbEl.getWidth() / this.minWidth;
         
+        Roo.log([minScale, this.getScaleLevel()]);
+        Roo.log([this.thumbEl.getWidth(), this.minWidth]);
+        
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel());
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel());
+        
+        Roo.log([width, height]);
+        Roo.log([width / minScale, height / minScale]);
+        Roo.log([this.imageEl.OriginWidth, this.imageEl.OriginHeight]);
         
         if(
                 this.isDocument &&
