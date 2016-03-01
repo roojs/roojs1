@@ -526,22 +526,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         Roo.log(response);
     },
     
-    uploadImage : function(file)
+    uploadManager : function(file)
     {
-        Roo.log('upload image');
-        Roo.log(file);
-        Roo.log(this);
-        return;
-    },
-    
-    uploadDocument : function(file)
-    {
-        Roo.log('upload document');
+        Roo.log('upload manager');
         Roo.log(file);
         Roo.log(this);
         return;
     }
-    
-    
     
 });
