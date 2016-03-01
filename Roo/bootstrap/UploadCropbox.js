@@ -117,6 +117,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     cropType : 'image/jpeg',
     buttons : false,
     canvasLoaded : false,
+    fromInput : true,
     
     getAutoCreate : function()
     {
