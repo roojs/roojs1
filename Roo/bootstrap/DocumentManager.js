@@ -530,7 +530,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         Roo.log('upload start');
         Roo.log(file);
-        Roo.log(this);
+        
         return;
     }
     
