@@ -247,7 +247,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             this.delegates.push(
                 (function(){
-                    _this.process(file);
+                    _this.uploadStart(file);
                 }).createDelegate(this)
             );
             
@@ -528,7 +528,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     uploadStart : function(file)
     {
-        Roo.log('upload manager');
+        Roo.log('upload start');
         Roo.log(file);
         Roo.log(this);
         return;
