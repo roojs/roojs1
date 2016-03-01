@@ -716,21 +716,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             y = this.canvasEl.height - cropHeight;
         }
         
-        Roo.log([cropWidth, cropHeight]);
-        Roo.log([this.canvasEl.width, this.canvasEl.height]);
-        Roo.log([canvas.width, canvas.height]);
-        
-        
         x = x < 0 ? 0 : x;
         y = y < 0 ? 0 : y;
         
-//        var centerX = canvas.width / 2;
-//        var centerY = canvas.height / 2;
-//        
-//        context.translate(centerX, centerY);
-
+        var centerX = canvas.width / 2;
+        var centerY = canvas.height / 2;
         
-        context.drawImage(this.imageEl, x, y, this.imageEl.OriginWidth, this.imageEl.OriginHeight, 0, 0, canvas.width, canvas.height);
+        context.translate(centerX, centerY);
+        
+        context.drawImage(this.canvasEl, x, y, this.canvasEl.width, this.canvasEl.height, centerX * -1, centerY * -1, canvas.width, canvas.height);
         
         this.cropData = canvas.toDataURL(this.cropType);
         
