@@ -732,10 +732,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         switch (this.rotate) {
             case 0 :
                 
-                this.canvas.width = this.imageEl.OriginWidth * this.getScaleLevel();
-                this.canvas.height = this.imageEl.OriginHeight * this.getScaleLevel();
+                canvas.width = this.imageEl.OriginWidth * this.getScaleLevel();
+                canvas.height = this.imageEl.OriginHeight * this.getScaleLevel();
                 
-                this.context.drawImage(canvas, 0, 0, this.canvas.width, this.canvas.height, 0, 0, this.canvas.width, this.canvas.height);
+                context.drawImage(imageCanvas, 0, 0, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
                 
                 break;
             case 90 : 
