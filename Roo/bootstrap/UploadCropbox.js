@@ -125,6 +125,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     buttons : false,
     canvasLoaded : false,
     isDocument : false,
+    documentMinWidth : 640,
+    documentMinHeight : 800,
     
     getAutoCreate : function()
     {
