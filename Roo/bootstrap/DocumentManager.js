@@ -194,20 +194,19 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.uploader.on('click', this.onUploaderClick, this);
         
-        this.progressBar = new Roo.bootstrap.ProgressBar({
-            aria_valuenow : 0,
-            aria_valuemin : 0,
-            aria_valuemax : 100,
-            panel : 'success'
-        });
-        
         this.progress = new Roo.bootstrap.Progress({
             active : true,
             striped : true,
-            cn : [
-                this.progressBar
-            ]
         });
+        
+        this.progressBar = new Roo.bootstrap.ProgressBar({
+            aria_valuenow : 0,
+            aria_valuemin : 0,
+            aria_valuemax : 12,
+            panel : 'success'
+        });
+        
+        this.progressBar.render(this.progress.getChildContainer());
         
         this.progressDialog = new Roo.bootstrap.Modal({ 
             html : '', 
