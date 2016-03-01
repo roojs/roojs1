@@ -721,6 +721,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         imageContext.rotate(this.rotate * Math.PI / 180);
         
+        imageContext.drawImage(this.imageEl, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight, center * -1, center * -1, this.imageEl.OriginWidth, this.imageEl.OriginHeight);
+        
+        window.open(imageCanvas.toDataURL(this.cropType));
+        
+        
+        
         switch (this.rotate) {
             case 0 :
                 
@@ -776,7 +782,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         
         
-        window.open(imageCanvas.toDataURL(this.cropType));
+        
         
         return;
         
