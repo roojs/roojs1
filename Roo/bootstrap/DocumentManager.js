@@ -75,7 +75,14 @@ Roo.bootstrap.DocumentManager = function(config){
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {Object} file
          */
-        "click" : true
+        "click" : true,
+        /**
+         * @event edit
+         * Fire when upload a image and editable set to true
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} file
+         */
+        "edit" : true
         
     });
 };
@@ -575,6 +582,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         Roo.log('upload start');
         Roo.log(file);
         
+        if(file.type.indexOf('image') == -1){
+            documents.push(
+                (function(){
+                    _this.uploadDocument(file);
+                }).createDelegate(this)
+            );
+            return;
+        }
         
         return;
     }
