@@ -14,8 +14,6 @@
  * @cfg {Number} minHeight default 300
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * 
- * @cfg {Boolean} fromInput (true|false) default true
- * 
  * @constructor
  * Create a new UploadCropbox
  * @param {Object} config The config object
@@ -117,7 +115,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     cropType : 'image/jpeg',
     buttons : false,
     canvasLoaded : false,
-    fromInput : true,
     
     getAutoCreate : function()
     {
@@ -888,11 +885,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(this.fromInput && (!input.files || !input.files[0] || !this.urlAPI)){
+        if(!input.files || !input.files[0] || !this.urlAPI){
             return;
         }
         
-        this.file = this.fromInput ? input.files[0] : input;
+        this.file = input.files[0];
         this.cropType = this.file.type;
         
         var _this = this;
