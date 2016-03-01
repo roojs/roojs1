@@ -941,19 +941,19 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-//        this.baseScale = this.thumbEl.getWidth() / this.minWidth;
+        this.baseScale = this.thumbEl.getWidth() / this.minWidth;
         
-//        Roo.log(this.imageEl.OriginWidth * this.getScaleLevel());
-//        
-//        this.scale = Math.log(this.thumbEl.getWidth() / this.imageEl.OriginWidth / this.baseScale) / Math.log(1.1);
-//        
-//        if(this.imageEl.OriginHeight * this.getScaleLevel() < this.thumbEl.getHeight()){
-//            this.scale = Math.log(this.thumbEl.getHeight() / this.imageEl.OriginHeight / this.baseScale) / Math.log(1.1);
-//        }
-//        
-//        Roo.log([this.baseScale, this.scale]);
-//        
-//        return;
+        Roo.log(this.imageEl.OriginWidth * this.getScaleLevel());
+        
+        this.scale = Math.log(this.thumbEl.getWidth() / this.imageEl.OriginWidth / this.baseScale) / Math.log(1.1);
+        
+        if(this.imageEl.OriginHeight * this.getScaleLevel() < this.thumbEl.getHeight()){
+            this.scale = Math.log(this.thumbEl.getHeight() / this.imageEl.OriginHeight / this.baseScale) / Math.log(1.1);
+        }
+        
+        Roo.log([this.baseScale, this.scale]);
+        
+        return;
         
 //        if(this.imageEl.OriginHeight * this.baseScale < this.thumbEl.getHeight()){
 //            height = this.thumbEl.getHeight();
@@ -972,25 +972,25 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //            
 //        }
         
-        width = this.thumbEl.getWidth();
-        this.baseScale = width / this.imageEl.OriginWidth;
-        
-        if(this.imageEl.OriginHeight * this.baseScale < this.thumbEl.getHeight()){
-            height = this.thumbEl.getHeight();
-            this.baseScale = height / this.imageEl.OriginHeight;
-        }
-        
-        if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
-            
-            height = this.thumbEl.getHeight();
-            this.baseScale = height / this.imageEl.OriginHeight;
-            
-            if(this.imageEl.OriginWidth * this.baseScale < this.thumbEl.getWidth()){
-                width = this.thumbEl.getWidth();
-                this.baseScale = width / this.imageEl.OriginWidth;
-            }
-            
-        }
+//        width = this.thumbEl.getWidth();
+//        this.baseScale = width / this.imageEl.OriginWidth;
+//        
+//        if(this.imageEl.OriginHeight * this.baseScale < this.thumbEl.getHeight()){
+//            height = this.thumbEl.getHeight();
+//            this.baseScale = height / this.imageEl.OriginHeight;
+//        }
+//        
+//        if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
+//            
+//            height = this.thumbEl.getHeight();
+//            this.baseScale = height / this.imageEl.OriginHeight;
+//            
+//            if(this.imageEl.OriginWidth * this.baseScale < this.thumbEl.getWidth()){
+//                width = this.thumbEl.getWidth();
+//                this.baseScale = width / this.imageEl.OriginWidth;
+//            }
+//            
+//        }
         
         return;
     },
