@@ -710,7 +710,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var imageCanvas = document.createElement("canvas");
         
-        var imageContext = canvas.getContext("2d");
+        var imageContext = imageCanvas.getContext("2d");
         
         imageCanvas.width = this.imageEl.OriginWidth;
         imageCanvas.height = this.imageEl.OriginHeight;
