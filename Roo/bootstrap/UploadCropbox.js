@@ -87,8 +87,14 @@ Roo.bootstrap.UploadCropbox = function(config){
          * Fire when resize
          * @param {Roo.bootstrap.UploadCropbox} this
          */
-        "resize" : true
-        
+        "resize" : true,
+        /**
+         * @event rotate
+         * Fire when rotate the image
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {String} pos
+         */
+        "rotate" : true
     });
     
     this.buttons = this.buttons || Roo.bootstrap.UploadCropbox.footer.STANDARD;
