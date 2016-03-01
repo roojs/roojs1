@@ -735,7 +735,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 canvas.width = this.minWidth
                 canvas.height = this.minHeight;
                 
-                context.drawImage(imageCanvas, 0, 0, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
+                var width = (this.minWidth > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : this.minWidth;
+                var height = (this.minHeight > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : this.minHeight;
+                
+                context.drawImage(imageCanvas, 0, 0, width, height, 0, 0, width, height);
                 
                 break;
             case 90 : 
