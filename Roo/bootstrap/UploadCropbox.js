@@ -708,7 +708,18 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
+        var imageCanvas = document.createElement("canvas");
         
+        var imagecontext = canvas.getContext("2d");
+        
+        imageCanvas.width = this.imageEl.OriginWidth;
+        imageCanvas.height = this.imageEl.OriginHeight;
+        
+        imagecontext.drawImage(this.imageEl, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight, 0, 0, canvas.width, canvas.height);
+        
+        window.open(this.cropData);
+        
+        return;
         
         var canvas = document.createElement("canvas");
         
