@@ -721,7 +721,59 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         imageContext.rotate(this.rotate * Math.PI / 180);
         
-        imageContext.drawImage(this.imageEl, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight, center * -1, center * -1, this.imageEl.OriginWidth, this.imageEl.OriginHeight);
+        switch (this.rotate) {
+            case 0 :
+                
+                this.canvasEl.width = this.imageEl.OriginWidth * this.getScaleLevel();
+                this.canvasEl.height = this.imageEl.OriginHeight * this.getScaleLevel();
+                
+                this.contextEl.drawImage(canvasEl, 0, 0, this.canvasEl.width, this.canvasEl.height, 0, 0, this.canvasEl.width, this.canvasEl.height);
+                
+                break;
+            case 90 : 
+                
+                this.canvasEl.width = this.imageEl.OriginHeight * this.getScaleLevel();
+                this.canvasEl.height = this.imageEl.OriginWidth * this.getScaleLevel();
+                
+                if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
+                    this.contextEl.drawImage(canvasEl, Math.abs(this.canvasEl.width - this.canvasEl.height), 0, this.canvasEl.width, this.canvasEl.height, 0, 0, this.canvasEl.width, this.canvasEl.height);
+                    break;
+                }
+                
+                this.contextEl.drawImage(canvasEl, 0, 0, this.canvasEl.width, this.canvasEl.height, 0, 0, this.canvasEl.width, this.canvasEl.height);
+                
+                break;
+            case 180 :
+                
+                this.canvasEl.width = this.imageEl.OriginWidth * this.getScaleLevel();
+                this.canvasEl.height = this.imageEl.OriginHeight * this.getScaleLevel();
+                
+                if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
+                    this.contextEl.drawImage(canvasEl, 0, Math.abs(this.canvasEl.width - this.canvasEl.height), this.canvasEl.width, this.canvasEl.height, 0, 0, this.canvasEl.width, this.canvasEl.height);
+                    break;
+                }
+                
+                this.contextEl.drawImage(canvasEl, Math.abs(this.canvasEl.width - this.canvasEl.height), 0, this.canvasEl.width, this.canvasEl.height, 0, 0, this.canvasEl.width, this.canvasEl.height);
+                
+                break;
+            case 270 :
+                
+                this.canvasEl.width = this.imageEl.OriginHeight * this.getScaleLevel();
+                this.canvasEl.height = this.imageEl.OriginWidth * this.getScaleLevel();
+        
+                if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
+                    this.contextEl.drawImage(canvasEl, 0, 0, this.canvasEl.width, this.canvasEl.height, 0, 0, this.canvasEl.width, this.canvasEl.height);
+                    break;
+                }
+                
+                this.contextEl.drawImage(canvasEl, 0, Math.abs(this.canvasEl.width - this.canvasEl.height), this.canvasEl.width, this.canvasEl.height, 0, 0, this.canvasEl.width, this.canvasEl.height);
+                
+                break;
+            default : 
+                break;
+        }
+        
+        
         
         
         window.open(imageCanvas.toDataURL(this.cropType));
