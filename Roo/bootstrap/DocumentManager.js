@@ -209,7 +209,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             ]
         });
         
-        Roo.log(this.porgressBarEl);
+        Roo.log(this.porgressEl);
         
         
 //        var _this = this;
