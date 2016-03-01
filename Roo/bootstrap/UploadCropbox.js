@@ -477,9 +477,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
                     width / minScale < this.minWidth || 
-                    width / minScale > this.imageEl.OriginWidth || 
+                    width > this.imageEl.OriginWidth || 
                     height / minScale < this.minHeight || 
-                    height / minScale > this.imageEl.OriginHeight
+                    height > this.imageEl.OriginHeight
                 )
         ){
             return false;
@@ -490,9 +490,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 (this.rotate == 90 || this.rotate == 270) && 
                 (
                     width / minScale < this.minHeight || 
-                    width / minScale > this.imageEl.OriginWidth || 
+                    width > this.imageEl.OriginWidth || 
                     height / minScale < this.minWidth || 
-                    height / minScale > this.imageEl.OriginHeight
+                    height > this.imageEl.OriginHeight
                 )
         ){
             return false;
