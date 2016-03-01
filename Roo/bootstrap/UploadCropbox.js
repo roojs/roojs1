@@ -743,7 +743,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 
                 imageContext.translate(centerX, centerY);
                 
-                context.drawImage(imageCanvas, 0, 0, width, height, 0, 0, width, height);
+                context.drawImage(imageCanvas, 0, 0, width, height, centerX * - 1, centerY * -1, width, height);
                 
                 break;
             case 90 : 
