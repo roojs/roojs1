@@ -206,6 +206,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     renderProgressDialog : function()
     {
         this.progressDialog = new Roo.bootstrap.Modal({
+            cls : 'roo-document-manager-progress-dialog',
             allow_close : false,
             title : '',
             buttons : Roo.bootstrap.Modal.OK, 
@@ -219,6 +220,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.progressDialog.render(Roo.get(document.body));
          
         this.progress = new Roo.bootstrap.Progress({
+            cls : 'roo-document-manager-progress',
             active : true,
             striped : true,
         });
@@ -226,6 +228,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.progress.render(this.progressDialog.getChildContainer());
         
         this.progressBar = new Roo.bootstrap.ProgressBar({
+            cls : 'roo-document-manager-progress-bar',
             aria_valuenow : 0,
             aria_valuemin : 0,
             aria_valuemax : 12,
