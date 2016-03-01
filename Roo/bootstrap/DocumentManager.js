@@ -197,7 +197,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.progressBar = new Roo.bootstrap.ProgressBar({
             aria_valuenow : 0,
             aria_valuemin : 0,
-            aria_valuemax : 0,
+            aria_valuemax : 100,
             panel : 'success'
         });
         
