@@ -192,7 +192,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.uploader = this.el.select('.roo-document-manager-uploader', true).first();
         this.uploader.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.uploader.on('click', this.onUpload, this);
+        this.uploader.on('click', this.onUploaderClick, this);
         
 //        var _this = this;
         
@@ -201,7 +201,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.fireEvent('initial', this);
     },
     
-    onUpload : function(e)
+    onUploaderClick : function(e)
     {
         e.preventDefault();
         this.selectorEl.dom.click();
