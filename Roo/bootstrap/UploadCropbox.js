@@ -542,6 +542,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.rotate = (this.rotate < 90) ? 270 : this.rotate - 90;
 
+        if(this.isDocument){
+            
+        }
+        
         this.draw();
         
         this.fireEvent('rotate', this, 'left');
