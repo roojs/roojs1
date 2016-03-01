@@ -740,25 +740,18 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         switch (this.rotate) {
             case 0 :
                 
-                var cropWidth = this.thumbEl.getWidth() / this.getScaleLevel();
-                var cropHeight = this.thumbEl.getHeight() / this.getScaleLevel();
-                
-                Roo.log(this.getScaleLevel());
-                
-                Roo.log(this.thumbEl.getWidth() / this.minWidth);
-                
-                cropWidth = (cropWidth > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : cropWidth;
-                cropHeight = (cropHeight > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : cropHeight;
+                var width = (this.minWidth > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : this.minWidth;
+                var height = (this.minHeight > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : this.minHeight;
                 
                 var x = (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true)) / this.getScaleLevel();
                 var y = (this.thumbEl.getTop(true) - this.previewEl.getTop(true)) / this.getScaleLevel();
 
-                if(this.imageEl.OriginWidth - cropWidth < x){
-                    x = this.imageEl.OriginWidth - cropWidth;
+                if(this.canvasEl.width - cropWidth < x){
+                    x = this.canvasEl.width - cropWidth;
                 }
 
-                if(this.imageEl.OriginHeight - cropHeight < y){
-                    y = this.imageEl.OriginHeight - cropHeight;
+                if(this.canvasEl.height - cropHeight < y){
+                    y = this.canvasEl.height - cropHeight;
                 }
 
                 x = x < 0 ? 0 : x;
@@ -766,8 +759,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 
                 Roo.log([x, y]);
                 
-                
-                context.drawImage(imageCanvas, x, y, cropWidth, cropHeight, cropWidth / 2 * - 1, cropHeight / 2 * -1, cropWidth, cropHeight);
+                context.drawImage(imageCanvas, x / this.getScaleLevel(), y, width, height, width / 2 * - 1, height / 2 * -1, width, height);
                 
                 break;
             case 90 : 
