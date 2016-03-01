@@ -310,6 +310,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
+        
+        
         var delegate = this.delegates.shift();
         
         delegate();
