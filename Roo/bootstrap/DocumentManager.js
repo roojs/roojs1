@@ -216,7 +216,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }
         
         Roo.each(this.selectorEl.dom.files, function(file){
-            Roo.log(typeof(file));
             if(this.fireEvent('inspect', this, file) != false){
                 this.files.push(file);
             }
@@ -228,7 +227,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     process : function()
     {
-        return;
         this.selectorEl.dom.value = '';
         
         if(!this.files.length){
