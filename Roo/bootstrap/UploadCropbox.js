@@ -1331,6 +1331,32 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
                     }
                 ]
             }
+        ],
+        ROTATOR : [
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-rotate-left',
+                action : 'rotate-left',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-undo"></i>'
+                    }
+                ]
+            },
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-rotate-right',
+                action : 'rotate-right',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-repeat"></i>'
+                    }
+                ]
+            }
         ]
     }
 });
