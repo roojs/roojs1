@@ -597,6 +597,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
 
         if(this.isDocument){
+            Roo.log('reset??');
             this.setThumbBoxSize();
             this.setThumbBoxPosition();
             this.setCanvasPosition();
