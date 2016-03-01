@@ -219,6 +219,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 }
             }
          });
+         
+         this.progress.addxtype(this.progressEl);
         
         
 //        var _this = this;
