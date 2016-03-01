@@ -526,7 +526,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         Roo.log(response);
     },
     
-    uploadManager : function(file)
+    uploadStart : function(file)
     {
         Roo.log('upload manager');
         Roo.log(file);
