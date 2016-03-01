@@ -194,9 +194,19 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.uploader.on('click', this.onUploaderClick, this);
         
-        var porgress = new Roo.bootstrap.Progress({
+        this.porgressBarEl = new Roo.bootstrap.ProgressBar({
+            aria_valuenow : 0,
+            aria_valuemin : 0,
+            aria_valuemax : 0,
+            panel : 'success'
+        });
+        
+        this.porgressEl = new Roo.bootstrap.Progress({
             active : true,
-            striped : true
+            striped : true,
+            cn : [
+                this.porgressBarEl
+            ]
         });
         
         
