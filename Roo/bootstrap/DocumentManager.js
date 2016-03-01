@@ -221,11 +221,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
         }, this);
         
-        this.process();
+        this.arrange();
         
     },
     
-    process : function()
+    arrange : function()
     {
         this.selectorEl.dom.value = '';
         
