@@ -714,6 +714,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         canvas.width = this.minWidth;
         canvas.height = this.minHeight;
         
+        
+        
         var cropWidth = this.thumbEl.getWidth();
         var cropHeight = this.thumbEl.getHeight();
         
