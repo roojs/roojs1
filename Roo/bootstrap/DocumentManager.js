@@ -583,8 +583,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         Roo.log(file);
         
         if(this.editable && file.type.indexOf('image') != -1){
-            
+            Roo.log(this.fireEvent('edit', this, file));
+            return;
         }
+        
+        
         
         return;
     }
