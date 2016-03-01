@@ -194,9 +194,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.uploader.on('click', this.onUpload, this);
         
-        var _this = this;
+//        var _this = this;
         
-        window.addEventListener("resize", function() { _this.refresh(); } );
+//        window.addEventListener("resize", function() { _this.refresh(); } );
         
         this.fireEvent('initial', this);
     },
