@@ -824,7 +824,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.baseScale = height / this.imageEl.OriginHeight;
         }
         
-        
         if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
             
             height = this.thumbEl.getHeight();
