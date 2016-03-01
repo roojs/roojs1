@@ -729,6 +729,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var context = canvas.getContext("2d");
         
+        canvas.backgroundColor="red";
+        
         switch (this.rotate) {
             case 0 :
                 
