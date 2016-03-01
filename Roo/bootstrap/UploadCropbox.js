@@ -708,24 +708,24 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-//        var imageCanvas = document.createElement("canvas");
-//        
-//        var imageContext = imageCanvas.getContext("2d");
-//        
-//        imageCanvas.width = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginWidth : this.imageEl.OriginHeight;
-//        imageCanvas.height = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginWidth : this.imageEl.OriginHeight;
-//        
-//        imageContext.drawImage(this.imageEl, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight);
-//        
-//        var center = imageCanvas.width / 2;
-//        
-//        context.translate(centerX, centerY);
-//        
-//        window.open(imageCanvas.toDataURL(this.cropType));
-//        
-//        return;
-//        
-//        
+        var imageCanvas = document.createElement("canvas");
+        
+        var imageContext = imageCanvas.getContext("2d");
+        
+        imageCanvas.width = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginWidth : this.imageEl.OriginHeight;
+        imageCanvas.height = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginWidth : this.imageEl.OriginHeight;
+        
+        imageContext.drawImage(this.imageEl, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight);
+        
+        var center = imageCanvas.width / 2;
+        
+        context.translate(center, center);
+        
+        window.open(imageCanvas.toDataURL(this.cropType));
+        
+        return;
+        
+        
         
         
         
