@@ -187,7 +187,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.selectorEl.attr('multiple', 'multiple');
         }
         
-        this.selectorEl.on('change', this.onSelect, this);
+        this.selectorEl.on('change', this.onFileSelected, this);
         
         this.uploader = this.el.select('.roo-document-manager-uploader', true).first();
         this.uploader.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
@@ -207,7 +207,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.selectorEl.dom.click();
     },
     
-    onSelect : function(e)
+    onFileSelected : function(e)
     {
         e.preventDefault();
         
