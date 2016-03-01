@@ -206,6 +206,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     renderProgressDialog : function()
     {
         this.progressDialog = new Roo.bootstrap.Modal({
+            animate : false,
             title : '',
             buttons : Roo.bootstrap.Modal.OK, 
             listeners : { 
