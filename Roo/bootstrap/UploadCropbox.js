@@ -743,6 +743,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 
                 context.translate(centerX, centerY);
                 
+                context.fillStyle = "#FF0000";
+                context.fillRect(20,20,150,100);
+        
                 context.drawImage(imageCanvas, 0, 0, width, height, width / 2 * - 1, height / 2 * -1, width, height);
                 
                 break;
