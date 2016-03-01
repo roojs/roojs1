@@ -712,10 +712,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var imageContext = imageCanvas.getContext("2d");
         
-        imageCanvas.width = this.imageEl.OriginWidth;
-        imageCanvas.height = this.imageEl.OriginHeight;
+        imageCanvas.width = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginWidth : this.imageEl.OriginHeight;
+        imageCanvas.height = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginWidth : this.imageEl.OriginHeight;
         
-        imageContext.drawImage(this.imageEl, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight);
+        imageContext.drawImage(this.imageEl, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight, 0, 0, imageCanvas.width, imageCanvas.height);
         
         window.open(imageCanvas.toDataURL(this.cropType));
         
