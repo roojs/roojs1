@@ -338,7 +338,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageEl.OriginWidth = this.imageEl.naturalWidth || this.imageEl.width;
         this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
         
-        setThumbBoxSize
+        if(this.isDocument){
+            this.setThumbBoxSize();
+        }
+        
         this.setThumbBoxPosition();
         this.baseRotateLevel();
         this.baseScaleLevel();
