@@ -888,11 +888,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(!input.files || !input.files[0] || !this.urlAPI){
+        if(this.fromInput && (!input.files || !input.files[0] || !this.urlAPI)){
             return;
         }
         
-        this.file = input.files[0];
+        this.file = this.fromInput ? input.files[0] : input;
         this.cropType = this.file.type;
         
         var _this = this;
