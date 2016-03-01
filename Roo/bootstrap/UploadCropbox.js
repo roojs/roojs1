@@ -455,8 +455,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel());
         
         
-        
         if(
+                !this.isDocument &&
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
                     width / minScale < this.minWidth || 
@@ -469,6 +469,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         if(
+                !this.isDocument &&
                 (this.rotate == 90 || this.rotate == 270) && 
                 (
                     width / minScale < this.minHeight || 
