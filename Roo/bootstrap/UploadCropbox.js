@@ -819,8 +819,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var width, height;
         
-        Roo.log([this.imageEl.OriginWidth, this.imageEl.OriginHeight]);
-        
         if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
             width = this.thumbEl.getWidth();
             this.baseScale = width / this.imageEl.OriginWidth;
@@ -829,52 +827,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         height = this.thumbEl.getHeight();
         this.baseScale = height / this.imageEl.OriginHeight;
-        
-        return;
-        
-        if(this.baseRotate == 6 || this.baseRotate == 8){
-            
-            width = this.thumbEl.getHeight();
-            this.baseScale = height / this.imageEl.OriginHeight;
-            
-            if(this.imageEl.OriginHeight * this.baseScale < this.thumbEl.getWidth()){
-                height = this.thumbEl.getWidth();
-                this.baseScale = height / this.imageEl.OriginHeight;
-            }
-            
-            if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
-                height = this.thumbEl.getWidth();
-                this.baseScale = height / this.imageEl.OriginHeight;
-                
-                if(this.imageEl.OriginWidth * this.baseScale < this.thumbEl.getHeight()){
-                    width = this.thumbEl.getHeight();
-                    this.baseScale = width / this.imageEl.OriginWidth;
-                }
-            }
-            
-            return;
-        }
-        
-        width = this.thumbEl.getWidth();
-        this.baseScale = width / this.imageEl.OriginWidth;
-        
-        if(this.imageEl.OriginHeight * this.baseScale < this.thumbEl.getHeight()){
-            height = this.thumbEl.getHeight();
-            this.baseScale = height / this.imageEl.OriginHeight;
-        }
-        
-        
-        if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
-            
-            height = this.thumbEl.getHeight();
-            this.baseScale = height / this.imageEl.OriginHeight;
-            
-            if(this.imageEl.OriginWidth * this.baseScale < this.thumbEl.getWidth()){
-                width = this.thumbEl.getWidth();
-                this.baseScale = width / this.imageEl.OriginWidth;
-            }
-            
-        }
         
         return;
     },
