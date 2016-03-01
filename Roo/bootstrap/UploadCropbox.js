@@ -746,12 +746,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 var x = (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true)) / this.getScaleLevel();
                 var y = (this.thumbEl.getTop(true) - this.previewEl.getTop(true)) / this.getScaleLevel();
 
-                if(this.canvasEl.width - cropWidth < x){
-                    x = this.canvasEl.width - cropWidth;
+                if(this.imageEl.OriginWidth - width < x){
+                    x = this.imageEl.OriginWidth - width;
                 }
 
-                if(this.canvasEl.height - cropHeight < y){
-                    y = this.canvasEl.height - cropHeight;
+                if(this.imageEl.OriginHeight - height < y){
+                    y = this.imageEl.OriginHeight - height;
                 }
 
                 x = x < 0 ? 0 : x;
