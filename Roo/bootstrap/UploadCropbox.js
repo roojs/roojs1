@@ -782,7 +782,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         
-        
+        window.open(canvas.toDataURL(this.cropType));
         
         
         
