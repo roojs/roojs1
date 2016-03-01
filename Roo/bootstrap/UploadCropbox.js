@@ -14,6 +14,8 @@
  * @cfg {Number} minHeight default 300
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * 
+ * @cfg {Boolean} fromInput (true|false) default true
+ * 
  * @constructor
  * Create a new UploadCropbox
  * @param {Object} config The config object
