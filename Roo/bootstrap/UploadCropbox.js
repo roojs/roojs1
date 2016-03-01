@@ -734,13 +734,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var width, height;
         
-//        if(this.isDocument && typeof(this.imageEl) != 'undefined'){
-//            width = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.max(this.minWidth, this.minHeight) : Math.min(this.minWidth, this.minHeight);
-//            height = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.min(this.minWidth, this.minHeight) : Math.max(this.minWidth, this.minHeight);
-//            
-//            this.minWidth = width;
-//            this.minHeight = height;
-//        }
+        if(this.isDocument && typeof(this.imageEl) != 'undefined'){
+            width = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.max(this.minWidth, this.minHeight) : Math.min(this.minWidth, this.minHeight);
+            height = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.min(this.minWidth, this.minHeight) : Math.max(this.minWidth, this.minHeight);
+            
+            this.minWidth = width;
+            this.minHeight = height;
+        }
         
         height = 300;
         width = Math.ceil(this.minWidth * height / this.minHeight);
