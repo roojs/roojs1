@@ -194,6 +194,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.uploader.on('click', this.onUploaderClick, this);
         
+        var porgress = new Roo.bootstrap.Progress({
+            active : true,
+            striped : true
+        });
+        
+        
 //        var _this = this;
         
 //        window.addEventListener("resize", function() { _this.refresh(); } );
