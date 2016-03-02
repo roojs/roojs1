@@ -727,6 +727,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var context = canvas.getContext("2d");
                 
+        canvas.width = this.minWidth;
+        canvas.height = this.minHeight;
+
+        var centerX = canvas.width / 2;
+        var centerY = canvas.height / 2;
+
+        context.translate(centerX, centerY);
+                
         switch (this.rotate) {
             case 0 :
                 
@@ -734,9 +742,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getHeight() / this.getScaleLevel());
                 
                 context.scale(this.minWidth / width, this.minHeight / height);
-                
-                Roo.log(this.getScaleLevel());
-                Roo.log([width, height]);
                 
                 var x = (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true)) / this.getScaleLevel();
                 var y = (this.thumbEl.getTop(true) - this.previewEl.getTop(true)) / this.getScaleLevel();
