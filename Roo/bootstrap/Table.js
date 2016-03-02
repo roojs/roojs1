@@ -171,8 +171,8 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     loadMask : false,
     tfoot : true,
     thead : true,
-    RowSelection : false,
-    CellSelection : false,
+    rowSelection : false,
+    cellSelection : false,
     layout : false,
     
     // Roo.Element - the tbody
@@ -343,7 +343,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var cell = Roo.get(el);
         
-        if(!cell || (!this.CellSelection && !this.RowSelection)){
+        if(!cell || (!this.cellSelection && !this.rowSelection)){
             return;
         }
         
@@ -364,11 +364,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = this.getRowIndex(row);
         
-        if(this.CellSelection){
+        if(this.cellSelection){
             this.fireEvent('cellclick', this, cell, rowIndex, cellIndex, e);
         }
         
-        if(this.RowSelection){
+        if(this.rowSelection){
             this.fireEvent('rowclick', this, row, rowIndex, e);
         }
         
