@@ -726,14 +726,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var canvas = document.createElement("canvas");
         
         var context = canvas.getContext("2d");
-        
-        canvas.width = this.minWidth
-        canvas.height = this.minHeight;
-        
-        var centerX = canvas.width / 2;
-        var centerY = canvas.height / 2;
-
-        context.translate(centerX, centerY);
                 
         switch (this.rotate) {
             case 0 :
