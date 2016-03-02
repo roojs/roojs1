@@ -748,8 +748,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.thumbEl.getTop(true) - this.previewEl.getTop(true)) * this.getScaleLevel());
                 
                 
-                var scaleWidth = (width > this.minWidth) ? (this.minWidth / width) : 1;
-                var scaleHeight = (height > this.minHeight) ? (this.minHeight / height) : 1;
+                var scale = Math.min(this.minWidth / width, this.minHeight / height);
                 
 //                
 //                Roo.log([scaleWidth, scaleHeight]);
@@ -770,7 +769,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //                Roo.log([scaleWidth, scaleHeight]);
                 
 //                if(!this.isDocument){
-                    context.scale(scaleWidth, scaleHeight);
+                    context.scale(scale, scale);
 //                }
                 
                 
