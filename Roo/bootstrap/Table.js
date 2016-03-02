@@ -28,8 +28,8 @@
  * @cfg {boolean} condensed Format condensed
  * @cfg {boolean} responsive Format condensed
  * @cfg {Boolean} loadMask (true|false) default false
- * @cfg {Boolean} tfoot (true|false) generate tfoot, default true
- * @cfg {Boolean} thead (true|false) generate thead, default true
+ * @cfg {Boolean} footerShow (true|false) generate tfoot, default true
+ * @cfg {Boolean} headerShow (true|false) generate thead, default true
  * @cfg {Boolean} rowSelection (true|false) default false
  * @cfg {Boolean} cellSelection (true|false) default false
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
