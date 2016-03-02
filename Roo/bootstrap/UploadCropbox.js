@@ -769,21 +769,21 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //                }
                 
                 
-                var x = (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true)) / this.getScaleLevel();
-                var y = (this.thumbEl.getTop(true) - this.previewEl.getTop(true)) / this.getScaleLevel();
+                var sx = (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true)) / this.getScaleLevel();
+                var sy = (this.thumbEl.getTop(true) - this.previewEl.getTop(true)) / this.getScaleLevel();
 
                 if(this.imageEl.OriginWidth - width < x){
-                    x = this.imageEl.OriginWidth - width;
+                    sx = this.imageEl.OriginWidth - width;
                 }
 
                 if(this.imageEl.OriginHeight - height < y){
-                    y = this.imageEl.OriginHeight - height;
+                    sy = this.imageEl.OriginHeight - height;
                 }
 
-                x = x < 0 ? 0 : x;
-                y = y < 0 ? 0 : y;
+                sx = sx < 0 ? 0 : sx;
+                sy = sy < 0 ? 0 : sy;
 
-                context.drawImage(imageCanvas, x, y, width, height, 0, 0, width, height);
+                context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
                 
                 break;
             case 90 : 
