@@ -741,41 +741,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getWidth() / this.getScaleLevel());
                 var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getHeight() / this.getScaleLevel());
                 
-                Roo.log([width, height]);
-                
-                
                 var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
                 var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
                 
-                Roo.log([this.thumbEl.getLeft(true), this.previewEl.getLeft(true)]);
-                Roo.log([this.thumbEl.getTop(true), this.previewEl.getTop(true)]);
-                Roo.log([x, y]);
-                
-                
                 var scale = Math.max(((this.minWidth - 2 * x) / width), ((this.minHeight - 2 * y) / height));
                 
-//                
-//                Roo.log([scaleWidth, scaleHeight]);
-                
-                
-//                Roo.log([this.thumbEl.getLeft(true), this.previewEl.getLeft(true)]);
-                
-//                if(this.isDocument && this.thumbEl.getLeft(true) < this.previewEl.getLeft(true)){
-//                    scaleWidth = 1;
-//                }
-                
-//                Roo.log([this.thumbEl.getTop(true), this.previewEl.getTop(true)]);
-                
-//                if(this.isDocument && this.thumbEl.getTop(true) < this.previewEl.getTop(true)){
-//                    scaleHeight = 1;
-//                }
-                
-//                Roo.log([scaleWidth, scaleHeight]);
-                
-//                if(!this.isDocument){
-                    context.scale(scale, scale);
-//                }
-                
+                context.scale(scale, scale);
                 
                 var sx = (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true)) / this.getScaleLevel();
                 var sy = (this.thumbEl.getTop(true) - this.previewEl.getTop(true)) / this.getScaleLevel();
