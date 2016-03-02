@@ -790,43 +790,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 break;
         }
         
-        
-        window.open(canvas.toDataURL(this.cropType));
-        
-        
-        
-        return;
-        
-        
-        
-        
-        
-        var canvas = document.createElement("canvas");
-        
-        var context = canvas.getContext("2d");
-        
-        canvas.width = this.minWidth;
-        canvas.height = this.minHeight;
-        
-        var cropWidth = this.thumbEl.getWidth();
-        var cropHeight = this.thumbEl.getHeight();
-        
-        var x = this.thumbEl.getLeft(true) - this.previewEl.getLeft(true);
-        var y = this.thumbEl.getTop(true) - this.previewEl.getTop(true);
-        
-        if(this.canvasEl.width - cropWidth < x){
-            x = this.canvasEl.width - cropWidth;
-        }
-        
-        if(this.canvasEl.height - cropHeight < y){
-            y = this.canvasEl.height - cropHeight;
-        }
-        
-        x = x < 0 ? 0 : x;
-        y = y < 0 ? 0 : y;
-        
-        context.drawImage(this.canvasEl, x, y, cropWidth, cropHeight, 0, 0, canvas.width, canvas.height);
-        
         this.cropData = canvas.toDataURL(this.cropType);
         
         window.open(this.cropData);
