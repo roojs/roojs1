@@ -47,6 +47,7 @@ Roo.bootstrap.Table = function(config){
     this.rowSelection = (typeof(config.RowSelection) != 'undefined') ? config.RowSelection : this.rowSelection;
     this.cellSelection = (typeof(config.CellSelection) != 'undefined') ? config.CellSelection : this.cellSelection;
     this.headerShow = (typeof(config.thead) != 'undefined') ? config.thead : this.headerShow;
+    this.footerShow = (typeof(config.thead) != 'undefined') ? config.tfoot : this.footerShow;
     
     
     if (this.sm) {
