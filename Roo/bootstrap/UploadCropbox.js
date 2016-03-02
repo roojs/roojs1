@@ -736,21 +736,24 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
                 var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
                 
+                var minWidth = this.minWidth - 2 * x;
+                var minHeight = this.minHeight - 2 * y;
+                
                 var scale = 1;
                 
-                if(width > this.minWidth){
-                    scale = (this.minWidth - 2 * x) / width;
+                if(width != minWidth){
+                    scale = minWidth / width;
                 }
                 
-                if(height > this.minHeight && height * scale > this.minHeight - 2 * y){
-                    scale = (this.minHeight - 2 * y) / height;
+                if(height != minHeight && height * scale > minHeight){
+                    scale = minHeight / height;
                 }
                 
-                var scale = Math.max(((this.minWidth - 2 * x) / width), ((this.minHeight - 2 * y) / height));
-                
-                if(width < height){
-                    scale = Math.min(((this.minWidth - 2 * x) / width), ((this.minHeight - 2 * y) / height));
-                }
+//                var scale = Math.max(((this.minWidth - 2 * x) / width), ((this.minHeight - 2 * y) / height));
+//                
+//                if(width < height){
+//                    scale = Math.min(((this.minWidth - 2 * x) / width), ((this.minHeight - 2 * y) / height));
+//                }
                 
                 context.scale(scale, scale);
                 
