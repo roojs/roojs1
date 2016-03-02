@@ -457,14 +457,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if(
                 this.isDocument &&
                 (
-                    width / minScale > this.imageEl.OriginWidth || 
-                    height / minScale > this.imageEl.OriginHeight ||
-                    (width < this.thumbEl.getWidth() && height < this.thumbEl.getHeight())
+                    width > this.imageEl.OriginWidth || 
+                    height > this.imageEl.OriginHeight ||
+                    (width < this.minWidth && height < this.minHeight)
                 )
         ){
             Roo.log(this.baseScale);
             
-            Roo.log([width, minScale]);
+            Roo.log([width, height]);
             return false;
         }
         
