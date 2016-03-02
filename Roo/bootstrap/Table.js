@@ -44,9 +44,9 @@ Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
     
     // BC...
-    this.rowSelection = (typeof(config.RowSelection) != 'undefined') ? config.RowSelection : config.rowSelection;
-    this.cellSelection = (typeof(config.CellSelection) != 'undefined') ? config.CellSelection : config.cellSelection;
-     
+    this.rowSelection = (typeof(config.RowSelection) != 'undefined') ? config.RowSelection : this.rowSelection;
+    this.cellSelection = (typeof(config.CellSelection) != 'undefined') ? config.CellSelection : this.cellSelection;
+    this.headerShow = (typeof(config.thead) != 'undefined') ? config.thead : this.headerShow;
     
     
     if (this.sm) {
