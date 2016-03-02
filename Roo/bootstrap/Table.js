@@ -364,6 +364,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = this.getRowIndex(row);
         
+        // why??? - should these not be based on SelectionModel?
         if(this.cellSelection){
             this.fireEvent('cellclick', this, cell, rowIndex, cellIndex, e);
         }
