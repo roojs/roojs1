@@ -758,7 +758,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 x = x < 0 ? 0 : x;
                 y = y < 0 ? 0 : y;
 
-                context.drawImage(imageCanvas, x, y, 480, 640, 480 / 2 * - 1, 640 / 2 * -1, 480, 640);
+                context.drawImage(imageCanvas, x, y, 591.75, 789, 591.75 / 2 * - 1, 789 / 2 * -1, 591.75, 789);
                 
                 break;
             case 90 : 
