@@ -449,15 +449,17 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     zoomable : function()
     {
-        var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel());
-        var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel());
+        var minScale = this.thumbEl.getWidth() / this.minWidth;
+        
+        var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel() / minScale);
+        var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel() / minScale);
         
         if(
                 this.isDocument &&
                 (
                     width > this.imageEl.OriginWidth || 
                     height > this.imageEl.OriginHeight ||
-                    (width < this.thumbEl.getWidth() && height < this.thumbEl.getHeight())
+                    (width < this.minWidth && height < this.minHeight)
                 )
         ){
             return false;
@@ -467,9 +469,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 !this.isDocument &&
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
-                    width < this.thumbEl.getWidth() || 
+                    width < this.minWidth || 
                     width > this.imageEl.OriginWidth || 
-                    height < this.thumbEl.getHeight() || 
+                    height < this.minHeight || 
                     height > this.imageEl.OriginHeight
                 )
         ){
@@ -480,9 +482,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 !this.isDocument &&
                 (this.rotate == 90 || this.rotate == 270) && 
                 (
-                    width < this.thumbEl.getWidth() || 
+                    width < this.minHeight || 
                     width > this.imageEl.OriginWidth || 
-                    height < this.thumbEl.getHeight() || 
+                    height < this.minWidth || 
                     height > this.imageEl.OriginHeight
                 )
         ){
