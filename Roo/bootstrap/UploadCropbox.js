@@ -734,10 +734,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
                 var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
                 
-                
-                
-                x = (this.thumbEl.getWidth() - this.canvasEl.width) / 2;
-                
                 Roo.log(this.getScaleLevel());
                 Roo.log([this.previewEl.getLeft(true) , this.thumbEl.getLeft(true)]);
                 Roo.log([x,y]);
