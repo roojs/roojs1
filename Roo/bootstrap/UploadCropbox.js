@@ -723,7 +723,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         imageContext.drawImage(this.imageEl, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight, center * -1, center * -1, this.imageEl.OriginWidth, this.imageEl.OriginHeight);
         
-//        window.open(imageCanvas.toDataURL(this.cropType));
+        window.open(imageCanvas.toDataURL(this.cropType));
         
         var canvas = document.createElement("canvas");
         
@@ -945,52 +945,36 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.baseScale = this.thumbEl.getWidth() / this.minWidth;
+//        this.baseScale = this.thumbEl.getWidth() / this.minWidth;
+//        
+//        this.scale = Math.log(this.thumbEl.getWidth() / this.imageEl.OriginWidth / this.baseScale) / Math.log(1.1);
+//        
+//        if(this.imageEl.OriginHeight * this.getScaleLevel() < this.thumbEl.getHeight()){
+//            this.scale = Math.log(this.thumbEl.getHeight() / this.imageEl.OriginHeight / this.baseScale) / Math.log(1.1);
+//        }
+//        
+//        return;
         
-        this.scale = Math.log(this.thumbEl.getWidth() / this.imageEl.OriginWidth / this.baseScale) / Math.log(1.1);
         
-        if(this.imageEl.OriginHeight * this.getScaleLevel() < this.thumbEl.getHeight()){
-            this.scale = Math.log(this.thumbEl.getHeight() / this.imageEl.OriginHeight / this.baseScale) / Math.log(1.1);
+        width = this.thumbEl.getWidth();
+        this.baseScale = width / this.imageEl.OriginWidth;
+        
+        if(this.imageEl.OriginHeight * this.baseScale < this.thumbEl.getHeight()){
+            height = this.thumbEl.getHeight();
+            this.baseScale = height / this.imageEl.OriginHeight;
         }
         
-        return;
-        
-//        if(this.imageEl.OriginHeight * this.baseScale < this.thumbEl.getHeight()){
-//            height = this.thumbEl.getHeight();
-//            this.baseScale = height / this.imageEl.OriginHeight;
-//        }
-//        
-//        if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
-//            
-//            height = this.thumbEl.getHeight();
-//            this.baseScale = height / this.imageEl.OriginHeight;
-//            
-//            if(this.imageEl.OriginWidth * this.baseScale < this.thumbEl.getWidth()){
-//                width = this.thumbEl.getWidth();
-//                this.baseScale = width / this.imageEl.OriginWidth;
-//            }
-//            
-//        }
-        
-//        width = this.thumbEl.getWidth();
-//        this.baseScale = width / this.imageEl.OriginWidth;
-//        
-//        if(this.imageEl.OriginHeight * this.baseScale < this.thumbEl.getHeight()){
-//            height = this.thumbEl.getHeight();
-//            this.baseScale = height / this.imageEl.OriginHeight;
-//        }
-//        
-//        if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
-//            
-//            height = this.thumbEl.getHeight();
-//            this.baseScale = height / this.imageEl.OriginHeight;
-//            
-//            if(this.imageEl.OriginWidth * this.baseScale < this.thumbEl.getWidth()){
-//                width = this.thumbEl.getWidth();
-//                this.baseScale = width / this.imageEl.OriginWidth;
-//            }
-//            
-//        }
+        if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
+            
+            height = this.thumbEl.getHeight();
+            this.baseScale = height / this.imageEl.OriginHeight;
+            
+            if(this.imageEl.OriginWidth * this.baseScale < this.thumbEl.getWidth()){
+                width = this.thumbEl.getWidth();
+                this.baseScale = width / this.imageEl.OriginWidth;
+            }
+            
+        }
         
         return;
     },
