@@ -761,8 +761,34 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 break;
             case 90 : 
                 
-                var width = (this.minWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : this.minWidth;
-                var height = (this.minHeight > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : this.minHeight;
+                var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getWidth() / this.getScaleLevel());
+                var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getHeight() / this.getScaleLevel());
+                
+                var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
+                var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
+                
+                var scale = Math.max(((this.minWidth - 2 * x) / width), ((this.minHeight - 2 * y) / height));
+                
+                if(this.imageEl.OriginWidth < this.imageEl.OriginHeight){
+                    scale = Math.min(((this.minWidth - 2 * x) / width), ((this.minHeight - 2 * y) / height));
+                }
+                
+                context.scale(scale, scale);
+                
+                var sx = (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true)) / this.getScaleLevel();
+                var sy = (this.thumbEl.getTop(true) - this.previewEl.getTop(true)) / this.getScaleLevel();
+
+                if(this.imageEl.OriginWidth - width < x){
+                    sx = this.imageEl.OriginWidth - width;
+                }
+
+                if(this.imageEl.OriginHeight - height < y){
+                    sy = this.imageEl.OriginHeight - height;
+                }
+
+                sx = sx < 0 ? 0 : sx;
+                sy = sy < 0 ? 0 : sy;
+                
                 
                 var x = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight) : 0;
                 
