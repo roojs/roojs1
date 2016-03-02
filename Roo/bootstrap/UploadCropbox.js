@@ -468,6 +468,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     (width / minScale < this.minWidth && height / minScale < this.minHeight)
                 )
         ){
+            Roo.log([width / minScale, height / minScale]);
             return false;
         }
         
