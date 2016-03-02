@@ -458,20 +458,19 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel());
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel());
         
-//        if(
-//                this.isDocument &&
-//                (
-//                    width / minScale > this.imageEl.OriginWidth || 
-//                    height / minScale > this.imageEl.OriginHeight ||
-//                    width / minScale < this.documentMinWidth ||
-//                    height / minScale < this.documentMinHeight
-//                )
-//        ){
-//            return false;
-//        }
+        if(
+                this.isDocument &&
+                (
+                    width / minScale > this.imageEl.OriginWidth || 
+                    height / minScale > this.imageEl.OriginHeight ||
+                    (width / minScale < this.documentMinWidth && height / minScale < this.documentMinHeight)
+                )
+        ){
+            return false;
+        }
         
         if(
-//                !this.isDocument &&
+                !this.isDocument &&
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
                     width / minScale < this.minWidth || 
@@ -484,7 +483,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         if(
-//                !this.isDocument &&
+                !this.isDocument &&
                 (this.rotate == 90 || this.rotate == 270) && 
                 (
                     width / minScale < this.minHeight || 
