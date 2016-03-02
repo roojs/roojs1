@@ -449,8 +449,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     zoomable : function()
     {
-        var minScale = this.thumbEl.getWidth() / this.minWidth;
-        
         var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel());
         var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel());
         
@@ -462,7 +460,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     (width < this.thumbEl.getWidth() && height < this.thumbEl.getHeight())
                 )
         ){
-            Roo.log([width, height]);
             return false;
         }
         
