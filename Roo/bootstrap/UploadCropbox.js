@@ -463,6 +463,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 )
         ){
             Roo.log(this.baseScale);
+            
             Roo.log([width, minScale]);
             return false;
         }
