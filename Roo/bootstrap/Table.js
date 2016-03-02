@@ -30,8 +30,8 @@
  * @cfg {Boolean} loadMask (true|false) default false
  * @cfg {Boolean} tfoot (true|false) generate tfoot, default true
  * @cfg {Boolean} thead (true|false) generate thead, default true
- * @cfg {Boolean} RowSelection (true|false) default false
- * @cfg {Boolean} CellSelection (true|false) default false
+ * @cfg {Boolean} rowSelection (true|false) default false
+ * @cfg {Boolean} cellSelection (true|false) default false
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  
  * 
@@ -42,6 +42,12 @@
 
 Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
+    
+    // BC...
+    this.rowSelection = (typeof(config.RowSelection) != 'undefined') ? config.RowSelection : config.rowSelection;
+    this.cellSelection = (typeof(config.CellSelection) != 'undefined') ? config.CellSelection : config.cellSelection;
+     
+    
     
     if (this.sm) {
         this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
