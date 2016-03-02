@@ -765,7 +765,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //                Roo.log([scaleWidth, scaleHeight]);
                 
 //                if(!this.isDocument){
-                    context.scale(scaleWidth, scaleHeight);
+//                    context.scale(scaleWidth, scaleHeight);
 //                }
                 
                 
