@@ -12,8 +12,6 @@
  * @cfg {Number} errorTimeout default 3000
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
- * @cfg {Number} documentMinWidth default 640
- * @cfg {Number} documentMinHeight default 800
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * @cfg {Boolean} isDocument (true|false) default false
  * 
@@ -125,8 +123,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     buttons : false,
     canvasLoaded : false,
     isDocument : false,
-    documentMinWidth : 640,
-    documentMinHeight : 800,
     
     getAutoCreate : function()
     {
@@ -463,8 +459,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 (
                     width / minScale > this.imageEl.OriginWidth || 
                     height / minScale > this.imageEl.OriginHeight ||
-                    width / minScale < this.documentMinWidth ||
-                    height / minScale < this.documentMinHeight ||
                     (width / minScale < this.minWidth && height / minScale < this.minHeight)
                 )
         ){
