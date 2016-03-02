@@ -832,8 +832,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         
         
-        
-        
         var canvas = document.createElement("canvas");
         
         var context = canvas.getContext("2d");
