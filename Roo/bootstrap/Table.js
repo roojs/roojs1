@@ -169,8 +169,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     cm : false,
     store : false,
     loadMask : false,
-    tfoot : true,
-    thead : true,
+    showFooter : true;
+    showHeader : true,
+    //tfoot : true,
+    //thead : true,
     rowSelection : false,
     cellSelection : false,
     layout : false,
