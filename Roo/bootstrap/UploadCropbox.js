@@ -745,6 +745,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 
                 Roo.log([this.imageEl.OriginWidth, this.imageEl.OriginHeight]);
                 
+                canvas.width = width;
+        canvas.height = height;
+
+        var centerX = canvas.width / 2;
+        var centerY = canvas.height / 2;
+
+        context.translate(centerX, centerY);
 //                var scaleWidth = (width > this.minWidth) ? (this.minWidth / width) : 1;
 //                var scaleHeight = (height > this.minHeight) ? (this.minHeight / height) : 1;
 //                
