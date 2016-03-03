@@ -484,8 +484,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         window.open(crop);
         
-        return;
-        
         var xhr = new XMLHttpRequest();
         
         if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
