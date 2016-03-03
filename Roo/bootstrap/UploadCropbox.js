@@ -809,27 +809,27 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 
                 var sx = 0;
                 
-//                if(x == 0){
-//                    sx = ((this.canvasEl.width - this.thumbEl.getWidth()) - (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true))) / this.getScaleLevel();
-//                }
-//                
-//                var sy = (this.thumbEl.getTop(true) - this.previewEl.getTop(true)) / this.getScaleLevel();
-//
-//                if(this.imageEl.OriginWidth - width < sx){
-//                    sx = this.imageEl.OriginWidth - width;
-//                }
-//
-//                if(this.imageEl.OriginHeight - height < sy){
-//                    sy = this.imageEl.OriginHeight - height;
-//                }
-//
-//                sx = sx < 0 ? 0 : sx;
-//                sy = sy < 0 ? 0 : sy;
+                if(x == 0){
+                    sx = ((this.canvasEl.width - this.thumbEl.getWidth()) - (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true))) / this.getScaleLevel();
+                }
+                
+                var sy = (this.thumbEl.getTop(true) - this.previewEl.getTop(true)) / this.getScaleLevel();
+
+                if(this.imageEl.OriginWidth - width < sx){
+                    sx = this.imageEl.OriginWidth - width;
+                }
+
+                if(this.imageEl.OriginHeight - height < sy){
+                    sy = this.imageEl.OriginHeight - height;
+                }
+
+                sx = sx < 0 ? 0 : sx;
+                sy = sy < 0 ? 0 : sy;
                 
                 
                 sx += (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight) : 0;
                 
-                context.drawImage(imageCanvas, sx, 0, width, height, x, y, width, height);
+                context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
                 
                 break;
             case 180 :
