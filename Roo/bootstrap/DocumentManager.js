@@ -402,12 +402,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     arrange : function()
     {
-        this.uploader.show();
-        
-        if(this.files.length > this.boxes - 1){
-            this.uploader.hide();
-        }
-        
         if(!this.delegates.length){
             this.refresh();
             return;
