@@ -923,7 +923,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     setThumbBoxSize : function()
     {
         var width, height;
-        alert(this.imageEl.OriginWidth);
+        Roo.log(this.imageEl.OriginWidth);
         if(this.isDocument && typeof(this.imageEl) != 'undefined'){
             width = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.max(this.minWidth, this.minHeight) : Math.min(this.minWidth, this.minHeight);
             height = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.min(this.minWidth, this.minHeight) : Math.max(this.minWidth, this.minHeight);
