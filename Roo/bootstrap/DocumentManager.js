@@ -417,15 +417,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         delegate();
     },
     
-    getParamName : function(i)
-    {
-        if(!this.multiple){
-            return this.paramName;
-        }
-        
-        return this.paramName + "_" + i;
-    },
-    
     refresh : function()
     {
         Roo.each(this.managerEl.select('.roo-document-manager-loading', true).elements, function(el){
@@ -658,6 +649,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var formData = new FormData();
 
         formData.append('returnHTML', 'NO');
+        
+        formData.append(this.getParamName(index), file, file.name);
         
         Roo.each(this.files, function(file, index){
             
