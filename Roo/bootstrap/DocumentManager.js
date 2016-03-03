@@ -316,9 +316,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
 //            );
         }, this);
         
-        this.porcess();
+        this.process();
         
         return;
+        
         if(!this.delegates.length){
             return;
         }
