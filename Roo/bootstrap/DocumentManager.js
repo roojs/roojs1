@@ -564,6 +564,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var response = Roo.decode(xhr.responseText);
           
         Roo.log(response);
+        
+        this.arrange();
     },
     
     process : function(file)
