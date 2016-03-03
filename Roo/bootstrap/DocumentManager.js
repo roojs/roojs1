@@ -527,12 +527,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.xhr.onload = function()
         {
-            _this.xhrOnLoad(this.xhr);
+            _this.xhrOnLoad(_this.xhr);
         }
         
         this.xhr.onerror = function()
         {
-            _this.xhrOnError(this.xhr);
+            _this.xhrOnError(_this.xhr);
         }
         
         var formData = new FormData();
