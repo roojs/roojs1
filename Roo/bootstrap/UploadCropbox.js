@@ -750,8 +750,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 }
                 
                 if(x > 0 && y > 0){
+                    scale = targetWidth / width;
                     
+                    if(width < height){
+                        scale = targetHeight / height;
+                    }
                 }
+                
 //                
 //                if((x == 0 && y == 0) || (x == 0 && y > 0)){
 //                    scale = targetWidth / width
