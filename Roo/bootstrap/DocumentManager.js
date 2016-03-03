@@ -554,7 +554,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
 
         imageEl.addEventListener("load", function(){ _this.drawPreview(imageEl); });
 
-        this.imageEl.src = src;
+        this.imageEl.src = baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename;
         
         var previewEl = this.managerEl.createChild({
             tag : 'div',
@@ -589,7 +589,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         return file;
     },
     
-    onPreviewLoad : function(image)
+    drawPreview : function(imageEl)
     {
         Roo.log('on preview load');
         Roo.log(this);
