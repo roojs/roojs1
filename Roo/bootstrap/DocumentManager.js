@@ -560,8 +560,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     drawPreview : function(file, imageEl)
     {
-        var width = this.imageEl.naturalWidth || this.imageEl.width;
-        var height = this.imageEl.naturalHeight || this.imageEl.height;
+        var width = imageEl.naturalWidth || imageEl.width;
+        var height = imageEl.naturalHeight || imageEl.height;
         
         var preview = {
             tag : 'div',
@@ -610,8 +610,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         file.target = previewEl;
 
         var image = previewEl.select('img', true).first();
-        
-//        image.dom.addEventListener("load", function(){ _this.onPreviewLoad(image); });
         
         image.on('click', this.onClick, this, file);
         
