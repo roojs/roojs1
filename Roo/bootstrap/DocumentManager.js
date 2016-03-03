@@ -254,11 +254,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.progressBar.render(this.progress.getChildContainer());
     },
     
-    updateProgressDialog : function()
-    {
-        
-    },
-    
     onUploaderClick : function(e)
     {
         e.preventDefault();
