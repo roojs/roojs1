@@ -541,6 +541,39 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }, this);
         
         this.arrange();
+    },
+    
+    renderThumbImage : function(file)
+    {
+        var previewEl = this.managerEl.createChild({
+            tag : 'div',
+            cls : 'roo-document-manager-preview',
+            cn : [
+                {
+                    tag : 'div',
+                    tooltip : file.filename,
+                    cls : 'roo-document-manager-thumb',
+                    html : '<img src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
+                },
+                {
+                    tag : 'button',
+                    cls : 'close',
+                    html : 'x'
+                }
+            ]
+        });
+
+        var close = previewEl.select('button.close', true).first();
+
+        close.on('click', this.onRemove, this, file);
+
+        file.target = previewEl;
+
+        var image = previewEl.select('img', true).first();
+
+        image.on('click', this.onClick, this, file);
+        
+        return file;
     }
     
 });
