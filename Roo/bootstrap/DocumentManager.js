@@ -640,7 +640,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         formData.append('returnHTML', 'NO');
         
         if(crop){
-            
+            formData.append('crop', crop);
         }
         
         formData.append(this.paramName, file, file.name);
