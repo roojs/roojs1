@@ -11,6 +11,14 @@
     margin-top: 10px;
 }
 
+.roo-document-manager-preview.tall {
+    width: 25%;
+}
+
+.roo-document-manager-preview.wide {
+    width: 50%;
+}
+
 .roo-document-manager-thumb,
 .roo-document-manager-upload-btn {
     width : 100%;
