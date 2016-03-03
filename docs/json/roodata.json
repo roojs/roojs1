@@ -36062,7 +36062,7 @@
      ]
     },
     {
-     "name": "tfoot",
+     "name": "footerShow",
      "type": "Boolean",
      "desc": "generate tfoot, default true",
      "memberOf": "",
@@ -36072,7 +36072,7 @@
      ]
     },
     {
-     "name": "thead",
+     "name": "headerShow",
      "type": "Boolean",
      "desc": "generate thead, default true",
      "memberOf": "",
@@ -36082,7 +36082,7 @@
      ]
     },
     {
-     "name": "RowSelection",
+     "name": "rowSelection",
      "type": "Boolean",
      "desc": "default false",
      "memberOf": "",
@@ -36092,7 +36092,7 @@
      ]
     },
     {
-     "name": "CellSelection",
+     "name": "cellSelection",
      "type": "Boolean",
      "desc": "default false",
      "memberOf": "",
