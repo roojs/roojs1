@@ -762,8 +762,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 var sx = Math.min(this.canvasEl.width - this.thumbEl.getWidth(), this.thumbEl.getLeft(true) - this.previewEl.getLeft(true));
                 var sy = Math.min(this.canvasEl.height - this.thumbEl.getHeight(), this.thumbEl.getTop(true) - this.previewEl.getTop(true));
 
-                sx = sx < 0 ? 0 : sx;
-                sy = sy < 0 ? 0 : sy;
+                sx = sx < 0 ? 0 : (sx / this.getScaleLevel());
+                sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
 
                 context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
                 
