@@ -432,9 +432,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
-        var file = this.renderThumbImage(response.data);
+        var file = this.renderPreview(response.data);
         
-        this.files.push(response.data);
+        this.files.push(file);
         
         this.arrange();
         
