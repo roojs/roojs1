@@ -543,7 +543,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.arrange();
     },
     
-    renderPreviewThumb : function(file)
+    renderPreview : function(file)
     {
         var previewEl = this.managerEl.createChild({
             tag : 'div',
