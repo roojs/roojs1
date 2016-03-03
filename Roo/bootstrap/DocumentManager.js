@@ -299,7 +299,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             this.delegates.push(
                 (function(){
-                    _this.uploadStart(file);
+                    _this.process(file);
                 }).createDelegate(this)
             );
             
@@ -307,7 +307,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.files = files;
         
-        this.process();
+        this.run();
         
         return;
         
@@ -400,7 +400,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
     },
     
-    process : function()
+    run : function()
     {
         if(!this.delegates.length){
             return;
