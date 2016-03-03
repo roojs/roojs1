@@ -132,6 +132,10 @@
         max-height: 100px;
     }
     
+    .roo-document-manager-preview.wide {
+        width: 16.66666666%;
+    }
+    
     .roo-document-manager-thumb,
     .roo-document-manager-upload-btn {
         line-height: 100px;
