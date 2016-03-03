@@ -594,6 +594,45 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var width = this.imageEl.naturalWidth || this.imageEl.width;
         var height = this.imageEl.naturalHeight || this.imageEl.height;
         
+        var preview = {
+            tag : 'div',
+            cls : 'roo-document-manager-preview',
+            cn : [
+                {
+                    tag : 'div',
+                    tooltip : file.filename,
+                    cls : 'roo-document-manager-thumb-tall',
+                    html : '<img src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
+                },
+                {
+                    tag : 'button',
+                    cls : 'close',
+                    html : 'x'
+                }
+            ]
+        }
+        
+        if(width > height){
+            preview = {
+                tag : 'div',
+                cls : 'roo-document-manager-preview',
+                cn : [
+                    {
+                        tag : 'div',
+                        tooltip : file.filename,
+                        cls : 'roo-document-manager-thumb-wide',
+                        html : '<img src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
+                    },
+                    {
+                        tag : 'button',
+                        cls : 'close',
+                        html : 'x'
+                    }
+                ]
+            }
+        }
+        
+        
         Roo.log('on preview load');
         Roo.log(this);
         Roo.log(image.dom.naturalWidth);
