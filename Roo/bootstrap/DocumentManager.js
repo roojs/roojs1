@@ -304,8 +304,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
                 var f = this.renderPreview(file);
-                Roo.log('render preive???');
-                Roo.log(f);
                 files.push(f);
                 return;
             }
@@ -548,26 +546,13 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     renderPreview : function(file)
     {
-        var _this = this;
+        if(typeof(file.target) != 'undefined' && file.target){
+            return file;
+        }
         
-        var imageEl = document.createElement('img');
-            
-        var _this = this;
-
-        imageEl.addEventListener("load", function(){ return _this.drawPreview(file, imageEl); });
-
-        imageEl.src = baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename;
-        
-    },
-    
-    drawPreview : function(file, imageEl)
-    {
-        var width = imageEl.naturalWidth || imageEl.width;
-        var height = imageEl.naturalHeight || imageEl.height;
-        
-        var preview = {
+        var previewEl = this.managerEl.createChild({
             tag : 'div',
-            cls : 'roo-document-manager-preview tall',
+            cls : 'roo-document-manager-preview',
             cn : [
                 {
                     tag : 'div',
@@ -578,32 +563,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 {
                     tag : 'button',
                     cls : 'close',
-                    html : 'x'
+                    html : '<i class="fa fa-times-circle"></i>'
                 }
             ]
-        }
-        
-        if(width > height){
-            preview = {
-                tag : 'div',
-                cls : 'roo-document-manager-preview wide',
-                cn : [
-                    {
-                        tag : 'div',
-                        tooltip : file.filename,
-                        cls : 'roo-document-manager-thumb',
-                        html : '<img src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
-                    },
-                    {
-                        tag : 'button',
-                        cls : 'close',
-                        html : 'x'
-                    }
-                ]
-            }
-        }
-        
-        var previewEl = this.managerEl.createChild(preview);
+        });
 
         var close = previewEl.select('button.close', true).first();
 
@@ -613,9 +576,32 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
 
         var image = previewEl.select('img', true).first();
         
+        var _this = this;
+        
+        image.dom.addEventListener("load", function(){ _this.onPreviewLoad(file, image); });
+        
         image.on('click', this.onClick, this, file);
         
         return file;
+        
+    },
+    
+    onPreviewLoad : function(file, image)
+    {
+        if(typeof(file.target) == 'undefined' || !file.target){
+            return;
+        }
+        
+        var width = image.dom.naturalWidth || image.dom.width;
+        var height = image.dom.naturalHeight || image.dom.height;
+        
+        if(width > height){
+            file.target.addClass('wide');
+            return;
+        }
+        
+        file.target.addClass('tall');
+        return;
         
     }
 });
