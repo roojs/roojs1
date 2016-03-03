@@ -591,6 +591,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     drawPreview : function(imageEl)
     {
+        var width = this.imageEl.naturalWidth || this.imageEl.width;
+        var height = this.imageEl.naturalHeight || this.imageEl.height;
+        
         Roo.log('on preview load');
         Roo.log(this);
         Roo.log(image.dom.naturalWidth);
