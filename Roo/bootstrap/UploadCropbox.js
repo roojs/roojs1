@@ -377,7 +377,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.dragable = true;
         this.pinching = false;
         
-        if(this.isDocument && (this.canvasEl.width <= this.thumbEl.getWidth() && this.canvasEl.height <= this.thumbEl.getHeight())){
+        if(this.isDocument && (this.canvasEl.width < this.thumbEl.getWidth() || this.canvasEl.height < this.thumbEl.getHeight())){
             this.dragable = false;
             return;
         }
