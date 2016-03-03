@@ -471,7 +471,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         if(
                 this.isDocument &&
-                (this.rotate == 0 || this.rotate == 180) && 
+                (this.rotate == 90 || this.rotate == 270) && 
                 (
                     width > this.imageEl.OriginWidth || 
                     height > this.imageEl.OriginHeight ||
