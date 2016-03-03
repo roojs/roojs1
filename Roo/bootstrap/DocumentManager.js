@@ -548,6 +548,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         var _this = this;
         
+        var imageEl = document.createElement('img');
+            
+        var _this = this;
+
+        this.imageEl.addEventListener("load", function(){ _this.onLoadCanvas(); });
+
+        this.imageEl.src = src;
+        
         var previewEl = this.managerEl.createChild({
             tag : 'div',
             cls : 'roo-document-manager-preview',
