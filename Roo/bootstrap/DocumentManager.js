@@ -588,7 +588,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         Roo.log(response);
     },
     
-    uploadStart : function(file)
+    run : function(file)
     {
         Roo.log('upload start');
         Roo.log(file);
