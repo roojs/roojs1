@@ -607,40 +607,34 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         var xhr = new XMLHttpRequest();
         
-        Roo.each(this.files, function(file, index){
-            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-                return;
-            }
-            
-            file.xhr = xhr;
-            
-            this.managerEl.createChild({
-                tag : 'div',
-                cls : 'roo-document-manager-loading',
-                cn : [
-                    {
-                        tag : 'div',
-                        tooltip : file.name,
-                        cls : 'roo-document-manager-thumb',
-                        html : '<i class="fa fa-spinner fa-pulse"></i>'
-                    }
-                ]
-
-            });
-            
-        }, this);
-        
-        if(this.files.length > this.boxes - 1 ){
-            this.uploader.hide();
+        if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
+            this.arrange();
+            return;
         }
+        
+        file.xhr = xhr;
+            
+        this.managerEl.createChild({
+            tag : 'div',
+            cls : 'roo-document-manager-loading',
+            cn : [
+                {
+                    tag : 'div',
+                    tooltip : file.name,
+                    cls : 'roo-document-manager-thumb',
+                    html : '<i class="fa fa-spinner fa-pulse"></i>'
+                }
+            ]
+
+        });
+
+        xhr.open(this.method, this.url, true);
         
         var headers = {
             "Accept": "application/json",
             "Cache-Control": "no-cache",
             "X-Requested-With": "XMLHttpRequest"
         };
-        
-        xhr.open(this.method, this.url, true);
         
         for (var headerName in headers) {
             var headerValue = headers[headerName];
