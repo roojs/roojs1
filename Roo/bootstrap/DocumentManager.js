@@ -475,14 +475,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     uploadStart : function(file, crop)
     {
-        var xhr = new XMLHttpRequest();
+        this.xhr = new XMLHttpRequest();
         
         if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
             this.arrange();
             return;
         }
         
-        file.xhr = xhr;
+        file.xhr = this.xhr;
             
         this.managerEl.createChild({
             tag : 'div',
@@ -498,7 +498,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
 
         });
 
-        xhr.open(this.method, this.url, true);
+        this.xhr.open(this.method, this.url, true);
         
         var headers = {
             "Accept": "application/json",
@@ -509,20 +509,20 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         for (var headerName in headers) {
             var headerValue = headers[headerName];
             if (headerValue) {
-                xhr.setRequestHeader(headerName, headerValue);
+                this.xhr.setRequestHeader(headerName, headerValue);
             }
         }
         
         var _this = this;
         
-        xhr.onload = function()
+        this.xhr.onload = function()
         {
-            _this.xhrOnLoad(xhr);
+            _this.xhrOnLoad(this.xhr);
         }
         
-        xhr.onerror = function()
+        this.xhr.onerror = function()
         {
-            _this.xhrOnError(xhr);
+            _this.xhrOnError(this.xhr);
         }
         
         var formData = new FormData();
@@ -536,7 +536,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         formData.append(this.paramName, file, file.name);
         
         if(this.fireEvent('prepare', this, formData) != false){
-            xhr.send(formData);
+            this.xhr.send(formData);
         };
     }
     
