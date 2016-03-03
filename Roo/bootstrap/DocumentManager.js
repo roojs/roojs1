@@ -595,8 +595,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var width = image.dom.naturalWidth || image.dom.width;
         var height = image.dom.naturalHeight || image.dom.height;
         
-        alert(width);
-        alert(height);
         if(width > height){
             file.target.addClass('wide');
             return;
