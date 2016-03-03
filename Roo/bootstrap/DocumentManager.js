@@ -336,6 +336,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.progressBar.aria_valuenow = this.progressBar.aria_valuemax - this.delegates.length;
         
+        this.progressDialog
+        
         delegate();
     },
     
