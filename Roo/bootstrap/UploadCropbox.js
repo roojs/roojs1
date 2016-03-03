@@ -762,11 +762,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 var sx = (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true)) / this.getScaleLevel();
                 var sy = (this.thumbEl.getTop(true) - this.previewEl.getTop(true)) / this.getScaleLevel();
 
-                if(this.imageEl.OriginWidth - width < x){
+                if(this.imageEl.OriginWidth - width < sx){
                     sx = this.imageEl.OriginWidth - width;
                 }
 
-                if(this.imageEl.OriginHeight - height < y){
+                if(this.imageEl.OriginHeight - height < sy){
                     sy = this.imageEl.OriginHeight - height;
                 }
 
@@ -813,14 +813,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     sx = ((this.canvasEl.width - this.thumbEl.getWidth()) - (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true))) / this.getScaleLevel();
                 }
                 
-                var sx =  (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true)) / this.getScaleLevel();
                 var sy = (this.thumbEl.getTop(true) - this.previewEl.getTop(true)) / this.getScaleLevel();
 
-                if(this.imageEl.OriginWidth - width < x){
+                if(this.imageEl.OriginWidth - width < sx){
                     sx = this.imageEl.OriginWidth - width;
                 }
 
-                if(this.imageEl.OriginHeight - height < y){
+                if(this.imageEl.OriginHeight - height < sy){
                     sy = this.imageEl.OriginHeight - height;
                 }
 
