@@ -475,7 +475,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 (
                     width > this.imageEl.OriginWidth || 
                     height > this.imageEl.OriginHeight ||
-                    (width < this.minWidth && height < this.minHeight)
+                    (width < this.minHeight && height < this.minWidth)
                 )
         ){
             return false;
