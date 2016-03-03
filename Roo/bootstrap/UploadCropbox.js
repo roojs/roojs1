@@ -855,12 +855,44 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 break;
             case 270 :
                 
-                var width = (this.minWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : this.minWidth;
-                var height = (this.minHeight > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : this.minHeight;
+                var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getWidth() / this.getScaleLevel());
+                var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getHeight() / this.getScaleLevel());
                 
-                var y = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? 0 : Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight);
+                var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
+                var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
                 
-                context.drawImage(imageCanvas, 0, y, width, height, width / 2 * - 1, height / 2 * -1, width, height);
+                var targetWidth = this.minWidth - 2 * x;
+                var targetHeight = this.minHeight - 2 * y;
+                
+                var scale = 1;
+                
+                if((x == 0 && y == 0) || (x == 0 && y > 0)){
+                    scale = targetWidth / width;
+                }
+                
+                if(x > 0 && y == 0){
+                    scale = targetHeight / height;
+                }
+                
+                if(x > 0 && y > 0){
+                    scale = targetWidth / width;
+                    
+                    if(width < height){
+                        scale = targetHeight / height;
+                    }
+                }
+                
+                context.scale(scale, scale);
+                
+                var sx = Math.min(this.canvasEl.width - this.thumbEl.getWidth(), this.thumbEl.getLeft(true) - this.previewEl.getLeft(true));
+                var sy = Math.min(this.canvasEl.height - this.thumbEl.getHeight(), this.thumbEl.getTop(true) - this.previewEl.getTop(true));
+
+                sx = sx < 0 ? 0 : (sx / this.getScaleLevel());
+                sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
+                
+                sy += (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? 0 : Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight);
+                
+                context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
                 
                 break;
             default : 
