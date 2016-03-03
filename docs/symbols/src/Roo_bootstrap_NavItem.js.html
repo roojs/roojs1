@@ -204,7 +204,7 @@
     </span><span class="jsdoc-syntax">},
     </span><span class="jsdoc-var">setActive </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">fire</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">is_was_active</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">&amp; </span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">state </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-var">this.was_active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
             </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">nv </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.NavGroup.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.navId</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">nv</span><span class="jsdoc-syntax">) {

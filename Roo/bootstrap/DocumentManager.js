@@ -238,7 +238,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.progress = new Roo.bootstrap.Progress({
             cls : 'roo-document-manager-progress',
             active : true,
-            striped : true,
+            striped : true
         });
         
         this.progress.render(this.progressDialog.getChildContainer());

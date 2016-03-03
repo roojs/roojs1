@@ -1856,6 +1856,10 @@
         </span><span class="jsdoc-var">this.syncValue</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">this.validate</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.tickable </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.view.refresh</span><span class="jsdoc-syntax">();
+        }
     },
     
     </span><span class="jsdoc-var">inputEl</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">()
@@ -2290,8 +2294,10 @@
 
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">listHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.touchViewListGroup.getHeight</span><span class="jsdoc-syntax">();
         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">firstChecked </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">listHeight </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">bodyHeight</span><span class="jsdoc-syntax">){
-            (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">firstChecked.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.scrollIntoView</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.touchViewListGroup.dom</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(500);
+            (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() { </span><span class="jsdoc-var">firstChecked.findParent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.scrollIntoView</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.touchViewListGroup.dom</span><span class="jsdoc-syntax">); })</span><span class="jsdoc-var">.defer</span><span class="jsdoc-syntax">(500);
         }
         
     },

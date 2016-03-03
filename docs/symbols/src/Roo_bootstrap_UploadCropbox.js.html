@@ -13,6 +13,7 @@
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
+ * @cfg {Boolean} isDocument (true|false) default false
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -87,8 +88,14 @@
          * Fire when resize
          * @param {Roo.bootstrap.UploadCropbox} this
          */
-        </span><span class="jsdoc-string">&quot;resize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
-        
+        </span><span class="jsdoc-string">&quot;resize&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event rotate
+         * Fire when rotate the image
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {String} pos
+         */
+        </span><span class="jsdoc-string">&quot;rotate&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
     
     </span><span class="jsdoc-var">this.buttons </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.buttons </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.bootstrap.UploadCropbox.footer.STANDARD</span><span class="jsdoc-syntax">;
@@ -115,6 +122,7 @@
     </span><span class="jsdoc-var">cropType </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'image/jpeg'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">buttons </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">canvasLoaded </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">isDocument </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -330,8 +338,14 @@
         </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.imageEl.naturalWidth </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.imageEl.width</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.imageEl.OriginHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.imageEl.naturalHeight </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.imageEl.height</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-var">this.setThumbBoxPosition</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.baseRotateLevel</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isDocument</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setThumbBoxSize</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-var">this.setThumbBoxPosition</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-var">this.baseScaleLevel</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">this.draw</span><span class="jsdoc-syntax">();
@@ -362,6 +376,11 @@
         
         </span><span class="jsdoc-var">this.dragable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.pinching </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isDocument </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">())){
+            </span><span class="jsdoc-var">this.dragable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
         
         </span><span class="jsdoc-var">this.mouseX </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">e.browserEvent.touches</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.pageX </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">e.getPageX</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.mouseY </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.isTouch </span><span class="jsdoc-syntax">? </span><span class="jsdoc-var">e.browserEvent.touches</span><span class="jsdoc-syntax">[0]</span><span class="jsdoc-var">.pageY </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">e.getPageY</span><span class="jsdoc-syntax">();
@@ -434,28 +453,58 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imageEl.OriginHeight </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minHeight</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">minScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.minHeight</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">minScale</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imageEl.OriginHeight </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">minScale</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">this.isDocument </span><span class="jsdoc-syntax">&amp;&amp;
                 (</span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">== 0 || </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">== 180) &amp;&amp; 
                 (
-                    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">minScale </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">|| 
-                    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">minScale </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">|| 
-                    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">minScale </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minHeight </span><span class="jsdoc-syntax">|| 
-                    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">minScale </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight
+                    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">|| 
+                    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight </span><span class="jsdoc-syntax">||
+                    (</span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minHeight</span><span class="jsdoc-syntax">)
+                )
+        ){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
+                </span><span class="jsdoc-var">this.isDocument </span><span class="jsdoc-syntax">&amp;&amp;
+                (</span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">== 90 || </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">== 270) &amp;&amp; 
+                (
+                    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">|| 
+                    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight </span><span class="jsdoc-syntax">||
+                    (</span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minHeight </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">)
+                )
+        ){
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
+                !</span><span class="jsdoc-var">this.isDocument </span><span class="jsdoc-syntax">&amp;&amp;
+                (</span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">== 0 || </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">== 180) &amp;&amp; 
+                (
+                    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">|| 
+                    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">|| 
+                    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minHeight </span><span class="jsdoc-syntax">|| 
+                    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight
                 </span><span class="jsdoc-syntax">)
         ){
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
+                !</span><span class="jsdoc-var">this.isDocument </span><span class="jsdoc-syntax">&amp;&amp;
                 (</span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">== 90 || </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">== 270) &amp;&amp; 
                 (
-                    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">minScale </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minHeight </span><span class="jsdoc-syntax">|| 
-                    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">minScale </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">|| 
-                    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">minScale </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">|| 
-                    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">minScale </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight
+                    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minHeight </span><span class="jsdoc-syntax">|| 
+                    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">|| 
+                    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">|| 
+                    </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight
                 </span><span class="jsdoc-syntax">)
         ){
             </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
@@ -467,12 +516,12 @@
     
     </span><span class="jsdoc-var">onRotateLeft </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {   
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">()){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isDocument </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">())){
             
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
             
             </span><span class="jsdoc-var">this.startScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.scale</span><span class="jsdoc-syntax">;
             
@@ -485,8 +534,8 @@
                 }
                 
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
-                        </span><span class="jsdoc-var">bw </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">() &lt; </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">() ||
-                        </span><span class="jsdoc-var">bh </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">() &lt; </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">()
+                        </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bw </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">()) &lt; </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">() ||
+                        </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bh </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">()) &lt; </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">()
                 ){
                     </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
                 }
@@ -507,18 +556,26 @@
         
         </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">&lt; 90) ? 270 : </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">- 90;
 
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isDocument</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setThumbBoxSize</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.setThumbBoxPosition</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.setCanvasPosition</span><span class="jsdoc-syntax">();
+        }
+        
         </span><span class="jsdoc-var">this.draw</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rotate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">);
         
     },
     
     </span><span class="jsdoc-var">onRotateRight </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">()){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.isDocument </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() || </span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">())){
             
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">minScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">;
+        
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bw </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">bh </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
             
             </span><span class="jsdoc-var">this.startScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.scale</span><span class="jsdoc-syntax">;
             
@@ -531,8 +588,8 @@
                 }
                 
                 </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(
-                        </span><span class="jsdoc-var">bw </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">() &lt; </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">() ||
-                        </span><span class="jsdoc-var">bh </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">() &lt; </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">()
+                        </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bw </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">()) &lt; </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">() ||
+                        </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">bh </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">()) &lt; </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">()
                 ){
                     </span><span class="jsdoc-keyword">continue</span><span class="jsdoc-syntax">;
                 }
@@ -553,7 +610,15 @@
         
         </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">&gt; 180) ? 0 : </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">+ 90;
 
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isDocument</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.setThumbBoxSize</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.setThumbBoxPosition</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.setCanvasPosition</span><span class="jsdoc-syntax">();
+        }
+        
         </span><span class="jsdoc-var">this.draw</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'rotate'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">onRotateFail </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -656,31 +721,200 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.canvasLoaded</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">imageCanvas </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;canvas&quot;</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">imageContext </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">imageCanvas.getContext</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;2d&quot;</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">imageCanvas.width </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">imageCanvas.height </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">center </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">imageCanvas.width </span><span class="jsdoc-syntax">/ 2;
+        
+        </span><span class="jsdoc-var">imageContext.translate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">center</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">center</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">imageContext.rotate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">Math.PI </span><span class="jsdoc-syntax">/ 180);
+        
+        </span><span class="jsdoc-var">imageContext.drawImage</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imageEl</span><span class="jsdoc-syntax">, 0, 0, </span><span class="jsdoc-var">this.imageEl.OriginWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">center </span><span class="jsdoc-syntax">* -1, </span><span class="jsdoc-var">center </span><span class="jsdoc-syntax">* -1, </span><span class="jsdoc-var">this.imageEl.OriginWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">canvas </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">document.createElement</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;canvas&quot;</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">context </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">canvas.getContext</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">&quot;2d&quot;</span><span class="jsdoc-syntax">);
-        
+                
         </span><span class="jsdoc-var">canvas.width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">canvas.height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minHeight</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cropWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cropHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">();
-        
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.previewEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.previewEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">cropWidth </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">cropWidth</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-keyword">switch </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rotate</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">0 :
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">this.imageEl.OriginWidth</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.imageEl.OriginHeight </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) &gt; </span><span class="jsdoc-var">this.previewEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) ? 0 : ((</span><span class="jsdoc-var">this.previewEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.thumbEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) &gt; </span><span class="jsdoc-var">this.previewEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) ? 0 : ((</span><span class="jsdoc-var">this.previewEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.thumbEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">targetWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">- 2 * </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">targetHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minHeight </span><span class="jsdoc-syntax">- 2 * </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">;
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= 1;
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">== 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">== 0) || (</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">== 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&gt; 0)){
+                    </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetWidth </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">== 0){
+                    </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetHeight </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetWidth </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">;
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetHeight </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">;
+                    }
+                }
+                
+                </span><span class="jsdoc-var">context.scale</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scale</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scale</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.thumbEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.previewEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.thumbEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.previewEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+
+                </span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">&lt; 0 ? 0 : (</span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">&lt; 0 ? 0 : (</span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+
+                </span><span class="jsdoc-var">context.drawImage</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">imageCanvas</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sy</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">90 : 
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.imageEl.OriginHeight </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">this.imageEl.OriginWidth</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) &gt; </span><span class="jsdoc-var">this.previewEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) ? 0 : ((</span><span class="jsdoc-var">this.previewEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.thumbEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) &gt; </span><span class="jsdoc-var">this.previewEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) ? 0 : ((</span><span class="jsdoc-var">this.previewEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.thumbEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">targetWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">- 2 * </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">targetHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minHeight </span><span class="jsdoc-syntax">- 2 * </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">;
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= 1;
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">== 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">== 0) || (</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">== 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&gt; 0)){
+                    </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetWidth </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">== 0){
+                    </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetHeight </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetWidth </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">;
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetHeight </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">;
+                    }
+                }
+                
+                </span><span class="jsdoc-var">context.scale</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scale</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scale</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.thumbEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.previewEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.thumbEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.previewEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+
+                </span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">&lt; 0 ? 0 : (</span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">&lt; 0 ? 0 : (</span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                
+                </span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">+= (</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">Math.abs</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">) : 0;
+                
+                </span><span class="jsdoc-var">context.drawImage</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">imageCanvas</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sy</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">180 :
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">this.imageEl.OriginWidth</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.imageEl.OriginHeight </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) &gt; </span><span class="jsdoc-var">this.previewEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) ? 0 : ((</span><span class="jsdoc-var">this.previewEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.thumbEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) &gt; </span><span class="jsdoc-var">this.previewEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) ? 0 : ((</span><span class="jsdoc-var">this.previewEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.thumbEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">targetWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">- 2 * </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">targetHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minHeight </span><span class="jsdoc-syntax">- 2 * </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">;
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= 1;
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">== 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">== 0) || (</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">== 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&gt; 0)){
+                    </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetWidth </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">== 0){
+                    </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetHeight </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetWidth </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">;
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetHeight </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">;
+                    }
+                }
+                
+                </span><span class="jsdoc-var">context.scale</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scale</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scale</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.thumbEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.previewEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.thumbEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.previewEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+
+                </span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">&lt; 0 ? 0 : (</span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">&lt; 0 ? 0 : (</span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+
+                </span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">+= (</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">) ? 0 : </span><span class="jsdoc-var">Math.abs</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">+= (</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">Math.abs</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">) : 0;
+                
+                </span><span class="jsdoc-var">context.drawImage</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">imageCanvas</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sy</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">case </span><span class="jsdoc-syntax">270 :
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.imageEl.OriginHeight </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">this.imageEl.OriginWidth</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">: (</span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">() / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) &gt; </span><span class="jsdoc-var">this.previewEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) ? 0 : ((</span><span class="jsdoc-var">this.previewEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.thumbEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.thumbEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) &gt; </span><span class="jsdoc-var">this.previewEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) ? 0 : ((</span><span class="jsdoc-var">this.previewEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.thumbEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)) / </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">targetWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">- 2 * </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">targetHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.minHeight </span><span class="jsdoc-syntax">- 2 * </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">;
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= 1;
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">== 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">== 0) || (</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">== 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&gt; 0)){
+                    </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetWidth </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">== 0){
+                    </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetHeight </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">;
+                }
+                
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&gt; 0){
+                    </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetWidth </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">;
+                    
+                    </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">){
+                        </span><span class="jsdoc-var">scale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">targetHeight </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">;
+                    }
+                }
+                
+                </span><span class="jsdoc-var">context.scale</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">scale</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">scale</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.width </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.thumbEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.previewEl.getLeft</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+                </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">(), </span><span class="jsdoc-var">this.thumbEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">) - </span><span class="jsdoc-var">this.previewEl.getTop</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
+
+                </span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">&lt; 0 ? 0 : (</span><span class="jsdoc-var">sx </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                </span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">&lt; 0 ? 0 : (</span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.getScaleLevel</span><span class="jsdoc-syntax">());
+                
+                </span><span class="jsdoc-var">sy </span><span class="jsdoc-syntax">+= (</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">) ? 0 : </span><span class="jsdoc-var">Math.abs</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-var">context.drawImage</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">imageCanvas</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sx</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">sy</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">);
+                
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">default </span><span class="jsdoc-syntax">: 
+                </span><span class="jsdoc-keyword">break</span><span class="jsdoc-syntax">;
         }
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">cropHeight </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.canvasEl.height </span><span class="jsdoc-syntax">- </span><span class="jsdoc-var">cropHeight</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">x </span><span class="jsdoc-syntax">&lt; 0 ? 0 : </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">y </span><span class="jsdoc-syntax">&lt; 0 ? 0 : </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">;
-        
-        </span><span class="jsdoc-var">context.drawImage</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.canvasEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">x</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">y</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cropWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">cropHeight</span><span class="jsdoc-syntax">, 0, 0, </span><span class="jsdoc-var">canvas.width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">canvas.height</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.cropData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">canvas.toDataURL</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cropType</span><span class="jsdoc-syntax">);
         
@@ -690,8 +924,23 @@
     
     </span><span class="jsdoc-var">setThumbBoxSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= 300;
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.minHeight</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isDocument </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imageEl</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.minHeight</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.minHeight</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= (</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">) ? </span><span class="jsdoc-var">Math.min</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.minHeight</span><span class="jsdoc-syntax">) : </span><span class="jsdoc-var">Math.max</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minWidth</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.minHeight</span><span class="jsdoc-syntax">);
+            
+            </span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.minHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">== 90 || </span><span class="jsdoc-var">this.rotate </span><span class="jsdoc-syntax">== 270){
+                </span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">;
+                </span><span class="jsdoc-var">this.minHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">;
+            }
+        }
+        
+        </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= 300;
+        </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Math.ceil</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.minHeight</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.minWidth </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.minHeight</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= 300;
@@ -737,10 +986,36 @@
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">height</span><span class="jsdoc-syntax">;
         
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.isDocument</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.baseRotate </span><span class="jsdoc-syntax">== 6 || </span><span class="jsdoc-var">this.baseRotate </span><span class="jsdoc-syntax">== 8){
+            
+                </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.baseScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.imageEl.OriginWidth</span><span class="jsdoc-syntax">;
+
+                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imageEl.OriginHeight </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.baseScale </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">()){
+                    </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">();
+                    </span><span class="jsdoc-var">this.baseScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">;
+                }
+
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">();
+            </span><span class="jsdoc-var">this.baseScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">;
+
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.baseScale </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">()){
+                </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">();
+                </span><span class="jsdoc-var">this.baseScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.imageEl.OriginWidth</span><span class="jsdoc-syntax">;
+            }
+
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.baseRotate </span><span class="jsdoc-syntax">== 6 || </span><span class="jsdoc-var">this.baseRotate </span><span class="jsdoc-syntax">== 8){
             
             </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">();
-            </span><span class="jsdoc-var">this.baseScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.baseScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">;
             
             </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imageEl.OriginHeight </span><span class="jsdoc-syntax">* </span><span class="jsdoc-var">this.baseScale </span><span class="jsdoc-syntax">&lt; </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">()){
                 </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getWidth</span><span class="jsdoc-syntax">();
@@ -767,7 +1042,6 @@
             </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.thumbEl.getHeight</span><span class="jsdoc-syntax">();
             </span><span class="jsdoc-var">this.baseScale </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">height </span><span class="jsdoc-syntax">/ </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">;
         }
-        
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.imageEl.OriginHeight</span><span class="jsdoc-syntax">){
             
@@ -875,22 +1149,22 @@
         
     },
     
-    </span><span class="jsdoc-var">prepare </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">)
-    {        
+    </span><span class="jsdoc-var">prepare </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">)
+    {   
         </span><span class="jsdoc-var">this.file </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.exif </span><span class="jsdoc-syntax">= {};
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.loadCanvas</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">input</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-string">'string'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.loadCanvas</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">input.files </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">input.files</span><span class="jsdoc-syntax">[0] || !</span><span class="jsdoc-var">this.urlAPI</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">file </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.urlAPI</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-var">this.file </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">input.files</span><span class="jsdoc-syntax">[0];
-        </span><span class="jsdoc-var">this.cropType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.file.type</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.file </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.cropType </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">file.type</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         
@@ -1253,6 +1527,32 @@
                         </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-default'</span><span class="jsdoc-syntax">,
                         </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;i class=&quot;fa fa-trash&quot;&gt;&lt;/i&gt;'
+                    </span><span class="jsdoc-syntax">}
+                ]
+            },
+            {
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn-group roo-upload-cropbox-rotate-right'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">action </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'rotate-right'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                    {
+                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-default'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;i class=&quot;fa fa-repeat&quot;&gt;&lt;/i&gt;'
+                    </span><span class="jsdoc-syntax">}
+                ]
+            }
+        ],
+        </span><span class="jsdoc-var">ROTATOR </span><span class="jsdoc-syntax">: [
+            {
+                </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn-group roo-upload-cropbox-rotate-left'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">action </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'rotate-left'</span><span class="jsdoc-syntax">,
+                </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                    {
+                        </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-default'</span><span class="jsdoc-syntax">,
+                        </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'&lt;i class=&quot;fa fa-undo&quot;&gt;&lt;/i&gt;'
                     </span><span class="jsdoc-syntax">}
                 ]
             },
