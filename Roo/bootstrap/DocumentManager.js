@@ -586,5 +586,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         Roo.log('on preview load');
         Roo.log(this);
         Roo.log(image.dom.naturalWidth);
+        
     }
 });
