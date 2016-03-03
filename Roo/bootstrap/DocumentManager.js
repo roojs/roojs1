@@ -546,27 +546,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var response = Roo.decode(xhr.responseText);
         
         if(!response.success){
-            this.refresh();
+            this.arrange();
             this.fireEvent('exception', this, xhr);
             return;
         }
         
-        var i = 0;
+        this.files.push(response.data);
         
-        Roo.each(this.files, function(file, index){
-            
-            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-                return;
-            }
-            
-            this.files[index] = response.data[i];
-            i++;
-            
-            return;
-            
-        }, this);
-        
-        this.refresh();
+        this.arrange();
         
     },
     
