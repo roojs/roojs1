@@ -590,7 +590,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     process : function(file)
     {
-        Roo.log('upload start');
+        Roo.log('process...');
         Roo.log(file);
         
         if(this.editable && file.type.indexOf('image') != -1){
