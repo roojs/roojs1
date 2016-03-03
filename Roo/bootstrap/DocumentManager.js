@@ -583,6 +583,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     onPreviewLoad : function()
     {
-        
+        Roo.log('on preview load');
+        Roo.log(this);
     }
 });
