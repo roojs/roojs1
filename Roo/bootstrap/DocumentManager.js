@@ -288,9 +288,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         var _this = this;
         
+        var files = [];
+        
         Roo.each(this.files, function(file){
             
             if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
+                files.push(file);
                 return;
             }
             
@@ -301,6 +304,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             );
             
         }, this);
+        
+        this.files = files;
         
         this.process();
         
