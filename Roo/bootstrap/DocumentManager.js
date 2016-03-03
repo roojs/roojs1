@@ -552,7 +552,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
         var _this = this;
 
-        this.imageEl.addEventListener("load", function(){ _this.onLoadCanvas(); });
+        imageEl.addEventListener("load", function(){ _this.drawPreview(imageEl); });
 
         this.imageEl.src = src;
         
