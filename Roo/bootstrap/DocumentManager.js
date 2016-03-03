@@ -227,6 +227,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             ], 
             listeners : { 
                 btnclick : function() {
+                    _this.uploadCancel();
                     this.hide();
                 }
             }
