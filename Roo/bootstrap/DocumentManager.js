@@ -601,10 +601,21 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
         }
         
+        var previewEl = this.managerEl.createChild(preview);
+
+        var close = previewEl.select('button.close', true).first();
+
+        close.on('click', this.onRemove, this, file);
+
+        file.target = previewEl;
+
+        var image = previewEl.select('img', true).first();
         
-        Roo.log('on preview load');
-        Roo.log(this);
-        Roo.log(image.dom.naturalWidth);
+//        image.dom.addEventListener("load", function(){ _this.onPreviewLoad(image); });
+        
+        image.on('click', this.onClick, this, file);
+        
+        return file;
         
     }
 });
