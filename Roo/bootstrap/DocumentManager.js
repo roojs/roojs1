@@ -286,6 +286,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.files = this.files.slice(0, this.boxes);
         }
         
+        this.uploader.show();
+        
+        if(this.files.length > this.boxes - 1){
+            this.uploader.hide();
+        }
+        
         var _this = this;
         
         var files = [];
