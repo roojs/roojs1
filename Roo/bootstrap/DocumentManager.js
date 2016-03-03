@@ -546,6 +546,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     renderPreview : function(file)
     {
+        var _this = this;
+        
         var previewEl = this.managerEl.createChild({
             tag : 'div',
             cls : 'roo-document-manager-preview',
@@ -572,6 +574,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
 
         var image = previewEl.select('img', true).first();
 
+        image.addEventListener("load", function(){ _this.onLoadCanvas(); });
+        
         image.on('click', this.onClick, this, file);
         
         return file;
