@@ -53,13 +53,12 @@
     top: 0px;
     right: 3px;
     font-size: 20px;
-    opacity: 0.5;
+    opacity: 1;
 }
 
 .roo-document-manager-preview > .close:hover {
-    opacity: 0.75;
+    color: #333;
 }
-
 
 /*
 * sm
