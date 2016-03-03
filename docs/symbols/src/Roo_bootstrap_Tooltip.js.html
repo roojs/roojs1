@@ -233,9 +233,8 @@
         //this.el.setXY([0,0]);
         </span><span class="jsdoc-var">this.el.show</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-comment">//this.el.dom.style.display='block';
-        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-comment">//this.el.appendTo(on_el);
+        //this.el.appendTo(on_el);
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">p </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.getPosition</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">box </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getBox</span><span class="jsdoc-syntax">();
@@ -243,12 +242,31 @@
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">autoPlace</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-comment">// fixme..
         </span><span class="jsdoc-syntax">}
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Tooltip.alignment</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">];
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">xy </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.getAlignToXY</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bindEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[0], </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[1]);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'top' </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">== </span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] &lt; 0){
+                </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'right'</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xy</span><span class="jsdoc-syntax">[0] + </span><span class="jsdoc-var">this.el.getWidth</span><span class="jsdoc-syntax">() &gt; </span><span class="jsdoc-var">Roo.lib.Dom.getViewWidth</span><span class="jsdoc-syntax">()){
+                </span><span class="jsdoc-var">placement </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'left'</span><span class="jsdoc-syntax">;
+            }
+        }
+        
+        </span><span class="jsdoc-var">align </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.bootstrap.Tooltip.alignment</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">];
+        
         </span><span class="jsdoc-var">this.el.alignTo</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bindEl</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[0],</span><span class="jsdoc-var">align</span><span class="jsdoc-syntax">[1]);
         </span><span class="jsdoc-comment">//var arrow = this.el.select('.arrow',true).first();
         //arrow.set(align[2], 
         
+        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">placement</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'in fade'</span><span class="jsdoc-syntax">);
+        
         </span><span class="jsdoc-var">this.hoverState </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el.hasClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'fade'</span><span class="jsdoc-syntax">)) {

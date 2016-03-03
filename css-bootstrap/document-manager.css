@@ -11,6 +11,10 @@
     margin-top: 10px;
 }
 
+.roo-document-manager-preview.wide {
+    width: 50%;
+}
+
 .roo-document-manager-thumb,
 .roo-document-manager-upload-btn {
     width : 100%;
@@ -49,13 +53,12 @@
     top: 0px;
     right: 3px;
     font-size: 20px;
-    opacity: 0.5;
+    opacity: 1;
 }
 
 .roo-document-manager-preview > .close:hover {
-    opacity: 0.75;
+    color: #333;
 }
-
 
 /*
 * sm
@@ -96,6 +99,10 @@
         max-height: 80px;
     }
     
+    .roo-document-manager-preview.wide {
+        width: 16.66666666%;
+    }
+    
     .roo-document-manager-thumb,
     .roo-document-manager-upload-btn {
         line-height: 80px;
@@ -122,6 +129,10 @@
         width: 8.33333333%;
         height: 100px;
         max-height: 100px;
+    }
+    
+    .roo-document-manager-preview.wide {
+        width: 16.66666666%;
     }
     
     .roo-document-manager-thumb,

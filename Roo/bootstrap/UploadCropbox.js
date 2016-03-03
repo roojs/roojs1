@@ -12,8 +12,6 @@
  * @cfg {Number} errorTimeout default 3000
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
- * @cfg {Number} documentMinWidth default 640
- * @cfg {Number} documentMinHeight default 800
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * @cfg {Boolean} isDocument (true|false) default false
  * 
@@ -125,8 +123,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     buttons : false,
     canvasLoaded : false,
     isDocument : false,
-    documentMinWidth : 640,
-    documentMinHeight : 800,
     
     getAutoCreate : function()
     {
@@ -342,12 +338,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageEl.OriginWidth = this.imageEl.naturalWidth || this.imageEl.width;
         this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
         
+        this.baseRotateLevel();
+        
         if(this.isDocument){
             this.setThumbBoxSize();
         }
         
         this.setThumbBoxPosition();
-        this.baseRotateLevel();
+        
         this.baseScaleLevel();
         
         this.draw();
@@ -455,16 +453,32 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var minScale = this.thumbEl.getWidth() / this.minWidth;
         
-        var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel());
-        var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel());
+        if(this.minWidth < this.minHeight){
+            minScale = this.thumbEl.getHeight() / this.minHeight;
+        }
+        
+        var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel() / minScale);
+        var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel() / minScale);
         
         if(
                 this.isDocument &&
+                (this.rotate == 0 || this.rotate == 180) && 
                 (
-                    width / minScale > this.imageEl.OriginWidth || 
-                    height / minScale > this.imageEl.OriginHeight ||
-                    width / minScale < this.documentMinWidth ||
-                    height / minScale < this.documentMinHeight
+                    width > this.imageEl.OriginWidth || 
+                    height > this.imageEl.OriginHeight ||
+                    (width < this.minWidth && height < this.minHeight)
+                )
+        ){
+            return false;
+        }
+        
+        if(
+                this.isDocument &&
+                (this.rotate == 90 || this.rotate == 270) && 
+                (
+                    width > this.imageEl.OriginWidth || 
+                    height > this.imageEl.OriginHeight ||
+                    (width < this.minHeight && height < this.minWidth)
                 )
         ){
             return false;
@@ -474,10 +488,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 !this.isDocument &&
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
-                    width / minScale < this.minWidth || 
-                    width / minScale > this.imageEl.OriginWidth || 
-                    height / minScale < this.minHeight || 
-                    height / minScale > this.imageEl.OriginHeight
+                    width < this.minWidth || 
+                    width > this.imageEl.OriginWidth || 
+                    height < this.minHeight || 
+                    height > this.imageEl.OriginHeight
                 )
         ){
             return false;
@@ -487,10 +501,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 !this.isDocument &&
                 (this.rotate == 90 || this.rotate == 270) && 
                 (
-                    width / minScale < this.minHeight || 
-                    width / minScale > this.imageEl.OriginWidth || 
-                    height / minScale < this.minWidth || 
-                    height / minScale > this.imageEl.OriginHeight
+                    width < this.minHeight || 
+                    width > this.imageEl.OriginWidth || 
+                    height < this.minWidth || 
+                    height > this.imageEl.OriginHeight
                 )
         ){
             return false;
@@ -506,8 +520,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             var minScale = this.thumbEl.getWidth() / this.minWidth;
             
-            var bw = this.canvasEl.width / this.getScaleLevel();
-            var bh = this.canvasEl.height / this.getScaleLevel();
+            var bw = Math.ceil(this.canvasEl.width / this.getScaleLevel());
+            var bh = Math.ceil(this.canvasEl.height / this.getScaleLevel());
             
             this.startScale = this.scale;
             
@@ -520,8 +534,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 }
                 
                 if(
-                        bw * this.getScaleLevel() < this.thumbEl.getHeight() ||
-                        bh * this.getScaleLevel() < this.thumbEl.getWidth()
+                        Math.ceil(bw * this.getScaleLevel()) < this.thumbEl.getHeight() ||
+                        Math.ceil(bh * this.getScaleLevel()) < this.thumbEl.getWidth()
                 ){
                     continue;
                 }
@@ -559,9 +573,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if(!this.isDocument && (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())){
             
             var minScale = this.thumbEl.getWidth() / this.minWidth;
-            
-            var bw = this.canvasEl.width / this.getScaleLevel();
-            var bh = this.canvasEl.height / this.getScaleLevel();
+        
+            var bw = Math.ceil(this.canvasEl.width / this.getScaleLevel());
+            var bh = Math.ceil(this.canvasEl.height / this.getScaleLevel());
             
             this.startScale = this.scale;
             
@@ -574,8 +588,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 }
                 
                 if(
-                        bw * this.getScaleLevel() < this.thumbEl.getHeight() ||
-                        bh * this.getScaleLevel() < this.thumbEl.getWidth()
+                        Math.ceil(bw * this.getScaleLevel()) < this.thumbEl.getHeight() ||
+                        Math.ceil(bh * this.getScaleLevel()) < this.thumbEl.getWidth()
                 ){
                     continue;
                 }
@@ -730,140 +744,179 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         canvas.width = this.minWidth;
         canvas.height = this.minHeight;
 
-//        var centerX = canvas.width / 2;
-//        var centerY = canvas.height / 2;
-//
-//        context.translate(centerX, centerY);
-                
         switch (this.rotate) {
             case 0 :
                 
                 var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getWidth() / this.getScaleLevel());
                 var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getHeight() / this.getScaleLevel());
                 
-                var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true));
-                var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : (this.thumbEl.getTop(true) - this.previewEl.getTop(true));
+                var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
+                var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
                 
-                if()
-//                var scaleWidth = (width > this.minWidth) ? (this.minWidth / width) : 1;
-//                var scaleHeight = (height > this.minHeight) ? (this.minHeight / height) : 1;
-//                
-//                Roo.log([scaleWidth, scaleHeight]);
+                var targetWidth = this.minWidth - 2 * x;
+                var targetHeight = this.minHeight - 2 * y;
                 
+                var scale = 1;
                 
-//                Roo.log([this.thumbEl.getLeft(true), this.previewEl.getLeft(true)]);
-                
-//                if(this.isDocument && this.thumbEl.getLeft(true) < this.previewEl.getLeft(true)){
-//                    scaleWidth = 1;
-//                }
-                
-//                Roo.log([this.thumbEl.getTop(true), this.previewEl.getTop(true)]);
-                
-//                if(this.isDocument && this.thumbEl.getTop(true) < this.previewEl.getTop(true)){
-//                    scaleHeight = 1;
-//                }
-                
-//                Roo.log([scaleWidth, scaleHeight]);
-                
-//                if(!this.isDocument){
-//                    context.scale(scaleWidth, scaleHeight);
-//                }
-                
-                
-                var sx = (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true)) / this.getScaleLevel();
-                var sy = (this.thumbEl.getTop(true) - this.previewEl.getTop(true)) / this.getScaleLevel();
-
-                if(this.imageEl.OriginWidth - width < x){
-                    sx = this.imageEl.OriginWidth - width;
+                if((x == 0 && y == 0) || (x == 0 && y > 0)){
+                    scale = targetWidth / width;
                 }
-
-                if(this.imageEl.OriginHeight - height < y){
-                    sy = this.imageEl.OriginHeight - height;
+                
+                if(x > 0 && y == 0){
+                    scale = targetHeight / height;
                 }
+                
+                if(x > 0 && y > 0){
+                    scale = targetWidth / width;
+                    
+                    if(width < height){
+                        scale = targetHeight / height;
+                    }
+                }
+                
+                context.scale(scale, scale);
+                
+                var sx = Math.min(this.canvasEl.width - this.thumbEl.getWidth(), this.thumbEl.getLeft(true) - this.previewEl.getLeft(true));
+                var sy = Math.min(this.canvasEl.height - this.thumbEl.getHeight(), this.thumbEl.getTop(true) - this.previewEl.getTop(true));
 
-                sx = sx < 0 ? 0 : sx;
-                sy = sy < 0 ? 0 : sy;
+                sx = sx < 0 ? 0 : (sx / this.getScaleLevel());
+                sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
 
                 context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
                 
                 break;
             case 90 : 
                 
-                var width = (this.minWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : this.minWidth;
-                var height = (this.minHeight > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : this.minHeight;
+                var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getWidth() / this.getScaleLevel());
+                var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getHeight() / this.getScaleLevel());
                 
-                var x = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight) : 0;
+                var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
+                var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
                 
-                context.drawImage(imageCanvas, x, 0, width, height, width / 2 * - 1, height / 2 * -1, width, height);
+                var targetWidth = this.minWidth - 2 * x;
+                var targetHeight = this.minHeight - 2 * y;
+                
+                var scale = 1;
+                
+                if((x == 0 && y == 0) || (x == 0 && y > 0)){
+                    scale = targetWidth / width;
+                }
+                
+                if(x > 0 && y == 0){
+                    scale = targetHeight / height;
+                }
+                
+                if(x > 0 && y > 0){
+                    scale = targetWidth / width;
+                    
+                    if(width < height){
+                        scale = targetHeight / height;
+                    }
+                }
+                
+                context.scale(scale, scale);
+                
+                var sx = Math.min(this.canvasEl.width - this.thumbEl.getWidth(), this.thumbEl.getLeft(true) - this.previewEl.getLeft(true));
+                var sy = Math.min(this.canvasEl.height - this.thumbEl.getHeight(), this.thumbEl.getTop(true) - this.previewEl.getTop(true));
+
+                sx = sx < 0 ? 0 : (sx / this.getScaleLevel());
+                sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
+                
+                sx += (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight) : 0;
+                
+                context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
                 
                 break;
             case 180 :
                 
-                var width = (this.minWidth > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : this.minWidth;
-                var height = (this.minHeight > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : this.minHeight;
+                var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getWidth() / this.getScaleLevel());
+                var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getHeight() / this.getScaleLevel());
                 
-                var x = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? 0 : Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight);
-                var y = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight) : 0;
+                var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
+                var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
                 
-                context.drawImage(imageCanvas, x, y, width, height, width / 2 * - 1, height / 2 * -1, width, height);
+                var targetWidth = this.minWidth - 2 * x;
+                var targetHeight = this.minHeight - 2 * y;
+                
+                var scale = 1;
+                
+                if((x == 0 && y == 0) || (x == 0 && y > 0)){
+                    scale = targetWidth / width;
+                }
+                
+                if(x > 0 && y == 0){
+                    scale = targetHeight / height;
+                }
+                
+                if(x > 0 && y > 0){
+                    scale = targetWidth / width;
+                    
+                    if(width < height){
+                        scale = targetHeight / height;
+                    }
+                }
+                
+                context.scale(scale, scale);
+                
+                var sx = Math.min(this.canvasEl.width - this.thumbEl.getWidth(), this.thumbEl.getLeft(true) - this.previewEl.getLeft(true));
+                var sy = Math.min(this.canvasEl.height - this.thumbEl.getHeight(), this.thumbEl.getTop(true) - this.previewEl.getTop(true));
+
+                sx = sx < 0 ? 0 : (sx / this.getScaleLevel());
+                sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
+
+                sx += (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? 0 : Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight);
+                sy += (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight) : 0;
+                
+                context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
                 
                 break;
             case 270 :
                 
-                var width = (this.minWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : this.minWidth;
-                var height = (this.minHeight > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : this.minHeight;
+                var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getWidth() / this.getScaleLevel());
+                var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getHeight() / this.getScaleLevel());
                 
-                var y = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? 0 : Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight);
+                var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
+                var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
                 
-                context.drawImage(imageCanvas, 0, y, width, height, width / 2 * - 1, height / 2 * -1, width, height);
+                var targetWidth = this.minWidth - 2 * x;
+                var targetHeight = this.minHeight - 2 * y;
+                
+                var scale = 1;
+                
+                if((x == 0 && y == 0) || (x == 0 && y > 0)){
+                    scale = targetWidth / width;
+                }
+                
+                if(x > 0 && y == 0){
+                    scale = targetHeight / height;
+                }
+                
+                if(x > 0 && y > 0){
+                    scale = targetWidth / width;
+                    
+                    if(width < height){
+                        scale = targetHeight / height;
+                    }
+                }
+                
+                context.scale(scale, scale);
+                
+                var sx = Math.min(this.canvasEl.width - this.thumbEl.getWidth(), this.thumbEl.getLeft(true) - this.previewEl.getLeft(true));
+                var sy = Math.min(this.canvasEl.height - this.thumbEl.getHeight(), this.thumbEl.getTop(true) - this.previewEl.getTop(true));
+
+                sx = sx < 0 ? 0 : (sx / this.getScaleLevel());
+                sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
+                
+                sy += (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? 0 : Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight);
+                
+                context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
                 
                 break;
             default : 
                 break;
         }
         
-        
-        window.open(canvas.toDataURL(this.cropType));
-        
-        
-        
-        return;
-        
-        
-        
-        
-        
-        var canvas = document.createElement("canvas");
-        
-        var context = canvas.getContext("2d");
-        
-        canvas.width = this.minWidth;
-        canvas.height = this.minHeight;
-        
-        var cropWidth = this.thumbEl.getWidth();
-        var cropHeight = this.thumbEl.getHeight();
-        
-        var x = this.thumbEl.getLeft(true) - this.previewEl.getLeft(true);
-        var y = this.thumbEl.getTop(true) - this.previewEl.getTop(true);
-        
-        if(this.canvasEl.width - cropWidth < x){
-            x = this.canvasEl.width - cropWidth;
-        }
-        
-        if(this.canvasEl.height - cropHeight < y){
-            y = this.canvasEl.height - cropHeight;
-        }
-        
-        x = x < 0 ? 0 : x;
-        y = y < 0 ? 0 : y;
-        
-        context.drawImage(this.canvasEl, x, y, cropWidth, cropHeight, 0, 0, canvas.width, canvas.height);
-        
         this.cropData = canvas.toDataURL(this.cropType);
-        
-        window.open(this.cropData);
-        
-        return;
         
         this.fireEvent('crop', this, this.cropData);
         
@@ -931,12 +984,33 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     baseScaleLevel : function()
     {
+        var width, height;
+        
         if(this.isDocument){
-            this.documentBaseScaleLevel();
+            
+            if(this.baseRotate == 6 || this.baseRotate == 8){
+            
+                height = this.thumbEl.getHeight();
+                this.baseScale = height / this.imageEl.OriginWidth;
+
+                if(this.imageEl.OriginHeight * this.baseScale > this.thumbEl.getWidth()){
+                    width = this.thumbEl.getWidth();
+                    this.baseScale = width / this.imageEl.OriginHeight;
+                }
+
+                return;
+            }
+
+            height = this.thumbEl.getHeight();
+            this.baseScale = height / this.imageEl.OriginHeight;
+
+            if(this.imageEl.OriginWidth * this.baseScale > this.thumbEl.getWidth()){
+                width = this.thumbEl.getWidth();
+                this.baseScale = width / this.imageEl.OriginWidth;
+            }
+
             return;
         }
-        
-        var width, height;
         
         if(this.baseRotate == 6 || this.baseRotate == 8){
             
@@ -961,17 +1035,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-//        this.baseScale = this.thumbEl.getWidth() / this.minWidth;
-//        
-//        this.scale = Math.log(this.thumbEl.getWidth() / this.imageEl.OriginWidth / this.baseScale) / Math.log(1.1);
-//        
-//        if(this.imageEl.OriginHeight * this.getScaleLevel() < this.thumbEl.getHeight()){
-//            this.scale = Math.log(this.thumbEl.getHeight() / this.imageEl.OriginHeight / this.baseScale) / Math.log(1.1);
-//        }
-//        
-//        return;
-        
-        
         width = this.thumbEl.getWidth();
         this.baseScale = width / this.imageEl.OriginWidth;
         
@@ -990,27 +1053,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 this.baseScale = width / this.imageEl.OriginWidth;
             }
             
-        }
-        
-        return;
-    },
-    
-    documentBaseScaleLevel : function()
-    {
-        var width, height;
-        
-        height = this.thumbEl.getHeight();
-        this.baseScale = height / this.imageEl.OriginHeight;
-        
-        if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
-            width = this.thumbEl.getWidth();
-            this.baseScale = width / this.imageEl.OriginWidth;
-        }
-        
-        var minScale = this.thumbEl.getWidth() / this.minWidth;
-        
-        if(this.baseScale > minScale){
-            this.baseScale = minScale;
         }
         
         return;

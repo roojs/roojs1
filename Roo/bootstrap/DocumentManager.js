@@ -203,23 +203,32 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.renderProgressDialog();
         
-//        var _this = this;
+        var _this = this;
         
-//        window.addEventListener("resize", function() { _this.refresh(); } );
+        window.addEventListener("resize", function() { _this.refresh(); } );
         
         this.fireEvent('initial', this);
     },
     
     renderProgressDialog : function()
     {
+        var _this = this;
+        
         this.progressDialog = new Roo.bootstrap.Modal({
             cls : 'roo-document-manager-progress-dialog',
             allow_close : false,
             title : '',
-            buttons : Roo.bootstrap.Modal.OK, 
+            buttons : [
+                {
+                    name  :'cancel',
+                    weight : 'danger',
+                    html : 'Cancel'
+                }
+            ], 
             listeners : { 
-                btnclick : function() { 
-                     this.hide();
+                btnclick : function() {
+                    _this.uploadCancel();
+                    this.hide();
                 }
             }
         });
@@ -229,7 +238,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.progress = new Roo.bootstrap.Progress({
             cls : 'roo-document-manager-progress',
             active : true,
-            striped : true,
+            striped : true
         });
         
         this.progress.render(this.progressDialog.getChildContainer());
@@ -243,11 +252,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         });
         
         this.progressBar.render(this.progress.getChildContainer());
-    },
-    
-    updateProgressDialog : function()
-    {
-        
     },
     
     onUploaderClick : function(e)
@@ -270,11 +274,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
         }, this);
         
-        this.arrange();
+        this.queue();
         
     },
     
-    arrange : function()
+    queue : function()
     {
         this.selectorEl.dom.value = '';
         
@@ -286,191 +290,67 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.files = this.files.slice(0, this.boxes);
         }
         
-        var _this = this;
+        this.uploader.show();
         
-        Roo.each(this.files, function(file){
-            
-            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-                return;
-            }
-            
-            this.delegates.push(
-                (function(){
-                    _this.uploadStart(file);
-                }).createDelegate(this)
-            );
-            
-//            if(file.type.indexOf('image') == -1){
-//                documents.push(
-//                    (function(){
-//                        _this.uploadDocument(file);
-//                    }).createDelegate(this)
-//                );
-//                return;
-//            }
-//            
-//            images.push(
-//                (function(){
-//                    _this.uploadImage(file);
-//                }).createDelegate(this)
-//            );
-        }, this);
-        
-        if(!this.delegates.length){
-            return;
-        }
-        
-        this.progressBar.aria_valuemax = this.delegates.length;
-        
-        var delegate = this.delegates.shift();
-        
-        delegate();
-        
-        return;
-        
-        
-        
-        var xhr = new XMLHttpRequest();
-        
-        Roo.each(this.files, function(file, index){
-            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-                return;
-            }
-            
-            file.xhr = xhr;
-            
-            this.managerEl.createChild({
-                tag : 'div',
-                cls : 'roo-document-manager-loading',
-                cn : [
-                    {
-                        tag : 'div',
-                        tooltip : file.name,
-                        cls : 'roo-document-manager-thumb',
-                        html : '<i class="fa fa-spinner fa-pulse"></i>'
-                    }
-                ]
-
-            });
-            
-        }, this);
-        
-        if(this.files.length > this.boxes - 1 ){
+        if(this.files.length > this.boxes - 1){
             this.uploader.hide();
         }
         
-        var headers = {
-            "Accept": "application/json",
-            "Cache-Control": "no-cache",
-            "X-Requested-With": "XMLHttpRequest"
-        };
-        
-        xhr.open(this.method, this.url, true);
-        
-        for (var headerName in headers) {
-            var headerValue = headers[headerName];
-            if (headerValue) {
-                xhr.setRequestHeader(headerName, headerValue);
-            }
-        }
-        
         var _this = this;
-        
-        xhr.onload = function()
-        {
-            _this.xhrOnLoad(xhr);
-        }
-        
-        xhr.onerror = function()
-        {
-            _this.xhrOnError(xhr);
-        }
-        
-        var formData = new FormData();
-
-        formData.append('returnHTML', 'NO');
-        
-        Roo.each(this.files, function(file, index){
-            
-            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-                return;
-            }
-            
-            formData.append(this.getParamName(index), file, file.name);
-            
-        }, this);
-        
-        if(this.fireEvent('prepare', this, formData) != false){
-            xhr.send(formData);
-        };
-        
-    },
-    
-    getParamName : function(i)
-    {
-        if(!this.multiple){
-            return this.paramName;
-        }
-        
-        return this.paramName + "_" + i;
-    },
-    
-    refresh : function()
-    {
-        Roo.each(this.managerEl.select('.roo-document-manager-loading', true).elements, function(el){
-            el.remove();
-        }, this);
-        
         
         var files = [];
         
         Roo.each(this.files, function(file){
             
-            if(typeof(file.id) == 'undefined' || file.id * 1 < 1){
+            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
+                var f = this.renderPreview(file);
+                files.push(f);
                 return;
             }
             
-            if(file.target){
-                files.push(file);
-                return;
-            }
-            
-            var previewEl = this.managerEl.createChild({
-                tag : 'div',
-                cls : 'roo-document-manager-preview',
-                cn : [
-                    {
-                        tag : 'div',
-                        tooltip : file.filename,
-                        cls : 'roo-document-manager-thumb',
-                        html : '<img src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
-                    },
-                    {
-                        tag : 'button',
-                        cls : 'close',
-                        html : 'x'
-                    }
-                ]
-            });
-            
-            var close = previewEl.select('button.close', true).first();
-            
-            close.on('click', this.onRemove, this, file);
-            
-            file.target = previewEl;
-            
-            var image = previewEl.select('img', true).first();
-            
-            image.on('click', this.onClick, this, file);
-            
-            files.push(file);
-            
-            return;
+            this.delegates.push(
+                (function(){
+                    _this.process(file);
+                }).createDelegate(this)
+            );
             
         }, this);
         
         this.files = files;
         
+        if(!this.delegates.length){
+            this.refresh();
+            return;
+        }
+        
+        this.progressBar.aria_valuemax = this.delegates.length;
+        
+        this.arrange();
+        
+        return;
+    },
+    
+    arrange : function()
+    {
+        if(!this.delegates.length){
+            this.progressDialog.hide();
+            this.refresh();
+            return;
+        }
+        
+        var delegate = this.delegates.shift();
+        
+        this.progressDialog.show();
+        
+        this.progressDialog.setTitle((this.progressBar.aria_valuemax - this.delegates.length) + ' / ' + this.progressBar.aria_valuemax);
+        
+        this.progressBar.update(this.progressBar.aria_valuemax - this.delegates.length);
+        
+        delegate();
+    },
+    
+    refresh : function()
+    {
         this.uploader.show();
         
         if(this.files.length > this.boxes - 1){
@@ -535,8 +415,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     xhrOnLoad : function(xhr)
     {
+        Roo.each(this.managerEl.select('.roo-document-manager-loading', true).elements, function(el){
+            el.remove();
+        }, this);
+        
         if (xhr.readyState !== 4) {
-            this.refresh();
+            this.arrange();
             this.fireEvent('exception', this, xhr);
             return;
         }
@@ -544,27 +428,16 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var response = Roo.decode(xhr.responseText);
         
         if(!response.success){
-            this.refresh();
+            this.arrange();
             this.fireEvent('exception', this, xhr);
             return;
         }
         
-        var i = 0;
+        var file = this.renderPreview(response.data);
         
-        Roo.each(this.files, function(file, index){
-            
-            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-                return;
-            }
-            
-            this.files[index] = response.data[i];
-            i++;
-            
-            return;
-            
-        }, this);
+        this.files.push(file);
         
-        this.refresh();
+        this.arrange();
         
     },
     
@@ -575,21 +448,160 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var response = Roo.decode(xhr.responseText);
           
         Roo.log(response);
+        
+        this.arrange();
     },
     
-    uploadStart : function(file)
+    process : function(file)
     {
-        Roo.log('upload start');
-        Roo.log(file);
-        
         if(this.editable && file.type.indexOf('image') != -1){
-            Roo.log(this.fireEvent('edit', this, file));
+            this.fireEvent('edit', this, file);
             return;
         }
         
-        
+        this.uploadStart(file, false);
         
         return;
-    }
+    },
     
+    uploadStart : function(file, crop)
+    {
+        this.xhr = new XMLHttpRequest();
+        
+        if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
+            this.arrange();
+            return;
+        }
+        
+        file.xhr = this.xhr;
+            
+        this.managerEl.createChild({
+            tag : 'div',
+            cls : 'roo-document-manager-loading',
+            cn : [
+                {
+                    tag : 'div',
+                    tooltip : file.name,
+                    cls : 'roo-document-manager-thumb',
+                    html : '<i class="fa fa-circle-o-notch fa-spin"></i>'
+                }
+            ]
+
+        });
+
+        this.xhr.open(this.method, this.url, true);
+        
+        var headers = {
+            "Accept": "application/json",
+            "Cache-Control": "no-cache",
+            "X-Requested-With": "XMLHttpRequest"
+        };
+        
+        for (var headerName in headers) {
+            var headerValue = headers[headerName];
+            if (headerValue) {
+                this.xhr.setRequestHeader(headerName, headerValue);
+            }
+        }
+        
+        var _this = this;
+        
+        this.xhr.onload = function()
+        {
+            _this.xhrOnLoad(_this.xhr);
+        }
+        
+        this.xhr.onerror = function()
+        {
+            _this.xhrOnError(_this.xhr);
+        }
+        
+        var formData = new FormData();
+
+        formData.append('returnHTML', 'NO');
+        
+        if(crop){
+            formData.append('crop', crop);
+        }
+        
+        formData.append(this.paramName, file, file.name);
+        
+        if(this.fireEvent('prepare', this, formData) != false){
+            this.xhr.send(formData);
+        };
+    },
+    
+    uploadCancel : function()
+    {
+        this.xhr.abort();
+        
+        this.delegates = [];
+        
+        Roo.each(this.managerEl.select('.roo-document-manager-loading', true).elements, function(el){
+            el.remove();
+        }, this);
+        
+        this.arrange();
+    },
+    
+    renderPreview : function(file)
+    {
+        if(typeof(file.target) != 'undefined' && file.target){
+            return file;
+        }
+        
+        var previewEl = this.managerEl.createChild({
+            tag : 'div',
+            cls : 'roo-document-manager-preview',
+            cn : [
+                {
+                    tag : 'div',
+                    tooltip : file.filename,
+                    cls : 'roo-document-manager-thumb',
+                    html : '<img src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
+                },
+                {
+                    tag : 'button',
+                    cls : 'close',
+                    html : '<i class="fa fa-times-circle"></i>'
+                }
+            ]
+        });
+
+        var close = previewEl.select('button.close', true).first();
+
+        close.on('click', this.onRemove, this, file);
+
+        file.target = previewEl;
+
+        var image = previewEl.select('img', true).first();
+        
+        var _this = this;
+        
+        image.dom.addEventListener("load", function(){ _this.onPreviewLoad(file, image); });
+        
+        image.on('click', this.onClick, this, file);
+        
+        return file;
+        
+    },
+    
+    onPreviewLoad : function(file, image)
+    {
+        if(typeof(file.target) == 'undefined' || !file.target){
+            return;
+        }
+        
+        var width = image.dom.naturalWidth || image.dom.width;
+        var height = image.dom.naturalHeight || image.dom.height;
+        
+        if(width > height){
+            file.target.addClass('wide');
+            return;
+        }
+        
+        file.target.addClass('tall');
+        return;
+        
+    }
 });
