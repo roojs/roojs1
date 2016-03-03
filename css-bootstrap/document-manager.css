@@ -1,20 +1,10 @@
 
 .roo-document-manager-uploader,
 .roo-document-manager-loading,
-.roo-document-manager-preview-tall {
+.roo-document-manager-preview {
     position: relative;
     float: left;
     width: 25%;
-    padding-left: 5px;
-    height: 100px;
-    max-height: 100px;
-    margin-top: 10px;
-}
-
-.roo-document-manager-preview-wide {
-    position: relative;
-    float: left;
-    width: 50%;
     padding-left: 5px;
     height: 100px;
     max-height: 100px;
