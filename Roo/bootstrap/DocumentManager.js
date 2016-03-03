@@ -328,6 +328,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     arrange : function()
     {
         if(!this.delegates.length){
+            this.progressDialog.hide();
             this.refresh();
             return;
         }
