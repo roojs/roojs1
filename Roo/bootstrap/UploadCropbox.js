@@ -784,10 +784,25 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
                 var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
                 
-                var scale = Math.min(((this.minWidth - 2 * x) / width), ((this.minHeight - 2 * y) / height));
+                var targetWidth = this.minWidth - 2 * x;
+                var targetHeight = this.minHeight - 2 * y;
                 
-                if(width < height){
-                    scale = Math.max(((this.minWidth - 2 * x) / width), ((this.minHeight - 2 * y) / height));
+                var scale = 1;
+                
+                if((x == 0 && y == 0) || (x == 0 && y > 0)){
+                    scale = targetWidth / width;
+                }
+                
+                if(x > 0 && y == 0){
+                    scale = targetHeight / height;
+                }
+                
+                if(x > 0 && y > 0){
+                    scale = targetWidth / width;
+                    
+                    if(width < height){
+                        scale = targetHeight / height;
+                    }
                 }
                 
                 context.scale(scale, scale);
