@@ -270,11 +270,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
         }, this);
         
-        this.arrange();
+        this.queue();
         
     },
     
-    arrange : function()
+    queue : function()
     {
         this.selectorEl.dom.value = '';
         
@@ -307,7 +307,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.files = files;
         
-        this.run();
+        this.arrange();
         
         return;
         
@@ -400,7 +400,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
     },
     
-    queue : function()
+    arrange : function()
     {
         if(!this.delegates.length){
             return;
