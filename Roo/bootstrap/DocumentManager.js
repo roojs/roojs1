@@ -596,12 +596,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         var preview = {
             tag : 'div',
-            cls : 'roo-document-manager-preview',
+            cls : 'roo-document-manager-preview-tall',
             cn : [
                 {
                     tag : 'div',
                     tooltip : file.filename,
-                    cls : 'roo-document-manager-thumb-tall',
+                    cls : 'roo-document-manager-thumb',
                     html : '<img src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
                 },
                 {
@@ -615,12 +615,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         if(width > height){
             preview = {
                 tag : 'div',
-                cls : 'roo-document-manager-preview',
+                cls : 'roo-document-manager-preview-wide',
                 cn : [
                     {
                         tag : 'div',
                         tooltip : file.filename,
-                        cls : 'roo-document-manager-thumb-wide',
+                        cls : 'roo-document-manager-thumb',
                         html : '<img src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
                     },
                     {
