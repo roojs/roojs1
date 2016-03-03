@@ -300,31 +300,16 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 }).createDelegate(this)
             );
             
-//            if(file.type.indexOf('image') == -1){
-//                documents.push(
-//                    (function(){
-//                        _this.uploadDocument(file);
-//                    }).createDelegate(this)
-//                );
-//                return;
-//            }
-//            
-//            images.push(
-//                (function(){
-//                    _this.uploadImage(file);
-//                }).createDelegate(this)
-//            );
         }, this);
         
         this.process();
         
         return;
         
+        
         if(!this.delegates.length){
             return;
         }
-        
-        
         
         this.progressBar.aria_valuemax = this.delegates.length;
         
