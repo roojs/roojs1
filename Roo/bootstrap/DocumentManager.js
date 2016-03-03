@@ -581,9 +581,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         return file;
     },
     
-    onPreviewLoad : function()
+    onPreviewLoad : function(image)
     {
         Roo.log('on preview load');
         Roo.log(this);
+        Roo.log(image);
     }
 });
