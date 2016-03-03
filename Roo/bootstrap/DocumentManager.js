@@ -406,7 +406,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log('process...');
+        Roo.log('run...');
         
         Roo.log(this.delegates.length);
         
