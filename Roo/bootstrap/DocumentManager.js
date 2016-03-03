@@ -650,17 +650,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
 
         formData.append('returnHTML', 'NO');
         
-        formData.append(this.getParamName(index), file, file.name);
-        
-        Roo.each(this.files, function(file, index){
-            
-            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-                return;
-            }
-            
-            formData.append(this.getParamName(index), file, file.name);
-            
-        }, this);
+        formData.append(this.paramName, file, file.name);
         
         if(this.fireEvent('prepare', this, formData) != false){
             xhr.send(formData);
