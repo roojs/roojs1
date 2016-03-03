@@ -303,6 +303,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         Roo.each(this.files, function(file){
             
             if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
+                this.renderPreview(file);
                 files.push(file);
                 return;
             }
