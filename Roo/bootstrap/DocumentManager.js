@@ -319,8 +319,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         return;
         
-        
-        
         var xhr = new XMLHttpRequest();
         
         Roo.each(this.files, function(file, index){
