@@ -406,7 +406,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log('run...');
+        Roo.log('arrange...');
         
         Roo.log(this.delegates.length);
         
