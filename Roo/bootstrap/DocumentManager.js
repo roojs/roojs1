@@ -583,7 +583,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         return;
     },
     
-    uploadStart : function(file)
+    uploadStart : function(file, data)
     {
         var xhr = new XMLHttpRequest();
         
