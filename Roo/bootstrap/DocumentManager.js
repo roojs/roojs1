@@ -596,7 +596,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         var preview = {
             tag : 'div',
-            cls : 'roo-document-manager-preview-tall',
+            cls : 'roo-document-manager-preview tall',
             cn : [
                 {
                     tag : 'div',
@@ -615,7 +615,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         if(width > height){
             preview = {
                 tag : 'div',
-                cls : 'roo-document-manager-preview-wide',
+                cls : 'roo-document-manager-preview wide',
                 cn : [
                     {
                         tag : 'div',
