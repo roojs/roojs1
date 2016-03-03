@@ -412,6 +412,19 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
     },
     
+    process : function()
+    {
+        if(!this.delegates.length){
+            return;
+        }
+        
+        this.progressBar.aria_valuemax = this.delegates.length;
+        
+        var delegate = this.delegates.shift();
+        
+        delegate();
+    },
+    
     getParamName : function(i)
     {
         if(!this.multiple){
