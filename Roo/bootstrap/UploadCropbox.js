@@ -742,32 +742,32 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 var scale = 1;
                 
                 if(x == 0 && y == 0){
-                    
-                }
-                
-                if(x == 0 && y > 0){
-                    
-                }
-                
-                if(x > 0 && y == 0){
-                    
-                }
-                
-                if(x > 0 && y > 0){
-                    
-                }
-                
-                if((x == 0 && y == 0) || (x == 0 && y > 0)){
                     scale = targetWidth / width
                 }
                 
-                if(x > 0 && y == 0){
-                    scale = targetHeight / height;
-                }
-                
-                if(x > 0 && y > 0 && width > targetWidth){
-                    
-                }
+//                if(x == 0 && y > 0){
+//                    
+//                }
+//                
+//                if(x > 0 && y == 0){
+//                    
+//                }
+//                
+//                if(x > 0 && y > 0){
+//                    
+//                }
+//                
+//                if((x == 0 && y == 0) || (x == 0 && y > 0)){
+//                    scale = targetWidth / width
+//                }
+//                
+//                if(x > 0 && y == 0){
+//                    scale = targetHeight / height;
+//                }
+//                
+//                if(x > 0 && y > 0 && width > targetWidth){
+//                    
+//                }
                 
                 
 //                if(width != minWidth){
@@ -788,7 +788,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
 //                    scale = Math.min(((this.minWidth - 2 * x) / width), ((this.minHeight - 2 * y) / height));
 //                }
                 
-                context.scale(targetWidth / width, targetWidth / width);
+                context.scale(scale, scale);
                 
                 var sx = (this.thumbEl.getLeft(true) - this.previewEl.getLeft(true)) / this.getScaleLevel();
                 var sy = (this.thumbEl.getTop(true) - this.previewEl.getTop(true)) / this.getScaleLevel();
