@@ -401,6 +401,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
+        Roo.log('process...;')
+        
         Roo.log(this.delegates.length);
         
 //        this.progressBar.aria_valuemax = this.delegates.length;
