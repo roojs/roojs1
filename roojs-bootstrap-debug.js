@@ -5798,7 +5798,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         for(var i = 0, len = cm.getColumnCount(); i < len; i++){
             
             var config = cm.config[i];
-                    
+            
             var c = {
                 tag: 'th',
                 style : '',
@@ -24019,6 +24019,7 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
  * @cfg {Number} minWidth default 300
  * @cfg {Number} minHeight default 300
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
+ * @cfg {Boolean} isDocument (true|false) default false
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -24093,8 +24094,14 @@ Roo.bootstrap.UploadCropbox = function(config){
          * Fire when resize
          * @param {Roo.bootstrap.UploadCropbox} this
          */
-        "resize" : true
-        
+        "resize" : true,
+        /**
+         * @event rotate
+         * Fire when rotate the image
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {String} pos
+         */
+        "rotate" : true
     });
     
     this.buttons = this.buttons || Roo.bootstrap.UploadCropbox.footer.STANDARD;
@@ -24121,6 +24128,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     cropType : 'image/jpeg',
     buttons : false,
     canvasLoaded : false,
+    isDocument : false,
     
     getAutoCreate : function()
     {
@@ -24336,8 +24344,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageEl.OriginWidth = this.imageEl.naturalWidth || this.imageEl.width;
         this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
         
-        this.setThumbBoxPosition();
         this.baseRotateLevel();
+        
+        if(this.isDocument){
+            this.setThumbBoxSize();
+        }
+        
+        this.setThumbBoxPosition();
+        
         this.baseScaleLevel();
         
         this.draw();
@@ -24368,6 +24382,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.dragable = true;
         this.pinching = false;
+        
+        if(this.isDocument && (this.canvasEl.width < this.thumbEl.getWidth() || this.canvasEl.height < this.thumbEl.getHeight())){
+            this.dragable = false;
+            return;
+        }
         
         this.mouseX = Roo.isTouch ? e.browserEvent.touches[0].pageX : e.getPageX();
         this.mouseY = Roo.isTouch ? e.browserEvent.touches[0].pageY : e.getPageY();
@@ -24440,28 +24459,58 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var minScale = this.thumbEl.getWidth() / this.minWidth;
         
-        var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel());
-        var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel());
+        if(this.minWidth < this.minHeight){
+            minScale = this.thumbEl.getHeight() / this.minHeight;
+        }
+        
+        var width = Math.ceil(this.imageEl.OriginWidth * this.getScaleLevel() / minScale);
+        var height = Math.ceil(this.imageEl.OriginHeight * this.getScaleLevel() / minScale);
         
         if(
+                this.isDocument &&
                 (this.rotate == 0 || this.rotate == 180) && 
                 (
-                    width / minScale < this.minWidth || 
-                    width / minScale > this.imageEl.OriginWidth || 
-                    height / minScale < this.minHeight || 
-                    height / minScale > this.imageEl.OriginHeight
+                    width > this.imageEl.OriginWidth || 
+                    height > this.imageEl.OriginHeight ||
+                    (width < this.minWidth && height < this.minHeight)
                 )
         ){
             return false;
         }
         
         if(
+                this.isDocument &&
                 (this.rotate == 90 || this.rotate == 270) && 
                 (
-                    width / minScale < this.minHeight || 
-                    width / minScale > this.imageEl.OriginWidth || 
-                    height / minScale < this.minWidth || 
-                    height / minScale > this.imageEl.OriginHeight
+                    width > this.imageEl.OriginWidth || 
+                    height > this.imageEl.OriginHeight ||
+                    (width < this.minHeight && height < this.minWidth)
+                )
+        ){
+            return false;
+        }
+        
+        if(
+                !this.isDocument &&
+                (this.rotate == 0 || this.rotate == 180) && 
+                (
+                    width < this.minWidth || 
+                    width > this.imageEl.OriginWidth || 
+                    height < this.minHeight || 
+                    height > this.imageEl.OriginHeight
+                )
+        ){
+            return false;
+        }
+        
+        if(
+                !this.isDocument &&
+                (this.rotate == 90 || this.rotate == 270) && 
+                (
+                    width < this.minHeight || 
+                    width > this.imageEl.OriginWidth || 
+                    height < this.minWidth || 
+                    height > this.imageEl.OriginHeight
                 )
         ){
             return false;
@@ -24473,12 +24522,12 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onRotateLeft : function(e)
     {   
-        var minScale = this.thumbEl.getWidth() / this.minWidth;
-        
-        if(this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight()){
+        if(!this.isDocument && (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())){
             
-            var bw = this.canvasEl.width / this.getScaleLevel();
-            var bh = this.canvasEl.height / this.getScaleLevel();
+            var minScale = this.thumbEl.getWidth() / this.minWidth;
+            
+            var bw = Math.ceil(this.canvasEl.width / this.getScaleLevel());
+            var bh = Math.ceil(this.canvasEl.height / this.getScaleLevel());
             
             this.startScale = this.scale;
             
@@ -24491,8 +24540,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 }
                 
                 if(
-                        bw * this.getScaleLevel() < this.thumbEl.getHeight() ||
-                        bh * this.getScaleLevel() < this.thumbEl.getWidth()
+                        Math.ceil(bw * this.getScaleLevel()) < this.thumbEl.getHeight() ||
+                        Math.ceil(bh * this.getScaleLevel()) < this.thumbEl.getWidth()
                 ){
                     continue;
                 }
@@ -24513,18 +24562,26 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.rotate = (this.rotate < 90) ? 270 : this.rotate - 90;
 
+        if(this.isDocument){
+            this.setThumbBoxSize();
+            this.setThumbBoxPosition();
+            this.setCanvasPosition();
+        }
+        
         this.draw();
+        
+        this.fireEvent('rotate', this, 'left');
         
     },
     
     onRotateRight : function(e)
     {
-        var minScale = this.thumbEl.getWidth() / this.minWidth;
-        
-        if(this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight()){
+        if(!this.isDocument && (this.canvasEl.height < this.thumbEl.getWidth() || this.canvasEl.width < this.thumbEl.getHeight())){
             
-            var bw = this.canvasEl.width / this.getScaleLevel();
-            var bh = this.canvasEl.height / this.getScaleLevel();
+            var minScale = this.thumbEl.getWidth() / this.minWidth;
+        
+            var bw = Math.ceil(this.canvasEl.width / this.getScaleLevel());
+            var bh = Math.ceil(this.canvasEl.height / this.getScaleLevel());
             
             this.startScale = this.scale;
             
@@ -24537,8 +24594,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 }
                 
                 if(
-                        bw * this.getScaleLevel() < this.thumbEl.getHeight() ||
-                        bh * this.getScaleLevel() < this.thumbEl.getWidth()
+                        Math.ceil(bw * this.getScaleLevel()) < this.thumbEl.getHeight() ||
+                        Math.ceil(bh * this.getScaleLevel()) < this.thumbEl.getWidth()
                 ){
                     continue;
                 }
@@ -24559,7 +24616,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.rotate = (this.rotate > 180) ? 0 : this.rotate + 90;
 
+        if(this.isDocument){
+            this.setThumbBoxSize();
+            this.setThumbBoxPosition();
+            this.setCanvasPosition();
+        }
+        
         this.draw();
+        
+        this.fireEvent('rotate', this, 'right');
     },
     
     onRotateFail : function()
@@ -24662,31 +24727,200 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if(!this.canvasLoaded){
             return;
         }
+        
+        var imageCanvas = document.createElement("canvas");
+        
+        var imageContext = imageCanvas.getContext("2d");
+        
+        imageCanvas.width = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginWidth : this.imageEl.OriginHeight;
+        imageCanvas.height = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? this.imageEl.OriginWidth : this.imageEl.OriginHeight;
+        
+        var center = imageCanvas.width / 2;
+        
+        imageContext.translate(center, center);
+        
+        imageContext.rotate(this.rotate * Math.PI / 180);
+        
+        imageContext.drawImage(this.imageEl, 0, 0, this.imageEl.OriginWidth, this.imageEl.OriginHeight, center * -1, center * -1, this.imageEl.OriginWidth, this.imageEl.OriginHeight);
+        
         var canvas = document.createElement("canvas");
         
         var context = canvas.getContext("2d");
-        
+                
         canvas.width = this.minWidth;
         canvas.height = this.minHeight;
-        
-        var cropWidth = this.thumbEl.getWidth();
-        var cropHeight = this.thumbEl.getHeight();
-        
-        var x = this.thumbEl.getLeft(true) - this.previewEl.getLeft(true);
-        var y = this.thumbEl.getTop(true) - this.previewEl.getTop(true);
-        
-        if(this.canvasEl.width - cropWidth < x){
-            x = this.canvasEl.width - cropWidth;
+
+        switch (this.rotate) {
+            case 0 :
+                
+                var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getWidth() / this.getScaleLevel());
+                var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getHeight() / this.getScaleLevel());
+                
+                var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
+                var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
+                
+                var targetWidth = this.minWidth - 2 * x;
+                var targetHeight = this.minHeight - 2 * y;
+                
+                var scale = 1;
+                
+                if((x == 0 && y == 0) || (x == 0 && y > 0)){
+                    scale = targetWidth / width;
+                }
+                
+                if(x > 0 && y == 0){
+                    scale = targetHeight / height;
+                }
+                
+                if(x > 0 && y > 0){
+                    scale = targetWidth / width;
+                    
+                    if(width < height){
+                        scale = targetHeight / height;
+                    }
+                }
+                
+                context.scale(scale, scale);
+                
+                var sx = Math.min(this.canvasEl.width - this.thumbEl.getWidth(), this.thumbEl.getLeft(true) - this.previewEl.getLeft(true));
+                var sy = Math.min(this.canvasEl.height - this.thumbEl.getHeight(), this.thumbEl.getTop(true) - this.previewEl.getTop(true));
+
+                sx = sx < 0 ? 0 : (sx / this.getScaleLevel());
+                sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
+
+                context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
+                
+                break;
+            case 90 : 
+                
+                var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getWidth() / this.getScaleLevel());
+                var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getHeight() / this.getScaleLevel());
+                
+                var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
+                var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
+                
+                var targetWidth = this.minWidth - 2 * x;
+                var targetHeight = this.minHeight - 2 * y;
+                
+                var scale = 1;
+                
+                if((x == 0 && y == 0) || (x == 0 && y > 0)){
+                    scale = targetWidth / width;
+                }
+                
+                if(x > 0 && y == 0){
+                    scale = targetHeight / height;
+                }
+                
+                if(x > 0 && y > 0){
+                    scale = targetWidth / width;
+                    
+                    if(width < height){
+                        scale = targetHeight / height;
+                    }
+                }
+                
+                context.scale(scale, scale);
+                
+                var sx = Math.min(this.canvasEl.width - this.thumbEl.getWidth(), this.thumbEl.getLeft(true) - this.previewEl.getLeft(true));
+                var sy = Math.min(this.canvasEl.height - this.thumbEl.getHeight(), this.thumbEl.getTop(true) - this.previewEl.getTop(true));
+
+                sx = sx < 0 ? 0 : (sx / this.getScaleLevel());
+                sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
+                
+                sx += (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight) : 0;
+                
+                context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
+                
+                break;
+            case 180 :
+                
+                var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getWidth() / this.getScaleLevel());
+                var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getHeight() / this.getScaleLevel());
+                
+                var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
+                var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
+                
+                var targetWidth = this.minWidth - 2 * x;
+                var targetHeight = this.minHeight - 2 * y;
+                
+                var scale = 1;
+                
+                if((x == 0 && y == 0) || (x == 0 && y > 0)){
+                    scale = targetWidth / width;
+                }
+                
+                if(x > 0 && y == 0){
+                    scale = targetHeight / height;
+                }
+                
+                if(x > 0 && y > 0){
+                    scale = targetWidth / width;
+                    
+                    if(width < height){
+                        scale = targetHeight / height;
+                    }
+                }
+                
+                context.scale(scale, scale);
+                
+                var sx = Math.min(this.canvasEl.width - this.thumbEl.getWidth(), this.thumbEl.getLeft(true) - this.previewEl.getLeft(true));
+                var sy = Math.min(this.canvasEl.height - this.thumbEl.getHeight(), this.thumbEl.getTop(true) - this.previewEl.getTop(true));
+
+                sx = sx < 0 ? 0 : (sx / this.getScaleLevel());
+                sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
+
+                sx += (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? 0 : Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight);
+                sy += (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight) : 0;
+                
+                context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
+                
+                break;
+            case 270 :
+                
+                var width = (this.thumbEl.getWidth() / this.getScaleLevel() > this.imageEl.OriginHeight) ? this.imageEl.OriginHeight : (this.thumbEl.getWidth() / this.getScaleLevel());
+                var height = (this.thumbEl.getHeight() / this.getScaleLevel() > this.imageEl.OriginWidth) ? this.imageEl.OriginWidth : (this.thumbEl.getHeight() / this.getScaleLevel());
+                
+                var x = (this.thumbEl.getLeft(true) > this.previewEl.getLeft(true)) ? 0 : ((this.previewEl.getLeft(true) - this.thumbEl.getLeft(true)) / this.getScaleLevel());
+                var y = (this.thumbEl.getTop(true) > this.previewEl.getTop(true)) ? 0 : ((this.previewEl.getTop(true) - this.thumbEl.getTop(true)) / this.getScaleLevel());
+                
+                var targetWidth = this.minWidth - 2 * x;
+                var targetHeight = this.minHeight - 2 * y;
+                
+                var scale = 1;
+                
+                if((x == 0 && y == 0) || (x == 0 && y > 0)){
+                    scale = targetWidth / width;
+                }
+                
+                if(x > 0 && y == 0){
+                    scale = targetHeight / height;
+                }
+                
+                if(x > 0 && y > 0){
+                    scale = targetWidth / width;
+                    
+                    if(width < height){
+                        scale = targetHeight / height;
+                    }
+                }
+                
+                context.scale(scale, scale);
+                
+                var sx = Math.min(this.canvasEl.width - this.thumbEl.getWidth(), this.thumbEl.getLeft(true) - this.previewEl.getLeft(true));
+                var sy = Math.min(this.canvasEl.height - this.thumbEl.getHeight(), this.thumbEl.getTop(true) - this.previewEl.getTop(true));
+
+                sx = sx < 0 ? 0 : (sx / this.getScaleLevel());
+                sy = sy < 0 ? 0 : (sy / this.getScaleLevel());
+                
+                sy += (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? 0 : Math.abs(this.imageEl.OriginWidth - this.imageEl.OriginHeight);
+                
+                context.drawImage(imageCanvas, sx, sy, width, height, x, y, width, height);
+                
+                break;
+            default : 
+                break;
         }
-        
-        if(this.canvasEl.height - cropHeight < y){
-            y = this.canvasEl.height - cropHeight;
-        }
-        
-        x = x < 0 ? 0 : x;
-        y = y < 0 ? 0 : y;
-        
-        context.drawImage(this.canvasEl, x, y, cropWidth, cropHeight, 0, 0, canvas.width, canvas.height);
         
         this.cropData = canvas.toDataURL(this.cropType);
         
@@ -24696,8 +24930,23 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     setThumbBoxSize : function()
     {
-        var height = 300;
-        var width = Math.ceil(this.minWidth * height / this.minHeight);
+        var width, height;
+        
+        if(this.isDocument && typeof(this.imageEl) != 'undefined'){
+            width = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.max(this.minWidth, this.minHeight) : Math.min(this.minWidth, this.minHeight);
+            height = (this.imageEl.OriginWidth > this.imageEl.OriginHeight) ? Math.min(this.minWidth, this.minHeight) : Math.max(this.minWidth, this.minHeight);
+            
+            this.minWidth = width;
+            this.minHeight = height;
+            
+            if(this.rotate == 90 || this.rotate == 270){
+                this.minWidth = height;
+                this.minHeight = width;
+            }
+        }
+        
+        height = 300;
+        width = Math.ceil(this.minWidth * height / this.minHeight);
         
         if(this.minWidth > this.minHeight){
             width = 300;
@@ -24743,10 +24992,36 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         var width, height;
         
+        if(this.isDocument){
+            
+            if(this.baseRotate == 6 || this.baseRotate == 8){
+            
+                height = this.thumbEl.getHeight();
+                this.baseScale = height / this.imageEl.OriginWidth;
+
+                if(this.imageEl.OriginHeight * this.baseScale > this.thumbEl.getWidth()){
+                    width = this.thumbEl.getWidth();
+                    this.baseScale = width / this.imageEl.OriginHeight;
+                }
+
+                return;
+            }
+
+            height = this.thumbEl.getHeight();
+            this.baseScale = height / this.imageEl.OriginHeight;
+
+            if(this.imageEl.OriginWidth * this.baseScale > this.thumbEl.getWidth()){
+                width = this.thumbEl.getWidth();
+                this.baseScale = width / this.imageEl.OriginWidth;
+            }
+
+            return;
+        }
+        
         if(this.baseRotate == 6 || this.baseRotate == 8){
             
             width = this.thumbEl.getHeight();
-            this.baseScale = height / this.imageEl.OriginHeight;
+            this.baseScale = width / this.imageEl.OriginHeight;
             
             if(this.imageEl.OriginHeight * this.baseScale < this.thumbEl.getWidth()){
                 height = this.thumbEl.getWidth();
@@ -24773,7 +25048,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             height = this.thumbEl.getHeight();
             this.baseScale = height / this.imageEl.OriginHeight;
         }
-        
         
         if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
             
@@ -24881,22 +25155,22 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    prepare : function(input)
-    {        
+    prepare : function(file)
+    {   
         this.file = false;
         this.exif = {};
         
-        if(typeof(input) === 'string'){
-            this.loadCanvas(input);
+        if(typeof(file) === 'string'){
+            this.loadCanvas(file);
             return;
         }
         
-        if(!input.files || !input.files[0] || !this.urlAPI){
+        if(!file || !this.urlAPI){
             return;
         }
         
-        this.file = input.files[0];
-        this.cropType = this.file.type;
+        this.file = file;
+        this.cropType = file.type;
         
         var _this = this;
         
@@ -25274,6 +25548,32 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
                     }
                 ]
             }
+        ],
+        ROTATOR : [
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-rotate-left',
+                action : 'rotate-left',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-undo"></i>'
+                    }
+                ]
+            },
+            {
+                tag : 'div',
+                cls : 'btn-group roo-upload-cropbox-rotate-right',
+                action : 'rotate-right',
+                cn : [
+                    {
+                        tag : 'button',
+                        cls : 'btn btn-default',
+                        html : '<i class="fa fa-repeat"></i>'
+                    }
+                ]
+            }
         ]
     }
 });
@@ -25297,6 +25597,7 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
  * @cfg {String} fieldLabel
  * @cfg {Number} labelWidth default 4
  * @cfg {String} labelAlign (left|top) default left
+ * @cfg {Boolean} editable (true|false) allow edit when upload a image default true
  * 
  * @constructor
  * Create a new DocumentManager
@@ -25353,7 +25654,14 @@ Roo.bootstrap.DocumentManager = function(config){
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {Object} file
          */
-        "click" : true
+        "click" : true,
+        /**
+         * @event edit
+         * Fire when upload a image and editable set to true
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} file
+         */
+        "edit" : true
         
     });
 };
@@ -25373,6 +25681,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     fieldLabel : '',
     labelWidth : 4,
     labelAlign : 'left',
+    editable : true,
+    delegates : [],
     
     getAutoCreate : function()
     {   
@@ -25463,12 +25773,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.selectorEl.attr('multiple', 'multiple');
         }
         
-        this.selectorEl.on('change', this.onSelect, this);
+        this.selectorEl.on('change', this.onFileSelected, this);
         
         this.uploader = this.el.select('.roo-document-manager-uploader', true).first();
         this.uploader.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
-        this.uploader.on('click', this.onUpload, this);
+        this.uploader.on('click', this.onUploaderClick, this);
+        
+        this.renderProgressDialog();
         
         var _this = this;
         
@@ -25477,15 +25789,57 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.fireEvent('initial', this);
     },
     
-    onUpload : function(e)
+    renderProgressDialog : function()
     {
-        e.preventDefault();
+        var _this = this;
         
-        this.selectorEl.dom.click();
+        this.progressDialog = new Roo.bootstrap.Modal({
+            cls : 'roo-document-manager-progress-dialog',
+            allow_close : false,
+            title : '',
+            buttons : [
+                {
+                    name  :'cancel',
+                    weight : 'danger',
+                    html : 'Cancel'
+                }
+            ], 
+            listeners : { 
+                btnclick : function() {
+                    _this.uploadCancel();
+                    this.hide();
+                }
+            }
+        });
+         
+        this.progressDialog.render(Roo.get(document.body));
+         
+        this.progress = new Roo.bootstrap.Progress({
+            cls : 'roo-document-manager-progress',
+            active : true,
+            striped : true
+        });
         
+        this.progress.render(this.progressDialog.getChildContainer());
+        
+        this.progressBar = new Roo.bootstrap.ProgressBar({
+            cls : 'roo-document-manager-progress-bar',
+            aria_valuenow : 0,
+            aria_valuemin : 0,
+            aria_valuemax : 12,
+            panel : 'success'
+        });
+        
+        this.progressBar.render(this.progress.getChildContainer());
     },
     
-    onSelect : function(e)
+    onUploaderClick : function(e)
+    {
+        e.preventDefault();
+        this.selectorEl.dom.click();
+    },
+    
+    onFileSelected : function(e)
     {
         e.preventDefault();
         
@@ -25499,11 +25853,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
         }, this);
         
-        this.process();
+        this.queue();
         
     },
     
-    process : function()
+    queue : function()
     {
         this.selectorEl.dom.value = '';
         
@@ -25515,147 +25869,67 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.files = this.files.slice(0, this.boxes);
         }
         
-        var xhr = new XMLHttpRequest();
+        this.uploader.show();
         
-        Roo.each(this.files, function(file, index){
-            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-                return;
-            }
-            
-            file.xhr = xhr;
-            
-            this.managerEl.createChild({
-                tag : 'div',
-                cls : 'roo-document-manager-loading',
-                cn : [
-                    {
-                        tag : 'div',
-                        tooltip : file.name,
-                        cls : 'roo-document-manager-thumb',
-                        html : '<i class="fa fa-spinner fa-pulse"></i>'
-                    }
-                ]
-
-            });
-            
-        }, this);
-        
-        if(this.files.length > this.boxes - 1 ){
+        if(this.files.length > this.boxes - 1){
             this.uploader.hide();
         }
         
-        var headers = {
-            "Accept": "application/json",
-            "Cache-Control": "no-cache",
-            "X-Requested-With": "XMLHttpRequest"
-        };
-        
-        xhr.open(this.method, this.url, true);
-        
-        for (var headerName in headers) {
-            var headerValue = headers[headerName];
-            if (headerValue) {
-                xhr.setRequestHeader(headerName, headerValue);
-            }
-        }
-        
         var _this = this;
-        
-        xhr.onload = function()
-        {
-            _this.xhrOnLoad(xhr);
-        }
-        
-        xhr.onerror = function()
-        {
-            _this.xhrOnError(xhr);
-        }
-        
-        var formData = new FormData();
-
-        formData.append('returnHTML', 'NO');
-        
-        Roo.each(this.files, function(file, index){
-            
-            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-                return;
-            }
-            
-            formData.append(this.getParamName(index), file, file.name);
-            
-        }, this);
-        
-        if(this.fireEvent('prepare', this, formData) != false){
-            xhr.send(formData);
-        };
-        
-    },
-    
-    getParamName : function(i)
-    {
-        if(!this.multiple){
-            return this.paramName;
-        }
-        
-        return this.paramName + "_" + i;
-    },
-    
-    refresh : function()
-    {
-        Roo.each(this.managerEl.select('.roo-document-manager-loading', true).elements, function(el){
-            el.remove();
-        }, this);
-        
         
         var files = [];
         
         Roo.each(this.files, function(file){
             
-            if(typeof(file.id) == 'undefined' || file.id * 1 < 1){
+            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
+                var f = this.renderPreview(file);
+                files.push(f);
                 return;
             }
             
-            if(file.target){
-                files.push(file);
-                return;
-            }
-            
-            var previewEl = this.managerEl.createChild({
-                tag : 'div',
-                cls : 'roo-document-manager-preview',
-                cn : [
-                    {
-                        tag : 'div',
-                        tooltip : file.filename,
-                        cls : 'roo-document-manager-thumb',
-                        html : '<img src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
-                    },
-                    {
-                        tag : 'button',
-                        cls : 'close',
-                        html : 'x'
-                    }
-                ]
-            });
-            
-            var close = previewEl.select('button.close', true).first();
-            
-            close.on('click', this.onRemove, this, file);
-            
-            file.target = previewEl;
-            
-            var image = previewEl.select('img', true).first();
-            
-            image.on('click', this.onClick, this, file);
-            
-            files.push(file);
-            
-            return;
+            this.delegates.push(
+                (function(){
+                    _this.process(file);
+                }).createDelegate(this)
+            );
             
         }, this);
         
         this.files = files;
         
+        if(!this.delegates.length){
+            this.refresh();
+            return;
+        }
+        
+        this.progressBar.aria_valuemax = this.delegates.length;
+        
+        this.arrange();
+        
+        return;
+    },
+    
+    arrange : function()
+    {
+        if(!this.delegates.length){
+            this.progressDialog.hide();
+            this.refresh();
+            return;
+        }
+        
+        var delegate = this.delegates.shift();
+        
+        this.progressDialog.show();
+        
+        this.progressDialog.setTitle((this.progressBar.aria_valuemax - this.delegates.length) + ' / ' + this.progressBar.aria_valuemax);
+        
+        this.progressBar.update(this.progressBar.aria_valuemax - this.delegates.length);
+        
+        delegate();
+    },
+    
+    refresh : function()
+    {
         this.uploader.show();
         
         if(this.files.length > this.boxes - 1){
@@ -25720,8 +25994,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     xhrOnLoad : function(xhr)
     {
+        Roo.each(this.managerEl.select('.roo-document-manager-loading', true).elements, function(el){
+            el.remove();
+        }, this);
+        
         if (xhr.readyState !== 4) {
-            this.refresh();
+            this.arrange();
             this.fireEvent('exception', this, xhr);
             return;
         }
@@ -25729,27 +26007,16 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var response = Roo.decode(xhr.responseText);
         
         if(!response.success){
-            this.refresh();
+            this.arrange();
             this.fireEvent('exception', this, xhr);
             return;
         }
         
-        var i = 0;
+        var file = this.renderPreview(response.data);
         
-        Roo.each(this.files, function(file, index){
-            
-            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-                return;
-            }
-            
-            this.files[index] = response.data[i];
-            i++;
-            
-            return;
-            
-        }, this);
+        this.files.push(file);
         
-        this.refresh();
+        this.arrange();
         
     },
     
@@ -25760,11 +26027,164 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var response = Roo.decode(xhr.responseText);
           
         Roo.log(response);
+        
+        this.arrange();
+    },
+    
+    process : function(file)
+    {
+        if(this.editable && file.type.indexOf('image') != -1){
+            this.fireEvent('edit', this, file);
+            return;
+        }
+        
+        this.uploadStart(file, false);
+        
+        return;
+    },
+    
+    uploadStart : function(file, crop)
+    {
+        this.xhr = new XMLHttpRequest();
+        
+        if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
+            this.arrange();
+            return;
+        }
+        
+        file.xhr = this.xhr;
+            
+        this.managerEl.createChild({
+            tag : 'div',
+            cls : 'roo-document-manager-loading',
+            cn : [
+                {
+                    tag : 'div',
+                    tooltip : file.name,
+                    cls : 'roo-document-manager-thumb',
+                    html : '<i class="fa fa-circle-o-notch fa-spin"></i>'
+                }
+            ]
+
+        });
+
+        this.xhr.open(this.method, this.url, true);
+        
+        var headers = {
+            "Accept": "application/json",
+            "Cache-Control": "no-cache",
+            "X-Requested-With": "XMLHttpRequest"
+        };
+        
+        for (var headerName in headers) {
+            var headerValue = headers[headerName];
+            if (headerValue) {
+                this.xhr.setRequestHeader(headerName, headerValue);
+            }
+        }
+        
+        var _this = this;
+        
+        this.xhr.onload = function()
+        {
+            _this.xhrOnLoad(_this.xhr);
+        }
+        
+        this.xhr.onerror = function()
+        {
+            _this.xhrOnError(_this.xhr);
+        }
+        
+        var formData = new FormData();
+
+        formData.append('returnHTML', 'NO');
+        
+        if(crop){
+            formData.append('crop', crop);
+        }
+        
+        formData.append(this.paramName, file, file.name);
+        
+        if(this.fireEvent('prepare', this, formData) != false){
+            this.xhr.send(formData);
+        };
+    },
+    
+    uploadCancel : function()
+    {
+        this.xhr.abort();
+        
+        this.delegates = [];
+        
+        Roo.each(this.managerEl.select('.roo-document-manager-loading', true).elements, function(el){
+            el.remove();
+        }, this);
+        
+        this.arrange();
+    },
+    
+    renderPreview : function(file)
+    {
+        if(typeof(file.target) != 'undefined' && file.target){
+            return file;
+        }
+        
+        var previewEl = this.managerEl.createChild({
+            tag : 'div',
+            cls : 'roo-document-manager-preview',
+            cn : [
+                {
+                    tag : 'div',
+                    tooltip : file.filename,
+                    cls : 'roo-document-manager-thumb',
+                    html : '<img src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename + '">'
+                },
+                {
+                    tag : 'button',
+                    cls : 'close',
+                    html : '<i class="fa fa-times-circle"></i>'
+                }
+            ]
+        });
+
+        var close = previewEl.select('button.close', true).first();
+
+        close.on('click', this.onRemove, this, file);
+
+        file.target = previewEl;
+
+        var image = previewEl.select('img', true).first();
+        
+        var _this = this;
+        
+        image.dom.addEventListener("load", function(){ _this.onPreviewLoad(file, image); });
+        
+        image.on('click', this.onClick, this, file);
+        
+        return file;
+        
+    },
+    
+    onPreviewLoad : function(file, image)
+    {
+        if(typeof(file.target) == 'undefined' || !file.target){
+            return;
+        }
+        
+        var width = image.dom.naturalWidth || image.dom.width;
+        var height = image.dom.naturalHeight || image.dom.height;
+        
+        if(width > height){
+            file.target.addClass('wide');
+            return;
+        }
+        
+        file.target.addClass('tall');
+        return;
+        
     }
-    
-    
-    
 });
+
 /*
 * Licence: LGPL
 */
