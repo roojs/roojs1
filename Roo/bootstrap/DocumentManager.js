@@ -313,6 +313,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.files = files;
         
+        this.progressBar.aria_valuemax = this.delegates.length;
+        
         this.arrange();
         
         return;
@@ -324,8 +326,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             this.refresh();
             return;
         }
-        
-        this.progressBar.aria_valuemax = this.delegates.length;
         
         var delegate = this.delegates.shift();
         
