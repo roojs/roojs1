@@ -334,9 +334,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         var delegate = this.delegates.shift();
         
-        this.progressBar.update(this.progressBar.aria_valuemax - this.delegates.length);
+        this.progressDialog.show();
         
-        this.progressDialog
+        this.progressBar.update(this.progressBar.aria_valuemax - this.delegates.length);
         
         delegate();
     },
