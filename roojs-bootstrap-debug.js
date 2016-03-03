@@ -5385,10 +5385,10 @@ Roo.LoadMask.prototype = {
  * @cfg {boolean} condensed Format condensed
  * @cfg {boolean} responsive Format condensed
  * @cfg {Boolean} loadMask (true|false) default false
- * @cfg {Boolean} tfoot (true|false) generate tfoot, default true
- * @cfg {Boolean} thead (true|false) generate thead, default true
- * @cfg {Boolean} RowSelection (true|false) default false
- * @cfg {Boolean} CellSelection (true|false) default false
+ * @cfg {Boolean} footerShow (true|false) generate tfoot, default true
+ * @cfg {Boolean} headerShow (true|false) generate thead, default true
+ * @cfg {Boolean} rowSelection (true|false) default false
+ * @cfg {Boolean} cellSelection (true|false) default false
  * @cfg {Roo.bootstrap.PagingToolbar} footer  a paging toolbar
  
  * 
@@ -5399,6 +5399,13 @@ Roo.LoadMask.prototype = {
 
 Roo.bootstrap.Table = function(config){
     Roo.bootstrap.Table.superclass.constructor.call(this, config);
+    
+    // BC...
+    this.rowSelection = (typeof(config.RowSelection) != 'undefined') ? config.RowSelection : this.rowSelection;
+    this.cellSelection = (typeof(config.CellSelection) != 'undefined') ? config.CellSelection : this.cellSelection;
+    this.headerShow = (typeof(config.thead) != 'undefined') ? config.thead : this.headerShow;
+    this.footerShow = (typeof(config.tfoot) != 'undefined') ? config.tfoot : this.footerShow;
+    
     
     if (this.sm) {
         this.selModel = Roo.factory(this.sm, Roo.bootstrap.Table);
@@ -5520,10 +5527,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     cm : false,
     store : false,
     loadMask : false,
-    tfoot : true,
-    thead : true,
-    RowSelection : false,
-    CellSelection : false,
+    footerShow : true,
+    headerShow : true,
+  
+    rowSelection : false,
+    cellSelection : false,
     layout : false,
     
     // Roo.Element - the tbody
@@ -5596,13 +5604,13 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         }
         
         if(this.store || this.cm){
-            if(this.thead){
+            if(this.headerShow){
                 cfg.cn.push(this.renderHeader());
             }
             
             cfg.cn.push(this.renderBody());
             
-            if(this.tfoot){
+            if(this.footerShow){
                 cfg.cn.push(this.renderFooter());
             }
             
@@ -5694,7 +5702,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
     {
         var cell = Roo.get(el);
         
-        if(!cell || (!this.CellSelection && !this.RowSelection)){
+        if(!cell || (!this.cellSelection && !this.rowSelection)){
             return;
         }
         
@@ -5715,11 +5723,12 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
         var cellIndex = cell.dom.cellIndex;
         var rowIndex = this.getRowIndex(row);
         
-        if(this.CellSelection){
+        // why??? - should these not be based on SelectionModel?
+        if(this.cellSelection){
             this.fireEvent('cellclick', this, cell, rowIndex, cellIndex, e);
         }
         
-        if(this.RowSelection){
+        if(this.rowSelection){
             this.fireEvent('rowclick', this, row, rowIndex, e);
         }
         
