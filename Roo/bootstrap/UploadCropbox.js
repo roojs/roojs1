@@ -931,7 +931,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.minWidth = width;
             this.minHeight = height;
             
-            alert(this.baseRotate);
+            alert(this.imageEl.OriginWidth);
             
             if(this.rotate == 90 || this.rotate == 270){
                 this.minWidth = height;
