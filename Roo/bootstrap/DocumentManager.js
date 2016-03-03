@@ -583,7 +583,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         return;
     },
     
-    uploadStart : function(file, data)
+    uploadStart : function(file, crop)
     {
         var xhr = new XMLHttpRequest();
         
@@ -638,6 +638,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         var formData = new FormData();
 
         formData.append('returnHTML', 'NO');
+        
+        if(crop){
+            
+        }
         
         formData.append(this.paramName, file, file.name);
         
