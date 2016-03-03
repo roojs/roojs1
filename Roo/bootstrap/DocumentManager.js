@@ -216,7 +216,13 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             cls : 'roo-document-manager-progress-dialog',
             allow_close : false,
             title : '',
-            buttons : Roo.bootstrap.Modal.OK, 
+            buttons : [
+                {
+                    name  :'cancel',
+                    weight : 'danger',
+                    html : 'Cancel'
+                }
+            ], 
             listeners : { 
                 btnclick : function() { 
                      this.hide();
