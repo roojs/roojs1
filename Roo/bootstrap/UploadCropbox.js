@@ -572,8 +572,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             
             var minScale = this.thumbEl.getWidth() / this.minWidth;
         
-            var bw = this.canvasEl.width / this.getScaleLevel();
-            var bh = this.canvasEl.height / this.getScaleLevel();
+            var bw = Math.ceil(this.canvasEl.width / this.getScaleLevel());
+            var bh = Math.ceil(this.canvasEl.height / this.getScaleLevel());
             
             this.startScale = this.scale;
             
