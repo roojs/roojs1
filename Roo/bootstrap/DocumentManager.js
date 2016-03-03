@@ -304,6 +304,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             
             if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
                 var f = this.renderPreview(file);
+                Roo.log('render preive???');
+                Roo.log(f);
                 files.push(f);
                 return;
             }
