@@ -432,33 +432,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
-        var previewEl = this.managerEl.createChild({
-            tag : 'div',
-            cls : 'roo-document-manager-preview',
-            cn : [
-                {
-                    tag : 'div',
-                    tooltip : response.data.filename,
-                    cls : 'roo-document-manager-thumb',
-                    html : '<img src="' + baseURL +'/Images/Thumb/' + this.thumbSize + '/' + response.data.id + '/' + response.data.filename + '">'
-                },
-                {
-                    tag : 'button',
-                    cls : 'close',
-                    html : 'x'
-                }
-            ]
-        });
-
-        var close = previewEl.select('button.close', true).first();
-
-        close.on('click', this.onRemove, this, response.data);
-
-        response.data.target = previewEl;
-
-        var image = previewEl.select('img', true).first();
-
-        image.on('click', this.onClick, this, response.data);
+        var file = this.add(response.data);
+        
+        
         
         this.files.push(response.data);
         
