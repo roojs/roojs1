@@ -986,10 +986,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     baseScaleLevel : function()
     {
-        if(this.isDocument){
-            this.documentBaseScaleLevel();
-            return;
-        }
+//        if(this.isDocument){
+//            this.documentBaseScaleLevel();
+//            return;
+//        }
         
         var width, height;
         
