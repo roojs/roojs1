@@ -967,15 +967,13 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     baseRotateLevel : function()
     {
         this.baseRotate = 1;
-        alert(typeof(this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]));
-        alert(this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]);
+        
         if(
                 typeof(this.exif) != 'undefined' &&
                 typeof(this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]) != 'undefined' &&
                 [1, 3, 6, 8].indexOf(this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']]) != -1
         ){
             this.baseRotate = this.exif[Roo.bootstrap.UploadCropbox['tags']['Orientation']];
-            alert(this.baseRotate);
         }
         
         this.rotate = Roo.bootstrap.UploadCropbox['Orientation'][this.baseRotate];
