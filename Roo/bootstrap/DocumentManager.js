@@ -316,9 +316,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
 //            );
         }, this);
         
+        this.porcess();
+        
+        return;
         if(!this.delegates.length){
             return;
         }
+        
+        
         
         this.progressBar.aria_valuemax = this.delegates.length;
         
