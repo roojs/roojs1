@@ -556,7 +556,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
 
         imageEl.addEventListener("load", function(){ return _this.drawPreview(file, imageEl); });
 
-        this.imageEl.src = baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename;
+        imageEl.src = baseURL +'/Images/Thumb/' + this.thumbSize + '/' + file.id + '/' + file.filename;
         
     },
     
