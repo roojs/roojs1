@@ -988,18 +988,18 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         if(this.isDocument){
             
-//            if(this.baseRotate == 6 || this.baseRotate == 8){
-//            
-//                width = this.thumbEl.getHeight();
-//                this.baseScale = width / this.imageEl.OriginHeight;
-//
-//                if(this.imageEl.OriginWidth < this.imageEl.OriginHeight){
-//                    height = this.thumbEl.getWidth();
-//                    this.baseScale = height / this.imageEl.OriginWidth;
-//                }
-//
-//                return;
-//            }
+            if(this.baseRotate == 6 || this.baseRotate == 8){
+            
+                height = this.thumbEl.getHeight();
+                this.baseScale = height / this.imageEl.OriginWidth;
+
+                if(this.imageEl.OriginWidth > this.imageEl.OriginHeight){
+                    width = this.thumbEl.getWidth();
+                    this.baseScale = width / this.imageEl.OriginHeight;
+                }
+
+                return;
+            }
 
             height = this.thumbEl.getHeight();
             this.baseScale = height / this.imageEl.OriginHeight;
