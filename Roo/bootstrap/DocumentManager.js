@@ -574,7 +574,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
 
         var image = previewEl.select('img', true).first();
 
-        image.addEventListener("load", function(){ _this.onPreviewLoad(); });
+        image.addEventListener("load", function(){ _this.onPreviewLoad(image); });
         
         image.on('click', this.onClick, this, file);
         
