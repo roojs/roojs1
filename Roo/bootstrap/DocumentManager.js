@@ -440,13 +440,13 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
 
         var close = previewEl.select('button.close', true).first();
 
-        close.on('click', this.onRemove, this, file);
+        close.on('click', this.onRemove, this, response.data);
 
         response.data.target = previewEl;
 
         var image = previewEl.select('img', true).first();
 
-        image.on('click', this.onClick, this, file);
+        image.on('click', this.onClick, this, response.data);
         
         this.files.push(response.data);
         
