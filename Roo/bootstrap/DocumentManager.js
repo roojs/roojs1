@@ -316,94 +316,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.arrange();
         
         return;
-        
-        
-        if(!this.delegates.length){
-            return;
-        }
-        
-        this.progressBar.aria_valuemax = this.delegates.length;
-        
-        var delegate = this.delegates.shift();
-        
-        delegate();
-        
-        return;
-        
-        var xhr = new XMLHttpRequest();
-        
-        Roo.each(this.files, function(file, index){
-            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-                return;
-            }
-            
-            file.xhr = xhr;
-            
-            this.managerEl.createChild({
-                tag : 'div',
-                cls : 'roo-document-manager-loading',
-                cn : [
-                    {
-                        tag : 'div',
-                        tooltip : file.name,
-                        cls : 'roo-document-manager-thumb',
-                        html : '<i class="fa fa-spinner fa-pulse"></i>'
-                    }
-                ]
-
-            });
-            
-        }, this);
-        
-        if(this.files.length > this.boxes - 1 ){
-            this.uploader.hide();
-        }
-        
-        var headers = {
-            "Accept": "application/json",
-            "Cache-Control": "no-cache",
-            "X-Requested-With": "XMLHttpRequest"
-        };
-        
-        xhr.open(this.method, this.url, true);
-        
-        for (var headerName in headers) {
-            var headerValue = headers[headerName];
-            if (headerValue) {
-                xhr.setRequestHeader(headerName, headerValue);
-            }
-        }
-        
-        var _this = this;
-        
-        xhr.onload = function()
-        {
-            _this.xhrOnLoad(xhr);
-        }
-        
-        xhr.onerror = function()
-        {
-            _this.xhrOnError(xhr);
-        }
-        
-        var formData = new FormData();
-
-        formData.append('returnHTML', 'NO');
-        
-        Roo.each(this.files, function(file, index){
-            
-            if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-                return;
-            }
-            
-            formData.append(this.getParamName(index), file, file.name);
-            
-        }, this);
-        
-        if(this.fireEvent('prepare', this, formData) != false){
-            xhr.send(formData);
-        };
-        
     },
     
     arrange : function()
@@ -426,6 +338,12 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     refresh : function()
     {
+        this.uploader.show();
+        
+        if(this.files.length > this.boxes - 1){
+            this.uploader.hide();
+        }
+        
         Roo.isTouch ? this.closable(false) : this.closable(true);
         
         this.fireEvent('refresh', this);
