@@ -537,6 +537,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     xhrOnLoad : function(xhr)
     {
+        Roo.each(this.managerEl.select('.roo-document-manager-loading', true).elements, function(el){
+            el.remove();
+        }, this);
         
         if (xhr.readyState !== 4) {
             this.arrange();
