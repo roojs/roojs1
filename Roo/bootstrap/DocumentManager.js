@@ -400,7 +400,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
     },
     
-    run : function()
+    queue : function()
     {
         if(!this.delegates.length){
             return;
