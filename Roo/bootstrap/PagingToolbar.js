@@ -201,7 +201,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             preventDefault: true,
             listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
-        Roo.log(this.loading);
+        
     },
 
     // private
