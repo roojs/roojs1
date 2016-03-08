@@ -11,17 +11,30 @@
  
 /**
  * @class Roo.bootstrap.PagingToolbar
- * @extends Roo.Row
+ * @extends Roo.bootstrap.NavSimplebar
  * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
  * @constructor
  * Create a new PagingToolbar
  * @param {Object} config The config object
+ * {Roo.data.Store} store
  */
 </span><span class="jsdoc-var">Roo.bootstrap.PagingToolbar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">)
 {
     </span><span class="jsdoc-comment">// old args format still supported... - xtype is prefered..
         // created from xtype...
+        
     </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.dataSource</span><span class="jsdoc-syntax">;
+    
+    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">);
+    
+    </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'run??'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">ds </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">ds.xmodule </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xmodule </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+    }
+    
     </span><span class="jsdoc-var">this.toolbarItems </span><span class="jsdoc-syntax">= [];
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">) {
         </span><span class="jsdoc-var">this.toolbarItems </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">config.items</span><span class="jsdoc-syntax">;
@@ -34,7 +47,8 @@
     </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">) { 
         </span><span class="jsdoc-var">this.bind</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">ds</span><span class="jsdoc-syntax">);
     }
-    
+    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'ds??'</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.ds</span><span class="jsdoc-syntax">);
     </span><span class="jsdoc-var">this.navgroup </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.NavGroup</span><span class="jsdoc-syntax">({ </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'pagination' </span><span class="jsdoc-syntax">});
     
 };
@@ -193,7 +207,7 @@
             </span><span class="jsdoc-var">preventDefault</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">listeners </span><span class="jsdoc-syntax">: { </span><span class="jsdoc-var">click </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.onClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-string">&quot;refresh&quot;</span><span class="jsdoc-syntax">]) }
         });
-
+        
     },
 
     </span><span class="jsdoc-comment">// private
