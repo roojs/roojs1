@@ -21655,17 +21655,30 @@ Roo.extend(Roo.bootstrap.Table.RowSelectionModel, Roo.bootstrap.Table.AbstractSe
  
 /**
  * @class Roo.bootstrap.PagingToolbar
- * @extends Roo.Row
+ * @extends Roo.bootstrap.NavSimplebar
  * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
  * @constructor
  * Create a new PagingToolbar
  * @param {Object} config The config object
+ * {Roo.data.Store} store
  */
 Roo.bootstrap.PagingToolbar = function(config)
 {
     // old args format still supported... - xtype is prefered..
         // created from xtype...
+        
     var ds = config.dataSource;
+    
+    Roo.log(ds);
+    Roo.log(this.store);
+    
+    if (this.store && !ds) {
+        Roo.log('run??');
+        this.store= Roo.factory(this.store, Roo.data);
+        ds = this.store;
+        ds.xmodule = this.xmodule || false;
+    }
+    
     this.toolbarItems = [];
     if (config.items) {
         this.toolbarItems = config.items;
@@ -21678,7 +21691,8 @@ Roo.bootstrap.PagingToolbar = function(config)
     if (ds) { 
         this.bind(ds);
     }
-    
+    Roo.log('ds??');
+    Roo.log(this.ds);
     this.navgroup = new Roo.bootstrap.NavGroup({ cls: 'pagination' });
     
 };
@@ -21837,7 +21851,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             preventDefault: true,
             listeners : { click : this.onClick.createDelegate(this, ["refresh"]) }
         });
-
+        
     },
 
     // private
