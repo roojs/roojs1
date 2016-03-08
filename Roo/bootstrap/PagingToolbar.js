@@ -42,7 +42,7 @@ Roo.bootstrap.PagingToolbar = function(config)
     if (ds) { 
         this.bind(ds);
     }
-    Roo.log('ds??');
+    
     Roo.log(this.ds);
     this.navgroup = new Roo.bootstrap.NavGroup({ cls: 'pagination' });
     
