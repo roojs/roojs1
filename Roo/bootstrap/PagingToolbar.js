@@ -16,7 +16,7 @@
  * @constructor
  * Create a new PagingToolbar
  * @param {Object} config The config object
- * {Roo.data.Store} store
+ * @param {Roo.data.Store} store
  */
 Roo.bootstrap.PagingToolbar = function(config)
 {
