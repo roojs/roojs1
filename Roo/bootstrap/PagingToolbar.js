@@ -23,12 +23,12 @@ Roo.bootstrap.PagingToolbar = function(config)
     // old args format still supported... - xtype is prefered..
         // created from xtype...
     
-    var ds = config.dataSource;
+    this.ds = config.dataSource;
     
-    if (config.store && !ds) {
+    if (config.store && !this.ds) {
         this.store= Roo.factory(config.store, Roo.data);
-        ds = this.store;
-        ds.xmodule = this.xmodule || false;
+        this.ds = this.store;
+        this.ds.xmodule = this.xmodule || false;
     }
     
     this.toolbarItems = [];
@@ -37,8 +37,6 @@ Roo.bootstrap.PagingToolbar = function(config)
     }
     
     Roo.bootstrap.PagingToolbar.superclass.constructor.call(this, config);
-    
-    this.ds = ds;
     
     this.cursor = 0;
     if (ds) { 
