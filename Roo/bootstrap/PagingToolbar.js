@@ -323,7 +323,6 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
                 ds.load({params:{start: lastStart, limit: this.pageSize}});
             break;
             case "refresh":
-                Roo.log('refresh???');
                 ds.load({params:{start: this.cursor, limit: this.pageSize}});
             break;
         }
