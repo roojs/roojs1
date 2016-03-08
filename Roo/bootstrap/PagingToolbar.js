@@ -124,6 +124,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
             Roo.log(this.el.select('ul.navbar-nav',true).first());
             this.el.select('ul.navbar-nav',true).first().createChild({cls:'x-paging-info'});
             this.displayEl = this.el.select('.x-paging-info', true).first();
+            Roo
 //            var navel = this.navgroup.addItem( { tagtype : 'span', html : '', cls : 'x-paging-info', preventDefault : true } );
 //            this.displayEl = navel.el.select('span',true).first();
         }
