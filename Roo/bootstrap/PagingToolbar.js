@@ -24,6 +24,7 @@ Roo.bootstrap.PagingToolbar = function(config)
         
     var ds = config.dataSource;
     
+    Roo.log(ds);
     if (this.store && !ds) {
         this.store= Roo.factory(this.store, Roo.data);
         ds = this.store;
