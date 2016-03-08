@@ -22,22 +22,11 @@ Roo.bootstrap.PagingToolbar = function(config)
 {
     // old args format still supported... - xtype is prefered..
         // created from xtype...
-        
+    
     var ds = config.dataSource;
     
-    Roo.log(config);
-    Roo.log(ds);
-    
-    Roo.log(this);
-    
-    Roo.log('store??');
-    Roo.log(this.store);
-    
-    if (this.store && !ds) {
-        
-        Roo.log('run??');
-        
-        this.store= Roo.factory(this.store, Roo.data);
+    if (config.store && !ds) {
+        this.store= Roo.factory(config.store, Roo.data);
         ds = this.store;
         ds.xmodule = this.xmodule || false;
     }
