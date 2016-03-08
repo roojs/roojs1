@@ -21666,33 +21666,28 @@ Roo.bootstrap.PagingToolbar = function(config)
 {
     // old args format still supported... - xtype is prefered..
         // created from xtype...
-        
-    var ds = config.dataSource;
     
-    Roo.log(ds);
-    Roo.log(this.store);
+    this.ds = config.dataSource;
     
-    if (this.store && !ds) {
-        Roo.log('run??');
-        this.store= Roo.factory(this.store, Roo.data);
-        ds = this.store;
-        ds.xmodule = this.xmodule || false;
+    if (config.store && !this.ds) {
+        this.store= Roo.factory(config.store, Roo.data);
+        this.ds = this.store;
+        this.ds.xmodule = this.xmodule || false;
     }
     
     this.toolbarItems = [];
     if (config.items) {
         this.toolbarItems = config.items;
-//        config.items = [];
     }
     
     Roo.bootstrap.PagingToolbar.superclass.constructor.call(this, config);
-    this.ds = ds;
+    
     this.cursor = 0;
-    if (ds) { 
-        this.bind(ds);
+    
+    if (this.ds) { 
+        this.bind(this.ds);
     }
-    Roo.log('ds??');
-    Roo.log(this.ds);
+    
     this.navgroup = new Roo.bootstrap.NavGroup({ cls: 'pagination' });
     
 };
