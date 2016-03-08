@@ -11,7 +11,7 @@
  
 /**
  * @class Roo.bootstrap.PagingToolbar
- * @extends Roo.Row
+ * @extends Roo.bootstrap.NavSimplebar
  * A specialized toolbar that is bound to a {@link Roo.data.Store} and provides automatic paging controls.
  * @constructor
  * Create a new PagingToolbar
