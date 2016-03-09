@@ -55,7 +55,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     autoCreate : false,
     
-    tooltip : 'test',
+    tooltip : null,
     /**
      * Initialize Events for the element
      */
@@ -86,9 +86,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
        // Roo.log("Call onRender: " + this.xtype);
         
         Roo.bootstrap.Component.superclass.onRender.call(this, ct, position);
-        Roo.log('onRender???');
+        
         if(this.el){
-            Roo.log('run??');
             if (this.el.attr('xtype')) {
                 this.el.attr('xtypex', this.el.attr('xtype'));
                 this.el.dom.removeAttribute('xtype');
@@ -129,10 +128,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         this.el = ct.createChild(cfg, position);
         
-        Roo.log(this);
-        
         if (this.tooltip) {
-            Roo.log(this.tooltip);
             this.tooltipEl().attr('tooltip', this.tooltip);
         }
         
@@ -157,14 +153,11 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
      */
     tooltipEl : function()
     {
-        Roo.log('tooltipEl!!!!!!!!!!!!!!');
-        Roo.log(this.el);
         return this.el;
     },
         
     addxtype  : function(tree,cntr)
     {
-        Roo.log(tree);
         var cn = this;
         
         cn = Roo.factory(tree);
