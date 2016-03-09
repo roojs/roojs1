@@ -25677,7 +25677,13 @@ Roo.bootstrap.DocumentManager = function(config){
          * @param {Roo.bootstrap.DocumentManager} this
          * @param {Object} file
          */
-        "edit" : true
+        "edit" : true,
+        /**
+         * @event beforeselectfile
+         * Fire before select file
+         * @param {Roo.bootstrap.DocumentManager} this
+         */
+        "beforeselectfile" : true
         
     });
 };
@@ -25852,7 +25858,11 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     onUploaderClick : function(e)
     {
         e.preventDefault();
-        this.selectorEl.dom.click();
+        
+        if(this.fireEvent('beforeselectfile', this) != false){
+            this.selectorEl.dom.click();
+        }
+        
     },
     
     onFileSelected : function(e)
