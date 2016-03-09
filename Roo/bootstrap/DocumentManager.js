@@ -86,7 +86,7 @@ Roo.bootstrap.DocumentManager = function(config){
         /**
          * @event beforeselectfile
          * Fire before select file
-         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {Roo.bootstrap.DocumentManager} this
          */
         "beforeselectfile" : true
         
