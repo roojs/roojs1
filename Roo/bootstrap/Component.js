@@ -153,6 +153,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
      */
     tooltipEl : function()
     {
+        Roo.log('tooltipEl!!!!!!!!!!!!!!');
+        Roo.log(this.el);
         return this.el;
     },
         
