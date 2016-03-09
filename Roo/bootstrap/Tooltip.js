@@ -84,9 +84,6 @@ Roo.apply(Roo.bootstrap.Tooltip, {
             //Roo.log("child element over..");
             
         }
-        
-        bindEl.setVisibilityMode(Roo.Element.DISPLAY);
-        
         this.currentEl = bindEl;
         this.currentTip.bind(bindEl);
         this.currentRegion = Roo.lib.Region.getRegion(dom);
@@ -234,7 +231,6 @@ Roo.extend(Roo.bootstrap.Tooltip, Roo.bootstrap.Component,  {
         
         //this.el.detach()
         //this.el.setXY([0,0]);
-        
         this.el.show();
         //this.el.dom.style.display='block';
         
