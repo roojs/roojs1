@@ -537,6 +537,9 @@ Roo.onReady(function(){
     if(Roo.isIOS){
         cls.push("roo-ios");
     }
+    if(Roo.isTouch){
+        cls.push("roo-touch");
+    }
     if(Roo.isBorderBox){
         cls.push('roo-border-box');
     }
