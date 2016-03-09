@@ -128,6 +128,8 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
         
         this.el = ct.createChild(cfg, position);
         
+        Roo.log(this);
+        
         if (this.tooltip) {
             Roo.log(this.tooltip);
             this.tooltipEl().attr('tooltip', this.tooltip);
