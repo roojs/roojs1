@@ -55,7 +55,7 @@ Roo.extend(Roo.bootstrap.Component, Roo.BoxComponent,  {
     
     autoCreate : false,
     
-    tooltip : null,
+    tooltip : 'test',
     /**
      * Initialize Events for the element
      */
