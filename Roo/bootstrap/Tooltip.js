@@ -84,6 +84,9 @@ Roo.apply(Roo.bootstrap.Tooltip, {
             //Roo.log("child element over..");
             
         }
+        
+        bindEl.setVisibilityMode(Roo.Element.DISPLAY);
+        
         this.currentEl = bindEl;
         this.currentTip.bind(bindEl);
         this.currentRegion = Roo.lib.Region.getRegion(dom);
