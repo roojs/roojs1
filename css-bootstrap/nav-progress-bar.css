@@ -18,6 +18,10 @@
     position: relative;
 }
 
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon {
+    font: normal normal normal 14px/1 FontAwesome;
+}
+
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon:before {
     content: counter(step);
     counter-increment: step;
