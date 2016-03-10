@@ -38,7 +38,7 @@
     background: #337ab7;
     position: absolute;
     left: -50%;
-    top: 22px;
+    top: 33px;
     z-index: -1; /*put it behind the numbers*/
 }
 
