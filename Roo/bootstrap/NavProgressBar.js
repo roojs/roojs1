@@ -18,8 +18,7 @@
 
 Roo.bootstrap.NavProgressBar = function(config){
     Roo.bootstrap.NavProgressBar.superclass.constructor.call(this, config);
-    this.items = [];
-   
+    
 //    Roo.bootstrap.NavProgressBar.register(this);
      this.addEvents({
         /**
@@ -36,7 +35,7 @@ Roo.bootstrap.NavProgressBar = function(config){
 
 Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
-    items : [],
+    items : false,
     navId : '',
     
     getAutoCreate : function()
