@@ -36,7 +36,7 @@ Roo.bootstrap.NavProgressBar = function(config){
 
 Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
-    items : false,
+    items : [],
     navId : '',
     
     getAutoCreate : function()
@@ -126,7 +126,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
    
     clearAll : function()
     {
-        this.navItems = [];
+        this.items = [];
         this.el.dom.innerHTML = '';
     },
     
