@@ -133,6 +133,45 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         return ret;
     },
     
+    indexOfItem : function(item)
+    {
+        var index = false;
+        
+        Roo.each(this.barItems, function(v, i){
+            
+            if (v.rid != item.rid) {
+                return;
+            }
+            
+            index = i;
+            return false
+        });
+        
+        return index;
+    },
+    
+    setActiveNext : function()
+    {
+        var i = this.indexOfItem(this.getActive());
+        
+        if (i > this.items.length) {
+            return;
+        }
+        
+        this.setActiveItem(this.items[i+1]);
+    },
+    
+    setActivePrev : function()
+    {
+        var i = this.indexOfItem(this.getActive());
+        
+        if (i  < 1) {
+            return;
+        }
+        
+        this.setActiveItem(this.items[i-1]);
+    },
+    
     formatBullets : function()
     {
         if(!this.barItems.length){
