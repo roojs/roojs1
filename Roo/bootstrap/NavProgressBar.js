@@ -79,7 +79,14 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         
         this.barItems.push(item);
         
+        this.formatBullets();
+        
         return item;
+    },
+    
+    formatBullets : function()
+    {
+        Roo.log(this.barItems);
     }
 //    
 //    
