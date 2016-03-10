@@ -37,6 +37,7 @@ Roo.bootstrap.NavProgressItem = function(config){
 
 Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     
+    tabId : '',
     active : false,
     disabled : false,
     html : '',
