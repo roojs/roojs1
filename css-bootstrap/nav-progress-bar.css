@@ -52,12 +52,14 @@
 
 .roo-navigation-bar .roo-navigation-bar-item.bottom .roo-navigation-bar-item-text {
     position: absolute;
+    width: 100%;
     top: 0;
     left: 0;
 }
 
 .roo-navigation-bar .roo-navigation-bar-item.top .roo-navigation-bar-item-text {
     position: absolute;
+    width: 100%;
     top: 0;
     left: 0;
 }
