@@ -9,7 +9,6 @@
  * @class Roo.bootstrap.NavProgressBar
  * @extends Roo.bootstrap.Component
  * Bootstrap NavProgressBar class
- * @cfg {String} navId - reference Id for nav progress bar.
  * 
  * @constructor
  * Create a new nav progress bar
@@ -19,7 +18,7 @@
 Roo.bootstrap.NavProgressBar = function(config){
     Roo.bootstrap.NavProgressBar.superclass.constructor.call(this, config);
 
-    this.items = this.items || [];
+    this.bullets = this.bullets || [];
    
 //    Roo.bootstrap.NavProgressBar.register(this);
      this.addEvents({
@@ -37,8 +36,9 @@ Roo.bootstrap.NavProgressBar = function(config){
 
 Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
-    items : [],
-    navId : '',
+    bullets : false,
+    barItems : false,
+    
     
     getAutoCreate : function()
     {
