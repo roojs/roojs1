@@ -33,7 +33,7 @@
     content: '';
     width: 100%;
     height: 2px;
-    background: white;
+    background: #337ab7;
     position: absolute;
     left: -50%;
     top: 9px;
