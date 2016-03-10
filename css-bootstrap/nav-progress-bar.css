@@ -5,6 +5,7 @@
     /*CSS counters to number the steps*/
     counter-reset: step;
     text-align: center;
+    height: 73px;
     padding: 0px;
 }
 
