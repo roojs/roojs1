@@ -30637,12 +30637,6 @@
   "Roo.bootstrap.NavProgressBar": {
    "props": [
     {
-     "name": "navId",
-     "type": "String",
-     "desc": "- reference Id for nav progress bar.",
-     "memberOf": ""
-    },
-    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -30955,12 +30949,6 @@
   "Roo.bootstrap.NavProgressItem": {
    "props": [
     {
-     "name": "tabId",
-     "type": "String",
-     "desc": "the tab that this item activates.",
-     "memberOf": ""
-    },
-    {
      "name": "active",
      "type": "Boolean",
      "desc": "Is item active default false",
@@ -30979,6 +30967,12 @@
       "true",
       "false"
      ]
+    },
+    {
+     "name": "html",
+     "type": "String",
+     "desc": "",
+     "memberOf": ""
     },
     {
      "name": "cls",
