@@ -49,6 +49,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+        
     }
 //    
 //    /**
