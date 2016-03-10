@@ -23,6 +23,7 @@
     counter-increment: step;
     width: 25px;
     line-height: 25px;
+    display: inline-block;
     font-size: 14px;
     color: white;
     background: #337ab7;
