@@ -59,7 +59,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'i',
-                    cls : 'roo-navigation-bar-item-icon'
+                    cls : 'roo-navigation-bar-item-icon ' + this.icon ? this.icon : ''
                 },
                 {
                     tag : 'span',
@@ -74,10 +74,6 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         }
         if(this.disabled){
             cfg.cls += ' disabled';
-        }
-        
-        if(this.icon){
-            cfg.cls += ' ' + this.icon;
         }
         
         return cfg;
