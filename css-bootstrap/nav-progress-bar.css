@@ -81,6 +81,10 @@
     content: "\f1da";
 }
 
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-list:before {
+    content: "\f1da";
+}
+
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-usd:before {
     content: "\f155";
 }
