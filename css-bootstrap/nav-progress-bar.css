@@ -15,7 +15,7 @@
     float: left;
     position: relative;
 }
-.roo-navigation-bar li:before {
+.roo-navigation-bar li.bottom:before {
     content: counter(step);
     counter-increment: step;
     width: 20px;
@@ -28,7 +28,7 @@
     margin: 0 auto 5px auto;
 }
 /*progressbar connectors*/
-.roo-navigation-bar li:after {
+.roo-navigation-bar li.bottom:after {
     content: '';
     width: 100%;
     height: 2px;
