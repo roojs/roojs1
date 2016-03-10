@@ -86,7 +86,16 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         
         this.iconEl.on('click', this.onClick, this);
         
+    },
+    
+    onClick : function(e)
+    {
+        e.preventDefault();
+        
+        Roo.log(this);
     }
+    
+    
 //    
 //    onClick : function(e)
 //    {
