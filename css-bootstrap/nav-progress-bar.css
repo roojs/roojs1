@@ -29,7 +29,6 @@
     border-radius: 5px;
     /*margin: 23px auto 5px auto;*/
 }
-/*
 
 .roo-navigation-bar li:after {
     content: '';
@@ -41,6 +40,8 @@
     top: 33px;
     z-index: -1; put it behind the numbers
 }
+
+/*
 
 .roo-navigation-bar-item-text {
     width: 100%
