@@ -41,9 +41,6 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {
-        Roo.log('items!!!!!!!!!!!1');
-        Roo.log(this.items);
-        
         var cfg = Roo.apply({}, Roo.bootstrap.NavProgressBar.superclass.getAutoCreate.call(this));
         
         cfg = {
@@ -53,7 +50,14 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         
         return cfg;
         
+    },
+    
+    initEvents: function() 
+    {
+        Roo.log('items!!!!!!!!!!!1');
+        Roo.log(this.items);
     }
+//    
 //    
 //    /**
 //    * sets the active Navigation item
