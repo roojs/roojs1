@@ -11,8 +11,8 @@
  * Bootstrap NavProgressItem class
  * @cfg {Boolean} active (true|false) Is item active default false
  * @cfg {Boolean} disabled (true|false) Is item active default false
- * @cfg {String} html
- * @cfg {String} position (top|bottom) text position default bottom
+ * @cfg {String} top Text at the top
+ * @cfg {String} bottom Text at the bottom
  * @cfg {String} icon show icon instead of number
  * 
  * @constructor
