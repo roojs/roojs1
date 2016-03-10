@@ -1,7 +1,7 @@
 
 .roo-navigation-bar {
     /*margin-bottom: 30px;*/
-    overflow: hidden;
+    /*overflow: hidden;*/
     /*CSS counters to number the steps*/
     counter-reset: step;
     text-align: center;
