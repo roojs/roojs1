@@ -15,20 +15,21 @@
  * Create a new NavProgressItem
  * @param {Object} config The config object
  */
-Roo.bootstrap.NavItem = function(config){
-    Roo.bootstrap.NavItem.superclass.constructor.call(this, config);
+Roo.bootstrap.NavProgressItem = function(config){
+    Roo.bootstrap.NavProgressItem.superclass.constructor.call(this, config);
     this.addEvents({
         // raw events
         /**
          * @event click
          * The raw click event for the entire grid.
+         * @param {Roo.bootstrap.NavProgressItem} this
          * @param {Roo.EventObject} e
          */
         "click" : true,
 	 /**
 	    * @event changed
 	    * Fires when the active item active state changes
-	    * @param {Roo.bootstrap.NavItem} this
+	    * @param {Roo.bootstrap.NavProgressItem} this
 	    * @param {boolean} state the new state
 	     
          */
@@ -37,11 +38,12 @@ Roo.bootstrap.NavItem = function(config){
    
 };
 
-Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     
-    tabId : false,
+    tabId : '',
     
-    getAutoCreate : function(){
+    getAutoCreate : function()
+    {
          
         var cfg = {
             tag: 'li',
