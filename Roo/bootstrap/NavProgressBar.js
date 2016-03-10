@@ -114,7 +114,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     */
     register : function(item)
     {
-        this.navItems.push( item);
+        this.items.push(item);
         item.navId = this.navId;
     
     },
