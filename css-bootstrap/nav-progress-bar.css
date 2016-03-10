@@ -41,7 +41,7 @@
     z-index: -1;
 }
 
-.roo-navigation-bar li.roo-navigation-bar-item:first-child:after {
+.roo-navigation-bar li.roo-navigation-bar-item:first-child > .roo-navigation-bar-item-icon:after {
     content: none; 
 }
 
