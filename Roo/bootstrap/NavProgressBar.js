@@ -44,52 +44,12 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         
         cfg = {
             tag : 'ul',
-            cls: 'nav' 
+            cls: 'roo-navigation-bar' 
         }
-        
-        if (['tabs','pills'].indexOf(this.type)!==-1) {
-            cfg.cls += ' nav-' + this.type
-        } else {
-            if (this.type!=='nav') {
-                Roo.log('nav type must be nav/tabs/pills')
-            }
-            cfg.cls += ' navbar-nav'
-        }
-        
-        if (this.parent().sidebar) {
-            cfg = {
-                tag: 'ul',
-                cls: 'dashboard-menu sidebar-menu'
-            }
-            
-            return cfg;
-        }
-        
-        if (this.form === true) {
-            cfg = {
-                tag: 'form',
-                cls: 'navbar-form'
-            }
-            
-            if (this.align === 'right') {
-                cfg.cls += ' navbar-right';
-            } else {
-                cfg.cls += ' navbar-left';
-            }
-        }
-        
-        if (this.align === 'right') {
-            cfg.cls += ' navbar-right';
-        }
-        
-        if (this.inverse) {
-            cfg.cls += ' navbar-inverse';
-            
-        }
-        
         
         return cfg;
     },
+    
     /**
     * sets the active Navigation item
     * @param {Roo.bootstrap.NavItem} the new current navitem
