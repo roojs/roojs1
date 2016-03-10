@@ -27,7 +27,7 @@
     counter-increment: step;
     width: 25px;
     line-height: 25px;
-    display: inline-block;
+    display: block;
     color: white;
     background: #337ab7;
     border-radius: 5px;
