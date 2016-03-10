@@ -18,7 +18,7 @@
     position: relative;
 }
 
-.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item:before {
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon:before {
     content: counter(step);
     counter-increment: step;
     width: 25px;
