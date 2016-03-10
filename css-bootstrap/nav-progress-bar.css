@@ -6,7 +6,7 @@
     counter-reset: step;
     text-align: center;
     line-height: 30px;
-    vertical-align: bottom;
+    vertical-align: middle;
 }
 
 .roo-navigation-bar li {
