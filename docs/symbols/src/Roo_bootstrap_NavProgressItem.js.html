@@ -1,0 +1,253 @@
+<html><head><title>../roojs1/Roo/bootstrap/NavProgressItem.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * Nav Progress Item
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.NavProgressItem
+ * @extends Roo.bootstrap.Component
+ * Bootstrap NavProgressItem class
+ * @cfg {String} tabId the tab that this item activates.
+ * @cfg {Boolean} active (true|false) Is item active default false
+ * @cfg {Boolean} disabled (true|false) Is item active default false
+ * 
+ * @constructor
+ * Create a new NavProgressItem
+ * @param {Object} config The config object
+ */
+</span><span class="jsdoc-var">Roo.bootstrap.NavProgressItem </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.NavProgressItem.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">// raw events
+        /**
+         * @event click
+         * The raw click event for the entire grid.
+         * @param {Roo.bootstrap.NavProgressItem} this
+         * @param {Roo.EventObject} e
+         */
+        </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+	 </span><span class="jsdoc-comment">/**
+	    * @event changed
+	    * Fires when the active item active state changes
+	    * @param {Roo.bootstrap.NavProgressItem} this
+	    * @param {boolean} state the new state
+	     
+         */
+        </span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+    </span><span class="jsdoc-syntax">});
+   
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.NavProgressItem</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    </span><span class="jsdoc-var">tabId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">active </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-navigation-bar-item'
+            
+        </span><span class="jsdoc-syntax">}
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.active</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' active'</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' disabled'</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    }
+</span><span class="jsdoc-comment">//    initEvents: function() 
+//    {
+//        if (typeof (this.menu) != 'undefined') {
+//            this.menu.parentType = this.xtype;
+//            this.menu.triggerEl = this.el;
+//            this.menu = this.addxtype(Roo.apply({}, this.menu));
+//        }
+//        
+//        this.el.select('a',true).on('click', this.onClick, this);
+//        
+//        if(this.tagtype == 'span'){
+//            this.el.select('span',true).on('click', this.onClick, this);
+//        }
+//       
+//        // at this point parent should be available..
+//        this.parent().register(this);
+//    },
+//    
+//    onClick : function(e)
+//    {
+//        if(
+//                this.preventDefault || 
+//                this.href == '#' 
+//        ){
+//            
+//            e.preventDefault();
+//        }
+//        
+//        if (this.disabled) {
+//            return;
+//        }
+//        
+//        var tg = Roo.bootstrap.TabGroup.get(this.navId);
+//        if (tg &amp;&amp; tg.transition) {
+//            Roo.log(&quot;waiting for the transitionend&quot;);
+//            return;
+//        }
+//        
+//        
+//        
+//        //Roo.log(&quot;fire event clicked&quot;);
+//        if(this.fireEvent('click', this, e) === false){
+//            return;
+//        };
+//        
+//        if(this.tagtype == 'span'){
+//            return;
+//        }
+//        
+//        //Roo.log(this.href);
+//        var ael = this.el.select('a',true).first();
+//        //Roo.log(ael);
+//        
+//        if(ael &amp;&amp; this.animateRef &amp;&amp; this.href.indexOf('#') &gt; -1){
+//            //Roo.log([&quot;test:&quot;,ael.dom.href.split(&quot;#&quot;)[0], document.location.toString().split(&quot;#&quot;)[0]]);
+//            if (ael.dom.href.split(&quot;#&quot;)[0] != document.location.toString().split(&quot;#&quot;)[0]) {
+//                return; // ignore... - it's a 'hash' to another page.
+//            }
+//            
+//            e.preventDefault();
+//            this.scrollToElement(e);
+//        }
+//        
+//        
+//        var p =  this.parent();
+//   
+//        if (['tabs','pills'].indexOf(p.type)!==-1) {
+//            if (typeof(p.setActiveItem) !== 'undefined') {
+//                p.setActiveItem(this);
+//            }
+//        }
+//        
+//        // if parent is a navbarheader....- and link is probably a '#' page ref.. then remove the expanded menu.
+//        if (p.parentType == 'NavHeaderbar' &amp;&amp; !this.menu) {
+//            // remove the collapsed menu expand...
+//            p.parent().el.select('.navbar-collapse',true).removeClass('in');  
+//        }
+//    },
+//    
+//    isActive: function () {
+//        return this.active
+//    },
+//    setActive : function(state, fire, is_was_active)
+//    {
+//        if (this.active &amp;&amp; !state &amp;&amp; this.navId) {
+//            this.was_active = true;
+//            var nv = Roo.bootstrap.NavGroup.get(this.navId);
+//            if (nv) {
+//                nv.clearWasActive(this);
+//            }
+//            
+//        }
+//        this.active = state;
+//        
+//        if (!state ) {
+//            this.el.removeClass('active');
+//        } else if (!this.el.hasClass('active')) {
+//            this.el.addClass('active');
+//        }
+//        if (fire) {
+//            this.fireEvent('changed', this, state);
+//        }
+//        
+//        // show a panel if it's registered and related..
+//        
+//        if (!this.navId || !this.tabId || !state || is_was_active) {
+//            return;
+//        }
+//        
+//        var tg = Roo.bootstrap.TabGroup.get(this.navId);
+//        if (!tg) {
+//            return;
+//        }
+//        var pan = tg.getPanelByName(this.tabId);
+//        if (!pan) {
+//            return;
+//        }
+//        // if we can not flip to new panel - go back to old nav highlight..
+//        if (false == tg.showPanel(pan)) {
+//            var nv = Roo.bootstrap.NavGroup.get(this.navId);
+//            if (nv) {
+//                var onav = nv.getWasActive();
+//                if (onav) {
+//                    onav.setActive(true, false, true);
+//                }
+//            }
+//            
+//        }
+//        
+//        
+//	
+//    },
+//     // this should not be here...
+//    setDisabled : function(state)
+//    {
+//        this.disabled = state;
+//        if (!state ) {
+//            this.el.removeClass('disabled');
+//        } else if (!this.el.hasClass('disabled')) {
+//            this.el.addClass('disabled');
+//        }
+//        
+//    },
+//    
+//    /**
+//     * Fetch the element to display the tooltip on.
+//     * @return {Roo.Element} defaults to this.el
+//     */
+//    tooltipEl : function()
+//    {
+//        return this.el.select('' + this.tagtype + '', true).first();
+//    },
+//    
+//    scrollToElement : function(e)
+//    {
+//        var c = document.body;
+//        
+//        /*
+//         * Firefox / IE places the overflow at the html level, unless specifically styled to behave differently.
+//         */
+//        if(Roo.isFirefox || Roo.isIE || Roo.isIE11){
+//            c = document.documentElement;
+//        }
+//        
+//        var target = Roo.get(c).select('a[name=' + this.href.split('#')[1] +']', true).first();
+//        
+//        if(!target){
+//            return;
+//        }
+//
+//        var o = target.calcOffsetsTo(c);
+//        
+//        var options = {
+//            target : target,
+//            value : o[1]
+//        }
+//        
+//        this.fireEvent('scrollto', this, options, e);
+//        
+//        Roo.get(c).scrollTo('top', options.value, true);
+//        
+//        return;
+//    }
+</span><span class="jsdoc-syntax">});
+ 
+
+ </span></code></body></html>

@@ -1,0 +1,243 @@
+<html><head><title>../roojs1/Roo/bootstrap/NavProgressBar.js</title><link rel="stylesheet" type="text/css" href="../../../css/highlight-js.css"/></head><body class="highlightpage"><code class="jsdoc-pretty"><span class="jsdoc-comment">/*
+ * - LGPL
+ *
+ * nav progress bar
+ * 
+ */
+
+/**
+ * @class Roo.bootstrap.NavProgressBar
+ * @extends Roo.bootstrap.Component
+ * Bootstrap NavProgressBar class
+ * @cfg {String} navId - reference Id for nav progress bar.
+ * 
+ * @constructor
+ * Create a new nav progress bar
+ * @param {Object} config The config object
+ */
+
+</span><span class="jsdoc-var">Roo.bootstrap.NavProgressBar </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">){
+    </span><span class="jsdoc-var">Roo.bootstrap.NavProgressBar.superclass.constructor.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">config</span><span class="jsdoc-syntax">);
+    </span><span class="jsdoc-var">this.items </span><span class="jsdoc-syntax">= [];
+   
+</span><span class="jsdoc-comment">//    Roo.bootstrap.NavProgressBar.register(this);
+     </span><span class="jsdoc-var">this.addEvents</span><span class="jsdoc-syntax">({
+        </span><span class="jsdoc-comment">/**
+	     * @event changed
+	     * Fires when the active item changes
+	     * @param {Roo.bootstrap.NavProgressBar} this
+	     * @param {Roo.bootstrap.NavProgressItem} selected The item selected
+	     * @param {Roo.bootstrap.NavProgressItem} prev The previously selected item 
+         */
+        </span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+     </span><span class="jsdoc-syntax">});
+    
+};
+
+</span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.NavProgressBar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
+    
+    </span><span class="jsdoc-var">items </span><span class="jsdoc-syntax">: [],
+    </span><span class="jsdoc-var">navId </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    
+    </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">({}, </span><span class="jsdoc-var">Roo.bootstrap.NavProgressBar.superclass.getAutoCreate.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">));
+        
+        </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'ul'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-navigation-bar' 
+        </span><span class="jsdoc-syntax">}
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">;
+    }
+</span><span class="jsdoc-comment">//    
+//    /**
+//    * sets the active Navigation item
+//    * @param {Roo.bootstrap.NavProgressItem} the new current navitem
+//    */
+//    setActiveItem : function(item)
+//    {
+//        var prev = false;
+//        Roo.each(this.items, function(v){
+//            if (v == item) {
+//                return ;
+//            }
+//            if (v.isActive()) {
+//                v.setActive(false, true);
+//                prev = v;
+//                
+//            }
+//            
+//        });
+//
+//        item.setActive(true, true);
+//        this.fireEvent('changed', this, item, prev);
+//    },
+//    
+//    /**
+//    * gets the active Navigation item
+//    * @return {Roo.bootstrap.NavProgressItem} the current navitem
+//    */
+//    getActive : function()
+//    {
+//        var active = false;
+//        
+//        Roo.each(this.items, function(v){
+//            
+//            if (!v.isActive()) {
+//                return;
+//            }
+//            
+//            active = v;
+//            return false;
+//            
+//        });
+//        
+//        return active;
+//    },
+//    
+//    indexOfNav : function(item)
+//    {
+//        var index = false;
+//        
+//        Roo.each(this.items, function(v,i){
+//            
+//            if (v != item) {
+//                return;
+//            }
+//            
+//            index = i;
+//            return false
+//        });
+//        
+//        return index;
+//    },
+//    
+//    /**
+//    * adds a Navigation item
+//    * @param {Roo.bootstrap.NavProgressItem} the NavProgressItem to add
+//    */
+//    addItem : function(cfg)
+//    {
+//        var cn = new Roo.bootstrap.NavProgressItem(cfg);
+//        this.register(cn);
+//        cn.parentId = this.id;
+//        cn.onRender(this.el, null);
+//        return cn;
+//    },
+//    
+//    /**
+//    * register a Navigation item
+//    * @param {Roo.bootstrap.NavItem} the navitem to add
+//    */
+//    register : function(item)
+//    {
+//        this.items.push(item);
+//        item.navId = this.navId;
+//    
+//    },
+//    
+//    /**
+//    * clear all the Navigation item
+//    */
+//   
+//    clearAll : function()
+//    {
+//        this.items = [];
+//        this.el.dom.innerHTML = '';
+//    },
+//    
+//    getNavItem: function(tabId)
+//    {
+//        var ret = false;
+//        Roo.each(this.items, function(e) {
+//            if (e.tabId == tabId) {
+//               ret =  e;
+//               return false;
+//            }
+//            return true;
+//            
+//        });
+//        return ret;
+//    },
+//    
+//    setActiveNext : function()
+//    {
+//        var i = this.indexOfNav(this.getActive());
+//        
+//        if (i &gt; this.items.length) {
+//            return;
+//        }
+//        
+//        this.setActiveItem(this.items[i+1]);
+//    },
+//    
+//    setActivePrev : function()
+//    {
+//        var i = this.indexOfNav(this.getActive());
+//        
+//        if (i  &lt; 1) {
+//            return;
+//        }
+//        
+//        this.setActiveItem(this.items[i-1]);
+//    },
+//    
+//    clearWasActive : function(except) {
+//        Roo.each(this.items, function(e) {
+//            if (e.tabId != except.tabId &amp;&amp; e.was_active) {
+//               e.was_active = false;
+//               return false;
+//            }
+//            return true;
+//            
+//        });
+//    },
+//    
+//    getWasActive : function ()
+//    {
+//        var r = false;
+//        Roo.each(this.items, function(e) {
+//            if (e.was_active) {
+//               r = e;
+//               return false;
+//            }
+//            return true;
+//            
+//        });
+//        return r;
+//    }
+    
+    
+</span><span class="jsdoc-syntax">});
+
+</span><span class="jsdoc-comment">// 
+//Roo.apply(Roo.bootstrap.NavProgressBar, {
+//    
+//    groups: {},
+//     /**
+//    * register a Navigation Group
+//    * @param {Roo.bootstrap.NavGroup} the navgroup to add
+//    */
+//    register : function(bar)
+//    {
+//        this.groups[bar.navId] = bar;
+//	
+//    },
+//    /**
+//    * fetch a Navigation Bar based on the navigation ID
+//    * @param {string} the nav bar to add
+//    * @returns {Roo.bootstrap.NavProgressBar} the nav bar
+//    */
+//    get: function(navId) 
+//    {
+//        if (typeof(this.groups[navId]) == 'undefined') {
+//            return false;
+//        }
+//        
+//        return this.groups[navId] ;
+//    }
+//    
+//});
+
+ </span></code></body></html>
