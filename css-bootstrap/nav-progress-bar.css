@@ -47,9 +47,9 @@
 
 /*
 
-.roo-navigation-bar-item-text {
+*/.roo-navigation-bar-item-text {
     width: 100%
-}
+}/*
 
 .roo-navigation-bar .roo-navigation-bar-item.top .roo-navigation-bar-item-text {
     position: absolute;
