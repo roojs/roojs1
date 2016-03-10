@@ -5,7 +5,7 @@
     /*CSS counters to number the steps*/
     counter-reset: step;
     text-align: center;
-    line-height: 60px;
+    line-height: 30px;
     vertical-align: bottom;
 }
 
@@ -18,7 +18,19 @@
     float: left;
     position: relative;
 }
-
+/*
+.roo-navigation-bar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 25px;
+    line-height: 25px;
+    display: block;
+    font-size: 14px;
+    color: white;
+    background: #337ab7;
+    border-radius: 5px;
+    margin: 0 auto 5px auto;
+}
 
 .roo-navigation-bar li:after {
     content: '';
@@ -28,8 +40,8 @@
     position: absolute;
     left: -50%;
     top: 9px;
-    z-index: -1; /*put it behind the numbers*/
-}
+    z-index: -1; put it behind the numbers
+}*/
 
 .roo-navigation-bar li:first-child:after {
     /*connector not needed before the first step*/
