@@ -113,6 +113,8 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     
     setActive : function(state)
     {
+        Roo.log([this, state]);
+        
         if(this.active == state){
             return;
         }
