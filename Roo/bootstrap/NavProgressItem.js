@@ -48,6 +48,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     disabled : false,
     html : '',
     position : 'bottom',
+    icon : false,
     
     getAutoCreate : function()
     {
@@ -64,11 +65,15 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
             ]
         }
         
-        if (this.active) {
+        if(this.active){
             cfg.cls += ' active';
         }
-        if (this.disabled) {
+        if(this.disabled){
             cfg.cls += ' disabled';
+        }
+        
+        if(this.icon){
+            
         }
         
         return cfg;
