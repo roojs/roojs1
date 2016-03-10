@@ -11,6 +11,7 @@
  * Bootstrap NavProgressItem class
  * @cfg {Boolean} active (true|false) Is item active default false
  * @cfg {Boolean} disabled (true|false) Is item active default false
+ * @cfg {String} html
  * 
  * @constructor
  * Create a new NavProgressItem
