@@ -4,6 +4,7 @@
     overflow: hidden;
     /*CSS counters to number the steps*/
     counter-reset: step;
+    text-align: center;
 }
 
 .roo-navigation-bar li {
