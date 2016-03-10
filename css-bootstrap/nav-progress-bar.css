@@ -17,7 +17,7 @@
     float: left;
     position: relative;
 }
-/*
+
 .roo-navigation-bar li:before {
     content: counter(step);
     counter-increment: step;
@@ -30,6 +30,7 @@
     border-radius: 5px;
     margin: 23px auto 5px auto;
 }
+/*
 
 .roo-navigation-bar li:after {
     content: '';
