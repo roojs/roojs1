@@ -58,30 +58,22 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
             cls: 'roo-navigation-bar-item',
             cn : [
                 {
+                    tag : 'span',
+                    cls : 'roo-navigation-bar-item-text',
+                    html : this.top
+                },
+                {
                     tag : 'i',
                     cls : 'roo-navigation-bar-item-icon'
                 },
                 {
                     tag : 'span',
                     cls : 'roo-navigation-bar-item-text',
-                    html : this.html
+                    html : this.bottom
                 }
             ]
         }
         
-        if(this.position == 'top'){
-            cfg.cn = [
-                {
-                    tag : 'span',
-                    cls : 'roo-navigation-bar-item-text',
-                    html : this.html
-                },
-                {
-                    tag : 'i',
-                    cls : 'roo-navigation-bar-item-icon'
-                }
-            ]; 
-        }
         
         if(this.active){
             cfg.cls += ' active';
