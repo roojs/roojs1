@@ -19,7 +19,7 @@
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon {
     font: normal normal normal 14px/1 FontAwesome;
     display: inline-block;
-    cursor: pointer;
+    
 }
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon:before {
@@ -32,6 +32,7 @@
     background: #337ab7;
     border-radius: 5px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon:after {
