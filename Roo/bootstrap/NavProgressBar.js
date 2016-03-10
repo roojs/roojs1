@@ -219,25 +219,24 @@ Roo.apply(Roo.bootstrap.NavProgressBar, {
     * register a Navigation Group
     * @param {Roo.bootstrap.NavGroup} the navgroup to add
     */
-    register : function(navgrp)
+    register : function(bar)
     {
-        this.groups[navgrp.navId] = navgrp;
+        this.groups[bar.navId] = bar;
 	
     },
     /**
-    * fetch a Navigation Group based on the navigation ID
-    * @param {string} the navgroup to add
-    * @returns {Roo.bootstrap.NavGroup} the navgroup 
+    * fetch a Navigation Bar based on the navigation ID
+    * @param {string} the nav bar to add
+    * @returns {Roo.bootstrap.NavProgressBar} the nav bar
     */
-    get: function(navId) {
+    get: function(navId) 
+    {
         if (typeof(this.groups[navId]) == 'undefined') {
             return false;
-            //this.register(new Roo.bootstrap.NavGroup({ navId : navId }));
         }
+        
         return this.groups[navId] ;
     }
-    
-    
     
 });
 
