@@ -5,6 +5,7 @@
     /*CSS counters to number the steps*/
     counter-reset: step;
     text-align: center;
+    line-height: 60px;
 }
 
 .roo-navigation-bar li {
