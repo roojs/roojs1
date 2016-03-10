@@ -65,5 +65,5 @@
 
 .roo-navigation-bar li.roo-navigation-bar-item.fa-history:before {
     font-family: FontAwesome;
-    content: "\f1da";
+    content: "\f1da" !important;
 }
