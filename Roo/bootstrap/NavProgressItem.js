@@ -101,10 +101,6 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log(this.parent());
-        
-        Roo.log(this);
-        
         this.fireEvent('click', this, e);
     },
     
