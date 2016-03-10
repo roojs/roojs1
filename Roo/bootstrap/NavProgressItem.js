@@ -127,34 +127,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
             this.el.addClass('active');
         }
         
-        // show a panel if it's registered and related..
-        
-        if (!this.navId || !this.tabId || !state || is_was_active) {
-            return;
-        }
-        
-        var tg = Roo.bootstrap.TabGroup.get(this.navId);
-        if (!tg) {
-            return;
-        }
-        var pan = tg.getPanelByName(this.tabId);
-        if (!pan) {
-            return;
-        }
-        // if we can not flip to new panel - go back to old nav highlight..
-        if (false == tg.showPanel(pan)) {
-            var nv = Roo.bootstrap.NavGroup.get(this.navId);
-            if (nv) {
-                var onav = nv.getWasActive();
-                if (onav) {
-                    onav.setActive(true, false, true);
-                }
-            }
-            
-        }
-        
-        
-	
+        return;
     }
     
     
