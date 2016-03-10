@@ -58,8 +58,8 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
         
         if(this.bullets.length){
-            Roo.each(this.bullets, function(i){
-               
+            Roo.each(this.bullets, function(b){
+               this.addItem(b);
             }, this);
         }
         
