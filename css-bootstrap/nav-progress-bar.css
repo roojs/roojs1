@@ -41,6 +41,10 @@
     z-index: -1;
 }
 
+.roo-navigation-bar li.roo-navigation-bar-item:first-child:after {
+    content: none; 
+}
+
 /*
 
 .roo-navigation-bar-item-text {
@@ -53,10 +57,7 @@
     left: 0;
 }
 
-.roo-navigation-bar li:first-child:after {
-    connector not needed before the first step
-    content: none; 
-}
+*//*
 marking active/completed steps green
 The number of the step and the connector before it = green
 .roo-navigation-bar li.active:before,  #progressbar li.active:after{
