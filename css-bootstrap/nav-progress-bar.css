@@ -27,6 +27,20 @@
     border-radius: 3px;
     margin: 0 auto 5px auto;
 }
+
+.roo-navigation-bar li.top:after {
+    content: counter(step);
+    counter-increment: step;
+    width: 20px;
+    line-height: 20px;
+    display: block;
+    font-size: 10px;
+    color: #333;
+    background: white;
+    border-radius: 3px;
+    margin: 0 auto 5px auto;
+}
+
 /*progressbar connectors*/
 .roo-navigation-bar li.bottom:after {
     content: '';
