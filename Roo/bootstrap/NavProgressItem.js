@@ -11,8 +11,8 @@
  * Bootstrap NavProgressItem class
  * @cfg {Boolean} active (true|false) Is item active default false
  * @cfg {Boolean} disabled (true|false) Is item active default false
- * @cfg {String} tHtml Text at the top
- * @cfg {String} bHtml Text at the bottom
+ * @cfg {String} top Text at the top
+ * @cfg {String} bottom Text at the bottom
  * @cfg {String} icon show icon instead of number
  * 
  * @constructor
@@ -46,8 +46,8 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     
     active : false,
     disabled : false,
-    html : '',
-    position : 'bottom',
+    top : '',
+    bottom : '',
     icon : false,
     
     getAutoCreate : function()
