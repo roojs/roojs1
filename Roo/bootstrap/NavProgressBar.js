@@ -97,19 +97,6 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         return active;
     },
     
-    formatBullets : function()
-    {
-        if(!this.barItems.length){
-            return;
-        }
-        
-        var width = 100 / this.barItems.length;
-        
-        Roo.each(this.barItems, function(i){
-            i.el.setStyle('width', width + '%');
-        }, this);
-    },
-    
     setActiveItem : function(item)
     {
         var prev = false;
@@ -128,54 +115,39 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         item.setActive(true);
         
         this.fireEvent('changed', this, item, prev);
+    },
+    
+    getBarItem: function(rid)
+    {
+        var ret = false;
+        
+        Roo.each(this.barItems, function(e) {
+            if (e.rid != rid) {
+                return;
+            }
+            
+            ret =  e;
+            return false;
+        });
+        
+        return ret;
+    },
+    
+    formatBullets : function()
+    {
+        if(!this.barItems.length){
+            return;
+        }
+        
+        var width = 100 / this.barItems.length;
+        
+        Roo.each(this.barItems, function(i){
+            i.el.setStyle('width', width + '%');
+        }, this);
     }
-//    
-//    
-//    /**
-//    * sets the active Navigation item
-//    * @param {Roo.bootstrap.NavProgressItem} the new current navitem
-//    */
-//    setActiveItem : function(item)
-//    {
-//        var prev = false;
-//        Roo.each(this.items, function(v){
-//            if (v == item) {
-//                return ;
-//            }
-//            if (v.isActive()) {
-//                v.setActive(false, true);
-//                prev = v;
-//                
-//            }
-//            
-//        });
-//
-//        item.setActive(true, true);
-//        this.fireEvent('changed', this, item, prev);
-//    },
-//    
-//    /**
-//    * gets the active Navigation item
-//    * @return {Roo.bootstrap.NavProgressItem} the current navitem
-//    */
-//    getActive : function()
-//    {
-//        var active = false;
-//        
-//        Roo.each(this.items, function(v){
-//            
-//            if (!v.isActive()) {
-//                return;
-//            }
-//            
-//            active = v;
-//            return false;
-//            
-//        });
-//        
-//        return active;
-//    },
-//    
+    
+    
+    
 //    indexOfNav : function(item)
 //    {
 //        var index = false;
