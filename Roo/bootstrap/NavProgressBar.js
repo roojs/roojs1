@@ -52,12 +52,12 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     /**
     * sets the active Navigation item
-    * @param {Roo.bootstrap.NavItem} the new current navitem
+    * @param {Roo.bootstrap.NavProgressItem} the new current navitem
     */
     setActiveItem : function(item)
     {
         var prev = false;
-        Roo.each(this.navItems, function(v){
+        Roo.each(this.items, function(v){
             if (v == item) {
                 return ;
             }
@@ -71,12 +71,11 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
 
         item.setActive(true, true);
         this.fireEvent('changed', this, item, prev);
-        
-        
     },
+    
     /**
     * gets the active Navigation item
-    * @return {Roo.bootstrap.NavItem} the current navitem
+    * @return {Roo.bootstrap.NavProgressItem} the current navitem
     */
     getActive : function()
     {
