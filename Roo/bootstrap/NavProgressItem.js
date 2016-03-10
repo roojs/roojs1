@@ -50,6 +50,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
             cls: 'roo-navigation-bar-item'
             
         }
+        
         if (this.active) {
             cfg.cls = typeof(cfg.cls) == 'undefined' ? 'active' : cfg.cls + ' active';
         }
