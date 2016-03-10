@@ -33,7 +33,7 @@
     color: white;
     background: #337ab7;
     border-radius: 5px;
-    /*margin: 23px auto 5px auto;*/
+    margin: 23px auto 5px auto;
 }
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon:after {
@@ -53,15 +53,14 @@
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-text {
     width: 100%;
-    display: inline-block;
-/*    position: absolute;
+    position: absolute;
     top: 53px;
-    left: 0;*/
+    left: 0;
 }
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-text.top {
-/*    top: 0;
-    left: 0;*/
+    top: 0;
+    left: 0;
 }
 
 
