@@ -136,17 +136,13 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     disable : function()
     {
         this.disabled = true;
-        
         this.el.addClass('disabled');
-        
     },
     
     enable : function()
     {
         this.disabled = false;
-        
         this.el.removeClass('disabled');
-        
     }
     
     
