@@ -9,6 +9,7 @@
  * @class Roo.bootstrap.NavProgressBar
  * @extends Roo.bootstrap.Component
  * Bootstrap NavProgressBar class
+ * @cfg {String} navId - reference Id for navbar.
  * 
  * @constructor
  * Create a new nav progress bar
@@ -17,9 +18,9 @@
 
 Roo.bootstrap.NavProgressBar = function(config){
     Roo.bootstrap.NavProgressBar.superclass.constructor.call(this, config);
-    
     this.items = [];
    
+    Roo.bootstrap.NavProgressBar.register(this);
      this.addEvents({
         /**
 	     * @event changed
@@ -36,6 +37,7 @@ Roo.bootstrap.NavProgressBar = function(config){
 Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     items : [],
+    navId : '',
     
     getAutoCreate : function()
     {
@@ -208,3 +210,35 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     
 });
+
+ 
+Roo.apply(Roo.bootstrap.NavProgressBar, {
+    
+    groups: {},
+     /**
+    * register a Navigation Group
+    * @param {Roo.bootstrap.NavGroup} the navgroup to add
+    */
+    register : function(navgrp)
+    {
+        this.groups[navgrp.navId] = navgrp;
+	
+    },
+    /**
+    * fetch a Navigation Group based on the navigation ID
+    * @param {string} the navgroup to add
+    * @returns {Roo.bootstrap.NavGroup} the navgroup 
+    */
+    get: function(navId) {
+        if (typeof(this.groups[navId]) == 'undefined') {
+            return false;
+            //this.register(new Roo.bootstrap.NavGroup({ navId : navId }));
+        }
+        return this.groups[navId] ;
+    }
+    
+    
+    
+});
+
+ 
