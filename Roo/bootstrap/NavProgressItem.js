@@ -50,17 +50,23 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     html : '',
     position : 'bottom',
     icon : false,
+    forceIcon : false,
     
     getAutoCreate : function()
     {
-         
+        var iconCls = 'roo-navigation-bar-item-icon';
+        
+        if(this.forceIcon && this.icon){
+            iconCls += ' this.icon';
+        }
+        
         var cfg = {
             tag: 'li',
             cls: 'roo-navigation-bar-item',
             cn : [
                 {
                     tag : 'i',
-                    cls : 'roo-navigation-bar-item-icon ' + (this.icon ? this.icon : '')
+                    cls : iconCls
                 },
                 {
                     tag : 'span',
