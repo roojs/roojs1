@@ -1100,8 +1100,9 @@ this.imageEl=this.el.select('.roo-document-viewer-image',true).first();this.imag
 this.trashBtn=this.el.select('.roo-document-viewer-trash',true).first();this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay='block';this.bodyEl.on('click',this.onClick,this);this.trashBtn.on('click',this.onTrash,this);},initial:function(){this.fireEvent('initial',this);
 },onClick:function(e){e.preventDefault();this.fireEvent('click',this);},onTrash:function(e){e.preventDefault();this.fireEvent('trash',this);}});
 // Roo/bootstrap/NavProgressBar.js
-Roo.bootstrap.NavProgressBar=function(A){Roo.bootstrap.NavProgressBar.superclass.constructor.call(this,A);this.items=[];this.addEvents({'changed':true});};Roo.extend(Roo.bootstrap.NavProgressBar,Roo.bootstrap.Component,{items:[],navId:'',getAutoCreate:function(){var A=Roo.apply({},Roo.bootstrap.NavProgressBar.superclass.getAutoCreate.call(this));
-A={tag:'ul',cls:'roo-navigation-bar'};return A;}});
+Roo.bootstrap.NavProgressBar=function(A){Roo.bootstrap.NavProgressBar.superclass.constructor.call(this,A);this.bullets=this.bullets||[];this.addEvents({'changed':true});};Roo.extend(Roo.bootstrap.NavProgressBar,Roo.bootstrap.Component,{bullets:false,barItems:false,getAutoCreate:function(){var A=Roo.apply({},Roo.bootstrap.NavProgressBar.superclass.getAutoCreate.call(this));
+A={tag:'ul',cls:'roo-navigation-bar'};return A;},onRender:function(ct,A){Roo.bootstrap.NavProgressBar.superclass.onRender.call(this,ct,A);if(this.bullets.length){Roo.each(this.bullets,function(i){},this);}},initEvents:function(){Roo.log('items!!!!!!!!!!!1');
+Roo.log(this.items);}});
 // Roo/bootstrap/NavProgressItem.js
-Roo.bootstrap.NavProgressItem=function(A){Roo.bootstrap.NavProgressItem.superclass.constructor.call(this,A);this.addEvents({"click":true,'changed':true});};Roo.extend(Roo.bootstrap.NavProgressItem,Roo.bootstrap.Component,{tabId:'',active:false,disabled:false,getAutoCreate:function(){var A={tag:'li',cls:'roo-navigation-bar-item'};if(this.active){A.cls+=' active';
-}if(this.disabled){A.cls+=' disabled';}return A;}});
+Roo.bootstrap.NavProgressItem=function(A){Roo.bootstrap.NavProgressItem.superclass.constructor.call(this,A);this.addEvents({"click":true,'changed':true});};Roo.extend(Roo.bootstrap.NavProgressItem,Roo.bootstrap.Component,{active:false,disabled:false,html:'',getAutoCreate:function(){var A={tag:'li',cls:'roo-navigation-bar-item',cn:[{tag:'span',cls:'roo-navigation-bar-item-text',html:this.html}]};if(this.active){A.cls+=' active';
+}if(this.disabled){A.cls+=' disabled';}return A;},initEvents:function(){Roo.log('bar item init???');}});

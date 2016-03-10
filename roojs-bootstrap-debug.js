@@ -26361,7 +26361,6 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.NavProgressBar
  * @extends Roo.bootstrap.Component
  * Bootstrap NavProgressBar class
- * @cfg {String} navId - reference Id for nav progress bar.
  * 
  * @constructor
  * Create a new nav progress bar
@@ -26370,7 +26369,8 @@ Roo.extend(Roo.bootstrap.DocumentViewer, Roo.bootstrap.Component,  {
 
 Roo.bootstrap.NavProgressBar = function(config){
     Roo.bootstrap.NavProgressBar.superclass.constructor.call(this, config);
-    this.items = [];
+
+    this.bullets = this.bullets || [];
    
 //    Roo.bootstrap.NavProgressBar.register(this);
      this.addEvents({
@@ -26388,8 +26388,9 @@ Roo.bootstrap.NavProgressBar = function(config){
 
 Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
-    items : [],
-    navId : '',
+    bullets : false,
+    barItems : false,
+    
     
     getAutoCreate : function()
     {
@@ -26401,7 +26402,28 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+        
+    },
+    
+    onRender : function(ct, position) 
+    {
+        Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
+        
+        if(this.bullets.length){
+            Roo.each(this.bullets, function(i){
+               
+            }, this);
+        }
+        
+        
+    },
+    
+    initEvents: function() 
+    {
+        Roo.log('items!!!!!!!!!!!1');
+        Roo.log(this.items);
     }
+//    
 //    
 //    /**
 //    * sets the active Navigation item
@@ -26603,9 +26625,9 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.NavProgressItem
  * @extends Roo.bootstrap.Component
  * Bootstrap NavProgressItem class
- * @cfg {String} tabId the tab that this item activates.
  * @cfg {Boolean} active (true|false) Is item active default false
  * @cfg {Boolean} disabled (true|false) Is item active default false
+ * @cfg {String} html
  * 
  * @constructor
  * Create a new NavProgressItem
@@ -26636,17 +26658,23 @@ Roo.bootstrap.NavProgressItem = function(config){
 
 Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     
-    tabId : '',
     active : false,
     disabled : false,
+    html : '',
     
     getAutoCreate : function()
     {
          
         var cfg = {
             tag: 'li',
-            cls: 'roo-navigation-bar-item'
-            
+            cls: 'roo-navigation-bar-item',
+            cn : [
+                {
+                    tag : 'span',
+                    cls : 'roo-navigation-bar-item-text',
+                    html : this.html
+                }
+            ]
         }
         
         if (this.active) {
@@ -26657,24 +26685,12 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+    },
+    
+    initEvents: function() 
+    {
+        Roo.log('bar item init???');
     }
-//    initEvents: function() 
-//    {
-//        if (typeof (this.menu) != 'undefined') {
-//            this.menu.parentType = this.xtype;
-//            this.menu.triggerEl = this.el;
-//            this.menu = this.addxtype(Roo.apply({}, this.menu));
-//        }
-//        
-//        this.el.select('a',true).on('click', this.onClick, this);
-//        
-//        if(this.tagtype == 'span'){
-//            this.el.select('span',true).on('click', this.onClick, this);
-//        }
-//       
-//        // at this point parent should be available..
-//        this.parent().register(this);
-//    },
 //    
 //    onClick : function(e)
 //    {
