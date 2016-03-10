@@ -16,7 +16,7 @@
     float: left;
     position: relative;
 }
-/*
+
 .roo-navigation-bar li:before {
     content: counter(step);
     counter-increment: step;
@@ -38,8 +38,8 @@
     position: absolute;
     left: -50%;
     top: 9px;
-    z-index: -1; put it behind the numbers
-}*/
+    z-index: -1; /*put it behind the numbers*/
+}
 
 .roo-navigation-bar li:first-child:after {
     /*connector not needed before the first step*/
