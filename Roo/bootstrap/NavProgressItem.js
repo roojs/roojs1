@@ -122,13 +122,12 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         
         this.active = state;
         
-        if (this.el.hasClass('active')) {
-            this.el.removeClass('active');
-        }
-        
         if (state) {
             this.el.addClass('active');
+            return;
         }
+        
+        this.el.removeClass('active');
         
         return;
     },
@@ -140,6 +139,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         }
         
         this.disabled = state;
+        
         if (!state) {
             this.el.removeClass('disabled');
         } else if (!this.el.hasClass('disabled')) {
