@@ -9,7 +9,7 @@
  * @class Roo.bootstrap.NavProgressBar
  * @extends Roo.bootstrap.Component
  * Bootstrap NavProgressBar class
- * @cfg {String} navId - reference Id for navbar.
+ * @cfg {String} navId - reference Id for nav progress bar.
  * 
  * @constructor
  * Create a new nav progress bar
