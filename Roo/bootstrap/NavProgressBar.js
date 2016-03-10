@@ -197,7 +197,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     getWasActive : function ()
     {
         var r = false;
-        Roo.each(this.navItems, function(e) {
+        Roo.each(this.items, function(e) {
             if (e.was_active) {
                r = e;
                return false;
