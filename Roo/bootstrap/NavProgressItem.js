@@ -30,15 +30,7 @@ Roo.bootstrap.NavProgressItem = function(config){
          * @param {Roo.bootstrap.NavProgressItem} this
          * @param {Roo.EventObject} e
          */
-        "click" : true,
-	 /**
-	    * @event changed
-	    * Fires when the active item active state changes
-	    * @param {Roo.bootstrap.NavProgressItem} this
-	    * @param {boolean} state the new state
-	     
-         */
-        'changed': true
+        "click" : true
     });
    
 };
@@ -119,17 +111,20 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         return this.active;
     },
     
-    setActive : function(state, fire, is_was_active)
+    setActive : function(state)
     {
+        if(this.active == state){
+            return;
+        }
+        
         this.active = state;
         
-        if (!state ) {
+        if (this.el.hasClass('active')) {
             this.el.removeClass('active');
-        } else if (!this.el.hasClass('active')) {
-            this.el.addClass('active');
         }
-        if (fire) {
-            this.fireEvent('changed', this, state);
+        
+        if (state) {
+            this.el.addClass('active');
         }
         
         // show a panel if it's registered and related..
