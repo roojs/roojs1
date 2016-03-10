@@ -12,6 +12,7 @@
  * @cfg {Boolean} active (true|false) Is item active default false
  * @cfg {Boolean} disabled (true|false) Is item active default false
  * @cfg {String} html
+ * @cfg {String} position (top|bottom) text position default bottom
  * 
  * @constructor
  * Create a new NavProgressItem
