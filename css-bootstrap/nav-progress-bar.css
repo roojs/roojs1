@@ -17,7 +17,7 @@
     float: left;
     position: relative;
 }
-
+/*
 .roo-navigation-bar li:before {
     content: counter(step);
     counter-increment: step;
@@ -39,7 +39,7 @@
     position: absolute;
     left: -50%;
     top: 33px;
-    z-index: -1; /*put it behind the numbers*/
+    z-index: -1; put it behind the numbers
 }
 
 .roo-navigation-bar-item-text {
@@ -53,11 +53,11 @@
 }
 
 .roo-navigation-bar li:first-child:after {
-    /*connector not needed before the first step*/
+    connector not needed before the first step
     content: none; 
 }
-/*marking active/completed steps green*/
-/*The number of the step and the connector before it = green*/
+marking active/completed steps green
+The number of the step and the connector before it = green
 .roo-navigation-bar li.active:before,  #progressbar li.active:after{
     background: #27AE60;
     color: white;
@@ -66,7 +66,7 @@
 .roo-navigation-bar li.roo-navigation-bar-item.fa-history:before {
     font-family: FontAwesome;
     content: "\f1da";
-}
+}*/
 
 
 
