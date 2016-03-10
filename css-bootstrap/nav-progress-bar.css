@@ -22,7 +22,6 @@
     content: counter(step);
     counter-increment: step;
     width: 25px;
-    height: 25px;
     line-height: 25px;
     display: block;
     color: white;
