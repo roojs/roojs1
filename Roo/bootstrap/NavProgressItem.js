@@ -150,9 +150,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     
     tooltipEl : function()
     {
-        Roo.log('??');
-        Roo.log(this.iconEl);
-        return this.iconEl;
+        return this.el.select('.roo-navigation-bar-item-icon', true).first();;
     }
 });
  
