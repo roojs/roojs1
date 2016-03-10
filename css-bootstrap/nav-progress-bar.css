@@ -42,6 +42,12 @@
     z-index: -1; /*put it behind the numbers*/
 }
 
+.roo-navigation-bar .roo-navigation-bar-item.top .roo-navigation-bar-item-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .roo-navigation-bar li:first-child:after {
     /*connector not needed before the first step*/
     content: none; 
