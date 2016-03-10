@@ -73,7 +73,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         }
         
         if(this.icon){
-            
+            cfg.cls += ' icon';
         }
         
         return cfg;
