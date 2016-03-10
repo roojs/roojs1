@@ -71,16 +71,5 @@
 }
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-usd:before {
-    content: "\f1da";
+    content: "\f155";
 }
-
-/*
-marking active/completed steps green
-The number of the step and the connector before it = green
-
-
-*/
-
-
-
-
