@@ -67,16 +67,20 @@
     color: white;
 }
 
+.roo-navigation-bar .roo-navigation-bar-item.disabled .roo-navigation-bar-item-icon:before {
+    background: #999999;
+    color: white;
+    cursor: not-allowed;
+}
+
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-search:before {
+    content: "\f002";
+}
+
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-history:before {
     content: "\f1da";
 }
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-usd:before {
     content: "\f155";
-}
-
-.roo-navigation-bar .roo-navigation-bar-item.disabled .roo-navigation-bar-item-icon:before {
-    background: #999999;
-    color: white;
-    cursor: not-allowed;
 }
