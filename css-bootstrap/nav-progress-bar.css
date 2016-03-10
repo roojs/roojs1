@@ -62,3 +62,8 @@
     background: #27AE60;
     color: white;
 }
+
+.roo-navigation-bar li.roo-navigation-bar-item.fa-history:before {
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f1da";
+}
