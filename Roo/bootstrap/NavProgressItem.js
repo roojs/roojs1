@@ -140,11 +140,12 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         
         this.disabled = state;
         
-        if (!state) {
-            this.el.removeClass('disabled');
-        } else if (!this.el.hasClass('disabled')) {
+        if (state) {
             this.el.addClass('disabled');
+            return;
         }
+        
+        this.el.removeClass('disabled');
         
     }
     
