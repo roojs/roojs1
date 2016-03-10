@@ -79,6 +79,24 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         return item;
     },
     
+    getActive : function()
+    {
+        var active = false;
+        
+        Roo.each(this.barItems, function(v){
+            
+            if (!v.isActive()) {
+                return;
+            }
+            
+            active = v;
+            return false;
+            
+        });
+        
+        return active;
+    },
+    
     formatBullets : function()
     {
         if(!this.barItems.length){
