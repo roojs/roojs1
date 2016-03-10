@@ -6,6 +6,7 @@
     counter-reset: step;
     text-align: center;
     height: 71px;
+    padding: 0px;
 }
 
 .roo-navigation-bar li {
