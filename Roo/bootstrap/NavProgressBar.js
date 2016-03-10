@@ -63,7 +63,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
             }, this);
         }
         
-    },
+    }
     
     initEvents: function() 
     {
@@ -135,18 +135,11 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
 //        return index;
 //    },
 //    
-//    /**
-//    * adds a Navigation item
-//    * @param {Roo.bootstrap.NavProgressItem} the NavProgressItem to add
-//    */
-//    addItem : function(cfg)
-//    {
-//        var cn = new Roo.bootstrap.NavProgressItem(cfg);
-//        this.register(cn);
-//        cn.parentId = this.id;
-//        cn.onRender(this.el, null);
-//        return cn;
-//    },
+    /**
+    * adds a Navigation item
+    * @param {Roo.bootstrap.NavProgressItem} the NavProgressItem to add
+    */
+    
 //    
 //    /**
 //    * register a Navigation item
