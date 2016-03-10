@@ -14,7 +14,7 @@
  * @cfg {String} html
  * @cfg {String} position (top|bottom) text position default bottom
  * @cfg {String} icon show icon instead of number
- * @cfg {Boolean} force (true|false) force to show number or icon..if set to false, Roo.isTouch showing icon, otherwish number
+ * @cfg {Boolean} forceIcon (true|false) force to show icon..if set to false, Roo.isTouch showing icon, otherwish number
  * 
  * @constructor
  * Create a new NavProgressItem
