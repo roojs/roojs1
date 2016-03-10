@@ -97,7 +97,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         var prev = false;
         
         Roo.each(this.barItems, function(v){
-            if (v == item) {
+            if (v.rid == item.rid) {
                 return ;
             }
             if (v.isActive()) {
