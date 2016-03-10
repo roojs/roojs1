@@ -52,6 +52,18 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         
     },
     
+    onRender : function(ct, position) 
+    {
+        Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
+        
+        if(this.items){
+            Roo.each(this.items, function(i){
+               Roo.factory(i).onRender(this.el, null);
+            }, this);
+        }   
+        
+    },
+    
     initEvents: function() 
     {
         Roo.log('items!!!!!!!!!!!1');
