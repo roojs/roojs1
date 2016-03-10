@@ -103,9 +103,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
             if (v.isActive()) {
                 v.setActive(false, true);
                 prev = v;
-                
             }
-            
         });
 
         item.setActive(true, true);
