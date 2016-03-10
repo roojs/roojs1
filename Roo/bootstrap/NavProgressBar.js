@@ -212,7 +212,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
 });
 
  
-Roo.apply(Roo.bootstrap.NavGroup, {
+Roo.apply(Roo.bootstrap.NavProgressBar, {
     
     groups: {},
      /**
