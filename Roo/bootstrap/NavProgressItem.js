@@ -9,7 +9,7 @@
  * @class Roo.bootstrap.NavProgressItem
  * @extends Roo.bootstrap.Component
  * Bootstrap NavProgressItem class
- * @cfg {String} tabId the tab that this item activates.
+ * @cfg {String} rid the reference id
  * @cfg {Boolean} active (true|false) Is item active default false
  * @cfg {Boolean} disabled (true|false) Is item active default false
  * @cfg {String} html
