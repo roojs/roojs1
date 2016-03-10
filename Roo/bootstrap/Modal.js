@@ -112,8 +112,6 @@ Roo.extend(Roo.bootstrap.Modal, Roo.bootstrap.Component,  {
         //this.el.addClass("x-dlg-modal");
     
         if (this.buttons.length) {
-            Roo.log('this.button');
-            Roo.log(this.buttons);
             Roo.each(this.buttons, function(bb) {
                 var b = Roo.apply({}, bb);
                 b.xns = b.xns || Roo.bootstrap;
