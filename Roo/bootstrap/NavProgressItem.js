@@ -92,7 +92,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         this.textEl = this.el.select('.roo-navigation-bar-item-text', true).first();
         
         if(Roo.isTouch){
-            this.textEl.hide();
+            this.textEl.setVisibilityMode(Roo.Element.DISPLAY).hide();
         }
         
         this.iconEl.on('click', this.onClick, this);
