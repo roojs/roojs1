@@ -16,7 +16,7 @@
     float: left;
     position: relative;
 }
-.roo-navigation-bar li.bottom:before {
+.roo-navigation-bar li:before {
     content: counter(step);
     counter-increment: step;
     width: 25px;
@@ -29,7 +29,7 @@
     margin: 0 auto 5px auto;
 }
 
-.roo-navigation-bar li.bottom:after {
+.roo-navigation-bar li:after {
     content: '';
     width: 100%;
     height: 5px;
@@ -38,19 +38,6 @@
     left: -50%;
     top: 9px;
     z-index: -1; /*put it behind the numbers*/
-}
-
-.roo-navigation-bar li.top:after {
-    content: counter(step);
-    counter-increment: step;
-    width: 25px;
-    line-height: 25px;
-    display: block;
-    font-size: 14px;
-    color: white;
-    background: #337ab7;
-    border-radius: 5px;
-    margin: 0 auto 5px auto;
 }
 
 .roo-navigation-bar li:first-child:after {
