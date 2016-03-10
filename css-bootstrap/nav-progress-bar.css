@@ -50,19 +50,13 @@
     content: none; 
 }
 
-/*
-
-*/.roo-navigation-bar-item-text {
-    width: 100%
-}/*
-
-*/.roo-navigation-bar .roo-navigation-bar-item.top .roo-navigation-bar-item-text {
+.roo-navigation-bar .roo-navigation-bar-item.top .roo-navigation-bar-item-text {
     position: absolute;
     top: 0;
     left: 0;
-}/*
+}
 
-*//*
+/*
 marking active/completed steps green
 The number of the step and the connector before it = green
 .roo-navigation-bar li.active:before,  #progressbar li.active:after{
