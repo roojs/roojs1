@@ -33,7 +33,7 @@
     color: white;
     background: #337ab7;
     border-radius: 5px;
-    margin: 23px auto 5px auto;
+    padding: 23px auto 5px auto;
 }
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon:after {
