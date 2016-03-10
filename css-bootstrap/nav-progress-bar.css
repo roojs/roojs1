@@ -51,6 +51,10 @@
 }
 
 .roo-navigation-bar .roo-navigation-bar-item.bottom .roo-navigation-bar-item-text {
+    width: 100%;
+}
+
+.roo-navigation-bar .roo-navigation-bar-item.bottom .roo-navigation-bar-item-text {
     position: absolute;
     width: 100%;
     top: 0;
