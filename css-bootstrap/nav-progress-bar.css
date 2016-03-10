@@ -18,18 +18,7 @@
     float: left;
     position: relative;
 }
-.roo-navigation-bar li:before {
-    content: counter(step);
-    counter-increment: step;
-    width: 25px;
-    line-height: 25px;
-    display: block;
-    font-size: 14px;
-    color: white;
-    background: #337ab7;
-    border-radius: 5px;
-    margin: 0 auto 5px auto;
-}
+
 
 .roo-navigation-bar li:after {
     content: '';
