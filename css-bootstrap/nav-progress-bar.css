@@ -60,7 +60,8 @@
     left: 0;
 }
 
-.roo-navigation-bar li.active:before,  #progressbar li.active:after{
+.roo-navigation-bar li.active .roo-navigation-bar-item-icon:before,
+.roo-navigation-bar-item-icon li.active .roo-navigation-bar-item-icon:after{
     background: #27AE60;
     color: white;
 }
