@@ -146,6 +146,11 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         }
         
         this.el.removeClass('disabled');
+    },
+    
+    tooltipEl : function()
+    {
+        return this.iconEl;
     }
     
     
