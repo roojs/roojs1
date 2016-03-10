@@ -18,7 +18,8 @@
 
 Roo.bootstrap.NavProgressBar = function(config){
     Roo.bootstrap.NavProgressBar.superclass.constructor.call(this, config);
-//    this.items = [];
+
+    this.items = this.items || [];
    
 //    Roo.bootstrap.NavProgressBar.register(this);
      this.addEvents({
