@@ -59,7 +59,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'span',
-                    cls : 'roo-navigation-bar-item-text ' + this.position,
+                    cls : 'roo-navigation-bar-item-text',
                     html : this.html
                 },
                 {
