@@ -112,3 +112,6 @@ Roo.bootstrap.Alert
 Roo.bootstrap.UploadCropbox
 Roo.bootstrap.DocumentManager
 Roo.bootstrap.DocumentViewer
+
+Roo.bootstrap.NavProgressBar
+Roo.bootstrap.NavProgressItem
