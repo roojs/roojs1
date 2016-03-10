@@ -169,7 +169,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.setActiveItem(this.items[i-1]);
+        this.setActiveItem(this.barItems[i-1]);
     },
     
     formatBullets : function()
