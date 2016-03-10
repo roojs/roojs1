@@ -63,7 +63,6 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
             }, this);
         }
         
-        
     },
     
     initEvents: function() 
