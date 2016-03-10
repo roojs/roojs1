@@ -79,17 +79,20 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     */
     getActive : function()
     {
+        var active = false;
         
-        var prev = false;
-        Roo.each(this.navItems, function(v){
+        Roo.each(this.items, function(v){
             
-            if (v.isActive()) {
-                prev = v;
-                
+            if (!v.isActive()) {
+                return;
             }
             
+            active = v;
+            return false;
+            
         });
-        return prev;
+        
+        return active;
     },
     
     indexOfNav : function()
