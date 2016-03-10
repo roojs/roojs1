@@ -67,8 +67,6 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        Roo.log('items!!!!!!!!!!!1');
-        Roo.log(this.items);
         
     },
     

@@ -73,7 +73,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        Roo.log('bar item init???');
+        
     }
 //    
 //    onClick : function(e)
