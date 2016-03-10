@@ -1099,3 +1099,9 @@ return A;},initEvents:function(){this.bodyEl=this.el.select('.roo-document-viewe
 this.imageEl=this.el.select('.roo-document-viewer-image',true).first();this.imageEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay='block';this.footerEl=this.el.select('.roo-document-viewer-footer',true).first();this.footerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay='block';
 this.trashBtn=this.el.select('.roo-document-viewer-trash',true).first();this.trashBtn.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay='block';this.bodyEl.on('click',this.onClick,this);this.trashBtn.on('click',this.onTrash,this);},initial:function(){this.fireEvent('initial',this);
 },onClick:function(e){e.preventDefault();this.fireEvent('click',this);},onTrash:function(e){e.preventDefault();this.fireEvent('trash',this);}});
+// Roo/bootstrap/NavProgressBar.js
+Roo.bootstrap.NavProgressBar=function(A){Roo.bootstrap.NavProgressBar.superclass.constructor.call(this,A);this.items=[];this.addEvents({'changed':true});};Roo.extend(Roo.bootstrap.NavProgressBar,Roo.bootstrap.Component,{items:[],navId:'',getAutoCreate:function(){var A=Roo.apply({},Roo.bootstrap.NavProgressBar.superclass.getAutoCreate.call(this));
+A={tag:'ul',cls:'roo-navigation-bar'};return A;}});
+// Roo/bootstrap/NavProgressItem.js
+Roo.bootstrap.NavProgressItem=function(A){Roo.bootstrap.NavProgressItem.superclass.constructor.call(this,A);this.addEvents({"click":true,'changed':true});};Roo.extend(Roo.bootstrap.NavProgressItem,Roo.bootstrap.Component,{tabId:'',active:false,disabled:false,getAutoCreate:function(){var A={tag:'li',cls:'roo-navigation-bar-item'};if(this.active){A.cls+=' active';
+}if(this.disabled){A.cls+=' disabled';}return A;}});
