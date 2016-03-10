@@ -10,7 +10,7 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap NavProgressItem class
  * @cfg {String} tabId the tab that this item activates.
- * @cfg {Boolean} active Is item active
+ * @cfg {Boolean} active (true|false) Is item active default false
  * 
  * @constructor
  * Create a new NavProgressItem
@@ -42,6 +42,7 @@ Roo.bootstrap.NavProgressItem = function(config){
 Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     
     tabId : '',
+    active : false,
     
     getAutoCreate : function()
     {
