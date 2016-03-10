@@ -36,8 +36,8 @@ Roo.bootstrap.NavProgressBar = function(config){
 
 Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
-    bullets : false,
-    barItems : false,
+    bullets : [],
+    barItems : [],
     
     
     getAutoCreate : function()
@@ -78,6 +78,8 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         
         item.parentId = this.id;
         item.onRender(this.el, null);
+        
+        this.barItems.push(item);
         
         return item;
     }
