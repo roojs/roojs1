@@ -86,10 +86,14 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     formatBullets : function()
     {
-        var width = this.barItems.length / 100;
+        if(!this.barItems.length){
+            return;
+        }
+        
+        var width = 100 / this.barItems.length;
         
         Roo.each(this.barItems, function(i){
-            i.el.setStyle('width', width);
+            i.el.setStyle('width', width + '%');
         }, this);
     }
 //    
