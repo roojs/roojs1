@@ -103,7 +103,6 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         
         this.parent().setActiveItem(this);
         
-        this.fireEvent('click', this, e);
     },
     
     isActive: function () 
