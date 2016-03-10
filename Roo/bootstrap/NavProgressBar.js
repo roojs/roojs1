@@ -61,7 +61,8 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
             Roo.each(this.items, function(i){
                Roo.factory(i).onRender(this.el, null);
             }, this);
-        }   
+        }
+        
         
     },
     
