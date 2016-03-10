@@ -63,24 +63,12 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+    },
+    
+    initEvents: function() 
+    {
+        Roo.log('bar item init???');
     }
-//    initEvents: function() 
-//    {
-//        if (typeof (this.menu) != 'undefined') {
-//            this.menu.parentType = this.xtype;
-//            this.menu.triggerEl = this.el;
-//            this.menu = this.addxtype(Roo.apply({}, this.menu));
-//        }
-//        
-//        this.el.select('a',true).on('click', this.onClick, this);
-//        
-//        if(this.tagtype == 'span'){
-//            this.el.select('span',true).on('click', this.onClick, this);
-//        }
-//       
-//        // at this point parent should be available..
-//        this.parent().register(this);
-//    },
 //    
 //    onClick : function(e)
 //    {
