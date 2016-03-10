@@ -101,12 +101,13 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
                 return ;
             }
             if (v.isActive()) {
-                v.setActive(false, true);
+                v.setActive(false);
                 prev = v;
             }
         });
 
-        item.setActive(true, true);
+        item.setActive(true);
+        
         this.fireEvent('changed', this, item, prev);
     }
 //    
