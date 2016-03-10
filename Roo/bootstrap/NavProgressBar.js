@@ -164,11 +164,14 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     setActiveNext : function()
     {
         var i = this.indexOfNav(this.getActive());
-        if (i > this.navItems.length) {
+        
+        if (i > this.items.length) {
             return;
         }
-        this.setActiveItem(this.navItems[i+1]);
+        
+        this.setActiveItem(this.items[i+1]);
     },
+    
     setActivePrev : function()
     {
         var i = this.indexOfNav(this.getActive());
