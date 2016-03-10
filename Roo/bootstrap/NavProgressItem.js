@@ -70,7 +70,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         }
         
         if(this.position == 'top'){
-            cfg.cn.push(
+            cfg.cn = [
                 {
                     tag : 'span',
                     cls : 'roo-navigation-bar-item-text',
@@ -80,7 +80,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
                     tag : 'i',
                     cls : 'roo-navigation-bar-item-icon'
                 }
-            ); 
+            ]; 
         }
         
         if(this.active){
