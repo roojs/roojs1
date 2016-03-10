@@ -62,37 +62,6 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
             cfg.cls += ' disabled';
         }
         
-        if (this.href || this.html || this.glyphicon || this.icon) {
-            cfg.cn = [
-                {
-                    tag: this.tagtype,
-                    href : this.href || "#",
-                    html: this.html || ''
-                }
-            ];
-            
-            if (this.icon) {
-                cfg.cn[0].html = '<i class="'+this.icon+'"></i> <span>' + cfg.cn[0].html + '</span>'
-            }
-
-            if(this.glyphicon) {
-                cfg.cn[0].html = '<span class="glyphicon glyphicon-' + this.glyphicon + '"></span> '  + cfg.cn[0].html;
-            }
-            
-            if (this.menu) {
-                
-                cfg.cn[0].html += " <span class='caret'></span>";
-             
-            }
-            
-            if (this.badge !== '') {
-                 
-                cfg.cn[0].html += ' <span class="badge">' + this.badge + '</span>';
-            }
-        }
-        
-        
-        
         return cfg;
     },
     initEvents: function() 
