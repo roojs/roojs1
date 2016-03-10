@@ -44,13 +44,15 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     
     active : false,
     disabled : false,
+    html : '',
     
     getAutoCreate : function()
     {
          
         var cfg = {
             tag: 'li',
-            cls: 'roo-navigation-bar-item'
+            cls: 'roo-navigation-bar-item',
+            html : ''
             
         }
         
