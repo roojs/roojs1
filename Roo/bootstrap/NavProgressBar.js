@@ -65,11 +65,6 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         
     },
     
-    initEvents: function() 
-    {
-        
-    },
-    
     addItem : function(cfg)
     {
         var item = new Roo.bootstrap.NavProgressItem(cfg);
