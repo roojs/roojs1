@@ -63,13 +63,23 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
             }, this);
         }
         
-    }
+    },
     
     initEvents: function() 
     {
         Roo.log('items!!!!!!!!!!!1');
         Roo.log(this.items);
         
+    },
+    
+    addItem : function(cfg)
+    {
+        var item = new Roo.bootstrap.NavProgressItem(cfg);
+        
+        item.parentId = this.id;
+        item.onRender(this.el, null);
+        
+        return item;
     }
 //    
 //    
