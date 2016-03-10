@@ -180,10 +180,11 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.setActiveItem(this.navItems[i-1]);
+        this.setActiveItem(this.items[i-1]);
     },
+    
     clearWasActive : function(except) {
-        Roo.each(this.navItems, function(e) {
+        Roo.each(this.items, function(e) {
             if (e.tabId != except.tabId && e.was_active) {
                e.was_active = false;
                return false;
@@ -192,6 +193,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
             
         });
     },
+    
     getWasActive : function ()
     {
         var r = false;
