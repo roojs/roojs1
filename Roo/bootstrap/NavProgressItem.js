@@ -9,7 +9,8 @@
  * @class Roo.bootstrap.NavProgressItem
  * @extends Roo.bootstrap.Component
  * Bootstrap NavProgressItem class
-  
+ * @cfg {String} tabId the tab that this item activates.
+ * 
  * @constructor
  * Create a new NavProgressItem
  * @param {Object} config The config object
