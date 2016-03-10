@@ -66,15 +66,16 @@
     color: white;
 }
 
+.roo-navigation-bar li.roo-navigation-bar-item.fa-history:before {
+    content: "\f1da";
+}
+
 /*
 marking active/completed steps green
 The number of the step and the connector before it = green
 
 
-.roo-navigation-bar li.roo-navigation-bar-item.fa-history:before {
-    font-family: FontAwesome;
-    content: "\f1da";
-}*/
+*/
 
 
 
