@@ -78,4 +78,5 @@
 .roo-navigation-bar .roo-navigation-bar-item.disabled .roo-navigation-bar-item-icon:before {
     background: #999999;
     color: white;
+    cursor: not-allowed;
 }
