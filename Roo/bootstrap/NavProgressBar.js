@@ -96,6 +96,23 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         return active;
     },
     
+    indexOfNav : function()
+    {
+        var index = false;
+        
+        Roo.each(this.items, function(v,i){
+            
+            if (!v.isActive()) {
+                return;
+            }
+            
+            index = i;
+            return false
+        });
+        
+        return index;
+    },
+    
     /**
     * adds a Navigation item
     * @param {Roo.bootstrap.NavProgressItem} the NavProgressItem to add
@@ -133,7 +150,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     getNavItem: function(tabId)
     {
         var ret = false;
-        Roo.each(this.navItems, function(e) {
+        Roo.each(this.items, function(e) {
             if (e.tabId == tabId) {
                ret =  e;
                return false;
