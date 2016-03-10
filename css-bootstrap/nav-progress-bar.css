@@ -2,6 +2,7 @@
 .roo-navigation-bar {
     counter-reset: step;
     text-align: center;
+    height: 73px;
     padding: 0px;
 }
 
