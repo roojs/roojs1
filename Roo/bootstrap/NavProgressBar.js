@@ -90,6 +90,25 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         Roo.each(this.barItems, function(i){
             i.el.setStyle('width', width + '%');
         }, this);
+    },
+    
+    setActiveItem : function(item)
+    {
+        var prev = false;
+        Roo.each(this.items, function(v){
+            if (v == item) {
+                return ;
+            }
+            if (v.isActive()) {
+                v.setActive(false, true);
+                prev = v;
+                
+            }
+            
+        });
+
+        item.setActive(true, true);
+        this.fireEvent('changed', this, item, prev);
     }
 //    
 //    
