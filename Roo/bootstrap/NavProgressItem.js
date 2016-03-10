@@ -103,7 +103,11 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
-        Roo.log(this);
+        if(this.disabled){
+            return;
+        }
+        
+        this.fireEvent('click', this);
     }
     
     
