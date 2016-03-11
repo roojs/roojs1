@@ -70,7 +70,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         var item = new Roo.bootstrap.NavProgressItem(cfg);
         
         item.parentId = this.id;
-        item.onRender(this.el, null);
+        item.render(this.el, null);
         
         this.barItems.push(item);
         
