@@ -25605,10 +25605,8 @@ Roo.apply(Roo.bootstrap.UploadCropbox, {
  * @cfg {String} paramName default 'imageUpload'
  * @cfg {String} method default POST
  * @cfg {String} url action url
- * @cfg {Number} boxes number of boxes default 12
+ * @cfg {Number} boxes number of boxes, 0 is no limit.. default 0
  * @cfg {Boolean} multiple multiple upload default true
- * @cfg {Number} minWidth default 300
- * @cfg {Number} minHeight default 300
  * @cfg {Number} thumbSize default 300
  * @cfg {String} fieldLabel
  * @cfg {Number} labelWidth default 4
@@ -25690,10 +25688,8 @@ Roo.bootstrap.DocumentManager = function(config){
 
 Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
-    boxes : 12,
+    boxes : 0,
     inputName : '',
-    minWidth : 300,
-    minHeight : 300,
     thumbSize : 300,
     multiple : true,
     files : [],
@@ -25891,13 +25887,13 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(this.files.length > this.boxes){
+        if(this.boxes > 0 && this.files.length > this.boxes){
             this.files = this.files.slice(0, this.boxes);
         }
         
         this.uploader.show();
         
-        if(this.files.length > this.boxes - 1){
+        if(this.boxes > 0 && this.files.length > this.boxes - 1){
             this.uploader.hide();
         }
         
@@ -25958,7 +25954,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         this.uploader.show();
         
-        if(this.files.length > this.boxes - 1){
+        if(this.boxes > 0 && this.files.length > this.boxes - 1){
             this.uploader.hide();
         }
         
@@ -25990,6 +25986,22 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }, this);
         
         this.files = files;
+        
+        this.refresh();
+    },
+    
+    clear : function()
+    {
+        Roo.each(this.files, function(file){
+            if(!file.target){
+                return;
+            }
+            
+            file.target.remove();
+
+        }, this);
+        
+        this.files = [];
         
         this.refresh();
     },
