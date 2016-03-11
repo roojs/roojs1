@@ -97,11 +97,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
                 }
             }
             this.onRender(container, position || null);
-            
-            if(this.style){
-                this.el.applyStyles(this.style);
-                delete this.style;
-            }
+             
             this.fireEvent("render", this);
             this.afterRender(this.container);
             if(this.hidden){
