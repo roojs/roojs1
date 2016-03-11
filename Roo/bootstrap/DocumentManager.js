@@ -314,6 +314,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
             
+            if(file.type.indexOf('image') != -1){
+                
+            }
+            
             this.delegates.push(
                 (function(){
                     _this.process(file);
