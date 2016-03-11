@@ -25901,6 +25901,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         var files = [];
         
+        var docs = [];
+        
         Roo.each(this.files, function(file){
             
             if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
@@ -25909,7 +25911,17 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
                 return;
             }
             
-            this.delegates.push(
+            if(file.type.indexOf('image') != -1){
+                this.delegates.push(
+                    (function(){
+                        _this.process(file);
+                    }).createDelegate(this)
+                );
+        
+                return;
+            }
+            
+            docs.push(
                 (function(){
                     _this.process(file);
                 }).createDelegate(this)
@@ -25918,6 +25930,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         }, this);
         
         this.files = files;
+        
+        this.delegates = this.delegates.concat(docs);
         
         if(!this.delegates.length){
             this.refresh();
