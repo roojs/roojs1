@@ -96,12 +96,23 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
                     position = Roo.getDom(position);
                 }
             }
-            this.onRender(container, position || null);
-             
-            this.fireEvent("render", this); 
+            this.onRender(this.container, position || null);
+            if(this.cls){
+                this.el.addClass(this.cls);
+                delete this.cls;
+            }
+            if(this.style){
+                this.el.applyStyles(this.style);
+                delete this.style;
+            }
+            this.fireEvent("render", this);
+            this.afterRender(this.container);
             if(this.hidden){
                 this.hide();
-            } 
+            }
+            if(this.disabled){
+                this.disable();
+            }
         }
         return this;
     },
