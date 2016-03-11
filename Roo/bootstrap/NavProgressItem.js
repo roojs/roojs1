@@ -106,7 +106,6 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         };
         
         this.parent().setActiveItem(this);
-        
     },
     
     isActive: function () 
