@@ -26388,8 +26388,8 @@ Roo.bootstrap.NavProgressBar = function(config){
 
 Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
-    bullets : false,
-    barItems : false,
+    bullets : [],
+    barItems : [],
     
     
     getAutoCreate : function()
@@ -26410,211 +26410,135 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
         
         if(this.bullets.length){
-            Roo.each(this.bullets, function(i){
-               
+            Roo.each(this.bullets, function(b){
+               this.addItem(b);
             }, this);
         }
         
-        
     },
     
-    initEvents: function() 
+    addItem : function(cfg)
     {
-        Roo.log('items!!!!!!!!!!!1');
-        Roo.log(this.items);
-    }
-//    
-//    
-//    /**
-//    * sets the active Navigation item
-//    * @param {Roo.bootstrap.NavProgressItem} the new current navitem
-//    */
-//    setActiveItem : function(item)
-//    {
-//        var prev = false;
-//        Roo.each(this.items, function(v){
-//            if (v == item) {
-//                return ;
-//            }
-//            if (v.isActive()) {
-//                v.setActive(false, true);
-//                prev = v;
-//                
-//            }
-//            
-//        });
-//
-//        item.setActive(true, true);
-//        this.fireEvent('changed', this, item, prev);
-//    },
-//    
-//    /**
-//    * gets the active Navigation item
-//    * @return {Roo.bootstrap.NavProgressItem} the current navitem
-//    */
-//    getActive : function()
-//    {
-//        var active = false;
-//        
-//        Roo.each(this.items, function(v){
-//            
-//            if (!v.isActive()) {
-//                return;
-//            }
-//            
-//            active = v;
-//            return false;
-//            
-//        });
-//        
-//        return active;
-//    },
-//    
-//    indexOfNav : function(item)
-//    {
-//        var index = false;
-//        
-//        Roo.each(this.items, function(v,i){
-//            
-//            if (v != item) {
-//                return;
-//            }
-//            
-//            index = i;
-//            return false
-//        });
-//        
-//        return index;
-//    },
-//    
-//    /**
-//    * adds a Navigation item
-//    * @param {Roo.bootstrap.NavProgressItem} the NavProgressItem to add
-//    */
-//    addItem : function(cfg)
-//    {
-//        var cn = new Roo.bootstrap.NavProgressItem(cfg);
-//        this.register(cn);
-//        cn.parentId = this.id;
-//        cn.onRender(this.el, null);
-//        return cn;
-//    },
-//    
-//    /**
-//    * register a Navigation item
-//    * @param {Roo.bootstrap.NavItem} the navitem to add
-//    */
-//    register : function(item)
-//    {
-//        this.items.push(item);
-//        item.navId = this.navId;
-//    
-//    },
-//    
-//    /**
-//    * clear all the Navigation item
-//    */
-//   
-//    clearAll : function()
-//    {
-//        this.items = [];
-//        this.el.dom.innerHTML = '';
-//    },
-//    
-//    getNavItem: function(tabId)
-//    {
-//        var ret = false;
-//        Roo.each(this.items, function(e) {
-//            if (e.tabId == tabId) {
-//               ret =  e;
-//               return false;
-//            }
-//            return true;
-//            
-//        });
-//        return ret;
-//    },
-//    
-//    setActiveNext : function()
-//    {
-//        var i = this.indexOfNav(this.getActive());
-//        
-//        if (i > this.items.length) {
-//            return;
-//        }
-//        
-//        this.setActiveItem(this.items[i+1]);
-//    },
-//    
-//    setActivePrev : function()
-//    {
-//        var i = this.indexOfNav(this.getActive());
-//        
-//        if (i  < 1) {
-//            return;
-//        }
-//        
-//        this.setActiveItem(this.items[i-1]);
-//    },
-//    
-//    clearWasActive : function(except) {
-//        Roo.each(this.items, function(e) {
-//            if (e.tabId != except.tabId && e.was_active) {
-//               e.was_active = false;
-//               return false;
-//            }
-//            return true;
-//            
-//        });
-//    },
-//    
-//    getWasActive : function ()
-//    {
-//        var r = false;
-//        Roo.each(this.items, function(e) {
-//            if (e.was_active) {
-//               r = e;
-//               return false;
-//            }
-//            return true;
-//            
-//        });
-//        return r;
-//    }
+        var item = new Roo.bootstrap.NavProgressItem(cfg);
+        
+        item.parentId = this.id;
+        item.onRender(this.el, null);
+        
+        this.barItems.push(item);
+        
+        this.formatBullets();
+        
+        return item;
+    },
     
+    getActive : function()
+    {
+        var active = false;
+        
+        Roo.each(this.barItems, function(v){
+            
+            if (!v.isActive()) {
+                return;
+            }
+            
+            active = v;
+            return false;
+            
+        });
+        
+        return active;
+    },
+    
+    setActiveItem : function(item)
+    {
+        var prev = false;
+        
+        Roo.each(this.barItems, function(v){
+            if (v.rid == item.rid) {
+                return ;
+            }
+            
+            if (v.isActive()) {
+                v.setActive(false);
+                prev = v;
+            }
+        });
+
+        item.setActive(true);
+        
+        this.fireEvent('changed', this, item, prev);
+    },
+    
+    getBarItem: function(rid)
+    {
+        var ret = false;
+        
+        Roo.each(this.barItems, function(e) {
+            if (e.rid != rid) {
+                return;
+            }
+            
+            ret =  e;
+            return false;
+        });
+        
+        return ret;
+    },
+    
+    indexOfItem : function(item)
+    {
+        var index = false;
+        
+        Roo.each(this.barItems, function(v, i){
+            
+            if (v.rid != item.rid) {
+                return;
+            }
+            
+            index = i;
+            return false
+        });
+        
+        return index;
+    },
+    
+    setActiveNext : function()
+    {
+        var i = this.indexOfItem(this.getActive());
+        
+        if (i > this.barItems.length) {
+            return;
+        }
+        
+        this.setActiveItem(this.barItems[i+1]);
+    },
+    
+    setActivePrev : function()
+    {
+        var i = this.indexOfItem(this.getActive());
+        
+        if (i  < 1) {
+            return;
+        }
+        
+        this.setActiveItem(this.barItems[i-1]);
+    },
+    
+    formatBullets : function()
+    {
+        if(!this.barItems.length){
+            return;
+        }
+        
+        var width = 100 / this.barItems.length;
+        
+        Roo.each(this.barItems, function(i){
+            i.el.setStyle('width', width + '%');
+        }, this);
+    }
     
 });
-
-// 
-//Roo.apply(Roo.bootstrap.NavProgressBar, {
-//    
-//    groups: {},
-//     /**
-//    * register a Navigation Group
-//    * @param {Roo.bootstrap.NavGroup} the navgroup to add
-//    */
-//    register : function(bar)
-//    {
-//        this.groups[bar.navId] = bar;
-//	
-//    },
-//    /**
-//    * fetch a Navigation Bar based on the navigation ID
-//    * @param {string} the nav bar to add
-//    * @returns {Roo.bootstrap.NavProgressBar} the nav bar
-//    */
-//    get: function(navId) 
-//    {
-//        if (typeof(this.groups[navId]) == 'undefined') {
-//            return false;
-//        }
-//        
-//        return this.groups[navId] ;
-//    }
-//    
-//});
-
- /*
+/*
  * - LGPL
  *
  * Nav Progress Item
@@ -26625,9 +26549,13 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.NavProgressItem
  * @extends Roo.bootstrap.Component
  * Bootstrap NavProgressItem class
+ * @cfg {String} rid the reference id
  * @cfg {Boolean} active (true|false) Is item active default false
  * @cfg {Boolean} disabled (true|false) Is item active default false
  * @cfg {String} html
+ * @cfg {String} position (top|bottom) text position default bottom
+ * @cfg {String} icon show icon instead of number
+ * @cfg {Boolean} forceIcon (true|false) true to force show icon..if set to false, Roo.isTouch showing icon, otherwish number
  * 
  * @constructor
  * Create a new NavProgressItem
@@ -26643,44 +26571,49 @@ Roo.bootstrap.NavProgressItem = function(config){
          * @param {Roo.bootstrap.NavProgressItem} this
          * @param {Roo.EventObject} e
          */
-        "click" : true,
-	 /**
-	    * @event changed
-	    * Fires when the active item active state changes
-	    * @param {Roo.bootstrap.NavProgressItem} this
-	    * @param {boolean} state the new state
-	     
-         */
-        'changed': true
+        "click" : true
     });
    
 };
 
 Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     
+    rid : '',
     active : false,
     disabled : false,
     html : '',
+    position : 'bottom',
+    icon : false,
+    forceIcon : false,
     
     getAutoCreate : function()
     {
-         
+        var iconCls = 'roo-navigation-bar-item-icon';
+        
+        if((this.forceIcon && this.icon) || !this.forceIcon && Roo.isTouch){
+            iconCls += ' ' + this.icon;
+        }
+        
         var cfg = {
             tag: 'li',
             cls: 'roo-navigation-bar-item',
             cn : [
                 {
+                    tag : 'i',
+                    cls : iconCls
+                },
+                {
                     tag : 'span',
-                    cls : 'roo-navigation-bar-item-text',
+                    cls : 'roo-navigation-bar-item-text ' + this.position,
                     html : this.html
                 }
             ]
         }
         
-        if (this.active) {
+        if(this.active){
             cfg.cls += ' active';
         }
-        if (this.disabled) {
+        if(this.disabled){
             cfg.cls += ' disabled';
         }
         
@@ -26689,174 +26622,75 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        Roo.log('bar item init???');
+        this.iconEl = this.el.select('.roo-navigation-bar-item-icon', true).first();
+        this.textEl = this.el.select('.roo-navigation-bar-item-text', true).first();
+        
+        if(Roo.isTouch){
+            this.textEl.setVisibilityMode(Roo.Element.DISPLAY).hide();
+        }
+        
+        this.iconEl.on('click', this.onClick, this);
+        
+    },
+    
+    onClick : function(e)
+    {
+        e.preventDefault();
+        
+        if(this.disabled){
+            return;
+        }
+        
+        if(this.fireEvent('click', this, e) === false){
+            return;
+        };
+        
+        this.parent().setActiveItem(this);
+    },
+    
+    isActive: function () 
+    {
+        return this.active;
+    },
+    
+    setActive : function(state)
+    {
+        if(this.active == state){
+            return;
+        }
+        
+        this.active = state;
+        
+        if (state) {
+            this.el.addClass('active');
+            return;
+        }
+        
+        this.el.removeClass('active');
+        
+        return;
+    },
+    
+    setDisabled : function(state)
+    {
+        if(this.disabled == state){
+            return;
+        }
+        
+        this.disabled = state;
+        
+        if (state) {
+            this.el.addClass('disabled');
+            return;
+        }
+        
+        this.el.removeClass('disabled');
+    },
+    
+    tooltipEl : function()
+    {
+        return this.el.select('.roo-navigation-bar-item-icon', true).first();;
     }
-//    
-//    onClick : function(e)
-//    {
-//        if(
-//                this.preventDefault || 
-//                this.href == '#' 
-//        ){
-//            
-//            e.preventDefault();
-//        }
-//        
-//        if (this.disabled) {
-//            return;
-//        }
-//        
-//        var tg = Roo.bootstrap.TabGroup.get(this.navId);
-//        if (tg && tg.transition) {
-//            Roo.log("waiting for the transitionend");
-//            return;
-//        }
-//        
-//        
-//        
-//        //Roo.log("fire event clicked");
-//        if(this.fireEvent('click', this, e) === false){
-//            return;
-//        };
-//        
-//        if(this.tagtype == 'span'){
-//            return;
-//        }
-//        
-//        //Roo.log(this.href);
-//        var ael = this.el.select('a',true).first();
-//        //Roo.log(ael);
-//        
-//        if(ael && this.animateRef && this.href.indexOf('#') > -1){
-//            //Roo.log(["test:",ael.dom.href.split("#")[0], document.location.toString().split("#")[0]]);
-//            if (ael.dom.href.split("#")[0] != document.location.toString().split("#")[0]) {
-//                return; // ignore... - it's a 'hash' to another page.
-//            }
-//            
-//            e.preventDefault();
-//            this.scrollToElement(e);
-//        }
-//        
-//        
-//        var p =  this.parent();
-//   
-//        if (['tabs','pills'].indexOf(p.type)!==-1) {
-//            if (typeof(p.setActiveItem) !== 'undefined') {
-//                p.setActiveItem(this);
-//            }
-//        }
-//        
-//        // if parent is a navbarheader....- and link is probably a '#' page ref.. then remove the expanded menu.
-//        if (p.parentType == 'NavHeaderbar' && !this.menu) {
-//            // remove the collapsed menu expand...
-//            p.parent().el.select('.navbar-collapse',true).removeClass('in');  
-//        }
-//    },
-//    
-//    isActive: function () {
-//        return this.active
-//    },
-//    setActive : function(state, fire, is_was_active)
-//    {
-//        if (this.active && !state && this.navId) {
-//            this.was_active = true;
-//            var nv = Roo.bootstrap.NavGroup.get(this.navId);
-//            if (nv) {
-//                nv.clearWasActive(this);
-//            }
-//            
-//        }
-//        this.active = state;
-//        
-//        if (!state ) {
-//            this.el.removeClass('active');
-//        } else if (!this.el.hasClass('active')) {
-//            this.el.addClass('active');
-//        }
-//        if (fire) {
-//            this.fireEvent('changed', this, state);
-//        }
-//        
-//        // show a panel if it's registered and related..
-//        
-//        if (!this.navId || !this.tabId || !state || is_was_active) {
-//            return;
-//        }
-//        
-//        var tg = Roo.bootstrap.TabGroup.get(this.navId);
-//        if (!tg) {
-//            return;
-//        }
-//        var pan = tg.getPanelByName(this.tabId);
-//        if (!pan) {
-//            return;
-//        }
-//        // if we can not flip to new panel - go back to old nav highlight..
-//        if (false == tg.showPanel(pan)) {
-//            var nv = Roo.bootstrap.NavGroup.get(this.navId);
-//            if (nv) {
-//                var onav = nv.getWasActive();
-//                if (onav) {
-//                    onav.setActive(true, false, true);
-//                }
-//            }
-//            
-//        }
-//        
-//        
-//	
-//    },
-//     // this should not be here...
-//    setDisabled : function(state)
-//    {
-//        this.disabled = state;
-//        if (!state ) {
-//            this.el.removeClass('disabled');
-//        } else if (!this.el.hasClass('disabled')) {
-//            this.el.addClass('disabled');
-//        }
-//        
-//    },
-//    
-//    /**
-//     * Fetch the element to display the tooltip on.
-//     * @return {Roo.Element} defaults to this.el
-//     */
-//    tooltipEl : function()
-//    {
-//        return this.el.select('' + this.tagtype + '', true).first();
-//    },
-//    
-//    scrollToElement : function(e)
-//    {
-//        var c = document.body;
-//        
-//        /*
-//         * Firefox / IE places the overflow at the html level, unless specifically styled to behave differently.
-//         */
-//        if(Roo.isFirefox || Roo.isIE || Roo.isIE11){
-//            c = document.documentElement;
-//        }
-//        
-//        var target = Roo.get(c).select('a[name=' + this.href.split('#')[1] +']', true).first();
-//        
-//        if(!target){
-//            return;
-//        }
-//
-//        var o = target.calcOffsetsTo(c);
-//        
-//        var options = {
-//            target : target,
-//            value : o[1]
-//        }
-//        
-//        this.fireEvent('scrollto', this, options, e);
-//        
-//        Roo.get(c).scrollTo('top', options.value, true);
-//        
-//        return;
-//    }
 });
  
 

@@ -9,9 +9,13 @@
  * @class Roo.bootstrap.NavProgressItem
  * @extends Roo.bootstrap.Component
  * Bootstrap NavProgressItem class
+ * @cfg {String} rid the reference id
  * @cfg {Boolean} active (true|false) Is item active default false
  * @cfg {Boolean} disabled (true|false) Is item active default false
  * @cfg {String} html
+ * @cfg {String} position (top|bottom) text position default bottom
+ * @cfg {String} icon show icon instead of number
+ * @cfg {Boolean} forceIcon (true|false) true to force show icon..if set to false, Roo.isTouch showing icon, otherwish number
  * 
  * @constructor
  * Create a new NavProgressItem
@@ -27,44 +31,49 @@
          * @param {Roo.bootstrap.NavProgressItem} this
          * @param {Roo.EventObject} e
          */
-        </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
-	 </span><span class="jsdoc-comment">/**
-	    * @event changed
-	    * Fires when the active item active state changes
-	    * @param {Roo.bootstrap.NavProgressItem} this
-	    * @param {boolean} state the new state
-	     
-         */
-        </span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;click&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
    
 };
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.NavProgressItem</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
+    </span><span class="jsdoc-var">rid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">active </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">disabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">position </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">icon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">forceIcon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-         
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">iconCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'roo-navigation-bar-item-icon'</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.forceIcon </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">) || !</span><span class="jsdoc-var">this.forceIcon </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">iconCls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">;
+        }
+        
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-navigation-bar-item'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                 {
+                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">iconCls
+                </span><span class="jsdoc-syntax">},
+                {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-navigation-bar-item-text'</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-navigation-bar-item-text ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
                 </span><span class="jsdoc-syntax">}
             ]
         }
         
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.active</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.active</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' active'</span><span class="jsdoc-syntax">;
         }
-        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">cfg.cls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' disabled'</span><span class="jsdoc-syntax">;
         }
         
@@ -73,175 +82,76 @@
     
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
     {
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bar item init???'</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">this.iconEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-navigation-bar-item-icon'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.textEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-navigation-bar-item-text'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.textEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
+        }
+        
+        </span><span class="jsdoc-var">this.iconEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) === </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        };
+        
+        </span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.setActiveItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">isActive</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function </span><span class="jsdoc-syntax">() 
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.active</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">setActive </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'active'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'active'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">setDisabled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">state</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'disabled'</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'disabled'</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">tooltipEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-navigation-bar-item-icon'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();;
     }
-</span><span class="jsdoc-comment">//    
-//    onClick : function(e)
-//    {
-//        if(
-//                this.preventDefault || 
-//                this.href == '#' 
-//        ){
-//            
-//            e.preventDefault();
-//        }
-//        
-//        if (this.disabled) {
-//            return;
-//        }
-//        
-//        var tg = Roo.bootstrap.TabGroup.get(this.navId);
-//        if (tg &amp;&amp; tg.transition) {
-//            Roo.log(&quot;waiting for the transitionend&quot;);
-//            return;
-//        }
-//        
-//        
-//        
-//        //Roo.log(&quot;fire event clicked&quot;);
-//        if(this.fireEvent('click', this, e) === false){
-//            return;
-//        };
-//        
-//        if(this.tagtype == 'span'){
-//            return;
-//        }
-//        
-//        //Roo.log(this.href);
-//        var ael = this.el.select('a',true).first();
-//        //Roo.log(ael);
-//        
-//        if(ael &amp;&amp; this.animateRef &amp;&amp; this.href.indexOf('#') &gt; -1){
-//            //Roo.log([&quot;test:&quot;,ael.dom.href.split(&quot;#&quot;)[0], document.location.toString().split(&quot;#&quot;)[0]]);
-//            if (ael.dom.href.split(&quot;#&quot;)[0] != document.location.toString().split(&quot;#&quot;)[0]) {
-//                return; // ignore... - it's a 'hash' to another page.
-//            }
-//            
-//            e.preventDefault();
-//            this.scrollToElement(e);
-//        }
-//        
-//        
-//        var p =  this.parent();
-//   
-//        if (['tabs','pills'].indexOf(p.type)!==-1) {
-//            if (typeof(p.setActiveItem) !== 'undefined') {
-//                p.setActiveItem(this);
-//            }
-//        }
-//        
-//        // if parent is a navbarheader....- and link is probably a '#' page ref.. then remove the expanded menu.
-//        if (p.parentType == 'NavHeaderbar' &amp;&amp; !this.menu) {
-//            // remove the collapsed menu expand...
-//            p.parent().el.select('.navbar-collapse',true).removeClass('in');  
-//        }
-//    },
-//    
-//    isActive: function () {
-//        return this.active
-//    },
-//    setActive : function(state, fire, is_was_active)
-//    {
-//        if (this.active &amp;&amp; !state &amp;&amp; this.navId) {
-//            this.was_active = true;
-//            var nv = Roo.bootstrap.NavGroup.get(this.navId);
-//            if (nv) {
-//                nv.clearWasActive(this);
-//            }
-//            
-//        }
-//        this.active = state;
-//        
-//        if (!state ) {
-//            this.el.removeClass('active');
-//        } else if (!this.el.hasClass('active')) {
-//            this.el.addClass('active');
-//        }
-//        if (fire) {
-//            this.fireEvent('changed', this, state);
-//        }
-//        
-//        // show a panel if it's registered and related..
-//        
-//        if (!this.navId || !this.tabId || !state || is_was_active) {
-//            return;
-//        }
-//        
-//        var tg = Roo.bootstrap.TabGroup.get(this.navId);
-//        if (!tg) {
-//            return;
-//        }
-//        var pan = tg.getPanelByName(this.tabId);
-//        if (!pan) {
-//            return;
-//        }
-//        // if we can not flip to new panel - go back to old nav highlight..
-//        if (false == tg.showPanel(pan)) {
-//            var nv = Roo.bootstrap.NavGroup.get(this.navId);
-//            if (nv) {
-//                var onav = nv.getWasActive();
-//                if (onav) {
-//                    onav.setActive(true, false, true);
-//                }
-//            }
-//            
-//        }
-//        
-//        
-//	
-//    },
-//     // this should not be here...
-//    setDisabled : function(state)
-//    {
-//        this.disabled = state;
-//        if (!state ) {
-//            this.el.removeClass('disabled');
-//        } else if (!this.el.hasClass('disabled')) {
-//            this.el.addClass('disabled');
-//        }
-//        
-//    },
-//    
-//    /**
-//     * Fetch the element to display the tooltip on.
-//     * @return {Roo.Element} defaults to this.el
-//     */
-//    tooltipEl : function()
-//    {
-//        return this.el.select('' + this.tagtype + '', true).first();
-//    },
-//    
-//    scrollToElement : function(e)
-//    {
-//        var c = document.body;
-//        
-//        /*
-//         * Firefox / IE places the overflow at the html level, unless specifically styled to behave differently.
-//         */
-//        if(Roo.isFirefox || Roo.isIE || Roo.isIE11){
-//            c = document.documentElement;
-//        }
-//        
-//        var target = Roo.get(c).select('a[name=' + this.href.split('#')[1] +']', true).first();
-//        
-//        if(!target){
-//            return;
-//        }
-//
-//        var o = target.calcOffsetsTo(c);
-//        
-//        var options = {
-//            target : target,
-//            value : o[1]
-//        }
-//        
-//        this.fireEvent('scrollto', this, options, e);
-//        
-//        Roo.get(c).scrollTo('top', options.value, true);
-//        
-//        return;
-//    }
-</span><span class="jsdoc-syntax">});
+});
  
 
  </span></code></body></html>

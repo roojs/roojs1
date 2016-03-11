@@ -30949,6 +30949,12 @@
   "Roo.bootstrap.NavProgressItem": {
    "props": [
     {
+     "name": "rid",
+     "type": "String",
+     "desc": "the reference id",
+     "memberOf": ""
+    },
+    {
      "name": "active",
      "type": "Boolean",
      "desc": "Is item active default false",
@@ -30973,6 +30979,32 @@
      "type": "String",
      "desc": "",
      "memberOf": ""
+    },
+    {
+     "name": "position",
+     "type": "String",
+     "desc": "text position default bottom",
+     "memberOf": "",
+     "optvals": [
+      "top",
+      "bottom"
+     ]
+    },
+    {
+     "name": "icon",
+     "type": "String",
+     "desc": "show icon instead of number",
+     "memberOf": ""
+    },
+    {
+     "name": "forceIcon",
+     "type": "Boolean",
+     "desc": "true to force show icon..if set to false, Roo.isTouch showing icon, otherwish number",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
     },
     {
      "name": "cls",
@@ -31081,12 +31113,6 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is shown.  Return false to stop the show."
-    },
-    {
-     "name": "changed",
-     "sig": "function (_self, state)\n{\n\n}",
-     "type": "function",
-     "desc": "Fires when the active item active state changes"
     },
     {
      "name": "childrenrendered",

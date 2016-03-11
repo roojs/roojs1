@@ -36,8 +36,8 @@
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.NavProgressBar</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
-    </span><span class="jsdoc-var">bullets </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">barItems </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">bullets </span><span class="jsdoc-syntax">: [],
+    </span><span class="jsdoc-var">barItems </span><span class="jsdoc-syntax">: [],
     
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -58,208 +58,132 @@
         </span><span class="jsdoc-var">Roo.bootstrap.NavProgressBar.superclass.onRender.call</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">ct</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">position</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bullets.length</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bullets</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
-               
+            </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.bullets</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">){
+               </span><span class="jsdoc-var">this.addItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">b</span><span class="jsdoc-syntax">);
             }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
         
-        
     },
     
-    </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
+    </span><span class="jsdoc-var">addItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'items!!!!!!!!!!!1'</span><span class="jsdoc-syntax">);
-        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.items</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">item </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">Roo.bootstrap.NavProgressItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">cfg</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">item.parentId </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.id</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">item.onRender</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">null</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.barItems.push</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.formatBullets</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">getActive </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.barItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">v.isActive</span><span class="jsdoc-syntax">()) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">active </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+            
+        });
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">active</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">setActiveItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">prev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.barItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.rid </span><span class="jsdoc-syntax">== </span><span class="jsdoc-var">item.rid</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return </span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.isActive</span><span class="jsdoc-syntax">()) {
+                </span><span class="jsdoc-var">v.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">);
+                </span><span class="jsdoc-var">prev </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">;
+            }
+        });
+
+        </span><span class="jsdoc-var">item.setActive</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'changed'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">prev</span><span class="jsdoc-syntax">);
+    },
+    
+    </span><span class="jsdoc-var">getBarItem</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">rid</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.barItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e.rid </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">rid</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">ret </span><span class="jsdoc-syntax">=  </span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        });
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">ret</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">indexOfItem </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">item</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.barItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
+            
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">v.rid </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-var">item.rid</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">index </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-keyword">return false
+        </span><span class="jsdoc-syntax">});
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">index</span><span class="jsdoc-syntax">;
+    },
+    
+    </span><span class="jsdoc-var">setActiveNext </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indexOfItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getActive</span><span class="jsdoc-syntax">());
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.barItems.length</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.setActiveItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.barItems</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">+1]);
+    },
+    
+    </span><span class="jsdoc-var">setActivePrev </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">i </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.indexOfItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getActive</span><span class="jsdoc-syntax">());
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i  </span><span class="jsdoc-syntax">&lt; 1) {
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">this.setActiveItem</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.barItems</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">-1]);
+    },
+    
+    </span><span class="jsdoc-var">formatBullets </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.barItems.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">= 100 / </span><span class="jsdoc-var">this.barItems.length</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.barItems</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">i</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">i.el.setStyle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'width'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">width </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'%'</span><span class="jsdoc-syntax">);
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     }
-</span><span class="jsdoc-comment">//    
-//    
-//    /**
-//    * sets the active Navigation item
-//    * @param {Roo.bootstrap.NavProgressItem} the new current navitem
-//    */
-//    setActiveItem : function(item)
-//    {
-//        var prev = false;
-//        Roo.each(this.items, function(v){
-//            if (v == item) {
-//                return ;
-//            }
-//            if (v.isActive()) {
-//                v.setActive(false, true);
-//                prev = v;
-//                
-//            }
-//            
-//        });
-//
-//        item.setActive(true, true);
-//        this.fireEvent('changed', this, item, prev);
-//    },
-//    
-//    /**
-//    * gets the active Navigation item
-//    * @return {Roo.bootstrap.NavProgressItem} the current navitem
-//    */
-//    getActive : function()
-//    {
-//        var active = false;
-//        
-//        Roo.each(this.items, function(v){
-//            
-//            if (!v.isActive()) {
-//                return;
-//            }
-//            
-//            active = v;
-//            return false;
-//            
-//        });
-//        
-//        return active;
-//    },
-//    
-//    indexOfNav : function(item)
-//    {
-//        var index = false;
-//        
-//        Roo.each(this.items, function(v,i){
-//            
-//            if (v != item) {
-//                return;
-//            }
-//            
-//            index = i;
-//            return false
-//        });
-//        
-//        return index;
-//    },
-//    
-//    /**
-//    * adds a Navigation item
-//    * @param {Roo.bootstrap.NavProgressItem} the NavProgressItem to add
-//    */
-//    addItem : function(cfg)
-//    {
-//        var cn = new Roo.bootstrap.NavProgressItem(cfg);
-//        this.register(cn);
-//        cn.parentId = this.id;
-//        cn.onRender(this.el, null);
-//        return cn;
-//    },
-//    
-//    /**
-//    * register a Navigation item
-//    * @param {Roo.bootstrap.NavItem} the navitem to add
-//    */
-//    register : function(item)
-//    {
-//        this.items.push(item);
-//        item.navId = this.navId;
-//    
-//    },
-//    
-//    /**
-//    * clear all the Navigation item
-//    */
-//   
-//    clearAll : function()
-//    {
-//        this.items = [];
-//        this.el.dom.innerHTML = '';
-//    },
-//    
-//    getNavItem: function(tabId)
-//    {
-//        var ret = false;
-//        Roo.each(this.items, function(e) {
-//            if (e.tabId == tabId) {
-//               ret =  e;
-//               return false;
-//            }
-//            return true;
-//            
-//        });
-//        return ret;
-//    },
-//    
-//    setActiveNext : function()
-//    {
-//        var i = this.indexOfNav(this.getActive());
-//        
-//        if (i &gt; this.items.length) {
-//            return;
-//        }
-//        
-//        this.setActiveItem(this.items[i+1]);
-//    },
-//    
-//    setActivePrev : function()
-//    {
-//        var i = this.indexOfNav(this.getActive());
-//        
-//        if (i  &lt; 1) {
-//            return;
-//        }
-//        
-//        this.setActiveItem(this.items[i-1]);
-//    },
-//    
-//    clearWasActive : function(except) {
-//        Roo.each(this.items, function(e) {
-//            if (e.tabId != except.tabId &amp;&amp; e.was_active) {
-//               e.was_active = false;
-//               return false;
-//            }
-//            return true;
-//            
-//        });
-//    },
-//    
-//    getWasActive : function ()
-//    {
-//        var r = false;
-//        Roo.each(this.items, function(e) {
-//            if (e.was_active) {
-//               r = e;
-//               return false;
-//            }
-//            return true;
-//            
-//        });
-//        return r;
-//    }
     
-    
-</span><span class="jsdoc-syntax">});
-
-</span><span class="jsdoc-comment">// 
-//Roo.apply(Roo.bootstrap.NavProgressBar, {
-//    
-//    groups: {},
-//     /**
-//    * register a Navigation Group
-//    * @param {Roo.bootstrap.NavGroup} the navgroup to add
-//    */
-//    register : function(bar)
-//    {
-//        this.groups[bar.navId] = bar;
-//	
-//    },
-//    /**
-//    * fetch a Navigation Bar based on the navigation ID
-//    * @param {string} the nav bar to add
-//    * @returns {Roo.bootstrap.NavProgressBar} the nav bar
-//    */
-//    get: function(navId) 
-//    {
-//        if (typeof(this.groups[navId]) == 'undefined') {
-//            return false;
-//        }
-//        
-//        return this.groups[navId] ;
-//    }
-//    
-//});
-
- </span></code></body></html>
+});
+</span></code></body></html>
