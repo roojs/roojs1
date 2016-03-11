@@ -21776,7 +21776,7 @@ Roo.extend(Roo.bootstrap.PagingToolbar, Roo.bootstrap.NavSimplebar, {
         var _this = this;
         
         if(this.buttons){
-            Roo.each(_this.buttons, function(e){
+            Roo.each(_this.buttons, function(e){ // this might need to use render????
                Roo.factory(e).onRender(_this.el, null);
             });
         }
@@ -26422,7 +26422,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         var item = new Roo.bootstrap.NavProgressItem(cfg);
         
         item.parentId = this.id;
-        item.onRender(this.el, null);
+        item.render(this.el, null);
         
         this.barItems.push(item);
         
@@ -26618,6 +26618,16 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         }
         
         return cfg;
+    },
+    
+    disable : function()
+    {
+        this.setDisabled(true);
+    },
+    
+    enable : function()
+    {
+        this.setDisabled(false);
     },
     
     initEvents: function() 
