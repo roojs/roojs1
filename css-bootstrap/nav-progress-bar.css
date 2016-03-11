@@ -54,12 +54,12 @@
     width: 90%;
     position: absolute;
     top: 49px;
-    left: 10%;
+    left: 5%;
 }
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-text.top {
     top: 0;
-    left: 10%;
+    left: 5%;
 }
 
 .roo-navigation-bar .roo-navigation-bar-item.active .roo-navigation-bar-item-icon:before {
