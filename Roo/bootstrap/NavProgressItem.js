@@ -85,6 +85,11 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         this.setDisabled(true);
     },
     
+    enable : function()
+    {
+        this.setDisabled(false);
+    },
+    
     initEvents: function() 
     {
         this.iconEl = this.el.select('.roo-navigation-bar-item-icon', true).first();
