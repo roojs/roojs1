@@ -73,11 +73,6 @@
     cursor: not-allowed;
 }
 
-.roo-navigation-bar .roo-navigation-bar-item.active .roo-navigation-bar-item-icon:before {
-    cursor: default;
-}
-
-
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-search:before {
     content: "\f002";
 }
