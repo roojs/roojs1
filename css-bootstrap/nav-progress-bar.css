@@ -59,7 +59,7 @@
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-text.top {
     top: 0;
-    left: 0;
+    left: 10%;
 }
 
 .roo-navigation-bar .roo-navigation-bar-item.active .roo-navigation-bar-item-icon:before {
