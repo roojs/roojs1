@@ -109,10 +109,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
             this.afterRender(this.container);
             if(this.hidden){
                 this.hide();
-            }
-            if(this.disabled){
-                this.disable();
-            }
+            } 
         }
         return this;
     },
