@@ -306,6 +306,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         var files = [];
         
+        var docs = [];
+        
         Roo.each(this.files, function(file){
             
             if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
@@ -315,10 +317,16 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
             }
             
             if(file.type.indexOf('image') != -1){
-                
+                this.delegates.push(
+                    (function(){
+                        _this.process(file);
+                    }).createDelegate(this)
+                );
+        
+                return;
             }
             
-            this.delegates.push(
+            docs.push(
                 (function(){
                     _this.process(file);
                 }).createDelegate(this)
