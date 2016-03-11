@@ -12,8 +12,6 @@
  * @cfg {String} url action url
  * @cfg {Number} boxes number of boxes, 0 is no limit.. default 0
  * @cfg {Boolean} multiple multiple upload default true
- * @cfg {Number} minWidth default 300
- * @cfg {Number} minHeight default 300
  * @cfg {Number} thumbSize default 300
  * @cfg {String} fieldLabel
  * @cfg {Number} labelWidth default 4
@@ -97,8 +95,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     boxes : 0,
     inputName : '',
-    minWidth : 300,
-    minHeight : 300,
     thumbSize : 300,
     multiple : true,
     files : [],
