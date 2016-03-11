@@ -82,37 +82,8 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     
     render : function(container, position){
         if(!this.rendered && this.fireEvent("beforerender", this) !== false){
-            if(!container && this.el){
-                this.el = Roo.get(this.el);
-                container = this.el.dom.parentNode;
-                this.allowDomMove = false;
-            }
-            this.container = Roo.get(container);
-            this.rendered = true;
-            if(position !== undefined){
-                if(typeof position == 'number'){
-                    position = this.container.dom.childNodes[position];
-                }else{
-                    position = Roo.getDom(position);
-                }
-            }
-            this.onRender(this.container, position || null);
-            if(this.cls){
-                this.el.addClass(this.cls);
-                delete this.cls;
-            }
-            if(this.style){
-                this.el.applyStyles(this.style);
-                delete this.style;
-            }
-            this.fireEvent("render", this);
-            this.afterRender(this.container);
-            if(this.hidden){
-                this.hide();
-            }
-            if(this.disabled){
-                this.disable();
-            }
+           
+            this.onRender(container, position || null);
         }
         return this;
     },
