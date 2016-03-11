@@ -1178,8 +1178,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     return;
                 }
                 
-                Roo.log(e);
-                
                 var buffer = e.target.result,
                     dataView = new DataView(buffer),
                     offset = 2,
