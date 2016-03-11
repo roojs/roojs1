@@ -73,6 +73,13 @@
     cursor: not-allowed;
 }
 
+.roo-navigation-bar .roo-navigation-bar-item.active .roo-navigation-bar-item-icon:before {
+    background: #999999;
+    color: white;
+    cursor: not-allowed;
+}
+
+
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-search:before {
     content: "\f002";
 }
