@@ -395,6 +395,22 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.refresh();
     },
     
+    clear : function()
+    {
+        Roo.each(this.files, function(file){
+            if(!file.target){
+                return;
+            }
+            
+            file.target.remove();
+
+        }, this);
+        
+        this.files = [];
+        
+        this.refresh();
+    },
+    
     onClick : function(e, el, o)
     {
         e.preventDefault();
