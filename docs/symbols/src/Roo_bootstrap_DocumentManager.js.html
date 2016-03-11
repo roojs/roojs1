@@ -10,10 +10,8 @@
  * @cfg {String} paramName default 'imageUpload'
  * @cfg {String} method default POST
  * @cfg {String} url action url
- * @cfg {Number} boxes number of boxes default 12
+ * @cfg {Number} boxes number of boxes, 0 is no limit.. default 0
  * @cfg {Boolean} multiple multiple upload default true
- * @cfg {Number} minWidth default 300
- * @cfg {Number} minHeight default 300
  * @cfg {Number} thumbSize default 300
  * @cfg {String} fieldLabel
  * @cfg {Number} labelWidth default 4
@@ -95,10 +93,8 @@
 
 </span><span class="jsdoc-var">Roo.extend</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.DocumentManager</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.bootstrap.Component</span><span class="jsdoc-syntax">,  {
     
-    </span><span class="jsdoc-var">boxes </span><span class="jsdoc-syntax">: 12,
+    </span><span class="jsdoc-var">boxes </span><span class="jsdoc-syntax">: 0,
     </span><span class="jsdoc-var">inputName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">minWidth </span><span class="jsdoc-syntax">: 300,
-    </span><span class="jsdoc-var">minHeight </span><span class="jsdoc-syntax">: 300,
     </span><span class="jsdoc-var">thumbSize </span><span class="jsdoc-syntax">: 300,
     </span><span class="jsdoc-var">multiple </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">files </span><span class="jsdoc-syntax">: [],
@@ -296,19 +292,21 @@
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         }
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.boxes</span><span class="jsdoc-syntax">){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boxes </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.boxes</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.files </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.files.slice</span><span class="jsdoc-syntax">(0, </span><span class="jsdoc-var">this.boxes</span><span class="jsdoc-syntax">);
         }
         
         </span><span class="jsdoc-var">this.uploader.show</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.boxes </span><span class="jsdoc-syntax">- 1){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boxes </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.boxes </span><span class="jsdoc-syntax">- 1){
             </span><span class="jsdoc-var">this.uploader.hide</span><span class="jsdoc-syntax">();
         }
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">files </span><span class="jsdoc-syntax">= [];
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">docs </span><span class="jsdoc-syntax">= [];
         
         </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">){
             
@@ -318,7 +316,17 @@
                 </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
             }
             
-            </span><span class="jsdoc-var">this.delegates.push</span><span class="jsdoc-syntax">(
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file.type.indexOf</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'image'</span><span class="jsdoc-syntax">) != -1){
+                </span><span class="jsdoc-var">this.delegates.push</span><span class="jsdoc-syntax">(
+                    (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
+                        </span><span class="jsdoc-var">_this.process</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
+                    })</span><span class="jsdoc-var">.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)
+                );
+        
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">docs.push</span><span class="jsdoc-syntax">(
                 (</span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
                     </span><span class="jsdoc-var">_this.process</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
                 })</span><span class="jsdoc-var">.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">)
@@ -327,6 +335,8 @@
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.files </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">files</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.delegates </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.delegates.concat</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">docs</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.delegates.length</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">();
@@ -363,7 +373,7 @@
     {
         </span><span class="jsdoc-var">this.uploader.show</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.boxes </span><span class="jsdoc-syntax">- 1){
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.boxes </span><span class="jsdoc-syntax">&gt; 0 &amp;&amp; </span><span class="jsdoc-var">this.files.length </span><span class="jsdoc-syntax">&gt; </span><span class="jsdoc-var">this.boxes </span><span class="jsdoc-syntax">- 1){
             </span><span class="jsdoc-var">this.uploader.hide</span><span class="jsdoc-syntax">();
         }
         
@@ -395,6 +405,22 @@
         }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.files </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">files</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">();
+    },
+    
+    </span><span class="jsdoc-var">clear </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.each</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.files</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">file.target</span><span class="jsdoc-syntax">){
+                </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+            }
+            
+            </span><span class="jsdoc-var">file.target.remove</span><span class="jsdoc-syntax">();
+
+        }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.files </span><span class="jsdoc-syntax">= [];
         
         </span><span class="jsdoc-var">this.refresh</span><span class="jsdoc-syntax">();
     },

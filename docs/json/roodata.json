@@ -21690,25 +21690,13 @@
     {
      "name": "boxes",
      "type": "Number",
-     "desc": "number of boxes default 12",
+     "desc": "number of boxes, 0 is no limit.. default 0",
      "memberOf": ""
     },
     {
      "name": "multiple",
      "type": "Boolean",
      "desc": "multiple upload default true",
-     "memberOf": ""
-    },
-    {
-     "name": "minWidth",
-     "type": "Number",
-     "desc": "default 300",
-     "memberOf": ""
-    },
-    {
-     "name": "minHeight",
-     "type": "Number",
-     "desc": "default 300",
      "memberOf": ""
     },
     {
