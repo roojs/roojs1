@@ -336,6 +336,8 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.files = files;
         
+        this.delegates = this.delegates.concat(docs);
+        
         if(!this.delegates.length){
             this.refresh();
             return;
