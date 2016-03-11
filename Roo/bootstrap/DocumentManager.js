@@ -302,7 +302,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         
         this.uploader.show();
         
-        if(this.files.length > this.boxes - 1){
+        if(this.boxes > 0 && this.files.length > this.boxes - 1){
             this.uploader.hide();
         }
         
