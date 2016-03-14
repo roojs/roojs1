@@ -1200,7 +1200,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     process : function()
     {
         this.xhr = new XMLHttpRequest();
-        
+     
         if(typeof(this.file.id) != 'undefined' && this.file.id * 1 > 0){
             return;
         }
