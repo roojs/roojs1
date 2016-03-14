@@ -110,7 +110,14 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {Object} data
          */
-        "upload" : true
+        "upload" : true,
+        /**
+         * @event arrange
+         * Fire when arrange the file data
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {FormData} data
+         */
+        "arrange" : true,
     });
     
     this.buttons = this.buttons || Roo.bootstrap.UploadCropbox.footer.STANDARD;
