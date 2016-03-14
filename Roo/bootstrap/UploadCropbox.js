@@ -55,6 +55,7 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @event exception
          * Fire when get exception
          * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {String} type
          * @param {Object} exception
          */
         "exception" : true,
