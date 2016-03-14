@@ -267,6 +267,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.bodyEl.on(mousewheel, this.onMouseWheel, this);
             Roo.get(document).on('mouseup', this.onMouseUp, this);
         }
+        
+        this.selectorEl.on('change', this.onFileSelected, this);
     },
     
     reset : function()
