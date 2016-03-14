@@ -24132,7 +24132,14 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {Object} data
          */
-        "upload" : true
+        "upload" : true,
+        /**
+         * @event arrange
+         * Fire when arrange the file data
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {Object} formData
+         */
+        "arrange" : true
     });
     
     this.buttons = this.buttons || Roo.bootstrap.UploadCropbox.footer.STANDARD;
@@ -25268,7 +25275,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         formData.append(this.paramName, file, file.name);
         
-        if(this.fireEvent('prepare', this, formData) != false){
+        if(this.fireEvent('arrange', this, formData) != false){
             this.xhr.send(formData);
         };
     },
@@ -25348,7 +25355,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             formData.append('mimetype', file.mimetype);
         }
         
-        if(this.fireEvent('prepare', this, formData) != false){
+        if(this.fireEvent('arrange', this, formData) != false){
             this.xhr.send(formData);
         };
     },
