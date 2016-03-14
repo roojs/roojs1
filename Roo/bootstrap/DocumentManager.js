@@ -639,5 +639,69 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         file.target.addClass('tall');
         return;
         
-    }
+    },
+    
+    uploadFromSource : function(file, crop)
+    {
+        this.xhr = new XMLHttpRequest();
+        
+        this.managerEl.createChild({
+            tag : 'div',
+            cls : 'roo-document-manager-loading',
+            cn : [
+                {
+                    tag : 'div',
+                    tooltip : file.name,
+                    cls : 'roo-document-manager-thumb',
+                    html : '<i class="fa fa-circle-o-notch fa-spin"></i>'
+                }
+            ]
+
+        });
+
+        this.xhr.open(this.method, this.url, true);
+        
+        var headers = {
+            "Accept": "application/json",
+            "Cache-Control": "no-cache",
+            "X-Requested-With": "XMLHttpRequest"
+        };
+        
+        for (var headerName in headers) {
+            var headerValue = headers[headerName];
+            if (headerValue) {
+                this.xhr.setRequestHeader(headerName, headerValue);
+            }
+        }
+        
+        var _this = this;
+        
+        this.xhr.onload = function()
+        {
+            _this.xhrOnLoad(_this.xhr);
+        }
+        
+        this.xhr.onerror = function()
+        {
+            _this.xhrOnError(_this.xhr);
+        }
+        
+        var formData = new FormData();
+
+        formData.append('returnHTML', 'NO');
+        
+        formData.append('crop', crop);
+        
+        if(typeof(file.filename) != 'undefined'){
+            formData.append('filename', file.filename);
+        }
+        
+        if(typeof(file.mimetype) != 'undefined'){
+            formData.append('mimetype', file.mimetype);
+        }
+        
+        if(this.fireEvent('prepare', this, formData) != false){
+            this.xhr.send(formData);
+        };
+    },
 });
