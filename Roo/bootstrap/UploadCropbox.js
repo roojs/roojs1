@@ -1216,10 +1216,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         this.xhr = new XMLHttpRequest();
         
-        if(typeof(this.file.id) != 'undefined' && this.file.id * 1 > 0){
-            return;
-        }
-        
         file.xhr = this.xhr;
 
         this.xhr.open(this.method, this.url, true);
@@ -1258,6 +1254,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         formData.append(this.paramName, file, file.name);
+        
+        if(typeof(file.filename) != 'undefined'){
+            formData.append('filename', file.filename);
+        }
+        
+        if(typeof(file.mimetype) != 'undefined'){
+            formData.append('mimetype', file.mimetype);
+        }
         
         if(this.fireEvent('arrange', this, formData) != false){
             this.xhr.send(formData);
