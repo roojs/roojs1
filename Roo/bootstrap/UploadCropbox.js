@@ -1264,14 +1264,14 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     xhrOnLoad : function(xhr)
     {
         if (xhr.readyState !== 4) {
-            this.fireEvent('exception', this, 'xhr', xhr);
+            this.fireEvent('exception', this, xhr);
             return;
         }
 
         var response = Roo.decode(xhr.responseText);
         
         if(!response.success){
-            this.fireEvent('exception', this, 'xhr', xhr);
+            this.fireEvent('exception', this, xhr);
             return;
         }
         
