@@ -41162,6 +41162,12 @@
    ],
    "events": [
     {
+     "name": "arrange",
+     "sig": "function (_self, formData)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire when arrange the file data"
+    },
+    {
      "name": "beforedestroy",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
