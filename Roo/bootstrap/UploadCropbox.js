@@ -345,6 +345,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.prepare(file);
         }
         
+        this.selectorEl.dom.value = '';
+        
     },
     
     trash : function(e)
