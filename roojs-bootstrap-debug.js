@@ -24077,7 +24077,7 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @event exception
          * Fire when get exception
          * @param {Roo.bootstrap.UploadCropbox} this
-         * @param {Object} options
+         * @param {XMLHttpRequest} xhr
          */
         "exception" : true,
         /**
@@ -24120,12 +24120,12 @@ Roo.bootstrap.UploadCropbox = function(config){
          */
         "rotate" : true,
         /**
-         * @event exception
-         * Fire when xhr load exception
+         * @event inspect
+         * Fire when inspect the file
          * @param {Roo.bootstrap.UploadCropbox} this
-         * @param {XMLHttpRequest} xhr
+         * @param {Object} file
          */
-        "exception" : true,
+        "inspect" : true,
         /**
          * @event upload
          * Fire when xhr upload the file
@@ -24366,6 +24366,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         if(this.fireEvent('inspect', this, file) != false){
             this.prepare(file);
         }
+        
+        this.selectorEl.dom.value = '';
         
     },
     
