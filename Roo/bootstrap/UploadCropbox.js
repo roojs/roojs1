@@ -965,7 +965,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.cropData = canvas.toDataURL(this.cropType);
         
         if(this.fireEvent('crop', this, this.cropData) !== false){
-            
+            this.process();
         };
         
     },
