@@ -1256,6 +1256,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         Roo.log(file);
         
         if(typeof(file) != 'undefined' && file.id * 1 < 1){
+            Roo.log('in???');
             formData.append(this.paramName, file, file.name);
         }
         
