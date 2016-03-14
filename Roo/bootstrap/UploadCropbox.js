@@ -1300,56 +1300,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    uploadFromSource : function(file, crop)
-    {
-        this.xhr = new XMLHttpRequest();
-        
-        this.xhr.open(this.method, this.url, true);
-        
-        var headers = {
-            "Accept": "application/json",
-            "Cache-Control": "no-cache",
-            "X-Requested-With": "XMLHttpRequest"
-        };
-        
-        for (var headerName in headers) {
-            var headerValue = headers[headerName];
-            if (headerValue) {
-                this.xhr.setRequestHeader(headerName, headerValue);
-            }
-        }
-        
-        var _this = this;
-        
-        this.xhr.onload = function()
-        {
-            _this.xhrOnLoad(_this.xhr);
-        }
-        
-        this.xhr.onerror = function()
-        {
-            _this.xhrOnError(_this.xhr);
-        }
-        
-        var formData = new FormData();
-
-        formData.append('returnHTML', 'NO');
-        
-        formData.append('crop', crop);
-        
-        if(typeof(file.filename) != 'undefined'){
-            formData.append('filename', file.filename);
-        }
-        
-        if(typeof(file.mimetype) != 'undefined'){
-            formData.append('mimetype', file.mimetype);
-        }
-        
-        if(this.fireEvent('arrange', this, formData) != false){
-            this.xhr.send(formData);
-        };
-    },
-    
     prepare : function(file)
     {   
         this.file = false;
