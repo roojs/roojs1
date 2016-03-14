@@ -55,7 +55,7 @@
          * @event exception
          * Fire when get exception
          * @param {Roo.bootstrap.UploadCropbox} this
-         * @param {Object} options
+         * @param {XMLHttpRequest} xhr
          */
         </span><span class="jsdoc-string">&quot;exception&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
@@ -98,12 +98,12 @@
          */
         </span><span class="jsdoc-string">&quot;rotate&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
-         * @event exception
-         * Fire when xhr load exception
+         * @event inspect
+         * Fire when inspect the file
          * @param {Roo.bootstrap.UploadCropbox} this
-         * @param {XMLHttpRequest} xhr
+         * @param {Object} file
          */
-        </span><span class="jsdoc-string">&quot;exception&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-string">&quot;inspect&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
         </span><span class="jsdoc-comment">/**
          * @event upload
          * Fire when xhr upload the file
@@ -344,6 +344,8 @@
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'inspect'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">this.prepare</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
         }
+        
+        </span><span class="jsdoc-var">this.selectorEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
         
     },
     
