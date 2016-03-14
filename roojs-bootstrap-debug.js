@@ -24037,6 +24037,8 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * @cfg {Boolean} isDocument (true|false) default false
  * @cfg {String} url action url
+ * @cfg {String} paramName default 'imageUpload'
+ * @cfg {String} method default POST
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -24167,6 +24169,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     buttons : false,
     canvasLoaded : false,
     isDocument : false,
+    method : 'POST',
+    paramName : 'imageUpload',
     
     getAutoCreate : function()
     {
@@ -24175,15 +24179,15 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             cls : 'roo-upload-cropbox',
             cn : [
                 {
+                    tag : 'input',
+                    cls : 'roo-upload-cropbox-selector',
+                    type : 'file'
+                },
+                {
                     tag : 'div',
                     cls : 'roo-upload-cropbox-body',
                     style : 'cursor:pointer',
                     cn : [
-                        {
-                            tag : 'input',
-                            cls : 'roo-upload-cropbox-selector',
-                            type : 'file'
-                        },
                         {
                             tag : 'div',
                             cls : 'roo-upload-cropbox-preview'
@@ -25234,10 +25238,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         this.xhr = new XMLHttpRequest();
         
-        if(typeof(this.file.id) != 'undefined' && this.file.id * 1 > 0){
-            return;
-        }
-        
         file.xhr = this.xhr;
 
         this.xhr.open(this.method, this.url, true);
@@ -25275,7 +25275,17 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             formData.append('crop', crop);
         }
         
-        formData.append(this.paramName, file, file.name);
+        if(typeof(file) != 'undefined' && (typeof(file.id) == 'undefined' || file.id * 1 < 1)){
+            formData.append(this.paramName, file, file.name);
+        }
+        
+        if(typeof(file.filename) != 'undefined'){
+            formData.append('filename', file.filename);
+        }
+        
+        if(typeof(file.mimetype) != 'undefined'){
+            formData.append('mimetype', file.mimetype);
+        }
         
         if(this.fireEvent('arrange', this, formData) != false){
             this.xhr.send(formData);
@@ -25310,56 +25320,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
           
         Roo.log(response);
         
-    },
-    
-    uploadFromSource : function(file, crop)
-    {
-        this.xhr = new XMLHttpRequest();
-        
-        this.xhr.open(this.method, this.url, true);
-        
-        var headers = {
-            "Accept": "application/json",
-            "Cache-Control": "no-cache",
-            "X-Requested-With": "XMLHttpRequest"
-        };
-        
-        for (var headerName in headers) {
-            var headerValue = headers[headerName];
-            if (headerValue) {
-                this.xhr.setRequestHeader(headerName, headerValue);
-            }
-        }
-        
-        var _this = this;
-        
-        this.xhr.onload = function()
-        {
-            _this.xhrOnLoad(_this.xhr);
-        }
-        
-        this.xhr.onerror = function()
-        {
-            _this.xhrOnError(_this.xhr);
-        }
-        
-        var formData = new FormData();
-
-        formData.append('returnHTML', 'NO');
-        
-        formData.append('crop', crop);
-        
-        if(typeof(file.filename) != 'undefined'){
-            formData.append('filename', file.filename);
-        }
-        
-        if(typeof(file.mimetype) != 'undefined'){
-            formData.append('mimetype', file.mimetype);
-        }
-        
-        if(this.fireEvent('arrange', this, formData) != false){
-            this.xhr.send(formData);
-        };
     },
     
     prepare : function(file)

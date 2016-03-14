@@ -41078,6 +41078,18 @@
      "memberOf": ""
     },
     {
+     "name": "paramName",
+     "type": "String",
+     "desc": "default 'imageUpload'",
+     "memberOf": ""
+    },
+    {
+     "name": "method",
+     "type": "String",
+     "desc": "default POST",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
