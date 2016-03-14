@@ -145,6 +145,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     buttons : false,
     canvasLoaded : false,
     isDocument : false,
+    method : 'POST',
+    paramName : 'imageUpload',
     
     getAutoCreate : function()
     {
