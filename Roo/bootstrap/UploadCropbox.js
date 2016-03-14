@@ -1253,7 +1253,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             formData.append('crop', crop);
         }
         
-        formData.append(this.paramName, file, file.name);
+        if(file){
+            formData.append(this.paramName, file, file.name);
+        }
         
         if(typeof(file.filename) != 'undefined'){
             formData.append('filename', file.filename);
