@@ -1149,6 +1149,45 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
+    xhrOnLoad : function(xhr)
+    {
+        Roo.each(this.managerEl.select('.roo-document-manager-loading', true).elements, function(el){
+            el.remove();
+        }, this);
+        
+        if (xhr.readyState !== 4) {
+            this.arrange();
+            this.fireEvent('exception', this, xhr);
+            return;
+        }
+
+        var response = Roo.decode(xhr.responseText);
+        
+        if(!response.success){
+            this.arrange();
+            this.fireEvent('exception', this, xhr);
+            return;
+        }
+        
+        var file = this.renderPreview(response.data);
+        
+        this.files.push(file);
+        
+        this.arrange();
+        
+    },
+    
+    xhrOnError : function()
+    {
+        Roo.log('xhr on error');
+        
+        var response = Roo.decode(xhr.responseText);
+          
+        Roo.log(response);
+        
+        this.arrange();
+    },
+    
     prepare : function(file)
     {   
         this.file = false;
