@@ -41072,6 +41072,12 @@
      ]
     },
     {
+     "name": "url",
+     "type": "String",
+     "desc": "action url",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
@@ -41286,6 +41292,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fire when trash image"
+    },
+    {
+     "name": "upload",
+     "sig": "function (_self, data)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire when xhr upload the file"
     }
    ],
    "methods": [

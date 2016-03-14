@@ -14,6 +14,7 @@
  * @cfg {Number} minHeight default 300
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * @cfg {Boolean} isDocument (true|false) default false
+ * @cfg {String} url action url
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -95,7 +96,21 @@
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {String} pos
          */
-        </span><span class="jsdoc-string">&quot;rotate&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
+        </span><span class="jsdoc-string">&quot;rotate&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event exception
+         * Fire when xhr load exception
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {XMLHttpRequest} xhr
+         */
+        </span><span class="jsdoc-string">&quot;exception&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+        </span><span class="jsdoc-comment">/**
+         * @event upload
+         * Fire when xhr upload the file
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {Object} data
+         */
+        </span><span class="jsdoc-string">&quot;upload&quot; </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true
     </span><span class="jsdoc-syntax">});
     
     </span><span class="jsdoc-var">this.buttons </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.buttons </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">Roo.bootstrap.UploadCropbox.footer.STANDARD</span><span class="jsdoc-syntax">;
@@ -135,6 +150,11 @@
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-upload-cropbox-body'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">style </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'cursor:pointer'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
+                        {
+                            </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'input'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-upload-cropbox-selector'</span><span class="jsdoc-syntax">,
+                            </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'file'
+                        </span><span class="jsdoc-syntax">},
                         {
                             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'div'</span><span class="jsdoc-syntax">,
                             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-upload-cropbox-preview'
@@ -195,6 +215,10 @@
         </span><span class="jsdoc-var">this.bodyEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-upload-cropbox-body'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.bodyEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
         
+        </span><span class="jsdoc-var">this.selectorEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-upload-cropbox-selector'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-var">this.selectorEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.selectorEl.hide</span><span class="jsdoc-syntax">();
+        
         </span><span class="jsdoc-var">this.previewEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-upload-cropbox-preview'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.previewEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.originalDisplay </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'block'</span><span class="jsdoc-syntax">;
         
@@ -243,6 +267,8 @@
             </span><span class="jsdoc-var">this.bodyEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">mousewheel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseWheel</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-var">Roo.get</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">document</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mouseup'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onMouseUp</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         }
+        
+        </span><span class="jsdoc-var">this.selectorEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'change'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onFileSelected</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-var">reset </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -298,7 +324,27 @@
     
     </span><span class="jsdoc-var">beforeSelectFile </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeselectfile'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'beforeselectfile'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.selectorEl.dom.click</span><span class="jsdoc-syntax">();
+        }
+    },
+    
+    </span><span class="jsdoc-var">onFileSelected </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">e.preventDefault</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.selectorEl.dom.files</span><span class="jsdoc-syntax">) == </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">|| !</span><span class="jsdoc-var">this.selectorEl.dom.files.length</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">file </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.selectorEl.dom.files</span><span class="jsdoc-syntax">[0];
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'inspect'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.prepare</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
+        }
+        
     },
     
     </span><span class="jsdoc-var">trash </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
@@ -920,6 +966,8 @@
         
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'crop'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cropData</span><span class="jsdoc-syntax">);
         
+        </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        
     },
     
     </span><span class="jsdoc-var">setThumbBoxSize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -1147,6 +1195,138 @@
         </span><span class="jsdoc-var">this.pinching </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.dragable </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         
+    },
+    
+    </span><span class="jsdoc-var">process </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">crop</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.xhr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">XMLHttpRequest</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.file.id</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined' </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.file.id </span><span class="jsdoc-syntax">* 1 &gt; 0){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-var">file.xhr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xhr</span><span class="jsdoc-syntax">;
+
+        </span><span class="jsdoc-var">this.xhr.open</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.method</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.url</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headers </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-string">&quot;Accept&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;application/json&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">&quot;Cache-Control&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;no-cache&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">&quot;X-Requested-With&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;XMLHttpRequest&quot;
+        </span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headerName </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">headers</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headerValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">headers</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">headerName</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">headerValue</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.xhr.setRequestHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">headerName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">headerValue</span><span class="jsdoc-syntax">);
+            }
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.xhr.onload </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-var">_this.xhrOnLoad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.xhr</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-var">this.xhr.onerror </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-var">_this.xhrOnError</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.xhr</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">formData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FormData</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">formData.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'returnHTML'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'NO'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">crop</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">formData.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'crop'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">crop</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-var">formData.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.paramName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file.name</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'prepare'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">formData</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.xhr.send</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">formData</span><span class="jsdoc-syntax">);
+        };
+    },
+    
+    </span><span class="jsdoc-var">xhrOnLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr.readyState </span><span class="jsdoc-syntax">!== 4) {
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'exception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">xhr</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">response </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr.responseText</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">response.success</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'exception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">xhr</span><span class="jsdoc-syntax">);
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">response </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr.responseText</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'upload'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-var">xhrOnError </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xhr on error'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">response </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr.responseText</span><span class="jsdoc-syntax">);
+          
+        </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">response</span><span class="jsdoc-syntax">);
+        
+    },
+    
+    </span><span class="jsdoc-var">uploadFromSource </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">crop</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-var">this.xhr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">XMLHttpRequest</span><span class="jsdoc-syntax">();
+        
+        </span><span class="jsdoc-var">this.xhr.open</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.method</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.url</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headers </span><span class="jsdoc-syntax">= {
+            </span><span class="jsdoc-string">&quot;Accept&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;application/json&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">&quot;Cache-Control&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;no-cache&quot;</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-string">&quot;X-Requested-With&quot;</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">&quot;XMLHttpRequest&quot;
+        </span><span class="jsdoc-syntax">};
+        
+        </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headerName </span><span class="jsdoc-keyword">in </span><span class="jsdoc-var">headers</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">headerValue </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">headers</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">headerName</span><span class="jsdoc-syntax">];
+            </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">headerValue</span><span class="jsdoc-syntax">) {
+                </span><span class="jsdoc-var">this.xhr.setRequestHeader</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">headerName</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">headerValue</span><span class="jsdoc-syntax">);
+            }
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">_this </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-var">this.xhr.onload </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-var">_this.xhrOnLoad</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.xhr</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-var">this.xhr.onerror </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+        {
+            </span><span class="jsdoc-var">_this.xhrOnError</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">_this.xhr</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">formData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">FormData</span><span class="jsdoc-syntax">();
+
+        </span><span class="jsdoc-var">formData.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'returnHTML'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-string">'NO'</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-var">formData.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'crop'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">crop</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file.filename</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">formData.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'filename'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file.filename</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file.mimetype</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">formData.append</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'mimetype'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">file.mimetype</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'prepare'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">formData</span><span class="jsdoc-syntax">) != </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.xhr.send</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">formData</span><span class="jsdoc-syntax">);
+        };
     },
     
     </span><span class="jsdoc-var">prepare </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">)
