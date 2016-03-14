@@ -96,7 +96,14 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {String} pos
          */
-        "rotate" : true
+        "rotate" : true,
+        /**
+         * @event exception
+         * Fire when xhr load exception
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {XMLHttpRequest} xhr
+         */
+        "exception" : true,
     });
     
     this.buttons = this.buttons || Roo.bootstrap.UploadCropbox.footer.STANDARD;
