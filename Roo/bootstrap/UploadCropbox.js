@@ -393,8 +393,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.thumbEl.show();
         this.footerEl.show();
         
-        
-        
         this.baseRotateLevel();
         
         if(this.isDocument){
