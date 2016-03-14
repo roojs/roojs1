@@ -292,6 +292,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.cropData = false;
         this.notifyEl.dom.innerHTML = this.emptyText;
         
+        this.selectorEl.dom.value = '';
+        
     },
     
     resize : function()
@@ -353,8 +355,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.prepare(file);
         }
         
-        this.selectorEl.dom.value = '';
-        
     },
     
     trash : function(e)
@@ -385,14 +385,19 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onLoadCanvas : function()
     {   
+        this.imageEl.OriginWidth = this.imageEl.naturalWidth || this.imageEl.width;
+        this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
+        
+        if()
+        this.fireEvent('exception', this, 'xhr', xhr);
+        
         this.bodyEl.un('click', this.beforeSelectFile, this);
         
         this.notifyEl.hide();
         this.thumbEl.show();
         this.footerEl.show();
         
-        this.imageEl.OriginWidth = this.imageEl.naturalWidth || this.imageEl.width;
-        this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
+        
         
         this.baseRotateLevel();
         
