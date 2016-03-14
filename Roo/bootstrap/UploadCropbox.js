@@ -350,10 +350,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         var file = this.selectorEl.dom.files[0];
         
-        if(this.fireEvent('inspect', this, file) != false){
-            this.prepare(file);
-        }
-        
+        this.fireEvent('inspect', this, file);
     },
     
     trash : function(e)
