@@ -331,6 +331,24 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
     },
     
+    onFileSelected : function(e)
+    {
+        e.preventDefault();
+        
+        if(typeof(this.selectorEl.dom.files) == 'undefined' || !this.selectorEl.dom.files.length){
+            return;
+        }
+        
+        Roo.each(this.selectorEl.dom.files, function(file){
+            if(this.fireEvent('inspect', this, file) != false){
+                this.files.push(file);
+            }
+        }, this);
+        
+        this.queue();
+        
+    },
+    
     trash : function(e)
     {
         this.fireEvent('trash', this);
