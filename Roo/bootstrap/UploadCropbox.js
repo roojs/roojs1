@@ -389,7 +389,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.imageEl.OriginHeight = this.imageEl.naturalHeight || this.imageEl.height;
         
         if(this.imageEl.OriginWidth < this.minWidth || this.imageEl.OriginHeight < this.minHeight){
+            this.reset();
             this.fireEvent('exception', this, 'volume', this.imageEl);
+            return;
         }
         
         this.bodyEl.un('click', this.beforeSelectFile, this);
