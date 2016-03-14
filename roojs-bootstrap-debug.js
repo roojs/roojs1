@@ -24036,6 +24036,7 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
  * @cfg {Number} minHeight default 300
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * @cfg {Boolean} isDocument (true|false) default false
+ * @cfg {String} url action url
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -24117,7 +24118,21 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @param {Roo.bootstrap.UploadCropbox} this
          * @param {String} pos
          */
-        "rotate" : true
+        "rotate" : true,
+        /**
+         * @event exception
+         * Fire when xhr load exception
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {XMLHttpRequest} xhr
+         */
+        "exception" : true,
+        /**
+         * @event upload
+         * Fire when xhr upload the file
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {Object} data
+         */
+        "upload" : true
     });
     
     this.buttons = this.buttons || Roo.bootstrap.UploadCropbox.footer.STANDARD;
@@ -24157,6 +24172,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                     cls : 'roo-upload-cropbox-body',
                     style : 'cursor:pointer',
                     cn : [
+                        {
+                            tag : 'input',
+                            cls : 'roo-upload-cropbox-selector',
+                            type : 'file'
+                        },
                         {
                             tag : 'div',
                             cls : 'roo-upload-cropbox-preview'
@@ -24217,6 +24237,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.bodyEl = this.el.select('.roo-upload-cropbox-body', true).first();
         this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
+        this.selectorEl = this.el.select('.roo-upload-cropbox-selector', true).first();
+        this.selectorEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
+        this.selectorEl.hide();
+        
         this.previewEl = this.el.select('.roo-upload-cropbox-preview', true).first();
         this.previewEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
@@ -24265,6 +24289,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.bodyEl.on(mousewheel, this.onMouseWheel, this);
             Roo.get(document).on('mouseup', this.onMouseUp, this);
         }
+        
+        this.selectorEl.on('change', this.onFileSelected, this);
     },
     
     reset : function()
@@ -24320,7 +24346,27 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     beforeSelectFile : function(e)
     {
-        this.fireEvent('beforeselectfile', this);
+        e.preventDefault();
+        
+        if(this.fireEvent('beforeselectfile', this) != false){
+            this.selectorEl.dom.click();
+        }
+    },
+    
+    onFileSelected : function(e)
+    {
+        e.preventDefault();
+        
+        if(typeof(this.selectorEl.dom.files) == 'undefined' || !this.selectorEl.dom.files.length){
+            return;
+        }
+        
+        var file = this.selectorEl.dom.files[0];
+        
+        if(this.fireEvent('inspect', this, file) != false){
+            this.prepare(file);
+        }
+        
     },
     
     trash : function(e)
@@ -24942,6 +24988,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.fireEvent('crop', this, this.cropData);
         
+        return;
+        
     },
     
     setThumbBoxSize : function()
@@ -25169,6 +25217,138 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.pinching = false;
         this.dragable = false;
         
+    },
+    
+    process : function(file, crop)
+    {
+        this.xhr = new XMLHttpRequest();
+        
+        if(typeof(this.file.id) != 'undefined' && this.file.id * 1 > 0){
+            return;
+        }
+        
+        file.xhr = this.xhr;
+
+        this.xhr.open(this.method, this.url, true);
+        
+        var headers = {
+            "Accept": "application/json",
+            "Cache-Control": "no-cache",
+            "X-Requested-With": "XMLHttpRequest"
+        };
+        
+        for (var headerName in headers) {
+            var headerValue = headers[headerName];
+            if (headerValue) {
+                this.xhr.setRequestHeader(headerName, headerValue);
+            }
+        }
+        
+        var _this = this;
+        
+        this.xhr.onload = function()
+        {
+            _this.xhrOnLoad(_this.xhr);
+        }
+        
+        this.xhr.onerror = function()
+        {
+            _this.xhrOnError(_this.xhr);
+        }
+        
+        var formData = new FormData();
+
+        formData.append('returnHTML', 'NO');
+        
+        if(crop){
+            formData.append('crop', crop);
+        }
+        
+        formData.append(this.paramName, file, file.name);
+        
+        if(this.fireEvent('prepare', this, formData) != false){
+            this.xhr.send(formData);
+        };
+    },
+    
+    xhrOnLoad : function(xhr)
+    {
+        if (xhr.readyState !== 4) {
+            this.fireEvent('exception', this, xhr);
+            return;
+        }
+
+        var response = Roo.decode(xhr.responseText);
+        
+        if(!response.success){
+            this.fireEvent('exception', this, xhr);
+            return;
+        }
+        
+        var response = Roo.decode(xhr.responseText);
+        
+        this.fireEvent('upload', this, response);
+        
+    },
+    
+    xhrOnError : function()
+    {
+        Roo.log('xhr on error');
+        
+        var response = Roo.decode(xhr.responseText);
+          
+        Roo.log(response);
+        
+    },
+    
+    uploadFromSource : function(file, crop)
+    {
+        this.xhr = new XMLHttpRequest();
+        
+        this.xhr.open(this.method, this.url, true);
+        
+        var headers = {
+            "Accept": "application/json",
+            "Cache-Control": "no-cache",
+            "X-Requested-With": "XMLHttpRequest"
+        };
+        
+        for (var headerName in headers) {
+            var headerValue = headers[headerName];
+            if (headerValue) {
+                this.xhr.setRequestHeader(headerName, headerValue);
+            }
+        }
+        
+        var _this = this;
+        
+        this.xhr.onload = function()
+        {
+            _this.xhrOnLoad(_this.xhr);
+        }
+        
+        this.xhr.onerror = function()
+        {
+            _this.xhrOnError(_this.xhr);
+        }
+        
+        var formData = new FormData();
+
+        formData.append('returnHTML', 'NO');
+        
+        formData.append('crop', crop);
+        
+        if(typeof(file.filename) != 'undefined'){
+            formData.append('filename', file.filename);
+        }
+        
+        if(typeof(file.mimetype) != 'undefined'){
+            formData.append('mimetype', file.mimetype);
+        }
+        
+        if(this.fireEvent('prepare', this, formData) != false){
+            this.xhr.send(formData);
+        };
     },
     
     prepare : function(file)
