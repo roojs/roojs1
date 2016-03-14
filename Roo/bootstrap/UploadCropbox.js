@@ -98,12 +98,12 @@ Roo.bootstrap.UploadCropbox = function(config){
          */
         "rotate" : true,
         /**
-         * @event exception
-         * Fire when xhr load exception
+         * @event inspect
+         * Fire when inspect the file
          * @param {Roo.bootstrap.UploadCropbox} this
-         * @param {XMLHttpRequest} xhr
+         * @param {Object} file
          */
-        "exception" : true,
+        "inspect" : true,
         /**
          * @event upload
          * Fire when xhr upload the file
