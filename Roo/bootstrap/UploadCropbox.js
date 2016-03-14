@@ -342,16 +342,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         var file = this.selectorEl.dom.files[0];
         
         if(this.fireEvent('inspect', this, file) != false){
-            
+            this.cropType = this.selectorEl.dom.files[0].type;
+            this.prepare(file);
         }
-            
-        this.cropType = this.selectorEl.dom.files[0].type;
-        
-        Roo.each(this.selectorEl.dom.files, function(file){
-            
-        }, this);
-        
-        this.queue();
         
     },
     
