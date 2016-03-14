@@ -1164,7 +1164,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    uploadStart : function(file, crop)
+    process : function(file, crop)
     {
         this.xhr = new XMLHttpRequest();
         
@@ -1230,7 +1230,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        this.fireEvent('upload', this, xhr);
+        var response = Roo.decode(xhr.responseText);
+        
+        this.fireEvent('upload', this, response);
         
     },
     
