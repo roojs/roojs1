@@ -1216,8 +1216,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         this.xhr = new XMLHttpRequest();
         
-        Roo.log(this.file);
-        
         if(typeof(this.file.id) != 'undefined' && this.file.id * 1 > 0){
             return;
         }
