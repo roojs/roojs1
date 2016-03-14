@@ -291,6 +291,8 @@
         </span><span class="jsdoc-var">this.cropData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.notifyEl.dom.innerHTML </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.emptyText</span><span class="jsdoc-syntax">;
         
+        </span><span class="jsdoc-var">this.selectorEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
+        
     },
     
     </span><span class="jsdoc-var">resize </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -352,8 +354,6 @@
             </span><span class="jsdoc-var">this.prepare</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">);
         }
         
-        </span><span class="jsdoc-var">this.selectorEl.dom.value </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">;
-        
     },
     
     </span><span class="jsdoc-var">trash </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)
@@ -384,14 +384,14 @@
     
     </span><span class="jsdoc-var">onLoadCanvas </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {   
+        </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.imageEl.naturalWidth </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.imageEl.width</span><span class="jsdoc-syntax">;
+        </span><span class="jsdoc-var">this.imageEl.OriginHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.imageEl.naturalHeight </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.imageEl.height</span><span class="jsdoc-syntax">;
+        
         </span><span class="jsdoc-var">this.bodyEl.un</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.beforeSelectFile</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.notifyEl.hide</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.thumbEl.show</span><span class="jsdoc-syntax">();
         </span><span class="jsdoc-var">this.footerEl.show</span><span class="jsdoc-syntax">();
-        
-        </span><span class="jsdoc-var">this.imageEl.OriginWidth </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.imageEl.naturalWidth </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.imageEl.width</span><span class="jsdoc-syntax">;
-        </span><span class="jsdoc-var">this.imageEl.OriginHeight </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.imageEl.naturalHeight </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.imageEl.height</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-var">this.baseRotateLevel</span><span class="jsdoc-syntax">();
         
@@ -973,7 +973,9 @@
         
         </span><span class="jsdoc-var">this.cropData </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">canvas.toDataURL</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.cropType</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'crop'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cropData</span><span class="jsdoc-syntax">);
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'crop'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cropData</span><span class="jsdoc-syntax">) !== </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.process</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.file</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.cropData</span><span class="jsdoc-syntax">);
+        }
         
         </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
         
