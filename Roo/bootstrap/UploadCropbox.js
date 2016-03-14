@@ -14,6 +14,7 @@
  * @cfg {Number} minHeight default 300
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * @cfg {Boolean} isDocument (true|false) default false
+ * @cfg {String} url action url
  * 
  * @constructor
  * Create a new UploadCropbox
