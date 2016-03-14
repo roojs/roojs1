@@ -968,6 +968,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             this.process();
         };
         
+        return;
+        
     },
     
     setThumbBoxSize : function()
