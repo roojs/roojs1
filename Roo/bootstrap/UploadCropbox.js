@@ -1246,7 +1246,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         formData.append(this.paramName, file, file.name);
         
-        if(this.fireEvent('prepare', this, formData) != false){
+        if(this.fireEvent('arrange', this, formData) != false){
             this.xhr.send(formData);
         };
     },
@@ -1326,7 +1326,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             formData.append('mimetype', file.mimetype);
         }
         
-        if(this.fireEvent('prepare', this, formData) != false){
+        if(this.fireEvent('arrange', this, formData) != false){
             this.xhr.send(formData);
         };
     },
