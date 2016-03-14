@@ -1154,25 +1154,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.xhr = new XMLHttpRequest();
         
         if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
-            this.arrange();
             return;
         }
         
         file.xhr = this.xhr;
-            
-        this.managerEl.createChild({
-            tag : 'div',
-            cls : 'roo-document-manager-loading',
-            cn : [
-                {
-                    tag : 'div',
-                    tooltip : file.name,
-                    cls : 'roo-document-manager-thumb',
-                    html : '<i class="fa fa-circle-o-notch fa-spin"></i>'
-                }
-            ]
-
-        });
 
         this.xhr.open(this.method, this.url, true);
         
