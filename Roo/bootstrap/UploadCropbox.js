@@ -104,6 +104,13 @@ Roo.bootstrap.UploadCropbox = function(config){
          * @param {XMLHttpRequest} xhr
          */
         "exception" : true,
+        /**
+         * @event upload
+         * Fire when xhr upload the file
+         * @param {Roo.bootstrap.UploadCropbox} this
+         * @param {XMLHttpRequest} xhr
+         */
+        "upload" : true
     });
     
     this.buttons = this.buttons || Roo.bootstrap.UploadCropbox.footer.STANDARD;
