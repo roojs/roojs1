@@ -15,6 +15,8 @@
  * @cfg {Array} buttons default ['rotateLeft', 'pictureBtn', 'rotateRight']
  * @cfg {Boolean} isDocument (true|false) default false
  * @cfg {String} url action url
+ * @cfg {String} paramName default 'imageUpload'
+ * @cfg {String} method default POST
  * 
  * @constructor
  * Create a new UploadCropbox
