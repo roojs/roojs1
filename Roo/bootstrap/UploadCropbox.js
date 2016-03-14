@@ -964,9 +964,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.cropData = canvas.toDataURL(this.cropType);
         
-        if(this.fireEvent('crop', this, this.cropData) !== false){
-            this.process();
-        };
+        this.fireEvent('crop', this, this.cropData);
         
         return;
         
@@ -1199,11 +1197,11 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
     },
     
-    process : function(file, crop)
+    process : function()
     {
         this.xhr = new XMLHttpRequest();
         
-        if(typeof(file.id) != 'undefined' && file.id * 1 > 0){
+        if(typeof(this.file.id) != 'undefined' && this.file.id * 1 > 0){
             return;
         }
         
