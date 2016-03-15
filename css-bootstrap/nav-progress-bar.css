@@ -32,12 +32,11 @@
     height: 5px;
     background: #337ab7;
     position: absolute;
-    left: -50%;
     top: 10px;
     z-index: -1;
 }
 
-.roo-navigation-bar .roo-navigation-bar-item:first-child > .roo-navigation-bar-item-icon:after {
+.roo-navigation-bar .roo-navigation-bar-item:last-child > .roo-navigation-bar-item-icon:after {
     content: none; 
 }
 
