@@ -15,7 +15,7 @@
  * @cfg {String} html
  * @cfg {String} position (top|bottom) text position default bottom
  * @cfg {String} icon show icon instead of number
- * @cfg {Boolean} forceIcon (true|false) true to force show icon..if set to false, Roo.isTouch showing icon, otherwish number
+ * @cfg {Boolean} forceIcon (true|false) true to force show icon..
  * 
  * @constructor
  * Create a new NavProgressItem
@@ -98,10 +98,6 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     {
         this.iconEl = this.el.select('.roo-navigation-bar-item-icon', true).first();
         this.textEl = this.el.select('.roo-navigation-bar-item-text', true).first();
-        
-//        if(Roo.isTouch){
-//            this.textEl.setVisibilityMode(Roo.Element.DISPLAY).hide();
-//        }
         
         this.iconEl.on('click', this.onClick, this);
         
