@@ -74,18 +74,15 @@
     
 }
 
-.xs-icon,
-.sm-icon,
-.md-icon,
-.lg-icon {
-    
+.xs-icon > .roo-navigation-bar-item .roo-navigation-bar-item-icon:before {
+    content: '';
 }
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
     .xs-icon > .roo-navigation-bar-item .roo-navigation-bar-item-icon:before {
         content: counter(step);
     }
-}
+}*/
 
 /*
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-search.force-icon:before {
