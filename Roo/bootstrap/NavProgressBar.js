@@ -239,8 +239,8 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         
         Roo.each(this.barItems, function(i){
             i.el.setStyle('width', width + '%');
-            i.topEl.setStyle('width', width + '%');
-            i.bottomEl.setStyle('width', width + '%');
+            i.topEl.el.setStyle('width', width + '%');
+            i.bottomEl.el.setStyle('width', width + '%');
         }, this);
         
     }
