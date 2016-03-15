@@ -20,6 +20,7 @@
     counter-reset: step;
     text-align: center;
     padding: 0px;
+    overflow: hidden;
 }
 
 .roo-navigation-bar .roo-navigation-bar-item {
