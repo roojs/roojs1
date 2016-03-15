@@ -15,7 +15,6 @@
  * @cfg {String} html
  * @cfg {String} position (top|bottom) text position default bottom
  * @cfg {String} icon show icon instead of number
- * @cfg {Boolean} forceIcon (true|false) true to force show icon..if set to false, Roo.isTouch showing icon, otherwish number
  * 
  * @constructor
  * Create a new NavProgressItem
@@ -44,15 +43,12 @@
     </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">position </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'bottom'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">icon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-var">forceIcon </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">iconCls </span><span class="jsdoc-syntax">= </span><span class="jsdoc-string">'roo-navigation-bar-item-icon'</span><span class="jsdoc-syntax">;
         
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">((</span><span class="jsdoc-var">this.forceIcon </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">) || !</span><span class="jsdoc-var">this.forceIcon </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">iconCls </span><span class="jsdoc-syntax">+= </span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">;
-        }
+        </span><span class="jsdoc-var">iconCls </span><span class="jsdoc-syntax">+= ((</span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">) ? (</span><span class="jsdoc-string">' ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.icon</span><span class="jsdoc-syntax">) : (</span><span class="jsdoc-string">' step-number'</span><span class="jsdoc-syntax">)) ;
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'li'</span><span class="jsdoc-syntax">,
@@ -61,11 +57,6 @@
                 {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">iconCls
-                </span><span class="jsdoc-syntax">},
-                {
-                    </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-navigation-bar-item-text ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.position</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.html
                 </span><span class="jsdoc-syntax">}
             ]
         }
@@ -93,14 +84,8 @@
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">() 
     {
         </span><span class="jsdoc-var">this.iconEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-navigation-bar-item-icon'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        </span><span class="jsdoc-var">this.textEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.roo-navigation-bar-item-text'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.isTouch</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.textEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
-        }
         
         </span><span class="jsdoc-var">this.iconEl.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onClick</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
-        
     },
     
     </span><span class="jsdoc-var">onClick </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e</span><span class="jsdoc-syntax">)

@@ -30991,16 +30991,6 @@
      "memberOf": ""
     },
     {
-     "name": "forceIcon",
-     "type": "Boolean",
-     "desc": "true to force show icon..if set to false, Roo.isTouch showing icon, otherwish number",
-     "memberOf": "",
-     "optvals": [
-      "true",
-      "false"
-     ]
-    },
-    {
      "name": "cls",
      "type": "String",
      "desc": "css class",

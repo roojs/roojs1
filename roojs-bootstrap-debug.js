@@ -26642,17 +26642,43 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     bullets : [],
     barItems : [],
     
-    
     getAutoCreate : function()
     {
         var cfg = Roo.apply({}, Roo.bootstrap.NavProgressBar.superclass.getAutoCreate.call(this));
         
         cfg = {
-            tag : 'ul',
-            cls: 'roo-navigation-bar' 
-        }
+            tag : 'div',
+            cls : 'roo-navigation-bar-group',
+            cn : [
+                {
+                    tag : 'div',
+                    cls : 'roo-navigation-top-bar'
+                },
+                {
+                    tag : 'div',
+                    cls : 'roo-navigation-bullets-bar',
+                    cn : [
+                        {
+                            tag : 'ul',
+                            cls : 'roo-navigation-bar'
+                        }
+                    ]
+                },
+                
+                {
+                    tag : 'div',
+                    cls : 'roo-navigation-bottom-bar'
+                }
+            ]
+            
+        };
         
         return cfg;
+        
+    },
+    
+    initEvents: function() 
+    {
         
     },
     
@@ -26666,6 +26692,8 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
             }, this);
         }
         
+        this.format();
+        
     },
     
     addItem : function(cfg)
@@ -26673,11 +26701,40 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         var item = new Roo.bootstrap.NavProgressItem(cfg);
         
         item.parentId = this.id;
-        item.render(this.el, null);
+        item.render(this.el.select('.roo-navigation-bar', true).first(), null);
+        
+        if(cfg.html){
+            var top = new Roo.bootstrap.Element({
+                tag : 'div',
+                cls : 'roo-navigation-bar-text'
+            });
+            
+            var bottom = new Roo.bootstrap.Element({
+                tag : 'div',
+                cls : 'roo-navigation-bar-text'
+            });
+            
+            top.onRender(this.el.select('.roo-navigation-top-bar', true).first(), null);
+            bottom.onRender(this.el.select('.roo-navigation-bottom-bar', true).first(), null);
+            
+            var topText = new Roo.bootstrap.Element({
+                tag : 'span',
+                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? cfg.html : ''
+            });
+            
+            var bottomText = new Roo.bootstrap.Element({
+                tag : 'span',
+                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? '' : cfg.html
+            });
+            
+            topText.onRender(top.el, null);
+            bottomText.onRender(bottom.el, null);
+            
+            item.topEl = top;
+            item.bottomEl = bottom;
+        }
         
         this.barItems.push(item);
-        
-        this.formatBullets();
         
         return item;
     },
@@ -26775,17 +26832,20 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         this.setActiveItem(this.barItems[i-1]);
     },
     
-    formatBullets : function()
+    format : function()
     {
         if(!this.barItems.length){
             return;
         }
-        
+     
         var width = 100 / this.barItems.length;
         
         Roo.each(this.barItems, function(i){
             i.el.setStyle('width', width + '%');
+            i.topEl.el.setStyle('width', width + '%');
+            i.bottomEl.el.setStyle('width', width + '%');
         }, this);
+        
     }
     
 });
@@ -26806,7 +26866,6 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
  * @cfg {String} html
  * @cfg {String} position (top|bottom) text position default bottom
  * @cfg {String} icon show icon instead of number
- * @cfg {Boolean} forceIcon (true|false) true to force show icon..if set to false, Roo.isTouch showing icon, otherwish number
  * 
  * @constructor
  * Create a new NavProgressItem
@@ -26835,15 +26894,12 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     html : '',
     position : 'bottom',
     icon : false,
-    forceIcon : false,
     
     getAutoCreate : function()
     {
         var iconCls = 'roo-navigation-bar-item-icon';
         
-        if((this.forceIcon && this.icon) || !this.forceIcon && Roo.isTouch){
-            iconCls += ' ' + this.icon;
-        }
+        iconCls += ((this.icon) ? (' ' + this.icon) : (' step-number')) ;
         
         var cfg = {
             tag: 'li',
@@ -26852,11 +26908,6 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
                 {
                     tag : 'i',
                     cls : iconCls
-                },
-                {
-                    tag : 'span',
-                    cls : 'roo-navigation-bar-item-text ' + this.position,
-                    html : this.html
                 }
             ]
         }
@@ -26884,14 +26935,8 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     initEvents: function() 
     {
         this.iconEl = this.el.select('.roo-navigation-bar-item-icon', true).first();
-        this.textEl = this.el.select('.roo-navigation-bar-item-text', true).first();
-        
-        if(Roo.isTouch){
-            this.textEl.setVisibilityMode(Roo.Element.DISPLAY).hide();
-        }
         
         this.iconEl.on('click', this.onClick, this);
-        
     },
     
     onClick : function(e)
