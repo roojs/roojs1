@@ -490,18 +490,14 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     process : function(file)
     {
-        if(this.fireEvent('beforeprocess', this, file) !== false){
-            
-            if(this.editable && file.type.indexOf('image') != -1){
-                this.fireEvent('edit', this, file);
-                return;
-            }
-
-            this.uploadStart(file, false);
-
+        if(this.editable && file.type.indexOf('image') != -1){
+            this.fireEvent('edit', this, file);
             return;
         }
         
+        this.uploadStart(file, false);
+        
+        return;
     },
     
     uploadStart : function(file, crop)
