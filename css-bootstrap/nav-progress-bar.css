@@ -1,4 +1,11 @@
+.roo-navigation-bar {
+    counter-reset: step;
+    text-align: center;
+    padding: 0px;
+}
 
+
+/*
 .roo-navigation-bar {
     counter-reset: step;
     text-align: center;
@@ -103,4 +110,4 @@
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-download.force:before {
     content: "\f019";
-}
+}*/
