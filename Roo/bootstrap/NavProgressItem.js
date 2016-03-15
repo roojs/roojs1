@@ -51,7 +51,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         Roo.log(this.icon);
         
         if(this.icon){
-            iconCls += (this.icon) ? (' ' + this.icon) : (' step-number') ;
+            iconCls += ((this.icon) ? (' ' + this.icon) : (' step-number')) ;
         }
         Roo.log(iconCls);
         var cfg = {
