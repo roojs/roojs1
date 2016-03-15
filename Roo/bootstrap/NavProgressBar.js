@@ -105,10 +105,10 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
                 tag : 'div',
                 cls : 'roo-navigation-bar-text',
                 items : [
-                    new Roo.bootstrap.Element({
+                    {
                         tag : 'span',
                         html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? cfg.html : ''
-                    })
+                    }
                 ]
             });
             
