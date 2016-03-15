@@ -67,6 +67,12 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         
     },
     
+    initEvents: function() 
+    {
+        Roo.log('initEvent????');
+        
+    },
+    
     onRender : function(ct, position) 
     {
         Roo.log('render bar???');
