@@ -218,12 +218,10 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     format : function()
     {
-        Roo.log('run?????');
-        Roo.log(this.barItems);
         if(!this.barItems.length){
             return;
         }
-        
+        Roo.log('get here???');
         var width = 100 / this.barItems.length;
         
         Roo.each(this.barItems, function(i){
