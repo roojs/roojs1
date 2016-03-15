@@ -101,13 +101,13 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         if(cfg.html){
             var top = new Roo.bootstrap.Element({
                 tag : 'div',
-                cls : 'roo-navigation-bar-text',
+                cls : 'column',
                 html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? cfg.html : ''
             });
             
             var bottom = new Roo.bootstrap.Element({
                 tag : 'div',
-                cls : 'roo-navigation-bar-text',
+                cls : 'column',
                 html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? '' : cfg.html
             });
             
