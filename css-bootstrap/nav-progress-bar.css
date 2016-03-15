@@ -77,6 +77,14 @@
     
 }
 
+.roo-navigation-top-bar {
+    display: none;
+}
+
+.roo-navigation-bottom-bar {
+    display: none;
+}
+
 @media (min-width: 768px) {
     .roo-navigation-bar .roo-navigation-bar-item.xs-icon > .roo-navigation-bar-item-icon:before {
         content: counter(step);
