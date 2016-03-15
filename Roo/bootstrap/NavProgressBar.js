@@ -49,7 +49,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'div',
-                    cls : 'roo-navigation-top-bar'
+                    cls : 'roo-navigation-bar-top'
                 },
                 {
                     tag : 'ul',
@@ -57,7 +57,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
                 },
                 {
                     tag : 'div',
-                    cls : 'roo-navigation-bottom-bar'
+                    cls : 'roo-navigation-bar-bottom'
                 }
             ]
             
@@ -69,9 +69,9 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        this.topEl = this.el.select('.roo-navigation-top-bar', true).first();
+        this.topEl = this.el.select('.roo-navigation-bar-top', true).first();
         this.iconEl = this.el.select('.roo-navigation-bar', true).first();
-        this.bottomEl = this.el.select('.roo-navigation-bottom-bar', true).first();
+        this.bottomEl = this.el.select('.roo-navigation-bar-bottom', true).first();
         
     },
     
@@ -93,6 +93,15 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         
         item.parentId = this.id;
         item.render(this.el.select('.roo-navigation-bar', true).first(), null);
+        
+        if(cfg.html){
+            var html = {
+                tag : 'div',
+                cls : 'roo-navigation-bar-text',
+                html : cfg.html
+            }
+            
+        }
         
         this.barItems.push(item);
         
