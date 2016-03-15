@@ -132,8 +132,6 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         
         this.barItems.push(item);
         
-        Roo.log(this.barItems);
-        
         return item;
     },
     
