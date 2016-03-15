@@ -42,7 +42,7 @@
     
 }
 
-.roo-navigation-bar .roo-navigation-bar-item:first-child > .roo-navigation-bar-item-icon:after {
+.roo-navigation-bar .roo-navigation-bar-item:last-child > .roo-navigation-bar-item-icon:after {
     content: none; 
 }
 
