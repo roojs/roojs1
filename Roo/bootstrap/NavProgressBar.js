@@ -83,6 +83,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     onRender : function(ct, position) 
     {
+        Roo.log('render???');
         Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
         
         if(this.bullets.length){
