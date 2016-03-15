@@ -73,11 +73,11 @@
     
 }
 
-.roo-navigation-bar .roo-navigation-bar-item.sm-icon > .roo-navigation-bar-item-icon:before,
+/*.roo-navigation-bar .roo-navigation-bar-item.sm-icon > .roo-navigation-bar-item-icon:before,
 .roo-navigation-bar .roo-navigation-bar-item.md-icon > .roo-navigation-bar-item-icon:before, 
 .roo-navigation-bar .roo-navigation-bar-item.lg-icon > .roo-navigation-bar-item-icon:before {
     content: counter(step);
-}
+}*/
 
 /*@media (min-width: 768px) {
     .xs-icon > .roo-navigation-bar-item .roo-navigation-bar-item-icon:before {
