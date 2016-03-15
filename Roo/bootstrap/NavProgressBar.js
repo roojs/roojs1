@@ -77,14 +77,10 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     initEvents: function() 
     {
         this.format();
-        
-        Roo.log(this.bullets);
-        Roo.log('run init???');
     },
     
     onRender : function(ct, position) 
     {
-        Roo.log('render???');
         Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
         
         if(this.bullets.length){
@@ -220,7 +216,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         this.setActiveItem(this.barItems[i-1]);
     },
     
-    format : function()
+    formatBullets : function()
     {
         if(!this.barItems.length){
             return;
