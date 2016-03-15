@@ -78,27 +78,27 @@
 }
 
 
-.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-search:before {
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-search.force:before {
     content: "\f002";
 }
 
-.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-history:before {
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-history.force:before {
     content: "\f1da";
 }
 
-.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-list:before {
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-list.force:before {
     content: "\f03a";
 }
 
-.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-shopping-cart:before {
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-shopping-cart.force:before {
     content: "\f07a";
 }
 
-.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-usd:before {
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-usd.force:before {
     content: "\f155";
 }
 
-.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-download:before {
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-download.force:before {
     content: "\f019";
 }
 
