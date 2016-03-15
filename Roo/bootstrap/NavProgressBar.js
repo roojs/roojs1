@@ -103,35 +103,26 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         if(cfg.html){
             var top = new Roo.bootstrap.Element({
                 tag : 'div',
-                cls : 'roo-navigation-bar-text'
+                cls : 'roo-navigation-bar-text',
+                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? cfg.html : ''
             });
             
             var bottom = new Roo.bootstrap.Element({
                 tag : 'div',
-                cls : 'roo-navigation-bar-text'
+                cls : 'roo-navigation-bar-text',
+                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? '' : cfg.html
             });
             
             top.onRender(this.el.select('.roo-navigation-top-bar', true).first(), null);
             bottom.onRender(this.el.select('.roo-navigation-bottom-bar', true).first(), null);
-            
-            var topText = new Roo.bootstrap.Element({
-                tag : 'span',
-                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? cfg.html : ''
-            });
-            
-            var bottomText = new Roo.bootstrap.Element({
-                tag : 'span',
-                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? '' : cfg.html
-            });
-            
-            topText.onRender(top.el, null);
-            bottomText.onRender(bottom.el, null);
             
             item.topEl = top;
             item.bottomEl = bottom;
         }
         
         this.barItems.push(item);
+        
+        Roo.log(this.barItems);
         
         return item;
     },
@@ -231,10 +222,13 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     format : function()
     {
+        Roo.log(this.barItems);
+        Roo.log(this.barItems.length);
         if(!this.barItems.length){
+            Roo.log('not get here???');
             return;
         }
-     
+        Roo.log('get here???');
         var width = 100 / this.barItems.length;
         
         Roo.each(this.barItems, function(i){
