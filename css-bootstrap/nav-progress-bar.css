@@ -77,6 +77,9 @@
     cursor: default;
 }
 
+.roo-navigation-bar-item-text {
+    display: block;
+}
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-search.force:before {
     content: "\f002";
