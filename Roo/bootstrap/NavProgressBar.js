@@ -219,7 +219,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     format : function()
     {
         Roo.log('run?????');
-        Roo.log(this.barItmes);
+        Roo.log(this.barItems);
         if(!this.barItems.length){
             return;
         }
