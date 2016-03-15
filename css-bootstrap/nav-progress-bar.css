@@ -70,6 +70,11 @@
     content: none; 
 }
 
+.roo-navigation-bar .roo-navigation-bar-item.active .roo-navigation-bar-item-icon:before {
+    background: #aa0000;
+    color: white;
+}
+
 .roo-navigation-bar .roo-navigation-bar-item.disabled .roo-navigation-bar-item-icon:before {
     background: #999999;
     color: white;
