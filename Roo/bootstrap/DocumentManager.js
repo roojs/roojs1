@@ -490,7 +490,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     process : function(file)
     {
-        if(this.fireEvent('beforeprocess', this) !== false){
+        if(this.fireEvent('beforeprocess', this, file) !== false){
             
             if(this.editable && file.type.indexOf('image') != -1){
                 this.fireEvent('edit', this, file);
