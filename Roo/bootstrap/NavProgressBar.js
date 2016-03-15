@@ -222,13 +222,10 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     format : function()
     {
-        Roo.log(this.barItems);
-        Roo.log(this.barItems.length);
         if(!this.barItems.length){
-            Roo.log('not get here???');
             return;
         }
-        Roo.log('get here???');
+     
         var width = 100 / this.barItems.length;
         
         Roo.each(this.barItems, function(i){
