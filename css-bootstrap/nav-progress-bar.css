@@ -5,7 +5,6 @@
 .roo-navigation-bottom-bar {
     width: 100%;
     float: left;
-    position: relative;
 }
 
 .roo-navigation-bar-text {
@@ -14,7 +13,6 @@
     height: 100%;
     min-height: 24px;
     text-align: center;
-    display:inline-block;
 }
 
 .roo-navigation-bar {
