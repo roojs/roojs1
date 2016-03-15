@@ -54,6 +54,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
 //            iconCls += ' force';
 //        }
 //        
+
         if(this.icon){
             iconCls += ' ' + this.icon;
         }
