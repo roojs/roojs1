@@ -120,6 +120,14 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
                 html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? cfg.html : ''
             });
             
+            var bottomText = new Roo.bootstrap.Element({
+                tag : 'span',
+                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? '' : cfg.html
+            });
+            
+            topText.onRender(top, null);
+            bottomText.onRender(bottom, null);
+            
             item.topEl = top;
             item.bottomEl = bottom;
         }
