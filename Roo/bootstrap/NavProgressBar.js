@@ -125,10 +125,8 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
                 bottom.el.hide();
             }
             
-            item.topEl = 
-            
-            
-            
+            item.topEl = top;
+            item.bottomEl = bottom;
         }
         
         this.barItems.push(item);
