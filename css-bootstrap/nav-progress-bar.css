@@ -74,6 +74,30 @@
     
 }
 
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-search.force-icon:before {
+    content: "\f002";
+}
+
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-history.force-icon:before {
+    content: "\f1da";
+}
+
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-list.force-icon:before {
+    content: "\f03a";
+}
+
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-shopping-cart.force-icon:before {
+    content: "\f07a";
+}
+
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-usd.force-icon:before {
+    content: "\f155";
+}
+
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-download.force-icon:before {
+    content: "\f019";
+}
+
 /*
 .roo-navigation-bar {
     counter-reset: step;
