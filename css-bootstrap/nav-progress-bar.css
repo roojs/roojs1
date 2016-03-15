@@ -43,8 +43,8 @@
     cursor: pointer;
 }
 
-.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon:before {
-    
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.step-number:before {
+    content: counter(step);
 }
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon:after {
