@@ -97,7 +97,7 @@
     .roo-navigation-bar .roo-navigation-bar-item.xs-icon > .roo-navigation-bar-item-icon:before,
     .roo-navigation-bar .roo-navigation-bar-item.sm-icon > .roo-navigation-bar-item-icon:before,
     .roo-navigation-bar .roo-navigation-bar-item.md-icon > .roo-navigation-bar-item-icon:before {
-        content: counter(step);
+        /*content: counter(step);*/
     }
 }
 
