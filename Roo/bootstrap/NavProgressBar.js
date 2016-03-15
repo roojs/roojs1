@@ -125,8 +125,8 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
                 html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? '' : cfg.html
             });
             
-            topText.onRender(top, null);
-            bottomText.onRender(bottom, null);
+            topText.onRender(top.el, null);
+            bottomText.onRender(bottom.el, null);
             
             item.topEl = top;
             item.bottomEl = bottom;
