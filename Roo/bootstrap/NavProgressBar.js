@@ -49,7 +49,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'div',
-                    cls : 'roo-navigation-bar-top'
+                    cls : 'roo-navigation-top-bar'
                 },
                 {
                     tag : 'div',
@@ -64,7 +64,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
                 
                 {
                     tag : 'div',
-                    cls : 'roo-navigation-bar-bottom'
+                    cls : 'roo-navigation-bottom-bar'
                 }
             ]
             
