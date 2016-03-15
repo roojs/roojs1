@@ -7,13 +7,10 @@
     float: left;
 }
 
-.roo-navigation-bar-text {
-    position: relative;
-}
 roo-navigation-bar-text > span {
     text-transform: uppercase;
     width: 50%;
-    position: relative;
+    display: inline-block;
 }
 
 
