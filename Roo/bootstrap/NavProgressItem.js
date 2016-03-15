@@ -15,7 +15,6 @@
  * @cfg {String} html
  * @cfg {String} position (top|bottom) text position default bottom
  * @cfg {String} icon show icon instead of number
- * @cfg {Boolean} forceIcon (true|false) true to force show icon..
  * 
  * @constructor
  * Create a new NavProgressItem
@@ -44,7 +43,6 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     html : '',
     position : 'bottom',
     icon : false,
-    forceIcon : false,
     
     getAutoCreate : function()
     {
