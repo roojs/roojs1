@@ -94,7 +94,6 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
         this.iconEl = this.el.select('.roo-navigation-bar-item-icon', true).first();
         
         this.iconEl.on('click', this.onClick, this);
-        
     },
     
     onClick : function(e)
