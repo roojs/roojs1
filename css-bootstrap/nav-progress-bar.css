@@ -1,12 +1,21 @@
+
+.roo-navigation-bar-group,
+.roo-navigation-top-bar,
+.roo-navigation-bullets-bar,
+.roo-navigation-bottom-bar {
+    width: 100%;
+}
+
+
+.roo-navigation-bar-text {
+    float: left;
+    /*position: relative;*/
+}
+
 .roo-navigation-bar {
     counter-reset: step;
     text-align: center;
     padding: 0px;
-}
-
-.roo-navigation-bar-text {
-    float: left;
-    position: relative;
 }
 
 .roo-navigation-bar .roo-navigation-bar-item {
