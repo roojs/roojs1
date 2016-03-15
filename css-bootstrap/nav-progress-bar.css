@@ -6,6 +6,7 @@
 
 .roo-navigation-bar-text {
     float: left;
+    position: relative;
 }
 
 .roo-navigation-bar .roo-navigation-bar-item {
