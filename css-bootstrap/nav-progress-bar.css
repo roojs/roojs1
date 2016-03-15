@@ -54,12 +54,6 @@
     z-index: -1;
 }
 
-.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon {
-    font: normal normal normal 14px/1 FontAwesome;
-    display: inline-block;
-    
-}
-
 .roo-navigation-bar .roo-navigation-bar-item:last-child > .roo-navigation-bar-item-icon:after {
     content: none; 
 }
@@ -72,6 +66,12 @@
 
 .roo-navigation-bar .roo-navigation-bar-item.active .roo-navigation-bar-item-icon:before {
     cursor: default;
+}
+
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon {
+    font: normal normal normal 14px/1 FontAwesome;
+    display: inline-block;
+    
 }
 
 /*
