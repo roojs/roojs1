@@ -90,6 +90,14 @@
     .roo-navigation-bar .roo-navigation-bar-item.xs-icon > .roo-navigation-bar-item-icon:before {
         content: counter(step);
     }
+    
+    .roo-navigation-top-bar {
+        display: block;
+    }
+
+    .roo-navigation-bottom-bar {
+        display: block;
+    }
 }
 
 @media (min-width: 992px) {
