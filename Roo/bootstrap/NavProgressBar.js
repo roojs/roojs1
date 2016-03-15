@@ -76,7 +76,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        this.formatBullets();
+        this.format();
     },
     
     onRender : function(ct, position) 
