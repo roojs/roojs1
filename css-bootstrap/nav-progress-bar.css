@@ -4,6 +4,15 @@
     padding: 0px;
 }
 
+.roo-navigation-bar .roo-navigation-bar-item {
+    list-style-type: none;
+    color: rgb(0,0,0);
+    text-transform: uppercase;
+    font-size: 14px;
+    float: left;
+    position: relative;
+}
+
 
 /*
 .roo-navigation-bar {
