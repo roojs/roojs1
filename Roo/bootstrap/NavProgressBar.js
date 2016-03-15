@@ -96,7 +96,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         var item = new Roo.bootstrap.NavProgressItem(cfg);
         
         item.parentId = this.id;
-        item.render(this.el.select('.roo-navigation-bar-list', true).first(), null);
+        item.render(this.el.select('.roo-navigation-bar', true).first(), null);
         
         if(cfg.html){
             var top = new Roo.bootstrap.Element({
