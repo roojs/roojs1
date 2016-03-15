@@ -21918,6 +21918,12 @@
      "desc": "prepare the form data"
     },
     {
+     "name": "process",
+     "sig": "function (_self, file)\n{\n\n}",
+     "type": "function",
+     "desc": "Fire before process file"
+    },
+    {
      "name": "refresh",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",

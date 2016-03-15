@@ -25832,7 +25832,14 @@ Roo.bootstrap.DocumentManager = function(config){
          * Fire before select file
          * @param {Roo.bootstrap.DocumentManager} this
          */
-        "beforeselectfile" : true
+        "beforeselectfile" : true,
+        /**
+         * @event process
+         * Fire before process file
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} file
+         */
+        "process" : true
         
     });
 };
@@ -26236,14 +26243,17 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     process : function(file)
     {
-        if(this.editable && file.type.indexOf('image') != -1){
-            this.fireEvent('edit', this, file);
+        if(this.fireEvent('process', this, file) !== false){
+            if(this.editable && file.type.indexOf('image') != -1){
+                this.fireEvent('edit', this, file);
+                return;
+            }
+
+            this.uploadStart(file, false);
+
             return;
         }
         
-        this.uploadStart(file, false);
-        
-        return;
     },
     
     uploadStart : function(file, crop)
