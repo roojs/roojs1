@@ -77,7 +77,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     initEvents: function() 
     {
         this.topEl = this.el.select('.roo-navigation-bar-top', true).first();
-        this.iconEl = this.el.select('.roo-navigation-bar', true).first();
+        this.iconEl = this.el.select('.roo-navigation-bar-list', true).first();
         this.bottomEl = this.el.select('.roo-navigation-bar-bottom', true).first();
         
     },
@@ -99,7 +99,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         var item = new Roo.bootstrap.NavProgressItem(cfg);
         
         item.parentId = this.id;
-        item.render(this.el.select('.roo-navigation-bar', true).first(), null);
+        item.render(this.el.select('.roo-navigation-bar-list', true).first(), null);
         
         if(cfg.html){
             var html = new Roo.bootstrap.Element({
