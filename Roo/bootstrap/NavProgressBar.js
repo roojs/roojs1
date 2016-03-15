@@ -95,12 +95,15 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         item.render(this.el.select('.roo-navigation-bar', true).first(), null);
         
         if(cfg.html){
-            var html = {
+            var html = new Roo.bootstrap.Element{
                 tag : 'div',
                 cls : 'roo-navigation-bar-text',
                 html : cfg.html
             }
             
+            var pos = (['top', 'bottom'].indexOf(cfg.position) == -1) ? cfg.position : 'bottom';
+            
+            html.onRender(this.el.select('.roo-navigation-bar-' + pos, true).first(), null);
         }
         
         this.barItems.push(item);
