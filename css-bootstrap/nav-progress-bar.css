@@ -77,10 +77,6 @@
     
 }
 
-.roo-navigation-bar .roo-navigation-bar-item.xs-icon > .roo-navigation-bar-item-icon:before {
-    /*content: '';*/
-}
-
 @media (min-width: 768px) {
     .roo-navigation-bar .roo-navigation-bar-item.xs-icon > .roo-navigation-bar-item-icon:before {
         content: counter(step);
@@ -88,8 +84,9 @@
 }
 
 @media (min-width: 992px) {
-    .roo-navigation-bar .roo-navigation-bar-item.md-icon > .roo-navigation-bar-item-icon:before {
-        /*content: counter(step);*/
+    .roo-navigation-bar .roo-navigation-bar-item.xs-icon > .roo-navigation-bar-item-icon:before,
+    .roo-navigation-bar .roo-navigation-bar-item.sm-icon > .roo-navigation-bar-item-icon:before {
+        content: counter(step);
     }
 }
 
@@ -97,7 +94,7 @@
     .roo-navigation-bar .roo-navigation-bar-item.xs-icon > .roo-navigation-bar-item-icon:before,
     .roo-navigation-bar .roo-navigation-bar-item.sm-icon > .roo-navigation-bar-item-icon:before,
     .roo-navigation-bar .roo-navigation-bar-item.md-icon > .roo-navigation-bar-item-icon:before {
-        /*content: counter(step);*/
+        content: counter(step);
     }
 }
 
