@@ -74,7 +74,7 @@
     
 }
 
-.xs-icon > .roo-navigation-bar-item .roo-navigation-bar-item-icon:before {
+.xs-icon > .roo-navigation-bar-item-icon:before {
     content: '';
 }
 
