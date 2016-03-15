@@ -44,9 +44,24 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         var cfg = Roo.apply({}, Roo.bootstrap.NavProgressBar.superclass.getAutoCreate.call(this));
         
         cfg = {
-            tag : 'ul',
-            cls: 'roo-navigation-bar' 
-        }
+            tag : 'div',
+            cls : 'roo-navigation-bar-group',
+            cn : [
+                {
+                    tag : 'div',
+                    cls : 'roo-navigation-top-bar'
+                },
+                {
+                    tag : 'ul',
+                    cls : 'roo-navigation-bar'
+                },
+                {
+                    tag : 'div',
+                    cls : 'roo-navigation-bottom-bar'
+                }
+            ]
+            
+        };
         
         return cfg;
         
