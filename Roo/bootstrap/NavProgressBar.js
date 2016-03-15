@@ -105,25 +105,17 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
             var top = new Roo.bootstrap.Element({
                 tag : 'div',
                 cls : 'roo-navigation-bar-text',
-                html : cfg.html
+                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? cfg.html : ''
             });
             
             var bottom = new Roo.bootstrap.Element({
                 tag : 'div',
                 cls : 'roo-navigation-bar-text',
-                html : cfg.html
+                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? '' : cfg.html
             });
             
             top.onRender(this.el.select('.roo-navigation-bar-top', true).first(), null);
             bottom.onRender(this.el.select('.roo-navigation-bar-bottom', true).first(), null);
-            
-            top.el.setVisibilityMode(Roo.Element.DISPLAY).hide();
-            bottom.el.setVisibilityMode(Roo.Element.DISPLAY).show();
-            
-            if(typeof(cfg.position) != 'undefined' && cfg.position == 'top'){
-                top.el.show();
-                bottom.el.hide();
-            }
             
             item.topEl = top;
             item.bottomEl = bottom;
