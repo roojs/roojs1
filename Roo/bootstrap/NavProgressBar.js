@@ -214,9 +214,18 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         
         var width = 100 / this.barItems.length;
         
-        Roo.each(this.barItems, function(i){
-            i.el.setStyle('width', width + '%');
-        }, this);
+        Roo.each(this.topEl.select('.roo-navigation-bar-text', true).elements, function(el){
+            el.setStyle('width', width + '%');
+        });
+        
+        Roo.each(this.bottomEl.select('.roo-navigation-bar-text', true).elements, function(el){
+            el.setStyle('width', width + '%');
+        });
+        
+        Roo.each(this.iconEl.select('.roo-navigation-bar-item', true).elements, function(el){
+            el.setStyle('width', width + '%');
+        });
+        
     }
     
 });
