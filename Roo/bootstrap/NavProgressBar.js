@@ -76,9 +76,9 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        this.topEl = this.el.select('.roo-navigation-bar-top', true).first();
-        this.iconEl = this.el.select('.roo-navigation-bar-list', true).first();
-        this.bottomEl = this.el.select('.roo-navigation-bar-bottom', true).first();
+//        this.topEl = this.el.select('.roo-navigation-bar-top', true).first();
+//        this.iconEl = this.el.select('.roo-navigation-bar-list', true).first();
+//        this.bottomEl = this.el.select('.roo-navigation-bar-bottom', true).first();
         
     },
     
@@ -102,18 +102,31 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         item.render(this.el.select('.roo-navigation-bar-list', true).first(), null);
         
         if(cfg.html){
-            var html = new Roo.bootstrap.Element({
+            var top = new Roo.bootstrap.Element({
                 tag : 'div',
                 cls : 'roo-navigation-bar-text',
                 html : cfg.html
             });
             
-            html.onRender(this.el.select('.roo-navigation-bar-top', true).first(), null);
-            html.onRender(this.el.select('.roo-navigation-bar-bottom', true).first(), null);
+            var bottom = new Roo.bootstrap.Element({
+                tag : 'div',
+                cls : 'roo-navigation-bar-text',
+                html : cfg.html
+            });
             
+            top.onRender(this.el.select('.roo-navigation-bar-top', true).first(), null);
+            bottom.onRender(this.el.select('.roo-navigation-bar-bottom', true).first(), null);
             
+            top.el.setVisibilityMode(Roo.Element.DISPLAY).hide();
+            bottom.el.setVisibilityMode(Roo.Element.DISPLAY).show();
             
-            var pos = (['top', 'bottom'].indexOf(cfg.position) !== -1) ? cfg.position : 'bottom';
+            if(typeof(cfg.position) != 'undefined' && cfg.position == 'top'){
+                top.el.show();
+                bottom.el.hide();
+            }
+            
+            item.topEl = 
+            
             
             
         }
