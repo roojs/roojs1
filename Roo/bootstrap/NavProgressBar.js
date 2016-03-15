@@ -39,7 +39,6 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     bullets : [],
     barItems : [],
     
-    
     getAutoCreate : function()
     {
         var cfg = Roo.apply({}, Roo.bootstrap.NavProgressBar.superclass.getAutoCreate.call(this));
