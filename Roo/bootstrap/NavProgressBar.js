@@ -69,7 +69,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-        Roo.log('initEvent????');
+        Roo.log(this.iconEl);
         
     },
     
@@ -78,6 +78,10 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         Roo.log('render bar???');
         
         Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
+        
+        this.topEl = this.el.select('.roo-navigation-top-bar', true).first();
+        this.iconEl = this.el.select('.roo-navigation-bar', true).first();
+        this.bottomEl = this.el.select('.roo-navigation-bottom-bar', true).first();
         
         if(this.bullets.length){
             Roo.each(this.bullets, function(b){
