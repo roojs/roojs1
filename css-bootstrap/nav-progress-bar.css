@@ -6,6 +6,7 @@
     width: 100%;
     float: left;
     position: relative;
+    overflow: hidden; 
 }
 
 .roo-navigation-bar-text {
