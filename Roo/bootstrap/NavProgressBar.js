@@ -101,7 +101,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
                 html : cfg.html
             });
             
-            var pos = (typeof(cfg.position) != 'undefined' && ['top', 'bottom'].indexOf(cfg.position) == -1) ? cfg.position : 'bottom';
+            var pos = (typeof(cfg.position) != 'undefined' && ['top', 'bottom'].indexOf(cfg.position) != -1) ? cfg.position : 'bottom';
             Roo.log(cfg);
             Roo.log(['top', 'bottom'].indexOf(cfg.position));
             Roo.log(pos);
