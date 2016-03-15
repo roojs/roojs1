@@ -75,7 +75,7 @@
 }
 
 .roo-navigation-bar .roo-navigation-bar-item.xs-icon > .roo-navigation-bar-item-icon:before {
-    content: '';
+    content: inherit;
 }
 
 /*@media (min-width: 768px) {
