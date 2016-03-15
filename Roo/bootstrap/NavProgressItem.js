@@ -50,11 +50,10 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     {
         var iconCls = 'roo-navigation-bar-item-icon';
         
-//        if((this.forceIcon)){
-//            iconCls += ' force';
-//        }
-//        
-
+        if((this.forceIcon)){
+            iconCls += ' force-icon';
+        }
+        
         if(this.icon){
             iconCls += (this.icon) ? (' ' + this.icon) : (' step-number') ;
         }
