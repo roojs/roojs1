@@ -103,7 +103,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
             
             var pos = (['top', 'bottom'].indexOf(cfg.position) == -1) ? cfg.position : 'bottom';
             
-            Roo.log(this.el.select('.roo-navigation-bar-top', true).first());
+            Roo.log(this.el.select('.roo-navigation-bar-' + pos, true).first());
             
             html.onRender(this.el.select('.roo-navigation-bar-' + pos, true).first(), null);
         }
