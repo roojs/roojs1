@@ -216,7 +216,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         this.setActiveItem(this.barItems[i-1]);
     },
     
-    formatBullets : function()
+    format : function()
     {
         if(!this.barItems.length){
             return;
