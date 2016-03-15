@@ -86,7 +86,14 @@ Roo.bootstrap.DocumentManager = function(config){
          * Fire before select file
          * @param {Roo.bootstrap.DocumentManager} this
          */
-        "beforeselectfile" : true
+        "beforeselectfile" : true,
+        /**
+         * @event process
+         * Fire before process file
+         * @param {Roo.bootstrap.DocumentManager} this
+         * @param {Object} file
+         */
+        "process" : true
         
     });
 };
