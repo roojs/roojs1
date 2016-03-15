@@ -5,8 +5,13 @@
 .roo-navigation-bottom-bar {
     width: 100%;
     float: left;
+}
+
+.roo-navigation-top-bar,
+.roo-navigation-bottom-bar {
     text-transform: uppercase;
 }
+
 
 .roo-navigation-bar-text {
     float: left;
