@@ -78,6 +78,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     {
         this.format();
         
+        Roo.log(this.bullets);
         Roo.log('run init???');
     },
     
