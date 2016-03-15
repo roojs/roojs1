@@ -102,7 +102,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
             var top = new Roo.bootstrap.Element({
                 tag : 'div',
                 cls : 'column',
-                style : 'float:left;',
+                style : 'float:left;position:relative',
                 html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? cfg.html : ''
             });
             
