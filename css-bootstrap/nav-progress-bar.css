@@ -4,6 +4,10 @@
     padding: 0px;
 }
 
+.roo-navigation-bar-text {
+    float: left;
+}
+
 .roo-navigation-bar .roo-navigation-bar-item {
     list-style-type: none;
     color: rgb(0,0,0);
