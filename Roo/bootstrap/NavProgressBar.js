@@ -53,11 +53,11 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
                 },
                 {
                     tag : 'div',
-                    cls : 'roo-navigation-bar',
+                    cls : 'roo-navigation-bullets-bar',
                     cn : [
                         {
                             tag : 'ul',
-                            cls : 'roo-navigation-bar-list'
+                            cls : 'roo-navigation-bar'
                         }
                     ]
                 },
