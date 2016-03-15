@@ -32,7 +32,6 @@
 }
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon:before {
-    content: counter(step);
     counter-increment: step;
     width: 25px;
     line-height: 25px;
@@ -42,6 +41,10 @@
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon:before {
+    
 }
 
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon:after {
