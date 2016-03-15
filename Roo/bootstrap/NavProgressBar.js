@@ -89,11 +89,10 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     addItem : function(cfg)
     {
-        Roo.log(this.el);
         var item = new Roo.bootstrap.NavProgressItem(cfg);
         
         item.parentId = this.id;
-        item.render(this.el, null);
+        item.render(this.el.select('.roo-navigation-bar', true).first(), null);
         
         this.barItems.push(item);
         
