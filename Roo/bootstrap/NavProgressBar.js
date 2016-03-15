@@ -76,10 +76,7 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     
     initEvents: function() 
     {
-//        this.topEl = this.el.select('.roo-navigation-bar-top', true).first();
-//        this.iconEl = this.el.select('.roo-navigation-bar-list', true).first();
-//        this.bottomEl = this.el.select('.roo-navigation-bar-bottom', true).first();
-        
+        this.formatBullets();
     },
     
     onRender : function(ct, position) 
@@ -122,8 +119,6 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         }
         
         this.barItems.push(item);
-        
-        this.formatBullets();
         
         return item;
     },
