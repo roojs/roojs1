@@ -50,7 +50,11 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
     {
         var iconCls = 'roo-navigation-bar-item-icon';
         
-        if((this.forceIcon && this.icon) || !this.forceIcon && Roo.isTouch){
+        if((this.forceIcon)){
+            iconCls += ' force';
+        }
+        
+        if(this.icon){
             iconCls += ' ' + this.icon;
         }
         
