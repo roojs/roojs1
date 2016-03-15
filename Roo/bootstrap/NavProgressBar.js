@@ -71,11 +71,6 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
     {
         Roo.log('initEvent????');
         
-        if(this.bullets.length){
-            Roo.each(this.bullets, function(b){
-               this.addItem(b);
-            }, this);
-        }
     },
     
     onRender : function(ct, position) 
@@ -84,12 +79,17 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         
         Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
         
-        
+        if(this.bullets.length){
+            Roo.each(this.bullets, function(b){
+               this.addItem(b);
+            }, this);
+        }
         
     },
     
     addItem : function(cfg)
     {
+        Roo.log(this.el);
         var item = new Roo.bootstrap.NavProgressItem(cfg);
         
         item.parentId = this.id;
