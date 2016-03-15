@@ -74,7 +74,12 @@
     
 }
 
-
+.xs-icon,
+.sm-icon,
+.md-icon,
+.lg-icon {
+    
+}
 
 /*
 .roo-navigation-bar .roo-navigation-bar-item .roo-navigation-bar-item-icon.fa-search.force-icon:before {
