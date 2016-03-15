@@ -37,6 +37,10 @@
     z-index: -1;
 }
 
+.roo-navigation-bar .roo-navigation-bar-item:first-child > .roo-navigation-bar-item-icon:after {
+    content: none; 
+}
+
 /*
 .roo-navigation-bar {
     counter-reset: step;
