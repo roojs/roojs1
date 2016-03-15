@@ -82,8 +82,8 @@
 }
 
 @media (min-width: 768px) {
-    .roo-navigation-bar .roo-navigation-bar-item.sm-icon > .roo-navigation-bar-item-icon:before {
-        /*content: counter(step);*/
+    .roo-navigation-bar .roo-navigation-bar-item.xs-icon > .roo-navigation-bar-item-icon:before {
+        content: counter(step);
     }
 }
 
