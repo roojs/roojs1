@@ -103,26 +103,35 @@ Roo.extend(Roo.bootstrap.NavProgressBar, Roo.bootstrap.Component,  {
         if(cfg.html){
             var top = new Roo.bootstrap.Element({
                 tag : 'div',
-                cls : 'roo-navigation-bar-text',
-                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? cfg.html : ''
+                cls : 'roo-navigation-bar-text'
             });
             
             var bottom = new Roo.bootstrap.Element({
                 tag : 'div',
-                cls : 'roo-navigation-bar-text',
-                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? '' : cfg.html
+                cls : 'roo-navigation-bar-text'
             });
             
             top.onRender(this.el.select('.roo-navigation-top-bar', true).first(), null);
             bottom.onRender(this.el.select('.roo-navigation-bottom-bar', true).first(), null);
+            
+            var topText = new Roo.bootstrap.Element({
+                tag : 'span',
+                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? cfg.html : ''
+            });
+            
+            var bottomText = new Roo.bootstrap.Element({
+                tag : 'span',
+                html : (typeof(cfg.position) != 'undefined' && cfg.position == 'top') ? '' : cfg.html
+            });
+            
+            topText.onRender(top.el, null);
+            bottomText.onRender(bottom.el, null);
             
             item.topEl = top;
             item.bottomEl = bottom;
         }
         
         this.barItems.push(item);
-        
-        Roo.log(this.barItems);
         
         return item;
     },
