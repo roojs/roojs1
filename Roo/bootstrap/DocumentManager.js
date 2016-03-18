@@ -196,6 +196,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.managerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.selectorEl = this.el.select('.roo-document-manager-selector', true).first();
+        this.selectorEl.setHeight('0px');
 //        this.selectorEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         this.selectorEl.hide();
         
