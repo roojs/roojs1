@@ -87,9 +87,18 @@
 }
 
 /* button styles */
-.sidebar .sidebar-menu li.danger {
-   
+.sidebar .sidebar-menu li a {
+   color: #333; 
 }
+.sidebar .sidebar-menu li a:hover,
+.sidebar .sidebar-menu li a:focus,
+.sidebar .sidebar-menu li a:active
+{
+  color: #000;
+}
+
+
+
 .sidebar .sidebar-menu li.danger {
   color: #fff;
   background-color: #d9534f;
