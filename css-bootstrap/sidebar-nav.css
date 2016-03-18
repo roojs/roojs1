@@ -87,14 +87,26 @@
 }
 
 /* button styles */
+.sidebar .sidebar-menu li {
+   border-bottom: 1px solid #ccc;
+}
 .sidebar .sidebar-menu li a {
    color: #333; 
 }
+.sidebar .sidebar-menu li:hover,
+.sidebar .sidebar-menu li:focus,
+.sidebar .sidebar-menu li:active
+{
+  background-color: #d9534f;
+  
+}
+
 .sidebar .sidebar-menu li:hover a,
 .sidebar .sidebar-menu li:focus a,
 .sidebar .sidebar-menu li:active a
 {
-  color: red;
+  color: #000;
+  
 }
 
 
@@ -113,6 +125,7 @@
   color: #fff;
   background-color: #c9302c;
   border-color: #ac2925;
+  border-bottom: 1px solid #ac2925;
 }
 .sidebar .sidebar-menu li.danger  a {
    color: #fff;
