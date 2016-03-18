@@ -90,9 +90,9 @@
 .sidebar .sidebar-menu li a {
    color: #333; 
 }
-.sidebar .sidebar-menu li:hover,
-.sidebar .sidebar-menu li:focus,
-.sidebar .sidebar-menu li:active
+.sidebar .sidebar-menu li  a:hover,
+.sidebar .sidebar-menu li a:focus,
+.sidebar .sidebar-menu li a:active
 {
   color: #000;
 }
