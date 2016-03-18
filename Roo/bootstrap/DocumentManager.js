@@ -116,6 +116,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     getAutoCreate : function()
     {   
+        
         var managerWidget = {
             tag : 'div',
             cls : 'roo-document-manager',
