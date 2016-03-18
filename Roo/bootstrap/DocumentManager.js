@@ -267,7 +267,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
      
-        Roo.log('onUploaderCLick???');
         if(this.fireEvent('beforeselectfile', this) != false){
             this.selectorEl.dom.click();
         }
