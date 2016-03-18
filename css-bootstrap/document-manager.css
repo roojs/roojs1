@@ -1,4 +1,9 @@
 
+.roo-document-manager-selector { // it must use visibility, display is not working on old safari...
+    visibility: hidden;
+    height: 0px;
+}
+
 .roo-document-manager-uploader,
 .roo-document-manager-loading,
 .roo-document-manager-preview {
