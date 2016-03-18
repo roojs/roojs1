@@ -89,6 +89,8 @@
 /* button styles */
 .sidebar .sidebar-menu li {
    border-bottom: 1px solid #ccc;
+   background-color: #eee;
+
 }
 .sidebar .sidebar-menu li a {
    color: #333; 
