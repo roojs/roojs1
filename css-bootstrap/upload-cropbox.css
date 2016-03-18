@@ -1,4 +1,9 @@
 
+.roo-upload-cropbox-selector { // it must use visibility, display is not working on old safari...
+    visibility: hidden;
+    height: 0px;
+}
+
 .roo-upload-cropbox-dialog .modal-header,
 .roo-upload-cropbox-dialog .modal-footer {
     padding-top: 5px;
