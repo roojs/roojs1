@@ -51,13 +51,14 @@
 .sidebar .sidebar-menu li.active:focus,
 .sidebar .sidebar-menu li.active.focus
 {
-  color: #fff;
-  background-color: #c9302c;
-  border-color: #ac2925;
-  border-bottom: 1px solid #ac2925;
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+    border-bottom: 1px solid #ac2925;
 }
+
 .sidebar .sidebar-menu li.active  a {
-   color: #fff;
+    color: #fff;
 }
 
 
