@@ -106,6 +106,11 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     onClick : function(e)
     {
+        if(this.disabled){
+            e.preventDefault();
+            return;
+        }
+        
         if(this.preventDefault){
             e.preventDefault();
         }
