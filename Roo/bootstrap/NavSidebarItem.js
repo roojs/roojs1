@@ -102,6 +102,11 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     initEvents : function()
     { 
         this.el.on('click', this.onClick, this);
+        
+        if(this.badge !== ''){
+            this.badgeEl = this.el.select('.badge', true).first();
+        }
+        
     },
     
     onClick : function(e)
@@ -169,7 +174,10 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         return this.active;
     },
     
-    
+    setBadge : function()
+    {
+        
+    }
     
    
      
