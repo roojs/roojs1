@@ -1,12 +1,6 @@
 .sidebar {
   margin-bottom: 5px;
-}
-.sidebar .sidebar-form input:focus {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  border-color: transparent!important;
-}
+} 
 .sidebar .sidebar-menu {
   list-style: none;
   margin: 0;
