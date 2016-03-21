@@ -31,17 +31,15 @@
 .sidebar .sidebar-menu li:focus,
 .sidebar .sidebar-menu li:active
 {
-  background-color: #fff;
-  
+    background-color: #fff;
 }
 
 .sidebar .sidebar-menu li:hover a,
 .sidebar .sidebar-menu li:focus a,
 .sidebar .sidebar-menu li:active a
 {
-  color: #000;
+    color: #000;
 }
-
 
 
 .sidebar .sidebar-menu li.danger {
@@ -49,18 +47,16 @@
   background-color: #d9534f;
   border-color: #d43f3a;
 }
-.sidebar .sidebar-menu li.danger:hover,
-.sidebar .sidebar-menu li.danger:focus,
-.sidebar .sidebar-menu li.danger.focus,
-.sidebar .sidebar-menu li.danger:active,
-.sidebar .sidebar-menu li.danger.active
+.sidebar .sidebar-menu li.active:hover,
+.sidebar .sidebar-menu li.active:focus,
+.sidebar .sidebar-menu li.active.focus
 {
   color: #fff;
   background-color: #c9302c;
   border-color: #ac2925;
   border-bottom: 1px solid #ac2925;
 }
-.sidebar .sidebar-menu li.danger  a {
+.sidebar .sidebar-menu li.active  a {
    color: #fff;
 }
 
