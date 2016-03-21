@@ -88,7 +88,8 @@
     border-bottom: 1px solid #ac2925;
 }
 
-.sidebar .sidebar-menu li.danger.active  a {
+.sidebar .sidebar-menu li.danger a,
+.sidebar .sidebar-menu li.danger.active a{
     color: #fff;
 }
 
