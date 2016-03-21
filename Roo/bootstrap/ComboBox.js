@@ -516,7 +516,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.el=false;
             this.rendered = false;
             
-            this.render(this.parent().getChildContainer(true), h);
+            this.render(this.parent().getChildContainer(true), k);
             
             
             
