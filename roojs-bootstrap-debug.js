@@ -4398,7 +4398,8 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     initEvents : function()
     { 
         this.el.on('click', this.onClick, this);
-        
+        Roo.log("set badgeEl? ", this.badge);
+    
         if(this.badge !== ''){
             Roo.log("set badgeEl");
             this.badgeEl = this.el.select('.badge', true).first().setVisibilityMode(Roo.Element.DISPLAY);
