@@ -167,7 +167,9 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     isActive: function () 
     {
         return this.active;
-    }
+    },
+    
+    
     
    
      
