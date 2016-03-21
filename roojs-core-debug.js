@@ -6584,6 +6584,9 @@ Roo.onReady(function(){
     if(Roo.isIOS){
         cls.push("roo-ios");
     }
+    if(Roo.isTouch){
+        cls.push("roo-touch");
+    }
     if(Roo.isBorderBox){
         cls.push('roo-border-box');
     }
@@ -9007,7 +9010,7 @@ if(opt.anim.isAnimated()){
             
             // we wander
             var z = 0;
-            var dom = this.dom
+            var dom = this.dom;
             while (dom && dom.style) {
                 if (!isNaN(parseInt(dom.style.zIndex))) {
                     z = Math.max(z, parseInt(dom.style.zIndex));
