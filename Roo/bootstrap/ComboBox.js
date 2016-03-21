@@ -485,6 +485,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
     },
     
+    _initEventsCalled : false,
+    
     // private
     initEvents: function()
     {
