@@ -69,6 +69,10 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             cfg.cls += ' active';
         }
         
+        if (this.disabled) {
+            cfg.cls += ' disabled';
+        }
+        
         // left icon..
         if (this.glyphicon || this.icon) {
             var c = this.glyphicon  ? ('glyphicon glyphicon-'+this.glyphicon)  : this.icon;
