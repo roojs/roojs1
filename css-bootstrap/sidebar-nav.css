@@ -1,38 +1,32 @@
 .sidebar {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .sidebar .sidebar-menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .sidebar .sidebar-menu > li {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #ccc;
+    background-color: #eee;
 }
 
 .sidebar .sidebar-menu > li > a {
-  padding: 12px 5px 12px 15px;
-  display: block;
+    padding: 12px 5px 12px 15px;
+    display: block;
+    color: #333; 
 }
 
 .sidebar .sidebar-menu > li > a > .fa,
 .sidebar .sidebar-menu > li > a > .glyphicon,
 .sidebar .sidebar-menu > li > a > .ion {
-  width: 20px;
+    width: 20px;
 }
 
-/* button styles */
-.sidebar .sidebar-menu > li {
-   border-bottom: 1px solid #ccc;
-   background-color: #eee;
-
-}
-.sidebar .sidebar-menu > li a {
-   color: #333; 
-}
 .sidebar .sidebar-menu li:hover,
 .sidebar .sidebar-menu li:focus,
 .sidebar .sidebar-menu li:active
