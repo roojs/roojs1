@@ -41,28 +41,6 @@
     color: #000;
 }
 
-.sidebar .sidebar-menu li.danger,
-.sidebar .sidebar-menu li.danger.active {
-  color: #fff;
-  background-color: #d9534f;
-  border-color: #d43f3a;
-}
-
-.sidebar .sidebar-menu li.danger:hover,
-.sidebar .sidebar-menu li.danger:focus,
-.sidebar .sidebar-menu li.danger.active:focus
-{
-    color: #fff;
-    background-color: #c9302c;
-    border-color: #ac2925;
-    border-bottom: 1px solid #ac2925;
-}
-
-.sidebar .sidebar-menu li.danger  a {
-    color: #fff;
-}
-
-
 .sidebar .sidebar-menu li.active {
   color: #fff;
   background-color: #337ab7;
@@ -91,6 +69,27 @@
 .sidebar .sidebar-menu li.disabled a {
     color: #ccc;
     cursor: default;
+}
+
+.sidebar .sidebar-menu li.danger,
+.sidebar .sidebar-menu li.danger.active {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+
+.sidebar .sidebar-menu li.danger:hover,
+.sidebar .sidebar-menu li.danger:focus,
+.sidebar .sidebar-menu li.danger.active:focus
+{
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+    border-bottom: 1px solid #ac2925;
+}
+
+.sidebar .sidebar-menu li.danger.active  a {
+    color: #fff;
 }
 
 
