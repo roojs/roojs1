@@ -48,6 +48,12 @@
   border-color: #d43f3a;
 }
 
+.sidebar .sidebar-menu li.disabled {
+  color: #fff;
+  background-color: #fff;
+  border-color: #fff;
+}
+
 .sidebar .sidebar-menu li.active:hover,
 .sidebar .sidebar-menu li.active:focus,
 .sidebar .sidebar-menu li.active.focus
