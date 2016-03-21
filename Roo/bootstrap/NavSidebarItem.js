@@ -42,6 +42,7 @@ Roo.bootstrap.NavSidebarItem = function(config){
 
 Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
+    badgeWeight : 'default',
     
     getAutoCreate : function(){
         
@@ -77,6 +78,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         a.cn.push(span);
         // then badge..
         if (this.badge !== '') {
+            
             a.cn.push({ tag: 'span',  cls : 'badge pull-right ' + (this.badgecls || ''), html: this.badge }); 
         }
         // fi
