@@ -100,7 +100,7 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
             this.el.select('.roo-alert-icon',true).first().removeClass(['fa', 'fa-' + this.faicon]);
         }
         
-        this.faicon = icon
+        this.faicon = icon;
         
         this.el.select('.roo-alert-icon',true).first().addClass(['fa', 'fa-' + this.faicon]);
     },
