@@ -90,6 +90,11 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         return cfg;
          
 	   
+    },
+    
+    initEvents : function()
+    { 
+        
     }
    
      
