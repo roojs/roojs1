@@ -392,7 +392,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         tn = sel.tagName.toUpperCase();
         
-        var lastSel = this.tb.selectedNode
+        var lastSel = this.tb.selectedNode;
         
         this.tb.selectedNode = sel;
         
