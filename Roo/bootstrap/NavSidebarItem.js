@@ -79,7 +79,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         // then badge..
         if (this.badge !== '') {
             
-            a.cn.push({ tag: 'span',  cls : 'badge pull-right ' + (this.badgecls || ''), html: this.badge }); 
+            a.cn.push({ tag: 'span',  cls : 'badge pull-right badge-' + this.badgecls, html: this.badge }); 
         }
         // fi
         if (this.menu) {
