@@ -42,7 +42,7 @@
 }
 
 
-.sidebar .sidebar-menu li.danger {
+.sidebar .sidebar-menu li.active {
   color: #fff;
   background-color: #d9534f;
   border-color: #d43f3a;
