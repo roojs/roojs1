@@ -57,6 +57,10 @@
     border-bottom: 1px solid #ac2925;
 }
 
+.sidebar .sidebar-menu li.danger  a {
+    color: #fff;
+}
+
 
 .sidebar .sidebar-menu li.active {
   color: #fff;
