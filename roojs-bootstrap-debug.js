@@ -11573,15 +11573,43 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
     },
     
+    _initEventsCalled : false,
+    
     // private
     initEvents: function()
     {
+        
+        if (this._initEventsCalled) { // as we call render... prevent looping...
+            return;
+        }
+        this._initEventsCalled = true;
         
         if (!this.store) {
             throw "can not find store for combo";
         }
         
         this.store = Roo.factory(this.store, Roo.data);
+        
+        // if we are building from html. then this element is so complex, that we can not really
+        // use the rendered HTML.
+        // so we have to trash and replace the previous code.
+        if (Roo.XComponent.build_from_html) {
+            
+            // remove this element....
+            var e = this.el.dom, k=0;
+            while (e ) { e = e.previousSibling;  ++k;}
+
+            this.el.remove();
+            
+            this.el=false;
+            this.rendered = false;
+            
+            this.render(this.parent().getChildContainer(true), k);
+            
+            
+            
+        }
+        
         
         /*
          * Touch Devices
@@ -24249,7 +24277,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.bodyEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.selectorEl = this.el.select('.roo-upload-cropbox-selector', true).first();
-        this.selectorEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         this.selectorEl.hide();
         
         this.previewEl = this.el.select('.roo-upload-cropbox-preview', true).first();
@@ -25942,7 +25969,6 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
         this.managerEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         
         this.selectorEl = this.el.select('.roo-document-manager-selector', true).first();
-        this.selectorEl.setVisibilityMode(Roo.Element.DISPLAY).originalDisplay = 'block';
         this.selectorEl.hide();
         
         if(this.multiple){
@@ -26012,7 +26038,7 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     onUploaderClick : function(e)
     {
         e.preventDefault();
-        
+     
         if(this.fireEvent('beforeselectfile', this) != false){
             this.selectorEl.dom.click();
         }
