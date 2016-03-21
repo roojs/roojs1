@@ -68,6 +68,10 @@
     color: #fff;
 }
 
+.sidebar .sidebar-menu li.disabled a {
+  color: #ccc;
+}
+
 
 .badge-default {
     background-color: #777;
