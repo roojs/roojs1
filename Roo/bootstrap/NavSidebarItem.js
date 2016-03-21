@@ -157,6 +157,11 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         this.el.removeClass('active');
         
         return;
+    },
+    
+    isActive: function () 
+    {
+        return this.active;
     }
     
    
