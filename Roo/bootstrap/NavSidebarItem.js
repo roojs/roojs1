@@ -13,7 +13,7 @@
  * @class Roo.bootstrap.NavSidebarItem
  * @extends Roo.bootstrap.NavItem
  * Bootstrap Navbar.NavSidebarItem class
- * {String} badgecls (success|bg-red|bg-yellow)the extra classes for the badge
+ * {String} badgecls (default|success| )the extra classes for the badge
  * @constructor
  * Create a new Navbar Button
  * @param {Object} config The config object
