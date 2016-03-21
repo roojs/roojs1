@@ -60,8 +60,8 @@
 
 .sidebar .sidebar-menu li.active {
   color: #fff;
-  background-color: #d9534f;
-  border-color: #d43f3a;
+  background-color: #337ab7;
+  border-color: #2e6da4;
 }
 
 .sidebar .sidebar-menu li.active:hover,
