@@ -509,7 +509,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             
             // remove this element....
             var e = this.el.dom, k=0;
-            while (false !=( e = e.previousSibling)) { ++k;}
+            while (e ) { e = e.previousSibling;  ++k;}
 
             this.el.remove();
             
