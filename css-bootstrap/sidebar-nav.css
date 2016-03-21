@@ -13,6 +13,7 @@
   margin: 0;
   padding: 0;
 }
+
 .sidebar .sidebar-menu > li {
   margin: 0;
   padding: 0;
@@ -73,7 +74,6 @@
 .sidebar .sidebar-menu li:active a
 {
   color: #000;
-  
 }
 
 
