@@ -49,9 +49,9 @@
 }
 
 .sidebar .sidebar-menu li.disabled {
-  color: #fff;
+  color: #ccc;
   background-color: #fff;
-  border-color: #fff;
+  border-color: #ccc;
 }
 
 .sidebar .sidebar-menu li.active:hover,
