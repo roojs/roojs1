@@ -172,12 +172,11 @@ if(nv){var E=nv.getWasActive();if(E){E.setActive(true,false,true);}}}},setDisabl
 this.fireEvent('scrollto',this,B,e);Roo.get(c).scrollTo('top',B.value,true);return;}});
 // Roo/bootstrap/NavSidebarItem.js
 Roo.bootstrap.NavSidebarItem=function(A){Roo.bootstrap.NavSidebarItem.superclass.constructor.call(this,A);this.addEvents({"click":true,'changed':true});};Roo.extend(Roo.bootstrap.NavSidebarItem,Roo.bootstrap.NavItem,{badgeWeight:'default',getAutoCreate:function(){var a={tag:'a',href:this.href||'#',cls:'',html:'',cn:[]}
-;var A={tag:'li',cls:'',cn:[a]};var span={tag:'span',html:this.html||''};if(this.active){A.cls+=' active';}if(this.disabled){A.cls+=' disabled';}if(this.glyphicon||this.icon){var c=this.glyphicon?('glyphicon glyphicon-'+this.glyphicon):this.icon;a.cn.push({tag:'i',cls:c}
-);}a.cn.push(span);if(this.badge!==''){a.cn.push({tag:'span',cls:'badge pull-right badge-'+this.badgeWeight,html:this.badge});}if(this.menu){a.cn.push({tag:'i',cls:'glyphicon glyphicon-chevron-down pull-right'});a.cls+='dropdown-toggle treeview';}return A;
-},initEvents:function(){this.el.on('click',this.onClick,this);Roo.log("set badgeEl? ",this.badge);if(this.badge!==''){Roo.log("set badgeEl");this.badgeEl=this.el.select('.badge',true).first().setVisibilityMode(Roo.Element.DISPLAY);}},onClick:function(e){if(this.disabled){e.preventDefault();
+;var A={tag:'li',cls:'',cn:[a]};var B={tag:'span',html:this.html||''};if(this.active){A.cls+=' active';}if(this.disabled){A.cls+=' disabled';}if(this.glyphicon||this.icon){var c=this.glyphicon?('glyphicon glyphicon-'+this.glyphicon):this.icon;a.cn.push({tag:'i',cls:c}
+);}a.cn.push(B);if(this.badge!==''){a.cn.push({tag:'span',cls:'badge pull-right badge-'+this.badgeWeight,html:this.badge});}if(this.menu){a.cn.push({tag:'i',cls:'glyphicon glyphicon-chevron-down pull-right'});a.cls+='dropdown-toggle treeview';}return A;},onClick:function(e){if(this.disabled){e.preventDefault();
 return;}if(this.preventDefault){e.preventDefault();}this.fireEvent('click',this);},disable:function(){this.setDisabled(true);},enable:function(){this.setDisabled(false);},setDisabled:function(A){if(this.disabled==A){return;}this.disabled=A;if(A){this.el.addClass('disabled');
 return;}this.el.removeClass('disabled');return;},setActive:function(A){if(this.active==A){return;}this.active=A;if(A){this.el.addClass('active');return;}this.el.removeClass('active');return;},isActive:function(){return this.active;},setBadge:function(A){if(!this.badgeEl){return;
-}this.badgeEl.dom.innerHTML=A;}});
+}this.badgeEl.dom.innerHTML=A;},initEvents:function(){this.el.on('click',this.onClick,this);if(this.badge!==''){this.badgeEl=this.el.select('.badge',true).first().setVisibilityMode(Roo.Element.DISPLAY);}}});
 // Roo/bootstrap/Row.js
 Roo.bootstrap.Row=function(A){Roo.bootstrap.Row.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.Row,Roo.bootstrap.Component,{getAutoCreate:function(){return {cls:'row clearfix'};}});
 // Roo/bootstrap/Element.js

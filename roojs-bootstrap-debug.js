@@ -4354,11 +4354,11 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             tag: 'li',
             cls: '',
             cn: [ a ]
-        }
+        };
         var span = {
             tag: 'span',
             html : this.html || ''
-        }
+        };
         
         
         if (this.active) {
@@ -4394,18 +4394,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
          
 	   
     },
-    
-    initEvents : function()
-    { 
-        this.el.on('click', this.onClick, this);
-        Roo.log("set badgeEl? ", this.badge);
-    
-        if(this.badge !== ''){
-            Roo.log("set badgeEl");
-            this.badgeEl = this.el.select('.badge', true).first().setVisibilityMode(Roo.Element.DISPLAY);
-        }
-        
-    },
+  
     
     onClick : function(e)
     {
@@ -4479,10 +4468,21 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         }
         
         this.badgeEl.dom.innerHTML = str;
-    }
+    },
     
    
-     
+      
+    initEvents : function()
+    { 
+        this.el.on('click', this.onClick, this);
+       
+    
+        if(this.badge !== ''){
+ 
+            this.badgeEl = this.el.select('.badge', true).first().setVisibilityMode(Roo.Element.DISPLAY);
+        }
+        
+    }
  
 });
  
