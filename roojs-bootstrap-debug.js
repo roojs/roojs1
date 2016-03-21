@@ -4309,6 +4309,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
  * @class Roo.bootstrap.NavSidebarItem
  * @extends Roo.bootstrap.NavItem
  * Bootstrap Navbar.NavSidebarItem class
+ * {String} badgeWeight (default|primary|success|info|warning|danger)the extra classes for the badge
  * @constructor
  * Create a new Navbar Button
  * @param {Object} config The config object
@@ -4337,6 +4338,7 @@ Roo.bootstrap.NavSidebarItem = function(config){
 
 Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
+    badgeWeight : 'default',
     
     getAutoCreate : function(){
         
@@ -4363,6 +4365,10 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
             cfg.cls += ' active';
         }
         
+        if (this.disabled) {
+            cfg.cls += ' disabled';
+        }
+        
         // left icon..
         if (this.glyphicon || this.icon) {
             var c = this.glyphicon  ? ('glyphicon glyphicon-'+this.glyphicon)  : this.icon;
@@ -4372,7 +4378,8 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         a.cn.push(span);
         // then badge..
         if (this.badge !== '') {
-            a.cn.push({ tag: 'span',  cls : 'badge pull-right ' + (this.badgecls || ''), html: this.badge }); 
+            
+            a.cn.push({ tag: 'span',  cls : 'badge pull-right badge-' + this.badgeWeight, html: this.badge }); 
         }
         // fi
         if (this.menu) {
@@ -4386,7 +4393,92 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         return cfg;
          
 	   
+    },
+    
+    initEvents : function()
+    { 
+        this.el.on('click', this.onClick, this);
+        
+        if(this.badge !== ''){
+            this.badgeEl = this.el.select('.badge', true).first().setVisibilityMode(Roo.Element.DISPLAY);
+        }
+        
+    },
+    
+    onClick : function(e)
+    {
+        if(this.disabled){
+            e.preventDefault();
+            return;
+        }
+        
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        
+        this.fireEvent('click', this);
+    },
+    
+    disable : function()
+    {
+        this.setDisabled(true);
+    },
+    
+    enable : function()
+    {
+        this.setDisabled(false);
+    },
+    
+    setDisabled : function(state)
+    {
+        if(this.disabled == state){
+            return;
+        }
+        
+        this.disabled = state;
+        
+        if (state) {
+            this.el.addClass('disabled');
+            return;
+        }
+        
+        this.el.removeClass('disabled');
+        
+        return;
+    },
+    
+    setActive : function(state)
+    {
+        if(this.active == state){
+            return;
+        }
+        
+        this.active = state;
+        
+        if (state) {
+            this.el.addClass('active');
+            return;
+        }
+        
+        this.el.removeClass('active');
+        
+        return;
+    },
+    
+    isActive: function () 
+    {
+        return this.active;
+    },
+    
+    setBadge : function(str)
+    {
+        if(!this.badgeEl){
+            return;
+        }
+        
+        this.badgeEl.dom.innerHTML = str;
     }
+    
    
      
  

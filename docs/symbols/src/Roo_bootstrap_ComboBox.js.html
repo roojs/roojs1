@@ -485,15 +485,43 @@
         
     },
     
+    </span><span class="jsdoc-var">_initEventsCalled </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-comment">// private
     </span><span class="jsdoc-var">initEvents</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this._initEventsCalled</span><span class="jsdoc-syntax">) { </span><span class="jsdoc-comment">// as we call render... prevent looping...
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+        </span><span class="jsdoc-var">this._initEventsCalled </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
         
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">) {
             </span><span class="jsdoc-keyword">throw </span><span class="jsdoc-string">&quot;can not find store for combo&quot;</span><span class="jsdoc-syntax">;
         }
         
         </span><span class="jsdoc-var">this.store </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.factory</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.store</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">Roo.data</span><span class="jsdoc-syntax">);
+        
+        </span><span class="jsdoc-comment">// if we are building from html. then this element is so complex, that we can not really
+        // use the rendered HTML.
+        // so we have to trash and replace the previous code.
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.XComponent.build_from_html</span><span class="jsdoc-syntax">) {
+            
+            </span><span class="jsdoc-comment">// remove this element....
+            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.dom</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">=0;
+            </span><span class="jsdoc-keyword">while </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">) { </span><span class="jsdoc-var">e </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">e.previousSibling</span><span class="jsdoc-syntax">;  ++</span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">;}
+
+            </span><span class="jsdoc-var">this.el.remove</span><span class="jsdoc-syntax">();
+            
+            </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">=</span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            </span><span class="jsdoc-var">this.rendered </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
+            
+            </span><span class="jsdoc-var">this.render</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.parent</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.getChildContainer</span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">), </span><span class="jsdoc-var">k</span><span class="jsdoc-syntax">);
+            
+            
+            
+        }
+        
         
         </span><span class="jsdoc-comment">/*
          * Touch Devices
