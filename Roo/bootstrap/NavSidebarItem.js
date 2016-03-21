@@ -137,6 +137,26 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         }
         
         this.el.removeClass('disabled');
+        
+        return;
+    },
+    
+    setActive : function(state)
+    {
+        if(this.active == state){
+            return;
+        }
+        
+        this.active = state;
+        
+        if (state) {
+            this.el.addClass('active');
+            return;
+        }
+        
+        this.el.removeClass('active');
+        
+        return;
     }
     
    
