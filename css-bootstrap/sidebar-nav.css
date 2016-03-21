@@ -13,12 +13,12 @@
     padding: 0;
     border-bottom: 1px solid #ccc;
     background-color: #eee;
+    color: #fff;
 }
 
-.sidebar .sidebar-menu > li > a {
+.sidebar .sidebar-menu > li {
     padding: 12px 5px 12px 15px;
     display: block;
-    color: #fff; 
 }
 
 .sidebar .sidebar-menu > li > a > .fa,
