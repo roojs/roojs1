@@ -243,7 +243,7 @@ Roo.form.HtmlEditor.ToolbarContext.options = {
 // fixme - these need to be configurable..
  
 
-Roo.form.HtmlEditor.ToolbarContext.types
+//Roo.form.HtmlEditor.ToolbarContext.types
 
 
 Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
