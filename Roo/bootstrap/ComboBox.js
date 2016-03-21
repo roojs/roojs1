@@ -491,6 +491,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     initEvents: function()
     {
         
+        if (this._initEventsCalled) { // as we call render... prevent looping...
+            return;
+        }
         if (!this.store) {
             throw "can not find store for combo";
         }
@@ -500,7 +503,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         // if we are building from html. then this element is so complex, that we can not really
         // use the rendered HTML.
         // so we have to trash and replace the previous code.
-        if (Roo.XComponent.build_from_html) {
+        if (Roo.XComponent.build_from_html && !this._initEventsCalled) {
+            this._initEventsCalled = true;
             // remove this element....
             this.el.remove();
             this.el=false;
