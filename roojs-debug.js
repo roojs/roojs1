@@ -6584,6 +6584,9 @@ Roo.onReady(function(){
     if(Roo.isIOS){
         cls.push("roo-ios");
     }
+    if(Roo.isTouch){
+        cls.push("roo-touch");
+    }
     if(Roo.isBorderBox){
         cls.push('roo-border-box');
     }
@@ -9007,7 +9010,7 @@ if(opt.anim.isAnimated()){
             
             // we wander
             var z = 0;
-            var dom = this.dom
+            var dom = this.dom;
             while (dom && dom.style) {
                 if (!isNaN(parseInt(dom.style.zIndex))) {
                     z = Math.max(z, parseInt(dom.style.zIndex));
@@ -24996,7 +24999,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
            
          var fctr = this.wrapEl.appendChild(document.createElement("div"));
         
-        this.footer.dataSource = this.store
+        this.footer.dataSource = this.store;
         this.footer.container = fctr;
         this.footer = Roo.factory(this.footer, Roo);
         fctr.insertFirst(this.el);
@@ -44400,7 +44403,7 @@ Roo.form.HtmlEditor.ToolbarContext.options = {
 // fixme - these need to be configurable..
  
 
-Roo.form.HtmlEditor.ToolbarContext.types
+//Roo.form.HtmlEditor.ToolbarContext.types
 
 
 Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
@@ -44549,7 +44552,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarContext.prototype,  {
         
         tn = sel.tagName.toUpperCase();
         
-        var lastSel = this.tb.selectedNode
+        var lastSel = this.tb.selectedNode;
         
         this.tb.selectedNode = sel;
         
@@ -47895,7 +47898,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         pt.x = e.clientX; 
         pt.y = e.clientY;
         if (this.isTouchEvent(e)) {
-            pt.x =  e.targetTouches[0].clientX 
+            pt.x =  e.targetTouches[0].clientX;
             pt.y = e.targetTouches[0].clientY;
         }
         var a = this.svgEl.dom.getScreenCTM();
