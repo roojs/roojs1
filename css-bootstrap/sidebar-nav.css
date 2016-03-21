@@ -1,12 +1,6 @@
 .sidebar {
   margin-bottom: 5px;
 }
-.sidebar .sidebar-form input:focus {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  border-color: transparent!important;
-}
 
 .sidebar .sidebar-menu {
   list-style: none;
@@ -18,10 +12,12 @@
   margin: 0;
   padding: 0;
 }
+
 .sidebar .sidebar-menu > li > a {
   padding: 12px 5px 12px 15px;
   display: block;
 }
+
 .sidebar .sidebar-menu > li > a > .fa,
 .sidebar .sidebar-menu > li > a > .glyphicon,
 .sidebar .sidebar-menu > li > a > .ion {
