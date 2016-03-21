@@ -102,7 +102,11 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     onClick : function(e)
     {
-        Roo.log(this);
+        if(this.preventDefault){
+            e.preventDefault();
+        }
+        
+        this.fireEvent('click', this);
     }
     
    
