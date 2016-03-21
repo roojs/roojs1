@@ -97,8 +97,14 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     initEvents : function()
     { 
-        Roo.log(this.el);
+        this.el.on('click', this.onClick, this);
+    },
+    
+    onClick : function(e)
+    {
+        Roo.log(this);
     }
+    
    
      
  
