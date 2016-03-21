@@ -45,7 +45,7 @@
 .sidebar .sidebar-menu .treeview-menu > li > a > .glyphicon,
 .sidebar .sidebar-menu .treeview-menu > li > a > .ion {
   width: 20px;
-/*}
+}
 .user-panel {
   padding: 10px;
 }
@@ -81,7 +81,7 @@
 .user-panel > .info > a > .ion,
 .user-panel > .info > a > .glyphicon {
   margin-right: 3px;
-}*/
+}
 
  .sidebar .sidebar-menu .open  .treeview-menu {
 	display:block;
