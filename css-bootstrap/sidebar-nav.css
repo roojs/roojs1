@@ -64,10 +64,13 @@
     border-bottom: 1px solid #ac2925;
 }
 
-.sidebar .sidebar-menu li.active  a {
+.sidebar .sidebar-menu li.active  {
     color: #fff;
 }
 
+.sidebar .sidebar-menu li.active  a {
+    color: #fff;
+}
 
 .badge-default {
     background-color: #777;
