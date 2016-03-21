@@ -123,3 +123,8 @@
     background-color: #d9534f;
     color: #fff;
 }
+
+.sidebar .sidebar-menu > li.active .badge-info {
+    background-color: #fff;
+    color: #5bc0de;
+}
