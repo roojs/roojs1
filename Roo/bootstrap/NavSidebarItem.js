@@ -174,9 +174,13 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
         return this.active;
     },
     
-    setBadge : function()
+    setBadge : function(str)
     {
+        if(!this.badgeEl){
+            return;
+        }
         
+        this.badgeEl.dom.innerHTML = str;
     }
     
    
