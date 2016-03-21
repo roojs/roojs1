@@ -508,10 +508,15 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         if (Roo.XComponent.build_from_html) {
             
             // remove this element....
+            var e = this.el.dom, k=0;
+            while (e = e.previousSibling) { ++k;}
+
             this.el.remove();
+            
             this.el=false;
             this.rendered = false;
-            this.render(this.parent().getChildContainer(true));
+            
+            this.render(this.parent().getChildContainer(true), h);
             
             
             
