@@ -160,7 +160,7 @@ Roo.extend(Roo.form.Signature, Roo.form.Field,  {
         pt.x = e.clientX; 
         pt.y = e.clientY;
         if (this.isTouchEvent(e)) {
-            pt.x =  e.targetTouches[0].clientX 
+            pt.x =  e.targetTouches[0].clientX;
             pt.y = e.targetTouches[0].clientY;
         }
         var a = this.svgEl.dom.getScreenCTM();
