@@ -495,6 +495,21 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         this.store = Roo.factory(this.store, Roo.data);
         
+        // if we are building from html. then this element is so complex, that we can not really
+        // use the rendered HTML.
+        // so we have to trash and replace the previous code.
+        if (Roo.XComponent.build_from_html) {
+            // remove this element....
+            this.el.remove();
+            this.el=false;
+            this.render(this.parent().getChildContainer(true));
+            //find the parentcomponent,
+            // call this.render(this.parentElement.getChildContainer(true))
+            
+            
+        }
+        
+        
         /*
          * Touch Devices
          */
