@@ -97,7 +97,7 @@ Roo.extend(Roo.bootstrap.NavSidebarItem, Roo.bootstrap.NavItem,  {
     
     initEvents : function()
     { 
-        
+        Roo.log(this.el);
     }
    
      
