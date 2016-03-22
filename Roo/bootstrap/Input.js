@@ -751,12 +751,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * Mark this field as invalid
      * @param {String} msg The validation message
      */
-    markInvalid : function(msg){
-        Roo.log('run???');
+    markInvalid : function(msg)
+    {
         if(!this.el  || this.preventMark){ // not rendered
             return;
         }
-        Roo.log(this.el);
+        
         this.el.removeClass([this.invalidClass, this.validClass]);
         
         var feedback = this.el.select('.form-control-feedback', true).first();
