@@ -8324,7 +8324,8 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      * Mark this field as invalid
      * @param {String} msg The validation message
      */
-    markInvalid : function(msg){
+    markInvalid : function(msg)
+    {
         if(!this.el  || this.preventMark){ // not rendered
             return;
         }
