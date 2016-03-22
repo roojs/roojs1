@@ -15,7 +15,7 @@
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} emptyResultText only for touch device
- * @cfg {String} triggerText trigger button text default 'Select'
+ * @cfg {String} triggerText multiple trigger button text default 'Select'
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
