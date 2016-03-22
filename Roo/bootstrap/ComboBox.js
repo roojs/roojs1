@@ -350,7 +350,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     tag : 'button',
                     type : 'button',
                     cls : 'btn btn-link btn-edit pull-' + this.btnPosition,
-                    html : 'Edit'
+                    html : this.triggerText
                 },
                 {
                     tag : 'button',
