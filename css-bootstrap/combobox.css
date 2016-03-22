@@ -267,3 +267,7 @@
     z-index: 2;
     top: 5px;
 }*/
+
+.has-warning .select2-container-multi {
+    border: 1px solid #8a6d3b;
+}
