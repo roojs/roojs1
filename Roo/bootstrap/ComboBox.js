@@ -1944,7 +1944,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             return true;
         }
         Roo.log('call mark invalid??????????????');
-        Roo.log(this);
+        Roo.log(this.markInvalid);
         this.markInvalid();
         return false;
     },
