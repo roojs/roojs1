@@ -11197,6 +11197,7 @@ Roo.extend(Roo.data.ArrayReader, Roo.data.JsonReader, {
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} emptyResultText only for touch device
+ * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -11487,6 +11488,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     showToggleBtn : true,
     animate : true,
     emptyResultText: 'Empty',
+    triggerText : 'Select',
+    
     // element that contains real text value.. (when hidden is used..)
     
     getAutoCreate : function()
@@ -11528,7 +11531,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     tag : 'button',
                     type : 'button',
                     cls : 'btn btn-link btn-edit pull-' + this.btnPosition,
-                    html : 'Edit'
+                    html : this.triggerText
                 },
                 {
                     tag : 'button',
@@ -13890,7 +13893,7 @@ Roo.View = function(config, depreciated_tpl, depreciated_config){
            
          var fctr = this.wrapEl.appendChild(document.createElement("div"));
         
-        this.footer.dataSource = this.store
+        this.footer.dataSource = this.store;
         this.footer.container = fctr;
         this.footer = Roo.factory(this.footer, Roo);
         fctr.insertFirst(this.el);
@@ -24125,7 +24128,7 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
             this.el.select('.roo-alert-icon',true).first().removeClass(['fa', 'fa-' + this.faicon]);
         }
         
-        this.faicon = icon
+        this.faicon = icon;
         
         this.el.select('.roo-alert-icon',true).first().addClass(['fa', 'fa-' + this.faicon]);
     },
