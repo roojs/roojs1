@@ -1943,7 +1943,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.markValid();
             return true;
         }
-        Roo.log('call mark invalid??????????????');
         
         this.markInvalid();
         return false;
