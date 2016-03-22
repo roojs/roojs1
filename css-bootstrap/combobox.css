@@ -235,23 +235,13 @@
     border-left: 0px;
 }
 
+.select2-container .roo-removable {
+    position: relative;
+}
+
 .select2-container .roo-removable .roo-combo-removable-btn {
     position: absolute;
     right: 15px;
-    z-index: 2;
-    top: 5px;
-}
-
-.select2-container.input-group .roo-removable .roo-combo-removable-btn {
-    position: absolute;
-    right: 40px;
-    z-index: 2;
-    top: 5px;
-}
-
-.select2-container .roo-removable.input-group .roo-combo-removable-btn {
-    position: absolute;
-    right: 45px;
     z-index: 2;
     top: 5px;
 }
