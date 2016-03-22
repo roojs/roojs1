@@ -15,6 +15,7 @@
  * @cfg {String} btnPosition set the position of the trigger button (left | right) default right
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} emptyResultText only for touch device
+ * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -305,6 +306,8 @@
     </span><span class="jsdoc-var">showToggleBtn </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">animate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">emptyResultText</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Empty'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">triggerText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Select'</span><span class="jsdoc-syntax">,
+    
     </span><span class="jsdoc-comment">// element that contains real text value.. (when hidden is used..)
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
@@ -346,7 +349,7 @@
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">type </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,
                     </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'btn btn-link btn-edit pull-' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.btnPosition</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Edit'
+                    </span><span class="jsdoc-var">html </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.triggerText
                 </span><span class="jsdoc-syntax">},
                 {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'button'</span><span class="jsdoc-syntax">,

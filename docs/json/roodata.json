@@ -16932,6 +16932,12 @@
      "memberOf": ""
     },
     {
+     "name": "triggerText",
+     "type": "String",
+     "desc": "multiple combobox trigger button text default 'Select'",
+     "memberOf": ""
+    },
+    {
      "name": "lazyRender",
      "type": "Boolean",
      "desc": "True to prevent the ComboBox from rendering until requested (should always be used when\nrendering into an Roo.Editor, defaults to false)",
