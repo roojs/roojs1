@@ -307,7 +307,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     animate : true,
     emptyResultText: 'Empty',
     
-    triggerText : 'SELECT',
+    triggerText : 'Select',
     
     // element that contains real text value.. (when hidden is used..)
     
@@ -350,7 +350,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     tag : 'button',
                     type : 'button',
                     cls : 'btn btn-link btn-edit pull-' + this.btnPosition,
-                    html : this.triggerText
+                    html : 'Edit'
                 },
                 {
                     tag : 'button',
