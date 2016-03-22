@@ -755,6 +755,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
     {
         Roo.log('mark invalid??????????????????????????');
         
+        Roo.log(this.el);
         if(!this.el  || this.preventMark){ // not rendered
             return;
         }
