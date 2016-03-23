@@ -179,6 +179,10 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initial: function()
     {
+        if(typeof(google) == 'undefined' || typeof(google.maps) == 'undefined'){
+            this.fireEvent('loadexception', this, this.gMapContext.location);
+        }
+        
         if(!this.mapTypeId){
             this.mapTypeId = google.maps.MapTypeId.ROADMAP;
         }
