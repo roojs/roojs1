@@ -24562,6 +24562,12 @@
      "desc": "Fires when the picker initialized."
     },
     {
+     "name": "loadexception",
+     "sig": "function (_self)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when load google lib failed."
+    },
+    {
      "name": "mapClick",
      "sig": "function (_self, e)\n{\n\n}",
      "type": "function",
