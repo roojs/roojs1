@@ -23830,7 +23830,7 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     getGmapContext: function() 
     {
-        return this.gMapContext
+        return (typeof(this.gMapContext) == 'undefined') ? false : this.gMapContext;
     },
     
     GMapContext: function() 
