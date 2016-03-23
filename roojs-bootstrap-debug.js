@@ -23684,7 +23684,13 @@ Roo.bootstrap.LocationPicker = function(config){
          * Fires when OverlayView Draw
          * @param {Roo.bootstrap.LocationPicker} this
          */
-        OverlayViewHide : true
+        OverlayViewHide : true,
+        /**
+         * @event loadexception
+         * Fires when load google lib failed.
+         * @param {Roo.bootstrap.LocationPicker} this
+         */
+        loadexception : true
     });
         
 };
@@ -23732,6 +23738,11 @@ Roo.extend(Roo.bootstrap.LocationPicker, Roo.bootstrap.Component,  {
     
     initial: function()
     {
+        if(typeof(google) == 'undefined' || typeof(google.maps) == 'undefined'){
+            this.fireEvent('loadexception', this);
+            return;
+        }
+        
         if(!this.mapTypeId){
             this.mapTypeId = google.maps.MapTypeId.ROADMAP;
         }
