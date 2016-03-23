@@ -125,7 +125,13 @@ Roo.bootstrap.LocationPicker = function(config){
          * Fires when OverlayView Draw
          * @param {Roo.bootstrap.LocationPicker} this
          */
-        OverlayViewHide : true
+        OverlayViewHide : true,
+        /**
+         * @event loadexception
+         * Fires when load google lib failed.
+         * @param {Roo.bootstrap.LocationPicker} this
+         */
+        loadexception : true
     });
         
 };
