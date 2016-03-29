@@ -162,6 +162,12 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         return false;
     },
+    
+    onTouch : function(e) {
+        e.stopEvent();
+        this.onClick(e);
+    },
+    
     onClick : function(e){
         Roo.log("menu.onClick");
         var t = this.findTargetItem(e);
