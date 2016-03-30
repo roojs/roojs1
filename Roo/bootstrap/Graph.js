@@ -169,6 +169,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 //                opts = { legend: ["%% - Enterprise Users", "% - ddd","Chrome Users"], legendpos: "west", 
 //                href: ["http://raphaeljs.com", "http://g.raphaeljs.com"]};
 //            
+                Roo.log('pie????????????');
                 Roo.log(opt);
                 this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts).hover(pfin, pfout);
                 
