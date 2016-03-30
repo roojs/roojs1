@@ -345,8 +345,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onFileSelected : function(e)
     {
-        Roo.log(this);
-        
         e.preventDefault();
         
         if(typeof(this.selectorEl.dom.files) == 'undefined' || !this.selectorEl.dom.files.length){
