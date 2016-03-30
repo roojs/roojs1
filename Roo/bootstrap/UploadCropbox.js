@@ -797,6 +797,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
+        if(this.loadMask){
+            this.maskEl.mask(this.loadingText);
+        }
+        
         var imageCanvas = document.createElement("canvas");
         
         var imageContext = imageCanvas.getContext("2d");
