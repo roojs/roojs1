@@ -272,7 +272,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 tag: 'span',
                 cls: 'month',
                 html: Roo.bootstrap.DateField.dates[this.language].monthsShort[i++]
-            }
+            };
             
             months.createChild(month);
         }
