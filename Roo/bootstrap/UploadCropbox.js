@@ -1316,6 +1316,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     xhrOnError : function()
     {
+        if(this.loadMask){
+            this.maskEl.unmask();
+        }
+        
         Roo.log('xhr on error');
         
         var response = Roo.decode(xhr.responseText);
