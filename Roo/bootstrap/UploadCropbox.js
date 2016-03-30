@@ -154,6 +154,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     loadMask : true,
     loadingText : 'Loading...',
     
+    
     getAutoCreate : function()
     {
         var cfg = {
