@@ -915,7 +915,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                             record: r,
                             rowIndex : rowIndex,
                             rowClass : ''
-                        }
+                        };
                         this.grid.fireEvent('rowclass', this, rowcfg);
                         alt.push(rowcfg.rowClass);
                     }
