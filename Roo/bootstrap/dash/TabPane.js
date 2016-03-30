@@ -46,7 +46,7 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
         var cfg = {
             tag: 'div',
             cls: 'tab-pane'
-        }
+        };
         
         if(this.active){
             cfg.cls += ' active';
