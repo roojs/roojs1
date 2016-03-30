@@ -59,7 +59,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
                     cls : iconCls
                 }
             ]
-        }
+        };
         
         if(this.active){
             cfg.cls += ' active';
