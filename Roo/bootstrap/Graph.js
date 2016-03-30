@@ -170,7 +170,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
 //                href: ["http://raphaeljs.com", "http://g.raphaeljs.com"]};
 //            
                 Roo.log('pie????????????');
-                Roo.log(opt);
+                Roo.log(opts);
                 this.raphael.piechart(this.g_x,this.g_y,this.g_r,xdata,opts).hover(pfin, pfout);
                 
                 
