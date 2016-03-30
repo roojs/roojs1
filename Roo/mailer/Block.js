@@ -48,7 +48,7 @@ Roo.extend(Roo.mailer.Block, Roo.bootstrap.Component,  {
                     cls : 'roo-m-' + this.blocktype + '-content',
                     html : this.html
                 }
-           ]
+           ];
         }
         
         var cfg =   {
