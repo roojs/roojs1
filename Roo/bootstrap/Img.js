@@ -142,9 +142,9 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
                 tag: 'a',
                 href: this.href,
                 cn: [
-		    cfg
-		]
-            }
+                    cfg
+                ]
+            };
             
             if(this.target){
                 a.target = this.target;
