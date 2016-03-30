@@ -123,7 +123,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             tag: 'img',
             cls: (this.imgResponsive) ? 'img-responsive' : '',
             html : null
-        }
+        };
         
         cfg.html = this.html || cfg.html;
         
