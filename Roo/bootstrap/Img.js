@@ -103,7 +103,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
                     cn: [
                         img
                     ]
-                }
+                };
 
                 if(this.target){
                     a.target = _this.target;
