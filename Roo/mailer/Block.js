@@ -38,9 +38,9 @@ Roo.extend(Roo.mailer.Block, Roo.bootstrap.Component,  {
         var tr = {
             tag : 'tr',
             cls : 'roo-m-block-tr'
-        }
+        };
         if (this.blocktype != 'row') {
-           tr.cn = [
+            tr.cn = [
                 {
                     tag : 'td',
                     align : 'center',
@@ -48,7 +48,7 @@ Roo.extend(Roo.mailer.Block, Roo.bootstrap.Component,  {
                     cls : 'roo-m-' + this.blocktype + '-content',
                     html : this.html
                 }
-           ];
+            ];
         }
         
         var cfg =   {
