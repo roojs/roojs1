@@ -79,7 +79,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             tag: 'li',
             cls: 'nav-item'
             
-        }
+        };
+        
         if (this.active) {
             cfg.cls = typeof(cfg.cls) == 'undefined' ? 'active' : cfg.cls + ' active';
         }
