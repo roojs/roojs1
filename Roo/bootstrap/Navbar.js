@@ -48,7 +48,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         var mark = {
             tag: "div",
             cls:"x-dlg-mask"
-        }
+        };
         
         this.maskEl = Roo.DomHelper.append(this.el, mark, true);
         
