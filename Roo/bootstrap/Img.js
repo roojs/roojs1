@@ -62,7 +62,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             tag: 'div',
             cls: 'roo-image-responsive-group',
             cn: []
-        }
+        };
         var _this = this;
         
         Roo.each(['xs', 'sm', 'md', 'lg'], function(size){
