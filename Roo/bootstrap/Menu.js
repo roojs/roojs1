@@ -115,7 +115,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             cls : 'dropdown-menu' ,
             style : 'z-index:1000'
             
-        }
+        };
 	
         if (this.type === 'submenu') {
             cfg.cls = 'submenu active';
