@@ -56,7 +56,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         cfg = {
             tag : 'ul',
             cls: 'nav' 
-        }
+        };
         
         if (['tabs','pills'].indexOf(this.type)!==-1) {
             cfg.cls += ' nav-' + this.type
