@@ -37,7 +37,7 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
 	
         cfg = {
             tag: 'tr'
-        }
+        };
             
         if(this.cls){
             cfg.cls = this.cls;
