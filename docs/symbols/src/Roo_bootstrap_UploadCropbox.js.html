@@ -17,6 +17,8 @@
  * @cfg {String} url action url
  * @cfg {String} paramName default 'imageUpload'
  * @cfg {String} method default POST
+ * @cfg {Boolean} loadMask (true|false) default true
+ * @cfg {Boolean} loadingText default 'Loading...'
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -149,6 +151,9 @@
     </span><span class="jsdoc-var">isDocument </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">method </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'POST'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">paramName </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'imageUpload'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">loadMask </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">loadingText </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Loading...'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">maskEl </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
@@ -214,6 +219,10 @@
                 </span><span class="jsdoc-var">btn.on</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'click'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.onFooterButtonClick.createDelegate</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, [</span><span class="jsdoc-var">bb.action</span><span class="jsdoc-syntax">], </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">));
                 
             }, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
+        }
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.maskEl </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el</span><span class="jsdoc-syntax">;
         }
     },
     
@@ -411,6 +420,10 @@
         </span><span class="jsdoc-var">this.resize</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">this.canvasLoaded </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">;
+        
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.maskEl.unmask</span><span class="jsdoc-syntax">();
+        }
         
     },
     
@@ -1213,6 +1226,10 @@
     
     </span><span class="jsdoc-var">process </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">crop</span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.maskEl.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadingText</span><span class="jsdoc-syntax">);
+        }
+        
         </span><span class="jsdoc-var">this.xhr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">new </span><span class="jsdoc-var">XMLHttpRequest</span><span class="jsdoc-syntax">();
         
         </span><span class="jsdoc-var">file.xhr </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.xhr</span><span class="jsdoc-syntax">;
@@ -1271,6 +1288,10 @@
     
     </span><span class="jsdoc-var">xhrOnLoad </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr</span><span class="jsdoc-syntax">)
     {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.maskEl.unmask</span><span class="jsdoc-syntax">();
+        }
+        
         </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr.readyState </span><span class="jsdoc-syntax">!== 4) {
             </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'exception'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">xhr</span><span class="jsdoc-syntax">);
             </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
@@ -1291,6 +1312,10 @@
     
     </span><span class="jsdoc-var">xhrOnError </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.maskEl.unmask</span><span class="jsdoc-syntax">();
+        }
+        
         </span><span class="jsdoc-var">Roo.log</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'xhr on error'</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">response </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">Roo.decode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">xhr.responseText</span><span class="jsdoc-syntax">);
@@ -1301,6 +1326,10 @@
     
     </span><span class="jsdoc-var">prepare </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">file</span><span class="jsdoc-syntax">)
     {   
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadMask</span><span class="jsdoc-syntax">){
+            </span><span class="jsdoc-var">this.maskEl.mask</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.loadingText</span><span class="jsdoc-syntax">);
+        }
+        
         </span><span class="jsdoc-var">this.file </span><span class="jsdoc-syntax">= </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">;
         </span><span class="jsdoc-var">this.exif </span><span class="jsdoc-syntax">= {};
         

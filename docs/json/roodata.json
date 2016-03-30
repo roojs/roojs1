@@ -38960,6 +38960,22 @@
      "memberOf": ""
     },
     {
+     "name": "loadMask",
+     "type": "Boolean",
+     "desc": "default true",
+     "memberOf": "",
+     "optvals": [
+      "true",
+      "false"
+     ]
+    },
+    {
+     "name": "loadingText",
+     "type": "Boolean",
+     "desc": "default 'Loading...'",
+     "memberOf": ""
+    },
+    {
      "name": "cls",
      "type": "String",
      "desc": "css class",
