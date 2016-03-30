@@ -802,6 +802,21 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(typeof(config.cls) != 'undefined'){
                 td.cls = (typeof(td.cls) == 'undefined') ? config.cls : (td.cls + ' ' + config.cls);
             }
+            
+            ['xs','sm','md','lg'].map(function(size){
+                
+                if(typeof(config[size]) == 'undefined'){
+                    return;
+                }
+                
+                if (!config[size]) { // 0 = hidden
+                    cfg.cls += ' hidden-' + size;
+                    return;
+                }
+                
+                cfg.cls += ' col-' + size + '-' + config[size];
+
+            });
              
             row.cn.push(td);
            
