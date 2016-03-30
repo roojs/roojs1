@@ -425,6 +425,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         
         this.canvasLoaded = true;
         
+        if(this.loadMask){
+            this.maskEl.unmask();
+        }
+        
     },
     
     setCanvasPosition : function()
