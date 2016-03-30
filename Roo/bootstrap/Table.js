@@ -187,7 +187,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             tag: 'table',
             cls : 'table',
             cn : []
-        }
+        };
             
         if (this.striped) {
             cfg.cls += ' table-striped';
