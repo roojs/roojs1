@@ -410,7 +410,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     ]
                 }
             ]
-        }
+        };
         
         var combobox = {
             cls: 'select2-container input-group select2-container-multi',
