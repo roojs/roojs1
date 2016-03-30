@@ -511,9 +511,20 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.cls = (typeof(c.cls) == 'undefined') ? config.cls : (c.cls + ' ' + config.cls);
             }
             
-            if(typeof(config.xs) != 'undefined'){
-                c.cls = (typeof(c.cls) == 'undefined') ? config.cls : (c.cls + ' ' + config.cls);
-            }
+            ['xs','sm','md','lg'].map(function(size){
+                
+                if(typeof(config[size]) == 'undefined'){
+                    return;
+                }
+                
+                if (!config[size]) { // 0 = hidden
+                    cfg.cls += ' hidden-' + size;
+                    return;
+                }
+                
+                cfg.cls += ' col-' + size + '-' + config[size];
+
+            });
             
             header.cn.push(c)
         }
