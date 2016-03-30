@@ -46,7 +46,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
             cfg = {
                 cls: 'btn-toolbar',
                 html: null
-            }
+            };
             
             return cfg;
         }
