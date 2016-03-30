@@ -81,7 +81,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         var cfg = {
             tag: 'div',
             html : null
-        }
+        };
         
         
         return  cfg;
