@@ -17,6 +17,7 @@
  * @cfg {String} url action url
  * @cfg {String} paramName default 'imageUpload'
  * @cfg {String} method default POST
+ * @cfg {String} loadingText text when loading the image default 'Loading...'
  * 
  * @constructor
  * Create a new UploadCropbox
