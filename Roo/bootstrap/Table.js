@@ -764,7 +764,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 rowIndex : rowIndex,
                 colIndex : i,
                 rowClass : ''
-            }
+            };
 
             this.fireEvent('rowclass', this, rowcfg);
             
