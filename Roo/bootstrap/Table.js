@@ -511,6 +511,10 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 c.cls = (typeof(c.cls) == 'undefined') ? config.cls : (c.cls + ' ' + config.cls);
             }
             
+            if(typeof(config.xs) != 'undefined'){
+                c.cls = (typeof(c.cls) == 'undefined') ? config.cls : (c.cls + ' ' + config.cls);
+            }
+            
             header.cn.push(c)
         }
         
