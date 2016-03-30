@@ -178,7 +178,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 //'for': id, // box label is handled by onclick - so no for...
                 cls: 'box-label',
                 html: this.boxLabel
-            }
+            };
             
             if(this.tooltip){
                 boxLabelCfg.tooltip = this.tooltip;
