@@ -154,7 +154,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     loadMask : true,
     loadingText : 'Loading...',
     
-    
     getAutoCreate : function()
     {
         var cfg = {
@@ -208,6 +207,8 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onRender : function(ct, position)
     {
+        Roo.log('onreander????');
+        
         Roo.bootstrap.UploadCropbox.superclass.onRender.call(this, ct, position);
         
         if (this.buttons.length) {
