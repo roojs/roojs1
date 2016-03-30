@@ -169,16 +169,16 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @cfg {String} tooltip (Optional)
      */
     /**
-     * @cfg {String} xs (Optional)
+     * @cfg {Number} xs (Optional)
      */
     /**
-     * @cfg {String} sm (Optional)
+     * @cfg {Number} sm (Optional)
      */
     /**
-     * @cfg {String} md (Optional)
+     * @cfg {Number} md (Optional)
      */
     /**
-     * @cfg {String} lg (Optional)
+     * @cfg {Number} lg (Optional)
      */
     /**
      * Returns the id of the column at the specified index.
