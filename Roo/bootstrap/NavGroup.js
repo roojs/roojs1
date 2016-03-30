@@ -71,7 +71,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             cfg = {
                 tag: 'ul',
                 cls: 'dashboard-menu sidebar-menu'
-            }
+            };
             
             return cfg;
         }
@@ -80,7 +80,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             cfg = {
                 tag: 'form',
                 cls: 'navbar-form'
-            }
+            };
             
             if (this.align === 'right') {
                 cfg.cls += ' navbar-right';
