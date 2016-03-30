@@ -810,11 +810,11 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 }
                 
                 if (!config[size]) { // 0 = hidden
-                    cfg.cls += ' hidden-' + size;
+                    td.cls += ' hidden-' + size;
                     return;
                 }
                 
-                cfg.cls += ' col-' + size + '-' + config[size];
+                td.cls += ' col-' + size + '-' + config[size];
 
             });
              
