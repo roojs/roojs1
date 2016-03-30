@@ -44,7 +44,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
                     html: this.html || ''
                 }
             ]
-        }
+        };
         
         if(this.fixed){
             cfg.cls += ' alert-messages-fixed';
