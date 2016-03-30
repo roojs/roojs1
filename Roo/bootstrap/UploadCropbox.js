@@ -18,6 +18,7 @@
  * @cfg {String} paramName default 'imageUpload'
  * @cfg {String} method default POST
  * @cfg {Boolean} loadMask (true|false) default true
+ * @cfg {Boolean} loadingText default 'Loading...'
  * 
  * @constructor
  * Create a new UploadCropbox
