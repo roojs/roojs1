@@ -58,9 +58,9 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableCell.superclass.getAutoCreate.call(this));
 	
-	cfg = {
-	    tag: 'td'
-	}
+        cfg = {
+            tag: 'td'
+        };
         
         if(this.tag){
             cfg.tag = this.tag;
