@@ -59,7 +59,7 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                     ]
                 }
             ]
-        }
+        };
         
         if(this.icon){
             cfg.cn.push({
