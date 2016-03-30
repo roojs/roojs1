@@ -857,7 +857,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var cfg = {
                 cls : 'fc-event-hori fc-event-draggable',
                 html : m.title
-            }
+            };
             var cg = ctr.createChild(cfg);
             
             cg.on('click', _this.onEventClick, _this, m);
