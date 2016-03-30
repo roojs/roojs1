@@ -38,7 +38,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
         var cfg = {
             cls: 'btn-group',
             html : null
-        }
+        };
         
         cfg.html = this.html || cfg.html;
         
