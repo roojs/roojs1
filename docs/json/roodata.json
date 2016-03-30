@@ -63449,6 +63449,30 @@
      "memberOf": ""
     },
     {
+     "name": "xs",
+     "type": "Number",
+     "desc": "(Optional)",
+     "memberOf": ""
+    },
+    {
+     "name": "sm",
+     "type": "Number",
+     "desc": "(Optional)",
+     "memberOf": ""
+    },
+    {
+     "name": "md",
+     "type": "Number",
+     "desc": "(Optional)",
+     "memberOf": ""
+    },
+    {
+     "name": "lg",
+     "type": "Number",
+     "desc": "(Optional)",
+     "memberOf": ""
+    },
+    {
      "name": "listeners",
      "type": "Object",
      "desc": "list of events and functions to call for this object, \nFor example :\n<pre><code>\n    listeners :  { \n       'click' : function(e) {\n           ..... \n        } ,\n        .... \n    } \n  </code></pre>",
