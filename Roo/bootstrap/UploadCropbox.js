@@ -17,7 +17,6 @@
  * @cfg {String} url action url
  * @cfg {String} paramName default 'imageUpload'
  * @cfg {String} method default POST
- * @cfg {String} loadingText text when loading the image default 'Loading...'
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -130,7 +129,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     emptyText : 'Click to upload image',
     rotateNotify : 'Image is too small to rotate',
-    loadingText : 'Loading...',
     errorTimeout : 3000,
     scale : 0,
     baseScale : 1,
