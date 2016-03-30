@@ -1965,7 +1965,14 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         this.triggerEl.on(Roo.isTouch ? 'touchstart' : 'mouseup', this.onTriggerPress, this);
         
         this.triggerEl.addClass('dropdown-toggle');
-        this.el.on(Roo.isTouch ? 'touchstart' : 'click' , this.onClick, this);
+        
+        
+        
+        
+        if (Roo.isTouch) {
+            this.el.on('touchstart'  , this.onTouch, this);
+        }
+        this.el.on('click' , this.onClick, this);
 
         this.el.on("mouseover", this.onMouseOver, this);
         this.el.on("mouseout", this.onMouseOut, this);
@@ -1987,6 +1994,12 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
         
         return false;
     },
+    
+    onTouch : function(e) {
+        e.stopEvent();
+        this.onClick(e);
+    },
+    
     onClick : function(e){
         Roo.log("menu.onClick");
         var t = this.findTargetItem(e);
@@ -24186,6 +24199,8 @@ Roo.extend(Roo.bootstrap.Alert, Roo.bootstrap.Component,  {
  * @cfg {String} url action url
  * @cfg {String} paramName default 'imageUpload'
  * @cfg {String} method default POST
+ * @cfg {Boolean} loadMask (true|false) default true
+ * @cfg {Boolean} loadingText default 'Loading...'
  * 
  * @constructor
  * Create a new UploadCropbox
@@ -24318,6 +24333,9 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     isDocument : false,
     method : 'POST',
     paramName : 'imageUpload',
+    loadMask : true,
+    loadingText : 'Loading...',
+    maskEl : false,
     
     getAutoCreate : function()
     {
@@ -24383,6 +24401,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 btn.on('click', this.onFooterButtonClick.createDelegate(this, [bb.action], true));
                 
             }, this);
+        }
+        
+        if(this.loadMask){
+            this.maskEl = this.el;
         }
     },
     
@@ -24580,6 +24602,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         this.resize();
         
         this.canvasLoaded = true;
+        
+        if(this.loadMask){
+            this.maskEl.unmask();
+        }
         
     },
     
@@ -25382,6 +25408,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     process : function(file, crop)
     {
+        if(this.loadMask){
+            this.maskEl.mask(this.loadingText);
+        }
+        
         this.xhr = new XMLHttpRequest();
         
         file.xhr = this.xhr;
@@ -25440,6 +25470,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     xhrOnLoad : function(xhr)
     {
+        if(this.loadMask){
+            this.maskEl.unmask();
+        }
+        
         if (xhr.readyState !== 4) {
             this.fireEvent('exception', this, xhr);
             return;
@@ -25460,6 +25494,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     xhrOnError : function()
     {
+        if(this.loadMask){
+            this.maskEl.unmask();
+        }
+        
         Roo.log('xhr on error');
         
         var response = Roo.decode(xhr.responseText);
@@ -25470,6 +25508,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     prepare : function(file)
     {   
+        if(this.loadMask){
+            this.maskEl.mask(this.loadingText);
+        }
+        
         this.file = false;
         this.exif = {};
         
