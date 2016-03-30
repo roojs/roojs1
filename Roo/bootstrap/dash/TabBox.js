@@ -107,7 +107,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                     cn: []
                 }
             ]
-        }
+        };
 
         return  cfg;
     },
