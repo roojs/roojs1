@@ -49,7 +49,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
             tag: this.tag,
             cls: this.cls,
             html: this.html
-        }
+        };
         
         return cfg;
     },
