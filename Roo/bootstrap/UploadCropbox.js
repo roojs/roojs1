@@ -797,10 +797,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
             return;
         }
         
-        if(this.loadMask){
-            this.maskEl.mask(this.loadingText);
-        }
-        
         var imageCanvas = document.createElement("canvas");
         
         var imageContext = imageCanvas.getContext("2d");
@@ -996,10 +992,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
         }
         
         this.cropData = canvas.toDataURL(this.cropType);
-        
-        if(this.loadMask){
-            this.maskEl.unmask();
-        }
         
         if(this.fireEvent('crop', this, this.cropData) !== false){
             this.process(this.file, this.cropData);
