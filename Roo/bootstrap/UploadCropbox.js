@@ -356,6 +356,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     {
         e.preventDefault();
         
+        if(this.loadMask){
+            this.maskEl.mask(this.loadingText);
+        }
+        
         if(typeof(this.selectorEl.dom.files) == 'undefined' || !this.selectorEl.dom.files.length){
             return;
         }
