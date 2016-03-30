@@ -1230,6 +1230,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     process : function(file, crop)
     {
+        if(this.loadMask){
+            this.maskEl.mask(this.loadingText);
+        }
+        
         this.xhr = new XMLHttpRequest();
         
         file.xhr = this.xhr;
@@ -1288,6 +1292,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     xhrOnLoad : function(xhr)
     {
+        if(this.loadMask){
+            this.maskEl.unmask();
+        }
+        
         if (xhr.readyState !== 4) {
             this.fireEvent('exception', this, xhr);
             return;
