@@ -33,7 +33,7 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
                     cls: 'ui-slider-handle ui-state-default ui-corner-all'
                 }
             ]
-        }
+        };
         
         return cfg;
     }
