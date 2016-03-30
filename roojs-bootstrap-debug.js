@@ -4983,6 +4983,18 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      * @cfg {String} tooltip (Optional)
      */
     /**
+     * @cfg {Number} xs (Optional)
+     */
+    /**
+     * @cfg {Number} sm (Optional)
+     */
+    /**
+     * @cfg {Number} md (Optional)
+     */
+    /**
+     * @cfg {Number} lg (Optional)
+     */
+    /**
      * Returns the id of the column at the specified index.
      * @param {Number} index The column index
      * @return {String} the id
@@ -5974,6 +5986,21 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             if(typeof(config.cls) != 'undefined'){
                 c.cls = (typeof(c.cls) == 'undefined') ? config.cls : (c.cls + ' ' + config.cls);
             }
+            
+            ['xs','sm','md','lg'].map(function(size){
+                
+                if(typeof(config[size]) == 'undefined'){
+                    return;
+                }
+                
+                if (!config[size]) { // 0 = hidden
+                    cfg.cls += ' hidden-' + size;
+                    return;
+                }
+                
+                cfg.cls += ' col-' + size + '-' + config[size];
+
+            });
             
             header.cn.push(c)
         }
