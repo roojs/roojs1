@@ -42,7 +42,7 @@ Roo.extend(Roo.mailer.Column, Roo.bootstrap.Component,  {
         var tr = {
             tag : 'tr',
             cn : [ ]
-        }
+        };
          
        
         
