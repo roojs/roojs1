@@ -153,6 +153,7 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     paramName : 'imageUpload',
     loadMask : true,
     loadingText : 'Loading...',
+    maskEl : false,
     
     getAutoCreate : function()
     {
@@ -207,8 +208,6 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
     
     onRender : function(ct, position)
     {
-        Roo.log('onreander????');
-        
         Roo.bootstrap.UploadCropbox.superclass.onRender.call(this, ct, position);
         
         if (this.buttons.length) {
@@ -220,6 +219,10 @@ Roo.extend(Roo.bootstrap.UploadCropbox, Roo.bootstrap.Component,  {
                 btn.on('click', this.onFooterButtonClick.createDelegate(this, [bb.action], true));
                 
             }, this);
+        }
+        
+        if(this.loadMask){
+            this.maskEl = this.el;
         }
     },
     
