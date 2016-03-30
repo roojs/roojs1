@@ -308,7 +308,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     ]
                 }
             ]
-        }
+        };
         this.maskEl = Roo.DomHelper.append(this.el.select('.fc-content', true).first(), mark, true);
         
         var size = this.el.select('.fc-content', true).first().getSize();
