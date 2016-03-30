@@ -885,7 +885,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 var child = {
                     container: t.getChildContainer(),
                     cfg: c
-                }
+                };
                 _this.renderCellObject(child);
             })
         }
