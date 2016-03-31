@@ -356,8 +356,6 @@ Roo.extend(Roo.data.Store, Roo.util.Observable, {
             }
             if (this.multiSort) {
                 var pn = this.paramNames;
-                Roo.log('sortToggle!!!!!!!!!!!!!!');
-                Roo.log(this.sortToggle);
                 p[pn["multisort"]] = Roo.encode( { sort : this.sortToggle, order: this.sortOrder });
             }
             
