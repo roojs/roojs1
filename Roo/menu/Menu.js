@@ -146,7 +146,8 @@ Roo.extend(Roo.menu.Menu, Roo.util.Observable, {
             tag: "a", cls: "x-menu-focus", href: "#", onclick: "return false;", tabIndex:"-1"
         });
         var ul = el.createChild({tag: "ul", cls: "x-menu-list"});
-        ul.on(Roo.isTouch ? 'touchstart' : 'click'   , this.onClick, this);
+        //disabling touch- as it's causing issues ..
+        //ul.on(Roo.isTouch ? 'touchstart' : 'click'   , this.onClick, this);
         
         ul.on("mouseover", this.onMouseOver, this);
         ul.on("mouseout", this.onMouseOut, this);
