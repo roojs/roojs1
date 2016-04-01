@@ -19238,7 +19238,8 @@ Roo.extend(Roo.menu.Menu, Roo.util.Observable, {
             tag: "a", cls: "x-menu-focus", href: "#", onclick: "return false;", tabIndex:"-1"
         });
         var ul = el.createChild({tag: "ul", cls: "x-menu-list"});
-        ul.on(Roo.isTouch ? 'touchstart' : 'click'   , this.onClick, this);
+        //disabling touch- as it's causing issues ..
+        //ul.on(Roo.isTouch ? 'touchstart' : 'click'   , this.onClick, this);
         
         ul.on("mouseover", this.onMouseOver, this);
         ul.on("mouseout", this.onMouseOut, this);
@@ -27174,7 +27175,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             tb.add(
                 btn('bold'),
                 btn('italic'),
-                btn('underline')
+                btn('underline'),
+                btn('strikethrough')
             );
         };
         if(!this.disable.fontSize){
@@ -27493,6 +27495,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             btns[frameId + '-bold'].toggle(doc.queryCommandState('bold'));
             btns[frameId + '-italic'].toggle(doc.queryCommandState('italic'));
             btns[frameId + '-underline'].toggle(doc.queryCommandState('underline'));
+            btns[frameId + '-strikethrough'].toggle(doc.queryCommandState('strikethrough'));
         }
         if(!this.disable.alignments){
             btns[frameId + '-justifyleft'].toggle(doc.queryCommandState('justifyleft'));
@@ -27616,6 +27619,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         underline : {
             title: 'Underline (Ctrl+U)',
             text: 'Underline the selected text.',
+            cls: 'x-html-editor-tip'
+        },
+        strikethrough : {
+            title: 'Strikethrough',
+            text: 'Strikethrough the selected text.',
             cls: 'x-html-editor-tip'
         },
         increasefontsize : {
@@ -37806,7 +37814,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                             record: r,
                             rowIndex : rowIndex,
                             rowClass : ''
-                        }
+                        };
                         this.grid.fireEvent('rowclass', this, rowcfg);
                         alt.push(rowcfg.rowClass);
                     }
@@ -37861,7 +37869,7 @@ Roo.extend(Roo.grid.GridView, Roo.grid.AbstractGridView, {
                             record: r,
                             rowIndex : rowIndex,
                             rowClass : ''
-                        }
+                        };
                         this.grid.fireEvent('rowclass', this, rowcfg);
                         alt.push(rowcfg.rowClass);
                     }
@@ -38946,6 +38954,18 @@ Roo.extend(Roo.grid.ColumnModel, Roo.util.Observable, {
      */
     /**
      * @cfg {String} tooltip (Optional)
+     */
+    /**
+     * @cfg {Number} xs (Optional)
+     */
+    /**
+     * @cfg {Number} sm (Optional)
+     */
+    /**
+     * @cfg {Number} md (Optional)
+     */
+    /**
+     * @cfg {Number} lg (Optional)
      */
     /**
      * Returns the id of the column at the specified index.
