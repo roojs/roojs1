@@ -240,6 +240,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 btn('italic'),
                 btn('underline'),
                 btn('strikethrough')
+                        
             );
         };
         if(!this.disable.fontSize){
@@ -558,6 +559,7 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             btns[frameId + '-bold'].toggle(doc.queryCommandState('bold'));
             btns[frameId + '-italic'].toggle(doc.queryCommandState('italic'));
             btns[frameId + '-underline'].toggle(doc.queryCommandState('underline'));
+            btns[frameId + '-strikethrough'].toggle(doc.queryCommandState('strikethrough'));
         }
         if(!this.disable.alignments){
             btns[frameId + '-justifyleft'].toggle(doc.queryCommandState('justifyleft'));
@@ -681,6 +683,11 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
         underline : {
             title: 'Underline (Ctrl+U)',
             text: 'Underline the selected text.',
+            cls: 'x-html-editor-tip'
+        },
+        strikethrough : {
+            title: 'Strikethrough',
+            text: 'Strikethrough the selected text.',
             cls: 'x-html-editor-tip'
         },
         increasefontsize : {
