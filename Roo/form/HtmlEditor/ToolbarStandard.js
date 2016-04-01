@@ -240,7 +240,6 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
                 btn('italic'),
                 btn('underline'),
                 btn('strikethrough')
-                        
             );
         };
         if(!this.disable.fontSize){
