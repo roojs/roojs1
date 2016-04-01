@@ -238,7 +238,8 @@ Roo.apply(Roo.form.HtmlEditor.ToolbarStandard.prototype,  {
             tb.add(
                 btn('bold'),
                 btn('italic'),
-                btn('underline')
+                btn('underline'),
+                btn('strikethrough')
             );
         };
         if(!this.disable.fontSize){
