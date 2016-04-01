@@ -61,6 +61,7 @@
 .x-html-editor-tb .x-edit-bold .x-btn-text              { background-position: 0 0px; }
 .x-html-editor-tb .x-edit-italic .x-btn-text            { background-position: 0 -16px; } 
 .x-html-editor-tb .x-edit-underline .x-btn-text         { background-position: 0 -32px; } 
+.x-html-editor-tb .x-edit-strikethrough .x-btn-text     { background-position: 0 -214px; }
 .x-html-editor-tb .x-edit-increasefontsize .x-btn-text  { background-position: 0 -48px; } 
 .x-html-editor-tb .x-edit-decreasefontsize .x-btn-text  { background-position: 0 -64px; } 
 .x-html-editor-tb .x-edit-insertorderedlist .x-btn-text { background-position: 0 -80px; } 
