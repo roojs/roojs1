@@ -35698,6 +35698,8 @@ Roo.extend(Roo.menu.Menu, Roo.util.Observable, {
         var ul = el.createChild({tag: "ul", cls: "x-menu-list"});
         //disabling touch- as it's causing issues ..
         //ul.on(Roo.isTouch ? 'touchstart' : 'click'   , this.onClick, this);
+        ul.on('click'   , this.onClick, this);
+        
         
         ul.on("mouseover", this.onMouseOver, this);
         ul.on("mouseout", this.onMouseOut, this);
