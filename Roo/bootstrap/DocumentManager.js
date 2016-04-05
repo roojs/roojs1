@@ -578,7 +578,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     uploadCancel : function()
     {
-        this.xhr.abort();
+        if (this.xhr) {
+            this.xhr.abort();
+        }
+        
         
         this.delegates = [];
         
