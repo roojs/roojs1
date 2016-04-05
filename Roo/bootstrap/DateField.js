@@ -51,7 +51,14 @@ Roo.bootstrap.DateField = function(config){
              * @param {Roo.bootstrap.DateField} this
              * @param {Mixed} date The date value
              */
-            select : true
+            select : true,
+            /**
+             * @event beforeselect
+             * Fires when before select a date.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            beforeselect : true
         });
 };
 
