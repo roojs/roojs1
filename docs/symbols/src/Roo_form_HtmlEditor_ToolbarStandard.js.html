@@ -238,7 +238,8 @@
             </span><span class="jsdoc-var">tb.add</span><span class="jsdoc-syntax">(
                 </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bold'</span><span class="jsdoc-syntax">),
                 </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'italic'</span><span class="jsdoc-syntax">),
-                </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'underline'</span><span class="jsdoc-syntax">)
+                </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'underline'</span><span class="jsdoc-syntax">),
+                </span><span class="jsdoc-var">btn</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'strikethrough'</span><span class="jsdoc-syntax">)
             );
         };
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disable.fontSize</span><span class="jsdoc-syntax">){
@@ -557,6 +558,7 @@
             </span><span class="jsdoc-var">btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">frameId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-bold'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.toggle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.queryCommandState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'bold'</span><span class="jsdoc-syntax">));
             </span><span class="jsdoc-var">btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">frameId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-italic'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.toggle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.queryCommandState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'italic'</span><span class="jsdoc-syntax">));
             </span><span class="jsdoc-var">btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">frameId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-underline'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.toggle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.queryCommandState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'underline'</span><span class="jsdoc-syntax">));
+            </span><span class="jsdoc-var">btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">frameId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-strikethrough'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.toggle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.queryCommandState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'strikethrough'</span><span class="jsdoc-syntax">));
         }
         </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.disable.alignments</span><span class="jsdoc-syntax">){
             </span><span class="jsdoc-var">btns</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">frameId </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-string">'-justifyleft'</span><span class="jsdoc-syntax">]</span><span class="jsdoc-var">.toggle</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">doc.queryCommandState</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'justifyleft'</span><span class="jsdoc-syntax">));
@@ -680,6 +682,11 @@
         </span><span class="jsdoc-var">underline </span><span class="jsdoc-syntax">: {
             </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Underline (Ctrl+U)'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Underline the selected text.'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-html-editor-tip'
+        </span><span class="jsdoc-syntax">},
+        </span><span class="jsdoc-var">strikethrough </span><span class="jsdoc-syntax">: {
+            </span><span class="jsdoc-var">title</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Strikethrough'</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">text</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'Strikethrough the selected text.'</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'x-html-editor-tip'
         </span><span class="jsdoc-syntax">},
         </span><span class="jsdoc-var">increasefontsize </span><span class="jsdoc-syntax">: {

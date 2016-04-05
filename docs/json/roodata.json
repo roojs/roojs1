@@ -15772,12 +15772,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "fieldLabel",
-     "type": "String",
-     "desc": "- the label associated",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "inputType",
      "type": "String",
      "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
@@ -15787,6 +15781,12 @@
      "name": "name",
      "type": "String",
      "desc": "name of the input",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "fieldLabel",
+     "type": "string",
+     "desc": "- the label associated",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -17240,12 +17240,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "fieldLabel",
-     "type": "String",
-     "desc": "- the label associated",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "inputType",
      "type": "String",
      "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
@@ -17255,6 +17249,12 @@
      "name": "name",
      "type": "String",
      "desc": "name of the input",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "fieldLabel",
+     "type": "string",
+     "desc": "- the label associated",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -18861,12 +18861,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "fieldLabel",
-     "type": "String",
-     "desc": "- the label associated",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "inputType",
      "type": "String",
      "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
@@ -18876,6 +18870,12 @@
      "name": "name",
      "type": "String",
      "desc": "name of the input",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "fieldLabel",
+     "type": "string",
+     "desc": "- the label associated",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -19212,6 +19212,12 @@
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
      "desc": "Fires before the component is rendered. Return false to stop the render."
+    },
+    {
+     "name": "beforeselect",
+     "sig": "function (_self, date)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when before select a date."
     },
     {
      "name": "beforeshow",
@@ -21836,15 +21842,15 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "fieldLabel",
-     "type": "String",
-     "desc": "- the label associated",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "name",
      "type": "String",
      "desc": "name of the input",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "fieldLabel",
+     "type": "string",
+     "desc": "- the label associated",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -22921,12 +22927,6 @@
      "memberOf": ""
     },
     {
-     "name": "fieldLabel",
-     "type": "String",
-     "desc": "- the label associated",
-     "memberOf": ""
-    },
-    {
      "name": "inputType",
      "type": "String",
      "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
@@ -22936,6 +22936,12 @@
      "name": "name",
      "type": "String",
      "desc": "name of the input",
+     "memberOf": ""
+    },
+    {
+     "name": "fieldLabel",
+     "type": "string",
+     "desc": "- the label associated",
      "memberOf": ""
     },
     {
@@ -26610,12 +26616,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "fieldLabel",
-     "type": "String",
-     "desc": "- the label associated",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "inputType",
      "type": "String",
      "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
@@ -26625,6 +26625,12 @@
      "name": "name",
      "type": "String",
      "desc": "name of the input",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "fieldLabel",
+     "type": "string",
+     "desc": "- the label associated",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -32729,12 +32735,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "fieldLabel",
-     "type": "String",
-     "desc": "- the label associated",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "inputType",
      "type": "String",
      "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
@@ -32744,6 +32744,12 @@
      "name": "name",
      "type": "String",
      "desc": "name of the input",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "fieldLabel",
+     "type": "string",
+     "desc": "- the label associated",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -36809,12 +36815,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "fieldLabel",
-     "type": "String",
-     "desc": "- the label associated",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "inputType",
      "type": "String",
      "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
@@ -36824,6 +36824,12 @@
      "name": "name",
      "type": "String",
      "desc": "name of the input",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "fieldLabel",
+     "type": "string",
+     "desc": "- the label associated",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -37492,12 +37498,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "fieldLabel",
-     "type": "String",
-     "desc": "- the label associated",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "inputType",
      "type": "String",
      "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
@@ -37507,6 +37507,12 @@
      "name": "name",
      "type": "String",
      "desc": "name of the input",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "fieldLabel",
+     "type": "string",
+     "desc": "- the label associated",
      "memberOf": "Roo.bootstrap.Input"
     },
     {
@@ -38219,12 +38225,6 @@
      "memberOf": "Roo.bootstrap.Input"
     },
     {
-     "name": "fieldLabel",
-     "type": "String",
-     "desc": "- the label associated",
-     "memberOf": "Roo.bootstrap.Input"
-    },
-    {
      "name": "inputType",
      "type": "String",
      "desc": "button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text",
@@ -38234,6 +38234,12 @@
      "name": "name",
      "type": "String",
      "desc": "name of the input",
+     "memberOf": "Roo.bootstrap.Input"
+    },
+    {
+     "name": "fieldLabel",
+     "type": "string",
+     "desc": "- the label associated",
      "memberOf": "Roo.bootstrap.Input"
     },
     {

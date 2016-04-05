@@ -447,7 +447,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
         var cfg = {
             cls: 'btn-group',
             html : null
-        }
+        };
         
         cfg.html = this.html || cfg.html;
         
@@ -455,7 +455,7 @@ Roo.extend(Roo.bootstrap.ButtonGroup, Roo.bootstrap.Component,  {
             cfg = {
                 cls: 'btn-toolbar',
                 html: null
-            }
+            };
             
             return cfg;
         }
@@ -1378,7 +1378,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             tag: 'div',
             cls: 'roo-image-responsive-group',
             cn: []
-        }
+        };
         var _this = this;
         
         Roo.each(['xs', 'sm', 'md', 'lg'], function(size){
@@ -1392,7 +1392,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
                 cls: (_this.imgResponsive) ? 'img-responsive' : '',
                 html: _this.html || cfg.html,
                 src: _this[size + 'Url']
-            }
+            };
             
             img.cls += ' roo-image-responsive-' + size;
             
@@ -1419,7 +1419,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
                     cn: [
                         img
                     ]
-                }
+                };
 
                 if(this.target){
                     a.target = _this.target;
@@ -1439,7 +1439,7 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
             tag: 'img',
             cls: (this.imgResponsive) ? 'img-responsive' : '',
             html : null
-        }
+        };
         
         cfg.html = this.html || cfg.html;
         
@@ -1458,9 +1458,9 @@ Roo.extend(Roo.bootstrap.Img, Roo.bootstrap.Component,  {
                 tag: 'a',
                 href: this.href,
                 cn: [
-		    cfg
-		]
-            }
+                    cfg
+                ]
+            };
             
             if(this.target){
                 a.target = this.target;
@@ -1947,7 +1947,7 @@ Roo.extend(Roo.bootstrap.Menu, Roo.bootstrap.Component,  {
             cls : 'dropdown-menu' ,
             style : 'z-index:1000'
             
-        }
+        };
 	
         if (this.type === 'submenu') {
             cfg.cls = 'submenu active';
@@ -3349,7 +3349,7 @@ Roo.extend(Roo.bootstrap.Navbar, Roo.bootstrap.Component,  {
         var mark = {
             tag: "div",
             cls:"x-dlg-mask"
-        }
+        };
         
         this.maskEl = Roo.DomHelper.append(this.el, mark, true);
         
@@ -3777,7 +3777,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
         cfg = {
             tag : 'ul',
             cls: 'nav' 
-        }
+        };
         
         if (['tabs','pills'].indexOf(this.type)!==-1) {
             cfg.cls += ' nav-' + this.type
@@ -3792,7 +3792,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             cfg = {
                 tag: 'ul',
                 cls: 'dashboard-menu sidebar-menu'
-            }
+            };
             
             return cfg;
         }
@@ -3801,7 +3801,7 @@ Roo.extend(Roo.bootstrap.NavGroup, Roo.bootstrap.Component,  {
             cfg = {
                 tag: 'form',
                 cls: 'navbar-form'
-            }
+            };
             
             if (this.align === 'right') {
                 cfg.cls += ' navbar-right';
@@ -4080,7 +4080,8 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
             tag: 'li',
             cls: 'nav-item'
             
-        }
+        };
+        
         if (this.active) {
             cfg.cls = typeof(cfg.cls) == 'undefined' ? 'active' : cfg.cls + ' active';
         }
@@ -4296,7 +4297,7 @@ Roo.extend(Roo.bootstrap.NavItem, Roo.bootstrap.Component,  {
         var options = {
             target : target,
             value : o[1]
-        }
+        };
         
         this.fireEvent('scrollto', this, options, e);
         
@@ -4585,7 +4586,7 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
             tag: this.tag,
             cls: this.cls,
             html: this.html
-        }
+        };
         
         return cfg;
     },
@@ -4805,7 +4806,7 @@ Roo.extend(Roo.bootstrap.Slider, Roo.bootstrap.Component,  {
                     cls: 'ui-slider-handle ui-state-default ui-corner-all'
                 }
             ]
-        }
+        };
         
         return cfg;
     }
@@ -5663,7 +5664,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
             tag: 'table',
             cls : 'table',
             cn : []
-        }
+        };
             
         if (this.striped) {
             cfg.cls += ' table-striped';
@@ -6240,7 +6241,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 rowIndex : rowIndex,
                 colIndex : i,
                 rowClass : ''
-            }
+            };
 
             this.fireEvent('rowclass', this, rowcfg);
             
@@ -6361,7 +6362,7 @@ Roo.extend(Roo.bootstrap.Table, Roo.bootstrap.Component,  {
                 var child = {
                     container: t.getChildContainer(),
                     cfg: c
-                }
+                };
                 _this.renderCellObject(child);
             })
         }
@@ -6446,9 +6447,9 @@ Roo.extend(Roo.bootstrap.TableCell, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         var cfg = Roo.apply({}, Roo.bootstrap.TableCell.superclass.getAutoCreate.call(this));
 	
-	cfg = {
-	    tag: 'td'
-	}
+        cfg = {
+            tag: 'td'
+        };
         
         if(this.tag){
             cfg.tag = this.tag;
@@ -6547,7 +6548,7 @@ Roo.extend(Roo.bootstrap.TableRow, Roo.bootstrap.Component,  {
 	
         cfg = {
             tag: 'tr'
-        }
+        };
             
         if(this.cls){
             cfg.cls = this.cls;
@@ -6611,7 +6612,7 @@ Roo.extend(Roo.bootstrap.TableBody, Roo.bootstrap.Component,  {
 	
         cfg = {
             tag: 'tbody'
-        }
+        };
             
         if (this.cls) {
             cfg.cls=this.cls
@@ -7116,7 +7117,7 @@ Roo.extend(Roo.bootstrap.Form, Roo.bootstrap.Component,  {
             method : this.method || 'POST',
             id : this.id || Roo.id(),
             cls : ''
-        }
+        };
         if (this.parent().xtype.match(/^Nav/)) {
             cfg.cls = 'navbar-form navbar-' + this.align;
             
@@ -7638,11 +7639,9 @@ Roo.form.VTypes = function(){
  * @extends Roo.bootstrap.Component
  * Bootstrap Input class
  * @cfg {Boolean} disabled is it disabled
- * @cfg {String} fieldLabel - the label associated
  * @cfg {String} inputType button | checkbox | email | file | hidden | image | number | password | radio | range | reset | search | submit | text
  * @cfg {String} name name of the input
  * @cfg {string} fieldLabel - the label associated
- * @cfg {string}  inputType - input / file submit ...
  * @cfg {string} placeholder - placeholder to put in text.
  * @cfg {string}  before - input group add on before
  * @cfg {string} after - input group add on after
@@ -11658,7 +11657,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     ]
                 }
             ]
-        }
+        };
         
         var combobox = {
             cls: 'select2-container input-group select2-container-multi',
@@ -14802,7 +14801,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
                     ]
                 }
             ]
-        }
+        };
         this.maskEl = Roo.DomHelper.append(this.el.select('.fc-content', true).first(), mark, true);
         
         var size = this.el.select('.fc-content', true).first().getSize();
@@ -15351,7 +15350,7 @@ Roo.extend(Roo.bootstrap.Calendar, Roo.bootstrap.Component,  {
             var cfg = {
                 cls : 'fc-event-hori fc-event-draggable',
                 html : m.title
-            }
+            };
             var cg = ctr.createChild(cfg);
             
             cg.on('click', _this.onEventClick, _this, m);
@@ -16329,7 +16328,14 @@ Roo.bootstrap.DateField = function(config){
              * @param {Roo.bootstrap.DateField} this
              * @param {Mixed} date The date value
              */
-            select : true
+            select : true,
+            /**
+             * @event beforeselect
+             * Fires when before select a date.
+             * @param {Roo.bootstrap.DateField} this
+             * @param {Mixed} date The date value
+             */
+            beforeselect : true
         });
 };
 
@@ -16550,7 +16556,7 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
                 tag: 'span',
                 cls: 'month',
                 html: Roo.bootstrap.DateField.dates[this.language].monthsShort[i++]
-            }
+            };
             
             months.createChild(month);
         }
@@ -16827,28 +16833,25 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
     setValue: function(v)
     {
+        if(this.fireEvent('beforeselect', this, v) !== false){
+            var d = new Date(this.parseDate(v) ).clearTime();
         
-        // v can be a string or a date..
-        
-        
-        var d = new Date(this.parseDate(v) ).clearTime();
-        
-        if(isNaN(d.getTime())){
-            this.date = this.viewDate = '';
-            Roo.bootstrap.DateField.superclass.setValue.call(this, '');
-            return;
-        }
-        
-        v = this.formatDate(d);
-        
-        Roo.bootstrap.DateField.superclass.setValue.call(this, v);
-        
-        this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
-     
-        this.update();
+            if(isNaN(d.getTime())){
+                this.date = this.viewDate = '';
+                Roo.bootstrap.DateField.superclass.setValue.call(this, '');
+                return;
+            }
 
-        this.fireEvent('select', this, this.date);
-        
+            v = this.formatDate(d);
+
+            Roo.bootstrap.DateField.superclass.setValue.call(this, v);
+
+            this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
+
+            this.update();
+
+            this.fireEvent('select', this, this.date);
+        }
     },
     
     getValue: function()
@@ -18000,7 +18003,7 @@ Roo.extend(Roo.bootstrap.MonthField, Roo.bootstrap.Input,  {
                 tag: 'span',
                 cls: 'month',
                 html: Roo.bootstrap.MonthField.dates[this.language].monthsShort[i++]
-            }
+            };
             
             months.createChild(month);
         }
@@ -18415,7 +18418,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 //'for': id, // box label is handled by onclick - so no for...
                 cls: 'box-label',
                 html: this.boxLabel
-            }
+            };
             
             if(this.tooltip){
                 boxLabelCfg.tooltip = this.tooltip;
@@ -22235,7 +22238,7 @@ Roo.extend(Roo.bootstrap.MessageBar, Roo.bootstrap.Component,  {
                     html: this.html || ''
                 }
             ]
-        }
+        };
         
         if(this.fixed){
             cfg.cls += ' alert-messages-fixed';
@@ -22398,7 +22401,7 @@ Roo.extend(Roo.bootstrap.Graph, Roo.bootstrap.Component,  {
         var cfg = {
             tag: 'div',
             html : null
-        }
+        };
         
         
         return  cfg;
@@ -22580,7 +22583,7 @@ Roo.extend(Roo.bootstrap.dash.NumberBox, Roo.bootstrap.Component,  {
                     ]
                 }
             ]
-        }
+        };
         
         if(this.icon){
             cfg.cn.push({
@@ -22741,7 +22744,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                         ]
                     }
                 ]
-            }
+            };
         }
         
         var cfg = {
@@ -22755,7 +22758,7 @@ Roo.extend(Roo.bootstrap.dash.TabBox, Roo.bootstrap.Component,  {
                     cn: []
                 }
             ]
-        }
+        };
 
         return  cfg;
     },
@@ -22895,7 +22898,7 @@ Roo.extend(Roo.bootstrap.dash.TabPane, Roo.bootstrap.Component,  {
         var cfg = {
             tag: 'div',
             cls: 'tab-pane'
-        }
+        };
         
         if(this.active){
             cfg.cls += ' active';
@@ -26090,6 +26093,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     editable : true,
     delegates : [],
     
+    
+    xhr : false, 
+    
     getAutoCreate : function()
     {   
         var managerWidget = {
@@ -26554,7 +26560,10 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     
     uploadCancel : function()
     {
-        this.xhr.abort();
+        if (this.xhr) {
+            this.xhr.abort();
+        }
+        
         
         this.delegates = [];
         
@@ -27139,7 +27148,7 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
                     cls : iconCls
                 }
             ]
-        }
+        };
         
         if(this.active){
             cfg.cls += ' active';

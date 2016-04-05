@@ -114,6 +114,9 @@
     </span><span class="jsdoc-var">editable </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">delegates </span><span class="jsdoc-syntax">: [],
     
+    
+    </span><span class="jsdoc-var">xhr </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">false</span><span class="jsdoc-syntax">, 
+    
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {   
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">managerWidget </span><span class="jsdoc-syntax">= {
@@ -578,7 +581,10 @@
     
     </span><span class="jsdoc-var">uploadCancel </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
     {
-        </span><span class="jsdoc-var">this.xhr.abort</span><span class="jsdoc-syntax">();
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.xhr</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-var">this.xhr.abort</span><span class="jsdoc-syntax">();
+        }
+        
         
         </span><span class="jsdoc-var">this.delegates </span><span class="jsdoc-syntax">= [];
         
