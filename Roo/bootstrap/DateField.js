@@ -549,28 +549,25 @@ Roo.extend(Roo.bootstrap.DateField, Roo.bootstrap.Input,  {
 
     setValue: function(v)
     {
+        if(this.fireEvent('beforeselect', this, v) !== false){
+            var d = new Date(this.parseDate(v) ).clearTime();
         
-        // v can be a string or a date..
-        
-        
-        var d = new Date(this.parseDate(v) ).clearTime();
-        
-        if(isNaN(d.getTime())){
-            this.date = this.viewDate = '';
-            Roo.bootstrap.DateField.superclass.setValue.call(this, '');
-            return;
-        }
-        
-        v = this.formatDate(d);
-        
-        Roo.bootstrap.DateField.superclass.setValue.call(this, v);
-        
-        this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
-     
-        this.update();
+            if(isNaN(d.getTime())){
+                this.date = this.viewDate = '';
+                Roo.bootstrap.DateField.superclass.setValue.call(this, '');
+                return;
+            }
 
-        this.fireEvent('select', this, this.date);
-        
+            v = this.formatDate(d);
+
+            Roo.bootstrap.DateField.superclass.setValue.call(this, v);
+
+            this.date = new Date(d.getTime() - d.getTimezoneOffset()*60000);
+
+            this.update();
+
+            this.fireEvent('select', this, this.date);
+        }
     },
     
     getValue: function()
