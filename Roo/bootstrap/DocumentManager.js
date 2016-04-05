@@ -114,6 +114,9 @@ Roo.extend(Roo.bootstrap.DocumentManager, Roo.bootstrap.Component,  {
     editable : true,
     delegates : [],
     
+    
+    xhr : false, 
+    
     getAutoCreate : function()
     {   
         var managerWidget = {
