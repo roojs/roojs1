@@ -115,3 +115,5 @@ Roo.bootstrap.DocumentViewer
 
 Roo.bootstrap.NavProgressBar
 Roo.bootstrap.NavProgressItem
+
+Roo.bootstrap.FieldLabel
