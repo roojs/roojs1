@@ -740,11 +740,16 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        var label = this.el.findParent('.form-group', false, true).select('label', true).first();
-        var icon = this.el.findParent('.form-group', false, true).select('i.fa-star', true).first();
+        var formGroup = this.el.findParent('.form-group', false, true);
         
-        if(label && icon){
-            icon.remove();
+        if(formGroup){
+            
+            var label = formGroup.select('label', true).first();
+            var icon = formGroup.select('i.fa-star', true).first();
+            
+            if(label && icon){
+                icon.remove();
+            }
         }
         
         this.el.addClass(this.validClass);
