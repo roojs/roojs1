@@ -147,6 +147,7 @@ Roo.apply(Roo.bootstrap.FieldLabel, {
     * @returns {Roo.bootstrap.FieldLabel} the CheckBox group
     */
     get: function(name) {
+        Roo.log(this.groups);
         if (typeof(this.groups[name]) == 'undefined') {
             return false;
         }
