@@ -62,6 +62,84 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     {
         Roo.bootstrap.Element.superclass.initEvents.call(this);
         
+    },
+    
+    /**
+     * Mark this field as valid
+     */
+    markValid : function(){
+        if(!this.el  || this.preventMark){ // not rendered
+            return;
+        }
+        
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        
+        var feedback = this.el.select('.form-control-feedback', true).first();
+            
+        if(feedback){
+            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+        }
+
+        if(this.disabled || this.allowBlank){
+            return;
+        }
+        
+        this.el.addClass(this.validClass);
+        
+        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
+            
+            var feedback = this.el.select('.form-control-feedback', true).first();
+            
+            if(feedback){
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
+            }
+            
+        }
+        
+        this.fireEvent('valid', this);
+    },
+    
+    /**
+     * Mark this field as invalid
+     * @param {String} msg The validation message
+     */
+    markInvalid : function(msg)
+    {
+        if(!this.el  || this.preventMark){ // not rendered
+            return;
+        }
+        
+        this.el.removeClass([this.invalidClass, this.validClass]);
+        
+        var feedback = this.el.select('.form-control-feedback', true).first();
+            
+        if(feedback){
+            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+        }
+
+        if(this.disabled || this.allowBlank){
+            return;
+        }
+        
+        this.el.addClass(this.invalidClass);
+        
+        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
+            
+            var feedback = this.el.select('.form-control-feedback', true).first();
+            
+            if(feedback){
+                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
+                
+                if(this.getValue().length || this.forceFeedback){
+                    this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
+                }
+                
+            }
+            
+        }
+        
+        this.fireEvent('invalid', this, msg);
     }
     
    
