@@ -18257,6 +18257,7 @@ Roo.apply(Roo.bootstrap.MonthField,  {
  * @cfg {Boolean} checked initnal the element
  * @cfg {Boolean} inline inline the element (default false)
  * @cfg {String} groupId the checkbox group id // normal just use for checkbox
+ * @cfg {String} targetLabel 
  * 
  * @constructor
  * Create a new CheckBox
@@ -18287,6 +18288,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     checked: false,
     weight : false,
     inline: false,
+    targetLabel : false,
     
     getAutoCreate : function()
     {
@@ -18672,6 +18674,8 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         var _this = this;
         
         this.fireEvent('invalid', this, msg);
+        
+        
         
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
@@ -27296,7 +27300,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag : this.tag,
-            cls : this.cls,
+            cls : 'roo-bootstrap-field-label ' + this.cls,
             for : this.for,
             cn : [
                 {
@@ -27326,35 +27330,13 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     /**
      * Mark this field as valid
      */
-    markValid : function(){
-        if(!this.el  || this.preventMark){ // not rendered
-            return;
-        }
+    markValid : function()
+    {
+        this.iconEl.show();
         
-        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.iconEl.removeClass(this.invalidClass);
         
-        var feedback = this.el.select('.form-control-feedback', true).first();
-            
-        if(feedback){
-            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
-        }
-
-        if(this.disabled || this.allowBlank){
-            return;
-        }
-        
-        this.el.addClass(this.validClass);
-        
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
-            
-            var feedback = this.el.select('.form-control-feedback', true).first();
-            
-            if(feedback){
-                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
-                this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
-            }
-            
-        }
+        this.iconEl.addClass(this.validClass);
         
         this.fireEvent('valid', this);
     },
@@ -27365,38 +27347,11 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
      */
     markInvalid : function(msg)
     {
-        if(!this.el  || this.preventMark){ // not rendered
-            return;
-        }
+        this.iconEl.show();
         
-        this.el.removeClass([this.invalidClass, this.validClass]);
+        this.iconEl.removeClass(this.validClass);
         
-        var feedback = this.el.select('.form-control-feedback', true).first();
-            
-        if(feedback){
-            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
-        }
-
-        if(this.disabled || this.allowBlank){
-            return;
-        }
-        
-        this.el.addClass(this.invalidClass);
-        
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
-            
-            var feedback = this.el.select('.form-control-feedback', true).first();
-            
-            if(feedback){
-                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
-                
-                if(this.getValue().length || this.forceFeedback){
-                    this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
-                }
-                
-            }
-            
-        }
+        this.iconEl.addClass(this.invalidClass);
         
         this.fireEvent('invalid', this, msg);
     }
