@@ -12,10 +12,11 @@
  * @cfg {String} html contents of the element
  * @cfg {String} tag tag of the element default label
  * @cfg {String} cls class of the element
- * @cfg {String} for label target 
+ * @cfg {String} target label target 
  * @cfg {Boolean} allowBlank (true|false) target allowBlank default true
  * @cfg {String} invalidClass default &quot;text-danger fa fa-lg fa-exclamation-triangle&quot;
  * @cfg {String} validClass default &quot;text-success fa fa-lg fa-check&quot;
+ * @cfg {String} iconTooltip default &quot;This field is required&quot;
  * 
  * @constructor
  * Create a new FieldLabel
@@ -47,21 +48,23 @@
     </span><span class="jsdoc-var">tag</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'label'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">cls</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">html</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
-    </span><span class="jsdoc-keyword">for</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">allowBlank </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">invalidClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text-danger fa fa-lg fa-exclamation-triangle'</span><span class="jsdoc-syntax">,
     </span><span class="jsdoc-var">validClass </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'text-success fa fa-lg fa-check'</span><span class="jsdoc-syntax">,
+    </span><span class="jsdoc-var">iconTooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'This field is required'</span><span class="jsdoc-syntax">,
     
     </span><span class="jsdoc-var">getAutoCreate </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-bootstrap-field-label ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.for</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.target</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                 {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'i'</span><span class="jsdoc-syntax">,
-                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''
+                    </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">''</span><span class="jsdoc-syntax">,
+                    </span><span class="jsdoc-var">tooltip </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.iconTooltip
                 </span><span class="jsdoc-syntax">},
                 {
                     </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'span'</span><span class="jsdoc-syntax">,
@@ -81,6 +84,7 @@
         
         </span><span class="jsdoc-var">this.iconEl.setVisibilityMode</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.Element.DISPLAY</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.hide</span><span class="jsdoc-syntax">();
         
+        </span><span class="jsdoc-var">Roo.bootstrap.FieldLabel.register</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
     
     </span><span class="jsdoc-comment">/**
@@ -113,6 +117,37 @@
     }
     
    
+});
+
+</span><span class="jsdoc-var">Roo.apply</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">Roo.bootstrap.FieldLabel</span><span class="jsdoc-syntax">, {
+    
+    </span><span class="jsdoc-var">groups</span><span class="jsdoc-syntax">: {},
+    
+     </span><span class="jsdoc-comment">/**
+    * register a FieldLabel Group
+    * @param {Roo.bootstrap.FieldLabel} the FieldLabel to add
+    */
+    </span><span class="jsdoc-var">register </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">)
+    {
+        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.groups.hasOwnProperty</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">label.target</span><span class="jsdoc-syntax">)){
+            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
+        }
+     
+        </span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">label.target</span><span class="jsdoc-syntax">] = </span><span class="jsdoc-var">label</span><span class="jsdoc-syntax">;
+	
+    },
+    </span><span class="jsdoc-comment">/**
+    * fetch a FieldLabel Group based on the target
+    * @param {string} target
+    * @returns {Roo.bootstrap.FieldLabel} the CheckBox group
+    */
+    </span><span class="jsdoc-var">get</span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">) {
+        </span><span class="jsdoc-keyword">if </span><span class="jsdoc-syntax">(</span><span class="jsdoc-keyword">typeof</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">]) == </span><span class="jsdoc-string">'undefined'</span><span class="jsdoc-syntax">) {
+            </span><span class="jsdoc-keyword">return false</span><span class="jsdoc-syntax">;
+        }
+        
+        </span><span class="jsdoc-keyword">return </span><span class="jsdoc-var">this.groups</span><span class="jsdoc-syntax">[</span><span class="jsdoc-var">target</span><span class="jsdoc-syntax">] ;
+    }
 });
 
  

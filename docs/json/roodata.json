@@ -15766,12 +15766,6 @@
      "memberOf": ""
     },
     {
-     "name": "targetLabel",
-     "type": "String",
-     "desc": "",
-     "memberOf": ""
-    },
-    {
      "name": "disabled",
      "type": "Boolean",
      "desc": "is it disabled",
@@ -20670,7 +20664,7 @@
      "memberOf": ""
     },
     {
-     "name": "for",
+     "name": "target",
      "type": "String",
      "desc": "label target",
      "memberOf": ""
@@ -20695,6 +20689,12 @@
      "name": "validClass",
      "type": "String",
      "desc": "default \"text-success fa fa-lg fa-check\"",
+     "memberOf": ""
+    },
+    {
+     "name": "iconTooltip",
+     "type": "String",
+     "desc": "default \"This field is required\"",
      "memberOf": ""
     },
     {
@@ -20904,6 +20904,12 @@
      "desc": "Try to focus this component."
     },
     {
+     "name": "get",
+     "sig": "(string target)",
+     "type": "function",
+     "desc": "fetch a FieldLabel Group based on the target"
+    },
+    {
      "name": "getChildContainer",
      "sig": "()",
      "type": "function",
@@ -20968,6 +20974,12 @@
      "sig": "()",
      "type": "function",
      "desc": "Removes all listeners for this object"
+    },
+    {
+     "name": "register",
+     "sig": "(Roo.bootstrap.FieldLabel the)",
+     "type": "function",
+     "desc": "register a FieldLabel Group"
     },
     {
      "name": "releaseCapture",
@@ -33102,12 +33114,6 @@
      "name": "groupId",
      "type": "String",
      "desc": "the checkbox group id // normal just use for checkbox",
-     "memberOf": "Roo.bootstrap.CheckBox"
-    },
-    {
-     "name": "targetLabel",
-     "type": "String",
-     "desc": "",
      "memberOf": "Roo.bootstrap.CheckBox"
     },
     {
