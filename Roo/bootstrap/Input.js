@@ -739,11 +739,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log('mark valid!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        
-        Roo.log(this);
-        
-        
         this.el.addClass(this.validClass);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
@@ -755,6 +750,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 this.el.select('.form-control-feedback', true).first().addClass([this.validFeedbackClass]);
             }
             
+        }
+        
+        var label = this.el.findParent('.form-group', false, true).select('label', true).first();
+        
+        if(label){
+            Roo.log(label);
         }
         
         this.fireEvent('valid', this);
