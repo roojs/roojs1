@@ -122,7 +122,7 @@ Roo.apply(Roo.bootstrap.FieldLabel, {
     
      /**
     * register a CheckBox Group
-    * @param {Roo.bootstrap.CheckBox} the CheckBox to add
+    * @param {Roo.bootstrap.FieldLabel} the CheckBox to add
     */
     register : function(label)
     {
@@ -141,7 +141,7 @@ Roo.apply(Roo.bootstrap.FieldLabel, {
     /**
     * fetch a CheckBox Group based on the group ID
     * @param {string} the group ID
-    * @returns {Roo.bootstrap.CheckBox} the CheckBox group
+    * @returns {Roo.bootstrap.FieldLabel} the CheckBox group
     */
     get: function(name) {
         if (typeof(this.groups[name]) == 'undefined') {
