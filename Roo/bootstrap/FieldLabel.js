@@ -39,20 +39,20 @@ Roo.bootstrap.FieldLabel = function(config){
         });
 };
 
-Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
+Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     
-    tag: 'div',
+    tag: 'label',
     cls: '',
     html: '',
-    preventDefault: false, 
-    clickable: false,
+    for: '',
     
     getAutoCreate : function(){
         
         var cfg = {
             tag: this.tag,
             cls: this.cls,
-            html: this.html
+            html: this.html,
+            for: this.for
         };
         
         return cfg;
@@ -62,30 +62,8 @@ Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
     {
         Roo.bootstrap.Element.superclass.initEvents.call(this);
         
-        if(this.clickable){
-            this.el.on('click', this.onClick, this);
-        }
-        
-    },
-    
-    onClick : function(e)
-    {
-        if(this.preventDefault){
-            e.preventDefault();
-        }
-        
-        this.fireEvent('click', this, e);
-    },
-    
-    getValue : function()
-    {
-        return this.el.dom.innerHTML;
-    },
-    
-    setValue : function(value)
-    {
-        this.el.dom.innerHTML = value;
     }
+    
    
 });
 
