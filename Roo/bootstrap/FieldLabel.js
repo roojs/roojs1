@@ -14,6 +14,8 @@
  * @cfg {String} cls class of the element
  * @cfg {String} for label target 
  * @cfg {Boolean} allowBlank (true|false) target allowBlank default true
+ * @cfg {String} invalidClass default "text-danger fa fa-lg fa-exclamation-triangle"
+ * @cfg {String} validClass default "text-danger fa fa-lg fa-exclamation-triangle"
  * 
  * @constructor
  * Create a new FieldLabel
