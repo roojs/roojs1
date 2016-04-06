@@ -724,8 +724,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     markValid : function()
     {
-        Roo.log('mark valid???');
-        
         if(!this.el  || this.preventMark){ // not rendered
             return;
         }
@@ -771,8 +769,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      */
     markInvalid : function(msg)
     {
-        Roo.log('mark invalid???');
-        
         if(!this.el  || this.preventMark){ // not rendered
             return;
         }
@@ -789,17 +785,17 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        var label = this.el.findParent('.form-group', false, true).select('label', true).first();
-        var icon = this.el.findParent('.form-group', false, true).select('i.fa-star', true).first();
-        
-        if(!this.getValue().length && label && !icon){
-            this.el.findParent('.form-group', false, true).createChild({
-                tag : 'i',
-                cls : 'text-danger fa fa-lg fa-star',
-                tooltip : 'This field is required',
-                style : 'margin-right:5px;'
-            }, label, true);
-        }
+//        var label = this.el.findParent('.form-group', false, true).select('label', true).first();
+//        var icon = this.el.findParent('.form-group', false, true).select('i.fa-star', true).first();
+//        
+//        if(!this.getValue().length && label && !icon){
+//            this.el.findParent('.form-group', false, true).createChild({
+//                tag : 'i',
+//                cls : 'text-danger fa fa-lg fa-star',
+//                tooltip : 'This field is required',
+//                style : 'margin-right:5px;'
+//            }, label, true);
+//        }
         
         this.el.addClass(this.invalidClass);
         
