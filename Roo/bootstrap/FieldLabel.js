@@ -16,6 +16,7 @@
  * @cfg {Boolean} allowBlank (true|false) target allowBlank default true
  * @cfg {String} invalidClass default "text-danger fa fa-lg fa-exclamation-triangle"
  * @cfg {String} validClass default "text-success fa fa-lg fa-check"
+ * @cfg {String} iconTooltip default "This field is required"
  * 
  * @constructor
  * Create a new FieldLabel
@@ -51,6 +52,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     allowBlank : true,
     invalidClass : 'text-danger fa fa-lg fa-exclamation-triangle',
     validClass : 'text-success fa fa-lg fa-check',
+    iconTooltip : 'This field is required',
     
     getAutoCreate : function(){
         
