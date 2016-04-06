@@ -52,7 +52,6 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     invalidClass : 'text-danger fa fa-lg fa-exclamation-triangle',
     validClass : 'text-success fa fa-lg fa-check',
     
-    
     getAutoCreate : function(){
         
         var cfg = {
