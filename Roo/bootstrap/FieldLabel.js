@@ -129,24 +129,24 @@ Roo.apply(Roo.bootstrap.FieldLabel, {
     */
     register : function(label)
     {
-        if(this.groups.hasOwnProperty(label.for)){
+        if(this.groups.hasOwnProperty(label.target)){
             return;
         }
      
-        this.groups[label.for] = label;
+        this.groups[label.target] = label;
 	
     },
     /**
-    * fetch a FieldLabel Group based on the for
-    * @param {string} for
+    * fetch a FieldLabel Group based on the target
+    * @param {string} target
     * @returns {Roo.bootstrap.FieldLabel} the CheckBox group
     */
-    get: function(name) {
-        if (typeof(this.groups[name]) == 'undefined') {
+    get: function(target) {
+        if (typeof(this.groups[target]) == 'undefined') {
             return false;
         }
         
-        return this.groups[name] ;
+        return this.groups[target] ;
     }
 });
 
