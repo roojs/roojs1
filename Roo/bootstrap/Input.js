@@ -787,7 +787,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         var label = this.el.findParent('.form-group', false, true).select('label', true).first();
         
         if(!this.getValue().length && !label.select('i', true).first()){
-            label.createChild({
+            label.appendChild({
                 tag : 'i',
                 cls : 'text-danger fa fa-lg fa-star',
                 tooltip : 'This field is required'
