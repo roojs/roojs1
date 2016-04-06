@@ -752,11 +752,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
         }
         
-        var label = this.el.findParent('.form-group', false, true).select('label', true).first();
-        
-        if(label){
-            Roo.log(label);
-        }
         
         this.fireEvent('valid', this);
     },
