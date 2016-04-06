@@ -56,7 +56,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
         
         var cfg = {
             tag : this.tag,
-            cls : this.cls,
+            cls : 'roo-bootstrap-field-label ' + this.cls,
             for : this.for,
             cn : [
                 {
