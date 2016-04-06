@@ -791,7 +791,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
                 tag : 'i',
                 cls : 'text-danger fa fa-lg fa-star',
                 tooltip : 'This field is required'
-            }, true, true);
+            });
         }
         
         this.el.addClass(this.invalidClass);
