@@ -15766,6 +15766,12 @@
      "memberOf": ""
     },
     {
+     "name": "targetLabel",
+     "type": "String",
+     "desc": "",
+     "memberOf": ""
+    },
+    {
      "name": "disabled",
      "type": "Boolean",
      "desc": "is it disabled",
@@ -33096,6 +33102,12 @@
      "name": "groupId",
      "type": "String",
      "desc": "the checkbox group id // normal just use for checkbox",
+     "memberOf": "Roo.bootstrap.CheckBox"
+    },
+    {
+     "name": "targetLabel",
+     "type": "String",
+     "desc": "",
      "memberOf": "Roo.bootstrap.CheckBox"
     },
     {

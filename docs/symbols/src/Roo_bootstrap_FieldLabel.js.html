@@ -56,7 +56,7 @@
         
         </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">cfg </span><span class="jsdoc-syntax">= {
             </span><span class="jsdoc-var">tag </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.tag</span><span class="jsdoc-syntax">,
-            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">,
+            </span><span class="jsdoc-var">cls </span><span class="jsdoc-syntax">: </span><span class="jsdoc-string">'roo-bootstrap-field-label ' </span><span class="jsdoc-syntax">+ </span><span class="jsdoc-var">this.cls</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-keyword">for </span><span class="jsdoc-syntax">: </span><span class="jsdoc-var">this.for</span><span class="jsdoc-syntax">,
             </span><span class="jsdoc-var">cn </span><span class="jsdoc-syntax">: [
                 {
@@ -86,35 +86,13 @@
     </span><span class="jsdoc-comment">/**
      * Mark this field as valid
      */
-    </span><span class="jsdoc-var">markValid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(){
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el  </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.preventMark</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// not rendered
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
+    </span><span class="jsdoc-var">markValid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">()
+    {
+        </span><span class="jsdoc-var">this.iconEl.show</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-var">this.iconEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">feedback </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-            
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validFeedbackClass</span><span class="jsdoc-syntax">]);
-        }
-
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.allowBlank </span><span class="jsdoc-syntax">&amp;&amp; (</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.forceFeedback</span><span class="jsdoc-syntax">)){
-            
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">feedback </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-            
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validFeedbackClass</span><span class="jsdoc-syntax">]);
-                </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.validFeedbackClass</span><span class="jsdoc-syntax">]);
-            }
-            
-        }
+        </span><span class="jsdoc-var">this.iconEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'valid'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">);
     },
@@ -125,38 +103,11 @@
      */
     </span><span class="jsdoc-var">markInvalid </span><span class="jsdoc-syntax">: </span><span class="jsdoc-keyword">function</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">)
     {
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(!</span><span class="jsdoc-var">this.el  </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.preventMark</span><span class="jsdoc-syntax">){ </span><span class="jsdoc-comment">// not rendered
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
+        </span><span class="jsdoc-var">this.iconEl.show</span><span class="jsdoc-syntax">();
         
-        </span><span class="jsdoc-var">this.el.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">]);
+        </span><span class="jsdoc-var">this.iconEl.removeClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.validClass</span><span class="jsdoc-syntax">);
         
-        </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">feedback </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-            
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validFeedbackClass</span><span class="jsdoc-syntax">]);
-        }
-
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.disabled </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
-            </span><span class="jsdoc-keyword">return</span><span class="jsdoc-syntax">;
-        }
-        
-        </span><span class="jsdoc-var">this.el.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">);
-        
-        </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.hasFeedback </span><span class="jsdoc-syntax">&amp;&amp; </span><span class="jsdoc-var">this.inputType </span><span class="jsdoc-syntax">!= </span><span class="jsdoc-string">'hidden' </span><span class="jsdoc-syntax">&amp;&amp; !</span><span class="jsdoc-var">this.allowBlank</span><span class="jsdoc-syntax">){
-            
-            </span><span class="jsdoc-keyword">var </span><span class="jsdoc-var">feedback </span><span class="jsdoc-syntax">= </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">();
-            
-            </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">feedback</span><span class="jsdoc-syntax">){
-                </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.removeClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this.validFeedbackClass</span><span class="jsdoc-syntax">]);
-                
-                </span><span class="jsdoc-keyword">if</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.getValue</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.length </span><span class="jsdoc-syntax">|| </span><span class="jsdoc-var">this.forceFeedback</span><span class="jsdoc-syntax">){
-                    </span><span class="jsdoc-var">this.el.select</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'.form-control-feedback'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-keyword">true</span><span class="jsdoc-syntax">)</span><span class="jsdoc-var">.first</span><span class="jsdoc-syntax">()</span><span class="jsdoc-var">.addClass</span><span class="jsdoc-syntax">([</span><span class="jsdoc-var">this.invalidFeedbackClass</span><span class="jsdoc-syntax">]);
-                }
-                
-            }
-            
-        }
+        </span><span class="jsdoc-var">this.iconEl.addClass</span><span class="jsdoc-syntax">(</span><span class="jsdoc-var">this.invalidClass</span><span class="jsdoc-syntax">);
         
         </span><span class="jsdoc-var">this.fireEvent</span><span class="jsdoc-syntax">(</span><span class="jsdoc-string">'invalid'</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">this</span><span class="jsdoc-syntax">, </span><span class="jsdoc-var">msg</span><span class="jsdoc-syntax">);
     }
