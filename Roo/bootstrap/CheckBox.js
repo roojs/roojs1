@@ -396,6 +396,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         if(label){
             Roo.log('label mark valid???');
+            Roo.log(label);
             label.markInvalid();
         }
         
