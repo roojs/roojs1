@@ -101,38 +101,9 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
      */
     markInvalid : function(msg)
     {
-        if(!this.el  || this.preventMark){ // not rendered
-            return;
-        }
+        this.iconEl.removeClass(this.validClass);
         
-        this.el.removeClass([this.invalidClass, this.validClass]);
-        
-        var feedback = this.el.select('.form-control-feedback', true).first();
-            
-        if(feedback){
-            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
-        }
-
-        if(this.disabled || this.allowBlank){
-            return;
-        }
-        
-        this.el.addClass(this.invalidClass);
-        
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
-            
-            var feedback = this.el.select('.form-control-feedback', true).first();
-            
-            if(feedback){
-                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
-                
-                if(this.getValue().length || this.forceFeedback){
-                    this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
-                }
-                
-            }
-            
-        }
+        this.iconEl.addClass(this.invalidClass);
         
         this.fireEvent('invalid', this, msg);
     }
