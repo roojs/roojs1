@@ -778,6 +778,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
+        var label = this.el.findParent('.form-group', false, true).select('label', true).first();
+        
+        if(!this.getValue().length){
+            
+        }
+        
         this.el.addClass(this.invalidClass);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
