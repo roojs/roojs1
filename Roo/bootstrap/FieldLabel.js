@@ -33,7 +33,7 @@ Roo.bootstrap.FieldLabel = function(config){
             /**
              * @event valid
              * Fires after the field has been validated with no errors.
-             * @param {Roo.form.Field} this
+             * @param {Roo.form.FieldLabel} this
              */
             valid : true
         });
