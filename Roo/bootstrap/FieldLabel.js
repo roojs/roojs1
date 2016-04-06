@@ -64,7 +64,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
                     cls : ''
                 },
                 {
-                    tag : 'div',
+                    tag : 'span',
                     html : this.html
                 }
             ] 
