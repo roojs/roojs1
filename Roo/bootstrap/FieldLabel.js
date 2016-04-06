@@ -49,10 +49,14 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     getAutoCreate : function(){
         
         var cfg = {
-            tag: this.tag,
-            cls: this.cls,
-            html: this.html,
-            for: this.for
+            tag : this.tag,
+            cls : this.cls,
+            for : this.for,
+            cn : [
+                {
+                    tag : 'i'
+                }
+            ] 
         };
         
         return cfg;
