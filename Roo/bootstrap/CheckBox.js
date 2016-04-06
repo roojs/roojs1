@@ -439,17 +439,21 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.fireEvent('invalid', this, msg);
         
+        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
+        
+        if(this.groupId){
+            label = Roo.bootstrap.FieldLabel.get(this.groupId + '-group');
+        }
+        
+        if(label){
+            label.markInvalid();
+        }
+            
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
                 e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
                 e.findParent('.form-group', false, true).addClass(_this.invalidClass);
             });
-            
-            var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
-        
-            if(label){
-                label.markInvalid();
-            }
             
             return;
         }
@@ -461,7 +465,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
         
         var group = Roo.bootstrap.CheckBox.get(this.groupId);
-            
+        
         if(!group){
             return;
         }
