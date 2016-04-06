@@ -1933,7 +1933,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     
     validate : function()
     {
-        Roo.log('validate??????????????');
         var v = this.getRawValue();
         
         if(this.multiple){
