@@ -81,6 +81,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
         
         this.iconEl.setVisibilityMode(Roo.Element.DISPLAY).hide();
         
+        Roo.bootstrap.FieldLabel.register(this);
     },
     
     /**
@@ -113,6 +114,43 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     }
     
    
+});
+
+Roo.apply(Roo.bootstrap.FieldLabel, {
+    
+    groups: {},
+    
+     /**
+    * register a CheckBox Group
+    * @param {Roo.bootstrap.CheckBox} the CheckBox to add
+    */
+    register : function(label)
+    {
+        if(typeof(this.groups[label.for]) == 'undefined'){
+            this.groups[label.for] = {};
+        }
+        
+        if(this.groups.hasOwnProperty(label.for)){
+            return;
+        }
+        
+        this.groups[label.for] = label;
+	
+    },
+    /**
+    * fetch a CheckBox Group based on the group ID
+    * @param {string} the group ID
+    * @returns {Roo.bootstrap.CheckBox} the CheckBox group
+    */
+    get: function(name) {
+        if (typeof(this.groups[name]) == 'undefined') {
+            return false;
+        }
+        
+        return this.groups[name] ;
+    }
+    
+    
 });
 
  
