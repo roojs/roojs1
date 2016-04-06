@@ -436,6 +436,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
         
         if(label){
+            Roo.log('label???');
             label.markInvalid();
         }
         
