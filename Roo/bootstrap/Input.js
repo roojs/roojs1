@@ -783,9 +783,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
-        Roo.log('mark invalid!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-        Roo.log(this);
-        
         this.el.addClass(this.invalidClass);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
