@@ -148,8 +148,6 @@ Roo.apply(Roo.bootstrap.FieldLabel, {
         
         return this.groups[name] ;
     }
-    
-    
 });
 
  
