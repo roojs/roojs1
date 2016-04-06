@@ -18257,7 +18257,6 @@ Roo.apply(Roo.bootstrap.MonthField,  {
  * @cfg {Boolean} checked initnal the element
  * @cfg {Boolean} inline inline the element (default false)
  * @cfg {String} groupId the checkbox group id // normal just use for checkbox
- * @cfg {String} targetLabel 
  * 
  * @constructor
  * Create a new CheckBox
@@ -18288,7 +18287,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     checked: false,
     weight : false,
     inline: false,
-    targetLabel : false,
     
     getAutoCreate : function()
     {
@@ -18634,6 +18632,16 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.fireEvent('valid', this);
         
+        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
+        
+        if(this.groupId){
+            label = Roo.bootstrap.FieldLabel.get(this.groupId + '-group');
+        }
+        
+        if(label){
+            label.markValid();
+        }
+        
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
                 e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
@@ -18675,8 +18683,16 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.fireEvent('invalid', this, msg);
         
+        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
         
+        if(this.groupId){
+            label = Roo.bootstrap.FieldLabel.get(this.groupId + '-group');
+        }
         
+        if(label){
+            label.markInvalid();
+        }
+            
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
                 e.findParent('.form-group', false, true).removeClass([_this.invalidClass, _this.validClass]);
@@ -18693,7 +18709,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         }
         
         var group = Roo.bootstrap.CheckBox.get(this.groupId);
-            
+        
         if(!group){
             return;
         }
@@ -27256,10 +27272,11 @@ Roo.extend(Roo.bootstrap.NavProgressItem, Roo.bootstrap.Component,  {
  * @cfg {String} html contents of the element
  * @cfg {String} tag tag of the element default label
  * @cfg {String} cls class of the element
- * @cfg {String} for label target 
+ * @cfg {String} target label target 
  * @cfg {Boolean} allowBlank (true|false) target allowBlank default true
  * @cfg {String} invalidClass default "text-danger fa fa-lg fa-exclamation-triangle"
  * @cfg {String} validClass default "text-success fa fa-lg fa-check"
+ * @cfg {String} iconTooltip default "This field is required"
  * 
  * @constructor
  * Create a new FieldLabel
@@ -27291,21 +27308,23 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     tag: 'label',
     cls: '',
     html: '',
-    for: '',
+    target: '',
     allowBlank : true,
     invalidClass : 'text-danger fa fa-lg fa-exclamation-triangle',
     validClass : 'text-success fa fa-lg fa-check',
+    iconTooltip : 'This field is required',
     
     getAutoCreate : function(){
         
         var cfg = {
             tag : this.tag,
             cls : 'roo-bootstrap-field-label ' + this.cls,
-            for : this.for,
+            for : this.target,
             cn : [
                 {
                     tag : 'i',
-                    cls : ''
+                    cls : '',
+                    tooltip : this.iconTooltip
                 },
                 {
                     tag : 'span',
@@ -27325,6 +27344,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
         
         this.iconEl.setVisibilityMode(Roo.Element.DISPLAY).hide();
         
+        Roo.bootstrap.FieldLabel.register(this);
     },
     
     /**
@@ -27357,6 +27377,37 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     }
     
    
+});
+
+Roo.apply(Roo.bootstrap.FieldLabel, {
+    
+    groups: {},
+    
+     /**
+    * register a FieldLabel Group
+    * @param {Roo.bootstrap.FieldLabel} the FieldLabel to add
+    */
+    register : function(label)
+    {
+        if(this.groups.hasOwnProperty(label.target)){
+            return;
+        }
+     
+        this.groups[label.target] = label;
+	
+    },
+    /**
+    * fetch a FieldLabel Group based on the target
+    * @param {string} target
+    * @returns {Roo.bootstrap.FieldLabel} the CheckBox group
+    */
+    get: function(target) {
+        if (typeof(this.groups[target]) == 'undefined') {
+            return false;
+        }
+        
+        return this.groups[target] ;
+    }
 });
 
  
