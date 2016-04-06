@@ -781,7 +781,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         var label = this.el.findParent('.form-group', false, true).select('label', true).first();
         
         if(!this.getValue().length){
-            
+            Roo.log(label);
         }
         
         this.el.addClass(this.invalidClass);
