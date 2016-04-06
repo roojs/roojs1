@@ -8,31 +8,35 @@
 /**
  * @class Roo.bootstrap.FieldLabel
  * @extends Roo.bootstrap.Component
- * Bootstrap Element class
+ * Bootstrap FieldLabel class
  * @cfg {String} html contents of the element
- * @cfg {String} tag tag of the element
+ * @cfg {String} tag tag of the element default label
  * @cfg {String} cls class of the element
- * @cfg {Boolean} preventDefault (true|false) default false
- * @cfg {Boolean} clickable (true|false) default false
+ * @cfg {String} for label target 
  * 
  * @constructor
- * Create a new Element
+ * Create a new FieldLabel
  * @param {Object} config The config object
  */
 
-Roo.bootstrap.Element = function(config){
+Roo.bootstrap.FieldLabel = function(config){
     Roo.bootstrap.Element.superclass.constructor.call(this, config);
     
     this.addEvents({
-        // raw events
-        /**
-         * @event click
-         * When a element is chick
-         * @param {Roo.bootstrap.Element} this
-         * @param {Roo.EventObject} e
-         */
-        "click" : true
-    });
+            /**
+             * @event invalid
+             * Fires after the field has been marked as invalid.
+             * @param {Roo.form.Field} this
+             * @param {String} msg The validation message
+             */
+            invalid : true,
+            /**
+             * @event valid
+             * Fires after the field has been validated with no errors.
+             * @param {Roo.form.Field} this
+             */
+            valid : true
+        });
 };
 
 Roo.extend(Roo.bootstrap.Element, Roo.bootstrap.Component,  {
