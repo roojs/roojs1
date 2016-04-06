@@ -446,7 +446,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         if(label){
             Roo.log('label mark invalid???');
             label.markInvalid();
-            
         }
         
         if(this.inputType == 'radio'){
