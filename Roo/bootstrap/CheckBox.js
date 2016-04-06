@@ -445,6 +445,12 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
                 e.findParent('.form-group', false, true).addClass(_this.invalidClass);
             });
             
+            var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
+        
+            if(label){
+                label.markInvalid();
+            }
+            
             return;
         }
         
