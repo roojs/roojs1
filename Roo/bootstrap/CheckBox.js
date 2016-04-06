@@ -48,6 +48,7 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     checked: false,
     weight : false,
     inline: false,
+    targetLabel : false,
     
     getAutoCreate : function()
     {
