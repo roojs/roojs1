@@ -81,6 +81,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
         
         this.iconEl.setVisibilityMode(Roo.Element.DISPLAY).hide();
         
+        
     },
     
     /**
