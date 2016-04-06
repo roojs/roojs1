@@ -759,7 +759,6 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             
         }
         
-        
         this.fireEvent('valid', this);
     },
     
