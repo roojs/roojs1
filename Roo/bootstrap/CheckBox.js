@@ -17,7 +17,6 @@
  * @cfg {Boolean} checked initnal the element
  * @cfg {Boolean} inline inline the element (default false)
  * @cfg {String} groupId the checkbox group id // normal just use for checkbox
- * @cfg {String} targetLabel 
  * 
  * @constructor
  * Create a new CheckBox
@@ -48,7 +47,6 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
     checked: false,
     weight : false,
     inline: false,
-    targetLabel : false,
     
     getAutoCreate : function()
     {
