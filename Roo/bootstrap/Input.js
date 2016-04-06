@@ -787,12 +787,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         var label = this.el.findParent('.form-group', false, true).select('label', true).first();
         var icon = this.el.findParent('.form-group', false, true).select('i.fa-star', true).first();
         
-        if(!this.getValue().length && !label.select('i', true).first()){
-            label.createChild({
+        if(!this.getValue().length && label && !icon){
+            this.el.findParent('.form-group', false, true).createChild({
                 tag : 'i',
                 cls : 'text-danger fa fa-lg fa-star',
                 tooltip : 'This field is required'
-            });
+            }, icon, true);
         }
         
         this.el.addClass(this.invalidClass);
