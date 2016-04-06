@@ -15,7 +15,7 @@
  * @cfg {String} for label target 
  * @cfg {Boolean} allowBlank (true|false) target allowBlank default true
  * @cfg {String} invalidClass default "text-danger fa fa-lg fa-exclamation-triangle"
- * @cfg {String} validClass default "text-danger fa fa-lg fa-exclamation-triangle"
+ * @cfg {String} validClass default "text-success fa fa-lg fa-check"
  * 
  * @constructor
  * Create a new FieldLabel
@@ -49,7 +49,8 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     html: '',
     for: '',
     allowBlank : true,
-    
+    invalidClass : 'text-danger fa fa-lg fa-exclamation-triangle',
+    validClass : 'text-success fa fa-lg fa-check',
     
     getAutoCreate : function(){
         
