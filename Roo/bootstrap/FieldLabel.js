@@ -26,7 +26,7 @@ Roo.bootstrap.FieldLabel = function(config){
             /**
              * @event invalid
              * Fires after the field has been marked as invalid.
-             * @param {Roo.form.Field} this
+             * @param {Roo.form.FieldLabel} this
              * @param {String} msg The validation message
              */
             invalid : true,
