@@ -81,13 +81,17 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
         
         this.iconEl.setVisibilityMode(Roo.Element.DISPLAY).hide();
         
+        this.markValid();
         
     },
     
     /**
      * Mark this field as valid
      */
-    markValid : function(){
+    markValid : function()
+    {
+        this.iconEl.show();
+        
         this.iconEl.removeClass(this.invalidClass);
         
         this.iconEl.addClass(this.validClass);
@@ -101,6 +105,8 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
      */
     markInvalid : function(msg)
     {
+        this.iconEl.show();
+        
         this.iconEl.removeClass(this.validClass);
         
         this.iconEl.addClass(this.invalidClass);
