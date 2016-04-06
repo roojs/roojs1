@@ -13,6 +13,7 @@
  * @cfg {String} tag tag of the element default label
  * @cfg {String} cls class of the element
  * @cfg {String} for label target 
+ * @cfg {Boolean} allowBlank (true|false) target allowBlank default true
  * 
  * @constructor
  * Create a new FieldLabel
@@ -45,6 +46,8 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     cls: '',
     html: '',
     for: '',
+    allowBlank : true,
+    
     
     getAutoCreate : function(){
         
@@ -54,7 +57,11 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             for : this.for,
             cn : [
                 {
-                    tag : 'i'
+                    tag : 'i',
+                    cls : ''
+                },
+                {
+                    
                 }
             ] 
         };
