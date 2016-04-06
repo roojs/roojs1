@@ -63,7 +63,8 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'i',
-                    cls : ''
+                    cls : '',
+                    tooltip : this.iconTooltip
                 },
                 {
                     tag : 'span',
