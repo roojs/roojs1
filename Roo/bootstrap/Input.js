@@ -722,7 +722,10 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
      /**
      * Mark this field as valid
      */
-    markValid : function(){
+    markValid : function()
+    {
+        Roo.log('mark valid???');
+        
         if(!this.el  || this.preventMark){ // not rendered
             return;
         }
