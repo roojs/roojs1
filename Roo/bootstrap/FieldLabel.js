@@ -48,7 +48,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     tag: 'label',
     cls: '',
     html: '',
-    for: '',
+    target: '',
     allowBlank : true,
     invalidClass : 'text-danger fa fa-lg fa-exclamation-triangle',
     validClass : 'text-success fa fa-lg fa-check',
@@ -59,7 +59,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
         var cfg = {
             tag : this.tag,
             cls : 'roo-bootstrap-field-label ' + this.cls,
-            for : this.for,
+            for : this.target,
             cn : [
                 {
                     tag : 'i',
