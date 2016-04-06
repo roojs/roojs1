@@ -1941,6 +1941,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         
         if(this.disabled || this.allowBlank || v.length){
             Roo.log('combo mark valid');
+            Roo.log(this.markValid);
             this.markValid();
             return true;
         }
