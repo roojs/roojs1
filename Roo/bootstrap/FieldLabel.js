@@ -12,7 +12,7 @@
  * @cfg {String} html contents of the element
  * @cfg {String} tag tag of the element default label
  * @cfg {String} cls class of the element
- * @cfg {String} for label target 
+ * @cfg {String} target label target 
  * @cfg {Boolean} allowBlank (true|false) target allowBlank default true
  * @cfg {String} invalidClass default "text-danger fa fa-lg fa-exclamation-triangle"
  * @cfg {String} validClass default "text-success fa fa-lg fa-check"
