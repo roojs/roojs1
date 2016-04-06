@@ -127,17 +127,10 @@ Roo.apply(Roo.bootstrap.FieldLabel, {
     */
     register : function(label)
     {
-        if(typeof(this.groups[label.for]) == 'undefined'){
-            this.groups[label.for] = {};
-        }
-        Roo.log('register???!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-        
-        Roo.log(label);
         if(this.groups.hasOwnProperty(label.for)){
             return;
         }
-        
-        Roo.log(label);
+     
         this.groups[label.for] = label;
 	
     },
@@ -147,7 +140,6 @@ Roo.apply(Roo.bootstrap.FieldLabel, {
     * @returns {Roo.bootstrap.FieldLabel} the CheckBox group
     */
     get: function(name) {
-        Roo.log(this.groups);
         if (typeof(this.groups[name]) == 'undefined') {
             return false;
         }
