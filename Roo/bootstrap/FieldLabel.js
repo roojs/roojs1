@@ -61,11 +61,7 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'i',
-                    cls : 'invalid-label ' + this.invalidClass
-                },
-                {
-                    tag : 'i',
-                    cls : 'valid-label ' + this.validClass
+                    cls : ''
                 },
                 {
                     tag : 'span',
@@ -80,6 +76,10 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
     initEvents: function() 
     {
         Roo.bootstrap.Element.superclass.initEvents.call(this);
+        
+        this.iconEl = this.el.select('i', true).first();
+        
+        this.iconEl.setVisibilityMode(Roo.Element.DISPLAY).hide();
         
     },
     
