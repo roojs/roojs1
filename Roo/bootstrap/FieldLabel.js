@@ -83,7 +83,6 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
         
         Roo.bootstrap.FieldLabel.register(this);
         
-        Roo.log(Roo.bootstrap.FieldLabel.register);
     },
     
     /**
