@@ -133,7 +133,7 @@ Roo.apply(Roo.bootstrap.FieldLabel, {
         if(this.groups.hasOwnProperty(label.for)){
             return;
         }
-        Roo.log('register???')
+        Roo.log('register???!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
         Roo.log(label);
         this.groups[label.for] = label;
 	
