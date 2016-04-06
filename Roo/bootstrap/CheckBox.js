@@ -433,7 +433,11 @@ Roo.extend(Roo.bootstrap.CheckBox, Roo.bootstrap.Input,  {
         
         this.fireEvent('invalid', this, msg);
         
+        var label = Roo.bootstrap.FieldLabel.get(this.name + '-group');
         
+        if(label){
+            label.markInvalid();
+        }
         
         if(this.inputType == 'radio'){
             Roo.each(this.el.up('form').select('input[name='+this.name+']', true).elements, function(e){
