@@ -61,10 +61,15 @@ Roo.extend(Roo.bootstrap.FieldLabel, Roo.bootstrap.Component,  {
             cn : [
                 {
                     tag : 'i',
-                    cls : ''
+                    cls : 'invalid-label ' + this.invalidClass
                 },
                 {
-                    
+                    tag : 'i',
+                    cls : 'valid-label ' + this.validClass
+                },
+                {
+                    tag : 'span',
+                    html : this.html
                 }
             ] 
         };
