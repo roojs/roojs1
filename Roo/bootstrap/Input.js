@@ -739,6 +739,12 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
             return;
         }
         
+        var label = this.el.findParent('.form-group', false, true).select('label', true).first();
+        
+        if(label.select('i', true).first()){
+            label.select('i', true).first().remove();
+        }
+        
         this.el.addClass(this.validClass);
         
         if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank && (this.getValue().length || this.forceFeedback)){
