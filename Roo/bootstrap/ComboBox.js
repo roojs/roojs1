@@ -1296,7 +1296,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-            if(this.fireEvent('tick', this, r, index, _this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked !== false){
+            if(this.fireEvent('tick', this, r, index, Roo.get(_this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked) !== false){
                 this.tickItems.push(r.data);
             }
             
