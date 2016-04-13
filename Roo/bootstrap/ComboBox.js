@@ -1275,7 +1275,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-            this.fireEvent('tick', this, r, view);
+            this.fireEvent('tick', this, r, view, index);
             
             var rm = false;
             var _this = this;
