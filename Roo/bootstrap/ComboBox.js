@@ -1296,12 +1296,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-            if(this.fireEvent('tick', this, r, index) !== false){
+            if(this.fireEvent('tick', this, r, index, _this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked) !== false){
                 this.tickItems.push(r.data);
             }
-            Roo.log(Roo.get(_this.view.getNodes(index, index)[0]).select('input', true).first());
+            
             if(typeof(e) == 'undefined' && view == false){
-                
                 Roo.get(_this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked = true;
             }
                     
