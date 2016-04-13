@@ -1269,8 +1269,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-            this.fireEvent('tick', this, r, index)
-            
             var rm = false;
             var _this = this;
             
@@ -1289,6 +1287,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             });
             
             if(rm){
+                this.fireEvent('tick', this, r, index);
                 return;
             }
             
@@ -1297,6 +1296,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             if(typeof(e) == 'undefined' && view == false){
                 Roo.get(_this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked = true;
             }
+            
+            this.fireEvent('tick', this, r, index);
                     
             return;
         }
