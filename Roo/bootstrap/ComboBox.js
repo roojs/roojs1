@@ -995,17 +995,14 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
              
         if(this.store.getCount() > 0){
-            Roo.log('check all??????');
-            Roo.log(this.checkAll);
+            
             if(this.checkAll.length){
-                var valueField = this.valueField;
-                var displayField = this.displayField;
+                
                 var r = new Roo.data.Record({});
                 
                 r.set(this.valueField, -1);
                 r.set(this.displayField, this.checkAll);
-                Roo.log('add?????');
-                Roo.log(r);
+                
                 this.store.insert(0, r);
             }
             
