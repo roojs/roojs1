@@ -16,7 +16,7 @@
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} emptyResultText only for touch device
  * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
- * @cfg {String} checkAll check all text, if set enable check all, default false
+ * @cfg {String} checkAll check all text, if set enable check all, default empty
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -308,6 +308,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     animate : true,
     emptyResultText: 'Empty',
     triggerText : 'Select',
+    checkAll : '',
     
     // element that contains real text value.. (when hidden is used..)
     
