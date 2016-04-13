@@ -16,7 +16,6 @@
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} emptyResultText only for touch device
  * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
- * @cfg {String} checkAll check all text, if set enable check all, default empty (this option is for tickable only)
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
@@ -308,7 +307,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     animate : true,
     emptyResultText: 'Empty',
     triggerText : 'Select',
-    checkAll : '',
     
     // element that contains real text value.. (when hidden is used..)
     
@@ -995,17 +993,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
              
         if(this.store.getCount() > 0){
-            
-            if(this.checkAll.length){
-                
-                var r = new Roo.data.Record({});
-                
-                r.set(this.valueField, -1);
-                r.set(this.displayField, this.checkAll);
-                
-                this.store.insert(0, r);
-            }
-            
             this.expand();
             this.restrictHeight();
             if(this.lastQuery == this.allQuery){
@@ -1272,9 +1259,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     // private
     onViewClick : function(view, doFocus, el, e)
     {
-        Roo.log('on view click!!!!!!!!!!!!!!!!!!!!!!!!!!');
         var index = this.view.getSelectedIndexes()[0];
-        Roo.log(index);
+        
         var r = this.store.getAt(index);
         
         if(this.tickable){
