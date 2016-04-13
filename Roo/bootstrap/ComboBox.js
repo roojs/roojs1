@@ -1294,6 +1294,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 }
             });
             Roo.log(this.tickItems);
+            Roo.log(rm);
             if(rm){
                 return;
             }
