@@ -11363,7 +11363,13 @@ Roo.bootstrap.ComboBox = function(config){
          * Fires when specialfilter
             * @param {Roo.bootstrap.ComboBox} combo This combo box
             */
-        'specialfilter' : true
+        'specialfilter' : true,
+        /**
+         * @event tick
+         * Fires when tick the element
+            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            */
+        'tick' : true
         
     });
     
@@ -12316,12 +12322,12 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         this.collapse();
-        
-        Roo.log(this.store.reader.jsonData);
-        if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
+        // only causes errors at present
+        //Roo.log(this.store.reader.jsonData);
+        //if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
             // fixme
             //Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
-        }
+        //}
         
         
     },
@@ -12552,6 +12558,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.each(this.tickItems, function(v,k){
                 
                 if(typeof(v) != 'undefined' && v[_this.valueField] == r.data[_this.valueField]){
+                    Roo.log(v);
                     _this.tickItems.splice(k, 1);
                     
                     if(typeof(e) == 'undefined' && view == false){
@@ -12567,7 +12574,9 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 return;
             }
             
-            this.tickItems.push(r.data);
+            if(this.fireEvent('tick', this, r, index, Roo.get(_this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked) !== false){
+                this.tickItems.push(r.data);
+            }
             
             if(typeof(e) == 'undefined' && view == false){
                 Roo.get(_this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked = true;
