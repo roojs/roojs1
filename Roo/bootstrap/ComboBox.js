@@ -995,6 +995,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
              
         if(this.store.getCount() > 0){
+            Roo.log('check all??????');
             Roo.log(this.checkAll);
             if(this.checkAll.length){
                 
