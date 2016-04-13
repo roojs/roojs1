@@ -995,6 +995,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
              
         if(this.store.getCount() > 0){
+            Roo.log(this.store.getCount);
             this.expand();
             this.restrictHeight();
             if(this.lastQuery == this.allQuery){
