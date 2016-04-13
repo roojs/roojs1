@@ -985,7 +985,7 @@ Roo.extend(Roo.bootstrap.Column, Roo.bootstrap.Component,  {
  * @cfg {String} sticky (footer|wrap|push) block to use as footer or body- needs css-bootstrap/sticky-footer.css
  * @cfg {String} tag (header|aside|section) type of HTML tag.
  * @cfg {String} alert (success|info|warning|danger) type alert (changes background / border...)
- * @cfg {String} fa (ban|check|...) font awesome icon
+ * @cfg {String} fa font awesome icon
  * @cfg {String} icon (info-sign|check|...) glyphicon name
  * @cfg {Boolean} hidden (true|false) hide the element
  * @cfg {Boolean} expandable (true|false) default false
