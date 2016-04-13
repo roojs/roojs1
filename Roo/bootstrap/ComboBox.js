@@ -86,7 +86,13 @@ Roo.bootstrap.ComboBox = function(config){
          * Fires when specialfilter
             * @param {Roo.bootstrap.ComboBox} combo This combo box
             */
-        'specialfilter' : true
+        'specialfilter' : true,
+        /**
+         * @event tick
+         * Fires when tick the element
+            * @param {Roo.bootstrap.ComboBox} combo This combo box
+            */
+        'tick' : true
         
     });
     
