@@ -1000,7 +1000,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             if(this.checkAll.length){
                 var valueField = this.valueField;
                 var displayField = this.displayField;
-                var r = new Roo.data.Record();
+                var r = new Roo.data.Record({});
                 
                 r.set(this.valueField, -1);
                 r.set(this.displayField, this.checkAll);
