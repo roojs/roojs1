@@ -17713,6 +17713,12 @@
      "desc": "Fires when any key related to navigation (arrows, tab, enter, esc, etc.) is pressed.  You can check\n{@link Roo.EventObject#getKey} to determine which key was pressed."
     },
     {
+     "name": "tick",
+     "sig": "function (combo)\n{\n\n}",
+     "type": "function",
+     "desc": "Fires when tick the element"
+    },
+    {
      "name": "valid",
      "sig": "function (_self)\n{\n\n}",
      "type": "function",
