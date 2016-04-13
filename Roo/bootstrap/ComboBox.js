@@ -998,10 +998,11 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.log('check all??????');
             Roo.log(this.checkAll);
             if(this.checkAll.length){
-                
+                var valueField = this.valueField;
+                var displayField = this.displayField;
                 var r = new Roo.data.Record({
-                    this.valueField : -1,
-                    this.displayField : this.checkAll
+                    valueField : -1,
+                    displayField : this.checkAll
                 });
                 Roo.log('add?????');
                 Roo.log(r);
