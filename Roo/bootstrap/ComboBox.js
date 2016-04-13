@@ -1283,6 +1283,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             Roo.each(this.tickItems, function(v,k){
                 
                 if(typeof(v) != 'undefined' && v[_this.valueField] == r.data[_this.valueField]){
+                    Roo.log(v);
                     _this.tickItems.splice(k, 1);
                     
                     if(typeof(e) == 'undefined' && view == false){
