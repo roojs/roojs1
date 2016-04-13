@@ -1002,7 +1002,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                     this.valueField : -1,
                     this.displayField : this.checkAll
                 });
-                
+                Roo.log('add?????');
+                Roo.log(r);
                 this.store.insert(0, r);
             }
             
