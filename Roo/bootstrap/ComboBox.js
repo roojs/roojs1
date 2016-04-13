@@ -1301,6 +1301,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             }
             
             if(typeof(e) == 'undefined' && view == false){
+                Roo.log(Roo.get(_this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked);
                 Roo.get(_this.view.getNodes(index, index)[0]).select('input', true).first().dom.checked = true;
             }
                     
