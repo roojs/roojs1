@@ -1039,8 +1039,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         this.collapse();
-        
-        Roo.log(this.store.reader.jsonData);
+        // only causes errors at present
+        //Roo.log(this.store.reader.jsonData);
         //if (this.store && typeof(this.store.reader.jsonData.errorMsg) != 'undefined') {
             // fixme
             //Roo.MessageBox.alert("Error loading",this.store.reader.jsonData.errorMsg);
