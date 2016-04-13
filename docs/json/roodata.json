@@ -18404,12 +18404,7 @@
      "name": "fa",
      "type": "String",
      "desc": "font awesome icon",
-     "memberOf": "",
-     "optvals": [
-      "ban",
-      "check",
-      "..."
-     ]
+     "memberOf": ""
     },
     {
      "name": "icon",
