@@ -995,8 +995,17 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
              
         if(this.store.getCount() > 0){
-            Roo.log('get count!!!!!!!!!!!!!!!!!!11');
-            Roo.log(this.store.getCount);
+            
+            if(this.checkAll.length){
+                
+                var r = new Roo.data.Record({
+                    this.valueField : -1,
+                    this.displayField : this.checkAll
+                });
+                
+                this.store.insert(0, r);
+            }
+            
             this.expand();
             this.restrictHeight();
             if(this.lastQuery == this.allQuery){
