@@ -16,6 +16,7 @@
  * @cfg {Boolean} animate default true
  * @cfg {Boolean} emptyResultText only for touch device
  * @cfg {String} triggerText multiple combobox trigger button text default 'Select'
+ * @cfg {String} checkAll check all text, if set enable check all, default false
  * @constructor
  * Create a new ComboBox.
  * @param {Object} config Configuration options
