@@ -1269,6 +1269,8 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
                 return;
             }
             
+            this.fireEvent('tick', this, r);
+            
             var rm = false;
             var _this = this;
             
