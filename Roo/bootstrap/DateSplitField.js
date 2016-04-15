@@ -53,6 +53,18 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             });
         }
         
+        ['day', 'month', 'year'].each(function(t){
+            cfg.cn.push({
+                tag : 'div',
+                cls : 'column roo-date-split-field-label col-md-' + ((this.labelAlign == 'top') ? '12' : this.labelWidth),
+                cn : [
+                    {
+                        tag : 'label',
+                        html : this.fieldLabel
+                    }
+                ]
+            });
+        });
         
         
     },
