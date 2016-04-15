@@ -106,17 +106,10 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             typeAhead : true,
             valueField : 'value',
             store : new Roo.data.SimpleStore({
-                data : (function() {             
-                    var days = [];             
-
-                    for (var i = 1; i < 32; i ++){
-                        if(i < 10){
-                            i = '0' + i;
-                        }
-                        days.push([i.toString()]);
-                    }             
+                data : (function() {    
+                    var days = [];
+                    _this.fireEvent('days', _this, days);
                     return days;
-
                 })(),
                 fields : [ 'value' ]
             })
