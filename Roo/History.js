@@ -310,7 +310,7 @@ Roo.History = {
 
 				// Initialise Alias
 				if ( this.getHash() ) {
-					this.Adapter.onDomLoad(function(){
+					Roo.onReady(function(){
 						_this.Adapter.trigger(window,'hashchange');
 					});
 				}
