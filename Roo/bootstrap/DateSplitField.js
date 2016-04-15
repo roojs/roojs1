@@ -161,12 +161,9 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                         _self.focus();
                     });
                 },
-                select : function (_self)
+                select : function (_self, oldvalue, newvalue)
                 {
-                    this.el.select('span.input-group-addon', true).first().on('click', function(e){
-                        e.preventDefault();
-                        _self.focus();
-                    });
+                    _this.validate();
                 }
             }
         });
