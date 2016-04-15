@@ -189,7 +189,7 @@ Roo.History = {
     {
         
         var emptyFunction = function(){};
-        
+        var _this = this;
         
         
         this.initialTitle = window.document.title;
@@ -266,6 +266,50 @@ Roo.History = {
 		 */
 		this.saveState(this.storeState(this.extractState(this.getLocationHref(),true)));
 
+        
+        
+        // Non-Native pushState Implementation
+		if ( !this.emulated.pushState ) {
+			// Be aware, the following is only for native pushState implementations
+			// If you are wanting to include something for all browsers
+			// Then include it above this if block
+
+			/**
+			 * Setup Safari Fix
+			 */
+			if ( this.bugs.safariPoll ) {
+				this.intervalList.push(setInterval(this.safariStatePoll, this.safariPollInterval));
+			}
+
+			/**
+			 * Ensure Cross Browser Compatibility
+			 */
+			if ( window.navigator.vendor === 'Apple Computer, Inc.' || (window.navigator.appCodeName||'') === 'Mozilla' ) {
+				/**
+				 * Fix Safari HashChange Issue
+				 */
+
+				// Setup Alias
+				this.Adapter.bind(window,'hashchange',function(){
+					this.Adapter.trigger(window,'popstate');
+				});
+
+				// Initialise Alias
+				if ( this.getHash() ) {
+					this.Adapter.onDomLoad(function(){
+						this.Adapter.trigger(window,'hashchange');
+					});
+				}
+			}
+
+		} // !History.emulated.pushState
+
+
+	}; // History.initCore
+
+        
+        
+        
         
 
 		// Return true
@@ -1949,50 +1993,9 @@ Roo.History = {
         }
     };
 
-			// For Internet Explorer
+		 
+
 		
-			// Both are enabled for consistency
-		}
-
-		// Non-Native pushState Implementation
-		if ( !History.emulated.pushState ) {
-			// Be aware, the following is only for native pushState implementations
-			// If you are wanting to include something for all browsers
-			// Then include it above this if block
-
-			/**
-			 * Setup Safari Fix
-			 */
-			if ( History.bugs.safariPoll ) {
-				History.intervalList.push(setInterval(History.safariStatePoll, this.safariPollInterval));
-			}
-
-			/**
-			 * Ensure Cross Browser Compatibility
-			 */
-			if ( window.navigator.vendor === 'Apple Computer, Inc.' || (window.navigator.appCodeName||'') === 'Mozilla' ) {
-				/**
-				 * Fix Safari HashChange Issue
-				 */
-
-				// Setup Alias
-				History.Adapter.bind(window,'hashchange',function(){
-					History.Adapter.trigger(window,'popstate');
-				});
-
-				// Initialise Alias
-				if ( History.getHash() ) {
-					History.Adapter.onDomLoad(function(){
-						History.Adapter.trigger(window,'hashchange');
-					});
-				}
-			}
-
-		} // !History.emulated.pushState
-
-
-	}; // History.initCore
-
 	// Try to Initialise History
 	if (!History.options || !History.options.delayInit) {
 		History.init();
