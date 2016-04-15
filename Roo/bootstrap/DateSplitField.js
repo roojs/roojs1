@@ -86,6 +86,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             editable : false,
             fieldLabel : '',
             forceSelection : true,
+            name : 'test',
             mode : 'local',
             placeholder : this.dayPlaceholder,
             selectOnFocus : true,
