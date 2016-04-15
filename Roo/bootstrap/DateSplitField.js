@@ -47,7 +47,20 @@ Roo.bootstrap.DateSplitField = function(config){
          * @param {Roo.bootstrap.DateSplitField} this
          * @param {Object} days
          */
-        "days" : true
+        "days" : true,
+        /**
+             * @event invalid
+             * Fires after the field has been marked as invalid.
+             * @param {Roo.form.Field} this
+             * @param {String} msg The validation message
+             */
+            invalid : true,
+            /**
+             * @event valid
+             * Fires after the field has been validated with no errors.
+             * @param {Roo.form.Field} this
+             */
+            valid : true,
     });
 };
 
