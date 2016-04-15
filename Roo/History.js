@@ -238,6 +238,9 @@ Roo.History = {
 
         this.initBugs();
         
+        
+        
+        
         this.Adapter.bind(window,'popstate',this.onPopState);
         
          
@@ -460,7 +463,7 @@ Roo.History = {
 					(this.isInternetExplorer() && this.getInternetExplorerMajorVersion() < 8)
 				);
 			
-	}
+	},
 
 	initBugs : function ()
     {
