@@ -661,6 +661,7 @@ Roo.extend(Roo.bootstrap.Input, Roo.bootstrap.Component,  {
         Roo.log('run????');
         Roo.log(v);
         this.value = v;
+        Roo.log(this.rendered);
         if(this.rendered){
             Roo.log('test???');
             this.inputEl().dom.value = (v === null || v === undefined ? '' : v);
