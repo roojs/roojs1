@@ -12,7 +12,7 @@
 // must call Roo.History.init( { ... options... });
 
 
-Roo.History = {
+Roo.History = new Roo.util.Observable({
 	 
      
     // ====================================================================
@@ -1794,10 +1794,10 @@ Roo.History = {
             this.expectedStateId = false;
             return false;
         }
-        var stateId = (event && event.browserEvent && event.browserEvent['state']) || (extra && extra['state']) || undefined;
+        stateId = (event && event.browserEvent && event.browserEvent['state']) || (extra && extra['state']) || undefined;
 
         // Ensure
-        stateId = this.Adapter.extractEventData('state',event,extra) || false;
+        //stateId = this.Adapter.extractEventData('state',event,extra) || false;
 
         // Fetch State
         if ( stateId ) {
@@ -2041,6 +2041,6 @@ Roo.History = {
             }
         }
     }
-};
+});
 
 		  
