@@ -1636,7 +1636,7 @@ Roo.History = new Roo.util.Observable({
 
         // Apply the New State
         //this.debug('this.safariStatePoll: trigger');
-        this.Adapter.trigger(window,'popstate');
+        Roo.get(window).fireEvent('popstate');
 
         // Chain
         return this;
@@ -1786,7 +1786,7 @@ Roo.History = new Roo.util.Observable({
             else {
                 // Traditional Anchor
                 //this.debug('this.onPopState: traditional anchor', currentHash);
-                this.Adapter.trigger(window,'anchorchange');
+                Roo.get(window).fireEvent('anchorchange');
                 this.busy(false);
             }
 
@@ -1838,7 +1838,7 @@ Roo.History = new Roo.util.Observable({
         this.setTitle(newState);
 
         // Fire Our Event
-        this.Adapter.trigger(window,'statechange');
+        Roo.get(window).fireEvent('statechange');
         this.busy(false);
 
         // Return true
@@ -1901,7 +1901,7 @@ Roo.History = new Roo.util.Observable({
             history.pushState(newState.id,newState.title,newState.url);
 
             // Fire HTML5 Event
-            this.Adapter.trigger(window,'popstate');
+            Roo.get(window).fireEvent('popstate');
         }
 
         // End pushState closure
@@ -1958,7 +1958,7 @@ Roo.History = new Roo.util.Observable({
             history.replaceState(newState.id,newState.title,newState.url);
 
             // Fire HTML5 Event
-            this.Adapter.trigger(window,'popstate');
+            Roo.get(window).fireEvent('popstate');
         }
 
         // End replaceState closure
