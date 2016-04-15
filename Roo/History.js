@@ -258,8 +258,8 @@ Roo.History = {
             this.intervalList.push(setInterval(this.onUnload,this.storeInterval));
 
 			// For Other Browsers
-			Roo.get(window).on('beforeunload',this.onUnload);
-			Roo.get(window).on('unload',this.onUnload);
+			Roo.get(window).on('beforeunload',this.onUnload,this);
+			Roo.get(window).on('unload',this.onUnload, this);
 
 		} else {
             this.onUnload = emptyFunction;
