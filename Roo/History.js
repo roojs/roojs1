@@ -1994,14 +1994,7 @@ Roo.History = {
                 throw e;
             }
         }
-    };
+    }
+}
 
-		 
-
-		
-	// Try to Initialise History
-	if (!History.options || !History.options.delayInit) {
-		History.init();
-	}
-
-})(window);
+		  
