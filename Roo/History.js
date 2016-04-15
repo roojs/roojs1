@@ -304,9 +304,9 @@ Roo.History = {
 				 */
 
 				// Setup Alias
-				this.Adapter.bind(window,'hashchange',function(){
+				Roo.get(window).on('hashchange',function(){
 					Roo.get(window).fireEvent('popstate');
-				});
+				}, this);
 
 				// Initialise Alias
 				if ( this.getHash() ) {
