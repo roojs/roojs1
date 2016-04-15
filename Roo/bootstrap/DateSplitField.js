@@ -220,8 +220,8 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     markValid : function()
     {
         
-        var label = formGroup.select('label', true).first();
-        var icon = formGroup.select('i.fa-star', true).first();
+        var label = this.el.select('label', true).first();
+        var icon = this.el.select('i.fa-star', true).first();
 
         if(label && icon){
             icon.remove();
@@ -236,56 +236,18 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
      */
     markInvalid : function(msg)
     {
-        if(!this.el  || this.preventMark){ // not rendered
-            return;
-        }
         
-        this.el.removeClass([this.invalidClass, this.validClass]);
-        
-        var feedback = this.el.select('.form-control-feedback', true).first();
-            
-        if(feedback){
-            this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
-        }
+        var label = formGroup.select('label', true).first();
+        var icon = formGroup.select('i.fa-star', true).first();
 
-        if(this.disabled || this.allowBlank){
-            return;
+        if(!this.getValue().length && label && !icon){
+            this.el.findParent('.form-group', false, true).createChild({
+                tag : 'i',
+                cls : 'text-danger fa fa-lg fa-star',
+                tooltip : 'This field is required',
+                style : 'margin-right:5px;'
+            }, label, true);
         }
-        
-        var formGroup = this.el.findParent('.form-group', false, true);
-        
-        if(formGroup){
-            var label = formGroup.select('label', true).first();
-            var icon = formGroup.select('i.fa-star', true).first();
-
-            if(!this.getValue().length && label && !icon){
-                this.el.findParent('.form-group', false, true).createChild({
-                    tag : 'i',
-                    cls : 'text-danger fa fa-lg fa-star',
-                    tooltip : 'This field is required',
-                    style : 'margin-right:5px;'
-                }, label, true);
-            }
-        }
-        
-        
-        this.el.addClass(this.invalidClass);
-        
-        if(this.hasFeedback && this.inputType != 'hidden' && !this.allowBlank){
-            
-            var feedback = this.el.select('.form-control-feedback', true).first();
-            
-            if(feedback){
-                this.el.select('.form-control-feedback', true).first().removeClass([this.invalidFeedbackClass, this.validFeedbackClass]);
-                
-                if(this.getValue().length || this.forceFeedback){
-                    this.el.select('.form-control-feedback', true).first().addClass([this.invalidFeedbackClass]);
-                }
-                
-            }
-            
-        }
-        
         this.fireEvent('invalid', this, msg);
     }
     
