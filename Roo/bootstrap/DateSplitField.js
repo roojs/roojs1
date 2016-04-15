@@ -119,6 +119,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         Roo.log(this.day);
         
         
+        
     },
     
     initEvents: function() 
