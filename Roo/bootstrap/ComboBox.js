@@ -1134,6 +1134,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var text = v;
         if(this.valueField){
             var r = this.findRecord(this.valueField, v);
+            Roo.log(r);
             if(r){
                 text = r.data[this.displayField];
             }else if(this.valueNotFoundText !== undefined){
