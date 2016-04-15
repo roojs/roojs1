@@ -11,6 +11,7 @@
 // this is not initialized automatically..
 // must call Roo.History.init( { ... options... });
 
+// TOTALLY UNTESTED...
 
 Roo.History = {
 	 
