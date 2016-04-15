@@ -225,7 +225,7 @@ Roo.History = {
 			this.replaceState = emptyFunction;
 		}   
 
-        
+        this.Adapter.bind(window,'popstate',this.onPopState);
         
         
         
@@ -1626,97 +1626,99 @@ Roo.History = {
 		// ====================================================================
 		// HTML5 State Support
 
-		// Non-Native pushState Implementation
-		
-		// Native pushState Implementation
-		else {
-			/*
-			 * Use native HTML5 History API Implementation
-			 */
+		 
+        /*
+         * Use native HTML5 History API Implementation
+         */
 
-			/**
-			 * History.onPopState(event,extra)
-			 * Refresh the Current State
-			 */
-			History.onPopState = function(event,extra){
-				// Prepare
-				var stateId = false, newState = false, currentHash, currentState;
+        /**
+         * onPopState(event,extra)
+         * Refresh the Current State
+         */
+        onPopState = function(event,extra){
+            // Prepare
+            var stateId = false, newState = false, currentHash, currentState;
 
-				// Reset the double check
-				History.doubleCheckComplete();
+            // Reset the double check
+            this.doubleCheckComplete();
 
-				// Check for a Hash, and handle apporiatly
-				currentHash = History.getHash();
-				if ( currentHash ) {
-					// Expand Hash
-					currentState = History.extractState(currentHash||History.getLocationHref(),true);
-					if ( currentState ) {
-						// We were able to parse it, it must be a State!
-						// Let's forward to replaceState
-						//History.debug('History.onPopState: state anchor', currentHash, currentState);
-						History.replaceState(currentState.data, currentState.title, currentState.url, false);
-					}
-					else {
-						// Traditional Anchor
-						//History.debug('History.onPopState: traditional anchor', currentHash);
-						History.Adapter.trigger(window,'anchorchange');
-						History.busy(false);
-					}
+            // Check for a Hash, and handle apporiatly
+            currentHash = this.getHash();
+            if ( currentHash ) {
+                // Expand Hash
+                currentState = this.extractState(currentHash||this.getLocationHref(),true);
+                if ( currentState ) {
+                    // We were able to parse it, it must be a State!
+                    // Let's forward to replaceState
+                    //this.debug('this.onPopState: state anchor', currentHash, currentState);
+                    this.replaceState(currentState.data, currentState.title, currentState.url, false);
+                }
+                else {
+                    // Traditional Anchor
+                    //this.debug('this.onPopState: traditional anchor', currentHash);
+                    this.Adapter.trigger(window,'anchorchange');
+                    this.busy(false);
+                }
 
-					// We don't care for hashes
-					History.expectedStateId = false;
-					return false;
-				}
+                // We don't care for hashes
+                this.expectedStateId = false;
+                return false;
+            }
 
-				// Ensure
-				stateId = History.Adapter.extractEventData('state',event,extra) || false;
+            // Ensure
+            stateId = this.Adapter.extractEventData('state',event,extra) || false;
 
-				// Fetch State
-				if ( stateId ) {
-					// Vanilla: Back/forward button was used
-					newState = History.getStateById(stateId);
-				}
-				else if ( History.expectedStateId ) {
-					// Vanilla: A new state was pushed, and popstate was called manually
-					newState = History.getStateById(History.expectedStateId);
-				}
-				else {
-					// Initial State
-					newState = History.extractState(History.getLocationHref());
-				}
+            // Fetch State
+            if ( stateId ) {
+                // Vanilla: Back/forward button was used
+                newState = this.getStateById(stateId);
+            }
+            else if ( this.expectedStateId ) {
+                // Vanilla: A new state was pushed, and popstate was called manually
+                newState = this.getStateById(this.expectedStateId);
+            }
+            else {
+                // Initial State
+                newState = this.extractState(this.getLocationHref());
+            }
 
-				// The State did not exist in our store
-				if ( !newState ) {
-					// Regenerate the State
-					newState = History.createStateObject(null,null,History.getLocationHref());
-				}
+            // The State did not exist in our store
+            if ( !newState ) {
+                // Regenerate the State
+                newState = this.createStateObject(null,null,this.getLocationHref());
+            }
 
-				// Clean
-				History.expectedStateId = false;
+            // Clean
+            this.expectedStateId = false;
 
-				// Check if we are the same state
-				if ( History.isLastSavedState(newState) ) {
-					// There has been no change (just the page's hash has finally propagated)
-					//History.debug('History.onPopState: no change', newState, History.savedStates);
-					History.busy(false);
-					return false;
-				}
+            // Check if we are the same state
+            if ( this.isLastSavedState(newState) ) {
+                // There has been no change (just the page's hash has finally propagated)
+                //this.debug('this.onPopState: no change', newState, this.savedStates);
+                this.busy(false);
+                return false;
+            }
 
-				// Store the State
-				History.storeState(newState);
-				History.saveState(newState);
+            // Store the State
+            this.storeState(newState);
+            this.saveState(newState);
 
-				// Force update of the title
-				History.setTitle(newState);
+            // Force update of the title
+            this.setTitle(newState);
 
-				// Fire Our Event
-				History.Adapter.trigger(window,'statechange');
-				History.busy(false);
+            // Fire Our Event
+            this.Adapter.trigger(window,'statechange');
+            this.busy(false);
 
-				// Return true
-				return true;
-			};
-			History.Adapter.bind(window,'popstate',History.onPopState);
+            // Return true
+            return true;
+        };
+        
+        
+        
+        
+        
+			
 
 			/**
 			 * History.pushState(data,title,url)
