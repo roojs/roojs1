@@ -185,9 +185,14 @@ Roo.History = {
     
     
 	// Initialise History
-	init : function(options){
+	init : function(options)
+    {
         
-        initialTitle : window.document.title,
+        var emptyFunction = function(){};
+        
+        
+        
+        this.initialTitle = window.document.title;
         this.store = {};
         this.idToState={};
 		this.stateToId={};
@@ -220,7 +225,7 @@ Roo.History = {
         if ( this.emulated.pushState ) {
 			 
 			// Prepare
-			var emptyFunction = function(){};
+			
 			this.pushState =  emptyFunction;
 			this.replaceState = emptyFunction;
 		}   
@@ -240,17 +245,21 @@ Roo.History = {
 				this.store = {};
 			}
 
-		} 
+		} else {
+            this.onUnload = emptyFunction;
+        }
+        
+        
         this.normalizeStore();
 		/**
 		 * Clear Intervals on exit to prevent memory leaks
 		 */
-		History.Adapter.bind(window,"unload",History.clearAllIntervals);
+		this.Adapter.bind(window,"unload",this.clearAllIntervals);
 
 		/**
 		 * Create the initial State
 		 */
-		History.saveState(History.storeState(History.extractState(History.getLocationHref(),true)));
+		this.saveState(this.storeState(this.extractState(this.getLocationHref(),true)));
 
         
 
