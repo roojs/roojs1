@@ -11,6 +11,8 @@
  * @extends Roo.bootstrap.Component
  * Bootstrap DateSplitField class
  * @cfg {string} fieldLabel - the label associated
+ * @cfg {Number} labelWidth set the width of label (0-12)
+ * @cfg {String} labelAlign (top|left)
 
  *     
  * @constructor
