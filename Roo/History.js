@@ -474,25 +474,27 @@ Roo.History = {
          * Safari 5 and Safari iOS 4 fail to return to the correct state once a hash is replaced by a `replaceState` call
          * https://bugs.webkit.org/show_bug.cgi?id=56249
          */
-        this.bugs.setHash: Boolean(!this.emulated.pushState && navigator.vendor === 'Apple Computer, Inc.' && /AppleWebKit\/5([0-2]|3[0-3])/.test(navigator.userAgent)),
+        this.bugs.setHash = Boolean(!this.emulated.pushState && navigator.vendor === 'Apple Computer, Inc.'
+                                    && /AppleWebKit\/5([0-2]|3[0-3])/.test(navigator.userAgent));
 
         /**
          * Safari 5 and Safari iOS 4 sometimes fail to apply the state change under busy conditions
          * https://bugs.webkit.org/show_bug.cgi?id=42940
          */
-        this.bugs.safariPoll: Boolean(!this.emulated.pushState && navigator.vendor === 'Apple Computer, Inc.' && /AppleWebKit\/5([0-2]|3[0-3])/.test(navigator.userAgent)),
+        this.bugs.safariPoll = Boolean(!this.emulated.pushState && navigator.vendor === 'Apple Computer, Inc.'
+                                       && /AppleWebKit\/5([0-2]|3[0-3])/.test(navigator.userAgent));
 
         /**
          * MSIE 6 and 7 sometimes do not apply a hash even it was told to (requiring a second call to the apply function)
          */
-        this.bugs.ieDoubleCheck: Boolean(this.isInternetExplorer() && this.getInternetExplorerMajorVersion() < 8),
+        this.bugs.ieDoubleCheck = Boolean(this.isInternetExplorer() && this.getInternetExplorerMajorVersion() < 8);
 
         /**
          * MSIE 6 requires the entire hash to be encoded for the hashes to trigger the onHashChange event
          */
-        this.bugs.hashEscape: Boolean(this.isInternetExplorer() && this.getInternetExplorerMajorVersion() < 7)
-    } 
-    }
+        this.bugs.hashEscape = Boolean(this.isInternetExplorer() && this.getInternetExplorerMajorVersion() < 7);
+    },
+    
 
     /**
      * isEmptyObject(obj)
@@ -500,14 +502,14 @@ Roo.History = {
      * @param {Object} obj
      * @return {boolean}
      */
-    isEmptyObject = function(obj) {
+    isEmptyObject : function(obj) {
         for ( var name in obj ) {
             if ( obj.hasOwnProperty(name) ) {
                 return false;
             }
         }
         return true;
-    };
+    },
 
     /**
      * cloneObject(obj)
@@ -515,7 +517,7 @@ Roo.History = {
      * @param {Object} obj
      * @return {Object}
      */
-    cloneObject = function(obj) {
+    cloneObject : function(obj) {
         var hash,newObj;
         if ( obj ) {
             hash = JSON.stringify(obj);
@@ -525,7 +527,7 @@ Roo.History = {
             newObj = {};
         }
         return newObj;
-    };
+    },
 
 
     // ====================================================================
@@ -536,7 +538,7 @@ Roo.History = {
      * Turns "http://mysite.com/dir/page.html?asd" into "http://mysite.com"
      * @return {String} rootUrl
      */
-    getRootUrl = function(){
+    getRootUrl : function(){
         // Create
         var rootUrl = window.document.location.protocol+'//'+(window.document.location.hostname||window.document.location.host);
         if ( window.document.location.port||false ) {
@@ -546,14 +548,14 @@ Roo.History = {
 
         // Return
         return rootUrl;
-    };
+    },
 
     /**
      * getBaseHref()
      * Fetches the `href` attribute of the `<base href="...">` element if it exists
      * @return {String} baseHref
      */
-    getBaseHref = function(){
+    getBaseHref : function(){
         // Create
         var
             baseElements = window.document.getElementsByTagName('base'),
@@ -573,27 +575,27 @@ Roo.History = {
 
         // Return
         return baseHref;
-    };
+    },
 
     /**
      * getBaseUrl()
      * Fetches the baseHref or basePageUrl or rootUrl (whichever one exists first)
      * @return {String} baseUrl
      */
-    getBaseUrl = function(){
+    getBaseUrl : function(){
         // Create
         var baseUrl = this.getBaseHref()||this.getBasePageUrl()||this.getRootUrl();
 
         // Return
         return baseUrl;
-    };
+    },
 
     /**
      * getPageUrl()
      * Fetches the URL of the current page
      * @return {String} pageUrl
      */
-    getPageUrl = function(){
+    getPageUrl : function(){
         // Fetch
         var
             State = this.getState(false,false),
@@ -607,14 +609,14 @@ Roo.History = {
 
         // Return
         return pageUrl;
-    };
+    },
 
     /**
      * getBasePageUrl()
      * Fetches the Url of the directory of the current page
      * @return {String} basePageUrl
      */
-    getBasePageUrl = function(){
+    getBasePageUrl : function(){
         // Create
         var basePageUrl = (this.getLocationHref()).replace(/[#\?].*/,'').replace(/[^\/]+$/,function(part,index,string){
             return (/[^\/]$/).test(part) ? '' : part;
@@ -622,7 +624,7 @@ Roo.History = {
 
         // Return
         return basePageUrl;
-    };
+    },
 
     /**
      * getFullUrl(url)
@@ -631,7 +633,7 @@ Roo.History = {
      * @param {Boolean} allowBaseHref
      * @return {string} fullUrl
      */
-    getFullUrl = function(url,allowBaseHref){
+    getFullUrl : function(url,allowBaseHref){
         // Prepare
         var fullUrl = url, firstChar = url.substring(0,1);
         allowBaseHref = (typeof allowBaseHref === 'undefined') ? true : allowBaseHref;
@@ -668,7 +670,7 @@ Roo.History = {
 
         // Return
         return fullUrl.replace(/\#$/,'');
-    };
+    },
 
     /**
      * getShortUrl(url)
@@ -676,7 +678,7 @@ Roo.History = {
      * @param {string} url
      * @return {string} url
      */
-    getShortUrl = function(url){
+    getShortUrl : function(url){
         // Prepare
         var shortUrl = url, baseUrl = this.getBaseUrl(), rootUrl = this.getRootUrl();
 
@@ -701,7 +703,7 @@ Roo.History = {
 
         // Return
         return shortUrl;
-    };
+    },
 
     /**
      * getLocationHref(document)
@@ -713,7 +715,7 @@ Roo.History = {
      * @param {object} document
      * @return {string} url
      */
-    getLocationHref = function(doc) {
+    getLocationHref : function(doc) {
         doc = doc || window.document;
 
         // most of the time, this will be true
@@ -734,7 +736,7 @@ Roo.History = {
             return doc.location.href;
         
         return doc.URL || doc.location.href;
-    };
+    },
 
 
 		
@@ -742,11 +744,13 @@ Roo.History = {
      * noramlizeStore()
      * Noramlize the store by adding necessary values
      */
-    normalizeStore = function(){
+    normalizeStore : function()
+    {
+        
         this.store.idToState = this.store.idToState||{};
         this.store.urlToId = this.store.urlToId||{};
         this.store.stateToId = this.store.stateToId||{};
-    };
+    },
 
     /**
      * getState()
@@ -776,1182 +780,1182 @@ Roo.History = {
 
         // Return
         return State;
-    };
-
-		/**
-		 * getIdByState(State)
-		 * Gets a ID for a State
-		 * @param {State} newState
-		 * @return {String} id
-		 */
-		getIdByState = function(newState){
-
-			// Fetch ID
-			var id = this.extractId(newState.url),
-				str;
-
-			if ( !id ) {
-				// Find ID via State String
-				str = this.getStateString(newState);
-				if ( typeof this.stateToId[str] !== 'undefined' ) {
-					id = this.stateToId[str];
-				}
-				else if ( typeof this.store.stateToId[str] !== 'undefined' ) {
-					id = this.store.stateToId[str];
-				}
-				else {
-					// Generate a new ID
-					while ( true ) {
-						id = (new Date()).getTime() + String(Math.random()).replace(/\D/g,'');
-						if ( typeof this.idToState[id] === 'undefined' && typeof this.store.idToState[id] === 'undefined' ) {
-							break;
-						}
-					}
-
-					// Apply the new State to the ID
-					this.stateToId[str] = id;
-					this.idToState[id] = newState;
-				}
-			}
-
-			// Return ID
-			return id;
-		};
-
-		/**
-		 * normalizeState(State)
-		 * Expands a State Object
-		 * @param {object} State
-		 * @return {object}
-		 */
-		normalizeState = function(oldState){
-			// Variables
-			var newState, dataNotEmpty;
-
-			// Prepare
-			if ( !oldState || (typeof oldState !== 'object') ) {
-				oldState = {};
-			}
-
-			// Check
-			if ( typeof oldState.normalized !== 'undefined' ) {
-				return oldState;
-			}
-
-			// Adjust
-			if ( !oldState.data || (typeof oldState.data !== 'object') ) {
-				oldState.data = {};
-			}
-
-			// ----------------------------------------------------------------
-
-			// Create
-			newState = {};
-			newState.normalized = true;
-			newState.title = oldState.title||'';
-			newState.url = this.getFullUrl(oldState.url?oldState.url:(this.getLocationHref()));
-			newState.hash = this.getShortUrl(newState.url);
-			newState.data = this.cloneObject(oldState.data);
-
-			// Fetch ID
-			newState.id = this.getIdByState(newState);
-
-			// ----------------------------------------------------------------
-
-			// Clean the URL
-			newState.cleanUrl = newState.url.replace(/\??\&_suid.*/,'');
-			newState.url = newState.cleanUrl;
-
-			// Check to see if we have more than just a url
-			dataNotEmpty = !this.isEmptyObject(newState.data);
-
-			// Apply
-			if ( (newState.title || dataNotEmpty) && this.disableSuid !== true ) {
-				// Add ID to Hash
-				newState.hash = this.getShortUrl(newState.url).replace(/\??\&_suid.*/,'');
-				if ( !/\?/.test(newState.hash) ) {
-					newState.hash += '?';
-				}
-				newState.hash += '&_suid='+newState.id;
-			}
-
-			// Create the Hashed URL
-			newState.hashedUrl = this.getFullUrl(newState.hash);
-
-			// ----------------------------------------------------------------
-
-			// Update the URL if we have a duplicate
-			if ( (this.emulated.pushState || this.bugs.safariPoll) && this.hasUrlDuplicate(newState) ) {
-				newState.url = newState.hashedUrl;
-			}
-
-			// ----------------------------------------------------------------
-
-			// Return
-			return newState;
-		};
-
-		/**
-		 * createStateObject(data,title,url)
-		 * Creates a object based on the data, title and url state params
-		 * @param {object} data
-		 * @param {string} title
-		 * @param {string} url
-		 * @return {object}
-		 */
-		createStateObject = function(data,title,url){
-			// Hashify
-			var State = {
-				'data': data,
-				'title': title,
-				'url': url
-			};
-
-			// Expand the State
-			State = this.normalizeState(State);
-
-			// Return object
-			return State;
-		};
-
-		/**
-		 * getStateById(id)
-		 * Get a state by it's UID
-		 * @param {String} id
-		 */
-		getStateById = function(id){
-			// Prepare
-			id = String(id);
-
-			// Retrieve
-			var State = this.idToState[id] || this.store.idToState[id] || undefined;
-
-			// Return State
-			return State;
-		};
-
-		/**
-		 * Get a State's String
-		 * @param {State} passedState
-		 */
-		getStateString = function(passedState){
-			// Prepare
-			var State, cleanedState, str;
-
-			// Fetch
-			State = this.normalizeState(passedState);
-
-			// Clean
-			cleanedState = {
-				data: State.data,
-				title: passedState.title,
-				url: passedState.url
-			};
-
-			// Fetch
-			str = JSON.stringify(cleanedState);
-
-			// Return
-			return str;
-		};
-
-		/**
-		 * Get a State's ID
-		 * @param {State} passedState
-		 * @return {String} id
-		 */
-		getStateId = function(passedState){
-			// Prepare
-			var State, id;
-
-			// Fetch
-			State = this.normalizeState(passedState);
-
-			// Fetch
-			id = State.id;
-
-			// Return
-			return id;
-		};
-
-		/**
-		 * getHashByState(State)
-		 * Creates a Hash for the State Object
-		 * @param {State} passedState
-		 * @return {String} hash
-		 */
-		getHashByState = function(passedState){
-			// Prepare
-			var State, hash;
-
-			// Fetch
-			State = this.normalizeState(passedState);
-
-			// Hash
-			hash = State.hash;
-
-			// Return
-			return hash;
-		};
-
-		/**
-		 * extractId(url_or_hash)
-		 * Get a State ID by it's URL or Hash
-		 * @param {string} url_or_hash
-		 * @return {string} id
-		 */
-		this.extractId = function ( url_or_hash ) {
-			// Prepare
-			var id,parts,url, tmp;
-
-			// Extract
-			
-			// If the URL has a #, use the id from before the #
-			if (url_or_hash.indexOf('#') != -1)
-			{
-				tmp = url_or_hash.split("#")[0];
-			}
-			else
-			{
-				tmp = url_or_hash;
-			}
-			
-			parts = /(.*)\&_suid=([0-9]+)$/.exec(tmp);
-			url = parts ? (parts[1]||url_or_hash) : url_or_hash;
-			id = parts ? String(parts[2]||'') : '';
-
-			// Return
-			return id||false;
-		};
-
-		/**
-		 * isTraditionalAnchor
-		 * Checks to see if the url is a traditional anchor or not
-		 * @param {String} url_or_hash
-		 * @return {Boolean}
-		 */
-		isTraditionalAnchor = function(url_or_hash){
-			// Check
-			var isTraditional = !(/[\/\?\.]/.test(url_or_hash));
-
-			// Return
-			return isTraditional;
-		};
-
-		/**
-		 * extractState
-		 * Get a State by it's URL or Hash
-		 * @param {String} url_or_hash
-		 * @return {State|null}
-		 */
-		extractState = function(url_or_hash,create){
-			// Prepare
-			var State = null, id, url;
-			create = create||false;
-
-			// Fetch SUID
-			id = this.extractId(url_or_hash);
-			if ( id ) {
-				State = this.getStateById(id);
-			}
-
-			// Fetch SUID returned no State
-			if ( !State ) {
-				// Fetch URL
-				url = this.getFullUrl(url_or_hash);
-
-				// Check URL
-				id = this.getIdByUrl(url)||false;
-				if ( id ) {
-					State = this.getStateById(id);
-				}
-
-				// Create State
-				if ( !State && create && !this.isTraditionalAnchor(url_or_hash) ) {
-					State = this.createStateObject(null,null,url);
-				}
-			}
-
-			// Return
-			return State;
-		};
-
-		/**
-		 * getIdByUrl()
-		 * Get a State ID by a State URL
-		 */
-		getIdByUrl = function(url){
-			// Fetch
-			var id = this.urlToId[url] || this.store.urlToId[url] || undefined;
-
-			// Return
-			return id;
-		};
-
-		/**
-		 * getLastSavedState()
-		 * Get an object containing the data, title and url of the current state
-		 * @return {Object} State
-		 */
-		getLastSavedState = function(){
-			return this.savedStates[this.savedStates.length-1]||undefined;
-		};
-
-		/**
-		 * getLastStoredState()
-		 * Get an object containing the data, title and url of the current state
-		 * @return {Object} State
-		 */
-		getLastStoredState = function(){
-			return this.storedStates[this.storedStates.length-1]||undefined;
-		};
-
-		/**
-		 * hasUrlDuplicate
-		 * Checks if a Url will have a url conflict
-		 * @param {Object} newState
-		 * @return {Boolean} hasDuplicate
-		 */
-		hasUrlDuplicate = function(newState) {
-			// Prepare
-			var hasDuplicate = false,
-				oldState;
-
-			// Fetch
-			oldState = this.extractState(newState.url);
-
-			// Check
-			hasDuplicate = oldState && oldState.id !== newState.id;
-
-			// Return
-			return hasDuplicate;
-		};
-
-		/**
-		 * storeState
-		 * Store a State
-		 * @param {Object} newState
-		 * @return {Object} newState
-		 */
-		storeState = function(newState){
-			// Store the State
-			this.urlToId[newState.url] = newState.id;
-
-			// Push the State
-			this.storedStates.push(this.cloneObject(newState));
-
-			// Return newState
-			return newState;
-		};
-
-		/**
-		 * isLastSavedState(newState)
-		 * Tests to see if the state is the last state
-		 * @param {Object} newState
-		 * @return {boolean} isLast
-		 */
-		isLastSavedState = function(newState){
-			// Prepare
-			var isLast = false,
-				newId, oldState, oldId;
-
-			// Check
-			if ( this.savedStates.length ) {
-				newId = newState.id;
-				oldState = this.getLastSavedState();
-				oldId = oldState.id;
-
-				// Check
-				isLast = (newId === oldId);
-			}
-
-			// Return
-			return isLast;
-		};
-
-		/**
-		 * saveState
-		 * Push a State
-		 * @param {Object} newState
-		 * @return {boolean} changed
-		 */
-		saveState = function(newState){
-			// Check Hash
-			if ( this.isLastSavedState(newState) ) {
-				return false;
-			}
-
-			// Push the State
-			this.savedStates.push(this.cloneObject(newState));
-
-			// Return true
-			return true;
-		};
-
-		/**
-		 * getStateByIndex()
-		 * Gets a state by the index
-		 * @param {integer} index
-		 * @return {Object}
-		 */
-		getStateByIndex = function(index){
-			// Prepare
-			var State = null;
-
-			// Handle
-			if ( typeof index === 'undefined' ) {
-				// Get the last inserted
-				State = this.savedStates[this.savedStates.length-1];
-			}
-			else if ( index < 0 ) {
-				// Get from the end
-				State = this.savedStates[this.savedStates.length+index];
-			}
-			else {
-				// Get from the beginning
-				State = this.savedStates[index];
-			}
-
-			// Return State
-			return State;
-		};
-		
-		/**
-		 * getCurrentIndex()
-		 * Gets the current index
-		 * @return (integer)
-		*/
-		getCurrentIndex = function(){
-			// Prepare
-			var index = null;
-			
-			// No states saved
-			if(this.savedStates.length < 1) {
-				index = 0;
-			}
-			else {
-				index = this.savedStates.length-1;
-			}
-			return index;
-		};
-
-		// ====================================================================
-		// Hash Helpers
-
-		/**
-		 * getHash()
-		 * @param {Location=} location
-		 * Gets the current document hash
-		 * Note: unlike location.hash, this is guaranteed to return the escaped hash in all browsers
-		 * @return {string}
-		 */
-		getHash = function(doc){
-			var url = this.getLocationHref(doc),
-				hash;
-			hash = this.getHashByUrl(url);
-			return hash;
-		};
-
-		/**
-		 * unescapeHash()
-		 * normalize and Unescape a Hash
-		 * @param {String} hash
-		 * @return {string}
-		 */
-		unescapeHash = function(hash){
-			// Prepare
-			var result = this.normalizeHash(hash);
-
-			// Unescape hash
-			result = decodeURIComponent(result);
-
-			// Return result
-			return result;
-		};
-
-		/**
-		 * normalizeHash()
-		 * normalize a hash across browsers
-		 * @return {string}
-		 */
-		normalizeHash = function(hash){
-			// Prepare
-			var result = hash.replace(/[^#]*#/,'').replace(/#.*/, '');
-
-			// Return result
-			return result;
-		};
-
-		/**
-		 * setHash(hash)
-		 * Sets the document hash
-		 * @param {string} hash
-		 * @return {Roo.History}
-		 */
-		setHash = function(hash,queue){
-			// Prepare
-			var State, pageUrl;
-
-			// Handle Queueing
-			if ( queue !== false && this.busy() ) {
-				// Wait + Push to Queue
-				//this.debug('this.setHash: we must wait', arguments);
-				this.pushQueue({
-					scope: this.
-					callback: this.setHash,
-					args: arguments,
-					queue: queue
-				});
-				return false;
-			}
-
-			// Log
-			//this.debug('this.setHash: called',hash);
-
-			// Make Busy + Continue
-			this.busy(true);
-
-			// Check if hash is a state
-			State = this.extractState(hash,true);
-			if ( State && !this.emulated.pushState ) {
-				// Hash is a state so skip the setHash
-				//this.debug('this.setHash: Hash is a state so skipping the hash set with a direct pushState call',arguments);
-
-				// PushState
-				this.pushState(State.data,State.title,State.url,false);
-			}
-			else if ( this.getHash() !== hash ) {
-				// Hash is a proper hash, so apply it
-
-				// Handle browser bugs
-				if ( this.bugs.setHash ) {
-					// Fix Safari Bug https://bugs.webkit.org/show_bug.cgi?id=56249
-
-					// Fetch the base page
-					pageUrl = this.getPageUrl();
-
-					// Safari hash apply
-					this.pushState(null,null,pageUrl+'#'+hash,false);
-				}
-				else {
-					// Normal hash apply
-					window.document.location.hash = hash;
-				}
-			}
-
-			// Chain
-			return this;
-		};
-
-		/**
-		 * escape()
-		 * normalize and Escape a Hash
-		 * @return {string}
-		 */
-		escapeHash = function(hash){
-			// Prepare
-			var result = normalizeHash(hash);
-
-			// Escape hash
-			result = window.encodeURIComponent(result);
-
-			// IE6 Escape Bug
-			if ( !this.bugs.hashEscape ) {
-				// Restore common parts
-				result = result
-					.replace(/\%21/g,'!')
-					.replace(/\%26/g,'&')
-					.replace(/\%3D/g,'=')
-					.replace(/\%3F/g,'?');
-			}
-
-			// Return result
-			return result;
-		};
-
-		/**
-		 * getHashByUrl(url)
-		 * Extracts the Hash from a URL
-		 * @param {string} url
-		 * @return {string} url
-		 */
-		getHashByUrl = function(url){
-			// Extract the hash
-			var hash = String(url)
-				.replace(/([^#]*)#?([^#]*)#?(.*)/, '$2')
-				;
-
-			// Unescape hash
-			hash = this.unescapeHash(hash);
-
-			// Return hash
-			return hash;
-		};
-
-		/**
-		 * setTitle(title)
-		 * Applies the title to the document
-		 * @param {State} newState
-		 * @return {Boolean}
-		 */
-		setTitle = function(newState){
-			// Prepare
-			var title = newState.title,
-				firstState;
-
-			// Initial
-			if ( !title ) {
-				firstState = this.getStateByIndex(0);
-				if ( firstState && firstState.url === newState.url ) {
-					title = firstState.title||this.initialTitle;
-				}
-			}
-
-			// Apply
-			try {
-				window.document.getElementsByTagName('title')[0].innerHTML = title.replace('<','&lt;').replace('>','&gt;').replace(' & ',' &amp; ');
-			}
-			catch ( Exception ) { }
-			window.document.title = title;
-
-			// Chain
-			return this;
-		};
-
-
-		// ====================================================================
-		// Queueing
-
-
-		/**
-		 * busy(value)
-		 * @param {boolean} value [optional]
-		 * @return {boolean} busy
-		 */
-		busy = function(value){
-			// Apply
-			if ( typeof value !== 'undefined' ) {
-				//this.debug('this.busy: changing ['+(this.busy.flag||false)+'] to ['+(value||false)+']', this.queues.length);
-				this.busy_flag = value;
-			}
-			// Default
-			else if ( typeof this.busy_flag === 'undefined' ) {
-				this.busy_flag = false;
-			}
-
-			// Queue
-			if ( !this.busy_flag ) {
-				// Execute the next item in the queue
-				window.clearTimeout(this.busy.timeout);
-				var fireNext = function(){
-					var i, queue, item;
-					if ( this.busy_flag ) return;
-					for ( i=this.queues.length-1; i >= 0; --i ) {
-						queue = this.queues[i];
-						if ( queue.length === 0 ) continue;
-						item = queue.shift();
-						this.fireQueueItem(item);
-						this.busy.timeout = window.setTimeout(fireNext,this.busyDelay);
-					}
-				};
-				this.busy.timeout = window.setTimeout(fireNext,this.busyDelay);
-			}
-
-			// Return
-			return this.busy_flag;
-		};
-
-		
-
-		/**
-		 * fireQueueItem(item)
-		 * Fire a Queue Item
-		 * @param {Object} item
-		 * @return {Mixed} result
-		 */
-		fireQueueItem = function(item){
-			return item.callback.apply(item.scope||this,item.args||[]);
-		};
-
-		/**
-		 * pushQueue(callback,args)
-		 * Add an item to the queue
-		 * @param {Object} item [scope,callback,args,queue]
-		 */
-		pushQueue = function(item){
-			// Prepare the queue
-			this.queues[item.queue||0] = this.queues[item.queue||0]||[];
-
-			// Add to the queue
-			this.queues[item.queue||0].push(item);
-
-			// Chain
-			return this;
-		};
-
-		/**
-		 * queue (item,queue), (func,queue), (func), (item)
-		 * Either firs the item now if not busy, or adds it to the queue
-		 */
-		queue = function(item,queue){
-			// Prepare
-			if ( typeof item === 'function' ) {
-				item = {
-					callback: item
-				};
-			}
-			if ( typeof queue !== 'undefined' ) {
-				item.queue = queue;
-			}
-
-			// Handle
-			if ( this.busy() ) {
-				this.pushQueue(item);
-			} else {
-				this.fireQueueItem(item);
-			}
-
-			// Chain
-			return this;
-		};
-
-		/**
-		 * clearQueue()
-		 * Clears the Queue
-		 */
-		clearQueue = function(){
-			this.busy_flag = false;
-			this.queues = [];
-			return this;
-		};
-
-
-
-		/**
-		 * doubleCheckComplete()
-		 * Complete a double check
-		 * @return {Roo.History}
-		 */
-		doubleCheckComplete = function(){
-			// Update
-			this.stateChanged = true;
-
-			// Clear
-			this.doubleCheckClear();
-
-			// Chain
-			return this;;
-		};
-
-		/**
-		 * doubleCheckClear()
-		 * Clear a double check
-		 * @return {Roo.History}
-		 */
-		doubleCheckClear = function(){
-			// Clear
-			if ( this.doubleChecker ) {
-				window.clearTimeout(this.doubleChecker);
-				this.doubleChecker = false;
-			}
-
-			// Chain
-			return this;
-		};
-
-		/**
-		 * doubleCheck()
-		 * Create a double check
-		 * @return {Roo.History}
-		 */
-		doubleCheck = function(tryAgain){
-			// Reset
-			this.stateChanged = false;
-			this.doubleCheckClear();
-
-			// Fix IE6,IE7 bug where calling history.back or history.forward does not actually change the hash (whereas doing it manually does)
-			// Fix Safari 5 bug where sometimes the state does not change: https://bugs.webkit.org/show_bug.cgi?id=42940
-			if ( this.bugs.ieDoubleCheck ) {
-				// Apply Check
-				this.doubleChecker = window.setTimeout(
-					function(){
-						this.doubleCheckClear();
-						if ( !this.stateChanged ) {
-							//this.debug('History.doubleCheck: State has not yet changed, trying again', arguments);
-							// Re-Attempt
-							tryAgain();
-						}
-						return true;
-					},
-					this.doubleCheckInterval
-				);
-			}
-
-			// Chain
-			return this;
-		};
-
-
-		// ====================================================================
-		// Safari Bug Fix
-
-		/**
-		 * safariStatePoll()
-		 * Poll the current state
-		 * @return {Roo.History}
-		 */
-		safariStatePoll = function(){
-			// Poll the URL
-
-			// Get the Last State which has the new URL
-			var
-				urlState = this.extractState(this.getLocationHref()),
-				newState;
-
-			// Check for a difference
-			if ( !this.isLastSavedState(urlState) ) {
-				newState = urlState;
-			}
-			else {
-				return;
-			}
-
-			// Check if we have a state with that url
-			// If not create it
-			if ( !newState ) {
-				//this.debug('this.safariStatePoll: new');
-				newState = this.createStateObject();
-			}
-
-			// Apply the New State
-			//this.debug('this.safariStatePoll: trigger');
-			this.Adapter.trigger(window,'popstate');
-
-			// Chain
-			return this;
-		};
-
-
-		// ====================================================================
-		// State Aliases
-
-		/**
-		 * back(queue)
-		 * Send the browser history back one item
-		 * @param {Integer} queue [optional]
-		 */
-		back = function(queue){
-			//this.debug('this.back: called', arguments);
-
-			// Handle Queueing
-			if ( queue !== false && this.busy() ) {
-				// Wait + Push to Queue
-				//this.debug('this.back: we must wait', arguments);
-				this.pushQueue({
-					scope: this,
-					callback: this.back,
-					args: arguments,
-					queue: queue
-				});
-				return false;
-			}
-
-			// Make Busy + Continue
-			this.busy(true);
-
-			// Fix certain browser bugs that prevent the state from changing
-			this.doubleCheck(function(){
-				this.back(false);
-			});
-
-			// Go back
-			history.go(-1);
-
-			// End back closure
-			return true;
-		};
-
-		/**
-		 * forward(queue)
-		 * Send the browser history forward one item
-		 * @param {Integer} queue [optional]
-		 */
-		forward = function(queue){
-			//this.debug('this.forward: called', arguments);
-
-			// Handle Queueing
-			if ( queue !== false && this.busy() ) {
-				// Wait + Push to Queue
-				//this.debug('this.forward: we must wait', arguments);
-				this.pushQueue({
-					scope: this,
-					callback: this.forward,
-					args: arguments,
-					queue: queue
-				});
-				return false;
-			}
-
-			// Make Busy + Continue
-			this.busy(true);
-            
-            var _t = this;
-			// Fix certain browser bugs that prevent the state from changing
-			this.doubleCheck(function(){
-                _t.forward(false);
-			});
-
-			// Go forward
-			history.go(1);
-
-			// End forward closure
-			return true;
-		};
-
-		/**
-		 * go(index,queue)
-		 * Send the browser history back or forward index times
-		 * @param {Integer} queue [optional]
-		 */
-		go = function(index,queue){
-			//this.debug('this.go: called', arguments);
-
-			// Prepare
-			var i;
-
-			// Handle
-			if ( index > 0 ) {
-				// Forward
-				for ( i=1; i<=index; ++i ) {
-					this.forward(queue);
-				}
-			}
-			else if ( index < 0 ) {
-				// Backward
-				for ( i=-1; i>=index; --i ) {
-					this.back(queue);
-				}
-			}
-			else {
-				throw new Error('History.go: History.go requires a positive or negative integer passed.');
-			}
-
-			// Chain
-			return this;
-		};
-
-
-		// ====================================================================
-		// HTML5 State Support
-
-		 
-        /*
-         * Use native HTML5 History API Implementation
-         */
-
-        /**
-         * onPopState(event,extra)
-         * Refresh the Current State
-         */
-        onPopState = function(event,extra){
-            // Prepare
-            var stateId = false, newState = false, currentHash, currentState;
-
-            // Reset the double check
-            this.doubleCheckComplete();
-
-            // Check for a Hash, and handle apporiatly
-            currentHash = this.getHash();
-            if ( currentHash ) {
-                // Expand Hash
-                currentState = this.extractState(currentHash||this.getLocationHref(),true);
-                if ( currentState ) {
-                    // We were able to parse it, it must be a State!
-                    // Let's forward to replaceState
-                    //this.debug('this.onPopState: state anchor', currentHash, currentState);
-                    this.replaceState(currentState.data, currentState.title, currentState.url, false);
-                }
-                else {
-                    // Traditional Anchor
-                    //this.debug('this.onPopState: traditional anchor', currentHash);
-                    this.Adapter.trigger(window,'anchorchange');
-                    this.busy(false);
-                }
-
-                // We don't care for hashes
-                this.expectedStateId = false;
-                return false;
+    },
+
+    /**
+     * getIdByState(State)
+     * Gets a ID for a State
+     * @param {State} newState
+     * @return {String} id
+     */
+    getIdByState : function(newState){
+
+        // Fetch ID
+        var id = this.extractId(newState.url),
+            str;
+
+        if ( !id ) {
+            // Find ID via State String
+            str = this.getStateString(newState);
+            if ( typeof this.stateToId[str] !== 'undefined' ) {
+                id = this.stateToId[str];
             }
-
-            // Ensure
-            stateId = this.Adapter.extractEventData('state',event,extra) || false;
-
-            // Fetch State
-            if ( stateId ) {
-                // Vanilla: Back/forward button was used
-                newState = this.getStateById(stateId);
-            }
-            else if ( this.expectedStateId ) {
-                // Vanilla: A new state was pushed, and popstate was called manually
-                newState = this.getStateById(this.expectedStateId);
+            else if ( typeof this.store.stateToId[str] !== 'undefined' ) {
+                id = this.store.stateToId[str];
             }
             else {
-                // Initial State
-                newState = this.extractState(this.getLocationHref());
+                // Generate a new ID
+                while ( true ) {
+                    id = (new Date()).getTime() + String(Math.random()).replace(/\D/g,'');
+                    if ( typeof this.idToState[id] === 'undefined' && typeof this.store.idToState[id] === 'undefined' ) {
+                        break;
+                    }
+                }
+
+                // Apply the new State to the ID
+                this.stateToId[str] = id;
+                this.idToState[id] = newState;
+            }
+        }
+
+        // Return ID
+        return id;
+    },
+
+    /**
+     * normalizeState(State)
+     * Expands a State Object
+     * @param {object} State
+     * @return {object}
+     */
+    normalizeState : function(oldState){
+        // Variables
+        var newState, dataNotEmpty;
+
+        // Prepare
+        if ( !oldState || (typeof oldState !== 'object') ) {
+            oldState = {};
+        }
+
+        // Check
+        if ( typeof oldState.normalized !== 'undefined' ) {
+            return oldState;
+        }
+
+        // Adjust
+        if ( !oldState.data || (typeof oldState.data !== 'object') ) {
+            oldState.data = {};
+        }
+
+        // ----------------------------------------------------------------
+
+        // Create
+        newState = {};
+        newState.normalized = true;
+        newState.title = oldState.title||'';
+        newState.url = this.getFullUrl(oldState.url?oldState.url:(this.getLocationHref()));
+        newState.hash = this.getShortUrl(newState.url);
+        newState.data = this.cloneObject(oldState.data);
+
+        // Fetch ID
+        newState.id = this.getIdByState(newState);
+
+        // ----------------------------------------------------------------
+
+        // Clean the URL
+        newState.cleanUrl = newState.url.replace(/\??\&_suid.*/,'');
+        newState.url = newState.cleanUrl;
+
+        // Check to see if we have more than just a url
+        dataNotEmpty = !this.isEmptyObject(newState.data);
+
+        // Apply
+        if ( (newState.title || dataNotEmpty) && this.disableSuid !== true ) {
+            // Add ID to Hash
+            newState.hash = this.getShortUrl(newState.url).replace(/\??\&_suid.*/,'');
+            if ( !/\?/.test(newState.hash) ) {
+                newState.hash += '?';
+            }
+            newState.hash += '&_suid='+newState.id;
+        }
+
+        // Create the Hashed URL
+        newState.hashedUrl = this.getFullUrl(newState.hash);
+
+        // ----------------------------------------------------------------
+
+        // Update the URL if we have a duplicate
+        if ( (this.emulated.pushState || this.bugs.safariPoll) && this.hasUrlDuplicate(newState) ) {
+            newState.url = newState.hashedUrl;
+        }
+
+        // ----------------------------------------------------------------
+
+        // Return
+        return newState;
+    },
+
+    /**
+     * createStateObject(data,title,url)
+     * Creates a object based on the data, title and url state params
+     * @param {object} data
+     * @param {string} title
+     * @param {string} url
+     * @return {object}
+     */
+    createStateObject : function(data,title,url){
+        // Hashify
+        var State = {
+            'data': data,
+            'title': title,
+            'url': url
+        };
+
+        // Expand the State
+        State = this.normalizeState(State);
+
+        // Return object
+        return State;
+    },
+
+    /**
+     * getStateById(id)
+     * Get a state by it's UID
+     * @param {String} id
+     */
+    getStateById : function(id){
+        // Prepare
+        id = String(id);
+
+        // Retrieve
+        var State = this.idToState[id] || this.store.idToState[id] || undefined;
+
+        // Return State
+        return State;
+    },
+
+    /**
+     * Get a State's String
+     * @param {State} passedState
+     */
+    getStateString : function(passedState){
+        // Prepare
+        var State, cleanedState, str;
+
+        // Fetch
+        State = this.normalizeState(passedState);
+
+        // Clean
+        cleanedState = {
+            data: State.data,
+            title: passedState.title,
+            url: passedState.url
+        };
+
+        // Fetch
+        str = JSON.stringify(cleanedState);
+
+        // Return
+        return str;
+    },
+
+    /**
+     * Get a State's ID
+     * @param {State} passedState
+     * @return {String} id
+     */
+    getStateId : function(passedState){
+        // Prepare
+        var State, id;
+
+        // Fetch
+        State = this.normalizeState(passedState);
+
+        // Fetch
+        id = State.id;
+
+        // Return
+        return id;
+    },
+
+    /**
+     * getHashByState(State)
+     * Creates a Hash for the State Object
+     * @param {State} passedState
+     * @return {String} hash
+     */
+    getHashByState : function(passedState){
+        // Prepare
+        var State, hash;
+
+        // Fetch
+        State = this.normalizeState(passedState);
+
+        // Hash
+        hash = State.hash;
+
+        // Return
+        return hash;
+    },
+
+    /**
+     * extractId(url_or_hash)
+     * Get a State ID by it's URL or Hash
+     * @param {string} url_or_hash
+     * @return {string} id
+     */
+    extractId : function ( url_or_hash ) {
+        // Prepare
+        var id,parts,url, tmp;
+
+        // Extract
+        
+        // If the URL has a #, use the id from before the #
+        if (url_or_hash.indexOf('#') != -1)
+        {
+            tmp = url_or_hash.split("#")[0];
+        }
+        else
+        {
+            tmp = url_or_hash;
+        }
+        
+        parts = /(.*)\&_suid=([0-9]+)$/.exec(tmp);
+        url = parts ? (parts[1]||url_or_hash) : url_or_hash;
+        id = parts ? String(parts[2]||'') : '';
+
+        // Return
+        return id||false;
+    },
+
+    /**
+     * isTraditionalAnchor
+     * Checks to see if the url is a traditional anchor or not
+     * @param {String} url_or_hash
+     * @return {Boolean}
+     */
+    isTraditionalAnchor : function(url_or_hash){
+        // Check
+        var isTraditional = !(/[\/\?\.]/.test(url_or_hash));
+
+        // Return
+        return isTraditional;
+    },
+
+    /**
+     * extractState
+     * Get a State by it's URL or Hash
+     * @param {String} url_or_hash
+     * @return {State|null}
+     */
+    extractState : function(url_or_hash,create){
+        // Prepare
+        var State = null, id, url;
+        create = create||false;
+
+        // Fetch SUID
+        id = this.extractId(url_or_hash);
+        if ( id ) {
+            State = this.getStateById(id);
+        }
+
+        // Fetch SUID returned no State
+        if ( !State ) {
+            // Fetch URL
+            url = this.getFullUrl(url_or_hash);
+
+            // Check URL
+            id = this.getIdByUrl(url)||false;
+            if ( id ) {
+                State = this.getStateById(id);
             }
 
-            // The State did not exist in our store
-            if ( !newState ) {
-                // Regenerate the State
-                newState = this.createStateObject(null,null,this.getLocationHref());
+            // Create State
+            if ( !State && create && !this.isTraditionalAnchor(url_or_hash) ) {
+                State = this.createStateObject(null,null,url);
+            }
+        }
+
+        // Return
+        return State;
+    },
+
+    /**
+     * getIdByUrl()
+     * Get a State ID by a State URL
+     */
+    getIdByUrl : function(url){
+        // Fetch
+        var id = this.urlToId[url] || this.store.urlToId[url] || undefined;
+
+        // Return
+        return id;
+    },
+
+    /**
+     * getLastSavedState()
+     * Get an object containing the data, title and url of the current state
+     * @return {Object} State
+     */
+    getLastSavedState : function(){
+        return this.savedStates[this.savedStates.length-1]||undefined;
+    },
+
+    /**
+     * getLastStoredState()
+     * Get an object containing the data, title and url of the current state
+     * @return {Object} State
+     */
+    getLastStoredState : function(){
+        return this.storedStates[this.storedStates.length-1]||undefined;
+    },
+
+    /**
+     * hasUrlDuplicate
+     * Checks if a Url will have a url conflict
+     * @param {Object} newState
+     * @return {Boolean} hasDuplicate
+     */
+    hasUrlDuplicate : function(newState) {
+        // Prepare
+        var hasDuplicate = false,
+            oldState;
+
+        // Fetch
+        oldState = this.extractState(newState.url);
+
+        // Check
+        hasDuplicate = oldState && oldState.id !== newState.id;
+
+        // Return
+        return hasDuplicate;
+    },
+
+    /**
+     * storeState
+     * Store a State
+     * @param {Object} newState
+     * @return {Object} newState
+     */
+    storeState : function(newState){
+        // Store the State
+        this.urlToId[newState.url] = newState.id;
+
+        // Push the State
+        this.storedStates.push(this.cloneObject(newState));
+
+        // Return newState
+        return newState;
+    },
+
+    /**
+     * isLastSavedState(newState)
+     * Tests to see if the state is the last state
+     * @param {Object} newState
+     * @return {boolean} isLast
+     */
+    isLastSavedState : function(newState){
+        // Prepare
+        var isLast = false,
+            newId, oldState, oldId;
+
+        // Check
+        if ( this.savedStates.length ) {
+            newId = newState.id;
+            oldState = this.getLastSavedState();
+            oldId = oldState.id;
+
+            // Check
+            isLast = (newId === oldId);
+        }
+
+        // Return
+        return isLast;
+    },
+
+    /**
+     * saveState
+     * Push a State
+     * @param {Object} newState
+     * @return {boolean} changed
+     */
+    saveState : function(newState){
+        // Check Hash
+        if ( this.isLastSavedState(newState) ) {
+            return false;
+        }
+
+        // Push the State
+        this.savedStates.push(this.cloneObject(newState));
+
+        // Return true
+        return true;
+    },
+
+    /**
+     * getStateByIndex()
+     * Gets a state by the index
+     * @param {integer} index
+     * @return {Object}
+     */
+    getStateByIndex : function(index){
+        // Prepare
+        var State = null;
+
+        // Handle
+        if ( typeof index === 'undefined' ) {
+            // Get the last inserted
+            State = this.savedStates[this.savedStates.length-1];
+        }
+        else if ( index < 0 ) {
+            // Get from the end
+            State = this.savedStates[this.savedStates.length+index];
+        }
+        else {
+            // Get from the beginning
+            State = this.savedStates[index];
+        }
+
+        // Return State
+        return State;
+    },
+    
+    /**
+     * getCurrentIndex()
+     * Gets the current index
+     * @return (integer)
+    */
+    getCurrentIndex : function(){
+        // Prepare
+        var index = null;
+        
+        // No states saved
+        if(this.savedStates.length < 1) {
+            index = 0;
+        }
+        else {
+            index = this.savedStates.length-1;
+        }
+        return index;
+    },
+
+    // ====================================================================
+    // Hash Helpers
+
+    /**
+     * getHash()
+     * @param {Location=} location
+     * Gets the current document hash
+     * Note: unlike location.hash, this is guaranteed to return the escaped hash in all browsers
+     * @return {string}
+     */
+    getHash : function(doc){
+        var url = this.getLocationHref(doc),
+            hash;
+        hash = this.getHashByUrl(url);
+        return hash;
+    },
+
+    /**
+     * unescapeHash()
+     * normalize and Unescape a Hash
+     * @param {String} hash
+     * @return {string}
+     */
+    unescapeHash : function(hash){
+        // Prepare
+        var result = this.normalizeHash(hash);
+
+        // Unescape hash
+        result = decodeURIComponent(result);
+
+        // Return result
+        return result;
+    },
+
+    /**
+     * normalizeHash()
+     * normalize a hash across browsers
+     * @return {string}
+     */
+    normalizeHash : function(hash){
+        // Prepare
+        var result = hash.replace(/[^#]*#/,'').replace(/#.*/, '');
+
+        // Return result
+        return result;
+    },
+
+    /**
+     * setHash(hash)
+     * Sets the document hash
+     * @param {string} hash
+     * @return {Roo.History}
+     */
+    setHash : function(hash,queue){
+        // Prepare
+        var State, pageUrl;
+
+        // Handle Queueing
+        if ( queue !== false && this.busy() ) {
+            // Wait + Push to Queue
+            //this.debug('this.setHash: we must wait', arguments);
+            this.pushQueue({
+                scope: this.
+                callback: this.setHash,
+                args: arguments,
+                queue: queue
+            });
+            return false;
+        }
+
+        // Log
+        //this.debug('this.setHash: called',hash);
+
+        // Make Busy + Continue
+        this.busy(true);
+
+        // Check if hash is a state
+        State = this.extractState(hash,true);
+        if ( State && !this.emulated.pushState ) {
+            // Hash is a state so skip the setHash
+            //this.debug('this.setHash: Hash is a state so skipping the hash set with a direct pushState call',arguments);
+
+            // PushState
+            this.pushState(State.data,State.title,State.url,false);
+        }
+        else if ( this.getHash() !== hash ) {
+            // Hash is a proper hash, so apply it
+
+            // Handle browser bugs
+            if ( this.bugs.setHash ) {
+                // Fix Safari Bug https://bugs.webkit.org/show_bug.cgi?id=56249
+
+                // Fetch the base page
+                pageUrl = this.getPageUrl();
+
+                // Safari hash apply
+                this.pushState(null,null,pageUrl+'#'+hash,false);
+            }
+            else {
+                // Normal hash apply
+                window.document.location.hash = hash;
+            }
+        }
+
+        // Chain
+        return this;
+    },
+
+    /**
+     * escape()
+     * normalize and Escape a Hash
+     * @return {string}
+     */
+    escapeHash : function(hash){
+        // Prepare
+        var result = normalizeHash(hash);
+
+        // Escape hash
+        result = window.encodeURIComponent(result);
+
+        // IE6 Escape Bug
+        if ( !this.bugs.hashEscape ) {
+            // Restore common parts
+            result = result
+                .replace(/\%21/g,'!')
+                .replace(/\%26/g,'&')
+                .replace(/\%3D/g,'=')
+                .replace(/\%3F/g,'?');
+        }
+
+        // Return result
+        return result;
+    },
+
+    /**
+     * getHashByUrl(url)
+     * Extracts the Hash from a URL
+     * @param {string} url
+     * @return {string} url
+     */
+    getHashByUrl : function(url){
+        // Extract the hash
+        var hash = String(url)
+            .replace(/([^#]*)#?([^#]*)#?(.*)/, '$2')
+            ;
+
+        // Unescape hash
+        hash = this.unescapeHash(hash);
+
+        // Return hash
+        return hash;
+    },
+
+    /**
+     * setTitle(title)
+     * Applies the title to the document
+     * @param {State} newState
+     * @return {Boolean}
+     */
+    setTitle : function(newState){
+        // Prepare
+        var title = newState.title,
+            firstState;
+
+        // Initial
+        if ( !title ) {
+            firstState = this.getStateByIndex(0);
+            if ( firstState && firstState.url === newState.url ) {
+                title = firstState.title||this.initialTitle;
+            }
+        }
+
+        // Apply
+        try {
+            window.document.getElementsByTagName('title')[0].innerHTML = title.replace('<','&lt;').replace('>','&gt;').replace(' & ',' &amp; ');
+        }
+        catch ( Exception ) { }
+        window.document.title = title;
+
+        // Chain
+        return this;
+    },
+
+
+    // ====================================================================
+    // Queueing
+
+
+    /**
+     * busy(value)
+     * @param {boolean} value [optional]
+     * @return {boolean} busy
+     */
+    busy : function(value){
+        // Apply
+        if ( typeof value !== 'undefined' ) {
+            //this.debug('this.busy: changing ['+(this.busy.flag||false)+'] to ['+(value||false)+']', this.queues.length);
+            this.busy_flag = value;
+        }
+        // Default
+        else if ( typeof this.busy_flag === 'undefined' ) {
+            this.busy_flag = false;
+        }
+
+        // Queue
+        if ( !this.busy_flag ) {
+            // Execute the next item in the queue
+            window.clearTimeout(this.busy.timeout);
+            var fireNext = function(){
+                var i, queue, item;
+                if ( this.busy_flag ) return;
+                for ( i=this.queues.length-1; i >= 0; --i ) {
+                    queue = this.queues[i];
+                    if ( queue.length === 0 ) continue;
+                    item = queue.shift();
+                    this.fireQueueItem(item);
+                    this.busy.timeout = window.setTimeout(fireNext,this.busyDelay);
+                }
+            };
+            this.busy.timeout = window.setTimeout(fireNext,this.busyDelay);
+        }
+
+        // Return
+        return this.busy_flag;
+    },
+
+    
+
+    /**
+     * fireQueueItem(item)
+     * Fire a Queue Item
+     * @param {Object} item
+     * @return {Mixed} result
+     */
+    fireQueueItem : function(item){
+        return item.callback.apply(item.scope||this,item.args||[]);
+    },
+
+    /**
+     * pushQueue(callback,args)
+     * Add an item to the queue
+     * @param {Object} item [scope,callback,args,queue]
+     */
+    pushQueue : function(item){
+        // Prepare the queue
+        this.queues[item.queue||0] = this.queues[item.queue||0]||[];
+
+        // Add to the queue
+        this.queues[item.queue||0].push(item);
+
+        // Chain
+        return this;
+    },
+
+    /**
+     * queue (item,queue), (func,queue), (func), (item)
+     * Either firs the item now if not busy, or adds it to the queue
+     */
+    queue : function(item,queue){
+        // Prepare
+        if ( typeof item === 'function' ) {
+            item = {
+                callback: item
+            };
+        }
+        if ( typeof queue !== 'undefined' ) {
+            item.queue = queue;
+        }
+
+        // Handle
+        if ( this.busy() ) {
+            this.pushQueue(item);
+        } else {
+            this.fireQueueItem(item);
+        }
+
+        // Chain
+        return this;
+    },
+
+    /**
+     * clearQueue()
+     * Clears the Queue
+     */
+    clearQueue : function(){
+        this.busy_flag = false;
+        this.queues = [];
+        return this;
+    },
+
+
+
+    /**
+     * doubleCheckComplete()
+     * Complete a double check
+     * @return {Roo.History}
+     */
+    doubleCheckComplete : function(){
+        // Update
+        this.stateChanged = true;
+
+        // Clear
+        this.doubleCheckClear();
+
+        // Chain
+        return this;;
+    },
+
+    /**
+     * doubleCheckClear()
+     * Clear a double check
+     * @return {Roo.History}
+     */
+    doubleCheckClear : function(){
+        // Clear
+        if ( this.doubleChecker ) {
+            window.clearTimeout(this.doubleChecker);
+            this.doubleChecker = false;
+        }
+
+        // Chain
+        return this;
+    },
+
+    /**
+     * doubleCheck()
+     * Create a double check
+     * @return {Roo.History}
+     */
+    doubleCheck : function(tryAgain){
+        // Reset
+        this.stateChanged = false;
+        this.doubleCheckClear();
+
+        // Fix IE6,IE7 bug where calling history.back or history.forward does not actually change the hash (whereas doing it manually does)
+        // Fix Safari 5 bug where sometimes the state does not change: https://bugs.webkit.org/show_bug.cgi?id=42940
+        if ( this.bugs.ieDoubleCheck ) {
+            // Apply Check
+            this.doubleChecker = window.setTimeout(
+                function(){
+                    this.doubleCheckClear();
+                    if ( !this.stateChanged ) {
+                        //this.debug('History.doubleCheck: State has not yet changed, trying again', arguments);
+                        // Re-Attempt
+                        tryAgain();
+                    }
+                    return true;
+                },
+                this.doubleCheckInterval
+            );
+        }
+
+        // Chain
+        return this;
+    },
+
+
+    // ====================================================================
+    // Safari Bug Fix
+
+    /**
+     * safariStatePoll()
+     * Poll the current state
+     * @return {Roo.History}
+     */
+    safariStatePoll : function(){
+        // Poll the URL
+
+        // Get the Last State which has the new URL
+        var
+            urlState = this.extractState(this.getLocationHref()),
+            newState;
+
+        // Check for a difference
+        if ( !this.isLastSavedState(urlState) ) {
+            newState = urlState;
+        }
+        else {
+            return;
+        }
+
+        // Check if we have a state with that url
+        // If not create it
+        if ( !newState ) {
+            //this.debug('this.safariStatePoll: new');
+            newState = this.createStateObject();
+        }
+
+        // Apply the New State
+        //this.debug('this.safariStatePoll: trigger');
+        this.Adapter.trigger(window,'popstate');
+
+        // Chain
+        return this;
+    },
+
+
+    // ====================================================================
+    // State Aliases
+
+    /**
+     * back(queue)
+     * Send the browser history back one item
+     * @param {Integer} queue [optional]
+     */
+    back : function(queue){
+        //this.debug('this.back: called', arguments);
+
+        // Handle Queueing
+        if ( queue !== false && this.busy() ) {
+            // Wait + Push to Queue
+            //this.debug('this.back: we must wait', arguments);
+            this.pushQueue({
+                scope: this,
+                callback: this.back,
+                args: arguments,
+                queue: queue
+            });
+            return false;
+        }
+
+        // Make Busy + Continue
+        this.busy(true);
+
+        // Fix certain browser bugs that prevent the state from changing
+        this.doubleCheck(function(){
+            this.back(false);
+        });
+
+        // Go back
+        history.go(-1);
+
+        // End back closure
+        return true;
+    },
+
+    /**
+     * forward(queue)
+     * Send the browser history forward one item
+     * @param {Integer} queue [optional]
+     */
+    forward : function(queue){
+        //this.debug('this.forward: called', arguments);
+
+        // Handle Queueing
+        if ( queue !== false && this.busy() ) {
+            // Wait + Push to Queue
+            //this.debug('this.forward: we must wait', arguments);
+            this.pushQueue({
+                scope: this,
+                callback: this.forward,
+                args: arguments,
+                queue: queue
+            });
+            return false;
+        }
+
+        // Make Busy + Continue
+        this.busy(true);
+        
+        var _t = this;
+        // Fix certain browser bugs that prevent the state from changing
+        this.doubleCheck(function(){
+            _t.forward(false);
+        });
+
+        // Go forward
+        history.go(1);
+
+        // End forward closure
+        return true;
+    },
+
+    /**
+     * go(index,queue)
+     * Send the browser history back or forward index times
+     * @param {Integer} queue [optional]
+     */
+    go : function(index,queue){
+        //this.debug('this.go: called', arguments);
+
+        // Prepare
+        var i;
+
+        // Handle
+        if ( index > 0 ) {
+            // Forward
+            for ( i=1; i<=index; ++i ) {
+                this.forward(queue);
+            }
+        }
+        else if ( index < 0 ) {
+            // Backward
+            for ( i=-1; i>=index; --i ) {
+                this.back(queue);
+            }
+        }
+        else {
+            throw new Error('History.go: History.go requires a positive or negative integer passed.');
+        }
+
+        // Chain
+        return this;
+    },
+
+
+    // ====================================================================
+    // HTML5 State Support
+
+     
+    /*
+     * Use native HTML5 History API Implementation
+     */
+
+    /**
+     * onPopState(event,extra)
+     * Refresh the Current State
+     */
+    onPopState : function(event,extra){
+        // Prepare
+        var stateId = false, newState = false, currentHash, currentState;
+
+        // Reset the double check
+        this.doubleCheckComplete();
+
+        // Check for a Hash, and handle apporiatly
+        currentHash = this.getHash();
+        if ( currentHash ) {
+            // Expand Hash
+            currentState = this.extractState(currentHash||this.getLocationHref(),true);
+            if ( currentState ) {
+                // We were able to parse it, it must be a State!
+                // Let's forward to replaceState
+                //this.debug('this.onPopState: state anchor', currentHash, currentState);
+                this.replaceState(currentState.data, currentState.title, currentState.url, false);
+            }
+            else {
+                // Traditional Anchor
+                //this.debug('this.onPopState: traditional anchor', currentHash);
+                this.Adapter.trigger(window,'anchorchange');
+                this.busy(false);
             }
 
-            // Clean
+            // We don't care for hashes
             this.expectedStateId = false;
+            return false;
+        }
 
-            // Check if we are the same state
-            if ( this.isLastSavedState(newState) ) {
-                // There has been no change (just the page's hash has finally propagated)
-                //this.debug('this.onPopState: no change', newState, this.savedStates);
-                this.busy(false);
-                return false;
-            }
+        // Ensure
+        stateId = this.Adapter.extractEventData('state',event,extra) || false;
 
-            // Store the State
-            this.storeState(newState);
-            this.saveState(newState);
+        // Fetch State
+        if ( stateId ) {
+            // Vanilla: Back/forward button was used
+            newState = this.getStateById(stateId);
+        }
+        else if ( this.expectedStateId ) {
+            // Vanilla: A new state was pushed, and popstate was called manually
+            newState = this.getStateById(this.expectedStateId);
+        }
+        else {
+            // Initial State
+            newState = this.extractState(this.getLocationHref());
+        }
 
-            // Force update of the title
-            this.setTitle(newState);
+        // The State did not exist in our store
+        if ( !newState ) {
+            // Regenerate the State
+            newState = this.createStateObject(null,null,this.getLocationHref());
+        }
 
-            // Fire Our Event
-            this.Adapter.trigger(window,'statechange');
+        // Clean
+        this.expectedStateId = false;
+
+        // Check if we are the same state
+        if ( this.isLastSavedState(newState) ) {
+            // There has been no change (just the page's hash has finally propagated)
+            //this.debug('this.onPopState: no change', newState, this.savedStates);
             this.busy(false);
+            return false;
+        }
 
-            // Return true
-            return true;
-        };
+        // Store the State
+        this.storeState(newState);
+        this.saveState(newState);
+
+        // Force update of the title
+        this.setTitle(newState);
+
+        // Fire Our Event
+        this.Adapter.trigger(window,'statechange');
+        this.busy(false);
+
+        // Return true
+        return true;
+    },
+    
+    
+    
+    
+    
         
-        
-        
-        
-        
-			
 
-        /**
-         * pushState(data,title,url)
-         * Add a new State to the history object, become it, and trigger onpopstate
-         * We have to trigger for HTML4 compatibility
-         * @param {object} data
-         * @param {string} title
-         * @param {string} url
-         * @return {true}
-         */
-        pushState = function(data,title,url,queue){
-            //this.debug('this.pushState: called', arguments);
+    /**
+     * pushState(data,title,url)
+     * Add a new State to the history object, become it, and trigger onpopstate
+     * We have to trigger for HTML4 compatibility
+     * @param {object} data
+     * @param {string} title
+     * @param {string} url
+     * @return {true}
+     */
+    pushState : function(data,title,url,queue){
+        //this.debug('this.pushState: called', arguments);
 
-            // Check the State
-            if ( this.getHashByUrl(url) && this.emulated.pushState ) {
-                throw new Error('History.js does not support states with fragement-identifiers (hashes/anchors).');
-            }
+        // Check the State
+        if ( this.getHashByUrl(url) && this.emulated.pushState ) {
+            throw new Error('History.js does not support states with fragement-identifiers (hashes/anchors).');
+        }
 
-            // Handle Queueing
-            if ( queue !== false && this.busy() ) {
-                // Wait + Push to Queue
-                //this.debug('this.pushState: we must wait', arguments);
-                this.pushQueue({
-                    scope: this,
-                    callback: this.pushState,
-                    args: arguments,
-                    queue: queue
-                });
-                return false;
-            }
+        // Handle Queueing
+        if ( queue !== false && this.busy() ) {
+            // Wait + Push to Queue
+            //this.debug('this.pushState: we must wait', arguments);
+            this.pushQueue({
+                scope: this,
+                callback: this.pushState,
+                args: arguments,
+                queue: queue
+            });
+            return false;
+        }
 
-            // Make Busy + Continue
-            this.busy(true);
+        // Make Busy + Continue
+        this.busy(true);
 
-            // Create the newState
-            var newState = this.createStateObject(data,title,url);
+        // Create the newState
+        var newState = this.createStateObject(data,title,url);
 
-            // Check it
-            if ( this.isLastSavedState(newState) ) {
-                // Won't be a change
-                this.busy(false);
-            }
-            else {
-                // Store the newState
-                this.storeState(newState);
-                this.expectedStateId = newState.id;
+        // Check it
+        if ( this.isLastSavedState(newState) ) {
+            // Won't be a change
+            this.busy(false);
+        }
+        else {
+            // Store the newState
+            this.storeState(newState);
+            this.expectedStateId = newState.id;
 
-                // Push the newState
-                history.pushState(newState.id,newState.title,newState.url);
+            // Push the newState
+            history.pushState(newState.id,newState.title,newState.url);
 
-                // Fire HTML5 Event
-                this.Adapter.trigger(window,'popstate');
-            }
+            // Fire HTML5 Event
+            this.Adapter.trigger(window,'popstate');
+        }
 
-            // End pushState closure
-            return true;
-        };
+        // End pushState closure
+        return true;
+    },
 
-        /**
-         * replaceState(data,title,url)
-         * Replace the State and trigger onpopstate
-         * We have to trigger for HTML4 compatibility
-         * @param {object} data
-         * @param {string} title
-         * @param {string} url
-         * @return {true}
-         */
-        replaceState = function(data,title,url,queue){
-            //this.debug('this.replaceState: called', arguments);
+    /**
+     * replaceState(data,title,url)
+     * Replace the State and trigger onpopstate
+     * We have to trigger for HTML4 compatibility
+     * @param {object} data
+     * @param {string} title
+     * @param {string} url
+     * @return {true}
+     */
+    replaceState : function(data,title,url,queue){
+        //this.debug('this.replaceState: called', arguments);
 
-            // Check the State
-            if ( this.getHashByUrl(url) && this.emulated.pushState ) {
-                throw new Error('this.js does not support states with fragement-identifiers (hashes/anchors).');
-            }
+        // Check the State
+        if ( this.getHashByUrl(url) && this.emulated.pushState ) {
+            throw new Error('this.js does not support states with fragement-identifiers (hashes/anchors).');
+        }
 
-            // Handle Queueing
-            if ( queue !== false && this.busy() ) {
-                // Wait + Push to Queue
-                //this.debug('this.replaceState: we must wait', arguments);
-                this.pushQueue({
-                    scope: this,
-                    callback: this.replaceState,
-                    args: arguments,
-                    queue: queue
-                });
-                return false;
-            }
+        // Handle Queueing
+        if ( queue !== false && this.busy() ) {
+            // Wait + Push to Queue
+            //this.debug('this.replaceState: we must wait', arguments);
+            this.pushQueue({
+                scope: this,
+                callback: this.replaceState,
+                args: arguments,
+                queue: queue
+            });
+            return false;
+        }
 
-            // Make Busy + Continue
-            this.busy(true);
+        // Make Busy + Continue
+        this.busy(true);
 
-            // Create the newState
-            var newState = this.createStateObject(data,title,url);
+        // Create the newState
+        var newState = this.createStateObject(data,title,url);
 
-            // Check it
-            if ( this.isLastSavedState(newState) ) {
-                // Won't be a change
-                this.busy(false);
-            }
-            else {
-                // Store the newState
-                this.storeState(newState);
-                this.expectedStateId = newState.id;
+        // Check it
+        if ( this.isLastSavedState(newState) ) {
+            // Won't be a change
+            this.busy(false);
+        }
+        else {
+            // Store the newState
+            this.storeState(newState);
+            this.expectedStateId = newState.id;
 
-                // Push the newState
-                history.replaceState(newState.id,newState.title,newState.url);
+            // Push the newState
+            history.replaceState(newState.id,newState.title,newState.url);
 
-                // Fire HTML5 Event
-                this.Adapter.trigger(window,'popstate');
-            }
+            // Fire HTML5 Event
+            this.Adapter.trigger(window,'popstate');
+        }
 
-            // End replaceState closure
-            return true;
-        };
- 
+        // End replaceState closure
+        return true;
+    },
+
 
 		// ====================================================================
 		// Initialise
@@ -1961,7 +1965,7 @@ Roo.History = {
 		 */
     
     // When the page is closed
-    onUnload = function(){
+    onUnload : function(){
         // Prepare
         var	currentStore, item, currentStoreString;
     
