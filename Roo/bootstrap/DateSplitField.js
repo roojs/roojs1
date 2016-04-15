@@ -159,9 +159,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             store : new Roo.data.SimpleStore({
                 data : (function() {
                     var years = [];
-                    
                     _this.fireEvent('years', _this, years);
-                    
                     return years;
                 })(),
                 fields : [ 'value' ]
