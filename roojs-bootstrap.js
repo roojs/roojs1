@@ -1170,3 +1170,7 @@ Roo.bootstrap.FieldLabel=function(A){Roo.bootstrap.Element.superclass.constructo
 },markValid:function(){this.iconEl.show();this.iconEl.removeClass(this.invalidClass);this.iconEl.addClass(this.validClass);this.fireEvent('valid',this);},markInvalid:function(A){this.iconEl.show();this.iconEl.removeClass(this.validClass);this.iconEl.addClass(this.invalidClass);
 this.fireEvent('invalid',this,A);}});Roo.apply(Roo.bootstrap.FieldLabel,{groups:{},register:function(A){if(this.groups.hasOwnProperty(A.target)){return;}this.groups[A.target]=A;},get:function(A){if(typeof(this.groups[A])=='undefined'){return false;}return this.groups[A];
 }});
+// Roo/bootstrap/DateSplitField.js
+Roo.bootstrap.DateSplitField=function(A){Roo.bootstrap.DateSplitField.superclass.constructor.call(this,A);};Roo.extend(Roo.bootstrap.DateSplitField,Roo.bootstrap.Component,{fieldLabel:'',labelAlign:'top',labelWidth:3,getAutoCreate:function(){var A={tag:'div',cls:'row roo-date-split-field-group',cn:[]};
+if(this.fieldLabel){A.cn.push({tag:'div',cls:'column roo-date-split-field-label col-md-'+((this.labelAlign=='top')?'12':this.labelWidth),cn:[{tag:'label',html:this.fieldLabel}]});}['day','month','year'].each(function(t){A.cn.push({tag:'div',cls:'column roo-date-split-field-'+t+' col-md-'+((this.labelAlign=='top')?'4':((12-this.labelWidth)/3))}
+);});return A;},initEvents:function(){}});
