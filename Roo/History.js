@@ -217,7 +217,14 @@ Roo.History = {
        
 		this.enabled = !this.emulated.pushState;
 
-         
+        if ( this.emulated.pushState ) {
+			 
+			// Prepare
+			var emptyFunction = function(){};
+			this.pushState =  emptyFunction;
+			this.replaceState = emptyFunction;
+		}   
+
         
         
         
@@ -1620,17 +1627,7 @@ Roo.History = {
 		// HTML5 State Support
 
 		// Non-Native pushState Implementation
-		if ( this.emulated.pushState ) {
-			/*
-			 * Provide Skeleton for HTML4 Browsers
-			 */
-
-			// Prepare
-			var emptyFunction = function(){};
-			History.pushState = History.pushState||emptyFunction;
-			History.replaceState = History.replaceState||emptyFunction;
-		} // History.emulated.pushState
-
+		
 		// Native pushState Implementation
 		else {
 			/*
