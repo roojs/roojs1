@@ -240,7 +240,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         var label = formGroup.select('label', true).first();
         var icon = formGroup.select('i.fa-star', true).first();
 
-        if(!this.getValue().length && label && !icon){
+        if(label && !icon){
             this.el.findParent('.form-group', false, true).createChild({
                 tag : 'i',
                 cls : 'text-danger fa fa-lg fa-star',
@@ -248,6 +248,7 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
                 style : 'margin-right:5px;'
             }, label, true);
         }
+        
         this.fireEvent('invalid', this, msg);
     }
     
