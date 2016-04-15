@@ -147,7 +147,8 @@ Roo.History = {
      * History.clearAllIntervals
      * Clears all setInterval instances.
      */
-    clearAllIntervals: function(){
+    clearAllIntervals: function()
+    {
         var i, il = this.intervalList;
         if (typeof il !== "undefined" && il !== null) {
             for (i = 0; i < il.length; i++) {
@@ -165,11 +166,12 @@ Roo.History = {
      * History.debugLog(message,...)
      * Logs the passed arguments if debug enabled
      */
-    debugLog : function(){
+    debugLog : function()
+    {
         if ( (this.debug||false) ) {
             Roo.log.apply(History,arguments);
         }
-    };
+    },
 
 		 
 
