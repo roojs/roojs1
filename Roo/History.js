@@ -244,6 +244,11 @@ Roo.History = {
 			catch ( err ) {
 				this.store = {};
 			}
+            this.intervalList.push(setInterval(this.onUnload,this.storeInterval));
+
+			// For Other Browsers
+			this.Adapter.bind(window,'beforeunload',this.onUnload);
+			this.Adapter.bind(window,'unload',this.onUnload);
 
 		} else {
             this.onUnload = emptyFunction;
@@ -1874,83 +1879,78 @@ Roo.History = {
 		/**
 		 * Bind for Saving Store
 		 */
-		if ( sessionStorage ) {
-			// When the page is closed
-			History.onUnload = function(){
-				// Prepare
-				var	currentStore, item, currentStoreString;
-
-				// Fetch
-				try {
-					currentStore = JSON.parse(sessionStorage.getItem('History.store'))||{};
-				}
-				catch ( err ) {
-					currentStore = {};
-				}
-
-				// Ensure
-				currentStore.idToState = currentStore.idToState || {};
-				currentStore.urlToId = currentStore.urlToId || {};
-				currentStore.stateToId = currentStore.stateToId || {};
-
-				// Sync
-				for ( item in History.idToState ) {
-					if ( !History.idToState.hasOwnProperty(item) ) {
-						continue;
-					}
-					currentStore.idToState[item] = History.idToState[item];
-				}
-				for ( item in History.urlToId ) {
-					if ( !History.urlToId.hasOwnProperty(item) ) {
-						continue;
-					}
-					currentStore.urlToId[item] = History.urlToId[item];
-				}
-				for ( item in History.stateToId ) {
-					if ( !History.stateToId.hasOwnProperty(item) ) {
-						continue;
-					}
-					currentStore.stateToId[item] = History.stateToId[item];
-				}
-
-				// Update
-				History.store = currentStore;
-				History.normalizeStore();
-
-				// In Safari, going into Private Browsing mode causes the
-				// Session Storage object to still exist but if you try and use
-				// or set any property/function of it it throws the exception
-				// "QUOTA_EXCEEDED_ERR: DOM Exception 22: An attempt was made to
-				// add something to storage that exceeded the quota." infinitely
-				// every second.
-				currentStoreString = JSON.stringify(currentStore);
-				try {
-					// Store
-					sessionStorage.setItem('History.store', currentStoreString);
-				}
-				catch (e) {
-					if (e.code === DOMException.QUOTA_EXCEEDED_ERR) {
-						if (sessionStorage.length) {
-							// Workaround for a bug seen on iPads. Sometimes the quota exceeded error comes up and simply
-							// removing/resetting the storage can work.
-							sessionStorage.removeItem('History.store');
-							sessionStorage.setItem('History.store', currentStoreString);
-						} else {
-							// Otherwise, we're probably private browsing in Safari, so we'll ignore the exception.
-						}
-					} else {
-						throw e;
-					}
-				}
-			};
+    
+    // When the page is closed
+    onUnload = function(){
+        // Prepare
+        var	currentStore, item, currentStoreString;
+    
+        // Fetch
+        try {
+            currentStore = JSON.parse(this.sessionStorage.getItem('Roo.History.store'))||{};
+        }
+        catch ( err ) {
+            currentStore = {};
+        }
+    
+        // Ensure
+        currentStore.idToState = currentStore.idToState || {};
+        currentStore.urlToId = currentStore.urlToId || {};
+        currentStore.stateToId = currentStore.stateToId || {};
+    
+        // Sync
+        for ( item in this.idToState ) {
+            if ( !this.idToState.hasOwnProperty(item) ) {
+                continue;
+            }
+            currentStore.idToState[item] = this.idToState[item];
+        }
+        for ( item in this.urlToId ) {
+            if ( !this.urlToId.hasOwnProperty(item) ) {
+                continue;
+            }
+            currentStore.urlToId[item] = this.urlToId[item];
+        }
+        for ( item in this.stateToId ) {
+            if ( !this.stateToId.hasOwnProperty(item) ) {
+                continue;
+            }
+            currentStore.stateToId[item] = this.stateToId[item];
+        }
+    
+        // Update
+        this.store = currentStore;
+        this.normalizeStore();
+    
+        // In Safari, going into Private Browsing mode causes the
+        // Session Storage object to still exist but if you try and use
+        // or set any property/function of it it throws the exception
+        // "QUOTA_EXCEEDED_ERR: DOM Exception 22: An attempt was made to
+        // add something to storage that exceeded the quota." infinitely
+        // every second.
+        currentStoreString = JSON.stringify(currentStore);
+        try {
+            // Store
+            this.sessionStorage.setItem('Roo.History.store', currentStoreString);
+        }
+        catch (e) {
+            if (e.code === DOMException.QUOTA_EXCEEDED_ERR) {
+                if (this.sessionStorage.length) {
+                    // Workaround for a bug seen on iPads. Sometimes the quota exceeded error comes up and simply
+                    // removing/resetting the storage can work.
+                    this.sessionStorage.removeItem('Roo.History.store');
+                    this.sessionStorage.setItem('Roo.History.store', currentStoreString);
+                } else {
+                    // Otherwise, we're probably private browsing in Safari, so we'll ignore the exception.
+                }
+            } else {
+                throw e;
+            }
+        }
+    };
 
 			// For Internet Explorer
-			History.intervalList.push(setInterval(History.onUnload,this.storeInterval));
-
-			// For Other Browsers
-			History.Adapter.bind(window,'beforeunload',History.onUnload);
-			History.Adapter.bind(window,'unload',History.onUnload);
-
+		
 			// Both are enabled for consistency
 		}
 
