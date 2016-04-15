@@ -15,18 +15,10 @@
 
 	// Localise Globals
 	var
-		console = window.console||undefined, // Prevent a JSLint complain
-		document = window.document, // Make sure we are using the correct document
-		navigator = window.navigator, // Make sure we are using the correct navigator
+		  
 		sessionStorage = false, // sessionStorage
-		setTimeout = window.setTimeout,
-		clearTimeout = window.clearTimeout,
-		setInterval = window.setInterval,
-		clearInterval = window.clearInterval,
-		JSON = window.JSON,
-		alert = window.alert,
-		History = window.History = window.History||{}, // Public History Object
-		history = window.history; // Old History Object
+		 
+		 
 
 	try {
 		sessionStorage = window.sessionStorage; // This will throw an exception in some browsers when cookies/localStorage are explicitly disabled (i.e. Chrome)
@@ -35,11 +27,7 @@
 	} catch(e) {
 		sessionStorage = false;
 	}
-
-	// MooTools Compatibility
-	JSON.stringify = JSON.stringify||JSON.encode;
-	JSON.parse = JSON.parse||JSON.decode;
-
+ 
 	// Check Existence
 	if ( typeof History.init !== 'undefined' ) {
 		throw new Error('History.js Core has already been loaded...');
@@ -137,7 +125,7 @@
 		 * History.options.initialTitle
 		 * What is the title of the initial state
 		 */
-		History.options.initialTitle = History.options.initialTitle || document.title;
+		History.options.initialTitle = History.options.initialTitle || window.document.title;
 
 		/**
 		 * History.options.html4Mode
@@ -208,7 +196,7 @@
 				?	History.getInternetExplorerMajorVersion.cached
 				:	(function(){
 						var v = 3,
-								div = document.createElement('div'),
+								div = window.document.createElement('div'),
 								all = div.getElementsByTagName('i');
 						while ( (div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->') && all[0] ) {}
 						return (v > 4) ? v : false;
@@ -252,12 +240,12 @@
 				pushState: !Boolean(
 					window.history && window.history.pushState && window.history.replaceState
 					&& !(
-						(/ Mobile\/([1-7][a-z]|(8([abcde]|f(1[0-8]))))/i).test(navigator.userAgent) /* disable for versions of iOS before version 4.3 (8F190) */
-						|| (/AppleWebKit\/5([0-2]|3[0-2])/i).test(navigator.userAgent) /* disable for the mercury iOS browser, or at least older versions of the webkit engine */
+						(/ Mobile\/([1-7][a-z]|(8([abcde]|f(1[0-8]))))/i).test(window.navigator.userAgent) /* disable for versions of iOS before version 4.3 (8F190) */
+						|| (/AppleWebKit\/5([0-2]|3[0-2])/i).test(window.navigator.userAgent) /* disable for the mercury iOS browser, or at least older versions of the webkit engine */
 					)
 				),
 				hashChange: Boolean(
-					!(('onhashchange' in window) || ('onhashchange' in document))
+					!(('onhashchange' in window) || ('onhashchange' in window.document))
 					||
 					(History.isInternetExplorer() && History.getInternetExplorerMajorVersion() < 8)
 				)
@@ -279,13 +267,13 @@
 			 * Safari 5 and Safari iOS 4 fail to return to the correct state once a hash is replaced by a `replaceState` call
 			 * https://bugs.webkit.org/show_bug.cgi?id=56249
 			 */
-			setHash: Boolean(!History.emulated.pushState && navigator.vendor === 'Apple Computer, Inc.' && /AppleWebKit\/5([0-2]|3[0-3])/.test(navigator.userAgent)),
+			setHash: Boolean(!History.emulated.pushState && window.navigator.vendor === 'Apple Computer, Inc.' && /AppleWebKit\/5([0-2]|3[0-3])/.test(window.navigator.userAgent)),
 
 			/**
 			 * Safari 5 and Safari iOS 4 sometimes fail to apply the state change under busy conditions
 			 * https://bugs.webkit.org/show_bug.cgi?id=42940
 			 */
-			safariPoll: Boolean(!History.emulated.pushState && navigator.vendor === 'Apple Computer, Inc.' && /AppleWebKit\/5([0-2]|3[0-3])/.test(navigator.userAgent)),
+			safariPoll: Boolean(!History.emulated.pushState && window.navigator.vendor === 'Apple Computer, Inc.' && /AppleWebKit\/5([0-2]|3[0-3])/.test(window.navigator.userAgent)),
 
 			/**
 			 * MSIE 6 and 7 sometimes do not apply a hash even it was told to (requiring a second call to the apply function)
@@ -342,9 +330,9 @@
 		 */
 		History.getRootUrl = function(){
 			// Create
-			var rootUrl = document.location.protocol+'//'+(document.location.hostname||document.location.host);
-			if ( document.location.port||false ) {
-				rootUrl += ':'+document.location.port;
+			var rootUrl = window.document.location.protocol+'//'+(window.document.location.hostname||window.document.location.host);
+			if ( window.document.location.port||false ) {
+				rootUrl += ':'+window.document.location.port;
 			}
 			rootUrl += '/';
 
@@ -360,7 +348,7 @@
 		History.getBaseHref = function(){
 			// Create
 			var
-				baseElements = document.getElementsByTagName('base'),
+				baseElements = window.document.getElementsByTagName('base'),
 				baseElement = null,
 				baseHref = '';
 
@@ -518,7 +506,7 @@
 		 * @return {string} url
 		 */
 		History.getLocationHref = function(doc) {
-			doc = doc || document;
+			doc = doc || window.document;
 
 			// most of the time, this will be true
 			if (doc.URL === doc.location.href)
@@ -1177,7 +1165,7 @@
 				}
 				else {
 					// Normal hash apply
-					document.location.hash = hash;
+					window.document.location.hash = hash;
 				}
 			}
 
@@ -1251,10 +1239,10 @@
 
 			// Apply
 			try {
-				document.getElementsByTagName('title')[0].innerHTML = title.replace('<','&lt;').replace('>','&gt;').replace(' & ',' &amp; ');
+				window.document.getElementsByTagName('title')[0].innerHTML = title.replace('<','&lt;').replace('>','&gt;').replace(' & ',' &amp; ');
 			}
 			catch ( Exception ) { }
-			document.title = title;
+			window.document.title = title;
 
 			// Chain
 			return History;
@@ -1290,7 +1278,7 @@
 			// Queue
 			if ( !History.busy.flag ) {
 				// Execute the next item in the queue
-				clearTimeout(History.busy.timeout);
+				window.clearTimeout(History.busy.timeout);
 				var fireNext = function(){
 					var i, queue, item;
 					if ( History.busy.flag ) return;
@@ -1299,10 +1287,10 @@
 						if ( queue.length === 0 ) continue;
 						item = queue.shift();
 						History.fireQueueItem(item);
-						History.busy.timeout = setTimeout(fireNext,History.options.busyDelay);
+						History.busy.timeout = window.setTimeout(fireNext,History.options.busyDelay);
 					}
 				};
-				History.busy.timeout = setTimeout(fireNext,History.options.busyDelay);
+				History.busy.timeout = window.setTimeout(fireNext,History.options.busyDelay);
 			}
 
 			// Return
@@ -1416,7 +1404,7 @@
 		History.doubleCheckClear = function(){
 			// Clear
 			if ( History.doubleChecker ) {
-				clearTimeout(History.doubleChecker);
+				window.clearTimeout(History.doubleChecker);
 				History.doubleChecker = false;
 			}
 
@@ -1438,7 +1426,7 @@
 			// Fix Safari 5 bug where sometimes the state does not change: https://bugs.webkit.org/show_bug.cgi?id=42940
 			if ( History.bugs.ieDoubleCheck ) {
 				// Apply Check
-				History.doubleChecker = setTimeout(
+				History.doubleChecker = window.setTimeout(
 					function(){
 						History.doubleCheckClear();
 						if ( !History.stateChanged ) {
@@ -1960,7 +1948,7 @@
 			/**
 			 * Ensure Cross Browser Compatibility
 			 */
-			if ( navigator.vendor === 'Apple Computer, Inc.' || (navigator.appCodeName||'') === 'Mozilla' ) {
+			if ( window.navigator.vendor === 'Apple Computer, Inc.' || (window.navigator.appCodeName||'') === 'Mozilla' ) {
 				/**
 				 * Fix Safari HashChange Issue
 				 */
