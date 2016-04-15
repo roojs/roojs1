@@ -1403,56 +1403,56 @@ Roo.History = {
 
 
 		/**
-		 * History.doubleCheckComplete()
+		 * doubleCheckComplete()
 		 * Complete a double check
-		 * @return {History}
+		 * @return {Roo.History}
 		 */
-		History.doubleCheckComplete = function(){
+		doubleCheckComplete = function(){
 			// Update
-			History.stateChanged = true;
+			this.stateChanged = true;
 
 			// Clear
-			History.doubleCheckClear();
+			this.doubleCheckClear();
 
 			// Chain
-			return History;
+			return this;;
 		};
 
 		/**
-		 * History.doubleCheckClear()
+		 * doubleCheckClear()
 		 * Clear a double check
-		 * @return {History}
+		 * @return {Roo.History}
 		 */
-		History.doubleCheckClear = function(){
+		doubleCheckClear = function(){
 			// Clear
-			if ( History.doubleChecker ) {
-				window.clearTimeout(History.doubleChecker);
-				History.doubleChecker = false;
+			if ( this.doubleChecker ) {
+				window.clearTimeout(this.doubleChecker);
+				this.doubleChecker = false;
 			}
 
 			// Chain
-			return History;
+			return this;
 		};
 
 		/**
-		 * History.doubleCheck()
+		 * doubleCheck()
 		 * Create a double check
-		 * @return {History}
+		 * @return {Roo.History}
 		 */
-		History.doubleCheck = function(tryAgain){
+		doubleCheck = function(tryAgain){
 			// Reset
-			History.stateChanged = false;
-			History.doubleCheckClear();
+			this.stateChanged = false;
+			this.doubleCheckClear();
 
 			// Fix IE6,IE7 bug where calling history.back or history.forward does not actually change the hash (whereas doing it manually does)
 			// Fix Safari 5 bug where sometimes the state does not change: https://bugs.webkit.org/show_bug.cgi?id=42940
-			if ( History.bugs.ieDoubleCheck ) {
+			if ( this.bugs.ieDoubleCheck ) {
 				// Apply Check
-				History.doubleChecker = window.setTimeout(
+				this.doubleChecker = window.setTimeout(
 					function(){
-						History.doubleCheckClear();
-						if ( !History.stateChanged ) {
-							//History.debug('History.doubleCheck: State has not yet changed, trying again', arguments);
+						this.doubleCheckClear();
+						if ( !this.stateChanged ) {
+							//this.debug('History.doubleCheck: State has not yet changed, trying again', arguments);
 							// Re-Attempt
 							tryAgain();
 						}
@@ -1463,7 +1463,7 @@ Roo.History = {
 			}
 
 			// Chain
-			return History;
+			return this;
 		};
 
 
