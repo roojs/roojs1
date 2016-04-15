@@ -163,7 +163,10 @@ Roo.History = {
     */
     queues : [],
 
-    
+    /**
+    * busy.flag
+    */
+    busy_flag : false,
     
 	// Initialise History
 	init : function(options){
@@ -1317,10 +1320,7 @@ Roo.History = {
 			return this.busy.flag;
 		};
 
-		/**
-		 * busy.flag
-		 */
-		History.busy.flag = false;
+		
 
 		/**
 		 * History.fireQueueItem(item)
