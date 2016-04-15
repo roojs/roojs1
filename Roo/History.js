@@ -7,6 +7,11 @@
  * @license New BSD License <http://creativecommons.org/licenses/BSD/>
  */
 
+
+// this is not initialized automatically..
+// must call Roo.History.init( { ... options... });
+
+
 Roo.History = {
 	 
      
