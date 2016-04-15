@@ -1130,7 +1130,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.syncValue();
             return;
         }
-        
+        Roo.log('run??');
         var text = v;
         if(this.valueField){
             var r = this.findRecord(this.valueField, v);
