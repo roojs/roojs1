@@ -1651,9 +1651,10 @@ Roo.History = {
      * Send the browser history back one item
      * @param {Integer} queue [optional]
      */
-    back : function(queue){
+    back : function(queue)
+    {
         //this.debug('this.back: called', arguments);
-
+        var _this = this;
         // Handle Queueing
         if ( queue !== false && this.busy() ) {
             // Wait + Push to Queue
@@ -1672,7 +1673,7 @@ Roo.History = {
 
         // Fix certain browser bugs that prevent the state from changing
         this.doubleCheck(function(){
-            this.back(false);
+            _this.back(false);
         });
 
         // Go back
