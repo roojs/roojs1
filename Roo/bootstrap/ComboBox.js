@@ -1073,7 +1073,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
     onSelect : function(record, index){
         
         if(this.fireEvent('beforeselect', this, record, index) !== false){
-            Roo.log(record.data);
+        
             this.setFromData(index > -1 ? record.data : false);
             
             this.collapse();
@@ -1130,11 +1130,10 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
             this.syncValue();
             return;
         }
-        Roo.log('run??');
+        
         var text = v;
         if(this.valueField){
             var r = this.findRecord(this.valueField, v);
-            Roo.log(r);
             if(r){
                 text = r.data[this.displayField];
             }else if(this.valueNotFoundText !== undefined){
@@ -1173,14 +1172,13 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         var dv = ''; // display value
         var vv = ''; // value value..
         this.lastData = o;
-        Roo.log(this.displayField);
         if (this.displayField) {
             dv = !o || typeof(o[this.displayField]) == 'undefined' ? '' : o[this.displayField];
         } else {
             // this is an error condition!!!
             Roo.log('no  displayField value set for '+ (this.name ? this.name : this.id));
         }
-        Roo.log(dv);
+        
         if(this.valueField){
             vv = !o || typeof(o[this.valueField]) == 'undefined' ? dv : o[this.valueField];
         }
@@ -1192,7 +1190,6 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         if(this.hiddenField){
-            Roo.log(this.hiddenField);
             this.hiddenField.dom.value = vv;
             
             this.lastSelectionText = dv;
