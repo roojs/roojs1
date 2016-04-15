@@ -208,11 +208,7 @@ Roo.History = {
         
         Roo.apply(this,options)
         
-		// Check Load Status of Adapter
-		//if ( typeof this.Adapter === 'undefined' ) {
-		//	return false;
-		//}
-
+		
 		// Check Load Status of Core
 		if ( typeof this.initCore !== 'undefined' ) {
 			this.initCore();
