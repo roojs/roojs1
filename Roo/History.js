@@ -168,6 +168,22 @@ Roo.History = {
     */
     busy_flag : false,
     
+    // ====================================================================
+    // IE Bug Fix
+
+    /**
+     * History.stateChanged
+     * States whether or not the state has changed since the last double check was initialised
+     */
+    stateChanged : false,
+
+    /**
+     * History.doubleChecker
+     * Contains the timeout used for the double checks
+     */
+    doubleChecker : false,
+    
+    
 	// Initialise History
 	init : function(options){
         
@@ -1291,20 +1307,20 @@ Roo.History = {
 			// Apply
 			if ( typeof value !== 'undefined' ) {
 				//this.debug('this.busy: changing ['+(this.busy.flag||false)+'] to ['+(value||false)+']', this.queues.length);
-				this.busy.flag = value;
+				this.busy_flag = value;
 			}
 			// Default
-			else if ( typeof this.busy.flag === 'undefined' ) {
-				this.busy.flag = false;
+			else if ( typeof this.busy_flag === 'undefined' ) {
+				this.busy_flag = false;
 			}
 
 			// Queue
-			if ( !this.busy.flag ) {
+			if ( !this.busy_flag ) {
 				// Execute the next item in the queue
 				window.clearTimeout(this.busy.timeout);
 				var fireNext = function(){
 					var i, queue, item;
-					if ( this.busy.flag ) return;
+					if ( this.busy_flag ) return;
 					for ( i=this.queues.length-1; i >= 0; --i ) {
 						queue = this.queues[i];
 						if ( queue.length === 0 ) continue;
@@ -1317,42 +1333,42 @@ Roo.History = {
 			}
 
 			// Return
-			return this.busy.flag;
+			return this.busy_flag;
 		};
 
 		
 
 		/**
-		 * History.fireQueueItem(item)
+		 * fireQueueItem(item)
 		 * Fire a Queue Item
 		 * @param {Object} item
 		 * @return {Mixed} result
 		 */
-		History.fireQueueItem = function(item){
-			return item.callback.apply(item.scope||History,item.args||[]);
+		fireQueueItem = function(item){
+			return item.callback.apply(item.scope||this,item.args||[]);
 		};
 
 		/**
-		 * History.pushQueue(callback,args)
+		 * pushQueue(callback,args)
 		 * Add an item to the queue
 		 * @param {Object} item [scope,callback,args,queue]
 		 */
-		History.pushQueue = function(item){
+		pushQueue = function(item){
 			// Prepare the queue
-			History.queues[item.queue||0] = History.queues[item.queue||0]||[];
+			this.queues[item.queue||0] = this.queues[item.queue||0]||[];
 
 			// Add to the queue
-			History.queues[item.queue||0].push(item);
+			this.queues[item.queue||0].push(item);
 
 			// Chain
-			return History;
+			return this;
 		};
 
 		/**
-		 * History.queue (item,queue), (func,queue), (func), (item)
+		 * queue (item,queue), (func,queue), (func), (item)
 		 * Either firs the item now if not busy, or adds it to the queue
 		 */
-		History.queue = function(item,queue){
+		queue = function(item,queue){
 			// Prepare
 			if ( typeof item === 'function' ) {
 				item = {
@@ -1364,41 +1380,27 @@ Roo.History = {
 			}
 
 			// Handle
-			if ( History.busy() ) {
-				History.pushQueue(item);
+			if ( this.busy() ) {
+				this.pushQueue(item);
 			} else {
-				History.fireQueueItem(item);
+				this.fireQueueItem(item);
 			}
 
 			// Chain
-			return History;
+			return this;
 		};
 
 		/**
-		 * History.clearQueue()
+		 * clearQueue()
 		 * Clears the Queue
 		 */
-		History.clearQueue = function(){
-			History.busy.flag = false;
-			History.queues = [];
-			return History;
+		clearQueue = function(){
+			this.busy_flag = false;
+			this.queues = [];
+			return this;
 		};
 
 
-		// ====================================================================
-		// IE Bug Fix
-
-		/**
-		 * History.stateChanged
-		 * States whether or not the state has changed since the last double check was initialised
-		 */
-		History.stateChanged = false;
-
-		/**
-		 * History.doubleChecker
-		 * Contains the timeout used for the double checks
-		 */
-		History.doubleChecker = false;
 
 		/**
 		 * History.doubleCheckComplete()
