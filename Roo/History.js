@@ -1794,6 +1794,7 @@ Roo.History = {
             this.expectedStateId = false;
             return false;
         }
+        var stateId = (event && event.browserEvent && event.browserEvent['state']) || (extra && extra['state']) || undefined;
 
         // Ensure
         stateId = this.Adapter.extractEventData('state',event,extra) || false;
