@@ -168,6 +168,11 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         });
 
         this.yearField.render(this.el.select('.roo-date-split-field-year', true).first(), null);
+    },
+    
+    setValue : function()
+    {
+        
     }
     
 });
