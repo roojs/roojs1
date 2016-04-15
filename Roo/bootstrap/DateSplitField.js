@@ -113,7 +113,10 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
             }
         });
 
-        day.onRender(this.el.select('.roo-date-split-field-day', true).first(), null);
+        var d = day.onRender(this.el.select('.roo-date-split-field-day', true).first(), null);
+        
+        Roo.log(d);
+        
         
     },
     
