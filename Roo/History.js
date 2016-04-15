@@ -12,7 +12,7 @@
 // must call Roo.History.init( { ... options... });
 
 
-Roo.History = new Roo.util.Observable({
+Roo.History = {
 	 
      
     // ====================================================================
@@ -241,7 +241,7 @@ Roo.History = new Roo.util.Observable({
         
         
         
-        this.Adapter.bind(window,'popstate',this.onPopState);
+        Roo.get(window).on('popstate',this.onPopState, this);
         
          
 		/**
@@ -258,8 +258,8 @@ Roo.History = new Roo.util.Observable({
             this.intervalList.push(setInterval(this.onUnload,this.storeInterval));
 
 			// For Other Browsers
-			this.Adapter.bind(window,'beforeunload',this.onUnload);
-			this.Adapter.bind(window,'unload',this.onUnload);
+			Roo.get(window).on('beforeunload',this.onUnload);
+			Roo.get(window).on('unload',this.onUnload);
 
 		} else {
             this.onUnload = emptyFunction;
@@ -270,7 +270,7 @@ Roo.History = new Roo.util.Observable({
 		/**
 		 * Clear Intervals on exit to prevent memory leaks
 		 */
-		this.Adapter.bind(window,"unload",this.clearAllIntervals);
+		Roo.get(window).on('unload',this.clearAllIntervals, this);
 
 		/**
 		 * Create the initial State
@@ -2041,6 +2041,4 @@ Roo.History = new Roo.util.Observable({
             }
         }
     }
-});
-
-		  
+};
