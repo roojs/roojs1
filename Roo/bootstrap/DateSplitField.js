@@ -198,13 +198,21 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
     validate : function()
     {
-        this.dayField.validate();
-        this.monthField.validate();
-        this.yearField.validate();
+        var d = this.dayField.validate();
+        var m = this.monthField.validate();
+        var y = this.yearField.validate();
         
         var vaild = true;
         
-        if(!this.dayAllowBlank && !this.dayField.getValue().length)
+        if(
+                (!this.dayAllowBlank && !d) ||
+                (!this.monthAllowBlank && !m) ||
+                (!this.yearAllowBlank && !y)
+        ){
+            vaild = false;
+        }
+        
+        return valid;
     }
     
 });
