@@ -1192,6 +1192,7 @@ Roo.extend(Roo.bootstrap.ComboBox, Roo.bootstrap.TriggerField, {
         }
         
         if(this.hiddenField){
+            Roo.log(this.hiddenField);
             this.hiddenField.dom.value = vv;
             
             this.lastSelectionText = dv;
