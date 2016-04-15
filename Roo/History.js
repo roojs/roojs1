@@ -357,244 +357,244 @@ Roo.History = {
         return true;
     };
 
-		/**
-		 * cloneObject(obj)
-		 * Clones a object and eliminate all references to the original contexts
-		 * @param {Object} obj
-		 * @return {Object}
-		 */
-		cloneObject = function(obj) {
-			var hash,newObj;
-			if ( obj ) {
-				hash = JSON.stringify(obj);
-				newObj = JSON.parse(hash);
-			}
-			else {
-				newObj = {};
-			}
-			return newObj;
-		};
+    /**
+     * cloneObject(obj)
+     * Clones a object and eliminate all references to the original contexts
+     * @param {Object} obj
+     * @return {Object}
+     */
+    cloneObject = function(obj) {
+        var hash,newObj;
+        if ( obj ) {
+            hash = JSON.stringify(obj);
+            newObj = JSON.parse(hash);
+        }
+        else {
+            newObj = {};
+        }
+        return newObj;
+    };
 
 
-		// ====================================================================
-		// URL Helpers
+    // ====================================================================
+    // URL Helpers
 
-		/**
-		 * getRootUrl()
-		 * Turns "http://mysite.com/dir/page.html?asd" into "http://mysite.com"
-		 * @return {String} rootUrl
-		 */
-		getRootUrl = function(){
-			// Create
-			var rootUrl = window.document.location.protocol+'//'+(window.document.location.hostname||window.document.location.host);
-			if ( window.document.location.port||false ) {
-				rootUrl += ':'+window.document.location.port;
-			}
-			rootUrl += '/';
+    /**
+     * getRootUrl()
+     * Turns "http://mysite.com/dir/page.html?asd" into "http://mysite.com"
+     * @return {String} rootUrl
+     */
+    getRootUrl = function(){
+        // Create
+        var rootUrl = window.document.location.protocol+'//'+(window.document.location.hostname||window.document.location.host);
+        if ( window.document.location.port||false ) {
+            rootUrl += ':'+window.document.location.port;
+        }
+        rootUrl += '/';
 
-			// Return
-			return rootUrl;
-		};
+        // Return
+        return rootUrl;
+    };
 
-		/**
-		 * getBaseHref()
-		 * Fetches the `href` attribute of the `<base href="...">` element if it exists
-		 * @return {String} baseHref
-		 */
-		getBaseHref = function(){
-			// Create
-			var
-				baseElements = window.document.getElementsByTagName('base'),
-				baseElement = null,
-				baseHref = '';
+    /**
+     * getBaseHref()
+     * Fetches the `href` attribute of the `<base href="...">` element if it exists
+     * @return {String} baseHref
+     */
+    getBaseHref = function(){
+        // Create
+        var
+            baseElements = window.document.getElementsByTagName('base'),
+            baseElement = null,
+            baseHref = '';
 
-			// Test for Base Element
-			if ( baseElements.length === 1 ) {
-				// Prepare for Base Element
-				baseElement = baseElements[0];
-				baseHref = baseElement.href.replace(/[^\/]+$/,'');
-			}
+        // Test for Base Element
+        if ( baseElements.length === 1 ) {
+            // Prepare for Base Element
+            baseElement = baseElements[0];
+            baseHref = baseElement.href.replace(/[^\/]+$/,'');
+        }
 
-			// Adjust trailing slash
-			baseHref = baseHref.replace(/\/+$/,'');
-			if ( baseHref ) baseHref += '/';
+        // Adjust trailing slash
+        baseHref = baseHref.replace(/\/+$/,'');
+        if ( baseHref ) baseHref += '/';
 
-			// Return
-			return baseHref;
-		};
+        // Return
+        return baseHref;
+    };
 
-		/**
-		 * getBaseUrl()
-		 * Fetches the baseHref or basePageUrl or rootUrl (whichever one exists first)
-		 * @return {String} baseUrl
-		 */
-		getBaseUrl = function(){
-			// Create
-			var baseUrl = this.getBaseHref()||this.getBasePageUrl()||this.getRootUrl();
+    /**
+     * getBaseUrl()
+     * Fetches the baseHref or basePageUrl or rootUrl (whichever one exists first)
+     * @return {String} baseUrl
+     */
+    getBaseUrl = function(){
+        // Create
+        var baseUrl = this.getBaseHref()||this.getBasePageUrl()||this.getRootUrl();
 
-			// Return
-			return baseUrl;
-		};
+        // Return
+        return baseUrl;
+    };
 
-		/**
-		 * getPageUrl()
-		 * Fetches the URL of the current page
-		 * @return {String} pageUrl
-		 */
-		getPageUrl = function(){
-			// Fetch
-			var
-				State = this.getState(false,false),
-				stateUrl = (State||{}).url||this.getLocationHref(),
-				pageUrl;
+    /**
+     * getPageUrl()
+     * Fetches the URL of the current page
+     * @return {String} pageUrl
+     */
+    getPageUrl = function(){
+        // Fetch
+        var
+            State = this.getState(false,false),
+            stateUrl = (State||{}).url||this.getLocationHref(),
+            pageUrl;
 
-			// Create
-			pageUrl = stateUrl.replace(/\/+$/,'').replace(/[^\/]+$/,function(part,index,string){
-				return (/\./).test(part) ? part : part+'/';
-			});
+        // Create
+        pageUrl = stateUrl.replace(/\/+$/,'').replace(/[^\/]+$/,function(part,index,string){
+            return (/\./).test(part) ? part : part+'/';
+        });
 
-			// Return
-			return pageUrl;
-		};
+        // Return
+        return pageUrl;
+    };
 
-		/**
-		 * getBasePageUrl()
-		 * Fetches the Url of the directory of the current page
-		 * @return {String} basePageUrl
-		 */
-		getBasePageUrl = function(){
-			// Create
-			var basePageUrl = (this.getLocationHref()).replace(/[#\?].*/,'').replace(/[^\/]+$/,function(part,index,string){
-				return (/[^\/]$/).test(part) ? '' : part;
-			}).replace(/\/+$/,'')+'/';
+    /**
+     * getBasePageUrl()
+     * Fetches the Url of the directory of the current page
+     * @return {String} basePageUrl
+     */
+    getBasePageUrl = function(){
+        // Create
+        var basePageUrl = (this.getLocationHref()).replace(/[#\?].*/,'').replace(/[^\/]+$/,function(part,index,string){
+            return (/[^\/]$/).test(part) ? '' : part;
+        }).replace(/\/+$/,'')+'/';
 
-			// Return
-			return basePageUrl;
-		};
+        // Return
+        return basePageUrl;
+    };
 
-		/**
-		 * getFullUrl(url)
-		 * Ensures that we have an absolute URL and not a relative URL
-		 * @param {string} url
-		 * @param {Boolean} allowBaseHref
-		 * @return {string} fullUrl
-		 */
-		getFullUrl = function(url,allowBaseHref){
-			// Prepare
-			var fullUrl = url, firstChar = url.substring(0,1);
-			allowBaseHref = (typeof allowBaseHref === 'undefined') ? true : allowBaseHref;
+    /**
+     * getFullUrl(url)
+     * Ensures that we have an absolute URL and not a relative URL
+     * @param {string} url
+     * @param {Boolean} allowBaseHref
+     * @return {string} fullUrl
+     */
+    getFullUrl = function(url,allowBaseHref){
+        // Prepare
+        var fullUrl = url, firstChar = url.substring(0,1);
+        allowBaseHref = (typeof allowBaseHref === 'undefined') ? true : allowBaseHref;
 
-			// Check
-			if ( /[a-z]+\:\/\//.test(url) ) {
-				// Full URL
-			}
-			else if ( firstChar === '/' ) {
-				// Root URL
-				fullUrl = this.getRootUrl()+url.replace(/^\/+/,'');
-			}
-			else if ( firstChar === '#' ) {
-				// Anchor URL
-				fullUrl = this.getPageUrl().replace(/#.*/,'')+url;
-			}
-			else if ( firstChar === '?' ) {
-				// Query URL
-				fullUrl = this.getPageUrl().replace(/[\?#].*/,'')+url;
-			}
-			else {
-				// Relative URL
-				if ( allowBaseHref ) {
-					fullUrl = this.getBaseUrl()+url.replace(/^(\.\/)+/,'');
-				} else {
-					fullUrl = this.getBasePageUrl()+url.replace(/^(\.\/)+/,'');
-				}
-				// We have an if condition above as we do not want hashes
-				// which are relative to the baseHref in our URLs
-				// as if the baseHref changes, then all our bookmarks
-				// would now point to different locations
-				// whereas the basePageUrl will always stay the same
-			}
+        // Check
+        if ( /[a-z]+\:\/\//.test(url) ) {
+            // Full URL
+        }
+        else if ( firstChar === '/' ) {
+            // Root URL
+            fullUrl = this.getRootUrl()+url.replace(/^\/+/,'');
+        }
+        else if ( firstChar === '#' ) {
+            // Anchor URL
+            fullUrl = this.getPageUrl().replace(/#.*/,'')+url;
+        }
+        else if ( firstChar === '?' ) {
+            // Query URL
+            fullUrl = this.getPageUrl().replace(/[\?#].*/,'')+url;
+        }
+        else {
+            // Relative URL
+            if ( allowBaseHref ) {
+                fullUrl = this.getBaseUrl()+url.replace(/^(\.\/)+/,'');
+            } else {
+                fullUrl = this.getBasePageUrl()+url.replace(/^(\.\/)+/,'');
+            }
+            // We have an if condition above as we do not want hashes
+            // which are relative to the baseHref in our URLs
+            // as if the baseHref changes, then all our bookmarks
+            // would now point to different locations
+            // whereas the basePageUrl will always stay the same
+        }
 
-			// Return
-			return fullUrl.replace(/\#$/,'');
-		};
+        // Return
+        return fullUrl.replace(/\#$/,'');
+    };
 
-		/**
-		 * getShortUrl(url)
-		 * Ensures that we have a relative URL and not a absolute URL
-		 * @param {string} url
-		 * @return {string} url
-		 */
-		getShortUrl = function(url){
-			// Prepare
-			var shortUrl = url, baseUrl = this.getBaseUrl(), rootUrl = this.getRootUrl();
+    /**
+     * getShortUrl(url)
+     * Ensures that we have a relative URL and not a absolute URL
+     * @param {string} url
+     * @return {string} url
+     */
+    getShortUrl = function(url){
+        // Prepare
+        var shortUrl = url, baseUrl = this.getBaseUrl(), rootUrl = this.getRootUrl();
 
-			// Trim baseUrl
-			if ( this.emulated.pushState ) {
-				// We are in a if statement as when pushState is not emulated
-				// The actual url these short urls are relative to can change
-				// So within the same session, we the url may end up somewhere different
-				shortUrl = shortUrl.replace(baseUrl,'');
-			}
+        // Trim baseUrl
+        if ( this.emulated.pushState ) {
+            // We are in a if statement as when pushState is not emulated
+            // The actual url these short urls are relative to can change
+            // So within the same session, we the url may end up somewhere different
+            shortUrl = shortUrl.replace(baseUrl,'');
+        }
 
-			// Trim rootUrl
-			shortUrl = shortUrl.replace(rootUrl,'/');
+        // Trim rootUrl
+        shortUrl = shortUrl.replace(rootUrl,'/');
 
-			// Ensure we can still detect it as a state
-			if ( this.isTraditionalAnchor(shortUrl) ) {
-				shortUrl = './'+shortUrl;
-			}
+        // Ensure we can still detect it as a state
+        if ( this.isTraditionalAnchor(shortUrl) ) {
+            shortUrl = './'+shortUrl;
+        }
 
-			// Clean It
-			shortUrl = shortUrl.replace(/^(\.\/)+/g,'./').replace(/\#$/,'');
+        // Clean It
+        shortUrl = shortUrl.replace(/^(\.\/)+/g,'./').replace(/\#$/,'');
 
-			// Return
-			return shortUrl;
-		};
+        // Return
+        return shortUrl;
+    };
 
-		/**
-		 * getLocationHref(document)
-		 * Returns a normalized version of document.location.href
-		 * accounting for browser inconsistencies, etc.
-		 *
-		 * This URL will be URI-encoded and will include the hash
-		 *
-		 * @param {object} document
-		 * @return {string} url
-		 */
-		getLocationHref = function(doc) {
-			doc = doc || window.document;
+    /**
+     * getLocationHref(document)
+     * Returns a normalized version of document.location.href
+     * accounting for browser inconsistencies, etc.
+     *
+     * This URL will be URI-encoded and will include the hash
+     *
+     * @param {object} document
+     * @return {string} url
+     */
+    getLocationHref = function(doc) {
+        doc = doc || window.document;
 
-			// most of the time, this will be true
-			if (doc.URL === doc.location.href)
-				return doc.location.href;
+        // most of the time, this will be true
+        if (doc.URL === doc.location.href)
+            return doc.location.href;
 
-			// some versions of webkit URI-decode document.location.href
-			// but they leave document.URL in an encoded state
-			if (doc.location.href === decodeURIComponent(doc.URL))
-				return doc.URL;
+        // some versions of webkit URI-decode document.location.href
+        // but they leave document.URL in an encoded state
+        if (doc.location.href === decodeURIComponent(doc.URL))
+            return doc.URL;
 
-			// FF 3.6 only updates document.URL when a page is reloaded
-			// document.location.href is updated correctly
-			if (doc.location.hash && decodeURIComponent(doc.location.href.replace(/^[^#]+/, "")) === doc.location.hash)
-				return doc.location.href;
+        // FF 3.6 only updates document.URL when a page is reloaded
+        // document.location.href is updated correctly
+        if (doc.location.hash && decodeURIComponent(doc.location.href.replace(/^[^#]+/, "")) === doc.location.hash)
+            return doc.location.href;
 
-			if (doc.URL.indexOf('#') == -1 && doc.location.href.indexOf('#') != -1)
-				return doc.location.href;
-			
-			return doc.URL || doc.location.href;
-		};
+        if (doc.URL.indexOf('#') == -1 && doc.location.href.indexOf('#') != -1)
+            return doc.location.href;
+        
+        return doc.URL || doc.location.href;
+    };
 
 
 		
-		/**
-		 * History.noramlizeStore()
-		 * Noramlize the store by adding necessary values
-		 */
-		History.normalizeStore = function(){
-			History.store.idToState = History.store.idToState||{};
-			History.store.urlToId = History.store.urlToId||{};
-			History.store.stateToId = History.store.stateToId||{};
-		};
+    /**
+     * History.noramlizeStore()
+     * Noramlize the store by adding necessary values
+     */
+    normalizeStore = function(){
+        this.store.idToState = this.store.idToState||{};
+        this.store.urlToId = this.store.urlToId||{};
+        this.store.stateToId = this.store.stateToId||{};
+    };
 
 		/**
 		 * History.getState()
