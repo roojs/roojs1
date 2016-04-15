@@ -79,6 +79,8 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
     
     onRender : function(ct, position) 
     {
+        var _this = this;
+        
         Roo.bootstrap.NavProgressBar.superclass.onRender.call(this, ct, position);
         
         this.dayField = new Roo.bootstrap.ComboBox({
@@ -132,6 +134,29 @@ Roo.extend(Roo.bootstrap.DateSplitField, Roo.bootstrap.Component,  {
         
         this.monthField.render(this.el.select('.roo-date-split-field-month', true).first(), null);
         
+        this.yearField = new Roo.bootstrap.ComboBox({
+            allowBlank : this.yearAllowBlank,
+            alwaysQuery : true,
+            displayField : 'value',
+            editable : false,
+            fieldLabel : '',
+            forceSelection : true,
+            mode : 'local',
+            placeholder : this.yearPlaceholder,
+            selectOnFocus : true,
+            tpl : '<div class="select2-result"><b>{value}</b></div>',
+            triggerAction : 'all',
+            typeAhead : true,
+            valueField : 'value',
+            store : new Roo.data.SimpleStore({
+                data : (function() {
+                    return _this.fireEvent('years', _this);
+                })(),
+                fields : [ 'value' ]
+            })
+        });
+
+        this.dayField.render(this.el.select('.roo-date-split-field-day', true).first(), null);
     },
     
     initEvents: function() 
